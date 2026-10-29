@@ -3,6 +3,12 @@
 Every published version of `@morphscreen/web`, newest first. A release
 publishes only a version written here.
 
+## Unreleased
+
+- A map keeps the core's drawn map when the live one can't start: without
+  WebGL (switched off, or a machine without it) MapLibre fails, and the
+  figure was left as an empty box.
+
 ## 0.1.1
 
 Open source under the Apache License 2.0, at

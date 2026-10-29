@@ -190,8 +190,9 @@
   // blobs, drawn into two small canvases that mask the two layers, wipes the
   // text away under the pointer and shows the drawn answer, then closes
   // behind it. The button turns the whole answer over, for touch and keys.
+  // A phone gets the drawn answer alone (site.css), so none of this runs there.
   const morph = document.querySelector("[data-morph]");
-  if (morph && "ResizeObserver" in window) {
+  if (morph && "ResizeObserver" in window && !matchMedia("(max-width: 640px)").matches) {
     const section = morph.closest(".morph");
     const text = morph.querySelector(".morph__layer--text");
     const ui = morph.querySelector(".morph__layer--ui");

@@ -141,6 +141,15 @@ Body: [SignupRequest](#signuprequest).
 | 429 | A limit reached, with Retry-After saying how long to wait: requests a minute (rate_limited), answers at once (too_many_streams), the free tier's day (daily_limit_reached), renders this month (render_limit_reached), or OpenRouter's own (openrouter_rate_limited). ([Error](#error)) |
 | 503 | Accounts can't be read just now; try again. ([Error](#error)) |
 
+### GET /v1/signup/status
+
+Whether sign-in links can be mailed now.
+
+| Status | What comes back |
+|---|---|
+| 200 | Whether links can be mailed ([SignupStatus](#signupstatus)) |
+| 503 | Accounts can't be read just now; try again. ([Error](#error)) |
+
 ### POST /v1/signup/verify
 
 Opens a magic link: a new account with its first key, a sign-in, or a deletion.
@@ -772,3 +781,10 @@ In a stream, after the answer's text: it had `errors` and a repair has started. 
 | Field | Type | Required | What it is |
 |---|---|---|---|
 | `repairing` | object | yes |  |
+
+### SignupStatus
+
+| Field | Type | Required | What it is |
+|---|---|---|---|
+| `email` | `open`, `paused`, `closed` | yes | Whether a link can be mailed now. |
+| `until` | string |  | When links come back, while `paused`. |

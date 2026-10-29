@@ -291,18 +291,25 @@ function liveMap(fig: HTMLElement, attrs: Attrs, data: any, maplibre: unknown, m
     const svg = fig.querySelector("svg");
     if (svg) svg.replaceWith(box);
     else fig.insertBefore(box, fig.querySelector("ol"));
-    map = new gl.Map({
-      container: box,
-      style: {
-        version: 8,
-        sources: { tiles: { type: "raster", tiles: [src.url], tileSize: 256, maxzoom: src.maxZoom } },
-        layers: [{ id: "tiles", type: "raster", source: "tiles" }],
-      },
-      center: [pts[0].lng, pts[0].lat],
-      zoom: 13,
-      // The provider's credit goes under the map, as on the core's map.
-      attributionControl: false,
-    });
+    try {
+      map = new gl.Map({
+        container: box,
+        style: {
+          version: 8,
+          sources: { tiles: { type: "raster", tiles: [src.url], tileSize: 256, maxzoom: src.maxZoom } },
+          layers: [{ id: "tiles", type: "raster", source: "tiles" }],
+        },
+        center: [pts[0].lng, pts[0].lat],
+        zoom: 13,
+        // The provider's credit goes under the map, as on the core's map.
+        attributionControl: false,
+      });
+    } catch {
+      // No WebGL (switched off, or a machine without it): the core's drawn map stays.
+      if (svg) box.replaceWith(svg);
+      else box.remove();
+      return;
+    }
     c = credit(box, src.credit);
     if (src.google)
       map.on("moveend", () => {

@@ -1417,6 +1417,28 @@
             }
           }
         }
+      },
+      "SignupStatus": {
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "enum": [
+              "open",
+              "paused",
+              "closed"
+            ],
+            "description": "Whether a link can be mailed now."
+          },
+          "until": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When links come back, while `paused`."
+          }
+        }
       }
     },
     "responses": {
@@ -1922,7 +1944,7 @@
       "post": {
         "operationId": "signup",
         "summary": "A magic link to sign up, or to sign in when the address has an account",
-        "description": "At most 3 links an hour to one address and 10 sign-ups a day from one network. The mail goes to the address; nothing in the answer says whether it has an account.",
+        "description": "At most 3 links an hour to one address and 10 sign-ups a day from one network. The mail goes to the address; nothing in the answer says whether it has an account. While the day's mail is used (see `GET /v1/signup/status`) it answers 503 `email_paused` before checking anything else.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1952,6 +1974,28 @@
           },
           "429": {
             "$ref": "#/components/responses/TooMany"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/v1/signup/status": {
+      "get": {
+        "operationId": "signupStatus",
+        "summary": "Whether sign-in links can be mailed now",
+        "description": "Links go out within the mail provider's daily and monthly caps, counted by UTC day. When the day's are used, `email` is `paused` until `until` (midnight UTC, or the first of the month for the month's) and links come back on their own; GitHub sign-in goes on. `closed` means sign-up isn't open on this server. Looked up at most every 10 seconds.",
+        "responses": {
+          "200": {
+            "description": "Whether links can be mailed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignupStatus"
+                }
+              }
+            }
           },
           "503": {
             "$ref": "#/components/responses/Unavailable"
@@ -2092,7 +2136,7 @@
       "post": {
         "operationId": "deleteAccount",
         "summary": "A link that deletes an account and everything it holds",
-        "description": "Opening the link (POST /v1/signup/verify) deletes the account, its projects, keys, usage and records. The mail goes to the address; nothing in the answer says whether it has an account.",
+        "description": "Opening the link (POST /v1/signup/verify) deletes the account, its projects, keys, usage and records. The mail goes to the address; nothing in the answer says whether it has an account. While the day's mail is used it answers 503 `email_paused`, the same for any address.",
         "requestBody": {
           "required": true,
           "content": {

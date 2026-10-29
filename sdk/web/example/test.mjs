@@ -1,6 +1,7 @@
 // Builds the example and checks it in headless Chrome: the answer streams,
 // the app's own component mounts, the map goes live (when WebGL is there),
-// and tapping a Button sends an ask action.
+// and tapping a Button sends an ask action. Without WebGL the core's drawn
+// map stays, never an empty box.
 import { createServer } from "node:http";
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -57,9 +58,23 @@ const state = await page.evaluate(() => ({
 }));
 await page.click("a.ms-btn");
 const actions = await page.evaluate(() => window.actions);
+
+// A browser without WebGL (switched off, or a machine without it): MapLibre can't start.
+const flat = await browser.newPage();
+flat.on("pageerror", (e) => errors.push(String(e)));
+await flat.evaluateOnNewDocument(() => {
+  const get = HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.getContext = function (kind, ...rest) {
+    return /webgl/i.test(kind) ? null : get.call(this, kind, ...rest);
+  };
+});
+await flat.goto(`http://127.0.0.1:${server.address().port}/example/index.html`);
+await flat.waitForSelector(".product", { timeout: 15000 });
+await new Promise((r) => setTimeout(r, 2500));
+const noGl = await flat.evaluate(() => ({ drawnMap: !!document.querySelector(".ms-map svg"), emptyBox: !!document.querySelector(".ms-maplive"), drawnPins: document.querySelectorAll(".ms-map svg circle.ms-pin").length }));
 await browser.close();
 server.close();
-const ok = state.product === "Kettle $40" && state.badge === "Open now" && state.places === 2 && actions[0]?.type === "ask" && actions[0]?.text === "Show more picks" && !errors.length;
-console.log(JSON.stringify({ ...state, action: actions[0], errors }, null, 1));
+const ok = state.product === "Kettle $40" && state.badge === "Open now" && state.places === 2 && actions[0]?.type === "ask" && actions[0]?.text === "Show more picks" && noGl.drawnMap && !noGl.emptyBox && noGl.drawnPins === 2 && !errors.length;
+console.log(JSON.stringify({ ...state, action: actions[0], noGl, errors }, null, 1));
 console.log(ok ? "example: ok" : "example: FAILED");
 process.exit(ok ? 0 : 1);

@@ -139,7 +139,7 @@ export function home({ plans, board, families, css }) {
 <section class="section morph" id="morph" aria-labelledby="morph-title" data-reveal data-answer-css="${css.answer}">
   <div class="section__head">
     ${heading("h2", "morph-title", "Your model writes text.", "Your users see this.")}
-    <p class="section__note fade">The same answer twice. DeepSeek V4 Flash was asked "${esc(BRIEF)}" and wrote the text on top; MorphScreen drew what's under it, line by line as it arrived. Move or drag across it to wipe one into the other.</p>
+    <p class="section__note fade"><span class="morph__wide">The same answer twice. DeepSeek V4 Flash was asked "${esc(BRIEF)}" and wrote the text on top; MorphScreen drew what's under it, line by line as it arrived. Move or drag across it to wipe one into the other.</span><span class="morph__phone">DeepSeek V4 Flash was asked "${esc(BRIEF)}" and answered in text. This is what MorphScreen drew from that text, line by line as it arrived.</span></p>
   </div>
   <div class="morph__stage" data-morph>
     <div class="morph__layer morph__layer--text" aria-hidden="true"><pre class="src">${source(top)}</pre></div>

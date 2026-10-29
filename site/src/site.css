@@ -561,6 +561,25 @@ main > .wrap > .section {
   bottom: 16px;
   z-index: 2;
 }
+.morph__phone {
+  display: none;
+}
+/* On a phone, the drawn answer alone: the wipe needs a pointer and room.
+   A window narrowed after the page loaded drops the text layer too. */
+@media (max-width: 640px) {
+  .morph.is-live .morph__layer--text,
+  .morph__toggle,
+  .morph__wide {
+    display: none;
+  }
+  .morph__phone {
+    display: inline;
+  }
+  .morph.is-live .morph__layer--ui {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+}
 .src {
   margin: 0;
   font-family: var(--msui-font-mono);
