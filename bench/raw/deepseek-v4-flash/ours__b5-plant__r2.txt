@@ -1,0 +1,113 @@
+# Factory Floor Supervisor Console
+
+<Card title="Live overview">
+<Columns>
+<Stat label="Overall Equipment Effectiveness" value="82.4%" change="+1.2 pts" note="Target 85%" icon="chart-line" tone="success" />
+<Stat label="Units produced" value="4,820" note="Of 5,400 target · 89%" icon="target" />
+<Stat label="Energy use today" value="18.4 MWh" note="Target 20 MWh" icon="lightning" />
+<Stat label="Safety incidents (YTD)" value="2" note="Reporting year to date" icon="shield-warning" />
+<Stat label="Days since last incident" value="47" note="Last incident: 12 Feb" icon="calendar" />
+</Columns>
+</Card>
+
+<Card title="Production lines" subtitle="Live rate and status">
+<Select label="Focus line" options="All lines | Line 1 | Line 2 | Line 3 | Line 4" placeholder="All lines" />
+| Line | Rate | Status | Andon |
+|---|---|---|---|
+| Line 1 | 96 units/hr | Running | — |
+| Line 2 | 0 units/hr | Idle | Critical — emergency stop |
+| Line 3 | 78 units/hr | Running | Minor — feeder jam |
+| Line 4 | 102 units/hr | Running | — |
+</Card>
+
+<Card title="Live andon alerts">
+| Time | Line | Station | Alert | Priority |
+|---|---|---|---|---|
+| 10:42 | Line 2 | Press 7 | Emergency stop | Critical |
+| 10:15 | Line 3 | Feeder | Material jam | Minor |
+| 09:58 | Line 1 | Winder | Speed drift | Watch |
+</Card>
+
+<Card title="Defect rate — past month">
+<Chart type="line" title="Defect rate over the past month" x="Week" y="Defect rate %">
+| Week | Defect rate |
+|---|---|
+| W1 | 1.4 |
+| W2 | 1.1 |
+| W3 | 1.8 |
+| W4 | 0.9 |
+</Chart>
+</Card>
+
+<Card title="Batches on quality hold">
+| Batch | Product | Qty | Reason | Held since |
+|---|---|---|---|---|
+| B-1021 | ABS Pellets | 1,200 kg | Melt flow out of spec | 2 h |
+| B-1024 | Resin Mix 7 | 650 kg | Contamination suspected | 1 h |
+| B-1029 | Packaging rolls | 3,400 units | Print misalignment | 45 min |
+</Card>
+
+<Card title="Downtime by cause">
+<Chart type="pie" title="Downtime hours — last 7 days" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Breakdowns | 18 |
+| Changeovers | 12 |
+| Material shortage | 7 |
+| Waiting quality | 4 |
+| Other | 3 |
+</Chart>
+</Card>
+
+<Card title="Maintenance" subtitle="Due machines and scheduling">
+| Machine | Due | Task | Priority |
+|---|---|---|---|
+| Press 7 | Tomorrow 14:00 | Hydraulic oil change | High |
+| Conveyor 3 | In 5 days | Belt alignment | Medium |
+| Winder 1 | In 8 days | Bearing replacement | Medium |
+
+<Form name="schedule-maintenance">
+<Select label="Machine" options="Press 7 | Conveyor 3 | Winder 1 | Line 2 Robots" placeholder="Select machine" />
+<Date label="Date" name="maintenance-date" />
+<Select label="Shift" options="Morning | Afternoon | Night" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Materials inventory">
+<Progress value="68" max="100" label="Steel — 13.6 / 20 t" tone="success" />
+<Progress value="42" max="100" label="Resin — 210 / 500 L" tone="warning" />
+<Progress value="85" max="100" label="Packaging — 1,530 / 1,800 units" tone="info" />
+</Card>
+
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Qty | Arriving |
+|---|---|---|---|
+| MetalWorks | Steel coils | 8 t | Tue 14:00 |
+| PolyChem | Resin | 500 L | Wed 09:30 |
+| PackRight | Cartons | 2,000 units | Thu 11:00 |
+| Apex Tools | Moulds | 2 pcs | Fri 08:30 |
+</Card>
+
+<Card title="Shift output compared">
+<Chart type="bar" title="Output vs target by shift" x="Shift" y="Units">
+| Shift | Output | Target |
+|---|---|---|
+| Morning | 2100 | 2000 |
+| Afternoon | 1850 | 2000 |
+| Night | 870 | 2000 |
+</Chart>
+</Card>
+
+<Card title="Open work orders">
+| WO # | Line | Task | Due | Priority |
+|---|---|---|---|---|
+| WO-4412 | Line 2 | Replace press hydraulic seals | Today 16:00 | High |
+| WO-4413 | Line 1 | Calibrate winder sensors | Tomorrow | Medium |
+| WO-4414 | Line 3 | Clear feeder jam | In progress | Critical |
+| WO-4415 | Line 4 | PM conveyor lubrication | Fri | Low |
+</Card>
+
+<Card title="Shift report">
+<Button variant="primary" icon="download">Export shift report</Button>
+</Card>

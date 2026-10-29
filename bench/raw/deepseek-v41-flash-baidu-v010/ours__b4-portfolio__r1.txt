@@ -1,0 +1,139 @@
+# Portfolio Review — Q3 FY25
+
+<Callout tone="warning" title="Portfolio health: 2 of 7 projects at risk, 4 overdue milestones, 11 blocked items">Atlas and Beacon are behind on delivery; Meridian needs a budget top-up before sprint 14.</Callout>
+
+<Columns>
+<Stat label="Active projects" value="7" change="+1 vs Q2" tone="info" icon="folder" />
+<Stat label="Overdue milestones" value="4" change="+2 vs Q2" tone="danger" icon="flag" />
+<Stat label="Budget spent" value="$2.41M" note="of $3.20M (75%)" tone="neutral" icon="chart-line" />
+<Stat label="Team utilization" value="88%" change="+6 pts" tone="warning" icon="users" />
+</Columns>
+
+<Card title="Quarter" subtitle="Switch the review to a different quarter">
+<Select label="Review quarter" name="quarter" options="Q3 FY25 (current) | Q2 FY25 | Q1 FY25 | Q4 FY24" value="Q3 FY25 (current)" hint="All figures below refresh for the selected quarter" />
+</Card>
+
+<Card title="Active projects" subtitle="Owner, deadline and health">
+| Project | Owner | Deadline | Budget spent | Health |
+|---|---|---|---|---|
+| Atlas — Payments re-platform | R. Okafor | 12 Sep | $640k / $700k | <Badge tone="danger">At risk</Badge> |
+| Beacon — Mobile app v3 | L. Marchetti | 26 Sep | $410k / $520k | <Badge tone="warning">Watch</Badge> |
+| Cobalt — Data warehouse | S. Iyer | 03 Oct | $300k / $450k | <Badge tone="success">On track</Badge> |
+| Delta — SSO & access | P. Nguyen | 17 Oct | $180k / $260k | <Badge tone="success">On track</Badge> |
+| Echo — Billing migration | T. Bauer | 31 Oct | $390k / $500k | <Badge tone="warning">Watch</Badge> |
+| Foxtrot — Partner API | A. Haddad | 14 Nov | $290k / $420k | <Badge tone="success">On track</Badge> |
+| Golf — Legacy sunset | M. Sørensen | 05 Dec | $200k / $350k | <Badge tone="info">Planning</Badge> |
+</Card>
+
+<Card title="Budget spent vs allocation">
+<Chart type="bar" x="Project" y="USD (thousands)">
+| Project | Allocated | Spent |
+|---|---|---|
+| Atlas | 700 | 640 |
+| Beacon | 520 | 410 |
+| Cobalt | 450 | 300 |
+| Delta | 260 | 180 |
+| Echo | 500 | 390 |
+| Foxtrot | 420 | 290 |
+| Golf | 350 | 200 |
+</Chart>
+</Card>
+
+<Card title="Overdue milestones">
+| Milestone | Project | Owner | Due | Days late |
+|---|---|---|---|---|
+| Cutover dry run | Atlas | R. Okafor | 22 Aug | 9 |
+| Beta build to TestFlight | Beacon | L. Marchetti | 26 Aug | 5 |
+| Warehouse schema sign-off | Cobalt | S. Iyer | 28 Aug | 3 |
+| Billing reconciliation report | Echo | T. Bauer | 29 Aug | 2 |
+</Card>
+
+<Card title="Team utilization">
+| Squad | Capacity (FTE) | Allocated | Utilization |
+|---|---|---|---|
+| Payments | 8 | 7.6 | 95% |
+| Mobile | 6 | 5.4 | 90% |
+| Data | 5 | 4.1 | 82% |
+| Platform | 4 | 3.6 | 90% |
+| Billing | 5 | 4.0 | 80% |
+| Shared services | 3 | 2.7 | 90% |
+
+<Progress value="88" max="100" label="Portfolio utilization" tone="warning" />
+</Card>
+
+<Card title="Risks" subtitle="Severity per risk">
+| Risk | Project | Severity | Mitigation |
+|---|---|---|---|
+| Payment vendor certification slipping | Atlas | <Badge tone="danger">Critical</Badge> | Escalate to vendor exec sponsor |
+| iOS 19 API deprecation | Beacon | <Badge tone="danger">Critical</Badge> | Pin SDK, patch in sprint 13 |
+| Single data engineer on schema | Cobalt | <Badge tone="warning">High</Badge> | Backfill from Platform squad |
+| Billing data quality gaps | Echo | <Badge tone="warning">High</Badge> | Add validation gate before cutover |
+| Partner API rate limits unknown | Foxtrot | <Badge tone="neutral">Medium</Badge> | Load test in staging |
+| Legacy decommission window | Golf | <Badge tone="info">Low</Badge> | Confirm freeze dates with ops |
+</Card>
+
+<Card title="Deadlines in the next two weeks">
+<Steps>
+<Step title="Atlas — vendor certification due" subtitle="02 Sep · R. Okafor" status="current">Blocking the cutover dry run.</Step>
+<Step title="Beacon — beta build shipped" subtitle="05 Sep · L. Marchetti" status="todo">Depends on SDK patch landing.</Step>
+<Step title="Cobalt — schema sign-off" subtitle="09 Sep · S. Iyer" status="todo">Needs second data engineer.</Step>
+<Step title="Delta — SSO design review" subtitle="12 Sep · P. Nguyen" status="todo">On track.</Step>
+</Steps>
+</Card>
+
+<Card title="Delivery pace — last six sprints">
+<Chart type="line" x="Sprint" y="Story points">
+| Sprint | Committed | Completed |
+|---|---|---|
+| S7 | 120 | 104 |
+| S8 | 130 | 118 |
+| S9 | 125 | 121 |
+| S10 | 140 | 112 |
+| S11 | 135 | 108 |
+| S12 | 145 | 119 |
+</Chart>
+</Card>
+
+<Card title="Blocked work items">
+| Item | Project | Blocked by | Age |
+|---|---|---|---|
+| Cutover runbook | Atlas | Vendor certification | 9 days |
+| Push notification service | Beacon | iOS SDK decision | 5 days |
+| Fact table loader | Cobalt | Missing engineer | 4 days |
+| Invoice parser | Echo | Data quality gaps | 6 days |
+| Rate-limit config | Foxtrot | Vendor docs | 2 days |
+| Access review script | Delta | Security sign-off | 3 days |
+</Card>
+
+<Card title="Request more people" subtitle="Ask for headcount against a project">
+<Form name="headcount-request">
+<Select label="Project" name="project" options="Atlas — Payments re-platform | Beacon — Mobile app v3 | Cobalt — Data warehouse | Delta — SSO & access | Echo — Billing migration | Foxtrot — Partner API | Golf — Legacy sunset" required="true" />
+<Input label="People requested" name="headcount" type="number" min="1" max="10" step="1" value="2" required="true" />
+<Select label="Role" name="role" options="Engineer | Data engineer | QA | Designer | PM" />
+<TextArea label="Justification" name="reason" rows="3" placeholder="Why this project needs the people now" hint="Reference the risk or blocked item this unblocks" required="true" />
+<Button>Submit request</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="Archive a finished project">
+<Form name="archive-project">
+<Select label="Project" name="archive_project" options="Golf — Legacy sunset | Delta — SSO & access" hint="Only projects marked complete can be archived" required="true" />
+<Date label="Completion date" name="completed_on" required="true" />
+<Switch label="Publish final report to portfolio archive" name="publish" value="true" />
+<Button variant="danger">Archive project</Button>
+</Form>
+</Card>
+
+<Card title="Export">
+<Button icon="download">Export review as PDF</Button>
+<Button variant="secondary" icon="table">Export as CSV</Button>
+<Button variant="tertiary" icon="calendar">Schedule weekly send</Button>
+</Card>
+
+<FollowUps>
+- Which projects are most likely to slip next quarter?
+- Show me the blocked items older than a week
+- What would Atlas's budget look like with two more engineers?
+- Compare Q3 and Q2 delivery pace
+</FollowUps>

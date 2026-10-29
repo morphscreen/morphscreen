@@ -1,0 +1,31 @@
+# Low Inventory Warning
+
+<Card title="Inventory Alerts" subtitle="Items below reorder threshold">
+<Input label="Search items" placeholder="Search by name, SKU, or category" type="search" name="inventory-search" />
+</Card>
+
+<Card title="Reorder Threshold" subtitle="Configuration">
+<Columns>
+<Stat label="Default threshold" value="10 units" note="Applies to all items unless overridden" tone="info" />
+<Stat label="Items currently low" value="7" note="Requires attention" tone="warning" />
+</Columns>
+<Callout tone="info" title="Threshold logic">Items appear here when available stock ≤ reorder point. Each product can have a custom threshold set in Product Settings.</Callout>
+</Card>
+
+<Card title="Low Stock Items">
+| Item | SKU | Category | On Hand | Reorder Point | Status | Action |
+|---|---|---|---|---|---|---|
+| Organic Almond Milk 1L | BEV-001 | Beverages | 3 | 10 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Whole Wheat Bread | BAK-042 | Bakery | 5 | 15 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Free-Range Eggs (12ct) | DAI-007 | Dairy | 8 | 20 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Grass-Fed Ground Beef 1lb | MEA-019 | Meat | 2 | 10 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Avocado Hass (each) | PRO-033 | Produce | 6 | 15 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Greek Yogurt Plain 32oz | DAI-012 | Dairy | 4 | 12 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Artisan Sourdough Loaf | BAK-055 | Bakery | 1 | 8 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+</Card>
+
+<Card title="Bulk Actions">
+<Button variant="secondary">Reorder All Low Items</Button>
+<Button variant="tertiary">Export Low Stock Report</Button>
+<Button variant="tertiary">Adjust Thresholds</Button>
+</Card>

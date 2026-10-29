@@ -1,0 +1,123 @@
+# Sales dashboard — this year
+
+A working view of the shop's year so far, plus the few things worth acting on this week. Figures are illustrative — swap in your own.
+
+<Callout tone="info" title="Where you are">Year to date through 25 Oct. You are <Badge tone="success">8% ahead of plan</Badge> and the holiday run-up is the next lever.</Callout>
+
+<Columns>
+<Stat label="Revenue YTD" value="$412,600" change="+14.2% YoY" tone="success" icon="chart-line" />
+<Stat label="Orders" value="9,847" change="+6.1% YoY" tone="success" icon="shopping-cart" />
+<Stat label="Average order value" value="$41.90" change="+7.6% YoY" tone="success" icon="receipt" />
+<Stat label="Return rate" value="4.8%" change="+0.9 pts" tone="warning" icon="arrow-u-up-left" />
+</Columns>
+
+<Card title="Revenue by month" subtitle="USD, this year">
+<Chart type="bar" x="Month" y="Revenue">
+| Month | Revenue |
+|---|---|
+| Jan | 24800 |
+| Feb | 26300 |
+| Mar | 31200 |
+| Apr | 33400 |
+| May | 35900 |
+| Jun | 34100 |
+| Jul | 37800 |
+| Aug | 36600 |
+| Sep | 40200 |
+| Oct | 42100 |
+| Nov | 0 |
+| Dec | 0 |
+</Chart>
+</Card>
+
+<Card title="Where the money comes from" subtitle="Share of revenue YTD">
+<Chart type="donut" title="Channel mix">
+| Channel | Revenue |
+|---|---|
+| In store | 214000 |
+| Online | 148000 |
+| Marketplace | 50600 |
+</Chart>
+</Card>
+
+<Card title="Top categories" subtitle="Revenue YTD vs last year">
+<Compare title="Category performance">
+| Category | This year | Last year | Change |
+|---|---|---|---|
+| Coffee & tea | $96,400 | $81,200 | +18.7% |
+| Kitchenware | $78,900 | $74,500 | +5.9% |
+| Chocolate & sweets | $61,300 | $52,800 | +16.1% |
+| Home fragrance | $44,700 | $46,100 | -3.0% |
+| Books & gifts | $38,200 | $31,400 | +21.7% |
+</Compare>
+</Card>
+
+<Card title="The funnel, YTD">
+<Funnel title="From visit to repeat purchase">
+| Stage | Count |
+|---|---|
+| Store visits | 148000 |
+| Browsed a product | 96000 |
+| Added to basket | 31000 |
+| Checked out | 9847 |
+| Bought again | 3410 |
+</Funnel>
+</Card>
+
+<Card title="Busiest days" subtitle="Orders by weekday and month band">
+<Heatmap title="Orders per weekday">
+| Day | Q1 | Q2 | Q3 | Oct |
+|---|---|---|---|---|
+| Mon | 210 | 245 | 260 | 88 |
+| Tue | 198 | 231 | 252 | 91 |
+| Wed | 224 | 258 | 279 | 97 |
+| Thu | 241 | 276 | 301 | 104 |
+| Fri | 302 | 341 | 372 | 129 |
+| Sat | 388 | 421 | 449 | 158 |
+| Sun | 264 | 289 | 311 | 112 |
+</Heatmap>
+</Card>
+
+<Card title="What to do next" subtitle="Ranked by expected impact">
+<Steps>
+<Step title="Fix the return rate" status="current" subtitle="4.8%, up 0.9 pts">
+Home fragrance drives most returns — 11% of its orders come back. Check the two worst-selling scents and the size photos on those listings.
+</Step>
+<Step title="Push the two winners" status="todo" subtitle="Coffee & tea, books & gifts">
+Both grew over 18%. Give them the front table and the top of the homepage through December.
+</Step>
+<Step title="Staff up Saturdays" status="todo" subtitle="449 orders in Q3">
+Saturday is 1.8× a Tuesday. Add one person on the floor from 10:00–14:00.
+</Step>
+<Step title="Set the holiday plan" status="todo" subtitle="Nov–Dec are blank">
+Last year Nov + Dec was 27% of revenue. Lock the stock order by 5 Nov.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Try the numbers yourself">
+<WhatIf title="What if the rest of the year goes like this?">
+<Slider label="November revenue" name="nov" min={0} max={80000} step={1000} value={52000} unit="$" />
+<Slider label="December revenue" name="dec" min={0} max={100000} step={1000} value={68000} unit="$" />
+<Slider label="Return rate" name="returns" min={0} max={15} step={0.1} value={4.8} unit="%" />
+<Result label="Full-year revenue" value={412600 + nov + dec} unit="$" decimals={0} />
+<Result label="Revenue lost to returns" value={(412600 + nov + dec) * returns / 100} unit="$" decimals={0} />
+</WhatIf>
+</Card>
+
+<Card title="Set a target for the rest of the year">
+<Form name="sales-target">
+<Input label="Revenue target for Nov–Dec" name="target" type="number" placeholder="120000" hint="Last year was $111,400" />
+<Select label="Main push" name="push" options="Coffee & tea | Kitchenware | Chocolate & sweets | Books & gifts | Home fragrance" />
+<Date label="Stock order deadline" name="deadline" value="2026-11-05" />
+<TextArea label="Notes for the team" name="notes" placeholder="Anything the floor and the online listings should know" rows={3} />
+<Button>Save target</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Break down revenue by product, not just category
+- Which customers bought more than once this year?
+- What did last November and December look like day by day?
+- Show me the return rate by product
+</FollowUps>

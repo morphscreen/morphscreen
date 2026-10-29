@@ -1,0 +1,41 @@
+# Personal Budget Check
+
+<Card title="Month overview" subtitle="Track your spending against your monthly budget">
+<Select placeholder="March 2025" label="View another month" name="month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" />
+<Columns>
+<Stat label="Budget" value="$3,500.00" icon="wallet" />
+<Stat label="Spent" value="$2,847.32" icon="receipt" tone="info" />
+<Stat label="Remaining" value="$652.68" icon="piggy-bank" tone="success" />
+</Columns>
+<Progress value="2847.32" max="3500" label="Spent $2,847.32 of $3,500.00 (81%)" tone="warning" />
+</Card>
+
+<Card title="Largest expense" subtitle="Your biggest single transaction this month">
+<Callout tone="danger" title="Rent · $1,200.00">
+Paid on March 1, 2025 — about 34% of your monthly budget.
+</Callout>
+</Card>
+
+<Card title="Spending by category" subtitle="Where your money went in March 2025">
+<Chart type="donut" title="Spending by category" x="Category" y="Amount (USD)">
+| Category | Amount |
+|---|---|
+| Rent | 1200.00 |
+| Groceries | 486.52 |
+| Dining | 342.15 |
+| Other | 275.20 |
+| Transport | 214.80 |
+| Utilities | 198.75 |
+| Entertainment | 129.90 |
+</Chart>
+</Card>
+
+<Card title="Add an expense" subtitle="Record a new transaction">
+<Form name="add-expense">
+<Input label="Expense name" name="name" placeholder="e.g., Groceries at Trader Joe's" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" min="0" step="0.01" required="true" />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Groceries | Transport | Dining | Entertainment | Utilities | Other" required="true" />
+<Date label="Date" name="date" hint="Defaults to today" />
+<Button icon="plus">Add expense</Button>
+</Form>
+</Card>

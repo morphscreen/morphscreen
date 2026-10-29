@@ -1,0 +1,224 @@
+# City Operations Center
+
+<Select label="Focus District" name="district" placeholder="Select a district" options="Downtown | Northside | Eastport | Westview | Southgate | Riverside | University | Industrial" value="Downtown" />
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="Live traffic index">
+<Stat label="Congestion Level" value="67%" change="+4% vs 1hr ago" tone="warning" />
+<Progress value="67" max="100" label="Traffic Flow" />
+<Badge tone="warning">Moderate-Heavy</Badge>
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance">
+<Stat label="System Wide" value="92.4%" change="-0.8% vs yesterday" tone="success" />
+<Chart type="bar" x="Line" y="% On Time">
+| Line | % On Time |
+|---|---|
+| Blue Line | 95.2 |
+| Red Line | 91.8 |
+| Green Line | 89.5 |
+| Yellow Line | 94.1 |
+| Bus Network | 91.2 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Air Quality by District" subtitle="AQI (lower is better)">
+<Chart type="horizontal" x="AQI" y="District">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Northside | 42 |
+| Eastport | 55 |
+| Westview | 38 |
+| Southgate | 63 |
+| Riverside | 31 |
+| University | 47 |
+| Industrial | 112 |
+</Chart>
+<Badge tone="danger">Industrial: Unhealthy</Badge>
+<Badge tone="warning">Downtown: Moderate</Badge>
+<Badge tone="success">Riverside: Good</Badge>
+</Card>
+
+<Card title="Energy Use — Past 7 Days" subtitle="MWh consumed">
+<Chart type="line" x="Day" y="MWh">
+| Day | Residential | Commercial | Industrial | Municipal |
+|---|---|---|---|---|
+| Mon | 1240 | 2180 | 3450 | 560 |
+| Tue | 1190 | 2210 | 3520 | 540 |
+| Wed | 1220 | 2190 | 3480 | 570 |
+| Thu | 1260 | 2250 | 3510 | 580 |
+| Fri | 1310 | 2320 | 3590 | 590 |
+| Sat | 1180 | 1980 | 3200 | 520 |
+| Sun | 1120 | 1850 | 2980 | 490 |
+</Chart>
+<Stat label="Total This Week" value="142,340 MWh" change="+3.2% vs last week" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today" subtitle="Real-time consumption">
+<Stat label="Current Rate" value="4.2M gal/hr" change="+0.3M vs avg" tone="info" />
+<Stat label="Today Total" value="68.4M gal" change="-2.1% vs same day last week" tone="success" />
+<Progress value="72" max="100" label="Reservoir Capacity" />
+<Badge tone="success">Within normal range</Badge>
+</Card>
+
+<Card title="Current Weather" subtitle="Downtown station">
+<Columns>
+<Stat label="Temperature" value="72°F" />
+<Stat label="Humidity" value="58%" />
+<Stat label="Wind" value="8 mph SW" />
+<Stat label="Pressure" value="1013 hPa" />
+</Columns>
+<Badge tone="info">Partly Cloudy</Badge>
+<Badge tone="success">Air Quality: Moderate</Badge>
+</Card>
+</Columns>
+
+<Card title="Open Incidents" subtitle="Active incidents with location and severity">
+<Chart type="table" x="Incident" y="Details">
+| Incident | Location | Severity | Type | Since | Status |
+|---|---|---|---|---|---|
+| INC-2024-0847 | 5th & Main (Downtown) | Critical | Water Main Break | 06:23 | Crew En Route |
+| INC-2024-0846 | I-90 Exit 12 (Northside) | High | Multi-Vehicle Crash | 07:11 | Active |
+| INC-2024-0845 | Riverside Park | Medium | Gas Leak Report | 07:45 | Investigating |
+| INC-2024-0844 | Eastport Substation | High | Power Outage | 08:02 | Crew Dispatched |
+| INC-2024-0843 | University Ave & 3rd | Low | Traffic Signal Out | 08:15 | Queued |
+| INC-2024-0842 | Industrial Zone Sector 4 | Medium | Chemical Spill | 08:30 | Contained |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Emergency Vehicles Deployed" subtitle="Live unit locations">
+<Chart type="table" x="Unit" y="Details">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| ENG-12 | Fire Engine | 5th & Main | INC-2024-0847 | On Scene |
+| MED-7 | Ambulance | I-90 Exit 12 | INC-2024-0846 | Transporting |
+| HAZ-3 | HazMat | Industrial Zone | INC-2024-0842 | On Scene |
+| ENG-8 | Fire Engine | Eastport Substation | INC-2024-0844 | En Route |
+| PD-22 | Police | Riverside Park | INC-2024-0845 | Investigating |
+| TOW-4 | Tow Truck | I-90 Exit 12 | INC-2024-0846 | En Route |
+</Chart>
+</Card>
+
+<Card title="Parking Availability — Downtown" subtitle="Real-time occupancy">
+<Progress value="78" max="100" label="Street Parking (2,840 spaces)" />
+<Progress value="62" max="100" label="Garage A — Civic Center (1,200)" />
+<Progress value="45" max="100" label="Garage B — Market St (950)" />
+<Progress value="88" max="100" label="Garage C — Convention (1,500)" />
+<Progress value="34" max="100" label="Lot D — Waterfront (600)" />
+<Stat label="Total Available" value="1,847 spaces" change="23% of capacity" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public Events This Weekend" subtitle="Permitted events requiring coordination">
+<Chart type="table" x="Event" y="Details">
+| Event | Date | Time | Location | Expected | Impact |
+|---|---|---|---|---|---|
+| Riverside Jazz Festival | Sat 14th | 12:00-22:00 | Riverside Park | 15,000 | High (traffic, transit) |
+| Marathon & 10K | Sun 15th | 07:00-12:00 | Downtown Loop | 8,500 | Critical (road closures) |
+| Farmers Market | Sat 14th | 08:00-14:00 | University Square | 3,200 | Medium (parking) |
+| Art Walk | Sat 14th | 17:00-23:00 | Eastport District | 5,000 | Medium (pedestrian) |
+| Food Truck Rally | Sun 15th | 11:00-18:00 | Southgate Plaza | 4,500 | Low |
+</Chart>
+</Card>
+
+<Card title="Citizen Reports (Live Feed)" subtitle="Incoming 311 reports — auto-refreshes">
+<Chart type="table" x="Time" y="Report">
+| Time | Category | Location | Description | Status |
+|---|---|---|---|---|
+| 08:47 | Pothole | 1200 Block Oak St | Large pothole near bus stop | New |
+| 08:45 | Streetlight | Maple & 4th (Westview) | Flickering light, safety concern | Assigned |
+| 08:42 | Trash | Riverside Park | Overflowing bins near playground | In Progress |
+| 08:38 | Graffiti | Industrial Zone Sector 2 | Tagging on warehouse wall | New |
+| 08:35 | Noise | 500 Block Elm (University) | Construction before 7am permit hours | Under Review |
+| 08:31 | Signal | 15th & Broadway | Left turn arrow not cycling | Dispatched |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Service Request Backlog" subtitle="Open 311 requests by category">
+<Stat label="Total Open" value="1,247" change="+23 vs yesterday" tone="warning" />
+<Stat label="Overdue (>SLA)" value="187" change="+12" tone="danger" />
+<Stat label="Avg Response" value="2.4 days" change="-0.3 days" tone="success" />
+<Chart type="bar" x="Category" y="Count">
+| Category | Count |
+|---|---|
+| Potholes/Road Repair | 312 |
+| Streetlight/Traffic Signal | 245 |
+| Trash/Recycling | 198 |
+| Code Enforcement | 156 |
+| Parks/Tree Maintenance | 134 |
+| Water/Sewer | 102 |
+| Signage | 100 |
+</Chart>
+</Card>
+
+<Card title="Roadworks Planned This Month" subtitle="Scheduled construction & closures">
+<Chart type="table" x="Project" y="Details">
+| Project | Location | Start | End | Type | Impact |
+|---|---|---|---|---|---|
+| Bridge Deck Replacement | I-90 Riverside Bridge | Oct 14 | Oct 28 | Major | Full closure, detour |
+| Water Main Replacement | 3rd Ave (Main-15th) | Oct 16 | Nov 3 | Utility | Lane shifts |
+| Fiber Installation | University Corridor | Oct 20 | Nov 10 | Utility | Rolling lane closures |
+| Resurfacing Program | Northside Arterials | Oct 22 | Nov 15 | Paving | Night work, delays |
+| ADA Ramp Upgrades | Downtown Core | Oct 25 | Nov 8 | Accessibility | Sidewalk closures |
+| Storm Drain Repair | Eastport Industrial | Oct 28 | Nov 12 | Drainage | Intersection closure |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets approaching or past maintenance windows">
+<Chart type="table" x="Asset" y="Details">
+| Asset | Type | Location | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|
+| Pump Station PS-7 | Water | Southgate | Oct 10 | 4 | Critical |
+| Transformer T-204 | Power | Industrial Zone | Oct 12 | 2 | High |
+| Bridge BR-12 (Inspection) | Transport | Riverside | Oct 15 | -1 (due) | High |
+| Generator GEN-3 (Hospital) | Power | University | Oct 18 | -4 | Critical |
+| Clarifier Tank #2 | Wastewater | Eastport | Oct 20 | -6 | Medium |
+| Traffic Cabinet TC-44 | Transport | Downtown | Oct 22 | -8 | Medium |
+| Reservoir Valve RV-9 | Water | Northside | Oct 25 | -11 | High |
+| Substation SUB-5 Switchgear | Power | Westview | Oct 28 | -14 | Critical |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Dispatch a Crew" subtitle="Assign personnel to an incident or task">
+<Form name="dispatch-crew">
+<Select label="Incident / Task" name="incident" placeholder="Select or enter new" options="INC-2024-0847 (Water Main) | INC-2024-0846 (Crash) | INC-2024-0845 (Gas Leak) | INC-2024-0844 (Power Outage) | New Task" required="true" />
+<Select label="Crew Type" name="crewType" placeholder="Select crew" options="Water Repair | Electrical | Roads/Paving | Traffic Signals | Parks/Tree | General Maintenance | HazMat" required="true" />
+<Select label="Unit(s)" name="units" placeholder="Select units" options="CREW-A (3 person) | CREW-B (3 person) | CREW-C (2 person) | VAC-TRUCK-1 | BACKHOE-2 | GENERATOR-1" required="true" />
+<Input label="Notes / Instructions" name="notes" placeholder="Special instructions, safety hazards, access info..." />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Broadcast message to citizens via app, SMS, web, signs">
+<Form name="public-alert">
+<Radio label="Alert Level" name="alertLevel" options="Info (Blue) | Advisory (Yellow) | Warning (Orange) | Emergency (Red)" value="Advisory (Yellow)" required="true" />
+<Select label="Channels" name="channels" placeholder="Select channels" options="Mobile App Push | SMS Subscribers | Website Banner | Variable Message Signs | Social Media | Emergency Alert System (EAS)" value="Mobile App Push | SMS Subscribers | Website Banner | Variable Message Signs" required="true" />
+<Select label="Target Area" name="targetArea" placeholder="Geographic targeting" options="Citywide | Downtown | Northside | Eastport | Westview | Southgate | Riverside | University | Industrial | Custom Polygon" value="Citywide" required="true" />
+<TextArea label="Alert Message" name="message" placeholder="Enter clear, actionable message (max 160 chars for SMS)..." rows="4" required="true" hint="Include: what, where, when, action needed, duration, info source" />
+<Input label="Expires" name="expires" type="datetime-local" placeholder="Auto-expire time" hint="Leave blank for manual expiry" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the live traffic camera feed for 5th & Main
+- What's the ETA for water main repair crew at INC-2024-0847?
+- Generate a weekend operations briefing for the marathon
+- Show all open incidents in the Industrial district
+- What's the current reservoir level and trend?
+</FollowUps>

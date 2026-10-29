@@ -1,0 +1,64 @@
+# Module 3: Advanced React Patterns
+
+## Lesson 4: Compound Components
+
+<Video 
+  src="https://example.com/lessons/compound-components.mp4" 
+  poster="https://example.com/posters/compound-components.jpg"
+  title="Compound Components in React"
+  caption="Learn how to build flexible, reusable component APIs with compound components"
+/>
+
+<Card title="Lesson Notes" icon="file-text">
+### Key Concepts
+
+**Compound Components** allow you to create components that work together as a cohesive unit, while giving the consumer control over composition and layout.
+
+```jsx
+// Parent manages state, children render UI
+<Select>
+  <Select.Trigger>Choose...</Select.Trigger>
+  <Select.Options>
+    <Select.Option value="a">Option A</Option>
+    <Select.Option value="b">Option B</Option>
+  </Select.Options>
+</Select>
+```
+
+### Benefits
+- **Separation of concerns** — logic in parent, rendering in children
+- **Flexible composition** — consumer controls markup order
+- **Implicit state sharing** — no prop drilling needed
+- **Type-safe APIs** — TypeScript can infer relationships
+
+### When to Use
+- Tabs, Selects, Menus, Accordions
+- Form field groups with validation
+- Complex UI widgets with multiple interactive parts
+
+### Implementation Pattern
+1. Create context in parent component
+2. Expose child components as static properties
+3. Children consume context via `useContext`
+4. Render props or `children` for maximum flexibility
+
+### Common Pitfalls
+- Forgetting to provide default context values
+- Not handling missing context gracefully
+- Over-engineering simple components
+</Card>
+
+<Card title="Next Lesson" icon="arrow-right" subtitle="Module 3 • Lesson 5">
+### Render Props & Higher-Order Components
+
+Explore two classic patterns for sharing component logic: **render props** for flexible rendering control, and **HOCs** for cross-cutting concerns like authentication, data fetching, and logging.
+
+<Badge tone="info">18 min video</Badge>
+<Badge tone="neutral">12 min reading</Badge>
+
+<Button variant="primary" size="medium">Start Lesson 5 →</Button>
+</Card>
+
+<Card title="Progress" icon="check-circle">
+<Switch label="Mark this lesson as complete" name="lesson-complete" value="false" hint="Your progress will be saved automatically" />
+</Card>

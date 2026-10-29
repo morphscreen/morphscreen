@@ -1,0 +1,118 @@
+# PMO Portfolio Review — Q2 2025
+
+<Columns>
+<Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" value="Q2 2025" hint="Switch review period" />
+<Button variant="secondary" icon="download" href="/export/pmo-review-q2-2025.csv">Export review</Button>
+</Columns>
+
+<Callout tone="warning" title="One-line health summary">Amber — 2 projects on track, 2 need attention, 1 at risk; focus on clearing the ERP invoice blocker and the Mobile App v2 beta release.</Callout>
+
+<Columns>
+<Stat label="Active projects" value="5" icon="folder" />
+<Stat label="On track" value="2" tone="success" icon="check-circle" />
+<Stat label="Needs attention" value="2" tone="warning" icon="warning" />
+<Stat label="At risk" value="1" tone="danger" icon="warning-circle" />
+<Stat label="Budget spent" value="68%" tone="info" icon="currency-dollar" />
+<Stat label="Utilization" value="78%" tone="info" icon="users" />
+</Columns>
+
+<Card title="Active projects" subtitle="Owner, deadline and health">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Mobile App v2 | Ana Ruiz | Jun 20, 2025 | <Badge tone="danger">Red</Badge> |
+| Cloud Migration | Priya Sharma | Jun 30, 2025 | <Badge tone="success">Green</Badge> |
+| Security Hardening | Lena Kim | Jul 05, 2025 | <Badge tone="warning">Yellow</Badge> |
+| ERP Rollout | Tom Becker | Jul 15, 2025 | <Badge tone="warning">Yellow</Badge> |
+| Data Platform | James Osei | Aug 01, 2025 | <Badge tone="success">Green</Badge> |
+</Card>
+
+<Columns>
+<Card title="Overdue milestones">
+| Milestone | Project | Due | Overdue |
+|---|---|---|---|
+| UAT sign-off | ERP Rollout | May 15, 2025 | 23 days |
+| Backend API freeze | Mobile App v2 | May 28, 2025 | 10 days |
+| Pen test completion | Security Hardening | Jun 01, 2025 | 6 days |
+</Card>
+
+<Card title="Deadlines in the next two weeks">
+| Date | Project | Milestone |
+|---|---|---|
+| Jun 12, 2025 | Cloud Migration | Phase 2 go/no-go |
+| Jun 15, 2025 | Mobile App v2 | Beta release |
+| Jun 18, 2025 | Security Hardening | Remediation complete |
+| Jun 20, 2025 | Data Platform | Design freeze |
+</Card>
+</Columns>
+
+<Card title="Budget spent vs allocation" subtitle="USD in thousands, per project">
+<Chart type="bar" x="Project" y="USD (k)">
+| Project | Spent | Allocated |
+|---|---|---|
+| Mobile App v2 | 260 | 380 |
+| Cloud Migration | 350 | 500 |
+| Security Hardening | 80 | 120 |
+| ERP Rollout | 520 | 700 |
+| Data Platform | 120 | 250 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Team utilization">
+| Team | Utilization |
+|---|---|
+| Engineering | <Progress value="88" max="100" label="88%" tone="success" /> |
+| QA | <Progress value="84" max="100" label="84%" tone="success" /> |
+| Design | <Progress value="76" max="100" label="76%" tone="info" /> |
+| PMO | <Progress value="62" max="100" label="62%" tone="warning" /> |
+</Card>
+
+<Card title="Delivery pace — last six sprints" subtitle="Story points planned vs delivered">
+<Chart type="line" x="Sprint" y="Story points">
+| Sprint | Planned | Delivered |
+|---|---|---|
+| S1 | 45 | 44 |
+| S2 | 48 | 42 |
+| S3 | 52 | 51 |
+| S4 | 50 | 47 |
+| S5 | 55 | 54 |
+| S6 | 56 | 49 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Risks" subtitle="Severity and mitigation">
+| Risk | Project | Severity | Mitigation |
+|---|---|---|---|
+| Vendor API delay | ERP Rollout | <Badge tone="danger">High</Badge> | Escalated; contingency batch window |
+| Data quality in migration | Cloud Migration | <Badge tone="danger">High</Badge> | Extra validation rules |
+| Staff attrition | Mobile App v2 | <Badge tone="warning">Medium</Badge> | Backfill raised; cross-training |
+| Cloud cost overrun | Data Platform | <Badge tone="warning">Medium</Badge> | Reserved instances; spend alerts |
+| Compliance change | Security Hardening | <Badge tone="neutral">Low</Badge> | Regulatory tracking |
+</Card>
+
+<Card title="Blocked work items">
+| Work item | Project | Blocker | Blocked for |
+|---|---|---|---|
+| Invoice integration | ERP Rollout | Vendor API keys not issued | 6 days |
+| Push notifications | Mobile App v2 | Apple certificate expired | 2 days |
+| Firewall rules | Cloud Migration | Change approval pending | 4 days |
+</Card>
+
+<Columns>
+<Card title="Request more people" subtitle="Raise a staffing request">
+<Form name="staffing-request">
+<Select label="Project" placeholder="Choose project" options="Mobile App v2 | ERP Rollout | Cloud Migration | Security Hardening | Data Platform" />
+<Select label="Role" placeholder="Choose role" options="Developer | QA Engineer | Designer | PMO Analyst | Data Engineer" />
+<Input label="Headcount" type="number" placeholder="1" min="1" max="10" hint="Full-time equivalents requested" />
+<Button variant="primary" icon="plus">Send request</Button>
+</Form>
+</Card>
+
+<Card title="Archive a finished project" subtitle="Move to closed portfolio">
+<Form name="archive-project">
+<Select label="Finished project" placeholder="Choose project" options="Legacy Portal Migration | CRM Cleanup | Reporting Refresh" hint="Archived projects keep their final reports" />
+<Button variant="secondary" icon="archive">Archive project</Button>
+</Form>
+</Card>
+</Columns>

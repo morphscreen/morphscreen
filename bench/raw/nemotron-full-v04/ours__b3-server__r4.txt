@@ -1,0 +1,82 @@
+# Service Health Dashboard
+
+<Card subtitle="Last updated: 2024-01-15 14:32 UTC">
+<Columns>
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" />
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Error rate (5m)" value="0.23%" change="+0.05% vs 1h ago" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="CPU & Memory Usage (24h)">
+<Tabs>
+<Tab title="CPU %">
+<Chart type="area" x="Time" y="CPU %" title="CPU Utilization">
+| Time | CPU % |
+|---|---|
+| 00:00 | 32 |
+| 02:00 | 28 |
+| 04:00 | 25 |
+| 06:00 | 35 |
+| 08:00 | 58 |
+| 10:00 | 72 |
+| 12:00 | 68 |
+| 14:00 | 71 |
+| 16:00 | 65 |
+| 18:00 | 54 |
+| 20:00 | 48 |
+| 22:00 | 41 |
+</Chart>
+</Tab>
+<Tab title="Memory %">
+<Chart type="area" x="Time" y="Memory %" title="Memory Utilization">
+| Time | Memory % |
+|---|---|
+| 00:00 | 45 |
+| 02:00 | 42 |
+| 04:00 | 40 |
+| 06:00 | 48 |
+| 08:00 | 62 |
+| 10:00 | 71 |
+| 12:00 | 69 |
+| 14:00 | 73 |
+| 16:00 | 68 |
+| 18:00 | 61 |
+| 20:00 | 55 |
+| 22:00 | 50 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open Incidents">
+| ID | Severity | Title | Service | Region | Started | Actions |
+|---|---|---|---|---|---|---|
+| INC-2024-001 | <Badge tone="danger">Critical</Badge> | Payment API latency spike | payments | us-east-1 | 14:15 UTC | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2024-002 | <Badge tone="warning">High</Badge> | Database connection pool exhaustion | orders | eu-west-1 | 13:42 UTC | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2024-003 | <Badge tone="info">Medium</Badge> | Cache miss rate elevated | catalog | us-west-2 | 12:30 UTC | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2024-004 | <Badge tone="info">Medium</Badge> | Intermittent 5xx from auth service | auth | ap-southeast-1 | 11:05 UTC | <Button variant="primary" size="small">Acknowledge</Button> |
+</Card>
+
+<Card title="Slowest Endpoints (p99 latency, 5m window)">
+| Endpoint | Service | p50 | p95 | p99 | Requests/min |
+|---|---|---|---|---|---|
+| POST /api/v1/payments/charge | payments | 1,240ms | 3,890ms | 8,420ms | 1,240 |
+| GET /api/v1/orders/{id}/history | orders | 890ms | 2,100ms | 5,670ms | 890 |
+| GET /api/v1/catalog/search | catalog | 560ms | 1,450ms | 3,210ms | 2,100 |
+| POST /api/v1/auth/token | auth | 420ms | 1,100ms | 2,890ms | 3,400 |
+| GET /api/v1/users/profile | users | 310ms | 890ms | 2,150ms | 1,800 |
+</Card>
+
+<Card title="Alert Thresholds">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="CPU alert threshold (%)" name="cpu-threshold" type="number" value="80" step="1" hint="Triggers when CPU exceeds this for 5m" />
+<Input label="Memory alert threshold (%)" name="memory-threshold" type="number" value="85" step="1" hint="Triggers when memory exceeds this for 5m" />
+<Input label="Error rate threshold (%)" name="error-threshold" type="number" value="1.0" step="0.1" hint="Triggers when 5m error rate exceeds this" />
+<Input label="Latency p99 threshold (ms)" name="latency-threshold" type="number" value="5000" step="100" hint="Triggers when any endpoint p99 exceeds this" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>

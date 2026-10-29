@@ -1,0 +1,45 @@
+# Budget Overview
+
+<Select label="Month" name="month-select" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025" value="June 2025" />
+
+<Card title="Monthly Budget">
+<Progress value="2145" max="3000" label="Spent $2,145 of $3,000 budget" tone="info" />
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,145" change="$855 remaining" tone="success" />
+<Stat label="Utilization" value="71.5%" />
+</Columns>
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 420 |
+| Transport | 180 |
+| Utilities | 165 |
+| Entertainment | 120 |
+| Other | 60 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="Rent payment">
+<Columns>
+<Stat label="Amount" value="$1,200" icon="currency-circle-dollar" />
+<Stat label="Category" value="Housing" />
+<Stat label="Date" value="Jun 1, 2025" />
+</Columns>
+<Callout tone="info" title="Recurring expense">This is your monthly rent. Consider setting up auto-tracking for recurring bills.</Callout>
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" />
+<Select label="Category" name="category" options="Housing | Food | Transport | Utilities | Entertainment | Other" placeholder="Select category" required="true" />
+<Date label="Date" name="date" value="2025-06-15" required="true" />
+<Button>Add Expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

@@ -1,0 +1,48 @@
+<Card title="Damaged Delivery Report" subtitle="Order #ORD-2024-087432">
+### Order Details
+| Item | Qty | Condition |
+|---|---|---|
+| Wireless Headphones (WH-1000XM5) | 1 | Outer box crushed, left earcup cracked |
+| USB-C Charging Cable (2m) | 1 | Cable frayed near connector |
+| Carrying Case | 1 | Zipper broken, fabric torn |
+
+<Details title="View full order summary" open="false">
+**Order Date:** 2024-01-15  
+**Carrier:** FastShip Logistics  
+**Tracking:** FSL-9876543210  
+**Delivery Attempt:** 2024-01-18 14:32  
+**Signed by:** J. Doe (recipient)
+</Details>
+</Card>
+
+<Card title="Damage Evidence" subtitle="Attach photos of the damaged items and packaging">
+<Camera label="Photo 1: Overall package condition" name="photo1" facing="back" hint="Capture the shipping box from multiple angles" required="true" />
+<Camera label="Photo 2: Damaged items" name="photo2" facing="back" hint="Close-ups of each damaged product" required="true" />
+<Camera label="Photo 3: Shipping labels & barcodes" name="photo3" facing="back" hint="Clear shot of all labels on the box" required="false" multiple="true" />
+</Card>
+
+<Card title="Parcel Verification" subtitle="Scan the barcode on the shipping label">
+<Scan label="Scan parcel barcode" name="parcelBarcode" kind="barcode" hint="Point camera at the barcode on the shipping label" required="true" />
+<Callout tone="info" title="Can't scan?">You can also enter the tracking number manually: **FSL-9876543210**</Callout>
+</Card>
+
+<Card title="What Happens Next" subtitle="After you submit this report">
+<Steps>
+<Step title="Report received" status="todo">Our support team receives your report with photos and barcode scan within minutes.</Step>
+<Step title="Carrier claim filed" status="todo">We open a damage claim with FastShip Logistics using your evidence.</Step>
+<Step title="Replacement shipped" status="todo">A replacement order is prepared and shipped at no cost to you (usually within 1 business day).</Step>
+<Step title="Return instructions" status="todo">You'll receive a prepaid return label for the damaged items — no need to repackage.</Step>
+<Step title="Refund or replacement confirmed" status="todo">Once the carrier processes the claim, your original payment method is refunded or the replacement is confirmed.</Step>
+</Steps>
+<Callout tone="success" title="Typical timeline">Most claims resolve in 3–5 business days. You'll get email updates at each step.
+</Callout>
+</Card>
+
+<Card title="Submit Report">
+<Form name="damage-report">
+<Input label="Your email" name="email" type="email" placeholder="you@example.com" hint="We'll send confirmation and updates here" required="true" />
+<TextArea label="Additional notes" name="notes" placeholder="Anything else we should know? (e.g., weather damage, missing items, delivery issues)" rows="3" hint="Optional" />
+<Button size="large">Send Damage Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>

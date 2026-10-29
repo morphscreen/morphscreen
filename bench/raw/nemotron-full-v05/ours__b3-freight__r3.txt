@@ -1,0 +1,105 @@
+# Logistics Coordinator Board
+
+<Badge tone="info">Last refreshed: 2024-01-15 14:32 UTC</Badge>
+
+---
+
+<Card title="Search Shipments">
+<Input label="Search by route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin → destination or carrier name" />
+</Card>
+
+---
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % (This Month)" value="87.3%" change="+2.1% vs last month" tone="success" />
+<Stat label="Avg Cost per Shipment" value="$1,847" change="-$112 vs last month" tone="neutral" />
+<Stat label="Active Shipments" value="142" change="+8 vs yesterday" tone="info" />
+<Stat label="Delayed Shipments" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Delayed Shipments Requiring Attention">
+<Callout tone="warning" title="18 shipments currently delayed">
+<strong>Top 3 by delay:</strong>
+1. SHIP-7842 (LAX → JFK) — 3 days late, carrier exception
+2. SHIP-7851 (SEA → ORD) — 2 days late, weather hold
+3. SHIP-7839 (MIA → DFW) — 2 days late, customs clearance
+</Callout>
+
+<Details title="View all delayed shipments" open="false">
+| Shipment | Route | Carrier | Original ETA | Delay | Reason |
+|---|---|---|---|---|---|
+| SHIP-7842 | LAX → JFK | FedEx Freight | 2024-01-12 | 3 days | Carrier exception |
+| SHIP-7851 | SEA → ORD | UPS Supply Chain | 2024-01-13 | 2 days | Weather hold |
+| SHIP-7839 | MIA → DFW | XPO Logistics | 2024-01-13 | 2 days | Customs clearance |
+| SHIP-7828 | ORD → ATL | Old Dominion | 2024-01-14 | 1 day | Terminal congestion |
+| SHIP-7815 | DFW → LAX | YRC Worldwide | 2024-01-14 | 1 day | Equipment failure |
+</Details>
+</Card>
+
+---
+
+<Card title="Shipments in Transit">
+<Columns>
+<Input label="Filter by status" type="search" placeholder="All statuses" hint="Type to filter table" />
+<Select label="Carrier" placeholder="All carriers" options="All | FedEx Freight | UPS Supply Chain | XPO Logistics | Old Dominion | YRC Worldwide | Estes Express" />
+</Columns>
+
+| Shipment | Origin → Destination | Carrier | ETA | Status | Flag |
+|---|---|---|---|---|---|
+| SHIP-7842 | LAX → JFK | FedEx Freight | 2024-01-15 18:00 | <Badge tone="danger">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7843 | SEA → ORD | UPS Supply Chain | 2024-01-15 14:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7844 | MIA → DFW | XPO Logistics | 2024-01-16 09:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7845 | ORD → ATL | Old Dominion | 2024-01-15 22:00 | <Badge tone="warning">At Risk</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7846 | DFW → LAX | YRC Worldwide | 2024-01-17 12:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7847 | ATL → MIA | Estes Express | 2024-01-16 16:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7848 | JFK → BOS | FedEx Freight | 2024-01-15 10:00 | <Badge tone="success">Delivered</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7849 | LAX → SFO | UPS Supply Chain | 2024-01-15 13:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7850 | SEA → PDX | XPO Logistics | 2024-01-16 08:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SHIP-7851 | SEA → ORD | UPS Supply Chain | 2024-01-13 14:00 | <Badge tone="danger">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+</Card>
+
+---
+
+<Card title="Volume Split by Carrier (This Month)">
+<Chart type="donut" title="Shipments by Carrier" x="Carrier" y="Volume">
+| Carrier | Shipments |
+|---|---|
+| FedEx Freight | 42 |
+| UPS Supply Chain | 38 |
+| XPO Logistics | 28 |
+| Old Dominion | 19 |
+| YRC Worldwide | 15 |
+| Estes Express | 12 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| 2024-W02 | 156 |
+| 2024-W03 | 142 |
+| 2024-W04 | 168 |
+| 2024-W05 | 134 |
+| 2024-W06 | 178 |
+| 2024-W07 | 152 |
+| 2024-W08 | 165 |
+| 2024-W09 | 142 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Create New Shipment</Button>
+<Button variant="secondary" size="large">Bulk Update ETAs</Button>
+<Button variant="tertiary" size="large">Export Report</Button>
+</Columns>
+</Card>

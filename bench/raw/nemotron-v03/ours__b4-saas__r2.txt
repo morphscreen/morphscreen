@@ -1,0 +1,119 @@
+<Select label="Reporting period" name="period" options="Last 30 days | Last 90 days | Last 6 months | Last 12 months | Year to date" value="Last 90 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$247,800" change="+12.4% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$2,973,600" change="+11.8% vs last year" tone="success" />
+<Stat label="Churn this month" value="2.1%" change="-0.3pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+4 vs last quarter" tone="success" />
+</Columns>
+
+<Columns>
+<Card title="New Signups (Past 90 Days)" subtitle="Daily signups trend">
+<Chart type="area" x="Date" y="Signups">
+| Date | Signups |
+|---|---|
+| 2024-01-15 | 8 |
+| 2024-01-22 | 12 |
+| 2024-01-29 | 9 |
+| 2024-02-05 | 15 |
+| 2024-02-12 | 11 |
+| 2024-02-19 | 18 |
+| 2024-02-26 | 14 |
+| 2024-03-04 | 22 |
+| 2024-03-11 | 19 |
+| 2024-03-18 | 25 |
+| 2024-03-25 | 21 |
+| 2024-04-01 | 28 |
+| 2024-04-08 | 24 |
+</Chart>
+</Card>
+
+<Card title="Customers by Plan" subtitle="Distribution across tiers">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Enterprise | 230 |
+| Custom | 45 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Feature Adoption (Newest Features)" subtitle="Percentage of active users who have tried each feature">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34 |
+| Advanced Analytics Dashboard | 52 |
+| SSO/SAML Integration | 18 |
+</Chart>
+<Columns>
+<Progress label="AI Workflow Builder" value="34" max="100" />
+<Progress label="Advanced Analytics Dashboard" value="52" max="100" />
+<Progress label="SSO/SAML Integration" value="18" max="100" />
+</Columns>
+</Card>
+
+<Card title="Top 10 Customers by Spend" subtitle="Largest accounts with seat count and monthly spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 450 | $18,500 | <Badge tone="success">Active</Badge> |
+| Globex Inc | Enterprise | 380 | $15,200 | <Badge tone="success">Active</Badge> |
+| Wayne Enterprises | Enterprise | 320 | $12,800 | <Badge tone="success">Active</Badge> |
+| Stark Industries | Custom | 290 | $11,600 | <Badge tone="success">Active</Badge> |
+| Umbrella Corp | Enterprise | 275 | $11,000 | <Badge tone="warning">At Risk</Badge> |
+| Cyberdyne Systems | Professional | 250 | $8,750 | <Badge tone="success">Active</Badge> |
+| Tyrell Corporation | Enterprise | 220 | $8,800 | <Badge tone="success">Active</Badge> |
+| Weyland-Yutani | Professional | 200 | $7,000 | <Badge tone="success">Active</Badge> |
+| Oscorp | Enterprise | 180 | $7,200 | <Badge tone="success">Active</Badge> |
+| Massive Dynamic | Custom | 165 | $6,600 | <Badge tone="success">Active</Badge> |
+</Card>
+
+<Columns>
+<Card title="Accounts at Risk" subtitle="Customers flagged by health score with primary risk reason">
+| Account | Health Score | Risk Reason | Owner | Last Activity |
+|---|---|---|---|---|
+| Umbrella Corp | 23/100 | Low feature adoption, no login 14 days | Sarah Chen | 14 days ago |
+| Initech | 31/100 | Failed payment x2, support tickets unresolved | Mike Torres | 8 days ago |
+| Pied Piper | 35/100 | Key champion left, seat utilization 12% | Sarah Chen | 21 days ago |
+| Hooli | 38/100 | Contract renewal in 30 days, no engagement | James Park | 12 days ago |
+| Dunder Mifflin | 41/100 | Downgrade requested, budget cuts cited | Lisa Wong | 5 days ago |
+</Card>
+
+<Card title="Failed Payments (Retry Available)" subtitle="Payments that failed in the last 7 days">
+| Customer | Amount | Failed On | Attempts | Action |
+|---|---|---|---|---|
+| Initech | $2,450 | 2024-04-10 | 2 | <Button size="small" variant="primary">Retry</Button> |
+| Hooli | $8,800 | 2024-04-09 | 1 | <Button size="small" variant="primary">Retry</Button> |
+| Dunder Mifflin | $1,200 | 2024-04-08 | 3 | <Button size="small" variant="danger">Max retries</Button> |
+| Vandelay Industries | $450 | 2024-04-07 | 1 | <Button size="small" variant="primary">Retry</Button> |
+| Sterling Cooper | $3,100 | 2024-04-05 | 2 | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+</Columns>
+
+<Card title="Seat Utilization Across Company" subtitle="Percentage of allocated seats actively used (last 30 days)">
+<Columns>
+<Progress label="Acme Corporation (450 seats)" value="87" max="100" />
+<Progress label="Globex Inc (380 seats)" value="92" max="100" />
+<Progress label="Wayne Enterprises (320 seats)" value="78" max="100" />
+<Progress label="Stark Industries (290 seats)" value="95" max="100" />
+<Progress label="Umbrella Corp (275 seats)" value="34" max="100" />
+<Progress label="Cyberdyne Systems (250 seats)" value="81" max="100" />
+<Progress label="Tyrell Corporation (220 seats)" value="89" max="100" />
+<Progress label="Weyland-Yutani (200 seats)" value="76" max="100" />
+<Progress label="Oscorp (180 seats)" value="83" max="100" />
+<Progress label="Massive Dynamic (165 seats)" value="91" max="100" />
+</Columns>
+<Callout tone="info" title="Company-wide average">Overall seat utilization: 81.2% — 3 accounts below 50% threshold</Callout>
+</Card>
+
+<Card title="Invite New Admin" subtitle="Grant administrative access to a team member">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="colleague@company.com" required="true" hint="Must be a valid company email" />
+<Select label="Role" name="role" options="Full Admin | Billing Admin | Read-only Admin" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="perms" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security settings" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

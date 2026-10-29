@@ -1,0 +1,117 @@
+# Store Manager Console
+
+<Columns>
+<Stat label="Sales today" value="$18,420" change="+6.2% vs. last Tue" tone="success" icon="chart-line" />
+<Stat label="Target" value="$21,000" note="87.7% reached" icon="target" />
+<Stat label="Avg basket" value="$42.60" change="+$1.80" tone="success" icon="shopping-cart" />
+<Stat label="Returns this week" value="37" change="+5 vs. last week" tone="warning" icon="arrow-u-up-left" />
+</Columns>
+
+<Progress value="87.7" max="100" label="Sales vs. daily target" tone="success" />
+
+<Card title="Foot traffic today" subtitle="Hourly entries, 7am–8pm">
+<Chart type="bar" x="Hour" y="Entries">
+| Hour | Entries |
+|---|---|
+| 7am | 18 |
+| 8am | 42 |
+| 9am | 61 |
+| 10am | 88 |
+| 11am | 104 |
+| 12pm | 137 |
+| 1pm | 121 |
+| 2pm | 96 |
+| 3pm | 84 |
+| 4pm | 109 |
+| 5pm | 143 |
+| 6pm | 158 |
+| 7pm | 97 |
+| 8pm | 44 |
+</Chart>
+</Card>
+
+<Card title="This week vs. last week">
+<Chart type="line" x="Day" y="Sales">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 16400 | 15200 |
+| Tue | 18420 | 17350 |
+| Wed | 17980 | 18100 |
+| Thu | 19240 | 17800 |
+| Fri | 23600 | 22100 |
+| Sat | 28900 | 27400 |
+| Sun | 21400 | 20900 |
+</Chart>
+</Card>
+
+<Card title="Best sellers today" subtitle="Units sold">
+| Item | Units | Revenue |
+|---|---|---|
+| Sourdough loaf | 214 | $1,284 |
+| Cold brew 1L | 168 | $1,008 |
+| Free-range eggs (12) | 142 | $852 |
+| Cheddar block 400g | 118 | $708 |
+| Bananas (per kg) | 96 | $288 |
+</Card>
+
+<Card title="Out of stock" subtitle="3 items need attention">
+<Callout tone="danger" title="Shelf gaps">Three items are at zero and blocking sales.</Callout>
+
+| Item | SKU | Last sold | Status |
+|---|---|---|---|
+| Oat milk 1L | 4471 | Yesterday | <Badge tone="danger">Out</Badge> |
+| Wholemeal bagels | 2210 | 2 days ago | <Badge tone="danger">Out</Badge> |
+| Sparkling water 6pk | 8834 | Today | <Badge tone="warning">Low</Badge> |
+</Card>
+
+<Card title="Reorder an item">
+<Form name="reorder">
+<Select label="Item" placeholder="Choose an item" options="Oat milk 1L | Wholemeal bagels | Sparkling water 6pk | Sourdough loaf" required="true" />
+<Input label="Quantity" type="number" value="24" min="1" step="1" hint="Cases, not units" required="true" />
+<Select label="Deliver to" options="Store 014 — Riverside | Store 022 — Northgate | Central warehouse" />
+<Date label="Needed by" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="Running promotions">
+| Promotion | Type | Redemptions | Uplift |
+|---|---|---|---|
+| 2-for-1 bread | Multibuy | 412 | +18% |
+| Coffee loyalty double | Loyalty | 289 | +11% |
+| Fresh veg 20% off | Discount | 176 | +7% |
+| Snack bundle $5 | Bundle | 98 | −3% |
+</Card>
+
+<Card title="Registers">
+| Register | Cashier | Status |
+|---|---|---|
+| Register 1 | Mia Chen | <Badge tone="success">Open</Badge> |
+| Register 2 | Dan Okafor | <Badge tone="success">Open</Badge> |
+| Register 3 | — | <Badge tone="neutral">Closed</Badge> |
+| Self-checkout A | — | <Badge tone="success">Open</Badge> |
+| Self-checkout B | — | <Badge tone="warning">Fault</Badge> |
+</Card>
+
+<Card title="On shift today" subtitle="Tuesday, 6 people">
+<Columns>
+<Avatar name="Mia Chen" subtitle="Register 1 · 7am–3pm" />
+<Avatar name="Dan Okafor" subtitle="Register 2 · 9am–5pm" />
+<Avatar name="Priya Raman" subtitle="Floor · 8am–4pm" />
+<Avatar name="Tom Bell" subtitle="Stock · 6am–2pm" />
+<Avatar name="Sofia Marino" subtitle="Bakery · 5am–1pm" />
+<Avatar name="Leo Grant" subtitle="Closing · 2pm–10pm" />
+</Columns>
+</Card>
+
+<Card title="View a different store">
+<Select label="Store" options="Store 014 — Riverside | Store 022 — Northgate | Store 031 — Harbourside | Store 007 — Old Town" />
+<Button variant="secondary">Switch store</Button>
+</Card>
+
+<FollowUps>
+- Show me yesterday's foot traffic
+- Which promotion should I extend?
+- Draft a reorder for all out-of-stock items
+- Who is on shift tomorrow?
+</FollowUps>

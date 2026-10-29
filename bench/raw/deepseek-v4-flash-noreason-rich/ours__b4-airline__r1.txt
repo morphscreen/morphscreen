@@ -1,0 +1,141 @@
+# Hub Operations Desk
+
+Live view of today's operations at **Atlanta (ATL)**. <Badge tone="warning">Weather advisory active</Badge>
+
+<Card title="On-Time Performance Today">
+<Columns>
+<Stat label="Flights on time" value="78%" change="+4% vs yesterday" tone="success" icon="check-circle" />
+<Stat label="Delayed flights" value="14" change="3 weather-related" tone="warning" icon="clock" />
+<Stat label="Cancellations" value="6" change="2 due to weather" tone="danger" icon="x-circle" />
+<Stat label="Avg. turnaround" value="52 min" change="−6 min from target" tone="info" icon="timer" />
+</Columns>
+<Progress value="78" max="100" label="On-time rate target: 85%" tone="warning" />
+</Card>
+
+<Card title="Average Passenger Load Today">
+<Columns>
+<Stat label="Avg. load factor" value="87%" change="+3% vs yesterday" tone="success" icon="users" />
+<Stat label="Passengers boarded" value="38,412" change="+1,204 vs yesterday" tone="info" icon="airplane" />
+</Columns>
+<Chart type="bar" title="Load factor by hour" x="Hour" y="Load %">
+| Hour | Load |
+|---|---|
+| 6 AM | 72 |
+| 9 AM | 84 |
+| 12 PM | 91 |
+| 3 PM | 88 |
+| 6 PM | 93 |
+| 9 PM | 79 |
+</Chart>
+</Card>
+
+<Card title="Flights and Status">
+<Tabs>
+<Tab title="All flights (42)">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 101 | ATL → JFK | A12 | <Badge tone="success">On time</Badge> |
+| DL 204 | ATL → LAX | B7 | <Badge tone="warning">Delayed 45 min</Badge> |
+| DL 310 | ATL → MIA | C3 | <Badge tone="success">On time</Badge> |
+| DL 415 | ATL → ORD | A5 | <Badge tone="danger">Cancelled</Badge> |
+| DL 522 | ATL → DFW | B12 | <Badge tone="warning">Delayed 20 min</Badge> |
+| DL 607 | ATL → SEA | C9 | <Badge tone="success">On time</Badge> |
+| DL 730 | ATL → BOS | A1 | <Badge tone="success">Boarding</Badge> |
+</Tabs>
+<Tab title="Delayed (14)">
+| Flight | Route | Gate | Delay |
+|---|---|---|---|
+| DL 204 | ATL → LAX | B7 | 45 min (weather) |
+| DL 522 | ATL → DFW | B12 | 20 min (late arrival) |
+| DL 815 | ATL → SFO | C1 | 35 min (weather) |
+| DL 901 | ATL → DEN | A9 | 15 min (mechanical) |
+</Tabs>
+<Tab title="Cancelled (6)">
+| Flight | Route | Gate | Reason |
+|---|---|---|---|
+| DL 415 | ATL → ORD | A5 | Weather |
+| DL 618 | ATL → PHL | B3 | Crew shortage |
+| DL 723 | ATL → MSP | C6 | Weather |
+</Tabs>
+</Tabs>
+</Card>
+
+<Card title="Delayed Flights — Action Needed">
+<Callout tone="warning" title="3 weather-related delays">
+Thunderstorms near ATL are causing ground stops. Monitor the following:
+</Callout>
+| Flight | Route | Delay | ETA |
+|---|---|---|---|
+| DL 204 | ATL → LAX | 45 min | 3:15 PM |
+| DL 815 | ATL → SFO | 35 min | 4:40 PM |
+| DL 901 | ATL → DEN | 15 min | 2:50 PM |
+<Button variant="primary" ask="Show me the full delayed flights list">View all 14 delayed</Button>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From | To | Status |
+|---|---|---|---|---|
+| 2:10 PM | DL 310 | C3 | C5 | <Badge tone="warning">Changed</Badge> |
+| 1:55 PM | DL 607 | C9 | B8 | <Badge tone="warning">Changed</Badge> |
+| 1:40 PM | DL 730 | A1 | A2 | <Badge tone="info">Updated</Badge> |
+| 1:25 PM | DL 522 | B12 | B14 | <Badge tone="warning">Changed</Badge> |
+<Button variant="secondary" ask="Show all gate changes today">See full history</Button>
+</Card>
+
+<Card title="Crews Available for Reassignment">
+| Crew ID | Role | Location | Available |
+|---|---|---|---|
+| CR-221 | Pilot | Gate B3 | <Badge tone="success">Now</Badge> |
+| CR-118 | Flight attendant | Terminal C | <Badge tone="success">Now</Badge> |
+| CR-304 | Pilot | Tarmac | <Badge tone="warning">In 30 min</Badge> |
+| CR-077 | Flight attendant | Gate A7 | <Badge tone="success">Now</Badge> |
+<Button variant="primary" ask="Assign crew CR-221 to a flight">Assign crew</Button>
+</Card>
+
+<Card title="Weather Advisories — ATL Hub">
+<Callout tone="warning" title="Thunderstorm watch until 6 PM">
+Scattered thunderstorms within 20 miles of ATL. Expect ground stops and holding patterns.
+</Callout>
+<Columns>
+<Stat label="Wind" value="14 kt" note="Gusts to 28 kt" icon="wind" />
+<Stat label="Visibility" value="3 mi" note="Reduced in rain" tone="warning" icon="eye" />
+<Stat label="Ceiling" value="2,500 ft" note="Lowering" tone="warning" icon="cloud" />
+</Columns>
+<Details title="Full advisory text" open="false">
+- SIGMET issued at 1:30 PM for thunderstorms along I-85 corridor.
+- FAA ground stop in effect for arrivals from ORD, PHL, MSP until 3 PM.
+- Expect de-icing delays if temperatures drop below 2°C overnight.
+</Details>
+</Card>
+
+<Card title="Connections at Risk of Being Missed">
+| Passenger | Flight | Connection | Layover | Risk |
+|---|---|---|---|---|
+| J. Martinez | DL 204 → LAX | UA 512 → SFO | 25 min | <Badge tone="danger">Critical</Badge> |
+| S. Chen | DL 815 → SFO | AS 331 → PDX | 30 min | <Badge tone="danger">Critical</Badge> |
+| R. Patel | DL 522 → DFW | AA 908 → AUS | 45 min | <Badge tone="warning">Watch</Badge> |
+| M. Osei | DL 901 → DEN | WN 214 → ABQ | 50 min | <Badge tone="warning">Watch</Badge> |
+<Button variant="primary" ask="Show rebooking options for J. Martinez">Rebook J. Martinez</Button>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passenger">
+<Input label="Passenger confirmation or name" placeholder="e.g. J. Martinez or DL-204-8821" />
+<Select label="Reason" placeholder="Select reason" options="Missed connection | Flight cancelled | Weather delay | Crew shortage" />
+<Radio label="Rebooking preference" options="Earliest available | Same day, flexible time | Next day" />
+<Checkboxes label="Notify via" options="SMS | Email | App push" value="SMS" />
+<Button>Find rebooking options</Button>
+</Form>
+</Card>
+
+<Card title="Switch Hub">
+<Select label="Select hub" options="Atlanta (ATL) | New York (JFK) | Los Angeles (LAX) | Chicago (ORD) | Dallas (DFW)" name="hub-select" />
+<Button variant="secondary" ask="Switch to New York (JFK) hub view">Switch hub</Button>
+</Card>
+
+<FollowUps>
+- Show me the full list of cancellations today
+- Which flights need crew coverage in the next 2 hours?
+- What's the weather outlook for the next 6 hours?
+- List passengers who need rebooking for cancelled flights
+</FollowUps>

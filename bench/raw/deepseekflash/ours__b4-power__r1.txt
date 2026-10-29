@@ -1,0 +1,103 @@
+# Grid Control — Live Operations
+
+<Columns>
+<Select label="Focus region" options="South East | South West | Midlands | North East | North West" value="South East" name="region" hint="Filters plants, outages, price and alerts to the chosen region" />
+<Badge tone="info">Last updated 12:03 UTC — Shift B online</Badge>
+</Columns>
+
+<Columns>
+<Stat label="Current load" value="38,420 MW" change="+2.1% vs last hour" />
+<Stat label="Price per MWh" value="$84.50" change="+$3.20 / MWh this hour" note="Day-ahead spot cleared" />
+<Stat label="Emissions today" value="1,984 t CO₂" change="-4.8% vs yesterday" note="152 g CO₂/kWh intensity" />
+<Stat label="Reserve margin" value="5,580 MW" change="12.4% of capacity" />
+</Columns>
+
+<Columns>
+<Card title="Network capacity" subtitle="Live utilisation">
+<Progress value="85" max="100" label="85% — 38,420 of 45,000 MW" />
+<Callout tone="warning" title="Margin tight">Reserve headroom is below the 15% operating threshold this hour.</Callout>
+</Card>
+
+<Card title="Generation split" subtitle="This hour by source">
+<Chart type="donut" x="Source" y="Share %">
+| Source | Share % |
+|---|---|
+| Gas | 38 |
+| Wind | 28 |
+| Nuclear | 22 |
+| Solar | 7 |
+| Hydro | 3 |
+| Imports | 2 |
+</Chart>
+</Card>
+
+<Card title="Demand forecast" subtitle="Next 24 hours">
+<Chart type="line" x="Hour" y="Demand (MW)">
+| Hour | Demand (MW) |
+|---|---|
+| 00:00 | 32100 |
+| 03:00 | 29800 |
+| 06:00 | 31200 |
+| 09:00 | 38400 |
+| 12:00 | 41200 |
+| 15:00 | 42600 |
+| 18:00 | 44800 |
+| 21:00 | 39500 |
+| 24:00 | 34500 |
+</Chart>
+<Callout tone="info" title="Evening peak">Forecast peak at 18:00–19:00 at 44.8 GW.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation plants" subtitle="Live output and status">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Bramford CCGT | Gas | 2,400 | Active |
+| Northsea Wind Farm | Wind | 1,850 | Active |
+| Hartlepool Nuclear | Nuclear | 1,150 | Reduced |
+| Solent Solar Array | Solar | 680 | Active |
+| Riverside Gas Peaker | Gas | 620 | Active |
+| Glenmore Hydro | Hydro | 320 | Standby |
+| Blackmoor Storage | Storage | 800 | Discharging |
+| Whitfield Biomass | Biomass | 0 | Maintenance |
+
+</Card>
+
+<Card title="Outages" subtitle="With affected region">
+| Ref | Outage | Affected region | Status | ETA |
+|---|---|---|---|---|
+| O-117 | Transformer fault · Hartlepool substation | North East | Under repair | 14:30 |
+| O-116 | Cable fault · Seaforth Bay interconnector | North West | Crew dispatched | 18:00 |
+| O-115 | Line works · Solent transmission | South East | Planned, cleared | 22:00 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Maintenance — February" subtitle="Planned this month">
+| Date | Asset | Scope | Status |
+|---|---|---|---|
+| Feb 12 | Bramford CCGT | Turbine inspection | Upcoming |
+| Feb 14 | Solent Transmission | Lineworks | Upcoming |
+| Feb 18 | Glenmore Hydro | Penstock survey | Upcoming |
+| Feb 21 | Blackmoor BESS | Inverter service | Upcoming |
+| Feb 27 | Riverside Peaker | Control upgrade | Upcoming |
+</Card>
+
+<Card title="Live alerts" subtitle="Arriving in real time">
+- <Badge tone="danger">Critical</Badge> AL-1182 · Frequency deviation — South East — 23 s ago
+- <Badge tone="warning">Warning</Badge> AL-1181 · Overvoltage at Hartlepool substation — 4 min ago
+- <Badge tone="warning">Advisory</Badge> AL-1180 · Unplanned wind ramp at Northsea — 11 min ago
+- <Badge tone="info">Info</Badge> AL-1179 · Interconnector flow reversal at Seaforth — 26 min ago
+</Card>
+
+<Card title="Curtailment" subtitle="Order generation reduction">
+<Form name="curtailment-order">
+<Select label="Plant" options="Bramford CCGT | Riverside Gas Peaker | Northsea Wind Farm | Solent Solar Array" placeholder="Select plant" name="plant" required="true" />
+<Input label="Curtail by (MW)" type="number" placeholder="e.g. 250" name="amount" required="true" />
+<Radio label="Priority" options="Normal | High | Emergency" name="priority" value="Normal" />
+<Select label="Reason" options="Over-frequency | Network congestion | Balancing need | Operational constraint" placeholder="Select reason" name="reason" required="true" />
+<Button>Order curtailment</Button>
+</Form>
+</Card>
+</Columns>

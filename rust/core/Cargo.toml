@@ -1,0 +1,15 @@
+[package]
+name = "morphscreen-core"
+description = "The format's streaming parser, validator and HTML renderer. no_std + alloc."
+version.workspace = true
+edition.workspace = true
+license = "Apache-2.0"
+publish.workspace = true
+build = "build.rs"
+
+[lib]
+name = "morphscreen_core"
+
+[dependencies]
+# Float math (cos, log10, ...) without std, ported from musl like the JS engines' fdlibm.
+libm = "0.2"

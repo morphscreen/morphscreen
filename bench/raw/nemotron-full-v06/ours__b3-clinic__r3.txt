@@ -1,0 +1,81 @@
+# Clinic Receptionist — Day View
+
+<Card title="📅 Today's Schedule" subtitle="Monday, January 15, 2024">
+<Date name="schedule-date" value="2024-01-15" />
+</Card>
+
+<Columns>
+<Card title="📊 Quick Stats">
+<Stat label="Patients Expected" value="24" change="+3 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Month)" value="8.2%" change="-1.1% vs last month" tone="success" />
+<Stat label="Checked In" value="7 / 24" tone="neutral" />
+<Stat label="Waiting" value="3" tone="warning" />
+</Card>
+
+<Card title="🚪 Room Status (Right Now)">
+| Room | Status | Current Patient | Next Available |
+|---|---|---|---|
+| Room 1 | <Badge tone="danger">Occupied</Badge> | Maria Santos (Dr. Chen) | 10:30 AM |
+| Room 2 | <Badge tone="success">Free</Badge> | — | Now |
+| Room 3 | <Badge tone="success">Free</Badge> | — | Now |
+| Room 4 | <Badge tone="warning">Cleaning</Badge> | — | 10:15 AM |
+| Room 5 | <Badge tone="danger">Occupied</Badge> | James Wilson (Dr. Patel) | 10:45 AM |
+</Card>
+</Columns>
+
+<Card title="🔔 Next Patient Called">
+<Callout tone="info" title="Now Calling: Maria Santos">
+<strong>Appointment:</strong> 10:00 AM with Dr. Chen (Room 1)<br />
+<strong>Reason:</strong> Follow-up — Blood pressure check<br />
+<strong>Checked in:</strong> 9:52 AM
+</Callout>
+<Button variant="primary" size="large">✅ Mark as Roomed</Button>
+<Button variant="secondary">⏭ Skip / Call Next</Button>
+</Card>
+
+<Card title="📋 Today's Appointments">
+| Time | Patient | Provider | Room | Status | Actions |
+|---|---|---|---|---|---|
+| 8:30 AM | Robert Kim | Dr. Chen | 1 | <Badge tone="success">Completed</Badge> | — |
+| 9:00 AM | Lisa Nguyen | Dr. Patel | 2 | <Badge tone="success">Completed</Badge> | — |
+| 9:30 AM | David Park | Dr. Chen | 1 | <Badge tone="success">Completed</Badge> | — |
+| 10:00 AM | **Maria Santos** | Dr. Chen | 1 | <Badge tone="info">In Room</Badge> | <Button variant="tertiary" size="small">Details</Button> |
+| 10:15 AM | James Wilson | Dr. Patel | 5 | <Badge tone="warning">Waiting</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 10:30 AM | Sarah Johnson | Dr. Chen | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 10:45 AM | Michael Brown | Dr. Patel | 5 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 11:00 AM | Emily Davis | Dr. Chen | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 11:15 AM | Chris Taylor | Dr. Patel | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 11:30 AM | Amanda White | Dr. Chen | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 1:00 PM | Kevin Lee | Dr. Patel | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 1:15 PM | Rachel Green | Dr. Chen | 4 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 1:30 PM | Thomas Clark | Dr. Patel | 5 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 2:00 PM | Jennifer Hall | Dr. Chen | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 2:15 PM | Daniel Young | Dr. Patel | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 2:30 PM | Michelle King | Dr. Chen | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 3:00 PM | Steven Wright | Dr. Patel | 4 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 3:15 PM | Laura Lopez | Dr. Chen | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 3:30 PM | Ryan Hill | Dr. Patel | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 4:00 PM | Jessica Scott | Dr. Chen | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 4:15 PM | Brandon Adams | Dr. Patel | 4 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 4:30 PM | Nicole Baker | Dr. Chen | 5 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+| 4:45 PM | Tyler Gonzalez | Dr. Patel | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" size="small">Check In</Button> |
+</Card>
+
+<Card title="✅ Check In Patient">
+<Form name="checkin-form">
+<Select label="Select Patient" name="patient" placeholder="Choose from today's schedule" options="James Wilson (10:15 AM) | Sarah Johnson (10:30 AM) | Michael Brown (10:45 AM) | Emily Davis (11:00 AM) | Chris Taylor (11:15 AM) | Amanda White (11:30 AM) | Kevin Lee (1:00 PM) | Rachel Green (1:15 PM) | Thomas Clark (1:30 PM) | Jennifer Hall (2:00 PM) | Daniel Young (2:15 PM) | Michelle King (2:30 PM) | Steven Wright (3:00 PM) | Laura Lopez (3:15 PM) | Ryan Hill (3:30 PM) | Jessica Scott (4:00 PM) | Brandon Adams (4:15 PM) | Nicole Baker (4:30 PM) | Tyler Gonzalez (4:45 PM)" required="true" />
+<Select label="Room Assignment" name="room" placeholder="Auto-assign or choose" options="Auto-assign (next available) | Room 2 | Room 3 | Room 4 (available 10:15) | Room 1 (available 10:30) | Room 5 (available 10:45)" />
+<Checkboxes label="Confirm" name="confirm" options="Patient verified ID | Insurance confirmed | Consent forms signed" hint="Check all that apply" />
+<Button variant="primary">Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="📆 Navigate Days">
+<Columns>
+<Button variant="secondary" href="#">← Previous Day (Jan 14)</Button>
+<Button variant="primary" disabled="true">Today — Jan 15</Button>
+<Button variant="secondary" href="#">Next Day (Jan 16) →</Button>
+</Columns>
+<Date name="jump-date" label="Jump to date" placeholder="Pick a date" />
+</Card>

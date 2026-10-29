@@ -1,0 +1,136 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Data refreshed">Last refreshed: **Today, 14:32 UTC** — auto-refresh every 5 minutes</Callout>
+
+<Columns>
+<Card title="Shipments in transit" subtitle="Live status of all active shipments">
+<Chart type="bar" x="Shipment" y="Status">
+| Shipment | In transit |
+|---|---|
+| SHP-2041 | 1 |
+| SHP-2042 | 1 |
+| SHP-2043 | 1 |
+| SHP-2044 | 1 |
+| SHP-2045 | 1 |
+| SHP-2046 | 1 |
+| SHP-2047 | 1 |
+| SHP-2048 | 1 |
+</Chart>
+</Card>
+
+<Card title="Delayed shipments" subtitle="Flagged for attention">
+<Badge tone="danger">3 delayed</Badge>
+
+| Shipment | Route | Delay |
+|---|---|---|
+| SHP-2043 | Chicago → Denver | +6h |
+| SHP-2046 | Dallas → Phoenix | +3h |
+| SHP-2048 | Seattle → Portland | +2h |
+
+<Button variant="danger" ask="Show me the delayed shipments with full details">View delayed</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Performance this month">
+<Stat label="On-time percentage" value="94.2%" change="+1.3%" tone="success" icon="trend-up" />
+<Stat label="Average cost per shipment" value="$142.60" change="-2.1%" tone="success" icon="currency-dollar" />
+</Card>
+
+<Card title="Volume by carrier">
+<Chart type="donut" title="Carrier share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 420 |
+| UPS | 310 |
+| DHL | 180 |
+| USPS | 90 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Input label="Origin" placeholder="e.g., Chicago" hint="City or ZIP code" />
+<Input label="Destination" placeholder="e.g., Denver" hint="City or ZIP code" />
+<Button>Search routes</Button>
+</Form>
+</Card>
+
+<Card title="Weekly volume — past two months">
+<Chart type="line" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 210 |
+| W2 | 245 |
+| W3 | 198 |
+| W4 | 232 |
+| W5 | 260 |
+| W6 | 241 |
+| W7 | 275 |
+| W8 | 288 |
+</Chart>
+</Card>
+
+<Card title="Shipment list — flag a shipment">
+| Shipment | Origin | Destination | ETA | Status | Flag |
+|---|---|---|---|---|---|
+| SHP-2041 | Chicago | Denver | Today 18:00 | In transit | <Button variant="tertiary" ask="Flag SHP-2041">Flag</Button> |
+| SHP-2042 | New York | Boston | Today 20:30 | In transit | <Button variant="tertiary" ask="Flag SHP-2042">Flag</Button> |
+| SHP-2043 | Chicago | Denver | Tomorrow 09:00 | Delayed | <Button variant="danger" ask="Flag SHP-2043">Flag</Button> |
+| SHP-2044 | Los Angeles | San Francisco | Tomorrow 11:00 | In transit | <Button variant="tertiary" ask="Flag SHP-2044">Flag</Button> |
+| SHP-2045 | Miami | Atlanta | Tomorrow 14:00 | In transit | <Button variant="tertiary" ask="Flag SHP-2045">Flag</Button> |
+| SHP-2046 | Dallas | Phoenix | Tomorrow 16:00 | Delayed | <Button variant="danger" ask="Flag SHP-2046">Flag</Button> |
+| SHP-2047 | Houston | Austin | Tomorrow 18:00 | In transit | <Button variant="tertiary" ask="Flag SHP-2047">Flag</Button> |
+| SHP-2048 | Seattle | Portland | Tomorrow 20:00 | Delayed | <Button variant="danger" ask="Flag SHP-2048">Flag</Button> |
+</Card>
+
+<Card title="Route map — current shipments">
+<Map title="Active routes">
+| Place | Lat | Lng | Note |
+|---|---|---|---|
+| Chicago | 41.8781 | -87.6298 | Origin |
+| Denver | 39.7392 | -104.9903 | Destination |
+| New York | 40.7128 | -74.0060 | Origin |
+| Boston | 42.3601 | -71.0589 | Destination |
+| Los Angeles | 34.0522 | -118.2437 | Origin |
+| San Francisco | 37.7749 | -122.4194 | Destination |
+| Miami | 25.7617 | -80.1918 | Origin |
+| Atlanta | 33.7490 | -84.3880 | Destination |
+| Dallas | 32.7767 | -96.7970 | Origin |
+| Phoenix | 33.4484 | -112.0740 | Destination |
+| Houston | 29.7604 | -95.3698 | Origin |
+| Austin | 30.2672 | -97.7431 | Destination |
+| Seattle | 47.6062 | -122.3321 | Origin |
+| Portland | 45.5152 | -122.6784 | Destination |
+</Map>
+</Card>
+
+<Card title="Shipment details — example">
+<KeyValue title="SHP-2041">
+| Label | Value |
+|---|---|
+| Origin | Chicago, IL |
+| Destination | Denver, CO |
+| ETA | Today, 18:00 UTC |
+| Status | In transit |
+| Carrier | FedEx |
+| Cost | $135.20 |
+</KeyValue>
+</Card>
+
+<Card title="Weekly volume trend">
+<Sparkline label="Shipments this week" values="210 | 245 | 198 | 232 | 260 | 241 | 275" value="275" change="+12.4%" />
+</Card>
+
+<Card title="Actions">
+<Button variant="primary" ask="Show me the full report for this month">Full monthly report</Button>
+<Button variant="secondary" ask="Export all shipment data as CSV">Export CSV</Button>
+</Card>
+
+<FollowUps>
+- Which shipments are flagged and why?
+- Show me the on-time trend for the last 6 months
+- What's the cost breakdown by carrier?
+- Can you alert me when a shipment is delayed?
+</FollowUps>

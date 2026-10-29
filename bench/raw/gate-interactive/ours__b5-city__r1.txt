@@ -1,0 +1,231 @@
+# City Operations Center
+
+<Select label="Focus District" name="district-filter" placeholder="All Districts" options="All Districts | Downtown | Northside | Southside | Eastport | Westlake | Riverside | University | Industrial" />
+
+<Columns>
+<Card title="Congestion Right Now">
+<Stat label="Congestion Index" value="72/100" change="+3% vs last hour" tone="warning" icon="chart-line" />
+<Progress value="72" max="100" label="Current Level" tone="warning" />
+</Card>
+
+<Card title="Transit Punctuality">
+<Stat label="On-Time Performance" value="87%" change="-2% vs target" tone="info" icon="calendar" />
+<Progress value="87" max="100" label="Target: 90%" tone="info" />
+</Card>
+
+<Card title="Water Use Today">
+<Stat label="Consumption" value="42.3M gal" change="+1.2M vs avg" tone="neutral" icon="chart-line" />
+<Progress value="68" max="100" label="Daily Capacity" tone="neutral" />
+</Card>
+
+<Card title="Current Weather">
+<Stat label="Temperature" value="68°F" tone="neutral" icon="chart-line" />
+<Stat label="Conditions" value="Partly Cloudy" tone="neutral" icon="chart-line" />
+<Stat label="Wind" value="SW 8 mph" tone="neutral" icon="chart-line" />
+<Stat label="Humidity" value="54%" tone="neutral" icon="chart-line" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Air Quality by District" subtitle="AQI (lower is better)">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Northside | 42 |
+| Southside | 55 |
+| Eastport | 71 |
+| Westlake | 38 |
+| Riverside | 45 |
+| University | 52 |
+| Industrial | 89 |
+</Chart>
+</Card>
+
+<Card title="Energy Use - Past 7 Days" subtitle="MWh">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 1840 |
+| Tue | 1920 |
+| Wed | 1880 |
+| Thu | 1950 |
+| Fri | 2010 |
+| Sat | 1780 |
+| Sun | 1690 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (12)">
+| # | Location | Type | Severity | Since |
+|---|---|---|---|---|
+| 1 | Main St & 5th Ave | Traffic Signal Out | High | 14 min |
+| 2 | Riverside Bridge | Debris on Roadway | Medium | 32 min |
+| 3 | University & College | Water Main Break | Critical | 1 hr |
+| 4 | Industrial Park Lot 3 | Power Outage | High | 2 hr |
+| 5 | Southside Transit Hub | Elevator Failure | Medium | 3 hr |
+| 6 | Eastport Marina | Fuel Spill | High | 4 hr |
+| 7 | Westlake Park | Tree Down | Low | 5 hr |
+| 8 | Downtown Garage B | Structural Issue | Medium | 6 hr |
+| 9 | Northside Library | HVAC Failure | Low | 8 hr |
+| 10 | Highway 101 Mile 12 | Pothole Cluster | Medium | 12 hr |
+| 11 | City Hall Plaza | Fountain Leak | Low | 18 hr |
+| 12 | Airport Access Rd | Signage Damage | Low | 24 hr |
+</Tab>
+<Tab title="Critical (1)">
+| # | Location | Type | Severity | Since |
+|---|---|---|---|---|
+| 3 | University & College | Water Main Break | Critical | 1 hr |
+</Tab>
+<Tab title="High (3)">
+| # | Location | Type | Severity | Since |
+|---|---|---|---|---|
+| 1 | Main St & 5th Ave | Traffic Signal Out | High | 14 min |
+| 4 | Industrial Park Lot 3 | Power Outage | High | 2 hr |
+| 6 | Eastport Marina | Fuel Spill | High | 4 hr |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Emergency Vehicles Deployed">
+| Unit | Type | Status | Location | Incident |
+|---|---|---|---|---|
+| ENG-3 | Fire Engine | En Route | University & College | Water Main Break |
+| MED-7 | Ambulance | On Scene | Eastport Marina | Fuel Spill |
+| PD-12 | Patrol Car | On Scene | Main St & 5th Ave | Signal Out |
+| HAZ-2 | Hazmat | En Route | Eastport Marina | Fuel Spill |
+| ENG-9 | Fire Engine | Staging | Industrial Park Lot 3 | Power Outage |
+| RES-1 | Rescue | Available | Station 1 | — |
+| MED-3 | Ambulance | Available | Station 4 | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Parking Availability Downtown">
+<Progress value="234" max="1200" label="Garage A — 234/1,200 spaces" tone="success" />
+<Progress value="89" max="450" label="Garage B — 89/450 spaces" tone="warning" />
+<Progress value="12" max="300" label="Garage C — 12/300 spaces" tone="danger" />
+<Progress value="156" max="600" label="Street Metered — 156/600 spaces" tone="info" />
+<Progress value="43" max="200" label="Civic Center Lot — 43/200 spaces" tone="success" />
+</Card>
+
+<Card title="Public Events This Weekend">
+| Event | Date | Time | Location | Expected Attendance |
+|---|---|---|---|---|
+| Riverside Jazz Festival | Sat Jun 15 | 12:00–22:00 | Riverside Park | 8,500 |
+| Downtown Art Walk | Sat Jun 15 | 17:00–23:00 | Main St (1st–8th) | 12,000 |
+| University Graduation | Sun Jun 16 | 09:00–13:00 | University Stadium | 15,000 |
+| Westlake Triathlon | Sun Jun 16 | 07:00–12:00 | Westlake Loop | 2,200 |
+| Eastport Food Fair | Sat–Sun | 11:00–20:00 | Eastport Plaza | 6,000 |
+| Northside Farmers Market | Sat Jun 15 | 08:00–13:00 | Northside Square | 3,500 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen Reports (Live)">
+<Callout tone="info" title="New Report">Pothole on Elm St near 12th — 30 sec ago</Callout>
+<Callout tone="neutral" title="New Report">Graffiti at Riverside Park restrooms — 2 min ago</Callout>
+<Callout tone="warning" title="New Report">Streetlight out at Oak & Maple — 5 min ago</Callout>
+<Callout tone="neutral" title="New Report">Trash overflow at Downtown Plaza — 8 min ago</Callout>
+<Callout tone="info" title="New Report">Noise complaint: construction at 400 Industrial — 12 min ago</Callout>
+<Callout tone="neutral" title="New Report">Crosswalk signal timing at 5th & Main — 18 min ago</Callout>
+<Callout tone="success" title="Resolved">Abandoned vehicle at Lot 7 — 22 min ago</Callout>
+</Card>
+
+<Card title="Service Request Backlog">
+<Stat label="Total Open" value="347" change="+12 today" tone="warning" icon="chart-line" />
+<Stat label="Overdue (>7 days)" value="23" change="+3" tone="danger" icon="chart-line" />
+<Stat label="Avg Resolution" value="4.2 days" change="-0.3" tone="success" icon="chart-line" />
+<Progress value="347" max="500" label="Capacity" tone="warning" />
+<Tabs>
+<Tab title="By Type">
+| Category | Open | Overdue | Avg Days |
+|---|---|---|---|
+| Potholes | 89 | 8 | 3.1 |
+| Streetlights | 67 | 4 | 2.8 |
+| Signage | 45 | 2 | 4.5 |
+| Drainage | 38 | 5 | 6.2 |
+| Parks | 32 | 1 | 5.0 |
+| Traffic Signals | 28 | 2 | 3.7 |
+| Sidewalks | 24 | 1 | 4.8 |
+| Other | 24 | 0 | 5.5 |
+</Tab>
+<Tab title="By District">
+| District | Open | Overdue |
+|---|---|---|
+| Downtown | 67 | 5 |
+| Industrial | 58 | 7 |
+| Southside | 52 | 3 |
+| Eastport | 49 | 2 |
+| Northside | 41 | 2 |
+| Westlake | 35 | 1 |
+| University | 28 | 2 |
+| Riverside | 17 | 1 |
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks Planned This Month">
+| Project | Location | Start | End | Impact | Status |
+|---|---|---|---|---|---|
+| Main St Resurfacing | Main St (1st–10th) | Jun 10 | Jun 28 | Lane closures | In Progress |
+| Bridge Deck Rehab | Riverside Bridge | Jun 17 | Jul 12 | Full closure weekends | Scheduled |
+| Utility Undergrounding | Oak Ave (5th–15th) | Jun 20 | Aug 15 | Rolling closures | Permitted |
+| Bike Lane Installation | University Blvd | Jun 24 | Jul 19 | Lane reduction | Scheduled |
+| Storm Drain Upgrade | Industrial Park | Jun 26 | Jul 24 | Detours | Permitted |
+| ADA Ramp Retrofit | Downtown Core | Jul 1 | Jul 31 | Sidewalk closures | Planning |
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+| Asset | Type | Location | Due Date | Priority | Status |
+|---|---|---|---|---|---|
+| Pump Station #4 | Water | Riverside | Jun 15 | Critical | Overdue |
+| Substation 12B | Power | Industrial | Jun 18 | High | Scheduled |
+| Bridge 204 | Transport | Highway 101 | Jun 20 | High | Scheduled |
+| Reservoir Valve 7 | Water | Westlake | Jun 22 | Medium | Planned |
+| Traffic Cabinet 33 | Signals | Downtown | Jun 25 | Medium | Planned |
+| Sewer Lift Station 9 | Wastewater | Southside | Jun 28 | High | Planned |
+| Streetlight Circuit 14 | Lighting | Northside | Jul 1 | Low | Planned |
+| HVAC Plant 2 | Facilities | City Hall | Jul 5 | Medium | Planned |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Incident" name="incident-select" placeholder="Select incident" options="Water Main Break — University & College | Traffic Signal Out — Main & 5th | Power Outage — Industrial Lot 3 | Fuel Spill — Eastport Marina | Debris — Riverside Bridge | Elevator Failure — Southside Hub | Other..." required="true" />
+<Select label="Crew Type" name="crew-type" placeholder="Select crew" options="Water Utilities | Electrical | Streets & Roads | Hazmat | Parks & Forestry | Traffic Signals | General Maintenance" required="true" />
+<Select label="Unit" name="unit-select" placeholder="Select unit" options="Water Crew 3 (Available) | Electrical Team 2 (Available) | Streets Crew 1 (Available) | Hazmat Unit 2 (En Route) | Parks Crew 4 (Available) | Signals Tech 1 (Available)" required="true" />
+<TextArea label="Notes" name="dispatch-notes" placeholder="Additional instructions..." rows="3" />
+<Button>Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Radio label="Alert Type" name="alert-type" options="Traffic Advisory | Emergency Alert | Service Disruption | Weather Warning | Air Quality | Event Notice | Test Message" value="Traffic Advisory" required="true" />
+<Select label="Target Area" name="alert-area" placeholder="Select area" options="Citywide | Downtown | Northside | Southside | Eastport | Westlake | Riverside | University | Industrial | Custom Polygon" required="true" />
+<Input label="Headline" name="alert-headline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" name="alert-message" placeholder="Full alert text..." rows="4" required="true" />
+<Checkboxes label="Channels" name="alert-channels" options="Mobile Push | SMS | Email | Social Media | Website Banner | Variable Message Signs | Highway Radio" value="Mobile Push | SMS | Website Banner" />
+<Switch label="Send Immediately" name="alert-immediate" value="true" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show congestion heatmap for Downtown
+- List all critical infrastructure overdue >30 days
+- Generate weekly operations summary report
+- View citizen report trends by category
+- Check mutual aid agreements with neighboring cities
+</FollowUps>

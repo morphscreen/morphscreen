@@ -1,0 +1,133 @@
+# Grid Operations Console — National Network
+
+<Select label="Focus Region" name="region" placeholder="All Regions" options="All Regions | North Grid | Central Grid | South Grid | West Grid | East Grid" />
+
+<Columns>
+<Card title="Network Load" subtitle="Real-time">
+<Stat label="Current Load" value="42,840 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Progress value="78" max="100" label="Capacity Utilization: 78%" tone="warning" />
+<Stat label="Available Reserve" value="12,160 MW" change="N-1 Secure" tone="success" />
+</Card>
+
+<Card title="Current Price">
+<Stat label="Spot Price" value="$87.40 / MWh" change="+$4.20 vs yesterday" tone="warning" />
+<Stat label="Day-Ahead Avg" value="$82.10 / MWh" tone="neutral" />
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ Intensity" value="342 g/kWh" change="-12 g vs yesterday" tone="success" />
+<Stat label="Total Emissions" value="1.24 Mt CO₂" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Live output">
+<Chart type="donut" title="Generation Mix (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 14,200 |
+| Coal | 9,800 |
+| Nuclear | 6,500 |
+| Wind | 5,600 |
+| Solar | 3,200 |
+| Hydro | 2,800 |
+| Battery | 450 |
+| Imports | 290 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="area" title="Forecast vs Actual (MW)" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38,200 | 38,150 |
+| 01:00 | 36,800 | 36,750 |
+| 02:00 | 35,900 | 35,880 |
+| 03:00 | 35,400 | 35,420 |
+| 04:00 | 35,600 | 35,650 |
+| 05:00 | 37,200 | 37,180 |
+| 06:00 | 40,500 | 40,480 |
+| 07:00 | 44,800 | 44,750 |
+| 08:00 | 47,200 | 47,100 |
+| 09:00 | 48,500 |  |
+| 10:00 | 49,100 |  |
+| 11:00 | 49,800 |  |
+| 12:00 | 50,200 |  |
+| 13:00 | 50,000 |  |
+| 14:00 | 49,600 |  |
+| 15:00 | 49,200 |  |
+| 16:00 | 48,900 |  |
+| 17:00 | 49,500 |  |
+| 18:00 | 50,800 |  |
+| 19:00 | 51,200 |  |
+| 20:00 | 50,400 |  |
+| 21:00 | 48,600 |  |
+| 22:00 | 45,200 |  |
+| 23:00 | 41,800 |  |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Plant Fleet — Output & Status">
+| Plant | Region | Source | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Northridge CCGT | North | Natural Gas | 1,200 | 1,080 | <Badge tone="success">Online</Badge> | 98% |
+| Coal Creek | Central | Coal | 1,800 | 1,620 | <Badge tone="success">Online</Badge> | 95% |
+| Atomic Point | South | Nuclear | 2,200 | 2,150 | <Badge tone="success">Online</Badge> | 100% |
+| Windridge Farm | West | Wind | 800 | 560 | <Badge tone="success">Online</Badge> | 72% |
+| Solar Valley | East | Solar | 600 | 320 | <Badge tone="success">Online</Badge> | 58% |
+| Hydro Peak | North | Hydro | 900 | 720 | <Badge tone="success">Online</Badge> | 92% |
+| Battery Ridge | Central | Battery | 300 | 180 | <Badge tone="success">Online</Badge> | 99% |
+| Old Harbor | East | Natural Gas | 950 | 0 | <Badge tone="warning">Standby</Badge> | 100% |
+| Greenfield | South | Coal | 1,100 | 0 | <Badge tone="danger">Offline</Badge> | 0% |
+</Card>
+
+<Columns>
+<Card title="Active Outages">
+| Outage ID | Region | Affected Customers | Cause | Est. Restoration | Crew Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North Grid | 12,400 | Storm damage — 33kV feeder | 2024-01-15 18:30 | <Badge tone="info">En route</Badge> |
+| OUT-2024-0852 | Central Grid | 3,200 | Equipment failure — transformer | 2024-01-15 14:00 | <Badge tone="success">On site</Badge> |
+| OUT-2024-0855 | West Grid | 8,700 | Vegetation contact — 11kV line | 2024-01-15 20:00 | <Badge tone="info">Dispatched</Badge> |
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Asset | Region | Type | Start | End | Impact (MW) | Status |
+|---|---|---|---|---|---|---|
+| Substation Alpha 220kV | North | Transformer replacement | 2024-01-20 | 2024-01-22 | 450 | <Badge tone="info">Scheduled</Badge> |
+| Windridge Turbine #7 | West | Gearbox overhaul | 2024-01-18 | 2024-01-25 | 3.2 | <Badge tone="info">Scheduled</Badge> |
+| Hydro Peak Unit 3 | North | Annual inspection | 2024-01-28 | 2024-02-03 | 150 | <Badge tone="info">Scheduled</Badge> |
+| Coal Creek FGD System | Central | Emissions control upgrade | 2024-02-05 | 2024-02-18 | 0 (derate 200) | <Badge tone="info">Approved</Badge> |
+</Card>
+</Columns>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="CRITICAL — 10:14:22">Northridge CCGT Unit 2 tripped offline — 600 MW lost. Frequency deviation -0.12 Hz. Automatic generation control activated.</Callout>
+<Callout tone="warning" title="WARNING — 10:12:05">Windridge Farm output dropping rapidly — forecast error >15%. Ramping gas peakers.</Callout>
+<Callout tone="info" title="INFO — 10:08:31">Central Grid 220kV line loading at 92% — monitor for contingency.</Callout>
+<Callout tone="success" title="RESOLVED — 09:55:12">OUT-2024-0849 restored — 4,100 customers back online.</Callout>
+<Callout tone="info" title="INFO — 09:42:00">Day-ahead market cleared at $82.10/MWh average.</Callout>
+</Card>
+
+<Card title="Order Curtailment">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Region" name="curtail-region" options="North Grid | Central Grid | South Grid | West Grid | East Grid" required="true" />
+<Select label="Resource Type" name="resource-type" options="Solar | Wind | Battery Discharge | Industrial Load | Commercial Load | Residential Load (via DR)" required="true" />
+</Columns>
+<Columns>
+<Input label="Curtailment Amount (MW)" name="curtail-mw" type="number" placeholder="e.g., 150" min="1" max="5000" step="1" required="true" hint="Must not exceed available output/load in region" />
+<Select label="Reason" name="curtail-reason" options="Frequency control | Voltage support | Thermal limit | Economic dispatch | Emergency" required="true" />
+</Columns>
+<TextArea label="Operator Notes" name="curtail-notes" placeholder="Reason, duration estimate, coordination details..." rows="3" />
+<Button variant="danger">Issue Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Acknowledge critical alert: Northridge CCGT trip
+- Review North Grid contingency after Unit 2 loss
+- Coordinate with market operations on price spike risk
+- Verify reserve adequacy for evening peak
+</FollowUps>

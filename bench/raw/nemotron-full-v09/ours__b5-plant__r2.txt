@@ -1,0 +1,292 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="info">Live · Updated 12s ago</Badge> <Badge tone="success">All lines running</Badge>
+
+---
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="OEE" value="84.2%" change="+1.3% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="92.1%" change="+0.8%" tone="info" icon="clock" />
+<Stat label="Performance" value="89.4%" change="-0.3%" tone="warning" icon="gauge" />
+<Stat label="Quality" value="98.7%" change="+0.2%" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="84.2" max="100" label="Target: 85%" tone="success" />
+</Card>
+
+<Card title="Today's Production">
+<Columns>
+<Stat label="Units Produced" value="12,847" change="Target: 15,000" tone="info" icon="package" />
+<Stat label="Line A" value="4,521" change="Rate: 452/hr" tone="neutral" />
+<Stat label="Line B" value="3,892" change="Rate: 389/hr" tone="neutral" />
+<Stat label="Line C" value="4,434" change="Rate: 443/hr" tone="neutral" />
+</Columns>
+<Progress value="12847" max="15000" label="85.6% of daily target" tone="info" />
+</Card>
+
+<Card title="Production Lines">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alarms |
+|---|---|---|---|---|---|
+| Line A | Running | 452 | 480 | 86.1% | 0 |
+| Line B | Running | 389 | 420 | 82.4% | 1 |
+| Line C | Running | 443 | 460 | 87.3% | 0 |
+| Line D | Maintenance | 0 | 400 | 0% | 2 |
+</Tab>
+<Tab title="Line A Detail">
+**Line A – Injection Molding**  
+Current job: Batch #M-2024-0847 (Polypropylene caps)  
+Cycle time: 18.2s (target 17.5s)  
+Good units: 4,412 | Rejects: 109 (2.4%)  
+Active since: 06:00 | Last changeover: 14:30 (22 min)
+</Tab>
+<Tab title="Line B Detail">
+**Line B – Extrusion**  
+Current job: Batch #E-2024-0312 (PVC pipe)  
+Cycle time: 22.8s (target 21.0s)  
+Good units: 3,782 | Rejects: 110 (2.8%)  
+Active since: 06:00 | Last changeover: 11:15 (35 min)
+</Tab>
+<Tab title="Line C Detail">
+**Line C – Assembly**  
+Current job: Batch #A-2024-0556 (Valve kits)  
+Cycle time: 15.4s (target 15.0s)  
+Good units: 4,342 | Rejects: 92 (2.1%)  
+Active since: 06:00 | Last changeover: 09:45 (18 min)
+</Tab>
+<Tab title="Line D Detail">
+**Line D – Packaging**  
+**Status: Scheduled Maintenance**  
+Planned downtime: 4 hrs (14:00–18:00)  
+Task: Conveyor belt replacement + sensor calibration  
+Next available: 18:00
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Defect Rate – Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| Oct 1 | 2.1 |
+| Oct 2 | 2.3 |
+| Oct 3 | 2.0 |
+| Oct 4 | 2.4 |
+| Oct 5 | 2.2 |
+| Oct 6 | 1.9 |
+| Oct 7 | 2.1 |
+| Oct 8 | 2.5 |
+| Oct 9 | 2.3 |
+| Oct 10 | 2.0 |
+| Oct 11 | 1.8 |
+| Oct 12 | 2.2 |
+| Oct 13 | 2.4 |
+| Oct 14 | 2.1 |
+| Oct 15 | 2.0 |
+| Oct 16 | 1.9 |
+| Oct 17 | 2.2 |
+| Oct 18 | 2.3 |
+| Oct 19 | 2.1 |
+| Oct 20 | 2.0 |
+| Oct 21 | 1.8 |
+| Oct 22 | 2.1 |
+| Oct 23 | 2.2 |
+| Oct 24 | 2.0 |
+| Oct 25 | 1.9 |
+| Oct 26 | 2.1 |
+| Oct 27 | 2.3 |
+| Oct 28 | 2.2 |
+| Oct 29 | 2.0 |
+| Oct 30 | 2.1 |
+</Chart>
+<Callout tone="info" title="Trend">Defect rate trending down 0.3% vs prior month. Spike on Oct 8 traced to resin batch R-4421 (quarantined).</Callout>
+</Card>
+
+<Card title="Downtime by Cause – This Week">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Changeover | 340 |
+| Material shortage | 185 |
+| Equipment fault | 120 |
+| Quality hold | 95 |
+| Planned maintenance | 240 |
+| Operator break | 150 |
+| Other | 70 |
+</Chart>
+<Callout tone="warning" title="Top loss">Changeovers account for 28% of downtime. SMED initiative targeting 30% reduction by Q1.</Callout>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Hours Since Last | Status |
+|---|---|---|---|---|---|
+| INJ-04 | A | Today | Lubrication | 498 | Overdue |
+| EXT-02 | B | Tomorrow | Filter change | 712 | Due soon |
+| ASM-07 | C | Nov 3 | Calibration | 1,024 | Due soon |
+| PKG-01 | D | Nov 5 | Belt replacement | 2,156 | Scheduled |
+| INJ-01 | A | Nov 7 | Full PM | 1,998 | Planned |
+| EXT-05 | B | Nov 10 | Gearbox oil | 1,890 | Planned |
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 t" change="Reorder at 15 t" tone="success" icon="cube" />
+<Stat label="Resin (PP/PE/PVC)" value="18.7 t" change="Reorder at 8 t" tone="warning" icon="droplet" />
+<Stat label="Packaging" value="3,240 units" change="Reorder at 1,000" tone="info" icon="box" />
+</Columns>
+<Details title="Breakdown by grade">
+| Material | Grade | On Hand | Allocated | Available | Days Cover |
+|---|---|---|---|---|---|
+| Steel | S355 | 18.2 t | 4.1 t | 14.1 t | 9 |
+| Steel | S275 | 24.1 t | 6.8 t | 17.3 t | 14 |
+| Resin | PP Homopolymer | 8.4 t | 2.2 t | 6.2 t | 6 |
+| Resin | PE HDPE | 6.1 t | 1.5 t | 4.6 t | 5 |
+| Resin | PVC Rigid | 4.2 t | 0.8 t | 3.4 t | 4 |
+| Packaging | Corrugated L | 1,840 | 420 | 1,420 | 11 |
+| Packaging | Corrugated M | 1,400 | 310 | 1,090 | 9 |
+</Details>
+</Card>
+
+<Card title="Supplier Deliveries – This Week">
+| Supplier | Material | Qty | ETA | PO # | Status |
+|---|---|---|---|---|---|
+| AcerSteel | Steel S355 | 25 t | Mon 08:00 | PO-2024-1847 | Confirmed |
+| PolySource | PP Homopolymer | 12 t | Tue 10:00 | PO-2024-1852 | Confirmed |
+| ChemResins | PVC Rigid | 8 t | Wed 14:00 | PO-2024-1859 | In transit |
+| PackCo | Corrugated L | 3,000 | Thu 09:00 | PO-2024-1863 | Confirmed |
+| AcerSteel | Steel S275 | 20 t | Fri 07:00 | PO-2024-1868 | Pending |
+| PolySource | PE HDPE | 10 t | Fri 11:00 | PO-2024-1871 | Confirmed |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri |
+|---|---|---|---|---|---|
+| 06:00–14:00 | 4,820 | 5,110 | 4,950 | 5,020 | 4,890 |
+| 14:00–22:00 | 4,650 | 4,890 | 4,720 | 4,810 | 4,680 |
+| 22:00–06:00 | 3,980 | 4,120 | 4,050 | 4,100 | 3,950 |
+</Chart>
+<Callout tone="info" title="Note">Night shift consistently 18–20% lower. Review staffing and changeover timing.</Callout>
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents This Year" value="3" change="Target: 0" tone="danger" icon="alert-triangle" />
+<Stat label="Days Since Last Incident" value="47" change="Last: Sep 13 – slip" tone="success" icon="calendar" />
+<Stat label="Near Misses (YTD)" value="12" change="+3 vs last year" tone="warning" icon="flag" />
+<Stat label="Training Compliance" value="98%" change="2 overdue" tone="info" icon="graduation-cap" />
+</Columns>
+<Details title="Incident log">
+| Date | Type | Line | Severity | Status |
+|---|---|---|---|---|
+| Sep 13 | Slip/fall | B | Minor (1 day lost) | Closed |
+| Jul 22 | Pinch point | A | First aid | Closed |
+| Apr 5 | Chemical splash | C | Medical treatment | Closed |
+</Details>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch | Line | Product | Qty | Reason | Since | Disposition |
+|---|---|---|---|---|---|---|
+| M-2024-0831 | A | PP caps 28mm | 12,000 | Dimensional variance | 2 hrs | Under review |
+| E-2024-0298 | B | PVC pipe 50mm | 8,500 | Surface finish | 6 hrs | Awaiting lab |
+| A-2024-0541 | C | Valve kit V-44 | 3,200 | Missing component | 1 hr | Rework queued |
+</Card>
+
+<Card title="Energy Use – Today">
+<Columns>
+<Stat label="Electricity" value="1,847 kWh" change="vs 1,920 avg" tone="success" icon="bolt" />
+<Stat label="Gas" value="4,230 m³" change="vs 4,180 avg" tone="neutral" icon="flame" />
+<Stat label="Water" value="18.4 m³" change="vs 19.1 avg" tone="info" icon="droplet" />
+<Stat label="Cost" value="$1,420" change="-$45 vs avg" tone="success" icon="currency-dollar" />
+</Columns>
+<Chart type="area" x="Hour" y="kW">
+| Hour | kW |
+|---|---|
+| 06:00 | 420 |
+| 07:00 | 680 |
+| 08:00 | 720 |
+| 09:00 | 740 |
+| 10:00 | 760 |
+| 11:00 | 755 |
+| 12:00 | 730 |
+| 13:00 | 710 |
+| 14:00 | 745 |
+| 15:00 | 750 |
+| 16:00 | 735 |
+| 17:00 | 720 |
+| 18:00 | 690 |
+| 19:00 | 650 |
+| 20:00 | 620 |
+| 21:00 | 580 |
+| 22:00 | 540 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Asset | Description | Assigned | Due |
+|---|---|---|---|---|---|---|
+| WO-2024-1156 | Critical | A | INJ-04 | Hydraulic leak – clamp cylinder | M. Torres | Today 16:00 |
+| WO-2024-1158 | High | B | EXT-02 | Temperature sensor drift | J. Chen | Tomorrow |
+| WO-2024-1161 | High | C | ASM-07 | Feeder jam – root cause | K. Patel | Nov 3 |
+| WO-2024-1149 | Medium | D | PKG-01 | Conveyor belt wear | R. Silva | Nov 5 |
+| WO-2024-1152 | Medium | A | INJ-01 | Preventive maintenance | M. Torres | Nov 7 |
+| WO-2024-1154 | Low | B | EXT-05 | Gearbox vibration analysis | J. Chen | Nov 10 |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="INJ-01 (Line A) | INJ-04 (Line A) | EXT-02 (Line B) | EXT-05 (Line B) | ASM-07 (Line C) | PKG-01 (Line D)" required="true" />
+<Date label="Date" name="date" required="true" />
+</Columns>
+<Select label="Maintenance Type" name="type" placeholder="Choose type" options="Lubrication | Filter change | Calibration | Belt replacement | Full PM | Gearbox oil | Other" required="true" />
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="4" value="4" min="0.5" max="48" step="0.5" required="true" />
+<TextArea label="Notes / Parts Required" name="notes" placeholder="List parts, special tools, contractor needs..." rows="3" />
+<Columns>
+<Button variant="primary">Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<Card title="Line Focus">
+<Select label="Focus on line" name="line-focus" placeholder="Select a line to filter all views" options="All lines | Line A – Injection Molding | Line B – Extrusion | Line C – Assembly | Line D – Packaging" />
+<Callout tone="info" title="Active filter">Showing all lines. Select one to filter OEE, production, alarms, work orders, and quality holds.</Callout>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="🔴 CRITICAL – Line A, INJ-04">Hydraulic pressure low – clamp force below spec. Maintenance dispatched. ETA 5 min.</Callout>
+<Callout tone="warning" title="🟡 WARNING – Line B, EXT-02">Melt temperature trending +8°C above setpoint. Operator adjusting.</Callout>
+<Callout tone="info" title="🔵 INFO – Line C, ASM-07">Changeover in progress. Estimated completion: 15:45.</Callout>
+<Callout tone="warning" title="🟡 WARNING – Line D, PKG-01">Conveyor belt tracking alarm. Scheduled replacement at 14:00.</Callout>
+<Details title="Alert history (last 2 hrs)">
+| Time | Line | Level | Message | Acknowledged |
+|---|---|---|---|---|
+| 13:42 | A | Critical | Hydraulic pressure low | M. Torres |
+| 13:38 | B | Warning | Melt temp +8°C | J. Chen |
+| 13:30 | C | Info | Changeover started | Auto |
+| 13:15 | D | Warning | Belt tracking | R. Silva |
+| 12:55 | A | Warning | Cycle time +12% | M. Torres |
+| 12:40 | B | Info | Material change | Auto |
+</Details>
+</Card>
+
+<Card title="Export Shift Report">
+<Columns>
+<Select label="Shift" name="shift" placeholder="Select shift" options="06:00–14:00 (Day) | 14:00–22:00 (Swing) | 22:00–06:00 (Night) | Full day" value="Full day" />
+<Select label="Format" name="format" placeholder="Choose format" options="PDF | Excel | CSV" value="PDF" />
+</Columns>
+<Button variant="primary" icon="download">Generate & Download Report</Button>
+<Button variant="tertiary">Email to management</Button>
+<Callout tone="neutral" title="Report includes">OEE, production vs target, downtime Pareto, quality metrics, safety, energy, maintenance actions, and open work orders.</Callout>
+</Card>
+
+<FollowUps>
+- Show me Line B's OEE trend for the last 7 days
+- Which work orders are overdue?
+- Create a corrective action for batch M-2024-0831
+- What's the energy cost per unit today?
+- Schedule preventive maintenance for INJ-01 next week
+</FollowUps>

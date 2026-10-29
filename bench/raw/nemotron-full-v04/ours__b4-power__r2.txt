@@ -1,0 +1,144 @@
+# GridOps Console — National Transmission System
+
+<Select label="Focus region" name="region" placeholder="All regions" options="All regions | North East | North West | Midlands | South East | South West | Wales | Scotland" value="All regions" />
+
+<Columns>
+<Card title="System Load" subtitle="Real-time">
+<Stat label="Current Load" value="42.3 GW" change="+1.2% vs 1h ago" tone="info" />
+<Progress value="42.3" max="58.0" label="Capacity utilization: 73%" />
+<Stat label="Available Margin" value="15.7 GW" change="Adequate" tone="success" />
+<Stat label="Frequency" value="50.02 Hz" change="Within limits" tone="success" />
+</Card>
+
+<Card title="Current Price">
+<Stat label="£/MWh" value="£68.50" change="-£4.20 vs yesterday" tone="success" />
+<Stat label="Day-ahead avg" value="£71.20" tone="neutral" />
+<Stat label="Balancing cost" value="£2.1M / day" tone="warning" />
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ intensity" value="185 g/kWh" change="-12% vs avg" tone="success" />
+<Stat label="Total emitted" value="18,740 tCO₂" change="Since 00:00" tone="neutral" />
+<Stat label="Renewable share" value="48.3%" change="+5.2 pp vs avg" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Live output (GW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Wind (onshore) | 11.2 |
+| Wind (offshore) | 8.7 |
+| Solar | 5.4 |
+| Nuclear | 5.9 |
+| CCGT (gas) | 7.8 |
+| Biomass | 2.1 |
+| Hydro | 1.2 |
+| Interconnectors | -1.4 |
+| Other | 1.4 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24h">
+<Chart type="line" title="Projected demand (GW)" x="Time" y="GW">
+| Time | Forecast | Actual |
+|---|---|---|
+| 00:00 | 31.2 | 31.2 |
+| 03:00 | 28.5 | 28.5 |
+| 06:00 | 30.1 | 30.1 |
+| 09:00 | 38.7 | 38.7 |
+| 12:00 | 42.3 | 42.3 |
+| 15:00 | 43.8 |  |
+| 18:00 | 46.2 |  |
+| 21:00 | 44.5 |  |
+| 00:00 | 36.8 |  |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Type | Capacity | Output | Status | Availability |
+|---|---|---|---|---|---|---|
+| Dogger Bank A | North East | Offshore Wind | 1.2 GW | 0.98 GW | <Badge tone="success">Generating</Badge> | 92% |
+| Hornsea 2 | North East | Offshore Wind | 1.3 GW | 1.12 GW | <Badge tone="success">Generating</Badge> | 95% |
+| Drax | Yorkshire | Biomass | 2.6 GW | 1.8 GW | <Badge tone="success">Generating</Badge> | 88% |
+| Sizewell B | East | Nuclear | 1.2 GW | 1.18 GW | <Badge tone="success">Generating</Badge> | 99% |
+| Hinkley Point C | South West | Nuclear | 3.2 GW | 0 GW | <Badge tone="warning">Commissioning</Badge> | 0% |
+| West Burton B | Midlands | CCGT | 1.3 GW | 0.65 GW | <Badge tone="success">Generating</Badge> | 85% |
+| Pembroke | Wales | CCGT | 2.2 GW | 1.4 GW | <Badge tone="success">Generating</Badge> | 90% |
+| Peterhead | Scotland | CCGT | 1.2 GW | 0.4 GW | <Badge tone="info">Standby</Badge> | 95% |
+| Dinorwig | Wales | Pumped Hydro | 1.7 GW | -0.3 GW | <Badge tone="info">Pumping</Badge> | 100% |
+| Ffestiniog | Wales | Pumped Hydro | 0.4 GW | 0 GW | <Badge tone="neutral">Idle</Badge> | 100% |
+| Viking Link | East | Interconnector | 1.4 GW | -0.8 GW | <Badge tone="success">Importing</Badge> | 98% |
+| IFA2 | South East | Interconnector | 1.0 GW | -0.6 GW | <Badge tone="success">Importing</Badge> | 97% |
+</Card>
+
+<Columns>
+<Card title="Active Outages">
+| Time | Region | Affected | Cause | Est. Restore | Customers |
+|---|---|---|---|---|---|
+| 14:22 | South West | Exeter 132kV circuit | Weather damage | 18:00 | 12,400 |
+| 13:55 | North West | Manchester substation | Equipment fault | 16:30 | 8,200 |
+| 12:10 | Scotland | Highland 275kV line | Planned work extended | 20:00 | 3,100 |
+| 11:45 | Wales | Cardiff 33kV network | Cable fault | 17:00 | 5,600 |
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Date | Plant / Asset | Region | Type | Duration | Impact |
+|---|---|---|---|---|---|
+| 2025-02-10 | Hinkley connector | South West | Line inspection | 06:00–14:00 | -500 MW import |
+| 2025-02-12 | Torness unit 1 | Scotland | Refuelling outage | 14 days | -600 MW nuclear |
+| 2025-02-15 | London 400kV ring | South East | Transformer replace | 3 days | N-1 risk elevated |
+| 2025-02-18 | Walney offshore | North West | Cable repair | 2 days | -300 MW wind |
+| 2025-02-22 | Dinorwig unit 3 | Wales | Annual overhaul | 5 days | -300 MW storage |
+| 2025-02-25 | IFA2 interconnector | South East | Converter maintenance | 1 day | -1 GW import |
+</Card>
+</Columns>
+
+<Card title="Live Alerts">
+<Details title="⚠ 14:32 — Voltage deviation, South East 400kV bus" open="true">
+Voltage at Wimbledon 400kV bus reading 418 kV (+4.5%). Tap changers adjusting. No load impact expected.
+</Details>
+<Details title="⚠ 14:28 — Wind forecast error, North East" open="true">
+Actual output 420 MW below forecast. CCGT ramp instructed. Imbalance price risk: moderate.
+</Details>
+<Details title="ℹ 14:15 — Interconnector flow change, IFA2" open="false">
+French grid requested reduction from 1.0 GW to 0.6 GW import. Ramping over 15 min.
+</Details>
+<Details title="✓ 13:58 — Frequency response activated" open="false">
+Dynamic containment low triggered at 49.95 Hz. 120 MW delivered from batteries. Event cleared.
+</Details>
+<Details title="⚠ 13:42 — Thermal limit approach, Yorkshire 275kV" open="false">
+Circuit loading at 92% rating. Generation re-dispatch instructed: Drax -150 MW, CCGT +150 MW.
+</Details>
+</Card>
+
+<Columns>
+<Card title="Order Curtailment" subtitle="Submit a curtailment instruction to a generator or interconnector">
+<Form name="curtailment-order">
+<Select label="Asset" name="asset" placeholder="Select plant or interconnector" options="Dogger Bank A | Hornsea 2 | Drax | Sizewell B | West Burton B | Pembroke | Peterhead | Viking Link | IFA2 | Other" required="true" />
+<Input label="Curtailment volume (MW)" name="volume" type="number" placeholder="e.g. 150" step="1" required="true" hint="Positive = reduce generation / increase import" />
+<Select label="Reason" name="reason" placeholder="Select reason" options="System security | Thermal constraint | Voltage constraint | Frequency control | Economic dispatch | Testing" required="true" />
+<Select label="Urgency" name="urgency" placeholder="Select urgency" options="Immediate (within 5 min) | Within 30 min | Within 2 hours | Scheduled" value="Within 30 min" required="true" />
+<TextArea label="Notes / instruction details" name="notes" placeholder="Additional instructions for the asset operator..." rows="3" />
+<Button variant="danger" size="large">Submit Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="primary" size="large">Declare Emergency Assistance</Button>
+<Button variant="secondary" size="large">Activate Demand Flexibility</Button>
+<Button variant="secondary" size="large">Request Interconnector Support</Button>
+<Button variant="tertiary" size="large">Publish Market Notice</Button>
+<Button variant="tertiary" size="large">Export Situation Report</Button>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show constraint management for North East
+- List all assets available for fast reserve
+- What is the current N-1 security margin?
+- Generate curtailment cost report for January
+</FollowUps>

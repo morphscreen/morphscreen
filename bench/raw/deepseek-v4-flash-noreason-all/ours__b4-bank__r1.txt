@@ -1,0 +1,99 @@
+# Personal Banking Home
+
+<Callout tone="info" title="Good morning, Alex">Here’s your money at a glance for Thursday, May 15.</Callout>
+
+<Card title="Account balances">
+<Columns>
+<Stat label="Checking" value="$4,280.15" change="+$320.00" icon="bank" />
+<Stat label="Savings" value="$12,640.80" change="+$150.00" icon="piggy-bank" />
+<Stat label="Credit card" value="$1,240.55" change="−$85.20" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+<Card title="Move money">
+<Form name="transfer">
+<Select label="From" options="Checking •••• 4821 | Savings •••• 9032 | Credit card •••• 7710" placeholder="Choose account" />
+<Select label="To" options="Checking •••• 4821 | Savings •••• 9032 | Credit card •••• 7710" placeholder="Choose account" />
+<Input label="Amount" type="number" placeholder="0.00" hint="Min $1.00, max $10,000.00" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods Market | −$86.42 | Today, 9:12 AM |
+| Shell Gas Station | −$52.00 | Yesterday |
+| Netflix | −$15.99 | May 13 |
+| Amazon | −$129.87 | May 12 |
+| Paycheck — Acme Corp | +$2,450.00 | May 10 |
+
+<Button variant="secondary" ask="Show me all transactions">View all</Button>
+</Card>
+
+<Card title="Spending by category — May">
+<Chart type="donut" title="This month" x="Category" y="Spent">
+| Category | Spent |
+|---|---|
+| Groceries | 620 |
+| Dining | 340 |
+| Transport | 210 |
+| Utilities | 180 |
+| Entertainment | 95 |
+| Other | 150 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+| Bill | Amount | Due date |
+|---|---|---|
+| Electric — Edison Co. | $68.40 | May 18 |
+| Internet — FiberNet | $79.99 | May 20 |
+| Rent — Maple Apartments | $1,450.00 | May 22 |
+| Phone — MobileOne | $55.00 | May 25 |
+
+<Button variant="secondary" ask="Pay my bills now">Pay bills</Button>
+</Card>
+
+<Card title="Vacation savings goal">
+<Progress value="7400" max="10000" label="$7,400 of $10,000 saved" tone="success" />
+<p>Target: Bali trip — June 2026. You’re 74% there. Keep going!</p>
+<Button variant="secondary" ask="Add to my vacation fund">Add money</Button>
+</Card>
+
+<Card title="Credit score">
+<Gauge label="Credit score" value="742" min="300" max="850" unit="pts" tone="success" />
+<p><Badge tone="success">Good</Badge> Up 12 points this quarter.</p>
+</Card>
+
+<Card title="Freeze credit line">
+<Details title="Freeze your credit card">
+<p>Freezing prevents new purchases, but recurring payments and refunds still go through. You can unfreeze anytime.</p>
+<Button variant="danger" ask="Freeze my credit card now">Freeze credit line</Button>
+</Details>
+</Card>
+
+<Card title="Statement period">
+<Select label="Statement period" options="1st – 30th | 5th – 4th | 10th – 9th | 15th – 14th" name="statement-period" placeholder="Choose a period" hint="Your next statement will use this window" />
+<Button>Save statement period</Button>
+</Card>
+
+<Card title="Alert preferences">
+<Checkboxes label="Alert me when…" options="Balance drops below $100 | Large purchase over $500 | Payment due in 3 days | New transaction over $200 | Credit score changes" name="alert-triggers" value="Balance drops below $100 | Payment due in 3 days" hint="Uncheck any you don’t want" />
+<Button>Save alerts</Button>
+</Card>
+
+<Card title="Dispute a transaction">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods Market — $86.42 | Amazon — $129.87 | Shell Gas Station — $52.00 | Netflix — $15.99" placeholder="Pick the transaction" />
+<TextArea label="Reason" placeholder="Tell us what’s wrong — e.g. double charge, wrong amount, unrecognized merchant" rows="3" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my checking account details
+- What’s my available credit?
+- Can I increase my credit limit?
+- Where can I see my full statement?
+</FollowUps>

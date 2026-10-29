@@ -1,0 +1,38 @@
+# Delivery Tracking
+
+<Card title="Current Location" subtitle="Last scanned 12 minutes ago">
+<Columns>
+<Stat label="Status" value="Out for Delivery" change="Driver: James M." tone="info" />
+<Stat label="Vehicle" value="Van #V-4421" tone="neutral" />
+</Columns>
+<Callout tone="info" title="Live location">
+<strong>127 Oak Street, Springfield</strong> — 0.3 miles from your address
+</Callout>
+<Map route="false" title="Package location">
+| Place | Address | Note |
+|---|---|---|
+| Current scan | 127 Oak Street, Springfield | Driver stopped |
+| Your address | 742 Evergreen Terrace, Springfield | Destination |
+</Map>
+</Card>
+
+<Card title="Estimated Delivery">
+<Columns>
+<Stat label="Today" value="By 6:30 PM" change="5 stops away" tone="success" />
+<Stat label="Delivery window" value="5:45 PM – 6:30 PM" tone="neutral" />
+</Columns>
+<Progress value="85" max="100" label="Route progress" tone="success" />
+<Callout tone="neutral" title="Delivery instructions">
+Leave at front door if no answer. Ring doorbell twice.
+</Callout>
+</Card>
+
+<Card title="Report a Problem">
+<Form name="delivery-issue">
+<Select label="Issue type" name="issue" placeholder="Select an issue" options="Package not delivered | Delivered to wrong address | Package damaged | Missing items | Driver behavior | Other" required="true" />
+<TextArea label="Details" name="details" placeholder="Describe what happened..." rows="4" hint="Include any photos or reference numbers" required="true" />
+<File label="Attach photos" name="photos" accept="image/*" multiple="true" hint="Up to 5 photos, 10 MB each" />
+<Button variant="primary">Submit Report</Button>
+<Button variant="secondary" href="#">Call Support</Button>
+</Form>
+</Card>

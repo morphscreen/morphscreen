@@ -1,0 +1,108 @@
+# Admin Overview
+
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Year to date" value="Last 30 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$127,400" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$1,528,800" change="+11.8% vs last year" tone="success" />
+<Stat label="Churn This Month" value="2.4%" change="-0.3pp vs last month" tone="danger" />
+<Stat label="Current NPS" value="62" change="+4 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 12 |
+| W2 | 18 |
+| W3 | 15 |
+| W4 | 22 |
+| W5 | 28 |
+| W6 | 24 |
+| W7 | 31 |
+| W8 | 35 |
+| W9 | 38 |
+| W10 | 42 |
+| W11 | 39 |
+| W12 | 45 |
+| W13 | 48 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 342 |
+| Professional | 187 |
+| Enterprise | 41 |
+| Custom | 12 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress label="Overall" value="78" max="100" tone="info" />
+<Progress label="Starter" value="65" max="100" tone="neutral" />
+<Progress label="Professional" value="82" max="100" tone="success" />
+<Progress label="Enterprise" value="91" max="100" tone="success" />
+<Progress label="Custom" value="73" max="100" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 240 | $12,000 | Active |
+| Globex Inc | Enterprise | 180 | $9,000 | Active |
+| Wayne Enterprises | Custom | 150 | $8,500 | Active |
+| Stark Industries | Enterprise | 120 | $6,800 | Active |
+| Umbrella Corp | Professional | 85 | $4,250 | Active |
+| Cyberdyne Systems | Professional | 72 | $3,600 | Active |
+| Tyrell Corporation | Enterprise | 60 | $3,200 | At Risk |
+| Massive Dynamic | Professional | 55 | $2,750 | Active |
+| Initech | Starter | 45 | $1,800 | Active |
+| Pied Piper | Professional | 40 | $2,000 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | Risk Reason | Since | Owner |
+|---|---|---|---|---|---|
+| Tyrell Corporation | Enterprise | 60 | No login in 21 days, feature adoption < 20% | 2024-01-15 | Sarah Chen |
+| Hooli Inc | Professional | 35 | Support tickets up 300%, NPS survey: 2/10 | 2024-01-22 | Mike Torres |
+| Dunder Mifflin | Starter | 12 | Payment failed 3x, no response to emails | 2024-01-28 | Jen Park |
+| Bluth Company | Professional | 28 | Key champion left, no new admin assigned | 2024-02-01 | Sarah Chen |
+| Sterling Cooper | Starter | 8 | Usage dropped 60% after price increase | 2024-02-05 | Mike Torres |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed On | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Bluth Company | $1,400 | 2024-02-01 | 3 | Card declined | <Button size="small">Retry</Button> |
+| Dunder Mifflin | $320 | 2024-01-28 | 3 | Insufficient funds | <Button size="small">Retry</Button> |
+| Sterling Cooper | $180 | 2024-02-05 | 1 | Expired card | <Button size="small">Retry</Button> |
+| Vandelay Industries | $450 | 2024-02-06 | 2 | Bank declined | <Button size="small">Retry</Button> |
+| Duff Beer | $220 | 2024-02-07 | 1 | Card expired | <Button size="small">Retry</Button> |
+</Card>
+
+<Card title="Newest Feature Adoption">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34 |
+| Advanced Analytics Dashboard | 52 |
+| Team Collaboration Spaces | 41 |
+</Chart>
+<Progress label="AI Workflow Builder" value="34" max="100" tone="warning" />
+<Progress label="Advanced Analytics Dashboard" value="52" max="100" tone="info" />
+<Progress label="Team Collaboration Spaces" value="41" max="100" tone="neutral" />
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" options="Owner | Admin | Billing Admin | Support Admin" value="Admin" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

@@ -1,0 +1,94 @@
+# Personal Banking Dashboard
+
+<Card title="Account Balances" subtitle="As of today">
+<Columns>
+<Stat label="Checking" value="$4,287.52" change="+$245.30 this month" tone="success" />
+<Stat label="Savings" value="$12,840.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,234.56" change="-$89.22 from last statement" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Dec 14 | Whole Foods Market | Groceries | -$87.43 |
+| Dec 13 | Shell Gas Station | Transportation | -$45.00 |
+| Dec 12 | Netflix | Subscriptions | -$15.99 |
+| Dec 11 | Amazon | Shopping | -$124.99 |
+| Dec 10 | Salary Deposit | Income | +$3,250.00 |
+| Dec 09 | Starbucks | Dining | -$12.75 |
+| Dec 08 | Electric Bill | Utilities | -$142.30 |
+</Card>
+
+<Card title="Spending This Month">
+<Chart type="donut" title="By Category" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 280 |
+| Transportation | 180 |
+| Shopping | 350 |
+| Subscriptions | 45 |
+| Utilities | 220 |
+| Other | 150 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Due Date | Amount | Status |
+|---|---|---|---|
+| Credit Card Payment | Dec 18 | $1,234.56 | <Badge tone="warning">Due in 4 days</Badge> |
+| Car Insurance | Dec 22 | $185.00 | <Badge tone="info">Due in 8 days</Badge> |
+| Internet | Dec 25 | $79.99 | <Badge tone="info">Due in 11 days</Badge> |
+| Phone Bill | Dec 28 | $65.00 | <Badge tone="neutral">Due in 14 days</Badge> |
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="6420" max="10000" label="Vacation Fund: $6,420 / $10,000 (64%)" tone="success" />
+<Callout tone="info" title="On track">You're saving $500/month. At this rate, you'll reach your goal by May 2025.</Callout>
+</Card>
+
+<Card title="Credit Score">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 from last month" tone="success" />
+<Stat label="Rating" value="Very Good" tone="info" />
+<Stat label="Last Updated" value="Dec 1, 2024" tone="neutral" />
+</Columns>
+<Callout tone="success" title="Great job!">Your score is in the "Very Good" range. Keep utilization low and pay on time to maintain it.</Callout>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Columns>
+<Select label="From Account" name="fromAccount" placeholder="Select account" options="Checking ($4,287.52) | Savings ($12,840.00)" required="true" />
+<Select label="To Account" name="toAccount" placeholder="Select account" options="Checking ($4,287.52) | Savings ($12,840.00)" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" max="4287.52" hint="Max $4,287.52 from Checking" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation savings, rent, etc." />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Switch label="Freeze Credit Card" name="freezeCredit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Callout tone="warning" title="What happens when frozen">New purchases, cash advances, and balance transfers will be declined. Automatic payments and returns still go through. You can unfreeze anytime.</Callout>
+</Card>
+
+<Card title="Statement Period">
+<Select label="Select Period" name="statementPeriod" placeholder="Choose a period" options="Current Month (Dec 1–31) | Last Month (Nov 1–30) | Last 3 Months | Last 6 Months | Year to Date | Custom Range" />
+</Card>
+
+<Card title="Alert Preferences">
+<Checkboxes label="Notify me when..." name="alertTriggers" options="Large transaction (>$100) | Low balance (<$500) | Bill due in 3 days | Credit utilization >30% | Direct deposit received | Unusual activity detected | Weekly spending summary" value="Large transaction (>$100) | Low balance (<$500) | Bill due in 3 days | Credit utilization >30% | Direct deposit received" hint="Choose which events trigger push/email notifications" />
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Transaction to Dispute" name="disputeTransaction" placeholder="Select a transaction" options="Whole Foods Market — $87.43 (Dec 14) | Shell Gas Station — $45.00 (Dec 13) | Netflix — $15.99 (Dec 12) | Amazon — $124.99 (Dec 11) | Starbucks — $12.75 (Dec 9) | Electric Bill — $142.30 (Dec 8)" required="true" />
+<Radio label="Reason" name="disputeReason" options="Unauthorized charge | Wrong amount | Duplicate charge | Goods not received | Service not as described | Canceled subscription still charged" required="true" />
+<TextArea label="Additional Details" name="disputeDetails" placeholder="Describe what happened, include any merchant communication, order numbers, etc." rows="4" hint="Optional but helps us resolve faster" />
+<Button variant="primary">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

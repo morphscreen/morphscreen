@@ -1,0 +1,553 @@
+/* MorphScreenUI over hosanna-ui (roadmap Z2). hosanna-ui reads about 45
+ * semantic tokens; most of the look comes from pointing those at ours, so its
+ * own hover, focus and disabled rules keep working. What tokens can't say
+ * (capsule buttons, mint switches, lilac checks, neutral words beside coloured
+ * dots) is restated below, state by state.
+ *
+ * The rule the build's lint holds us to: text is white or one of the three
+ * greys, or ink on a light fill. A colour on a mark (a dot, an icon, a ring)
+ * is set through a variable, or with `color` on a line that ends in mark. */
+
+@layer msui.tokens {
+  :root,
+  [data-theme],
+  [data-hos-canvas] {
+    color-scheme: dark;
+
+    --hos-font-sans: var(--msui-font-sans);
+    --hos-font-mono: var(--msui-font-mono);
+
+    --hos-bg: var(--msui-ground);
+    --hos-bg-sunken: var(--msui-raised);
+    --hos-surface: var(--msui-base);
+    --hos-surface-raised: var(--msui-raised);
+    --hos-surface-overlay: var(--msui-raised);
+    --hos-surface-hover: rgb(255 255 255 / 0.05);
+    --hos-surface-active: rgb(255 255 255 / 0.08);
+    --hos-surface-selected: var(--msui-pressed);
+
+    --hos-fg: var(--msui-text);
+    --hos-fg-muted: var(--msui-text-2);
+    --hos-fg-subtle: var(--msui-text-3);
+    --hos-fg-on-accent: var(--msui-on-light);
+    --hos-fg-inverted: var(--msui-on-light);
+
+    --hos-border: var(--msui-rule);
+    --hos-border-subtle: var(--msui-hairline);
+    --hos-border-strong: var(--msui-edge);
+    --hos-border-accent: rgb(171 218 255 / 0.45);
+
+    /* The primary action is white, as on the board. */
+    --hos-accent: var(--msui-text);
+    --hos-accent-hover: #ffffff;
+    --hos-accent-active: #d9d9df;
+    --hos-accent-subtle: var(--msui-pressed);
+    --hos-accent-fg: var(--msui-text);
+
+    /* Each status keeps its pastel for fills and marks; its words stay white. */
+    --hos-danger: var(--msui-rose-tint);
+    --hos-danger-hover: #452836;
+    --hos-danger-active: #2b1820;
+    --hos-danger-subtle: var(--msui-rose-tint);
+    --hos-danger-fg: var(--msui-text);
+    --hos-danger-on: var(--msui-text);
+    --hos-success: var(--msui-mint);
+    --hos-success-subtle: var(--msui-mint-tint);
+    --hos-success-fg: var(--msui-text);
+    --hos-success-on: var(--msui-on-light);
+    --hos-warning: var(--msui-butter);
+    --hos-warning-subtle: var(--msui-butter-tint);
+    --hos-warning-fg: var(--msui-text);
+    --hos-warning-on: var(--msui-on-light);
+    --hos-info: var(--msui-sky);
+    --hos-info-subtle: var(--msui-sky-tint);
+    --hos-info-fg: var(--msui-text);
+    --hos-info-on: var(--msui-on-light);
+
+    --hos-ring: var(--msui-sky);
+    --hos-ring-offset-color: var(--msui-ground);
+    --hos-backdrop: rgb(0 0 0 / 0.7);
+    --hos-skeleton: rgb(255 255 255 / 0.06);
+    --hos-skeleton-shine: rgb(255 255 255 / 0.1);
+
+    --hos-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+    --hos-shadow-md: var(--msui-shadow-float);
+    --hos-shadow-lg: var(--msui-shadow-lift);
+    --hos-shadow-inset-top: inset 0 1px 0 rgb(255 255 255 / 0.04);
+
+    --hos-radius-xs: 6px;
+    --hos-radius-sm: var(--msui-r-control);
+    --hos-radius-md: var(--msui-r-control);
+    --hos-radius-lg: var(--msui-r-panel);
+    --hos-radius-xl: var(--msui-r-panel);
+
+    --hos-text-lg: 18px;
+    --hos-text-lg-lh: 26px;
+    --hos-text-xl: 22px;
+    --hos-text-xl-lh: 28px;
+    --hos-text-2xl: 30px;
+    --hos-text-2xl-lh: 36px;
+    --hos-text-3xl: 44px;
+    --hos-text-3xl-lh: 48px;
+
+    --hos-control-h-sm: 32px;
+    --hos-control-h-md: 40px;
+    --hos-control-h-lg: 46px;
+    --hos-control-px-sm: var(--msui-space-3);
+    --hos-control-px-md: var(--msui-space-4);
+    --hos-control-px-lg: var(--msui-space-5);
+
+    --hos-dur-fast: var(--msui-dur-fast);
+    --hos-dur-base: var(--msui-dur-base);
+  }
+}
+
+@layer msui.theme {
+  body {
+    background-color: var(--msui-ground);
+    color: var(--msui-text);
+    font-family: var(--msui-font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--msui-text);
+    text-decoration-color: var(--msui-edge);
+    text-underline-offset: 3px;
+  }
+  a:hover {
+    text-decoration-color: currentColor;
+  }
+
+  ::selection {
+    background-color: var(--msui-lilac-tint);
+    color: var(--msui-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--msui-sky);
+    outline-offset: 2px;
+  }
+
+  /* ---- type steps ---------------------------------------------------------- */
+
+  .msui-display,
+  .msui-title1,
+  .msui-title2,
+  .msui-title3,
+  .msui-headline,
+  .msui-figure {
+    color: var(--msui-text);
+    text-wrap: balance;
+  }
+  .msui-display { font-size: var(--msui-display-size); line-height: var(--msui-display-line); font-weight: var(--msui-display-weight); letter-spacing: var(--msui-display-tracking); font-stretch: calc(var(--msui-display-width) * 1%); }
+  .msui-title1 { font-size: var(--msui-title1-size); line-height: var(--msui-title1-line); font-weight: var(--msui-title1-weight); letter-spacing: var(--msui-title1-tracking); font-stretch: calc(var(--msui-title1-width) * 1%); }
+  .msui-title2 { font-size: var(--msui-title2-size); line-height: var(--msui-title2-line); font-weight: var(--msui-title2-weight); letter-spacing: var(--msui-title2-tracking); font-stretch: calc(var(--msui-title2-width) * 1%); }
+  .msui-title3 { font-size: var(--msui-title3-size); line-height: var(--msui-title3-line); font-weight: var(--msui-title3-weight); font-stretch: calc(var(--msui-title3-width) * 1%); }
+  .msui-headline { font-size: var(--msui-headline-size); line-height: var(--msui-headline-line); font-weight: var(--msui-headline-weight); }
+  .msui-body { font-size: var(--msui-body-size); line-height: var(--msui-body-line); color: var(--msui-text-2); }
+  .msui-callout { font-size: var(--msui-callout-size); line-height: var(--msui-callout-line); color: var(--msui-text-2); }
+  .msui-small { font-size: var(--msui-small-size); line-height: var(--msui-small-line); color: var(--msui-text-2); }
+  .msui-caption { font-size: var(--msui-caption-size); line-height: var(--msui-caption-line); color: var(--msui-text-3); }
+  .msui-micro { font-size: var(--msui-micro-size); line-height: var(--msui-micro-line); font-weight: var(--msui-micro-weight); color: var(--msui-text-3); }
+  .msui-figure { font-size: var(--msui-figure-size); line-height: var(--msui-figure-line); font-weight: var(--msui-figure-weight); letter-spacing: var(--msui-figure-tracking); font-stretch: calc(var(--msui-figure-width) * 1%); font-variant-numeric: tabular-nums; }
+  .msui-code { font-family: var(--msui-font-mono); font-size: var(--msui-code-size); line-height: var(--msui-code-line); }
+  .msui-num { font-variant-numeric: tabular-nums; }
+
+  /* ---- the eight jobs ------------------------------------------------------ */
+
+  /* A tone sets two variables, never a text colour: --mark for the dot, icon or
+   * bar, --tint for the ground behind words that stay white. */
+  .msui-sky { --mark: var(--msui-sky); --tint: var(--msui-sky-tint); }
+  .msui-peach { --mark: var(--msui-peach); --tint: var(--msui-peach-tint); }
+  .msui-aqua { --mark: var(--msui-aqua); --tint: var(--msui-aqua-tint); }
+  .msui-butter { --mark: var(--msui-butter); --tint: var(--msui-butter-tint); }
+  .msui-rose { --mark: var(--msui-rose); --tint: var(--msui-rose-tint); }
+  .msui-lime { --mark: var(--msui-lime); --tint: var(--msui-lime-tint); }
+  .msui-lilac { --mark: var(--msui-lilac); --tint: var(--msui-lilac-tint); }
+  .msui-mint { --mark: var(--msui-mint); --tint: var(--msui-mint-tint); }
+
+  .msui-dot {
+    display: inline-block;
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--mark, var(--msui-text-3));
+  }
+
+  /* A status: the tint behind, a dot, the words white. */
+  .msui-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    height: 26px;
+    padding-inline: 10px;
+    border-radius: var(--msui-r-control);
+    background-color: var(--tint, var(--msui-control));
+    color: var(--msui-text);
+    font-size: 13px;
+    font-weight: 550;
+    white-space: nowrap;
+  }
+  .msui-tag::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--mark, var(--msui-text-3));
+  }
+
+  /* A family or a filter: no tint, the colour only on its dot or icon. */
+  .msui-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+    padding-inline: 12px;
+    border-radius: var(--msui-r-control);
+    background-color: var(--msui-raised);
+    color: var(--msui-text);
+    font-size: 14px;
+    font-weight: 550;
+    white-space: nowrap;
+  }
+  .msui-chip:not(:has(.msui-icon))::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--mark, var(--msui-text-3));
+  }
+
+  .msui-icon {
+    flex: none;
+    color: var(--mark, currentColor); /* mark */
+  }
+
+  .msui-panel {
+    background-color: var(--msui-base);
+    border-radius: var(--msui-r-panel);
+    box-shadow: inset 0 0 0 1px var(--msui-hairline);
+  }
+
+  .msui-meter {
+    height: 8px;
+    border-radius: 999px;
+    background-color: var(--msui-control);
+    overflow: hidden;
+  }
+  .msui-meter > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--mark, var(--msui-text));
+    transition: width var(--msui-dur-morph) var(--msui-morph-ease);
+  }
+
+  /* ---- liquid glass, only on what floats ---------------------------------- */
+
+  /* A lens, never frost: in Chrome ui/glass.ts adds a displacement map so the
+   * page bends at the rim and stays sharp in the middle. Elsewhere, and for
+   * anyone who asks for less transparency, it is a plain dark capsule. */
+  .msui-glass {
+    position: relative;
+    border-radius: 999px;
+    /* A little of the ground in the glass keeps its words readable over bright content. */
+    background-color: rgb(14 14 16 / 0.42);
+    box-shadow: var(--msui-shadow-float);
+    -webkit-backdrop-filter: saturate(1.3) brightness(1.05);
+    backdrop-filter: saturate(1.3) brightness(1.05);
+  }
+  .msui-glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(150deg, rgb(255 255 255 / 0.62), rgb(255 255 255 / 0.1) 30%, rgb(255 255 255 / 0.03) 62%, rgb(255 255 255 / 0.3));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .msui-glass-pill {
+    border-radius: 999px;
+    background-color: var(--msui-glass-pill);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.24);
+  }
+  /* hosanna-ui's line tabs as a glass capsule: its measured indicator becomes
+   * the pill that slides, overshooting a little, to the tab picked. */
+  .msui-glass-tabs.hos-tabs__list[data-variant="line"] {
+    gap: 0;
+    height: 52px;
+    padding: 4px;
+    box-sizing: border-box;
+    border-bottom: 0;
+  }
+  .msui-glass-tabs.hos-tabs__list[data-variant="line"]::after {
+    top: 4px;
+    bottom: auto;
+    height: 44px;
+    border-radius: 999px;
+    background-color: var(--msui-glass-pill);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.24);
+  }
+  .msui-glass-tabs.hos-tabs__list[data-variant="line"][data-animate]::after {
+    transition:
+      translate var(--msui-dur-pill) var(--msui-pill-ease),
+      width var(--msui-dur-pill) var(--msui-pill-ease);
+  }
+  .msui-glass-tabs .hos-tabs__tab {
+    z-index: 1;
+    height: 44px;
+    padding-inline: 18px;
+    border-radius: 999px;
+    color: var(--msui-text-2);
+    font-size: 15px;
+  }
+  .msui-glass-tabs .hos-tabs__tab:hover:not([data-disabled]):not([data-selected]) {
+    color: var(--msui-text);
+  }
+  .msui-glass-tabs .hos-tabs__tab[data-selected] {
+    color: var(--msui-text);
+    font-weight: 620;
+  }
+
+  /* A countdown to something taking effect: the ring empties as time runs out. */
+  .msui-ring {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    rotate: -90deg;
+  }
+  .msui-ring circle {
+    fill: none;
+    stroke-width: 2.4;
+  }
+  .msui-ring circle:first-child {
+    stroke: var(--msui-edge);
+  }
+  .msui-ring circle:last-child {
+    stroke: var(--mark, var(--msui-lilac));
+    stroke-linecap: round;
+    stroke-dasharray: 56.55;
+    animation: msui-ring var(--msui-ring-for, 8s) linear forwards;
+  }
+  @keyframes msui-ring {
+    to {
+      stroke-dashoffset: 56.55;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .msui-ring circle:last-child {
+      animation: none;
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .msui-glass {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background-color: var(--msui-control);
+    }
+  }
+
+  /* ---- hosanna-ui's parts -------------------------------------------------- */
+
+  @supports (corner-shape: squircle) {
+    :where(.msui-r, .msui-panel, .msui-tag, .msui-chip, .hos-card, .hos-input, .hos-textarea, .hos-select, .hos-dialog, .hos-drawer, .hos-popover, .hos-menu, .hos-toast, .hos-alert, .hos-badge, .hos-tooltip, .hos-table__wrapper, .hos-tabs__list, .hos-checkbox__box) {
+      corner-shape: squircle;
+    }
+  }
+
+  /* Buttons are capsules: only things you press get them. */
+  .hos-button,
+  .hos-icon-button {
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .hos-button[data-size="sm"] {
+    border-radius: 999px;
+  }
+  .hos-button[data-variant="secondary"] {
+    background-color: var(--msui-control);
+    border-color: transparent;
+  }
+  .hos-button[data-variant="secondary"]:hover:not(:disabled):not([aria-disabled="true"]) {
+    background-color: var(--msui-pressed);
+  }
+
+  /* Fields sit one step up from the card they're on; focus is the sky ring. */
+  .hos-input,
+  .hos-textarea,
+  .hos-select {
+    background-color: var(--msui-raised);
+  }
+  .hos-input:focus-within {
+    border-color: transparent;
+  }
+  .hos-input[data-invalid],
+  .hos-input[data-invalid]:hover:not([data-disabled]) {
+    border-color: var(--msui-rose-chart);
+  }
+  .hos-input[data-invalid]:focus-within {
+    border-color: transparent;
+    outline-color: var(--msui-rose-chart);
+  }
+  .hos-field__error {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--msui-text-2);
+  }
+  .hos-field__error::before {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--msui-rose);
+  }
+  .hos-field__error[hidden] {
+    display: none;
+  }
+
+  /* On is mint, as anything that worked; the thumb goes dark on it. */
+  .hos-switch__input:checked + .hos-switch__track {
+    background-color: var(--msui-mint);
+  }
+  .hos-switch__input:checked:hover:not(:disabled) + .hos-switch__track {
+    background-color: #c3eed6;
+  }
+  .hos-switch__input:checked + .hos-switch__track .hos-switch__thumb {
+    background-color: var(--msui-ground);
+  }
+
+  /* A check is the selection's lilac. */
+  .hos-checkbox__input:checked + .hos-checkbox__box,
+  .hos-checkbox__input:indeterminate + .hos-checkbox__box {
+    background-color: var(--msui-lilac);
+    border-color: var(--msui-lilac);
+    color: var(--msui-on-light);
+  }
+  .hos-checkbox__input:hover:not(:disabled):not(:checked) + .hos-checkbox__box {
+    border-color: var(--msui-text-3);
+  }
+  .hos-radio__input:checked + .hos-radio__control,
+  .hos-radio__control:has(.hos-radio__input:checked) {
+    border-color: var(--msui-lilac);
+  }
+  .hos-radio__dot {
+    background-color: var(--msui-lilac);
+  }
+
+  /* Solid tabs are a segmented capsule; the line indicator stays white. */
+  .hos-tabs__list[data-variant="solid"] {
+    padding: 3px;
+    border-radius: 999px;
+    background-color: var(--msui-raised);
+  }
+  .hos-tabs__tab[data-variant="solid"] {
+    border-radius: 999px;
+    color: var(--msui-text-3);
+  }
+  .hos-tabs__tab[data-variant="solid"]:hover:not([data-disabled]):not([data-selected]) {
+    color: var(--msui-text-2);
+  }
+  .hos-tabs__tab[data-variant="solid"][data-selected] {
+    background-color: var(--msui-pressed);
+    box-shadow: none;
+    color: var(--msui-text);
+  }
+
+  /* Badges: the tint, a dot, white words. */
+  .hos-badge {
+    --hos-badge-dot: var(--msui-text-3);
+  }
+  .hos-badge[data-tone="success"] { --hos-badge-dot: var(--msui-mint); }
+  .hos-badge[data-tone="warning"] { --hos-badge-dot: var(--msui-butter); }
+  .hos-badge[data-tone="danger"] { --hos-badge-dot: var(--msui-rose); --hos-badge-solid: var(--msui-rose); --hos-badge-on-solid: var(--msui-on-light); }
+  .hos-badge[data-tone="info"] { --hos-badge-dot: var(--msui-sky); }
+  .hos-badge[data-tone="accent"] { --hos-badge-dot: var(--msui-lilac); }
+  .hos-badge[data-variant="subtle"][data-tone]:not([data-tone="neutral"]):not(:has(.hos-badge__dot))::before {
+    content: "";
+    flex: none;
+    width: 7px;
+    height: 7px;
+    margin-right: 2px;
+    border-radius: 50%;
+    background-color: var(--hos-badge-dot);
+  }
+  .hos-badge__dot {
+    background-color: var(--hos-badge-dot);
+  }
+
+  /* Alerts: a tint and a coloured icon, never a stripe down the side. */
+  .hos-alert[data-tone="success"] { --hos-alert-fg: var(--msui-mint); }
+  .hos-alert[data-tone="warning"] { --hos-alert-fg: var(--msui-butter); }
+  .hos-alert[data-tone="danger"] { --hos-alert-fg: var(--msui-rose); --hos-alert-bg: var(--msui-rose-tint); }
+  .hos-alert[data-tone="info"] { --hos-alert-fg: var(--msui-sky); }
+  .hos-alert {
+    border-color: transparent;
+    border-radius: var(--msui-r-card);
+  }
+
+  .hos-card {
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--msui-hairline);
+  }
+  .hos-card[data-variant="raised"] {
+    box-shadow: inset 0 0 0 1px var(--msui-hairline), var(--msui-shadow-float);
+  }
+
+  .hos-dialog,
+  .hos-drawer {
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--msui-hairline), var(--msui-shadow-lift);
+  }
+  .hos-popover,
+  .hos-menu,
+  .hos-select__list {
+    border-radius: var(--msui-r-card);
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--msui-hairline), var(--msui-shadow-float);
+  }
+  .hos-tooltip {
+    border-radius: var(--msui-r-control);
+    background-color: var(--msui-control);
+    color: var(--msui-text);
+  }
+
+  /* The toast is where undo lives: a dark capsule-cornered card, the action white. */
+  .hos-toast {
+    border-radius: var(--msui-r-card);
+    background-color: var(--msui-control);
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--msui-hairline), var(--msui-shadow-float);
+  }
+  .hos-toast__action {
+    padding-inline: 14px;
+    border-radius: 999px;
+    background-color: var(--msui-text);
+    color: var(--msui-on-light);
+    font-weight: 600;
+  }
+  .hos-toast__action:hover {
+    background-color: #ffffff;
+  }
+
+  /* hosanna-ui keeps a page header's actions from shrinking; on a phone a
+   * row of them then runs off the screen. They wrap instead. */
+  .hos-page-header__actions {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hos-table__header-cell {
+    color: var(--msui-text-3);
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,48 @@
+root = Card([header, dateRange, kpiSection, trafficSection, sourcesSection, campaignsSection, emailSection, exportSection])
+
+header = CardHeader("Marketing Dashboard", "Weekly performance overview")
+
+dateRange = Form("date-range", dateButtons, [dateField])
+dateField = FormControl("Date range", datePicker, "Choose the period for this report")
+datePicker = DatePicker("range", "range")
+dateButtons = Buttons([applyBtn])
+applyBtn = Button("Apply range", null, "primary")
+
+kpiSection = Card([kpiTitle, kpis], "sunk")
+kpiTitle = Heading("Key metrics", "h3")
+kpis = Table([kpiName, kpiValue])
+kpiName = Col("Metric", ["Visitors", "Conversion rate"])
+kpiValue = Col("Value", ["48,210", "3.8%"])
+
+trafficSection = Card([trafficTitle, trafficChart, trafficNote])
+trafficTitle = Heading("Site visitors (last 30 days)", "h3")
+trafficChart = LineChart(["Day 1", "Day 5", "Day 10", "Day 15", "Day 20", "Day 25", "Day 30"], [visitorSeries], "natural", "Day", "Visitors")
+visitorSeries = Series("Visitors", [1200, 1450, 1380, 1600, 1750, 1680, 1900])
+trafficNote = TextCallout("info", "Peak traffic", "Visitors peaked at 2,140 on Day 24, driven by the Spring Sale email blast.")
+
+sourcesSection = Card([sourcesTitle, sourcesChart, sourcesTable])
+sourcesTitle = Heading("Top 5 traffic sources", "h3")
+sourcesChart = HorizontalBarChart(["Direct", "Organic search", "Paid ads", "Social", "Email"], [sourceSeries], "grouped", "Share (%)", "Source")
+sourceSeries = Series("Share", [32, 28, 18, 14, 8])
+sourcesTable = Table([sourceName, sourceShare])
+sourceName = Col("Source", ["Direct", "Organic search", "Paid ads", "Social", "Email"])
+sourceShare = Col("Share", ["32%", "28%", "18%", "14%", "8%"])
+
+campaignsSection = Card([campaignsTitle, campaignsTable, bestCampaign])
+campaignsTitle = Heading("Running campaigns", "h3")
+campaignsTable = Table([campaignName, campaignSpend])
+campaignName = Col("Campaign", ["Spring Sale", "New Product Launch", "Retargeting", "Brand Awareness", "Newsletter Signup"])
+campaignSpend = Col("Spend", ["$12,400", "$9,800", "$6,200", "$4,500", "$2,100"])
+bestCampaign = Callout("success", "Best performer", "Spring Sale is the top campaign with $12,400 spend and a 6.2% conversion rate — 2.4x the average.")
+
+emailSection = Card([emailTitle, emailChart, emailNote])
+emailTitle = Heading("Email subscriber growth (this month)", "h3")
+emailChart = AreaChart(["Week 1", "Week 2", "Week 3", "Week 4"], [emailSeries], "linear", "Week", "Subscribers")
+emailSeries = Series("Subscribers", [1000, 1420, 1790, 2210])
+emailNote = TextCallout("success", "Growth", "Subscribers grew 121% this month, reaching 2,210 total.")
+
+exportSection = Card([exportTitle, exportButtons])
+exportTitle = Heading("Export report", "h3")
+exportButtons = Buttons([exportCsv, exportPdf])
+exportCsv = Button("Export as CSV")
+exportPdf = Button("Export as PDF", null, "secondary")

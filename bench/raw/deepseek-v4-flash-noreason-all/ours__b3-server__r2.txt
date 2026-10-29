@@ -1,0 +1,117 @@
+# Service Health Dashboard
+
+On-call view · live data · <Badge tone="warning">2 incidents open</Badge>
+
+<Card title="Service overview">
+<Columns>
+<Stat label="Uptime this quarter" value="99.98%" tone="success" icon="trend-up" note="Target 99.9%" />
+<Stat label="Error rate right now" value="0.42%" tone="warning" icon="warning-circle" note="Up from 0.31% an hour ago" />
+<Stat label="Open incidents" value="2" tone="danger" icon="fire" note="1 critical, 1 major" />
+<Stat label="Requests/min" value="12,847" change="+4.2%" tone="info" icon="pulse" note="vs. 7-day avg" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory usage — last 24 hours">
+<Chart type="line" title="Resource utilisation" x="Time (UTC)" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 60 |
+| 04:00 | 35 | 59 |
+| 06:00 | 44 | 62 |
+| 08:00 | 58 | 68 |
+| 10:00 | 72 | 74 |
+| 12:00 | 81 | 79 |
+| 14:00 | 76 | 77 |
+| 16:00 | 63 | 72 |
+| 18:00 | 55 | 68 |
+| 20:00 | 48 | 65 |
+| 22:00 | 45 | 63 |
+| Now | 52 | 66 |
+</Chart>
+<Callout tone="info" title="CPU spike at 12:00 UTC">Tied to the batch job; memory stayed under 80% all day.</Callout>
+</Card>
+
+<Card title="Open incidents">
+<Columns>
+<Card title="INC-4821 · API checkout failing" subtitle="Critical">
+<Badge tone="danger">Critical</Badge> — P1, open 23 min
+<KeyValue title="Details">
+| Field | Value |
+|---|---|
+| Region | us-east-1 |
+| Started | 14:02 UTC |
+| Impact | 8% of checkout requests |
+| Owner | @maya |
+</KeyValue>
+<Button variant="primary" ask="Acknowledge INC-4821">Acknowledge</Button>
+<Button variant="tertiary" ask="Show INC-4821 runbook">Runbook</Button>
+</Card>
+<Card title="INC-4819 · Elevated latency in EU" subtitle="Major">
+<Badge tone="warning">Major</Badge> — P2, open 1h 12m
+<KeyValue title="Details">
+| Field | Value |
+|---|---|
+| Region | eu-west-1 |
+| Started | 13:13 UTC |
+| Impact | p95 +340ms |
+| Owner | @junior |
+</KeyValue>
+<Button variant="primary" ask="Acknowledge INC-4819">Acknowledge</Button>
+<Button variant="tertiary" ask="Show INC-4819 runbook">Runbook</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Narrow by region">
+<Radio label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" name="region" value="All regions" />
+<Callout tone="neutral" title="Region filter applies to">Error rate, endpoint latency, and incidents below. CPU/memory and uptime stay global.</Callout>
+</Card>
+
+<Card title="Five slowest endpoints — all regions">
+| Endpoint | Method | p95 latency |
+|---|---|---|
+| /api/v2/checkout/confirm | POST | 1,240 ms |
+| /api/v2/orders/{id}/history | GET | 980 ms |
+| /api/v2/search/autocomplete | GET | 742 ms |
+| /api/v2/invoices/recalculate | POST | 615 ms |
+| /api/v2/users/{id}/preferences | GET | 488 ms |
+
+<Callout tone="warning" title="Checkout confirm is 3× its baseline">Correlates with INC-4821 in us-east-1. <Button variant="tertiary" ask="Compare checkout latency by region">Compare by region</Button></Callout>
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="0.5" name="error-threshold" unit="%" />
+<Select label="Notify via" options="PagerDuty + Slack | PagerDuty only | Slack only | Email" name="notify-channel" />
+<Switch label="Auto-create incident when breached" name="auto-incident" value="true" hint="Recommended" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<Card title="Acknowledge flow">
+<Steps>
+<Step title="Incident fires" status="done" subtitle="14:02 UTC — alert triggered at 0.5% error rate" />
+<Step title="Acknowledge" status="current" subtitle="You’re on call — claim it so others know" />
+<Step title="Investigate" status="todo" subtitle="Follow the runbook, check logs and traces" />
+<Step title="Resolve" status="todo" subtitle="Confirm fix, close incident, postmortem" />
+</Steps>
+<Callout tone="success" title="What acknowledging does">Silences duplicate pages for 30 min, assigns you as owner, and notifies the team in Slack.</Callout>
+<Button variant="primary" ask="Acknowledge INC-4821">Acknowledge INC-4821</Button>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="secondary" ask="Show full incident list">All incidents</Button>
+<Button variant="secondary" ask="Show deployment history">Deployments</Button>
+<Button variant="secondary" ask="Show recent changes">Recent changes</Button>
+<Button variant="secondary" ask="Page the on-call lead">Page lead</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Which regions are affected right now?
+- What changed in the last hour?
+- Show the runbook for INC-4821
+- Compare today's error rate to last week
+</FollowUps>

@@ -1,0 +1,73 @@
+<Card title="Clinic Day View" subtitle="Monday, January 15, 2024">
+<Columns>
+<Card title="Today's Appointments">
+| Time | Patient | Reason | Room | Status |
+|---|---|---|---|---|
+| 08:00 | Sarah Johnson | Annual Checkup | Room 1 | ✅ Checked In |
+| 08:30 | Michael Chen | Follow-up | Room 2 | ⏳ Waiting |
+| 09:00 | Emily Davis | Consultation | Room 1 | 📅 Scheduled |
+| 09:30 | James Wilson | Physical Therapy | Room 3 | 📅 Scheduled |
+| 10:00 | Lisa Anderson | Vaccination | Room 2 | 📅 Scheduled |
+| 10:30 | Robert Taylor | Blood Work | Room 1 | 📅 Scheduled |
+| 11:00 | Jennifer Martinez | Dermatology | Room 3 | 📅 Scheduled |
+| 11:30 | David Brown | Cardiology | Room 2 | 📅 Scheduled |
+| 14:00 | Amanda White | Pediatrics | Room 1 | 📅 Scheduled |
+| 14:30 | Christopher Lee | Orthopedics | Room 3 | 📅 Scheduled |
+| 15:00 | Michelle Garcia | Neurology | Room 2 | 📅 Scheduled |
+| 15:30 | Daniel Rodriguez | ENT | Room 1 | 📅 Scheduled |
+</Card>
+
+<Card title="Quick Stats">
+<Stat label="Patients Expected Today" value="12" change="+2 vs yesterday" tone="info" />
+<Stat label="No-Show Rate This Month" value="8.2%" change="-1.3% vs last month" tone="success" />
+<Stat label="Checked In" value="1" change="of 12" tone="neutral" />
+<Stat label="Waiting" value="1" change="in lobby" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Room Status" subtitle="Current availability">
+<Columns>
+<Badge tone="success">Room 1 — Occupied (Sarah Johnson)</Badge>
+<Badge tone="warning">Room 2 — Waiting (Michael Chen)</Badge>
+<Badge tone="info">Room 3 — Free</Badge>
+<Badge tone="info">Room 4 — Free</Badge>
+<Badge tone="info">Procedure Room — Free</Badge>
+</Columns>
+</Card>
+
+<Card title="Next Patient Called">
+<Callout tone="info" title="Now Calling: Michael Chen">
+<strong>Appointment:</strong> 08:30 Follow-up<br />
+<strong>Room:</strong> Room 2<br />
+<strong>Provider:</strong> Dr. Patel<br />
+<strong>Status:</strong> Waiting in lobby
+</Callout>
+<Button variant="primary" size="large">✓ Mark as Roomed</Button>
+<Button variant="secondary" size="large">⏭ Skip / Call Next</Button>
+</Card>
+
+<Card title="Patient Check-In">
+<Form name="check-in">
+<Select label="Select Patient" placeholder="Choose a patient to check in" options="Michael Chen (08:30) | Emily Davis (09:00) | James Wilson (09:30) | Lisa Anderson (10:00) | Robert Taylor (10:30) | Jennifer Martinez (11:00) | David Brown (11:30) | Amanda White (14:00) | Christopher Lee (14:30) | Michelle Garcia (15:00) | Daniel Rodriguez (15:30)" required="true" />
+<Checkboxes label="Confirm Details" options="Insurance verified | Consent forms signed | Contact info updated" hint="Check all that apply" />
+<Button variant="primary">Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate Days">
+<Columns>
+<Date label="Jump to Date" name="nav-date" value="2024-01-15" />
+<Button variant="secondary" href="#">◀ Previous Day</Button>
+<Button variant="secondary" href="#">Next Day ▶</Button>
+<Button variant="tertiary" href="#">Today</Button>
+</Columns>
+</Card>
+</Card>
+
+<FollowUps>
+- View patient chart for Michael Chen
+- Print daily schedule
+- Send appointment reminders for tomorrow
+- Review no-show report details
+</FollowUps>

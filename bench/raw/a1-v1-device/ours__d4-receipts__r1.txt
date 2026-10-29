@@ -1,0 +1,63 @@
+<Card title="New Expense Claim" subtitle="Add receipts and invoices, then submit for approval">
+<Form name="expense-claim">
+
+### Receipts & Invoices
+
+<Columns>
+<Camera label="Photograph paper receipt" name="receipt-photo" facing="back" hint="Take a clear photo of the receipt" required="false" />
+<File label="Upload PDF invoice" name="invoice-pdf" accept="application/pdf" hint="Drag & drop or click to select a PDF" required="false" />
+</Columns>
+
+---
+
+### Expense Items
+
+<Details title="Expense 1" open="true">
+<Columns>
+<Input label="Amount" name="expense-1-amount" type="number" placeholder="0.00" hint="Enter amount" required="true" />
+<Select label="Category" name="expense-1-category" placeholder="Select category" options="Meals | Travel | Lodging | Office Supplies | Software | Other" required="true" />
+</Columns>
+<Camera label="Attach receipt photo" name="expense-1-photo" facing="back" hint="Optional: photograph the receipt" required="false" />
+<File label="Or attach PDF" name="expense-1-pdf" accept="application/pdf" hint="Optional: upload invoice PDF" required="false" />
+<TextArea label="Notes" name="expense-1-notes" placeholder="Business purpose, attendees, etc." rows="2" hint="Optional" required="false" />
+</Details>
+
+<Details title="Expense 2" open="false">
+<Columns>
+<Input label="Amount" name="expense-2-amount" type="number" placeholder="0.00" hint="Enter amount" required="true" />
+<Select label="Category" name="expense-2-category" placeholder="Select category" options="Meals | Travel | Lodging | Office Supplies | Software | Other" required="true" />
+</Columns>
+<Camera label="Attach receipt photo" name="expense-2-photo" facing="back" hint="Optional: photograph the receipt" required="false" />
+<File label="Or attach PDF" name="expense-2-pdf" accept="application/pdf" hint="Optional: upload invoice PDF" required="false" />
+<TextArea label="Notes" name="expense-2-notes" placeholder="Business purpose, attendees, etc." rows="2" hint="Optional" required="false" />
+</Details>
+
+<Details title="Expense 3" open="false">
+<Columns>
+<Input label="Amount" name="expense-3-amount" type="number" placeholder="0.00" hint="Enter amount" required="true" />
+<Select label="Category" name="expense-3-category" placeholder="Select category" options="Meals | Travel | Lodging | Office Supplies | Software | Other" required="true" />
+</Columns>
+<Camera label="Attach receipt photo" name="expense-3-photo" facing="back" hint="Optional: photograph the receipt" required="false" />
+<File label="Or attach PDF" name="expense-3-pdf" accept="application/pdf" hint="Optional: upload invoice PDF" required="false" />
+<TextArea label="Notes" name="expense-3-notes" placeholder="Business purpose, attendees, etc." rows="2" hint="Optional" required="false" />
+</Details>
+
+<Button variant="tertiary" size="small">+ Add another expense</Button>
+
+---
+
+### Claim Summary
+
+<Stat label="Claim Total" value="$0.00" tone="info" />
+<Callout tone="info" title="Auto-calculated">Total updates as you enter amounts above. All expenses require a category.</Callout>
+
+---
+
+### Submit
+
+<Switch label="I confirm these expenses are accurate and comply with policy" name="confirm-policy" value="false" hint="Required before submission" />
+<Button variant="primary" size="large" disabled="true">Submit Claim</Button>
+<Button variant="secondary">Save as Draft</Button>
+
+</Form>
+</Card>

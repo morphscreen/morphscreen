@@ -1,0 +1,456 @@
+# City Operations Center
+
+<Columns>
+<Card title="District Focus" subtitle="Filter all metrics by district">
+<Select label="Select District" name="district-focus" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastport | Westgate | Riverside | University | Industrial | Harborview" />
+</Card>
+
+<Card title="Current Weather" subtitle="Live conditions">
+<Columns>
+<Stat label="Temperature" value="22°C" change="+2°C vs 1hr ago" tone="neutral" />
+<Stat label="Humidity" value="65%" change="Stable" tone="neutral" />
+<Stat label="Wind" value="12 km/h NE" change="Increasing" tone="info" />
+<Stat label="Condition" value="Partly Cloudy" change="No precipitation" tone="success" />
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="City-wide traffic index">
+<Progress value="67" max="100" label="Overall Congestion: 67%" tone="warning" />
+<Columns>
+<Stat label="Downtown" value="82%" change="Heavy" tone="danger" />
+<Stat label="Highways" value="71%" change="Moderate-Heavy" tone="warning" />
+<Stat label="Arterials" value="58%" change="Moderate" tone="info" />
+<Stat label="Residential" value="34%" change="Light" tone="success" />
+</Columns>
+<Chart type="horizontal" title="Congestion by Corridor" x="Level" y="Corridor">
+| Corridor | Level |
+|---|---|
+| I-95 North | 89 |
+| Main St Bridge | 85 |
+| Downtown Loop | 82 |
+| University Ave | 76 |
+| Harbor Crossing | 71 |
+| Riverside Dr | 65 |
+| Eastport Blvd | 58 |
+| Westgate Pkwy | 45 |
+</Chart>
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance across modes">
+<Columns>
+<Stat label="Bus Network" value="87%" change="-2% vs target" tone="warning" />
+<Stat label="Light Rail" value="94%" change="+1% vs target" tone="success" />
+<Stat label="Ferry" value="91%" change="On target" tone="success" />
+<Stat label="Paratransit" value="83%" change="-5% vs target" tone="danger" />
+</Columns>
+<Chart type="bar" title="Punctuality by Route (Top 10)" x="Route" y="On-Time %">
+| Route | On-Time % |
+|---|---|
+| Blue Line Rail | 97 |
+| Green Line Rail | 95 |
+| Route 1 Express | 93 |
+| Route 12 | 91 |
+| Route 5 | 89 |
+| Route 23 | 87 |
+| Route 8 | 85 |
+| Route 15 | 82 |
+| Route 3 | 79 |
+| Route 27 | 76 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Air Quality by District" subtitle="AQI readings (lower is better)">
+<Chart type="bar" title="Current AQI by District" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Industrial | 142 |
+| Downtown | 118 |
+| Harborview | 95 |
+| Westgate | 87 |
+| University | 72 |
+| Northside | 68 |
+| Eastport | 61 |
+| Riverside | 54 |
+</Chart>
+<Columns>
+<Badge tone="danger">Industrial: Unhealthy for Sensitive Groups</Badge>
+<Badge tone="warning">Downtown: Unhealthy for Sensitive Groups</Badge>
+<Badge tone="warning">Harborview: Moderate</Badge>
+<Badge tone="info">Westgate: Moderate</Badge>
+<Badge tone="success">University: Good</Badge>
+<Badge tone="success">Northside: Good</Badge>
+<Badge tone="success">Eastport: Good</Badge>
+<Badge tone="success">Riverside: Good</Badge>
+</Columns>
+</Card>
+
+<Card title="Energy Use — Past 7 Days" subtitle="MWh consumed city-wide">
+<Chart type="line" title="Daily Energy Consumption" x="Day" y="MWh">
+| Day | Residential | Commercial | Industrial | Municipal |
+|---|---|---|---|---|
+| Mon | 1,240 | 2,180 | 3,450 | 420 |
+| Tue | 1,190 | 2,210 | 3,520 | 410 |
+| Wed | 1,260 | 2,150 | 3,380 | 430 |
+| Thu | 1,310 | 2,290 | 3,610 | 440 |
+| Fri | 1,280 | 2,340 | 3,580 | 425 |
+| Sat | 1,420 | 1,890 | 2,950 | 380 |
+| Sun | 1,380 | 1,650 | 2,720 | 360 |
+</Chart>
+<Stat label="Week Total" value="28,475 MWh" change="+3.2% vs last week" tone="warning" />
+<Stat label="Peak Demand" value="4,890 MW" change="Thu 2:00 PM" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today" subtitle="Real-time consumption">
+<Progress value="78" max="100" label="System Capacity Used: 78%" tone="info" />
+<Columns>
+<Stat label="Residential" value="185 ML" change="Normal" tone="success" />
+<Stat label="Commercial" value="92 ML" change="Normal" tone="success" />
+<Stat label="Industrial" value="67 ML" change="+8% vs avg" tone="warning" />
+<Stat label="Loss/Leakage" value="23 ML" change="Within threshold" tone="info" />
+</Columns>
+<Chart type="area" title="Hourly Consumption (ML)" x="Hour" y="ML">
+| Hour | Consumption |
+|---|---|
+| 00:00 | 12.4 |
+| 03:00 | 10.2 |
+| 06:00 | 14.8 |
+| 09:00 | 22.1 |
+| 12:00 | 25.6 |
+| 15:00 | 24.3 |
+| 18:00 | 26.7 |
+| 21:00 | 20.1 |
+</Chart>
+</Card>
+
+<Card title="Parking Availability — Downtown" subtitle="Core zone occupancy">
+<Columns>
+<Stat label="Street Parking" value="89% Full" change="112/1,000 spaces" tone="danger" />
+<Stat label="Garage A (Main)" value="94% Full" change="32/540 spaces" tone="danger" />
+<Stat label="Garage B (Arts)" value="76% Full" change="144/600 spaces" tone="warning" />
+<Stat label="Garage C (Civic)" value="68% Full" change="224/700 spaces" tone="info" />
+</Columns>
+<Progress value="89" max="100" label="Street Parking" tone="danger" />
+<Progress value="94" max="100" label="Garage A" tone="danger" />
+<Progress value="76" max="100" label="Garage B" tone="warning" />
+<Progress value="68" max="100" label="Garage C" tone="info" />
+<Badge tone="info">Dynamic pricing active: +25% zones A & B</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents" subtitle="Active incidents with location & severity">
+<Tabs>
+<Tab title="All (12)">
+| Severity | Incident | Location | Since | Status |
+|---|---|---|---|---|
+| 🔴 Critical | Water Main Break | 5th & Main (Downtown) | 06:42 | Crew En Route |
+| 🟠 High | Multi-Vehicle Collision | I-95 NB @ Exit 12 | 07:15 | Lanes Blocked |
+| 🟠 High | Power Outage | Industrial Sector 3 | 06:58 | Investigating |
+| 🟡 Medium | Gas Leak Report | 200 Block University Ave | 07:30 | Evacuating |
+| 🟡 Medium | Sewer Backup | Riverside Dr & 3rd | 07:05 | Contained |
+| 🟡 Medium | Traffic Signal Failure | Harbor Crossing | 07:22 | Manual Control |
+| 🟢 Low | Pothole Hazard | Westgate Pkwy @ Mile 4 | 06:10 | Coned Off |
+| 🟢 Low | Graffiti Removal | Eastport Transit Center | 05:45 | Scheduled |
+| 🟢 Low | Streetlight Out | Northside - 12 blocks | 04:30 | Queued |
+| 🟢 Low | Illegal Dumping | Industrial Lot 7 | 03:15 | Documented |
+| 🟢 Low | Noise Complaint | University District | 02:00 | Monitoring |
+| 🟢 Low | Abandoned Vehicle | Harborview & 8th | 01:30 | Tagged |
+</Tab>
+<Tab title="Critical/High (3)">
+| Severity | Incident | Location | Since | Status |
+|---|---|---|---|---|
+| 🔴 Critical | Water Main Break | 5th & Main (Downtown) | 06:42 | Crew En Route |
+| 🟠 High | Multi-Vehicle Collision | I-95 NB @ Exit 12 | 07:15 | Lanes Blocked |
+| 🟠 High | Power Outage | Industrial Sector 3 | 06:58 | Investigating |
+</Tab>
+<Tab title="By District">
+<Select label="Filter by District" name="incident-district" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastport | Westgate | Riverside | University | Industrial | Harborview" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Emergency Vehicles Deployed" subtitle="Real-time unit locations">
+<Columns>
+<Stat label="Fire Engines" value="8/12 Deployed" change="4 Available" tone="warning" />
+<Stat label="Ambulances" value="14/18 Deployed" change="4 Available" tone="info" />
+<Stat label="Police Units" value="22/35 Deployed" change="13 Available" tone="success" />
+<Stat label="HazMat" value="2/3 Deployed" change="1 Available" tone="danger" />
+</Columns>
+<Tabs>
+<Tab title="Fire">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| Engine 1 | Engine | 5th & Main | Water Main Break | On Scene |
+| Engine 3 | Engine | Industrial Sector 3 | Power Outage | En Route |
+| Truck 2 | Ladder | Station 2 | Standby | Available |
+| Rescue 1 | Heavy Rescue | I-95 @ Exit 12 | Collision | On Scene |
+| Engine 5 | Engine | Station 5 | Standby | Available |
+| Engine 7 | Engine | Station 7 | Standby | Available |
+| Battalion 1 | Command | 5th & Main | Water Main Break | On Scene |
+| HazMat 1 | HazMat | Industrial Sector 3 | Power Outage | On Scene |
+</Tab>
+<Tab title="EMS">
+| Unit | Type | Location | Call Type | Status |
+|---|---|---|---|---|
+| Medic 1 | ALS | Downtown | Cardiac | Transporting |
+| Medic 2 | ALS | I-95 @ Exit 12 | Trauma | On Scene |
+| Medic 3 | BLS | University | Fall | En Route |
+| Medic 4 | ALS | Riverside | Respiratory | Transporting |
+| Medic 5 | BLS | Westgate | MVA | On Scene |
+| Medic 6 | ALS | Harborview | Cardiac | En Route |
+| Medic 7 | BLS | Eastport | Seizure | Transporting |
+| Medic 8 | ALS | Northside | Overdose | On Scene |
+| Medic 9 | BLS | Station 3 | Standby | Available |
+| Medic 10 | ALS | Station 4 | Standby | Available |
+| Medic 11 | BLS | Station 6 | Standby | Available |
+| Medic 12 | ALS | Station 8 | Standby | Available |
+| Medic 13 | BLS | Station 9 | Standby | Available |
+| Medic 14 | ALS | Station 10 | Standby | Available |
+</Tab>
+<Tab title="Police">
+| Unit | Beat | Location | Assignment | Status |
+|---|---|---|---|---|
+| 101 | Downtown | 5th & Main | Traffic Control | On Scene |
+| 102 | Downtown | I-95 @ Exit 12 | Collision Investigation | On Scene |
+| 103 | Downtown | University Ave | Gas Leak Perimeter | On Scene |
+| 201 | Northside | Patrol Sector 2 | Routine Patrol | Active |
+| 202 | Northside | Patrol Sector 2 | Routine Patrol | Active |
+| 301 | Eastport | Patrol Sector 3 | Routine Patrol | Active |
+| 302 | Eastport | Harborview | Event Security | On Scene |
+| 401 | Westgate | Patrol Sector 4 | Routine Patrol | Active |
+| 402 | Westgate | Patrol Sector 4 | Routine Patrol | Active |
+| 501 | Riverside | Patrol Sector 5 | Routine Patrol | Active |
+| 502 | Riverside | Patrol Sector 5 | Routine Patrol | Active |
+| 601 | University | Patrol Sector 6 | Routine Patrol | Active |
+| 602 | University | Campus Area | Event Security | On Scene |
+| 701 | Industrial | Patrol Sector 7 | Facility Check | Active |
+| 702 | Industrial | Sector 3 | Power Outage Security | On Scene |
+| 801 | Harborview | Waterfront | Event Security | On Scene |
+| 802 | Harborview | Marina District | Routine Patrol | Active |
+| 901 | Traffic | City-wide | Traffic Enforcement | Active |
+| 902 | Traffic | City-wide | Traffic Enforcement | Active |
+| 903 | K9 | City-wide | Support | Available |
+| 904 | K9 | City-wide | Support | Available |
+| 905 | Supervisor | City-wide | Command | Active |
+| 906 | Supervisor | City-wide | Command | Active |
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public Events This Weekend" subtitle="Permitted events impacting operations">
+<Tabs>
+<Tab title="Saturday">
+| Event | Location | Time | Expected | Impact | Permits |
+|---|---|---|---|---|---|
+| Harbor Festival | Harborview Waterfront | 10:00-22:00 | 15,000 | Road closures, transit reroute | Police, Fire, EMS, Sanitation |
+| University Homecoming | Campus & University Ave | 08:00-18:00 | 8,000 | Parking restrictions, traffic | Police, EMS |
+| Farmers Market | Downtown Plaza | 07:00-13:00 | 3,000 | Street closure (2 blocks) | Police, Sanitation |
+| 5K Charity Run | Riverside Park Loop | 07:30-10:30 | 2,500 | Trail closures, parking | Police, EMS, Parks |
+| Jazz in the Park | Northside Green | 14:00-20:00 | 1,500 | Noise permit, parking | Police, Parks |
+</Tab>
+<Tab title="Sunday">
+| Event | Location | Time | Expected | Impact | Permits |
+|---|---|---|---|---|---|
+| Harbor Festival | Harborview Waterfront | 10:00-20:00 | 12,000 | Road closures, transit reroute | Police, Fire, EMS, Sanitation |
+| Art Walk | Eastport Arts District | 11:00-17:00 | 4,000 | Street closures, parking | Police, Sanitation |
+| Community Bike Ride | City-wide Loop | 08:00-12:00 | 1,200 | Rolling road closures | Police, EMS |
+| Sunday Market | Westgate Town Center | 09:00-15:00 | 2,000 | Parking lot closure | Police, Sanitation |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Citizen Reports (Live Feed)" subtitle="Incoming 311 reports — auto-refreshes">
+<Details title="Latest Reports" open="true">
+| Time | Category | Location | Description | Status |
+|---|---|---|---|---|
+| 07:42 | Pothole | 1200 Block Westgate | Large pothole in right lane | New |
+| 07:38 | Streetlight | Northside - Oak & 5th | Flickering/out since last night | New |
+| 07:35 | Trash | Eastport Alley | Overflowing dumpster, rodents | Triaged |
+| 07:31 | Graffiti | Downtown Transit Hub | Tag on shelter wall | Assigned |
+| 07:28 | Noise | University - Fraternity Row | Loud music, 45 min ongoing | Dispatched |
+| 07:25 | Water Quality | Riverside - Tap water | Brown water from faucet | Investigating |
+| 07:22 | Parking | Harborview Marina | Abandoned boat trailer | Ticketed |
+| 07:18 | Signal | Westgate & Industrial | Left turn arrow not cycling | Assigned |
+| 07:15 | Sidewalk | Downtown - 3rd Ave | Heaved slab, trip hazard | Triaged |
+| 07:10 | Tree | Northside - Maple Park | Large limb down on path | Dispatched |
+</Details>
+<Button variant="secondary" size="small">Refresh Feed</Button>
+<Button variant="tertiary" size="small">View All Reports</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Service Request Backlog" subtitle="Open 311 requests by category & age">
+<Chart type="stacked" title="Backlog by Category & Age (Days)" x="Category" y="Count">
+| Category | 0-3 Days | 4-7 Days | 8-14 Days | 15-30 Days | 30+ Days |
+|---|---|---|---|---|---|
+| Potholes | 42 | 28 | 15 | 8 | 3 |
+| Streetlights | 35 | 22 | 12 | 6 | 2 |
+| Sanitation | 28 | 18 | 10 | 5 | 1 |
+| Signs/Signals | 22 | 15 | 8 | 4 | 2 |
+| Trees | 18 | 12 | 7 | 3 | 1 |
+| Sidewalks | 15 | 10 | 6 | 3 | 2 |
+| Drainage | 12 | 8 | 5 | 2 | 1 |
+| Graffiti | 10 | 6 | 3 | 1 | 0 |
+| Other | 8 | 5 | 2 | 1 | 1 |
+</Chart>
+<Columns>
+<Stat label="Total Open" value="1,247" change="+23 vs yesterday" tone="warning" />
+<Stat label="Avg Resolution" value="6.2 days" change="-0.3 days" tone="success" />
+<Stat label="Overdue (>14d)" value="187" change="-12" tone="danger" />
+<Stat label="SLA Compliance" value="84%" change="+2%" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Roadworks Planned This Month" subtitle="Scheduled construction & maintenance">
+<Tabs>
+<Tab title="This Week">
+<Steps>
+<Step title="I-95 Resurfacing (Exit 10-14)" status="current">Night closures 22:00-05:00, Mon-Fri | 2 lanes each direction | Detour via US-1</Step>
+<Step title="Downtown Water Main Replacement" status="current">5th Ave (Main to Oak) | Full closure | 3-week project, Week 2 of 3</Step>
+<Step title="University Ave Bike Lane Install" status="todo">Phase 2: 12th-18th St | Lane shifts | Starts Wednesday</Step>
+<Step title="Harborview Bridge Deck Repair" status="todo">Southbound lane closure | Weekend work | Starts Saturday 06:00</Step>
+<Step title="Westgate Signal Modernization" status="todo">5 intersections | Rolling 4-hr closures | Starts Thursday</Step>
+</Steps>
+</Tab>
+<Tab title="Next Week">
+<Steps>
+<Step title="Eastport Sewer Lining" status="todo">Riverside Dr (3rd-8th) | Trenchless | 5-day project</Step>
+<Step title="Northside Gas Main Upgrade" status="todo">Oak St Corridor | Phased closures | 2-week project</Step>
+<Step title="Industrial Rail Crossing Repair" status="todo">Sector 3 crossing | Full closure 48hrs | Coordination with rail</Step>
+<Step title="Civic Center Plaza Renovation" status="todo">Pedestrian area | Phased access | 4-week project starts</Step>
+</Steps>
+</Tab>
+<Tab title="Full Calendar">
+<Chart type="bar" title="Roadwork Days by Type" x="Type" y="Days">
+| Type | Days |
+|---|---|
+| Resurfacing | 18 |
+| Utility Work | 14 |
+| Bridge/Structural | 8 |
+| Signals/ITS | 6 |
+| Bike/Ped | 5 |
+| Emergency Repair | 3 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets approaching or past due date">
+<Tabs>
+<Tab title="Overdue (12)">
+| Asset | Type | Location | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|
+| Bridge B-402 | Bridge Deck | I-95 @ Riverside | 2024-10-15 | 22 | 🔴 Critical |
+| Pump Station PS-7 | Mechanical | Industrial Sector 2 | 2024-10-28 | 9 | 🟠 High |
+| Traffic Signal TS-284 | Electrical | Downtown - 5th/Main | 2024-11-01 | 5 | 🟠 High |
+| Water Tank WT-3 | Structural | Northside Reservoir | 2024-11-03 | 3 | 🟡 Medium |
+| Substation SUB-12 | Electrical | University District | 2024-11-05 | 1 | 🟡 Medium |
+| Tunnel Vent TV-1 | Mechanical | Harbor Crossing | 2024-11-05 | 1 | 🟠 High |
+| Retaining Wall RW-8 | Structural | Westgate Hill | 2024-11-06 | 0 | 🟡 Medium |
+| Storm Lift SL-4 | Mechanical | Eastport Lowlands | 2024-11-06 | 0 | 🟡 Medium |
+| Ped Bridge PB-3 | Structural | Riverside Park | 2024-11-06 | 0 | 🟢 Low |
+| Signal Cabinet SC-156 | Electrical | Harborview & 4th | 2024-11-06 | 0 | 🟢 Low |
+| Fire Hydrant FH-892 | Mechanical | Industrial Lot 7 | 2024-11-06 | 0 | 🟢 Low |
+| Streetlight Pole SL-3421 | Electrical | University & 12th | 2024-11-06 | 0 | 🟢 Low |
+</Tab>
+<Tab title="Due This Week (8)">
+| Asset | Type | Location | Due Date | Days Left | Priority |
+|---|---|---|---|---|---|
+| Bridge B-118 | Bridge Deck | I-95 @ University | 2024-11-08 | 2 | 🟠 High |
+| Pump Station PS-3 | Mechanical | Downtown Basement | 2024-11-09 | 3 | 🟠 High |
+| Water Main WM-44 | Pipeline | 5th Ave (Main-Oak) | 2024-11-10 | 4 | 🟡 Medium |
+| Substation SUB-7 | Electrical | Westgate Industrial | 2024-11-11 | 5 | 🟡 Medium |
+| Tunnel Vent TV-2 | Mechanical | Harbor Crossing | 2024-11-11 | 5 | 🟠 High |
+| Retaining Wall RW-2 | Structural | Northside Bluff | 2024-11-12 | 6 | 🟡 Medium |
+| Storm Lift SL-1 | Mechanical | Riverside | 2024-11-12 | 6 | 🟡 Medium |
+| Ped Bridge PB-7 | Structural | Eastport Canal | 2024-11-12 | 6 | 🟢 Low |
+</Tab>
+<Tab title="Due This Month (24)">
+<Chart type="horizontal" title="Assets by Type" x="Count" y="Type">
+| Type | Count |
+|---|---|
+| Bridges | 6 |
+| Pump Stations | 5 |
+| Signals/Cabinets | 4 |
+| Substations | 3 |
+| Tunnels/Vents | 2 |
+| Retaining Walls | 2 |
+| Storm Lifts | 2 |
+| Ped Bridges | 2 |
+| Water Mains | 2 |
+| Hydrants | 4 |
+| Streetlights | 8 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Dispatch Crew" subtitle="Send a team to an incident or location">
+<Form name="dispatch-crew">
+<Select label="Crew Type" name="crew-type" placeholder="Select crew type" options="Roads & Bridges | Water & Sewer | Electrical | Traffic Signals | Trees & Vegetation | Sanitation | Facilities | Emergency Response" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Emergency (Immediate) | Urgent (Within 1 hr) | High (Within 4 hrs) | Standard (Next Business Day) | Scheduled" required="true" />
+<Input label="Location / Address" name="location" placeholder="e.g., 5th & Main, Downtown" required="true" />
+<Select label="District" name="dispatch-district" placeholder="Auto-detect from address" options="Auto-detect | Downtown | Northside | Eastport | Westgate | Riverside | University | Industrial | Harborview" />
+<TextArea label="Description / Work Order Details" name="description" placeholder="Describe the issue, required equipment, safety concerns..." rows="3" required="true" />
+<Input label="Requester / Contact" name="requester" placeholder="Your name / call-back number" />
+<Checkboxes label="Notify" name="notify" options="Incident Commander | District Supervisor | Public Info Office | Utility Partners" value="" />
+<Button>Dispatch Crew</Button>
+<Button variant="secondary">Save as Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Send Public Alert" subtitle="Broadcast message to citizens via app, SMS, social, road signs">
+<Form name="public-alert">
+<Radio label="Alert Type" name="alert-type" options="Emergency Alert (Imminent threat) | Public Safety (Hazard info) | Service Disruption (Transit, water, power) | Traffic Advisory (Closures, delays) | Community Info (Events, testing) | Weather Advisory" value="Service Disruption (Transit, water, power)" required="true" />
+<Select label="Severity" name="alert-severity" placeholder="Select severity" options="Extreme (Life safety) | Severe (Significant impact) | Moderate (Notable disruption) | Minor (Informational)" required="true" />
+<Select label="Target Area" name="alert-area" placeholder="Select geographic target" options="City-wide | Downtown | Northside | Eastport | Westgate | Riverside | University | Industrial | Harborview | Custom Polygon" required="true" />
+<Input label="Headline (max 90 chars)" name="headline" placeholder="Water Main Break: 5th Ave Closed Downtown" required="true" />
+<TextArea label="Message Body" name="message" placeholder="Describe the situation, impacts, actions citizens should take, estimated resolution..." rows="4" required="true" />
+<Input label="Estimated Resolution" name="resolution" placeholder="e.g., 2024-11-07 18:00 or 'Unknown'" />
+<Checkboxes label="Channels" name="channels" options="Mobile Push | SMS | Email Subscribers | Social Media (X/FB) | Road Signs (VMS) | Highway Advisory Radio | 311/IVR | Media Partners" value="Mobile Push | SMS | Social Media (X/FB) | Road Signs (VMS)" />
+<Switch label="Require Acknowledgment" name="require-ack" value="false" hint="Recipients must confirm receipt (Emergency only)" />
+<Switch label="Auto-Expire" name="auto-expire" value="true" hint="Automatically retire alert at resolution time" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions" subtitle="Common operational commands">
+<Columns>
+<Button variant="primary" size="large" href="#">🚨 Activate EOC</Button>
+<Button variant="danger" size="large" href="#">🚑 Mass Casualty Plan</Button>
+<Button variant="primary" size="large" href="#">⚡ Grid Emergency</Button>
+<Button variant="secondary" size="large" href="#">💧 Water Emergency</Button>
+<Button variant="secondary" size="large" href="#">🚌 Transit Disruption</Button>
+<Button variant="tertiary" size="large" href="#">📋 Daily Briefing</Button>
+<Button variant="tertiary" size="large" href="#">📊 Generate Report</Button>
+<Button variant="tertiary" size="large" href="#">🔄 Shift Handoff</Button>
+</Columns>
+</Card>
+</Columns>
+
+<Callout tone="info" title="System Status">All feeds live • Last refresh: 07:43 AM • Next scheduled refresh: 07:48 AM • 311 API: Connected • SCADA: Connected • CAD: Connected • Weather: Connected</Callout>
+
+<FollowUps>
+- Show me the water main break incident details
+- Dispatch a roads crew to the pothole on Westgate
+- Send a traffic advisory for the I-95 collision
+- Filter all views to Downtown district
+- What's the status of Bridge B-402 maintenance?
+- Show me citizen reports for the Industrial district
+</FollowUps>

@@ -1,0 +1,102 @@
+<Card title="Hub Operations Desk" subtitle="Atlanta Hartsfield-Jackson (ATL) · Tuesday, October 15, 2025">
+<Columns>
+<Select label="Switch hub" options="Atlanta (ATL) | Dallas/Fort Worth (DFW) | Chicago O'Hare (ORD) | New York JFK (JFK)" name="hub" placeholder="Choose a hub" />
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="On-Time Performance" value="87.4%" note="+2.1% vs yesterday" />
+<Stat label="Avg Passenger Load" value="78%" note="1,842 passengers today" />
+<Stat label="Cancellations Today" value="3" note="2 weather-related" />
+<Stat label="Avg Turnaround Time" value="42 min" note="Target: 45 min" />
+</Columns>
+
+<Card title="On-Time Performance by Hour" subtitle="Today, local time">
+<Chart type="line" x="Hour" y="% On-Time">
+| Hour | On-Time % |
+|---|---|
+| 5 AM | 95 |
+| 6 AM | 92 |
+| 7 AM | 88 |
+| 8 AM | 85 |
+| 9 AM | 90 |
+| 10 AM | 82 |
+| 11 AM | 78 |
+| 12 PM | 75 |
+</Chart>
+</Card>
+
+<Callout tone="warning" title="Weather Advisory — ATL">
+Thunderstorms expected 2:00–5:00 PM ET. Expect ground stops and 30–60 min hold delays on arrivals. De-icing active at gates B and C.
+</Callout>
+
+<Callout tone="warning" title="Delayed Flights — Action Required">
+**DL 118** (ATL → LAX, Gate C4) · 45 min delay · **DL 504** (ATL → DFW, Gate B3) · 25 min delay · **DL 145** (ATL → SFO, Gate B8) · 60 min delay
+</Callout>
+
+<Columns>
+<Card title="Flight Status Board" subtitle="All departures today">
+<Badge tone="success">12 On Time</Badge> <Badge tone="warning">3 Delayed</Badge> <Badge tone="danger">3 Cancelled</Badge>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 452 | ATL → JFK | B12 | <Badge tone="success">On Time</Badge> |
+| DL 118 | ATL → LAX | C4 | <Badge tone="warning">Delayed 45m</Badge> |
+| DL 227 | ATL → ORD | A7 | <Badge tone="success">On Time</Badge> |
+| DL 331 | ATL → MIA | D9 | <Badge tone="info">Boarding</Badge> |
+| DL 504 | ATL → DFW | B3 | <Badge tone="warning">Delayed 25m</Badge> |
+| DL 672 | ATL → SEA | E2 | <Badge tone="success">On Time</Badge> |
+| DL 890 | ATL → BOS | C2 | <Badge tone="danger">Cancelled</Badge> |
+| DL 145 | ATL → SFO | B8 | <Badge tone="warning">Delayed 60m</Badge> |
+| DL 310 | ATL → SFO | A2 | <Badge tone="success">On Time</Badge> |
+| DL 208 | ATL → MIA | D5 | <Badge tone="info">Boarding</Badge> |
+| DL 455 | ATL → IAD | C1 | <Badge tone="danger">Cancelled</Badge> |
+| DL 612 | ATL → LAX | E4 | <Badge tone="success">On Time</Badge> |
+| DL 88 | ATL → IAD | A5 | <Badge tone="danger">Cancelled</Badge> |
+</Card>
+
+<Card title="Recent Gate Changes" subtitle="Last 2 hours">
+| Time | Flight | Old → New |
+|---|---|---|
+| 10:42 AM | DL 331 | D2 → D9 |
+| 10:15 AM | DL 227 | A3 → A7 |
+| 9:58 AM | DL 672 | E5 → E2 |
+| 9:31 AM | DL 452 | B8 → B12 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment" subtitle="On standby at ATL">
+<Avatar name="Capt. M. Rodriguez" subtitle="B737 · 4h duty left" />
+<Avatar name="F/O J. Chen" subtitle="A320 · 6h duty left" />
+<Avatar name="F/A S. Patel" subtitle="B737 · 5h duty left" />
+<Avatar name="F/A L. Nguyen" subtitle="A320 · 3h duty left" />
+</Card>
+
+<Card title="Connections at Risk" subtitle="May miss their connecting flight">
+| Passenger | Flight | Connection | Time Left |
+|---|---|---|---|
+| A. Thompson | DL 118 | ATL → SFO | 18 min |
+| R. Garcia | DL 504 | ATL → MIA | 12 min |
+| J. Kim | DL 145 | ATL → IAD | 22 min |
+</Card>
+</Columns>
+
+<Card title="Rebook Affected Passengers" subtitle="Assign to next available departure">
+<Form name="rebooking">
+<Columns>
+<Select label="Passenger" options="A. Thompson | R. Garcia | J. Kim | Other" name="passenger" placeholder="Select passenger" />
+<Select label="Current flight" options="DL 118 (ATL → LAX) | DL 504 (ATL → DFW) | DL 145 (ATL → SFO)" name="current-flight" placeholder="Select flight" />
+<Select label="New flight" options="DL 310 (ATL → SFO) 3:15 PM | DL 208 (ATL → MIA) 4:00 PM | DL 455 (ATL → IAD) 5:30 PM | DL 612 (ATL → LAX) 6:45 PM" name="new-flight" placeholder="Select new flight" />
+</Columns>
+<Button>Rebook Passenger</Button>
+<Button variant="secondary">View Rebooking Queue</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full passenger manifest for DL 118
+- Which gates are available for reassignment?
+- What's the weather outlook for the next 6 hours?
+- How many crew members are needed for the delayed flights?
+</FollowUps>

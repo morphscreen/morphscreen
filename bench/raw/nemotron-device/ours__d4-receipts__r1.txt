@@ -1,0 +1,35 @@
+<Card title="Expense Claim" subtitle="Submit receipts and invoices for reimbursement">
+<Form name="expense-claim">
+
+### Paper receipts
+<Camera label="Photograph receipts" name="receipts" multiple="true" facing="back" hint="Take a photo of each paper receipt. You can add multiple." />
+
+### PDF invoices
+<File label="Upload PDF invoices" name="invoices" accept="application/pdf" multiple="true" hint="Select one or more PDF files from your device." />
+
+### Expense items
+Enter details for each receipt or invoice. Add a line for every expense.
+
+<Input label="Description" name="desc1" placeholder="e.g., Lunch with client" hint="What was this expense for?" />
+<Select label="Category" name="cat1" options="Meals | Travel | Lodging | Office Supplies | Other" placeholder="Select category" hint="Choose the expense category" />
+<Input label="Amount (USD)" name="amt1" type="number" placeholder="0.00" hint="Enter the amount" />
+
+<Input label="Description" name="desc2" placeholder="e.g., Taxi fare" hint="What was this expense for?" />
+<Select label="Category" name="cat2" options="Meals | Travel | Lodging | Office Supplies | Other" placeholder="Select category" hint="Choose the expense category" />
+<Input label="Amount (USD)" name="amt2" type="number" placeholder="0.00" hint="Enter the amount" />
+
+<Input label="Description" name="desc3" placeholder="e.g., Hotel stay" hint="What was this expense for?" />
+<Select label="Category" name="cat3" options="Meals | Travel | Lodging | Office Supplies | Other" placeholder="Select category" hint="Choose the expense category" />
+<Input label="Amount (USD)" name="amt3" type="number" placeholder="0.00" hint="Enter the amount" />
+
+<Callout tone="info" title="Need more lines?">This form includes three expense lines. If you have more items, please submit this claim and create another, or contact finance to increase the limit.</Callout>
+
+### Claim total
+<Stat label="Total" value="$0.00" note="Calculated when you submit" tone="neutral" />
+
+### Submit
+<Button>Submit claim</Button>
+<Button variant="secondary">Save as draft</Button>
+
+</Form>
+</Card>

@@ -1,0 +1,64 @@
+# Service Health Dashboard
+
+<Badge tone="warning">On-call</Badge> Live view — last refreshed 14:32 UTC
+
+<Callout tone="warning" title="Active incident">Payment API is erroring above threshold. 1 critical incident needs acknowledgement.</Callout>
+
+<Card title="Region">
+<Select label="Narrow to one region" placeholder="All regions" options="All regions | us-east-1 | eu-west-1 | ap-southeast-2" name="region" />
+</Card>
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.98%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error rate right now" value="1.24%" change="threshold 1.00%" tone="warning" icon="warning" />
+<Stat label="Open incidents" value="3" change="1 critical · 1 high · 1 medium" tone="danger" icon="bell" />
+</Columns>
+
+<Card title="CPU and memory usage — past 24 hours">
+<Chart type="line" x="Time" y="% utilization">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 04:00 | 38 | 60 |
+| 08:00 | 51 | 64 |
+| 12:00 | 63 | 68 |
+| 16:00 | 58 | 67 |
+| 20:00 | 47 | 63 |
+| Now | 44 | 62 |
+</Chart>
+</Card>
+
+<Card title="Alert threshold">
+<Slider label="Error rate threshold (%)" min="0" max="5" step="0.1" value="1" name="error-threshold" />
+<p>Current threshold: <strong>1.0%</strong> — pages the on-call engineer when exceeded for 5 consecutive minutes.</p>
+</Card>
+
+<Card title="Open incidents" subtitle="Acknowledge to take ownership and stop duplicate pages">
+<p><strong>INC-4821 · Payment API timeouts</strong> <Badge tone="danger">Critical</Badge><br />
+us-east-1 · started 14:20 UTC · 3 services affected · 2,140 errors in last 5 min</p>
+<Button variant="secondary" size="small">Acknowledge</Button>
+
+<p><strong>INC-4820 · Checkout CPU spikes</strong> <Badge tone="warning">High</Badge><br />
+eu-west-1 · started 13:51 UTC · 2 services affected · p95 latency at 1.9 s</p>
+<Button variant="secondary" size="small">Acknowledge</Button>
+
+<p><strong>INC-4819 · Search latency elevated</strong> <Badge tone="neutral">Medium</Badge><br />
+ap-southeast-2 · started 12:40 UTC · 1 service affected · no errors, slowness only</p>
+<Button variant="secondary" size="small">Acknowledge</Button>
+</Card>
+
+<Card title="Slowest endpoints — past hour" subtitle="p50, p95, and p99 latency">
+| Endpoint | p50 | p95 | p99 |
+|---|---|---|---|
+| POST /v1/charges | 340 ms | 1.2 s | 2.8 s |
+| GET /v1/checkout/session | 210 ms | 890 ms | 1.9 s |
+| POST /v1/payment_methods | 180 ms | 720 ms | 1.6 s |
+| GET /v1/refunds | 150 ms | 610 ms | 1.4 s |
+| GET /v1/customers | 120 ms | 480 ms | 1.1 s |
+</Card>
+
+<FollowUps>
+- Show incident timeline for INC-4821
+- Compare CPU and memory by region
+- What changed in the last deploy?
+</FollowUps>

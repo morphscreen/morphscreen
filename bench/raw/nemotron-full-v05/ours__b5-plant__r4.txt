@@ -1,0 +1,351 @@
+# Factory Floor Supervisor Console
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Stat label="OEE" value="84.2%" change="+2.1% vs last week" tone="success" />
+<Progress value="84.2" max="100" label="Target: 85%" tone="success" />
+<Stat label="Availability" value="92.5%" tone="info" />
+<Stat label="Performance" value="95.1%" tone="info" />
+<Stat label="Quality" value="95.8%" tone="info" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Stat label="Produced Today" value="4,847" change="Target: 5,200" tone="info" />
+<Progress value="4847" max="5200" label="93.2% of daily target" tone="warning" />
+<Stat label="Rate" value="606/hr" change="Target: 650/hr" tone="neutral" />
+</Card>
+
+<Card title="Safety">
+<Stat label="Incidents This Year" value="3" change="Target: 0" tone="danger" />
+<Stat label="Days Since Last Incident" value="47" change="Record: 182 days" tone="success" />
+<Stat label="Near Misses" value="12" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Production Lines">
+<Tabs>
+<Tab title="All Lines">
+<Columns>
+<Card title="Line A – Injection Molding">
+<Stat label="Status" value="Running" tone="success" />
+<Stat label="Rate" value="1,240/hr" change="Target: 1,300" tone="warning" />
+<Stat label="OEE" value="87.3%" tone="success" />
+<Stat label="Active Job" value="BATCH-2024-0892" />
+<Stat label="Next Changeover" value="2h 15m" />
+</Card>
+<Card title="Line B – Extrusion">
+<Stat label="Status" value="Running" tone="success" />
+<Stat label="Rate" value="980/hr" change="Target: 1,000" tone="warning" />
+<Stat label="OEE" value="82.1%" tone="info" />
+<Stat label="Active Job" value="BATCH-2024-0895" />
+<Stat label="Next Changeover" value="4h 30m" />
+</Card>
+<Card title="Line C – Assembly">
+<Stat label="Status" value="⚠️ Minor Stop" tone="warning" />
+<Stat label="Rate" value="720/hr" change="Target: 800" tone="danger" />
+<Stat label="OEE" value="76.4%" tone="warning" />
+<Stat label="Active Job" value="BATCH-2024-0888" />
+<Stat label="Issue" value="Feeder jam – clearing" />
+</Card>
+<Card title="Line D – Packaging">
+<Stat label="Status" value="Running" tone="success" />
+<Stat label="Rate" value="1,550/hr" change="Target: 1,500" tone="success" />
+<Stat label="OEE" value="89.7%" tone="success" />
+<Stat label="Active Job" value="BATCH-2024-0890" />
+<Stat label="Next Changeover" value="1h 45m" />
+</Card>
+</Columns>
+</Tab>
+<Tab title="Line A Detail">
+<Card title="Line A – Injection Molding Detail">
+<Columns>
+<Card title="Machines">
+| Machine | Status | Rate | OEE | Current Job |
+|---|---|---|---|---|
+| IM-01 | Running | 320/hr | 88.2% | BATCH-0892 |
+| IM-02 | Running | 310/hr | 86.7% | BATCH-0892 |
+| IM-03 | Running | 305/hr | 87.9% | BATCH-0892 |
+| IM-04 | Setup | 0/hr | — | Changeover |
+</Card>
+<Card title="Live Metrics">
+<Stat label="Good Units" value="11,842" />
+<Stat label="Rejects" value="234" />
+<Stat label="Cycle Time" value="11.2s" change="Target: 11.0s" />
+<Stat label="Temperature" value="235°C" change="Set: 230-240°C" />
+<Stat label="Pressure" value="1,240 bar" change="Set: 1,200-1,300" />
+</Card>
+</Columns>
+</Tab>
+<Tab title="Line B Detail">
+<Card title="Line B – Extrusion Detail">
+<Columns>
+<Card title="Machines">
+| Machine | Status | Rate | OEE | Current Job |
+|---|---|---|---|---|
+| EX-01 | Running | 340/hr | 83.1% | BATCH-0895 |
+| EX-02 | Running | 320/hr | 81.5% | BATCH-0895 |
+| EX-03 | Maintenance | 0/hr | — | Scheduled PM |
+</Card>
+<Card title="Live Metrics">
+<Stat label="Good Units" value="8,920" />
+<Stat label="Rejects" value="187" />
+<Stat label="Throughput" value="980/hr" />
+<Stat label="Melt Temp" value="215°C" change="Set: 210-220°C" />
+<Stat label="Screw Speed" value="85 RPM" change="Set: 80-90" />
+</Card>
+</Columns>
+</Tab>
+<Tab title="Line C Detail">
+<Card title="Line C – Assembly Detail">
+<Columns>
+<Card title="Machines">
+| Machine | Status | Rate | OEE | Current Job |
+|---|---|---|---|---|
+| AS-01 | Running | 250/hr | 78.2% | BATCH-0888 |
+| AS-02 | ⚠️ Jam | 0/hr | — | Clearing |
+| AS-03 | Running | 240/hr | 75.8% | BATCH-0888 |
+| AS-04 | Running | 230/hr | 74.9% | BATCH-0888 |
+</Card>
+<Card title="Live Metrics">
+<Stat label="Good Units" value="5,840" />
+<Stat label="Rejects" value="156" />
+<Stat label="Cycle Time" value="14.8s" change="Target: 13.5s" tone="warning" />
+<Stat label="Feeder Status" value="Clearing jam" tone="warning" />
+<Stat label="Est. Restart" value="8 min" />
+</Card>
+</Columns>
+</Tab>
+<Tab title="Line D Detail">
+<Card title="Line D – Packaging Detail">
+<Columns>
+<Card title="Machines">
+| Machine | Status | Rate | OEE | Current Job |
+|---|---|---|---|---|
+| PK-01 | Running | 400/hr | 90.1% | BATCH-0890 |
+| PK-02 | Running | 390/hr | 89.4% | BATCH-0890 |
+| PK-03 | Running | 385/hr | 89.8% | BATCH-0890 |
+| PK-04 | Running | 375/hr | 89.2% | BATCH-0890 |
+</Card>
+<Card title="Live Metrics">
+<Stat label="Good Units" value="14,200" />
+<Stat label="Rejects" value="89" />
+<Stat label="Throughput" value="1,550/hr" tone="success" />
+<Stat label="Film Tension" value="42 N" change="Set: 40-45" />
+<Stat label="Seal Temp" value="185°C" change="Set: 180-190" />
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Defect Rate – Past 30 Days">
+<Chart type="line" title="Defect Rate %" x="Date" y="Rate">
+| Date | Defect Rate |
+|---|---|
+| 2024-10-01 | 2.1 |
+| 2024-10-02 | 1.9 |
+| 2024-10-03 | 2.3 |
+| 2024-10-04 | 2.0 |
+| 2024-10-05 | 1.8 |
+| 2024-10-06 | 2.2 |
+| 2024-10-07 | 2.1 |
+| 2024-10-08 | 1.9 |
+| 2024-10-09 | 2.0 |
+| 2024-10-10 | 1.7 |
+| 2024-10-11 | 1.8 |
+| 2024-10-12 | 2.1 |
+| 2024-10-13 | 2.0 |
+| 2024-10-14 | 1.9 |
+| 2024-10-15 | 1.8 |
+| 2024-10-16 | 1.7 |
+| 2024-10-17 | 1.6 |
+| 2024-10-18 | 1.8 |
+| 2024-10-19 | 1.9 |
+| 2024-10-20 | 1.7 |
+| 2024-10-21 | 1.6 |
+| 2024-10-22 | 1.5 |
+| 2024-10-23 | 1.6 |
+| 2024-10-24 | 1.7 |
+| 2024-10-25 | 1.6 |
+| 2024-10-26 | 1.5 |
+| 2024-10-27 | 1.4 |
+| 2024-10-28 | 1.5 |
+| 2024-10-29 | 1.4 |
+| 2024-10-30 | 1.3 |
+| 2024-10-31 | 1.2 |
+</Chart>
+<Stat label="Current Rate" value="1.2%" change="Target: <1.5%" tone="success" />
+</Card>
+
+<Card title="Downtime by Cause – This Month">
+<Chart type="donut" title="Downtime Hours" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Planned Maintenance | 48 |
+| Changeovers | 32 |
+| Material Shortage | 18 |
+| Equipment Failure | 14 |
+| Quality Holds | 8 |
+| Operator Unavailable | 6 |
+| Setup/Adjustment | 4 |
+</Chart>
+<Stat label="Total Downtime" value="130 hrs" change="4.3% of scheduled time" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Priority | Hours Since Last PM |
+|---|---|---|---|---|---|
+| EX-03 | B | 2024-11-02 | Preventive | High | 512 |
+| IM-04 | A | 2024-11-05 | Preventive | Medium | 498 |
+| AS-02 | C | 2024-11-03 | Corrective | High | — |
+| PK-02 | D | 2024-11-07 | Preventive | Low | 485 |
+| CM-01 | Comp | 2024-11-01 | Inspection | Medium | 365 |
+<Badge tone="warning">5 machines due this week</Badge>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Card title="Steel Coil">
+<Stat label="On Hand" value="42.3 tons" />
+<Progress value="42.3" max="100" label="42.3% of capacity" tone="warning" />
+<Stat label="Reorder Point" value="15 tons" />
+<Stat label="Days of Supply" value="8 days" tone="warning" />
+</Card>
+<Card title="Resin (PE/PP)">
+<Stat label="On Hand" value="18.7 tons" />
+<Progress value="18.7" max="50" label="37.4% of capacity" tone="danger" />
+<Stat label="Reorder Point" value="10 tons" />
+<Stat label="Days of Supply" value="5 days" tone="danger" />
+</Card>
+<Card title="Packaging Film">
+<Stat label="On Hand" value="3,240 rolls" />
+<Progress value="3240" max="5000" label="64.8% of capacity" tone="info" />
+<Stat label="Reorder Point" value="1,500 rolls" />
+<Stat label="Days of Supply" value="12 days" tone="success" />
+</Card>
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplier Deliveries – This Week">
+| Supplier | Material | Qty | Due Date | Status | PO |
+|---|---|---|---|---|---|
+| Apex Metals | Steel Coil – Grade 50 | 25 tons | 2024-11-04 | Confirmed | PO-2024-1189 |
+| PolySource | PE Resin | 15 tons | 2024-11-03 | In Transit | PO-2024-1192 |
+| FilmTech | Packaging Film | 2,000 rolls | 2024-11-05 | Confirmed | PO-2024-1195 |
+| LubriCorp | Hydraulic Oil | 500 gal | 2024-11-06 | Pending | PO-2024-1198 |
+| FastenerCo | M8×1.25 Bolts | 10,000 pcs | 2024-11-02 | Confirmed | PO-2024-1187 |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Units per Shift" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri |
+|---|---|---|---|---|---|
+| 1st (6a-2p) | 4,820 | 4,950 | 4,890 | 4,910 | 4,847 |
+| 2nd (2p-10p) | 4,650 | 4,780 | 4,720 | 4,690 | 4,610 |
+| 3rd (10p-6a) | 3,980 | 4,120 | 4,050 | 4,080 | 3,950 |
+</Chart>
+<Stat label="Best Shift Today" value="1st Shift" change="4,847 units" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+| Batch | Line | Qty | Hold Reason | Since | Disposition |
+|---|---|---|---|---|---|
+| BATCH-2024-0885 | A | 1,200 | Dimensional variance | 2024-10-30 | Under review |
+| BATCH-2024-0889 | C | 850 | Surface defect cluster | 2024-10-31 | Awaiting lab |
+| BATCH-2024-0891 | B | 2,100 | Weight out of spec | 2024-11-01 | Rework queued |
+<Badge tone="warning">3 batches on hold – 4,150 units</Badge>
+</Card>
+
+<Card title="Energy Use – Today">
+<Stat label="Total Consumption" value="1,847 kWh" change="vs 1,920 kWh avg" tone="success" />
+<Stat label="Cost" value="$221.64" change="$0.12/kWh" />
+<Chart type="area" title="Hourly Energy Use (kWh)" x="Hour" y="kWh">
+| Hour | Consumption |
+|---|---|
+| 6 | 45 |
+| 7 | 78 |
+| 8 | 82 |
+| 9 | 85 |
+| 10 | 88 |
+| 11 | 90 |
+| 12 | 87 |
+| 13 | 84 |
+| 14 | 86 |
+| 15 | 89 |
+| 16 | 91 |
+| 17 | 88 |
+| 18 | 85 |
+| 19 | 82 |
+| 20 | 79 |
+| 21 | 76 |
+| 22 | 72 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Work Orders">
+| WO # | Machine | Description | Priority | Assigned | Created | Status |
+|---|---|---|---|---|---|---|
+| WO-2024-0412 | EX-03 | Replace heater band zone 3 | High | M. Torres | 2024-10-31 | In Progress |
+| WO-2024-0415 | IM-02 | Calibrate pressure transducer | Medium | J. Chen | 2024-11-01 | Scheduled |
+| WO-2024-0418 | AS-02 | Clear feeder jam + inspect | High | R. Patel | 2024-11-01 | In Progress |
+| WO-2024-0420 | PK-01 | Replace sealing jaw set | Low | K. Nguyen | 2024-11-01 | Queued |
+| WO-2024-0422 | CM-01 | Compressor oil change | Medium | M. Torres | 2024-11-01 | Scheduled |
+<Badge tone="danger">2 High</Badge> <Badge tone="warning">2 Medium</Badge> <Badge tone="info">1 Low</Badge>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="🔴 LINE C – AS-02 FEEDER JAM">
+Feeder jam detected at 10:42. Operator dispatched. ETA to clear: 8 min. Impact: -240 units/hr.
+</Callout>
+<Callout tone="warning" title="🟡 LINE B – EX-03 TEMPERATURE DRIFT">
+Zone 2 temp +8°C above setpoint. Auto-correcting. Monitor for quality impact.
+</Callout>
+<Callout tone="info" title="🔵 LINE A – IM-04 CHANGEOVER STARTED">
+Changeover to BATCH-0893 initiated. Estimated completion: 12:30.
+</Callout>
+<Callout tone="success" title="🟢 LINE D – PK-03 RATE RECOVERED">
+Rate restored to 385/hr after minor micro-stop. No quality impact.
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="IM-01 | IM-02 | IM-03 | IM-04 | EX-01 | EX-02 | EX-03 | AS-01 | AS-02 | AS-03 | AS-04 | PK-01 | PK-02 | PK-03 | PK-04 | CM-01" required="true" />
+<Select label="Maintenance Type" name="type" placeholder="Select type" options="Preventive | Corrective | Inspection | Calibration | Lubrication" required="true" />
+</Columns>
+<Columns>
+<Date label="Scheduled Date" name="date" required="true" />
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="e.g., 4" min="0.5" max="48" step="0.5" required="true" />
+</Columns>
+<TextArea label="Description / Notes" name="notes" placeholder="Details, parts needed, special instructions..." rows="3" />
+<Columns>
+<Select label="Assigned Technician" name="tech" placeholder="Select technician" options="M. Torres | J. Chen | R. Patel | K. Nguyen | S. Williams | T. Brown" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Low | Medium | High | Critical" value="Medium" required="true" />
+</Columns>
+<Button variant="primary">Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Export Shift Report">
+<Callout tone="info" title="Shift Report Export">
+Generate a complete PDF/CSV report for the current or selected shift including: OEE summary, production counts, downtime log, quality data, maintenance actions, safety notes, and energy use.
+</Callout>
+<Columns>
+<Select label="Shift" name="shift" placeholder="Select shift" options="Current Shift (1st) | 1st Shift (6a-2p) | 2nd Shift (2p-10p) | 3rd Shift (10p-6a) | All Shifts Today" />
+<Select label="Format" name="format" placeholder="Select format" options="PDF | CSV | Excel" value="PDF" />
+</Columns>
+<Button variant="primary" size="large">Export Shift Report</Button>
+<Button variant="secondary">Email to Management</Button>
+</Card>

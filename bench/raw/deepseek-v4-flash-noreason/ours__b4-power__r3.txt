@@ -1,0 +1,143 @@
+# Power Network Operator Console
+
+Live operational view of the national grid. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Network Overview" subtitle="Updated 30 seconds ago">
+<Columns>
+<div>
+<Stat label="Current Load" value="38.2 GW" change="+2.1% vs 1h ago" tone="info" icon="lightning" />
+<Stat label="Capacity" value="44.0 GW" change="86.8% utilised" tone="warning" icon="gauge" />
+<Stat label="Price" value="€82 / MWh" change="+€4 vs yesterday" tone="neutral" icon="currency-eur" />
+<Stat label="Emissions Today" value="12,480 t CO₂" change="−8% vs target" tone="success" icon="leaf" />
+</div>
+<div>
+<Chart type="donut" title="Generation Mix" x="Source" y="Share">
+| Source | Share |
+|---|---|
+| Wind | 42 |
+| Solar | 18 |
+| Gas | 22 |
+| Hydro | 12 |
+| Nuclear | 6 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Capacity Utilisation">
+<Progress value="86.8" max="100" label="38.2 GW / 44.0 GW" tone="warning" />
+<Callout tone="warning" title="Approaching capacity">Load is expected to peak at 41.5 GW at 18:00. Consider curtailment or demand response.</Callout>
+</Card>
+
+<Card title="Generation Plants" subtitle="Sorted by output">
+| Plant | Source | Output | Status |
+|---|---|---|---|
+| Hornsea Wind Farm | Wind | 4.8 GW | <Badge tone="success">Online</Badge> |
+| Dogger Bank | Wind | 3.2 GW | <Badge tone="success">Online</Badge> |
+| Grain Gas CCGT | Gas | 2.1 GW | <Badge tone="success">Online</Badge> |
+| Drax BECCS | Biomass | 1.6 GW | <Badge tone="warning">Reduced</Badge> |
+| Hinkley Point C | Nuclear | 1.0 GW | <Badge tone="success">Online</Badge> |
+| Dinorwig Hydro | Hydro | 0.8 GW | <Badge tone="neutral">Standby</Badge> |
+| Solana Solar Park | Solar | 0.6 GW | <Badge tone="warning">Reduced</Badge> |
+| West Burton B | Gas | 0.4 GW | <Badge tone="danger">Offline</Badge> |
+</Card>
+
+<Card title="Active Outages">
+<Tabs>
+<Tab title="All Regions">
+<Columns>
+<div>
+**North East England**
+- <Badge tone="danger">4,200 customers</Badge> — Newcastle substation fault
+- Est. restoration: 14:30
+</div>
+<div>
+**South Wales**
+- <Badge tone="warning">1,850 customers</Badge> — Storm damage on 132kV line
+- Est. restoration: 21:00
+</div>
+<div>
+**East Midlands**
+- <Badge tone="warning">950 customers</Badge> — Planned maintenance overrun
+- Est. restoration: 16:45
+</div>
+</Columns>
+</Tab>
+<Tab title="North East">
+<Callout tone="danger" title="Newcastle substation fault">4,200 customers affected. Crew on site, switching to backup feeder.</Callout>
+</Tab>
+<Tab title="South Wales">
+<Callout tone="warning" title="132kV line storm damage">Repair crew dispatched. Temporary generation units being deployed.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Demand Forecast – Next 24 Hours">
+<Chart type="area" x="Hour" y="GW">
+| Hour | Forecast |
+|---|---|
+| 00:00 | 32.1 |
+| 02:00 | 30.4 |
+| 04:00 | 29.8 |
+| 06:00 | 31.2 |
+| 08:00 | 36.8 |
+| 10:00 | 38.5 |
+| 12:00 | 39.1 |
+| 14:00 | 39.8 |
+| 16:00 | 40.2 |
+| 18:00 | 41.5 |
+| 20:00 | 40.9 |
+| 22:00 | 38.2 |
+| 00:00 | 34.5 |
+</Chart>
+</Card>
+
+<Card title="Planned Maintenance – This Month">
+| Date | Asset | Region | Duration |
+|---|---|---|---|
+| 12–14 May | Transformer T7 | London | 48h |
+| 18–20 May | 400kV line | Midlands | 36h |
+| 22–23 May | Substation B3 | Yorkshire | 24h |
+| 27 May | SCADA upgrade | National | 8h |
+</Card>
+
+<Card title="Live Alerts">
+<Details title="14:02 – High frequency deviation" open=true>
+Frequency at 50.4 Hz. AGC responding. Monitor for next 15 minutes.
+</Details>
+<Details title="13:47 – Solar ramp-down">
+Cloud cover over East Anglia. Solar output dropping faster than forecast.
+</Details>
+<Details title="13:30 – Interconnector import reduced">
+Brittany interconnector at 60% due to fault on French side.
+</Details>
+<Details title="13:12 – Wind curtailment requested">
+National Grid ESO requesting 500 MW curtailment in Scotland.
+</Details>
+</Card>
+
+<Card title="Regional Focus & Actions">
+<Columns>
+<div>
+<Form name="regional-focus">
+<Select label="Focus Region" placeholder="Select a region" options="National | Scotland | North East England | South Wales | East Midlands | London | Yorkshire" />
+<Button>Apply Focus</Button>
+</Form>
+</div>
+<div>
+<Form name="curtailment">
+<Select label="Curtailment Type" placeholder="Select action" options="Wind curtailment | Demand response | Voluntary reduction | Emergency load shed" />
+<Input label="Amount (MW)" type="number" placeholder="500" min="0" max="5000" />
+<Select label="Region" placeholder="Select region" options="Scotland | North East England | South Wales | East Midlands | London | Yorkshire" />
+<Button variant="warning">Order Curtailment</Button>
+</Form>
+</div>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the load curve for the last 24 hours
+- Which plants can ramp up quickly?
+- What caused the frequency deviation?
+- Compare emissions by generation source
+</FollowUps>

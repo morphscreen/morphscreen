@@ -1,0 +1,56 @@
+root = Card([header, kpiRow, filterRow, ordersSection, volumeSection], "card", "column", "l")
+
+header = CardHeader("E-Commerce Operations Desk", "Real-time order management and metrics")
+
+kpiRow = Card([ordersTodayCard, revenueTodayCard, aovCard, refundRateCard], "clear", "row", "m", "stretch", "between", true)
+
+ordersTodayCard = Card([ordersTodayLabel, ordersTodayValue], "sunk", "column", "s", "center")
+ordersTodayLabel = TextContent("Orders Today", "small")
+ordersTodayValue = TextContent("1,247", "large-heavy")
+
+revenueTodayCard = Card([revenueTodayLabel, revenueTodayValue], "sunk", "column", "s", "center")
+revenueTodayLabel = TextContent("Revenue Today", "small")
+revenueTodayValue = TextContent("$187,432", "large-heavy")
+
+aovCard = Card([aovLabel, aovValue], "sunk", "column", "s", "center")
+aovLabel = TextContent("Avg Order Value", "small")
+aovValue = TextContent("$150.31", "large-heavy")
+
+refundRateCard = Card([refundRateLabel, refundRateValue], "sunk", "column", "s", "center")
+refundRateLabel = TextContent("Refund Rate (Month)", "small")
+refundRateValue = TextContent("2.3%", "large-heavy")
+
+filterRow = Card([statusFilter, customerSearch], "clear", "row", "m", "stretch", "between", true)
+
+statusFilter = FormControl("Filter by Status", statusSelect, "Select one or more statuses")
+statusSelect = Select("status_filter", [statusAll, statusPending, statusProcessing, statusShipped, statusDelivered, statusCancelled, statusRefunded], "All statuses", null, "medium")
+statusAll = SelectItem("all", "All")
+statusPending = SelectItem("pending", "Pending")
+statusProcessing = SelectItem("processing", "Processing")
+statusShipped = SelectItem("shipped", "Shipped")
+statusDelivered = SelectItem("delivered", "Delivered")
+statusCancelled = SelectItem("cancelled", "Cancelled")
+statusRefunded = SelectItem("refunded", "Refunded")
+
+customerSearch = FormControl("Search Customer", customerInput, "Type customer name or email")
+customerInput = Input("customer_search", "Search by name or email...", "text")
+
+ordersSection = Card([ordersHeader, ordersTable, ordersActions], "card", "column", "m")
+ordersHeader = Heading("Recent Orders", "h3")
+
+ordersTable = Table([orderIdCol, customerCol, totalCol, statusCol, actionCol])
+orderIdCol = Col("Order ID", ["ORD-2024-001247", "ORD-2024-001246", "ORD-2024-001245", "ORD-2024-001244", "ORD-2024-001243", "ORD-2024-001242", "ORD-2024-001241", "ORD-2024-001240", "ORD-2024-001239", "ORD-2024-001238"])
+customerCol = Col("Customer", ["Sarah Chen", "Marcus Johnson", "Emily Rodriguez", "David Kim", "Lisa Thompson", "James Wilson", "Amanda Foster", "Robert Chen", "Jennifer Lee", "Michael Brown"])
+totalCol = Col("Total", ["$299.99", "$149.50", "$89.99", "$449.00", "$79.95", "$199.99", "$349.99", "$129.99", "$59.99", "$219.50"])
+statusCol = Col("Status", ["delivered", "shipped", "processing", "pending", "delivered", "cancelled", "shipped", "processing", "pending", "refunded"])
+actionCol = Col("Action", ["fulfill", "fulfill", "fulfill", "fulfill", "fulfill", "fulfill", "fulfill", "fulfill", "fulfill", "fulfill"], "action")
+
+ordersActions = Buttons([fulfillBtn, viewAllBtn], "row")
+fulfillBtn = Button("Mark Selected Fulfilled", null, "primary")
+viewAllBtn = Button("View All Orders", null, "secondary")
+
+volumeSection = Card([volumeHeader, volumeChart], "card", "column", "m")
+volumeHeader = Heading("Order Volume — Last 4 Weeks", "h3")
+volumeChart = BarChart(volumeLabels, [volumeSeries], "grouped", "Week", "Orders")
+volumeLabels = ["Week 1", "Week 2", "Week 3", "Week 4"]
+volumeSeries = Series("Orders", [8420, 9150, 8890, 9670])

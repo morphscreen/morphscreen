@@ -1,0 +1,185 @@
+# Live-Ops Command Center
+
+<Columns>
+<Card title="Region Focus" subtitle="Filter every metric below">
+<Select label="Focus Region" options="All Regions | NA-East | NA-West | EU-West | EU-East | AP-Southeast | AP-Northeast | SA-East" placeholder="All Regions" />
+<Button variant="secondary" ask="Applying region focus to EU-West…">Apply Focus</Button>
+</Card>
+<Card title="Hotfix Ready" subtitle="Build 2.5.1">
+<Callout tone="danger" title="Critical fixes">Fixes Android 14 startup crash and EU-West login timeouts.</Callout>
+<Button variant="danger" ask="Confirm hotfix 2.5.1 deployment to all regions?">Ship Hotfix</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Live Now">
+<Badge tone="success">● Live</Badge>
+<Stat label="Players Online" value="48,213" change="+3.2% vs last hour" />
+</Card>
+<Card title="Active Players">
+<Stat label="Daily Active Players" value="1,204,556" change="+5.1% vs yesterday" />
+<Stat label="Monthly Active Players" value="8,932,441" change="+2.4% vs last month" />
+</Card>
+<Card title="Revenue">
+<Stat label="Revenue Today" value="$284,310" change="+12.6% vs yesterday" />
+<Stat label="Revenue Per User" value="$0.24" change="+6.8% vs yesterday" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Session Length" subtitle="Past two weeks · avg minutes per player">
+<Chart type="line" x="Day" y="Avg Session (min)">
+| Day | Avg Session |
+|---|---|
+| Mon | 42 |
+| Tue | 45 |
+| Wed | 39 |
+| Thu | 47 |
+| Fri | 52 |
+| Sat | 58 |
+| Sun | 55 |
+| Mon | 44 |
+| Tue | 41 |
+| Wed | 38 |
+| Thu | 50 |
+| Fri | 54 |
+| Sat | 61 |
+| Sun | 57 |
+</Chart>
+</Card>
+<Card title="Crash Rate by Version" subtitle="Last 24 hours · % of sessions crashed">
+<Chart type="bar" x="Version" y="Crash Rate (%)">
+| Version | Crash Rate |
+|---|---|
+| 2.4.0 | 0.8 |
+| 2.4.1 | 0.4 |
+| 2.4.2 | 0.2 |
+| 2.4.3 | 0.9 |
+| 2.5.0 | 1.4 |
+</Chart>
+<Callout tone="danger" title="2.5.0 spike">Crash rate is above the 1.0% threshold. Hotfix 2.5.1 is ready.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Best-Selling Items" subtitle="Today by units sold">
+| Item | Units Sold | Revenue |
+|---|---|---|
+| Dragon's Crown Bundle | 12,482 | $187,230 |
+| 5,000 Gems Pack | 9,214 | $92,140 |
+| Battle Pass Season 7 | 8,903 | $133,545 |
+| Phoenix Mount | 5,672 | $85,080 |
+| XP Booster (7-day) | 4,318 | $21,590 |
+
+<Button variant="secondary">View Full Catalog</Button>
+</Card>
+<Card title="Server Region Health" subtitle="Live status per region">
+| Region | Health | Players Online | Load |
+|---|---|---|---|
+| NA-East | <Badge tone="success">Healthy</Badge> | 18,204 | 62% |
+| NA-West | <Badge tone="success">Healthy</Badge> | 9,877 | 48% |
+| EU-West | <Badge tone="warning">Degraded</Badge> | 8,431 | 84% |
+| EU-East | <Badge tone="success">Healthy</Badge> | 5,220 | 41% |
+| AP-Southeast | <Badge tone="success">Healthy</Badge> | 3,914 | 35% |
+| AP-Northeast | <Badge tone="success">Healthy</Badge> | 2,467 | 29% |
+| SA-East | <Badge tone="danger">Offline</Badge> | 0 | 0% |
+
+<Callout tone="warning" title="EU-West degraded">Login timeout caused by database connection pool exhaustion. Hotfix 2.5.1 addresses this.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Live Events" subtitle="Currently running and next up">
+<Tabs>
+<Tab title="Running">
+<Badge tone="success">Double XP Weekend</Badge> — ends in 2d 4h
+<Badge tone="info">Dragon Invasion</Badge> — ends in 6h 30m
+</Tab>
+<Tab title="Upcoming">
+<Badge tone="warning">Season 7 Launch</Badge> — starts in 3d 0h
+<Badge tone="neutral">Mid-Season Sale</Badge> — starts in 5d 12h
+</Tab>
+</Tabs>
+</Card>
+<Card title="Running Experiments" subtitle="Both live now">
+<Tabs>
+<Tab title="A: XP Curve">
+<Stat label="Confidence" value="94%" />
+<Stat label="D1 Retention" value="+3.1%" />
+<Stat label="ARPU" value="-0.4%" />
+<Callout tone="success" title="Winner">XP Curve B wins on retention with no significant revenue loss.</Callout>
+</Tab>
+<Tab title="B: Shop Layout">
+<Stat label="Confidence" value="88%" />
+<Stat label="Conversion" value="+5.2%" />
+<Stat label="ARPU" value="+2.1%" />
+<Callout tone="warning" title="Inconclusive">Trending positive, but needs 2 more days for significance.</Callout>
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Player Reports" subtitle="Awaiting review">
+<Badge tone="danger">1,284 pending</Badge>
+<Avatar name="ShadowBlade" subtitle="Toxic chat · 2 min ago" />
+<Avatar name="LunaTic" subtitle="Cheating · 5 min ago" />
+<Avatar name="OrcSlayer" subtitle="Griefing · 8 min ago" />
+<Button variant="secondary" ask="Opening report review queue…">Review Queue</Button>
+</Card>
+<Card title="Ban Appeals" subtitle="Awaiting review">
+<Badge tone="warning">342 pending</Badge>
+<Avatar name="NightOwl" subtitle="False positive · 1 hr ago" />
+<Avatar name="KrakenKing" subtitle="Compromised account · 3 hrs ago" />
+<Avatar name="PixelPirate" subtitle="Appeal evidence attached · 5 hrs ago" />
+<Button variant="secondary" ask="Opening appeal review queue…">Review Queue</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Currency Inflation" subtitle="Total gold in the economy">
+<Chart type="line" x="Month" y="Gold (millions)">
+| Month | Gold |
+|---|---|
+| Jan | 120 |
+| Feb | 128 |
+| Mar | 141 |
+| Apr | 155 |
+| May | 172 |
+| Jun | 190 |
+| Jul | 211 |
+</Chart>
+<Callout tone="warning" title="Up 12% this quarter">Consider a gold sink event before Season 7 launch.</Callout>
+</Card>
+<Card title="Draft Patch Notes" subtitle="For build 2.5.1">
+<Form name="patch-notes">
+<Input label="Patch Version" placeholder="2.5.1" />
+<Input label="Title" placeholder="Season 7 Balance Update" />
+<TextArea label="Patch Notes" rows="8" placeholder="### Balance Changes
+- Reduced Dragon's Breath damage by 12%
+- Increased Scout movement speed by 5%
+
+### Bug Fixes
+- Fixed Android 14 startup crash
+- Fixed EU-West login timeout" />
+<Button>Save Draft</Button>
+<Button variant="secondary" ask="Sending patch notes to review…">Send to Review</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Hotfix Deployment" subtitle="Ship 2.5.1 to all regions">
+<Steps>
+<Step title="Review changelog" status="current">Confirm the patch notes draft above.</Step>
+<Step title="Deploy to staging" status="todo">Auto-run on staging cluster.</Step>
+<Step title="Ship to production" status="todo">Roll out to all regions with progressive percentage.</Step>
+</Steps>
+<Button variant="danger" ask="Confirm hotfix 2.5.1 deployment to all regions?">Ship Hotfix</Button>
+</Card>
+
+<FollowUps>
+- What is the crash rate trend for 2.5.0 over the past week?
+- Show me the revenue impact of the Double XP Weekend event.
+- Which region has the highest ARPU right now?
+- Draft patch notes for the Season 7 content update.
+</FollowUps>

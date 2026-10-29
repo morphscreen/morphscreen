@@ -1,0 +1,65 @@
+# Service Health
+
+Last updated 2 minutes ago. <Badge tone="success">All systems operational</Badge> · <Badge tone="warning">2 open incidents</Badge>
+
+<Card title="Key metrics" subtitle="Quarter-to-date and current status">
+<Columns>
+<Stat label="Uptime (Q3)" value="99.94%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error rate (now)" value="0.42%" change="Below 1% target" tone="success" icon="pulse" />
+<Stat label="Open incidents" value="2" change="1 critical, 1 major" tone="warning" icon="warning-circle" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory usage — past 24 hours" subtitle="Across all regions">
+<Chart type="line" x="Time" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 38 | 62 |
+| 03:00 | 42 | 64 |
+| 06:00 | 55 | 68 |
+| 09:00 | 71 | 74 |
+| 12:00 | 66 | 72 |
+| 15:00 | 58 | 69 |
+| 18:00 | 49 | 66 |
+| 21:00 | 41 | 63 |
+| Now | 44 | 65 |
+</Chart>
+</Card>
+
+<Card title="Filter by region">
+<Select label="Region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" name="region" />
+</Card>
+
+<Card title="Open incidents" subtitle="Click acknowledge to take ownership">
+<Columns>
+<Card title="INC-4821 — Database connection pool exhausted" subtitle="Critical · us-east-1 · 34m ago">
+<Badge tone="danger">Critical</Badge> <Badge tone="info">P1</Badge>
+Impact: Checkout is failing for ~12% of requests in us-east-1. Root cause suspected in recent connection pool config change.
+<Button variant="primary">Acknowledge</Button>
+</Card>
+<Card title="INC-4820 — Elevated latency on search API" subtitle="Major · eu-west-1 · 2h ago">
+<Badge tone="warning">Major</Badge> <Badge tone="info">P2</Badge>
+Impact: Search responses at p95 are 3.1s vs 800ms baseline. Investigation ongoing; mitigation in progress.
+<Button variant="primary">Acknowledge</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Slowest endpoints — last 24 hours" subtitle="p95 latency">
+| Endpoint | Latency (ms) |
+|---|---|
+| POST /api/v2/checkout | 2,840 |
+| GET /api/v2/search | 1,920 |
+| POST /api/v2/payment/confirm | 1,450 |
+| GET /api/v2/recommendations | 1,120 |
+| DELETE /api/v2/cart/items | 890 |
+</Card>
+
+<Card title="Alert threshold" subtitle="Get notified when error rate exceeds your limit">
+<Form name="alert-settings">
+<Slider label="Error rate threshold (%)" min="0.5" max="5" step="0.1" value="1" name="error-threshold" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Acknowledged incidents">Acknowledged incidents move to the "investigating" state and stop paging the on-call rotation. You can view them in the incident log.</Callout>

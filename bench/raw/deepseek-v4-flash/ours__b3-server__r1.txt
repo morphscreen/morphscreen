@@ -1,0 +1,58 @@
+# Service health
+
+On-call engineer view · refreshed 2 minutes ago · <Badge tone="danger">P1 active</Badge>
+
+<Callout tone="danger" title="INC-1142 is active">Checkout latency in us-east-1 is above threshold (P95 842 ms). Acknowledge the incident from the table below to take ownership.</Callout>
+
+<Card title="Controls" subtitle="Filters apply to every panel below">
+<Form name="service-controls">
+<Columns>
+<Select label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" name="region" value="All regions" hint="Narrow incidents, endpoints, and resource usage to a single region." />
+<Slider label="Error rate alert threshold" min="0" max="5" step="0.1" value="1.2" name="errorRateThreshold" hint="Percent of requests. On-call is paged above this value." />
+</Columns>
+<Button>Apply filters and save threshold</Button>
+</Form>
+</Card>
+
+<Card title="Key metrics" subtitle="Right now, across the selected region">
+<Columns>
+<Stat label="Uptime this quarter" value="99.98%" change="Target 99.95%" tone="success" icon="chart-line" />
+<Stat label="Error rate right now" value="0.42%" change="Threshold 1.2%" tone="warning" icon="warning" />
+<Stat label="Open incidents" value="4" change="3 unacknowledged" tone="danger" icon="warning-circle" />
+<Stat label="P95 latency (slowest)" value="842 ms" change="SLO 800 ms" tone="warning" icon="gauge" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory — past 24 hours" subtitle="Average utilization, all hosts in selected region">
+<Chart type="area" x="Time" y="Usage %">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 38 | 58 |
+| 04:00 | 55 | 61 |
+| 08:00 | 63 | 63 |
+| 12:00 | 48 | 66 |
+| 16:00 | 72 | 68 |
+| 20:00 | 69 | 70 |
+| Now | 61 | 71 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Open incidents" subtitle="Ordered by severity">
+| ID | Incident | Severity | Opened | Action |
+|---|---|---|---|---|
+| INC-1142 | Checkout latency spike | <Badge tone="danger">P1</Badge> | 12m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-1141 | Payment provider timeouts | <Badge tone="warning">P2</Badge> | 58m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-1138 | eu-west-1 API error budget burn | <Badge tone="warning">P2</Badge> | 3h ago | <Badge tone="success">Acknowledged</Badge> |
+| INC-1136 | Async job queue backlog | <Badge tone="neutral">P3</Badge> | 8h ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Card>
+<Card title="Slowest endpoints" subtitle="P95 latency, past 4 hours">
+| Endpoint | P95 latency |
+|---|---|
+| POST /api/v1/payments/verify | 842 ms |
+| GET /api/v1/orders?expand=items | 617 ms |
+| POST /api/v1/webhooks/stripe | 554 ms |
+| GET /api/v1/inventory/stock | 489 ms |
+| GET /api/v1/recommendations | 431 ms |
+</Card>
+</Columns>

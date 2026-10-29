@@ -1,0 +1,185 @@
+# Trading Desk Morning Workspace
+
+<Badge tone="info">Live</Badge> <Badge tone="warning">Pre-market</Badge> <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Portfolio Overview">
+<Columns>
+<Stat label="Portfolio Value" value="$12.4M" change="+2.3%" tone="success" icon="chart-line" />
+<Stat label="P&L Today" value="+$184,200" change="+1.5%" tone="success" icon="trend-up" />
+<Stat label="Margin Used" value="$3.1M" change="25%" tone="info" icon="shield" />
+<Stat label="Value at Risk (95%)" value="$420K" change="1d" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Drawdown (12mo)">
+<Chart type="area" x="Month" y="Drawdown %">
+| Month | Drawdown |
+|---|---|
+| Jan | -2.1 |
+| Feb | -3.4 |
+| Mar | -5.2 |
+| Apr | -4.8 |
+| May | -6.1 |
+| Jun | -3.9 |
+| Jul | -2.7 |
+| Aug | -4.3 |
+| Sep | -5.8 |
+| Oct | -4.1 |
+| Nov | -2.9 |
+| Dec | -3.2 |
+</Chart>
+<Stat label="Max Drawdown" value="-6.1%" change="May" tone="danger" />
+<Stat label="Current Drawdown" value="-3.2%" tone="warning" />
+</Card>
+
+<Card title="Positions">
+| Ticker | Size | Entry | Current | P&L |
+|---|---|---|---|---|
+| AAPL | 5,000 | $178.40 | $182.60 | +$21,000 |
+| MSFT | 3,200 | $332.10 | $338.50 | +$20,480 |
+| TSLA | 1,500 | $245.80 | $238.20 | -$11,400 |
+| GOOGL | 4,000 | $141.20 | $144.80 | +$14,400 |
+| AMZN | 2,800 | $145.60 | $143.10 | -$7,000 |
+| SPY | 10,000 | $478.50 | $481.20 | +$27,000 |
+
+<Button ask="Show full position list">View all positions</Button>
+</Card>
+
+<Card title="Exposure by Sector">
+<Chart type="donut" title="Sector Allocation">
+| Sector | Allocation |
+|---|---|
+| Technology | 42 |
+| Consumer Cyclical | 18 |
+| Financial | 15 |
+| Healthcare | 12 |
+| Energy | 8 |
+| Other | 5 |
+</Chart>
+</Card>
+
+<Card title="Risk Limits">
+<Callout tone="danger" title="Limit breach imminent">**Sector concentration limit (Technology):** 42% vs limit 45% — 3% buffer remaining</Callout>
+<Callout tone="warning" title="Approaching limit">**Single position limit (SPY):** $4.81M vs limit $5.0M — $190K buffer</Callout>
+
+<Progress value="42" max="45" label="Tech concentration" tone="warning" />
+<Progress value="96" max="100" label="SPY position limit" tone="danger" />
+<Progress value="65" max="100" label="Leverage ratio" tone="info" />
+</Card>
+
+<Card title="Top Movers Today">
+<Columns>
+<div>
+**Biggest Gainers**
+| Ticker | Change |
+|---|---|
+| AAPL | +2.4% |
+| SPY | +0.6% |
+| GOOGL | +2.5% |
+</div>
+<div>
+**Biggest Losers**
+| Ticker | Change |
+|---|---|
+| TSLA | -3.1% |
+| AMZN | -1.7% |
+</div>
+</Columns>
+</Card>
+
+<Card title="Watchlist">
+| Instrument | Last Price | Change |
+|---|---|---|
+| NVDA | $824.50 | +1.8% |
+| META | $485.20 | +0.9% |
+| JPM | $198.30 | -0.4% |
+| XOM | $118.70 | +0.3% |
+| GLD | $205.40 | +0.7% |
+| BTC/USD | $67,200 | -1.2% |
+
+<Button ask="Add to watchlist">Add instrument</Button>
+</Card>
+
+<Card title="Working Orders">
+| Ticker | Side | Qty | Type | Limit | Status |
+|---|---|---|---|---|---|
+| AAPL | Buy | 500 | Limit | $180.00 | Open |
+| TSLA | Sell | 200 | Stop | $235.00 | Open |
+| SPY | Buy | 1,000 | Market | — | Pending |
+
+<Button ask="Cancel order AAPL">Cancel AAPL order</Button>
+<Button ask="Modify TSLA stop">Modify TSLA stop</Button>
+</Card>
+
+<Card title="Market Headlines">
+<Callout tone="success" title="Bullish">**Fed holds rates steady** — Markets rally on dovish tone</Callout>
+<Callout tone="danger" title="Bearish">**Oil prices spike 4%** — Middle East tensions escalate</Callout>
+<Callout tone="neutral" title="Neutral">**Apple announces Q2 earnings date** — April 25 after close</Callout>
+<Callout tone="info" title="Positive">**Jobless claims fall to 212K** — Labor market remains strong</Callout>
+</Card>
+
+<Card title="Economic Releases This Week">
+| Date | Release | Prior | Consensus | Impact |
+|---|---|---|---|---|
+| Mon | Retail Sales (MoM) | +0.6% | +0.3% | High |
+| Tue | Industrial Production | +0.1% | +0.2% | Medium |
+| Wed | FOMC Minutes | — | — | High |
+| Thu | Philly Fed Index | 5.2 | 3.8 | Medium |
+| Fri | Existing Home Sales | 4.38M | 4.42M | Low |
+
+<Button ask="Add to calendar">Add to calendar</Button>
+</Card>
+
+<Card title="Strategy Returns (YTD)">
+| Strategy | Return | Status |
+|---|---|---|
+| Momentum | +8.2% | <Badge tone="success">On track</Badge> |
+| Mean Reversion | +3.5% | <Badge tone="info">Steady</Badge> |
+| Arbitrage | +1.8% | <Badge tone="warning">Underperforming</Badge> |
+| Macro | -0.7% | <Badge tone="danger">Review needed</Badge> |
+
+<Chart type="bar" x="Strategy" y="Return %">
+| Strategy | Return |
+|---|---|
+| Momentum | 8.2 |
+| Mean Reversion | 3.5 |
+| Arbitrage | 1.8 |
+| Macro | -0.7 |
+</Chart>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Card title="Rebalance Portfolio">
+<Form name="rebalance">
+<Select label="Target allocation" options="Equal weight | Market cap weight | Risk parity | Custom" placeholder="Select strategy" />
+<Checkboxes label="Include" options="Equities | Fixed income | Commodities | Crypto" name="asset-classes" />
+<Button>Preview rebalance</Button>
+</Form>
+</Card>
+
+<Card title="Place Order">
+<Form name="place-order">
+<Input label="Ticker" name="ticker" placeholder="e.g. AAPL" required />
+<Radio label="Side" options="Buy | Sell" name="side" required />
+<Input label="Quantity" type="number" name="quantity" placeholder="100" min="1" required />
+<Select label="Order type" options="Market | Limit | Stop | Stop Limit" name="order-type" />
+<Button variant="primary">Submit order</Button>
+</Form>
+</Card>
+
+<Card title="Timeframe">
+<Radio label="View" options="1D | 1W | 1M | 3M | 1Y | YTD" name="timeframe" value="1D" />
+<Button ask="Set timeframe to 1W">Apply 1W</Button>
+<Button ask="Set timeframe to 1M">Apply 1M</Button>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the P&L breakdown by sector
+- What's the correlation between my top positions?
+- Run a stress test on the portfolio
+- Compare my returns to the S&P 500
+- Show me the options chain for AAPL
+</FollowUps>

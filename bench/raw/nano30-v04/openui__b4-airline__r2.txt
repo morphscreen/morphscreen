@@ -1,0 +1,71 @@
+root = Card([
+    header,
+    onTimeHeader,
+    onTime,
+    flightsHeader,
+    flightsTable,
+    delayedHeader,
+    delayedCallout,
+    gateChangesHeader,
+    gateChanges,
+    crewsHeader,
+    crewsSection,
+    weatherHeader,
+    weatherCallout,
+    connectionsHeader,
+    connectionsSection,
+    rebookBtn,
+    hubBtn,
+    cancellationsHeader,
+    cancellationsTable,
+    turnaroundHeader,
+    turnaroundText,
+    loadHeader,
+    loadText
+])
+
+header = CardHeader("Operations Desk", "Hub Overview")
+onTimeHeader = CardHeader("On-Time Performance", "Today's Metrics")
+flightsHeader = CardHeader("Flights", "Active flights")
+delayedHeader = CardHeader("Delayed Flights", "Flights currently delayed")
+gateChangesHeader = CardHeader("Gate Changes", "Recent gate modifications")
+crewsHeader = CardHeader("Crews Available", "Staff ready for reassignment")
+weatherHeader = CardHeader("Weather", "Current weather advisories")
+connectionsHeader = CardHeader("Connection Risk", "Flights at risk of missed connections")
+cancellationsHeader = CardHeader("Cancellations", "Flights cancelled today")
+turnaroundHeader = CardHeader("Turnaround", "Average turnaround time")
+loadHeader = CardHeader("Passenger Load", "Average load factor")
+
+onTime = TextContent("On-time performance today: 92%", "large")
+
+flightNumberCol = Col("Flight", ["AA123", "DL456", "UA789", "AA101"], "string")
+routeCol = Col("Route", ["JFK-LAX", "ORD-SEA", "LAX-ORD", "MIA-ATL"], "string")
+gateCol = Col("Gate", ["A12", "B3", "C5", "D7"], "string")
+statusCol = Col("Status", ["On Time", "Delayed", "On Time", "On Time"], "string")
+flightsTable = Table([flightNumberCol, routeCol, gateCol, statusCol])
+
+delayedCallout = TextCallout("warning", "Delayed Flights", "AA123 (JFK-LAX) Gate A12; DL456 (ORD-SEA) Gate B3")
+
+gateChange1 = ListItem("AA123", "A12 → A14")
+gateChange2 = ListItem("DL456", "B3 → C2")
+gateChanges = ListBlock([gateChange1, gateChange2])
+
+crew1 = ListItem("Captain Smith", "Pilot", "AA123")
+crew2 = ListItem("First Officer Lee", "Co-pilot", "DL456")
+crewsSection = ListBlock([crew1, crew2])
+
+weatherCallout = Callout("warning", "Weather Advisory", "Crosswinds 25kt, visibility reduced")
+
+connection1 = ListItem("AA123 → UA456", "Missed due to delay")
+connection2 = ListItem("DL456 → AA789", "At risk")
+connectionsSection = ListBlock([connection1, connection2])
+
+rebookBtn = Button("Reassign Affected Passengers")
+hubBtn = Button("View Other Hub")
+
+cancellationCol = Col("Flight", ["AA123", "DL456"], "string")
+statusCol2 = Col("Status", ["Cancelled", "Cancelled"], "string")
+cancellationsTable = Table([cancellationCol, statusCol2])
+
+turnaroundText = TextContent("Average turnaround time: 45 minutes", "large")
+loadText = TextContent("Average passenger load today: 78%", "large")

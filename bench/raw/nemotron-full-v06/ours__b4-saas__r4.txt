@@ -1,0 +1,104 @@
+# Admin Overview
+
+<Columns>
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Year to date" value="Last 30 days" />
+</Columns>
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$287,400" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$3.45M" change="+11.8% vs last year" tone="success" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+3 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 51 |
+| Week 4 | 47 |
+| Week 5 | 55 |
+| Week 6 | 62 |
+| Week 7 | 58 |
+| Week 8 | 67 |
+| Week 9 | 71 |
+| Week 10 | 69 |
+| Week 11 | 74 |
+| Week 12 | 78 |
+| Week 13 | 82 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Enterprise | 230 |
+| Custom | 45 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress value="78" max="100" label="Overall utilization: 78% of 12,400 seats" tone="info" />
+<Progress value="92" max="100" label="Enterprise: 92% utilized" tone="success" />
+<Progress value="74" max="100" label="Professional: 74% utilized" tone="neutral" />
+<Progress value="58" max="100" label="Starter: 58% utilized" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 850 | $42,500 | Active |
+| Globex Inc | Enterprise | 620 | $31,000 | Active |
+| Wayne Enterprises | Enterprise | 540 | $27,000 | Active |
+| Stark Industries | Enterprise | 480 | $24,000 | Active |
+| Umbrella Corp | Professional | 320 | $16,000 | Active |
+| Cyberdyne Systems | Enterprise | 290 | $14,500 | At Risk |
+| Massive Dynamic | Professional | 260 | $13,000 | Active |
+| Tyrell Corporation | Enterprise | 240 | $12,000 | Active |
+| Initech | Professional | 210 | $10,500 | Active |
+| Wonka Industries | Custom | 180 | $9,800 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Customer | Plan | Seats | Risk Reason | Health Score |
+|---|---|---|---|---|
+| Cyberdyne Systems | Enterprise | 290 | No login in 21 days; key champion left | 28 |
+| Pied Piper | Professional | 140 | Usage dropped 60% last 30 days | 35 |
+| Hooli | Starter | 45 | Failed payment ×2; support tickets unresolved | 22 |
+| Dunder Mifflin | Professional | 180 | Contract renewal in 14 days; no engagement | 41 |
+| Bluth Company | Starter | 30 | Seat utilization < 20% for 60 days | 30 |
+</Card>
+
+<Card title="Failed Payments (Last 7 Days)">
+| Customer | Amount | Failed On | Attempts | Action |
+|---|---|---|---|---|
+| Hooli | $2,400 | 2024-01-18 | 2 | <Button variant="primary" size="small">Retry</Button> |
+| Bluth Company | $450 | 2024-01-17 | 3 | <Button variant="primary" size="small">Retry</Button> |
+| Sterling Cooper | $1,200 | 2024-01-16 | 1 | <Button variant="primary" size="small">Retry</Button> |
+| Vandelay Industries | $890 | 2024-01-15 | 2 | <Button variant="primary" size="small">Retry</Button> |
+| Duff Beer | $3,100 | 2024-01-14 | 1 | <Button variant="primary" size="small">Retry</Button> |
+</Card>
+
+<Card title="New Feature Adoption">
+| Feature | Launched | Adoption Rate | Active Users |
+|---|---|---|---|
+| AI-Powered Insights | 2024-01-05 | 34% | 2,840 |
+| Team Workspaces | 2023-12-20 | 52% | 4,330 |
+| Advanced Webhooks | 2023-12-08 | 18% | 1,500 |
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" options="Admin | Billing Admin | Read-only Admin" placeholder="Select role" required="true" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

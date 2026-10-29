@@ -1,0 +1,32 @@
+root = Card([header, progress, rating, modulesSection, nextLesson, continueAction])
+
+header = CardHeader("Python for Data Science", "Instructor: Dr. Maya Chen")
+
+progress = Card([progressHeading, progressBar, progressText], "sunk")
+progressHeading = Heading("Overall Progress", "h3")
+progressBar = Progress(68, "68% complete")
+progressText = TextContent("You're more than halfway through the course. Keep it up!")
+
+rating = Card([ratingHeading, ratingStars], "sunk")
+ratingHeading = Heading("Average Learner Rating", "h3")
+ratingStars = TextContent("⭐ 4.8 / 5.0 (from 1,204 reviews)")
+
+modulesSection = Card([modulesHeading, modulesList])
+modulesHeading = Heading("Modules", "h3")
+modulesList = ListBlock([module1, module2, module3, module4])
+
+module1 = ListItem("Module 1: Python Basics", "Completed", [module1Status])
+module1Status = "✅"
+module2 = ListItem("Module 2: Data Structures", "Completed", [module2Status])
+module2Status = "✅"
+module3 = ListItem("Module 3: NumPy", "In Progress", [module3Status])
+module3Status = "⏳"
+module4 = ListItem("Module 4: Pandas", "Not Started", [module4Status])
+module4Status = "🔒"
+
+nextLesson = Card([nextHeading, nextCallout])
+nextHeading = Heading("Next Lesson", "h3")
+nextCallout = Callout("info", "Up next: Introduction to NumPy Arrays", "In Module 3: NumPy. Estimated time: 25 minutes.")
+
+continueAction = Buttons([continueBtn])
+continueBtn = Button("Continue Learning")

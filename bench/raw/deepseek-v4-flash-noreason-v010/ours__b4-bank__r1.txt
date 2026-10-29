@@ -1,0 +1,104 @@
+# Personal Banking Home
+
+Welcome back, Alex. Here's your money at a glance.
+
+<Card title="Account Balances">
+<Columns>
+<Stat label="Checking" value="$4,280.50" change="+$320 this month" icon="bank" tone="info" />
+<Stat label="Savings" value="$12,750.00" change="+$500 this month" icon="piggy-bank" tone="success" />
+<Stat label="Credit" value="$1,245.80" change="Used of $8,000 limit" icon="credit-card" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods Market | -$86.42 | Today |
+| Shell Gas Station | -$45.00 | Yesterday |
+| Netflix | -$15.99 | Jan 12 |
+| Amazon | -$129.30 | Jan 10 |
+| Salary Deposit | +$3,200.00 | Jan 5 |
+
+<Button variant="secondary" size="small">View all transactions</Button>
+</Card>
+
+<Card title="Spending by Category — This Month">
+<Chart type="donut" title="Where your money went">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 310 |
+| Transport | 180 |
+| Utilities | 250 |
+| Entertainment | 95 |
+| Other | 140 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Amount | Due Date | Status |
+|---|---|---|---|
+| Electric Bill | $78.20 | Jan 18 | <Badge tone="warning">Due in 3 days</Badge> |
+| Internet | $59.99 | Jan 22 | <Badge tone="neutral">Due in 7 days</Badge> |
+| Rent | $1,400.00 | Feb 1 | <Badge tone="neutral">Due in 17 days</Badge> |
+
+<Button variant="secondary" size="small">Pay all due bills</Button>
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="7200" max="10000" label="$7,200 of $10,000 saved" tone="success" />
+<Callout tone="info" title="You're 72% there!">Keep saving $500/month and you'll hit your goal by June.</Callout>
+</Card>
+
+<Card title="Credit Score">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 from last month" icon="chart-line" tone="success" />
+</Columns>
+<Callout tone="success" title="Great standing">Your score is in the "Good" range. Keep it up!</Callout>
+</Card>
+
+<Card title="Move Money Between Accounts">
+<Form name="transfer-form">
+<Select label="From" placeholder="Choose account" options="Checking ($4,280.50) | Savings ($12,750.00) | Credit ($1,245.80)" />
+<Select label="To" placeholder="Choose account" options="Checking ($4,280.50) | Savings ($12,750.00) | Credit ($1,245.80)" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" />
+<Input label="Date" type="date" />
+<Button>Transfer money</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Management">
+<Switch label="Freeze credit line" name="freeze-credit" hint="Blocks new purchases and cash advances" />
+<Callout tone="warning" title="Frozen credit">When frozen, recurring payments and refunds still process.</Callout>
+<Button variant="danger" size="small">Freeze credit line now</Button>
+</Card>
+
+<Card title="Statement Period">
+<Select label="Choose statement cycle" placeholder="Select a period" options="1st – 30th | 5th – 4th | 10th – 9th | 15th – 14th" />
+<Callout tone="neutral" title="Current period">Jan 1 – Jan 30. Next statement generates Feb 1.</Callout>
+</Card>
+
+<Card title="Manage Transaction Alerts">
+<Form name="alert-settings">
+<Checkboxes label="Alert me when" options="Purchase over $100 | Purchase over $500 | Foreign transaction | Withdrawal over $200 | Balance below $100 | Large deposit" />
+<Select label="Alert method" placeholder="Choose a channel" options="Push notification | Email | SMS | All" />
+<Button>Save alert preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select transaction" placeholder="Choose a transaction" options="Whole Foods Market -$86.42 | Shell Gas Station -$45.00 | Amazon -$129.30" />
+<Radio label="Reason" options="I didn't make this purchase | Wrong amount | Duplicate charge | Item not received | Other" />
+<TextArea label="Details" placeholder="Describe what happened…" rows="4" hint="Include any supporting info" />
+<Button variant="danger">Submit dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my full transaction history
+- What's my credit utilization now?
+- How much can I save before June?
+- Set up a new bill payment
+</FollowUps>

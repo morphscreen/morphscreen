@@ -1,0 +1,129 @@
+# Hospital Operations Command View
+
+<Card title="Hospital Command Center" subtitle="Real-time operations overview">
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="+3%" tone="warning" icon="bed" />
+<Stat label="ER Wait Time" value="42 min" change="+12 min" tone="danger" icon="clock" />
+<Stat label="Admissions (14d)" value="847" change="+5%" tone="info" icon="trend-up" />
+<Stat label="Patients Ready" value="14" tone="success" icon="check-circle" />
+</Columns>
+</Card>
+
+<Card title="Critical Patients">
+<Callout tone="danger" title="3 Critical Patients Require Immediate Attention">
+- Room 214: Cardiac arrest, Dr. Chen attending
+- Room 307: Stroke alert, awaiting CT
+- Room 412: Sepsis, ICU consult pending
+</Callout>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 42 |
+| ICU | 18 |
+| Cardiology | 24 |
+| Orthopedics | 15 |
+| Pediatrics | 12 |
+| Maternity | 20 |
+| Surgery | 8 |
+| Oncology | 10 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+<Columns>
+<Avatar name="Dr. Maria Chen" subtitle="Chief of Emergency" />
+<Avatar name="Dr. James Park" subtitle="Cardiologist" />
+<Avatar name="Nurse Lisa Brown" subtitle="ICU Lead" />
+<Avatar name="Nurse Ahmed Khan" subtitle="ER Triage" />
+<Avatar name="Dr. Sarah Lee" subtitle="Pediatrician" />
+<Avatar name="Nurse Olivia Smith" subtitle="Surgery" />
+<Avatar name="Tech David Kim" subtitle="Radiology" />
+<Avatar name="Dr. Robert Taylor" subtitle="Orthopedics" />
+</Columns>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:00 | OR1 | CABG | Dr. Patel | In progress |
+| 08:30 | OR2 | Hip replacement | Dr. Taylor | In progress |
+| 10:00 | OR3 | Appendectomy | Dr. Garcia | Scheduled |
+| 11:30 | OR1 | Cholecystectomy | Dr. Chen | Scheduled |
+| 13:00 | OR2 | Knee arthroscopy | Dr. Taylor | Scheduled |
+| 14:30 | OR3 | Hernia repair | Dr. Garcia | Scheduled |
+</Card>
+
+<Card title="Supplies Running Low">
+<Callout tone="warning" title="Restock Needed">
+| Supply | Current | Threshold | Status |
+|---|---|---|---|
+| IV saline 500ml | 24 units | 50 units | <Badge tone="danger">Critical</Badge> |
+| Surgical gloves (size 7) | 3 boxes | 10 boxes | <Badge tone="warning">Low</Badge> |
+| Blood type O- | 2 units | 5 units | <Badge tone="danger">Critical</Badge> |
+| Ventilator circuits | 4 units | 8 units | <Badge tone="warning">Low</Badge> |
+</Callout>
+</Card>
+
+<Card title="Admissions Over Past Two Weeks">
+<Chart type="line" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Mon | 58 |
+| Tue | 62 |
+| Wed | 55 |
+| Thu | 71 |
+| Fri | 65 |
+| Sat | 48 |
+| Sun | 42 |
+| Mon | 60 |
+| Tue | 67 |
+| Wed | 59 |
+| Thu | 73 |
+| Fri | 68 |
+| Sat | 51 |
+| Sun | 45 |
+</Chart>
+</Card>
+
+<Card title="Patients Ready for Discharge">
+| Room | Patient | Discharge Time | Requires |
+|---|---|---|---|
+| 203 | John Miller | 14:00 | Transportation |
+| 215 | Anna Garcia | 14:30 | Prescription |
+| 310 | David Brown | 15:00 | Follow-up appt |
+| 118 | Emma Wilson | 15:30 | Home care setup |
+| 409 | Michael Lee | 16:00 | None |
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Form name="file-incident">
+<Input label="Incident Type" placeholder="e.g., Fall, Medication error" />
+<TextArea label="Description" placeholder="Describe the incident..." rows="3" />
+<Button variant="danger" label="File Incident">File Incident</Button>
+</Form>
+
+<Form name="lookup-day">
+<Date label="View Operations for Date" />
+<Button variant="secondary">Load Day</Button>
+</Form>
+
+<Form name="request-transfer">
+<Input label="Patient ID" placeholder="e.g., P-12345" />
+<Select label="Destination Department" options="ICU | Cardiology | Orthopedics | Pediatrics | Maternity | Surgery | Oncology" placeholder="Select department" />
+<TextArea label="Reason for Transfer" placeholder="Clinical justification..." rows="2" />
+<Button>Request Transfer</Button>
+</Form>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the ICU bed occupancy breakdown
+- What are the ER wait times by acuity level?
+- List today's scheduled surgeries in detail
+- Which supplies need immediate reorder?
+- Show staffing for the night shift
+</FollowUps>

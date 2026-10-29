@@ -1,0 +1,145 @@
+# Admin Overview
+
+<Columns>
+<Stat label="MRR" value="$48,230" change="+5.2%" tone="success" icon="chart-line" />
+<Stat label="ARR" value="$578,760" change="+5.2%" tone="success" icon="chart-line" />
+<Stat label="Churn (MTD)" value="3.2%" change="-0.4%" tone="warning" icon="trend-down" />
+<Stat label="NPS" value="42" change="+2" tone="info" icon="smiley" />
+</Columns>
+
+<Card title="Reporting Period">
+<Form name="reporting-period">
+<Radio label="Period" options="Last 30 days | Last 90 days | Last 12 months | Custom range" name="period" />
+<Button>Apply</Button>
+</Form>
+</Card>
+
+<Card title="New Signups (Last 90 Days)">
+<Chart type="bar" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 55 |
+| Week 4 | 61 |
+| Week 5 | 47 |
+| Week 6 | 52 |
+| Week 7 | 58 |
+| Week 8 | 63 |
+| Week 9 | 49 |
+| Week 10 | 56 |
+| Week 11 | 71 |
+| Week 12 | 68 |
+| Week 13 | 74 |
+</Chart>
+<Button ask="Show signup details for last 90 days">View details</Button>
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 184 |
+| Professional | 127 |
+| Enterprise | 43 |
+</Chart>
+</Card>
+
+<Card title="Ten Largest Customers">
+| Customer | Seats | Spend |
+|---|---|---|
+| Acme Corp | 245 | $12,400/mo |
+| GlobalTech Inc | 198 | $9,850/mo |
+| MegaCorp Ltd | 156 | $8,200/mo |
+| DataStream LLC | 134 | $7,100/mo |
+| CloudFirst Inc | 112 | $6,400/mo |
+| NorthStar Systems | 98 | $5,600/mo |
+| Blue Ocean Co | 87 | $5,100/mo |
+| Peak Performance | 76 | $4,800/mo |
+| VentureWorks | 65 | $4,200/mo |
+| Quantum Solutions | 54 | $3,900/mo |
+</Card>
+
+<Card title="Accounts at Risk">
+<Callout tone="danger" title="3 accounts need attention">
+<Columns>
+<Card subtitle="Acme Corp - Enterprise">
+<Stat label="Seats" value="245" />
+<Stat label="Spend" value="$12,400/mo" />
+<Badge tone="danger">At Risk</Badge>
+<Details title="Reason: Low login activity (last login 14 days ago)">
+<Button ask="Reach out to Acme Corp about low engagement">Send engagement email</Button>
+</Details>
+</Card>
+<Card subtitle="DataStream LLC - Professional">
+<Stat label="Seats" value="134" />
+<Stat label="Spend" value="$7,100/mo" />
+<Badge tone="danger">At Risk</Badge>
+<Details title="Reason: Support ticket escalation unresolved (5 days)">
+<Button ask="Escalate DataStream LLC support ticket">View ticket</Button>
+</Details>
+</Card>
+<Card subtitle="VentureWorks - Starter">
+<Stat label="Seats" value="65" />
+<Stat label="Spend" value="$4,200/mo" />
+<Badge tone="danger">At Risk</Badge>
+<Details title="Reason: Billing issue - declined card">
+<Button ask="Contact VentureWorks about payment">Send payment reminder</Button>
+</Details>
+</Card>
+</Columns>
+</Callout>
+</Card>
+
+<Card title="Failed Payments">
+| Customer | Amount | Date | Status |
+|---|---|---|---|
+| VentureWorks | $4,200 | 2025-03-28 | Declined |
+| Blue Ocean Co | $5,100 | 2025-03-27 | Declined |
+| Peak Performance | $4,800 | 2025-03-25 | Declined |
+<Button ask="Retry all failed payments">Retry all</Button>
+<Button variant="secondary" ask="Show payment details">View details</Button>
+</Card>
+
+<Card title="Feature Adoption (Newest Features)">
+<Columns>
+<Card subtitle="AI Reports">
+<Progress value="34" max="100" label="34% adoption" tone="info" />
+<Button ask="Show AI Reports adoption details">Details</Button>
+</Card>
+<Card subtitle="Team Dashboards">
+<Progress value="28" max="100" label="28% adoption" tone="warning" />
+<Button ask="Show Team Dashboards adoption details">Details</Button>
+</Card>
+<Card subtitle="API v3">
+<Progress value="12" max="100" label="12% adoption" tone="neutral" />
+<Button ask="Show API v3 adoption details">Details</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Seat Utilization">
+<Chart type="bar" x="Plan" y="Utilization">
+| Plan | Utilization |
+|---|---|
+| Starter | 68% |
+| Professional | 72% |
+| Enterprise | 81% |
+</Chart>
+<Stat label="Overall" value="74%" change="+3%" tone="info" />
+</Card>
+
+<Card title="Invite an Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" options="Admin (full access) | Billing Admin | Support Admin" placeholder="Choose a role" />
+<Button>Send invitation</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the churn breakdown by plan
+- Which features have the lowest adoption?
+- What's the revenue forecast for next quarter?
+- Show me the detailed payment history
+</FollowUps>

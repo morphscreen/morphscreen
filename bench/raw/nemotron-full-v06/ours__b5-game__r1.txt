@@ -1,0 +1,229 @@
+# Live Operations Dashboard
+
+<Badge tone="success">Live</Badge> <Badge tone="info">v2.4.1</Badge> <Badge tone="neutral">Last sync: 12s ago</Badge>
+
+---
+
+<Columns>
+<Card title="Players Online Now">
+<Stat label="Concurrent Players" value="247,832" change="+3.2% vs 1hr ago" tone="success" />
+<Stat label="Peak Today" value="312,400" change="at 14:22 UTC" tone="neutral" />
+<Progress value="79" max="100" label="Capacity Utilization" tone="info" />
+</Card>
+
+<Card title="Active Players">
+<Stat label="DAU" value="1.24M" change="+1.8% WoW" tone="success" />
+<Stat label="MAU" value="8.7M" change="+0.9% MoM" tone="info" />
+<Stat label="DAU/MAU Ratio" value="14.3%" change="Healthy" tone="success" />
+</Card>
+
+<Card title="Revenue Today">
+<Stat label="Gross Revenue" value="$487,200" change="+12.4% vs avg" tone="success" />
+<Stat label="Revenue per User (ARPU)" value="$0.39" change="+$0.04 vs yesterday" tone="info" />
+<Stat label="Paying Users" value="42,100" change="3.4% conversion" tone="neutral" />
+</Card>
+</Columns>
+
+---
+
+<Card title="Session Length — Last 14 Days">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session (min) | Median Session (min) |
+|---|---|---|
+| 2025-01-03 | 28.4 | 22 |
+| 2025-01-04 | 31.2 | 24 |
+| 2025-01-05 | 35.8 | 28 |
+| 2025-01-06 | 33.1 | 26 |
+| 2025-01-07 | 29.7 | 23 |
+| 2025-01-08 | 30.5 | 24 |
+| 2025-01-09 | 32.8 | 25 |
+| 2025-01-10 | 38.2 | 30 |
+| 2025-01-11 | 41.5 | 33 |
+| 2025-01-12 | 39.7 | 31 |
+| 2025-01-13 | 34.2 | 27 |
+| 2025-01-14 | 31.9 | 25 |
+| 2025-01-15 | 30.1 | 24 |
+| 2025-01-16 | 33.6 | 26 |
+</Chart>
+</Card>
+
+---
+
+<Columns>
+<Card title="Best-Selling Items (Last 7 Days)">
+<Chart type="bar" x="Item" y="Units Sold">
+| Item | Units Sold |
+|---|---|
+| Battle Pass S12 | 184,200 |
+| Crimson Skin Bundle | 97,500 |
+| XP Boost (30d) | 82,100 |
+| Legendary Crate | 64,800 |
+| Emote Pack: Victory | 51,300 |
+| Weapon Charm Set | 43,700 |
+| Profile Banner Pack | 38,900 |
+</Chart>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="line" x="Date" y="Index (Base=100)">
+| Date | Gold Inflation Index | Premium Currency Index |
+|---|---|---|
+| 2025-01-02 | 100 | 100 |
+| 2025-01-04 | 102.3 | 100.1 |
+| 2025-01-06 | 105.7 | 100.2 |
+| 2025-01-08 | 108.9 | 100.3 |
+| 2025-01-10 | 112.4 | 100.4 |
+| 2025-01-12 | 115.8 | 100.5 |
+| 2025-01-14 | 118.2 | 100.6 |
+| 2025-01-16 | 121.5 | 100.7 |
+</Chart>
+<Callout tone="warning" title="Inflation Alert">Gold supply growing 2.1%/day. Consider sink adjustments or cap increases.</Callout>
+</Card>
+</Columns>
+
+---
+
+<Card title="Server Regions & Health">
+<Select label="Focus Region" name="region-focus" placeholder="Select a region to drill down" options="Global (All) | North America East | North America West | Europe West | Europe East | Asia Pacific | South America | Middle East" value="Global (All)" />
+<Chart type="bar" x="Region" y="Health Score">
+| Region | Health Score | Players | Latency (ms) | Error Rate | Status |
+|---|---|---|---|---|---|
+| North America East | 98 | 68,200 | 42 | 0.03% | Healthy |
+| North America West | 97 | 54,100 | 38 | 0.04% | Healthy |
+| Europe West | 99 | 72,500 | 35 | 0.02% | Healthy |
+| Europe East | 94 | 31,800 | 58 | 0.12% | Degraded |
+| Asia Pacific | 96 | 18,400 | 67 | 0.08% | Healthy |
+| South America | 91 | 9,200 | 89 | 0.21% | Warning |
+| Middle East | 93 | 3,600 | 76 | 0.15% | Degraded |
+</Chart>
+</Card>
+
+---
+
+<Columns>
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Crash Rate % | Sessions | Crashes |
+|---|---|---|---|
+| 2.4.1 | 0.12% | 2.1M | 2,520 |
+| 2.4.0 | 0.34% | 890K | 3,026 |
+| 2.3.9 | 0.87% | 145K | 1,262 |
+| 2.3.8 | 1.24% | 42K | 521 |
+| 2.3.7 | 2.11% | 18K | 380 |
+| Older | 3.45% | 8K | 276 |
+</Chart>
+<Callout tone="info" title="Note">99.2% of sessions on v2.4.1. Older versions auto-prompt update.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Tabs>
+<Tab title="Running Now (3)">
+<Details title="Winter Festival — Ends Jan 20" open="true">
+<Stat label="Participants" value="892K" />
+<Stat label="Completion Rate" value="34%" />
+<Stat label="Revenue Attributed" value="$124K" />
+</Details>
+<Details title="Ranked Season 12 — Ends Feb 14">
+<Stat label="Active Players" value="1.1M" />
+<Stat label="Avg Matches/Player" value="18.4" />
+<Stat label="Retention (D7)" value="67%" />
+</Details>
+<Details title="Double XP Weekend — Ends Jan 19">
+<Stat label="Opted In" value="2.3M" />
+<Stat label="Sessions Boosted" value="+23%" />
+<Stat label="Revenue Lift" value="+8%" />
+</Details>
+</Tab>
+<Tab title="Upcoming (2)">
+<Details title="Lunar New Year Event — Starts Jan 25">
+<Stat label="Pre-registrations" value="412K" />
+<Stat label="Est. Reach" value="3.2M" />
+<Stat label="Content Ready" value="100%" />
+</Details>
+<Details title="Valentine's Collab — Starts Feb 7">
+<Stat label="Pre-registrations" value="187K" />
+<Stat label="Est. Reach" value="2.8M" />
+<Stat label="Content Ready" value="78%" />
+</Details>
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Moderation Queue">
+<Stat label="Player Reports Awaiting Review" value="1,247" change="+234 since midnight" tone="danger" />
+<Stat label="Ban Appeals Awaiting Review" value="312" change="+41 since midnight" tone="warning" />
+<Progress value="67" max="100" label="Reports SLA (24hr target)" tone="warning" />
+<Progress value="42" max="100" label="Appeals SLA (48hr target)" tone="info" />
+<Button variant="secondary" size="small">Open Moderation Dashboard</Button>
+</Card>
+
+<Card title="Running Experiments">
+<Tabs>
+<Tab title="Exp #1: Matchmaking SBMM Tuning">
+<Stat label="Variant A (Control)" value="50.1% Win Rate" />
+<Stat label="Variant B (Loosened)" value="51.3% Win Rate" />
+<Stat label="P-value" value="0.034" />
+<Stat label="Lift" value="+2.4% retention D1" tone="success" />
+<Callout tone="success" title="Significant">Variant B shows statistically significant improvement. Ready for rollout decision.</Callout>
+</Tab>
+<Tab title="Exp #2: Shop Layout Personalization">
+<Stat label="Variant A (Control)" value="$0.39 ARPU" />
+<Stat label="Variant B (Personalized)" value="$0.43 ARPU" />
+<Stat label="P-value" value="0.087" />
+<Stat label="Lift" value="+10.3% ARPU" tone="info" />
+<Callout tone="warning" title="Not Yet Significant">Trending positive but not at 95% confidence. Continue for 3 more days.</Callout>
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Draft Patch Notes">
+<Form name="patch-notes-draft">
+<TextArea label="Patch Notes (Markdown)" name="patch-notes" placeholder="## Version 2.4.2 — January 22, 2025
+
+### Balance Changes
+- **Assault Rifle**: Damage reduced 28 → 26
+- **Sniper Rifle**: Fire rate increased 0.85 → 0.95s
+
+### Bug Fixes
+- Fixed crash when opening inventory during matchmaking
+- Resolved desync on Europe East servers
+
+### New Content
+- Added 'Arctic Ops' weapon skin series
+- New emote: 'Tactical Salute'" rows="14" hint="Use Markdown. Preview renders below." />
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Discard</Button>
+</Form>
+</Card>
+
+<Card title="Ship Hotfix">
+<Form name="hotfix-deploy">
+<Input label="Hotfix ID" name="hotfix-id" placeholder="HF-2025-012" required="true" />
+<Select label="Target Region(s)" name="hotfix-regions" options="All Regions | North America East | North America West | Europe West | Europe East | Asia Pacific | South America | Middle East" required="true" placeholder="Select region(s)" />
+<Select label="Severity" name="hotfix-severity" options="Critical (immediate) | High (next 30 min) | Medium (next maintenance)" required="true" />
+<TextArea label="Changes Summary" name="hotfix-changes" placeholder="Describe the fix and any config changes..." rows="4" required="true" />
+<Checkboxes label="Confirmations" name="hotfix-confirm" options="QA validated in staging | Rollback plan documented | On-call notified | Player comms drafted" required="true" />
+<Button variant="danger" ask="true" label="Deploy Hotfix">Deploy Hotfix</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+---
+
+<FollowUps>
+- Drill into Europe East server degradation
+- Review top 20 player reports by severity
+- Approve Experiment #1 rollout to 100%
+- Schedule currency sink for next patch
+- Prepare Lunar New Year launch checklist
+</FollowUps>

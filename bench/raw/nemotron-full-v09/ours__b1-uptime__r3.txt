@@ -1,0 +1,13 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Current uptime" value="99.97%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Most Recent Incident">
+**Incident:** Partial API latency spike affecting `/v1/payments` endpoint  
+**Impact:** Elevated p99 latency (2.1s → 8.4s) for ~12 minutes  
+**Root cause:** Database connection pool exhaustion during scheduled analytics job  
+**Resolved:** 2024-01-15 14:23 UTC  
+**Mitigation:** Increased pool size and added circuit breaker for analytics workload
+</Card>

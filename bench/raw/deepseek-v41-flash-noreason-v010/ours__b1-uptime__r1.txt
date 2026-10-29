@@ -1,0 +1,38 @@
+# Platform Status
+
+<Card title="API uptime this month" subtitle="Measured across all regions, 1st–today">
+<Columns>
+<Stat label="API uptime" value="99.97%" change="+0.04 pts vs last month" tone="success" icon="chart-line" />
+<Stat label="Error budget used" value="18%" note="of 43m 12s allowance" tone="info" icon="gauge" />
+<Stat label="Monitored endpoints" value="42" note="all passing checks" tone="neutral" icon="pulse" />
+</Columns>
+<Progress value="99.97" max="100" label="API uptime target 99.9%" tone="success" />
+</Card>
+
+<Card title="Most recent incident" subtitle="Resolved 3 days ago">
+<Callout tone="success" title="Resolved — elevated API latency (us-east-1)">
+**Started:** Tue 09:14 UTC · **Resolved:** Tue 10:02 UTC · **Duration:** 48 minutes
+
+A misconfigured connection pool on the us-east-1 read replicas pushed p95 latency to 2.4s. Rolling back the config and draining the pool restored normal response times. No data loss; a follow-up fix is tracked to ship next week.
+</Callout>
+<Details title="Incident timeline">
+<Steps>
+<Step title="Alert fired" status="done" subtitle="09:14 UTC">p95 latency crossed 1s threshold on us-east-1.</Step>
+<Step title="On-call acknowledged" status="done" subtitle="09:21 UTC">Traffic shifted away from the affected replica set.</Step>
+<Step title="Root cause identified" status="done" subtitle="09:44 UTC">Connection pool config change traced to the morning deploy.</Step>
+<Step title="Rollback complete" status="done" subtitle="10:02 UTC">Latency back under 300ms; incident closed.</Step>
+</Steps>
+</Details>
+</Card>
+
+<Card title="Current state">
+| Service | Status |
+|---|---|
+| API | <Badge tone="success">Operational</Badge> |
+| Dashboard | <Badge tone="success">Operational</Badge> |
+| Webhooks | <Badge tone="success">Operational</Badge> |
+| Build pipeline | <Badge tone="warning">Degraded</Badge> |
+</Card>
+
+<Button ask="Show the full incident history for this month">View incident history</Button>
+<Button variant="secondary" ask="Subscribe me to status updates by email">Subscribe to updates</Button>

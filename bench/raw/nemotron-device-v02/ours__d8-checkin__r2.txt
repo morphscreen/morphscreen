@@ -1,0 +1,45 @@
+<Card title="Event Check-In" subtitle="Tech Conference 2024 — Main Hall">
+
+### Check-In Stats
+<Columns>
+<Stat label="Checked In" value="247" change="+12 in last hour" tone="success" />
+<Stat label="Expected" value="500" tone="info" />
+<Stat label="No-Shows" value="253" change="51% remaining" tone="warning" />
+</Columns>
+
+<Progress value="247" max="500" label="Overall progress" />
+
+### Scan QR Ticket
+<Scan label="Scan attendee QR code" name="qr-scan" kind="qr" hint="Point camera at attendee's ticket QR code" required="true" />
+
+<Callout tone="info" title="Manual entry">
+If a QR code won't scan, use the name lookup below to find the guest and check them in manually.
+</Callout>
+
+### Look Up Guest by Name
+<Input label="Search attendee" name="guest-search" placeholder="Type name, email, or ticket ID" hint="Results appear as you type" />
+
+<Details title="Search results (demo)" open="false">
+| Name | Ticket ID | Status | Action |
+|---|---|---|---|
+| Sarah Chen | TC2024-0847 | ✅ Checked in 10:15 AM | — |
+| Marcus Johnson | TC2024-0923 | ⏳ Pending | <Button variant="primary" disabled="true">Check In</Button> |
+| Priya Patel | TC2024-1102 | ⏳ Pending | <Button variant="primary" disabled="true">Check In</Button> |
+</Details>
+
+### Recent Check-Ins
+| Time | Name | Ticket ID | Method |
+|---|---|---|---|
+| 10:23 AM | Alex Rivera | TC2024-0156 | QR Scan |
+| 10:21 AM | Jamie Park | TC2024-0289 | QR Scan |
+| 10:19 AM | Casey Wong | TC2024-0341 | Manual |
+| 10:17 AM | Taylor Kim | TC2024-0412 | QR Scan |
+| 10:15 AM | Sarah Chen | TC2024-0847 | QR Scan |
+| 10:12 AM | Jordan Lee | TC2024-0523 | Manual |
+| 10:10 AM | Morgan Davis | TC2024-0678 | QR Scan |
+
+<Callout tone="neutral" title="Need help?">
+Tap a recent entry to view details or undo a check-in. Pull to refresh the list.
+</Callout>
+
+</Card>

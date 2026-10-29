@@ -1,0 +1,97 @@
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="85%" change="↑ 2%" tone="neutral" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Stat label="Units Produced" value="12,340" change="86%" tone="success" />
+</Card>
+
+<Card title="Production Lines">
+<Stat label="Line 1" value="120 units/hr ✔️" tone="success" />
+<Stat label="Line 2" value="95 units/hr ✔️" tone="success" />
+<Stat label="Line 3" value="150 units/hr ✔️" tone="success" />
+</Card>
+
+<Card title="Defect Rate">
+<Stat label="Defect Rate" value="2.5%" change="↓ 0.3%" tone="warning" />
+</Card>
+
+<Card title="Downtime by Cause">
+<Chart type="pie" title="Downtime by Cause" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical | 150 |
+| Electrical | 80 |
+| Material | 45 |
+| Other | 30 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<Stat label="Machine A" value="Due" tone="warning" />
+<Stat label="Machine B" value="Due" tone="warning" />
+<Stat label="Machine C" value="Due" tone="warning" />
+</Card>
+
+<Card title="Stock Levels">
+<Stat label="Steel" value="120 tons" tone="neutral" />
+<Stat label="Resin" value="80 tons" tone="neutral" />
+<Stat label="Packaging" value="500 units" tone="neutral" />
+</Card>
+
+<Card title="Supplier Deliveries">
+<Stat label="Delivery 1" value="Due" change="May 3" tone="info" />
+<Stat label="Delivery 2" value="Due" change="May 5" tone="info" />
+<Stat label="Delivery 3" value="Due" change="May 7" tone="info" />
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Shift Output" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| A | 1500 |
+| B | 1300 |
+| C | 1700 |
+| D | 1200 |
+</Chart>
+</Card>
+
+<Card title="Safety Incidents">
+<Stat label="Incidents" value="4" change="this year" note="30 days since last" tone="warning" />
+</Card>
+
+<Card title="Batches on Quality Hold">
+<Stat label="Batches" value="2" tone="warning" />
+</Card>
+
+<Card title="Energy Use">
+<Stat label="Energy" value="2,450 kWh" tone="neutral" />
+</Card>
+
+<Card title="Open Work Orders">
+<Stat label="WO-001" value="High" tone="danger" />
+<Stat label="WO-002" value="Medium" tone="warning" />
+<Stat label="WO-003" value="Low" tone="success" />
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="maintenance-schedule">
+<Input label="Machine" name="machine" placeholder="Machine ID" required=false />
+<Input label="Date" name="date" placeholder="Select date" required=false />
+<Button variant="primary" href="#">Schedule</Button>
+<Button variant="secondary" href="#">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Focus on One Line">
+<Select label="Focus Line" options="Line 1 | Line 2 | Line 3" name="line" placeholder="Select line" required=false />
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="warning" title="Overheat - Line 2">Overheat detected on Line 2</Callout>
+<Callout tone="warning" title="Low Material - Line 1">Low material on Line 1</Callout>
+</Card>
+
+<Card title="Export Shift Report">
+<Button variant="primary" href="#">Export Shift Report</Button>
+</Card>

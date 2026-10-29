@@ -1,0 +1,14 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.9%" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Badge tone="success">Resolved</Badge>
+<p><strong>Incident:</strong> Elevated API latency (p99 > 2s) affecting /v1/search endpoint</p>
+<p><strong>Resolved:</strong> 2024-01-15 14:23 UTC (2 days ago)</p>
+<p><strong>Root cause:</strong> Database connection pool exhaustion due to a slow query regression in the v2.14.0 deploy. Rolled back to v2.13.8 and applied query optimization.</p>
+<Callout tone="info" title="Impact">~3.2% of requests experienced elevated latency for 47 minutes. No data loss.</Callout>
+</Card>

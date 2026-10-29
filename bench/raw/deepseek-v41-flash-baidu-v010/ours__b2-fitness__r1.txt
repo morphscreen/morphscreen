@@ -1,0 +1,74 @@
+# Today's Summary
+
+<Badge tone="success">Goal reached</Badge> You're 1,142 steps past your daily target.
+
+<Columns>
+<Stat label="Steps today" value="11,142" change="+8.4%" tone="success" icon="footprints" note="Goal: 10,000" />
+<Stat label="Calories burned" value="742 kcal" change="+112 kcal" tone="info" icon="fire" note="Active + resting" />
+<Stat label="Active minutes" value="64 min" change="+9 min" tone="success" icon="timer" />
+<Stat label="Distance" value="8.3 km" change="+0.6 km" tone="neutral" icon="map-pin" />
+</Columns>
+
+<Card title="Steps toward today's goal" subtitle="10,000 step target">
+<Progress value="11142" max="10000" label="111% of goal" tone="success" />
+</Card>
+
+<Card title="Calories burned today" subtitle="By activity type">
+<Chart type="donut" title="Calories by activity" x="Activity" y="kcal">
+| Activity | Calories |
+|---|---|
+| Walking | 318 |
+| Running | 246 |
+| Strength | 118 |
+| Resting burn | 60 |
+</Chart>
+</Card>
+
+<Card title="Workouts this week" subtitle="Mon–Sun, minutes per day">
+<Chart type="bar" title="Workout minutes by day" x="Day" y="Minutes">
+| Day | Minutes |
+|---|---|
+| Mon | 45 |
+| Tue | 0 |
+| Wed | 62 |
+| Thu | 30 |
+| Fri | 0 |
+| Sat | 78 |
+| Sun | 64 |
+</Chart>
+</Card>
+
+<Card title="Workout log">
+<Steps>
+<Step title="Monday — Upper body strength" status="done" subtitle="45 min · 310 kcal">Bench press, rows, overhead press. 3 sets each.</Step>
+<Step title="Wednesday — Interval run" status="done" subtitle="62 min · 520 kcal">6 × 800 m at threshold pace, 90 s recovery.</Step>
+<Step title="Thursday — Mobility" status="done" subtitle="30 min · 140 kcal">Hip and shoulder flow, light stretching.</Step>
+<Step title="Saturday — Long ride" status="done" subtitle="78 min · 610 kcal">22 km steady, two hill repeats.</Step>
+<Step title="Sunday — Easy jog" status="current" subtitle="64 min · 480 kcal">Recovery pace, logged just now.</Step>
+</Steps>
+</Card>
+
+<Card title="Log a new workout" subtitle="Takes about 20 seconds">
+<Form name="log-workout">
+<Select label="Activity" name="activity" placeholder="Choose an activity" options="Run | Walk | Cycle | Strength | Swim | Yoga | Other" required="true" />
+<Input label="Duration" name="duration" type="number" placeholder="45" hint="In minutes" min="1" max="600" required="true" />
+<Input label="Calories burned" name="calories" type="number" placeholder="320" hint="Leave blank to estimate automatically" min="0" max="5000" />
+<Date label="Date" name="date" hint="Defaults to today" />
+<Slider label="Effort" name="effort" min="1" max="10" step="1" value="6" unit="/10" />
+<TextArea label="Notes" name="notes" placeholder="How did it feel? Any niggles?" rows="3" />
+<Switch label="Add to weekly goal" name="counts_toward_goal" value=true hint="Counts this session toward your 150 active minutes" />
+<Button>Save workout</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Weekly target">
+You've logged 279 active minutes this week against a 150-minute goal. One more session on Tuesday would balance the week.
+</Callout>
+
+<FollowUps>
+- How has my resting heart rate changed this month?
+- Show my best and worst workout days this week
+- Set a new daily step goal
+- Compare this week to last week
+</FollowUps>

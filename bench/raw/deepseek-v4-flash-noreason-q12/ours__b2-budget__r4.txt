@@ -1,0 +1,89 @@
+# Personal Budget Check
+
+<Card title="March 2025 Overview">
+<Columns>
+<Stat label="Budget" value="$3,200" icon="wallet" />
+<Stat label="Spent" value="$2,845" change="11% under budget" tone="success" icon="receipt" />
+<Stat label="Remaining" value="$355" icon="piggy-bank" />
+<Stat label="Daily average" value="$91.77" icon="chart-line" />
+</Columns>
+
+<Progress value="2845" max="3200" label="Budget used: $2,845 / $3,200 (89%)" tone="info" />
+
+<Callout tone="warning" title="Largest expense this month">
+Rent — $1,200 (42% of total spending)
+</Callout>
+</Card>
+
+<Card title="Spending by category">
+<Chart type="donut" title="Category breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Groceries | 480 |
+| Transportation | 260 |
+| Dining out | 350 |
+| Utilities | 210 |
+| Entertainment | 145 |
+| Health | 120 |
+| Other | 80 |
+</Chart>
+</Card>
+
+<Card title="Largest expense highlighted">
+<Columns>
+<Stat label="Rent" value="$1,200" note="Due Mar 1 · Paid" tone="danger" icon="house" />
+<Stat label="Share of total" value="42%" note="Next largest: Groceries $480" icon="percent" />
+</Columns>
+
+<Callout tone="danger" title="Single largest expense">
+This month's largest single expense is **Rent at $1,200**, which is 42% of your total spending. Consider negotiating rent or exploring shared housing to reduce this fixed cost.
+</Callout>
+</Card>
+
+<Card title="Browse another month">
+<Tabs>
+<Tab title="February 2025">
+<Columns>
+<Stat label="Budget" value="$3,200" />
+<Stat label="Spent" value="$2,980" change="7% under budget" tone="success" />
+<Stat label="Remaining" value="$220" />
+</Columns>
+<Progress value="2980" max="3200" label="93% of budget used" tone="warning" />
+</Tab>
+<Tab title="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,200" />
+<Stat label="Spent" value="$3,410" change="7% over budget" tone="danger" />
+<Stat label="Over" value="$210" />
+</Columns>
+<Progress value="3410" max="3200" label="107% of budget used" tone="danger" />
+</Tab>
+<Tab title="December 2024">
+<Columns>
+<Stat label="Budget" value="$3,200" />
+<Stat label="Spent" value="$2,650" change="17% under budget" tone="success" />
+<Stat label="Remaining" value="$550" />
+</Columns>
+<Progress value="2650" max="3200" label="83% of budget used" tone="success" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an expense" subtitle="Log a new transaction for March 2025">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g. Grocery run at Safeway" required="true" />
+<Input label="Amount ($)" type="number" placeholder="0.00" step="0.01" min="0" required="true" />
+<Select label="Category" placeholder="Choose a category" options="Housing | Groceries | Transportation | Dining out | Utilities | Entertainment | Health | Other" required="true" />
+<Date label="Date" required="true" />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my spending trend over the last 6 months
+- Suggest ways to cut down on my largest expense
+- Compare my spending to last month in detail
+- Set a savings goal based on my remaining budget
+</FollowUps>

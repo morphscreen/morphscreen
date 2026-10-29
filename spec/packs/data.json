@@ -1,0 +1,56 @@
+{
+  "name": "data",
+  "version": "0.1.0",
+  "about": "Ways to show data beyond charts and tables: facts, timelines, gauges, heatmaps, funnels, sparklines and hierarchies.",
+  "components": {
+    "KeyValue": {
+      "about": "labelled facts, from the Markdown table inside: the label, then the value",
+      "attrs": { "title": "string" },
+      "content": "table"
+    },
+    "Timeline": {
+      "about": "events in order, one per list item, written as \"when: what happened\"",
+      "attrs": { "title": "string" },
+      "content": "list"
+    },
+    "Gauge": {
+      "about": "one number on a scale from min to max",
+      "attrs": {
+        "label": { "type": "string", "required": true },
+        "value": { "type": "number", "required": true },
+        "min": "number",
+        "max": "number",
+        "unit": "string",
+        "tone": ["neutral", "info", "success", "warning", "danger"]
+      },
+      "content": "none"
+    },
+    "Heatmap": {
+      "about": "a grid of numbers shaded by size, from the Markdown table inside: the row label, then one column per bucket",
+      "attrs": { "title": "string" },
+      "content": "table",
+      "columns": "numeric"
+    },
+    "Funnel": {
+      "about": "how many reach each stage, from the Markdown table inside: the stage, then the count",
+      "attrs": { "title": "string" },
+      "content": "table",
+      "columns": "numeric"
+    },
+    "Sparkline": {
+      "about": "a number with a small trend line from its recent values",
+      "attrs": {
+        "label": { "type": "string", "required": true },
+        "values": { "type": "list", "required": true },
+        "value": "string",
+        "change": "string"
+      },
+      "content": "none"
+    },
+    "Tree": {
+      "about": "a hierarchy, one list item per entry, written as its path with \" > \" between levels",
+      "attrs": { "title": "string" },
+      "content": "list"
+    }
+  }
+}

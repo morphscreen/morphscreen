@@ -1,0 +1,76 @@
+<Card title="Uptime this quarter">
+<Stat label="Uptime %" value="99.95%" change="0%" tone="success" />
+<Progress value="99.95" max="100" label="Uptime" tone="success" />
+</Card>
+
+<Card title="CPU & Memory usage (last 24h)">
+<Chart type="line" x="Hour" y="Usage %" title="CPU and Memory Usage">
+| Hour | CPU % | Memory % |
+|---|---|---|
+| 0 | 12 | 45 |
+| 1 | 13 | 46 |
+| 2 | 11 | 44 |
+| 3 | 10 | 43 |
+| 4 | 9 | 42 |
+| 5 | 8 | 41 |
+| 6 | 7 | 40 |
+| 7 | 6 | 39 |
+| 8 | 5 | 38 |
+| 9 | 6 | 38 |
+|10 | 7 | 39 |
+|11 | 9 | 40 |
+|12 |10 | 41 |
+|13 |12 | 42 |
+|14 |13 | 43 |
+|15 |15 | 45 |
+|16 |16 | 46 |
+|17 |18 | 48 |
+|18 |19 | 49 |
+|19 |20 | 50 |
+|20 |21 | 51 |
+|21 |22 | 52 |
+|22 |23 | 53 |
+|23 |24 | 54 |
+</Chart>
+</Card>
+
+<Card title="Error rate now">
+<Stat label="Error rate" value="0.42%" change="0%" tone="warning" />
+</Card>
+
+<Card title="Open incidents">
+<Details title="Open incidents" open=true>
+- #101 Critical
+- #102 Warning
+- #103 Info
+- #104 Critical
+- #105 Warning
+</Details>
+</Card>
+
+<Card title="Region filter">
+<Select label="Region" options="US-East | US-West | EU | APAC"! name="region" placeholder="Choose region" required=true />
+</Card>
+
+<Card title="Slowest endpoints">
+<Chart type="horizontal" x="Endpoint" y="Latency ms" title="Top 5 Slowest Endpoints">
+| Endpoint | Latency ms |
+|---|---|
+| /api/v1/search | 850 |
+| /api/v1/users | 720 |
+| /api/v1/orders | 680 |
+| /api/v1/payments | 650 |
+| /api/v1/reports | 620 |
+</Chart>
+</Card>
+
+<Card title="Set alert threshold">
+<Form name="alert-config">
+<Input label="Alert threshold (ms)" name="threshold" type="number" placeholder="200" min="0" step="10" required=true />
+<Button variant="primary" href="#" size="medium" label="Save" />
+</Form>
+</Card>
+
+<Card title="Acknowledge incident">
+<Switch label="Acknowledge incident" name="acknowledge" value="true" hint="" />
+</Card>

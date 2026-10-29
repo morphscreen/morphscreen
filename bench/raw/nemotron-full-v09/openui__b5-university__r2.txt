@@ -1,0 +1,173 @@
+root = Card([header, deptFilter, enrollmentSection, applicationsSection, acceptanceSection, revenueSection, courseCapacitySection, teachingLoadSection, riskSection, scholarshipSection, housingSection, eventsSection, alumniSection, semesterComparisonSection, waitlistSection, courseApprovalTrigger, messageTrigger], "card", "column", "l")
+
+header = CardHeader("University Administrator Dashboard", "Academic Year 2024-2025 Overview")
+
+deptFilter = Card([filterLabel, deptSelect], "clear", "row", "m", "center")
+filterLabel = TextContent("Focus Department:", "default")
+deptSelect = Select("department_focus", [deptAll, deptCS, deptBio, deptEng, deptBus, deptArts], "All Departments", null, "medium")
+deptAll = SelectItem("all", "All Departments")
+deptCS = SelectItem("cs", "Computer Science")
+deptBio = SelectItem("bio", "Biology")
+deptEng = SelectItem("eng", "Engineering")
+deptBus = SelectItem("bus", "Business")
+deptArts = SelectItem("arts", "Arts & Humanities")
+
+enrollmentSection = Card([enrollmentTitle, enrollmentChart], "sunk", "column", "m")
+enrollmentTitle = Heading("Total Enrollment (5-Year Trend)", "h3")
+enrollmentChart = LineChart(enrollmentYears, [enrollmentSeries], "natural", "Academic Year", "Students")
+enrollmentYears = ["2020-21", "2021-22", "2022-23", "2023-24", "2024-25"]
+enrollmentSeries = Series("Total Enrollment", [18420, 19150, 19870, 20540, 21280])
+
+applicationsSection = Card([appsTitle, appsChart], "sunk", "column", "m")
+appsTitle = Heading("Applications by Program", "h3")
+appsChart = HorizontalBarChart(appPrograms, [appsSeries], "grouped", "Applications", "Program")
+appPrograms = ["Computer Science", "Biology", "Engineering", "Business", "Arts & Humanities", "Psychology", "Economics", "Physics"]
+appsSeries = Series("Applications", [3420, 2180, 2890, 4150, 1920, 1670, 1340, 890])
+
+acceptanceSection = Card([acceptTitle, acceptRate, acceptDetail], "sunk", "column", "m")
+acceptTitle = Heading("Acceptance Rate", "h3")
+acceptRate = RadialChart(acceptLabels, acceptValues)
+acceptLabels = ["Accepted", "Rejected"]
+acceptValues = [28.5, 71.5]
+acceptDetail = TextContent("Overall acceptance rate: 28.5% (6,042 accepted of 21,202 applications)", "default")
+
+revenueSection = Card([revTitle, revMetric, revTrend], "sunk", "column", "m")
+revTitle = Heading("Tuition Revenue (Current Fiscal Year)", "h3")
+revMetric = TextContent("$127.4M", "large-heavy")
+revTrend = TextContent("↑ 4.2% vs prior year ($122.3M) | Net of scholarships: $98.1M", "small")
+
+courseCapacitySection = Card([capTitle, capChart], "sunk", "column", "m")
+capTitle = Heading("Course Offering Capacity Utilization", "h3")
+capChart = HorizontalBarChart(capCourses, [capFilled, capRemaining], "stacked", "Seats", "Course")
+capCourses = ["CS101 Intro Programming", "BIO200 Genetics", "ENG301 Thermodynamics", "BUS150 Marketing", "ART101 Art History", "PSY220 Cognitive Psych", "ECN101 Microeconomics", "PHY210 Quantum Mechanics"]
+capFilled = Series("Filled", [95, 78, 82, 65, 88, 72, 91, 54])
+capRemaining = Series("Available", [5, 22, 18, 35, 12, 28, 9, 46])
+
+teachingLoadSection = Card([teachTitle, teachChart], "sunk", "column", "m")
+teachTitle = Heading("Teaching Load by Faculty Member", "h3")
+teachChart = BarChart(teachFaculty, [teachCourses, teachStudents], "grouped", "Faculty", "Count")
+teachFaculty = ["Dr. Chen (CS)", "Dr. Patel (BIO)", "Dr. Rodriguez (ENG)", "Dr. Kim (BUS)", "Dr. Johnson (ART)", "Dr. Williams (PSY)", "Dr. Garcia (ECN)", "Dr. Lee (PHY)"]
+teachCourses = Series("Courses", [3, 2, 3, 2, 2, 3, 2, 2])
+teachStudents = Series("Students", [185, 142, 167, 198, 95, 156, 134, 89])
+
+riskSection = Card([riskTitle, riskTable], "sunk", "column", "m")
+riskTitle = Heading("Students at Academic Risk", "h3")
+riskTable = Table([riskStudent, riskProgram, riskGPA, riskCredits, riskStatus])
+riskStudent = Col("Student", ["A. Martinez", "J. Thompson", "K. Nguyen", "R. Okafor", "S. Patel", "M. Rossi", "L. Kim", "D. Brown"])
+riskProgram = Col("Program", ["Engineering", "Computer Science", "Biology", "Business", "Arts", "Psychology", "Economics", "Physics"])
+riskGPA = Col("Current GPA", [1.82, 1.95, 1.78, 1.89, 1.92, 1.85, 1.91, 1.76])
+riskCredits = Col("Credits Earned", [12, 18, 9, 15, 21, 14, 16, 8])
+riskStatus = Col("Status", ["Probation", "Probation", "Probation", "Warning", "Warning", "Probation", "Warning", "Probation"])
+
+scholarshipSection = Card([scholarTitle, scholarProgress, scholarDetail], "sunk", "column", "m")
+scholarTitle = Heading("Scholarship Budget Utilization", "h3")
+scholarProgress = Progress(scholarPct, scholarLabel)
+scholarPct = 78.5
+scholarLabel = "Used: $4.71M of $6.00M allocated"
+scholarDetail = TextContent("Merit: $2.1M used of $2.5M | Need-based: $1.8M of $2.2M | Athletic: $0.81M of $1.3M", "small")
+
+housingSection = Card([housingTitle, housingOccupancy, housingDetail], "sunk", "column", "m")
+housingTitle = Heading("Housing Occupancy", "h3")
+housingOccupancy = Progress(housingPct, housingLabel)
+housingPct = 94.2
+housingLabel = "Occupied: 3,768 of 4,000 beds"
+housingDetail = TextContent("Freshman halls: 98% | Upperclass: 91% | Graduate: 87% | 232 beds available for waitlist", "small")
+
+eventsSection = Card([eventsTitle, eventsList], "sunk", "column", "m")
+eventsTitle = Heading("Campus Events This Month", "h3")
+eventsList = ListBlock(eventItems, "number")
+eventItems = [
+  ListItem("Career Fair 2025", "Feb 12-13 | Main Gymnasium | 120+ employers registered", null, "View Details"),
+  ListItem("Research Symposium", "Feb 19-21 | Science Complex | Student poster presentations", null, "View Details"),
+  ListItem("Alumni Homecoming Weekend", "Feb 28 - Mar 2 | Campus-wide | Classes of '15, '20, '25", null, "View Details"),
+  ListItem("Mental Health Awareness Week", "Feb 3-7 | Student Center | Workshops & counseling sessions", null, "View Details"),
+  ListItem("International Food Festival", "Feb 15 | Quad | Cultural organizations showcase", null, "View Details")
+]
+
+alumniSection = Card([alumniTitle, alumniChart], "sunk", "column", "m")
+alumniTitle = Heading("Alumni Giving (4-Year Trend)", "h3")
+alumniChart = BarChart(alumniYears, [alumniDonors, alumniAmount], "grouped", "Fiscal Year", "Count / $M")
+alumniYears = ["2021-22", "2022-23", "2023-24", "2024-25"]
+alumniDonors = Series("Donors", [8420, 8950, 9310, 9780])
+alumniAmount = Series("Amount ($M)", [12.4, 13.8, 14.9, 16.2])
+
+semesterComparisonSection = Card([semTitle, semTable], "sunk", "column", "m")
+semTitle = Heading("This Semester vs. Last Semester", "h3")
+semTable = Table([semMetric, semCurrent, semPrevious, semChange])
+semMetric = Col("Metric", ["Enrollment", "Credit Hours", "Avg Class Size", "Faculty FTE", "Course Sections", "Waitlist Total", "Withdrawal Rate", "Dean's List %"])
+semCurrent = Col("Spring 2025", [21280, 298450, 28.4, 1180, 890, 1240, 3.2, 18.5])
+semPrevious = Col("Fall 2024", [20950, 291200, 27.9, 1165, 875, 1080, 3.5, 17.8])
+semChange = Col("Change", ["+1.6%", "+2.5%", "+1.8%", "+1.3%", "+1.7%", "+14.8%", "-0.3pp", "+0.7pp"])
+
+waitlistSection = Card([waitTitle, waitChart], "sunk", "column", "m")
+waitTitle = Heading("Waitlisted Students by Program", "h3")
+waitChart = HorizontalBarChart(waitPrograms, [waitSeries], "grouped", "Waitlisted Students", "Program")
+waitPrograms = ["Computer Science", "Engineering", "Business", "Biology", "Psychology", "Economics", "Arts & Humanities", "Physics"]
+waitSeries = Series("Waitlisted", [340, 285, 220, 156, 98, 87, 65, 42])
+
+courseApprovalTrigger = DialogBlock("Approve New Course", "New Course Approval", "Review and approve a proposed course for the upcoming semester", courseApprovalContent, "primary")
+courseApprovalContent = Form("course_approval", courseApprovalButtons, [courseCodeField, courseTitleField, courseDeptField, courseCreditsField, courseDescField, coursePrereqField, courseInstructorField, courseCapacityField])
+courseCodeField = FormControl("Course Code", courseCodeInput, "e.g., CS495")
+courseCodeInput = Input("course_code", "CS495")
+courseTitleField = FormControl("Course Title", courseTitleInput, "Full course title")
+courseTitleInput = Input("course_title", "Advanced Machine Learning")
+courseDeptField = FormControl("Department", courseDeptSelect)
+courseDeptSelect = Select("course_dept", [deptCS2, deptBio2, deptEng2, deptBus2, deptArts2, deptPsy2, deptEcn2, deptPhy2], "Select department")
+deptCS2 = SelectItem("cs", "Computer Science")
+deptBio2 = SelectItem("bio", "Biology")
+deptEng2 = SelectItem("eng", "Engineering")
+deptBus2 = SelectItem("bus", "Business")
+deptArts2 = SelectItem("arts", "Arts & Humanities")
+deptPsy2 = SelectItem("psy", "Psychology")
+deptEcn2 = SelectItem("ecn", "Economics")
+deptPhy2 = SelectItem("phy", "Physics")
+courseCreditsField = FormControl("Credits", courseCreditsInput)
+courseCreditsInput = Input("course_credits", "3", "number")
+courseDescField = FormControl("Description", courseDescArea, "Course description for catalog")
+courseDescArea = TextArea("course_description", "Advanced topics in machine learning including deep learning, reinforcement learning, and current research directions.")
+coursePrereqField = FormControl("Prerequisites", coursePrereqInput, "Comma-separated course codes")
+coursePrereqInput = Input("course_prereqs", "CS340, CS350, MATH220")
+courseInstructorField = FormControl("Assigned Instructor", courseInstructorSelect)
+courseInstructorSelect = Select("course_instructor", [instrChen, instrPatel, instrRodriguez, instrKim, instrJohnson], "Select instructor")
+instrChen = SelectItem("chen", "Dr. Chen (CS)")
+instrPatel = SelectItem("patel", "Dr. Patel (BIO)")
+instrRodriguez = SelectItem("rodriguez", "Dr. Rodriguez (ENG)")
+instrKim = SelectItem("kim", "Dr. Kim (BUS)")
+instrJohnson = SelectItem("johnson", "Dr. Johnson (ART)")
+courseCapacityField = FormControl("Enrollment Capacity", courseCapacityInput, "Maximum students")
+courseCapacityInput = Input("course_capacity", "30", "number")
+courseApprovalButtons = Buttons([courseApproveBtn, courseRejectBtn], "row")
+courseApproveBtn = Button("Approve Course", null, "primary")
+courseRejectBtn = Button("Reject", null, "secondary")
+
+messageTrigger = DialogBlock("Send Message to Student Group", "Message Student Group", "Compose and send a message to a selected student population", messageContent, "primary")
+messageContent = Form("student_message", messageButtons, [messageGroupField, messageSubjectField, messageBodyField, messageChannelField, messageScheduleField])
+messageGroupField = FormControl("Recipient Group", messageGroupSelect, "Select target student population")
+messageGroupSelect = Select("recipient_group", [groupAll, groupFreshman, groupSophomore, groupJunior, groupSenior, groupGrad, groupProbation, groupHonors, groupIntl, groupAthletes], "All Students")
+groupAll = SelectItem("all", "All Students")
+groupFreshman = SelectItem("freshman", "Freshman Class (2028)")
+groupSophomore = SelectItem("sophomore", "Sophomore Class (2027)")
+groupJunior = SelectItem("junior", "Junior Class (2026)")
+groupSenior = SelectItem("senior", "Senior Class (2025)")
+groupGrad = SelectItem("grad", "Graduate Students")
+groupProbation = SelectItem("probation", "Students on Academic Probation")
+groupHonors = SelectItem("honors", "Honors Program Students")
+groupIntl = SelectItem("intl", "International Students")
+groupAthletes = SelectItem("athletes", "Student Athletes")
+messageSubjectField = FormControl("Subject", messageSubjectInput, "Email subject line")
+messageSubjectInput = Input("message_subject", "Important: Upcoming Registration Deadlines")
+messageBodyField = FormControl("Message", messageBodyArea, "Message content (supports basic formatting)")
+messageBodyArea = TextArea("message_body", "Dear Students,\n\nThis is a reminder that registration for Fall 2025 opens on March 15th. Please meet with your advisor before your registration window...\n\nBest regards,\nOffice of the Registrar", 8)
+messageChannelField = FormControl("Delivery Channel", messageChannelRadio)
+messageChannelRadio = RadioGroup("delivery_channel", [chanEmail, chanSMS, chanPush, chanPortal], "email")
+chanEmail = RadioItem("Email", "Send via university email", "email")
+chanSMS = RadioItem("SMS", "Send via text message (urgent only)", "sms")
+chanPush = RadioItem("Push Notification", "Mobile app push notification", "push")
+chanPortal = RadioItem("Student Portal", "Post to student portal announcements", "portal")
+messageScheduleField = FormControl("Schedule", messageScheduleRadio)
+messageScheduleRadio = RadioGroup("schedule_type", [schedNow, schedLater], "now")
+schedNow = RadioItem("Send Immediately", "Deliver as soon as possible", "now")
+schedLater = RadioItem("Schedule for Later", "Choose date and time", "later")
+messageButtons = Buttons([messageSendBtn, messageCancelBtn], "row")
+messageSendBtn = Button("Send Message", null, "primary")
+messageCancelBtn = Button("Cancel", null, "secondary")

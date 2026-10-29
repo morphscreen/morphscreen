@@ -1,0 +1,57 @@
+<Card title="Airline Hub Operations">
+<Columns>
+<Card title="On-time Performance">
+<Stat label="On-time performance" value="92%" change="↑ 2%" note="Today" tone="success"/>
+<Progress value={92} max={100} label="On-time" tone="success"/>
+</Card>
+<Card title="Flights">
+| Flight | Route | Gate | Status |
+|--------|-------|------|--------|
+| AA100 | JFK → LAX | 12A | On-time |
+| DL200 | ORD → MIA | 5B | Delayed |
+| UA300 | ATL → SFO | 8C | On-time |
+| WN400 | DEN → ATL | 3D | Cancelled |
+</Card>
+<Callout tone="warning" title="Delayed Flights">
+- DL200: ORD → MIA – Gate 5B – Delayed (45 min)  
+- WN400: DEN → ATL – Gate 3D – Cancelled
+</Callout>
+<Card title="Gate Changes">
+- AA100: Gate 12A → 14C  
+- DL200: Gate 5B → 7D  
+- UA300: Gate 8C → 9E
+</Card>
+<Card title="Crews Available">
+<Stat label="Crews Available" value="12" change="↑ 2" note="Ready for reassignment" tone="info"/>
+</Card>
+<Callout tone="warning" title="Weather Advisory">
+Strong crosswinds and reduced visibility expected throughout the day. Operations may be impacted.
+</Callout>
+</Columns>
+<Columns>
+<Card title="Avg. Passenger Load">
+<Stat label="Avg. passenger load" value="85%" change="↔ 0%" note="Today" tone="neutral"/>
+</Card>
+<Callout tone="warning" title="Connections at Risk">
+Several connections have less than 30‑minute layovers, increasing the chance of missed connections.
+</Callout>
+<Card title="Reassign Affected Passengers">
+<Form name="rebook">
+<Input label="Passenger name" name="passenger_name" placeholder="John Doe" />
+<Input label="Current flight" name="current_flight" placeholder="AA100" />
+<Select label="New flight" name="new_flight" options="AA101 | AA102 | AA103" placeholder="Select new flight" />
+<Button variant="primary" label="Reassign flight"/>
+</Form>
+</Card>
+<Card title="Switch Hub">
+<Select label="Hub" name="hub" options="Hub A | Hub B | Hub C" placeholder="Select hub" />
+</Card>
+<Card title="Cancellations">
+<Stat label="Cancellations" value="5" change="↑ 1" note="Today" tone="danger"/>
+</Card>
+<Card title="Avg. Turnaround Time">
+<Stat label="Avg. turnaround time" value="25 min" change="↔ 2 min" note="Today" tone="neutral"/>
+<Progress value={25} max={60} label="Turnaround" tone="info"/>
+</Card>
+</Columns>
+</Card>

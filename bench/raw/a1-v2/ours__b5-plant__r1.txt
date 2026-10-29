@@ -1,0 +1,272 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="warning" title="Live Andon Alerts">
+<Badge tone="danger">CRITICAL</Badge> Line 3 – Extruder jam at Station B | <Badge tone="warning">WARNING</Badge> Line 1 – Temperature drift +3°C | <Badge tone="info">INFO</Badge> Line 5 – Scheduled changeover in 15 min
+</Callout>
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="Availability" value="92.4%" change="+1.2% vs yesterday" tone="success" />
+<Stat label="Performance" value="87.1%" change="-0.8% vs yesterday" tone="warning" />
+<Stat label="Quality" value="96.8%" change="+0.3% vs yesterday" tone="success" />
+<Stat label="OEE Overall" value="77.9%" change="+0.5% vs yesterday" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Today's Production Target">
+<Progress value="8470" max="10000" label="Units Produced: 8,470 / 10,000 (84.7%)" />
+<Columns>
+<Stat label="Target Rate" value="1,250 units/hr" />
+<Stat label="Actual Rate" value="1,059 units/hr" change="-15.3% vs target" tone="warning" />
+<Stat label="Projected End-of-Day" value="9,850 units" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Production Lines Overview">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alerts |
+|---|---|---|---|---|---|
+| Line 1 – Injection | <Badge tone="success">Running</Badge> | 420 | 450 | 81% | 1 Warning |
+| Line 2 – Extrusion | <Badge tone="success">Running</Badge> | 380 | 400 | 79% | 0 |
+| Line 3 – Blow Molding | <Badge tone="danger">Stopped</Badge> | 0 | 350 | 0% | 1 Critical |
+| Line 4 – Assembly | <Badge tone="success">Running</Badge> | 280 | 300 | 85% | 0 |
+| Line 5 – Packaging | <Badge tone="warning">Changeover</Badge> | 0 | 250 | — | 1 Info |
+</Tab>
+<Tab title="Line 1 Detail">
+<Columns>
+<Stat label="Current Rate" value="420 units/hr" />
+<Stat label="Shift Output" value="3,360 units" />
+<Stat label="Defect Rate" value="1.8%" />
+<Stat label="Downtime Today" value="42 min" />
+</Columns>
+<Chart type="line" title="Line 1 Hourly Rate" x="Hour" y="Units/hr">
+| Hour | Rate |
+|---|---|
+| 06:00 | 410 |
+| 07:00 | 435 |
+| 08:00 | 428 |
+| 09:00 | 415 |
+| 10:00 | 422 |
+| 11:00 | 420 |
+| 12:00 | 418 |
+| 13:00 | 425 |
+| 14:00 | 420 |
+</Chart>
+</Tab>
+<Tab title="Line 2 Detail">
+<Columns>
+<Stat label="Current Rate" value="380 units/hr" />
+<Stat label="Shift Output" value="3,040 units" />
+<Stat label="Defect Rate" value="2.4%" />
+<Stat label="Downtime Today" value="28 min" />
+</Columns>
+</Tab>
+<Tab title="Line 3 Detail">
+<Columns>
+<Stat label="Current Rate" value="0 units/hr" />
+<Stat label="Shift Output" value="1,200 units" />
+<Stat label="Defect Rate" value="—" />
+<Stat label="Downtime Today" value="380 min" />
+</Columns>
+<Callout tone="danger" title="Line 3 Stopped">Extruder jam at Station B. Maintenance dispatched. ETA 45 min.</Callout>
+</Tab>
+<Tab title="Line 4 Detail">
+<Columns>
+<Stat label="Current Rate" value="280 units/hr" />
+<Stat label="Shift Output" value="2,240 units" />
+<Stat label="Defect Rate" value="1.2%" />
+<Stat label="Downtime Today" value="15 min" />
+</Columns>
+</Tab>
+<Tab title="Line 5 Detail">
+<Columns>
+<Stat label="Current Rate" value="0 units/hr (Changeover)" />
+<Stat label="Shift Output" value="1,870 units" />
+<Stat label="Defect Rate" value="0.9%" />
+<Stat label="Downtime Today" value="120 min" />
+</Columns>
+</Tab>
+</Tabs>
+<Radio label="Focus on Line" name="line-focus" options="Line 1 | Line 2 | Line 3 | Line 4 | Line 5" value="Line 1" />
+</Card>
+
+<Card title="Defect Rate – Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| 2025-01-15 | 2.1 |
+| 2025-01-16 | 1.9 |
+| 2025-01-17 | 2.3 |
+| 2025-01-18 | 2.0 |
+| 2025-01-19 | 1.8 |
+| 2025-01-20 | 2.2 |
+| 2025-01-21 | 1.7 |
+| 2025-01-22 | 1.9 |
+| 2025-01-23 | 2.1 |
+| 2025-01-24 | 1.8 |
+| 2025-01-25 | 1.6 |
+| 2025-01-26 | 1.9 |
+| 2025-01-27 | 2.0 |
+| 2025-01-28 | 1.7 |
+| 2025-01-29 | 1.8 |
+| 2025-01-30 | 2.1 |
+| 2025-01-31 | 1.9 |
+| 2025-02-01 | 1.8 |
+| 2025-02-02 | 1.7 |
+| 2025-02-03 | 1.9 |
+| 2025-02-04 | 1.8 |
+| 2025-02-05 | 2.0 |
+| 2025-02-06 | 1.8 |
+| 2025-02-07 | 1.7 |
+| 2025-02-08 | 1.6 |
+| 2025-02-09 | 1.8 |
+| 2025-02-10 | 1.9 |
+| 2025-02-11 | 1.8 |
+| 2025-02-12 | 1.7 |
+| 2025-02-13 | 1.8 |
+</Chart>
+<Stat label="30-Day Avg Defect Rate" value="1.88%" change="-0.12% vs prior month" tone="success" />
+</Card>
+
+<Card title="Downtime by Cause – This Month">
+<Chart type="donut" title="Downtime Split" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical Failure | 420 |
+| Material Shortage | 180 |
+| Changeover | 310 |
+| Quality Hold | 95 |
+| Planned Maintenance | 240 |
+| Operator Unavailable | 65 |
+| Power/Utility | 40 |
+</Chart>
+<Columns>
+<Stat label="Total Downtime" value="1,350 min" />
+<Stat label="Unplanned %" value="56.3%" tone="warning" />
+<Stat label="MTBF" value="142 hrs" />
+<Stat label="MTTR" value="38 min" />
+</Columns>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Priority | Status |
+|---|---|---|---|---|---|
+| EXT-03 Extruder | Line 3 | 2025-02-15 | Preventive | High | Overdue |
+| INJ-01 Injector | Line 1 | 2025-02-16 | Predictive | Medium | Scheduled |
+| BLW-02 Blow Mold | Line 3 | 2025-02-18 | Preventive | High | Pending |
+| ASM-04 Assembler | Line 4 | 2025-02-20 | Preventive | Low | Planned |
+| PKG-01 Packager | Line 5 | 2025-02-22 | Predictive | Medium | Planned |
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tonnes" change="-3.2t today" tone="warning" note="Reorder at 30t" />
+<Stat label="Resin Pellets" value="18.7 tonnes" change="-1.8t today" tone="info" note="Reorder at 10t" />
+<Stat label="Packaging Film" value="8,450 kg" change="-620kg today" tone="success" note="Reorder at 5,000kg" />
+<Stat label="Corrugate Boxes" value="24,200 units" change="-1,800 today" tone="success" note="Reorder at 15,000" />
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | Status | PO # |
+|---|---|---|---|---|---|
+| AcerSteel Ltd | Steel Coil – Grade 50 | 25 tonnes | 2025-02-17 | Confirmed | PO-2025-0412 |
+| PolySource Inc | PP Resin – MFI 12 | 15 tonnes | 2025-02-18 | In Transit | PO-2025-0418 |
+| PackRight Co | Stretch Film 500mm | 5,000 kg | 2025-02-19 | Confirmed | PO-2025-0421 |
+| BoxMaster Ltd | RSC Boxes 400×300×200 | 10,000 units | 2025-02-20 | Pending Ack | PO-2025-0425 |
+| LubriTech | Hydraulic Oil ISO 46 | 1,000 L | 2025-02-21 | Confirmed | PO-2025-0428 |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Units per Shift (Last 7 Days)" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift A (06-14) | 8200 | 8450 | 8100 | 8380 | 8520 | 7900 | 0 |
+| Shift B (14-22) | 7950 | 8100 | 7880 | 8050 | 8200 | 7600 | 0 |
+| Shift C (22-06) | 6100 | 6350 | 5980 | 6200 | 6450 | 5800 | 0 |
+</Chart>
+<Columns>
+<Stat label="Shift A Avg" value="8,258 units" tone="success" />
+<Stat label="Shift B Avg" value="7,969 units" />
+<Stat label="Shift C Avg" value="6,147 units" tone="info" />
+<Stat label="Best Shift" value="Shift A (+3.6% vs avg)" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Safety Metrics">
+<Columns>
+<Stat label="Recordable Incidents (YTD)" value="3" change="+1 vs last year" tone="danger" />
+<Stat label="Lost-Time Incidents (YTD)" value="1" change="0 vs last year" tone="warning" />
+<Stat label="Near Misses (YTD)" value="12" change="-4 vs last year" tone="success" />
+<Stat label="Days Since Last Incident" value="47 days" tone="success" />
+</Columns>
+<Callout tone="info" title="Last Incident">2025-01-08 – Minor laceration, Line 2, first aid only. Root cause: missing guard on trim station. Corrective action complete.</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Disposition |
+|---|---|---|---|---|---|---|
+| B-20250213-04 | Line 1 | Container 500ml | 2,400 | Wall thickness variance | 2025-02-13 08:15 | Pending lab |
+| B-20250213-07 | Line 3 | Bottle 1L | 1,800 | Visual defect – splay marks | 2025-02-13 11:30 | Rework queued |
+| B-20250212-15 | Line 4 | Cap Assembly | 5,000 | Torque test failure | 2025-02-12 22:45 | Scrap approved |
+| B-20250211-09 | Line 5 | Shrink Band | 10,000 | Seal integrity | 2025-02-11 14:20 | Released |
+</Card>
+
+<Card title="Energy Use – Today">
+<Columns>
+<Stat label="Electricity" value="1,840 kWh" change="+4.2% vs avg" tone="warning" />
+<Stat label="Natural Gas" value="850 m³" change="-2.1% vs avg" tone="success" />
+<Stat label="Compressed Air" value="12,400 m³" change="+1.8% vs avg" />
+<Stat label="Water" value="18.5 m³" change="0% vs avg" />
+</Columns>
+<Chart type="area" title="Hourly Energy Consumption" x="Hour" y="kWh">
+| Hour | Electricity | Gas (kWh equiv) |
+|---|---|---|
+| 06:00 | 85 | 42 |
+| 07:00 | 110 | 55 |
+| 08:00 | 125 | 62 |
+| 09:00 | 130 | 65 |
+| 10:00 | 128 | 64 |
+| 11:00 | 132 | 66 |
+| 12:00 | 135 | 68 |
+| 13:00 | 138 | 69 |
+| 14:00 | 140 | 70 |
+| 15:00 | 138 | 69 |
+| 16:00 | 135 | 67 |
+| 17:00 | 130 | 65 |
+| 18:00 | 125 | 62 |
+| 19:00 | 118 | 58 |
+| 20:00 | 110 | 55 |
+| 21:00 | 102 | 50 |
+| 22:00 | 95 | 45 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Machine | Line | Description | Priority | Assigned | Created | Status |
+|---|---|---|---|---|---|---|---|
+| WO-2025-0892 | EXT-03 | Line 3 | Clear extruder jam, inspect screw | Critical | M. Torres | 2025-02-13 10:22 | In Progress |
+| WO-2025-0891 | INJ-01 | Line 1 | Replace nozzle heater band | High | J. Chen | 2025-02-13 08:45 | Assigned |
+| WO-2025-0890 | CNV-04 | Line 2 | Conveyor belt tracking adjustment | Medium | R. Patel | 2025-02-12 15:30 | Waiting Parts |
+| WO-2025-0889 | ASM-02 | Line 4 | Gripper calibration | Low | S. Kim | 2025-02-12 09:15 | Scheduled |
+| WO-2025-0888 | PKG-03 | Line 5 | Sealer jaw replacement | Medium | M. Torres | 2025-02-11 14:00 | On Hold |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Select machine" options="EXT-03 Extruder (Line 3) | INJ-01 Injector (Line 1) | BLW-02 Blow Mold (Line 3) | ASM-04 Assembler (Line 4) | PKG-01 Packager (Line 5) | CNV-02 Conveyor (Line 2) | CNV-04 Conveyor (Line 2) | Other" required="true" />
+<Date label="Scheduled Date" name="maint-date" required="true" />
+<Select label="Maintenance Type" name="maint-type" placeholder="Select type" options="Preventive | Predictive | Corrective | Inspection | Calibration" required="true" />
+<Select label="Priority" name="priority" options="Critical | High | Medium | Low" value="Medium" required="true" />
+<TextArea label="Description / Notes" name="maint-notes" placeholder="Describe work to be performed..." rows="3" />
+<Columns>
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">View Calendar</Button>
+</Columns>
+</Form>
+</Card>
+
+<Button variant="primary" size="large">Export Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Shift Report (CSV)</Button>
+<Button variant="tertiary" size="large">Email Report to Management</Button>

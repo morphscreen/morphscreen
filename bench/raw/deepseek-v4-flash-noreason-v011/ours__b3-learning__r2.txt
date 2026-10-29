@@ -1,0 +1,82 @@
+<Card title="Training Analytics Dashboard" subtitle="Monitor learner performance and engagement across your platform">
+<Tabs>
+<Tab title="Overview">
+  <Columns>
+    <Stat label="Active Learners This Week" value="847" icon="users" tone="info" />
+    <Stat label="Course Completion Rate" value="72%" icon="check-circle" tone="success" />
+    <Stat label="Average Quiz Score" value="84%" icon="chart-line" tone="info" />
+  </Columns>
+
+  <Card title="Courses Ranked by Enrollment">
+    <Chart type="horizontal" x="Course" y="Enrolled learners">
+      | Course | Enrolled |
+      |---|---|
+      | Data Fundamentals | 1,204 |
+      | Python for Analytics | 987 |
+      | Machine Learning Intro | 654 |
+      | SQL & Databases | 512 |
+      | Cloud Architecture | 398 |
+      | Agile Project Management | 276 |
+    </Chart>
+  </Card>
+
+  <Card title="Learners at Risk of Dropping Out">
+    <Callout tone="warning" title="6 learners flagged">
+      These learners have not engaged in over 14 days or scored below 50% on recent quizzes.
+    </Callout>
+    <Columns>
+      <Avatar name="Alex Chen" subtitle="No activity 18 days" />
+      <Avatar name="Maria Santos" subtitle="Quiz score 42%" />
+      <Avatar name="James Wilson" subtitle="No activity 21 days" />
+      <Avatar name="Priya Patel" subtitle="Quiz score 38%" />
+      <Avatar name="Omar Hassan" subtitle="No activity 16 days" />
+      <Avatar name="Lena Johansson" subtitle="Quiz score 45%" />
+    </Columns>
+    <Button variant="secondary" ask="Message the 6 at-risk learners">Message at-risk learners</Button>
+  </Card>
+</Tab>
+
+<Tab title="Engagement Trends">
+  <Card title="Weekly Engagement (Last 8 Weeks)">
+    <Chart type="line" x="Week" y="Active learners">
+      | Week | Active learners |
+      |---|---|
+      | Week 1 | 620 |
+      | Week 2 | 710 |
+      | Week 3 | 680 |
+      | Week 4 | 750 |
+      | Week 5 | 800 |
+      | Week 6 | 770 |
+      | Week 7 | 830 |
+      | Week 8 | 847 |
+    </Chart>
+  </Card>
+  <Callout tone="info" title="Trend">
+    Engagement has grown 37% over the past 8 weeks, with a slight dip in week 6.
+  </Callout>
+</Tab>
+
+<Tab title="Cohort Management">
+  <Card title="Narrow to One Cohort">
+    <Form name="cohort-filter">
+      <Select label="Select Cohort" options="All Cohorts | Data Science Q1 2025 | Data Science Q2 2025 | Engineering Bootcamp | Marketing Analytics | Leadership Program" name="cohort" />
+      <Button>Apply Filter</Button>
+    </Form>
+  </Card>
+
+  <Card title="Message a Cohort">
+    <Form name="message-cohort">
+      <Select label="Target Cohort" options="Data Science Q1 2025 | Data Science Q2 2025 | Engineering Bootcamp | Marketing Analytics | Leadership Program" name="target-cohort" required />
+      <Input label="Subject" name="subject" placeholder="e.g., Reminder: Weekly quiz due Friday" required />
+      <TextArea label="Message" name="message" placeholder="Write your message to the cohort…" rows="5" required />
+      <Button>Send Message</Button>
+    </Form>
+  </Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- [Show me the at-risk learners in Data Science Q1 2025](#)
+- [What's the trend for quiz scores over the last 8 weeks?](#)
+- [Send a reminder to the Engineering Bootcamp cohort](#)
+</FollowUps>

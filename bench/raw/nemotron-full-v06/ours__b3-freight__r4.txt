@@ -1,0 +1,160 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">2025-01-15 14:32 UTC • Auto-refresh every 5 min</Callout>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % (Jan)" value="87.3%" change="+2.1% vs Dec" tone="success" />
+<Stat label="Avg Cost / Shipment" value="$1,847" change="-$42 vs last month" tone="neutral" />
+<Stat label="Active Shipments" value="234" change="+12 vs yesterday" tone="info" />
+<Stat label="Delayed" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Search Shipments">
+<Form name="route-search">
+<Input label="Search by route" name="route" placeholder="e.g. LAX → JFK, CHI → ATL" hint="Type origin → destination or carrier name" />
+<Select label="Filter by status" name="status" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" value="All" />
+<Select label="Filter by carrier" name="carrier" placeholder="All carriers" options="All | FedEx Freight | UPS Supply Chain | XPO Logistics | Old Dominion | YRC Worldwide | Estes Express" value="All" />
+<Button variant="secondary">Clear filters</Button>
+</Form>
+</Card>
+
+<Card title="Shipments in Transit">
+<Tabs>
+<Tab title="All (234)">
+| # | Origin | Destination | Carrier | ETA | Status | Cost | Flag |
+|---|---|---|---|---|---|---|---|
+| SH-8842 | Los Angeles, CA | Chicago, IL | FedEx Freight | 2025-01-16 08:00 | In Transit | $1,650 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8843 | Dallas, TX | Atlanta, GA | UPS Supply Chain | 2025-01-16 14:30 | In Transit | $1,200 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8844 | Seattle, WA | Denver, CO | XPO Logistics | 2025-01-17 10:00 | In Transit | $1,890 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8845 | Miami, FL | New York, NY | Old Dominion | 2025-01-16 18:00 | In Transit | $2,100 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8846 | Houston, TX | Phoenix, AZ | YRC Worldwide | 2025-01-17 12:00 | In Transit | $1,450 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8847 | Boston, MA | Washington, DC | Estes Express | 2025-01-16 16:00 | In Transit | $980 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | San Francisco, CA | Portland, OR | FedEx Freight | 2025-01-18 09:00 | In Transit | $1,320 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8849 | Chicago, IL | Detroit, MI | UPS Supply Chain | 2025-01-16 11:00 | In Transit | $850 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8850 | Atlanta, GA | Orlando, FL | XPO Logistics | 2025-01-17 15:00 | In Transit | $1,100 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Denver, CO | Salt Lake City, UT | Old Dominion | 2025-01-18 13:00 | In Transit | $1,560 | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (18)">
+| # | Origin | Destination | Carrier | ETA | Status | Delay | Cost | Flag |
+|---|---|---|---|---|---|---|---|---|
+| SH-8821 | Newark, NJ | Boston, MA | FedEx Freight | 2025-01-14 10:00 | **Delayed** | +2 days | $1,200 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8822 | Philadelphia, PA | Pittsburgh, PA | UPS Supply Chain | 2025-01-14 14:00 | **Delayed** | +1 day | $950 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8823 | Charlotte, NC | Nashville, TN | XPO Logistics | 2025-01-13 18:00 | **Delayed** | +3 days | $1,400 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8824 | Memphis, TN | St. Louis, MO | Old Dominion | 2025-01-14 08:00 | **Delayed** | +2 days | $1,100 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8825 | Kansas City, MO | Omaha, NE | YRC Worldwide | 2025-01-13 12:00 | **Delayed** | +4 days | $1,750 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8826 | Indianapolis, IN | Columbus, OH | Estes Express | 2025-01-14 16:00 | **Delayed** | +1 day | $890 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8827 | Las Vegas, NV | Phoenix, AZ | FedEx Freight | 2025-01-13 10:00 | **Delayed** | +3 days | $1,300 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8828 | San Antonio, TX | Austin, TX | UPS Supply Chain | 2025-01-14 14:00 | **Delayed** | +2 days | $650 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8829 | Portland, OR | Seattle, WA | XPO Logistics | 2025-01-13 09:00 | **Delayed** | +4 days | $1,050 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8830 | Cleveland, OH | Cincinnati, OH | Old Dominion | 2025-01-14 11:00 | **Delayed** | +1 day | $780 | <Button variant="danger" size="small">Flag</Button> |
+</Tab>
+<Tab title="Flagged (7)">
+| # | Origin | Destination | Carrier | ETA | Status | Flagged By | Flag Reason | Flag |
+|---|---|---|---|---|---|---|---|---|
+| SH-8812 | Baltimore, MD | Richmond, VA | FedEx Freight | 2025-01-16 10:00 | In Transit | M. Chen | Temperature excursion risk | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8815 | Minneapolis, MN | Milwaukee, WI | UPS Supply Chain | 2025-01-17 14:00 | In Transit | J. Patel | High-value cargo | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8818 | Raleigh, NC | Charleston, SC | XPO Logistics | 2025-01-16 18:00 | In Transit | M. Chen | Weather delay predicted | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8821 | Newark, NJ | Boston, MA | FedEx Freight | 2025-01-14 10:00 | Delayed | J. Patel | 2+ day delay | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8823 | Charlotte, NC | Nashville, TN | XPO Logistics | 2025-01-13 18:00 | Delayed | M. Chen | 3+ day delay | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8825 | Kansas City, MO | Omaha, NE | YRC Worldwide | 2025-01-13 12:00 | Delayed | J. Patel | 4+ day delay | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8829 | Portland, OR | Seattle, WA | XPO Logistics | 2025-01-13 09:00 | Delayed | M. Chen | 4+ day delay | <Button variant="danger" size="small">Unflag</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Delayed Shipments — Require Attention">
+<Callout tone="warning" title="18 shipments delayed">Top causes: Weather (6), Carrier capacity (5), Customs hold (4), Mechanical (3). 5 shipments delayed 3+ days — escalate to carriers.</Callout>
+<Columns>
+<Stat label="Avg Delay" value="2.3 days" change="+0.4 vs last week" tone="warning" />
+<Stat label="Oldest Delay" value="4 days" change="SH-8825, SH-8829" tone="danger" />
+<Stat label="At Risk of SLA Breach" value="7" change="3 critical" tone="danger" />
+<Stat label="Escalated Today" value="3" change="+2 vs yesterday" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Volume Split by Carrier (Jan)">
+<Chart type="donut" title="Shipment Count by Carrier">
+| Carrier | Shipments |
+|---|---|
+| FedEx Freight | 52 |
+| UPS Supply Chain | 48 |
+| XPO Logistics | 41 |
+| Old Dominion | 37 |
+| YRC Worldwide | 29 |
+| Estes Express | 27 |
+</Chart>
+<Chart type="bar" title="Revenue by Carrier (USD)">
+| Carrier | Revenue |
+|---|---|
+| FedEx Freight | 98400 |
+| UPS Supply Chain | 87600 |
+| XPO Logistics | 78900 |
+| Old Dominion | 71200 |
+| YRC Worldwide | 54300 |
+| Estes Express | 49800 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="line" title="Shipments per Week" x="Week" y="Count">
+| Week | Total | On-Time | Delayed |
+|---|---|---|---|
+| W1 (Nov 18) | 210 | 185 | 25 |
+| W2 (Nov 25) | 225 | 198 | 27 |
+| W3 (Dec 2) | 240 | 212 | 28 |
+| W4 (Dec 9) | 255 | 225 | 30 |
+| W5 (Dec 16) | 270 | 238 | 32 |
+| W6 (Dec 23) | 230 | 200 | 30 |
+| W7 (Dec 30) | 195 | 170 | 25 |
+| W8 (Jan 6) | 234 | 204 | 18 |
+</Chart>
+<Chart type="bar" title="On-Time % by Week" x="Week" y="Percentage">
+| Week | On-Time % |
+|---|---|
+| W1 (Nov 18) | 88.1 |
+| W2 (Nov 25) | 88.0 |
+| W3 (Dec 2) | 88.3 |
+| W4 (Dec 9) | 88.2 |
+| W5 (Dec 16) | 88.1 |
+| W6 (Dec 23) | 87.0 |
+| W7 (Dec 30) | 87.2 |
+| W8 (Jan 6) | 87.3 |
+</Chart>
+</Card>
+
+<Card title="Cost Analysis">
+<Columns>
+<Stat label="Avg Cost / Shipment (All)" value="$1,847" tone="neutral" />
+<Stat label="Avg Cost — On-Time" value="$1,720" tone="success" />
+<Stat label="Avg Cost — Delayed" value="$2,410" tone="warning" />
+<Stat label="Cost Variance (Delayed vs On-Time)" value="+40%" tone="danger" />
+</Columns>
+<Chart type="bar" title="Avg Cost by Carrier">
+| Carrier | Avg Cost |
+|---|---|
+| FedEx Freight | 1892 |
+| UPS Supply Chain | 1825 |
+| XPO Logistics | 1924 |
+| Old Dominion | 1924 |
+| YRC Worldwide | 1872 |
+| Estes Express | 1844 |
+</Chart>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Create New Shipment</Button>
+<Button variant="secondary" size="large">Bulk Flag Delayed</Button>
+<Button variant="secondary" size="large">Export CSV</Button>
+<Button variant="tertiary" size="large">Carrier Scorecards</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the top 5 delayed routes this month
+- Which carrier has the best on-time rate for LAX → CHI?
+- Set up alerts for shipments delayed > 48 hours
+- Compare Q4 vs Q1 volume trends
+</FollowUps>

@@ -1,0 +1,156 @@
+# University Administrator Overview
+
+<Badge tone="info">Spring 2025</Badge>
+
+<Card title="Department focus" subtitle="Select a department to filter all metrics below">
+<Form name="department-focus">
+<Select label="Department" name="department" options="All departments | Computer Science | Business | Psychology | Mechanical Engineering | Biology | Nursing" placeholder="Choose a department" />
+<Button>Apply filter</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Total enrollment" subtitle="Five-year trend">
+<Stat label="Total enrollment" value="38,420" change="+2.4% vs last year" tone="success" icon="users" />
+<Chart type="line" x="Academic year" y="Students">
+| Year | Students |
+|---|---|
+| 2020-21 | 34810 |
+| 2021-22 | 35420 |
+| 2022-23 | 36180 |
+| 2023-24 | 37520 |
+| 2024-25 | 38420 |
+</Chart>
+</Card>
+
+<Card title="Applications by program" subtitle="Fall 2025 cycle to date">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Computer Science | 4120 |
+| Business | 3480 |
+| Psychology | 2910 |
+| Mechanical Engineering | 2640 |
+| Biology | 2310 |
+| Nursing | 1980 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Acceptance rate">
+<Stat label="Acceptance rate" value="62.4%" change="-2.7 pts vs last year" tone="warning" icon="chart-line" />
+<Progress value="62.4" max="100" label="Offers / applications" tone="warning" />
+</Card>
+
+<Card title="Tuition revenue this year">
+<Stat label="Net tuition revenue" value="$214.6M" change="+6.1% vs last year" tone="success" icon="currency-dollar" />
+<Progress value="68" max="100" label="Annual budget target collected" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Course offering fullness" subtitle="Spring 2025 sections at capacity">
+<Progress value="96" max="100" label="NUR 220 · 48/50" tone="danger" />
+<Progress value="92" max="100" label="CS 101 · 184/200" tone="warning" />
+<Progress value="85" max="100" label="ME 301 · 85/100" tone="info" />
+<Progress value="78" max="100" label="BUS 201 · 117/150" />
+<Progress value="71" max="100" label="BIO 150 · 106/150" />
+<Progress value="64" max="100" label="PSY 110 · 96/150" />
+</Card>
+
+<Card title="Teaching load by faculty" subtitle="Courses per faculty member this semester">
+<Progress value="4" max="5" label="Dr. Chen · CS · 4 courses · 178 students" tone="info" />
+<Progress value="5" max="5" label="Dr. Patel · ME · 5 courses · 210 students" tone="danger" />
+<Progress value="3" max="5" label="Dr. Alvarez · BUS · 3 courses · 142 students" />
+<Progress value="4" max="5" label="Dr. Nguyen · PSY · 4 courses · 167 students" tone="info" />
+<Progress value="3" max="5" label="Dr. Okafor · BIO · 3 courses · 133 students" />
+<Progress value="2" max="5" label="Dr. Rossi · NUR · 2 courses · 88 students" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Students at academic risk" subtitle="GPA below 2.0 or on probation">
+<Stat label="At-risk students" value="1,240" change="-3% vs last term" tone="danger" icon="warning" />
+| Program | At-risk students |
+|---|---|
+| Business | 260 |
+| Computer Science | 230 |
+| Psychology | 210 |
+| Mechanical Engineering | 190 |
+| Biology | 180 |
+| Nursing | 170 |
+</Card>
+
+<Columns>
+<Card title="Scholarships & housing" subtitle="Budget and capacity status">
+<Progress value="71" max="100" label="Scholarship budget used · $12.8M of $18M" tone="info" />
+<Progress value="90" max="100" label="Housing occupancy · 4,320 of 4,800 beds" tone="success" />
+</Card>
+
+<Card title="Campus events this month" subtitle="March 2025">
+| Date | Event | Location |
+|---|---|---|
+| Mar 4 | Spring Career Fair | Student Union |
+| Mar 11 | Research Symposium | Innovation Hall |
+| Mar 18 | Guest Lecture: AI Ethics | Keyes Hall |
+| Mar 25 | International Food Festival | Quad |
+| Mar 30 | Admissions Open House | Main Auditorium |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Alumni giving" subtitle="Donations received by fiscal year">
+<Chart type="bar" x="Fiscal year" y="USD (millions)">
+| Year | Giving |
+|---|---|
+| FY 2021 | 8.2 |
+| FY 2022 | 9.4 |
+| FY 2023 | 11.1 |
+| FY 2024 | 12.6 |
+</Chart>
+</Card>
+
+<Card title="This semester vs last" subtitle="Spring 2025 compared with Fall 2024">
+| Metric | Fall 2024 | Spring 2025 | Change |
+|---|---|---|---|
+| Total course registrations | 178,340 | 181,210 | +1.6% |
+| Average GPA | 3.18 | 3.21 | +0.03 |
+| Retention to next term | 91.6% | 92.4% | +0.8 pts |
+| Waitlisted students | 1,540 | 1,310 | -14.9% |
+| Student satisfaction | 4.1 / 5 | 4.3 / 5 | +0.2 |
+</Card>
+</Columns>
+
+<Card title="Waitlisted students by program" subtitle="Current waitlists">
+| Program | Waitlisted |
+|---|---|
+| Nursing | 312 |
+| Computer Science | 268 |
+| Business | 210 |
+| Psychology | 180 |
+| Mechanical Engineering | 170 |
+| Biology | 170 |
+</Card>
+
+<Columns>
+<Card title="Approve new course" subtitle="Review course proposal">
+<Form name="approve-course">
+<Input label="Course code" name="code" placeholder="e.g. CS 390" required="true" />
+<Input label="Course title" name="title" placeholder="Introduction to Machine Learning" required="true" />
+<Select label="Department" name="dept" options="Computer Science | Business | Psychology | Mechanical Engineering | Biology | Nursing" />
+<Input label="Instructor" name="instructor" placeholder="Dr. Jane Smith" />
+<Input label="Credits" name="credits" type="number" placeholder="3" min="1" max="6" />
+<Button variant="primary">Approve course</Button>
+<Button variant="secondary">Request changes</Button>
+</Form>
+</Card>
+
+<Card title="Message a student group" subtitle="Send an announcement">
+<Form name="message-group">
+<Select label="Student group" name="group" options="All undergraduates | At-risk students | First-generation students | Graduate students | Residential students | CS majors" />
+<Input label="Subject" name="subject" placeholder="Spring advising appointments" />
+<TextArea label="Message" name="message" placeholder="Write announcement…" rows="4" />
+<Button>Send message</Button>
+</Form>
+</Card>
+</Columns>

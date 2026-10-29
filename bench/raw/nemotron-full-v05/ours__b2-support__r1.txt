@@ -1,0 +1,35 @@
+# Support Lead Morning View
+
+<Card title="Filters">
+<Columns>
+<Switch label="High priority only" name="high-priority-filter" value="false" hint="Show only P1 and P2 tickets" />
+</Columns>
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Open tickets" value="47" change="+3 vs yesterday" tone="warning" />
+<Stat label="Avg first response" value="1h 24m" change="-12m vs last week" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Five most recent tickets">
+| # | Ticket | Priority | Status | Assignee | Updated |
+|---|---|---|---|---|---|
+| 1 | #TK-2847: Payment failed on renewal | <Badge tone="danger">P1 Critical</Badge> | Open | — | 8 min ago |
+| 2 | #TK-2846: SSO login loop on mobile | <Badge tone="warning">P2 High</Badge> | In progress | Sarah Chen | 23 min ago |
+| 3 | #TK-2845: Export CSV missing columns | <Badge tone="info">P3 Medium</Badge> | Open | — | 1h 12m ago |
+| 4 | #TK-2844: Dark mode toggle resets | <Badge tone="info">P3 Medium</Badge> | Waiting on customer | Marcus Lee | 2h 5m ago |
+| 5 | #TK-2843: Invite link expires too fast | <Badge tone="neutral">P4 Low</Badge> | Open | — | 3h 41m ago |
+</Card>
+
+<Card title="Open a new ticket">
+<Form name="new-ticket">
+<Input label="Subject" placeholder="Brief summary of the issue" required="true" />
+<Select label="Priority" options="P1 Critical | P2 High | P3 Medium | P4 Low" required="true" />
+<TextArea label="Description" placeholder="Steps to reproduce, expected vs actual behavior, logs, screenshots…" rows="4" required="true" />
+<Input label="Customer email" type="email" placeholder="customer@company.com" hint="Optional: link to existing account" />
+<Button>Create ticket</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

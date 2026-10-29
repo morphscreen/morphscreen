@@ -1,0 +1,121 @@
+# Admin overview
+
+<Columns>
+<Stat label="Monthly recurring revenue" value="$412,800" change="+6.2% MoM" tone="success" icon="chart-line" />
+<Stat label="Annual recurring revenue" value="$4.95M" change="+4.1% QoQ" tone="success" icon="chart-line" />
+<Stat label="Churn this month" value="1.8%" change="+0.3 pts" tone="warning" icon="chart-line" />
+<Stat label="Net promoter score" value="+41" change="+5 vs last quarter" tone="success" icon="users" />
+</Columns>
+
+<Card title="Reporting period" subtitle="Change the window for every metric on this screen">
+<Form name="reporting-period">
+<Radio label="Period" options="Last 30 days | Last 90 days | Year to date | Custom range" value="Last 90 days" />
+<Date label="From" name="from" />
+<Date label="To" name="to" />
+<Button>Apply period</Button>
+</Form>
+</Card>
+
+<Card title="New signups" subtitle="Past 90 days">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 182 |
+| W2 | 204 |
+| W3 | 231 |
+| W4 | 218 |
+| W5 | 265 |
+| W6 | 288 |
+| W7 | 302 |
+| W8 | 331 |
+| W9 | 356 |
+| W10 | 374 |
+| W11 | 402 |
+| W12 | 438 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" title="Share of accounts">
+| Plan | Accounts |
+|---|---|
+| Starter | 1840 |
+| Growth | 962 |
+| Scale | 318 |
+| Enterprise | 74 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization" subtitle="Active seats against purchased seats">
+<Progress value="78" max="100" label="Company-wide seat utilization" tone="info" />
+| Plan | Seats used | Seats purchased | Utilization |
+|---|---|---|---|
+| Starter | 4,120 | 5,520 | 75% |
+| Growth | 6,480 | 7,700 | 84% |
+| Scale | 3,910 | 4,760 | 82% |
+| Enterprise | 2,240 | 3,100 | 72% |
+</Card>
+
+<Card title="Ten largest customers">
+| Customer | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Northwind Group | Enterprise | 620 | $48,200 |
+| Contoso Health | Enterprise | 540 | $41,900 |
+| Fabrikam Logistics | Enterprise | 410 | $33,400 |
+| Tailspin Media | Scale | 380 | $22,800 |
+| Adatum Financial | Scale | 355 | $21,300 |
+| Proseware Labs | Scale | 320 | $19,200 |
+| Litware Retail | Scale | 298 | $17,900 |
+| Wingtip Travel | Growth | 265 | $12,400 |
+| Alpine Ski House | Growth | 240 | $11,200 |
+| Fourth Coffee Co. | Growth | 214 | $9,800 |
+</Card>
+
+<Card title="Accounts at risk">
+<Callout tone="warning" title="4 accounts need attention">Combined monthly spend at risk: $61,400</Callout>
+| Account | Monthly spend | Reason |
+|---|---|---|
+| Fabrikam Logistics | $33,400 | Login activity down 62% over 30 days; champion left the company |
+| Litware Retail | $17,900 | Two failed payments and no admin login in 21 days |
+| Alpine Ski House | $11,200 | Support tickets up 3x; NPS response of 3 |
+| Fourth Coffee Co. | $9,800 | Trial of Scale plan expired without conversion |
+<Button ask="Show me the full risk list with recommended actions for each account">See all at-risk accounts</Button>
+</Card>
+
+<Card title="Failed payments">
+| Account | Amount | Failed on | Reason |
+|---|---|---|---|
+| Litware Retail | $17,900 | 3 days ago | Card declined — insufficient funds |
+| Alpine Ski House | $11,200 | 5 days ago | Card expired |
+| Fourth Coffee Co. | $9,800 | 8 days ago | Bank authorization hold |
+<Button variant="primary" ask="Retry the failed payment for Litware Retail">Retry Litware Retail</Button>
+<Button variant="secondary" ask="Retry the failed payment for Alpine Ski House">Retry Alpine Ski House</Button>
+<Button variant="secondary" ask="Retry the failed payment for Fourth Coffee Co.">Retry Fourth Coffee Co.</Button>
+</Card>
+
+<Card title="New feature adoption" subtitle="Share of active accounts using each feature">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption |
+|---|---|
+| Audit log export | 46 |
+| Custom roles | 38 |
+| Usage alerts | 27 |
+</Chart>
+</Card>
+
+<Card title="Invite an admin">
+<Form name="invite-admin">
+<Input label="Full name" name="name" placeholder="Jane Smith" required="true" />
+<Input label="Work email" name="email" type="email" placeholder="jane@company.com" hint="They'll get an invite link valid for 7 days" required="true" />
+<Select label="Role" name="role" options="Admin | Billing admin | Read-only" placeholder="Choose a role" required="true" />
+<Checkboxes label="Permissions" name="perms" options="Manage billing | Manage users | Manage integrations | View reports" value="View reports" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Break down MRR movement into new, expansion, and churn
+- Show the at-risk accounts with the longest time since last login
+- Compare feature adoption between Enterprise and Growth plans
+- Draft a win-back email for the failed-payment accounts
+</FollowUps>

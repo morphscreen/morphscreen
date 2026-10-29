@@ -1,0 +1,78 @@
+# Low-Inventory Warning
+
+<Callout tone="warning" title="Action needed">
+6 items are at or below the reorder threshold. Review and reorder before stock runs out.
+</Callout>
+
+<Card title="Search & Filter">
+<Form name="inventory-search">
+<Input label="Search items" name="search" type="search" placeholder="Search by name or SKU…" />
+<Select label="Category" name="category" placeholder="All categories" options="All categories | Electronics | Apparel | Home Goods | Office Supplies" />
+<Select label="Status" name="status" placeholder="All statuses" options="All statuses | Below threshold | At threshold" />
+<Button>Apply filters</Button>
+</Form>
+</Card>
+
+<Card title="Low-Inventory Items" subtitle="Threshold: 10 units — items at or below this trigger a warning">
+<Columns>
+<div>
+<Stat label="Items below threshold" value="4" tone="danger" icon="warning-circle" />
+</div>
+<div>
+<Stat label="Items at threshold" value="2" tone="warning" icon="alert" />
+</div>
+<div>
+<Stat label="Total to reorder" value="142 units" tone="info" icon="package" />
+</div>
+</Columns>
+
+<Details title="What does the threshold mean?" open="false">
+The reorder threshold is set to **10 units**. When an item's remaining stock drops to 10 or below, it appears on this warning screen. You can adjust this threshold in Inventory Settings.
+</Details>
+
+<Card title="Items Running Low">
+| Item | SKU | Remaining Units | Threshold Status | Action |
+|---|---|---|---|---|
+| Wireless Mouse M325 | SKU-1001 | 3 | <Badge tone="danger">Below</Badge> | <Button variant="primary" size="small">Reorder 25</Button> |
+| USB-C Cable 2m | SKU-1002 | 7 | <Badge tone="danger">Below</Badge> | <Button variant="primary" size="small">Reorder 50</Button> |
+| Laptop Stand Pro | SKU-1003 | 10 | <Badge tone="warning">At threshold</Badge> | <Button variant="primary" size="small">Reorder 15</Button> |
+| Desk Organizer | SKU-1004 | 2 | <Badge tone="danger">Below</Badge> | <Button variant="primary" size="small">Reorder 30</Button> |
+| HDMI Cable 1.5m | SKU-1005 | 10 | <Badge tone="warning">At threshold</Badge> | <Button variant="primary" size="small">Reorder 20</Button> |
+| Notebook A5 | SKU-1006 | 5 | <Badge tone="danger">Below</Badge> | <Button variant="primary" size="small">Reorder 40</Button> |
+</Card>
+
+<Card title="Stock Level Overview">
+<Chart type="bar" title="Remaining units vs threshold" x="Item" y="Units">
+| Item | Remaining | Threshold |
+|---|---|---|
+| Wireless Mouse | 3 | 10 |
+| USB-C Cable | 7 | 10 |
+| Laptop Stand | 10 | 10 |
+| Desk Organizer | 2 | 10 |
+| HDMI Cable | 10 | 10 |
+| Notebook | 5 | 10 |
+</Chart>
+</Card>
+
+<Card title="Reorder Summary">
+<Columns>
+<div>
+<Stat label="Items selected" value="6" icon="list-checks" />
+</div>
+<div>
+<Stat label="Total units" value="180" icon="shopping-cart" />
+</div>
+<div>
+<Stat label="Est. cost" value="$1,240" tone="info" icon="currency-dollar" />
+</div>
+</Columns>
+<Button variant="primary">Reorder all selected</Button>
+<Button variant="secondary">Adjust threshold</Button>
+</Card>
+
+<FollowUps>
+- Which items are closest to running out completely?
+- Show me the reorder history for these items.
+- How do I change the threshold for a specific item?
+- What suppliers do we use for these items?
+</FollowUps>

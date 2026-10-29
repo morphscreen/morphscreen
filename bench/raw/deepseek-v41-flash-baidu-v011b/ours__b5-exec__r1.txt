@@ -1,0 +1,106 @@
+# Quarterly Command View
+
+<Card title="Q3 FY25 command view" subtitle="Company-wide · Board pack preview">
+<Columns>
+<Stat label="Revenue" value="$42.8M" change="+12% QoQ" tone="success" icon="chart-line" />
+<Stat label="Costs" value="$31.2M" change="+6% QoQ" tone="warning" icon="chart-line" />
+<Stat label="Profit" value="$11.6M" change="+31% QoQ" tone="success" icon="chart-line" />
+<Stat label="Runway" value="19 months" note="At current burn" tone="info" icon="calendar" />
+</Columns>
+</Card>
+
+<Card title="Scope controls" subtitle="Change the quarter, focus a region, export the pack">
+<Form name="scope">
+<Select label="Quarter" name="quarter" value="Q3 FY25" options="Q1 FY25 | Q2 FY25 | Q3 FY25 | Q4 FY25" hint="Switches every number on this screen" />
+<Select label="Region" name="region" value="Global" options="Global | North America | EMEA | APAC | LATAM" hint="Narrows revenue, costs, pipeline and headcount" />
+<Radio label="Currency" name="currency" options="USD | EUR | GBP" value="USD" />
+<Button icon="download">Export pack</Button>
+<Button variant="secondary" icon="calendar">Schedule board review</Button>
+</Form>
+</Card>
+
+<Card title="Revenue, costs and profit over four quarters">
+<Chart type="line" x="Quarter" y="USD (millions)">
+| Quarter | Revenue | Costs | Profit |
+|---|---|---|---|
+| Q4 FY24 | 33.1 | 27.4 | 5.7 |
+| Q1 FY25 | 35.6 | 28.9 | 6.7 |
+| Q2 FY25 | 38.2 | 29.4 | 8.8 |
+| Q3 FY25 | 42.8 | 31.2 | 11.6 |
+</Chart>
+</Card>
+
+<Card title="Budget by department against plan">
+<Chart type="bar" x="Department" y="USD (millions)">
+| Department | Actual | Plan |
+|---|---|---|
+| Engineering | 9.4 | 9.0 |
+| Sales & Marketing | 8.1 | 8.6 |
+| Customer Success | 4.2 | 4.0 |
+| G&A | 3.9 | 4.1 |
+| R&D | 5.6 | 5.5 |
+</Chart>
+<Callout tone="info" title="Two lines off plan">Sales & Marketing is $0.5M under plan; Engineering is $0.4M over on contractor spend.</Callout>
+</Card>
+
+<Card title="Headcount by department">
+<Columns>
+<Stat label="Total headcount" value="1,412" change="+58 QoQ" icon="users" />
+<Stat label="Attrition" value="8.1%" note="Annualized" tone="warning" icon="users" />
+</Columns>
+<Chart type="horizontal" x="Department" y="People">
+| Department | Headcount |
+|---|---|
+| Engineering | 512 |
+| Sales & Marketing | 318 |
+| Customer Success | 224 |
+| R&D | 186 |
+| G&A | 172 |
+</Chart>
+</Card>
+
+<Card title="Top risks">
+| Risk | Owner | Severity |
+|---|---|---|
+| EMEA renewal concentration — 3 accounts are 22% of ARR | Dana Whitfield, CRO | <Badge tone="danger">High</Badge> |
+| Cloud cost per active tenant up 9% QoQ | Priya Raman, CTO | <Badge tone="warning">Medium</Badge> |
+| Key engineer attrition in Platform team | Marcus Lee, VP Eng | <Badge tone="warning">Medium</Badge> |
+| New data-residency rules in APAC | Sofia Alvarez, Legal | <Badge tone="info">Watch</Badge> |
+| FX exposure on EUR-denominated contracts | Tom Becker, CFO | <Badge tone="info">Watch</Badge> |
+</Card>
+
+<Card title="Strategic initiatives">
+<Steps>
+<Step title="Enterprise tier launch" status="done" subtitle="Shipped Q2 · 41 logos converted">On plan, revenue contribution tracking ahead of model.</Step>
+<Step title="APAC data residency build-out" status="current" subtitle="Owner: Priya Raman · Due Q4">Two of three regions live; Singapore pending certification.</Step>
+<Step title="Partner marketplace" status="current" subtitle="Owner: Dana Whitfield · Due Q1 FY26">12 partners onboarded against a target of 20.</Step>
+<Step title="Billing platform migration" status="todo" subtitle="Owner: Tom Becker · Due Q2 FY26">Scoping complete, engineering not yet staffed.</Step>
+</Steps>
+</Card>
+
+<Card title="Go-to-market health">
+<Columns>
+<Stat label="Pipeline value" value="$118M" change="+14% QoQ" tone="success" icon="chart-line" />
+<Stat label="Win rate" value="27.4%" change="+2.1 pts" tone="success" icon="chart-line" />
+<Stat label="Customers" value="3,847" change="+212 net" tone="success" icon="users" />
+<Stat label="Churn" value="1.3%" note="Monthly, logo" tone="warning" icon="users" />
+</Columns>
+<Columns>
+<Stat label="NPS" value="54" change="+6 pts" tone="success" icon="chart-line" />
+<Stat label="CAC payback" value="14 months" tone="neutral" icon="calendar" />
+</Columns>
+</Card>
+
+<Card title="Next board meeting" subtitle="Thursday 14 November · 09:00 PT">
+<Checkboxes label="Agenda items" name="agenda" options="Q3 results vs plan | FY26 budget approval | APAC expansion decision | Executive compensation review | Risk register update" value="Q3 results vs plan | FY26 budget approval | APAC expansion decision" />
+<TextArea label="Notes for the chair" name="chair-notes" placeholder="Anything the board should read before the meeting" rows="4" />
+<Button icon="download">Export board pack</Button>
+<Button variant="secondary" icon="calendar">Add to calendar</Button>
+</Card>
+
+<FollowUps>
+- Break down EMEA revenue by account
+- What changed in costs since Q2?
+- Draft the FY26 budget approval slide
+- Show pipeline by stage and region
+</FollowUps>

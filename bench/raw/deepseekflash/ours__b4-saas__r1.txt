@@ -1,0 +1,111 @@
+Here is the single-screen admin overview for your SaaS, covering all 13 requirements.
+
+# SaaS Admin Overview
+
+<Card title="Admin controls" subtitle="Set reporting range and manage admin access">
+<Badge tone="success">All systems operational</Badge>
+
+<Columns>
+<Form name="reporting-period">
+<Select label="Reporting period" placeholder="Choose a period" options="Last 30 days | Last 90 days | Last 12 months" name="period" />
+<Button>Apply period</Button>
+</Form>
+<Form name="invite-admin">
+<Input label="Invite another admin" type="email" placeholder="colleague@company.com" hint="They'll receive a secure invite link by email" />
+<Button>Send invite</Button>
+</Form>
+</Columns>
+</Card>
+
+<Card title="Key metrics" subtitle="Reflects the selected reporting period">
+<Columns>
+<Stat label="MRR" value="$128,400" change="+6.2% vs prior period" note="Monthly recurring revenue" />
+<Stat label="ARR" value="$1,540,800" change="+6.2% vs prior period" note="Annual recurring revenue" />
+<Stat label="Churn this month" value="2.1%" change="Down 0.3 pts" note="Logo churn" />
+<Stat label="Current NPS" value="42" change="+5 vs last quarter" note="Based on 214 responses" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="New signups" subtitle="Past 90 days, weekly totals">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 74 |
+| W2 | 91 |
+| W3 | 85 |
+| W4 | 102 |
+| W5 | 118 |
+| W6 | 96 |
+| W7 | 124 |
+| W8 | 139 |
+| W9 | 121 |
+| W10 | 146 |
+| W11 | 158 |
+| W12 | 172 |
+| W13 | 184 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan" subtitle="Active customer accounts">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Basic | 1240 |
+| Pro | 680 |
+| Enterprise | 118 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Ten largest customers" subtitle="Ranked by monthly spend, with seats">
+| Customer | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Acme Corp | Enterprise | 240 | $24,500 |
+| Globex Inc. | Enterprise | 180 | $19,200 |
+| Initech | Enterprise | 120 | $14,800 |
+| Umbrella Corp | Pro | 95 | $9,500 |
+| Stark Industries | Enterprise | 88 | $9,200 |
+| Wayne Enterprises | Pro | 72 | $7,400 |
+| Hooli | Pro | 65 | $6,800 |
+| Pied Piper | Pro | 58 | $6,100 |
+| Cyberdyne Systems | Basic | 110 | $5,500 |
+| Vandelay Industries | Basic | 85 | $4,250 |
+</Card>
+
+<Columns>
+<Card title="Accounts at risk" subtitle="Likely churn drivers for each account">
+| Account | Risk reason |
+|---|---|
+| Umbrella Corp | Login activity down 70% for 21 days |
+| Initech | Renewal in 45 days; no response to QBR invite |
+| Pied Piper | Usage dropped after admin change; 3 open support tickets |
+| Cyberdyne Systems | Budget freeze announced; asked to downgrade |
+| Vandelay Industries | Monthly spend down 40%; active seats reduced |
+</Card>
+
+<Card title="Failed payments" subtitle="Retry to collect revenue">
+| Customer | Amount | Failed on | Action |
+|---|---|---|---|
+| Globex Inc. | $19,200 | Mar 2 | <Button variant="secondary" ask="Retry payment for Globex Inc.">Retry</Button> |
+| Initech | $14,800 | Mar 4 | <Button variant="secondary" ask="Retry payment for Initech">Retry</Button> |
+| Hooli | $6,800 | Mar 7 | <Button variant="secondary" ask="Retry payment for Hooli">Retry</Button> |
+| Pied Piper | $6,100 | Mar 6 | <Button variant="secondary" ask="Retry payment for Pied Piper">Retry</Button> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Feature adoption" subtitle="Three newest features – share of active accounts using each">
+<Progress value="62" max="100" label="AI Copilot – 62% of accounts" />
+<Progress value="43" max="100" label="Custom reports – 43% of accounts" />
+<Progress value="28" max="100" label="SCIM provisioning – 28% of accounts" />
+</Card>
+
+<Card title="Seat utilization" subtitle="Across all customer accounts">
+<Progress value="74" max="100" label="74% of purchased seats are in active use" />
+<Columns>
+<Stat label="Purchased seats" value="8,412" />
+<Stat label="Active seats" value="6,225" />
+</Columns>
+</Card>
+</Columns>

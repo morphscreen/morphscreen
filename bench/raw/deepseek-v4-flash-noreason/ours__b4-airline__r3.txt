@@ -1,0 +1,223 @@
+# Airline Hub Operations — ATL
+
+<Columns>
+<div>
+<Stat label="On-Time Performance" value="87.4%" change="+2.1 pts vs yesterday" tone="success" icon="chart-line" />
+</div>
+<div>
+<Stat label="Avg Passenger Load" value="78.2%" change="−3.4 pts vs yesterday" tone="info" icon="users" />
+</div>
+<div>
+<Stat label="Avg Turnaround Time" value="41 min" change="−6 min vs yesterday" tone="success" icon="clock" />
+</div>
+<div>
+<Stat label="Cancellations Today" value="4" change="1 weather-related" tone="warning" icon="x-circle" />
+</div>
+</Columns>
+
+<Card title="Hub Selector" subtitle="Switch to another operating hub">
+<Form name="hub-select">
+<Select label="Hub" options="ATL — Atlanta (current) | DFW — Dallas/Fort Worth | ORD — Chicago O'Hare | DEN — Denver | JFK — New York JFK" name="hub" />
+<Button>View Hub</Button>
+</Form>
+</Card>
+
+<Card title="Delayed Flights" subtitle="Highlighted — 9 flights delayed, 2 critical">
+<Callout tone="warning" title="Critical delay — DL 2184">Mechanical issue; passenger rebooking recommended. See connections at risk below.</Callout>
+<Callout tone="warning" title="Critical delay — UA 1732">Crew timeout; replacement crew assigned from standby pool.</Callout>
+
+| Flight | Route | Gate | Status | Delay |
+|---|---|---|---|---|
+| DL 2184 | ATL → LAX | B12 | <Badge tone="danger">Delayed</Badge> | 1h 45m |
+| UA 1732 | ATL → SFO | C7 | <Badge tone="danger">Delayed</Badge> | 1h 20m |
+| AA 1102 | ATL → MIA | A4 | <Badge tone="warning">Delayed</Badge> | 45m |
+| WN 4471 | ATL → DAL | D3 | <Badge tone="warning">Delayed</Badge> | 35m |
+| DL 882 | ATL → BOS | B9 | <Badge tone="warning">Delayed</Badge> | 28m |
+| F9 221 | ATL → DEN | E1 | <Badge tone="warning">Delayed</Badge> | 22m |
+| AS 314 | ATL → SEA | C12 | <Badge tone="warning">Delayed</Badge> | 18m |
+| B6 1901 | ATL → JFK | A7 | <Badge tone="warning">Delayed</Badge> | 15m |
+| NK 776 | ATL → LAS | E5 | <Badge tone="warning">Delayed</Badge> | 12m |
+</Card>
+
+<Card title="All Flights — Today" subtitle="Departures and arrivals through 23:59 ET">
+<Tabs>
+<Tab title="Departures">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 2184 | ATL → LAX | B12 | <Badge tone="danger">Delayed</Badge> |
+| UA 1732 | ATL → SFO | C7 | <Badge tone="danger">Delayed</Badge> |
+| AA 1102 | ATL → MIA | A4 | <Badge tone="warning">Delayed</Badge> |
+| WN 4471 | ATL → DAL | D3 | <Badge tone="warning">Delayed</Badge> |
+| DL 882 | ATL → BOS | B9 | <Badge tone="warning">Delayed</Badge> |
+| F9 221 | ATL → DEN | E1 | <Badge tone="warning">Delayed</Badge> |
+| AS 314 | ATL → SEA | C12 | <Badge tone="warning">Delayed</Badge> |
+| B6 1901 | ATL → JFK | A7 | <Badge tone="warning">Delayed</Badge> |
+| NK 776 | ATL → LAS | E5 | <Badge tone="warning">Delayed</Badge> |
+| DL 1510 | ATL → MCO | B3 | <Badge tone="success">Boarding</Badge> |
+| AA 2081 | ATL → DFW | A11 | <Badge tone="success">On time</Badge> |
+| WN 3390 | ATL → HOU | D1 | <Badge tone="success">On time</Badge> |
+| DL 2417 | ATL → ORD | B7 | <Badge tone="info">Scheduled</Badge> |
+| UA 610 | ATL → IAH | C2 | <Badge tone="info">Scheduled</Badge> |
+| F9 118 | ATL → PHL | E2 | <Badge tone="info">Scheduled</Badge> |
+</Tab>
+<Tab title="Arrivals">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1922 | LAX → ATL | B11 | <Badge tone="success">Landed</Badge> |
+| AA 884 | MIA → ATL | A5 | <Badge tone="success">Landed</Badge> |
+| UA 331 | SFO → ATL | C8 | <Badge tone="success">On time</Badge> |
+| WN 552 | DAL → ATL | D2 | <Badge tone="warning">Delayed</Badge> |
+| F9 447 | DEN → ATL | E4 | <Badge tone="success">On time</Badge> |
+| B6 1290 | JFK → ATL | A6 | <Badge tone="info">En route</Badge> |
+| NK 881 | LAS → ATL | E6 | <Badge tone="info">En route</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Connections at Risk" subtitle="Passengers who may miss their connection">
+<Callout tone="danger" title="Act now — 12 passengers on DL 2184">They connect to DL 882 (BOS) and DL 2417 (ORD). Rebooking recommended.</Callout>
+
+| Passenger | Flight | Connection | Connection Gate | Time to Connection | Risk |
+|---|---|---|---|---|---|
+| M. Chen | DL 2184 | DL 882 → BOS | B9 | 25 min | <Badge tone="danger">High</Badge> |
+| A. Patel | DL 2184 | DL 882 → BOS | B9 | 25 min | <Badge tone="danger">High</Badge> |
+| S. Okafor | DL 2184 | DL 2417 → ORD | B7 | 40 min | <Badge tone="warning">Medium</Badge> |
+| R. Silva | DL 2184 | DL 2417 → ORD | B7 | 40 min | <Badge tone="warning">Medium</Badge> |
+| J. Thompson | UA 1732 | UA 610 → IAH | C2 | 55 min | <Badge tone="warning">Medium</Badge> |
+| L. Garcia | UA 1732 | UA 610 → IAH | C2 | 55 min | <Badge tone="warning">Medium</Badge> |
+| K. Nguyen | AA 1102 | AA 2081 → DFW | A11 | 30 min | <Badge tone="danger">High</Badge> |
+| P. Rossi | AA 1102 | AA 2081 → DFW | A11 | 30 min | <Badge tone="danger">High</Badge> |
+| T. Kim | WN 4471 | WN 3390 → HOU | D1 | 35 min | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Rebook Affected Passengers" subtitle="Select passengers and choose a new itinerary">
+<Form name="rebook">
+<Checkboxes label="Passengers" options="M. Chen (DL 2184 → BOS) | A. Patel (DL 2184 → BOS) | S. Okafor (DL 2184 → ORD) | R. Silva (DL 2184 → ORD) | J. Thompson (UA 1732 → IAH) | L. Garcia (UA 1732 → IAH) | K. Nguyen (AA 1102 → DFW) | P. Rossi (AA 1102 → DFW) | T. Kim (WN 4471 → HOU)" name="passengers" />
+<Select label="New flight (same destination)" options="DL 2417 → BOS (dep 19:45, B7) | DL 1510 → BOS (dep 21:10, B3) | DL 882 → ORD (dep 20:30, B9) | UA 610 → IAH (dep 21:05, C2) | AA 2081 → DFW (dep 20:15, A11) | WN 3390 → HOU (dep 20:40, D1)" name="new-flight" />
+<Radio label="Rebooking option" options="Automatic — next available flight | Hold for later confirmation | Hotel + meal voucher (if overnight)" name="rebook-option" />
+<Button>Rebook Selected</Button>
+<Button variant="secondary">Send Notification</Button>
+</Form>
+</Card>
+
+<Card title="Recent Gate Changes" subtitle="Last 2 hours">
+| Time | Flight | Route | From | To | Reason |
+|---|---|---|---|---|---|
+| 14:32 | DL 1510 | ATL → MCO | B2 | B3 | Equipment swap |
+| 14:18 | AA 2081 | ATL → DFW | A9 | A11 | Congestion |
+| 14:05 | WN 4471 | ATL → DAL | D5 | D3 | Crew availability |
+| 13:47 | UA 1732 | ATL → SFO | C4 | C7 | Mechanical |
+| 13:22 | B6 1901 | ATL → JFK | A3 | A7 | Gate conflict |
+</Card>
+
+<Card title="Crews Available for Reassignment" subtitle="Standby and released crews — 14 total">
+| Crew ID | Role | Base | Available Until | Notes |
+|---|---|---|---|---|
+| CRW-118 | Captain | ATL | 22:00 | Released from DL 2184 |
+| CRW-204 | First Officer | ATL | 21:30 | Standby |
+| CRW-336 | Flight Attendant | ATL | 23:00 | Released from UA 1732 |
+| CRW-451 | Flight Attendant | ATL | 20:45 | Standby |
+| CRW-509 | Captain | ATL | 19:30 | Standby |
+| CRW-612 | First Officer | ATL | 22:15 | Released from WN 4471 |
+| CRW-738 | Flight Attendant | ATL | 21:00 | Standby |
+| CRW-823 | Flight Attendant | ATL | 23:30 | Standby |
+| CRW-901 | Captain | ATL | 20:00 | Released from F9 221 |
+| CRW-044 | First Officer | ATL | 22:45 | Standby |
+| CRW-157 | Flight Attendant | ATL | 21:15 | Released from AS 314 |
+| CRW-268 | Flight Attendant | ATL | 23:15 | Standby |
+| CRW-372 | Captain | ATL | 19:45 | Standby |
+| CRW-480 | First Officer | ATL | 22:30 | Released from B6 1901 |
+</Card>
+
+<Card title="Weather Advisories — Atlanta (KATL)" subtitle="Updated 14:35 ET">
+<Callout tone="warning" title="Thunderstorm watch until 20:00 ET">Isolated storms 15 mi southwest of the field. Gusts up to 35 kt possible. Expect holding for arrivals from the west.</Callout>
+
+| Advisory | Valid Until | Impact |
+|---|---|---|
+| Thunderstorm watch | 20:00 ET | Arrival delays 15–30 min possible |
+| Wind advisory — crosswinds | 18:00 ET | Runway 26L/8R may be limited |
+| Low visibility — fog | 07:00 ET (expired) | — |
+| Heat advisory — ramp ops | 22:00 ET | Ramp crews rotating; turnaround +5 min |
+</Card>
+
+<Card title="Key Metrics Today" subtitle="As of 14:35 ET">
+<Columns>
+<div>
+<Stat label="On-Time Performance" value="87.4%" change="+2.1 pts" tone="success" icon="chart-line" />
+</div>
+<div>
+<Stat label="Avg Passenger Load" value="78.2%" change="−3.4 pts" tone="info" icon="users" />
+</div>
+<div>
+<Stat label="Avg Turnaround Time" value="41 min" change="−6 min" tone="success" icon="clock" />
+</div>
+<div>
+<Stat label="Cancellations Today" value="4" change="1 weather" tone="warning" icon="x-circle" />
+</div>
+</Columns>
+
+<Card title="Hourly On-Time Performance">
+<Chart type="line" x="Hour" y="% on-time">
+| Hour | On-Time % |
+|---|---|
+| 06 | 92 |
+| 07 | 89 |
+| 08 | 91 |
+| 09 | 85 |
+| 10 | 88 |
+| 11 | 90 |
+| 12 | 84 |
+| 13 | 86 |
+| 14 | 87 |
+</Chart>
+</Card>
+
+<Card title="Turnaround Time by Airline">
+<Chart type="bar" x="Airline" y="Minutes">
+| Airline | Avg Turnaround |
+|---|---|
+| Delta | 38 |
+| United | 44 |
+| American | 42 |
+| Southwest | 35 |
+| Frontier | 47 |
+| Alaska | 43 |
+| JetBlue | 40 |
+| Spirit | 45 |
+</Chart>
+</Card>
+
+<Card title="Cancellations Today" subtitle="4 total — 3 weather, 1 mechanical">
+| Flight | Route | Scheduled | Reason | Passengers Rebooked |
+|---|---|---|---|---|
+| DL 2440 | ATL → MCI | 08:15 | Weather — storms | Yes (all 118) |
+| AA 772 | ATL → PIT | 09:30 | Weather — storms | Yes (all 96) |
+| WN 1188 | ATL → BNA | 11:45 | Weather — storms | Yes (all 132) |
+| F9 331 | ATL → TPA | 13:20 | Mechanical — brake issue | In progress (74 of 89) |
+</Card>
+
+<Card title="Average Passenger Load by Route">
+<Chart type="bar" x="Route" y="Load %">
+| Route | Load % |
+|---|---|
+| ATL → LAX | 91 |
+| ATL → SFO | 84 |
+| ATL → MIA | 88 |
+| ATL → DAL | 76 |
+| ATL → BOS | 82 |
+| ATL → DEN | 69 |
+| ATL → SEA | 73 |
+| ATL → JFK | 79 |
+| ATL → LAS | 64 |
+| ATL → MCO | 86 |
+</Chart>
+</Card>
+</Card>
+
+<FollowUps>
+- Show me the crew schedule for the next 6 hours
+- Which gates have the most congestion right now?
+- List all passengers on DL 2184 who need hotel vouchers
+- Compare on-time performance across all hubs today
+- What weather is expected at DFW for the evening push?
+</FollowUps>

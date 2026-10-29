@@ -1,0 +1,160 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Plant 2 – Day Shift • Live">
+<Columns>
+<Select label="Focus line" options="All lines | Line A | Line B | Line C | Line D" name="focus-line" value="All lines" hint="Selecting a line filters all sections below" />
+<Button variant="primary">Export Shift Report</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" note="Target 85%" />
+<Progress value="78.4" max="100" label="78.4% vs 85% target" />
+</Card>
+<Card title="Today's Production Target">
+<Stat label="Units Produced" value="4,820" note="Target 5,500" />
+<Progress value="4820" max="5500" label="4,820 / 5,500 (88%)" />
+</Card>
+<Card title="Energy Use Today">
+<Stat label="Consumption" value="12.4 MWh" change="−3% vs same shift yesterday" note="Peak at 10:00" />
+</Card>
+<Card title="Safety">
+<Stat label="Incidents (YTD)" value="3" note="47 days since last incident" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Production Lines" subtitle="Rate and status per line">
+
+| Line | Product | Rate (u/h) | Status |
+|---|---|---|---|
+| Line A | Bracket XR-7 | 420 | <Badge tone="success">Running</Badge> |
+| Line B | Flange Y-12 | 380 | <Badge tone="warning">Idle</Badge> |
+| Line C | Casing Z-4 | 0 | <Badge tone="danger">Down</Badge> |
+| Line D | Bracket XR-7 | 350 | <Badge tone="success">Running</Badge> |
+
+</Card>
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="Line C – Conveyor jam">Down for 12 min. Maintenance notified.</Callout>
+<Callout tone="warning" title="Line B – Material low">Resin hopper below 15%. Reorder triggered.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Defect Rate – Past Month">
+<Chart type="line" x="Day" y="Defect %">
+| Day | Defect % |
+|---|---|
+| Nov 1 | 2.1 |
+| Nov 4 | 1.8 |
+| Nov 7 | 2.3 |
+| Nov 10 | 1.9 |
+| Nov 13 | 2.0 |
+| Nov 16 | 1.7 |
+| Nov 19 | 2.2 |
+| Nov 22 | 1.5 |
+| Nov 25 | 1.8 |
+| Nov 28 | 1.4 |
+</Chart>
+</Card>
+<Card title="Downtime Split by Cause">
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Changeover | 3.2 |
+| Breakdown | 2.8 |
+| Material shortage | 1.8 |
+| Quality checks | 1.2 |
+| Other | 1.0 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A (06:00–14:00) | 1720 |
+| Shift B (14:00–22:00) | 1580 |
+| Shift C (22:00–06:00) | 1520 |
+</Chart>
+</Card>
+<Card title="Energy Use Today by Hour">
+<Chart type="area" x="Hour" y="MWh">
+| Hour | MWh |
+|---|---|
+| 00:00 | 0.8 |
+| 02:00 | 0.7 |
+| 04:00 | 0.6 |
+| 06:00 | 0.9 |
+| 08:00 | 1.4 |
+| 10:00 | 1.6 |
+| 12:00 | 1.5 |
+| 14:00 | 1.3 |
+| 16:00 | 1.2 |
+| 18:00 | 1.1 |
+| 20:00 | 0.9 |
+| 22:00 | 0.7 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+
+| Machine | Due Date | Type | Priority |
+|---|---|---|---|
+| Press 3 | Nov 30 | Hydraulic | <Badge tone="danger">High</Badge> |
+| Conveyor B | Dec 2 | Belt | <Badge tone="warning">Medium</Badge> |
+| Robo Weld 1 | Dec 3 | Calibration | <Badge tone="warning">Medium</Badge> |
+| Compressor 2 | Dec 5 | Filter | <Badge tone="neutral">Low</Badge> |
+
+</Card>
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" options="Press 3 | Conveyor B | Robo Weld 1 | Compressor 2" name="machine" placeholder="Select machine" required="true" />
+<Date label="Date" name="maintenance-date" required="true" />
+<Button variant="primary">Schedule</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel" value="42 t" note="Reorder at 30 t" />
+<Stat label="Resin" value="18 drums" change="Low" note="Reorder at 20 drums" />
+<Stat label="Packaging" value="320 boxes" note="Reorder at 150 boxes" />
+</Columns>
+</Card>
+<Card title="Supplier Deliveries Due This Week">
+
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| SteelCo Ltd | Steel coil | Mon | <Badge tone="success">On time</Badge> |
+| PolyMers Inc | Resin | Tue | <Badge tone="danger">Delayed</Badge> |
+| PackRight | Packaging | Thu | <Badge tone="success">On time</Badge> |
+
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+
+| Batch | Product | Reason | Held Since |
+|---|---|---|---|
+| B-1042 | Bracket XR-7 | Dimensional variance | 2h |
+| B-1045 | Casing Z-4 | Surface defect | 5h |
+
+</Card>
+<Card title="Open Work Orders" subtitle="Sorted by priority">
+
+| WO ID | Line | Task | Priority |
+|---|---|---|---|
+| WO-2213 | Line A | Retool for next batch | <Badge tone="danger">High</Badge> |
+| WO-2214 | Line C | Clear conveyor jam | <Badge tone="danger">High</Badge> |
+| WO-2215 | Line B | Load resin hopper | <Badge tone="warning">Medium</Badge> |
+| WO-2216 | Line D | Calibrate sensors | <Badge tone="neutral">Low</Badge> |
+
+</Card>
+</Columns>

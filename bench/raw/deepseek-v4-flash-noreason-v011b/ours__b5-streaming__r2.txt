@@ -1,0 +1,320 @@
+# Streaming Service Operations Room
+
+<Badge tone="info">Live Dashboard</Badge> <Badge tone="success">All Systems Nominal</Badge>
+
+<Columns>
+<Stat label="Viewers Now" value="847,293" icon="users" tone="info" />
+<Stat label="Watch Time Today" value="1.2M hrs" icon="clock" tone="success" />
+<Stat label="Revenue Today" value="$2.4M" icon="currency-dollar" tone="success" />
+<Stat label="Buffering Rate" value="1.8%" icon="warning-circle" tone="warning" />
+</Columns>
+
+---
+
+## 1. Viewers Watching Right Now
+
+<Progress value="847293" max="1200000" label="847,293 / 1,200,000 capacity" tone="info" />
+
+<Card title="Live Viewers by Region">
+<Select label="Filter Region" options="All Regions | North America | Europe | Asia Pacific | Latin America | Middle East & Africa" name="region-filter" />
+<Chart type="bar" x="Region" y="Viewers">
+| Region | Viewers |
+|---|---|
+| North America | 312,450 |
+| Europe | 248,120 |
+| Asia Pacific | 156,890 |
+| Latin America | 87,430 |
+| Middle East & Africa | 42,403 |
+</Chart>
+</Card>
+
+<Button ask="Show me the top 10 live streams right now">View Top Live Streams</Button>
+
+---
+
+## 2. Most-Watched Titles (Today)
+
+<Card title="Top Titles by Watch Hours">
+| Title | Watch Hours | Status |
+|---|---|---|
+| **Nightfall Chronicles** (S3 E7) | 142,300 hrs | <Badge tone="success">Trending</Badge> |
+| **Ocean Depths** (Documentary) | 98,750 hrs | <Badge tone="info">New</Badge> |
+| **Laugh Lab** (Comedy Special) | 87,200 hrs | <Badge tone="neutral">Steady</Badge> |
+| **Velocity** (Action Film) | 76,480 hrs | <Badge tone="warning">Dropping</Badge> |
+| **Kids Planet** (S2 E4) | 65,100 hrs | <Badge tone="success">Rising</Badge> |
+</Card>
+
+<Button ask="Show me detailed analytics for Nightfall Chronicles">Analyze Nightfall Chronicles</Button>
+
+---
+
+## 3. Watch Time Over the Past Month
+
+<Card title="Monthly Watch Time Trend">
+<Chart type="line" x="Week" y="Watch Time (hours)">
+| Week | Watch Time |
+|---|---|
+| Week 1 | 8,200,000 |
+| Week 2 | 8,900,000 |
+| Week 3 | 9,400,000 |
+| Week 4 | 10,100,000 |
+</Chart>
+<Stat label="Total" value="36.6M hrs" icon="chart-line" tone="success" change="+12% vs last month" />
+</Card>
+
+<Button ask="Break down watch time by day of week">Daily Breakdown</Button>
+
+---
+
+## 4. Subscribers vs Cancellations
+
+<Card title="Net Growth This Month">
+<Columns>
+<Stat label="New Subscribers" value="284,500" icon="user-plus" tone="success" change="+8.2%" />
+<Stat label="Cancellations" value="112,300" icon="user-minus" tone="danger" change="-3.1%" />
+</Columns>
+<Chart type="area" x="Week" y="Count">
+| Week | New Subscribers | Cancellations |
+|---|---|---|
+| Week 1 | 68,200 | 29,100 |
+| Week 2 | 71,500 | 27,800 |
+| Week 3 | 73,100 | 28,400 |
+| Week 4 | 71,700 | 27,000 |
+</Chart>
+</Card>
+
+<Button ask="Show churn rate by plan tier">Churn by Plan</Button>
+
+---
+
+## 5. Performance by Genre
+
+<Card title="Genre Watch Time & Engagement">
+<Chart type="horizontal" x="Genre" y="Watch Time (hours)">
+| Genre | Watch Time | Completion Rate (%) |
+|---|---|---|
+| Drama | 3,200,000 | 78 |
+| Comedy | 2,800,000 | 82 |
+| Action | 2,400,000 | 74 |
+| Documentary | 1,900,000 | 88 |
+| Kids & Family | 1,600,000 | 91 |
+| Sci-Fi | 1,400,000 | 76 |
+| Horror | 900,000 | 69 |
+</Chart>
+</Card>
+
+<Button ask="Compare genre performance week over week">Week-over-Week Comparison</Button>
+
+---
+
+## 6. Buffering Rate
+
+<Card title="Buffering & Quality Metrics">
+<Columns>
+<Stat label="Buffering Rate" value="1.8%" icon="warning-circle" tone="warning" change="+0.3% vs yesterday" />
+<Stat label="Avg Start Time" value="1.2s" icon="clock" tone="success" />
+<Stat label="4K Streams" value="34%" icon="monitor" tone="info" />
+</Columns>
+<Chart type="line" x="Hour" y="Buffering Rate (%)">
+| Hour | Buffering Rate |
+|---|---|
+| 00:00 | 1.2 |
+| 04:00 | 0.8 |
+| 08:00 | 1.5 |
+| 12:00 | 2.1 |
+| 16:00 | 2.4 |
+| 20:00 | 2.9 |
+</Chart>
+</Card>
+
+<Button ask="Show buffering by device type">Buffering by Device</Button>
+
+---
+
+## 7. Delivery Health by Region
+
+<Card title="CDN & Regional Health">
+<Chart type="bar" x="Region" y="Health Score (%)">
+| Region | Health Score | Avg Bitrate (Mbps) |
+|---|---|---|
+| North America | 98 | 12.4 |
+| Europe | 96 | 11.8 |
+| Asia Pacific | 89 | 9.2 |
+| Latin America | 82 | 7.5 |
+| Middle East & Africa | 74 | 5.1 |
+</Chart>
+<Callout tone="warning" title="Asia Pacific Alert">Increased latency detected in Southeast Asia nodes. Investigating.</Callout>
+</Card>
+
+<Button ask="Show detailed CDN node map">View CDN Map</Button>
+
+---
+
+## 8. Releases Coming This Month
+
+<Card title="Upcoming Releases">
+| Date | Title | Type | Expected Demand |
+|---|---|---|---|
+| Apr 5 | **Shadow Realm** | Series Premiere | <Badge tone="success">High</Badge> |
+| Apr 12 | **The Great Bake Off** S5 | Season Premiere | <Badge tone="success">High</Badge> |
+| Apr 18 | **Desert Storm** | Film | <Badge tone="info">Medium</Badge> |
+| Apr 22 | **Wild Australia** | Documentary | <Badge tone="neutral">Low</Badge> |
+| Apr 28 | **Laugh Lab 2** | Comedy Special | <Badge tone="info">Medium</Badge> |
+</Card>
+
+<Button ask="Show me the marketing plan for Shadow Realm">Marketing Plan</Button>
+
+---
+
+## 9. Licenses Expiring Soon
+
+<Card title="Licenses Expiring (Next 60 Days)">
+| Title | Expiry Date | Days Left | Renewal Cost | Action |
+|---|---|---|---|---|
+| **The Office** (US) | May 3 | 28 | $4.2M | <Button variant="secondary" ask="Start renewal negotiation for The Office">Renegotiate</Button> |
+| **Planet Earth II** | May 15 | 40 | $1.8M | <Button variant="secondary" ask="Start renewal negotiation for Planet Earth II">Renegotiate</Button> |
+| **Breaking Bad** | Jun 1 | 57 | $3.5M | <Button variant="secondary" ask="Start renewal negotiation for Breaking Bad">Renegotiate</Button> |
+| **Stranger Things** S1-3 | Jun 10 | 66 | $8.1M | <Button variant="danger" ask="Let Stranger Things expire">Let Expire</Button> |
+</Card>
+
+<Button ask="Show all licenses and their costs">Full License Report</Button>
+
+---
+
+## 10. Recommendation Click-Through Rate
+
+<Card title="Recommendation Performance">
+<Columns>
+<Stat label="CTR" value="12.4%" icon="cursor-click" tone="success" change="+1.8% this week" />
+<Stat label="Impressions" value="48.2M" icon="eye" />
+<Stat label="Conversions" value="5.98M" icon="check-circle" tone="success" />
+</Columns>
+<Chart type="line" x="Day" y="CTR (%)">
+| Day | CTR |
+|---|---|
+| Mon | 11.2 |
+| Tue | 11.8 |
+| Wed | 12.1 |
+| Thu | 12.5 |
+| Fri | 13.0 |
+| Sat | 13.4 |
+| Sun | 12.9 |
+</Chart>
+</Card>
+
+<Button ask="Show recommendation performance by algorithm model">Algorithm Breakdown</Button>
+
+---
+
+## 11. Searches Without Playback
+
+<Card title="Failed Search Analysis">
+<Stat label="Zero-Result Searches" value="23,450" icon="search" tone="warning" change="+5.2% vs last week" />
+<Stat label="Top Missing Queries" icon="list" />
+
+| Search Term | Count | Suggested Action |
+|---|---|---|
+| "The Crown season 7" | 1,204 | <Badge tone="warning">Not available</Badge> |
+| "Inception 2" | 892 | <Badge tone="warning">Not available</Badge> |
+| "Harry Potter series" | 756 | <Badge tone="info">Wrong query</Badge> |
+| "Naruto Shippuden" | 621 | <Badge tone="warning">Not available</Badge> |
+| "The Batman 2" | 498 | <Badge tone="warning">Not available</Badge> |
+</Card>
+
+<Button ask="Show search suggestions improvement plan">Improve Search</Button>
+
+---
+
+## 12. Revenue Split by Plan
+
+<Card title="Revenue by Subscription Plan">
+<Chart type="donut" x="Plan" y="Revenue Share">
+| Plan | Revenue Share |
+|---|---|
+| Premium (4K) | 42 |
+| Standard (HD) | 35 |
+| Basic (SD) | 18 |
+| Student | 5 |
+</Chart>
+<Columns>
+<Stat label="ARPU" value="$14.50" icon="currency-dollar" tone="info" />
+<Stat label="Premium ARPU" value="$19.99" icon="star" tone="success" />
+</Columns>
+</Card>
+
+<Button ask="Show revenue trends by plan over time">Revenue Trends</Button>
+
+---
+
+## 13. Viewing Split by Device
+
+<Card title="Watch Time by Device Type">
+<Chart type="pie" x="Device" y="Watch Time Share">
+| Device | Watch Time Share |
+|---|---|
+| Smart TV | 45 |
+| Mobile Phone | 28 |
+| Tablet | 12 |
+| Desktop/Laptop | 10 |
+| Game Console | 5 |
+</Chart>
+</Card>
+
+<Button ask="Show viewing patterns by device and time of day">Device Patterns</Button>
+
+---
+
+## 14. Focus on One Region
+
+<Card title="Regional Focus">
+<Form name="region-focus">
+<Select label="Select Region" options="North America | Europe | Asia Pacific | Latin America | Middle East & Africa" name="region" placeholder="Choose a region..." />
+<Button>Apply Region Focus</Button>
+</Form>
+
+<Callout tone="info" title="Current: Global View">Select a region above to filter all metrics above to that region only.</Callout>
+</Card>
+
+---
+
+## 15. Feature Flags
+
+<Card title="Feature Flags & Rollout Status">
+| Feature | Status | Rollout % | Toggle |
+|---|---|---|---|
+| **AI Recommendations v2** | <Badge tone="success">Live</Badge> | 100% | <Switch label="Enabled" value="true" /> |
+| **Kids Profile PIN** | <Badge tone="success">Live</Badge> | 100% | <Switch label="Enabled" value="true" /> |
+| **Download for Offline** | <Badge tone="info">Rolling Out</Badge> | 65% | <Switch label="Enabled" value="true" /> |
+| **Watch Party** | <Badge tone="warning">A/B Test</Badge> | 25% | <Switch label="Enabled" value="false" /> |
+| **Spatial Audio** | <Badge tone="info">Rolling Out</Badge> | 40% | <Switch label="Enabled" value="true" /> |
+| **Ultra HD (8K)** | <Badge tone="neutral">Planned</Badge> | 0% | <Switch label="Enabled" value="false" /> |
+| **Interactive Stories** | <Badge tone="danger">Paused</Badge> | 0% | <Switch label="Enabled" value="false" /> |
+</Card>
+
+<Button ask="Show feature flag audit log">Audit Log</Button>
+
+---
+
+## 16. Promote a Title on Home Screen
+
+<Card title="Home Screen Promotion">
+<Form name="promote-title">
+<Select label="Select Title" options="Shadow Realm | The Great Bake Off S5 | Desert Storm | Wild Australia | Laugh Lab 2" name="title" placeholder="Choose a title..." />
+<Input label="Promotion Slot" name="slot" placeholder="e.g., Hero Banner, Row 2, Recommended" />
+<Date label="Start Date" name="start-date" />
+<Date label="End Date" name="end-date" />
+<Select label="Target Audience" options="All Users | New Users | Returning Users | Premium Only | By Genre Preference" name="audience" />
+<Radio label="Promotion Type" options="Hero Banner | Featured Row | Push Notification | Email Blast" name="type" />
+<Button>Promote Title</Button>
+</Form>
+</Card>
+
+---
+
+<FollowUps>
+- Show me the full incident report for today
+- Compare this week's metrics to last week
+- Export this dashboard as a PDF report
+- Schedule a daily operations briefing
+- Show me the top 10 most engaged users
+</FollowUps>

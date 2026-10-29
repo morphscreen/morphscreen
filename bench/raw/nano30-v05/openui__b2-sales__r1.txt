@@ -1,0 +1,11 @@
+root = Card([header, revenueValue, chart, productTable, conversionCallout, downloadButton])
+header = CardHeader("Monthly Revenue")
+revenueValue = TextContent("Revenue: $128,400", "large")
+chart = LineChart(monthLabels, [revenueSeries], "natural", "Month", "USD")
+productTable = Table([colProduct, colUnits])
+colProduct = Col("Product", ["Product A", "Product B", "Product C"], "string")
+colUnits = Col("Units Sold", [1200, 950, 800], "number")
+conversionCallout = TextCallout("info", "Conversion", "12.5%")
+downloadButton = Button("Download", [], "secondary", "normal", "medium")
+monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+revenueSeries = Series("Revenue", [20000, 22000, 25000, 27000, 30000, 32000])

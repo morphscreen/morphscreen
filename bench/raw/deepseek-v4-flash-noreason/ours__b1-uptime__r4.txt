@@ -1,0 +1,76 @@
+# Platform Status
+
+<Columns>
+<Stat label="API Uptime (This Month)" value="99.95%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+<Stat label="Most Recent Incident" value="Resolved" note="API latency spike on June 8" tone="success" icon="check-circle" />
+</Columns>
+
+<Card title="Most Recent Incident" subtitle="Resolved June 8, 2025 · 14:32 UTC">
+**Summary:** A database connection pool exhaustion caused elevated latency (p95 > 2s) and intermittent 503 errors on the public API for approximately 24 minutes.
+
+**Resolution:** The connection pool limits were tuned and a failover replica was promoted. All systems returned to normal operation at 14:32 UTC. No data loss occurred.
+
+<Badge tone="success">Resolved</Badge> <Badge tone="neutral">Duration: 24 min</Badge> <Badge tone="neutral">Impact: Partial</Badge>
+</Card>
+
+<Card title="Uptime & Incident History">
+<Tabs>
+<Tab title="This Month">
+<Chart type="line" x="Day" y="Uptime %">
+| Day | Uptime |
+|---|---|
+| Jun 1 | 100 |
+| Jun 2 | 100 |
+| Jun 3 | 100 |
+| Jun 4 | 100 |
+| Jun 5 | 100 |
+| Jun 6 | 100 |
+| Jun 7 | 100 |
+| Jun 8 | 99.4 |
+| Jun 9 | 100 |
+| Jun 10 | 100 |
+| Jun 11 | 100 |
+| Jun 12 | 100 |
+| Jun 13 | 100 |
+| Jun 14 | 100 |
+| Jun 15 | 100 |
+| Jun 16 | 100 |
+| Jun 17 | 100 |
+| Jun 18 | 100 |
+| Jun 19 | 100 |
+| Jun 20 | 100 |
+| Jun 21 | 100 |
+| Jun 22 | 100 |
+| Jun 23 | 100 |
+| Jun 24 | 100 |
+| Jun 25 | 100 |
+| Jun 26 | 100 |
+| Jun 27 | 100 |
+| Jun 28 | 100 |
+| Jun 29 | 100 |
+| Jun 30 | 100 |
+</Chart>
+</Tab>
+<Tab title="Past Incidents">
+| Date | Incident | Status |
+|---|---|---|
+| Jun 8 | API latency spike | <Badge tone="success">Resolved</Badge> |
+| May 22 | Deploy rollback – auth errors | <Badge tone="success">Resolved</Badge> |
+| Apr 30 | CDN edge failure | <Badge tone="success">Resolved</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Current API Health">
+<Columns>
+<Stat label="Error Rate (24h)" value="0.03%" tone="success" icon="check" />
+<Stat label="p95 Latency (24h)" value="210 ms" tone="success" icon="gauge" />
+<Stat label="Active Alerts" value="0" tone="success" icon="bell" />
+</Columns>
+</Card>
+
+<FollowUps>
+- What caused the June 8 incident?
+- Show the full incident report
+- Compare uptime across the last 3 months
+</FollowUps>

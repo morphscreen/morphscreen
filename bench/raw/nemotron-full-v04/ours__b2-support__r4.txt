@@ -1,0 +1,31 @@
+# Support Lead Morning View
+
+<Columns>
+<Stat label="Open tickets" value="47" change="+3 vs yesterday" tone="warning" />
+<Stat label="Avg first response" value="1h 22m" change="-8m vs target" tone="success" />
+</Columns>
+
+<Card title="Filters">
+<Switch label="High priority only" name="high-priority-filter" value="false" hint="Show only P1 and P2 tickets" />
+</Card>
+
+<Card title="Recent tickets" subtitle="5 most recent">
+| ID | Subject | Priority | Status | Assignee | Created |
+|---|---|---|---|---|---|
+| #3421 | Payment failure on checkout | <Badge tone="danger">P1</Badge> | Open | — | 08:12 |
+| #3420 | Export CSV missing columns | <Badge tone="warning">P2</Badge> | In progress | Maya Chen | 07:58 |
+| #3419 | Dark mode toggle broken | <Badge tone="info">P3</Badge> | Open | — | 07:41 |
+| #3418 | API rate limit docs unclear | <Badge tone="info">P3</Badge> | Waiting | Alex Rivera | 07:15 |
+| #3417 | Mobile layout shift on iOS | <Badge tone="neutral">P4</Badge> | Open | — | 06:52 |
+</Card>
+
+<Card title="Open a new ticket">
+<Form name="new-ticket">
+<Input label="Subject" placeholder="Brief summary of the issue" required="true" />
+<Select label="Priority" options="P1 - Critical | P2 - High | P3 - Medium | P4 - Low" placeholder="Select priority" required="true" />
+<TextArea label="Description" placeholder="Steps to reproduce, expected vs actual, screenshots..." rows="4" required="true" />
+<Select label="Category" options="Billing | Technical | Account | Feature request | Other" placeholder="Choose category" />
+<Button>Create ticket</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

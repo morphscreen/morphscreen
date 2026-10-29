@@ -1,0 +1,77 @@
+# Clinic Reception — Day View
+
+<Columns>
+<Card title="Today's Appointments" subtitle="Tuesday, March 26, 2024">
+| Time | Patient | Reason | Room | Status |
+|---|---|---|---|---|
+| 08:30 | Maria Santos | Annual checkup | Room 1 | ✅ Checked in |
+| 09:00 | James Chen | Follow-up | Room 2 | ⏳ Waiting |
+| 09:30 | Aisha Patel | Vaccination | Room 1 | 📅 Scheduled |
+| 10:00 | Robert Kim | Consultation | Room 3 | 📅 Scheduled |
+| 10:30 | Elena Rossi | Physical therapy | Room 2 | 📅 Scheduled |
+| 11:00 | David Park | Blood work | Lab | 📅 Scheduled |
+| 11:30 | Sofia Alvarez | Dermatology | Room 3 | 📅 Scheduled |
+| 14:00 | Marcus Johnson | Cardiology | Room 1 | 📅 Scheduled |
+| 14:30 | Priya Sharma | Pediatrics | Room 2 | 📅 Scheduled |
+| 15:00 | Omar Hassan | Orthopedics | Room 3 | 📅 Scheduled |
+</Card>
+
+<Card title="Quick Stats">
+<Stat label="Patients Expected Today" value="10" change="+2 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (March)" value="8.2%" change="-1.3% vs Feb" tone="success" />
+<Stat label="Checked In" value="1 / 10" change="10% complete" tone="neutral" />
+<Stat label="Avg Wait Time" value="12 min" change="+3 min" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Room Status" subtitle="Real-time availability">
+<Progress label="Room 1 — General" value="30" max="100" tone="success" />
+<Progress label="Room 2 — General" value="20" max="100" tone="success" />
+<Progress label="Room 3 — Specialty" value="10" max="100" tone="success" />
+<Progress label="Lab — Blood Work" value="0" max="100" tone="info" />
+<Progress label="PT Room — Therapy" value="0" max="100" tone="info" />
+<Badge tone="success">Room 3 free now</Badge>
+<Badge tone="success">Lab free now</Badge>
+<Badge tone="success">PT Room free now</Badge>
+<Badge tone="warning">Room 1 in 30 min</Badge>
+<Badge tone="warning">Room 2 in 20 min</Badge>
+</Card>
+
+<Card title="Next Patient to Call">
+<Callout tone="info" title="James Chen — 09:00 AM">
+**Reason:** Follow-up consultation  
+**Room:** Room 2 (available now)  
+**Provider:** Dr. Martinez  
+**Insurance:** Verified ✓
+</Callout>
+<Button size="large" variant="primary">Call Patient Now</Button>
+<Button variant="secondary" size="large">Mark No-Show</Button>
+</Card>
+</Columns>
+
+<Card title="Check In Patient">
+<Form name="checkin-form">
+<Select label="Select Patient" placeholder="Choose from today's schedule" options="James Chen (09:00) | Aisha Patel (09:30) | Robert Kim (10:00) | Elena Rossi (10:30) | David Park (11:00) | Sofia Alvarez (11:30) | Marcus Johnson (14:00) | Priya Sharma (14:30) | Omar Hassan (15:00)" required="true" />
+<Select label="Room Assignment" placeholder="Auto-assign or choose" options="Room 1 — General | Room 2 — General | Room 3 — Specialty | Lab — Blood Work | PT Room — Therapy" />
+<Checkboxes label="Confirm" options="Insurance verified | Consent forms signed | Copay collected" />
+<Button>Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate Days">
+<Columns>
+<Date label="Jump to Date" name="nav-date" />
+<Button variant="secondary">◀ Previous Day</Button>
+<Button variant="primary">Next Day ▶</Button>
+<Button variant="tertiary">Today</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- View patient chart for James Chen
+- Print daily schedule
+- Send appointment reminders for tomorrow
+- Review no-show reports for March
+</FollowUps>

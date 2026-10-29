@@ -1,0 +1,239 @@
+# City Operations Center
+
+Live operational view of the city. Data refreshes every 60 seconds.
+
+<Callout tone="warning" title="Active weather alert">Thunderstorm watch in effect until 20:00. Emergency crews on standby.</Callout>
+
+<Columns>
+<Card title="Current weather">
+<Stat label="Temperature" value="24°C" icon="thermometer" />
+<Stat label="Wind" value="18 km/h" icon="wind" />
+<Stat label="Humidity" value="62%" icon="drop" />
+<Stat label="Rain chance" value="85%" icon="cloud-rain" />
+![Overcast city skyline with dark clouds](find)
+</Card>
+
+<Card title="Congestion right now">
+<Stat label="Traffic index" value="7.2/10" tone="warning" icon="car" />
+<Stat label="Avg speed" value="31 km/h" change="-12% vs usual" tone="warning" icon="speedometer" />
+<Stat label="Hotspots" value="4" tone="danger" icon="warning" />
+<Progress value="72" max="100" label="Network load" tone="warning" />
+</Card>
+
+<Card title="Transit punctuality">
+<Stat label="On-time rate" value="91%" tone="success" icon="clock" />
+<Stat label="Delayed lines" value="3" tone="warning" icon="train" />
+<Stat label="Avg delay" value="4 min" icon="hourglass" />
+<Badge tone="warning">Metro Line 2: 12 min delay</Badge>
+</Card>
+</Columns>
+
+<Card title="Air quality by district">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Center | 68 |
+| Riverside | 54 |
+| Industrial | 112 |
+| North Hills | 42 |
+| Harbor | 87 |
+| University | 58 |
+</Chart>
+<Callout tone="danger" title="Industrial district">AQI above 100. Sensitive groups should limit outdoor activity.</Callout>
+</Card>
+
+<Columns>
+<Card title="Energy use — past week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Usage |
+|---|---|
+| Mon | 820 |
+| Tue | 845 |
+| Wed | 830 |
+| Thu | 860 |
+| Fri | 905 |
+| Sat | 780 |
+| Sun | 745 |
+</Chart>
+<Stat label="Peak demand" value="905 MWh" note="Friday 18:00" icon="lightning" />
+</Card>
+
+<Card title="Water use today">
+<Stat label="Total usage" value="42,300 m³" icon="droplet" />
+<Stat label="vs yesterday" value="-5%" tone="success" icon="trend-down" />
+<Stat label="Peak hour" value="08:00" note="18,200 m³/h" icon="clock" />
+<Progress value="65" max="100" label="Daily capacity" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Open incidents" subtitle="Severity and location">
+<Columns>
+<Card>
+<Badge tone="danger">Critical</Badge>
+**Water main burst** — Harbor Ave & 3rd St
+<Button ask>Assign crew</Button>
+</Card>
+<Card>
+<Badge tone="warning">High</Badge>
+**Traffic signal outage** — Center Blvd & 5th Ave
+<Button ask>Dispatch technician</Button>
+</Card>
+<Card>
+<Badge tone="warning">High</Badge>
+**Power line down** — Riverside Park entrance
+<Button ask>Dispatch crew</Button>
+</Card>
+<Card>
+<Badge tone="info">Medium</Badge>
+**Pothole cluster** — North Hills Rd, km 2–3
+<Button ask>Schedule repair</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Emergency vehicle deployment">
+<Gallery>
+![Ambulance parked at city hospital](find)
+![Fire truck at central station](find)
+![Police car on patrol downtown](find)
+</Gallery>
+<Columns>
+<Stat label="Ambulances deployed" value="6/8" icon="ambulance" />
+<Stat label="Fire units active" value="3/5" icon="fire-truck" />
+<Stat label="Police patrols" value="12" icon="police-car" />
+</Columns>
+<Callout tone="info" title="Live positions">All units have GPS tracking. Tap a unit to see its exact location.</Callout>
+</Card>
+
+<Columns>
+<Card title="Parking availability downtown">
+<Stat label="Spaces free" value="1,847" icon="parking" />
+<Stat label="Occupancy" value="68%" tone="success" icon="chart-donut" />
+<Stat label="Garages open" value="9/9" tone="success" icon="building" />
+<Progress value="68" max="100" label="Downtown capacity" tone="info" />
+</Card>
+
+<Card title="Public events this weekend">
+<Badge tone="info">Saturday</Badge>
+**Riverside Food Market** — 10:00–18:00, Riverside Park
+<Badge tone="info">Saturday</Badge>
+**City Marathon** — 07:00–14:00, starts at Center Square
+<Badge tone="info">Sunday</Badge>
+**Open-air concert** — 19:00–23:00, Harbor Amphitheater
+<Button ask>View full event calendar</Button>
+</Card>
+</Columns>
+
+<Card title="Citizen reports — live feed">
+<Columns>
+<Card>
+<Avatar name="M. Chen" subtitle="2 min ago" />
+**Streetlight out** — 12 Oak Street, Center
+<Badge tone="warning">Lighting</Badge>
+</Card>
+<Card>
+<Avatar name="J. Rodriguez" subtitle="5 min ago" />
+**Overflowing bin** — Riverside Park, north entrance
+<Badge tone="info">Sanitation</Badge>
+</Card>
+<Card>
+<Avatar name="A. Novak" subtitle="8 min ago" />
+**Noisy construction** — 45 Harbor Ave
+<Badge tone="info">Noise</Badge>
+</Card>
+<Card>
+<Avatar name="S. Patel" subtitle="11 min ago" />
+**Damaged sidewalk** — University Rd & 2nd St
+<Badge tone="warning">Infrastructure</Badge>
+</Card>
+</Columns>
+<Button>Show all reports</Button>
+</Card>
+
+<Card title="Service request backlog">
+<Columns>
+<Stat label="Total open" value="342" icon="inbox" />
+<Stat label="New today" value="47" icon="plus" />
+<Stat label="Resolved today" value="38" icon="check" />
+<Stat label="Avg response" value="2.4 days" icon="timer" />
+</Columns>
+<Chart type="bar" x="Category" y="Requests">
+| Category | Open | Resolved |
+|---|---|---|
+| Roads | 82 | 21 |
+| Lighting | 64 | 12 |
+| Sanitation | 58 | 30 |
+| Parks | 45 | 18 |
+| Water | 38 | 9 |
+| Other | 55 | 14 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Focus on a district">
+<Select label="District" placeholder="Choose district" options="Center | Riverside | Industrial | North Hills | Harbor | University" />
+<Callout tone="info" title="District summary">Select a district to see its live congestion, air quality, incidents, and service requests.</Callout>
+<Button>Apply district view</Button>
+</Card>
+
+<Card title="Dispatch a crew">
+<Form name="dispatch">
+<Select label="Crew type" options="Road repair | Water utility | Electrical | Sanitation | Parks | Traffic" />
+<Select label="Priority" options="Routine | Urgent | Emergency" />
+<Input label="Location" placeholder="Street address or intersection" />
+<TextArea label="Notes" placeholder="Describe the job" rows="3" />
+<Button>Dispatch crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send public alert">
+<Form name="alert">
+<Select label="Alert type" options="Weather | Traffic | Safety | Utility outage | Public health | Other" />
+<Select label="Audience" options="All residents | One district | Downtown only" />
+<TextArea label="Message" placeholder="Write the alert message…" rows="4" required="true" />
+<Callout tone="warning" title="Review">Alerts reach 1.2M residents via SMS, app push, and sirens.</Callout>
+<Button>Send alert</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Roadworks planned this month">
+<Chart type="bar" x="Week" y="Worksites">
+| Week | Sites |
+|---|---|
+| Week 1 | 14 |
+| Week 2 | 22 |
+| Week 3 | 18 |
+| Week 4 | 9 |
+</Chart>
+<Columns>
+<Badge tone="info">Harbor Ave resurfacing — all month, night work</Badge>
+<Badge tone="info">Center Blvd bridge inspection — Week 2–3</Badge>
+<Badge tone="info">University Rd utility upgrade — Week 2</Badge>
+</Columns>
+</Card>
+
+<Card title="Infrastructure jobs due for maintenance">
+| Asset | Location | Due | Status |
+|---|---|---|---|
+| Bridge #12 | Riverside Crossing | This week | <Badge tone="danger">Overdue</Badge> |
+| Pump station | Harbor District | 5 days | <Badge tone="warning">Due soon</Badge> |
+| Street lights (48) | North Hills Rd | 2 weeks | <Badge tone="info">Scheduled</Badge> |
+| Water pipe | Industrial Park | 3 weeks | <Badge tone="info">Planned</Badge> |
+| Traffic signals | Center area | 1 month | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Action center">
+<Columns>
+<Button>View district dashboard</Button>
+<Button variant="secondary">Generate daily report</Button>
+<Button variant="danger">Emergency broadcast</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full incident map
+- What's causing the Harbor Ave water main burst?
+- Compare air quality across all districts this week
+</FollowUps>

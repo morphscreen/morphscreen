@@ -1,0 +1,67 @@
+# Clinic Receptionist Dashboard
+
+<Card title="Today's Overview">
+<Columns>
+<Stat label="Patients expected today" value="24" icon="calendar" />
+<Stat label="No-show rate this month" value="12%" change="+3% vs last month" tone="warning" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Today's Appointments">
+| Time | Patient Name | Room | Status |
+|---|---|---|---|
+| 08:00 | Ana Horvat | 3 | Checked in |
+| 08:30 | Marko Kovač | 2 | Checked in |
+| 09:00 | Ivana Novak | 1 | In progress |
+| 09:30 | Petar Jurić | — | Waiting |
+| 10:00 | Maja Babić | — | Waiting |
+| 10:30 | Luka Petrić | — | Waiting |
+| 11:00 | Sara Knežević | — | Waiting |
+| 11:30 | Tomislav Bošnjak | — | Waiting |
+| 12:00 | Nina Vuković | — | Waiting |
+| 13:00 | Davor Matić | — | Waiting |
+| 13:30 | Helena Šimić | — | Waiting |
+| 14:00 | Ivan Blažević | — | Waiting |
+| 14:30 | Katarina Lovrić | — | Waiting |
+| 15:00 | Filip Grgić | — | Waiting |
+| 15:30 | Lucija Horvat | — | Waiting |
+| 16:00 | Matej Rukavina | — | Waiting |
+| 16:30 | Tena Barišić | — | Waiting |
+| 17:00 | Ante Pavlović | — | Waiting |
+</Card>
+
+<Card title="Room Status">
+<Columns>
+<Stat label="Room 1" value="Occupied" icon="map-pin" tone="warning" />
+<Stat label="Room 2" value="Occupied" icon="map-pin" tone="warning" />
+<Stat label="Room 3" value="Occupied" icon="map-pin" tone="warning" />
+<Stat label="Room 4" value="Free" icon="map-pin" tone="success" />
+<Stat label="Room 5" value="Free" icon="map-pin" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Next Patient Called">
+<Avatar name="Ivana Novak" subtitle="Room 1 — 09:00 appointment" />
+<Callout tone="info" title="Called at 08:55">Ivana Novak has been called to Room 1.</Callout>
+</Card>
+
+<Card title="Check In Patient">
+<Form name="checkin">
+<Input label="Patient name or ID" name="patient" placeholder="Search by name or ID" required />
+<Button variant="primary">Check in</Button>
+</Form>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="change-date">
+<Date label="Select date" name="date" />
+<Button variant="secondary">View that day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the patient list for tomorrow
+- Who is the next patient waiting?
+- Mark a patient as no-show
+- Which patients haven't been called yet?
+</FollowUps>

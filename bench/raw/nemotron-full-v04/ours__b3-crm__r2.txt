@@ -1,0 +1,85 @@
+# Acme Corporation
+
+<Card title="Account Overview" subtitle="Enterprise • Technology">
+<Columns>
+<Avatar name="Sarah Chen" src="https://api.dicebear.com/7.x/avataaars/svg?seed=sarah" subtitle="Account Owner" />
+<Stat label="Total Deal Value" value="$2.4M" change="+12% vs last quarter" tone="success" />
+<Stat label="Current Stage" value="Negotiation" change="Stage 4 of 5" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Deal Stage Progress">
+<Progress value={4} max={5} label="Negotiation • Contract Review • Legal Approval • Procurement • Closed Won" />
+<Badge tone="info">Stage 4: Legal Approval</Badge>
+</Card>
+
+<Card title="Recent Activity">
+<Steps>
+<Step title="Contract sent for legal review" status="done" subtitle="Sarah Chen • 2 hours ago">
+Sent revised MSA and DPA to Acme legal team for review. Redlines expected by Friday.
+</Step>
+<Step title="Security questionnaire completed" status="done" subtitle="Mike Torres • 1 day ago">
+Completed 84-question security assessment. Score: 92/100. Minor findings on encryption at rest.
+</Step>
+<Step title="Executive sponsor meeting" status="done" subtitle="Sarah Chen • 3 days ago">
+Met with CTO Patricia Liu. Confirmed budget approval and timeline. Champion identified.
+</Step>
+<Step title="Technical validation call" status="current" subtitle="Alex Park • Scheduled tomorrow 10 AM">
+Deep-dive on API integration, rate limits, and SLA commitments. Solutions engineer attending.
+</Step>
+<Step title="Procurement negotiation" status="todo" subtitle="TBD • Next week">
+Final pricing discussion with procurement. Volume discounts and multi-year terms on table.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Contacts">
+| Name | Role | Email | Phone | Influence |
+|---|---|---|---|---|
+| Patricia Liu | CTO / Executive Sponsor | patricia.liu@acme.com | +1 415-555-0102 | High |
+| David Park | VP Engineering | david.park@acme.com | +1 415-555-0103 | High |
+| Lisa Wang | Procurement Lead | lisa.wang@acme.com | +1 415-555-0104 | Medium |
+| James Okonkwo | Security Architect | james.okonkwo@acme.com | +1 415-555-0105 | Medium |
+| Maria Santos | Legal Counsel | maria.santos@acme.com | +1 415-555-0106 | Low |
+</Card>
+
+<Card title="Open Follow-ups">
+| Task | Owner | Due Date | Status |
+|---|---|---|---|
+| Send SOC 2 Type II report | Sarah Chen | 2025-01-20 | Overdue |
+| Provide API rate limit documentation | Alex Park | 2025-01-22 | Pending |
+| Schedule procurement call | Sarah Chen | 2025-01-24 | Scheduled |
+| Share reference customer contacts | Mike Torres | 2025-01-27 | Not Started |
+| Finalize redline responses | Maria Santos (Acme) | 2025-01-29 | Waiting on Client |
+</Card>
+
+<Card title="Renewal Alert">
+<Callout tone="warning" title="Renewal Approaching">
+Contract renews in **45 days** (2025-03-15). Begin renewal conversation now to avoid auto-renewal at current terms.
+</Callout>
+<Columns>
+<Stat label="Renewal Date" value="March 15, 2025" />
+<Stat label="Current ARR" value="$480,000" />
+<Stat label="Projected Upsell" value="$120,000" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Add a Note">
+<Form name="add-note">
+<TextArea label="Note" name="note" placeholder="Jot down thoughts, decisions, or reminders..." rows={4} hint="Visible to account team" />
+<Button>Save Note</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Log a Call">
+<Form name="log-call">
+<Input label="Date & Time" name="callDate" type="datetime-local" value="2025-01-18T14:00" required="true" />
+<Select label="Call Type" name="callType" options="Discovery | Demo | Technical Validation | Negotiation | Check-in | Other" placeholder="Select call type" required="true" />
+<Input label="Duration (minutes)" name="duration" type="number" value="30" step="15" required="true" />
+<TextArea label="Summary" name="summary" placeholder="Key discussion points, decisions, action items..." rows={4} required="true" />
+<TextArea label="Next Steps" name="nextSteps" placeholder="What happens next? Who owns what? By when?" rows={3} />
+<Button>Log Call</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

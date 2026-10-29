@@ -1,0 +1,123 @@
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="85%" change="↑2%" note="metric" tone="success" />
+<Progress value="85" max="100" label="OEE" tone="success" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Stat label="Units Produced" value="12,500" change="↓16.7%" note="metric" tone="warning" />
+<Progress value="83" max="100" label="Target Achieved" tone="warning" />
+</Card>
+
+<Card title="Production Line Rates and Status">
+<Chart type="horizontal" title="Line Rates">
+| Line | Rate (units/hr) | Status |
+|---|---|---|
+| Line A | 120 | ✅ |
+| Line B | 95 | ⚠️ |
+| Line C | 110 | ✅ |
+</Chart>
+</Card>
+
+<Card title="Defect Rate (Last 30 Days)">
+<Stat label="Defect Rate" value="2.5%" change="↓0.3%" note="metric" tone="success" />
+<Chart type="line" title="Defect Rate Trend" x="Week" y="Defect Rate (%)">
+| Week | Defect Rate (%) |
+|---|---|
+| W1 | 2.8 |
+| W2 | 2.6 |
+| W3 | 2.5 |
+| W4 | 2.4 |
+| W5 | 2.3 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause">
+<Chart type="pie" title="Downtime Causes">
+| Cause | Hours |
+|---|---|
+| Mechanical | 120 |
+| Electrical | 45 |
+| Material | 30 |
+| Setup | 15 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<Details title="Upcoming Maintenance" open=true>
+<Text>Machine A - Due 2025-10-05<br>
+Machine B - Due 2025-10-07<br>
+Machine C - Due 2025-10-10</Text>
+</Details>
+</Card>
+
+<Card title="Inventory Stock">
+<Stat label="Steel" value="200 tons" change="↔" note="metric" tone="neutral" />
+<Stat label="Resin" value="150 tons" change="↔" note="metric" tone="neutral" />
+<Stat label="Packaging" value="500 units" change="↔" note="metric" tone="neutral" />
+<Progress value="200" max="500" label="Steel Stock" tone="success" />
+<Progress value="150" max="300" label="Resin Stock" tone="success" />
+<Progress value="500" max="1000" label="Packaging Stock" tone="success" />
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+<Stat label="Deliveries Due" value="3" change="↑1" note="metric" tone="info" />
+<Details title="Delivery Schedule" open=true>
+<Text>Supplier X - 2025-09-30<br>
+Supplier Y - 2025-10-01<br>
+Supplier Z - 2025-10-03</Text>
+</Details>
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Shift Output (Units)" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Day | 8000 |
+| Night | 5000 |
+| Swing | 6500 |
+</Chart>
+</Card>
+
+<Card title="Safety Incidents">
+<Stat label="Incidents This Year" value="2" change="↔" note="metric" tone="danger" />
+<Stat label="Days Since Last Incident" value="45" change="↔" note="metric" tone="info" />
+</Card>
+
+<Card title="Quality Hold Batches">
+<Stat label="Batches on Hold" value="5" change="↔" note="metric" tone="warning" />
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Energy Consumption" value="250 MWh" change="↔" note="metric" tone="info" />
+<Progress value="50" max="100" label="Energy Use % of Plan" tone="success" />
+</Card>
+
+<Card title="Open Work Orders">
+<Details title="Work Orders by Priority" open=true>
+<Text>High Priority: 3<br>
+Medium Priority: 7<br>
+Low Priority: 5</Text>
+</Details>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="maintenance-schedule">
+<Input label="Machine Name" placeholder="Enter machine ID" name="machine" type="text" required="false" />
+<Date name="maintenance_date" label="Maintenance Date" value="2025-10-05" hint="Select date" required="true" />
+<Button variant="primary" href="#" disabled="false" size="medium" label="Schedule" />
+</Form>
+</Card>
+
+<Card title="Focus on Production Line">
+<Button variant="primary" label="Focus on Line A" />
+<Button variant="primary" label="Focus on Line B" />
+<Button variant="primary" label="Focus on Line C" />
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="warning" title="Andon Alert">Machine #4 offline - operator assistance required.</Callout>
+</Card>
+
+<Card title="Export Shift Report">
+<Button variant="secondary" href="#" disabled="false" size="large" label="Export Report" />
+</Card>

@@ -1,0 +1,84 @@
+# Invoice Overview
+
+<Card title="Invoice Summary">
+<Columns>
+<Stat label="Amount Due" value="$2,450.00" icon="currency-dollar" />
+<Stat label="Due Date" value="May 15, 2025" icon="calendar" />
+<Stat label="Status" value="Overdue" icon="warning-circle" />
+</Columns>
+</Card>
+
+<Card title="Payment Details">
+<Callout tone="warning" title="Action Required">
+This invoice is past due. Please pay as soon as possible to avoid any late fees.
+</Callout>
+
+<Form name="payment">
+<Radio
+label="Payment Method"
+options="Credit Card | PayPal | Bank Transfer"
+name="payment-method"
+value="Credit Card"
+required="true"
+/>
+
+<Input
+label="Card Number"
+name="card-number"
+type="text"
+placeholder="1234 5678 9012 3456"
+required="true"
+hint="Enter your 16-digit card number"
+/>
+
+<Columns>
+<Input
+label="Expiry Date"
+name="expiry"
+type="text"
+placeholder="MM/YY"
+required="true"
+/>
+<Input
+label="CVV"
+name="cvv"
+type="text"
+placeholder="123"
+required="true"
+/>
+</Columns>
+
+<Input
+label="Billing Email"
+name="email"
+type="email"
+placeholder="you@example.com"
+required="true"
+/>
+
+<Button variant="primary" size="large" icon="credit-card">Pay $2,450.00 Now</Button>
+</Form>
+</Card>
+
+<Card title="Invoice Details">
+| Item | Description | Amount |
+|---|---|---|
+| Web Design | Homepage + 3 inner pages | $1,200.00 |
+| Logo Design | Brand identity package | $650.00 |
+| SEO Optimization | On-page SEO audit & fixes | $600.00 |
+| **Total** | | **$2,450.00** |
+
+<Details title="Payment Terms & Policies" open="false">
+- Payment is due within 30 days of invoice date
+- Late payments incur a 1.5% monthly fee
+- Refunds available within 14 days of payment
+- For questions, contact: billing@freelancer.com
+</Details>
+</Card>
+
+<FollowUps>
+- When will the payment be confirmed?
+- Can I get a receipt after payment?
+- What payment methods do you accept?
+- Can I set up a payment plan?
+</FollowUps>

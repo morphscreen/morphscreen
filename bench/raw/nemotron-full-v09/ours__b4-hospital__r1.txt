@@ -1,0 +1,274 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selection" subtitle="Select operational day">
+<Columns>
+<Date label="Operational Date" name="op-date" value="2025-01-15" />
+<Select label="View Mode" name="view-mode" options="Real-time | Historical | Forecast" value="Real-time" />
+<Button variant="secondary" icon="refresh-cw">Refresh Data</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="400 total beds">
+<Progress value="342" max="400" label="342 / 400 occupied (85.5%)" tone="warning" />
+<Stat label="Available" value="58" change="12 ICU | 23 Med-Surg | 15 Step-down | 8 Pediatrics" tone="info" icon="bed" />
+<Stat label="Admissions Pending" value="14" tone="warning" icon="user-plus" />
+</Card>
+
+<Card title="Current ER Wait Time">
+<Stat label="Avg Wait" value="47 min" change="Target: < 30 min" tone="danger" icon="clock" />
+<Stat label="Patients in Waiting" value="23" tone="warning" icon="users" />
+<Stat label="LWBS Today" value="3" change="Left Without Being Seen" tone="danger" icon="user-x" />
+<Progress value="47" max="60" label="Wait time vs 60-min threshold" tone="danger" />
+</Card>
+
+<Card title="Critical Patients" subtitle="Requiring immediate attention">
+<Callout tone="danger" title="🔴 CODE SEPSIS - Room 304">
+Patient M. Rodriguez (MRN: 88291) - Lactate 5.2, MAP 58, on norepinephrine. ICU bed held.
+</Callout>
+<Callout tone="danger" title="🔴 STEMI - Cath Lab Activated">
+Patient J. Chen (MRN: 77103) - Door-to-balloon: 42 min. Cardiologist en route.
+</Callout>
+<Callout tone="warning" title="🟡 CRITICAL - Room 218">
+Patient R. Thompson (MRN: 99045) - TBI, GCS 7. Neurosurgery consulted. Awaiting ICU transfer.
+</Callout>
+<Callout tone="warning" title="🟡 CRITICAL - Room 112">
+Patient A. Williams (MRN: 66412) - DKA, pH 7.08, K+ 6.2. Insulin drip running. ICU consult placed.
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Admissions — Past 14 Days">
+<Chart type="bar" x="Day" y="Admissions" title="Daily Admissions">
+| Day | Admissions |
+|---|---|
+| Jan 1 | 42 |
+| Jan 2 | 38 |
+| Jan 3 | 45 |
+| Jan 4 | 51 |
+| Jan 5 | 48 |
+| Jan 6 | 44 |
+| Jan 7 | 39 |
+| Jan 8 | 46 |
+| Jan 9 | 53 |
+| Jan 10 | 47 |
+| Jan 11 | 41 |
+| Jan 12 | 36 |
+| Jan 13 | 49 |
+| Jan 14 | 52 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="horizontal" x="Count" y="Department" title="Current Census by Department">
+| Department | Count |
+|---|---|
+| Med-Surg | 98 |
+| ICU | 28 |
+| Step-down | 42 |
+| Pediatrics | 31 |
+| OB/GYN | 24 |
+| Psychiatry | 18 |
+| Oncology | 22 |
+| Cardiology | 35 |
+| Orthopedics | 27 |
+| Emergency | 23 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Staff On Shift" subtitle="Current shift: 07:00–19:30 | 247 total staff">
+<Columns>
+<Card title="Physicians (34)">
+| Role | Count | On Call |
+|---|---|---|
+| Attending | 18 | 4 |
+| Fellow | 6 | 2 |
+| Resident | 10 | 3 |
+</Card>
+<Card title="Nursing (156)">
+| Role | Count | Ratio |
+|---|---|---|
+| RN | 112 | 1:4 |
+| LPN | 24 | 1:6 |
+| CNA | 20 | 1:8 |
+</Card>
+<Card title="Allied Health (38)">
+| Role | Count |
+|---|---|
+| Respiratory Therapy | 12 |
+| Physical Therapy | 8 |
+| Pharmacy | 6 |
+| Lab | 7 |
+| Radiology | 5 |
+</Card>
+<Card title="Support (19)">
+| Role | Count |
+|---|---|
+| Transport | 6 |
+| Environmental | 5 |
+| Security | 4 |
+| Admin/Clerical | 4 |
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Patients Ready for Discharge" subtitle="18 patients | Estimated bed recovery: 18">
+<Details title="Med-Surg (7)" open="true">
+| Patient | MRN | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| M. Anderson | 88102 | 4d | Transport pending | 10:00 |
+| K. Brooks | 88215 | 3d | Pharmacy clearance | 11:30 |
+| L. Carter | 88341 | 5d | Home health arranged | 09:45 |
+| D. Davis | 88409 | 2d | Awaiting ride | 10:30 |
+| P. Evans | 88567 | 6d | DME delivery | 12:00 |
+| R. Foster | 88623 | 3d | Family en route | 11:00 |
+| S. Garcia | 88711 | 4d | PT clearance | 10:15 |
+</Details>
+<Details title="Step-down (5)" open="true">
+| Patient | MRN | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| J. Harris | 88805 | 2d | Cardiology sign-off | 10:30 |
+| A. Jackson | 88912 | 3d | Anticoag teaching | 11:00 |
+| T. King | 89044 | 4d | Wound care supplies | 10:45 |
+| C. Lee | 89133 | 2d | Discharge meds ready | 09:30 |
+| M. Martinez | 89220 | 5d | Social work complete | 11:30 |
+</Details>
+<Details title="ICU (3)" open="false">
+| Patient | MRN | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| N. Nelson | 89308 | 7d | Step-down bed wait | 14:00 |
+| O. Owens | 89417 | 6d | Trach/vent weaning | 16:00 |
+| Q. Parker | 89529 | 8d | LTAC placement | TBD |
+</Details>
+<Details title="Pediatrics (3)" open="false">
+| Patient | MRN | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| R. Quinn | 89601 | 2d | Parent education | 10:00 |
+| S. Rivera | 89714 | 3d | Outpatient follow-up | 11:00 |
+| V. Stevens | 89822 | 1d | Car seat check | 09:30 |
+</Details>
+</Card>
+
+<Card title="Today's Operating Room Bookings" subtitle="12 ORs | 34 cases scheduled">
+<Details title="OR 1 — General Surgery" open="true">
+| Time | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|
+| 07:30–10:30 | Lap Cholecystectomy | Dr. Patel | Dr. Kim | In Progress |
+| 11:00–13:30 | Hernia Repair | Dr. Patel | Dr. Kim | Scheduled |
+| 14:00–17:00 | Colectomy | Dr. Chen | Dr. Wong | Scheduled |
+</Details>
+<Details title="OR 2 — Orthopedics" open="true">
+| Time | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|
+| 07:30–11:00 | THA Left | Dr. Rodriguez | Dr. Park | In Progress |
+| 11:30–14:30 | TKA Right | Dr. Rodriguez | Dr. Park | Scheduled |
+| 15:00–17:30 | ORIF Ankle | Dr. Thompson | Dr. Lee | Scheduled |
+</Details>
+<Details title="OR 3 — Neurosurgery" open="false">
+| Time | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|
+| 08:00–13:00 | Craniotomy Tumor | Dr. Ahmed | Dr. Singh | Scheduled |
+| 13:30–16:00 | Laminectomy | Dr. Ahmed | Dr. Singh | Scheduled |
+</Details>
+<Details title="OR 4 — Cardiothoracic" open="false">
+| Time | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|
+| 07:00–12:00 | CABG x3 | Dr. Okafor | Dr. Nguyen | In Progress |
+| 12:30–16:30 | AVR | Dr. Okafor | Dr. Nguyen | Scheduled |
+</Details>
+<Details title="OR 5–12 — Other Services" open="false">
+| OR | Service | Cases | First Start |
+|---|---|---|---|
+| OR 5 | Urology | 3 | 07:30 |
+| OR 6 | ENT | 2 | 08:00 |
+| OR 7 | GYN | 3 | 07:30 |
+| OR 8 | Vascular | 2 | 08:30 |
+| OR 9 | Plastics | 2 | 09:00 |
+| OR 10 | Ophthalmology | 4 | 07:30 |
+| OR 11 | Trauma (Open) | — | — |
+| OR 12 | Trauma (Open) | — | — |
+</Details>
+</Card>
+</Columns>
+
+<Card title="Supplies Running Low" subtitle="Items below par level — 14 critical, 22 warning">
+<Columns>
+<Card title="Critical (≤ 2 days supply)">
+| Item | Current | Par | Days Left | Vendor | Order Status |
+|---|---|---|---|---|---|
+| Norepinephrine 4mg/4ml | 12 | 50 | 1 | McKesson | **STAT ordered** |
+| Vasopressin 20u/ml | 8 | 30 | 1 | Cardinal | **STAT ordered** |
+| Propofol 1% 100ml | 15 | 60 | 2 | McKesson | **STAT ordered** |
+| Rocuronium 100mg | 22 | 80 | 2 | Cardinal | **STAT ordered** |
+| Heparin 25000u/5ml | 18 | 75 | 2 | McKesson | **STAT ordered** |
+| Insulin Regular 100u/ml | 30 | 100 | 2 | Novo Nordisk | **STAT ordered** |
+| Albumin 5% 250ml | 10 | 40 | 2 | CSL Behring | **STAT ordered** |
+| Platelets (apheresis) | 4 | 12 | 1 | Blood Center | **Emergency release** |
+| Type O Neg RBC | 6 | 20 | 1 | Blood Center | **Emergency release** |
+| CRRT Filter Sets | 3 | 15 | 1 | Baxter | **STAT ordered** |
+</Card>
+<Card title="Warning (3–5 days supply)">
+| Item | Current | Par | Days Left | Vendor | Order Status |
+|---|---|---|---|---|---|
+| Normal Saline 1L | 240 | 500 | 3 | Baxter | Ordered |
+| D5W 1L | 180 | 400 | 3 | Baxter | Ordered |
+| Lactated Ringers 1L | 210 | 450 | 4 | Baxter | Ordered |
+| Fentanyl 100mcg/2ml | 85 | 200 | 4 | McKesson | Ordered |
+| Midazolam 5mg/ml | 60 | 150 | 4 | Cardinal | Ordered |
+| Ketamine 500mg/10ml | 45 | 120 | 5 | McKesson | Ordered |
+| Epinephrine 1mg/10ml | 90 | 250 | 5 | Cardinal | Ordered |
+| Atropine 1mg/10ml | 75 | 200 | 5 | McKesson | Ordered |
+| Calcium Chloride 1g | 55 | 150 | 5 | Cardinal | Ordered |
+| Sodium Bicarb 8.4% | 40 | 120 | 5 | McKesson | Ordered |
+| Central Line Kits (Triple) | 28 | 80 | 4 | Teleflex | Ordered |
+| Arterial Line Kits | 35 | 100 | 4 | Edwards | Ordered |
+| Chest Tube Trays | 22 | 60 | 5 | Cardinal | Ordered |
+| Surgical Staplers (GIA) | 18 | 50 | 5 | Medtronic | Ordered |
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Reporter Name" name="reporter" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="incident-type" options="Patient Safety | Medication Error | Fall | Equipment Failure | Security | Near Miss | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Severe Harm | Level 5 - Death" placeholder="Select severity" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room / Area" required="true" />
+<Date label="Date & Time of Incident" name="incident-datetime" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened, contributing factors, immediate actions taken..." rows="4" required="true" />
+<TextArea label="Witnesses" name="witnesses" placeholder="Names and roles of witnesses" rows="2" />
+<Checkboxes label="Notifications Required" name="notifications" options="Risk Management | Quality & Safety | Department Director | Compliance | Legal" value="Risk Management | Quality & Safety" />
+<Button variant="primary" icon="file-text">Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" name="pt-name" placeholder="Last, First" required="true" />
+<Input label="MRN" name="mrn" placeholder="Medical Record Number" required="true" />
+<Select label="Current Location" name="current-loc" options="ER | ICU | Step-down | Med-Surg 3 | Med-Surg 4 | Pediatrics | OB/GYN | Psychiatry | Other" placeholder="Select current unit" required="true" />
+<Select label="Requested Destination" name="dest-loc" options="ICU | Step-down | Med-Surg | Telemetry | Pediatrics | Psychiatry | Outside Facility (LTAC/SNF) | Home with Services" placeholder="Select destination" required="true" />
+<Select label="Transfer Urgency" name="urgency" options="Emergent (Immediate) | Urgent (< 2 hrs) | Semi-Urgent (< 6 hrs) | Routine (< 24 hrs)" placeholder="Select urgency" required="true" />
+<Radio label="Transfer Type" name="transfer-type" options="Internal | External (EMS) | External (Air)" value="Internal" />
+<TextArea label="Clinical Reason for Transfer" name="reason" placeholder="Clinical justification, stability concerns, required resources..." rows="3" required="true" />
+<TextArea label="Lines / Tubes / Devices" name="devices" placeholder="List all: IV access, drains, vents, monitors, etc." rows="2" />
+<Input label="Receiving Physician" name="receiving-md" placeholder="Accepting provider name" />
+<Input label="Receiving Unit Contact" name="receiving-contact" placeholder="Charge nurse / unit phone" />
+<Button variant="primary" icon="arrow-right-left">Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- View detailed bed management board
+- Check blood bank inventory levels
+- Review staffing matrix for next shift
+- Generate daily operations summary report
+- Escalate supply chain issues to materials management
+</FollowUps>

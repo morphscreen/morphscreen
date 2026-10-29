@@ -1,0 +1,158 @@
+# Streaming Operations Room
+
+<Columns>
+<Stat label="Watching right now" value="1,284,902" change="+3.1% vs last hour" tone="success" icon="users" />
+<Stat label="Buffering rate" value="0.42%" change="-0.11 pp" tone="success" icon="activity" />
+<Stat label="Rec click-through" value="18.4%" change="+0.9 pp" tone="info" icon="cursor-click" />
+<Stat label="Searches w/o playback" value="6.7%" change="+0.4 pp" tone="warning" icon="magnifying-glass" />
+</Columns>
+
+<Card title="Focus region" subtitle="Filter the room to one delivery region">
+<Select label="Region" name="region" options="All regions | North America | Europe | LATAM | APAC | Middle East & Africa" value="All regions" hint="Applies to delivery health, releases and licenses below" />
+</Card>
+
+<Card title="Most-watched titles" subtitle="Last 24 hours, hours streamed">
+<Chart type="horizontal" x="Title" y="Hours">
+| Title | Hours |
+|---|---|
+| The Glass Harbor | 41200 |
+| Nightfall Protocol | 33700 |
+| Salt & Ember | 28900 |
+| Paper Kingdoms | 22400 |
+| Deep Field | 19800 |
+</Chart>
+</Card>
+
+<Card title="Watch time — past month">
+<Chart type="area" x="Day" y="Hours">
+| Day | Hours |
+|---|---|
+| W1 | 4120000 |
+| W2 | 4380000 |
+| W3 | 4610000 |
+| W4 | 4870000 |
+</Chart>
+</Card>
+
+<Card title="Subscribers vs cancellations">
+<Chart type="line" x="Week" y="Count">
+| Week | New subs | Cancellations |
+|---|---|---|
+| W1 | 18400 | 9200 |
+| W2 | 21100 | 10100 |
+| W3 | 19800 | 11400 |
+| W4 | 22600 | 10800 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre">
+<Chart type="bar" x="Genre" y="Hours">
+| Genre | Hours |
+|---|---|
+| Drama | 1820000 |
+| Comedy | 1210000 |
+| Thriller | 940000 |
+| Documentary | 610000 |
+| Kids & Family | 520000 |
+| Reality | 380000 |
+</Chart>
+</Card>
+
+<Card title="Delivery health by region">
+| Region | Status | Buffering | Streams |
+|---|---|---|---|
+| North America | <Badge tone="success">Healthy</Badge> | 0.31% | 612,400 |
+| Europe | <Badge tone="success">Healthy</Badge> | 0.38% | 401,200 |
+| LATAM | <Badge tone="warning">Degraded</Badge> | 0.94% | 118,900 |
+| APAC | <Badge tone="warning">Degraded</Badge> | 0.81% | 96,300 |
+| MEA | <Badge tone="danger">Incident</Badge> | 1.62% | 56,100 |
+</Card>
+
+<Card title="Releases coming this month">
+<Steps>
+<Step title="The Glass Harbor — S2" subtitle="Mar 14 · Drama · All regions" status="current">Promo slot booked on home carousel</Step>
+<Step title="Deep Field" subtitle="Mar 19 · Documentary · Global" status="todo">Subtitles pending for 4 locales</Step>
+<Step title="Salt & Ember — Finale" subtitle="Mar 24 · Drama · NA, EU" status="todo">Rights window confirmed</Step>
+<Step title="Paper Kingdoms" subtitle="Mar 28 · Thriller · Global" status="todo">Trailer cut in review</Step>
+</Steps>
+</Card>
+
+<Card title="Licenses expiring soon">
+| Title | Expires | Region | Renewal |
+|---|---|---|---|
+| Nightfall Protocol | Mar 31 | APAC | <Badge tone="warning">In negotiation</Badge> |
+| Harbor Lights | Apr 04 | EU | <Badge tone="danger">At risk</Badge> |
+| The Long Quiet | Apr 12 | LATAM | <Badge tone="info">Offer sent</Badge> |
+| Ember Roads | Apr 20 | NA | <Badge tone="success">Renewed</Badge> |
+</Card>
+
+<Card title="Discovery quality">
+<Columns>
+<Stat label="Recommendation CTR" value="18.4%" change="+0.9 pp" tone="success" icon="cursor-click" />
+<Stat label="Searches without playback" value="6.7%" change="+0.4 pp" tone="warning" icon="magnifying-glass" />
+</Columns>
+<Chart type="bar" x="Week" y="Percent">
+| Week | Rec CTR | Search no-play |
+|---|---|---|
+| W1 | 16.8 | 5.9 |
+| W2 | 17.4 | 6.1 |
+| W3 | 17.9 | 6.4 |
+| W4 | 18.4 | 6.7 |
+</Chart>
+<Button variant="secondary" ask="Show the top search terms that ended without playback">Top failed searches</Button>
+</Card>
+
+<Card title="Revenue split by plan">
+<Chart type="donut" x="Plan" y="Revenue">
+| Plan | Revenue |
+|---|---|
+| Standard with ads | 4120000 |
+| Standard | 6380000 |
+| Premium | 8940000 |
+| Premium annual | 3210000 |
+</Chart>
+</Card>
+
+<Card title="Viewing split by device">
+<Chart type="pie" x="Device" y="Share">
+| Device | Share |
+|---|---|
+| Smart TV | 46 |
+| Mobile | 27 |
+| Desktop | 14 |
+| Tablet | 8 |
+| Console | 5 |
+</Chart>
+</Card>
+
+<Card title="Feature flags">
+| Flag | State | Rollout |
+|---|---|---|
+| Unified player v3 | <Badge tone="success">On</Badge> | 100% |
+| Autoplay next episode | <Badge tone="success">On</Badge> | 100% |
+| Ad tier frequency cap | <Badge tone="warning">Ramping</Badge> | 40% |
+| 4K on mobile | <Badge tone="neutral">Off</Badge> | 0% |
+| Personalized home rails | <Badge tone="info">Testing</Badge> | 15% |
+<Switch label="Kill switch — live events" name="killswitch-live" value=false hint="Disables live delivery across all regions" />
+</Card>
+
+<Card title="Promote a title on the home screen">
+<Form name="promote-title">
+<Select label="Title" name="title" options="The Glass Harbor — S2 | Deep Field | Salt & Ember — Finale | Paper Kingdoms" required=true />
+<Select label="Placement" name="placement" options="Hero banner | Top carousel | Genre rail | Continue-watching rail" required=true />
+<Date label="Start date" name="start" hint="Defaults to today if left blank" />
+<Slider label="Audience share" name="share" min=0 max=100 step=5 value=25 unit="%" />
+<Checkboxes label="Regions" name="regions" options="North America | Europe | LATAM | APAC | Middle East & Africa" value="North America | Europe" />
+<Button>Schedule promotion</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="danger" title="MEA delivery incident">Buffering at 1.62% in Middle East & Africa — CDN node lag. Escalated to infrastructure.</Callout>
+
+<FollowUps>
+- Which titles are driving the LATAM buffering spike?
+- Show the full list of licenses expiring in the next 60 days
+- Break down cancellations by plan and region
+- What search terms most often end without playback?
+</FollowUps>

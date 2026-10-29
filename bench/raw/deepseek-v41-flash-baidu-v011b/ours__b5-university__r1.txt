@@ -1,0 +1,220 @@
+# University Administration Dashboard
+
+<Callout tone="info" title="Fall 2024 semester">All figures are as of the census date unless noted. Use the department filter to scope every panel below.</Callout>
+
+<Card title="Focus" subtitle="Scope the dashboard to one department">
+<Select label="Department" name="department" placeholder="All departments" options="All departments | Arts & Sciences | Engineering | Business | Education | Nursing | Public Health" hint="Every panel on this screen updates with your choice" />
+</Card>
+
+<Card title="Enrollment & revenue at a glance">
+<Columns>
+<Stat label="Total enrollment" value="18,420" change="+2.4% YoY" tone="success" icon="users" />
+<Stat label="Acceptance rate" value="61.8%" change="-1.2 pts" tone="warning" icon="chart-line" />
+<Stat label="Tuition revenue (FY)" value="$214.6M" change="+4.1%" tone="success" icon="chart-line" />
+<Stat label="Students at risk" value="312" change="+18" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="1. Enrollment over five years">
+<Chart type="line" title="Total enrollment" x="Year" y="Students">
+| Year | Enrolled |
+|---|---|
+| 2020 | 16450 |
+| 2021 | 16980 |
+| 2022 | 17310 |
+| 2023 | 17980 |
+| 2024 | 18420 |
+</Chart>
+<Button ask="Break down enrollment by department and level">Break down by department</Button>
+</Card>
+
+<Card title="2. Applications by program">
+<Chart type="bar" title="Applications received" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Arts & Sciences | 6120 |
+| Engineering | 4480 |
+| Business | 3910 |
+| Nursing | 2240 |
+| Education | 1560 |
+| Public Health | 1180 |
+</Chart>
+<Button ask="Compare applications to last year by program">Compare to last year</Button>
+</Card>
+
+<Card title="3. Acceptance rate" subtitle="Offers made against applications received">
+<Columns>
+<Stat label="Overall acceptance rate" value="61.8%" tone="warning" icon="chart-line" />
+<Stat label="Offers made" value="12,140" icon="users" />
+<Stat label="Yield (accepted → enrolled)" value="38.2%" tone="info" icon="chart-line" />
+</Columns>
+<Progress value="61.8" max="100" label="Acceptance rate vs. 60% target" tone="warning" />
+<Button ask="Show acceptance rate by program">By program</Button>
+</Card>
+
+<Card title="4. Tuition revenue this year">
+<Columns>
+<Stat label="Tuition revenue" value="$214.6M" change="+4.1% vs. FY23" tone="success" icon="chart-line" />
+<Stat label="Net of aid" value="$168.2M" tone="neutral" icon="chart-line" />
+<Stat label="Outstanding balance" value="$9.4M" tone="warning" icon="warning" />
+</Columns>
+<Button ask="Show tuition revenue by department and term">Revenue by department</Button>
+</Card>
+
+<Card title="5. Course offering fill rates" subtitle="Seats filled against capacity">
+<Chart type="horizontal" title="Fill rate by course" x="Course" y="% filled">
+| Course | Fill % |
+|---|---|
+| CS 101 | 98 |
+| BIO 210 | 91 |
+| ECON 301 | 84 |
+| PSY 105 | 76 |
+| HIST 220 | 58 |
+| PHIL 140 | 41 |
+</Chart>
+<Button ask="List courses with fill rate under 60%">Courses under 60%</Button>
+</Card>
+
+<Card title="6. Teaching load by faculty member">
+<Chart type="bar" title="Credit hours taught" x="Faculty" y="Credit hours">
+| Faculty | Credit hours |
+|---|---|
+| Dr. Okafor | 12 |
+| Dr. Nguyen | 12 |
+| Dr. Alvarez | 9 |
+| Dr. Petrov | 9 |
+| Dr. Chen | 6 |
+| Dr. Ibrahim | 6 |
+</Chart>
+<Button ask="Flag faculty over the 12 credit hour load">Flag overloaded faculty</Button>
+</Card>
+
+<Card title="7. Students at academic risk">
+<Badge tone="danger">312 students</Badge> <Badge tone="warning">GPA below 2.0 or 2+ flags</Badge>
+<Chart type="donut" title="Risk by reason" x="Reason" y="Students">
+| Reason | Students |
+|---|---|
+| GPA below 2.0 | 128 |
+| Attendance | 84 |
+| Failed core course | 62 |
+| Financial hold | 38 |
+</Chart>
+<Button ask="Show the 20 highest-risk students and their advisors">View at-risk list</Button>
+</Card>
+
+<Card title="8. Scholarship budget">
+<Progress value="11.4" max="16" label="$11.4M of $16M used (71%)" tone="info" />
+<Columns>
+<Stat label="Budget" value="$16.0M" icon="chart-line" />
+<Stat label="Committed" value="$11.4M" tone="info" icon="chart-line" />
+<Stat label="Remaining" value="$4.6M" tone="success" icon="chart-line" />
+</Columns>
+<Button ask="Show scholarship awards by department">Awards by department</Button>
+</Card>
+
+<Card title="9. Housing occupancy">
+<Progress value="7420" max="8100" label="7,420 of 8,100 beds (91.6%)" tone="warning" />
+<Columns>
+<Stat label="Occupancy" value="91.6%" tone="warning" icon="users" />
+<Stat label="Waitlist" value="214" tone="danger" icon="warning" />
+</Columns>
+<Button ask="Show housing occupancy by residence hall">By residence hall</Button>
+</Card>
+
+<Card title="10. Campus events this month">
+| Date | Event | Venue |
+|---|---|---|
+| Nov 4 | Research Symposium | Union Hall |
+| Nov 9 | Homecoming Game | Stadium |
+| Nov 15 | Fall Concert | Auditorium |
+| Nov 22 | Career Fair | Convocation Center |
+| Nov 28 | Alumni Reception | Alumni House |
+<Button ask="Add a campus event to the calendar">Add event</Button>
+</Card>
+
+<Card title="11. Alumni giving, past four years">
+<Chart type="bar" title="Alumni giving" x="Year" y="USD">
+| Year | Giving |
+|---|---|
+| 2021 | 8200000 |
+| 2022 | 9400000 |
+| 2023 | 10600000 |
+| 2024 | 12100000 |
+</Chart>
+<Button ask="Show alumni giving by graduating class">By class year</Button>
+</Card>
+
+<Card title="13. This semester vs. last semester">
+<Tabs>
+<Tab title="Enrollment">
+<Chart type="bar" title="Headcount by term" x="Term" y="Students">
+| Term | Students |
+|---|---|
+| Spring 2024 | 17890 |
+| Fall 2024 | 18420 |
+</Chart>
+</Tab>
+<Tab title="Applications">
+<Chart type="bar" title="Applications by term" x="Term" y="Applications">
+| Term | Applications |
+|---|---|
+| Spring 2024 | 18640 |
+| Fall 2024 | 19490 |
+</Chart>
+</Tab>
+<Tab title="Retention">
+<Chart type="bar" title="Fall-to-fall retention" x="Term" y="% retained">
+| Term | Retention % |
+|---|---|
+| Fall 2023 | 86.2 |
+| Fall 2024 | 88.1 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="14. Waitlisted students per program">
+<Chart type="bar" title="Waitlist size" x="Program" y="Students">
+| Program | Waitlisted |
+|---|---|
+| Nursing | 186 |
+| Engineering | 142 |
+| Business | 96 |
+| Public Health | 74 |
+| Arts & Sciences | 52 |
+| Education | 28 |
+</Chart>
+<Button ask="Show waitlisted students who can be admitted now">Show admittable waitlist</Button>
+</Card>
+
+<Card title="15. Approve a new course">
+<Form name="course-approval">
+<Input label="Course title" name="course_title" placeholder="e.g., Data Ethics in Practice" required="true" />
+<Input label="Course code" name="course_code" placeholder="e.g., CS 340" required="true" />
+<Select label="Department" name="course_dept" placeholder="Choose a department" options="Arts & Sciences | Engineering | Business | Education | Nursing | Public Health" required="true" />
+<Input label="Credit hours" name="credits" type="number" min="1" max="6" value="3" required="true" />
+<Input label="Proposed instructor" name="instructor" placeholder="Dr. Last Name" />
+<TextArea label="Rationale" name="rationale" placeholder="Why this course is needed and who it serves" rows="3" />
+<Switch label="Requires curriculum committee review" name="committee_review" value="true" />
+<Button>Submit for approval</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="16. Message a student group">
+<Form name="group-message">
+<Select label="Recipient group" name="group" placeholder="Choose a group" options="All students | Students at academic risk | Nursing waitlist | First-year students | Graduating seniors | Scholarship recipients" required="true" />
+<Input label="Subject" name="subject" placeholder="e.g., Spring registration opens Monday" required="true" />
+<TextArea label="Message" name="body" placeholder="Write your message here" rows="4" required="true" />
+<Radio label="Send as" options="Email | SMS | Campus portal announcement" />
+<Button>Send message</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the full at-risk student list with advisors
+- Break down enrollment by department and level
+- Compare applications to last year by program
+- Show housing occupancy by residence hall
+- Show alumni giving by graduating class
+</FollowUps>

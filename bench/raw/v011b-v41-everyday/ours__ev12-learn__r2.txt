@@ -1,0 +1,114 @@
+# Photosynthesis, from sunlight to sugar
+
+Photosynthesis is how plants, algae and some bacteria turn light energy into chemical energy. In one sentence: **light + water + carbon dioxide → sugar + oxygen**, powered by chlorophyll.
+
+<Card title="The big picture" subtitle="Two stages, one after the other">
+<Steps>
+<Step title="Light hits the leaf" status="done" subtitle="Chlorophyll absorbs it">Pigments in the chloroplast trap photons, mostly red and blue light; green is reflected, which is why leaves look green.</Step>
+<Step title="Light reactions split water" status="done" subtitle="In the thylakoid membrane">The energy is used to split H₂O, releasing O₂ as waste and producing ATP and NADPH.</Step>
+<Step title="Calvin cycle builds sugar" status="current" subtitle="In the stroma">ATP and NADPH drive CO₂ into a cycle that ends with G3P, which becomes glucose.</Step>
+<Step title="Sugar leaves the leaf" status="todo" subtitle="Exported as sucrose">Glucose is packed into sucrose and shipped through the phloem to the rest of the plant.</Step>
+</Steps>
+</Card>
+
+<Card title="The two stages side by side">
+<Compare title="Light reactions vs Calvin cycle">
+| Feature | Light reactions | Calvin cycle |
+|---|---|---|
+| Needs light directly | yes | no |
+| Where | Thylakoid membrane | Stroma |
+| Inputs | H₂O, light, ADP, NADP⁺ | CO₂, ATP, NADPH |
+| Outputs | O₂, ATP, NADPH | G3P (sugar) |
+| Runs at night | no | yes, if ATP is left |
+</Compare>
+</Card>
+
+<Card title="The overall equation">
+<Math tex="6CO_2 + 6H_2O + \text{light} \rightarrow C_6H_{12}O_6 + 6O_2" label="Balanced equation for photosynthesis" />
+
+Six carbon dioxide molecules and six water molecules, using light, make one glucose and six oxygen molecules. The oxygen comes from the water, not the carbon dioxide — a detail worth remembering.
+</Card>
+
+<Card title="What controls the rate">
+<Chart type="bar" title="Rate of photosynthesis vs light intensity" x="Light intensity" y="Rate">
+| Light intensity | Rate |
+|---|---|
+| Low | 12 |
+| Medium | 38 |
+| High | 61 |
+| Very high | 63 |
+</Chart>
+</Card>
+
+<Callout tone="info" title="Why the curve flattens">
+Past a certain light level the rate stops climbing. Something else becomes the bottleneck — usually CO₂ concentration or temperature, since enzymes in the Calvin cycle have an optimum.
+</Callout>
+
+<Card title="Key numbers to remember">
+<KeyValue title="Photosynthesis by the numbers">
+| Fact | Value |
+|---|---|
+| CO₂ needed per glucose | 6 |
+| Water split per glucose | 6 |
+| O₂ released per glucose | 6 |
+| ATP + NADPH per CO₂ fixed | 3 ATP, 2 NADPH |
+| Turns of the Calvin cycle per glucose | 6 |
+</KeyValue>
+</Card>
+
+<Card title="Check yourself">
+<Quiz title="Photosynthesis quiz">
+<Question text="Where does the oxygen released by photosynthesis come from?" answer="Water" explain="The light reactions split H₂O in the thylakoid membrane; the O₂ is a by-product of that split, not of CO₂.">
+- Carbon dioxide
+- Water
+- Glucose
+- Chlorophyll
+</Question>
+<Question text="Which stage can run without light, as long as ATP and NADPH are available?" answer="The Calvin cycle" explain="The Calvin cycle uses chemical energy, not photons, so it can continue briefly in the dark until the ATP and NADPH run out.">
+- The light reactions
+- The Calvin cycle
+- Both equally
+- Neither
+</Question>
+<Question text="What happens to the rate of photosynthesis when CO₂ runs low?" answer="It slows down" explain="CO₂ is the carbon source for the Calvin cycle, so a shortage starves the cycle and the whole process slows.">
+- It speeds up
+- It slows down
+- It stays the same
+- It stops instantly
+</Question>
+</Quiz>
+</Card>
+
+<Card title="Terms to lock in">
+<Flashcards title="Photosynthesis flashcards">
+| Front | Back |
+|---|---|
+| Chlorophyll | The green pigment that absorbs light energy |
+| Thylakoid | The membrane stack where the light reactions happen |
+| Stroma | The fluid around the thylakoids where the Calvin cycle runs |
+| ATP | The cell's energy currency, made in the light reactions |
+| NADPH | The electron carrier that powers the Calvin cycle |
+| G3P | The three-carbon sugar that becomes glucose |
+| Stomata | Leaf pores that let CO₂ in and O₂ out |
+</Flashcards>
+</Card>
+
+<Card title="Try changing the numbers">
+<WhatIf title="How much sugar can a leaf make?">
+<Slider label="Light intensity" min="0" max="100" step="1" value="60" name="light" unit="%" />
+<Slider label="CO₂ level" min="0" max="100" step="1" value="50" name="co2" unit="%" />
+<Slider label="Temperature" min="0" max="45" step="1" value="25" name="temp" unit="°C" />
+<Result label="Sugar produced" value="round(light * co2 / 100 * max(0, 1 - (temp - 25) ^ 2 / 400))" unit="g/hour" decimals="1" />
+</WhatIf>
+</Card>
+
+<Callout tone="success" title="The one-line takeaway">
+Plants capture light, split water to get electrons, and use those electrons to bolt carbon dioxide into sugar — releasing the oxygen we breathe as a side effect.
+</Callout>
+
+<FollowUps>
+- Explain the Calvin cycle step by step
+- How do C4 and CAM plants save water?
+- What limits photosynthesis in a greenhouse?
+- Quiz me harder on the light reactions
+</FollowUps>

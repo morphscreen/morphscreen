@@ -1,0 +1,156 @@
+root = Card([header, portfolioSummary, riskMetrics, positionsTable, exposureChart, varSection, gainersLosers, watchlist, workingOrders, marginSection, headlines, economicReleases, strategyReturns, drawdownChart, riskLimits, rebalanceBtn, orderForm, timeframeSelector], "card", "column", "l")
+
+header = CardHeader("Trading Desk — Morning Workspace", "As of 09:30 ET | Portfolio: MAIN-DESK-01")
+
+portfolioSummary = Card([portfolioValue, pnlToday], "sunk", "row", "l", "center", "between")
+portfolioValue = TextContent("Portfolio Value: **$12,847,392.15**", "large-heavy")
+pnlToday = TextContent("P&L Today: **+$234,567.89 (+1.86%)**", "large-heavy")
+
+riskMetrics = Card([varCard, marginCard, riskLimitsCard], "sunk", "row", "l", "stretch", "between")
+varCard = Card([varLabel, varValue], "clear", "column", "s")
+varLabel = TextContent("Value at Risk (95%, 1D)", "small")
+varValue = TextContent("**$412,300**", "large-heavy")
+marginCard = Card([marginLabel, marginValue, marginProgress], "clear", "column", "s")
+marginLabel = TextContent("Margin in Use", "small")
+marginValue = TextContent("**$3,210,500 / $5,000,000 (64.2%)**", "default")
+marginProgress = Progress(64.2, "64.2% utilized")
+riskLimitsCard = Card([riskLimitsLabel, riskLimitsContent], "clear", "column", "s")
+riskLimitsLabel = TextContent("Risk Limits Near Breach", "small")
+riskLimitsContent = Callout("warning", "Sector Concentration", "Tech sector at 38% (limit: 40%) — $247K from breach")
+
+positionsTable = Card([positionsHeader, positionsTableComp], "card", "column", "m")
+positionsHeader = Heading("Current Positions", "h3")
+positionsTableComp = Table([posTicker, posSize, posEntry, posCurrent, posUnrealized])
+posTicker = Col("Ticker", ["AAPL", "MSFT", "NVDA", "GOOGL", "TSLA", "JPM", "XOM", "JNJ"])
+posSize = Col("Size", [12500, 8200, 3100, 4500, -2200, 15000, 9800, 6700])
+posEntry = Col("Entry", [172.45, 398.12, 421.80, 138.90, 248.50, 156.75, 112.30, 164.20])
+posCurrent = Col("Current", [189.20, 412.55, 487.30, 145.60, 231.80, 162.40, 118.90, 158.75])
+posUnrealized = Col("Unrealized P&L", [209375, 118306, 203050, 30150, -36740, 84750, 64680, -36515])
+
+exposureChart = Card([exposureHeader, exposureChartComp], "card", "column", "m")
+exposureHeader = Heading("Exposure by Sector", "h3")
+exposureChartComp = PieChart(["Technology", "Financials", "Energy", "Healthcare", "Consumer", "Industrials", "Cash"], [38.2, 18.5, 9.1, 12.3, 8.7, 6.4, 6.8], "donut")
+
+varSection = Card([varDetailHeader, varDetail], "card", "column", "m")
+varDetailHeader = Heading("Value at Risk Detail", "h3")
+varDetail = TextContent("**1-Day 95% VaR:** $412,300 | **1-Day 99% VaR:** $687,400 | **10-Day 95% VaR:** $1,302,100\n\nMethodology: Historical simulation (250 days) | Portfolio beta: 1.12 | Largest single position risk: NVDA ($203K unrealized)")
+
+gainersLosers = Card([glHeader, gainersTable, losersTable], "card", "column", "m")
+glHeader = Heading("Today's Biggest Movers", "h3")
+gainersTable = Table([glTicker, glChange, glPrice])
+glTicker = Col("Ticker", ["NVDA", "AAPL", "MSFT", "JPM", "XOM"])
+glChange = Col("Change %", [+15.6, +9.7, +3.6, +3.6, +5.9])
+glPrice = Col("Price", [487.30, 189.20, 412.55, 162.40, 118.90])
+losersTable = Table([llTicker, llChange, llPrice])
+llTicker = Col("Ticker", ["TSLA", "JNJ", "GOOGL", "AMZN", "META"])
+llChange = Col("Change %", [-6.7, -3.3, -2.4, -1.8, -1.2])
+llPrice = Col("Price", [231.80, 158.75, 145.60, 178.90, 498.20])
+
+watchlist = Card([watchHeader, watchTable], "card", "column", "m")
+watchHeader = Heading("Watchlist", "h3")
+watchTable = Table([watchTicker, watchPrice, watchChange, watchNotes])
+watchTicker = Col("Ticker", ["SPY", "QQQ", "IWM", "VIX", "DXY", "TLT", "GLD", "BTC-USD"])
+watchPrice = Col("Price", [458.20, 389.45, 198.30, 14.25, 104.80, 92.10, 2340.50, 67240])
+watchChange = Col("Change", [+0.8, +1.2, -0.3, -5.1, +0.2, -0.7, +0.4, +2.1])
+watchNotes = Col("Notes", ["ES futures +0.6%", "NQ futures +1.1%", "Small caps lagging", "Vol compression", "Dollar steady", "Yields 4.32%", "Gold near highs", "Above 65K"])
+
+workingOrders = Card([woHeader, woTable], "card", "column", "m")
+woHeader = Heading("Working Orders", "h3")
+woTable = Table([woTicker, woSide, woType, woQty, woLimit, woStatus, woTime])
+woTicker = Col("Ticker", ["AAPL", "NVDA", "TSLA", "SPY", "QQQ"])
+woSide = Col("Side", ["Buy", "Sell", "Buy", "Sell", "Buy"])
+woType = Col("Type", ["Limit", "Stop", "Limit", "Limit", "Stop"])
+woQty = Col("Qty", [2500, 500, 1000, 5000, 2000])
+woLimit = Col("Limit/Stop", [185.00, 475.00, 225.00, 455.00, 385.00])
+woStatus = Col("Status", ["Working", "Working", "Working", "Working", "Working"])
+woTime = Col("Time", ["09:15", "09:22", "09:28", "09:10", "09:18"])
+
+marginSection = Card([marginHeader, marginDetail], "card", "column", "m")
+marginHeader = Heading("Margin Detail", "h3")
+marginDetail = TextContent("**Reg T Margin:** $3,210,500 used / $5,000,000 available (64.2%)\n**Portfolio Margin:** $2,890,200 used / $6,500,000 available (44.5%)\n**Day Trading Buying Power:** $1,789,500\n**Overnight Buying Power:** $3,450,000\n**Maintenance Excess:** $1,789,500\n**Concentration Charge:** $247,000 (Tech sector)")
+
+headlines = Card([hlHeader, hlList], "card", "column", "m")
+hlHeader = Heading("Market Headlines", "h3")
+hlList = ListBlock([
+    ListItem("Fed holds rates steady; Powell signals patience on cuts", "Reuters | 08:45 ET | Sentiment: Neutral", null, null),
+    ListItem("Tech earnings beat expectations; AI spending guides higher", "Bloomberg | 07:30 ET | Sentiment: Positive", null, null),
+    ListItem("Oil drops 3% on demand concerns; OPEC+ meeting next week", "WSJ | 08:12 ET | Sentiment: Negative", null, null),
+    ListItem("Inflation data Friday key for September rate path", "FT | 06:55 ET | Sentiment: Neutral", null, null),
+    ListItem("China stimulus talks boost Asian markets overnight", "CNBC | 05:20 ET | Sentiment: Positive", null, null)
+], "number")
+
+economicReleases = Card([erHeader, erTable], "card", "column", "m")
+erHeader = Heading("Economic Releases This Week", "h3")
+erTable = Table([erDate, erTime, erEvent, erConsensus, erPrevious])
+erDate = Col("Date", ["Mon", "Tue", "Wed", "Thu", "Fri", "Fri"])
+erTime = Col("Time", ["10:00", "08:30", "08:30", "08:30", "08:30", "10:00"])
+erEvent = Col("Event", ["ISM Manufacturing", "JOLTS Job Openings", "ADP Employment", "Initial Claims", "Nonfarm Payrolls", "Unemployment Rate"])
+erConsensus = Col("Consensus", ["48.5", "8.1M", "185K", "235K", "190K", "4.1%"])
+erPrevious = Col("Previous", ["48.7", "8.18M", "192K", "233K", "206K", "4.1%"])
+
+strategyReturns = Card([srHeader, srChart], "card", "column", "m")
+srHeader = Heading("Strategy Returns YTD", "h3")
+srChart = BarChart(["Long/Short Equity", "Global Macro", "Fixed Income Arb", "Stat Arb", "Event Driven", "CTA/Trend"], [
+    Series("YTD %", [18.4, 12.7, 8.9, 22.1, 15.3, -3.2])
+], "grouped", "Strategy", "Return %")
+
+drawdownChart = Card([ddHeader, ddChart], "card", "column", "m")
+ddHeader = Heading("Drawdown — Past 12 Months", "h3")
+ddChart = AreaChart(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], [
+    Series("Drawdown %", [0, -2.1, -5.4, -3.8, -7.2, -4.1, -1.8, -6.5, -3.2, -1.1, -0.5, 0])
+], "natural", "Month", "Drawdown %")
+
+riskLimits = Card([rlHeader, rlList], "card", "column", "m")
+rlHeader = Heading("Risk Limits Monitor", "h3")
+rlList = ListBlock([
+    ListItem("Sector Concentration — Technology", "Current: 38.2% | Limit: 40% | **$247K from breach**", null, null),
+    ListItem("Single Name — NVDA", "Current: 4.2% | Limit: 5% | $103K from breach", null, null),
+    ListItem("Gross Leverage", "Current: 1.85x | Limit: 2.0x | $1.15M from breach", null, null),
+    ListItem("Net Leverage", "Current: 0.92x | Limit: 1.2x | $3.6M from breach", null, null),
+    ListItem("VaR Utilization", "Current: 82% | Limit: 90% | $41K from breach", null, null),
+    ListItem("Liquidity Score", "Current: 7.2/10 | Minimum: 6.0 | **Safe**", null, null)
+], "number")
+
+rebalanceBtn = Buttons([rebalanceButton])
+rebalanceButton = Button("Rebalance Portfolio to Target Weights", null, "primary")
+
+orderForm = Card([ofHeader, ofForm], "card", "column", "m")
+ofHeader = Heading("Place Order", "h3")
+ofForm = Form("place-order", ofButtons, [ofTicker, ofSide, ofQty, ofType, ofLimit, ofTif])
+ofTicker = FormControl("Ticker", ofTickerInput, "Symbol (e.g., AAPL)")
+ofTickerInput = Input("ticker", "AAPL", "text")
+ofSide = FormControl("Side", ofSideSelect)
+ofSideSelect = Select("side", [ofSideBuy, ofSideSell], "Buy")
+ofSideBuy = SelectItem("buy", "Buy")
+ofSideSell = SelectItem("sell", "Sell")
+ofQty = FormControl("Quantity", ofQtyInput, "Number of shares/contracts")
+ofQtyInput = Input("quantity", "100", "number")
+ofType = FormControl("Order Type", ofTypeSelect)
+ofTypeSelect = Select("order_type", [ofTypeMarket, ofTypeLimit, ofTypeStop, ofTypeStopLimit], "Market")
+ofTypeMarket = SelectItem("market", "Market")
+ofTypeLimit = SelectItem("limit", "Limit")
+ofTypeStop = SelectItem("stop", "Stop")
+ofTypeStopLimit = SelectItem("stop_limit", "Stop Limit")
+ofLimit = FormControl("Limit Price", ofLimitInput, "Required for limit/stop-limit orders")
+ofLimitInput = Input("limit_price", "185.00", "number")
+ofTif = FormControl("Time in Force", ofTifSelect)
+ofTifSelect = Select("tif", [ofTifDay, ofTifGtc, ofTifIoc, ofTifFok], "Day")
+ofTifDay = SelectItem("day", "Day")
+ofTifGtc = SelectItem("gtc", "GTC")
+ofTifIoc = SelectItem("ioc", "IOC")
+ofTifFok = SelectItem("fok", "FOK")
+ofButtons = Buttons([ofSubmit, ofCancel])
+ofSubmit = Button("Submit Order", null, "primary")
+ofCancel = Button("Clear", null, "tertiary")
+
+timeframeSelector = Card([tfHeader, tfSelect], "sunk", "row", "m", "center", "between")
+tfHeader = TextContent("Chart Timeframe:", "default")
+tfSelect = Select("timeframe", [tf1m, tf5m, tf15m, tf1h, tf4h, tf1d, tf1w, tf1M], "1D")
+tf1m = SelectItem("1m", "1 Minute")
+tf5m = SelectItem("5m", "5 Minutes")
+tf15m = SelectItem("15m", "15 Minutes")
+tf1h = SelectItem("1h", "1 Hour")
+tf4h = SelectItem("4h", "4 Hours")
+tf1d = SelectItem("1d", "1 Day")
+tf1w = SelectItem("1w", "1 Week")
+tf1M = SelectItem("1M", "1 Month")

@@ -1,0 +1,11 @@
+root = Card([header, termsSection, acceptanceField, signatureField, formButtons])
+header = CardHeader("Lease Agreement", "Review the terms below, then sign to accept")
+termsSection = MarkDownRenderer(termsMarkdown, "card")
+termsMarkdown = "**Lease Term:** 12 months (January 1, 2026 – December 31, 2026)\n\n**Monthly Rent:** $2,450.00, due on the 1st of each month\n\n**Security Deposit:** $2,450.00 (refundable, held per state law)\n\n**Utilities Included:** Water, trash, and sewer. Tenant responsible for electricity, gas, and internet.\n\n**Pet Policy:** One cat or dog under 25 lbs permitted with $300 non-refundable pet fee.\n\n**Maintenance:** Landlord handles structural/appliance repairs; tenant handles minor upkeep.\n\n**Early Termination:** 60 days written notice + 2 months' rent fee.\n\n**Renewal Option:** 30-day notice required; rent may increase up to 5%."
+acceptanceField = FormControl("Acceptance", acceptanceCheckbox, "You must accept the terms to proceed")
+acceptanceCheckbox = CheckBoxGroup("accept-terms", [acceptItem], { required: true })
+acceptItem = CheckBoxItem("I have read and agree to all terms and conditions of this lease agreement", "", "accept-terms", false)
+signatureField = FormControl("Signature", signatureInput, "Type your full legal name as your electronic signature")
+signatureInput = Input("signature", "John A. Smith", "text", { required: true, minLength: 2 })
+formButtons = Buttons([submitBtn], "row")
+submitBtn = Button("Sign & Submit Lease", { type: "continue_conversation", context: "Submit signed lease agreement with acceptance and signature" }, "primary")

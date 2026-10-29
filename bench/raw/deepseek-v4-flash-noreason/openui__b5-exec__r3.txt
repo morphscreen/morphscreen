@@ -1,0 +1,92 @@
+root = Card([header, quarterControl, regionControl, exportActions, kpiSection, revenueTrend, costTrend, budgetSection, headcountSection, riskSection, initiativeSection, runwaySection, pipelineSection, winRateSection, customerSection, npsSection, boardSection])
+
+header = CardHeader("Quarterly Command Center", "Q3 2024 · All regions consolidated")
+
+quarterControl = Card([quarterLabel, quarterButtons], "sunk", "row", "m", "center")
+quarterLabel = TextContent("**Current quarter:** Q3 2024")
+quarterButtons = Buttons([q1Btn, q2Btn, q3Btn, q4Btn], "row")
+q1Btn = Button("Q1 2024", null, "secondary", "normal", "small")
+q2Btn = Button("Q2 2024", null, "secondary", "normal", "small")
+q3Btn = Button("Q3 2024", null, "primary", "normal", "small")
+q4Btn = Button("Q4 2024", null, "secondary", "normal", "small")
+
+regionControl = Card([regionLabel, regionButtons], "sunk", "row", "m", "center")
+regionLabel = TextContent("**Region focus:**")
+regionButtons = Buttons([allRegionsBtn, naBtn, eurBtn, apacBtn], "row")
+allRegionsBtn = Button("All regions", null, "primary", "normal", "small")
+naBtn = Button("North America", null, "secondary", "normal", "small")
+eurBtn = Button("Europe", null, "secondary", "normal", "small")
+apacBtn = Button("APAC", null, "secondary", "normal", "small")
+
+exportActions = Buttons([exportBtn], "row")
+exportBtn = Button("Export full pack", null, "primary")
+
+kpiSection = Card([kpiHeading, kpiTable], "sunk")
+kpiHeading = Heading("Financial snapshot", "h3")
+kpiTable = Table([kpiMetric, kpiValue])
+kpiMetric = Col("Metric", ["Revenue", "Costs", "Profit", "Runway", "Pipeline", "Win rate", "Customers", "Churn", "NPS"])
+kpiValue = Col("Value", ["$42.8M", "$31.2M", "$11.6M", "14 months", "$96.5M", "38%", "12,480", "2.1%", "47"])
+
+revenueTrend = Card([revenueTrendHeading, revenueChart], "sunk")
+revenueTrendHeading = Heading("Revenue by quarter", "h3")
+revenueChart = BarChart(["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"], [revenueSeries], "grouped", "Quarter", "USD (M)")
+revenueSeries = Series("Revenue", [34.2, 38.6, 42.8, 46.1])
+
+costTrend = Card([costTrendHeading, costChart], "sunk")
+costTrendHeading = Heading("Costs by quarter", "h3")
+costChart = BarChart(["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"], [costSeries], "grouped", "Quarter", "USD (M)")
+costSeries = Series("Costs", [27.8, 29.4, 31.2, 32.5])
+
+budgetSection = Card([budgetHeading, budgetChart], "sunk")
+budgetHeading = Heading("Budget vs plan by department", "h3")
+budgetChart = HorizontalBarChart(["Engineering", "Sales", "Marketing", "Operations", "Finance"], [budgetActual, budgetPlan], "grouped", "USD (M)", "Department")
+budgetActual = Series("Actual", [9.8, 8.4, 6.2, 4.5, 2.3])
+budgetPlan = Series("Plan", [9.2, 8.0, 6.8, 4.2, 2.5])
+
+headcountSection = Card([headcountHeading, headcountChart], "sunk")
+headcountHeading = Heading("Headcount by department", "h3")
+headcountChart = BarChart(["Engineering", "Sales", "Marketing", "Operations", "Finance"], [headcountSeries], "grouped", "Department", "Employees")
+headcountSeries = Series("Headcount", [320, 240, 120, 180, 60])
+
+riskSection = Card([riskHeading, riskTable], "sunk")
+riskHeading = Heading("Top risks", "h3")
+riskTable = Table([riskName, riskOwner])
+riskName = Col("Risk", ["Supply chain disruption", "Key engineering attrition", "Regulatory change in EU", "Currency volatility", "Cloud cost overrun"])
+riskOwner = Col("Owner", ["M. Chen", "A. Patel", "J. Rodriguez", "S. Kim", "L. Novak"])
+
+initiativeSection = Card([initiativeHeading, initiativeTable], "sunk")
+initiativeHeading = Heading("Strategic initiatives", "h3")
+initiativeTable = Table([initiativeName, initiativeStatus])
+initiativeName = Col("Initiative", ["AI assistant launch", "APAC expansion", "Enterprise tier rollout", "Data platform migration", "Partner ecosystem"])
+initiativeStatus = Col("Status", ["On track", "At risk", "On track", "Behind", "On track"])
+
+runwaySection = Card([runwayHeading, runwayProgress], "sunk", "column", "m")
+runwayHeading = Heading("Months of runway", "h3")
+runwayProgress = Progress(14, "14 months of runway remaining")
+
+pipelineSection = Card([pipelineHeading, pipelineProgress], "sunk", "column", "m")
+pipelineHeading = Heading("Sales pipeline value", "h3")
+pipelineProgress = Progress(72, "$96.5M pipeline · 72% of $134M annual target")
+
+winRateSection = Card([winRateHeading, winRateProgress], "sunk", "column", "m")
+winRateHeading = Heading("Win rate", "h3")
+winRateProgress = Progress(38, "38% win rate this quarter")
+
+customerSection = Card([customerHeading, customerTable], "sunk")
+customerHeading = Heading("Customer count and churn", "h3")
+customerTable = Table([customerMetric, customerValue])
+customerMetric = Col("Metric", ["Active customers", "New customers", "Churned customers", "Churn rate", "Net revenue retention"])
+customerValue = Col("Value", ["12,480", "1,240", "265", "2.1%", "118%"])
+
+npsSection = Card([npsHeading, npsProgress], "sunk", "column", "m")
+npsHeading = Heading("Net Promoter Score", "h3")
+npsProgress = Progress(47, "NPS of 47 · up 5 points from last quarter")
+
+boardSection = Card([boardHeading, boardList], "sunk")
+boardHeading = Heading("Next board meeting items", "h3")
+boardList = ListBlock([boardItem1, boardItem2, boardItem3, boardItem4, boardItem5], "number")
+boardItem1 = ListItem("Approve Q4 hiring plan for APAC expansion", "Presented by S. Kim")
+boardItem2 = ListItem("Review AI assistant launch readiness and go/no-go", "Presented by M. Chen")
+boardItem3 = ListItem("Approve enterprise tier pricing and packaging", "Presented by J. Rodriguez")
+boardItem4 = ListItem("Review data platform migration timeline and budget", "Presented by L. Novak")
+boardItem5 = ListItem("Discuss strategic partnership with two candidates", "Presented by A. Patel")

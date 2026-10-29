@@ -1,0 +1,52 @@
+# Operations desk — today
+
+<Columns>
+<Stat label="Orders placed today" value="184" change="+12%" tone="success" icon="shopping-cart" />
+<Stat label="Revenue today" value="$21,480" change="+8.4%" tone="success" icon="currency-dollar" />
+<Stat label="Average order value" value="$116.74" change="+2.1%" tone="neutral" icon="chart-line" />
+<Stat label="Refund rate this month" value="2.8%" change="-0.4 pts" tone="success" icon="arrow-u-up-left" />
+</Columns>
+
+<Card title="Order volume" subtitle="Past four weeks, all statuses">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| W1 | 1042 |
+| W2 | 1188 |
+| W3 | 1265 |
+| W4 | 1341 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Filter and search, then mark fulfilled">
+<Form name="order-filter">
+<Input label="Search by customer" name="customer" type="search" placeholder="e.g. Dana Whitfield" hint="Matches first or last name" />
+<Select label="Status" name="status" options="All statuses | Paid | Packing | Shipped | Fulfilled | Refunded" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Order queue">
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #48213 | Dana Whitfield | $148.00 | <Badge tone="info">Paid</Badge> |
+| #48212 | Marcus Oyelaran | $92.50 | <Badge tone="warning">Packing</Badge> |
+| #48211 | Priya Raghunathan | $310.20 | <Badge tone="info">Shipped</Badge> |
+| #48210 | Elena Vasquez | $64.99 | <Badge tone="success">Fulfilled</Badge> |
+| #48209 | Tom Berger | $127.40 | <Badge tone="danger">Refunded</Badge> |
+| #48208 | Aisha Nkemelu | $205.75 | <Badge tone="warning">Packing</Badge> |
+
+<Button ask="Mark order #48213 as fulfilled" icon="check">Mark #48213 fulfilled</Button>
+<Button ask="Mark order #48212 as fulfilled" icon="check">Mark #48212 fulfilled</Button>
+<Button variant="secondary" ask="Show all orders with status Packing">Show all Packing orders</Button>
+</Card>
+
+<Callout tone="info" title="Two orders waiting">#48212 and #48208 are still in Packing past the 24-hour target.</Callout>
+
+<FollowUps>
+- Show only orders that are still unfulfilled
+- Break down today's revenue by product category
+- What is driving the refund rate this month?
+- Compare this week's order volume to the same week last month
+</FollowUps>

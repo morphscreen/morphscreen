@@ -1,0 +1,102 @@
+<Card title="Service Health Dashboard" subtitle="Production • Last updated: 2 minutes ago">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Error rate (now)" value="0.12%" change="+0.03% from 1h ago" tone="warning" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 warning" tone="danger" />
+<Stat label="Avg latency (p95)" value="247ms" change="-12ms from 1h ago" tone="info" />
+</Columns>
+
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" hint="Filter all metrics by region" />
+</Card>
+
+<Columns>
+<Card title="CPU & Memory (24h)" subtitle="us-east-1">
+<Tabs>
+<Tab title="CPU Usage">
+<Chart type="area" x="Time" y="%">
+| Time | CPU % |
+|---|---|
+| 00:00 | 42 |
+| 02:00 | 38 |
+| 04:00 | 35 |
+| 06:00 | 45 |
+| 08:00 | 58 |
+| 10:00 | 67 |
+| 12:00 | 72 |
+| 14:00 | 69 |
+| 16:00 | 71 |
+| 18:00 | 65 |
+| 20:00 | 54 |
+| 22:00 | 48 |
+</Chart>
+<Progress value="67" max="100" label="Current: 67%" />
+</Tab>
+<Tab title="Memory Usage">
+<Chart type="area" x="Time" y="%">
+| Time | Memory % |
+|---|---|
+| 00:00 | 55 |
+| 02:00 | 52 |
+| 04:00 | 50 |
+| 06:00 | 58 |
+| 08:00 | 65 |
+| 10:00 | 71 |
+| 12:00 | 74 |
+| 14:00 | 73 |
+| 16:00 | 75 |
+| 18:00 | 70 |
+| 20:00 | 62 |
+| 22:00 | 58 |
+</Chart>
+<Progress value="72" max="100" label="Current: 72%" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open Incidents" subtitle="3 active">
+<Table>
+| Severity | Title | Service | Region | Started | Actions |
+|---|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Payment processing timeout | payments-api | us-east-1 | 14 min ago | <Button variant="danger" size="sm">Acknowledge</Button> |
+| <Badge tone="warning">Warning</Badge> | Elevated 5xx on auth-service | auth-service | eu-west-1 | 42 min ago | <Button variant="secondary" size="sm">Acknowledge</Button> |
+| <Badge tone="warning">Warning</Badge> | High latency on search index | search-api | us-west-2 | 1h 12m ago | <Button variant="secondary" size="sm">Acknowledge</Button> |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Slowest Endpoints (p95 latency)" subtitle="Top 5 by latency, last 5 minutes">
+<Table>
+| Endpoint | Service | p50 | p95 | p99 | Requests/min | Trend |
+|---|---|---|---|---|---|---|
+| POST /api/v1/payments/process | payments-api | 1,240ms | 2,890ms | 4,120ms | 1,240 | <Badge tone="danger">↑ 34%</Badge> |
+| GET /api/v1/search/products | search-api | 890ms | 1,850ms | 2,400ms | 3,420 | <Badge tone="warning">↑ 18%</Badge> |
+| POST /api/v1/auth/token/refresh | auth-service | 420ms | 1,120ms | 1,890ms | 8,750 | <Badge tone="neutral">→</Badge> |
+| GET /api/v1/users/profile | user-api | 310ms | 890ms | 1,340ms | 12,300 | <Badge tone="success">↓ 5%</Badge> |
+| POST /api/v1/orders/create | orders-api | 280ms | 760ms | 1,100ms | 2,100 | <Badge tone="neutral">→</Badge> |
+</Table>
+</Card>
+
+<Card title="Alert Threshold Configuration" subtitle="Configure alerting rules">
+<Form name="alert-thresholds">
+<Select label="Metric" name="metric" placeholder="Select metric" options="Error rate | CPU usage | Memory usage | Latency (p95) | Request throughput" value="Error rate" required="true" />
+<Select label="Condition" name="condition" placeholder="Select condition" options="Greater than | Greater than or equal | Less than | Less than or equal" value="Greater than" required="true" />
+<Input label="Threshold value" name="threshold" type="number" placeholder="e.g., 0.5" value="0.5" hint="For error rate: 0.5 = 0.5%" required="true" />
+<Select label="Duration" name="duration" placeholder="Select duration" options="1 minute | 5 minutes | 10 minutes | 15 minutes | 30 minutes" value="5 minutes" required="true" hint="How long condition must persist" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Critical | Warning | Info" value="Warning" required="true" />
+<Select label="Notification channel" name="channel" placeholder="Select channel" options="PagerDuty | Slack #oncall | Email | Webhook" value="PagerDuty" required="true" />
+<Button>Save threshold</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Callout tone="info" title="Quick actions">
+<Columns>
+<Button variant="primary">Create incident</Button>
+<Button variant="secondary">View runbooks</Button>
+<Button variant="secondary">Page on-call</Button>
+<Button variant="tertiary">Export metrics</Button>
+</Columns>
+</Callout>
+</Card>

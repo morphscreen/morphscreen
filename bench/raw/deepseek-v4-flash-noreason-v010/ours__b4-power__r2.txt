@@ -1,0 +1,168 @@
+# Power Network Operator Console
+
+Live operational view of the national grid. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Network Overview" subtitle="Real-time grid health">
+<Columns>
+<Stat label="Current Load" value="38.2 GW" change="+2.1% vs 1h ago" icon="lightning" tone="info" />
+<Stat label="Capacity Used" value="76.4%" change="Headroom: 11.8 GW" icon="gauge" tone="success" />
+<Stat label="Price / MWh" value="€87.40" change="+€3.20 today" icon="currency-eur" tone="warning" />
+<Stat label="Emissions Today" value="12,480 t" change="−8% vs yesterday" icon="leaf" tone="success" />
+</Columns>
+<Progress value="76.4" max="100" label="Grid capacity utilization" tone="info" />
+</Card>
+
+<Card title="Generation Mix" subtitle="Current output by source">
+<Chart type="donut" title="Share of generation" x="Source" y="Output (GW)">
+| Source | Output |
+|---|---|
+| Wind | 12.8 |
+| Solar | 6.4 |
+| Natural Gas | 9.2 |
+| Nuclear | 7.5 |
+| Hydro | 2.3 |
+</Chart>
+</Card>
+
+<Card title="Plant Status" subtitle="All connected generation assets">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| North Sea Wind Farm A | Wind | 1,240 | <Badge tone="success">Online</Badge> |
+| East Coast Wind Farm B | Wind | 980 | <Badge tone="success">Online</Badge> |
+| Solstice Solar Park | Solar | 610 | <Badge tone="warning">Derated</Badge> |
+| Riverbend Hydro | Hydro | 340 | <Badge tone="success">Online</Badge> |
+| Beacon Hill Gas Plant | Natural Gas | 1,850 | <Badge tone="success">Online</Badge> |
+| Granite Nuclear Unit 1 | Nuclear | 1,200 | <Badge tone="success">Online</Badge> |
+| Granite Nuclear Unit 2 | Nuclear | 1,180 | <Badge tone="warning">Maintenance</Badge> |
+| Highland Peaker | Natural Gas | 210 | <Badge tone="danger">Trip</Badge> |
+
+<Button variant="secondary" ask="Show me the full plant list with all 42 assets">View all 42 plants</Button>
+</Card>
+
+<Card title="Active Outages" subtitle="Regions currently affected">
+<Columns>
+<Callout tone="danger" title="Highland Peaker trip">
+<strong>Region:</strong> North Highlands<br/>
+<strong>Impact:</strong> 210 MW lost, 2,400 customers<br/>
+<strong>Started:</strong> 14:22, ETA restore 18:00
+</Callout>
+<Callout tone="warning" title="Line maintenance">
+<strong>Region:</strong> East Midlands<br/>
+<strong>Impact:</strong> 150 MW rerouted, 800 customers<br/>
+<strong>Started:</strong> 09:00, ETA restore 17:00
+</Callout>
+</Columns>
+</Card>
+
+<Card title="Demand Forecast" subtitle="Next 24 hours">
+<Chart type="line" x="Hour" y="Load (GW)">
+| Hour | Forecast |
+|---|---|
+| 00:00 | 34.0 |
+| 03:00 | 32.5 |
+| 06:00 | 36.8 |
+| 09:00 | 40.2 |
+| 12:00 | 38.9 |
+| 15:00 | 37.4 |
+| 18:00 | 42.1 |
+| 21:00 | 40.5 |
+</Chart>
+</Card>
+
+<Card title="Maintenance This Month" subtitle="Planned works and expected impact">
+| Date | Asset | Region | Duration | Impact |
+|---|---|---|---|---|
+| Jun 12–14 | Granite Nuclear Unit 2 | Central | 3 days | −1,180 MW |
+| Jun 18 | Solstice Solar Park | South | 1 day | −610 MW |
+| Jun 22–24 | East Coast Wind Farm B | East | 3 days | −980 MW |
+
+<Button variant="secondary" ask="Show the full maintenance calendar for June">Full calendar</Button>
+</Card>
+
+<Card title="Live Alerts" subtitle="Newest first">
+<Steps>
+<Step title="Highland Peaker trip" status="done">
+<strong>14:22</strong> – Unit tripped, cause under investigation. <Button variant="tertiary" size="small" ask="What caused the Highland Peaker trip?">Details</Button>
+</Step>
+<Step title="Wind forecast upgrade" status="current">
+<strong>14:05</strong> – Wind output expected +400 MW from 16:00. <Button variant="tertiary" size="small" ask="Show updated wind forecast">View</Button>
+</Step>
+<Step title="Price spike warning" status="current">
+<strong>13:40</strong> – Price above €85/MWh for next 3 hours. <Button variant="tertiary" size="small" ask="Why is the price spiking?">Analyze</Button>
+</Step>
+</Steps>
+</Card>
+
+<Card title="Regional Focus" subtitle="Select a region to drill down">
+<Tabs>
+<Tab title="North">
+<Columns>
+<Stat label="Load" value="8.9 GW" icon="lightning" />
+<Stat label="Capacity" value="9.6 GW" icon="gauge" />
+<Stat label="Alerts" value="2" tone="danger" icon="bell" />
+</Columns>
+<Callout tone="danger" title="Highland Peaker offline">210 MW unavailable until 18:00. Consider curtailment in North region.</Callout>
+</Tab>
+<Tab title="South">
+<Columns>
+<Stat label="Load" value="11.2 GW" icon="lightning" />
+<Stat label="Capacity" value="12.8 GW" icon="gauge" />
+<Stat label="Alerts" value="0" tone="success" icon="bell" />
+</Columns>
+<Callout tone="warning" title="Solar derated">Solstice Solar Park at 82% due to cloud cover.</Callout>
+</Tab>
+<Tab title="East">
+<Columns>
+<Stat label="Load" value="7.4 GW" icon="lightning" />
+<Stat label="Capacity" value="8.1 GW" icon="gauge" />
+<Stat label="Alerts" value="1" tone="warning" icon="bell" />
+</Columns>
+<Callout tone="warning" title="Line maintenance">150 MW rerouted through East Midlands corridor until 17:00.</Callout>
+</Tab>
+<Tab title="West">
+<Columns>
+<Stat label="Load" value="5.8 GW" icon="lightning" />
+<Stat label="Capacity" value="6.4 GW" icon="gauge" />
+<Stat label="Alerts" value="0" tone="success" icon="bell" />
+</Columns>
+<Callout tone="success" title="All clear">No active issues in West region.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Curtailment Control" subtitle="Order a reduction in generation">
+<Form name="curtailment">
+<Select label="Region" placeholder="Choose region" options="North | South | East | West | National" />
+<Select label="Plant" placeholder="Choose plant" options="North Sea Wind Farm A | East Coast Wind Farm B | Solstice Solar Park | Beacon Hill Gas Plant" />
+<Slider label="Curtailment amount" min="0" max="1000" step="50" value="200" unit="MW" name="amount" />
+<Radio label="Duration" options="1 hour | 2 hours | 4 hours | Until further notice" name="duration" />
+<TextArea label="Reason" placeholder="e.g., Grid congestion on North corridor" rows="2" />
+<Button>Submit curtailment order</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today" subtitle="CO₂ output and trend">
+<Columns>
+<Stat label="Total CO₂" value="12,480 t" icon="leaf" tone="success" />
+<Stat label="vs. Yesterday" value="−8%" tone="success" icon="trend-down" />
+<Stat label="Intensity" value="327 g/kWh" icon="chart-line" tone="warning" />
+</Columns>
+<Chart type="area" title="Hourly emissions" x="Hour" y="t CO₂">
+| Hour | Emissions |
+|---|---|
+| 00:00 | 480 |
+| 04:00 | 420 |
+| 08:00 | 560 |
+| 12:00 | 610 |
+| 16:00 | 540 |
+| 20:00 | 590 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Which region is closest to capacity right now?
+- What happens if I curtail 500 MW in the North?
+- Show me the outage impact on the East region
+- Compare today's emissions to last week
+</FollowUps>

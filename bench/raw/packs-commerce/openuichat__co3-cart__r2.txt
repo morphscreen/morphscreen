@@ -1,0 +1,31 @@
+root = Card([cartHeader, cartTable, summarySection, promoForm, checkoutButtons])
+cartHeader = CardHeader("Shopping Cart", "4 items in your cart")
+cartTable = EditableTable("cart-items", cartColumns, cartData)
+cartColumns = [
+  { type: "text", key: "name", header: "Product", width: 200 },
+  { type: "number", key: "price", header: "Price", width: 100 },
+  { type: "number", key: "quantity", header: "Qty", width: 80 },
+  { type: "number", key: "total", header: "Total", width: 100 }
+]
+cartData = [
+  { id: "1", values: ["Wireless Headphones", 79.99, 1, 79.99] },
+  { id: "2", values: ["USB-C Hub", 34.99, 2, 69.98] },
+  { id: "3", values: ["Mechanical Keyboard", 129.99, 1, 129.99] },
+  { id: "4", values: ["Mouse Pad", 14.99, 3, 44.97] }
+]
+summarySection = EntityList(summaryRows, "default", summaryHeader, summaryFooter)
+summaryRows = [
+  { left: "Subtotal", right: "$324.93", rightVariant: "number" },
+  { left: "Shipping", right: "$9.99", rightVariant: "number" },
+  { left: "Tax (8%)", right: "$26.79", rightVariant: "number" }
+]
+summaryHeader = { left: "Order Summary", right: "", rightVariant: "text" }
+summaryFooter = { left: "Total", right: "$361.71", rightVariant: "number" }
+promoForm = Form("promo-form", promoButtons, [promoField])
+promoField = FormControl("Promo Code", promoInput, "Enter a discount code if you have one")
+promoInput = Input("promo-code", "e.g. SAVE20", "text")
+promoButtons = Buttons([promoApplyBtn], "row")
+promoApplyBtn = Button("Apply", { type: "continue_conversation", context: "Apply promo code SAVE20 to cart" }, "secondary")
+checkoutButtons = Buttons([checkoutBtn, continueBtn], "row")
+checkoutBtn = Button("Proceed to Checkout", { type: "continue_conversation", context: "Start checkout process for cart total $361.71" }, "primary", "normal", "large")
+continueBtn = Button("Continue Shopping", { type: "continue_conversation", context: "Continue browsing products" }, "tertiary", "normal", "large")

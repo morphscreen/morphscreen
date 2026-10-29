@@ -1,0 +1,226 @@
+# Streaming Operations Dashboard
+
+<Badge tone="success">Live</Badge> <Badge tone="info">Auto-refresh: 30s</Badge> <Badge tone="neutral">UTC 14:32</Badge>
+
+<Columns>
+<Card title="Current Viewers">
+<Stat label="Watching Now" value="2.4M" change="+12% vs 1hr ago" tone="success" icon="users" />
+<Stat label="Peak Today" value="3.1M" change="at 20:15 UTC" tone="neutral" icon="chart-line" />
+<Stat label="Concurrent Streams" value="1.8M" change="+8% vs yesterday" tone="info" icon="play-circle" />
+</Card>
+
+<Card title="Buffering Health">
+<Stat label="Global Buffer Rate" value="0.34%" change="-0.05% vs 24hr" tone="success" icon="gauge" />
+<Progress value="34" max="10000" label="Target: <0.5%" tone="success" />
+<Stat label="Rebuffer Ratio" value="0.12%" change="stable" tone="neutral" icon="rotate-ccw" />
+</Card>
+</Columns>
+
+<Card title="Most-Watched Titles (Last 24h)">
+<Chart type="horizontal" x="Title" y="Hours Watched">
+| Title | Hours Watched |
+|---|---|
+| The Crown S6 | 482,000 |
+| Stranger Things S4 | 415,000 |
+| Wednesday S1 | 389,000 |
+| Squid Game S2 | 356,000 |
+| Bridgerton S3 | 312,000 |
+| The Witcher S3 | 287,000 |
+| Black Mirror S6 | 245,000 |
+| Ozark S4 | 221,000 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Watch Time — Past 30 Days">
+<Chart type="line" x="Date" y="Hours (M)">
+| Date | Hours (M) |
+|---|---|
+| Nov 1 | 12.4 |
+| Nov 3 | 13.1 |
+| Nov 5 | 14.8 |
+| Nov 7 | 13.9 |
+| Nov 9 | 15.2 |
+| Nov 11 | 16.7 |
+| Nov 13 | 15.8 |
+| Nov 15 | 17.3 |
+| Nov 17 | 18.1 |
+| Nov 19 | 16.9 |
+| Nov 21 | 18.5 |
+| Nov 23 | 19.2 |
+| Nov 25 | 20.1 |
+| Nov 27 | 19.8 |
+| Nov 29 | 21.4 |
+</Chart>
+</Card>
+
+<Card title="Subscribers: New vs Cancelled">
+<Chart type="bar" x="Week" y="Count (K)">
+| Week | New | Cancelled |
+|---|---|---|
+| W1 | 84 | 32 |
+| W2 | 91 | 28 |
+| W3 | 78 | 35 |
+| W4 | 95 | 30 |
+| W5 | 102 | 27 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Performance by Genre">
+<Chart type="bar" x="Genre" y="Avg Watch Time (min)">
+| Genre | Avg Watch Time (min) |
+|---|---|
+| Drama | 42 |
+| Thriller | 38 |
+| Comedy | 31 |
+| Sci-Fi | 45 |
+| Documentary | 28 |
+| Animation | 35 |
+| Horror | 33 |
+| Reality | 22 |
+</Chart>
+</Card>
+
+<Card title="Delivery Health by Region">
+<Select label="Focus Region" name="region-focus" placeholder="Select region" options="Global | North America | Europe | APAC | LATAM | MEA" value="Global" />
+<Chart type="bar" x="Region" y="Health Score">
+| Region | Health Score |
+|---|---|
+| North America | 98.2 |
+| Europe | 97.8 |
+| APAC | 96.5 |
+| LATAM | 94.1 |
+| MEA | 92.3 |
+</Chart>
+<Stat label="Global CDN Hit Rate" value="94.7%" change="+0.3%" tone="success" icon="server" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Releases This Month">
+<Table>
+| Title | Type | Release Date | Genre | Est. Viewers |
+|---|---|---|---|---|
+| Rebel Moon P2 | Film | Dec 8 | Sci-Fi | 12M |
+| The Crown S6 P2 | Series | Dec 14 | Drama | 18M |
+| Maestro | Film | Dec 20 | Biography | 8M |
+| Berlin (Money Heist) | Series | Dec 29 | Thriller | 15M |
+| Chicken Run 2 | Film | Dec 15 | Animation | 9M |
+</Table>
+</Card>
+
+<Card title="Licenses Expiring Soon">
+<Table>
+| Title | Expires | Days Left | Status | Action |
+|---|---|---|---|---|
+| Friends | Jan 15 | 18 | <Badge tone="danger">Critical</Badge> | Renew |
+| The Office | Jan 22 | 25 | <Badge tone="warning">At Risk</Badge> | Negotiate |
+| Parks & Rec | Feb 5 | 39 | <Badge tone="warning">At Risk</Badge> | Negotiate |
+| Harry Potter 1-8 | Feb 18 | 52 | <Badge tone="info">Monitor</Badge> | Review |
+| Seinfeld | Mar 1 | 63 | <Badge tone="neutral">Tracking</Badge> | — |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recommendation Click-Through">
+<Stat label="CTR (Global)" value="4.7%" change="+0.3% WoW" tone="success" icon="mouse-pointer-click" />
+<Chart type="line" x="Date" y="CTR %">
+| Date | CTR % |
+|---|---|
+| Nov 1 | 4.1 |
+| Nov 5 | 4.3 |
+| Nov 9 | 4.4 |
+| Nov 13 | 4.5 |
+| Nov 17 | 4.6 |
+| Nov 21 | 4.7 |
+| Nov 25 | 4.7 |
+| Nov 29 | 4.7 |
+</Chart>
+</Card>
+
+<Card title="Searches Without Playback">
+<Stat label="Zero-Result Rate" value="8.2%" change="-0.4% WoW" tone="success" icon="magnifying-glass" />
+<Stat label="No-Play Rate" value="14.6%" change="+0.2% WoW" tone="warning" icon="x-circle" />
+<Chart type="bar" x="Query Type" y="No-Play %">
+| Query Type | No-Play % |
+|---|---|
+| Title Exact | 5.2 |
+| Actor/Director | 12.8 |
+| Genre Browse | 18.4 |
+| Mood/Theme | 24.1 |
+| Kids Content | 8.9 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Revenue Split by Plan">
+<Chart type="donut" x="Plan" y="Revenue %">
+| Plan | Revenue % |
+|---|---|
+| Premium (4K) | 42 |
+| Standard (HD) | 35 |
+| Basic (SD) | 15 |
+| Mobile Only | 8 |
+</Chart>
+<Stat label="ARPU" value="$14.82" change="+$0.34 MoM" tone="success" icon="currency-dollar" />
+</Card>
+
+<Card title="Viewing Split by Device">
+<Chart type="donut" x="Device" y="Hours %">
+| Device | Hours % |
+|---|---|
+| Smart TV | 48 |
+| Mobile | 28 |
+| Desktop | 14 |
+| Tablet | 7 |
+| Game Console | 3 |
+</Chart>
+<Stat label="TV Share" value="48%" change="+2% YoY" tone="info" icon="tv" />
+</Card>
+</Columns>
+
+<Card title="Feature Flags">
+<Table>
+| Flag | Description | State | Owner | Updated |
+|---|---|---|---|---|
+| new_homepage_layout | Redesigned hero + rails | <Switch name="ff-new-home" value="true" /> | Product | Nov 28 |
+| shuffle_play | Random episode button | <Switch name="ff-shuffle" value="true" /> | Growth | Nov 15 |
+| live_channels | FAST linear channels | <Switch name="ff-live" value="false" /> | Content | Nov 10 |
+| social_watchparty | Synced viewing + chat | <Switch name="ff-watchparty" value="true" /> | Social | Nov 22 |
+| ai_recs_v2 | LLM-based recommendations | <Switch name="ff-ai-recs" value="true" /> | ML | Dec 1 |
+| kids_profiles_pin | PIN-protected profiles | <Switch name="ff-kids-pin" value="true" /> | Safety | Oct 30 |
+| spatial_audio | Dolby Atmos support | <Switch name="ff-spatial" value="false" /> | Engineering | Nov 5 |
+| download_quality_picker | Per-title quality selection | <Switch name="ff-dl-quality" value="true" /> | Mobile | Nov 18 |
+</Table>
+</Card>
+
+<Card title="Promote Title on Home Screen">
+<Form name="promote-title">
+<Columns>
+<Select label="Title" name="promo-title" placeholder="Select a title" options="The Crown S6 | Stranger Things S4 | Wednesday S1 | Squid Game S2 | Bridgerton S3 | Rebel Moon P2 | Maestro | Berlin" required="true" />
+<Select label="Placement" name="promo-placement" placeholder="Choose placement" options="Hero Banner | Top Rail | Continue Watching Row | Trending Now | Genre Spotlight | New Releases" required="true" />
+</Columns>
+<Columns>
+<Date label="Start Date" name="promo-start" required="true" />
+<Date label="End Date" name="promo-end" required="true" />
+</Columns>
+<TextArea label="Custom Copy (optional)" name="promo-copy" placeholder="Override default promotional text" rows="3" hint="Max 160 chars. Leave blank for auto-generated." />
+<Columns>
+<Button variant="primary" icon="rocket-launch">Promote Title</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Clear Form</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Drill into APAC delivery health
+- Compare buffering by CDN provider
+- View license renewal pipeline
+- Analyze zero-result search queries
+- Check feature flag rollout metrics
+</FollowUps>

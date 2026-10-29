@@ -1,0 +1,178 @@
+# Daily Store Console
+
+<Columns>
+
+<Card title="Sales Today" subtitle="vs. target">
+<Stat label="Current" value="$4,820" change="+12%" tone="success" icon="trend-up" />
+<Stat label="Target" value="$5,000" change="−3.6% to goal" tone="warning" />
+<Progress value="96.4" max="100" label="96.4% of target" tone="info" />
+<Button variant="secondary" size="small" icon="eye">View hourly breakdown</Button>
+</Card>
+
+<Card title="Foot Traffic Today" subtitle="Hourly count">
+<Chart type="bar" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 24 |
+| 9 AM | 47 |
+| 10 AM | 68 |
+| 11 AM | 89 |
+| 12 PM | 112 |
+| 1 PM | 95 |
+| 2 PM | 78 |
+| 3 PM | 82 |
+| 4 PM | 91 |
+| 5 PM | 103 |
+| 6 PM | 76 |
+| 7 PM | 45 |
+</Chart>
+<Stat label="Total today" value="910" change="+8% vs last Tue" tone="success" icon="users" />
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Best Sellers" subtitle="Units sold today">
+| Item | Units |
+|---|---|
+| Premium Coffee Beans (12oz) | 47 |
+| Organic Honey (16oz) | 38 |
+| Artisan Sourdough Loaf | 31 |
+| Cold Brew Concentrate | 29 |
+| Mixed Nut Trail Mix | 24 |
+| Dark Chocolate Bar | 22 |
+<Button variant="secondary" size="small" icon="chart-bar">Full sales report</Button>
+</Card>
+
+<Card title="Out of Stock Items" subtitle="6 items need restocking">
+<Badge tone="danger">Critical</Badge>
+- **Organic Almond Milk** — last sold 2 days ago
+- **Gluten-Free Pasta** — 0 units
+- **Kombucha (Ginger)** — 0 units
+<Badge tone="warning">Low stock</Badge>
+- **Greek Yogurt (Plain)** — 2 units left
+- **Frozen Blueberries** — 3 units left
+- **Granola (Maple)** — 4 units left
+<Button variant="primary" size="small" icon="package" ask="Reorder out of stock items">Reorder all critical</Button>
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Today's Staff" subtitle="On shift">
+<Avatar name="Maria Gonzalez" subtitle="Manager, 8 AM – 4 PM" />
+<Avatar name="James Chen" subtitle="Cashier, 8 AM – 2 PM" />
+<Avatar name="Aisha Patel" subtitle="Stock clerk, 9 AM – 5 PM" />
+<Avatar name="David Kim" subtitle="Cashier, 2 PM – 8 PM" />
+<Avatar name="Sarah O'Brien" subtitle="Customer service, 10 AM – 6 PM" />
+</Card>
+
+<Card title="Average Basket Size" subtitle="Today vs last week">
+<Stat label="Today" value="$34.20" change="+$1.80" tone="success" icon="shopping-cart" />
+<Stat label="Last week avg" value="$32.40" />
+<Chart type="line" x="Day" y="Avg basket ($)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 31.50 | 30.20 |
+| Tue | 33.80 | 31.90 |
+| Wed | 34.20 | 32.40 |
+</Chart>
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Returns This Week" subtitle="Mon – Wed">
+<Stat label="Returns" value="12" change="−3 vs last week" tone="success" icon="arrow-counter-clockwise" />
+<Stat label="Value" value="$318.50" change="−$72.10" tone="success" />
+<Details title="Return reasons" open=false>
+- Wrong item: 4
+- Damaged: 3
+- Changed mind: 3
+- Expired: 2
+</Details>
+</Card>
+
+<Card title="Running Promotions" subtitle="Performance">
+<Tabs>
+<Tab title="Buy 1 Get 1 50% Off">
+<Stat label="Redemptions" value="34" change="+12% vs forecast" tone="success" />
+<Stat label="Revenue impact" value="−$142" tone="warning" />
+<Progress value="68" max="100" label="68% of target redemptions" tone="info" />
+</Tab>
+<Tab title="Loyalty 10% Off">
+<Stat label="Redemptions" value="52" change="+28% vs forecast" tone="success" />
+<Stat label="Revenue impact" value="−$89" tone="success" />
+<Progress value="104" max="100" label="Exceeded target" tone="success" />
+</Tab>
+<Tab title="New Customer $5 Off">
+<Stat label="Redemptions" value="8" change="−40% vs forecast" tone="danger" />
+<Stat label="Revenue impact" value="−$40" tone="info" />
+<Progress value="20" max="100" label="20% of target" tone="danger" />
+</Tab>
+</Tabs>
+<Button variant="secondary" size="small" icon="megaphone">Manage promotions</Button>
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Register Status" subtitle="All registers">
+| Register | Status | Last transaction |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | 2 min ago |
+| Register 2 | <Badge tone="success">Open</Badge> | 1 min ago |
+| Register 3 | <Badge tone="danger">Closed</Badge> | — |
+| Register 4 | <Badge tone="success">Open</Badge> | 5 min ago |
+| Register 5 | <Badge tone="warning">Paused</Badge> | 12 min ago |
+<Button variant="secondary" size="small" icon="cash-register">Open register 3</Button>
+</Card>
+
+<Card title="Reorder an Item" subtitle="Search & place order">
+<Form name="reorder">
+<Input label="Item name or SKU" placeholder="e.g. Organic Almond Milk" />
+<Input label="Quantity" type="number" placeholder="e.g. 24" min="1" />
+<Select label="Urgency" options="Standard (2-3 days) | Express (next day) | Rush (same day)" placeholder="Select urgency" />
+<Button variant="primary" icon="package">Submit reorder</Button>
+</Form>
+</Card>
+
+</Columns>
+
+<Card title="Store Selector" subtitle="View another store's console">
+<Form name="switch-store">
+<Select label="Select store" options="Store #101 — Downtown | Store #102 — Westside Mall | Store #103 — Eastside Plaza | Store #104 — Northgate" placeholder="Choose a store" />
+<Button variant="secondary" icon="storefront">Switch to store</Button>
+</Form>
+</Card>
+
+<Card title="This Week vs Last Week" subtitle="Key metrics comparison">
+<Columns>
+<Chart type="bar" x="Metric" y="Value">
+| Metric | This week | Last week |
+|---|---|---|
+| Sales | 4820 | 4510 |
+| Foot traffic | 910 | 842 |
+| Avg basket | 34.20 | 32.40 |
+| Returns | 12 | 15 |
+</Chart>
+</Columns>
+<Columns>
+<Stat label="Sales change" value="+6.9%" tone="success" icon="trend-up" />
+<Stat label="Traffic change" value="+8.1%" tone="success" icon="users" />
+<Stat label="Basket change" value="+5.6%" tone="success" icon="shopping-cart" />
+<Stat label="Returns change" value="−20%" tone="success" icon="arrow-counter-clockwise" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the hourly sales breakdown for today
+- Which promotion should I boost?
+- What's the inventory count for out-of-stock items?
+- Who's the next shift manager tomorrow?
+- Compare this week to the same week last year
+</FollowUps>

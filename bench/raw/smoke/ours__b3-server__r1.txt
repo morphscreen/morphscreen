@@ -1,0 +1,58 @@
+# Service Health — On-Call View
+
+<Card title="Live status" subtitle="Updated 2 minutes ago">
+<Columns>
+<Select label="Region" options="All regions | us-east-1 | eu-west-1 | ap-southeast-1" name="region" value="All regions" />
+<Stat label="Uptime this quarter" value="99.95%" note="SLO target 99.9%" />
+<Stat label="Error rate right now" value="0.42%" note="Alert threshold 1%" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory usage" subtitle="Past 24 hours">
+<Chart type="line" x="Time" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 03:00 | 38 | 58 |
+| 06:00 | 45 | 63 |
+| 09:00 | 68 | 72 |
+| 12:00 | 72 | 75 |
+| 15:00 | 64 | 70 |
+| 18:00 | 58 | 67 |
+| 21:00 | 50 | 64 |
+</Chart>
+</Card>
+
+<Card title="Open incidents" subtitle="3 active">
+<Columns>
+<Card title="Checkout API returning 500s" subtitle="us-east-1">
+<Badge tone="danger">SEV1</Badge>
+<Button variant="primary">Acknowledge</Button>
+</Card>
+
+<Card title="Search latency spike" subtitle="eu-west-1">
+<Badge tone="warning">SEV2</Badge>
+<Button variant="secondary">Acknowledge</Button>
+</Card>
+
+<Card title="Background worker queue backlog" subtitle="ap-southeast-1">
+<Badge tone="info">SEV3</Badge>
+<Button variant="tertiary">Acknowledge</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="Past 5 minutes · p95 latency">
+| Endpoint | Latency |
+|---|---|
+| POST /api/checkout | 1.82s |
+| GET /api/orders/search | 1.47s |
+| POST /api/payment/refund | 1.21s |
+| GET /api/catalog/recommendations | 0.96s |
+| GET /api/users/profile | 0.88s |
+</Card>
+
+<Card title="Alert threshold" subtitle="Error rate">
+<Slider label="Error rate threshold (%)" min="0" max="5" step="0.1" value="1" name="error_threshold" />
+<Button variant="primary">Save threshold</Button>
+</Card>

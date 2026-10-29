@@ -1,0 +1,154 @@
+<Card title="Reporting Period">
+<Select label="Period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Card>
+
+<Columns>
+<Card title="Monthly Recurring Revenue">
+<Stat label="MRR" value="$127,450" change="+12.3% vs last month" tone="success" />
+<Progress value="127450" max="150000" label="Target: $150K" />
+</Card>
+
+<Card title="Annual Recurring Revenue">
+<Stat label="ARR" value="$1,529,400" change="+14.1% vs last year" tone="success" />
+<Progress value="1529400" max="1800000" label="Target: $1.8M" />
+</Card>
+
+<Card title="Churn This Month">
+<Stat label="Revenue Churn" value="2.1%" change="-0.4% vs last month" tone="success" />
+<Stat label="Logo Churn" value="3.8%" change="+0.2% vs last month" tone="warning" />
+</Card>
+
+<Card title="Current NPS">
+<Stat label="NPS Score" value="62" change="+4 vs last quarter" tone="success" />
+<Progress value="62" max="100" label="Promoters: 68% | Passives: 26% | Detractors: 6%" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="New Signups (Past 90 Days)">
+<Chart type="area" x="Week" y="Signups" title="Weekly Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 12 |
+| Week 2 | 18 |
+| Week 3 | 15 |
+| Week 4 | 22 |
+| Week 5 | 19 |
+| Week 6 | 25 |
+| Week 7 | 28 |
+| Week 8 | 31 |
+| Week 9 | 27 |
+| Week 10 | 33 |
+| Week 11 | 35 |
+| Week 12 | 38 |
+| Week 13 | 41 |
+</Chart>
+<Stat label="Total (90 days)" value="344" change="+23% vs prior 90 days" tone="success" />
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 680 |
+| Enterprise | 142 |
+| Custom | 18 |
+</Chart>
+<Stat label="Total Customers" value="2,080" change="+156 this quarter" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Seat Utilization Across Company">
+<Columns>
+<Card subtitle="Starter Plan" title="Starter">
+<Progress value="67" max="100" label="Avg utilization: 67%" />
+<Stat label="Total seats" value="3,720" />
+<Stat label="Active seats" value="2,492" />
+</Card>
+<Card subtitle="Professional Plan" title="Professional">
+<Progress value="82" max="100" label="Avg utilization: 82%" />
+<Stat label="Total seats" value="5,440" />
+<Stat label="Active seats" value="4,461" />
+</Card>
+<Card subtitle="Enterprise Plan" title="Enterprise">
+<Progress value="74" max="100" label="Avg utilization: 74%" />
+<Stat label="Total seats" value="8,520" />
+<Stat label="Active seats" value="6,305" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Top 10 Customers by Spend">
+<Tabs>
+<Tab title="Table">
+| Customer | Plan | Seats | Monthly Spend | Annual Spend | Status |
+|---|---|---|---|---|---|
+| Acme Corporation | Enterprise | 450 | $18,750 | $225,000 | Active |
+| Globex Inc | Enterprise | 320 | $14,200 | $170,400 | Active |
+| Wayne Enterprises | Enterprise | 280 | $12,600 | $151,200 | Active |
+| Stark Industries | Enterprise | 250 | $11,250 | $135,000 | Active |
+| Umbrella Corp | Professional | 180 | $8,100 | $97,200 | Active |
+| Cyberdyne Systems | Enterprise | 150 | $7,500 | $90,000 | At Risk |
+| Massive Dynamic | Professional | 140 | $6,300 | $75,600 | Active |
+| Tyrell Corporation | Enterprise | 120 | $6,000 | $72,000 | Active |
+| Oscorp Industries | Professional | 110 | $4,950 | $59,400 | Active |
+| Weyland-Yutani | Professional | 100 | $4,500 | $54,000 | Active |
+</Tab>
+<Tab title="Revenue Concentration">
+<Stat label="Top 10 % of MRR" value="42.3%" />
+<Stat label="Top 10 % of ARR" value="41.8%" />
+<Stat label="Avg seat price (top 10)" value="$41.67" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | MRR | Risk Score | Reason | Owner | Last Activity |
+|---|---|---|---|---|---|---|
+| Cyberdyne Systems | Enterprise | $7,500 | 87% | Low feature adoption, no login 21 days | Sarah Chen | 21 days ago |
+| Hooli Inc | Professional | $3,200 | 72% | Failed payment ×2, support tickets ↑ | Marcus Webb | 8 days ago |
+| Pied Piper | Starter | $450 | 68% | Single admin, no team invites sent | Lisa Park | 14 days ago |
+| Dunder Mifflin | Professional | $2,800 | 65% | Contract renewal in 30 days, no response | Sarah Chen | 12 days ago |
+| Initech | Starter | $320 | 61% | Usage dropped 60% last 30 days | Marcus Webb | 19 days ago |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Attempts | Last Attempt | Status | Action |
+|---|---|---|---|---|---|
+| Hooli Inc | $3,200 | 2 | 2 hours ago | Card declined | <Button variant="primary" size="sm">Retry</Button> |
+| Pied Piper | $450 | 1 | 1 day ago | Insufficient funds | <Button variant="primary" size="sm">Retry</Button> |
+| Initech | $320 | 3 | 3 days ago | Card expired | <Button variant="primary" size="sm">Retry</Button> |
+| Vandelay Industries | $180 | 1 | 5 hours ago | Bank declined | <Button variant="primary" size="sm">Retry</Button> |
+| Duff Beer | $290 | 2 | 6 hours ago | Card declined | <Button variant="primary" size="sm">Retry</Button> |
+</Card>
+
+<Card title="Newest Feature Adoption">
+<Columns>
+<Card title="AI Insights Dashboard" subtitle="Launched 4 weeks ago">
+<Stat label="Adoption" value="34%" change="+8% this week" tone="success" />
+<Progress value="34" max="100" label="Of eligible users" />
+<Stat label="Active users" value="707 / 2,080" />
+</Card>
+<Card title="Workflow Automations" subtitle="Launched 6 weeks ago">
+<Stat label="Adoption" value="52%" change="+12% this week" tone="success" />
+<Progress value="52" max="100" label="Of eligible users" />
+<Stat label="Active users" value="1,082 / 2,080" />
+</Card>
+<Card title="Advanced Analytics Export" subtitle="Launched 8 weeks ago">
+<Stat label="Adoption" value="28%" change="+3% this week" tone="info" />
+<Progress value="28" max="100" label="Of eligible users" />
+<Stat label="Active users" value="582 / 2,080" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="colleague@company.com" required="true" hint="They'll receive an invitation to join as an admin" />
+<Select label="Role" name="role" options="Full Admin | Billing Admin | Read-only Admin" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security settings" hint="Select additional permissions" />
+<Button>Send Invitation</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

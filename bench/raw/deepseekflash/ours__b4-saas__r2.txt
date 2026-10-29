@@ -1,0 +1,130 @@
+<Card title="Acme Analytics · Admin Overview" subtitle="Your SaaS business at a glance">
+
+<Columns>
+<Select label="Reporting period" placeholder="Choose a period" options="Last 30 days | Last 90 days | This quarter | This year" name="reporting-period" />
+<Button variant="primary">Invite admin</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$128,400" change="+3.2%" note="vs last month" />
+<Stat label="Annual Recurring Revenue" value="$1.54M" change="+18%" note="vs last year" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4 pts" note="better than target" />
+<Stat label="Current NPS" value="47" change="+5" note="vs last quarter" />
+</Columns>
+
+<Columns>
+<Card title="New Signups · Past 90 Days" subtitle="Weekly signups, trailing 90 days">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 72 |
+| W2 | 89 |
+| W3 | 64 |
+| W4 | 103 |
+| W5 | 118 |
+| W6 | 97 |
+| W7 | 111 |
+| W8 | 142 |
+| W9 | 135 |
+| W10 | 156 |
+| W11 | 171 |
+| W12 | 188 |
+| W13 | 204 |
+</Chart>
+</Card>
+
+<Card title="Customers by Plan" subtitle="Active paid customers">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 268 |
+| Enterprise | 74 |
+</Chart>
+
+| Plan | Customers | Share |
+|---|---|---|
+| Starter | 412 | 55% |
+| Growth | 268 | 36% |
+| Enterprise | 74 | 10% |
+</Card>
+</Columns>
+
+<Card title="Seat Utilization Across the Company" subtitle="All plans combined">
+<Progress value="68" max="100" label="Overall seat utilization: 68%" />
+
+| Plan | Seats used | Seats purchased | Utilization |
+|---|---|---|---|
+| Starter | 214 | 320 | 67% |
+| Growth | 301 | 420 | 72% |
+| Enterprise | 198 | 310 | 64% |
+
+<Callout tone="info" title="Optimization opportunity">Growth plan has ~119 unused seats. Consider a rightsizing campaign before renewal.</Callout>
+</Card>
+
+<Card title="Ten Largest Customers" subtitle="Sorted by monthly spend">
+| # | Company | Plan | Seats | Monthly spend |
+|---|---|---|---|---|
+| 1 | Northwind Traders | Enterprise | 240 | $12,800 |
+| 2 | Stark Industries | Enterprise | 210 | $11,200 |
+| 3 | Umbrella Corp | Enterprise | 185 | $9,850 |
+| 4 | Globex | Growth | 120 | $3,400 |
+| 5 | Initech | Growth | 95 | $2,700 |
+| 6 | Hooli | Enterprise | 82 | $6,400 |
+| 7 | Acme Paper Co | Growth | 64 | $1,900 |
+| 8 | Massive Dynamic | Growth | 51 | $1,520 |
+| 9 | Pied Piper | Starter | 44 | $1,280 |
+| 10 | Cyberdyne Systems | Starter | 37 | $1,100 |
+</Card>
+
+<Columns>
+<Card title="Accounts at Risk" subtitle="Why they are at risk">
+| Account | Risk | Reason |
+|---|---|---|
+| Northwind Traders | <Badge tone="danger">High</Badge> | Seat count tripled without contract renewal |
+| Umbrella Corp | <Badge tone="danger">High</Badge> | Billing contact left, no replacement named |
+| Globex | <Badge tone="warning">Medium</Badge> | Logins dropped 40% after price change |
+| Initech | <Badge tone="warning">Medium</Badge> | Data residency ticket unresolved for 5 days |
+| Pied Piper | <Badge tone="warning">Medium</Badge> | Usage flat for 3 consecutive weeks |
+</Card>
+
+<Card title="Failed Payments" subtitle="Requires action">
+| Company | Amount | Due date | Retry |
+|---|---|---|---|
+| Globex | $1,240 | Feb 2 | <Button variant="primary" ask="Retry payment for Globex">Retry</Button> |
+| Initech | $840 | Feb 5 | <Button variant="primary" ask="Retry payment for Initech">Retry</Button> |
+| Stark Industries | $6,900 | Feb 7 | <Button variant="primary" ask="Retry payment for Stark Industries">Retry</Button> |
+| Hooli | $299 | Feb 10 | <Button variant="primary" ask="Retry payment for Hooli">Retry</Button> |
+
+<Callout tone="warning" title="Dunning enabled">Automatic retry has already been attempted twice for each invoice.</Callout>
+</Card>
+</Columns>
+
+<Card title="Adoption of Newest Features" subtitle="% of active accounts using each feature">
+<Progress value="18" max="100" label="Collaboration Hub: 18% of customers" />
+<Progress value="34" max="100" label="AI Insights: 34% of customers" />
+<Progress value="52" max="100" label="SSO Enforcement: 52% of customers" />
+
+| Feature | Released | Adoption | Trend |
+|---|---|---|---|
+| Collaboration Hub | Jan 15 | 18% | <Badge tone="warning">Needs promotion</Badge> |
+| AI Insights | Dec 1 | 34% | <Badge tone="success">Growing</Badge> |
+| SSO Enforcement | Nov 10 | 52% | <Badge tone="success">On track</Badge> |
+</Card>
+
+<Card title="Invite Another Admin" subtitle="Grant access to your admin dashboard">
+<Form name="invite-admin">
+<Input label="Admin email" type="email" placeholder="colleague@yourcompany.com" hint="They will receive an invitation link" required="true" />
+<Select label="Role" options="Owner | Admin | Support" name="admin-role" placeholder="Choose a role" required="true" />
+<Button>Send invite</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How did signup conversion trend by acquisition channel?
+- Which at-risk accounts have the highest expansion potential?
+- Show me the daily MRR breakdown for the last 12 months
+- What is the seat utilization by enterprise account?
+</FollowUps>

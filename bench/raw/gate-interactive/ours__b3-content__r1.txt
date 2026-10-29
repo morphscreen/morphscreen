@@ -1,0 +1,113 @@
+# Content Studio
+
+<Select label="Filter by category" placeholder="All categories" options="All | News | Features | Opinion | Reviews | Interviews | Guides" name="category-filter" />
+
+<Columns>
+<Card title="Drafts" subtitle="8 in progress">
+| Title | Status | Updated | Word Count |
+|---|---|---|---|
+| The Future of AI in Journalism | <Badge tone="warning">In Review</Badge> | 2 hours ago | 1,842 |
+| Climate Policy: What Changed This Year | <Badge tone="info">Editing</Badge> | 5 hours ago | 2,105 |
+| Inside the New Space Race | <Badge tone="neutral">Drafting</Badge> | Yesterday | 987 |
+| Local Elections: A Voter's Guide | <Badge tone="success">Ready to Schedule</Badge> | Yesterday | 3,421 |
+| The Rise of Micro-Communities | <Badge tone="neutral">Drafting</Badge> | 2 days ago | 1,234 |
+| Sustainable Fashion's Supply Chain | <Badge tone="warning">In Review</Badge> | 3 days ago | 2,876 |
+| Mental Health in Remote Work | <Badge tone="info">Editing</Badge> | 4 days ago | 1,567 |
+| Quantum Computing Breakthroughs | <Badge tone="neutral">Drafting</Badge> | 5 days ago | 678 |
+</Card>
+
+<Card title="Published This Week" subtitle="12 pieces live">
+| Title | Category | Published | Views |
+|---|---|---|---|
+| Local Elections: A Voter's Guide | Guides | Monday | 12,4K |
+| The Rise of Micro-Communities | Features | Tuesday | 8,7K |
+| Quantum Computing Breakthroughs | News | Wednesday | 15,2K |
+| Sustainable Fashion's Supply Chain | Features | Thursday | 6,3K |
+| Mental Health in Remote Work | Opinion | Friday | 9,1K |
+| Inside the New Space Race | News | Saturday | 11,8K |
+| Climate Policy: What Changed | News | Sunday | 7,4K |
+| The Future of AI in Journalism | Features | Today | 4,2K |
+</Card>
+</Columns>
+
+<Card title="Most-Read Article This Month">
+<Stat label="Quantum Computing Breakthroughs" value="47,832" change="+23% vs last month" tone="success" icon="chart-line" />
+**Category:** News • **Published:** March 12 • **Avg. read time:** 4:32
+<Progress value="47832" max="50000" label="Monthly target: 50,000 views" tone="success" />
+</Card>
+
+<Card title="Readership (Last 30 Days)">
+<Chart type="area" x="Date" y="Views">
+| Date | Views |
+|---|---|
+| Mar 1 | 12400 |
+| Mar 2 | 13200 |
+| Mar 3 | 11800 |
+| Mar 4 | 14500 |
+| Mar 5 | 15600 |
+| Mar 6 | 16200 |
+| Mar 7 | 18900 |
+| Mar 8 | 22100 |
+| Mar 9 | 19800 |
+| Mar 10 | 17400 |
+| Mar 11 | 15600 |
+| Mar 12 | 28900 |
+| Mar 13 | 25400 |
+| Mar 14 | 21200 |
+| Mar 15 | 18700 |
+| Mar 16 | 16800 |
+| Mar 17 | 15200 |
+| Mar 18 | 14500 |
+| Mar 19 | 13900 |
+| Mar 20 | 14200 |
+| Mar 21 | 15800 |
+| Mar 22 | 17600 |
+| Mar 23 | 19800 |
+| Mar 24 | 21400 |
+| Mar 25 | 18900 |
+| Mar 26 | 16700 |
+| Mar 27 | 15400 |
+| Mar 28 | 14800 |
+| Mar 29 | 14200 |
+| Mar 30 | 13800 |
+| Mar 31 | 13500 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Comments Awaiting Reply" subtitle="6 unanswered">
+| Article | Commenter | Comment | Age |
+|---|---|---|---|
+| Quantum Computing Breakthroughs | Sarah Chen | "Could you explain the error correction aspect in more detail?" | 3 hours |
+| Local Elections: A Voter's Guide | Marcus J. | "The deadline for registration seems wrong for my state." | 5 hours |
+| The Rise of Micro-Communities | Priya K. | "Fascinating piece. How do you see this affecting local news?" | 8 hours |
+| Sustainable Fashion's Supply Chain | Alex R. | "Any data on carbon footprint per garment type?" | 1 day |
+| Mental Health in Remote Work | Jamie L. | "Would love a follow-up on hybrid work models." | 1 day |
+| Inside the New Space Race | Taylor M. | "What about the environmental impact of launches?" | 2 days |
+</Card>
+
+<Card title="Schedule a Piece" subtitle="Set a publish date for a ready draft">
+<Form name="schedule-piece">
+<Select label="Select draft" placeholder="Choose a draft to schedule" options="Local Elections: A Voter's Guide (Ready) | The Future of AI in Journalism (In Review) | Sustainable Fashion's Supply Chain (In Review)" name="draft-select" required="true" />
+<Input label="Title" value="Local Elections: A Voter's Guide" name="schedule-title" hint="Editable before publishing" />
+<Date label="Publish date" name="publish-date" value="2024-04-15" required="true" />
+<Input label="Publish time" type="time" value="09:00" name="publish-time" />
+<Checkboxes label="Distribution channels" options="Website | Newsletter | Social Media | Push Notification" value="Website | Newsletter | Social Media" name="channels" />
+<Button>Schedule for Publishing</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Start a New Draft">
+<Form name="new-draft">
+<Input label="Working title" placeholder="Enter a title..." name="draft-title" required="true" />
+<Select label="Category" placeholder="Select category" options="News | Features | Opinion | Reviews | Interviews | Guides" name="draft-category" required="true" />
+<TextArea label="Brief / Outline" placeholder="Key points, sources, angle..." name="draft-brief" rows="4" hint="Optional but recommended" />
+<Columns>
+<Button>Create Draft</Button>
+<Button variant="secondary">Save as Idea</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>

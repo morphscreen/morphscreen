@@ -1,0 +1,137 @@
+# Personal Banking Home
+
+<Columns>
+<div>
+
+## Balances
+
+<Card title="Accounts">
+<Columns>
+<Stat label="Checking" value="$12,480.32" change="+2.4%" tone="success" icon="bank" />
+<Stat label="Savings" value="$38,205.17" change="+1.1%" tone="success" icon="piggy-bank" />
+<Stat label="Credit" value="$4,312.90" change="-3.2%" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+</div>
+<div>
+
+## Credit Score
+
+<Card title="Current score">
+<Stat label="FICO Score" value="742" change="+12 pts" tone="success" icon="chart-line" />
+<Progress value="742" max="850" label="Good" tone="success" />
+</Card>
+
+</div>
+</Columns>
+
+<Card title="Move money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Select label="From" options="Checking ••4821 | Savings ••9034 | Credit ••1120" placeholder="Choose account" />
+<Select label="To" options="Checking ••4821 | Savings ••9034 | Credit ••1120" placeholder="Choose account" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent transactions" subtitle="Last 7 days">
+| Date | Merchant | Amount |
+|---|---|---|
+| Mar 4 | Whole Foods Market | −$86.42 |
+| Mar 4 | Shell Gas | −$52.10 |
+| Mar 3 | Netflix | −$15.99 |
+| Mar 3 | Starbucks | −$6.75 |
+| Mar 2 | Amazon | −$124.30 |
+| Mar 2 | City Utilities | −$98.22 |
+| Mar 1 | Trader Joe's | −$64.18 |
+
+<Button variant="secondary" size="small">View all</Button>
+</Card>
+
+<Columns>
+<div>
+
+<Card title="Spending by category" subtitle="This month">
+<Chart type="donut" title="March spending">
+| Category | Amount |
+|---|---|
+| Groceries | 620 |
+| Dining | 340 |
+| Transport | 210 |
+| Utilities | 198 |
+| Entertainment | 145 |
+| Shopping | 280 |
+</Chart>
+</Card>
+
+</div>
+<div>
+
+<Card title="Bills due soon" subtitle="Next 14 days">
+| Bill | Due | Amount |
+|---|---|---|
+| Rent | Mar 5 | $1,850.00 |
+| Electric | Mar 8 | $98.22 |
+| Internet | Mar 12 | $74.99 |
+| Phone | Mar 14 | $65.00 |
+
+<Badge tone="warning">2 due this week</Badge>
+</Card>
+
+</div>
+</Columns>
+
+<Columns>
+<div>
+
+<Card title="Vacation savings goal" subtitle="Bali trip — October">
+<Stat label="Saved" value="$3,850" note="of $6,000 goal" icon="airplane" />
+<Progress value="3850" max="6000" label="64%" tone="info" />
+<Button variant="secondary" size="small">Add funds</Button>
+</Card>
+
+</div>
+<div>
+
+<Card title="Credit line controls">
+<Form name="credit-controls">
+<Switch label="Freeze credit line" hint="Block new purchases and cash advances" />
+<Button variant="danger" size="small">Freeze card</Button>
+</Form>
+</Card>
+
+</div>
+</Columns>
+
+<Card title="Statement period" subtitle="Choose your billing cycle">
+<Form name="statement-period">
+<Radio label="Statement period" options="1st – end of month | 5th – 4th of next month | 10th – 9th of next month | 15th – 14th of next month" />
+<Button>Apply period</Button>
+</Form>
+</Card>
+
+<Card title="Alert preferences" subtitle="Manage what triggers notifications">
+<Form name="alert-settings">
+<Checkboxes label="Alert me when" options="Balance below $500 | Large purchase over $200 | Payment due in 3 days | New login detected | Foreign transaction | Credit score changes" value="Balance below $500 | Large purchase over $200" />
+<Select label="Delivery method" options="Push notification | Email | SMS" placeholder="Choose method" />
+<Button>Save preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a transaction" subtitle="Report an unrecognized or incorrect charge">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods $86.42 (Mar 4) | Shell $52.10 (Mar 4) | Amazon $124.30 (Mar 2) | Other" placeholder="Select transaction" />
+<TextArea label="Reason" placeholder="Describe why you're disputing this charge…" rows="3" />
+<Input label="Expected amount (optional)" type="number" placeholder="0.00" step="0.01" min="0" />
+<Button variant="primary">Submit dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my spending trend over the last 3 months
+- What's the best day to schedule my statement period?
+- How does freezing my credit affect automatic payments?
+- Help me set a monthly budget based on my categories
+</FollowUps>

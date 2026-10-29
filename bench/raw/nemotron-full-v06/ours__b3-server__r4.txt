@@ -1,0 +1,76 @@
+# Service Health Dashboard
+
+<Card title="Service Overview" subtitle="us-east-1 • Last updated 2 min ago">
+<Columns>
+<Stat label="Uptime this quarter" value="99.94%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Current error rate" value="0.23%" change="+0.05% vs 1h ago" tone="warning" />
+<Stat label="Open incidents" value="3" change="1 critical" tone="danger" />
+<Stat label="P99 latency" value="342 ms" change="-18 ms vs 1h ago" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Region Filter">
+<Select label="Select region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="us-east-1" />
+</Card>
+
+<Card title="CPU & Memory Usage (24h)">
+<Chart type="line" x="Time" y="Usage %" title="Resource Utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 53 |
+| 06:00 | 45 | 60 |
+| 08:00 | 62 | 68 |
+| 10:00 | 71 | 74 |
+| 12:00 | 78 | 81 |
+| 14:00 | 82 | 85 |
+| 16:00 | 79 | 83 |
+| 18:00 | 74 | 79 |
+| 20:00 | 65 | 72 |
+| 22:00 | 52 | 65 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+| ID | Severity | Title | Region | Started | Status |
+|---|---|---|---|---|---|
+| INC-1847 | <Badge tone="danger">Critical</Badge> | Database connection pool exhaustion | us-east-1 | 14 min ago | <Badge tone="warning">Investigating</Badge> |
+| INC-1845 | <Badge tone="warning">High</Badge> | Elevated 5xx on /api/v2/payments | eu-west-1 | 1h 23m ago | <Badge tone="info">Mitigating</Badge> |
+| INC-1842 | <Badge tone="info">Medium</Badge> | Slow query detection on orders table | us-west-2 | 3h 45m ago | <Badge tone="neutral">Monitoring</Badge> |
+<Columns>
+<Button variant="primary" size="small">Acknowledge INC-1847</Button>
+<Button variant="secondary" size="small">Acknowledge INC-1845</Button>
+<Button variant="secondary" size="small">Acknowledge INC-1842</Button>
+</Columns>
+</Card>
+
+<Card title="Slowest Endpoints (P99 Latency)">
+| Endpoint | Method | P99 Latency | P95 Latency | Error Rate | Throughput |
+|---|---|---|---|---|---|
+| /api/v2/reports/generate | POST | 2,840 ms | 1,920 ms | 1.2% | 45 req/min |
+| /api/v1/analytics/export | GET | 1,960 ms | 1,340 ms | 0.8% | 120 req/min |
+| /api/v2/payments/process | POST | 1,420 ms | 980 ms | 2.1% | 320 req/min |
+| /api/v1/search/fulltext | GET | 1,180 ms | 820 ms | 0.4% | 890 req/min |
+| /api/v2/orders/bulk-create | POST | 940 ms | 670 ms | 0.6% | 210 req/min |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Slider label="Error rate alert threshold (%)" min="0.1" max="5" step="0.1" value="1" name="error-threshold" />
+<Slider label="P99 latency alert threshold (ms)" min="100" max="5000" step="50" value="1000" name="latency-threshold" />
+<Slider label="CPU usage alert threshold (%)" min="50" max="95" step="1" value="85" name="cpu-threshold" />
+<Slider label="Memory usage alert threshold (%)" min="50" max="95" step="1" value="90" name="memory-threshold" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show incident timeline for INC-1847
+- View error rate breakdown by endpoint
+- Compare latency across regions
+- Configure notification channels for alerts
+</FollowUps>

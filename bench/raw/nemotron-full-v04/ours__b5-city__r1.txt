@@ -1,0 +1,370 @@
+# City Operations Center
+
+<Card title="District Focus" subtitle="Select a district to filter all views">
+<Select label="Focus District" name="district" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastside | Westside | Riverside | University | Industrial | Harbor" value="All Districts" />
+</Card>
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="Citywide traffic index">
+<Stat label="Congestion Level" value="67%" change="+3% vs last hour" tone="warning" />
+<Progress value="67" max="100" label="Traffic Flow Index" />
+<Badge tone="warning">Peak: 8:15 AM</Badge>
+<Badge tone="info">Clear: 11:30 PM</Badge>
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance across modes">
+<Stat label="System Wide" value="92.4%" change="+0.8% vs yesterday" tone="success" />
+<Chart type="bar" title="By Mode" x="Mode" y="On-Time %">
+| Mode | On-Time % |
+|---|---|
+| Metro | 96.2 |
+| Bus | 89.1 |
+| Tram | 94.7 |
+| Commuter Rail | 91.3 |
+| Ferry | 97.8 |
+</Chart>
+</Card>
+
+<Card title="Air Quality by District" subtitle="AQI (0-500 scale, lower is better)">
+<Chart type="horizontal" title="Current AQI" x="AQI" y="District">
+| District | AQI | Level |
+|---|---|---|
+| Downtown | 87 | Moderate |
+| Industrial | 142 | Unhealthy for Sensitive |
+| Riverside | 45 | Good |
+| University | 52 | Moderate |
+| Northside | 68 | Moderate |
+| Eastside | 73 | Moderate |
+| Westside | 58 | Moderate |
+| Harbor | 95 | Moderate |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use — Past 7 Days" subtitle="Megawatt-hours, city grid">
+<Chart type="line" title="Daily Consumption" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 142,300 |
+| Tue | 138,900 |
+| Wed | 145,600 |
+| Thu | 141,200 |
+| Fri | 148,700 |
+| Sat | 132,400 |
+| Sun | 128,900 |
+</Chart>
+<Stat label="Week Total" value="978,000 MWh" change="-2.1% vs prev week" tone="success" />
+</Card>
+
+<Card title="Water Use Today" subtitle="Real-time consumption vs capacity">
+<Stat label="Current Draw" value="487 ML" change="+12 ML vs same time yesterday" tone="neutral" />
+<Stat label="Reservoir Level" value="78.3%" change="-0.4% vs yesterday" tone="info" />
+<Progress value="487" max="620" label="Daily Capacity (ML)" />
+<Badge tone="success">Within normal range</Badge>
+</Card>
+
+<Card title="Current Weather" subtitle="Downtown station, updated 2 min ago">
+<Columns>
+<Stat label="Temperature" value="18°C" />
+<Stat label="Humidity" value="64%" />
+<Stat label="Wind" value="12 km/h SW" />
+<Stat label="Pressure" value="1018 hPa" />
+</Columns>
+<Badge tone="info">Partly Cloudy</Badge>
+<Badge tone="neutral">UV Index: 4 (Moderate)</Badge>
+<Badge tone="neutral">Precipitation: 0 mm</Badge>
+</Card>
+</Columns>
+
+<Card title="Open Incidents" subtitle="Active emergencies with location and severity">
+<Tabs>
+<Tab title="All (12)">
+| ID | Type | Location | District | Severity | Since | Status |
+|---|---|---|---|---|---|---|
+| INC-2024-0847 | Water Main Break | 3rd & Main | Downtown | Critical | 06:42 | Crew En Route |
+| INC-2024-0846 | Power Outage | Sector 7 Grid | Industrial | High | 07:15 | Assessing |
+| INC-2024-0845 | Traffic Signal Failure | University Ave & 12th | University | Medium | 07:30 | Dispatched |
+| INC-2024-0844 | Gas Leak Report | 210 Harbor Blvd | Harbor | High | 07:41 | Evacuating |
+| INC-2024-0843 | Sewer Backup | Riverside Dr & 5th | Riverside | Medium | 07:55 | Contained |
+| INC-2024-0842 | Downed Tree | Northside Blvd | Northside | Low | 08:02 | Clearing |
+| INC-2024-0841 | Sinkhole | Eastside & 8th | Eastside | Critical | 08:10 | Securing |
+| INC-2024-0840 | Transformer Fire | Westside Industrial Park | Westside | High | 08:18 | Extinguished |
+| INC-2024-0839 | Flooding | Harbor Tunnel Entrance | Harbor | Medium | 08:25 | Pumping |
+| INC-2024-0838 | Bridge Inspection | Riverside Bridge | Riverside | Low | 08:30 | Monitoring |
+| INC-2024-0837 | Signal Timing | Downtown Corridor | Downtown | Low | 08:35 | Adjusting |
+| INC-2024-0836 | Debris on Tracks | Metro Line 2 | University | Medium | 08:40 | Clearing |
+</Tab>
+<Tab title="Critical (2)">
+| ID | Type | Location | District | Severity | Since | Status |
+|---|---|---|---|---|---|---|
+| INC-2024-0847 | Water Main Break | 3rd & Main | Downtown | Critical | 06:42 | Crew En Route |
+| INC-2024-0841 | Sinkhole | Eastside & 8th | Eastside | Critical | 08:10 | Securing |
+</Tab>
+<Tab title="High (3)">
+| ID | Type | Location | District | Severity | Since | Status |
+|---|---|---|---|---|---|---|
+| INC-2024-0846 | Power Outage | Sector 7 Grid | Industrial | High | 07:15 | Assessing |
+| INC-2024-0844 | Gas Leak Report | 210 Harbor Blvd | Harbor | High | 07:41 | Evacuating |
+| INC-2024-0840 | Transformer Fire | Westside Industrial Park | Westside | High | 08:18 | Extinguished |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Emergency Vehicles Deployed" subtitle="Real-time GPS positions, updated every 30s">
+<Columns>
+<Card title="Fire (8 active)">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| ENG-1 | Engine | 3rd & Main | INC-0847 | On Scene |
+| LAD-2 | Ladder | 3rd & Main | INC-0847 | On Scene |
+| ENG-5 | Engine | 210 Harbor Blvd | INC-0844 | Staging |
+| HAZ-1 | Hazmat | 210 Harbor Blvd | INC-0844 | On Scene |
+| ENG-3 | Engine | Eastside & 8th | INC-0841 | En Route |
+| RES-1 | Rescue | Eastside & 8th | INC-0841 | En Route |
+| ENG-7 | Engine | Westside Industrial | INC-0840 | Returning |
+| BC-1 | Battalion Chief | 3rd & Main | INC-0847 | Command |
+</Card>
+<Card title="EMS (6 active)">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| MED-2 | Ambulance | 3rd & Main | INC-0847 | Transporting |
+| MED-5 | Ambulance | 210 Harbor Blvd | INC-0844 | On Scene |
+| MED-1 | Ambulance | University Ave | INC-0845 | En Route |
+| MED-8 | Ambulance | Riverside Dr | INC-0843 | On Scene |
+| MED-3 | Ambulance | Northside Blvd | INC-0842 | Cleared |
+| SUP-1 | Supervisor | Downtown | — | Available |
+</Card>
+<Card title="Police (12 active)">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| PAT-4 | Patrol | 3rd & Main | INC-0847 | Traffic Control |
+| PAT-7 | Patrol | 210 Harbor Blvd | INC-0844 | Perimeter |
+| PAT-2 | Patrol | Eastside & 8th | INC-0841 | Evacuation |
+| PAT-9 | Patrol | Westside Industrial | INC-0840 | Scene Secure |
+| TRAF-1 | Traffic | Downtown Corridor | INC-0837 | Signal Mgmt |
+| TRAF-3 | Traffic | Metro Line 2 | INC-0836 | Crowd Control |
+| K9-1 | K9 | Harbor Tunnel | INC-0839 | Search |
+| SGT-2 | Supervisor | Downtown | — | Command |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Parking Availability — Downtown" subtitle="Real-time occupancy, 4,200 total spaces">
+<Columns>
+<Card title="Garages">
+| Facility | Capacity | Available | Occupancy | Rate/hr |
+|---|---|---|---|---|
+| Civic Center | 850 | 127 | 85% | $4.50 |
+| Market Square | 620 | 89 | 86% | $5.00 |
+| Transit Hub | 1,100 | 342 | 69% | $3.75 |
+| Riverside Deck | 480 | 203 | 58% | $4.00 |
+| University Lot | 350 | 156 | 55% | $3.50 |
+</Card>
+<Card title="Street Zones">
+| Zone | Spaces | Available | Occupancy | Time Limit |
+|---|---|---|---|---|
+| Zone A (Core) | 420 | 38 | 91% | 2 hr |
+| Zone B (Ring) | 380 | 95 | 75% | 3 hr |
+| Zone C (Periphery) | 300 | 142 | 53% | 4 hr |
+</Card>
+</Columns>
+<Progress value="73" max="100" label="Overall Downtown Occupancy" />
+</Card>
+
+<Card title="Public Events This Weekend" subtitle="Permitted events affecting operations">
+<Tabs>
+<Tab title="Saturday (8 events)">
+| Event | Location | District | Time | Est. Attendance | Impact |
+|---|---|---|---|---|---|
+| Farmers Market | Market Square | Downtown | 08:00-14:00 | 3,500 | Street closure |
+| Marathon | Citywide Loop | All | 07:00-12:00 | 12,000 | Major traffic |
+| Jazz Festival | Riverside Park | Riverside | 14:00-22:00 | 8,000 | Parking + noise |
+| Art Walk | University District | University | 17:00-23:00 | 4,200 | Pedestrian only |
+| Food Truck Rally | Harbor Plaza | Harbor | 12:00-20:00 | 2,800 | Parking |
+| Soccer Tournament | Northside Fields | Northside | 09:00-18:00 | 1,500 | Parking |
+| Cultural Fair | Eastside Community Ctr | Eastside | 10:00-16:00 | 900 | Minimal |
+| Night Market | Westside Plaza | Westside | 18:00-24:00 | 3,200 | Street closure |
+</Tab>
+<Tab title="Sunday (5 events)">
+| Event | Location | District | Time | Est. Attendance | Impact |
+|---|---|---|---|---|---|
+| Cycling Race | River Trail | Riverside | 08:00-11:00 | 2,000 | Trail closure |
+| Flea Market | Industrial Lot 4 | Industrial | 09:00-15:00 | 1,800 | Parking |
+| Concert Series | University Quad | University | 16:00-20:00 | 5,500 | Noise + parking |
+| Religious Procession | Downtown Churches | Downtown | 10:00-12:00 | 1,200 | Rolling closure |
+| Dragon Boat Race | Harbor | Harbor | 11:00-17:00 | 3,000 | Water traffic |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Citizen Reports — Live Feed" subtitle="Incoming 311 reports, auto-refreshes every 15s">
+<Columns>
+<Card title="Last 10 Reports">
+| Time | Category | Location | District | Status |
+|---|---|---|---|---|
+| 08:47 | Pothole | 14th & Oak | Northside | Triaged |
+| 08:45 | Streetlight Out | 2200 Block Elm | Eastside | Assigned |
+| 08:43 | Graffiti | Riverside Underpass | Riverside | New |
+| 08:41 | Missed Trash | 45 Harbor View | Harbor | New |
+| 08:39 | Noise Complaint | 300 University Ave | University | Dispatched |
+| 08:37 | Illegal Dumping | Industrial Lot 7 | Industrial | Investigating |
+| 08:35 | Tree Down | 12th & Pine | Westside | Resolved |
+| 08:33 | Water Leak | 88 Main St | Downtown | Escalated |
+| 08:31 | Signal Timing | 5th & Broadway | Downtown | Duplicate |
+| 08:29 | Parking Violation | Zone A - Core | Downtown | Ticketed |
+</Card>
+<Card title="Report Volume Today">
+<Stat label="Total Reports" value="247" change="+34 vs same day last week" tone="neutral" />
+<Chart type="bar" title="By Category" x="Category" y="Count">
+| Category | Count |
+|---|---|
+| Potholes/Road | 52 |
+| Streetlights | 38 |
+| Sanitation | 31 |
+| Noise | 29 |
+| Parking | 27 |
+| Parks/Trees | 24 |
+| Water/Sewer | 19 |
+| Traffic Signals | 15 |
+| Other | 12 |
+</Chart>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Service Request Backlog" subtitle="Open 311 requests awaiting resolution">
+<Columns>
+<Stat label="Total Backlog" value="1,847" change="+127 vs last week" tone="warning" />
+<Stat label="Avg Resolution Time" value="4.2 days" change="+0.3 days" tone="warning" />
+<Stat label="Overdue (>14 days)" value="234" change="+18" tone="danger" />
+<Stat label="SLA Compliance" value="78%" change="-3%" tone="warning" />
+</Columns>
+<Chart type="stacked" title="Backlog by Age & Category" x="Category" y="Count">
+| Category | 0-3 days | 4-7 days | 8-14 days | 15+ days |
+|---|---|---|---|---|
+| Potholes/Road | 45 | 38 | 22 | 15 |
+| Streetlights | 32 | 28 | 19 | 14 |
+| Sanitation | 28 | 24 | 16 | 12 |
+| Parks/Trees | 22 | 18 | 14 | 28 |
+| Water/Sewer | 18 | 15 | 11 | 32 |
+| Traffic Signals | 12 | 10 | 8 | 18 |
+| Other | 10 | 8 | 6 | 15 |
+</Chart>
+</Card>
+
+<Card title="Roadworks Planned This Month" subtitle="Permitted construction affecting traffic">
+<Tabs>
+<Tab title="This Week (6)">
+| Project | Location | District | Type | Start | End | Lanes Affected |
+|---|---|---|---|---|---|---|
+| Main St Resurfacing | Main St (1st-10th) | Downtown | Resurfacing | Oct 14 | Oct 18 | 2 of 4 |
+| Bridge Deck Repair | Riverside Bridge | Riverside | Structural | Oct 14 | Oct 25 | 1 of 2 |
+| Utility Upgrade | University Ave (5th-15th) | University | Underground | Oct 15 | Nov 2 | 1 of 3 |
+| Bike Lane Install | Northside Blvd | Northside | New Construction | Oct 16 | Oct 30 | Parking lane |
+| Sewer Relining | Eastside (8th-12th) | Eastside | Trenchless | Oct 17 | Oct 21 | Shoulder |
+| Signal Modernization | Downtown Corridor | Downtown | Electrical | Oct 18 | Nov 8 | Intermittent |
+</Tab>
+<Tab title="Next Week (4)">
+| Project | Location | District | Type | Start | End | Lanes Affected |
+|---|---|---|---|---|---|---|
+| Tunnel Lighting | Harbor Tunnel | Harbor | Electrical | Oct 21 | Nov 1 | 1 of 2 (night) |
+| Pavement Marking | Citywide Arterials | All | Maintenance | Oct 21 | Oct 25 | Rolling |
+| ADA Ramps | Westside & 3rd | Westside | Accessibility | Oct 22 | Oct 28 | Sidewalk |
+| Fiber Install | Industrial Park | Industrial | Underground | Oct 23 | Nov 15 | Shoulder |
+</Tab>
+<Tab title="Later This Month (3)">
+| Project | Location | District | Type | Start | End | Lanes Affected |
+|---|---|---|---|---|---|---|
+| Roundabout Construct | 12th & Cedar | University | New Construction | Oct 28 | Dec 15 | Full closure |
+| Retaining Wall | Riverside Dr | Riverside | Structural | Oct 29 | Nov 20 | 1 of 2 |
+| Transit Priority | Metro Line 1 Corridor | Downtown | Signals | Oct 30 | Dec 10 | Intermittent |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets approaching or past scheduled maintenance">
+<Tabs>
+<Tab title="Overdue (12)">
+| Asset ID | Asset Type | Location | District | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|---|
+| BR-042 | Bridge Expansion Joint | Riverside Bridge | Riverside | Sep 28 | 16 | Critical |
+| PS-017 | Pump Station | Harbor Lift Station | Harbor | Oct 2 | 12 | High |
+| SW-089 | Stormwater Vault | 3rd & Main | Downtown | Oct 5 | 9 | High |
+| TL-156 | Traffic Controller | University & 12th | University | Oct 8 | 6 | Medium |
+| HY-203 | Fire Hydrant | 2100 Block Elm | Eastside | Oct 10 | 4 | Medium |
+| SG-077 | Signal Cabinet | Downtown Corridor | Downtown | Oct 11 | 3 | Medium |
+| VL-034 | Valve Chamber | Industrial Sector 7 | Industrial | Oct 12 | 2 | Medium |
+| MH-145 | Manhole Cover | Northside Blvd | Northside | Oct 12 | 2 | Low |
+| LT-091 | Streetlight Pole | Westside Plaza | Westside | Oct 13 | 1 | Low |
+| DR-067 | Drainage Inlet | Riverside Park | Riverside | Oct 13 | 1 | Low |
+| BX-023 | Utility Box | Harbor Plaza | Harbor | Oct 13 | 1 | Low |
+| FN-011 | Fountain Pump | University Quad | University | Oct 13 | 1 | Low |
+</Tab>
+<Tab title="Due This Week (18)">
+| Asset ID | Asset Type | Location | District | Due Date | Days Left | Priority |
+|---|---|---|---|---|---|---|
+| BR-019 | Bridge Bearings | 5th St Bridge | Downtown | Oct 14 | 0 | High |
+| PS-008 | Pump Station | Northside Lift | Northside | Oct 14 | 0 | High |
+| SW-045 | Stormwater Vault | Eastside & 8th | Eastside | Oct 15 | 1 | Medium |
+| TL-201 | Traffic Controller | Harbor & Main | Harbor | Oct 15 | 1 | Medium |
+| HY-112 | Fire Hydrant | University Ave | University | Oct 16 | 2 | Medium |
+| SG-033 | Signal Cabinet | Westside Industrial | Westside | Oct 16 | 2 | Medium |
+| VL-056 | Valve Chamber | Industrial Sector 3 | Industrial | Oct 17 | 3 | Medium |
+| MH-088 | Manhole Cover | Riverside Dr | Riverside | Oct 17 | 3 | Low |
+| LT-134 | Streetlight Pole | Market Square | Downtown | Oct 18 | 4 | Low |
+| DR-029 | Drainage Inlet | Northside Fields | Northside | Oct 18 | 4 | Low |
+| BX-041 | Utility Box | Eastside Community | Eastside | Oct 19 | 5 | Low |
+| FN-007 | Fountain Pump | Harbor Plaza | Harbor | Oct 19 | 5 | Low |
+| BR-031 | Bridge Joint | University Bridge | University | Oct 20 | 6 | High |
+| PS-022 | Pump Station | Westside Lift | Westside | Oct 20 | 6 | High |
+</Tab>
+<Tab title="Due Next Week (24)">
+| Asset ID | Asset Type | Location | District | Due Date | Days Left | Priority |
+|---|---|---|---|---|---|---|
+| TL-078 | Traffic Controller | 12th & Cedar | University | Oct 21 | 7 | Medium |
+| HY-156 | Fire Hydrant | Westside Plaza | Westside | Oct 21 | 7 | Medium |
+| SG-089 | Signal Cabinet | Northside Blvd | Northside | Oct 22 | 8 | Medium |
+| VL-012 | Valve Chamber | Downtown Core | Downtown | Oct 22 | 8 | High |
+| MH-101 | Manhole Cover | Harbor Tunnel | Harbor | Oct 23 | 9 | Low |
+| LT-045 | Streetlight Pole | Riverside Trail | Riverside | Oct 23 | 9 | Low |
+| DR-073 | Drainage Inlet | Industrial Lot 4 | Industrial | Oct 24 | 10 | Low |
+| BX-018 | Utility Box | University Quad | University | Oct 24 | 10 | Low |
+| FN-015 | Fountain Pump | Eastside Park | Eastside | Oct 25 | 11 | Low |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Dispatch a Crew" subtitle="Assign personnel to an incident or task">
+<Form name="dispatch-crew">
+<Select label="Incident / Task" name="incident" placeholder="Select or enter manually" options="INC-2024-0847 Water Main Break | INC-2024-0846 Power Outage | INC-2024-0844 Gas Leak | INC-2024-0841 Sinkhole | INC-2024-0845 Signal Failure | INC-2024-0843 Sewer Backup | New Task..." />
+<Select label="Crew Type" name="crewType" placeholder="Select crew type" options="Water Operations | Electrical | Gas/Hazmat | Roads & Bridges | Sewer/Drainage | Traffic Signals | Parks/Forestry | General Maintenance" />
+<Select label="Unit(s)" name="units" placeholder="Select available units" options="ENG-1, ENG-3, ENG-5, ENG-7 | MED-1, MED-2, MED-3, MED-5, MED-8 | PAT-2, PAT-4, PAT-7, PAT-9 | TRAF-1, TRAF-3 | HAZ-1 | RES-1 | BC-1 | SGT-2 | Custom..." />
+<Input label="Notes / Instructions" name="notes" placeholder="Special instructions, safety hazards, access info..." />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Broadcast to citizen app, SMS, social media, variable message signs">
+<Form name="public-alert">
+<Select label="Alert Type" name="alertType" placeholder="Select alert type" options="Emergency Alert (Imminent Threat) | Public Safety Warning | Traffic Advisory | Service Disruption | Weather Advisory | Air Quality Alert | Test Message" />
+<Select label="Target Area" name="targetArea" placeholder="Select geographic target" options="Citywide | Downtown | Northside | Eastside | Westside | Riverside | University | Industrial | Harbor | Custom Polygon..." />
+<Select label="Channels" name="channels" placeholder="Select delivery channels" options="Mobile Push + SMS + Email | Mobile Push Only | SMS Only | Variable Message Signs | Social Media (X/FB) | Emergency Alert System (EAS) | All Channels" value="Mobile Push + SMS + Email" />
+<TextArea label="Alert Message" name="message" placeholder="Enter alert text (max 360 chars for SMS)..." rows="4" hint="Include: what, where, when, action required, duration, info source" />
+<Input label="Expires At" name="expires" type="datetime-local" placeholder="Auto-expire timestamp" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the water main break incident details
+- List all crews currently available for dispatch
+- What's the air quality trend for Industrial district this week?
+- Show energy use by district instead of citywide
+- Filter incidents to show only Critical and High severity
+</FollowUps>

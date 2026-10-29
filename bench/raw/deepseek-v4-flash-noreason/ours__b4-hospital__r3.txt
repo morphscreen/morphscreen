@@ -1,0 +1,185 @@
+# Hospital Operations Command View
+
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="+3% vs yesterday" tone="warning" icon="bed" />
+<Stat label="Current ER Wait" value="42 min" change="Avg, down 8 min" tone="success" icon="clock" />
+<Stat label="Admissions (14d)" value="1,284" change="+6% vs prior period" icon="chart-line" />
+<Stat label="Critical Patients" value="12" tone="danger" icon="heartbeat" />
+</Columns>
+
+<Callout tone="danger" title="Critical patients requiring attention">
+<Columns>
+<div>
+- **ICU-3**: M. Chen, 68 — post-op cardiac arrest, stable on vent
+- **ER-7**: A. Rodriguez, 45 — STEMI, awaiting cath lab
+- **NICU-2**: Baby K. — respiratory distress, on CPAP
+</div>
+<div>
+- **Onc-5**: S. Patel, 52 — neutropenic fever, sepsis protocol
+- **Neuro-1**: J. Okafor, 71 — acute stroke, tPA given
+- **Peds-4**: L. Nguyen, 9 — anaphylaxis, improving
+</div>
+</Columns>
+</Callout>
+
+<Card title="Bed Occupancy by Unit">
+<Chart type="bar" title="Occupancy rate by unit" x="Unit" y="Occupancy %">
+| Unit | Occupancy |
+|---|---|
+| ICU | 94 |
+| ER | 88 |
+| Medical | 82 |
+| Surgical | 76 |
+| Pediatrics | 64 |
+| Maternity | 58 |
+| NICU | 91 |
+| Psych | 70 |
+</Chart>
+</Card>
+
+<Card title="Admissions — Last 14 Days">
+<Chart type="area" title="Daily admissions" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Day 1 | 78 |
+| Day 2 | 84 |
+| Day 3 | 92 |
+| Day 4 | 71 |
+| Day 5 | 88 |
+| Day 6 | 95 |
+| Day 7 | 102 |
+| Day 8 | 76 |
+| Day 9 | 83 |
+| Day 10 | 91 |
+| Day 11 | 87 |
+| Day 12 | 98 |
+| Day 13 | 105 |
+| Day 14 | 110 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="donut" title="Current inpatients by department" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Medical | 142 |
+| Surgical | 118 |
+| ICU | 31 |
+| Pediatrics | 47 |
+| ER (boarding) | 36 |
+| Maternity | 24 |
+| Psych | 18 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift — Now">
+<Columns>
+<div>
+**Nursing**
+- <Avatar name="Sarah Kim" subtitle="RN — Charge Nurse, Med-Surg" />
+- <Avatar name="David Osei" subtitle="RN — ICU" />
+- <Avatar name="Maria Lopez" subtitle="LPN — Pediatrics" />
+- <Avatar name="James Wu" subtitle="RN — ER" />
+- <Avatar name="Amira Hassan" subtitle="RN — Surgical" />
+</div>
+<div>
+**Physicians**
+- <Avatar name="Dr. Emily Carter" subtitle="Attending — Emergency" />
+- <Avatar name="Dr. Robert Ng" subtitle="Attending — Cardiology" />
+- <Avatar name="Dr. Priya Sharma" subtitle="Resident — Internal Med" />
+- <Avatar name="Dr. Tom Becker" subtitle="Attending — Surgery" />
+</div>
+<div>
+**Support**
+- <Avatar name="Lisa Park" subtitle="Pharmacist" />
+- <Avatar name="Mark Johnson" subtitle="Respiratory Therapist" />
+- <Avatar name="Elena Petrova" subtitle="Social Worker" />
+- <Avatar name="Chris Miller" subtitle="Radiology Tech" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Ready for Discharge">
+| Patient | Room | Department | Waiting On |
+|---|---|---|---|
+| H. Garcia, 54 | Med-12 | Medical | Transport — 20 min |
+| W. Thompson, 72 | Surg-8 | Surgical | Paperwork complete |
+| R. Ali, 38 | Peds-3 | Pediatrics | Pickup at 16:00 |
+| B. Novak, 65 | Med-21 | Medical | Rx to pharmacy |
+| S. Dubois, 49 | Surg-15 | Surgical | Follow-up scheduled |
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR-1 | Total knee replacement | Dr. Becker | <Badge tone="success">In progress</Badge> |
+| 08:00 | OR-2 | Lap cholecystectomy | Dr. Fernandez | <Badge tone="success">In progress</Badge> |
+| 09:30 | OR-3 | C-section | Dr. Okafor | <Badge tone="info">Scheduled</Badge> |
+| 11:00 | OR-1 | Hernia repair | Dr. Becker | <Badge tone="neutral">On deck</Badge> |
+| 13:00 | OR-2 | Colonoscopy | Dr. Nguyen | <Badge tone="neutral">Scheduled</Badge> |
+| 14:30 | OR-3 | Appendectomy | Dr. Fernandez | <Badge tone="neutral">Scheduled</Badge> |
+| 16:00 | OR-1 | Carpal tunnel | Dr. Wu | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies Running Low">
+<Callout tone="warning" title="Restock needed within 24h">
+| Supply | Current Stock | Reorder Level | Est. Days Left |
+|---|---|---|---|
+| Saline 1L bags | 24 cases | 50 | 1.5 |
+| N95 masks | 3 boxes | 10 | 0.5 |
+| Insulin pens | 8 units | 20 | 2 |
+| Blood culture bottles | 6 pairs | 15 | 1 |
+| ECG electrodes | 12 boxes | 25 | 3 |
+</Callout>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<div>
+<Button label="File an Incident" variant="danger">File an Incident</Button>
+</div>
+<div>
+<Button label="Request Patient Transfer" variant="primary">Request Patient Transfer</Button>
+</div>
+<div>
+<Button label="View Another Day" variant="secondary">View Another Day</Button>
+</div>
+</Columns>
+</Card>
+
+<Details title="File an Incident">
+<Form name="incident-report">
+<Input label="Patient MRN (optional)" placeholder="MRN-000123" />
+<Select label="Incident type" options="Medication error | Fall | Equipment failure | Behavioral | Safety | Other" placeholder="Select type" />
+<TextArea label="Description" placeholder="Describe what happened, when, and who was involved" rows="4" />
+<Select label="Severity" options="Near miss | Minor | Moderate | Severe | Critical" placeholder="Select severity" />
+<Radio label="Was patient harmed?" options="Yes | No | Unknown" />
+<Button>Submit Incident Report</Button>
+</Form>
+</Details>
+
+<Details title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient MRN" placeholder="MRN-000123" required />
+<Select label="From unit" options="ER | ICU | Medical | Surgical | Pediatrics | Maternity | NICU | Psych" placeholder="Current unit" />
+<Select label="To unit" options="ER | ICU | Medical | Surgical | Pediatrics | Maternity | NICU | Psych" placeholder="Destination unit" />
+<TextArea label="Reason for transfer" placeholder="Clinical justification and urgency" rows="3" />
+<Select label="Priority" options="Routine | Urgent | STAT" placeholder="Select priority" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Details>
+
+<Details title="View Another Day">
+<Form name="date-navigation">
+<Date label="Select date" name="view-date" />
+<Button>Load Day</Button>
+</Form>
+</Details>
+
+<FollowUps>
+- Show current ventilator usage and availability
+- List pending lab results for critical patients
+- Summarize yesterday's incident reports
+- Show staffing gaps for the next 24 hours
+- Compare bed occupancy to last week
+</FollowUps>

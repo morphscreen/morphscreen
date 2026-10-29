@@ -1,0 +1,37 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved on June 12, 2025 at 14:32 UTC">
+<Callout tone="info" title="Degraded API response times">
+On June 12 between 11:05 and 14:32 UTC, the API experienced elevated latency affecting approximately 8% of requests. Root cause was a database connection pool exhaustion during a deployment of the user-service. The issue was resolved by rolling back the deployment and scaling connection pools. No data loss occurred.
+</Callout>
+</Card>
+
+<Card title="Status Overview">
+<Columns>
+<Stat label="All Systems" value="Operational" tone="success" icon="check-circle" />
+<Stat label="API" value="Operational" tone="success" icon="cloud" />
+<Stat label="Database" value="Operational" tone="success" icon="database" />
+<Stat label="Auth Service" value="Operational" tone="success" icon="lock" />
+</Columns>
+</Card>
+
+<Card title="Incident History (Last 7 Days)">
+| Date | Incident | Duration | Status |
+|---|---|---|---|
+| June 12 | Degraded API response times | 3h 27m | Resolved |
+| June 10 | Scheduled maintenance – DB upgrade | 45m | Completed |
+| June 8 | Brief spike in 5xx errors | 12m | Resolved |
+</Card>
+
+<Button ask="Show me the full incident report for June 12">View full incident report</Button>
+<Button variant="secondary" ask="What's the current API latency?">Check current latency</Button>
+
+<FollowUps>
+- When is the next scheduled maintenance?
+- Show me uptime for the last 30 days
+- Which services are most affected by incidents?
+</FollowUps>

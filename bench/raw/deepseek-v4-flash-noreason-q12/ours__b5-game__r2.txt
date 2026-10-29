@@ -1,0 +1,169 @@
+# Live-Ops Command Center
+
+<Callout tone="info" title="Live-Ops Room">Real-time monitoring for all live game services. Data refreshes every 30 seconds. <Badge tone="success">All systems nominal</Badge></Callout>
+
+<Card title="Player Activity">
+<Columns>
+<Stat label="Players Online Now" value="48,213" change="+12% vs 1h ago" tone="success" icon="users" />
+<Stat label="Daily Active Players" value="1,284,902" change="+3.4% vs yesterday" tone="info" icon="chart-line" />
+<Stat label="Monthly Active Players" value="8,941,330" change="+1.2% vs last week" tone="info" icon="calendar" />
+</Columns>
+</Card>
+
+<Card title="Revenue">
+<Columns>
+<Stat label="Revenue Today" value="$214,580" change="+8.1% vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Revenue Per User (Today)" value="$0.167" change="+4.5% vs yesterday" tone="info" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Session Length — Past 14 Days">
+<Chart type="line" x="Day" y="Avg. Session (min)">
+| Day | Avg Session |
+|---|---|
+| D1 | 32.4 |
+| D2 | 33.1 |
+| D3 | 31.8 |
+| D4 | 34.2 |
+| D5 | 35.0 |
+| D6 | 33.6 |
+| D7 | 32.9 |
+| D8 | 34.7 |
+| D9 | 36.1 |
+| D10 | 35.4 |
+| D11 | 34.8 |
+| D12 | 36.9 |
+| D13 | 37.2 |
+| D14 | 38.0 |
+</Chart>
+</Card>
+
+<Card title="Top-Selling Items (Last 7 Days)">
+| Item | Units Sold |
+|---|---|
+| Ember Cat Mount | 12,480 |
+| Dragon's Hoard Bundle | 9,215 |
+| Royal Crown Skin | 7,890 |
+| XP Boost ×10 | 6,340 |
+| Legendary Loot Crate | 5,102 |
+| Frost Castle Decoration | 3,875 |
+</Card>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Stat label="NA East" value="Healthy" change="98.2% uptime" tone="success" icon="map-pin" />
+<Stat label="NA West" value="Healthy" change="99.1% uptime" tone="success" icon="map-pin" />
+<Stat label="EU Central" value="Healthy" change="97.8% uptime" tone="success" icon="map-pin" />
+<Stat label="Asia Pacific" value="Degraded" change="94.5% uptime" tone="warning" icon="map-pin" />
+<Stat label="South America" value="Healthy" change="98.9% uptime" tone="success" icon="map-pin" />
+</Columns>
+<Button variant="secondary" label="Focus on a region">Focus on a region</Button>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="App Version" y="Crash Rate (%)">
+| Version | Crash Rate |
+|---|---|
+| v2.4.1 | 0.32 |
+| v2.4.0 | 0.48 |
+| v2.3.9 | 0.21 |
+| v2.3.8 | 0.19 |
+| v2.3.7 | 0.25 |
+</Chart>
+<Callout tone="warning" title="v2.4.0 anomaly">Crash rate spiked 2.3× above baseline. Investigating with the engineering team.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Columns>
+<Stat label="Running Now" value="3" tone="success" icon="calendar" />
+<Stat label="Upcoming (next 7 days)" value="2" tone="info" icon="calendar" />
+</Columns>
+| Event | Status | Ends In |
+|---|---|---|
+| Summer Festival | <Badge tone="success">Running</Badge> | 2d 14h |
+| Double XP Weekend | <Badge tone="success">Running</Badge> | 1d 06h |
+| Raid Boss: Frost Wyrm | <Badge tone="success">Running</Badge> | 4h 30m |
+| Pirate Treasure Hunt | <Badge tone="info">Upcoming</Badge> | Starts in 1d 12h |
+| Halloween Haunt | <Badge tone="info">Upcoming</Badge> | Starts in 5d 00h |
+</Card>
+
+<Card title="Player Reports & Ban Appeals">
+<Columns>
+<Stat label="Reports Awaiting Review" value="342" change="+18 in last hour" tone="warning" icon="flag" />
+<Stat label="Ban Appeals Awaiting Review" value="87" change="+6 in last hour" tone="warning" icon="shield" />
+</Columns>
+<Button variant="secondary">Open moderation queue</Button>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="area" x="Week" y="Gold in circulation (millions)">
+| Week | Gold |
+|---|---|
+| W1 | 120 |
+| W2 | 126 |
+| W3 | 131 |
+| W4 | 138 |
+| W5 | 145 |
+| W6 | 152 |
+| W7 | 160 |
+| W8 | 169 |
+</Chart>
+<Callout tone="warning" title="Inflation trending up">Weekly inflation rate is 4.7%, above the 3% target. Consider a gold sink event.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Stat label="Experiment A: New Onboarding" value="+8.2% D1 retention" change="Significant (p<0.01)" tone="success" icon="flask" />
+<Stat label="Experiment B: Shop Pricing" value="+3.1% revenue" change="Not significant (p=0.14)" tone="warning" icon="flask" />
+</Columns>
+<Details title="Experiment A details" open="false">
+<Steps>
+<Step title="Hypothesis" status="done">A shorter, quest-driven onboarding improves day-1 retention.</Step>
+<Step title="Rollout" status="done">50% of new players (n=48,200) since 14 days ago.</Step>
+<Step title="Result" status="done">D1 retention up 8.2% (43.1% → 51.3%). Statistically significant. Recommend rollout to 100%.</Step>
+</Steps>
+</Details>
+<Details title="Experiment B details" open="false">
+<Steps>
+<Step title="Hypothesis" status="done">Bundling mid-tier items at a 15% discount increases total spend.</Step>
+<Step title="Rollout" status="done">25% of players (n=120,400) since 10 days ago.</Step>
+<Step title="Result" status="done">Revenue up 3.1% but not significant (p=0.14). Continue for another week before deciding.</Step>
+</Steps>
+</Details>
+</Card>
+
+<Card title="Draft Patch Notes">
+<Form name="patch-notes">
+<Input label="Patch version" placeholder="v2.5.0" />
+<Input label="Title" placeholder="Summer Festival Update" />
+<TextArea label="Patch notes" rows="8" placeholder="## New Features&#10;- Added the Summer Festival event&#10;- New Pirate Treasure Hunt mode&#10;&#10;## Balance Changes&#10;- Reduced Frost Wyrm HP by 10%&#10;&#10;## Bug Fixes&#10;- Fixed crash on Android when opening the shop" />
+<Button>Save draft</Button>
+<Button variant="secondary">Preview notes</Button>
+</Form>
+</Card>
+
+<Card title="Focus on a Region">
+<Form name="region-focus">
+<Select label="Select a region" options="NA East | NA West | EU Central | Asia Pacific | South America" placeholder="Choose a region" />
+<Callout tone="neutral" title="What this does">Filters all metrics above to the selected region only, including player counts, revenue, crash rate, and events.</Callout>
+<Button>Apply region focus</Button>
+</Form>
+</Card>
+
+<Card title="Ship a Hotfix">
+<Form name="hotfix">
+<Callout tone="danger" title="Careful">Hotfixes deploy immediately to all players. Confirm you have tested the build on staging.</Callout>
+<Input label="Hotfix version" placeholder="v2.4.1-hotfix.1" />
+<TextArea label="What does this fix?" rows="3" placeholder="Fix crash on Android when opening the shop (2.4.0 regression)" />
+<Checkboxes label="Confirmation" options="I have tested this build on staging | I have reviewed the diff with engineering | I have approval from the game director" />
+<Button variant="danger">Ship hotfix</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the last 24 hours of player reports in detail
+- Compare revenue by region for the past week
+- Which items have the highest refund rate?
+- Prepare a summary of Experiment A for the leadership team
+- What's the projected gold supply for next month?
+</FollowUps>

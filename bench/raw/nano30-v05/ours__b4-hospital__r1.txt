@@ -1,0 +1,98 @@
+<Card title="Bed Occupancy">
+<Stat label="Bed occupancy" value="92%" change="-2%" note="↓" tone="warning"/>
+<Progress value="92" max="100" label="Bed occupancy" tone="info"/>
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="ER wait time" value="27 min" change="+5 min" note="⏱" tone="warning"/>
+<Progress value="27" max="60" label="Wait time" tone="warning"/>
+</Card>
+
+<Card title="Admissions (Last 2 Weeks)">
+<Chart type="line" x="Day" y="Admissions" title="Admissions">
+| Day | Admissions |
+|---|---|
+| D1 | 12 |
+| D2 | 9 |
+| D3 | 15 |
+| D4 | 11 |
+| D5 | 13 |
+| D6 | 8 |
+| D7 | 14 |
+| D8 | 10 |
+| D9 | 16 |
+| D10 | 12 |
+| D11 | 9 |
+| D12 | 14 |
+| D13 | 11 |
+| D14 | 13 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="pie" title="Patients per Department">
+| Department | Count |
+|---|---|
+| Cardiology | 45 |
+| Oncology | 30 |
+| Orthopedics | 25 |
+| Pediatrics | 20 |
+| Emergency | 15 |
+| Other | 5 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+<Avatar name="Dr. Alice Smith" src="https://example.com/avatar1.png" subtitle="Attending"/>
+<Badge tone="info">Attending</Badge>
+<Avatar name="Dr. Bob Lee" src="https://example.com/avatar2.png" subtitle="Resident"/>
+<Badge tone="info">Resident</Badge>
+<Avatar name="Nurse Carol Wu" src="https://example.com/avatar3.png" subtitle="Nurse"/>
+<Badge tone="info">Nurse</Badge>
+<Avatar name="Tech Dan Ortiz" src="https://example.com/avatar4.png" subtitle="Tech"/>
+<Badge tone="info">Tech</Badge>
+</Card>
+
+<Card title="Critical Patients">
+<Callout tone="warning" title="Critical Patients">Patient ID 1023 (John Doe) - Severe chest pain, requires immediate catheterization.</Callout>
+</Card>
+
+<Card title="Ready for Discharge">
+<Stat label="Ready for Discharge" value="8" change="+2" note="✅" tone="success"/>
+</Card>
+
+<Card title="Operating Room Bookings - Today">
+<Chart type="horizontal" title="OR Bookings - Today">
+| OR | Procedure | Time |
+|---|---|---|
+| OR1 | Knee replacement | 08:00-09:30 |
+| OR2 | Cardiac cath | 09:45-11:15 |
+| OR3 | Appendectomy | 11:30-13:00 |
+| OR4 | MRI scan | 13:30-15:00 |
+</Chart>
+</Card>
+
+<Card title="Supplies Running Low">
+<Stat label="Supplies Low" value="3 items" change="↓" note="Critical" tone="danger"/>
+<Badge tone="danger">Low Stock</Badge>
+<Progress value="15" max="100" label="Supply level" tone="danger"/>
+</Card>
+
+<Card title="File Incident">
+<Form name="incident-report">
+<Input label="Incident description" placeholder="Describe the event" required=true />
+<Button variant="danger" size=medium label="File Incident" />
+</Form>
+</Card>
+
+<Card title="View Another Day">
+<Date name="selectedDate" hint="Pick a date" required=false />
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient name" placeholder="Enter patient name" required=true />
+<Input label="Destination unit" placeholder="e.g., ICU" required=true />
+<Button variant="primary" size=medium label="Request Transfer" />
+</Form>
+</Card>

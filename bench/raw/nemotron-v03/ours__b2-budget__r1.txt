@@ -1,0 +1,47 @@
+<Card title="Budget Overview" subtitle="March 2024">
+<Select label="Month" name="month" value="March 2024" options="January 2024 | February 2024 | March 2024 | April 2024 | May 2024 | June 2024 | July 2024 | August 2024 | September 2024 | October 2024 | November 2024 | December 2024" />
+</Card>
+
+<Columns>
+<Card title="Monthly Budget" subtitle="Total spent vs. limit">
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,340" change="+$180 vs last month" tone="info" />
+<Stat label="Remaining" value="$660" change="22% left" tone="success" />
+<Progress value="2340" max="3000" label="78% of budget used" />
+</Card>
+
+<Card title="Largest Expense" subtitle="Single biggest transaction this month">
+<Callout tone="warning" title="Rent Payment">
+**$1,200** · Housing · March 1st
+</Callout>
+<Badge tone="neutral">Recurring</Badge>
+</Card>
+</Columns>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 480 |
+| Transportation | 220 |
+| Utilities | 180 |
+| Entertainment | 140 |
+| Shopping | 120 |
+</Chart>
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="USD" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Health | Other" required="true" />
+</Columns>
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Date label="Date" name="date" value="2024-03-15" required="true" />
+<Columns>
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>

@@ -1,0 +1,169 @@
+# Speeding Up Your 2 GB CSV Reading in Python
+
+<Callout tone="warning" title="First, check your bottleneck">
+Before optimizing, run a quick profile to confirm whether the slowdown is from disk I/O, parsing, or memory. Use `cProfile` or simply time a read without processing.
+</Callout>
+
+## Quick Wins (Try These First)
+
+<Card title="1. Use the right pandas engine">
+The default Python parser is slow. Switch to a faster engine:
+
+<Code file="pandas_engine.py">
+import pandas as pd
+
+# Use C engine instead of Python
+df = pd.read_csv('large.csv', engine='c', low_memory=False)
+</Code>
+
+<Callout tone="info" title="When to use low_memory=False">
+This loads the whole file into memory at once, avoiding type inference issues that slow down chunked reading. Only use if you have enough RAM (roughly 2-4× the file size).
+</Callout>
+</Card>
+
+<Card title="2. Specify dtypes to avoid guessing">
+Telling pandas the column types saves massive time:
+
+<Code file="dtypes.py">
+import pandas as pd
+
+# Define dtypes for each column
+dtype_dict = {
+    'id': 'int32',
+    'name': 'string',
+    'amount': 'float32',
+    'date': 'datetime64[ns]'
+}
+
+df = pd.read_csv('large.csv', dtype=dtype_dict, parse_dates=['date'])
+</Code>
+
+<Stat label="Speedup" value="2-4×" tone="success" icon="chart-line" note="vs. default inference" />
+</Card>
+
+## Advanced Techniques
+
+<Card title="Chunked reading for memory efficiency">
+If you don't need all data at once, read in chunks:
+
+<Code file="chunked.py">
+import pandas as pd
+
+chunks = pd.read_csv('large.csv', chunksize=500_000)
+results = []
+
+for chunk in chunks:
+    # Process each chunk
+    results.append(chunk[chunk['amount'] > 100])
+    
+df = pd.concat(results)
+</Code>
+</Card>
+
+<Card title="Parallel processing with multiprocessing">
+Split the file and process chunks in parallel:
+
+<Code file="parallel.py">
+import pandas as pd
+from multiprocessing import Pool
+
+def process_chunk(chunk):
+    # Your processing logic here
+    return chunk[chunk['amount'] > 100]
+
+# Read file in chunks
+chunks = pd.read_csv('large.csv', chunksize=500_000)
+
+with Pool(4) as pool:
+    results = pool.map(process_chunk, chunks)
+
+df = pd.concat(results)
+</Code>
+</Card>
+
+<Card title="Use Polars for maximum speed">
+Polars is a Rust-based DataFrame library that's significantly faster:
+
+<Code file="polars.py">
+import polars as pl
+
+# Read CSV (parallel by default)
+df = pl.read_csv('large.csv')
+
+# Or lazy evaluation for complex pipelines
+df = pl.scan_csv('large.csv').filter(pl.col('amount') > 100).collect()
+</Code>
+
+<Stat label="Speedup" value="5-10×" tone="success" icon="chart-line" note="vs. pandas on large files" />
+</Card>
+
+## Comparison of Approaches
+
+<Card title="Which method should you use?">
+<Compare title="CSV reading methods">
+| Factor | pandas (default) | pandas (C engine) | Polars | Chunked |
+|---|---|---|---|---|
+| Speed | Baseline | 2-4× faster | 5-10× faster | 1.5-2× faster |
+| Memory use | High | High | Medium | Low |
+| Ease of use | Easy | Easy | Moderate | Moderate |
+| Best for | Small files | Medium files | Large files | Very large files |
+</Compare>
+</Card>
+
+## Step-by-Step Optimization Plan
+
+<Steps>
+<Step title="Profile your current setup" status="current">
+Time your current read: `python -c "import pandas as pd; df = pd.read_csv('large.csv'); print(f'Read time: {time}')"`
+</Step>
+<Step title="Switch to C engine" status="todo">
+Add `engine='c', low_memory=False` to your pandas read
+</Step>
+<Step title="Define dtypes" status="todo">
+Identify column types and pass a dtype dictionary
+</Step>
+<Step title="Consider Polars" status="todo">
+If still slow, try `pl.read_csv()` for a 5-10× boost
+</Step>
+<Step title="Optimize memory" status="todo">
+If memory is the issue, use chunked reading or Polars' lazy API
+</Step>
+</Steps>
+
+<Card title="Quick benchmark template">
+Use this to test each method on your data:
+
+<Code file="benchmark.py">
+import time
+import pandas as pd
+import polars as pl
+
+file = 'large.csv'
+
+# Method 1: pandas default
+start = time.time()
+df1 = pd.read_csv(file)
+print(f"pandas default: {time.time() - start:.2f}s")
+
+# Method 2: pandas optimized
+start = time.time()
+df2 = pd.read_csv(file, engine='c', low_memory=False)
+print(f"pandas C engine: {time.time() - start:.2f}s")
+
+# Method 3: Polars
+start = time.time()
+df3 = pl.read_csv(file)
+print(f"Polars: {time.time() - start:.2f}s")
+</Code>
+</Card>
+
+<Callout tone="success" title="Bottom line">
+For a 2 GB CSV, **Polars** is your best bet for raw speed. If you must stick with pandas, use the C engine with explicit dtypes. Only use chunking if memory is your constraint, not speed.
+</Callout>
+
+<FollowUps>
+- How do I handle CSV files larger than my RAM?
+- What are the best practices for writing CSV files quickly?
+- Can I use Dask for even larger files?
+- How do I convert my CSV to Parquet for faster future reads?
+</FollowUps>

@@ -1,0 +1,130 @@
+# Power Network Operator Console
+
+<Callout tone="warning" title="Live alert">⚠️ Grid frequency deviation detected in North region — 0.2 Hz below nominal. Monitoring.</Callout>
+
+<Columns>
+<Card title="Network Overview">
+<Stat label="Current Load" value="8.42 GW" change="+3.2%" tone="info" icon="chart-line" />
+<Stat label="Capacity Used" value="78%" change="+2.1%" tone="success" icon="gauge" />
+<Stat label="Price / MWh" value="$54.20" change="+$2.10" tone="info" icon="currency-circle-dollar" />
+<Stat label="Emissions Today" value="12,480 tCO₂" change="-8.4%" tone="success" icon="leaf" />
+</Card>
+</Columns>
+
+<Card title="Network Capacity">
+<Progress value="78" max="100" label="78% of capacity used" tone="success" />
+<Callout tone="info" title="Headroom">2.34 GW available before reaching 95% alert threshold.</Callout>
+</Card>
+
+<Card title="Generation Mix">
+<Chart type="donut" title="Share by source">
+| Source | Share (%) |
+|---|---|
+| Natural Gas | 32 |
+| Nuclear | 28 |
+| Hydro | 18 |
+| Wind | 14 |
+| Solar | 8 |
+</Chart>
+</Card>
+
+<Card title="Plant Output & Status">
+| Plant | Source | Output | Status |
+|---|---|---|---|
+| Riverside CCGT | Gas | 1.2 GW | <Badge tone="success">Running</Badge> |
+| Lakeside Nuclear | Nuclear | 2.4 GW | <Badge tone="success">Running</Badge> |
+| North Falls Hydro | Hydro | 0.9 GW | <Badge tone="success">Running</Badge> |
+| Hilltop Wind Farm | Wind | 0.6 GW | <Badge tone="info">Partial</Badge> |
+| Desert Solar Park | Solar | 0.3 GW | <Badge tone="warning">Reduced</Badge> |
+| Peak Gas Peaker | Gas | 0.1 GW | <Badge tone="neutral">Standby</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected | Status |
+|---|---|---|
+| North Suburbs | 12,400 customers | <Badge tone="danger">Unplanned</Badge> |
+| East Industrial | 3,800 customers | <Badge tone="warning">Maintenance</Badge> |
+| West Rural | 1,200 customers | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Demand Forecast — Next 24h">
+<Chart type="area" title="Forecast vs capacity" x="Hour" y="GW">
+| Hour | Forecast | Capacity |
+|---|---|---|
+| 00:00 | 7.2 | 10.8 |
+| 04:00 | 6.8 | 10.8 |
+| 08:00 | 8.5 | 10.8 |
+| 12:00 | 9.1 | 10.8 |
+| 16:00 | 9.4 | 10.8 |
+| 20:00 | 8.8 | 10.8 |
+| 24:00 | 7.5 | 10.8 |
+</Chart>
+<Callout tone="info" title="Peak risk">Peak at 16:00 — 87% of capacity. Monitor closely.</Callout>
+</Card>
+
+<Card title="Maintenance — This Month">
+| Date | Plant | Work |
+|---|---|---|
+| Mar 12–14 | Desert Solar | Inverter overhaul |
+| Mar 18–19 | North Falls | Turbine inspection |
+| Mar 25–27 | Riverside CCGT | Turbine blade replacement |
+</Card>
+
+<Card title="Live Alerts">
+<Details title="14:22 — Frequency deviation in North">
+Frequency 49.8 Hz. Automatic governor response engaged. No load shedding required.
+</Details>
+<Details title="13:45 — Wind forecast upgrade">
+Hilltop Wind output expected to rise 15% over next 2 hours.
+</Details>
+<Details title="12:10 — Solar cloud cover">
+Desert Solar output reduced 40% due to cloud bank. Recovery expected by 15:00.
+</Details>
+</Card>
+
+<Card title="Focus by Region">
+<Radio label="Select region" name="region" options="North | South | East | West | All regions" value="All regions" />
+</Card>
+
+<Card title="Order Curtailment">
+<Form name="curtailment">
+<Select label="Plant" name="plant" options="Hilltop Wind Farm | Desert Solar Park | Riverside CCGT" placeholder="Select plant" />
+<Stepper label="Reduce output by (MW)" name="curtail-mw" value="100" min="0" max="500" step="10" unit=" MW" />
+<Time label="Start time" name="start" value="15:00" />
+<TextArea label="Reason" name="reason" placeholder="e.g. Local constraint, frequency control" />
+<Button>Submit curtailment</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ Emitted" value="12,480 t" change="-8.4%" tone="success" icon="leaf" />
+<Chart type="bar" title="Hourly emissions" x="Hour" y="tCO₂">
+| Hour | tCO₂ |
+|---|---|
+| 00:00 | 420 |
+| 04:00 | 380 |
+| 08:00 | 510 |
+| 12:00 | 560 |
+| 16:00 | 580 |
+| 20:00 | 520 |
+| 24:00 | 450 |
+</Chart>
+</Card>
+
+<Card title="Regional Map">
+<Map title="Network regions" route="false">
+| Region | Lat | Lng | Status |
+|---|---|---|---|
+| North | 51.5074 | -0.1278 | Alert |
+| South | 50.9097 | -1.4044 | Normal |
+| East | 52.6309 | 1.2974 | Outage |
+| West | 51.4545 | -2.5879 | Normal |
+</Map>
+</Card>
+
+<FollowUps>
+- Show detailed load curve for the East region
+- What caused the North frequency deviation?
+- List all curtailment orders in the last 24 hours
+- Compare emissions with yesterday
+</FollowUps>

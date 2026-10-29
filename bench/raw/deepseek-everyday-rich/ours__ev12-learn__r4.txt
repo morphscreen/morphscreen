@@ -1,0 +1,171 @@
+# How Photosynthesis Works
+
+Photosynthesis is the process plants, algae, and some bacteria use to turn sunlight, water, and carbon dioxide into food (glucose) and oxygen. It's the foundation of almost all life on Earth.
+
+<Card title="The Big Picture">
+Photosynthesis happens in two main stages, working together like a factory:
+
+1. **Light-dependent reactions**: Capture sunlight and split water to make energy (ATP and NADPH) and release oxygen.
+2. **Calvin cycle (light-independent)**: Use that energy to turn carbon dioxide into glucose.
+
+The overall equation is simple:
+
+<Math tex="6CO_2 + 6H_2O + light \rightarrow C_6H_{12}O_6 + 6O_2" label="Photosynthesis equation" />
+
+**In words:** Carbon dioxide + water + sunlight → glucose + oxygen.
+</Card>
+
+<Card title="Where It Happens">
+Photosynthesis occurs in the **chloroplasts** of plant cells, especially in the leaves.
+
+<Gallery>
+![A plant leaf cell showing chloroplasts with thylakoid stacks under a microscope](find)
+![A diagram of a chloroplast showing the thylakoid membranes and stroma](find)
+</Gallery>
+
+<KeyValue title="Key parts of the chloroplast">
+| Part | Role |
+|---|---|
+| Thylakoid | Stacked discs where light reactions occur |
+| Stroma | Fluid around thylakoids where the Calvin cycle runs |
+| Chlorophyll | Green pigment in thylakoids that captures light |
+</KeyValue>
+</Card>
+
+<Card title="Step-by-Step: The Light Reactions">
+These happen in the thylakoid membranes when sunlight hits the leaf.
+
+<Steps>
+<Step title="Light hits chlorophyll" status="current" subtitle="Energy capture">
+Chlorophyll absorbs photons, exciting electrons to a higher energy state.
+</Step>
+<Step title="Water is split" status="todo" subtitle="Oxygen release">
+Enzymes split water (H₂O) into oxygen (released as waste), protons, and electrons.
+</Step>
+<Step title="Electron transport chain" status="todo" subtitle="Energy conversion">
+Excited electrons pass down protein complexes, pumping protons across the membrane.
+</Step>
+<Step title="ATP and NADPH formed" status="todo" subtitle="Chemical energy">
+The proton gradient powers ATP synthase to make ATP; electrons reduce NADP⁺ to NADPH.
+</Step>
+</Steps>
+
+<Callout tone="info" title="Oxygen comes from water, not CO₂">
+The oxygen we breathe comes from splitting water, not from carbon dioxide. This was proven with radioactive isotope experiments in the 1940s.
+</Callout>
+</Card>
+
+<Card title="Step-by-Step: The Calvin Cycle">
+These reactions happen in the stroma and don't need light directly (though they need ATP/NADPH from light reactions).
+
+<Steps>
+<Step title="Carbon fixation" status="current" subtitle="CO₂ captured">
+An enzyme called RuBisCO attaches CO₂ to a 5-carbon sugar (RuBP), forming a 6-carbon molecule that splits into two 3-carbon molecules (3-PGA).
+</Step>
+<Step title="Reduction" status="todo" subtitle="Building sugar">
+ATP and NADPH from light reactions convert 3-PGA into G3P, a sugar phosphate.
+</Step>
+<Step title="Regeneration" status="todo" subtitle="RuBP rebuilt">
+Most G3P is used to regenerate RuBP, so the cycle can continue. One G3P exits per three turns to make glucose.
+</Step>
+</Steps>
+</Card>
+
+<Card title="What the Plant Produces">
+For every **6 molecules of CO₂** fixed, the plant makes:
+
+- **1 glucose** (C₆H₁₂O₆) — used for energy or stored as starch
+- **6 oxygen** (O₂) — released into the air
+
+<Chart type="bar" title="Products per 6 CO₂ molecules" x="Product" y="Molecules">
+| Product | Molecules |
+|---|---|
+| Glucose | 1 |
+| Oxygen | 6 |
+| ATP used | 18 |
+| NADPH used | 12 |
+</Chart>
+
+<Callout tone="success" title="Why it matters">
+Almost all food chains start here. Herbivores eat plants, carnivores eat herbivores — and the energy all traces back to photosynthesis. It also produces the oxygen in every breath you take.
+</Callout>
+</Card>
+
+<Card title="Factors That Affect Photosynthesis Rate">
+These three factors can limit how fast photosynthesis runs:
+
+<Columns>
+<Stat label="Light intensity" value="High" tone="info" note="More light = faster, up to a saturation point" />
+<Stat label="CO₂ concentration" value="0.04%" tone="info" note="More CO₂ = faster, within limits" />
+<Stat label="Temperature" value="25-35°C" tone="warning" note="Optimal for most plants; too hot damages enzymes" />
+</Columns>
+
+<Progress value="70" max="100" label="Typical leaf efficiency at midday" tone="success" />
+</Card>
+
+<Card title="Check Your Understanding">
+<Quiz title="Photosynthesis Quiz">
+<Question text="What gas is released during the light reactions?" answer="Oxygen" explain="Oxygen comes from splitting water molecules in the thylakoid.">
+- Carbon dioxide
+- Oxygen
+- Nitrogen
+- Hydrogen
+</Question>
+<Question text="Where does the Calvin cycle take place?" answer="Stroma" explain="The stroma is the fluid-filled space around the thylakoids inside the chloroplast.">
+- Thylakoid membrane
+- Stroma
+- Mitochondria
+- Cell wall
+</Question>
+<Question text="What is the main product of photosynthesis that plants use for energy?" answer="Glucose" explain="Glucose (C₆H₁₂O₆) is the sugar that stores chemical energy.">
+- ATP
+- Glucose
+- Starch
+- Oxygen
+</Question>
+</Quiz>
+</Card>
+
+<Card title="Visual Summary">
+This flowchart shows how the two stages connect:
+
+<Funnel title="Photosynthesis pathway">
+| Stage | Output |
+|---|---|
+| Light absorbed | 100% |
+| Water split | 50% |
+| ATP/NADPH produced | 30% |
+| Glucose built | 12% |
+</Funnel>
+
+<Callout tone="neutral" title="Remember the rhyme">
+"Light splits water, makes ATP; Calvin fixes CO₂, makes G3P."
+</Callout>
+</Card>
+
+<Card title="Try It Yourself">
+<WhatIf title="Photosynthesis rate calculator">
+<Slider label="Light intensity" min="0" max="100" step="5" value="70" name="light" unit="%" />
+<Slider label="CO₂ concentration" min="0" max="100" step="5" value="40" name="co2" unit="%" />
+<Slider label="Temperature" min="0" max="45" step="1" value="25" name="temp" unit="°C" />
+
+<Result label="Relative photosynthesis rate" value="light * co2 / 100 * (1 - max(0, temp - 35) / 20)" decimals="1" unit="%" />
+</WhatIf>
+<Details title="How to read this">
+Move the sliders to see how each factor affects the rate. The formula mimics real limitations: low light or CO₂ slows things down, and very high temperatures reduce enzyme activity.
+</Details>
+</Card>
+
+<Card title="Common Misconceptions">
+| Myth | Truth |
+|---|---|
+| Plants "breathe" CO₂ at night | Plants respire 24/7, but photosynthesis only happens in light |
+| Photosynthesis = respiration in reverse | They use different pathways and organelles |
+| Chlorophyll is green because it reflects green light | Correct! It absorbs red and blue best, reflecting green |
+</Card>
+
+<FollowUps>
+- How do C4 and CAM plants differ?
+- What happens to plants in winter?
+- How does photosynthesis relate to climate change?
+</FollowUps>

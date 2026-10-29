@@ -1,0 +1,199 @@
+# University Administrator Dashboard
+
+<Card title="University Overview" subtitle="Spring 2025 Semester">
+<Columns>
+<Stat label="Total Enrollment" value="24,382" change="+3.2%" tone="success" icon="users" />
+<Stat label="Acceptance Rate" value="68.4%" change="-2.1%" tone="warning" icon="chart-line" />
+<Stat label="Tuition Revenue (YTD)" value="$187.2M" change="+5.8%" tone="success" icon="chart-line" />
+<Stat label="Housing Occupancy" value="94.3%" change="+1.2%" tone="success" icon="map-pin" />
+</Columns>
+</Card>
+
+<Card title="Enrollment Trend (5 Years)">
+<Chart type="line" x="Year" y="Students">
+| Year | Enrollment |
+|---|---|
+| 2020-21 | 21,450 |
+| 2021-22 | 22,180 |
+| 2022-23 | 22,890 |
+| 2023-24 | 23,610 |
+| 2024-25 | 24,382 |
+</Chart>
+</Card>
+
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Business | 4,210 |
+| Engineering | 3,850 |
+| Computer Science | 3,620 |
+| Biology | 2,410 |
+| Psychology | 2,180 |
+| Nursing | 1,950 |
+| Economics | 1,740 |
+| Political Science | 1,520 |
+</Chart>
+</Card>
+
+<Card title="Course Capacity & Enrollment">
+<Chart type="horizontal" x="Course" y="Enrolled / Capacity">
+| Course | Enrolled | Capacity |
+|---|---|---|
+| BIO 101 | 180 | 200 |
+| CS 201 | 145 | 150 |
+| ENG 301 | 85 | 100 |
+| PSY 202 | 195 | 200 |
+| BUS 401 | 55 | 60 |
+| MTH 102 | 220 | 250 |
+| CHE 201 | 90 | 120 |
+| PHY 101 | 165 | 200 |
+</Chart>
+<Callout tone="warning" title="Near capacity">PSY 202 (97.5%) and CS 201 (96.7%) are nearly full. Consider adding sections.</Callout>
+</Card>
+
+<Card title="Faculty Teaching Load">
+<Chart type="bar" x="Faculty Member" y="Courses">
+| Faculty | Courses |
+|---|---|
+| Dr. Williams | 4 |
+| Dr. Chen | 3 |
+| Prof. Martinez | 5 |
+| Dr. Patel | 3 |
+| Prof. Johnson | 4 |
+| Dr. Kim | 2 |
+| Prof. O'Brien | 4 |
+| Dr. Singh | 3 |
+</Chart>
+</Card>
+
+<Card title="Students at Academic Risk">
+<Columns>
+<Stat label="Probation" value="412" tone="danger" icon="users" />
+<Stat label="Warning" value="287" tone="warning" icon="users" />
+<Stat label="At Risk Total" value="699" change="+8.3%" tone="danger" icon="chart-line" />
+</Columns>
+<Progress value="699" max="24382" label="2.9% of total enrollment" tone="danger" />
+<Button ask="Show detailed list of at-risk students by college">View at-risk students</Button>
+</Card>
+
+<Card title="Scholarship Budget">
+<Columns>
+<Stat label="Total Budget" value="$14.5M" icon="chart-line" />
+<Stat label="Used" value="$11.2M" tone="info" icon="chart-line" />
+<Stat label="Remaining" value="$3.3M" tone="success" icon="chart-line" />
+</Columns>
+<Progress value="11.2" max="14.5" label="77.2% of budget used" tone="info" />
+<Button ask="Show scholarship distribution by college">View scholarship details</Button>
+</Card>
+
+<Card title="Housing Occupancy">
+<Columns>
+<Stat label="Total Capacity" value="8,200" icon="map-pin" />
+<Stat label="Occupied" value="7,733" tone="success" icon="map-pin" />
+<Stat label="Available" value="467" tone="warning" icon="map-pin" />
+</Columns>
+<Progress value="7733" max="8200" label="94.3% occupied" tone="success" />
+</Card>
+
+<Card title="Campus Events This Month">
+<Tabs>
+<Tab title="Upcoming">
+| Date | Event | Location | Attendees |
+|---|---|---|---|
+| Apr 5 | Spring Career Fair | Student Center | 1,200 |
+| Apr 8 | Guest Lecture: AI Ethics | Science Hall | 300 |
+| Apr 12 | Earth Day Cleanup | Main Quad | 500 |
+| Apr 15 | Study Abroad Info Session | Global House | 200 |
+| Apr 20 | Faculty Research Symposium | Library | 400 |
+| Apr 25 | Student Art Exhibition | Art Gallery | 350 |
+| Apr 28 | End-of-Semester BBQ | North Lawn | 1,500 |
+</Tab>
+<Tab title="Past">
+| Date | Event | Attendance |
+|---|---|---|
+| Apr 1 | Poetry Slam | 180 |
+| Apr 3 | Transfer Student Welcome | 220 |
+</Tab>
+</Tabs>
+<Button ask="Show full events calendar">View all events</Button>
+</Card>
+
+<Card title="Alumni Giving (4 Years)">
+<Chart type="bar" x="Year" y="Donations ($)">
+| Year | Donations |
+|---|---|
+| 2021-22 | 2.8M |
+| 2022-23 | 3.1M |
+| 2023-24 | 3.4M |
+| 2024-25 | 3.9M |
+</Chart>
+<Stat label="Total Raised (4yr)" value="$13.2M" change="+39.3%" tone="success" />
+</Card>
+
+<Card title="Department Focus">
+<Form name="department-focus">
+<Select label="Select Department" options="All Departments | College of Business | College of Engineering | College of Arts & Sciences | College of Nursing | College of Education" placeholder="Choose a department" />
+<Button>Apply Filter</Button>
+</Form>
+</Card>
+
+<Card title="Semester Comparison">
+<Columns>
+<Stat label="Enrollment" value="24,382" change="+3.2%" tone="success" icon="users" />
+<Stat label="Applications" value="21,480" change="+5.1%" tone="success" icon="chart-line" />
+<Stat label="Acceptance Rate" value="68.4%" change="-2.1%" tone="warning" icon="chart-line" />
+<Stat label="Avg. GPA" value="3.24" change="+0.03" tone="success" icon="chart-line" />
+<Stat label="Retention Rate" value="89.7%" change="+1.4%" tone="success" icon="users" />
+<Stat label="Graduation Rate" value="72.3%" change="+0.8%" tone="success" icon="chart-line" />
+</Columns>
+<Callout tone="info" title="Key Insight">Applications are up 5.1% while acceptance rate dropped 2.1%, indicating stronger applicant quality.</Callout>
+</Card>
+
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 245 |
+| Nursing | 189 |
+| Engineering | 156 |
+| Business | 134 |
+| Biology | 98 |
+| Psychology | 72 |
+| Economics | 45 |
+| Political Science | 38 |
+</Chart>
+<Callout tone="warning" title="High demand">Computer Science (245) and Nursing (189) have the longest waitlists. Consider expanding capacity.</Callout>
+</Card>
+
+<Card title="Administrative Actions">
+<Columns>
+<Card title="Approve New Course">
+<Form name="approve-course">
+<Input label="Course Code" placeholder="e.g. CS 450" />
+<Input label="Course Title" placeholder="e.g. Machine Learning" />
+<Select label="Department" options="Computer Science | Business | Engineering | Biology | Psychology | Nursing" />
+<Input label="Faculty Member" placeholder="e.g. Dr. Smith" />
+<Input label="Capacity" type="number" placeholder="e.g. 60" />
+<Button>Submit for Approval</Button>
+</Form>
+</Card>
+<Card title="Send Message to Student Group">
+<Form name="message-students">
+<Select label="Student Group" options="All Students | Freshmen | Sophomores | Juniors | Seniors | Graduate Students | Honors Program | Athletes | International Students" />
+<Input label="Subject" placeholder="e.g. Important Announcement" />
+<TextArea label="Message" placeholder="Type your message here..." rows="4" />
+<Button>Send Message</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the detailed enrollment breakdown by college
+- Which courses have the most waitlisted students?
+- List faculty with the highest teaching loads
+- What scholarships are underutilized?
+- Show housing occupancy by residence hall
+- Compare this semester's GPA distribution to last
+</FollowUps>

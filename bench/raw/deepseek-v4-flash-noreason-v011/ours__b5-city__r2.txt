@@ -1,0 +1,201 @@
+# City Operations Center
+
+<Card title="City Dashboard" subtitle="Live overview of city operations">
+<Columns>
+<Stat label="Congestion" value="74%" change="+3%" tone="warning" icon="car" />
+<Stat label="Transit Punctuality" value="89%" change="-2%" tone="warning" icon="bus" />
+<Stat label="Water Use Today" value="2.4M L" change="+5%" tone="info" icon="drop" />
+<Stat label="Energy Use (Week)" value="14.2 GWh" change="-1.2%" tone="success" icon="lightning" />
+</Columns>
+</Card>
+
+<Card title="Current Weather" subtitle="City Center Station">
+<Columns>
+<Stat label="Temperature" value="22°C" icon="thermometer" />
+<Stat label="Humidity" value="58%" icon="humidity" />
+<Stat label="Wind" value="12 km/h" icon="wind" />
+<Stat label="Condition" value="Partly Cloudy" icon="cloud" />
+</Columns>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| North | 42 |
+| South | 68 |
+| East | 55 |
+| West | 73 |
+| Center | 61 |
+</Chart>
+<Callout tone="warning" title="South & West">AQI elevated in South (68) and West (73) – sensitive groups limit outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy Use Over Past Week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 2050 |
+| Tue | 2120 |
+| Wed | 2080 |
+| Thu | 2150 |
+| Fri | 2300 |
+| Sat | 1980 |
+| Sun | 1890 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents" subtitle="6 active">
+<Columns>
+<Badge tone="danger">Critical</Badge>
+<Badge tone="warning">High</Badge>
+<Badge tone="info">Medium</Badge>
+<Badge tone="neutral">Low</Badge>
+</Columns>
+
+| Severity | Location | Type | Status |
+|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Main & 5th Ave | Water main break | Crew en route |
+| <Badge tone="warning">High</Badge> | Oak St & Elm St | Traffic light outage | Dispatch pending |
+| <Badge tone="warning">High</Badge> | River Rd | Fallen tree | Crew assigned |
+| <Badge tone="info">Medium</Badge> | Park Ave | Pothole | Scheduled |
+| <Badge tone="info">Medium</Badge> | Library | Broken window | Scheduled |
+| <Badge tone="neutral">Low</Badge> | Greenway | Graffiti | Backlogged |
+
+<Map>
+| Name | Lat | Lng |
+|---|---|---|
+| Water main break | 45.5231 | -122.6765 |
+| Traffic light outage | 45.5250 | -122.6800 |
+| Fallen tree | 45.5300 | -122.6700 |
+| Pothole | 45.5200 | -122.6850 |
+| Broken window | 45.5220 | -122.6780 |
+| Graffiti | 45.5280 | -122.6750 |
+</Map>
+</Card>
+
+<Card title="Emergency Vehicles Deployed">
+<Columns>
+<Stat label="Ambulances" value="8" icon="ambulance" />
+<Stat label="Fire Trucks" value="5" icon="fire-truck" />
+<Stat label="Police Units" value="12" icon="police-car" />
+</Columns>
+<Map>
+| Name | Lat | Lng |
+|---|---|---|
+| Ambulance 1 | 45.5250 | -122.6780 |
+| Ambulance 2 | 45.5200 | -122.6820 |
+| Fire Truck 1 | 45.5230 | -122.6760 |
+| Police Unit 1 | 45.5280 | -122.6740 |
+| Police Unit 2 | 45.5220 | -122.6800 |
+</Map>
+</Card>
+
+<Card title="Parking Availability Downtown">
+<Columns>
+<Stat label="Garages" value="1,240 spots" change="-12%" tone="warning" icon="garage" />
+<Stat label="Street" value="320 spots" change="-8%" tone="info" icon="parking" />
+</Columns>
+<Chart type="bar" x="Garage" y="Available">
+| Garage | Available |
+|---|---|
+| Central | 245 |
+| Eastside | 380 |
+| Westside | 290 |
+| South | 325 |
+</Chart>
+</Card>
+
+<Card title="Public Events This Weekend">
+<Columns>
+<Card title="Saturday">
+- **City Market** – 8 AM–2 PM, Central Plaza
+- **Concert in the Park** – 6 PM, Riverside Park
+- **Art Walk** – 10 AM–5 PM, Downtown Galleries
+</Card>
+<Card title="Sunday">
+- **Farmers Market** – 9 AM–1 PM, East Side
+- **Street Fair** – 11 AM–6 PM, Main Street
+- **Yoga in the Park** – 8 AM, North Park
+</Card>
+</Columns>
+</Card>
+
+<Card title="Citizen Reports" subtitle="Live feed">
+<Callout tone="info" title="New report">**Pothole on Oak St** – Reported 2 min ago, near Oak & 3rd Ave</Callout>
+<Callout tone="info" title="New report">**Noise complaint** – Reported 5 min ago, 142 Elm St, loud music</Callout>
+<Callout tone="info" title="New report">**Streetlight out** – Reported 8 min ago, corner of Pine & 2nd</Callout>
+<Callout tone="info" title="New report">**Broken sidewalk** – Reported 12 min ago, 78 Park Ave</Callout>
+</Card>
+
+<Card title="Service Request Backlog">
+<Columns>
+<Stat label="Open Requests" value="347" tone="warning" icon="clipboard-text" />
+<Stat label="Avg Response Time" value="4.2 days" tone="info" icon="clock" />
+</Columns>
+<Progress value="347" max="500" label="Backlog: 347/500" tone="warning" />
+<Chart type="bar" x="Category" y="Count">
+| Category | Count |
+|---|---|
+| Potholes | 98 |
+| Streetlights | 64 |
+| Parks | 52 |
+| Waste | 47 |
+| Water | 41 |
+| Other | 45 |
+</Chart>
+</Card>
+
+<Card title="Roadworks Planned This Month">
+| Road | Section | Dates | Impact |
+|---|---|---|---|
+| Main St | 1st to 5th Ave | Jun 10–14 | Lane closures |
+| Oak St | 2nd to 8th Ave | Jun 15–20 | Full closure |
+| River Rd | Bridge to Park | Jun 22–25 | Night work |
+| Pine Ave | 3rd to 6th Ave | Jun 25–30 | Lane shifts |
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+<Progress value="12" max="24" label="12 of 24 jobs completed" tone="info" />
+| Job | Due Date | Priority | Status |
+|---|---|---|---|
+| Water pump station | Jun 15 | <Badge tone="danger">High</Badge> | In progress |
+| Bridge inspection | Jun 18 | <Badge tone="warning">Medium</Badge> | Scheduled |
+| Sewer line cleaning | Jun 20 | <Badge tone="info">Low</Badge> | Pending |
+| Traffic signal upgrade | Jun 22 | <Badge tone="warning">Medium</Badge> | Pending |
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Card title="Focus on a District">
+<Select label="Select district" options="All Districts | North | South | East | West | Center" placeholder="Choose district" />
+<Button>Apply Filter</Button>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Incident type" options="Water main | Traffic light | Fallen tree | Pothole | Other" placeholder="Select type" />
+<Input label="Location" placeholder="e.g. Main & 5th Ave" />
+<Select label="Priority" options="Low | Medium | High | Critical" />
+<Button>Dispatch Now</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="Alert type" options="Emergency | Weather | Traffic | General" />
+<TextArea label="Message" placeholder="Enter alert message for citizens…" rows="3" />
+<Select label="Target area" options="Citywide | North | South | East | West | Center" />
+<Button variant="danger">Send Alert</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the live traffic camera feed
+- Which districts need the most attention right now?
+- What's the status of the water main break on Main & 5th?
+- Can I see a timeline of today's citizen reports?
+- What's the forecast for the weekend events?
+</FollowUps>

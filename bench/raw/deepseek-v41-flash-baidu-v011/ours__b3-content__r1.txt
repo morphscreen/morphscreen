@@ -1,0 +1,96 @@
+# Content Studio
+
+<Columns>
+<Stat label="Drafts in progress" value="7" change="+2 today" tone="info" icon="pencil-simple" />
+<Stat label="Published this week" value="5" change="+1 vs last week" tone="success" icon="paper-plane-tilt" />
+<Stat label="Comments awaiting reply" value="12" tone="warning" icon="chat-circle" />
+<Stat label="Reads this month" value="48,210" change="+9.4%" tone="success" icon="chart-line" />
+</Columns>
+
+<Card title="Drafts" subtitle="Status for every piece in the pipeline">
+| Title | Category | Status | Last edited |
+|---|---|---|---|
+| The Quiet Return of the Long Read | Essays | <Badge tone="warning">In review</Badge> | 2h ago |
+| Why Newsletters Beat Feeds | Media | <Badge tone="info">Drafting</Badge> | Yesterday |
+| A Field Guide to Slow Interviews | Craft | <Badge tone="neutral">Outline</Badge> | 3d ago |
+| Numbers That Lie to Editors | Data | <Badge tone="danger">Needs rewrite</Badge> | 5d ago |
+| Notes from the Print Floor | Culture | <Badge tone="info">Drafting</Badge> | 6d ago |
+
+<Button ask="Open the draft 'Why Newsletters Beat Feeds' for editing" variant="secondary">Open a draft</Button>
+</Card>
+
+<Card title="Published this week">
+| Piece | Category | Published | Reads |
+|---|---|---|---|
+| The Editor's Desk Is Back | Media | Mon | 6,410 |
+| Five Sentences, One Story | Craft | Tue | 4,880 |
+| What Readers Actually Finish | Data | Wed | 9,120 |
+| A City of Small Magazines | Culture | Thu | 3,760 |
+| Interview: 20 Years of Footnotes | Essays | Fri | 5,240 |
+</Card>
+
+<Card title="Most-read article this month" subtitle="Topped the chart for 18 of 30 days">
+**What Readers Actually Finish** — 9,120 reads, 71% completion rate.
+
+<Progress value="71" max="100" label="Completion rate" tone="success" />
+<Progress value="34" max="100" label="Share rate" tone="info" />
+
+<Button ask="Show the full readership breakdown for 'What Readers Actually Finish'">See its breakdown</Button>
+</Card>
+
+<Card title="Readership, past 30 days">
+<Chart type="area" x="Day" y="Reads">
+| Day | Reads |
+|---|---|
+| 1 | 1180 |
+| 5 | 1320 |
+| 10 | 1460 |
+| 15 | 1390 |
+| 20 | 1720 |
+| 25 | 1890 |
+| 30 | 2040 |
+</Chart>
+</Card>
+
+<Card title="Narrow by category">
+<Form name="category-filter">
+<Select label="Category" options="All categories | Essays | Media | Craft | Data | Culture" hint="Applies to drafts, published pieces and comments" />
+<Checkboxes label="Status" options="Outline | Drafting | In review | Needs rewrite | Published" />
+<Date label="Published after" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Schedule a piece">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="The Quiet Return of the Long Read" required="true" />
+<Date label="Publish date" name="publish-date" required="true" />
+<Select label="Category" options="Essays | Media | Craft | Data | Culture" />
+<Button>Schedule</Button>
+</Form>
+</Card>
+
+<Card title="Comments awaiting reply">
+| Commenter | On | Comment | Waiting |
+|---|---|---|---|
+| M. Reyes | What Readers Actually Finish | "Where did the completion data come from?" | 3h |
+| T. Okafor | The Editor's Desk Is Back | "Loved this — one typo in para 4." | 6h |
+| J. Lindqvist | A City of Small Magazines | "Can you name the print shops?" | 1d |
+| A. Duarte | Five Sentences, One Story | "Disagree on the second example." | 2d |
+
+<Button ask="Reply to M. Reyes about the completion data source">Reply to M. Reyes</Button>
+<Button variant="secondary" ask="Show all comments awaiting reply">Show all 12</Button>
+</Card>
+
+<Card title="Start something new">
+<Button variant="primary" icon="plus" ask="Start a new draft">New draft</Button>
+<Button variant="secondary" ask="Start a new draft from a blank outline">New from outline</Button>
+</Card>
+
+<FollowUps>
+- Which drafts are stuck in review the longest?
+- Draft a reply to J. Lindqvist about the print shops
+- Compare readership this week against last week
+- Schedule the next three pieces for me
+</FollowUps>

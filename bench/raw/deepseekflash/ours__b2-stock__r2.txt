@@ -1,0 +1,62 @@
+Here’s a complete single-screen low-inventory warning view. The search box filters the item list, the threshold control sets the warning level, and each item card includes a reorder action.
+
+<Card title="Low Inventory Warning" subtitle="Items at or below the reorder threshold">
+  <Form name="search-items">
+    <Input label="Search items" name="query" type="search" placeholder="Search by name or SKU…" hint="Results update as you type" />
+    <Button>Search</Button>
+  </Form>
+
+  <Callout tone="warning" title="Current warning threshold">
+    The low-inventory warning triggers when an item has <strong>20 or fewer</strong> remaining units. You can adjust this threshold with the slider below; each item card also shows which threshold applies.
+  </Callout>
+
+  <Form name="threshold-settings">
+    <Slider label="Warning threshold" min="5" max="50" step="5" value="20" name="threshold" />
+    <Button variant="secondary">Update threshold</Button>
+  </Form>
+
+  <Columns>
+    <Stat label="Items running low" value="4" />
+    <Stat label="Warning threshold" value="20 units" note="Per item" />
+    <Stat label="Lowest remaining" value="5" note="Ceramic Pour-Over Dripper" />
+  </Columns>
+
+  <h3>Items running low</h3>
+  <p>Use the <strong>Reorder</strong> button on any item to create a reorder for that item.</p>
+
+  <Columns>
+    <Card title="Organic Almond Butter" subtitle="SKU-101">
+      <Badge tone="warning">Low</Badge>
+      <Stat label="Remaining units" value="12" />
+      **Threshold:** 20 units
+      <Progress value="12" max="20" label="Stock vs threshold" />
+      <Button ask="Reorder SKU-101 Organic Almond Butter with 12 remaining units">Reorder</Button>
+    </Card>
+
+    <Card title="Cold Brew Coffee Concentrate" subtitle="SKU-102">
+      <Badge tone="warning">Low</Badge>
+      <Stat label="Remaining units" value="18" />
+      **Threshold:** 20 units
+      <Progress value="18" max="20" label="Stock vs threshold" />
+      <Button ask="Reorder SKU-102 Cold Brew Coffee Concentrate with 18 remaining units">Reorder</Button>
+    </Card>
+  </Columns>
+
+  <Columns>
+    <Card title="Paper Tea Filters (box of 100)" subtitle="SKU-103">
+      <Badge tone="danger">Critical</Badge>
+      <Stat label="Remaining units" value="8" />
+      **Threshold:** 20 units
+      <Progress value="8" max="20" label="Stock vs threshold" />
+      <Button ask="Reorder SKU-103 Paper Tea Filters with 8 remaining units">Reorder</Button>
+    </Card>
+
+    <Card title="Ceramic Pour-Over Dripper" subtitle="SKU-104">
+      <Badge tone="danger">Critical</Badge>
+      <Stat label="Remaining units" value="5" />
+      **Threshold:** 20 units
+      <Progress value="5" max="20" label="Stock vs threshold" />
+      <Button ask="Reorder SKU-104 Ceramic Pour-Over Dripper with 5 remaining units">Reorder</Button>
+    </Card>
+  </Columns>
+</Card>

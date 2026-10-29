@@ -1,0 +1,88 @@
+<Card title="E‑commerce Operations Desk" subtitle="Real‑time overview of today’s performance">
+  <Columns>
+    <Stat label="Orders today" value="47" icon="shopping-bag" />
+    <Stat label="Revenue today" value="$4,280" icon="currency-dollar" />
+    <Stat label="Avg order value" value="$91.06" icon="trend-up" />
+    <Stat label="Refund rate this month" value="2.3%" icon="arrow-u-up-left" note="▼ 0.4 pp vs last month" tone="success" />
+  </Columns>
+</Card>
+
+<Card title="Order volume – past 4 weeks">
+  <Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 310 |
+| Week 2 | 278 |
+| Week 3 | 345 |
+| Week 4 | 402 |
+  </Chart>
+</Card>
+
+<Card title="Recent orders">
+  <Tabs>
+    <Tab title="All">
+      <Form name="filter-orders">
+        <Columns>
+          <Select label="Status" name="status" options="All | Pending | Shipped | Fulfilled | Cancelled" value="All" />
+          <Input label="Search customer" name="search" type="text" placeholder="Type a name…" />
+        </Columns>
+        <Button variant="secondary">Apply filters</Button>
+      </Form>
+
+| ID | Customer | Total | Status |
+|---|---|---|---|
+| #10234 | Ana Kovačić | $134.00 | <Badge tone="warning">Pending</Badge> |
+| #10233 | Marko Horvat | $89.50 | <Badge tone="success">Shipped</Badge> |
+| #10232 | Ivana Jurić | $210.00 | <Badge tone="success">Fulfilled</Badge> |
+| #10231 | Luka Babić | $45.00 | <Badge tone="danger">Cancelled</Badge> |
+| #10230 | Petra Novak | $72.00 | <Badge tone="warning">Pending</Badge> |
+
+<Button variant="primary" label="Mark selected as fulfilled">Mark selected as fulfilled</Button>
+    </Tab>
+
+    <Tab title="Pending">
+      <Form name="filter-orders-pending">
+        <Input label="Search customer" name="search" type="text" placeholder="Type a name…" />
+        <Button variant="secondary">Apply</Button>
+      </Form>
+
+| ID | Customer | Total | Status |
+|---|---|---|---|
+| #10234 | Ana Kovačić | $134.00 | <Badge tone="warning">Pending</Badge> |
+| #10230 | Petra Novak | $72.00 | <Badge tone="warning">Pending</Badge> |
+
+<Button variant="primary" label="Mark selected as fulfilled">Mark selected as fulfilled</Button>
+    </Tab>
+
+    <Tab title="Shipped">
+| ID | Customer | Total | Status |
+|---|---|---|---|
+| #10233 | Marko Horvat | $89.50 | <Badge tone="success">Shipped</Badge> |
+    </Tab>
+
+    <Tab title="Fulfilled">
+| ID | Customer | Total | Status |
+|---|---|---|---|
+| #10232 | Ivana Jurić | $210.00 | <Badge tone="success">Fulfilled</Badge> |
+    </Tab>
+
+    <Tab title="Cancelled">
+| ID | Customer | Total | Status |
+|---|---|---|---|
+| #10231 | Luka Babić | $45.00 | <Badge tone="danger">Cancelled</Badge> |
+    </Tab>
+  </Tabs>
+</Card>
+
+<Card title="Mark an order fulfilled">
+  <Form name="mark-fulfilled">
+    <Input label="Order ID" name="orderId" type="text" placeholder="e.g. #10234" required />
+    <Button variant="primary">Mark as fulfilled</Button>
+  </Form>
+</Card>
+
+<FollowUps>
+- Show me the top 5 customers by revenue this month
+- Which products are most returned?
+- Export today’s orders as CSV
+</FollowUps>

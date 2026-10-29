@@ -1,0 +1,212 @@
+# City Operations Center
+
+<Columns>
+<Card title="Current Weather" subtitle="Live conditions">
+<Stat label="Temperature" value="18°C" icon="thermometer" />
+<Stat label="Wind" value="14 km/h" icon="wind" />
+<Stat label="Humidity" value="62%" icon="drop" />
+<Stat label="Precipitation" value="0 mm" icon="cloud-rain" tone="success" />
+</Card>
+
+<Card title="Congestion Right Now" subtitle="Live traffic index">
+<Stat label="City-wide" value="72%" tone="warning" icon="car" />
+<Chart type="bar" x="District" y="Congestion %">
+| District | Congestion |
+|---|---|
+| Downtown | 88 |
+| Riverside | 64 |
+| Northgate | 55 |
+| Southport | 79 |
+| Eastside | 48 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Transit Punctuality" subtitle="Last 30 minutes">
+<Stat label="On-time rate" value="91%" tone="success" icon="clock" />
+<Chart type="line" x="Hour" y="On-time %">
+| Hour | Buses | Trams | Metro |
+|---|---|---|---|
+| 06:00 | 87 | 92 | 95 |
+| 07:00 | 82 | 89 | 93 |
+| 08:00 | 78 | 85 | 90 |
+| 09:00 | 84 | 88 | 94 |
+| 10:00 | 91 | 93 | 96 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Air Quality by District" subtitle="AQI index">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 112 |
+| Riverside | 78 |
+| Northgate | 65 |
+| Southport | 95 |
+| Eastside | 58 |
+</Chart>
+<Callout tone="warning" title="Downtown elevated">AQI 112 — sensitive groups should limit outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy Use Over Past Week" subtitle="MWh consumed">
+<Chart type="area" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 820 |
+| Tue | 795 |
+| Wed | 845 |
+| Thu | 810 |
+| Fri | 890 |
+| Sat | 760 |
+| Sun | 735 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today" subtitle="Megaliters">
+<Stat label="Consumed" value="412 ML" icon="droplet" />
+<Stat label="vs. yesterday" value="-3%" tone="success" icon="trend-down" />
+<Progress value="78" max="100" label="Daily capacity" tone="info" />
+</Card>
+
+<Card title="Parking Availability Downtown" subtitle="Live spaces">
+<Stat label="Free spaces" value="1,204" icon="parking" tone="success" />
+<Chart type="bar" x="Garage" y="Spaces free">
+| Garage | Spaces |
+|---|---|
+| Central | 210 |
+| Market St | 145 |
+| Harbor | 320 |
+| Civic | 180 |
+| Union Sq | 349 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Open Incidents" subtitle="All active">
+<Tabs>
+<Tab title="All">
+| ID | Location | Type | Severity | Status |
+|---|---|---|---|---|
+| INC-2041 | Downtown, 5th Ave | Road closure | <Badge tone="danger">Critical</Badge> | Responding |
+| INC-2042 | Riverside Park | Flooding | <Badge tone="warning">High</Badge> | On site |
+| INC-2043 | Northgate Mall | Fire alarm | <Badge tone="warning">High</Badge> | En route |
+| INC-2044 | Southport Bridge | Vandalism | <Badge tone="neutral">Low</Badge> | Queued |
+| INC-2045 | Eastside Library | Power outage | <Badge tone="warning">High</Badge> | Crew assigned |
+</Tab>
+<Tab title="Critical">
+| ID | Location | Type | Severity | Status |
+|---|---|---|---|---|
+| INC-2041 | Downtown, 5th Ave | Road closure | <Badge tone="danger">Critical</Badge> | Responding |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Emergency Vehicles Deployed" subtitle="Live map view">
+<Gallery>
+![Map showing emergency vehicle locations across the city](find)
+</Gallery>
+<table>
+| Vehicle | District | Status |
+|---|---|---|
+| Ambulance A-12 | Downtown | <Badge tone="warning">En route</Badge> |
+| Fire Engine F-3 | Riverside | <Badge tone="success">On scene</Badge> |
+| Police Unit P-7 | Northgate | <Badge tone="success">Patrol</Badge> |
+| Rescue R-1 | Southport | <Badge tone="info">Standby</Badge> |
+</table>
+</Card>
+
+<Card title="Public Events This Weekend" subtitle="City calendar">
+| Event | Location | Time |
+|---|---|---|
+| Farmers Market | Central Plaza | Sat 08:00–14:00 |
+| Riverfront Festival | Riverside Park | Sat–Sun 10:00–22:00 |
+| Tech Expo | Convention Center | Sat 09:00–18:00 |
+| Open Air Cinema | Eastside Green | Sun 19:30–23:00 |
+</Card>
+</Columns>
+
+<Card title="Citizen Reports" subtitle="Live feed">
+<Callout tone="info" title="New report">Pothole on 3rd St near the bakery — reported 2 min ago by M. Chen</Callout>
+<Callout tone="info" title="New report">Streetlight flickering on Oak Ave — reported 5 min ago by J. Patel</Callout>
+<Callout tone="info" title="New report">Noisy construction after hours on King St — reported 8 min ago by A. Rossi</Callout>
+<Callout tone="info" title="New report">Graffiti on bus shelter, Union Sq — reported 12 min ago by T. Kim</Callout>
+</Card>
+
+<Columns>
+<Card title="Service Request Backlog" subtitle="By category">
+<Chart type="bar" x="Category" y="Requests">
+| Category | Open | Overdue |
+|---|---|---|
+| Roads | 142 | 38 |
+| Lighting | 87 | 12 |
+| Parks | 64 | 5 |
+| Waste | 51 | 9 |
+| Water | 29 | 3 |
+</Chart>
+</Card>
+
+<Card title="Focus on One District" subtitle="Select and drill down">
+<Select label="District" options="All districts | Downtown | Riverside | Northgate | Southport | Eastside" placeholder="Choose a district" />
+<Stat label="Active incidents" value="3" tone="warning" icon="warning" />
+<Stat label="Open requests" value="48" icon="clipboard" />
+<Button variant="secondary" label="View district dashboard">View district dashboard</Button>
+</Card>
+</Columns>
+
+<Card title="Dispatch a Crew" subtitle="Assign resources to incidents">
+<Form name="dispatch">
+<Select label="Incident" options="INC-2041 | INC-2042 | INC-2043 | INC-2044 | INC-2045" placeholder="Select incident ID" required />
+<Select label="Crew type" options="Road crew | Fire unit | Police unit | Utility crew | Park services" placeholder="Choose crew type" required />
+<Input label="Crew ID / Unit" placeholder="e.g., Crew-12, Unit-4" required />
+<Input label="Estimated arrival (minutes)" type="number" min="1" max="120" placeholder="15" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a Public Alert" subtitle="Broadcast to citizens">
+<Form name="alert">
+<Select label="Channel" options="SMS | Email | Push notification | Social media | All channels" placeholder="Choose channel" required />
+<Select label="District scope" options="City-wide | Downtown | Riverside | Northgate | Southport | Eastside" placeholder="Choose scope" required />
+<TextArea label="Alert message" placeholder="e.g., Water outage on Oak Ave from 14:00–16:00. Use alternate routes." hint="Max 280 characters" required />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Roadworks Planned This Month" subtitle="Scheduled maintenance">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| 5th Ave | Downtown | Mar 18–22 | Lane closure |
+| Oak Ave | Riverside | Mar 20–24 | Full closure |
+| King St | Northgate | Mar 25–28 | Night works |
+| Harbor Rd | Southport | Mar 26–30 | Lane closure |
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Upcoming due dates">
+| Asset | District | Due | Priority |
+|---|---|---|---|
+| Bridge 12 | Riverside | Mar 21 | <Badge tone="danger">High</Badge> |
+| Water pump 4 | Southport | Mar 23 | <Badge tone="warning">Medium</Badge> |
+| Streetlights 200-block | Downtown | Mar 27 | <Badge tone="warning">Medium</Badge> |
+| Park irrigation | Eastside | Apr 02 | <Badge tone="neutral">Low</Badge> |
+</Card>
+</Columns>
+
+<Card title="Quick Actions">
+<Button variant="primary" label="Dispatch crew">Dispatch crew</Button>
+<Button variant="danger" label="Send public alert">Send public alert</Button>
+<Button variant="secondary" label="View district dashboard">View district dashboard</Button>
+<Button variant="tertiary" label="Export report">Export report</Button>
+</Card>
+
+<FollowUps>
+- Show me the incident map with live locations
+- What’s the status of INC-2041 right now?
+- Compare air quality across all districts over the past week
+- Which crews are available for dispatch right now?
+- Show the full list of citizen reports today
+</FollowUps>

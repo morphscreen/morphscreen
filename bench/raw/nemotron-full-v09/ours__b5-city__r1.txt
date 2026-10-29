@@ -1,0 +1,271 @@
+# City Operations Center
+
+<Callout tone="info" title="Live Dashboard" icon="radar">All metrics update in real time. Last refresh: 14:32:18</Callout>
+
+<Card title="District Focus" subtitle="Filter all widgets to a single district">
+<Select label="Select District" placeholder="All Districts" options="All Districts | Downtown | Midtown | Westside | Eastside | Northgate | Southport | Harborview | University" name="district-filter" />
+</Card>
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="Citywide average">
+<Stat label="Congestion Index" value="67%" change="+3% vs 1hr ago" tone="warning" icon="chart-line" />
+<Progress value="67" max="100" label="Traffic Flow" tone="warning" />
+<Stat label="Avg Speed" value="28 km/h" change="-4 km/h" tone="neutral" />
+<Stat label="Active Incidents" value="12" change="+2" tone="danger" icon="map-pin" />
+</Card>
+
+<Card title="Transit Punctuality" subtitle="All modes combined">
+<Stat label="On-Time Rate" value="91.2%" change="+0.4% vs yesterday" tone="success" icon="calendar" />
+<Progress value="91" max="100" label="Target: 95%" tone="success" />
+<Chart type="bar" x="Mode" y="On-Time %" title="By Mode">
+| Mode | On-Time % |
+|---|---|
+| Metro | 96 |
+| Bus | 87 |
+| Tram | 93 |
+| Commuter Rail | 89 |
+| Ferry | 94 |
+</Chart>
+</Card>
+
+<Card title="Air Quality by District" subtitle="AQI (lower is better)">
+<Chart type="horizontal" x="District" y="AQI" title="Current AQI by District">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Midtown | 65 |
+| Westside | 42 |
+| Eastside | 58 |
+| Northgate | 35 |
+| Southport | 48 |
+| Harborview | 52 |
+| University | 41 |
+</Chart>
+<Stat label="Citywide Avg AQI" value="52" change="-3 vs yesterday" tone="success" icon="chart-line" />
+<Badge tone="info">Moderate</Badge>
+</Card>
+
+<Card title="Energy Use — Past 7 Days" subtitle="MWh consumed">
+<Chart type="line" x="Day" y="MWh" title="Daily Energy Consumption">
+| Day | Residential | Commercial | Industrial | Municipal |
+|---|---|---|---|---|
+| Mon | 1240 | 2180 | 3450 | 560 |
+| Tue | 1190 | 2210 | 3520 | 540 |
+| Wed | 1210 | 2190 | 3480 | 550 |
+| Thu | 1260 | 2240 | 3510 | 570 |
+| Fri | 1310 | 2290 | 3460 | 580 |
+| Sat | 1180 | 1950 | 3100 | 520 |
+| Sun | 1150 | 1880 | 2980 | 500 |
+</Chart>
+<Stat label="Total This Week" value="48,720 MWh" change="+2.1% vs last week" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today" subtitle="Real-time consumption">
+<Stat label="Current Rate" value="1.84M gal/hr" change="+0.12M vs avg" tone="warning" icon="chart-line" />
+<Progress value="72" max="100" label="Daily Capacity Used" tone="info" />
+<Stat label="Reservoir Level" value="84%" change="-1% vs yesterday" tone="success" />
+<Chart type="area" x="Hour" y="Gal (000s)" title="Hourly Usage">
+| Hour | Usage |
+|---|---|
+| 00:00 | 980 |
+| 04:00 | 820 |
+| 08:00 | 1450 |
+| 12:00 | 1890 |
+| 16:00 | 2100 |
+| 20:00 | 1750 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents" subtitle="12 active | Updated 14:31">
+<Chart type="table" x="Incident" y="Severity" title="Active Incidents">
+| Incident | Location | Type | Severity | Since | Status |
+|---|---|---|---|---|---|
+| INC-2024-0847 | Main St & 5th Ave | Traffic Collision | Critical | 13:45 | Dispatched |
+| INC-2024-0846 | Harborview Bridge | Structural Alert | High | 13:22 | Monitoring |
+| INC-2024-0845 | University Station | Power Outage | High | 12:58 | Crew En Route |
+| INC-2024-0844 | Downtown Core | Water Main Break | Medium | 11:30 | Repairing |
+| INC-2024-0843 | Eastside Park | Gas Leak | Critical | 10:15 | Contained |
+| INC-2024-0842 | Midtown Tunnel | Signal Failure | Medium | 09:40 | Investigating |
+| INC-2024-0841 | Northgate Ave | Fallen Tree | Low | 08:22 | Clearing |
+| INC-2024-0840 | Southport Docks | Oil Spill | High | 07:55 | Contained |
+| INC-2024-0839 | Westside Plaza | Elevator Entrapment | Low | 06:30 | Resolved |
+| INC-2024-0838 | City Hall | HVAC Failure | Low | 05:10 | Scheduled |
+</Chart>
+</Card>
+
+<Card title="Emergency Vehicles Deployed" subtitle="18 units active">
+<Chart type="table" x="Unit" y="Status" title="Live Deployment">
+| Unit | Type | Location | Incident | Status | ETA |
+|---|---|---|---|---|---|
+| ENG-12 | Fire Engine | Main St & 5th | INC-0847 | On Scene | — |
+| LAD-04 | Ladder Truck | Main St & 5th | INC-0847 | On Scene | — |
+| AMB-07 | Ambulance | Main St & 5th | INC-0847 | Transporting | 12 min |
+| ENG-09 | Fire Engine | Harborview Bridge | INC-0846 | Staging | — |
+| HAZ-02 | Hazmat | Eastside Park | INC-0843 | On Scene | — |
+| AMB-03 | Ambulance | University Station | INC-0845 | En Route | 4 min |
+| ENG-15 | Fire Engine | Southport Docks | INC-0840 | On Scene | — |
+| RES-01 | Rescue | Midtown Tunnel | INC-0842 | En Route | 7 min |
+| PAT-08 | Patrol | Downtown Core | INC-0844 | Traffic Control | — |
+| PAT-11 | Patrol | Northgate Ave | INC-0841 | Clearing | — |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Parking Availability — Downtown" subtitle="Core zones only">
+<Progress value="34" max="100" label="Zone A — Financial District (1,240 spaces)" tone="danger" />
+<Progress value="52" max="100" label="Zone B — Retail Core (2,100 spaces)" tone="warning" />
+<Progress value="68" max="100" label="Zone C — Arts District (890 spaces)" tone="info" />
+<Progress value="79" max="100" label="Zone D — Waterfront (1,560 spaces)" tone="success" />
+<Progress value="45" max="100" label="Zone E — Civic Center (680 spaces)" tone="warning" />
+<Stat label="Total Available" value="2,847 / 6,470" change="44% occupancy" tone="neutral" icon="map-pin" />
+</Card>
+
+<Card title="Public Events This Weekend" subtitle="Permitted events requiring coordination">
+<Chart type="table" x="Event" y="Impact" title="Weekend Events">
+| Event | Date | Location | Expected Attendance | Impact Level | Permit |
+|---|---|---|---|---|---|
+| Harbor Festival | Sat 10:00–22:00 | Harborview Waterfront | 45,000 | High | Approved |
+| Marathon Race | Sun 07:00–13:00 | Citywide Route | 12,000 runners | Critical | Approved |
+| University Graduation | Sat 14:00–17:00 | University Stadium | 8,500 | Medium | Approved |
+| Art Walk | Sat 17:00–23:00 | Arts District | 6,000 | Low | Approved |
+| Food Truck Rally | Sun 11:00–20:00 | Southport Park | 3,500 | Low | Pending |
+| Pride Parade | Sat 12:00–16:00 | Downtown Core | 25,000 | High | Approved |
+</Chart>
+</Card>
+
+<Card title="Citizen Reports — Live Feed" subtitle="Last 20 reports">
+<Chart type="table" x="Time" y="Category" title="Incoming Reports">
+| Time | Category | Location | Description | Status |
+|---|---|---|---|---|
+| 14:31 | Pothole | 3rd Ave & Pine | Large pothole in right lane | New |
+| 14:28 | Streetlight | 1200 Block Oak St | Flickering/out | Assigned |
+| 14:25 | Graffiti | Eastside Park Restroom | Tagging on north wall | New |
+| 14:22 | Noise | 400 Block Elm Apts | Construction after hours | Investigating |
+| 14:19 | Trash | Downtown Plaza | Overflowing bins | Dispatched |
+| 14:15 | Signal | Midtown & Broadway | Left turn arrow stuck red | New |
+| 14:12 | Water Leak | 800 Block Cedar | Water bubbling from pavement | Assigned |
+| 14:08 | Parking | Zone B — Retail | Abandoned vehicle 3+ days | New |
+| 14:05 | Sidewalk | University Ave | Trip hazard — raised slab | New |
+| 14:01 | Tree | Westside & 2nd | Low branch blocking sidewalk | Assigned |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Service Request Backlog" subtitle="Non-emergency 311 requests">
+<Stat label="Open Requests" value="1,247" change="+23 vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="Avg Response Time" value="4.2 days" change="+0.3 days" tone="warning" />
+<Stat label="Overdue (>10 days)" value="189" change="+12" tone="danger" />
+<Progress value="68" max="100" label="SLA Compliance" tone="warning" />
+<Chart type="bar" x="Category" y="Count" title="By Category">
+| Category | Count |
+|---|---|
+| Potholes/Roads | 312 |
+| Streetlights | 245 |
+| Sanitation | 198 |
+| Parks/Trees | 167 |
+| Traffic Signals | 134 |
+| Buildings | 98 |
+| Water/Sewer | 93 |
+</Chart>
+</Card>
+
+<Card title="Current Weather" subtitle="Downtown station • Updated 14:30">
+<Stat label="Temperature" value="18°C" change="Feels like 17°C" tone="neutral" icon="chart-line" />
+<Stat label="Condition" value="Partly Cloudy" change="UV Index: 4" tone="info" />
+<Columns>
+<Stat label="Humidity" value="62%" change="" tone="neutral" />
+<Stat label="Wind" value="14 km/h SW" change="" tone="neutral" />
+<Stat label="Pressure" value="1018 hPa" change="Rising" tone="success" />
+<Stat label="Precipitation" value="0 mm" change="0% chance next 6h" tone="success" />
+</Columns>
+<Chart type="line" x="Hour" y="Temp (°C)" title="Next 12 Hours">
+| Hour | Temp |
+|---|---|
+| 14:00 | 18 |
+| 16:00 | 19 |
+| 18:00 | 18 |
+| 20:00 | 16 |
+| 22:00 | 14 |
+| 00:00 | 13 |
+| 02:00 | 12 |
+| 04:00 | 11 |
+| 06:00 | 11 |
+| 08:00 | 13 |
+| 10:00 | 15 |
+| 12:00 | 17 |
+</Chart>
+</Card>
+
+<Card title="Roadworks Planned This Month" subtitle="Scheduled closures & restrictions">
+<Chart type="table" x="Project" y="Impact" title="Planned Roadworks">
+| Project | Location | Start | End | Type | Impact | Status |
+|---|---|---|---|---|---|---|
+| Bridge Deck Rehab | Harborview Bridge | May 6 | May 24 | Structural | Full closure nights | Scheduled |
+| Water Main Replace | Oak St (3rd–8th) | May 13 | May 31 | Utility | Lane shifts | Permitted |
+| Tram Track Renewal | University Blvd | May 20 | Jun 14 | Transit | Detour route | Approved |
+| Fiber Install | Downtown Core | May 27 | Jun 21 | Telecom | Sidewalk closure | Permitted |
+| Repaving Program | Northgate Ave | May 1 | May 18 | Paving | Rolling closures | Active |
+| Storm Drain Upgrade | Eastside Industrial | May 15 | Jun 7 | Drainage | Road closure | Scheduled |
+| Bike Lane Build | Westside Corridor | May 22 | Jul 5 | Active Transport | Lane reduction | Approved |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets past due or due within 30 days">
+<Stat label="Overdue" value="23" change="+3 this week" tone="danger" icon="warning" />
+<Stat label="Due This Month" value="67" change="" tone="warning" />
+<Stat label="Due Next Month" value="112" change="" tone="info" />
+<Chart type="table" x="Asset" y="Priority" title="Priority Maintenance Queue">
+| Asset ID | Asset Type | Location | Last Service | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|---|
+| BRG-HV-01 | Bridge Bearings | Harborview Bridge | 2023-11-15 | 2024-04-15 | 28 | Critical |
+| PMP-WS-07 | Pump Station | Southport Docks | 2024-01-20 | 2024-04-20 | 23 | Critical |
+| SUB-DT-12 | Substation | Downtown Core | 2024-02-01 | 2024-05-01 | 12 | High |
+| TNK-NG-03 | Water Tank | Northgate Reservoir | 2023-12-10 | 2024-04-10 | 33 | Critical |
+| SWR-ES-09 | Sewer Lift | Eastside Industrial | 2024-01-05 | 2024-04-05 | 38 | Critical |
+| SIG-MT-22 | Traffic Controller | Midtown & Broadway | 2024-02-14 | 2024-05-14 | 0 | High |
+| LGT-WS-45 | Streetlight Circuit | Westside Corridor | 2024-03-01 | 2024-05-31 | — | Medium |
+| BRG-DT-04 | Expansion Joint | Downtown Viaduct | 2024-01-30 | 2024-04-30 | 13 | High |
+</Chart>
+</Card>
+
+<Card title="Dispatch a Crew" subtitle="Create and assign a work order">
+<Form name="dispatch-crew">
+<Select label="Incident / Request" placeholder="Select or enter new" options="INC-2024-0847 (Traffic Collision) | INC-2024-0846 (Structural Alert) | INC-2024-0845 (Power Outage) | INC-2024-0844 (Water Main) | New Request..." name="incident" required="true" />
+<Select label="Crew Type" placeholder="Choose crew" options="Roads & Paving | Water & Sewer | Electrical | Traffic Signals | Parks & Trees | General Maintenance | Hazmat Response" name="crew-type" required="true" />
+<Select label="Available Units" placeholder="Select unit(s)" options="CRW-RD-01 (Roads) | CRW-WS-03 (Water/Sewer) | CRW-EL-02 (Electrical) | CRW-TS-01 (Traffic) | CRW-PK-04 (Parks) | CRW-GN-05 (General) | CRW-HZ-01 (Hazmat)" name="units" required="true" />
+<Input label="Location" placeholder="Address or landmark" name="location" required="true" />
+<TextArea label="Instructions / Notes" placeholder="Special instructions, hazards, access info..." name="notes" rows="3" />
+<Button variant="primary" icon="send">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Broadcast to citizen app, SMS, traffic signs, media">
+<Form name="public-alert">
+<Radio label="Alert Level" options="Info — General advisory | Warning — Action recommended | Critical — Immediate action required | Emergency — Life safety threat" name="alert-level" value="Warning — Action recommended" required="true" />
+<Select label="Channels" placeholder="Select channels" options="Mobile Push | SMS | Traffic Signs (VMS) | Radio/TV (EAS) | Social Media | Website Banner | All Channels" name="channels" value="All Channels" required="true" />
+<Select label="Target Area" placeholder="Geographic targeting" options="Citywide | Downtown | Midtown | Westside | Eastside | Northgate | Southport | Harborview | University | Custom Polygon..." name="target-area" value="Citywide" required="true" />
+<Input label="Headline" placeholder="Brief headline (max 90 chars)" name="headline" required="true" />
+<TextArea label="Message Body" placeholder="Full alert text with instructions, duration, contact info..." name="message" rows="4" required="true" />
+<Input label="Expires At" type="datetime-local" name="expires" required="true" />
+<Checkboxes label="Options" options="Require acknowledgment | Include shelter locations | Include evacuation routes | Translate to Spanish/Chinese" name="options" />
+<Button variant="danger" icon="send">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the congestion heatmap for Downtown
+- List all overdue infrastructure maintenance with cost estimates
+- What's the 48-hour forecast for the marathon route?
+- Generate a situation report for the 14:00 briefing
+- Open the dispatch log for the last 24 hours
+</FollowUps>

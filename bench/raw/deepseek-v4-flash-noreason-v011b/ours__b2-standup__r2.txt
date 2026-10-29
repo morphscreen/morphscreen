@@ -1,0 +1,73 @@
+# Async Standup
+
+<Card title="Remote Team Standup" subtitle="Wednesday, October 18, 2023">
+<Columns>
+<Stat label="Updates received" value="4/7" note="3 still missing" icon="users" />
+<Stat label="Blocked" value="1" tone="warning" icon="warning-circle" />
+</Columns>
+</Card>
+
+<Card title="Team Updates">
+<Tabs>
+<Tab title="Today's updates">
+
+<Avatar name="Alex Chen" subtitle="Frontend Developer" />
+<Details title="Status: Working on checkout flow" open=true>
+- Finished the payment form validation
+- Started on the success page UI
+- No blockers today
+</Details>
+
+<Avatar name="Jordan Lee" subtitle="Backend Developer" />
+<Details title="Status: API integration" open=true>
+- Connected payment gateway endpoint
+- Writing tests for error handling
+- Blocked by: awaiting API key from provider
+<Badge tone="warning">Blocked</Badge>
+</Details>
+
+<Avatar name="Sam Rivera" subtitle="Designer" />
+<Details title="Status: Design review" open=true>
+- Reviewed Alex's checkout mockups
+- Updated the color palette for accessibility
+- No blockers
+</Details>
+
+<Avatar name="Priya Patel" subtitle="QA Engineer" />
+<Details title="Status: Testing sprint 12" open=true>
+- Ran regression tests on payment flow
+- Found 2 minor bugs, filed them
+- No blockers
+</Details>
+
+</Tab>
+<Tab title="Missing updates">
+
+<Callout tone="info" title="3 teammates haven't posted yet">
+<Avatar name="Mia Thompson" subtitle="Product Manager" />
+<Avatar name="Omar Hassan" subtitle="DevOps Engineer" />
+<Avatar name="Lena Kim" subtitle="Mobile Developer" />
+</Callout>
+
+<Button variant="secondary" ask="Remind everyone to post their update">Send reminder</Button>
+
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Post your update">
+<Form name="standup-update">
+<Input label="Your name" placeholder="e.g., Alex Chen" required />
+<TextArea label="What did you work on?" placeholder="Describe your progress today..." rows="3" required />
+<TextArea label="Any blockers?" placeholder="If nothing, write 'None'" rows="2" />
+<Switch label="I'm blocked" name="blocked" hint="Enable if you need help" />
+<Button>Submit update</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the blocked teammate's details
+- Who hasn't posted yet?
+- Remind everyone to post
+- View yesterday's standup
+</FollowUps>

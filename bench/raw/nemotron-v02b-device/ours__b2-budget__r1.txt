@@ -1,0 +1,44 @@
+<Card title="Budget Overview" subtitle="January 2025">
+<Select label="Month" name="month" value="January 2025" options="January 2025 | December 2024 | November 2024 | October 2024" />
+</Card>
+
+<Columns>
+<Card title="Total Spent vs Budget">
+<Stat label="Spent" value="$2,847" change="$347 over" tone="danger" />
+<Stat label="Budget" value="$2,500" />
+<Progress value="2847" max="2500" label="114% of budget" />
+<Badge tone="danger">Over budget by $347</Badge>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="warning" title="Rent Payment">
+$1,200 • January 2nd • Housing
+</Callout>
+<Stat label="% of total" value="42%" />
+</Card>
+</Columns>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 580 |
+| Transport | 320 |
+| Utilities | 247 |
+| Entertainment | 180 |
+| Shopping | 150 |
+| Other | 170 |
+</Chart>
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="e.g., 45.50" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transport | Utilities | Entertainment | Shopping | Other" required="true" />
+<Input label="Description" name="description" placeholder="What was this for?" hint="e.g., Groceries at Whole Foods" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

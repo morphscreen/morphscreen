@@ -1,0 +1,109 @@
+# Personal Banking Home
+
+<Columns>
+<Stat label="Checking" value="$4,230.18" change="+$1,205 this month" icon="bank" tone="info" />
+<Stat label="Savings" value="$12,847.55" change="+$310 this month" icon="piggy-bank" tone="success" />
+<Stat label="Credit Card" value="$1,284.60" change="Due in 9 days" icon="credit-card" tone="warning" />
+<Stat label="Credit Score" value="742" change="+12 since Jan" icon="chart-line" tone="success" />
+</Columns>
+
+<Card title="Move Money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Select label="From" name="from" options="Checking •••• 4821 ($4,230.18) | Savings •••• 9034 ($12,847.55) | Credit •••• 2210 ($1,284.60)" placeholder="Select account" />
+<Select label="To" name="to" options="Checking •••• 4821 ($4,230.18) | Savings •••• 9034 ($12,847.55) | Credit •••• 2210 ($1,284.60)" placeholder="Select account" />
+<Input label="Amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" hint="Enter a dollar amount" required="true" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Account | Amount |
+|---|---|---|---|
+| Mar 12 | Whole Foods Market | Checking | -$86.42 |
+| Mar 11 | Shell Gas Station | Credit | -$52.18 |
+| Mar 10 | Netflix | Credit | -$15.99 |
+| Mar 09 | Direct Deposit – Acme Corp | Checking | +$2,400.00 |
+| Mar 08 | Starbucks | Checking | -$6.75 |
+| Mar 07 | Amazon | Credit | -$64.30 |
+| Mar 06 | Transfer to Savings | Checking | -$300.00 |
+
+<Button variant="secondary" ask="Show me more transactions">View all transactions</Button>
+</Card>
+
+<Card title="Spending by Category — March">
+<Chart type="donut" title="This month" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 486.20 |
+| Dining | 312.85 |
+| Transport | 198.40 |
+| Utilities | 245.00 |
+| Entertainment | 128.50 |
+| Shopping | 210.75 |
+| Other | 95.30 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Due Date | Amount | Status |
+|---|---|---|---|
+| Rent | Mar 15 | $1,800.00 | <Badge tone="warning">Due in 2 days</Badge> |
+| Electric | Mar 18 | $84.20 | <Badge tone="neutral">Due in 5 days</Badge> |
+| Internet | Mar 20 | $59.99 | <Badge tone="neutral">Due in 7 days</Badge> |
+| Credit Card | Mar 21 | $1,284.60 | <Badge tone="neutral">Due in 8 days</Badge> |
+
+<Button variant="secondary" ask="Schedule my bill payments">Schedule payments</Button>
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Bali, Indonesia — September trip">
+<Columns>
+<Stat label="Saved" value="$12,847.55" change="72% of goal" icon="airplane" tone="success" />
+<Stat label="Goal" value="$17,850" icon="flag" />
+</Columns>
+<Progress value="12847.55" max="17850" label="72% of $17,850 goal" tone="success" />
+<Callout tone="info" title="On track">You'll hit your goal by August 12 at your current savings rate.</Callout>
+<Button variant="secondary" ask="Add to my vacation fund">Add to vacation fund</Button>
+</Card>
+
+<Card title="Credit Line & Score">
+<Columns>
+<Stat label="Credit Score" value="742" change="Good (670–739)" icon="chart-line" tone="success" />
+<Stat label="Credit Utilization" value="18%" change="$1,284.60 of $7,000" icon="gauge" tone="success" />
+</Columns>
+<Badge tone="success">Credit line active</Badge>
+<Button variant="danger" ask="Freeze my credit line">Freeze credit line</Button>
+</Card>
+
+<Card title="Statement Period" subtitle="Choose your billing cycle">
+<Select label="Statement period" name="statement-period" options="1st – 30th of month | 5th – 4th of next month | 10th – 9th of next month | 15th – 14th of next month | 20th – 19th of next month" placeholder="Current: 10th – 9th" hint="Your next statement closes April 9" required="true" />
+<Button>Update statement period</Button>
+</Card>
+
+<Card title="Alert Preferences" subtitle="Choose what triggers a notification">
+<Form name="alerts">
+<Switch label="Low balance warning (below $500)" name="low-balance" />
+<Switch label="Large transaction (over $500)" name="large-transaction" />
+<Switch label="Unusual spending pattern" name="unusual-spending" />
+<Switch label="New bill due" name="bill-due" />
+<Switch label="Credit score change" name="score-change" />
+<Switch label="Statement available" name="statement-ready" />
+<Button>Save preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a Transaction" subtitle="We'll investigate and credit your account if the charge is found to be in error">
+<Form name="dispute">
+<Select label="Transaction to dispute" name="dispute-transaction" options="Mar 12 – Whole Foods Market – $86.42 | Mar 11 – Shell Gas Station – $52.18 | Mar 10 – Netflix – $15.99 | Mar 07 – Amazon – $64.30" placeholder="Select a transaction" required="true" />
+<Radio label="Reason" name="dispute-reason" options="I didn't make this charge | Wrong amount charged | Duplicate charge | Item not received | Other" required="true" />
+<TextArea label="Details" name="dispute-details" placeholder="Describe what happened, any dates, receipts, or emails that support your claim…" rows="4" hint="Optional but helps us resolve faster" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my spending by merchant
+- What's my credit utilization target?
+- How do I increase my credit limit?
+- Show upcoming bills for next month
+- Compare my spending to last month
+</FollowUps>

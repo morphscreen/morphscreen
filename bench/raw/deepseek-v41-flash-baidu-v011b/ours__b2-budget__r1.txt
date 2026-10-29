@@ -1,0 +1,73 @@
+# Budget check — October
+
+<Callout tone="warning" title="You're 78% through the month and 91% through the budget">
+At this pace you'll land around $2,340 against a $2,300 budget. Tight, not blown.
+</Callout>
+
+<Card title="This month at a glance" subtitle="October 2025">
+<Columns>
+<Stat label="Spent so far" value="$2,094" change="+$186 vs Sept" tone="warning" icon="wallet" />
+<Stat label="Monthly budget" value="$2,300" note="Remaining: $206" tone="neutral" icon="target" />
+<Stat label="Days left" value="9" note="$22.90/day to stay on budget" tone="info" icon="calendar" />
+</Columns>
+
+<Progress value="2094" max="2300" label="Budget used" tone="warning" />
+</Card>
+
+<Card title="Spending by category" subtitle="October 2025">
+<Chart type="donut" title="Share of spend" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 980 |
+| Groceries | 412 |
+| Transport | 238 |
+| Dining out | 214 |
+| Utilities | 150 |
+| Subscriptions | 100 |
+</Chart>
+</Card>
+
+<Card title="Biggest single expense" subtitle="The one to look at first">
+<Columns>
+<Stat label="Rent — October" value="$980" change="42% of all spending" tone="danger" icon="house" />
+<Stat label="Next largest" value="$186" note="Car insurance, Oct 4" tone="neutral" icon="car" />
+</Columns>
+
+<Callout tone="info" title="Rent is fixed, the rest isn't">
+Rent alone eats 43% of the budget. Everything else combined — $1,114 — is what you can actually move.
+</Callout>
+
+<Button ask="Show me how to cut the $1,114 of flexible spending this month">Ways to trim flexible spend</Button>
+</Card>
+
+<Card title="Look at another month">
+<Select label="Month" name="month" value="October 2025" options="October 2025 | September 2025 | August 2025 | July 2025" hint="Pick a month to reload the totals above" />
+<Button ask="Show September 2025 in the same layout: total, categories, largest expense">Load September 2025</Button>
+</Card>
+
+<Card title="Add an expense" subtitle="Log it now so the totals stay honest">
+<Form name="add-expense">
+<Input label="What was it?" name="description" placeholder="Coffee and pastries" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="18.40" step="0.01" min="0" hint="In dollars" required="true" />
+<Date label="Date" name="date" value="2025-10-22" required="true" />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Groceries | Transport | Dining out | Utilities | Subscriptions | Other" required="true" />
+<Switch label="Recurring monthly" name="recurring" value="false" hint="Turn on for rent, insurance, subscriptions" />
+<Button>Add expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Details title="How the numbers are worked out">
+- **Spent so far** sums every logged expense dated in the selected month.
+- **Budget used** compares that total against the monthly budget you set ($2,300).
+- **Category split** groups the same expenses by category; percentages are of the month's total.
+- **Largest expense** is the single highest-amount entry, not the highest category.
+- Changing the month re-runs all of the above for that month's entries.
+</Details>
+
+<FollowUps>
+- What would my budget look like at $2,000 a month?
+- Which subscriptions should I cancel first?
+- How does my dining out compare to the last three months?
+- Set a weekly spending cap for the rest of October
+</FollowUps>

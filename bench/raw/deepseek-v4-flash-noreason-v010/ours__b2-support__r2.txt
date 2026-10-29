@@ -1,0 +1,60 @@
+<Card title="Support Lead Morning View" subtitle="Thursday, June 12 — Overview of your queue">
+<Columns>
+<Stat label="Open tickets" value="23" change="+3 vs yesterday" tone="warning" icon="ticket" />
+<Stat label="Avg. first response" value="2h 14m" change="-18 min vs last week" tone="success" icon="clock" />
+<Stat label="High priority" value="7" change="2 critical" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent tickets" subtitle="Five most recent by creation time">
+<Tabs>
+<Tab title="All tickets">
+| Ticket | Subject | Priority | Status | Age |
+|---|---|---|---|---|
+| #4821 | Login fails after password reset | <Badge tone="danger">Critical</Badge> | Open | 12m |
+| #4820 | Invoice PDF not downloading | <Badge tone="warning">High</Badge> | Open | 34m |
+| #4819 | How to export user data? | <Badge tone="neutral">Normal</Badge> | Awaiting reply | 1h |
+| #4818 | API rate limit exceeded unexpectedly | <Badge tone="warning">High</Badge> | Open | 1h 20m |
+| #4817 | Feature request: dark mode | <Badge tone="info">Low</Badge> | Open | 2h |
+
+<Button variant="secondary" label="Show all 23 tickets">View full queue</Button>
+</Tab>
+<Tab title="High priority only">
+<Callout tone="warning" title="Filtered view">Showing only High and Critical tickets — 7 total.</Callout>
+| Ticket | Subject | Priority | Status | Age |
+|---|---|---|---|---|
+| #4821 | Login fails after password reset | <Badge tone="danger">Critical</Badge> | Open | 12m |
+| #4820 | Invoice PDF not downloading | <Badge tone="warning">High</Badge> | Open | 34m |
+| #4818 | API rate limit exceeded unexpectedly | <Badge tone="warning">High</Badge> | Open | 1h 20m |
+| #4816 | Payment webhook not firing | <Badge tone="danger">Critical</Badge> | Open | 3h |
+| #4814 | SSL certificate expiring in 2 days | <Badge tone="warning">High</Badge> | Assigned | 5h |
+
+<Button variant="secondary" label="Export these 7 tickets">Export list</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="primary" label="Open new ticket" icon="plus">New ticket</Button>
+<Button variant="secondary" label="Filter to high priority" icon="funnel">Apply high-priority filter</Button>
+</Columns>
+</Card>
+
+<Card title="Open a new ticket">
+<Form name="new-ticket">
+<Select label="Priority" options="Low | Normal | High | Critical" placeholder="Select priority" />
+<Input label="Customer email" type="email" placeholder="customer@example.com" />
+<Input label="Subject" placeholder="Brief issue summary" />
+<TextArea label="Description" placeholder="What's the problem? Include steps to reproduce if relevant." rows="4" />
+<Button>Create ticket</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the oldest open tickets that need attention
+- Which tickets are at risk of breaching SLA today?
+- Assign the two critical tickets to the most experienced agents
+- Summarize the last 24 hours of ticket volume by category
+</FollowUps>

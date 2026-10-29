@@ -1,0 +1,187 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="info" title="Live View">Last updated: 14:32:15 | Shift: B (14:00–22:00) | <Badge tone="success">All systems nominal</Badge></Callout>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Stat label="OEE" value="87.3%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="94.2%" change="+0.8%" tone="info" />
+<Stat label="Performance" value="91.5%" change="-0.3%" tone="warning" />
+<Stat label="Quality" value="99.1%" change="+0.2%" tone="success" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Progress value="12847" max="15000" label="12,847 / 15,000 units (85.6%)" tone="info" />
+<Stat label="Rate" value="1,427/hr" change="Target: 1,667/hr" tone="neutral" />
+<Stat label="Projected EOD" value="14,920" change="-80 vs target" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Line Focus">
+<Select label="Focus on line" name="line-focus" placeholder="All lines" options="All lines | Line A – Injection | Line B – Extrusion | Line C – Assembly | Line D – Packaging" />
+</Card>
+
+<Columns>
+<Card title="Production Lines">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alarms |
+|---|---|---|---|---|---|
+| Line A – Injection | <Badge tone="success">Running</Badge> | 1,420 | 1,500 | 89.1% | 0 |
+| Line B – Extrusion | <Badge tone="warning">Degraded</Badge> | 980 | 1,200 | 81.4% | 2 |
+| Line C – Assembly | <Badge tone="success">Running</Badge> | 1,650 | 1,600 | 92.3% | 0 |
+| Line D – Packaging | <Badge tone="danger">Stopped</Badge> | 0 | 1,800 | 0% | 1 |
+</Card>
+
+<Card title="Defect Rate – Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| Oct 1 | 1.2 |
+| Oct 2 | 0.9 |
+| Oct 3 | 1.1 |
+| Oct 4 | 0.8 |
+| Oct 5 | 1.0 |
+| Oct 6 | 0.7 |
+| Oct 7 | 0.9 |
+| Oct 8 | 1.3 |
+| Oct 9 | 0.8 |
+| Oct 10 | 0.6 |
+| Oct 11 | 0.9 |
+| Oct 12 | 1.0 |
+| Oct 13 | 0.8 |
+| Oct 14 | 0.9 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Downtime by Cause (This Month)">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical | 420 |
+| Electrical | 180 |
+| Material shortage | 95 |
+| Changeover | 310 |
+| Quality hold | 65 |
+| Planned maintenance | 480 |
+| Other | 40 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Status |
+|---|---|---|---|---|
+| INJ-03 | A | Today | Lubrication | <Badge tone="warning">Overdue</Badge> |
+| EXT-07 | B | Tomorrow | Filter change | <Badge tone="info">Scheduled</Badge> |
+| ASM-12 | C | Oct 18 | Calibration | <Badge tone="info">Scheduled</Badge> |
+| PKG-04 | D | Oct 19 | Belt replacement | <Badge tone="info">Scheduled</Badge> |
+| INJ-01 | A | Oct 20 | Full PM | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock">
+<Stat label="Steel Coil" value="42.3 t" change="Reorder at 15 t" tone="success" icon="package" />
+<Progress value="42.3" max="60" label="70.5% of capacity" tone="success" />
+<Stat label="Resin Pellets" value="18.7 t" change="Reorder at 10 t" tone="info" icon="package" />
+<Progress value="18.7" max="30" label="62.3% of capacity" tone="info" />
+<Stat label="Packaging Film" value="8,400 kg" change="Reorder at 3,000 kg" tone="warning" icon="package" />
+<Progress value="8400" max="15000" label="56.0% of capacity" tone="warning" />
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| AcerSteel | Steel coil – Grade 50 | 25 t | Oct 16 | <Badge tone="info">Confirmed</Badge> |
+| PolySource | PP Resin | 15 t | Oct 17 | <Badge tone="info">Confirmed</Badge> |
+| FlexFilm | BOPP Film | 5,000 kg | Oct 18 | <Badge tone="warning">Pending</Badge> |
+| AcerSteel | Steel coil – Grade 80 | 10 t | Oct 19 | <Badge tone="info">Confirmed</Badge> |
+| PolySource | Color masterbatch | 500 kg | Oct 20 | <Badge tone="info">Confirmed</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A (06–14) | 11,200 |
+| Shift B (14–22) | 12,847 |
+| Shift C (22–06) | 9,450 |
+</Chart>
+<Stat label="Best shift" value="Shift B" change="+14.7% vs avg" tone="success" />
+</Card>
+
+<Card title="Safety">
+<Stat label="Incidents YTD" value="3" change="Target: 0" tone="danger" icon="alert-triangle" />
+<Stat label="Days since last incident" value="47" change="Record: 112 days" tone="success" icon="calendar" />
+<Stat label="Near misses this month" value="2" change="-1 vs last month" tone="info" />
+<Stat label="Safety observations" value="127" change="+23 vs last month" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+| Batch | Line | Product | Qty | Reason | Since |
+|---|---|---|---|---|---|
+| B-20241014-03 | B | Pipe Ø110mm | 420 | Wall thickness variance | 2 hrs |
+| B-20241014-07 | D | Clamshell tray | 1,200 | Seal integrity fail | 45 min |
+| B-20241013-19 | A | Gear housing | 85 | Surface defect | 18 hrs |
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Total" value="1,847 kWh" change="+3.2% vs avg" tone="warning" icon="bolt" />
+<Stat label="Cost" value="$221.64" change="$18.42 vs avg" tone="neutral" />
+<Chart type="area" x="Hour" y="kWh">
+| Hour | kWh |
+|---|---|
+| 06 | 95 |
+| 07 | 112 |
+| 08 | 134 |
+| 09 | 142 |
+| 10 | 156 |
+| 11 | 161 |
+| 12 | 158 |
+| 13 | 149 |
+| 14 | 167 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Machine | Description | Assigned | Due |
+|---|---|---|---|---|---|---|
+| WO-20241014-001 | <Badge tone="danger">Critical</Badge> | D | PKG-04 | Conveyor belt snapped | M. Torres | Today 16:00 |
+| WO-20241014-002 | <Badge tone="warning">High</Badge> | B | EXT-07 | Temperature drift +12°C | J. Chen | Today 18:00 |
+| WO-20241014-003 | <Badge tone="info">Medium</Badge> | A | INJ-03 | Lubrication overdue | R. Patel | Tomorrow |
+| WO-20241013-018 | <Badge tone="info">Medium</Badge> | C | ASM-12 | Calibration check | S. Kim | Oct 18 |
+| WO-20241012-009 | <Badge tone="neutral">Low</Badge> | A | INJ-01 | Preventive maintenance | – | Oct 20 |
+</Card>
+
+<Columns>
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="INJ-01 | INJ-03 | EXT-07 | ASM-12 | PKG-04 | EXT-02 | ASM-08 | PKG-01" placeholder="Select machine" required="true" />
+<Date label="Date" name="maint-date" required="true" />
+<Select label="Type" name="maint-type" options="Lubrication | Filter change | Calibration | Belt replacement | Full PM | Inspection | Other" placeholder="Maintenance type" required="true" />
+<TextArea label="Notes" name="maint-notes" placeholder="Additional details..." rows="2" />
+<Button>Schedule</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Live Andon Alerts">
+| Time | Line | Machine | Type | Message | Status |
+|---|---|---|---|---|---|
+| 14:28 | B | EXT-07 | <Badge tone="warning">Warning</Badge> | Melt temp 12°C above setpoint | <Badge tone="warning">Acknowledged</Badge> |
+| 14:15 | D | PKG-04 | <Badge tone="danger">Critical</Badge> | Conveyor belt break – line stopped | <Badge tone="danger">Active</Badge> |
+| 13:52 | A | INJ-03 | <Badge tone="info">Info</Badge> | Lubrication due – 0 hrs remaining | <Badge tone="info">Pending</Badge> |
+| 13:40 | C | ASM-05 | <Badge tone="success">Resolved</Badge> | Jam cleared at station 3 | <Badge tone="success">Closed</Badge> |
+</Card>
+</Columns>
+
+<Card title="Actions">
+<Button label="Export Shift Report" icon="download" />
+<Button variant="secondary" label="Print Dashboard" icon="printer" />
+<Button variant="tertiary" label="Refresh Data" icon="refresh-cw" />
+</Card>

@@ -1,0 +1,116 @@
+# Personal Banking Home
+
+A single screen covering accounts, activity, spending, bills, goals, credit, and the actions you can take from here.
+
+<Card title="Accounts" subtitle="Balances as of today">
+<Columns>
+<Stat label="Everyday Checking" value="$4,182.55" note="•••4821" icon="bank" />
+<Stat label="Vacation Savings" value="$6,240.00" note="•••7390" icon="piggy-bank" />
+<Stat label="Platinum Credit" value="-$1,308.42" note="Limit $12,000 · •••2210" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+<Card title="Recent transactions" subtitle="Last 5 posted">
+| Merchant | Category | Amount |
+|---|---|---|
+| Whole Foods Market | Groceries | -$86.20 |
+| Shell Gas #2214 | Auto & Fuel | -$52.10 |
+| Direct Deposit — Acme Corp | Income | +$2,450.00 |
+| Netflix | Subscriptions | -$15.49 |
+| Blue Bottle Coffee | Dining | -$6.75 |
+
+<Button ask="Dispute a transaction" variant="secondary" icon="warning">Dispute a transaction</Button>
+</Card>
+
+<Card title="Spending this month" subtitle="$1,842.10 across 5 categories">
+<Chart type="donut" title="Spending by category" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Groceries | 412 |
+| Dining | 188 |
+| Auto & Fuel | 176 |
+| Subscriptions | 116 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+<Steps>
+<Step title="Electric — City Power" subtitle="$94.20 due in 2 days" status="current">Autopay on, from Checking •••4821</Step>
+<Step title="Internet — Fiberline" subtitle="$69.99 due in 6 days" status="todo">Autopay on, from Checking •••4821</Step>
+<Step title="Platinum Credit minimum" subtitle="$35.00 due in 9 days" status="todo">Not on autopay</Step>
+</Steps>
+<Button ask="Set up autopay for the credit minimum" variant="secondary">Set up autopay</Button>
+</Card>
+
+<Card title="Vacation savings goal" subtitle="$6,240 of $8,000">
+<Progress value="6240" max="8000" label="Vacation fund" tone="success" />
+<Columns>
+<Stat label="Saved" value="$6,240" />
+<Stat label="Remaining" value="$1,760" />
+<Stat label="On pace for" value="Aug 2026" tone="success" />
+</Columns>
+<Button ask="Move money into the vacation savings goal">Add to goal</Button>
+</Card>
+
+<Card title="Credit score" subtitle="Updated 3 days ago">
+<Columns>
+<Stat label="FICO Score 8" value="742" change="+8 pts" note="Good" tone="success" icon="chart-line" />
+<Stat label="Utilization" value="11%" note="Low impact" tone="success" />
+<Stat label="Hard inquiries" value="1" note="Last 12 months" />
+</Columns>
+<Callout tone="info" title="What moved it">Paying the Platinum balance below 30% added 8 points this cycle.</Callout>
+<Button ask="Show my full credit report" variant="secondary">Full credit report</Button>
+</Card>
+
+<Card title="Move money" subtitle="Between your accounts">
+<Form name="transfer">
+<Select label="From" options="Everyday Checking •••4821 | Vacation Savings •••7390 | Platinum Credit •••2210" />
+<Select label="To" options="Vacation Savings •••7390 | Everyday Checking •••4821 | Platinum Credit •••2210" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0" hint="Available to move: $4,182.55" />
+<Date label="Send on" name="send-date" hint="Leave as today for an instant transfer" />
+<Button>Move money</Button>
+</Form>
+</Card>
+
+<Card title="Card controls">
+<Switch label="Freeze Platinum Credit •••2210" name="freeze-credit" value="false" hint="Blocks new purchases and cash advances. Recurring bills still post." />
+<Callout tone="warning" title="Freezing is instant">Unfreeze any time from this screen. Existing autopays continue to run.</Callout>
+</Card>
+
+<Card title="Statements" subtitle="Pick a period">
+<Form name="statement-period">
+<Select label="Statement period" options="Current cycle (Nov 1 – Nov 30) | October 2026 | September 2026 | August 2026 | Custom range" />
+<Radio label="Accounts to include" options="All accounts | Checking only | Savings only | Credit only" />
+<Button>View statement</Button>
+<Button variant="tertiary">Download PDF</Button>
+</Form>
+</Card>
+
+<Card title="Alerts" subtitle="Choose what triggers a notification">
+<Form name="alert-settings">
+<Checkboxes label="Notify me when" options="Balance drops below $500 | A transaction over $200 posts | A bill is due in 3 days | A bill is past due | Direct deposit arrives | Credit score changes | International charge is made | Card is frozen or unfrozen" value="A transaction over $200 posts | A bill is due in 3 days" />
+<Radio label="Send alerts by" options="Push | Text message | Email" />
+<Slider label="Large transaction threshold" min="50" max="1000" step="50" value="200" name="threshold" unit="$" />
+<Button>Save alert settings</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a transaction">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods Market — $86.20 (Nov 24) | Shell Gas #2214 — $52.10 (Nov 22) | Netflix — $15.49 (Nov 20) | Blue Bottle Coffee — $6.75 (Nov 18)" />
+<Select label="Reason" options="I didn't make this purchase | I was charged twice | Wrong amount | Item not received | Cancelled subscription | Other" />
+<TextArea label="What happened" name="details" placeholder="Add any details that help us review this" rows="3" />
+<Checkboxes label="Attach proof (optional)" options="Receipt | Screenshot | Email confirmation" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+<Callout tone="neutral" title="What happens next">We review most disputes within 10 business days. A provisional credit may appear while we investigate.</Callout>
+</Card>
+
+<FollowUps>
+- How much did I spend on dining last month?
+- What is my credit utilization right now?
+- When does my next statement close?
+- Move $250 to my vacation savings
+- Why did my credit score change?
+</FollowUps>

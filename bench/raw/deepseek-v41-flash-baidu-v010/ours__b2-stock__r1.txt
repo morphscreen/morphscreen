@@ -1,0 +1,63 @@
+# Low-Inventory Warning
+
+<Callout tone="warning" title="12 items below reorder threshold">Orders placed before 4:00 PM ship same day.</Callout>
+
+<Card title="Stock alerts" subtitle="Items at or under their reorder threshold">
+<Form name="inventory-search">
+<Input label="Search items" type="search" name="query" placeholder="SKU, product name, or supplier" hint="Try 'cold brew' or 'SKU-1042'" />
+<Select label="Filter by status" name="status" options="All low stock | Out of stock | Below threshold" />
+<Button>Search</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Items running low">
+| Item | SKU | Remaining units | Threshold | Status |
+|---|---|---|---|---|
+| Cold Brew Concentrate 1L | SKU-1042 | 4 | 10 | <Badge tone="danger">Critical</Badge> |
+| Oat Milk Barista 1L | SKU-2210 | 7 | 12 | <Badge tone="warning">Low</Badge> |
+| Espresso Beans 500g | SKU-0871 | 9 | 15 | <Badge tone="warning">Low</Badge> |
+| Paper Cups 12oz (50pk) | SKU-3390 | 2 | 8 | <Badge tone="danger">Critical</Badge> |
+| Vanilla Syrup 750ml | SKU-1120 | 11 | 12 | <Badge tone="info">Near threshold</Badge> |
+
+<Progress value="4" max="10" label="Cold Brew Concentrate 1L" tone="danger" />
+<Progress value="7" max="12" label="Oat Milk Barista 1L" tone="warning" />
+<Progress value="9" max="15" label="Espresso Beans 500g" tone="warning" />
+<Progress value="2" max="8" label="Paper Cups 12oz (50pk)" tone="danger" />
+<Progress value="11" max="12" label="Vanilla Syrup 750ml" tone="info" />
+</Card>
+
+<Card title="Reorder an item" subtitle="Pick an item and quantity, then submit">
+<Form name="reorder">
+<Select label="Item" name="item" placeholder="Choose an item" options="Cold Brew Concentrate 1L (SKU-1042) | Oat Milk Barista 1L (SKU-2210) | Espresso Beans 500g (SKU-0871) | Paper Cups 12oz 50pk (SKU-3390) | Vanilla Syrup 750ml (SKU-1120)" required="true" />
+<Input label="Quantity to reorder" type="number" name="qty" placeholder="e.g. 24" min="1" step="1" hint="Suggested: bring stock back above threshold" required="true" />
+<Select label="Supplier" name="supplier" placeholder="Choose a supplier" options="Primary supplier | Backup supplier | Rush courier" />
+<Date label="Needed by" name="needed" />
+<TextArea label="Notes" name="notes" placeholder="Delivery instructions, PO number, etc." rows="3" />
+<Button>Place reorder</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Reorder threshold settings" subtitle="The level that triggers a warning">
+| Item | Current threshold | Trigger |
+|---|---|---|
+| Cold Brew Concentrate 1L | 10 units | Below threshold |
+| Oat Milk Barista 1L | 12 units | Below threshold |
+| Espresso Beans 500g | 15 units | Below threshold |
+| Paper Cups 12oz (50pk) | 8 units | Below threshold |
+| Vanilla Syrup 750ml | 12 units | Below threshold |
+
+<Details title="How thresholds work">
+A warning fires when remaining units drop to or below the item's threshold. Critical fires at half the threshold or fewer. Edit a threshold to change when the alert appears.
+</Details>
+
+<Button variant="secondary">Edit thresholds</Button>
+</Card>
+
+<FollowUps>
+- Which items are out of stock right now?
+- How do I change the reorder threshold for one item?
+- Can I reorder all low-stock items at once?
+- Show me the supplier contact for SKU-1042
+</FollowUps>

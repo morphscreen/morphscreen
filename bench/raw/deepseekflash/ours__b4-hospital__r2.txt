@@ -1,0 +1,142 @@
+<Card title="Hospital Operations Command" subtitle="St. Mary's Medical Center — Command View">
+<Date label="View another day" value="2025-01-15" hint="Select a date to load that day's operations" />
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="Current status">
+<Stat label="Occupancy" value="87%" note="261 of 300 beds" />
+<Progress value="87" max="100" label="Bed occupancy" />
+<Badge tone="warning">9 beds available</Badge>
+<Badge tone="info">ICU: 2 beds left</Badge>
+</Card>
+<Card title="Current ER Wait" subtitle="Average across all acuity levels">
+<Stat label="ER wait" value="42 min" change="+12 min vs yesterday" note="Peak: 68 min at 11:30" />
+<Badge tone="warning">Above 30-min target</Badge>
+</Card>
+<Card title="Admissions Today" subtitle="As of 14:00">
+<Stat label="Admissions" value="18" change="+4 vs yesterday" note="6 pending bed assignment" />
+</Card>
+<Card title="Critical Patients" subtitle="Called out">
+<Stat label="Critical" value="4" change="1 code blue active" note="2 in ICU · 1 in ER · 1 in OR" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Admissions — Past 14 Days" subtitle="Daily admission count">
+<Chart type="line" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Jan 1 | 14 |
+| Jan 2 | 16 |
+| Jan 3 | 12 |
+| Jan 4 | 18 |
+| Jan 5 | 15 |
+| Jan 6 | 20 |
+| Jan 7 | 17 |
+| Jan 8 | 13 |
+| Jan 9 | 19 |
+| Jan 10 | 22 |
+| Jan 11 | 16 |
+| Jan 12 | 14 |
+| Jan 13 | 18 |
+| Jan 14 | 21 |
+</Chart>
+</Card>
+<Card title="Patients per Department" subtitle="Current census">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Cardiology | 42 |
+| Neurology | 28 |
+| Orthopedics | 35 |
+| General | 51 |
+| ICU | 18 |
+| Pediatrics | 24 |
+| Maternity | 16 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Staff on Shift" subtitle="10 staff currently on duty">
+<Columns>
+<Avatar name="Dr. Sarah Chen" subtitle="Attending · Cardiology · 07:00–19:00" />
+<Avatar name="Dr. James Park" subtitle="Resident · ER · 07:00–19:00" />
+<Avatar name="Dr. Emily Rodriguez" subtitle="Attending · Neurology · 07:00–19:00" />
+<Avatar name="Michael O'Brien, RN" subtitle="Charge Nurse · ICU · 07:00–19:00" />
+<Avatar name="Aisha Khan, RN" subtitle="RN · Pediatrics · 07:00–19:00" />
+<Avatar name="Dr. David Kim" subtitle="Surgeon · Orthopedics · 06:30–18:30" />
+<Avatar name="Linda Novak, RN" subtitle="RN · Maternity · 19:00–07:00" />
+<Avatar name="Dr. Omar Haddad" subtitle="Attending · General · 07:00–19:00" />
+<Avatar name="Grace Liu, RN" subtitle="RN · ER · 07:00–19:00" />
+<Avatar name="Dr. Thomas Wright" subtitle="Anesthesiologist · OR · 06:30–18:30" />
+</Columns>
+</Card>
+<Card title="Critical Patients" subtitle="Called out — page team immediately">
+<Callout tone="danger" title="4 critical patients">
+- **M. Alvarez** — Room 214 — Code Blue — awaiting ICU bed
+- **J. Okafor** — Room 108 — Post-op hemorrhage — OR on standby
+- **S. Nguyen** — ICU-3 — Septic shock — on vasopressors
+- **R. Thompson** — ER Bay 7 — STEMI — cath lab ready
+</Callout>
+</Card>
+<Card title="Ready for Discharge" subtitle="Cleared by care team">
+| Patient | Room | Discharge to | Action |
+|---|---|---|---|
+| R. Patel | 312 | Home | <Button ask="Discharge R. Patel (Room 312)">Discharge</Button> |
+| L. Garcia | 205 | Home | <Button ask="Discharge L. Garcia (Room 205)">Discharge</Button> |
+| K. Jensen | 118 | Rehab facility | <Button ask="Discharge K. Jensen (Room 118)">Discharge</Button> |
+| A. Brooks | 401 | Home | <Button ask="Discharge A. Brooks (Room 401)">Discharge</Button> |
+| T. Nguyen | 227 | Skilled nursing | <Button ask="Discharge T. Nguyen (Room 227)">Discharge</Button> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Today's OR Bookings" subtitle="Operating room schedule">
+| Time | OR | Surgeon | Procedure | Patient | Status |
+|---|---|---|---|---|---|
+| 07:30 | OR-1 | Dr. Nguyen | CABG | W. Brooks | <Badge tone="success">In progress</Badge> |
+| 08:00 | OR-2 | Dr. Kim | Total knee | P. Doyle | <Badge tone="success">In progress</Badge> |
+| 09:15 | OR-3 | Dr. Patel | Lap chole | M. Reyes | <Badge tone="info">Scheduled</Badge> |
+| 10:30 | OR-1 | Dr. Nguyen | Valve repair | T. Ito | <Badge tone="info">Scheduled</Badge> |
+| 11:45 | OR-2 | Dr. Kim | Hip replacement | A. Foster | <Badge tone="info">Scheduled</Badge> |
+| 13:00 | OR-4 | Dr. Haddad | Bowel resection | C. Diaz | <Badge tone="info">Scheduled</Badge> |
+| 14:30 | OR-3 | Dr. Patel | Appendectomy | J. Walsh | <Badge tone="info">Scheduled</Badge> |
+</Card>
+<Card title="Supplies Running Low" subtitle="Below reorder threshold">
+| Supply | Stock level | Status |
+|---|---|---|
+| Saline 0.9% 1L | 8% | <Badge tone="danger">Critical</Badge> |
+| N95 masks | 15% | <Badge tone="danger">Critical</Badge> |
+| Insulin glargine | 22% | <Badge tone="warning">Low</Badge> |
+| IV tubing | 18% | <Badge tone="warning">Low</Badge> |
+| Blood culture bottles | 30% | <Badge tone="warning">Low</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="File an Incident" subtitle="Report a safety or operational issue">
+<Form name="incident-report">
+<Select label="Incident type" options="Medication error | Fall | Equipment failure | Security | Other" placeholder="Select type" required="true" />
+<Select label="Severity" options="Low | Medium | High | Critical" placeholder="Select severity" required="true" />
+<Input label="Location" placeholder="e.g. Room 214, ER Bay 3" />
+<TextArea label="Description" placeholder="Describe what happened" rows="3" required="true" />
+<Button>File incident</Button>
+</Form>
+</Card>
+<Card title="Request Patient Transfer" subtitle="Move a patient between departments">
+<Form name="transfer-request">
+<Input label="Patient" placeholder="Patient name or MRN" required="true" />
+<Select label="From department" options="ER | ICU | Cardiology | Orthopedics | General | Maternity" placeholder="Current department" required="true" />
+<Select label="To department" options="ICU | Cardiology | Orthopedics | General | Maternity | Pediatrics" placeholder="Destination department" required="true" />
+<TextArea label="Reason" placeholder="Clinical reason for transfer" rows="2" required="true" />
+<Button>Request transfer</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show ICU bed availability by hour
+- View staffing gaps for the night shift
+- Generate a shift handoff summary
+</FollowUps>

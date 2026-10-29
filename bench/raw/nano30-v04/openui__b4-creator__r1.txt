@@ -1,0 +1,203 @@
+We need to produce a single screen for a creator's cross-platform studio. Must include all 11 items.
+
+We must follow openui-lang syntax. Root must be Card. We need to define components and data.
+
+We need follower total and growth over past month -> maybe use CardHeader then a section with a chart (LineChart) showing growth, and maybe a badge for total.
+
+Engagement rate -> maybe a Badge or TextCallout.
+
+Best posts this month with reach for each -> maybe a Table showing posts and reach.
+
+Audience split by platform -> maybe a PieChart or BarChart (horizontal) showing split.
+
+Posts scheduled this week -> maybe a ListBlock (list items) showing scheduled posts, or a Table.
+
+Best hour to post based on history -> maybe a BarChart showing hourly distribution.
+
+Comments waiting for a reply -> maybe a ListBlock of comments.
+
+Earnings this month -> maybe a Badge or TextCallout.
+
+Pending collaboration requests -> maybe a ListBlock or FollowUpBlock (clickable suggestions).
+
+Way to schedule a post with caption and time -> maybe a Form with Input for caption and DatePicker for time.
+
+Way to narrow everything to one platform -> maybe a Select dropdown (Select) that filters content.
+
+We need to ensure each defined variable is referenced from root's children list. Also ensure each defined variable appears in root children (or reachable). Since root children list must be a complete commitment. So we need to list all components that we define and reference.
+
+We need to define components in order: root first, then component definitions, then data values.
+
+We must ensure that each defined variable (except root) is referenced somewhere in children list of root or its children.
+
+We can create sections using SectionBlock with collapsible sections maybe, but easier: we can just put everything in a Card with appropriate layout (maybe column direction). Use Card with direction: "column". That will display items vertically.
+
+We need to include a way to narrow to one platform: a Select component that can filter data. Could be a FormControl with Select.
+
+We need to define data arrays for charts: labels and series.
+
+Let's design:
+
+- root = Card([header, statsSection, bestPostsSection, audienceSection, scheduleSection, hourChartSection, commentsSection, earningsSection, collabSection, scheduleForm, platformSelect]) with direction "column", align "start", gap "m".
+
+But we need to define each component.
+
+Let's list components:
+
+1. header: CardHeader("Creator Studio Overview", "Metrics and Scheduling") maybe.
+
+2. statsSection: maybe a Card with variant "sunk" containing follower total, growth chart, engagement rate, earnings, pending collab. Could be a Card with children.
+
+But we need separate items for each of the 11 items; we can embed them within sections.
+
+Simplify: Use a Card for each major area? But root children must be a list of components in reading order. We can create separate Card components for each item, but we need to reference them.
+
+Let's create:
+
+- header = CardHeader("Creator Studio", null) maybe.
+
+- followerSection = Card([followerHeader, followerTotal, growthChart]) with variant "sunk"? maybe not.
+
+But we need to keep root children list complete. Let's design a hierarchy:
+
+root = Card([header, statsCard, postsTable, audienceChart, scheduleList, hourChart, commentsList, earningsBadge, collabList, scheduleForm, platformSelect])
+
+Now define each component:
+
+header = CardHeader("Creator Studio Overview", null)
+
+statsCard = Card([followerHeader, followerValue, growthChart, engagementRate, earningsBadge]) maybe.
+
+But we need to include all items: follower total and growth, engagement rate, earnings. Also best posts, audience split, scheduled posts, best hour, comments, pending collab, schedule form.
+
+Maybe better to use SectionBlock to group items, but we need to reference SectionItem.
+
+Simplify: Use a Card for each item, but we need to include them in root children.
+
+Let's define:
+
+- followerHeader = TextContent("Followers", "large") maybe.
+
+But we need a value. Use a Badge or TextCallout to show total and growth.
+
+We can have:
+
+followerBadge = Badge("12,345", "default")? Not exactly. Maybe use TextCallout with variant "info" showing total and growth.
+
+But we need to show growth over past month - maybe a LineChart.
+
+Let's define:
+
+followerValue = TextContent("12,345", "large") — total followers.
+
+growthChart = LineChart(labels: ["Day1","Day2","Day3","Day4","Day5","Day6","Day7","Day7","Day30"], series: [growthSeries], "natural", "Day", "Followers") — but we need data series. We'll define growthSeries = Series("Followers", [12000,12500,13000,13500,14000,14500,15000,15500,16000]) — approximate.
+
+engagementRate = TextCallout(variant:"info", title:"Engagement Rate", description:"4.5%") maybe.
+
+earningsBadge = Badge("Earnings $8,200", "default")? But earnings is a value; maybe use TextCallout.
+
+But we need to ensure each defined variable is referenced in root children.
+
+Let's outline all defined variables:
+
+- header
+
+- followerHeader (maybe TextContent)
+
+- followerValue (TextContent)
+
+- growthSeries (Series)
+
+- growthChart (LineChart)
+
+- engagementRate (TextCallout)
+
+- earningsValue (TextContent) maybe.
+
+- bestPostsTable = Table([...]) with columns.
+
+- postsSeries etc.
+
+- audienceChart = PieChart or BarChart.
+
+- scheduledPostsList = ListBlock (list items) maybe.
+
+- hourChart = BarChart showing hour distribution.
+
+- commentsList = ListBlock (list items) maybe.
+
+- earningsBadge = TextCallout or Badge.
+
+- collabList = ListBlock (pending collaboration requests).
+
+- scheduleForm = Form(...)
+
+- platformSelect = Select (dropdown) for narrowing.
+
+We also need to define items for lists: For scheduled posts, we need data; maybe just placeholder items.
+
+Let's define:
+
+- scheduledPosts = ListBlock([...]) with items defined as ListItem.
+
+- comments = ListBlock([...]) with items defined as ListItem.
+
+- collabRequests = ListBlock([...]) with items as ListItem.
+
+Now we need to define each variable and ensure they are referenced in root children.
+
+Let's create a plan:
+
+Root children list (in order):
+
+1. header (CardHeader)
+
+2. statsCard (Card) — contains follower info, engagement, earnings.
+
+3. bestPostsCard (Card) — contains best posts table.
+
+4. audienceCard (Card) — contains audience chart.
+
+5. scheduleCard (Card) — contains scheduled posts list.
+
+6. hourChartCard (Card) — contains hour distribution chart.
+
+7. commentsCard (Card) — contains comments list.
+
+8. earningsCard (Card) — maybe earnings info.
+
+9. collabCard (Card) — pending collaboration requests.
+
+10. scheduleFormCard (Card) — schedule form.
+
+11. platformSelectCard (Card) — maybe a Card with Select to narrow.
+
+But we need to ensure root children list includes all.
+
+Alternatively, we can embed everything directly in root without extra Cards, but it's okay.
+
+We need to define each component and ensure that each variable is referenced.
+
+Let's start building definitions line by line.
+
+First line: root = Card([...]) — we need to fill children list.
+
+But before that we need to define all components. In openui-lang, we can define components before root, and root can reference them. Since root is first, but we can define components before root (they are just references). However, the recommended order is root first, then definitions. But we can define root first with placeholders? The root children list must be complete; but we can reference components that are defined later because of hoisting. So we can write root = Card([...]) with references to components we will define later. That's allowed.
+
+Thus we can write root = Card([header, statsCard, bestPostsCard, audienceCard, scheduleCard, hourChartCard, commentsCard, earningsCard, collabCard, scheduleForm, platformSelectCard]) — but we need to define each of those components.
+
+Now define each:
+
+header = CardHeader("Creator Studio Overview", null)
+
+statsCard = Card([followerHeader, followerValue, growthChart, engagementRate, earningsValue]) — maybe.
+
+But we need to define followerHeader etc.
+
+Let's define:
+
+followerHeader = TextContent("Followers", "large") — but maybe better: TextContent with size large.
+
+followerValue = TextContent("12,345<unk>", size?) Not needed.
+
+But<unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk>.

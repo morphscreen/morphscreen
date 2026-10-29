@@ -1,0 +1,66 @@
+<Card title="Training Analytics" subtitle="Snapshot of learner performance this week">
+<Columns>
+  <Stat label="Active Learners (This Week)" value="1,247" icon="users" tone="info" />
+  <Stat label="Course Completion Rate" value="72%" icon="check-circle" tone="success" />
+  <Stat label="Average Quiz Score" value="84%" icon="chart-line" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="bar" x="Course" y="Enrolled Learners">
+| Course | Enrolled |
+|---|---|
+| Python Fundamentals | 520 |
+| Data Science 101 | 410 |
+| Cloud Architecture | 380 |
+| Agile Project Mgmt | 295 |
+| Cybersecurity Basics | 210 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+<Callout tone="warning" title="48 learners flagged">
+These learners have < 40% course progress and haven’t logged in for 14+ days.
+</Callout>
+<Columns>
+  <Avatar name="Ana Kovačić" subtitle="Python Fundamentals — 22%" />
+  <Avatar name="Marko Perić" subtitle="Data Science 101 — 18%" />
+  <Avatar name="Iva Horvat" subtitle="Cloud Architecture — 31%" />
+  <Avatar name="Luka Babić" subtitle="Agile Project Mgmt — 12%" />
+</Columns>
+<Button variant="secondary" ask="Show all 48 at-risk learners">View all at-risk</Button>
+</Card>
+
+<Card title="Engagement Over the Past 8 Weeks">
+<Chart type="line" x="Week" y="Active Learners">
+| Week | Active |
+|---|---|
+| W-8 | 980 |
+| W-7 | 1,020 |
+| W-6 | 1,100 |
+| W-5 | 1,150 |
+| W-4 | 1,200 |
+| W-3 | 1,180 |
+| W-2 | 1,220 |
+| W-1 | 1,247 |
+</Chart>
+</Card>
+
+<Card title="Filter by Cohort & Message">
+<Form name="cohort-filter">
+<Select label="Select a cohort" placeholder="Choose cohort…" options="All Cohorts | Cohort A — Data Science | Cohort B — Cloud | Cohort C — Python | Cohort D — Agile" name="cohort" />
+<Button variant="secondary" ask="Narrow analytics to Cohort A — Data Science">Apply cohort filter</Button>
+</Form>
+<Details title="Message this cohort" open=false>
+<Form name="cohort-message">
+<TextArea label="Message content" placeholder="e.g. Reminder: this week's quiz closes Friday." name="message" rows="4" required=true />
+<Button>Send message to cohort</Button>
+</Form>
+</Details>
+</Card>
+
+<FollowUps>
+- Show me the detailed report for Cohort A
+- Which learners scored lowest on the last quiz?
+- Schedule a weekly message to at-risk learners
+</FollowUps>

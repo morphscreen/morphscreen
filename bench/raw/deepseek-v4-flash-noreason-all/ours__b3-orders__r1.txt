@@ -1,0 +1,69 @@
+# E-commerce Operations Desk
+
+Live view of today's storefront activity. <Badge tone="success">Live</Badge>
+
+<Callout tone="info" title="Ops brief">
+Use the status filter and search to narrow orders, then mark them fulfilled to keep the queue moving.
+</Callout>
+
+<Columns>
+<Card title="Orders today">
+<Stat label="Orders placed" value="147" change="+12 vs yesterday" icon="shopping-cart" tone="info" />
+</Card>
+<Card title="Revenue today">
+<Stat label="Revenue" value="$18,420" change="+8.4% vs yesterday" icon="chart-line" tone="success" />
+</Card>
+<Card title="Average order value">
+<Stat label="AOV" value="$125.31" change="+3.2% vs yesterday" icon="trend-up" tone="neutral" />
+</Card>
+<Card title="Refund rate this month">
+<Stat label="Refund rate" value="2.1%" change="-0.4 pts vs last month" icon="arrow-counter-clockwise" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Order volume — past four weeks">
+<Chart type="bar" title="Weekly orders" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| 4 weeks ago | 812 |
+| 3 weeks ago | 934 |
+| 2 weeks ago | 1,021 |
+| Last week | 1,148 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Filter by status or search by customer name">
+<Form name="orders-filter">
+<Select label="Status" name="status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Delivered | Cancelled" />
+<Input label="Search customer" name="search" type="search" placeholder="Type a customer name…" hint="Matches partial names" />
+<Button variant="primary">Apply filter</Button>
+</Form>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Maya Chen | $89.00 | Pending | <Button variant="primary" size="small" ask>Mark fulfilled</Button> |
+| #10481 | Liam O'Brien | $210.50 | Paid | <Button variant="primary" size="small" ask>Mark fulfilled</Button> |
+| #10480 | Sofia Rossi | $45.99 | Fulfilled | <Badge tone="success">Done</Badge> |
+| #10479 | Noah Kim | $132.75 | Paid | <Button variant="primary" size="small" ask>Mark fulfilled</Button> |
+| #10478 | Emma Wilson | $78.20 | Shipped | <Badge tone="info">In transit</Badge> |
+| #10477 | Lucas Silva | $199.99 | Pending | <Button variant="primary" size="small" ask>Mark fulfilled</Button> |
+| #10476 | Ava Patel | $64.10 | Delivered | <Badge tone="neutral">Complete</Badge> |
+| #10475 | Ethan Brown | $150.00 | Cancelled | <Badge tone="danger">Void</Badge> |
+| #10474 | Isabella Garcia | $95.45 | Paid | <Button variant="primary" size="small" ask>Mark fulfilled</Button> |
+| #10473 | Jack Thompson | $220.30 | Fulfilled | <Badge tone="success">Done</Badge> |
+</Card>
+
+<Card title="How to use this desk">
+<Steps>
+<Step title="Narrow the queue" status="done" subtitle="Pick a status or search a name">Use the filter bar to see only what needs attention — e.g., Pending orders.</Step>
+<Step title="Review the order" status="current" subtitle="Check the customer, total, and status">Make sure the order is accurate before fulfilling.</Step>
+<Step title="Mark fulfilled" status="todo" subtitle="Tap the button on the row">The order moves to Shipped, and the queue updates.</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- Show me today's top-selling products
+- Which orders are at risk of delay?
+- What's the refund breakdown by reason?
+- Export the current order list as CSV
+</FollowUps>

@@ -1,0 +1,48 @@
+# Support Lead Morning View
+
+<Columns>
+<Stat label="Open tickets" value="23" change="+4 today" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="1h 42m" change="−12m vs yesterday" tone="info" icon="clock" />
+<Stat label="High priority" value="6" change="+2 today" tone="danger" icon="warning" />
+</Columns>
+
+<Card title="Recent tickets" subtitle="Five most recently created">
+<Tabs>
+<Tab title="All tickets">
+| Ticket | Subject | Priority | Created |
+|---|---|---|---|
+| #4821 | Login fails after password reset | <Badge tone="danger">High</Badge> | 09:14 |
+| #4820 | Invoice PDF not generating | <Badge tone="warning">Medium</Badge> | 08:57 |
+| #4819 | API timeout on /v2/orders | <Badge tone="danger">High</Badge> | 08:41 |
+| #4818 | Feature request: bulk archive | <Badge tone="neutral">Low</Badge> | 08:26 |
+| #4817 | Mobile app crashes on iOS 18 | <Badge tone="warning">Medium</Badge> | 08:03 |
+</Tab>
+<Tab title="High priority only">
+| Ticket | Subject | Priority | Created |
+|---|---|---|---|
+| #4821 | Login fails after password reset | <Badge tone="danger">High</Badge> | 09:14 |
+| #4819 | API timeout on /v2/orders | <Badge tone="danger">High</Badge> | 08:41 |
+| #4816 | Payment processing down | <Badge tone="danger">High</Badge> | 07:52 |
+| #4814 | Data loss on sync | <Badge tone="danger">High</Badge> | 07:30 |
+| #4812 | Security alert: failed admin login | <Badge tone="danger">High</Badge> | 07:11 |
+</Tab>
+</Tabs>
+
+<Columns>
+<Button variant="secondary" label="Filter to high priority">Filter to high priority</Button>
+<Button label="Open new ticket">Open new ticket</Button>
+</Columns>
+</Card>
+
+<Card title="Open a new ticket">
+<Form name="new-ticket">
+<Input label="Subject" placeholder="Brief summary of the issue" required="true" />
+<Select label="Priority" options="Low | Medium | High" placeholder="Select priority" required="true" />
+<TextArea label="Description" placeholder="Details, steps to reproduce, affected users…" rows="4" />
+<Button>Create ticket</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Tip">
+Use the **Filter to high priority** button to quickly focus on urgent issues, or the **Open new ticket** button to log a new case from this screen.
+</Callout>

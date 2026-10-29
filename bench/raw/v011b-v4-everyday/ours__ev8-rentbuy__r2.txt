@@ -1,0 +1,92 @@
+# Rent or buy? Let's work through it together
+
+<Card title="Your situation at a glance">
+<KeyValue title="Your numbers">
+| Factor | Value |
+|---|---|
+| Annual income | £60,000 |
+| Monthly rent | £1,800 |
+| Rent as % of income | 36% |
+| Mortgage affordability (3.5x income) | ~£210,000 |
+| Mortgage affordability (4.5x income) | ~£270,000 |
+</KeyValue>
+</Card>
+
+<Card title="The trade‑offs">
+<Columns>
+<Card title="Renting ✓" subtitle="Keep your flexibility">
+- No repair or maintenance costs
+- Easy to move for a new job or city
+- No stamp duty or legal fees upfront
+- Your deposit stays in your savings
+- Rent can rise each year
+</Card>
+<Card title="Buying ✓" subtitle="Build equity over time">
+- Monthly payment may be similar to rent
+- You own the asset (it can grow in value)
+- No landlord can evict you
+- Fixed-rate mortgage = predictable costs
+- You pay for repairs and maintenance
+</Card>
+</Columns>
+</Card>
+
+<Card title="What could your monthly costs look like?">
+<WhatIf title="Monthly cost comparison">
+<Slider label="Flat price (£)" min="150000" max="400000" step="10000" value="250000" name="price" unit="£" />
+<Slider label="Deposit (%)" min="5" max="40" step="5" value="10" name="deposit" unit="%" />
+<Slider label="Mortgage rate (%)" min="3" max="7" step="0.25" value="4.5" name="rate" unit="%" />
+
+<Result label="Deposit amount" value="price * deposit / 100" unit="£" />
+<Result label="Mortgage needed" value="price - (price * deposit / 100)" unit="£" />
+<Result label="Monthly mortgage (25‑year)" value="round((price - (price * deposit / 100)) * (rate / 100 / 12) / (1 - (1 + rate / 100 / 12)^(-300)))" unit="£" />
+<Result label="Your current rent" value="1800" unit="£" />
+
+<Callout tone="info" title="Remember">
+Add ~£100–£200/month for buildings insurance, service charges (if leasehold) and maintenance. Your rent today is **£1,800** — compare it to the mortgage result above.
+</Callout>
+</WhatIf>
+</Card>
+
+<Card title="The big picture: rent vs buy">
+<Chart type="bar" x="Scenario" y="Monthly cost (£)">
+| Scenario | Monthly payment | Plus running costs (est.) |
+|---|---|---|
+| Current rent | 1800 | 0 |
+| Buy £200k flat, 10% deposit | 920 | 150 |
+| Buy £250k flat, 10% deposit | 1150 | 180 |
+| Buy £300k flat, 10% deposit | 1380 | 200 |
+| Buy £250k flat, 20% deposit | 1020 | 180 |
+</Chart>
+</Card>
+
+<Card title="Key questions to ask yourself">
+<Checklist title="Before you decide" name="buy-check">
+- [ ] Can I afford a deposit plus stamp duty and legal fees (3–6% of the price)?
+- [ ] Do I plan to stay in the same city for at least 5 years?
+- [ ] Am I comfortable with the risk of house prices falling?
+- [ ] Do I have an emergency fund left after buying (3–6 months of costs)?
+- [ ] Is my credit score good enough for a competitive mortgage rate?
+- [ ] Would I be okay paying for a new boiler or roof if needed?
+</Checklist>
+</Card>
+
+<Card title="A rough rule of thumb">
+<Callout tone="info" title="The 5‑year rule">
+If you plan to stay in the same place **less than 5 years**, renting is usually better — the costs of buying and selling (stamp duty, legal fees, estate agent fees) eat up any equity gains. If you'll stay **5+ years**, buying often wins.
+</Callout>
+</Card>
+
+<Card title="What's your next step?">
+<Columns>
+<Button ask="What flats can I afford on £60k in my area?">Show me affordable flats near me</Button>
+<Button ask="Estimate my stamp duty and buying costs">Estimate my buying costs</Button>
+<Button ask="Compare renting vs buying over 10 years with numbers">Run a 10‑year comparison</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- What mortgage rate could I get with my credit score?
+- How much do I need for a deposit on a £250k flat?
+- What are the hidden costs of buying a flat?
+</FollowUps>

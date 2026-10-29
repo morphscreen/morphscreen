@@ -1,0 +1,188 @@
+# Live-Ops Command Center
+
+<Badge tone="success">All systems nominal</Badge> · Last refreshed 2 min ago
+
+<Card title="Live Pulse" subtitle="Real-time metrics">
+<Columns>
+<Stat label="Players online" value="48,213" change="+12.4%" icon="users" tone="success" />
+<Stat label="Revenue today" value="$214,890" change="+8.1%" icon="currency-dollar" tone="success" />
+<Stat label="DAU / MAU" value="1.2M / 8.4M" change="+3.2% / +1.1%" icon="chart-line" />
+<Stat label="ARPU" value="$0.178" change="+4.6%" icon="trend-up" />
+</Columns>
+</Card>
+
+<Card title="Session Length — Last 14 Days">
+<Chart type="area" x="Day" y="Minutes">
+| Day | Avg Session (min) |
+|---|---|
+| D-13 | 24.1 |
+| D-12 | 25.8 |
+| D-11 | 23.4 |
+| D-10 | 26.2 |
+| D-9 | 27.5 |
+| D-8 | 26.9 |
+| D-7 | 28.3 |
+| D-6 | 29.1 |
+| D-5 | 27.8 |
+| D-4 | 30.2 |
+| D-3 | 31.4 |
+| D-2 | 29.6 |
+| D-1 | 32.1 |
+| Today | 33.8 |
+</Chart>
+<Callout tone="info" title="Trend">Session length up 40% over two weeks — likely driven by the Frostfall event.</Callout>
+</Card>
+
+<Card title="Best-Selling Items — Today">
+<Columns>
+<Product name="Dragon's Breath Elixir" price="$9.99" was="$12.99" rating={4.8} count={1240} badge="Top seller" image="Find">
+Limited-time event item. Grants 2x XP for 1 hour.
+<Button variant="primary" ask="Tell me more about Dragon's Breath Elixir">View item</Button>
+<Button variant="secondary" ask="Show sales breakdown for this item">Sales detail</Button>
+</Product>
+<Product name="Eternal Frost Bundle" price="$19.99" rating={4.6} count={890} badge="New" image="Find">
+Winter-themed skin set + 500 gems.
+<Button variant="primary" ask="Tell me more about Eternal Frost Bundle">View item</Button>
+</Product>
+<Product name="Mana Core x10" price="$4.99" rating={4.5} count={2100} image="Find">
+Crafting material bundle.
+<Button variant="primary" ask="Tell me more about Mana Core x10">View item</Button>
+</Product>
+</Columns>
+</Card>
+
+<Card title="Server Health by Region">
+<Map title="Server regions and health">
+| Region | Lat | Lng | Status | 
+|---|---|---|---|
+| US West | 37.7749 | -122.4194 | Healthy |
+| US East | 40.7128 | -74.0060 | Healthy |
+| EU Central | 48.8566 | 2.3522 | Degraded |
+| Asia Pacific | 35.6762 | 139.6503 | Healthy |
+| South America | -23.5505 | -46.6333 | Healthy |
+</Map>
+<Columns>
+<Stat label="US West" value="98%" note="Health" tone="success" />
+<Stat label="US East" value="97%" note="Health" tone="success" />
+<Stat label="EU Central" value="82%" note="Health" tone="warning" />
+<Stat label="Asia Pacific" value="99%" note="Health" tone="success" />
+<Stat label="South America" value="96%" note="Health" tone="success" />
+</Columns>
+<Button variant="secondary" ask="Focus on EU Central region">Focus on EU Central</Button>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash %">
+| Version | Crash Rate |
+|---|---|
+| 2.4.1 | 0.12% |
+| 2.4.0 | 0.08% |
+| 2.3.9 | 0.45% |
+| 2.3.8 | 1.20% |
+| 2.3.7 | 0.32% |
+</Chart>
+<Callout tone="danger" title="Action needed">Version 2.3.8 crash rate is 15x above baseline — recommend hotfix or forced update.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Columns>
+<Event title="Frostfall Festival" start="2024-12-01T00:00" end="2024-12-14T23:59" where="All regions" tone="success">
+Winter-themed quests, rare drops, double XP weekends.
+</Event>
+<Event title="Midnight Raid" start="2024-12-08T20:00" end="2024-12-08T22:00" where="US West, EU Central" tone="info">
+World boss spawn — limited slots.
+</Event>
+<Event title="Holiday Gacha" start="2024-12-15T00:00" end="2024-12-31T23:59" where="All regions" tone="warning">
+Upcoming — seasonal loot boxes.
+</Event>
+</Columns>
+</Card>
+
+<Card title="Moderation Queue">
+<Columns>
+<Stat label="Player reports" value="342" change="+18%" tone="warning" icon="flag" />
+<Stat label="Ban appeals" value="87" change="-5%" tone="info" icon="shield-check" />
+</Columns>
+<Steps>
+<Step title="Review 15 highest-priority reports" status="current" subtitle="Cheating / exploit reports first" />
+<Step title="Process ban appeals" status="todo" subtitle="87 waiting, 12 auto-approved" />
+</Steps>
+<Button variant="primary" ask="Show me the moderation queue">Open queue</Button>
+</Card>
+
+<Card title="Economy Health — Currency Inflation">
+<Gauge label="Gem inflation index" value={1.08} min={0.8} max={1.5} unit="x" tone="warning" />
+<KeyValue title="Economy metrics">
+| Metric | Value |
+|---|---|
+| Gem supply (30d change) | +8.2% |
+| Gold supply (30d change) | +4.1% |
+| Item price index | 1.03x baseline |
+| Inflation warning threshold | 1.15x |
+</KeyValue>
+<Callout tone="warning" title="Watch">Gem inflation at 1.08x — approaching warning threshold. Consider reducing gem drops.</Callout>
+</Card>
+
+<Card title="A/B Experiments — Results">
+<Tabs>
+<Tab title="Experiment A: Newbie Bundle">
+<KeyValue title="Results">
+| Metric | Control | Variant |
+|---|---|---|
+| Conversion rate | 2.1% | 3.4% |
+| ARPU | $0.14 | $0.22 |
+| 7-day retention | 38% | 41% |
+</KeyValue>
+<Callout tone="success" title="Winner">Variant statistically significant (+62% conversion). Recommend rollout.</Callout>
+<Button variant="primary" ask="Roll out Experiment A to all players">Roll out</Button>
+</Tab>
+<Tab title="Experiment B: Reward Timing">
+<KeyValue title="Results">
+| Metric | Control | Variant |
+|---|---|---|
+| Session length | 28 min | 31 min |
+| Daily logins | 1.8 | 1.9 |
+| IAP revenue | $0.19 | $0.17 |
+</KeyValue>
+<Callout tone="warning" title="Inconclusive">Session length up but revenue down — not significant. Keep running.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Patch Notes Draft">
+<Form name="patch-notes">
+<Input label="Version" placeholder="2.5.0" value="2.5.0" />
+<Input label="Title" placeholder="Frostfall Update" value="Frostfall Update" />
+<TextArea label="Notes" rows="6" placeholder="Write patch notes here..." value="• New Frostfall event quests
+• Balance: Reduced gem drop rate by 10%
+• Fix: Crash on Android when opening inventory
+• Improvement: Faster loading on EU Central servers
+" />
+<Button variant="primary">Save draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Hotfix Deploy">
+<Form name="hotfix">
+<Select label="Affected region" options="All regions | US West | US East | EU Central | Asia Pacific | South America" placeholder="Select region" />
+<Input label="Hotfix description" placeholder="e.g. Fix crash on login" />
+<Switch label="Force update required" hint="Players must download the new build" />
+<Button variant="danger" ask="Ship hotfix to EU Central">Ship hotfix</Button>
+</Form>
+</Card>
+
+<Card title="Focus Mode: Region Filter">
+<Form name="region-focus">
+<Radio label="Focus on" options="All regions | US West | US East | EU Central | Asia Pacific | South America" />
+<Button variant="primary" ask="Focus dashboard on EU Central">Apply focus</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the last 24 hours of revenue by region
+- What caused the crash spike on 2.3.8?
+- Draft a hotfix note for the EU Central issue
+- Compare this week's ARPU to last week
+- Which items are underperforming today?
+</FollowUps>

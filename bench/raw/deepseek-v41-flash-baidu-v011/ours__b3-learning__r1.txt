@@ -1,0 +1,92 @@
+# Training platform — analytics
+
+One screen: the numbers up top, then engagement, courses, at-risk learners, and the two actions (cohort filter, message cohort).
+
+<Card title="This week at a glance" subtitle="All cohorts, week to date">
+<Columns>
+<Stat label="Active learners this week" value="1,842" change="+6.4% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="68%" change="+2.1 pts" tone="success" icon="chart-line" />
+<Stat label="Average quiz score" value="76.4%" change="-1.3 pts" tone="warning" icon="chart-line" />
+<Stat label="Learners at risk" value="127" change="+18" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Engagement — past 8 weeks" subtitle="Active learners and lessons completed per week">
+<Chart type="line" x="Week" y="Learners">
+| Week | Active learners | Lessons completed |
+|---|---|---|
+| W1 | 1490 | 6120 |
+| W2 | 1535 | 6480 |
+| W3 | 1610 | 6905 |
+| W4 | 1580 | 6720 |
+| W5 | 1665 | 7310 |
+| W6 | 1710 | 7580 |
+| W7 | 1780 | 7940 |
+| W8 | 1842 | 8265 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Current enrolments, all cohorts">
+<Chart type="horizontal" x="Course" y="Learners">
+| Course | Enrolled |
+|---|---|
+| Data Fundamentals | 1240 |
+| Python for Analysts | 980 |
+| Workplace Safety | 865 |
+| Customer Service Essentials | 720 |
+| Intro to SQL | 610 |
+| Leadership Basics | 445 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="No activity in 14+ days, or quiz scores below 60%">
+| Learner | Cohort | Last active | Avg quiz | Risk |
+|---|---|---|---|---|
+| Priya Raman | C-2024-A | 21 days ago | 48% | <Badge tone="danger">High</Badge> |
+| Tom Okafor | C-2024-A | 17 days ago | 55% | <Badge tone="danger">High</Badge> |
+| Lena Fischer | C-2024-B | 15 days ago | 58% | <Badge tone="warning">Medium</Badge> |
+| Marco Silva | C-2024-B | 14 days ago | 61% | <Badge tone="warning">Medium</Badge> |
+| Aisha Bello | C-2024-C | 14 days ago | 59% | <Badge tone="warning">Medium</Badge> |
+
+<Progress value="127" max="1842" label="127 of 1,842 active learners flagged" tone="danger" />
+
+<Button ask="Show me the full at-risk learner list with recommended interventions">See all 127 at-risk learners</Button>
+</Card>
+
+<Card title="Narrow to one cohort" subtitle="Filter the whole screen">
+<Form name="cohort-filter">
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | C-2024-A (Data Fundamentals) | C-2024-B (Python for Analysts) | C-2024-C (Workplace Safety) | C-2024-D (Customer Service Essentials)" hint="Pick one to scope every chart and list above" />
+<Date label="Enrolled between" name="enrolled_from" hint="Optional" />
+<Switch label="Only show learners at risk" name="at_risk_only" value="false" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Message a cohort" subtitle="Sends to every active learner in the selected cohort">
+<Form name="cohort-message">
+<Select label="Send to" name="cohort" placeholder="Choose a cohort" options="C-2024-A (Data Fundamentals) | C-2024-B (Python for Analysts) | C-2024-C (Workplace Safety) | C-2024-D (Customer Service Essentials)" required="true" />
+<Select label="Audience" name="audience" options="Everyone in cohort | At-risk learners only | Learners who haven't started" />
+<Input label="Subject" name="subject" placeholder="Reminder: finish Module 4 by Friday" required="true" />
+<TextArea label="Message" name="body" rows="5" placeholder="Hi {{first_name}}, we noticed you haven't logged in this week…" hint="Merge tags: {{first_name}}, {{course}}, {{last_active}}" required="true" />
+<Checkboxes label="Also" name="extras" options="Send a copy to me | Schedule for Monday 9am" />
+<Button>Send message</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Where learners are" subtitle="Cohort hubs by region">
+<Map>
+<MapPin lat="51.5074" lng="-0.1278" label="London — C-2024-A hub" />
+<MapPin lat="6.5244" lng="3.3792" label="Lagos — C-2024-B hub" />
+<MapPin lat="52.52" lng="13.405" label="Berlin — C-2024-C hub" />
+<MapPin lat="-23.5505" lng="-46.6333" label="São Paulo — C-2024-D hub" />
+</Map>
+</Card>
+
+<FollowUps>
+- Which cohort has the worst completion rate, and why?
+- Draft a re-engagement message for the 127 at-risk learners
+- Compare quiz scores between C-2024-A and C-2024-B
+- Show completion rate by course instead of by cohort
+</FollowUps>

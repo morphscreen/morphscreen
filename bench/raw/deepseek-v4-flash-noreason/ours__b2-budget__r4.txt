@@ -1,0 +1,109 @@
+# Personal Budget Check
+
+<Card title="This Month's Overview">
+<Columns>
+<Stat label="Budget" value="$2,500" icon="wallet" />
+<Stat label="Spent" value="$1,863" note="74.5% used" icon="chart-line" tone="info" />
+<Stat label="Remaining" value="$637" note="25.5% left" icon="piggy-bank" tone="success" />
+</Columns>
+
+<Progress value="1863" max="2500" label="Budget used" tone="info" />
+
+<Callout tone="warning" title="Heads up">
+You're 74.5% through your budget with 10 days left in the month. Consider trimming discretionary spending.
+</Callout>
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category split">
+| Category | Amount |
+|---|---|
+| Housing | 850 |
+| Groceries | 320 |
+| Dining out | 240 |
+| Transport | 180 |
+| Utilities | 130 |
+| Entertainment | 90 |
+| Other | 53 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="danger" title="Highlighted expense">
+**Rent — $850** on Nov 1 · Housing category · 45.6% of total spending
+</Callout>
+</Card>
+
+<Card title="Change Month">
+<Tabs>
+<Tab title="November (Current)">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Nov 1 | Housing | Rent | $850 |
+| Nov 3 | Groceries | Weekly groceries | $96 |
+| Nov 5 | Dining out | Team lunch | $42 |
+| Nov 7 | Transport | Gas refill | $48 |
+| Nov 10 | Utilities | Electricity bill | $130 |
+| Nov 12 | Groceries | Weekly groceries | $88 |
+| Nov 14 | Dining out | Dinner with friends | $64 |
+| Nov 16 | Transport | Metro pass | $60 |
+| Nov 18 | Groceries | Weekly groceries | $72 |
+| Nov 20 | Entertainment | Movie tickets | $34 |
+| Nov 22 | Dining out | Brunch | $38 |
+| Nov 24 | Groceries | Weekly groceries | $64 |
+| Nov 26 | Other | Household supplies | $53 |
+| Nov 28 | Entertainment | Concert | $56 |
+| **Total** | | | **$1,863** |
+</Tab>
+<Tab title="October">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Oct 1 | Housing | Rent | $850 |
+| Oct 4 | Groceries | Weekly groceries | $92 |
+| Oct 6 | Utilities | Internet bill | $60 |
+| Oct 8 | Transport | Gas refill | $52 |
+| Oct 10 | Groceries | Weekly groceries | $85 |
+| Oct 12 | Dining out | Date night | $78 |
+| Oct 15 | Utilities | Electricity bill | $125 |
+| Oct 18 | Groceries | Weekly groceries | $90 |
+| Oct 21 | Entertainment | Streaming subs | $25 |
+| Oct 24 | Groceries | Weekly groceries | $70 |
+| Oct 27 | Other | Birthday gift | $45 |
+| Oct 30 | Transport | Metro pass | $60 |
+| **Total** | | | **$1,632** |
+</Tab>
+<Tab title="September">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Sep 1 | Housing | Rent | $850 |
+| Sep 3 | Groceries | Weekly groceries | $88 |
+| Sep 6 | Transport | Car maintenance | $120 |
+| Sep 9 | Groceries | Weekly groceries | $92 |
+| Sep 12 | Dining out | Restaurant | $55 |
+| Sep 15 | Utilities | Electricity bill | $118 |
+| Sep 18 | Groceries | Weekly groceries | $76 |
+| Sep 21 | Entertainment | Concert tickets | $60 |
+| Sep 24 | Groceries | Weekly groceries | $84 |
+| Sep 27 | Dining out | Pizza night | $32 |
+| Sep 29 | Other | Pharmacy | $28 |
+| **Total** | | | **$1,603** |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Weekly groceries" required />
+<Input label="Amount ($)" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Groceries | Dining out | Transport | Utilities | Entertainment | Other" required />
+<Input label="Date" name="date" type="date" required />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me a breakdown of my dining out spending
+- Which category is trending up the most?
+- Suggest ways to stay under budget this month
+</FollowUps>

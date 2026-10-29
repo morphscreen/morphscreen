@@ -1,0 +1,107 @@
+# Logistics Coordinator Board
+
+Last refreshed: **Today, 09:42 UTC** <Badge tone="neutral">Auto-refresh every 5 min</Badge>
+
+<Stat label="On-time percentage" value="94.2%" note="+1.8% vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg cost / shipment" value="$412.80" note="-3.4% vs last month" tone="info" icon="trend-down" />
+
+<Card title="Delayed shipments" subtitle="3 shipments require attention">
+<Callout tone="danger" title="Action needed">
+  Two shipments are over 24h late. Review carrier SLA and contact dispatch.
+</Callout>
+<Columns>
+<Stat label="Delayed" value="3" tone="danger" icon="warning" />
+<Stat label="At risk" value="2" tone="warning" icon="clock" />
+<Stat label="On time" value="47" tone="success" icon="check" />
+</Columns>
+</Card>
+
+<Card title="Shipments in transit">
+<Tabs>
+<Tab title="All (52)">
+<Table>
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SH-1042 | Chicago, IL | Denver, CO | Today 14:30 | On time |
+| SH-1043 | Houston, TX | Atlanta, GA | Today 16:45 | **Delayed 2h** |
+| SH-1044 | Seattle, WA | Portland, OR | Today 18:00 | On time |
+| SH-1045 | Miami, FL | Charlotte, NC | Tomorrow 08:15 | On time |
+| SH-1046 | Newark, NJ | Boston, MA | Tomorrow 09:30 | **Delayed 5h** |
+| SH-1047 | Dallas, TX | Phoenix, AZ | Tomorrow 11:00 | On time |
+| SH-1048 | Los Angeles, CA | Las Vegas, NV | Tomorrow 13:20 | **Delayed 26h** |
+| SH-1049 | Kansas City, MO | St. Louis, MO | Tomorrow 15:00 | On time |
+</Table>
+</Tab>
+<Tab title="Delayed (3)">
+<Table>
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SH-1043 | Houston, TX | Atlanta, GA | Today 16:45 | **Delayed 2h** |
+| SH-1046 | Newark, NJ | Boston, MA | Tomorrow 09:30 | **Delayed 5h** |
+| SH-1048 | Los Angeles, CA | Las Vegas, NV | Tomorrow 13:20 | **Delayed 26h** |
+</Table>
+</Tab>
+</Tabs>
+
+<Form name="flag-shipment">
+<Select label="Shipment ID" options="SH-1042 | SH-1043 | SH-1044 | SH-1045 | SH-1046 | SH-1047 | SH-1048 | SH-1049" placeholder="Select shipment" />
+<Select label="Flag reason" options="Weather delay | Carrier issue | Customs hold | Address problem | Other" placeholder="Choose reason" />
+<TextArea label="Notes" rows="2" placeholder="Add context for the team" />
+<Button variant="secondary" label="Flag shipment">Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Input label="Origin" placeholder="City or ZIP" />
+<Input label="Destination" placeholder="City or ZIP" />
+<Button label="Search routes">Search routes</Button>
+</Form>
+</Card>
+
+<Card title="Volume by carrier">
+<Chart type="pie" title="Shipment share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 18 |
+| UPS | 14 |
+| DHL | 9 |
+| USPS | 7 |
+| Other | 4 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume — past 2 months">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 38 |
+| W2 | 41 |
+| W3 | 35 |
+| W4 | 44 |
+| W5 | 47 |
+| W6 | 42 |
+| W7 | 49 |
+| W8 | 52 |
+</Chart>
+</Card>
+
+<Details title="Volume table view" open="false">
+| Week | Shipments | Change |
+|---|---|---|
+| W1 | 38 | — |
+| W2 | 41 | +7.9% |
+| W3 | 35 | -14.6% |
+| W4 | 44 | +25.7% |
+| W5 | 47 | +6.8% |
+| W6 | 42 | -10.6% |
+| W7 | 49 | +16.7% |
+| W8 | 52 | +6.1% |
+</Details>
+
+<FollowUps>
+- Show me the flagged shipments list
+- Which carriers have the most delays?
+- Compare this month's costs to last month
+- Export the transit board as CSV
+</FollowUps>

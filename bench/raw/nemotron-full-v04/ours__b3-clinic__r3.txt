@@ -1,0 +1,114 @@
+# Clinic Receptionist — Day View
+
+<Card title="Monday, January 20, 2025" subtitle="Reception Dashboard">
+<Columns>
+<Card title="Quick Stats">
+<Stat label="Patients Expected" value="18" change="+2 vs yesterday" tone="info" />
+<Stat label="Checked In" value="5" change="28% complete" tone="success" />
+<Stat label="No-Show Rate (MTD)" value="12%" change="Target: <10%" tone="warning" />
+</Card>
+
+<Card title="Room Status" subtitle="Right now">
+<Badge tone="success">Room 1 — Free</Badge>
+<Badge tone="danger">Room 2 — Occupied (Dr. Chen)</Badge>
+<Badge tone="success">Room 3 — Free</Badge>
+<Badge tone="danger">Room 4 — Occupied (Dr. Patel)</Badge>
+<Badge tone="info">Room 5 — Prep</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Next Patient Called">
+<Callout tone="info" title="Now serving">
+<strong>Maria Santos</strong> — 10:15 AM · Room 2 · Dr. Chen
+<br />
+<small>Checked in at 10:08 AM · Annual physical</small>
+</Callout>
+</Card>
+
+<Card title="Today's Appointments">
+<Tabs>
+<Tab title="All (18)">
+<Table>
+| Time | Patient | Type | Provider | Room | Status | Action |
+|---|---|---|---|---|---|---|
+| 8:00 AM | James Wilson | Follow-up | Dr. Chen | 2 | ✓ Checked in | — |
+| 8:30 AM | Linda Park | New patient | Dr. Patel | 4 | ✓ Checked in | — |
+| 9:00 AM | Robert Kim | Annual physical | Dr. Chen | 2 | ✓ Checked in | — |
+| 9:30 AM | Sarah Chen | Consultation | Dr. Patel | 4 | ✓ Checked in | — |
+| 10:00 AM | David Brown | Follow-up | Dr. Chen | 2 | ✓ Checked in | — |
+| 10:15 AM | Maria Santos | Annual physical | Dr. Chen | 2 | 🟢 In room | — |
+| 10:45 AM | Jennifer Lee | Vaccination | Dr. Patel | 4 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 11:15 AM | Michael Torres | Follow-up | Dr. Chen | 1 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 11:45 AM | Amanda Foster | New patient | Dr. Patel | 3 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 1:00 PM | Kevin Zhang | Annual physical | Dr. Chen | 1 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 1:30 PM | Rachel Green | Consultation | Dr. Patel | 3 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 2:00 PM | Thomas Reed | Follow-up | Dr. Chen | 2 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 2:30 PM | Nicole Adams | New patient | Dr. Patel | 4 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 3:00 PM | Steven Hall | Annual physical | Dr. Chen | 1 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 3:30 PM | Patricia Young | Vaccination | Dr. Patel | 3 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 4:00 PM | Daniel King | Follow-up | Dr. Chen | 2 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 4:30 PM | Lisa Wright | Consultation | Dr. Patel | 4 | ⏳ Waiting | <Button size="small">Check in</Button> |
+| 5:00 PM | Christopher Scott | New patient | Dr. Chen | 1 | ⏳ Waiting | <Button size="small">Check in</Button> |
+</Table>
+</Tab>
+<Tab title="Waiting (13)">
+<Table>
+| Time | Patient | Type | Provider | Room | Action |
+|---|---|---|---|---|---|
+| 10:45 AM | Jennifer Lee | Vaccination | Dr. Patel | 4 | <Button size="small">Check in</Button> |
+| 11:15 AM | Michael Torres | Follow-up | Dr. Chen | 1 | <Button size="small">Check in</Button> |
+| 11:45 AM | Amanda Foster | New patient | Dr. Patel | 3 | <Button size="small">Check in</Button> |
+| 1:00 PM | Kevin Zhang | Annual physical | Dr. Chen | 1 | <Button size="small">Check in</Button> |
+| 1:30 PM | Rachel Green | Consultation | Dr. Patel | 3 | <Button size="small">Check in</Button> |
+| 2:00 PM | Thomas Reed | Follow-up | Dr. Chen | 2 | <Button size="small">Check in</Button> |
+| 2:30 PM | Nicole Adams | New patient | Dr. Patel | 4 | <Button size="small">Check in</Button> |
+| 3:00 PM | Steven Hall | Annual physical | Dr. Chen | 1 | <Button size="small">Check in</Button> |
+| 3:30 PM | Patricia Young | Vaccination | Dr. Patel | 3 | <Button size="small">Check in</Button> |
+| 4:00 PM | Daniel King | Follow-up | Dr. Chen | 2 | <Button size="small">Check in</Button> |
+| 4:30 PM | Lisa Wright | Consultation | Dr. Patel | 4 | <Button size="small">Check in</Button> |
+| 5:00 PM | Christopher Scott | New patient | Dr. Chen | 1 | <Button size="small">Check in</Button> |
+</Table>
+</Tab>
+<Tab title="Completed (5)">
+<Table>
+| Time | Patient | Type | Provider | Room | Status |
+|---|---|---|---|---|---|
+| 8:00 AM | James Wilson | Follow-up | Dr. Chen | 2 | ✓ Done |
+| 8:30 AM | Linda Park | New patient | Dr. Patel | 4 | ✓ Done |
+| 9:00 AM | Robert Kim | Annual physical | Dr. Chen | 2 | ✓ Done |
+| 9:30 AM | Sarah Chen | Consultation | Dr. Patel | 4 | ✓ Done |
+| 10:00 AM | David Brown | Follow-up | Dr. Chen | 2 | ✓ Done |
+</Table>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Check In Patient" subtitle="Walk-in or manual check-in">
+<Form name="checkin-form">
+<Columns>
+<Input label="Patient name" placeholder="Search or type name" name="patient" required="true" />
+<Select label="Appointment type" name="type" options="Follow-up | New patient | Annual physical | Consultation | Vaccination | Other" placeholder="Select type" required="true" />
+</Columns>
+<Columns>
+<Select label="Provider" name="provider" options="Dr. Chen | Dr. Patel | Dr. Kim | Dr. Rodriguez" placeholder="Select provider" required="true" />
+<Select label="Room" name="room" options="Room 1 | Room 2 | Room 3 | Room 4 | Room 5" placeholder="Assign room" required="true" />
+</Columns>
+<TextArea label="Notes" placeholder="Reason for visit, special instructions..." name="notes" rows="3" />
+<Button>Check in patient</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="date-nav">
+<Columns>
+<Date label="Select date" name="targetDate" value="2025-01-20" required="true" />
+<Radio label="Quick jump" name="quickJump" options="Today | Tomorrow | This week | Next week" value="Today" />
+</Columns>
+<Button>Go to date</Button>
+<Button variant="secondary" href="#">Today</Button>
+<Button variant="tertiary" href="#">← Previous day</Button>
+<Button variant="tertiary" href="#">Next day →</Button>
+</Form>
+</Card>

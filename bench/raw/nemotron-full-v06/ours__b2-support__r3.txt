@@ -1,0 +1,45 @@
+# Support Lead Morning View
+
+<Card title="Queue Overview" subtitle="Live as of 08:42 AM">
+<Columns>
+<Stat label="Open Tickets" value="47" change="+3 vs yesterday" tone="warning" />
+<Stat label="Avg First Response" value="1h 24m" change="-12m vs target" tone="success" />
+<Stat label="High Priority" value="8" change="+2" tone="danger" />
+<Stat label="Unassigned" value="12" change="0" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Filters">
+<Columns>
+<Switch label="High priority only" name="high-priority-filter" value="false" hint="Show only P1 and P2 tickets" />
+<Select label="Assignee" placeholder="All agents" options="All agents | Me | Unassigned | Sarah Chen | Marcus Webb | Priya Patel" />
+<Select label="Channel" placeholder="All channels" options="All channels | Email | Chat | Phone | Portal | Social" />
+</Columns>
+</Card>
+
+<Card title="Recent Tickets (Last 5)">
+| # | Ticket ID | Subject | Priority | Channel | Status | Created | Assignee |
+|---|---|---|---|---|---|---|---|
+| 1 | **#TK-4892** | API rate limit errors on v3 endpoints | <Badge tone="danger">P1 Critical</Badge> | Email | <Badge tone="warning">Open</Badge> | 08:31 AM | Unassigned |
+| 2 | **#TK-4891** | SSO login failing for Acme Corp users | <Badge tone="danger">P1 Critical</Badge> | Chat | <Badge tone="info">In Progress</Badge> | 08:15 AM | Sarah Chen |
+| 3 | **#TK-4890** | Billing portal shows incorrect usage | <Badge tone="warning">P2 High</Badge> | Portal | <Badge tone="warning">Open</Badge> | 07:58 AM | Unassigned |
+| 4 | **#TK-4889** | Mobile app crash on iOS 17.4 | <Badge tone="warning">P2 High</Badge> | Email | <Badge tone="info">In Progress</Badge> | 07:42 AM | Marcus Webb |
+| 5 | **#TK-4888** | Feature request: dark mode for admin panel | <Badge tone="info">P3 Medium</Badge> | Portal | <Badge tone="warning">Open</Badge> | 07:10 AM | Priya Patel |
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button size="large" variant="primary">+ Open New Ticket</Button>
+<Button size="large" variant="secondary" href="#">View All Open</Button>
+<Button size="large" variant="tertiary" href="#">SLA Dashboard</Button>
+</Columns>
+</Card>
+
+<Details title="Priority Definitions">
+| Priority | Label | SLA First Response | SLA Resolution |
+|---|---|---|---|
+| P1 | Critical | 15 minutes | 4 hours |
+| P2 | High | 1 hour | 8 hours |
+| P3 | Medium | 4 hours | 24 hours |
+| P4 | Low | 8 hours | 72 hours |
+</Details>

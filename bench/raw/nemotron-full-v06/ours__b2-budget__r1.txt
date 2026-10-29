@@ -1,0 +1,55 @@
+# Personal Budget Check
+
+<Card title="Month Selector" subtitle="Choose a month to review">
+<Select label="Select Month" name="month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025" value="June 2025" />
+</Card>
+
+<Columns>
+<Card title="Budget Overview">
+<Stat label="Total Budget" value="$3,000" />
+<Stat label="Total Spent" value="$2,340" change="$660 remaining" tone="success" />
+<Stat label="Spent" value="78%" change="of budget used" tone="info" />
+<Progress value="2340" max="3000" label="Budget Progress" tone="success" />
+</Card>
+
+<Card title="Largest Expense This Month" subtitle="Single biggest transaction">
+<Callout tone="warning" title="Rent Payment - $1,200">
+**Category:** Housing  
+**Date:** June 1, 2025  
+**Payment Method:** Bank Transfer  
+**Notes:** Monthly rent for apartment
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 450 |
+| Transportation | 280 |
+| Utilities | 180 |
+| Entertainment | 120 |
+| Shopping | 80 |
+| Health & Fitness | 30 |
+</Chart>
+</Card>
+
+<Card title="Add New Expense" subtitle="Record a transaction for June 2025">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" hint="Enter expense amount" />
+<Select label="Category" name="category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Health & Fitness | Other" placeholder="Select category" required="true" />
+</Columns>
+<Columns>
+<Date label="Date" name="date" value="2025-06-15" required="true" />
+<Input label="Merchant / Description" name="merchant" placeholder="e.g., Whole Foods, Uber, Netflix" required="true" />
+</Columns>
+<TextArea label="Notes (optional)" name="notes" placeholder="Any additional details..." rows="2" />
+<Columns>
+<Button variant="primary">Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>

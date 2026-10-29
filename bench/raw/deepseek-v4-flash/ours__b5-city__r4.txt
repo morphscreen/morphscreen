@@ -1,0 +1,144 @@
+# City Operations Center
+
+Monday 11 Nov 2025 · 09:42 local time
+<Badge tone="success">All systems live</Badge>
+<Badge tone="info">Updated 2 min ago</Badge>
+
+<Card title="District focus">
+<Select label="Focus district" options="All districts | Central | North | South | East | West" name="district" value="All districts" hint="Every panel below filters to this district. Dispatch crews and public alerts are sent there." />
+</Card>
+
+<Card title="At a glance">
+<Columns>
+<Stat label="Congestion now" value="42%" note="Moderate · delays on 5th Ave" tone="warning" icon="car" />
+<Stat label="Transit punctuality" value="93.8%" note="2,341 of 2,496 runs on time" tone="success" icon="bus" />
+<Stat label="Water use today" value="84 ML" note="vs 91 ML daily average" tone="success" icon="drop" />
+<Stat label="Parking — downtown" value="1,204" note="free of 3,850 spots" tone="info" icon="map-pin" />
+<Stat label="Service backlog" value="318" note="open requests · down 12 today" tone="warning" icon="clipboard" />
+<Stat label="Weather now" value="18°C" note="Partly cloudy · humidity 61%" tone="info" icon="cloud-sun" />
+</Columns>
+
+<Details title="Service request backlog by category">
+| Category | Open |
+|---|---|
+| Roads & sidewalks | 96 |
+| Streetlights | 74 |
+| Water & drainage | 58 |
+| Parks & trees | 45 |
+| Other | 45 |
+</Details>
+</Card>
+
+<Callout tone="danger" title="High-severity incident — Central">Collision at 5th & Main with minor injuries. Ambulance A‑12 and Police P‑4 en route. Expect lane closures on 5th Ave until about 10:15.</Callout>
+
+<Columns>
+<Card title="Air quality by district" subtitle="AQI now · lower is better">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Central | 52 |
+| North | 41 |
+| South | 38 |
+| East | 63 |
+| West | 47 |
+</Chart>
+</Card>
+
+<Card title="Energy use — past week" subtitle="Grid consumption in MWh">
+<Chart type="area" x="Day" y="MWh">
+| Day | MWh |
+|---|---|
+| Mon | 3420 |
+| Tue | 3580 |
+| Wed | 3650 |
+| Thu | 3490 |
+| Fri | 3810 |
+| Sat | 3120 |
+| Sun | 2980 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open incidents" subtitle="6 open · sorted by severity">
+| Location | Type | Severity | Status |
+|---|---|---|---|
+| 5th & Main, Central | Traffic collision | <Badge tone="danger">High</Badge> | Crew en route |
+| East Ave block 12, East | Water main leak | <Badge tone="warning">Medium</Badge> | Crew assigned |
+| Central plaza, Central | Fallen tree | <Badge tone="warning">Medium</Badge> | Awaiting crew |
+| Northgate Rd, North | Streetlight outage | <Badge tone="success">Low</Badge> | Scheduled today |
+| Riverside, South | Illegal dumping | <Badge tone="success">Low</Badge> | Scheduled |
+</Card>
+
+<Card title="Emergency vehicles deployed" subtitle="12 active units">
+| Unit | District | Status |
+|---|---|---|
+| Ambulance A‑12 | Central | En route to 5th & Main |
+| Police P‑4 | Central | Traffic control at 5th & Main |
+| Fire Engine F‑3 | East | Staged at East Ave leak |
+| Rescue R‑2 | West | Supporting East Ave |
+| HAZMAT H‑1 | North | Patrolling |
+| Ambulance A‑7 | South | Available |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public events — this weekend" subtitle="Sat 9 & Sun 10 Nov">
+| Event | District | When |
+|---|---|---|
+| City Market | Central | Sat 08:00–14:00 |
+| Riverside Marathon | North, East | Sun 07:00–12:00 |
+| Open‑air concert | Central plaza | Sat 18:00–22:00 |
+| Tech fair | West | Sun 10:00–17:00 |
+| Community clean‑up | South | Sat 09:00–11:00 |
+</Card>
+
+<Card title="Citizen reports — live" subtitle="Streaming from the citizen app">
+- **2 min ago** — Pothole on Oak St, Central
+- **5 min ago** — Broken traffic light at 4th & Elm, East
+- **9 min ago** — Noise complaint, Northgate, North
+- **14 min ago** — Illegal dumping, Riverside, South
+- **22 min ago** — Low water pressure, West End
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks — this month" subtitle="Planned closures and restrictions">
+| Works | District | Period |
+|---|---|---|
+| Oak St resurfacing | Central | 8–20 Nov |
+| Sewer upgrade, East Ave | East | 12–30 Nov |
+| Bridge inspection, North Ring | North | 15–18 Nov |
+| Tram track works, South Blvd | South | 10–24 Nov |
+| Street lighting, West Gate | West | 20–28 Nov |
+</Card>
+
+<Card title="Infrastructure maintenance due" subtitle="Scheduled jobs">
+| Job | District | Due |
+|---|---|---|
+| Transformer inspection | Central | 14 Nov |
+| Water pump overhaul | East | 17 Nov |
+| Signal cabinet cleanup | North | 21 Nov |
+| Solar panel check | West | 22 Nov |
+| Bridge expansion joint | South | 30 Nov |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a crew" subtitle="Crew is assigned to the district selected above">
+<Form name="dispatch">
+<Select label="Crew type" options="Roadworks | Water & sewer | Electrical | Parks & trees | Police support" name="crew-type" placeholder="Choose crew type" />
+<Select label="Priority" options="Routine | Urgent | Emergency" name="priority" placeholder="Choose priority" />
+<TextArea label="Instructions" name="instructions" placeholder="Reference an incident ID or describe the task" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send public alert" subtitle="Delivered by app, SMS and road signs">
+<Form name="alert">
+<Select label="Severity" options="Info | Advisory | Warning | Emergency" name="severity" placeholder="Choose level" />
+<TextArea label="Message" name="message" placeholder="e.g. Flooding on East Ave — avoid the area until further notice." hint="Sent to the selected district only." />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+</Columns>

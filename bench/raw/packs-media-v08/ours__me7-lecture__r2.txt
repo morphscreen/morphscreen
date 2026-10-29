@@ -1,0 +1,82 @@
+# Lecture: Introduction to Machine Learning
+
+## Lecture Recording
+
+<Card title="Week 3: Supervised Learning Fundamentals" subtitle="Recorded on March 15, 2024 • 1h 24m">
+<Video 
+  src="https://example.com/lectures/ml-week3.mp4" 
+  poster="https://example.com/lectures/ml-week3-poster.jpg"
+  title="Supervised Learning Fundamentals"
+  caption="Lecture covers linear regression, logistic regression, and model evaluation metrics"
+/>
+</Card>
+
+## Slides' Main Points
+
+<Card title="Key Concepts Covered" icon="chart-line">
+<Details title="1. Problem Setup & Notation" open="true">
+- Supervised learning: learning a function f: X → Y from labeled examples
+- Training set: {(x⁽¹⁾, y⁽¹⁾), ..., (x⁽ᵐ⁾, y⁽ᵐ⁾)} where x ∈ ℝⁿ, y ∈ ℝ (regression) or y ∈ {0,1} (classification)
+- Hypothesis space ℋ: set of candidate functions we consider
+</Details>
+
+<Details title="2. Linear Regression">
+- Hypothesis: h_θ(x) = θ₀ + θ₁x₁ + ... + θₙxₙ = θᵀx
+- Cost function: J(θ) = ½m Σ(h_θ(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
+- Gradient descent update: θ_j := θ_j - α ∂/∂θ_j J(θ)
+- Normal equation: θ = (XᵀX)⁻¹Xᵀy (closed-form solution)
+</Details>
+
+<Details title="3. Logistic Regression">
+- Hypothesis: h_θ(x) = g(θᵀx) where g(z) = 1/(1+e⁻ᶻ) (sigmoid)
+- Decision boundary: θᵀx = 0
+- Cost function: J(θ) = -1/m Σ[y⁽ⁱ⁾log(h_θ(x⁽ⁱ⁾)) + (1-y⁽ⁱ⁾)log(1-h_θ(x⁽ⁱ⁾))]
+- Regularization: add λ/2m Σθⱼ² to prevent overfitting
+</Details>
+
+<Details title="4. Model Evaluation">
+- Train/validation/test split (e.g., 70/15/15)
+- Regression metrics: MSE, RMSE, MAE, R²
+- Classification metrics: accuracy, precision, recall, F1, AUC-ROC
+- Cross-validation: k-fold CV for robust estimates
+- Bias-variance tradeoff: underfitting vs. overfitting
+</Details>
+
+<Details title="5. Practical Considerations">
+- Feature scaling: standardization vs. normalization
+- Feature engineering: polynomial features, interaction terms
+- Handling missing data: imputation strategies
+- Regularization: L1 (Lasso) vs L2 (Ridge) vs Elastic Net
+</Details>
+</Card>
+
+## Reading List
+
+<Card title="Required & Recommended Reading" icon="book-open">
+### Required
+| # | Title | Author | Type | Link |
+|---|-------|--------|------|------|
+| 1 | **An Introduction to Statistical Learning**, Ch. 3–4 | James, Witten, Hastie, Tibshirani | Textbook | [PDF](https://www.statlearning.com/) |
+| 2 | **Pattern Recognition and Machine Learning**, Sec. 3.1–3.3 | Christopher Bishop | Textbook | [Library Reserve](https://library.example.edu/reserve/ml-bishop) |
+| 3 | "A Few Useful Things to Know About Machine Learning" | Pedro Domingos | Paper (CACM 2012) | [DOI:10.1145/2347736.2347755](https://doi.org/10.1145/2347736.2347755) |
+
+### Recommended
+| # | Title | Author | Type | Notes |
+|---|-------|--------|------|-------|
+| 4 | **Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow**, Ch. 2–3 | Aurélien Géron | Textbook | Practical Python implementations |
+| 5 | "Understanding Machine Learning: From Theory to Algorithms" | Shalev-Shwartz & Ben-David | Textbook | More theoretical depth |
+| 6 | CS229 Lecture Notes: Supervised Learning | Andrew Ng | Course Notes | [Stanford CS229](https://cs229.stanford.edu/notes2023/cs229-notes1.pdf) |
+| 7 | "Regularization Paths for Generalized Linear Models via Coordinate Descent" | Friedman, Hastie, Tibshirani | Paper (JSS 2010) | glmnet implementation details |
+
+### Supplementary Resources
+- **Video**: [StatQuest: Linear Regression](https://youtu.be/PaFPbb66DxQ) — 15 min visual explanation
+- **Interactive**: [ML Playground: Bias-Variance Tradeoff](https://ml-playground.example.edu/bias-variance) — Adjust model complexity
+- **Code**: [Lecture 3 Notebook](https://github.com/course/ml-lectures/blob/main/week03-supervised-learning.ipynb) — Runnable examples from class
+</Card>
+
+<FollowUps>
+- What's the difference between L1 and L2 regularization in practice?
+- How do I choose the right evaluation metric for my classification problem?
+- Can you walk through the gradient descent derivation for logistic regression?
+- What are common feature engineering techniques for tabular data?
+</FollowUps>

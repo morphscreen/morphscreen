@@ -1,0 +1,95 @@
+<Card title="Morning Dashboard">
+<Stat label="Portfolio Value" value="$1.2M" change=" +$120k" tone="success"/>
+<Stat label="P&L Today" value="$45k" change=" +$45k" tone="success"/>
+</Card>
+
+<Card title="Positions">
+| Ticker | Size | Entry | Current |
+|---|---|---|---|
+| AAPL | 100 | 150.00 | 155.20 |
+| MSFT | 50 | 300.00 | 310.45 |
+| TSLA | 20 | 600.00 | 620.10 |
+</Card>
+
+<Card title="Exposure by Sector">
+<Chart type="pie" title="Exposure by Sector" x="Sector" y="Value">
+| Sector | Value |
+|---|---|
+| Tech | 45% |
+| Energy | 20% |
+| Health | 15% |
+| Finance | 10% |
+| Other | 10% |
+</Chart>
+</Card>
+
+<Card title="Value at Risk">
+<Stat label="Value at Risk" value="$25k" tone="warning"/>
+</Card>
+
+<Card title="Margin & Risk Limits">
+<Stat label="Margin Used" value="75%" tone="info"/>
+<Callout tone="warning" title="Risk Limits">Margin usage near breach; consider reducing exposure.</Callout>
+</Card>
+
+<Card title="Biggest Gainers / Losers">
+<Stat label="Biggest Gainer" value="+4.5%" change=" +4.5%" tone="success"/>
+<Stat label="Biggest Loser" value="-3.2%" change=" -3.2%" tone="danger"/>
+</Card>
+
+<Card title="Watched Instruments">
+AAPL - $155.20
+MSFT - $310.45
+TSLA - $620.10
+</Card>
+
+<Card title="Working Orders">
+<Steps>
+<Step title! status="current">AAPL Buy 50</Step>
+<Step title! status="done">MSFT Sell 30</Step>
+<Step title! status="todo">TSLA Buy 10</Step>
+</Steps>
+</Card>
+
+<Card title="Market Headlines">
+📈 Tech: Quarterly earnings beat forecasts (Positive)
+📉 Energy: Oil prices slip amid demand worries (Negative)
+📊 Finance: Fed signals rate hold (Neutral)
+</Card>
+
+<FollowUps>
+- Monday: CPI data
+- Wednesday: Non-farm payrolls
+- Friday: Consumer confidence
+</FollowUps>
+
+<Card title="Strategy Returns YTD">
+<Chart type="bar" title="Strategy Returns YTD" x="Strategy" y="Return">
+| Strategy | Return |
+|---|---|
+| Momentum | 12% |
+| Value | 8% |
+| Arbitrage | 5% |
+| Scalping | 3% |
+</Chart>
+</Card>
+
+<Card title="Drawdown Past Year">
+<Chart type="area" title="Drawdown Past Year" x="Metric" y="Value">
+| Metric | Value |
+|---|---|
+| Max Drawdown | 15% |
+| Avg Drawdown | 8% |
+</Chart>
+</Card>
+
+<Button variant="primary" href="#">Rebalance Portfolio</Button>
+
+<Form name="order-form">
+<Input label="Ticker" name="ticker" placeholder="Enter ticker" required=true />
+<Select label="Side" options="Buy | Sell" name="side" required=true />
+<Input label="Quantity" name="qty" type="number" placeholder="Shares" required=true />
+<Button variant="primary" href="#" ask>Place Order</Button>
+</Form>
+
+<Slider label="Timeframe" min=1! max=24! step=1! value=1! name="timeframe" />

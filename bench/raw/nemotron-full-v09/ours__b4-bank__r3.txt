@@ -1,0 +1,148 @@
+# Personal Banking
+
+## Account Overview
+
+<Columns>
+<Card title="Checking" subtitle="Available balance">
+<Stat label="Current" value="$4,231.58" change="+$245.12 this month" tone="success" icon="wallet" />
+</Card>
+<Card title="Savings" subtitle="Emergency fund">
+<Stat label="Current" value="$18,450.00" change="+$500.00 this month" tone="info" icon="piggy-bank" />
+</Card>
+<Card title="Credit Card" subtitle="Visa ending in 4281">
+<Stat label="Balance" value="$1,247.32" change="$3,752.68 available" tone="warning" icon="credit-card" />
+</Card>
+</Columns>
+
+## Quick Actions
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Columns>
+<Select label="From account" name="fromAccount" options="Checking | Savings | Credit Card" placeholder="Select account" required="true" />
+<Select label="To account" name="toAccount" options="Checking | Savings | Credit Card" placeholder="Select account" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" hint="Available: $4,231.58 (Checking)" />
+<Button>Transfer</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Switch label="Freeze credit line" name="freezeCredit" value="false" hint="Prevents new charges on your credit card" />
+<Callout tone="info" title="Credit freeze active">New transactions will be declined. Recurring payments and returns still process.</Callout>
+</Card>
+
+## Credit Score
+
+<Card title="Credit Score" subtitle="Updated weekly from TransUnion">
+<Stat label="Current Score" value="742" change="+12 points since last month" tone="success" icon="chart-line" />
+<Progress value="742" max="850" label="Score range: 300–850 (Good)" tone="success" />
+<Details title="Score factors" open="false">
+<Columns>
+<Card title="Positive factors">
+- On-time payments: 100%
+- Credit utilization: 25%
+- Account age: 4.2 years
+</Card>
+<Card title="Areas to improve">
+- Credit mix: Only 2 types
+- Recent inquiries: 2 in 12 months
+</Card>
+</Columns>
+</Details>
+</Card>
+
+## Recent Transactions
+
+<Card title="Recent Transactions" subtitle="Last 10 transactions across all accounts">
+| Date | Merchant | Account | Category | Amount |
+|---|---|---|---|---|
+| Dec 14 | Whole Foods Market | Checking | Groceries | -$87.43 |
+| Dec 13 | Salary Deposit | Checking | Income | +$3,250.00 |
+| Dec 12 | Shell Gas Station | Credit Card | Transportation | -$45.00 |
+| Dec 11 | Netflix | Credit Card | Subscriptions | -$15.99 |
+| Dec 10 | Amazon | Credit Card | Shopping | -$124.99 |
+| Dec 9 | Rent Payment | Checking | Housing | -$1,850.00 |
+| Dec 8 | Starbucks | Checking | Dining | -$12.75 |
+| Dec 7 | Electric Bill | Checking | Utilities | -$89.42 |
+| Dec 6 | Transfer to Savings | Checking | Transfer | -$500.00 |
+| Dec 5 | Uber | Credit Card | Transportation | -$23.50 |
+</Card>
+
+## Spending This Month
+
+<Card title="Spending by Category" subtitle="December 2024 • Checking + Credit Card">
+<Chart type="donut" title="December Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1850.00 |
+| Groceries | 412.35 |
+| Transportation | 187.50 |
+| Dining | 234.80 |
+| Utilities | 267.83 |
+| Subscriptions | 47.97 |
+| Shopping | 312.45 |
+| Other | 89.22 |
+</Chart>
+<Callout tone="neutral" title="Total spent: $3,402.12" />
+</Card>
+
+## Vacation Savings Goal
+
+<Card title="Vacation Fund" subtitle="Japan trip — Target: April 2025">
+<Progress value="18450" max="25000" label="$18,450 of $25,000 saved (73.8%)" tone="info" />
+<Columns>
+<Stat label="Monthly contribution" value="$500" tone="neutral" icon="calendar" />
+<Stat label="Projected completion" value="March 2025" tone="success" icon="flag" />
+<Stat label="Remaining" value="$6,550" tone="warning" icon="wallet" />
+</Columns>
+</Card>
+
+## Bills Due Soon
+
+<Card title="Upcoming Bills" subtitle="Next 14 days">
+| Due Date | Payee | Amount | Account | Status |
+|---|---|---|---|---|
+| Dec 16 | Internet (Comcast) | $89.99 | Checking | Pending |
+| Dec 18 | Car Insurance | $165.00 | Checking | Scheduled |
+| Dec 20 | Credit Card Payment | $1,247.32 | Checking | Due |
+| Dec 22 | Phone Bill | $65.00 | Credit Card | Pending |
+| Dec 25 | Gym Membership | $49.99 | Credit Card | Scheduled |
+| Jan 1 | Rent | $1,850.00 | Checking | Upcoming |
+</Card>
+
+## Statement Period
+
+<Card title="Statement Settings">
+<Select label="Statement period" name="statementPeriod" options="Monthly (1st–Last day) | Monthly (15th–14th) | Bi-weekly | Custom dates" placeholder="Select period" value="Monthly (1st–Last day)" hint="Changes apply to future statements" />
+<Button variant="secondary">Download current statement</Button>
+</Card>
+
+## Alert Preferences
+
+<Card title="Alert Triggers" subtitle="Choose what sends you notifications">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions" hint="Push + email" />
+<Checkboxes label="Account alerts" name="acctAlerts" options="Low balance (<$100) | Large deposit (>$500) | Bill payment due | Bill payment posted | Credit limit near max" value="Low balance (<$100) | Bill payment due" hint="Push + email" />
+<Checkboxes label="Security alerts" name="secAlerts" options="New device login | Password change | Profile update | New payee added | Credit freeze toggle" value="New device login | Password change | New payee added" hint="Push + email + SMS" />
+</Card>
+
+## Dispute a Transaction
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select transaction" name="disputeTx" options="Whole Foods Market - $87.43 (Dec 14) | Shell Gas Station - $45.00 (Dec 12) | Netflix - $15.99 (Dec 11) | Amazon - $124.99 (Dec 10) | Starbucks - $12.75 (Dec 8) | Uber - $23.50 (Dec 5)" placeholder="Choose a transaction" required="true" />
+<Select label="Dispute reason" name="disputeReason" options="Unauthorized charge | Incorrect amount | Duplicate charge | Goods not received | Service not as described | Canceled subscription" placeholder="Select reason" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Describe what happened, include any merchant communication..." rows="4" hint="Optional but helpful for investigation" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+<Callout tone="info" title="What happens next">We'll investigate within 10 business days. You may see a provisional credit within 1-2 days for unauthorized charges.</Callout>
+</Card>
+
+<FollowUps>
+- Set up automatic savings transfer
+- View annual spending report
+- Order new debit card
+- Update beneficiary information
+</FollowUps>

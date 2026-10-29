@@ -1,0 +1,78 @@
+# Service Health Dashboard
+
+<Badge tone="success">All systems operational</Badge> · <Badge tone="neutral">Last updated 30s ago</Badge>
+
+## Current Status
+
+<Columns>
+<Stat label="Uptime (this quarter)" value="99.97%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error rate (now)" value="0.08%" tone="success" icon="warning-circle" />
+<Stat label="Active incidents" value="2" tone="warning" icon="bell" />
+</Columns>
+
+<Card title="CPU & Memory Usage — Past 24 Hours">
+<Chart type="area" x="Time (UTC)" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 55 |
+| 04:00 | 38 | 52 |
+| 08:00 | 67 | 68 |
+| 12:00 | 78 | 74 |
+| 16:00 | 72 | 71 |
+| 20:00 | 58 | 63 |
+| Now | 45 | 57 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+| Incident | Severity | Region | Status |
+|---|---|---|---|
+| Payment API latency spike | <Badge tone="danger">Critical</Badge> | us-east-1 | Unacknowledged |
+| Search index stale | <Badge tone="warning">High</Badge> | eu-west-2 | Acknowledged |
+
+<Columns>
+<Button variant="danger" ask="Acknowledge the Payment API latency spike incident">Acknowledge Critical Incident</Button>
+<Button variant="secondary" ask="Acknowledge the Search index stale incident">Acknowledge High Incident</Button>
+</Columns>
+</Card>
+
+<Card title="Filter by Region">
+<Radio label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-2 | ap-southeast-1" name="region-filter" value="All regions" />
+<Button ask="Show service health for us-east-1 only">Apply Filter</Button>
+</Card>
+
+<Card title="Slowest Endpoints (P95 Latency)">
+| Endpoint | Latency | Region |
+|---|---|---|
+| POST /api/payments/charge | 2,340 ms | us-east-1 |
+| GET /api/search/query | 1,890 ms | eu-west-2 |
+| POST /api/orders/create | 1,120 ms | us-east-1 |
+| GET /api/users/history | 980 ms | ap-southeast-1 |
+| PUT /api/inventory/sync | 870 ms | us-west-2 |
+
+<Callout tone="warning" title="Threshold alert">POST /api/payments/charge exceeds 2,000 ms P95 threshold.</Callout>
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold (%)" min="0.1" max="5" step="0.1" value="1" name="error-threshold" unit="%" />
+<Slider label="P95 latency threshold (ms)" min="500" max="5000" step="100" value="2000" name="latency-threshold" unit="ms" />
+<Slider label="CPU usage threshold (%)" min="50" max="95" step="5" value="85" name="cpu-threshold" unit="%" />
+<Button variant="primary">Save Thresholds</Button>
+</Form>
+</Card>
+
+<Card title="Acknowledge an Incident">
+<Form name="acknowledge-incident">
+<Select label="Select incident" options="CRIT-3421: Payment API latency spike | HIGH-2109: Search index stale" name="incident-id" placeholder="Choose an incident" />
+<Input label="Your on-call handle" placeholder="@jdoe" name="responder" />
+<Button variant="primary" ask="Acknowledge the selected incident">Acknowledge Incident</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the timeline for the Payment API incident
+- What changed in the last hour for error rate?
+- Escalate the critical incident to the team lead
+- Compare this week's uptime to last week
+</FollowUps>

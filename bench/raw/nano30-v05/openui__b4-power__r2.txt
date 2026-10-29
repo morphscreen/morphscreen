@@ -1,0 +1,27 @@
+root = Card([header, loadSection, generationChart, plantList, outageList, forecastChart, priceCallout, maintenanceCallout, alertsList, focusBtn, curtailBtn, emissionsBadge])
+
+header = CardHeader("Power Network Console", "Live overview")
+loadText = TextContent("Current load: 850 MW", "large")
+capacityCallout = Callout("info", "Network capacity: 1000 MW (85% used)", "Network load is 85% of capacity")
+loadSection = Card([loadText, capacityCallout], "card")
+genLabels = ["Coal", "Gas", "Nuclear", "Renewables"]
+genValues = [150, 300, 200, 150]
+generationChart = PieChart(genLabels, genValues, "pie", "circular")
+plantAItem = ListItem("Plant A", "200 MW", null, "Online")
+plantBItem = ListItem("Plant B", "350 MW", null, "Online")
+plantCItem = ListItem("Plant C", "150 MW", null, "Online")
+plantList = ListBlock([plantAItem, plantBItem, plantCItem], "number")
+outageItem1 = ListItem("Region North", "200 MW outage (planned)", null, "Planned")
+outageItem2 = ListItem("Region South", "100 MW outage (unplanned)", null, "Unplanned")
+outageList = ListBlock([outageItem1, outageItem2], "number")
+forecastHours = ["0h", "6h", "12h", "18h", "24h"]
+forecastSeries = Series("Demand", [800, 820, 850, 880, 900])
+forecastChart = LineChart(forecastHours, [forecastSeries], "natural", "Hour", "MW")
+priceCallout = Callout("info", "Current price: $50/MWh", "Price per megawatt hour")
+maintenanceCallout = TextCallout("neutral", "Planned maintenance: Plant A (2 hrs)", "Maintenance scheduled this month")
+alert1Item = ListItem("High load", "Load reached 90% of capacity", null, "Warning")
+alert2Item = ListItem("Low price", "Price dropped to $45/MWh", null, "Info")
+alertsList = ListBlock([alert1Item, alert2Item], "number")
+focusBtn = Button("Focus on Region", null, "primary", "normal", "medium")
+curtailBtn = Button("Order Curtailment", null, "secondary", "normal", "small")
+emissionsBadge = Badge("CO2: 120 t", "secondary")

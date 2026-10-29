@@ -1,0 +1,180 @@
+# Hospital Operations — Command View
+
+<Callout tone="warning" title="2 critical alerts active">ICU-04 and ER-11 flagged critical in the last hour. See Critical patients below.</Callout>
+
+<Columns>
+<Stat label="Bed occupancy" value="82%" change="+3% vs yesterday" tone="warning" icon="bed" />
+<Stat label="ER wait (median)" value="48 min" change="+11 min" tone="danger" icon="clock" />
+<Stat label="Admissions (14d)" value="1,204" change="+6%" tone="info" icon="chart-line" />
+<Stat label="Staff on shift" value="146" tone="success" icon="users" />
+</Columns>
+
+<Card title="Bed occupancy" subtitle="Live across all wards">
+<Progress value="82" max="100" label="Overall occupancy (410 of 500 beds)" tone="warning" />
+| Ward | Occupied | Capacity | Status |
+|---|---|---|---|
+| ICU | 28 | 30 | <Badge tone="danger">Critical</Badge> |
+| Med-Surg | 142 | 160 | <Badge tone="warning">High</Badge> |
+| Pediatrics | 44 | 60 | <Badge tone="success">Normal</Badge> |
+| Maternity | 38 | 50 | <Badge tone="success">Normal</Badge> |
+| Oncology | 61 | 70 | <Badge tone="warning">High</Badge> |
+| Step-down | 97 | 130 | <Badge tone="success">Normal</Badge> |
+</Card>
+
+<Card title="Current ER wait" subtitle="By triage level, right now">
+| Triage | Patients waiting | Median wait |
+|---|---|---|
+| ESI 1 (Resuscitation) | 2 | 0 min |
+| ESI 2 (Emergent) | 9 | 22 min |
+| ESI 3 (Urgent) | 24 | 48 min |
+| ESI 4 (Less urgent) | 31 | 76 min |
+| ESI 5 (Non-urgent) | 18 | 94 min |
+
+<Callout tone="danger" title="Boarding bottleneck">6 admitted patients are holding in the ER awaiting an ICU or Med-Surg bed.</Callout>
+</Card>
+
+<Card title="Admissions over the past two weeks">
+<Chart type="line" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon 1 | 71 |
+| Tue 2 | 84 |
+| Wed 3 | 92 |
+| Thu 4 | 88 |
+| Fri 5 | 96 |
+| Sat 6 | 63 |
+| Sun 7 | 58 |
+| Mon 8 | 79 |
+| Tue 9 | 87 |
+| Wed 10 | 95 |
+| Thu 11 | 101 |
+| Fri 12 | 99 |
+| Sat 13 | 66 |
+| Sun 14 | 61 |
+</Chart>
+</Card>
+
+<Card title="Patients per department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Med-Surg | 142 |
+| Step-down | 97 |
+| Oncology | 61 |
+| Pediatrics | 44 |
+| Maternity | 38 |
+| ICU | 28 |
+| Cardiology | 22 |
+| Orthopedics | 19 |
+</Chart>
+</Card>
+
+<Card title="Staff on shift" subtitle="146 active, by role">
+| Name | Role | Department | Shift |
+|---|---|---|---|
+| Dr. A. Okafor | Attending physician | ICU | 07:00–19:00 |
+| Dr. L. Moreau | Attending physician | ER | 07:00–19:00 |
+| Dr. S. Nakamura | Hospitalist | Med-Surg | 08:00–18:00 |
+| Dr. P. Adeyemi | Surgeon | OR | 06:00–16:00 |
+| N. Ferreira, RN | Charge nurse | ER | 07:00–19:00 |
+| J. Alvarez, RN | Registered nurse | ICU | 07:00–19:00 |
+| M. Chen, RN | Registered nurse | Pediatrics | 07:00–19:00 |
+| T. Boateng, RN | Registered nurse | Med-Surg | 19:00–07:00 |
+| R. Kaur, RRT | Respiratory therapist | ICU | 07:00–19:00 |
+| D. Whitfield | Pharmacist | Pharmacy | 08:00–16:00 |
+| H. Lindqvist | Radiologic tech | Imaging | 08:00–16:00 |
+| C. Mensah | Patient care tech | Med-Surg | 07:00–19:00 |
+
+<Button ask="Show the full shift roster for today">Show full roster</Button>
+</Card>
+
+<Card title="Critical patients" subtitle="Escalated in the last 6 hours">
+| Bed | Patient | Condition | Attending | Last update |
+|---|---|---|---|---|
+| ICU-04 | J. Reyes | Septic shock, on vasopressors | Dr. Okafor | 12 min ago |
+| ICU-11 | M. Duarte | Post-op hemorrhage | Dr. Adeyemi | 26 min ago |
+| ER-11 | S. Kowalski | STEMI, cath lab pending | Dr. Moreau | 4 min ago |
+| Step-07 | A. Ibrahim | Respiratory failure, BiPAP | Dr. Nakamura | 41 min ago |
+
+<Button ask="Open the ICU-04 escalation record">Open ICU-04 record</Button>
+</Card>
+
+<Card title="Ready for discharge" subtitle="Awaiting sign-off or transport">
+| Bed | Patient | Cleared by | Blocker |
+|---|---|---|---|
+| Med-212 | L. Petrov | Dr. Nakamura | Pharmacy take-home meds |
+| Med-238 | R. Silva | Dr. Nakamura | Transport |
+| Ped-14 | K. Yamada | Dr. Chen | Parent pickup |
+| Mat-09 | E. Novak | Dr. Hassan | None — ready now |
+| Ortho-31 | B. Mwangi | Dr. Adeyemi | Physio sign-off |
+
+<Button ask="Request discharge paperwork for all five patients">Request discharge paperwork</Button>
+</Card>
+
+<Card title="Today's operating room bookings">
+| OR | Time | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| OR-1 | 07:30 | CABG | Dr. Adeyemi | <Badge tone="success">In progress</Badge> |
+| OR-1 | 11:00 | Appendectomy | Dr. Lindgren | <Badge tone="info">Scheduled</Badge> |
+| OR-2 | 08:00 | Hip replacement | Dr. Osei | <Badge tone="success">In progress</Badge> |
+| OR-2 | 13:30 | Knee arthroscopy | Dr. Osei | <Badge tone="info">Scheduled</Badge> |
+| OR-3 | 09:15 | Cesarean section | Dr. Hassan | <Badge tone="warning">Delayed 20 min</Badge> |
+| OR-3 | 15:00 | Cholecystectomy | Dr. Lindgren | <Badge tone="info">Scheduled</Badge> |
+| OR-4 | 10:00 | Craniotomy | Dr. Varga | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies running low">
+| Item | On hand | Reorder point | Status |
+|---|---|---|---|
+| IV fluids (1L saline) | 42 | 150 | <Badge tone="danger">Critical</Badge> |
+| N95 respirators | 310 | 500 | <Badge tone="warning">Low</Badge> |
+| Propofol 20 mL | 18 | 40 | <Badge tone="warning">Low</Badge> |
+| Blood — O-negative | 9 units | 20 | <Badge tone="danger">Critical</Badge> |
+| Surgical gloves (size 7.5) | 640 | 800 | <Badge tone="warning">Low</Badge> |
+| Heparin 5000u | 120 | 100 | <Badge tone="success">OK</Badge> |
+
+<Button ask="Raise a restock order for the critical supplies">Raise restock order</Button>
+</Card>
+
+<Card title="Actions">
+<Tabs>
+<Tab title="File an incident">
+<Form name="incident-report">
+<Input label="Reported by" placeholder="Your name and role" required="true" />
+<Select label="Incident type" placeholder="Choose a type" options="Patient safety | Medication error | Fall | Equipment failure | Staff injury | Security | Other" required="true" />
+<Select label="Location" placeholder="Choose a ward" options="ICU | ER | Med-Surg | Pediatrics | Maternity | Oncology | Step-down | Operating rooms | Other" required="true" />
+<Radio label="Severity" options="Near miss | Minor | Moderate | Severe | Sentinel event" required="true" />
+<TextArea label="What happened" placeholder="Time, people involved, what you observed" rows="5" required="true" />
+<Input label="Date and time" type="datetime-local" />
+<Switch label="Notify the on-call administrator" value="true" />
+<Button>Submit incident</Button>
+</Form>
+</Tab>
+
+<Tab title="View another day">
+<Date label="Pick a date" name="view-date" value="2024-06-14" hint="Shows occupancy, admissions, OR bookings and staffing for that day" />
+<Radio label="What to show" options="Everything | Occupancy and admissions | OR bookings | Staffing" />
+<Button ask="Load the operations view for the date I picked">Load that day</Button>
+</Tab>
+
+<Tab title="Request a transfer">
+<Form name="transfer-request">
+<Input label="Patient name or MRN" placeholder="e.g. MRN 448201" required="true" />
+<Select label="From" placeholder="Current ward" options="ICU | ER | Med-Surg | Pediatrics | Maternity | Oncology | Step-down | Other facility" required="true" />
+<Select label="To" placeholder="Receiving ward" options="ICU | ER | Med-Surg | Pediatrics | Maternity | Oncology | Step-down | Other facility" required="true" />
+<Radio label="Priority" options="Routine | Urgent | Emergent" required="true" />
+<Input label="Requested time" type="time" />
+<TextArea label="Clinical reason" placeholder="Diagnosis, current status, why the transfer is needed" rows="4" required="true" />
+<Checkboxes label="Needs" options="Bed confirmed | Transport | Monitoring en route | Receiving team notified" />
+<Button>Submit transfer request</Button>
+</Form>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Which beds open up in the next 4 hours?
+- Show me the ER wait trend for the past 7 days
+- Who is on call tonight for ICU?
+- Which OR bookings are at risk of delay?
+</FollowUps>

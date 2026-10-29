@@ -1,0 +1,141 @@
+# Personal Banking
+
+## Account Overview
+
+<Columns>
+<Card title="Checking" subtitle="Primary account">
+<Stat label="Available" value="$12,450.00" change="+$1,200 this month" tone="success" />
+<Stat label="Current" value="$12,450.00" />
+</Card>
+
+<Card title="Savings" subtitle="Emergency fund">
+<Stat label="Balance" value="$28,750.00" change="+$500 this month" tone="success" />
+<Stat label="APY" value="4.25%" tone="info" />
+</Card>
+
+<Card title="Credit Card" subtitle="Platinum Rewards">
+<Stat label="Balance" value="-$2,340.50" change="Due Oct 28" tone="warning" />
+<Stat label="Available Credit" value="$12,659.50" tone="info" />
+<Stat label="Credit Limit" value="$15,000.00" />
+</Card>
+</Columns>
+
+## Quick Actions
+
+<Card title="Move Money">
+<Form name="transfer">
+<Columns>
+<Select label="From account" name="fromAccount" placeholder="Select account" options="Checking •••• 4281 ($12,450.00) | Savings •••• 9173 ($28,750.00)" required="true" />
+<Select label="To account" name="toAccount" placeholder="Select account" options="Checking •••• 4281 ($12,450.00) | Savings •••• 9173 ($28,750.00) | Credit Card •••• 5521 (Pay down)" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" hint="Min $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Rent, groceries, etc." />
+<Button>Transfer</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Card Controls">
+<Columns>
+<Switch label="Freeze credit line" name="freezeCredit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Select label="Statement period" name="statementPeriod" placeholder="Choose period" options="Current (Sep 28 – Oct 27) | Previous (Aug 28 – Sep 27) | Last 3 months | Last 6 months | Custom range" />
+</Columns>
+</Card>
+
+## Recent Transactions
+
+<Card title="Recent Transactions" subtitle="Last 10 transactions across all accounts">
+| Date | Merchant | Category | Account | Amount |
+|---|---|---|---|---|
+| Oct 26 | Whole Foods Market | Groceries | Checking •••• 4281 | -$87.43 |
+| Oct 25 | Shell Gas Station | Transportation | Credit •••• 5521 | -$45.00 |
+| Oct 24 | Netflix | Subscriptions | Credit •••• 5521 | -$15.99 |
+| Oct 23 | Salary Deposit | Income | Checking •••• 4281 | +$3,200.00 |
+| Oct 22 | Amazon | Shopping | Credit •••• 5521 | -$124.56 |
+| Oct 21 | Electric Bill | Utilities | Checking •••• 4281 | -$142.30 |
+| Oct 20 | Starbucks | Dining | Checking •••• 4281 | -$12.75 |
+| Oct 19 | Rent Payment | Housing | Checking •••• 4281 | -$1,800.00 |
+| Oct 18 | Gym Membership | Health & Fitness | Credit •••• 5521 | -$59.99 |
+| Oct 17 | Transfer to Savings | Transfer | Checking •••• 4281 | -$500.00 |
+<Button variant="tertiary" size="small">View all transactions</Button>
+</Card>
+
+## Spending This Month
+
+<Card title="Spending by Category (October)">
+<Chart type="donut" title="October Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Groceries | 420 |
+| Transportation | 280 |
+| Dining | 310 |
+| Shopping | 245 |
+| Utilities | 142 |
+| Subscriptions | 76 |
+| Health & Fitness | 60 |
+| Other | 185 |
+</Chart>
+<Stat label="Total spent" value="$3,518.00" change="$482 under budget" tone="success" />
+</Card>
+
+## Bills Due Soon
+
+<Card title="Upcoming Bills">
+| Due Date | Bill | Amount | Account | Status |
+|---|---|---|---|---|
+| Oct 28 | Credit Card Payment | $2,340.50 | Checking •••• 4281 | Due in 2 days |
+| Nov 1 | Rent | $1,800.00 | Checking •••• 4281 | Due in 6 days |
+| Nov 5 | Internet | $79.99 | Checking •••• 4281 | Due in 10 days |
+| Nov 12 | Phone Bill | $85.00 | Credit •••• 5521 | Due in 17 days |
+| Nov 15 | Car Insurance | $165.00 | Checking •••• 4281 | Due in 20 days |
+<Button variant="secondary" size="small">View all bills</Button>
+<Button variant="tertiary" size="small">Set up autopay</Button>
+</Card>
+
+## Goals & Credit
+
+<Columns>
+<Card title="Vacation Savings Goal">
+<Progress value="18750" max="25000" label="$18,750 of $25,000 (75%)" />
+<Stat label="Monthly contribution" value="$500" tone="info" />
+<Stat label="Estimated completion" value="March 2025" tone="neutral" />
+<Button variant="secondary" size="small">Adjust goal</Button>
+</Card>
+
+<Card title="Credit Score">
+<Stat label="Current Score" value="742" change="+12 from last month" tone="success" />
+<Badge tone="success">Good</Badge>
+<Stat label="Report updated" value="Oct 15, 2024" tone="neutral" />
+<Button variant="tertiary" size="small">View full report</Button>
+<Button variant="tertiary" size="small">Score factors</Button>
+</Card>
+</Columns>
+
+## Alert Preferences
+
+<Card title="Manage Alert Triggers">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions" hint="Get push notifications for selected transaction types" />
+<Checkboxes label="Account alerts" name="accountAlerts" options="Low balance (<$500) | Large deposit (>$1,000) | Bill payment due | Bill payment posted | Statement available" value="Low balance (<$500) | Bill payment due" />
+<Checkboxes label="Security alerts" name="securityAlerts" options="Password changed | New device login | Profile updated | Credit score changed | Credit inquiry" value="Password changed | New device login | Profile updated" />
+<Button variant="secondary">Save preferences</Button>
+</Card>
+
+## Dispute a Transaction
+
+<Card title="Dispute a Transaction">
+<Form name="dispute">
+<Select label="Select transaction" name="disputeTx" placeholder="Choose a transaction to dispute" options="Whole Foods Market • Oct 26 • -$87.43 | Shell Gas Station • Oct 25 • -$45.00 | Netflix • Oct 24 • -$15.99 | Amazon • Oct 22 • -$124.56 | Electric Bill • Oct 21 • -$142.30 | Starbucks • Oct 20 • -$12.75 | Rent Payment • Oct 19 • -$1,800.00 | Gym Membership • Oct 18 • -$59.99" required="true" />
+<Radio label="Reason for dispute" name="disputeReason" options="Unauthorized charge | Incorrect amount | Goods/services not received | Goods/services not as described | Duplicate charge | Canceled subscription" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Provide any supporting information, dates, merchant communication, etc." rows="4" hint="Include any reference numbers, emails, or evidence" required="true" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me transactions over $200 this month
+- Set up a new savings goal for holiday shopping
+- What's my credit utilization ratio?
+- Schedule a recurring transfer to savings
+</FollowUps>

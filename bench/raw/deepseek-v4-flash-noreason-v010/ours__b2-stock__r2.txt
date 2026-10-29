@@ -1,0 +1,53 @@
+# Low Inventory Warning
+
+<Callout tone="warning" title="Action needed">6 items are running low. Review and reorder before stock runs out.</Callout>
+
+<Card title="Search inventory">
+<Form name="inventory-search">
+<Input label="Search items" name="search" type="search" placeholder="Search by name or SKU…" hint="Finds items at or below the threshold" />
+<Button variant="primary" icon="magnifying-glass">Search</Button>
+</Form>
+</Card>
+
+<Card title="Items running low" subtitle="Items at or below the reorder threshold">
+<Columns>
+<Stat label="Items low" value="6" tone="warning" icon="warning" />
+<Stat label="Total units remaining" value="87" tone="warning" icon="boxes" />
+<Stat label="Reorder threshold" value="20 units" tone="info" icon="sliders" />
+</Columns>
+
+| Item | SKU | Remaining units | Threshold | Status | Reorder |
+|---|---|---|---|---|---|
+| Organic Green Tea 500g | TEA-500G | 12 | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary">Reorder 50</Button> |
+| Ceramic Mug 350ml | MUG-350 | 18 | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder 30</Button> |
+| Bamboo Spoon Set | BSP-4PK | 15 | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder 25</Button> |
+| Glass Storage Jar 1L | JAR-1L | 8 | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary">Reorder 40</Button> |
+| Linen Napkin (Set of 4) | NAP-4PK | 20 | 20 | <Badge tone="warning">At threshold</Badge> | <Button size="small" variant="primary">Reorder 20</Button> |
+| Wooden Cutting Board | CUT-MD | 14 | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder 15</Button> |
+
+<Callout tone="info" title="How the threshold works">The reorder threshold is set per item. When **remaining units** drop to or below the threshold, the item appears on this warning screen. You can adjust thresholds in item settings.</Callout>
+</Card>
+
+<Card title="Reorder progress" subtitle="Stock levels relative to threshold">
+<Progress value="12" max="20" label="Green Tea — 12/20 units" tone="danger" />
+<Progress value="18" max="20" label="Ceramic Mug — 18/20 units" tone="warning" />
+<Progress value="15" max="20" label="Bamboo Spoon Set — 15/20 units" tone="warning" />
+<Progress value="8" max="20" label="Glass Jar — 8/20 units" tone="danger" />
+<Progress value="20" max="20" label="Linen Napkin — 20/20 units" tone="warning" />
+<Progress value="14" max="20" label="Cutting Board — 14/20 units" tone="warning" />
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="secondary" icon="shopping-cart">Reorder all low items</Button>
+<Button variant="tertiary" icon="gear">Adjust thresholds</Button>
+<Button variant="tertiary" icon="download">Export list</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me items below 50% of threshold
+- Reorder all critical items only
+- Which items have been low the longest?
+- How do I change the threshold for an item?
+</FollowUps>

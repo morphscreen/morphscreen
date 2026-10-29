@@ -1,0 +1,221 @@
+# City Operations Center — Live Screen
+
+<Columns>
+<Stat label="Congestion index" value="72 / 100" change="+8 vs 1h ago" tone="warning" icon="traffic-cone" />
+<Stat label="Transit punctuality" value="91.4%" change="-1.2 pts" tone="warning" icon="bus" />
+<Stat label="Open incidents" value="23" change="+4 today" tone="danger" icon="warning" />
+<Stat label="Weather" value="14°C, light rain" change="Wind 18 km/h SW" tone="info" icon="cloud-rain" />
+</Columns>
+
+<Callout tone="warning" title="Two districts above threshold">
+Harbour North (AQI 142) and Mill Row (AQI 128) are in the "unhealthy for sensitive groups" band. Consider an advisory before the evening peak.
+</Callout>
+
+<Card title="1. Congestion right now" subtitle="Live index by corridor, 0 = free flow, 100 = gridlock">
+<Chart type="horizontal" x="Corridor" y="Congestion index">
+| Corridor | Index |
+|---|---|
+| Ring Road East | 88 |
+| Central Bridge | 79 |
+| Harbour Approach | 74 |
+| Mill Row Bypass | 61 |
+| North Gate | 44 |
+</Chart>
+<Button ask="Show the Ring Road East congestion in more detail">More on Ring Road East</Button>
+</Card>
+
+<Card title="2. Transit punctuality" subtitle="On-time arrivals, last 60 minutes">
+<Chart type="bar" x="Mode" y="Percent on time">
+| Mode | On time |
+|---|---|
+| Metro | 94 |
+| Tram | 91 |
+| Bus | 87 |
+| Regional rail | 96 |
+</Chart>
+<Progress value="91" max="100" label="Network-wide punctuality" tone="warning" />
+</Card>
+
+<Card title="3. Air quality by district" subtitle="PM2.5, µg/m³, rolling 1-hour average">
+<Chart type="bar" x="District" y="PM2.5">
+| District | PM2.5 |
+|---|---|
+| Harbour North | 142 |
+| Mill Row | 128 |
+| Old Quarter | 96 |
+| Riverside | 71 |
+| Greenfield | 48 |
+| University | 39 |
+</Chart>
+</Card>
+
+<Card title="4. Energy use, past week" subtitle="Grid load in MW, city total">
+<Chart type="area" x="Day" y="MW">
+| Day | Load |
+|---|---|
+| Mon | 812 |
+| Tue | 846 |
+| Wed | 901 |
+| Thu | 878 |
+| Fri | 934 |
+| Sat | 762 |
+| Sun | 719 |
+</Chart>
+<Stat label="Peak this week" value="934 MW" note="Friday, 18:40" tone="warning" />
+</Card>
+
+<Card title="5. Water use today" subtitle="Consumption vs. daily target">
+<Progress value="68" max="100" label="68% of daily allocation used" tone="success" />
+<Columns>
+<Stat label="Used so far" value="41.2 ML" tone="info" />
+<Stat label="Daily target" value="60.5 ML" />
+<Stat label="Reservoir level" value="76%" tone="success" />
+</Columns>
+</Card>
+
+<Card title="6. Open incidents" subtitle="Location and severity">
+| Incident | Location | Severity | Since |
+|---|---|---|---|
+| Multi-vehicle collision | Central Bridge, northbound | <Badge tone="danger">Critical</Badge> | 14:02 |
+| Burst main, road flooded | Mill Row / Kiln St | <Badge tone="warning">High</Badge> | 13:18 |
+| Signal failure | Harbour Approach × Dock 3 | <Badge tone="warning">High</Badge> | 12:55 |
+| Fallen tree blocking lane | Riverside Park Rd | <Badge tone="info">Medium</Badge> | 11:40 |
+| Illegal dumping report | Greenfield Ln | <Badge tone="neutral">Low</Badge> | 10:12 |
+</Card>
+
+<Card title="7. Emergency vehicle deployment" subtitle="Units by district and status">
+| Unit | District | Status |
+|---|---|---|
+| Ambulance A-12 | Central | <Badge tone="success">Available</Badge> |
+| Ambulance A-07 | Harbour North | <Badge tone="warning">On call</Badge> |
+| Fire E-03 | Mill Row | <Badge tone="danger">Committed</Badge> |
+| Fire E-09 | Riverside | <Badge tone="success">Available</Badge> |
+| Police P-21 | Old Quarter | <Badge tone="success">Available</Badge> |
+| Police P-14 | University | <Badge tone="info">Returning</Badge> |
+</Card>
+
+<Card title="8. Parking availability downtown" subtitle="Free spaces by garage, live">
+<Chart type="bar" x="Garage" y="Free spaces">
+| Garage | Free |
+|---|---|
+| Civic Centre | 42 |
+| Market Square | 8 |
+| Harbour Deck | 117 |
+| Cathedral St | 0 |
+| Riverside Mall | 63 |
+</Chart>
+<Callout tone="info" title="Cathedral St full">Signage is already redirecting drivers to Harbour Deck.</Callout>
+</Card>
+
+<Card title="9. Public events this weekend">
+| Event | Venue | When | Expected |
+|---|---|---|---|
+| Harbour Food Festival | Dock 3 | Sat 11:00–22:00 | 12,000 |
+| City Half Marathon | Riverside loop | Sun 07:30–12:00 | 8,500 |
+| Open Air Cinema | Greenfield Park | Sat 20:30 | 2,200 |
+| University Open Day | Campus East | Sun 10:00–16:00 | 4,000 |
+</Card>
+
+<Card title="10. Citizen reports, live feed" subtitle="Newest first">
+<Steps>
+<Step title="Blocked drain, water pooling" status="current" subtitle="Harbour North · 14:41 · photo attached">Reported by 3 residents within 200 m.</Step>
+<Step title="Streetlight out on three poles" status="todo" subtitle="Mill Row · 14:33">No photo.</Step>
+<Step title="Abandoned vehicle, 9 days" status="todo" subtitle="Old Quarter · 14:20">Second report on same plate.</Step>
+<Step title="Graffiti on underpass" status="todo" subtitle="Riverside · 14:05">Photo attached.</Step>
+</Steps>
+<Button ask="Show me the newest citizen reports in full">See all new reports</Button>
+</Card>
+
+<Card title="11. Service request backlog" subtitle="Open requests by age">
+<Chart type="stacked" x="Category" y="Requests">
+| Category | Under 3 days | 3–7 days | Over 7 days |
+|---|---|---|---|
+| Roads | 84 | 51 | 22 |
+| Water | 46 | 30 | 9 |
+| Lighting | 38 | 24 | 14 |
+| Waste | 61 | 19 | 6 |
+| Parks | 27 | 12 | 3 |
+</Chart>
+<Stat label="Over 7 days" value="54" change="+6 this week" tone="danger" />
+</Card>
+
+<Card title="12. Current weather">
+<Columns>
+<Stat label="Now" value="14°C" note="Light rain, feels like 12°C" icon="cloud-rain" />
+<Stat label="Wind" value="18 km/h SW" icon="wind" />
+<Stat label="Visibility" value="6.4 km" icon="eye" />
+<Stat label="Rain next 6h" value="4.2 mm" tone="info" icon="drop" />
+</Columns>
+<Callout tone="info" title="Watch">Rain plus the Mill Row burst main will keep that corridor slow into the evening peak.</Callout>
+</Card>
+
+<Card title="13. Focus on one district" subtitle="Filters the whole screen to a single district">
+<Form name="district-focus">
+<Select label="District" name="district" placeholder="Choose a district" options="All districts | Harbour North | Mill Row | Old Quarter | Riverside | Greenfield | University | Central" hint="Applies to congestion, air quality, incidents, parking and reports" />
+<Button>Focus this district</Button>
+<Button variant="tertiary">Clear focus</Button>
+</Form>
+</Card>
+
+<Card title="14. Dispatch a crew" subtitle="Assign a unit to an open job">
+<Form name="dispatch-crew">
+<Select label="Job" name="job" placeholder="Pick an open job" options="Multi-vehicle collision — Central Bridge | Burst main — Mill Row / Kiln St | Signal failure — Harbour Approach | Fallen tree — Riverside Park Rd | Blocked drain — Harbour North" required="true" />
+<Select label="Crew" name="crew" placeholder="Pick a crew" options="Roads Crew 2 | Roads Crew 5 | Water Crew 1 | Signals Team | Parks & Trees | Waste Unit 4" required="true" />
+<Select label="Priority" name="priority" options="Routine | Urgent | Emergency" />
+<TextArea label="Notes for the crew" name="notes" placeholder="Access notes, hazards, contact on site" rows="3" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="15. Send a public alert">
+<Form name="public-alert">
+<Input label="Headline" name="headline" placeholder="e.g. Avoid Mill Row this evening" required="true" />
+<TextArea label="Message" name="message" placeholder="Write the alert as citizens will read it" rows="4" hint="Keep it under 240 characters for SMS" required="true" />
+<Checkboxes label="Channels" name="channels" options="SMS | Push notification | City app banner | Social media | Variable road signs" value="Push notification | City app banner" />
+<Radio label="Severity" name="severity" options="Advisory | Warning | Emergency" />
+<Date label="Send on" name="send_date" hint="Leave as today to send now" />
+<Button variant="danger">Send public alert</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="16. Roadworks planned this month">
+| Scheme | District | Window | Impact |
+|---|---|---|---|
+| Bridge deck resurfacing | Central | 12–19 | 2 lanes closed overnight |
+| Cycle lane build | Riverside | 14–28 | Parking bay loss |
+| Sewer replacement | Mill Row | 18–25 | Road closed, diversion |
+| Junction upgrade | North Gate | 21–30 | Lane narrowing |
+| Footway relay | Old Quarter | 24–27 | Footpath only |
+</Card>
+
+<Card title="17. Infrastructure jobs due for maintenance" subtitle="Sorted by due date">
+| Asset | District | Due | Status |
+|---|---|---|---|
+| Pump station 4 | Mill Row | 3 days | <Badge tone="danger">Overdue risk</Badge> |
+| Traffic signals, Dock 3 | Harbour North | 9 days | <Badge tone="warning">Scheduled</Badge> |
+| Water main, Kiln St | Mill Row | 12 days | <Badge tone="warning">Scheduled</Badge> |
+| Substation 11 | University | 21 days | <Badge tone="success">On plan</Badge> |
+| Streetlight circuit 7 | Old Quarter | 28 days | <Badge tone="success">On plan</Badge> |
+</Table>
+</Card>
+
+<Card title="Map of active sites" subtitle="Incidents, roadworks, events and vehicle posts">
+<Map>
+<Map lat="51.5074" lng="-0.1278" label="Central Bridge — multi-vehicle collision" />
+<Map lat="51.5112" lng="-0.1190" label="Mill Row — burst main and roadworks" />
+<Map lat="51.5038" lng="-0.1305" label="Harbour North — signal failure, blocked drain" />
+<Map lat="51.4990" lng="-0.1245" label="Riverside — fallen tree, cycle lane works" />
+<Map lat="51.5155" lng="-0.1320" label="Old Quarter — footway relay" />
+<Map lat="51.5201" lng="-0.1102" label="Greenfield — open air cinema" />
+<Map lat="51.5248" lng="-0.1340" label="University — open day, substation 11" />
+<Map lat="51.5095" lng="-0.1180" label="Dock 3 — food festival, ambulance A-07" />
+</Map>
+</Card>
+
+<FollowUps>
+- Focus on Mill Row and re-check everything
+- Draft a public alert about the Mill Row burst main
+- Show which incidents have been open longest
+- Compare this week's energy use with last week
+</FollowUps>

@@ -1,0 +1,244 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view · Updated 14:32">
+<Columns>
+<Stat label="OEE" value="84.2%" change="+1.3% vs yesterday" tone="success" />
+<Stat label="Units Today" value="8,742 / 10,500" change="83.3% of target" tone="info" />
+<Stat label="Defect Rate (30d)" value="1.8%" change="-0.2% vs prior month" tone="success" />
+<Stat label="Energy Today" value="1,240 kWh" change="+4.2% vs avg" tone="warning" />
+</Columns>
+
+<Columns>
+<Stat label="Safety Incidents (YTD)" value="3" change="0 lost-time" tone="success" />
+<Stat label="Days Since Last Incident" value="127" change="Record: 245 days" tone="info" />
+<Stat label="Batches on Hold" value="4" change="2 critical" tone="danger" />
+<Stat label="Open Work Orders" value="18" change="5 high priority" tone="warning" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Production Lines" subtitle="Click a line to focus">
+<Table>
+| Line | Status | Rate (units/hr) | Target | Efficiency | OEE | Andon |
+|---|---|---|---|---|---|---|
+| Line A | <Badge tone="success">Running</Badge> | 420 | 450 | 93.3% | 87.1% | — |
+| Line B | <Badge tone="warning">Slow</Badge> | 310 | 380 | 81.6% | 76.4% | <Badge tone="warning">Minor</Badge> |
+| Line C | <Badge tone="success">Running</Badge> | 395 | 400 | 98.8% | 91.2% | — |
+| Line D | <Badge tone="danger">Down</Badge> | 0 | 350 | 0% | 0% | <Badge tone="danger">Critical</Badge> |
+| Line E | <Badge tone="success">Running</Badge> | 280 | 300 | 93.3% | 84.7% | — |
+</Table>
+<Select label="Focus on line" placeholder="Select a line for details" options="Line A | Line B | Line C | Line D | Line E" name="line-focus" />
+</Card>
+
+<Card title="Live Andon Alerts" subtitle="Real-time">
+<Callout tone="danger" title="Line D — Emergency Stop">
+Triggered 14:28 · Hydraulic pressure loss · Maintenance dispatched
+</Callout>
+<Callout tone="warning" title="Line B — Rate Deviation">
+Triggered 14:15 · Output 22% below target · Check feeder
+</Callout>
+<Callout tone="info" title="Line A — Quality Check">
+Triggered 13:52 · In-process inspection due · Operator acknowledged
+</Callout>
+<Callout tone="info" title="Line C — Shift Handover">
+Triggered 14:00 · Shift 2 taking over · All parameters nominal
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %" title="Daily Defect Rate">
+| Date | Defect % |
+|---|---|
+| Day 1 | 2.1 |
+| Day 2 | 1.9 |
+| Day 3 | 2.3 |
+| Day 4 | 1.8 |
+| Day 5 | 2.0 |
+| Day 6 | 1.7 |
+| Day 7 | 1.6 |
+| Day 8 | 1.9 |
+| Day 9 | 1.8 |
+| Day 10 | 2.1 |
+| Day 11 | 1.9 |
+| Day 12 | 1.7 |
+| Day 13 | 1.6 |
+| Day 14 | 1.8 |
+| Day 15 | 1.9 |
+| Day 16 | 2.0 |
+| Day 17 | 1.8 |
+| Day 18 | 1.7 |
+| Day 19 | 1.6 |
+| Day 20 | 1.8 |
+| Day 21 | 1.9 |
+| Day 22 | 2.0 |
+| Day 23 | 1.8 |
+| Day 24 | 1.7 |
+| Day 25 | 1.6 |
+| Day 26 | 1.8 |
+| Day 27 | 1.9 |
+| Day 28 | 1.8 |
+| Day 29 | 1.7 |
+| Day 30 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause — This Month">
+<Chart type="pie" title="Downtime Hours by Cause">
+| Cause | Hours |
+|---|---|
+| Mechanical | 48 |
+| Electrical | 22 |
+| Tooling | 18 |
+| Material Shortage | 15 |
+| Quality Hold | 12 |
+| Changeover | 8 |
+| Planned Maintenance | 6 |
+| Other | 5 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+<Table>
+| Machine | Line | Due Date | Type | Hours Since Last | Status |
+|---|---|---|---|---|---|
+| CNC-04 | Line A | 2025-01-20 | Preventive | 492 | <Badge tone="warning">Due Soon</Badge> |
+| Press-12 | Line B | 2025-01-18 | Corrective | 510 | <Badge tone="danger">Overdue</Badge> |
+| Injection-07 | Line C | 2025-01-22 | Preventive | 485 | <Badge tone="warning">Due Soon</Badge> |
+| Welder-03 | Line D | 2025-01-15 | Inspection | 520 | <Badge tone="danger">Overdue</Badge> |
+| Cutter-09 | Line E | 2025-01-25 | Preventive | 470 | <Badge tone="info">Scheduled</Badge> |
+</Table>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" placeholder="Select machine" options="CNC-04 | Press-12 | Injection-07 | Welder-03 | Cutter-09 | Other" name="machine" required="true" />
+<Select label="Maintenance Type" placeholder="Select type" options="Preventive | Corrective | Inspection | Calibration" name="maint-type" required="true" />
+<Date label="Scheduled Date" name="maint-date" required="true" />
+<Input label="Estimated Duration (hrs)" type="number" placeholder="4" name="duration" required="true" />
+<TextArea label="Notes" placeholder="Parts needed, special instructions..." name="notes" rows="3" />
+<Button>Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock">
+<Columns>
+<Progress label="Steel Coil" value="68" max="100" />
+<Progress label="Resin (tons)" value="42" max="100" />
+<Progress label="Packaging (pallets)" value="85" max="100" />
+</Columns>
+<Table>
+| Material | Current | Min Level | Reorder Qty | Supplier | ETA |
+|---|---|---|---|---|---|
+| Steel Coil | 68 tons | 20 tons | 50 tons | Apex Metals | 2025-01-22 |
+| Resin | 42 tons | 15 tons | 30 tons | PolySource | 2025-01-20 |
+| Packaging | 85 pallets | 30 pallets | 100 pallets | PackCo | 2025-01-19 |
+</Table>
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+<Table>
+| Date | Supplier | Material | Qty | Status | PO # |
+|---|---|---|---|---|---|
+| 2025-01-15 | PolySource | Resin | 30 tons | <Badge tone="success">Confirmed</Badge> | PO-8842 |
+| 2025-01-16 | Apex Metals | Steel Coil | 50 tons | <Badge tone="info">In Transit</Badge> | PO-8845 |
+| 2025-01-17 | PackCo | Packaging | 100 pallets | <Badge tone="success">Confirmed</Badge> | PO-8848 |
+| 2025-01-18 | Tooling Inc | Carbide Inserts | 200 pcs | <Badge tone="warning">Pending</Badge> | PO-8851 |
+| 2025-01-19 | LubriTech | Hydraulic Fluid | 500 L | <Badge tone="success">Confirmed</Badge> | PO-8853 |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units" title="Units Produced per Shift (Today)">
+| Shift | Units |
+|---|---|
+| Shift 1 (06-14) | 3,420 |
+| Shift 2 (14-22) | 3,180 |
+| Shift 3 (22-06) | 2,142 |
+</Chart>
+<Table>
+| Shift | Target | Actual | Efficiency | OEE | Defects |
+|---|---|---|---|---|---|
+| Shift 1 | 3,500 | 3,420 | 97.7% | 86.3% | 12 |
+| Shift 2 | 3,500 | 3,180 | 90.9% | 82.1% | 18 |
+| Shift 3 | 3,500 | 2,142 | 61.2% | 58.4% | 8 |
+</Table>
+</Card>
+
+<Card title="Batches on Quality Hold">
+<Table>
+| Batch | Line | Product | Qty | Hold Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| B-20250114-003 | Line B | Widget-XL | 1,200 | Dimensional variance | 13:45 | <Badge tone="danger">Critical</Badge> |
+| B-20250114-007 | Line D | Gear-Set | 850 | Surface finish | 14:10 | <Badge tone="warning">Under Review</Badge> |
+| B-20250113-022 | Line A | Bracket-Pro | 2,000 | Material cert missing | 2025-01-13 | <Badge tone="info">Awaiting Docs</Badge> |
+| B-20250114-001 | Line C | Housing-A | 1,500 | First-article inspection | 06:30 | <Badge tone="warning">In Progress</Badge> |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Work Orders">
+<Table>
+| WO # | Priority | Line | Asset | Description | Assigned | Due | Status |
+|---|---|---|---|---|---|---|---|
+| WO-4421 | <Badge tone="danger">High</Badge> | Line D | Press-12 | Hydraulic cylinder replacement | M. Torres | 2025-01-15 | <Badge tone="danger">In Progress</Badge> |
+| WO-4425 | <Badge tone="danger">High</Badge> | Line B | Feeder-03 | Vibratory feeder calibration | J. Chen | 2025-01-15 | <Badge tone="warning">Queued</Badge> |
+| WO-4418 | <Badge tone="warning">Medium</Badge> | Line A | CNC-04 | Spindle bearing inspection | R. Patel | 2025-01-17 | <Badge tone="info">Scheduled</Badge> |
+| WO-4429 | <Badge tone="warning">Medium</Badge> | Line C | Injection-07 | Nozzle heater replacement | K. Nguyen | 2025-01-16 | <Badge tone="warning">Parts Ordered</Badge> |
+| WO-4402 | <Badge tone="info">Low</Badge> | Line E | Cutter-09 | Blade sharpening | A. Silva | 2025-01-20 | <Badge tone="info">Planned</Badge> |
+| WO-4431 | <Badge tone="info">Low</Badge> | Facility | HVAC-02 | Filter replacement | Facilities | 2025-01-18 | <Badge tone="info">Planned</Badge> |
+</Table>
+</Card>
+
+<Card title="Energy Use Today">
+<Chart type="area" x="Hour" y="kWh" title="Hourly Energy Consumption">
+| Hour | kWh |
+|---|---|
+| 06:00 | 45 |
+| 07:00 | 52 |
+| 08:00 | 58 |
+| 09:00 | 62 |
+| 10:00 | 65 |
+| 11:00 | 68 |
+| 12:00 | 64 |
+| 13:00 | 66 |
+| 14:00 | 70 |
+| 15:00 | 72 |
+| 16:00 | 68 |
+| 17:00 | 65 |
+| 18:00 | 60 |
+| 19:00 | 58 |
+| 20:00 | 55 |
+| 21:00 | 52 |
+| 22:00 | 48 |
+</Chart>
+<Stat label="Total Today" value="1,240 kWh" change="Avg: 1,190 kWh" tone="neutral" />
+<Stat label="Cost Estimate" value="$186" change="$0.15/kWh" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Export Shift Report">
+<Form name="export-report">
+<Columns>
+<Select label="Shift" placeholder="Select shift" options="Shift 1 (06-14) | Shift 2 (14-22) | Shift 3 (22-06) | All Shifts" name="export-shift" />
+<Select label="Format" placeholder="Select format" options="PDF | CSV | Excel" name="export-format" />
+<Date label="Date" name="export-date" />
+</Columns>
+<Button>Generate Report</Button>
+<Button variant="secondary" href="#">Email to Me</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed OEE breakdown for Line D
+- List all overdue maintenance tasks
+- Create work order for Line B feeder issue
+- View quality hold resolution history
+</FollowUps>

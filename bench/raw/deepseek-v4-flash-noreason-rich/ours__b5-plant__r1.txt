@@ -1,0 +1,189 @@
+# Factory Floor Supervisor Console
+
+Live view of all production lines, quality, maintenance, and inventory — updated every 30 seconds.
+
+<Callout tone="warning" title="Live andon alert">Line 3 has stopped — conveyor jam detected 4 minutes ago. Maintenance has been notified.</Callout>
+
+<Card title="Overall Equipment Effectiveness">
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="84.2%" change="-1.3%" tone="warning" icon="clock" />
+<Stat label="Performance" value="92.7%" change="+3.0%" tone="success" icon="lightning" />
+<Stat label="Quality" value="98.1%" change="+0.4%" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="78.4" max="100" label="World-class OEE target: 85%" tone="warning" />
+</Card>
+
+<Card title="Units Produced vs Today's Target">
+<Columns>
+<Stat label="Produced" value="4,382" change="Target: 5,000" icon="factory" />
+<Stat label="Pace needed" value="74 units/hr" note="Current pace: 68 units/hr" tone="warning" icon="speedometer" />
+</Columns>
+<Progress value="87.6" max="100" label="87.6% of target — 618 units to go" tone="info" />
+</Card>
+
+<Card title="Production Lines — Live Status">
+<Tabs>
+<Tab title="All Lines">
+| Line | Product | Rate (units/hr) | Status |
+|---|---|---|---|
+| Line 1 | Steel brackets | 82 | <Badge tone="success">Running</Badge> |
+| Line 2 | Resin housings | 74 | <Badge tone="success">Running</Badge> |
+| Line 3 | Packaging kits | 0 | <Badge tone="danger">Stopped — jam</Badge> |
+| Line 4 | Steel brackets | 68 | <Badge tone="warning">Running slow</Badge> |
+</Tab>
+<Tab title="Line 1 — Focused">
+<Columns>
+<Stat label="Rate" value="82 units/hr" note="Target: 80" tone="success" />
+<Stat label="Uptime" value="96.3%" tone="success" />
+<Stat label="Operator" value="M. Alvarez" />
+</Columns>
+<Progress value="92" max="100" label="Line 1 output vs target" tone="success" />
+<Button variant="secondary" ask="Show detailed production data for Line 1">Detail view</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Day" y="Defect rate (%)">
+| Day | Defect % |
+|---|---|
+| 1 | 2.1 |
+| 5 | 1.8 |
+| 10 | 2.4 |
+| 15 | 1.9 |
+| 20 | 1.6 |
+| 25 | 1.4 |
+| 30 | 1.2 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause — This Week">
+<Chart type="donut" title="Downtime split">
+| Cause | Hours |
+|---|---|
+| Mechanical failure | 6.2 |
+| Material shortage | 3.8 |
+| Changeover | 2.5 |
+| Quality hold | 1.9 |
+| Operator break | 1.4 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due date | Last service |
+|---|---|---|---|
+| Press P-102 | Line 1 | Tomorrow | 42 days ago |
+| Conveyor C-3 | Line 3 | Overdue by 2 days | 89 days ago |
+| Injection M-7 | Line 2 | In 3 days | 55 days ago |
+| Wrapper W-1 | Line 4 | In 5 days | 30 days ago |
+
+<Button variant="secondary" ask="Show all maintenance history">Full maintenance log</Button>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel" value="12.4 t" note="Reorder at 8 t" tone="success" icon="cube" />
+<Stat label="Resin" value="4.1 t" note="Reorder at 5 t" tone="danger" icon="cube" />
+<Stat label="Packaging" value="38,200 units" note="Reorder at 25,000" tone="success" icon="package" />
+</Columns>
+<Progress value="62" max="100" label="Steel" tone="success" />
+<Progress value="35" max="100" label="Resin" tone="danger" />
+<Progress value="78" max="100" label="Packaging" tone="success" />
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due | Status |
+|---|---|---|---|---|
+| Acme Steel Co. | Steel coils | 8 t | Today | <Badge tone="warning">In transit</Badge> |
+| PolyChem Ltd. | Resin pellets | 5 t | Tomorrow | <Badge tone="info">Confirmed</Badge> |
+| BoxWorks | Cardboard boxes | 15,000 | Thu | <Badge tone="info">Confirmed</Badge> |
+| FastWrap Inc. | Stretch film | 200 rolls | Fri | <Badge tone="neutral">Pending</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison — This Week">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri |
+|---|---|---|---|---|---|
+| Morning | 1450 | 1520 | 1480 | 1390 | 1430 |
+| Afternoon | 1380 | 1410 | 1445 | 1500 | 1360 |
+| Night | 1120 | 1080 | 1150 | 1200 | 980 |
+</Chart>
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents this year" value="2" note="Target: 0" tone="warning" icon="shield-warning" />
+<Stat label="Days since last incident" value="87" tone="success" icon="shield-check" />
+</Columns>
+<Callout tone="success" title="Safety milestone">87 days without a recordable incident — best run this year.</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Product | Qty | Reason | Held for |
+|---|---|---|---|---|
+| B-2417 | Resin housings | 320 | Dimensional variance | 2.5 hrs |
+| B-2418 | Steel brackets | 540 | Surface defect | 1 hr |
+| B-2422 | Packaging kits | 780 | Print misalignment | 30 min |
+
+<Button variant="secondary" ask="Show details of quality holds">Manage holds</Button>
+</Card>
+
+<Card title="Energy Use Today">
+<Columns>
+<Stat label="Total" value="18.4 MWh" change="+3.1% vs same time yesterday" tone="warning" icon="lightning" />
+<Stat label="Cost so far" value="$1,842" />
+<Stat label="Peak demand" value="1.12 MW" note="Occurred at 14:20" />
+</Columns>
+<Chart type="area" x="Hour" y="MWh">
+| Hour | Usage |
+|---|---|
+| 06:00 | 0.8 |
+| 08:00 | 1.4 |
+| 10:00 | 1.6 |
+| 12:00 | 1.5 |
+| 14:00 | 1.7 |
+| 16:00 | 1.3 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| ID | Description | Line | Priority | Status |
+|---|---|---|---|---|
+| WO-1182 | Repair conveyor jam | Line 3 | <Badge tone="danger">Critical</Badge> | In progress |
+| WO-1181 | Calibrate press P-102 | Line 1 | <Badge tone="warning">High</Badge> | Scheduled |
+| WO-1180 | Replace injection nozzle | Line 2 | <Badge tone="warning">High</Badge> | Waiting parts |
+| WO-1179 | Lubricate wrapper W-1 | Line 4 | <Badge tone="info">Medium</Badge> | Planned |
+| WO-1178 | Adjust label sensor | Line 4 | <Badge tone="neutral">Low</Badge> | Open |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" placeholder="Select machine" options="Press P-102 (Line 1) | Conveyor C-3 (Line 3) | Injection M-7 (Line 2) | Wrapper W-1 (Line 4)" required="true" />
+<Date label="Date" required="true" />
+<Select label="Priority" options="Low | Medium | High | Critical" placeholder="Select priority" />
+<TextArea label="Notes" placeholder="Describe the work needed" rows="3" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Focus on a Line">
+<Radio label="Select line to focus" options="Line 1 | Line 2 | Line 3 | Line 4" name="focus-line" value="Line 1" />
+<Button>Focus view</Button>
+</Card>
+
+<Card title="Export Shift Report">
+<Columns>
+<Stat label="Today's report" value="4,382 units" note="Generated 16:45" />
+</Columns>
+<Button variant="primary" icon="download">Export shift report (PDF)</Button>
+<Button variant="secondary">Export as CSV</Button>
+<Button variant="tertiary" ask="Email the shift report to the plant manager">Email report</Button>
+</Card>
+
+<FollowUps>
+- What is causing the defect rate improvement on Line 2?
+- Show me the maintenance history for Press P-102
+- Which supplier delivery is most at risk this week?
+- Compare today's energy use to last Tuesday
+</FollowUps>

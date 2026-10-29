@@ -1,0 +1,104 @@
+# Front desk — today
+
+<Callout tone="info" title="You're on the front desk until 5:00 PM">Everything below updates as you check patients in.</Callout>
+
+<Columns>
+<Stat label="Patients expected" value="24" icon="users" note="18 arrived · 4 checked in now" />
+<Stat label="No-show rate" value="6.2%" change="-1.4 pts vs last month" tone="success" icon="chart-line" />
+<Stat label="Rooms free now" value="3 of 7" tone="info" icon="map-pin" />
+</Columns>
+
+<Card title="Next patient to call" subtitle="Room 2 is ready">
+<Columns>
+<Avatar name="Priya Raman" subtitle="9:30 AM · Follow-up, Dr. Okafor" />
+<Badge tone="warning">Waiting 12 min</Badge>
+</Columns>
+<Button ask="Call Priya Raman to room 2 and mark her as called" variant="primary" icon="megaphone">Call Priya to Room 2</Button>
+</Card>
+
+<Card title="Check a patient in">
+<Form name="checkin">
+<Input label="Patient name" name="patient" placeholder="Start typing a name" hint="Matches today's appointment list" required="true" />
+<Select label="Appointment time" name="time" placeholder="Choose a time" options="9:30 AM — Priya Raman | 9:45 AM — Marcus Webb | 10:00 AM — Elena Duarte | 10:15 AM — Sam Oyelaran | 10:30 AM — Nadia Haddad" required="true" />
+<Radio label="Status" name="status" options="Arrived and waiting | In with the clinician | Rescheduled" />
+<Button variant="primary">Check in</Button>
+<Button variant="tertiary">Undo last check-in</Button>
+</Form>
+</Card>
+
+<Card title="Today's appointments" subtitle="24 booked · 18 arrived · 3 rooms free">
+<Tabs>
+<Tab title="All">
+| Time | Patient | Clinician | Room | Status |
+|---|---|---|---|---|
+| 9:30 AM | Priya Raman | Dr. Okafor | 2 | Waiting |
+| 9:45 AM | Marcus Webb | Dr. Lindqvist | 4 | In room |
+| 10:00 AM | Elena Duarte | Dr. Okafor | 2 | Arrived |
+| 10:15 AM | Sam Oyelaran | Dr. Reyes | 5 | Not arrived |
+| 10:30 AM | Nadia Haddad | Dr. Lindqvist | 4 | Not arrived |
+| 10:45 AM | Tom Bergström | Dr. Reyes | 1 | Arrived |
+| 11:00 AM | Aiko Tanaka | Dr. Okafor | 3 | Not arrived |
+| 11:20 AM | Grace Mbeki | Dr. Reyes | 5 | Not arrived |
+</Tab>
+<Tab title="Waiting now">
+| Time | Patient | Waited | Room assigned |
+|---|---|---|---|
+| 9:30 AM | Priya Raman | 12 min | 2 |
+| 10:00 AM | Elena Duarte | 4 min | 2 |
+| 10:45 AM | Tom Bergström | 1 min | 1 |
+</Tab>
+<Tab title="Not arrived">
+| Time | Patient | Clinician | Reminder sent |
+|---|---|---|---|
+| 10:15 AM | Sam Oyelaran | Dr. Reyes | 10:05 AM |
+| 10:30 AM | Nadia Haddad | Dr. Lindqvist | 10:20 AM |
+| 11:00 AM | Aiko Tanaka | Dr. Okafor | — |
+| 11:20 AM | Grace Mbeki | Dr. Reyes | — |
+</Tab>
+</Tabs>
+<Button ask="Show me the full appointment list for today with every patient and time">See all 24 appointments</Button>
+</Card>
+
+<Card title="Rooms right now">
+<Chart type="bar" title="Minutes each room has been free" x="Room" y="Minutes free">
+| Room | Minutes free |
+|---|---|
+| Room 1 | 4 |
+| Room 2 | 0 |
+| Room 3 | 18 |
+| Room 4 | 0 |
+| Room 5 | 9 |
+| Room 6 | 26 |
+| Room 7 | 14 |
+</Chart>
+<Button ask="Which rooms are free right now and which are about to open up?">Check room availability again</Button>
+</Card>
+
+<Card title="Move to another day" subtitle="Currently showing Thursday, 14 March">
+<Form name="day-nav">
+<Date label="Jump to date" name="date" value="2024-03-14" />
+<Button variant="primary">Go to this day</Button>
+<Button variant="secondary">Yesterday</Button>
+<Button variant="secondary">Tomorrow</Button>
+</Form>
+</Card>
+
+<Card title="This month at a glance">
+<Chart type="line" title="No-show rate by week" x="Week" y="Percent">
+| Week | No-show % |
+|---|---|
+| W1 | 7.4 |
+| W2 | 6.9 |
+| W3 | 5.8 |
+| W4 | 6.2 |
+</Chart>
+</Card>
+
+<Callout tone="warning" title="4 patients still not arrived">Sam Oyelaran, Nadia Haddad, Aiko Tanaka and Grace Mbeki have no arrival recorded. Reminders were sent to the first two.</Callout>
+
+<FollowUps>
+- Who has not arrived yet today?
+- Show me tomorrow's appointments
+- Which room has been free the longest?
+- How do I reschedule a patient to another day?
+</FollowUps>

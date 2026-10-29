@@ -1,0 +1,84 @@
+# Personal Budget Check
+
+<Card title="Budget Overview">
+<Columns>
+<Stat label="Budget" value="$4,500" icon="wallet" />
+<Stat label="Spent this month" value="$3,847" icon="shopping-cart" tone="info" />
+<Stat label="Remaining" value="$653" icon="trend-up" tone="success" />
+</Columns>
+
+<Progress value="3847" max="4500" label="85% spent" tone="info" />
+
+<Callout tone="warning" title="Approaching budget limit">You have spent 85% of your monthly budget with 9 days left in the month.</Callout>
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 1400 |
+| Food & Groceries | 850 |
+| Transportation | 420 |
+| Utilities | 310 |
+| Entertainment | 290 |
+| Shopping | 250 |
+| Health | 187 |
+| Other | 140 |
+</Chart>
+
+<Callout tone="danger" title="Largest expense">
+<Stat label="Housing" value="$1,400" icon="house" note="30% of total spending" />
+</Callout>
+</Card>
+
+<Card title="View a Different Month">
+<Form name="select-month">
+<Date label="Choose month" name="view-month" hint="Pick any month to review" />
+<Button>View month</Button>
+</Form>
+
+<Tabs>
+<Tab title="This Month (April 2025)">
+| Category | Budgeted | Spent | Status |
+|---|---|---|---|
+| Housing | $1,400 | $1,400 | <Badge tone="warning">Met</Badge> |
+| Food & Groceries | $900 | $850 | <Badge tone="success">Under</Badge> |
+| Transportation | $500 | $420 | <Badge tone="success">Under</Badge> |
+| Utilities | $350 | $310 | <Badge tone="success">Under</Badge> |
+| Entertainment | $300 | $290 | <Badge tone="success">Under</Badge> |
+| Shopping | $200 | $250 | <Badge tone="danger">Over</Badge> |
+| Health | $200 | $187 | <Badge tone="success">Under</Badge> |
+| Other | $150 | $140 | <Badge tone="success">Under</Badge> |
+</Tab>
+<Tab title="Last Month (March 2025)">
+| Category | Budgeted | Spent | Status |
+|---|---|---|---|
+| Housing | $1,400 | $1,400 | <Badge tone="warning">Met</Badge> |
+| Food & Groceries | $900 | $920 | <Badge tone="danger">Over</Badge> |
+| Transportation | $500 | $480 | <Badge tone="success">Under</Badge> |
+| Utilities | $350 | $330 | <Badge tone="success">Under</Badge> |
+| Entertainment | $300 | $275 | <Badge tone="success">Under</Badge> |
+| Shopping | $200 | $180 | <Badge tone="success">Under</Badge> |
+| Health | $200 | $210 | <Badge tone="danger">Over</Badge> |
+| Other | $150 | $130 | <Badge tone="success">Under</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run at Trader Joe's" required />
+<Input label="Amount ($)" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required />
+<Select label="Category" name="category" options="Housing | Food & Groceries | Transportation | Utilities | Entertainment | Shopping | Health | Other" placeholder="Choose a category" required />
+<Date label="Date" name="expense-date" hint="Defaults to today" />
+<TextArea label="Notes (optional)" name="notes" placeholder="Any extra details" rows="2" />
+<Button>Add expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me a breakdown of my food spending this month
+- How can I reduce my shopping category?
+- Compare my spending across the last 3 months
+- Alert me when I'm close to the budget limit
+</FollowUps>

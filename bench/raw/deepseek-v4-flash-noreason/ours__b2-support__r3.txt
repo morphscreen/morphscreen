@@ -1,0 +1,50 @@
+# Support Lead Dashboard
+
+<Columns>
+<Stat label="Open tickets" value="24" change="+3 today" icon="ticket" />
+<Stat label="Avg first response" value="1h 42m" change="-18m vs last week" tone="success" icon="clock" />
+<Stat label="High priority" value="7" change="2 critical" tone="warning" icon="warning" />
+</Columns>
+
+<Card title="Ticket queue" subtitle="Five most recent tickets">
+<Radio label="Filter" options="All priorities | High priority only" name="priority-filter" value="All priorities" />
+
+| Ticket | Subject | Priority | Status |
+|---|---|---|---|
+| #4821 | Login failure after update | <Badge tone="danger">Critical</Badge> | Open |
+| #4820 | Invoice download broken | <Badge tone="warning">High</Badge> | Open |
+| #4819 | Feature request: dark mode | <Badge tone="neutral">Low</Badge> | Open |
+| #4818 | API rate limit question | <Badge tone="info">Medium</Badge> | Open |
+| #4817 | Billing discrepancy | <Badge tone="warning">High</Badge> | Awaiting reply |
+
+<Details title="Filtered view: high-priority only" open="false">
+| Ticket | Subject | Priority | Status |
+|---|---|---|---|
+| #4821 | Login failure after update | <Badge tone="danger">Critical</Badge> | Open |
+| #4820 | Invoice download broken | <Badge tone="warning">High</Badge> | Open |
+| #4817 | Billing discrepancy | <Badge tone="warning">High</Badge> | Awaiting reply |
+</Details>
+
+<Button variant="primary" icon="plus">New ticket</Button>
+<Button variant="secondary" icon="arrow-clockwise">Refresh queue</Button>
+</Card>
+
+<Card title="Response time trend" subtitle="Average first response, last 7 days">
+<Chart type="line" x="Day" y="Hours">
+| Day | Hours |
+|---|---|
+| Mon | 2.1 |
+| Tue | 1.8 |
+| Wed | 1.5 |
+| Thu | 1.9 |
+| Fri | 1.4 |
+| Sat | 2.3 |
+| Sun | 1.7 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Which tickets are unassigned right now?
+- Show me the SLA breach risk for today
+- What's the busiest support channel this week?
+</FollowUps>

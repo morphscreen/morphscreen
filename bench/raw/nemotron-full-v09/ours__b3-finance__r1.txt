@@ -1,0 +1,41 @@
+# Month-End Finance View
+
+<Card subtitle="Select a month to view its financial summary">
+<Columns>
+<Select label="Month" name="month" value="2025-01" options="2025-01 | 2024-12 | 2024-11 | 2024-10 | 2024-09 | 2024-08" />
+<Button variant="secondary" icon="download">Download Statement</Button>
+</Columns>
+</Card>
+
+<Card title="Key Metrics" subtitle="January 2025">
+<Columns>
+<Stat label="Cash on Hand" value="$487,200" change="-$42,800 vs Dec" tone="neutral" icon="currency-usd" />
+<Stat label="Monthly Burn" value="$142,500" change="+$8,200 vs Dec" tone="warning" icon="fire" />
+<Stat label="Runway" value="3.4 months" change="-0.3 months vs Dec" tone="danger" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category" subtitle="January 2025">
+<Chart type="donut" title="Expense Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Payroll & Benefits | 89,400 |
+| Cloud & Infrastructure | 24,800 |
+| Marketing & Ads | 16,200 |
+| Office & Operations | 7,500 |
+| Professional Services | 4,600 |
+</Chart>
+</Card>
+
+<Card title="Transactions Above $10,000" subtitle="January 2025 — 6 transactions">
+| Date | Vendor | Category | Amount |
+|---|---|---|---|
+| 2025-01-03 | Gusto Payroll | Payroll & Benefits | $89,400 |
+| 2025-01-05 | AWS | Cloud & Infrastructure | $24,800 |
+| 2025-01-08 | Google Ads | Marketing & Ads | $12,500 |
+| 2025-01-12 | Meta Ads | Marketing & Ads | $10,200 |
+| 2025-01-15 | WeWork | Office & Operations | $11,800 |
+| 2025-01-22 | Orrick Legal | Professional Services | $14,600 |
+</Card>
+
+<Callout tone="info" title="Runway Alert">At current burn rate, runway falls below 3 months in March. Consider extending runway or reducing burn by ~$25K/month.</Callout>

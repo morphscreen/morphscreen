@@ -1,0 +1,28 @@
+root = Card([header, filterForm, kpiCard, insightsRow, timingEarningsRow, bestPostsCard, scheduledCard, commentsCard, collabsCard, scheduleCard, followups], "card", "column", "l")
+
+header = CardHeader("Creator Studio", "Cross-platform dashboard · @maya.creates")
+
+filterForm = Form("platform-filter", filterButtons, [platformField])
+filterButtons = Buttons([applyFilterBtn])
+applyFilterBtn = Button("Apply filter", null, "primary")
+platformField = FormControl("Platform", platformSelect, "Narrows every metric on this screen to one platform")
+platformSelect = Select("platform", [allOpt, igOpt, ttOpt, ytOpt, xOpt], "All platforms")
+allOpt = SelectItem("all", "All platforms")
+igOpt = SelectItem("instagram", "Instagram")
+ttOpt = SelectItem("tiktok", "TikTok")
+ytOpt = SelectItem("youtube", "YouTube")
+xOpt = SelectItem("x", "X (Twitter)")
+
+kpiCard = Card([kpiHeading, kpiTable], "sunk")
+kpiHeading = Heading("Overview", "h3")
+kpiTable = Table([kpiMetric, kpiValue, kpiDelta])
+kpiMetric = Col("Metric", ["Followers", "Engagement rate", "Earnings this month", "Unread comments"])
+kpiValue = Col("Value", ["248,600", "4.8%", "$8,240", "37"])
+kpiDelta = Col("vs last month", ["+12.4%", "+0.6 pts", "+18%", "-9"])
+
+insightsRow = Card([growthCard, audienceCard], "clear", "row", "l", "stretch")
+growthCard = Card([growthHeading, growthChart], "sunk")
+growthHeading = Heading("Follower growth · past 30 days", "h3")
+growthChart = LineChart(["Sep 1", "Sep 8", "Sep 15", "Sep 22", "Sep 29"], [growthSeries], "natural", "", "Followers")
+growthSeries = Series("Followers", [221000, 228500, 233200, 240100, 248600])
+audienceCard = Card([

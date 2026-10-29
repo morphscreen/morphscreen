@@ -1,0 +1,172 @@
+# Streaming Operations Dashboard
+
+<Select label="Focus region" name="region" placeholder="All regions" options="Global | North America | Europe | APAC | Latin America" />
+
+<Columns>
+<Card title="Live Viewers">
+<Stat label="Watching now" value="2.4M" change="+3.2% vs 1hr ago" tone="success" icon="users" />
+<Stat label="Peak today" value="3.1M" change="at 8:14 PM" tone="neutral" icon="chart-line" />
+<Stat label="Concurrent streams" value="1.8M" change="+1.1% vs yesterday" tone="info" icon="play-circle" />
+</Card>
+
+<Card title="Buffering Health">
+<Stat label="Buffering rate" value="0.34%" change="-0.02% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Avg buffer events/session" value="0.8" change="-0.1 vs last week" tone="info" icon="clock" />
+<Stat label="Rebuffer ratio" value="0.12%" change="stable" tone="neutral" icon="refresh-cw" />
+</Card>
+
+<Card title="Recommendation & Search">
+<Stat label="Rec click-through rate" value="4.7%" change="+0.3% vs last week" tone="success" icon="mouse-pointer-click" />
+<Stat label="Searches w/o playback" value="12.4%" change="-0.8% vs last week" tone="warning" icon="magnifying-glass" />
+<Stat label="Search→play latency" value="1.2s" change="-0.1s vs last week" tone="info" icon="timer" />
+</Card>
+</Columns>
+
+<Card title="Most-Watched Titles (Last 7 Days)">
+<Chart type="bar" title="Hours watched" x="Title" y="Hours">
+| Title | Hours (M) |
+|---|---|
+| The Crown S6 | 4.2 |
+| Stranger Things S4 | 3.8 |
+| Wednesday S1 | 3.5 |
+| Squid Game S1 | 3.1 |
+| Bridgerton S3 | 2.9 |
+| The Witcher S3 | 2.7 |
+| Black Mirror S6 | 2.4 |
+| Narcos S3 | 2.1 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Watch Time (Past 30 Days)">
+<Chart type="line" title="Hours watched (millions)" x="Date" y="Hours">
+| Date | Hours |
+|---|---|
+| 2024-10-01 | 12.4 |
+| 2024-10-05 | 14.1 |
+| 2024-10-10 | 13.8 |
+| 2024-10-15 | 15.2 |
+| 2024-10-20 | 16.7 |
+| 2024-10-25 | 18.3 |
+| 2024-10-30 | 19.1 |
+</Chart>
+</Card>
+
+<Card title="Subscribers: New vs Cancelled">
+<Chart type="bar" title="Subscribers (thousands)" x="Week" y="Count">
+| Week | New | Cancelled | Net |
+|---|---|---|---|
+| W1 | 42 | 28 | 14 |
+| W2 | 38 | 31 | 7 |
+| W3 | 45 | 26 | 19 |
+| W4 | 52 | 29 | 23 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Performance by Genre">
+<Chart type="bar" title="Avg completion rate %" x="Genre" y="Rate">
+| Genre | Completion % |
+|---|---|
+| Drama | 78 |
+| Comedy | 72 |
+| Thriller | 81 |
+| Documentary | 65 |
+| Sci-Fi | 76 |
+| Horror | 69 |
+| Animation | 74 |
+| Reality | 58 |
+</Chart>
+</Card>
+
+<Card title="Delivery Health by Region">
+<Chart type="bar" title="Avg bitrate (Mbps) & Error rate %" x="Region" y="Value">
+| Region | Bitrate | Error Rate |
+|---|---|---|
+| North America | 12.4 | 0.18 |
+| Europe | 11.8 | 0.22 |
+| APAC | 9.6 | 0.31 |
+| Latin America | 8.2 | 0.45 |
+| Middle East | 7.9 | 0.52 |
+| Africa | 5.4 | 0.78 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Revenue Split by Plan">
+<Chart type="donut" title="Monthly revenue %" x="Plan" y="Revenue">
+| Plan | Revenue ($M) |
+|---|---|
+| Premium 4K | 42.3 |
+| Standard HD | 31.7 |
+| Basic SD | 18.2 |
+| Mobile Only | 7.8 |
+</Chart>
+</Card>
+
+<Card title="Viewing Split by Device">
+<Chart type="donut" title="Hours watched %" x="Device" y="Hours">
+| Device | Hours (M) |
+|---|---|
+| Smart TV | 52.1 |
+| Mobile | 28.4 |
+| Desktop | 12.7 |
+| Tablet | 6.8 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Releases Coming This Month">
+| Date | Title | Type | Genre |
+|---|---|---|---|
+| Nov 3 | The Diplomat S2 | Series | Thriller |
+| Nov 7 | Rebel Moon Pt 2 | Film | Sci-Fi |
+| Nov 10 | Squid Game S2 | Series | Thriller |
+| Nov 14 | The Killer | Film | Action |
+| Nov 17 | Bridgerton S3 Pt 2 | Series | Romance |
+| Nov 21 | Avatar: The Last Airbender | Series | Fantasy |
+| Nov 24 | Maestro | Film | Biography |
+| Nov 28 | Berlin | Series | Crime |
+</Card>
+
+<Card title="Licenses Expiring Soon (Next 30 Days)">
+| Title | Expires | Region | Action |
+|---|---|---|---|
+| The Office (US) | Nov 15 | Global | Renew pending |
+| Friends | Nov 22 | NA/EU | Negotiating |
+| Harry Potter Films | Nov 28 | Global | Auto-renew |
+| Parks & Rec | Dec 5 | NA | Review needed |
+| Breaking Bad | Dec 12 | Global | Renewed ✓ |
+| The Big Bang Theory | Dec 18 | NA/EU | At risk |
+</Card>
+</Columns>
+
+<Card title="Feature Flags">
+| Flag | State | Description | Owner |
+|---|---|---|---|
+| new-recommendation-engine | <Badge tone="success">Enabled</Badge> | ML-based recs v2 | ML Team |
+| shuffle-play | <Badge tone="success">Enabled</Badge> | Random episode play | Product |
+| live-sports-low-latency | <Badge tone="warning">Canary (5%)</Badge> | <2s latency for sports | Platform |
+| kids-profile-pin | <Badge tone="success">Enabled</Badge> | PIN protection for kids | Safety |
+| spatial-audio-rollout | <Badge tone="info">Rolling (40%)</Badge> | Dolby Atmos support | Audio |
+| ad-tier-frequency-cap | <Badge tone="success">Enabled</Badge> | Max 4 ads/hr | Ads |
+| download-quality-selector | <Badge tone="neutral">Disabled</Badge> | User picks DL quality | Mobile |
+| social-watch-party | <Badge tone="danger">Deprecated</Badge> | Group viewing feature | Social |
+</Card>
+
+<Card title="Promote Title on Home Screen">
+<Form name="promote-title">
+<Select label="Title" name="title" placeholder="Select a title" options="The Crown S6 | Stranger Things S4 | Wednesday S1 | Squid Game S1 | Bridgerton S3 | The Witcher S3 | Black Mirror S6 | Narcos S3 | Rebel Moon Pt 2 | Squid Game S2 | The Diplomat S2 | Avatar: The Last Airbender | Berlin" required="true" />
+<Select label="Placement" name="placement" placeholder="Choose placement" options="Hero Banner (Top) | Continue Watching Row | Trending Now Row | Genre Row (Top) | New Releases Row | Search Results Top" required="true" />
+<Date label="Start date" name="startDate" required="true" />
+<Date label="End date" name="endDate" required="true" />
+<Input label="Custom badge text" name="badge" placeholder="e.g., New Season, Trending, Critics' Choice" hint="Optional" />
+<Checkboxes label="Target regions" name="regions" options="North America | Europe | APAC | Latin America | Middle East | Africa" value="North America | Europe | APAC | Latin America | Middle East | Africa" />
+<Switch label="A/B test (50/50 split)" name="abTest" value="false" hint="Compare against control group" />
+<Button>Promote Title</Button>
+<Button variant="secondary">Preview Placement</Button>
+</Form>
+</Card>

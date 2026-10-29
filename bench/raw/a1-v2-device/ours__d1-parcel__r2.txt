@@ -1,0 +1,39 @@
+# Damaged Delivery Report
+
+<Card title="Order #ORD-2024-087421" subtitle="Delivered 2 hours ago">
+| Item | Qty | Condition |
+|---|---|---|
+| Wireless Headphones (Black) | 1 | Expected: New |
+| USB-C Charging Cable | 2 | Expected: New |
+| Carrying Case | 1 | Expected: New |
+</Card>
+
+<Card title="Damage Photos" subtitle="Add up to 5 photos showing the damage">
+<Camera label="Photo 1" name="damage-photo-1" facing="back" hint="Overall package condition" required="true" />
+<Camera label="Photo 2" name="damage-photo-2" facing="back" hint="Close-up of damage" required="false" />
+<Camera label="Photo 3" name="damage-photo-3" facing="back" hint="Shipping label visible" required="false" />
+<Camera label="Photo 4" name="damage-photo-4" facing="back" hint="Items inside package" required="false" />
+<Camera label="Photo 5" name="damage-photo-5" facing="back" hint="Any other relevant detail" required="false" />
+</Card>
+
+<Card title="Parcel Barcode" subtitle="Scan the tracking barcode on the shipping label">
+<Scan label="Scan barcode" name="parcel-barcode" kind="barcode" hint="Position the barcode within the frame" required="true" />
+</Card>
+
+<Card title="What Happens Next">
+<Steps>
+<Step title="Report submitted" status="todo">Your report and photos are sent to our claims team</Step>
+<Step title="Review within 24 hrs" status="todo">We verify the damage and confirm eligibility</Step>
+<Step title="Resolution offered" status="todo">Choose: replacement, refund, or store credit</Step>
+<Step title="Resolution processed" status="todo">Replacement ships next business day or refund issues in 3–5 days</Step>
+</Steps>
+</Card>
+
+<Card title="Submit Report">
+<Form name="damage-report">
+<Input label="Your email" name="email" type="email" placeholder="you@example.com" hint="We'll send confirmation here" required="true" />
+<TextArea label="Additional notes" name="notes" placeholder="Describe the damage, how you found the package, etc." rows="3" hint="Optional but helpful" required="false" />
+<Button variant="primary" size="large">Send Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>

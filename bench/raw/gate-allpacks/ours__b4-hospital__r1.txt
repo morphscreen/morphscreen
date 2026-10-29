@@ -1,0 +1,199 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selection" subtitle="Select operational day">
+<Date label="Operational Date" name="ops-date" value="2025-01-15" />
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Gauge label="Total Beds" value="342" min="0" max="400" unit="beds" tone="info" />
+<Gauge label="Occupied" value="318" min="0" max="400" unit="beds" tone="warning" />
+<Gauge label="Available" value="82" min="0" max="400" unit="beds" tone="success" />
+<Progress value="318" max="400" label="Overall Occupancy: 79.5%" tone="warning" />
+</Card>
+
+<Card title="ER Status">
+<Stat label="Current Wait Time" value="47 min" change="+12 min vs avg" tone="warning" />
+<Stat label="Patients in Waiting" value="23" change="5 critical" tone="danger" />
+<Stat label="LWBS Today" value="3" change="Left Without Being Seen" tone="danger" />
+<Progress value="47" max="120" label="Wait Time vs Target (120 min)" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" x="Date" y="Admissions" title="Daily Admissions Trend">
+| Date | Admissions | Discharges | Net Change |
+|---|---|---|---|
+| 2025-01-02 | 28 | 31 | -3 |
+| 2025-01-03 | 34 | 29 | +5 |
+| 2025-01-04 | 31 | 28 | +3 |
+| 2025-01-05 | 26 | 33 | -7 |
+| 2025-01-06 | 38 | 25 | +13 |
+| 2025-01-07 | 32 | 30 | +2 |
+| 2025-01-08 | 29 | 34 | -5 |
+| 2025-01-09 | 35 | 27 | +8 |
+| 2025-01-10 | 30 | 32 | -2 |
+| 2025-01-11 | 27 | 29 | -2 |
+| 2025-01-12 | 33 | 26 | +7 |
+| 2025-01-13 | 36 | 31 | +5 |
+| 2025-01-14 | 29 | 28 | +1 |
+| 2025-01-15 | 31 | 0 | +31 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients" title="Current Census by Department">
+| Department | Patients | Capacity | Occupancy |
+|---|---|---|---|
+| Emergency | 42 | 50 | 84% |
+| ICU | 18 | 20 | 90% |
+| Cardiology | 28 | 35 | 80% |
+| Orthopedics | 22 | 30 | 73% |
+| Neurology | 15 | 25 | 60% |
+| Oncology | 19 | 25 | 76% |
+| Pediatrics | 12 | 20 | 60% |
+| General Medicine | 45 | 60 | 75% |
+| Surgery (Post-op) | 24 | 35 | 69% |
+| Psychiatry | 14 | 20 | 70% |
+| Obstetrics | 16 | 25 | 64% |
+| Rehabilitation | 25 | 35 | 71% |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift — 07:00–19:00">
+<KeyValue title="Clinical Staff">
+| Role | Scheduled | Present | On Call | Notes |
+|---|---|---|---|---|
+| Attending Physicians | 12 | 11 | 3 | Dr. Chen late |
+| Residents/Fellows | 24 | 23 | 6 | |
+| Registered Nurses | 48 | 46 | 12 | 2 call-outs |
+| Nurse Practitioners | 8 | 8 | 2 | |
+| Respiratory Therapists | 6 | 6 | 2 | |
+| Pharmacists | 4 | 4 | 1 | |
+| Physical Therapists | 5 | 5 | 0 | |
+| Social Workers | 3 | 3 | 1 | |
+</KeyValue>
+</Card>
+
+<Card title="Critical Patients — Active Alerts">
+<Callout tone="danger" title="4 Critical Patients Requiring Attention">
+<Details title="ICU Bed 3 — MRN 884721" open="true">
+**Patient:** Margaret Holloway, 72 | **Admitted:** 2025-01-13 | **Diagnosis:** Septic shock, ARDS
+**Vitals:** BP 82/48 (on norepinephrine 0.3), HR 118, SpO₂ 88% (FiO₂ 100%), Temp 39.1°C
+**Labs:** Lactate 5.2, Cr 2.8, WBC 22.4, Plt 42k
+**Action Required:** Nephrology consult for CRRT, consider ECMO evaluation
+</Details>
+<Details title="ER Bay 7 — MRN 912304" open="false">
+**Patient:** James Rodriguez, 45 | **Admitted:** 2025-01-15 06:22 | **Diagnosis:** STEMI, cardiogenic shock
+**Vitals:** BP 78/40 (on dobutamine + norepi), HR 102, SpO₂ 91% (NC 6L)
+**Labs:** Troponin 48.2, BNP 1,840, Lactate 6.8
+**Action Required:** Cath lab activated — ETA 15 min, Cardiology on bedside
+</Details>
+<Details title="ICU Bed 11 — MRN 776512" open="false">
+**Patient:** Eleanor Park, 68 | **Admitted:** 2025-01-10 | **Diagnosis:** Post-op esophageal perforation, mediastinitis
+**Vitals:** BP 94/56 (vasopressin), HR 124, SpO₂ 93% (vent), Temp 38.7°C
+**Labs:** WBC 28.1, Cr 1.9, INR 2.3
+**Action Required:** Repeat CT chest, ID recommends antifungal escalation
+</Details>
+<Details title="Stepdown 4B — MRN 553891" open="false">
+**Patient:** Michael Torres, 53 | **Admitted:** 2025-01-14 | **Diagnosis:** Massive PE, RV strain
+**Vitals:** BP 102/68, HR 110, SpO₂ 94% (HFNC 50L), RR 28
+**Labs:** D-dimer >20,000, Troponin 1.8, BNP 920
+**Action Required:** IR consult for possible catheter-directed thrombolysis
+</Details>
+</Callout>
+</Card>
+
+<Card title="Patients Ready for Discharge (Est. >24h)">
+<KeyValue title="Discharge Planning">
+| Patient | MRN | Unit | LOS | Barrier | Expected DC | Transport |
+|---|---|---|---|---|---|---|
+| Sarah Mitchell | 882104 | Cardiology | 5d | Home health referral pending | Today 14:00 | Family |
+| Robert Kim | 771239 | Orthopedics | 3d | PT clearance received | Today 11:00 | Ambulatory |
+| Linda Chen | 664528 | Gen Medicine | 7d | SNF bed confirmed (Sunrise) | Today 10:00 | Ambulance |
+| David Okafor | 559812 | Neurology | 4d | Outpatient neuro follow-up scheduled | Today 15:00 | Family |
+| Patricia Ross | 447301 | Oncology | 6d | PICC line education complete | Tomorrow AM | Family |
+| James Wilson | 338924 | Surgery | 2d | Pain control on PO regimen | Today 12:00 | Ambulatory |
+| Maria Santos | 229156 | Pediatrics | 3d | Parent education complete | Today 16:00 | Family |
+| Thomas Reed | 115678 | Rehab | 14d | Home safety eval done | Tomorrow AM | Ambulance |
+</KeyValue>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<Agenda title="OR Schedule — 2025-01-15">
+| Time | OR | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| 07:30 | 1 | Laparoscopic Whipple | Dr. Patel | Dr. Kim | In Progress | 6h |
+| 07:30 | 2 | CABG x3 | Dr. Chen | Dr. Williams | In Progress | 5h |
+| 07:30 | 3 | Total Hip Arthroplasty | Dr. Rodriguez | Dr. Park | In Progress | 3h |
+| 07:30 | 4 | Craniotomy (tumor) | Dr. Gupta | Dr. Lee | In Progress | 7h |
+| 07:30 | 5 | Open AAA Repair | Dr. Thompson | Dr. Brown | In Progress | 4h |
+| 11:00 | 3 | Total Knee Arthroplasty | Dr. Rodriguez | Dr. Park | Scheduled | 2.5h |
+| 12:00 | 2 | Lap Cholecystectomy | Dr. Patel | Dr. Kim | Scheduled | 1.5h |
+| 13:30 | 5 | Thyroidectomy | Dr. Thompson | Dr. Brown | Scheduled | 2h |
+| 14:00 | 4 | VP Shunt Revision | Dr. Gupta | Dr. Lee | Scheduled | 3h |
+| 15:30 | 1 | Exploratory Lap (trauma) | Dr. Patel | Dr. Kim | Add-on | TBD |
+| 16:00 | 2 | Appendectomy (lap) | Dr. Rodriguez | Dr. Park | Add-on | 1h |
+</Agenda>
+</Card>
+
+<Card title="Supplies Running Low (Par Level < 20%)">
+<KeyValue title="Critical Supply Alerts">
+| Item | Current | Par Level | % Remaining | Days at Current Burn | Reorder Status | Unit |
+|---|---|---|---|---|---|---|
+| Norepinephrine 4mg/4ml | 12 | 100 | 12% | 1.5 | **URGENT** — PO #8847 placed | ICU/ER |
+| Vasopressin 20u/ml | 8 | 60 | 13% | 2 | **URGENT** — PO #8847 placed | ICU/ER |
+| CRRT Prismaflex Sets | 5 | 40 | 12.5% | 1 | **URGENT** — Vendor expedite | ICU |
+| Platelets (apheresis) | 3 | 20 | 15% | <1 | **URGENT** — Blood bank notified | All |
+| FFP (thawed) | 4 | 30 | 13% | 1 | **URGENT** — Blood bank notified | OR/ER |
+| Heparin 25,000u/500ml | 15 | 80 | 18.7% | 3 | Ordered — ETA tomorrow | All |
+| Enoxaparin 40mg | 22 | 120 | 18.3% | 4 | Ordered — ETA tomorrow | All |
+| Piperacillin-Tazo 4.5g | 18 | 100 | 18% | 3 | Ordered — ETA tomorrow | All |
+| Propofol 1% 100ml | 25 | 150 | 16.6% | 2 | Ordered — ETA tomorrow | OR/ICU |
+| Rocuronium 100mg | 30 | 200 | 15% | 3 | Ordered — ETA tomorrow | OR/ICU |
+</KeyValue>
+</Card>
+
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Input label="Reporter Name" placeholder="Your name" required="true" />
+<Select label="Incident Type" placeholder="Select type" options="Patient Safety | Medication Error | Equipment Failure | Fall | Pressure Injury | HIPAA/Privacy | Security | Near Miss | Other" required="true" />
+<Select label="Severity" placeholder="Select severity" options="Level 1 — No Harm | Level 2 — Minor Harm | Level 3 — Moderate Harm | Level 4 — Major Harm | Level 5 — Death" required="true" />
+<Input label="Location" placeholder="Unit / Room / Area" required="true" />
+<Date label="Date of Incident" name="incident-date" required="true" />
+<Time label="Time of Incident" name="incident-time" required="true" />
+<TextArea label="Description" placeholder="Describe what happened, contributing factors, immediate actions taken" rows="4" required="true" />
+<TextArea label="Patient(s) Involved (MRN)" placeholder="List MRNs if applicable" rows="2" />
+<Input label="Witness(es)" placeholder="Names of witnesses" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient MRN" placeholder="Enter MRN" required="true" />
+<Input label="Patient Name" placeholder="Auto-populates from MRN" required="true" />
+<Select label="Current Unit" placeholder="Select current unit" options="ER | ICU | Stepdown | Cardiology | Orthopedics | Neurology | Oncology | Pediatrics | Gen Medicine | Surgery | Psychiatry | OB | Rehab" required="true" />
+<Select label="Requesting Unit" placeholder="Select destination unit" options="ER | ICU | Stepdown | Cardiology | Orthopedics | Neurology | Oncology | Pediatrics | Gen Medicine | Surgery | Psychiatry | OB | Rehab" required="true" />
+<Select label="Transfer Reason" placeholder="Select reason" options="Higher Level of Care | Lower Level of Care | Specialty Service | Bed Management | Patient Preference | Isolation Needs | Procedure/OR | Other" required="true" />
+<Select label="Urgency" placeholder="Select urgency" options="Emergent (Immediate) | Urgent (<1 hr) | Semi-Urgent (<4 hr) | Routine (<24 hr)" required="true" />
+<Select label="Transport Mode" placeholder="Select transport" options="RN Only | RN + RT | RN + MD | Critical Care Team | EMS/Ambulance | Wheelchair | Ambulatory" required="true" />
+<TextArea label="Clinical Summary / Reason for Transfer" placeholder="Include key vitals, lines, drips, isolation, code status, pending orders" rows="4" required="true" />
+<Input label="Accepting Provider" placeholder="Name of accepting physician/APP" />
+<Input label="Requesting Provider" placeholder="Your name" required="true" />
+<Button>Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">📞 Code Blue Team Activation</Button>
+<Button variant="danger" size="large">🚨 Disaster Protocol</Button>
+<Button variant="secondary" size="large">📋 Bed Huddle (Next: 14:00)</Button>
+<Button variant="tertiary" size="large">📊 Export Census Report</Button>
+</Columns>
+</Card>

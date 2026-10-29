@@ -1,0 +1,85 @@
+# Training Platform Analytics
+
+Overview of learner performance and engagement for your training programs.
+
+<Card title="Key Metrics" subtitle="Current performance snapshot">
+<Columns>
+<Stat label="Active Learners (this week)" value="1,284" change="+12.4%" note="vs. last week" tone="success" icon="users" />
+<Stat label="Course Completion Rate" value="78%" change="+3.2%" note="vs. last month" tone="success" icon="check-circle" />
+<Stat label="Average Quiz Score" value="86%" change="+1.8%" note="vs. last week" tone="info" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Filter by Cohort" subtitle="Narrow down all analytics below to a specific group">
+<Form name="cohort-filter">
+<Select label="Cohort" name="cohort" placeholder="Select a cohort" options="All Cohorts | Sales Q3 | Engineering Onboarding | Customer Success | Leadership Program | Product Training" />
+<Button>Apply Filter</Button>
+</Form>
+</Card>
+
+<Card title="Engagement Across the Past Eight Weeks" subtitle="Active learners per week">
+<Chart type="line" x="Week" y="Active Learners" title="Weekly Active Learners">
+| Week | Active Learners |
+|---|---|
+| Week 1 | 842 |
+| Week 2 | 915 |
+| Week 3 | 988 |
+| Week 4 | 1,056 |
+| Week 5 | 1,102 |
+| Week 6 | 1,189 |
+| Week 7 | 1,245 |
+| Week 8 | 1,284 |
+</Chart>
+</Card>
+
+<Card title="Courses Ranked by Enrollment" subtitle="Most popular courses first">
+<Chart type="bar" x="Course" y="Enrollments" title="Enrollment by Course">
+| Course | Enrollments |
+|---|---|
+| Sales Fundamentals | 412 |
+| Customer Success Basics | 356 |
+| Leadership Essentials | 289 |
+| Product Onboarding | 243 |
+| Communication Skills | 198 |
+| Data Literacy | 154 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out" subtitle="Based on low activity, missed deadlines, or declining quiz scores">
+<Columns>
+<Card title="Risk Overview">
+<Stat label="At-risk learners" value="37" change="+5" note="since last week" tone="danger" icon="warning" />
+<Progress value="37" max="1284" label="3% of active learners" tone="danger" />
+</Card>
+<Card title="Top At-Risk Learners">
+| Learner | Course | Last Activity | Risk |
+|---|---|---|---|
+| Jamie Chen | Sales Fundamentals | 6 days ago | <Badge tone="danger">High</Badge> |
+| Alex Rivera | Data Literacy | 5 days ago | <Badge tone="danger">High</Badge> |
+| Sam Okafor | Leadership Essentials | 4 days ago | <Badge tone="warning">Medium</Badge> |
+| Priya Patel | Product Onboarding | 3 days ago | <Badge tone="warning">Medium</Badge> |
+| Marcus Webb | Customer Success Basics | 7 days ago | <Badge tone="danger">High</Badge> |
+</Card>
+</Columns>
+<Details title="View all 37 at-risk learners" open="false">
+Full list available with individual risk scores, last activity timestamps, and recommended interventions. Export the list or message them directly.
+</Details>
+</Card>
+
+<Card title="Message a Cohort" subtitle="Send a nudge, announcement, or reminder to an entire cohort">
+<Form name="cohort-message">
+<Select label="Recipients" name="recipients" placeholder="Select a cohort" options="All Cohorts | Sales Q3 | Engineering Onboarding | Customer Success | Leadership Program | Product Training | At-risk learners" />
+<Input label="Subject" name="subject" placeholder="e.g., Reminder: Complete your quiz" />
+<TextArea label="Message" name="message" placeholder="Write your message here…" rows="5" hint="Personalization tokens like {{first_name}} will be filled automatically" />
+<Checkboxes label="Send options" name="send-options" options="Send as email | Send as in-app notification | Send as SMS" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview Message</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed breakdown for the Sales Q3 cohort
+- Which courses have the highest dropout risk?
+- Compare quiz scores across cohorts
+- Schedule a recurring weekly report for these metrics
+</FollowUps>

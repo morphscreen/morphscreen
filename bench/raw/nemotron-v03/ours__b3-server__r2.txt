@@ -1,0 +1,235 @@
+<Card title="Service Health Dashboard" subtitle="Production • Last updated: 2 minutes ago">
+<Columns>
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" />
+<Slider label="Time window" min="1" max="168" step="1" value="24" name="timeWindow" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Uptime This Quarter">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+<Callout tone="info" title="SLA Status">Within SLA — 0.03% error budget remaining</Callout>
+</Card>
+
+<Card title="Error Rate (Now)">
+<Stat label="Error Rate" value="0.23%" change="0.05% ↑ last 5m" tone="warning" />
+<Progress value="0.23" max="1" label="Threshold: 0.5%" />
+<Callout tone="neutral" title="Breakdown">HTTP 5xx: 0.18% | Timeout: 0.04% | Other: 0.01%</Callout>
+</Card>
+</Columns>
+
+<Card title="CPU & Memory Usage (Past 24 Hours)">
+<Chart type="area" x="Time" y="Usage %" title="Resource Utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 53 |
+| 06:00 | 41 | 57 |
+| 08:00 | 58 | 62 |
+| 10:00 | 72 | 68 |
+| 12:00 | 78 | 71 |
+| 14:00 | 82 | 74 |
+| 16:00 | 79 | 72 |
+| 18:00 | 74 | 69 |
+| 20:00 | 65 | 65 |
+| 22:00 | 52 | 61 |
+</Chart>
+<Columns>
+<Badge tone="info">CPU Peak: 82% at 14:00</Badge>
+<Badge tone="info">Memory Peak: 74% at 14:00</Badge>
+</Columns>
+</Card>
+
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (7)">
+<Columns>
+<Card title="INC-2024-0847" subtitle="Payment service latency spike">
+<Badge tone="danger">SEV-1</Badge>
+<Callout tone="danger" title="Impact">Checkout failing for 12% of users</Callout>
+<Details title="Details" open="false">
+**Service:** payments-api (us-east-1)
+**Started:** 2024-01-15 14:22 UTC
+**Owner:** @sarah.chen
+**Runbook:** [payment-latency-runbook](https://runbooks.example.com/payment-latency)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0847">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+
+<Card title="INC-2024-0846" subtitle="Database connection pool exhaustion">
+<Badge tone="warning">SEV-2</Badge>
+<Callout tone="warning" title="Impact">Elevated latency on user profile reads</Callout>
+<Details title="Details" open="false">
+**Service:** user-service (eu-west-1)
+**Started:** 2024-01-15 13:45 UTC
+**Owner:** @marcus.johnson
+**Runbook:** [db-pool-exhaustion](https://runbooks.example.com/db-pool)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0846">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+
+<Card title="INC-2024-0845" subtitle="Cache invalidation storm">
+<Badge tone="warning">SEV-2</Badge>
+<Callout tone="warning" title="Impact">Increased origin traffic, 2x latency</Callout>
+<Details title="Details" open="false">
+**Service:** edge-cache (global)
+**Started:** 2024-01-15 12:10 UTC
+**Owner:** @priya.sharma
+**Runbook:** [cache-storm](https://runbooks.example.com/cache-storm)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0845">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="INC-2024-0844" subtitle="Kafka consumer lag growing">
+<Badge tone="info">SEV-3</Badge>
+<Callout tone="info" title="Impact">Analytics pipeline delayed by ~15 min</Callout>
+<Details title="Details" open="false">
+**Service:** analytics-ingest (us-west-2)
+**Started:** 2024-01-15 11:30 UTC
+**Owner:** @alex.rodriguez
+**Runbook:** [kafka-lag](https://runbooks.example.com/kafka-lag)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0844">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+
+<Card title="INC-2024-0843" subtitle="SSL cert expiring in 7 days">
+<Badge tone="info">SEV-3</Badge>
+<Callout tone="info" title="Impact">No immediate impact, renewal needed</Callout>
+<Details title="Details" open="false">
+**Service:** api-gateway (all regions)
+**Started:** 2024-01-15 09:00 UTC
+**Owner:** @devops-team
+**Runbook:** [cert-renewal](https://runbooks.example.com/cert-renewal)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0843">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+
+<Card title="INC-2024-0842" subtitle="Log volume spike — cost alert">
+<Badge tone="neutral">SEV-4</Badge>
+<Callout tone="neutral" title="Impact">Logging costs 3x baseline</Callout>
+<Details title="Details" open="false">
+**Service:** auth-service (ap-southeast-1)
+**Started:** 2024-01-15 08:15 UTC
+**Owner:** @team-platform
+**Runbook:** [log-volume](https://runbooks.example.com/log-volume)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0842">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+
+<Card title="INC-2024-0841" subtitle="Deprecated API endpoint still receiving traffic">
+<Badge tone="neutral">SEV-4</Badge>
+<Callout tone="neutral" title="Impact">~200 req/min to /v1/deprecated</Callout>
+<Details title="Details" open="false">
+**Service:** public-api (us-east-1)
+**Started:** 2024-01-15 07:00 UTC
+**Owner:** @api-team
+**Runbook:** [deprecated-api](https://runbooks.example.com/deprecated-api)
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0841">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="SEV-1 (1)">
+<Card title="INC-2024-0847" subtitle="Payment service latency spike">
+<Badge tone="danger">SEV-1</Badge>
+<Callout tone="danger" title="Impact">Checkout failing for 12% of users</Callout>
+<Details title="Details" open="true">
+**Service:** payments-api (us-east-1)
+**Started:** 2024-01-15 14:22 UTC
+**Owner:** @sarah.chen
+**Runbook:** [payment-latency-runbook](https://runbooks.example.com/payment-latency)
+**Timeline:**
+- 14:22 — Alert fired: p99 latency > 5s
+- 14:25 — On-call paged
+- 14:28 — Sarah acknowledged, investigating DB connection pool
+- 14:35 — Identified: connection leak in new release v2.3.1
+- 14:40 — Rollback initiated
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0847">Acknowledge</Button>
+<Button variant="secondary" href="#">View in PagerDuty</Button>
+<Button variant="secondary" href="#">Create postmortem</Button>
+</Card>
+</Tab>
+
+<Tab title="SEV-2 (2)">
+<Columns>
+<Card title="INC-2024-0846" subtitle="Database connection pool exhaustion">
+<Badge tone="warning">SEV-2</Badge>
+<Callout tone="warning" title="Impact">Elevated latency on user profile reads</Callout>
+<Details title="Details" open="false">
+**Service:** user-service (eu-west-1)
+**Started:** 2024-01-15 13:45 UTC
+**Owner:** @marcus.johnson
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0846">Acknowledge</Button>
+</Card>
+
+<Card title="INC-2024-0845" subtitle="Cache invalidation storm">
+<Badge tone="warning">SEV-2</Badge>
+<Callout tone="warning" title="Impact">Increased origin traffic, 2x latency</Callout>
+<Details title="Details" open="false">
+**Service:** edge-cache (global)
+**Started:** 2024-01-15 12:10 UTC
+**Owner:** @priya.sharma
+</Details>
+<Button variant="danger" ask="acknowledge INC-2024-0845">Acknowledge</Button>
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Five Slowest Endpoints (p99 Latency)">
+<Chart type="horizontal" x="Endpoint" y="Latency (ms)" title="Top 5 by p99 Latency — Last 24h">
+| Endpoint | p50 (ms) | p95 (ms) | p99 (ms) |
+|---|---|---|---|
+| POST /api/v1/checkout | 420 | 1,850 | 4,200 |
+| GET /api/v1/users/{id}/recommendations | 380 | 1,200 | 3,100 |
+| POST /api/v1/orders/bulk | 510 | 1,650 | 2,950 |
+| GET /api/v1/search/products | 290 | 980 | 2,400 |
+| PUT /api/v1/inventory/sync | 450 | 1,100 | 2,100 |
+</Chart>
+<Columns>
+<Badge tone="danger">Checkout p99: 4.2s (SLA: 2s)</Badge>
+<Badge tone="warning">Recommendations p99: 3.1s (SLA: 1.5s)</Badge>
+<Badge tone="warning">Bulk orders p99: 2.95s (SLA: 2s)</Badge>
+</Columns>
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error Rate Threshold (%)" name="errorRateThreshold" type="number" placeholder="0.5" value="0.5" hint="Triggers SEV-2 when exceeded for 5m" />
+<Input label="Latency p99 Threshold (ms)" name="latencyThreshold" type="number" placeholder="2000" value="2000" hint="Triggers SEV-2 when exceeded for 5m" />
+<Input label="CPU Threshold (%)" name="cpuThreshold" type="number" placeholder="80" value="80" hint="Triggers SEV-3 when exceeded for 10m" />
+<Input label="Memory Threshold (%)" name="memoryThreshold" type="number" placeholder="85" value="85" hint="Triggers SEV-3 when exceeded for 10m" />
+</Columns>
+<Columns>
+<Input label="Error Rate Page Threshold (%)" name="errorRatePageThreshold" type="number" placeholder="1.0" value="1.0" hint="Triggers SEV-1 page when exceeded for 2m" />
+<Input label="Latency p99 Page Threshold (ms)" name="latencyPageThreshold" type="number" placeholder="5000" value="5000" hint="Triggers SEV-1 page when exceeded for 2m" />
+</Columns>
+<Button>Save Thresholds</Button>
+<Button variant="secondary">Reset to Defaults</Button>
+<Callout tone="info" title="Note">Changes take effect immediately. Thresholds are evaluated per region based on the selected filter above.</Callout>
+</Form>
+</Card>
+
+<FollowUps>
+- Acknowledge INC-2024-0847 (SEV-1 payment latency)
+- View runbook for database connection pool exhaustion
+- Check if checkout latency correlates with new release v2.3.1
+- Review alert thresholds for eu-west-1 region
+- Create postmortem for SEV-1 incident
+</FollowUps>

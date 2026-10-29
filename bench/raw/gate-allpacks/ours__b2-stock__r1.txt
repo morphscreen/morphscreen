@@ -1,0 +1,54 @@
+# Low Inventory Warning
+
+<Card title="Threshold Configuration" subtitle="Items appear here when stock falls below this level">
+<KeyValue title="Current Settings">
+| Setting | Value |
+|---|---|
+| Default low-stock threshold | 10 units |
+| Critical threshold | 3 units |
+| Auto-reorder enabled | Yes |
+| Notification frequency | Daily at 9:00 AM |
+</KeyValue>
+<Button variant="secondary" size="small">Adjust thresholds</Button>
+</Card>
+
+<Card title="Search Items">
+<Input label="Search low-stock items" name="search" placeholder="Type product name, SKU, or category…" hint="Filters the list below in real time" />
+</Card>
+
+<Card title="Items Running Low (12 items)">
+<Stat label="Critical (≤3 units)" value="3" tone="danger" />
+<Stat label="Low (4-10 units)" value="9" tone="warning" />
+<Stat label="Total value at risk" value="$4,872" tone="info" />
+
+| Product | SKU | Category | Current Stock | Threshold | Status | Action |
+|---|---|---|---|---|---|---|
+| Organic Almond Milk 1L | AM-1001 | Beverages | 2 | 10 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder 50</Button> |
+| Whole Wheat Bread | BR-2045 | Bakery | 4 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 30</Button> |
+| Free-Range Eggs 12ct | EG-3012 | Dairy | 3 | 10 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder 40</Button> |
+| Greek Yogurt Plain 500g | YG-4401 | Dairy | 7 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 25</Button> |
+| Avocado Hass 4ct | AV-5500 | Produce | 5 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 20</Button> |
+| Chicken Breast 1kg | CH-6601 | Meat | 8 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 15</Button> |
+| Salmon Fillet 500g | SA-7702 | Seafood | 1 | 5 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder 10</Button> |
+| Baby Spinach 160g | SP-8801 | Produce | 6 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 30</Button> |
+| Almond Butter 340g | AB-9901 | Pantry | 9 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 12</Button> |
+| Oat Milk Barista 1L | OM-1010 | Beverages | 4 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 25</Button> |
+| Sourdough Loaf | BR-2046 | Bakery | 5 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder 20</Button> |
+| Kale Organic 200g | KL-1122 | Produce | 3 | 8 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder 15</Button> |
+</Card>
+
+<Card title="Bulk Actions">
+<Button variant="primary">Create purchase orders for all</Button>
+<Button variant="secondary">Export to CSV</Button>
+<Button variant="tertiary">Print pick list</Button>
+</Card>
+
+<Details title="Reorder History (last 7 days)" open="false">
+| Date | Product | Qty Ordered | Supplier | Status | ETA |
+|---|---|---|---|---|---|
+| 2025-01-15 | Organic Almond Milk 1L | 50 | FreshDirect | Delivered | — |
+| 2025-01-14 | Free-Range Eggs 12ct | 40 | Sunny Farms | Delivered | — |
+| 2025-01-13 | Salmon Fillet 500g | 10 | OceanCatch | Shipped | 2025-01-16 |
+| 2025-01-12 | Greek Yogurt Plain 500g | 25 | DairyBest | Delivered | — |
+| 2025-01-11 | Avocado Hass 4ct | 20 | GreenValley | Delivered | — |
+</Details>

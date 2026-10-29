@@ -1,0 +1,65 @@
+# Module 3: React Fundamentals
+
+## Lesson 4: State & Props Deep Dive
+
+<Card title="Lesson Video">
+<Video src="https://example.com/videos/react-state-props.mp4" poster="https://example.com/thumbnails/react-state-props.jpg" title="State & Props Deep Dive" caption="Duration: 18:42" />
+</Card>
+
+<Card title="Lesson Notes">
+### Key Concepts
+
+**State vs Props**
+- **Props**: Data passed from parent to child (read-only)
+- **State**: Internal data managed by the component (mutable)
+
+**useState Hook**
+```jsx
+const [count, setCount] = useState(0);
+```
+- Returns current state value and a setter function
+- Setter triggers re-render with new value
+
+**Lifting State Up**
+- Move shared state to closest common ancestor
+- Pass data down via props
+- Pass setter functions down for updates
+
+**Immutability**
+- Never mutate state directly: `state.items.push()` ❌
+- Always create new objects/arrays: `setItems([...items, newItem])` ✅
+
+### Common Patterns
+
+| Pattern | Use Case |
+|---------|----------|
+| Functional updates | `setCount(c => c + 1)` when updates depend on previous state |
+| Lazy initialization | `useState(() => expensiveCalculation())` for expensive initial values |
+| Multiple state variables | Separate unrelated state for cleaner updates |
+
+### Practice Exercise
+Create a `Counter` component with:
+1. Increment, Decrement, Reset buttons
+2. Display current count
+3. Disable decrement at 0
+</Card>
+
+<Card title="Next Lesson">
+### Lesson 5: useEffect & Side Effects
+**Duration:** 22:15  
+**Topics:** Component lifecycle, data fetching, subscriptions, cleanup functions
+
+<Button variant="primary" size="medium">Start Next Lesson</Button>
+<Button variant="secondary" size="medium">View All Lessons</Button>
+</Card>
+
+<Card title="Progress">
+<Columns>
+<Columns>
+<Stat label="Module Progress" value="67%" change="4 of 6 lessons complete" tone="info" />
+</Columns>
+<Columns>
+<Switch label="Mark this lesson complete" name="lesson-complete" value="false" hint="Track your learning progress" />
+</Columns>
+</Columns>
+</Card>

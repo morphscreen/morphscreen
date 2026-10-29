@@ -1,0 +1,114 @@
+# Power Network Operator Console
+
+<Columns>
+<Card title="Network Overview">
+<Stat label="Current Load" value="18.4 GW" change="+2.1% vs 1h ago" tone="info" icon="lightning" />
+<Stat label="Capacity" value="22.0 GW" change="83.6% utilized" tone="warning" icon="gauge" />
+<Stat label="Price" value="$74 / MWh" change="+$6 vs yesterday" tone="success" icon="currency-circle-dollar" />
+<Stat label="Emissions Today" value="9,120 t CO₂e" change="-12% vs target" tone="success" icon="leaf" />
+</Card>
+
+<Card title="Capacity Headroom">
+<Progress value="83.6" max="100" label="Network load vs capacity" tone="warning" />
+<Callout tone="warning" title="Approaching limit">Load is within 3.4 GW of the 22 GW firm capacity. High demand expected 17:00–20:00.</Callout>
+</Card>
+</Columns>
+
+<Card title="Generation Mix" subtitle="Live output by source">
+<Chart type="donut" title="Share of generation" x="Source" y="GW">
+| Source | GW |
+|---|---|
+| Wind | 6.2 |
+| Solar | 4.8 |
+| Gas | 4.1 |
+| Nuclear | 2.5 |
+| Hydro | 0.8 |
+</Chart>
+</Card>
+
+<Card title="Plant Status">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Northwind Farm | Wind | 1,240 | <Badge tone="success">Online</Badge> |
+| Solar Valley | Solar | 980 | <Badge tone="success">Online</Badge> |
+| Riverside Gas | Gas | 1,150 | <Badge tone="warning">Derated</Badge> |
+| Beacon Nuclear | Nuclear | 1,200 | <Badge tone="success">Online</Badge> |
+| Highland Hydro | Hydro | 340 | <Badge tone="info">Standby</Badge> |
+| Eastshore Wind | Wind | 610 | <Badge tone="success">Online</Badge> |
+| Millbrook Gas | Gas | 0 | <Badge tone="danger">Offline</Badge> |
+</Card>
+
+<Card title="Outages">
+| Region | Affected Customers | Duration | Status |
+|---|---|---|---|
+| South Coast | 12,400 | 2h 10m elapsed | <Badge tone="danger">Active</Badge> |
+| Northridge | 3,200 | 45m elapsed | <Badge tone="danger">Active</Badge> |
+| Eastvale | 0 | Scheduled 14:00 | <Badge tone="info">Planned</Badge> |
+</Card>
+
+<Card title="Demand Forecast – Next 24h">
+<Chart type="line" x="Hour" y="GW">
+| Hour | Demand |
+|---|---|
+| 00:00 | 15.2 |
+| 03:00 | 14.1 |
+| 06:00 | 15.8 |
+| 09:00 | 18.9 |
+| 12:00 | 19.6 |
+| 15:00 | 20.4 |
+| 18:00 | 21.2 |
+| 21:00 | 19.8 |
+| 24:00 | 16.3 |
+</Chart>
+</Card>
+
+<Card title="Maintenance – This Month">
+| Date | Asset | Region | Impact |
+|---|---|---|---|
+| 12 Jun | Transformer T-7 | South Coast | None |
+| 18 Jun | Line L-14 | Northridge | Reduced redundancy |
+| 24 Jun | Substation S-3 | Eastvale | 2h outage planned |
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="Overload risk">South Coast line L-9 load at 97% capacity – possible curtailment needed.</Callout>
+<Callout tone="warning" title="Derating">Riverside Gas output reduced by 20% due to cooling issue.</Callout>
+<Callout tone="info" title="Weather">High winds expected 14:00–18:00 – wind generation likely to increase.</Callout>
+</Card>
+
+<Card title="Region Focus">
+<Select label="Region" options="All regions | South Coast | Northridge | Eastvale | Westland" placeholder="Choose a region to focus" />
+<Callout tone="neutral" title="Selected: All regions">Showing network-wide data. Choose a region to filter load, outages, and plants.</Callout>
+</Card>
+
+<Card title="Curtailment Order">
+<Form name="curtailment">
+<Select label="Action" options="Reduce output | Disconnect | Emergency shed" placeholder="Select action" />
+<Input label="Amount (MW)" type="number" placeholder="e.g. 250" min="0" max="5000" />
+<Select label="Target plant" options="Northwind Farm | Solar Valley | Riverside Gas | Eastshore Wind" placeholder="Select plant" />
+<TextArea label="Reason" placeholder="Brief justification for the curtailment" rows="3" />
+<Button>Send Order</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today">
+<Chart type="area" x="Hour" y="t CO₂e">
+| Hour | Emissions |
+|---|---|
+| 00:00 | 380 |
+| 04:00 | 340 |
+| 08:00 | 410 |
+| 12:00 | 450 |
+| 16:00 | 430 |
+| 20:00 | 380 |
+| 24:00 | 360 |
+</Chart>
+<Stat label="Total Today" value="9,120 t" change="Target 10,400 t" tone="success" icon="leaf" />
+</Card>
+
+<FollowUps>
+- What is the current reserve margin in the South Coast region?
+- Which plants can be ramped up to cover the Millbrook Gas outage?
+- Show the last 24 hours of price volatility.
+- How much curtailment has been ordered today and from which plants?
+</FollowUps>

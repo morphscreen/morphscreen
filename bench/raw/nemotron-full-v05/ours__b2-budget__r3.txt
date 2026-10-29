@@ -1,0 +1,66 @@
+# Personal Budget Check
+
+<Card title="Budget Overview" subtitle="Current month">
+<Columns>
+<Stat label="Total Spent" value="$2,847" change="$153 over budget" tone="danger" />
+<Stat label="Monthly Budget" value="$3,000" change="$153 remaining" tone="info" />
+<Stat label="Largest Expense" value="$890" change="Rent" tone="warning" />
+</Columns>
+
+<Progress value="2847" max="3000" label="Budget utilization" tone="danger" />
+</Card>
+
+<Card title="Select Month">
+<Columns>
+<Date label="View month" name="budget-month" value="2025-01" />
+</Columns>
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="pie" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 890 |
+| Food | 520 |
+| Transport | 380 |
+| Utilities | 290 |
+| Entertainment | 210 |
+| Shopping | 180 |
+| Healthcare | 150 |
+| Other | 227 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="warning" title="🏠 Rent - $890">
+**Category:** Housing | **Date:** Jan 1, 2025 | **Payment method:** Bank transfer
+<br />
+This is your single largest expense this month, representing 31% of total spending.
+</Callout>
+</Card>
+
+<Card title="Add Expense" subtitle="Log a new transaction">
+<Form name="add-expense">
+<Columns>
+<Input label="Description" placeholder="e.g., Groceries at Whole Foods" name="description" required="true" />
+<Input label="Amount" type="number" placeholder="0.00" name="amount" step="0.01" min="0.01" required="true" />
+</Columns>
+<Columns>
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transport | Utilities | Entertainment | Shopping | Healthcare | Other" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+</Columns>
+<Columns>
+<Select label="Payment method" name="payment" placeholder="How did you pay?" options="Cash | Credit card | Debit card | Bank transfer | Digital wallet" />
+<Input label="Notes (optional)" placeholder="Any additional details" name="notes" />
+</Columns>
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me last month's comparison
+- Set up budget alerts
+- Export spending report
+- Create savings goal
+</FollowUps>

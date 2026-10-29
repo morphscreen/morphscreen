@@ -1,0 +1,139 @@
+# Editor's Content Studio
+
+Welcome back! Here's your editorial dashboard at a glance.
+
+<Card title="Overview">
+<Columns>
+<Stat label="Drafts" value="12" change="+2 this week" icon="file-text" />
+<Stat label="Published this week" value="8" change="+3 vs last week" icon="megaphone" />
+<Stat label="Most-read article" value="24.1k views" note="The Future of Remote Work" icon="trend-up" />
+<Stat label="Comments awaiting reply" value="5" change="2 urgent" icon="chat-circle" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Filter by category">
+<Select label="Category" placeholder="All categories" options="All categories | Technology | Culture | Business | Science | Opinion" name="category-filter" />
+</Card>
+
+<Card title="Drafts" subtitle="Your in-progress pieces">
+| Title | Category | Updated | Status |
+|---|---|---|---|
+| The Rise of AI Writing Tools | Technology | 2h ago | <Badge tone="info">Drafting</Badge> |
+| A Field Guide to Urban Farming | Culture | Yesterday | <Badge tone="warning">Needs review</Badge> |
+| How Remote Teams Build Trust | Business | 3d ago | <Badge tone="success">Ready to publish</Badge> |
+| The Hidden Costs of Fast Fashion | Culture | 5d ago | <Badge tone="neutral">Stale</Badge> |
+| Quantum Computing, Explained | Science | 1w ago | <Badge tone="warning">Needs review</Badge> |
+
+<Button>Start new draft</Button>
+<Button variant="secondary">Manage all drafts</Button>
+</Card>
+
+<Card title="Published this week">
+| Title | Category | Published | Views |
+|---|---|---|---|
+| The Future of Remote Work | Business | Mon | 24,102 |
+| 10 Tools for Better Focus | Technology | Mon | 18,430 |
+| Why Cities Are Going Green | Culture | Tue | 12,887 |
+| The Truth About Sleep | Science | Wed | 9,214 |
+| Inside the Gig Economy | Business | Thu | 7,665 |
+| A Beginner's Guide to Meditation | Culture | Thu | 5,902 |
+| The Next Wave of Solar Power | Science | Fri | 4,318 |
+| Design Trends for 2025 | Technology | Fri | 3,740 |
+
+<Chart type="bar" title="Views by day" x="Day" y="Views">
+| Day | Views |
+|---|---|
+| Mon | 42532 |
+| Tue | 12887 |
+| Wed | 9214 |
+| Thu | 13567 |
+| Fri | 8058 |
+</Chart>
+</Card>
+
+<Card title="Most-read article this month">
+<Columns>
+<div>
+<Badge tone="success">#1 this month</Badge>
+<h3>The Future of Remote Work</h3>
+<p><strong>24,102 views</strong> · Published 5 days ago · Business</p>
+<p>Read time: 8 min · 412 shares · 38 comments</p>
+</div>
+<Stat label="Engagement rate" value="6.2%" note="Above average (4.1%)" icon="chart-line" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Readership — last 30 days">
+<Chart type="area" title="Daily readers" x="Date" y="Readers">
+| Date | Readers |
+|---|---|
+| Oct 1 | 3200 |
+| Oct 5 | 4100 |
+| Oct 10 | 3800 |
+| Oct 15 | 5200 |
+| Oct 20 | 6100 |
+| Oct 25 | 5800 |
+| Oct 30 | 7400 |
+</Chart>
+<Columns>
+<Stat label="Total readers" value="38,600" change="+12%" icon="users" />
+<Stat label="Avg. daily readers" value="1,287" icon="chart-line" />
+<Stat label="Top source" value="Newsletter" note="34% of traffic" icon="envelope" />
+</Columns>
+</Card>
+
+<Card title="Schedule a piece">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="e.g. The Future of Urban Transit" required="true" />
+<Date label="Publish date" name="publish-date" required="true" />
+<Select label="Category" options="Technology | Culture | Business | Science | Opinion" name="category" placeholder="Select a category" />
+<Button>Schedule publication</Button>
+</Form>
+</Card>
+
+<Card title="Comments awaiting reply">
+<Tabs>
+<Tab title="All (5)">
+| Article | Comment excerpt | Author | Time |
+|---|---|---|---|
+| The Future of Remote Work | "How do you see this affecting…" | <Avatar name="Sarah Chen" /> | 1h ago |
+| The Future of Remote Work | "Great piece, but what about…" | <Avatar name="Marcus Webb" /> | 3h ago |
+| 10 Tools for Better Focus | "Tool #4 changed my workflow!" | <Avatar name="Priya Patel" /> | 5h ago |
+| Why Cities Are Going Green | "Would love a follow-up on…" | <Avatar name="Tom Alvarez" /> | 8h ago |
+| The Truth About Sleep | "Disagree with point #2 —…" | <Avatar name="Jade Kim" /> | Yesterday |
+
+<Callout tone="warning" title="2 need attention">Comments on "The Future of Remote Work" are from verified industry experts and may warrant priority replies.</Callout>
+</Tab>
+<Tab title="Urgent (2)">
+| Article | Comment excerpt | Author | Time |
+|---|---|---|---|
+| The Future of Remote Work | "How do you see this affecting…" | <Avatar name="Sarah Chen" /> | 1h ago |
+| The Future of Remote Work | "Great piece, but what about…" | <Avatar name="Marcus Webb" /> | 3h ago |
+</Tab>
+<Tab title="Replied (3)">
+| Article | Comment excerpt | Author | Time |
+|---|---|---|---|
+| 10 Tools for Better Focus | "Tool #4 changed my workflow!" | <Avatar name="Priya Patel" /> | 5h ago |
+| Why Cities Are Going Green | "Would love a follow-up on…" | <Avatar name="Tom Alvarez" /> | 8h ago |
+| The Truth About Sleep | "Disagree with point #2 —…" | <Avatar name="Jade Kim" /> | Yesterday |
+</Tab>
+</Tabs>
+<Button variant="secondary">Reply to all comments</Button>
+</Card>
+
+<Card title="Start a new draft">
+<Form name="new-draft">
+<Input label="Working title" name="draft-title" placeholder="Give your piece a working title" required="true" />
+<Select label="Category" options="Technology | Culture | Business | Science | Opinion" name="draft-category" placeholder="Select a category" />
+<TextArea label="Notes / outline" name="draft-notes" placeholder="Jot down your angle, key points, or a quick outline…" rows="4" />
+<Button>Create draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full editorial calendar
+- Which drafts are closest to being published?
+- What topics are trending with our readers?
+- Who are the top commenters this month?
+</FollowUps>

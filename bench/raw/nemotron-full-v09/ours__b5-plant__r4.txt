@@ -1,0 +1,257 @@
+# Factory Floor Supervisor Console
+
+<Columns>
+<Stat label="OEE" value="84.2%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Units Produced" value="12,847 / 15,000" change="85.6% of target" tone="info" icon="package" />
+<Stat label="Safety Incidents (YTD)" value="3" change="147 days since last" tone="warning" icon="shield-warning" />
+<Stat label="Energy Today" value="2,847 kWh" change="−4.2% vs avg" tone="success" icon="bolt" />
+</Columns>
+
+<Card title="Live Andon Alerts" subtitle="Real-time line status">
+<Columns>
+<Callout tone="danger" title="Line 3 — Machine M3-07" >EMERGENCY STOP: Hydraulic pressure loss. Maintenance dispatched. ETA 8 min.</Callout>
+<Callout tone="warning" title="Line 1 — Machine M1-02" >QUALITY HOLD: Dimensional drift on Batch #B-20241107-04. QC reviewing.</Callout>
+<Callout tone="info" title="Line 5 — Machine M5-01" >MATERIAL LOW: Resin hopper at 12%. Refill requested.</Callout>
+</Columns>
+</Card>
+
+<Card title="Production Lines Overview">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | Actual | OEE | Active Alerts |
+|---|---|---|---|---|---|---|
+| Line 1 | <Badge tone="success">Running</Badge> | 1,240 | 1,200 | 9,920 | 87.3% | 1 Warning |
+| Line 2 | <Badge tone="success">Running</Badge> | 1,180 | 1,150 | 9,440 | 85.1% | — |
+| Line 3 | <Badge tone="danger">Stopped</Badge> | 0 | 1,300 | 7,800 | 62.4% | 1 Critical |
+| Line 4 | <Badge tone="success">Running</Badge> | 1,050 | 1,000 | 8,400 | 89.7% | — |
+| Line 5 | <Badge tone="warning">Degraded</Badge> | 890 | 1,100 | 7,120 | 78.2% | 1 Info |
+| Line 6 | <Badge tone="success">Running</Badge> | 1,320 | 1,250 | 10,560 | 91.4% | — |
+</Tab>
+<Tab title="Line 1 Detail">
+**Line 1 — Injection Molding**  
+**Status:** <Badge tone="success">Running</Badge> | **Current Rate:** 1,240 units/hr | **Shift Target:** 9,600 | **Produced:** 9,920 (103.3%)  
+**OEE:** 87.3% (Availability 94.2% · Performance 96.8% · Quality 95.9%)  
+**Active Job:** Batch #B-20241107-03 — Automotive bracket, 12,000 pcs  
+**Next Changeover:** 14:30 (est. 25 min)  
+**Material:** Steel coil #SC-20241105-01 (2.3t remaining) | Resin lot #RL-20241106-03 (840 kg)  
+**Quality:** 2.1% defect rate (within spec) | Last inspection: 09:15 — Pass
+</Tab>
+<Tab title="Line 2 Detail">
+**Line 2 — Stamping**  
+**Status:** <Badge tone="success">Running</Badge> | **Current Rate:** 1,180 units/hr | **Shift Target:** 9,200 | **Produced:** 9,440 (102.6%)  
+**OEE:** 85.1% (Availability 91.5% · Performance 97.2% · Quality 95.4%)  
+**Active Job:** Batch #B-20241107-01 — Chassis bracket, 15,000 pcs  
+**Next Changeover:** 15:00 (est. 35 min)  
+**Material:** Steel coil #SC-20241104-02 (1.8t remaining)  
+**Quality:** 1.8% defect rate | Last inspection: 09:30 — Pass
+</Tab>
+<Tab title="Line 3 Detail">
+**Line 3 — Assembly**  
+**Status:** <Badge tone="danger">Stopped</Badge> | **Current Rate:** 0 units/hr | **Shift Target:** 10,400 | **Produced:** 7,800 (75.0%)  
+**OEE:** 62.4% (Availability 71.2% · Performance 92.1% · Quality 96.3%)  
+**Active Job:** Batch #B-20241107-05 — Sub-assembly, 14,000 pcs  
+**Downtime Cause:** Hydraulic system failure on M3-07 | Started: 10:42 | Est. recovery: 11:30  
+**Material:** Steel coil #SC-20241105-03 (3.1t) | Packaging: Carton lot #PK-20241106-01 (2,400 units)  
+**Quality:** 0.9% defect rate | Last inspection: 10:00 — Pass
+</Tab>
+<Tab title="Line 4 Detail">
+**Line 4 — CNC Machining**  
+**Status:** <Badge tone="success">Running</Badge> | **Current Rate:** 1,050 units/hr | **Shift Target:** 8,000 | **Produced:** 8,400 (105.0%)  
+**OEE:** 89.7% (Availability 95.8% · Performance 97.5% · Quality 96.2%)  
+**Active Job:** Batch #B-20241107-02 — Precision housing, 10,000 pcs  
+**Next Changeover:** 16:00 (est. 45 min)  
+**Material:** Steel bar stock #SB-20241103-01 (4.2t)  
+**Quality:** 1.2% defect rate | Last inspection: 09:45 — Pass
+</Tab>
+<Tab title="Line 5 Detail">
+**Line 5 — Blow Molding**  
+**Status:** <Badge tone="warning">Degraded</Badge> | **Current Rate:** 890 units/hr | **Shift Target:** 8,800 | **Produced:** 7,120 (80.9%)  
+**OEE:** 78.2% (Availability 88.4% · Performance 84.6% · Quality 98.7%)  
+**Active Job:** Batch #B-20241107-06 — Fluid reservoir, 11,000 pcs  
+**Issue:** Resin feed inconsistency — hopper at 12%, refill in progress  
+**Material:** Resin lot #RL-20241106-04 (120 kg remaining) | Packaging: Carton lot #PK-20241106-02 (1,800 units)  
+**Quality:** 0.6% defect rate | Last inspection: 10:10 — Pass
+</Tab>
+<Tab title="Line 6 Detail">
+**Line 6 — Packaging**  
+**Status:** <Badge tone="success">Running</Badge> | **Current Rate:** 1,320 units/hr | **Shift Target:** 10,000 | **Produced:** 10,560 (105.6%)  
+**OEE:** 91.4% (Availability 97.1% · Performance 98.2% · Quality 95.8%)  
+**Active Job:** Batch #B-20241107-07 — Final pack, 13,000 pcs  
+**Next Changeover:** 15:30 (est. 20 min)  
+**Material:** Packaging film #PF-20241105-01 (3,200 m) | Cartons #PK-20241106-03 (4,100 units)  
+**Quality:** 1.5% defect rate | Last inspection: 10:20 — Pass
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %" title="Daily Defect Rate">
+| Date | Defect % |
+|---|---|
+| Oct 8 | 2.4 |
+| Oct 9 | 2.1 |
+| Oct 10 | 1.9 |
+| Oct 11 | 2.3 |
+| Oct 12 | 2.0 |
+| Oct 13 | 1.8 |
+| Oct 14 | 2.2 |
+| Oct 15 | 2.5 |
+| Oct 16 | 2.1 |
+| Oct 17 | 1.9 |
+| Oct 18 | 2.0 |
+| Oct 19 | 2.4 |
+| Oct 20 | 2.2 |
+| Oct 21 | 1.8 |
+| Oct 22 | 1.7 |
+| Oct 23 | 2.1 |
+| Oct 24 | 2.3 |
+| Oct 25 | 2.0 |
+| Oct 26 | 1.9 |
+| Oct 27 | 2.2 |
+| Oct 28 | 2.1 |
+| Oct 29 | 1.8 |
+| Oct 30 | 1.9 |
+| Oct 31 | 2.0 |
+| Nov 1 | 2.1 |
+| Nov 2 | 2.3 |
+| Nov 3 | 2.0 |
+| Nov 4 | 1.9 |
+| Nov 5 | 2.2 |
+| Nov 6 | 2.1 |
+| Nov 7 | 2.0 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause — This Month">
+<Chart type="donut" x="Cause" y="Hours" title="Total: 187.4 hrs">
+| Cause | Hours |
+|---|---|
+| Mechanical Failure | 52.3 |
+| Changeover | 41.7 |
+| Material Shortage | 28.9 |
+| Quality Hold | 19.2 |
+| Planned Maintenance | 18.5 |
+| Operator Break | 14.1 |
+| Electrical | 8.7 |
+| Software/Control | 4.0 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Hours Since Last | Status |
+|---|---|---|---|---|---|
+| M3-07 | Line 3 | Today | Hydraulic seal replacement | 2,140 | <Badge tone="danger">Overdue</Badge> |
+| M1-04 | Line 1 | Tomorrow | Preventive (5000 hr) | 4,985 | <Badge tone="warning">Due Soon</Badge> |
+| M5-02 | Line 5 | Nov 10 | Gearbox oil change | 3,820 | <Badge tone="warning">Due Soon</Badge> |
+| M2-01 | Line 2 | Nov 12 | Die inspection | 4,210 | <Badge tone="info">Scheduled</Badge> |
+| M4-03 | Line 4 | Nov 15 | Spindle bearing check | 6,100 | <Badge tone="info">Scheduled</Badge> |
+| M6-01 | Line 6 | Nov 18 | Conveyor belt replacement | 2,850 | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Raw Material Stock">
+| Material | Current Stock | Reorder Point | Days Remaining | Status |
+|---|---|---|---|---|
+| Steel (coils/bar) | 18.4 tonnes | 8.0 t | 12 days | <Badge tone="success">OK</Badge> |
+| Resin (pellets) | 3,240 kg | 1,500 kg | 9 days | <Badge tone="warning">Low</Badge> |
+| Packaging (cartons/film) | 14,500 units | 6,000 units | 18 days | <Badge tone="success">OK</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplier Deliveries — This Week">
+| Supplier | Material | Qty | Due Date | Status | PO # |
+|---|---|---|---|---|---|
+| AcerSteel Ltd | Steel coil (Grade 50) | 12 t | Nov 8 | <Badge tone="info">In Transit</Badge> | PO-20241104-01 |
+| PolyResin Inc | PP Resin Lot #RL-202411 | 5,000 kg | Nov 9 | <Badge tone="info">Confirmed</Badge> | PO-20241105-02 |
+| PackRight Co | Cartons (std 40×30×25) | 8,000 units | Nov 10 | <Badge tone="success">Delivered</Badge> | PO-20241103-07 |
+| AcerSteel Ltd | Bar stock (Ø45mm) | 6 t | Nov 11 | <Badge tone="info">Confirmed</Badge> | PO-20241106-01 |
+| FilmTech GmbH | Stretch film (500mm) | 4,000 m | Nov 12 | <Badge tone="warning">Delayed</Badge> | PO-20241105-03 |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units" title="Last 7 Days">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift A (06-14) | 14200 | 14800 | 15100 | 14900 | 15300 | 13800 | 12900 |
+| Shift B (14-22) | 13800 | 14200 | 14500 | 14100 | 14700 | 13200 | 12500 |
+| Shift C (22-06) | 11500 | 11800 | 12100 | 11900 | 12400 | 11200 | 10800 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| B-20241107-04 | Line 1 | Auto bracket | 2,400 | Dimensional drift (hole pattern) | 10:15 | <Badge tone="warning">QC Review</Badge> |
+| B-20241106-12 | Line 3 | Sub-assembly | 1,800 | Surface finish out of spec | Nov 6 14:30 | <Badge tone="info">Rework Queued</Badge> |
+| B-20241105-08 | Line 5 | Fluid reservoir | 3,200 | Wall thickness variance | Nov 5 09:00 | <Badge tone="danger">Scrap Candidate</Badge> |
+| B-20241104-15 | Line 2 | Chassis bracket | 900 | Hardness test failure | Nov 4 16:45 | <Badge tone="info">Root Cause Analysis</Badge> |
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Machine | Description | Assigned | Due | Status |
+|---|---|---|---|---|---|---|---|
+| WO-20241107-001 | <Badge tone="danger">Critical</Badge> | Line 3 | M3-07 | Hydraulic pump replacement | J. Miller | Today 14:00 | <Badge tone="warning">In Progress</Badge> |
+| WO-20241107-002 | <Badge tone="warning">High</Badge> | Line 1 | M1-02 | Calibrate injection pressure | S. Chen | Today 16:00 | <Badge tone="info">Assigned</Badge> |
+| WO-20241107-003 | <Badge tone="warning">High</Badge> | Line 5 | M5-01 | Resin feeder auger repair | R. Torres | Tomorrow 10:00 | <Badge tone="info">Parts Ordered</Badge> |
+| WO-20241106-018 | <Badge tone="info">Medium</Badge> | Line 4 | M4-03 | Spindle vibration analysis | M. Kowalski | Nov 10 | <Badge tone="info">Scheduled</Badge> |
+| WO-20241106-019 | <Badge tone="info">Medium</Badge> | Line 2 | M2-01 | Die set replacement (preventive) | A. Patel | Nov 12 | <Badge tone="info">Planned</Badge> |
+| WO-20241105-012 | <Badge tone="neutral">Low</Badge> | Line 6 | M6-02 | Conveyor belt tracking adjust | J. Miller | Nov 15 | <Badge tone="info">Backlog</Badge> |
+</Card>
+</Columns>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="M1-01 | M1-02 | M1-03 | M1-04 | M2-01 | M2-02 | M3-01 | M3-02 | M3-03 | M3-04 | M3-05 | M3-06 | M3-07 | M3-08 | M4-01 | M4-02 | M4-03 | M4-04 | M5-01 | M5-02 | M5-03 | M6-01 | M6-02 | M6-03" required="true" />
+<Date label="Date" name="maint-date" required="true" />
+</Columns>
+<Select label="Maintenance Type" name="maint-type" placeholder="Select type" options="Preventive | Corrective | Predictive | Calibration | Lubrication | Inspection | Overhaul" required="true" />
+<TextArea label="Description / Notes" name="maint-notes" placeholder="Describe work to be performed, parts needed, special instructions..." rows="3" />
+<Columns>
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="e.g. 4" step="0.5" min="0.5" max="48" />
+<Select label="Assigned Technician" name="technician" placeholder="Assign technician" options="J. Miller | S. Chen | R. Torres | M. Kowalski | A. Patel | T. Nguyen | K. Okafor" />
+</Columns>
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Clear Form</Button>
+</Form>
+</Card>
+
+<Card title="Focus on Single Line" subtitle="Filter all views to one production line">
+<Select label="Select Line" name="line-focus" placeholder="Choose a line to focus" options="Line 1 — Injection Molding | Line 2 — Stamping | Line 3 — Assembly | Line 4 — CNC Machining | Line 5 — Blow Molding | Line 6 — Packaging" />
+<Callout tone="info" title="Line Focus Active">When a line is selected, all charts, tables, and metrics above will filter to show only data for that line. Clear selection to return to plant-wide view.</Callout>
+</Card>
+
+<Columns>
+<Card title="Export Shift Report">
+<Form name="export-report">
+<Radio label="Report Format" name="format" options="PDF | Excel (XLSX) | CSV" value="PDF" />
+<Radio label="Shift" name="shift" options="Shift A (06:00–14:00) | Shift B (14:00–22:00) | Shift C (22:00–06:00) | All Shifts" value="All Shifts" />
+<Date label="Date" name="report-date" />
+<Checkboxes label="Include Sections" name="sections" options="OEE Summary | Production Output | Defect Analysis | Downtime Breakdown | Maintenance Log | Quality Holds | Safety Incidents | Energy Usage | Material Consumption" value="OEE Summary | Production Output | Defect Analysis | Downtime Breakdown | Maintenance Log | Quality Holds | Safety Incidents | Energy Usage | Material Consumption" />
+<Button>Generate & Download</Button>
+<Button variant="secondary">Email to Me</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large" icon="wrench">Log Breakdown</Button>
+<Button variant="secondary" size="large" icon="clipboard-text">Start Quality Check</Button>
+<Button variant="secondary" size="large" icon="truck">Confirm Delivery</Button>
+<Button variant="tertiary" size="large" icon="printer">Print Shift Handoff</Button>
+</Columns>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me Line 3's OEE trend for the past week
+- Which machines have the most unplanned downtime this month?
+- What's the root cause for Batch B-20241105-08 quality hold?
+- Generate preventive maintenance schedule for next month
+- Compare energy consumption across all lines
+</FollowUps>

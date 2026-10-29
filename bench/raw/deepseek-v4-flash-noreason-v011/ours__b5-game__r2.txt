@@ -1,0 +1,178 @@
+# Live-Ops Command Center
+
+<Card title="Live Overview" subtitle="Real-time studio dashboard">
+<Columns>
+<div>
+<Stat label="Players Online" value="12,847" icon="users" tone="success" note="+3% vs last hour" />
+<Stat label="Daily Active" value="348,291" icon="calendar" tone="info" note="Yesterday: 332,104" />
+<Stat label="Monthly Active" value="4.2M" icon="calendar" tone="info" note="+8% MoM" />
+</div>
+<div>
+<Stat label="Revenue Today" value="$187,430" icon="chart-line" tone="success" note="vs $172k yesterday" />
+<Stat label="Revenue Per User" value="$0.45" icon="chart-line" tone="neutral" note="Daily ARPU" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Session Length (Last 14 Days)">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session |
+|---|---|
+| Day -13 | 24.3 |
+| Day -12 | 25.1 |
+| Day -11 | 23.8 |
+| Day -10 | 26.4 |
+| Day -9 | 27.2 |
+| Day -8 | 25.9 |
+| Day -7 | 28.3 |
+| Day -6 | 29.1 |
+| Day -5 | 27.8 |
+| Day -4 | 30.2 |
+| Day -3 | 31.5 |
+| Day -2 | 29.7 |
+| Day -1 | 28.9 |
+| Today | 32.1 |
+</Chart>
+<Badge tone="success">+12% trend</Badge>
+</Card>
+
+<Card title="Best-Selling Items">
+| Item | Units Sold (24h) | Revenue |
+|---|---|---|
+| Legendary Sword Pack | 3,421 | $68,420 |
+| Battle Pass Season 7 | 2,890 | $57,800 |
+| Epic Skin: Frost Queen | 1,754 | $35,080 |
+| XP Booster (7-day) | 1,203 | $12,030 |
+| Starter Bundle | 987 | $9,870 |
+</Card>
+
+<Card title="Server Regions & Health">
+<Columns>
+<div>
+<Stat label="US East" value="4,210" icon="map-pin" tone="success" note="98% uptime" />
+<Stat label="EU West" value="3,847" icon="map-pin" tone="success" note="99% uptime" />
+<Stat label="Asia Pacific" value="2,910" icon="map-pin" tone="warning" note="92% uptime, latency spike" />
+<Stat label="South America" value="1,020" icon="map-pin" tone="success" note="97% uptime" />
+<Stat label="Middle East" value="860" icon="map-pin" tone="danger" note="85% uptime, partial outage" />
+</div>
+<div>
+<Button variant="primary" ask="Show me only US East metrics">Focus: US East</Button>
+<Button variant="primary" ask="Show me only EU West metrics">Focus: EU West</Button>
+<Button variant="primary" ask="Show me only Asia Pacific metrics">Focus: Asia Pacific</Button>
+<Button variant="primary" ask="Show me only South America metrics">Focus: South America</Button>
+<Button variant="primary" ask="Show me only Middle East metrics">Focus: Middle East</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Crash Rate |
+|---|---|
+| v3.2.1 | 0.12% |
+| v3.2.0 | 0.08% |
+| v3.1.5 | 0.21% |
+| v3.1.4 | 0.15% |
+| v3.1.3 | 0.45% |
+</Chart>
+<Callout tone="warning" title="v3.1.3 spike">0.45% crash rate — consider force-upgrading users</Callout>
+</Card>
+
+<Card title="Live Events">
+<Tabs>
+<Tab title="Running Now">
+- **Summer Splash** — ends in 3h 42m — 128,400 participants
+- **Double XP Weekend** — ends in 26h — 342,100 participants
+<Button variant="secondary" ask="Show details for Summer Splash event">Details</Button>
+</Tab>
+<Tab title="Upcoming">
+- **Boss Raid: Shadow King** — starts in 2d 14h
+- **Season 7 Launch** — starts in 7d 0h
+- **Community Tournament** — starts in 14d
+<Button variant="secondary" ask="Show upcoming events schedule">Full Schedule</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Player Reports & Ban Appeals">
+<Columns>
+<div>
+<Stat label="Reports Awaiting Review" value="342" icon="users" tone="warning" note="Avg response: 4.2h" />
+<Button variant="primary" ask="Open player reports queue">Review Reports</Button>
+</div>
+<div>
+<Stat label="Ban Appeals Awaiting Review" value="87" icon="users" tone="danger" note="Avg response: 6.8h" />
+<Button variant="primary" ask="Open ban appeals queue">Review Appeals</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Columns>
+<div>
+<Stat label="Gold Supply" value="842M" icon="chart-line" tone="warning" note="+3.2% this week" />
+<Stat label="Gems Supply" value="124M" icon="chart-line" tone="success" note="+0.8% this week" />
+</div>
+<div>
+<Chart type="line" x="Week" y="Gold (Millions)">
+| Week | Gold Supply |
+|---|---|
+| W-4 | 782 |
+| W-3 | 798 |
+| W-2 | 815 |
+| W-1 | 827 |
+| Current | 842 |
+</Chart>
+</div>
+</Columns>
+<Callout tone="warning" title="Gold inflation accelerating">Consider sink events or adjusting drop rates</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<div>
+<Card title="Experiment A: Shop UI Redesign">
+<Stat label="Conversion Rate" value="14.2%" icon="chart-line" tone="success" note="Control: 11.8%" />
+<Stat label="Revenue Impact" value="+$12,400/day" icon="chart-line" tone="success" />
+<Badge tone="success">Winning</Badge>
+<Button variant="secondary" ask="Show full results for Experiment A">Full Results</Button>
+</Card>
+</div>
+<div>
+<Card title="Experiment B: Difficulty Tuning">
+<Stat label="Retention (D1)" value="62%" icon="chart-line" tone="warning" note="Control: 68%" />
+<Stat label="Session Length" value="28.4 min" icon="chart-line" tone="neutral" note="Control: 32.1 min" />
+<Badge tone="warning">Needs review</Badge>
+<Button variant="secondary" ask="Show full results for Experiment B">Full Results</Button>
+</Card>
+</div>
+</Columns>
+</Card>
+
+<Card title="Patch Notes Draft">
+<Form name="patch-notes">
+<Input label="Version" placeholder="v3.2.2" />
+<Input label="Title" placeholder="Balance Update & Bug Fixes" />
+<TextArea label="Notes" placeholder="Enter patch notes here..." rows="8" />
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary" ask="Show me saved patch note drafts">View Drafts</Button>
+</Form>
+</Card>
+
+<Card title="Hotfix Ship">
+<Callout tone="danger" title="Emergency deploy">Only use for critical fixes. Requires lead approval.</Callout>
+<Form name="hotfix">
+<Select label="Target Version" options="v3.2.1 | v3.2.0 | v3.1.5" placeholder="Select version to patch" />
+<TextArea label="Hotfix Description" placeholder="Describe what this fixes..." rows="3" />
+<Checkboxes label="Approvals" options="Lead approved | QA verified | Rollback plan ready" name="approvals" />
+<Button variant="danger">Ship Hotfix</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me crash reports in detail
+- What's the current player sentiment?
+- Compare today's revenue to last week
+- Show the full event calendar
+- Export this dashboard as PDF
+</FollowUps>

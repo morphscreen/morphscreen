@@ -1,0 +1,135 @@
+# Store Manager Console
+
+<Card title="Daily Overview">
+<Columns>
+<Stat label="Sales Today" value="$4,280" change="+12%" tone="success" icon="trend-up" />
+<Stat label="Target" value="$5,000" note="86% achieved" icon="target" />
+<Stat label="Basket Size" value="$38.50" change="+$2.10" tone="success" icon="shopping-cart" />
+<Stat label="Returns This Week" value="$620" change="-8%" tone="success" icon="arrow-counter-clockwise" />
+</Columns>
+</Card>
+
+<Card title="Foot Traffic Today">
+<Chart type="bar" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 45 |
+| 9 AM | 78 |
+| 10 AM | 112 |
+| 11 AM | 145 |
+| 12 PM | 168 |
+| 1 PM | 132 |
+| 2 PM | 156 |
+| 3 PM | 143 |
+| 4 PM | 128 |
+| 5 PM | 95 |
+| 6 PM | 67 |
+| 7 PM | 42 |
+</Chart>
+<Stat label="Total Today" value="1,311" change="+5%" note="vs last week" tone="success" icon="users" />
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Revenue ($)">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 4200 | 3900 |
+| Tue | 4100 | 3800 |
+| Wed | 4280 | 3950 |
+| Thu | 4450 | 4100 |
+| Fri | 0 | 4300 |
+| Sat | 0 | 5200 |
+| Sun | 0 | 4800 |
+</Chart>
+<Stat label="This Week So Far" value="$17,030" change="+6.5%" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Best Sellers">
+| Item | Units Sold Today |
+|---|---|
+| Premium Sneakers - White | 24 |
+| Cotton T-Shirt Pack | 18 |
+| Wireless Earbuds | 15 |
+| Denim Jacket | 12 |
+| Running Shoes - Blue | 11 |
+| Yoga Mat Premium | 9 |
+<Button ask="Show more best sellers">View all best sellers</Button>
+</Card>
+
+<Card title="Items Out of Stock">
+<Badge tone="danger">3 items need reorder</Badge>
+
+| Item | SKU | Last Sold |
+|---|---|---|
+| Organic Coffee Beans | OC-452 | 3 days ago |
+| Protein Bars - Chocolate | PB-221 | 2 days ago |
+| Water Bottle 1L | WB-108 | 1 day ago |
+<Button ask="Reorder Organic Coffee Beans (SKU: OC-452)" variant="primary">Reorder Coffee Beans</Button>
+<Button ask="Reorder Protein Bars (SKU: PB-221)">Reorder Protein Bars</Button>
+<Button ask="Reorder Water Bottle 1L (SKU: WB-108)">Reorder Water Bottle</Button>
+</Card>
+
+<Card title="Staff on Shift Today">
+<Columns>
+<Avatar name="Sarah Johnson" subtitle="Manager - 8 AM to 4 PM" />
+<Avatar name="Mike Chen" subtitle="Sales - 8 AM to 2 PM" />
+<Avatar name="Emily Davis" subtitle="Sales - 10 AM to 6 PM" />
+<Avatar name="Carlos Ruiz" subtitle="Cashier - 8 AM to 4 PM" />
+<Avatar name="Lisa Park" subtitle="Stock - 6 AM to 2 PM" />
+<Avatar name="James Wilson" subtitle="Sales - 2 PM to 10 PM" />
+</Columns>
+<Button ask="Show full staff schedule">View full schedule</Button>
+</Card>
+
+<Card title="Register Status">
+| Register | Status | Cashier |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Carlos Ruiz |
+| Register 2 | <Badge tone="success">Open</Badge> | Sarah Johnson |
+| Register 3 | <Badge tone="danger">Closed</Badge> | — |
+| Register 4 | <Badge tone="success">Open</Badge> | Emily Davis |
+| Register 5 | <Badge tone="warning">Break</Badge> | Mike Chen |
+</Card>
+
+<Card title="Running Promotions">
+| Promotion | Sales Impact | Status |
+|---|---|---|
+| Summer Sale - 20% off Apparel | +35% sales | <Badge tone="success">Strong</Badge> |
+| Buy 2 Get 1 Free - Snacks | +18% sales | <Badge tone="success">Good</Badge> |
+| Loyalty Points Double | +12% signups | <Badge tone="info">Moderate</Badge> |
+| Clearance - Extra 30% | +8% sales | <Badge tone="warning">Slow</Badge> |
+<Button ask="Show promotion details">View promotion details</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button ask="Reorder an item" variant="primary">Reorder Item</Button>
+<Button ask="Switch to another store">View Different Store</Button>
+<Button ask="Show daily sales report">Full Sales Report</Button>
+<Button ask="Show inventory alerts">Inventory Alerts</Button>
+</Columns>
+</Card>
+
+<Card title="Reorder an Item">
+<Form name="reorder-item">
+<Select label="Item to reorder" options="Organic Coffee Beans (OC-452) | Protein Bars - Chocolate (PB-221) | Water Bottle 1L (WB-108) | Other item" placeholder="Select an item" required />
+<Input label="Quantity" type="number" placeholder="e.g., 50" min="1" step="1" required />
+<Select label="Priority" options="Standard (3-5 days) | Express (1-2 days) | Rush (same day)" placeholder="Select shipping" />
+<Button>Submit Reorder</Button>
+</Form>
+</Card>
+
+<Card title="Switch Store">
+<Form name="switch-store">
+<Select label="Select store" options="Store #101 - Downtown | Store #102 - Westside Mall | Store #103 - Eastside Plaza | Store #104 - Northgate | Store #105 - Southpark" placeholder="Choose a store" required />
+<Button>View This Store</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the sales breakdown by department
+- What's our best selling category this week?
+- Compare today's foot traffic to last week
+- Who's the top performing cashier today?
+- Show me the returns details
+</FollowUps>

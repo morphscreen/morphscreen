@@ -1,0 +1,105 @@
+# Logistics Coordinator Board
+
+<Card title="Key Metrics" subtitle="Updated 2 minutes ago">
+<Columns>
+<Stat label="On-Time % (This Month)" value="87%" change="+2.1% vs last month" tone="success" />
+<Stat label="Avg Cost / Shipment" value="$1,240" change="-$45 vs last month" tone="info" />
+<Stat label="Active Shipments" value="142" change="+8 vs yesterday" tone="neutral" />
+<Stat label="Delayed" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Search & Filter">
+<Columns>
+<Input label="Search by route" name="route-search" placeholder="e.g., LAX → JFK, CHI → ATL" hint="Type origin → destination" />
+<Select label="Carrier" name="carrier-filter" placeholder="All carriers" options="All | FedEx | UPS | DHL | USPS | Regional | Ocean" />
+<Select label="Status" name="status-filter" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" />
+<Date label="Date range" name="date-range" hint="Filter by ETA window" />
+</Columns>
+</Card>
+
+<Card title="Shipments in Transit">
+<Tabs>
+<Tab title="All (142)">
+| # | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|
+| SH-8842 | Los Angeles (LAX) | New York (JFK) | FedEx | 2025-01-18 14:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8843 | Chicago (ORD) | Atlanta (ATL) | UPS | 2025-01-18 09:15 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8844 | Dallas (DFW) | Miami (MIA) | DHL | 2025-01-18 16:45 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8845 | Seattle (SEA) | Denver (DEN) | FedEx | 2025-01-19 11:20 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8846 | Boston (BOS) | San Francisco (SFO) | UPS | 2025-01-19 18:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8847 | Houston (IAH) | Phoenix (PHX) | Regional | 2025-01-18 13:10 | <Badge tone="danger">Exception</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | Newark (EWR) | Orlando (MCO) | FedEx | 2025-01-18 15:55 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8849 | San Diego (SAN) | Portland (PDX) | DHL | 2025-01-19 10:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8850 | Minneapolis (MSP) | Las Vegas (LAS) | UPS | 2025-01-18 12:40 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Philadelphia (PHL) | Salt Lake City (SLC) | Regional | 2025-01-19 14:20 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (18)">
+| # | Origin | Destination | Carrier | ETA | Delay | Reason | Actions |
+|---|---|---|---|---|---|---|---|
+| SH-8844 | Dallas (DFW) | Miami (MIA) | DHL | 2025-01-18 16:45 | +4h 22m | Weather hold at DFW | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | Newark (EWR) | Orlando (MCO) | FedEx | 2025-01-18 15:55 | +2h 15m | Mechanical issue | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Philadelphia (PHL) | Salt Lake City (SLC) | Regional | 2025-01-19 14:20 | +6h 40m | Customs clearance | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8853 | Detroit (DTW) | Raleigh (RDU) | UPS | 2025-01-18 11:30 | +3h 05m | Traffic congestion | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8857 | Baltimore (BWI) | Tampa (TPA) | FedEx | 2025-01-18 17:20 | +1h 50m | Sorting delay | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Flagged (5)">
+| # | Origin | Destination | Carrier | ETA | Status | Flagged By | Actions |
+|---|---|---|---|---|---|---|---|
+| SH-8844 | Dallas (DFW) | Miami (MIA) | DHL | 2025-01-18 16:45 | <Badge tone="warning">Delayed</Badge> | M. Chen | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8862 | Phoenix (PHX) | Nashville (BNA) | UPS | 2025-01-20 08:00 | <Badge tone="success">On Time</Badge> | J. Rivera | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8867 | Charlotte (CLT) | Indianapolis (IND) | Regional | 2025-01-19 22:15 | <Badge tone="warning">Delayed</Badge> | M. Chen | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8871 | Cincinnati (CVG) | Columbus (CMH) | FedEx | 2025-01-18 19:45 | <Badge tone="success">On Time</Badge> | A. Patel | <Button variant="danger" size="small">Unflag</Button> |
+| SH-8874 | Kansas City (MCI) | St. Louis (STL) | DHL | 2025-01-19 06:30 | <Badge tone="danger">Exception</Badge> | J. Rivera | <Button variant="danger" size="small">Unflag</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Volume Split by Carrier (This Month)">
+<Chart type="donut" title="Shipments by Carrier" x="Carrier" y="Volume">
+| Carrier | Volume |
+|---|---|
+| FedEx | 52 |
+| UPS | 41 |
+| DHL | 28 |
+| Regional | 14 |
+| USPS | 7 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| 2024-11-25 | 112 |
+| 2024-12-02 | 128 |
+| 2024-12-09 | 135 |
+| 2024-12-16 | 148 |
+| 2024-12-23 | 98 |
+| 2024-12-30 | 87 |
+| 2025-01-06 | 142 |
+| 2025-01-13 | 156 |
+</Chart>
+</Card>
+</Columns>
+
+<Callout tone="warning" title="Delayed Shipments Requiring Attention">
+18 shipments currently delayed. Top causes: Weather (6), Mechanical (4), Customs (3), Traffic (3), Sorting (2). 
+<Button variant="secondary" size="small">View delayed details</Button>
+<Button variant="tertiary" size="small">Notify customers</Button>
+</Callout>
+
+<Details title="Data Refresh Info" open="false">
+Last full refresh: **2025-01-18 08:42:15 EST**  
+Next scheduled refresh: **2025-01-18 09:12:15 EST** (every 30 minutes)  
+Data sources: Carrier APIs (FedEx, UPS, DHL), TMS, Warehouse WMS  
+<Button variant="tertiary" size="small">Force refresh now</Button>
+</Details>
+
+<FollowUps>
+- Show me all shipments delayed due to weather
+- Create a flag for shipment SH-8844 with note "Customer escalation"
+- Export this week's volume report to CSV
+- Set up alert for any shipment delayed > 4 hours
+</FollowUps>

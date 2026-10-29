@@ -1,0 +1,76 @@
+# Clinic Receptionist Dashboard
+
+<Card title="Today's Overview" subtitle="March 15, 2026">
+<Columns>
+<Stat label="Expected patients" value="24" icon="users" />
+<Stat label="No-show rate this month" value="8.3%" note="12.1% last month" tone="success" icon="chart-line" />
+<Stat label="Free rooms now" value="3 of 8" icon="map-pin" />
+</Columns>
+</Card>
+
+<Card title="Today's Appointments">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 08:00 | Maria Santos | 101 | Checked in |
+| 08:30 | James Chen | 102 | Checked in |
+| 09:00 | Priya Patel | 103 | ✅ Checked in |
+| 09:30 | David Kim | — | Called out |
+| 10:00 | Sarah Johnson | 104 | ✅ Checked in |
+| 10:30 | Ahmed Hassan | — | Waiting |
+| 11:00 | Lisa Thompson | 105 | ✅ Checked in |
+| 11:30 | Carlos Rivera | — | Waiting |
+| 12:00 | Emily Davis | — | Waiting |
+| 12:30 | *Lunch break* | | |
+| 13:30 | Robert Wilson | — | Waiting |
+| 14:00 | Anita Sharma | 106 | ✅ Checked in |
+| 14:30 | Michael Brown | — | Waiting |
+| 15:00 | Yuki Tanaka | — | Waiting |
+| 15:30 | Olivia Martinez | — | Waiting |
+| 16:00 | Kevin Anderson | — | Waiting |
+| 16:30 | Sofia Garcia | — | Waiting |
+| 17:00 | Daniel Lee | — | Waiting |
+
+<Callout tone="success" title="Next patient called out">
+**David Kim** — 09:30 appointment — Please proceed to Room 103
+</Callout>
+</Card>
+
+<Card title="Room Availability">
+<Columns>
+<Badge tone="success">Room 101 — Dr. Adams</Badge>
+<Badge tone="success">Room 102 — Dr. Lee</Badge>
+<Badge tone="success">Room 103 — Dr. Patel</Badge>
+<Badge tone="success">Room 104 — Dr. Garcia</Badge>
+<Badge tone="success">Room 105 — Dr. Wilson</Badge>
+<Badge tone="neutral">Room 106 — Dr. Chen</Badge>
+<Badge tone="neutral">Room 107 — Dr. Kim</Badge>
+<Badge tone="neutral">Room 108 — Dr. Taylor</Badge>
+</Columns>
+
+<Callout tone="info" title="Free rooms right now">
+Rooms 106, 107, and 108 are available for walk-ins or overflow.
+</Callout>
+</Card>
+
+<Card title="Check In a Patient">
+<Form name="check-in">
+<Input label="Patient name" placeholder="Search or type full name" />
+<Input label="Appointment time" type="time" placeholder="09:30" />
+<Select label="Assign to room" options="Room 101 | Room 102 | Room 103 | Room 104 | Room 105 | Room 106 (free) | Room 107 (free) | Room 108 (free)" placeholder="Pick a room" />
+<Button variant="primary">Check patient in</Button>
+</Form>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="change-date">
+<Date label="View appointments for" hint="Pick any date to see that day's schedule" />
+<Button variant="secondary">Go to this day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the no-show list for today
+- Which patients are still waiting?
+- Open the patient profile for David Kim
+- Show me this week's schedule
+</FollowUps>

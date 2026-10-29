@@ -1,0 +1,270 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="ACTIVE EMERGENCY — REGIONAL FLOOD EVENT">Level 3 Activation | Incident Command: Unified Command Post Alpha | Last Updated: 2024-01-15 14:32 UTC</Callout>
+
+<Card title="Zone Focus" subtitle="Filter all views to a specific zone">
+<Select label="Select Zone" name="zone-focus" placeholder="All Zones" options="All Zones | Zone A — North District | Zone B — Central District | Zone C — South District | Zone D — East District | Zone E — West District" />
+</Card>
+
+<Columns>
+<Card title="Active Incidents by Zone">
+| Zone | Incident ID | Type | Severity | Status | Started | Assigned Units |
+|---|---|---|---|---|---|---|
+| Zone A | INC-2024-0042 | Flash Flood | Critical | Active | 2024-01-15 06:15 | Engine 12, Rescue 3, Medic 7 |
+| Zone A | INC-2024-0045 | Structural Collapse | High | Active | 2024-01-15 08:30 | Engine 8, Truck 4, USAR-1 |
+| Zone B | INC-2024-0043 | Levee Breach | Critical | Active | 2024-01-15 07:00 | Engine 15, Boat 2, Helicopter 1 |
+| Zone B | INC-2024-0047 | Hazmat Spill | High | Contained | 2024-01-15 09:45 | Hazmat 1, Engine 20 |
+| Zone C | INC-2024-0044 | Mass Casualty | Critical | Active | 2024-01-15 07:30 | Medic 1-5, Ambulance 12-18 |
+| Zone D | INC-2024-0046 | Fire — Commercial | High | Active | 2024-01-15 10:15 | Engine 5, Truck 2, Battalion 1 |
+| Zone E | INC-2024-0048 | Water Rescue | Medium | Active | 2024-01-15 11:00 | Boat 1, Rescue 5 |
+</Card>
+
+<Card title="Overall Severity Summary">
+<Stat label="Critical Incidents" value="3" change="+1 since 12:00" tone="danger" />
+<Stat label="High Severity" value="3" change="0" tone="warning" />
+<Stat label="Medium Severity" value="1" change="0" tone="info" />
+<Stat label="Low Severity" value="0" change="0" tone="success" />
+<Stat label="Contained" value="1" change="+1" tone="success" />
+<Stat label="Total Active" value="9" change="+2" tone="danger" />
+<Progress value="3" max="9" label="Critical Ratio" tone="danger" />
+<Progress value="6" max="9" label="High+Critical" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Resources Available">
+<Stat label="Fire Engines" value="12 / 18" change="6 deployed" tone="warning" />
+<Stat label="Ladder Trucks" value="4 / 6" change="2 deployed" tone="warning" />
+<Stat label="Rescue Units" value="5 / 8" change="3 deployed" tone="info" />
+<Stat label="Ambulances" value="15 / 24" change="9 deployed" tone="danger" />
+<Stat label="Boats" value="3 / 5" change="2 deployed" tone="info" />
+<Stat label="Helicopters" value="2 / 3" change="1 deployed" tone="warning" />
+<Stat label="Personnel On Duty" value="142" change="+28 volunteers" tone="success" />
+<Stat label="Swift Water Techs" value="18 / 24" change="6 deployed" tone="warning" />
+<Stat label="USAR Specialists" value="12 / 16" change="4 deployed" tone="info" />
+<Stat label="Sandbags (pallets)" value="450" change="-120 used" tone="warning" />
+<Stat label="Potable Water (gal)" value="12,000" change="-3,200 distributed" tone="info" />
+<Stat label="MREs (cases)" value="850" change="-200 distributed" tone="info" />
+<Stat label="Generators" value="8 / 12" change="4 deployed" tone="warning" />
+<Stat label="Pumps (trash)" value="6 / 10" change="4 deployed" tone="warning" />
+</Card>
+
+<Card title="Shelters — Capacity & Occupancy">
+| Shelter | Zone | Capacity | Occupied | Available | Status | Manager |
+|---|---|---|---|---|---|---|
+| North High School | A | 400 | 312 | 88 | Open | M. Chen |
+| Central Community Center | B | 350 | 298 | 52 | Open | R. Torres |
+| South Middle School | C | 300 | 275 | 25 | Near Full | J. Patel |
+| East Recreation Center | D | 250 | 180 | 70 | Open | K. Williams |
+| West Elementary | E | 200 | 95 | 105 | Open | D. Kim |
+| Fairgrounds Expo Hall | B | 600 | 420 | 180 | Open | L. Garcia |
+| University Arena | C | 800 | 120 | 680 | Standby | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Evacuation Routes Status">
+| Route | Zone | Status | Capacity (veh/hr) | Current Flow | Last Cleared | Notes |
+|---|---|---|---|---|---|---|
+| I-95 Northbound | A | Open | 2,400 | 1,850 | 14:15 | Heavy congestion |
+| Highway 101 | B | Partial | 1,200 | 900 | 13:45 | Lane 3 flooded |
+| State Route 44 | C | Closed | — | — | — | Bridge washout |
+| County Road 12 | D | Open | 800 | 420 | 14:20 | Clear |
+| Evacuation Blvd | E | Open | 1,500 | 1,100 | 14:10 | Contraflow active |
+| Old Mill Road | A | Closed | — | — | — | Landslide |
+| Coastal Highway | B | Partial | 1,000 | 650 | 13:30 | Debris clearance ongoing |
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+<Chart type="line" x="Time" y="Value">
+| Time | Precip (in) | Wind (mph) | Temp (°F) | Alert Level |
+|---|---|---|---|---|
+| Now | 0.0 | 18 | 52 | Watch |
+| +3hr | 0.3 | 22 | 50 | Watch |
+| +6hr | 0.8 | 28 | 48 | Warning |
+| +9hr | 1.2 | 32 | 46 | Warning |
+| +12hr | 1.5 | 35 | 45 | Warning |
+| +15hr | 1.0 | 30 | 44 | Warning |
+| +18hr | 0.6 | 25 | 43 | Watch |
+| +21hr | 0.2 | 20 | 42 | Watch |
+| +24hr | 0.0 | 15 | 44 | Advisory |
+| +27hr | 0.0 | 12 | 46 | Advisory |
+| +30hr | 0.0 | 10 | 48 | None |
+| +33hr | 0.0 | 8 | 50 | None |
+| +36hr | 0.0 | 8 | 52 | None |
+| +39hr | 0.0 | 10 | 54 | None |
+| +42hr | 0.0 | 12 | 56 | None |
+| +45hr | 0.0 | 14 | 57 | None |
+| +48hr | 0.0 | 15 | 58 | None |
+</Chart>
+<Callout tone="warning" title="Flash Flood Warning">Valid until 2024-01-15 22:00. Additional 2-4 inches expected. Winds gusting to 40 mph.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Rescued & Casualties">
+<Stat label="People Rescued" value="347" change="+52 since 12:00" tone="success" />
+<Stat label="Evacuated to Shelters" value="1,700" change="+280" tone="info" />
+<Stat label="Sheltered in Place" value="420" change="-15" tone="warning" />
+<Stat label="Injuries — Minor" value="23" change="+4" tone="info" />
+<Stat label="Injuries — Serious" value="8" change="+2" tone="warning" />
+<Stat label="Injuries — Critical" value="3" change="+1" tone="danger" />
+<Stat label="Fatalities Confirmed" value="2" change="+1" tone="danger" />
+<Stat label="Missing / Unaccounted" value="14" change="-3" tone="danger" />
+</Card>
+
+<Card title="Volunteers On Duty">
+| Name | Role | Assignment | Zone | Shift Start | Status |
+|---|---|---|---|---|---|
+| A. Rodriguez | CERT Team Lead | Shelter Ops — North HS | A | 06:00 | Active |
+| S. Nakamura | Medical Volunteer | Triage — Central CC | B | 06:00 | Active |
+| M. Okafor | Logistics | Supply Distribution | C | 08:00 | Active |
+| T. Kowalski | Communications | Radio Relay — EOC | All | 06:00 | Active |
+| P. Singh | CERT | Sandbag Detail | A | 10:00 | Active |
+| R. Murphy | Search & Rescue | Water Rescue Support | B | 08:00 | Active |
+| L. Chen | Interpreter | Shelter Intake — South MS | C | 10:00 | Active |
+| J. Alvarez | Driver | Evacuation Transport | D | 08:00 | Active |
+| K. Thompson | Admin | Donations Sorting | E | 10:00 | Active |
+| V. Petrov | IT/Comms | Mesh Network Setup | All | 12:00 | Active |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Donations Received">
+<Stat label="Monetary (USD)" value="$247,500" change="+$42,000 today" tone="success" />
+<Stat label="Water (pallets)" value="180" change="+45 today" tone="info" />
+<Stat label="Food (MRE cases)" value="320" change="+80 today" tone="info" />
+<Stat label="Clothing (bins)" value="95" change="+20 today" tone="neutral" />
+<Stat label="Hygiene Kits" value="1,200" change="+300 today" tone="info" />
+<Stat label="Blankets" value="850" change="+150 today" tone="info" />
+<Stat label="Generators Donated" value="4" change="+2 today" tone="success" />
+<Stat label="Volunteer Hours Pledged" value="1,450" change="+320 today" tone="success" />
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Requested By | Time | Status |
+|---|---|---|---|---|---|---|
+| REQ-0892 | A | Medical Supplies | Critical | Shelter Mgr Chen | 13:45 | Pending |
+| REQ-0893 | B | Pumps (3 trash) | High | Incident Cmd B | 13:50 | Pending |
+| REQ-0894 | C | Evacuation Buses | Critical | IC Zone C | 13:55 | Pending |
+| REQ-0895 | A | Sandbags (50 pallets) | High | Engine 12 | 14:00 | Pending |
+| REQ-0896 | D | Generators (2) | Medium | Shelter Mgr Williams | 14:05 | Pending |
+| REQ-0897 | B | Swift Water Techs | Critical | Rescue 3 | 14:10 | Pending |
+| REQ-0898 | E | Comms Equipment | Medium | Volunteer Petrov | 14:15 | Pending |
+| REQ-0899 | C | Pediatric Meds | High | Medic 3 | 14:20 | Pending |
+| REQ-0900 | All | Portable Toilets | Medium | Logistics Chief | 14:25 | Pending |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Communication Channels">
+| Channel | Type | Status | Coverage | Last Test | Backup |
+|---|---|---|---|---|---|
+| EOC Primary Radio | VHF/UHF | Operational | Region-wide | 14:30 | Satellite |
+| Fire Dispatch | Trunked 800MHz | Operational | County | 14:28 | VHF Simplex |
+| EMS Dispatch | UHF MedNet | Operational | County | 14:29 | Cellular |
+| Police Dispatch | P25 Phase II | Operational | County | 14:27 | Mutual Aid |
+| Shelter Net | Mesh/LoRa | Degraded | Zone A-C | 14:15 | Runners |
+| Amateur Radio (ARES) | HF/VHF/UHF | Operational | Region-wide | 14:25 | Winlink |
+| Cellular (Priority) | LTE/5G | Congested | Region-wide | 14:20 | Satellite |
+| Satellite Phones | Iridium | Operational | Global | 14:10 | — |
+| IPAWS/WEA | Federal Alert | Operational | Region-wide | 14:00 | EAS |
+| Social Media | Web | Operational | Public | 14:30 | Website |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Zone | Reason | Since | Est. Reopen | Detour |
+|---|---|---|---|---|---|
+| State Route 44 | C | Bridge washout | 07:15 | Unknown | I-95 to Exit 12 |
+| Old Mill Road | A | Landslide | 08:30 | 24-48 hrs | County Rd 12 |
+| Riverside Drive | B | Flooding | 06:45 | Tide-dependent | Highway 101 |
+| Bridge St / 3rd Ave | A | Structural damage | 09:00 | Unknown | Main St Bridge |
+| Coastal Hwy (MM 12-18) | B | Debris / erosion | 10:30 | 12-18 hrs | Inland Route 7 |
+| Lakeview Blvd | D | Sinkhole | 11:45 | 6-8 hrs | Park Ave |
+| Highway 99 (MM 45) | E | Flooding | 12:20 | Unknown | Frontage Rd |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Nearby Hospitals — Free Beds">
+| Hospital | Zone | Trauma Level | Total Beds | ICU Free | Med/Surg Free | ED Status | Helipad |
+|---|---|---|---|---|---|---|---|
+| Regional Medical Center | A | Level I | 450 | 4 / 48 | 28 / 180 | Diversion | Yes |
+| Mercy General | B | Level II | 320 | 6 / 32 | 15 / 120 | Open | Yes |
+| St. Luke's | C | Level III | 180 | 2 / 16 | 12 / 85 | Open | No |
+| Community Hospital | D | Level III | 150 | 3 / 12 | 18 / 70 | Open | Yes |
+| Veterans Medical | E | Level II | 280 | 5 / 24 | 22 / 110 | Open | Yes |
+| Children's Hospital | B | Level I Peds | 210 | 3 / 20 | 10 / 90 | Open | Yes |
+| County Psychiatric | C | — | 100 | — | 15 / 60 | Open | No |
+</Card>
+
+<Card title="Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|---|
+| TASK-1422 | Establish LZ at North HS | Battalion 1 | A | Critical | 15:00 | In Progress |
+| TASK-1423 | Clear debris Coastal Hwy | PW Crew 3 | B | High | 16:00 | Assigned |
+| TASK-1424 | Deploy pumps to Zone C | Logistics | C | Critical | 15:30 | En Route |
+| TASK-1425 | Set up comms relay Zone E | V. Petrov | E | High | 15:00 | In Progress |
+| TASK-1426 | Distribute MREs to shelters | K. Thompson | All | Medium | 17:00 | Assigned |
+| TASK-1427 | Inspect Bridge St damage | Eng. Div | A | High | 16:00 | Pending |
+| TASK-1428 | Activate Univ. Arena shelter | L. Garcia | C | Medium | 18:00 | Pending |
+| TASK-1429 | Coordinate helo medevac | Medic 1 | B | Critical | ASAP | In Progress |
+| TASK-1430 | Verify evacuation complete Zone D | J. Alvarez | D | High | 15:30 | In Progress |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Select label="Resource Type" name="res-type" placeholder="Select resource type" options="Fire Engine | Ladder Truck | Rescue Unit | Ambulance | Boat | Helicopter | Personnel — Firefighters | Personnel — Paramedics | Personnel — Swift Water Techs | Personnel — USAR | Sandbags (pallets) | Potable Water (gallons) | MREs (cases) | Generators | Pumps (trash) | Portable Toilets | Medical Supplies | Communications Equipment | Shelter Supplies | Heavy Equipment" required="true" />
+<Input label="Quantity" name="res-qty" type="number" placeholder="1" min="1" max="100" required="true" />
+<Select label="Priority" name="res-priority" placeholder="Select priority" options="Critical — Immediate | High — Within 2 hrs | Medium — Within 6 hrs | Low — Next operational period" required="true" />
+<Select label="Delivery Zone" name="res-zone" placeholder="Select zone" options="Zone A | Zone B | Zone C | Zone D | Zone E | Staging Area Alpha | Staging Area Bravo | EOC Warehouse" required="true" />
+<TextArea label="Justification / Notes" name="res-notes" placeholder="Operational need, specific location, point of contact..." rows="3" />
+<Button variant="primary">Submit Resource Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Emergency Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="broadcast-channels" placeholder="Select channels" options="All Channels | IPAWS/WEA (Public Alert) | EOC Radio Net | Shelter Net | Amateur Radio (ARES) | Social Media | Website | Shelter PA Systems | Door-to-Door Teams" required="true" />
+<Radio label="Audience" name="broadcast-audience" options="General Public | Evacuees in Shelters | Field Personnel | Volunteers | Media/Press | All of the Above" value="All of the Above" required="true" />
+<Select label="Message Template" name="broadcast-template" placeholder="Use template or write custom" options="Custom Message | Evacuation Order | Shelter-in-Place | Route Change / Closure | Weather Warning Update | All Clear / Return Home | Resource Distribution Info | Safety Advisory | Missing Person Alert" />
+<TextArea label="Message" name="broadcast-message" placeholder="Enter broadcast message..." rows="5" required="true" hint="Max 160 chars for WEA; longer for other channels" />
+<Switch label="Request Read Receipt / Acknowledgment" name="broadcast-receipt" value="true" />
+<Button variant="primary">Send Broadcast</Button>
+<Button variant="secondary">Save as Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="File Situation Report (SITREP)">
+<Form name="situation-report">
+<Select label="Report Type" name="sitrep-type" placeholder="Select report type" options="Initial | Update (Periodic) | Final | Special / Significant Event" required="true" />
+<Input label="Incident Number(s)" name="sitrep-incidents" placeholder="INC-2024-0042, INC-2024-0043..." required="true" />
+<Select label="Zone(s)" name="sitrep-zones" placeholder="Select zone(s)" options="All Zones | Zone A | Zone B | Zone C | Zone D | Zone E" required="true" />
+<Date label="Reporting Period Start" name="sitrep-start" required="true" />
+<Date label="Reporting Period End" name="sitrep-end" required="true" />
+<TextArea label="Situation Summary" name="sitrep-summary" placeholder="Current situation, major developments, changes since last report..." rows="4" required="true" />
+<TextArea label="Actions Taken" name="sitrep-actions" placeholder="Operational actions, resources deployed, evacuations, rescues..." rows="4" />
+<TextArea label="Resource Status" name="sitrep-resources" placeholder="Resources committed, available, needed..." rows="3" />
+<TextArea label="Planned Actions / Next Operational Period" name="sitrep-planned" placeholder="Priorities, objectives, resource requests for next period..." rows="3" />
+<TextArea label="Issues / Concerns / Safety Hazards" name="sitrep-issues" placeholder="Gaps, risks, unmet needs, safety concerns..." rows="3" />
+<TextArea label="Casualty / Damage Assessment Update" name="sitrep-casualties" placeholder="Updated numbers, assessments..." rows="3" />
+<Button variant="primary">Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Request mutual aid from neighboring jurisdictions
+- Activate State Emergency Operations Center liaison
+- Coordinate with National Guard for high-water vehicles
+- Establish family reunification center
+- Begin preliminary damage assessment teams
+</FollowUps>

@@ -1,0 +1,113 @@
+# Database Migration Plan
+
+<Card title="Migration Overview" subtitle="Version 2.4.0 → 2.5.0 · Target: PostgreSQL 15">
+<Stat label="Tables affected" value="3" />
+<Stat label="Columns added" value="5" />
+<Stat label="Columns modified" value="2" />
+<Stat label="Estimated downtime" value="~45 sec" tone="warning" />
+</Card>
+
+<Card title="1. Files Touched">
+<FileTree title="Migration 2025-01-15_add_billing_fields">
+migrations/
+├── 2025-01-15_add_billing_fields/
+│   ├── up.sql
+│   ├── down.sql
+│   ├── seed_billing_codes.sql
+│   └── README.md
+services/
+├── billing/
+│   ├── models/
+│   │   ├── account.go
+│   │   └── invoice.go
+│   └── repository/
+│       └── postgres_account.go
+api/
+├── graphql/
+│   └── schema/
+│       ├── account.graphql
+│       └── invoice.graphql
+└── rest/
+    └── openapi/
+        └── billing.yaml
+</FileTree>
+</Card>
+
+<Card title="2. Schema Change Diff">
+<Diff file="migrations/2025-01-15_add_billing_fields/up.sql">
+-- Migration: Add billing fields to accounts and invoices
+-- Author: Platform Team
+-- Date: 2025-01-15
+
+BEGIN;
+
+-- Add billing_address_id to accounts
+-ALTER TABLE accounts ADD COLUMN billing_address_id UUID REFERENCES addresses(id);
++ALTER TABLE accounts ADD COLUMN billing_address_id UUID REFERENCES addresses(id) ON DELETE SET NULL;
+
+-- Add tax_id and currency to accounts
++ALTER TABLE accounts ADD COLUMN tax_id VARCHAR(50);
++ALTER TABLE accounts ADD COLUMN currency CHAR(3) NOT NULL DEFAULT 'USD';
+
+-- Add billing_cycle and next_billing_date to invoices
++ALTER TABLE invoices ADD COLUMN billing_cycle VARCHAR(20) NOT NULL DEFAULT 'monthly'
++    CHECK (billing_cycle IN ('monthly', 'quarterly', 'annual'));
++ALTER TABLE invoices ADD COLUMN next_billing_date TIMESTAMPTZ;
+
+-- Create index for billing queries
++CREATE INDEX idx_invoices_next_billing ON invoices(next_billing_date) WHERE next_billing_date IS NOT NULL;
++CREATE INDEX idx_accounts_tax_id ON accounts(tax_id) WHERE tax_id IS NOT NULL;
+
+-- Update existing accounts with default currency
++UPDATE accounts SET currency = 'USD' WHERE currency IS NULL;
+
+COMMIT;
+</Diff>
+</Card>
+
+<Card title="3. Rollback Steps">
+<Steps>
+<Step title="Verify migration status" status="todo">
+Check that the migration has been applied and identify which steps need reversal.
+```sql
+SELECT * FROM schema_migrations WHERE version = '2025-01-15';
+```
+</Step>
+<Step title="Disable application writes" status="todo">
+Put the billing service in read-only mode or pause the deployment to prevent new data during rollback.
+</Step>
+<Step title="Drop indexes" status="todo">
+```sql
+DROP INDEX IF EXISTS idx_invoices_next_billing;
+DROP INDEX IF EXISTS idx_accounts_tax_id;
+```
+</Step>
+<Step title="Remove added columns" status="todo">
+```sql
+ALTER TABLE invoices DROP COLUMN IF EXISTS next_billing_date;
+ALTER TABLE invoices DROP COLUMN IF EXISTS billing_cycle;
+ALTER TABLE accounts DROP COLUMN IF EXISTS currency;
+ALTER TABLE accounts DROP COLUMN IF EXISTS tax_id;
+ALTER TABLE accounts DROP COLUMN IF EXISTS billing_address_id;
+```
+</Step>
+<Step title="Remove migration record" status="todo">
+```sql
+DELETE FROM schema_migrations WHERE version = '2025-01-15';
+```
+</Step>
+<Step title="Restore application writes" status="todo">
+Re-enable the billing service and verify normal operation.
+</Step>
+<Step title="Post-rollback validation" status="todo">
+Run smoke tests against the billing API endpoints to confirm schema compatibility.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="primary">Run Migration</Button>
+<Button variant="secondary">Dry Run</Button>
+<Button variant="tertiary">View Down Script</Button>
+<Button variant="danger">Rollback</Button>
+</Card>

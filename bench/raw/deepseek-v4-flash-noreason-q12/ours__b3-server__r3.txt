@@ -1,0 +1,88 @@
+# Service Health Overview
+
+<Callout tone="info" title="On-call shift">You're covering **US-West** until 09:00 UTC. 2 open incidents need attention.</Callout>
+
+<Columns>
+<Stat label="Uptime (Q3)" value="99.92%" change="+0.04% vs Q2" tone="success" icon="chart-line" />
+<Stat label="Error rate (now)" value="0.43%" change="−0.12% in last hour" tone="success" icon="warning-circle" />
+<Stat label="Open incidents" value="2" change="1 critical, 1 major" tone="danger" icon="fire" />
+</Columns>
+
+<Card title="Region filter" subtitle="Scope the dashboard to one region">
+<Select label="Region" options="All regions | US-West | US-East | EU-Central | AP-Southeast" name="region" value="US-West" />
+</Card>
+
+<Card title="CPU & Memory — last 24 hours">
+<Chart type="line" x="Time (UTC)" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 45 | 62 |
+| 04:00 | 48 | 64 |
+| 06:00 | 51 | 66 |
+| 08:00 | 58 | 70 |
+| 10:00 | 63 | 74 |
+| 12:00 | 61 | 72 |
+| 14:00 | 66 | 76 |
+| 16:00 | 72 | 80 |
+| 18:00 | 69 | 78 |
+| 20:00 | 57 | 73 |
+| 22:00 | 49 | 68 |
+| 24:00 | 44 | 63 |
+</Chart>
+<Callout tone="warning" title="Memory pressure">Memory peaked at 80% at 16:00 UTC — approaching the 85% threshold.</Callout>
+</Card>
+
+<Card title="Open incidents">
+| Incident | Severity | Region | Started | Status |
+|---|---|---|---|---|
+| **INC-4821** — Checkout latency spike | <Badge tone="danger">Critical</Badge> | US-West | 07:42 UTC | Unacknowledged |
+| **INC-4819** — Payment webhook 5xx errors | <Badge tone="warning">Major</Badge> | EU-Central | 06:15 UTC | Acknowledged |
+
+<Details title="INC-4821 — Checkout latency spike" open>
+**Severity:** <Badge tone="danger">Critical</Badge> — **Region:** US-West  
+**Started:** 07:42 UTC · **Duration:** 1h 18m  
+P99 checkout latency is 4.2s (baseline 800ms). Autoscaling hasn't triggered. Investigating database connection pool exhaustion.
+
+<Button variant="primary" label="Acknowledge incident">Acknowledge incident</Button>
+<Button variant="secondary">View runbook</Button>
+</Details>
+
+<Details title="INC-4819 — Payment webhook 5xx errors">
+**Severity:** <Badge tone="warning">Major</Badge> — **Region:** EU-Central  
+**Started:** 06:15 UTC · **Duration:** 2h 45m  
+Webhook delivery failing for ~12% of events. Upstream provider degraded. Mitigation in progress.
+
+<Button variant="secondary" disabled>Already acknowledged</Button>
+</Details>
+</Card>
+
+<Card title="Slowest endpoints — last 5 minutes">
+| Endpoint | Method | P95 Latency | Requests/min |
+|---|---|---|---|
+| `/api/v1/checkout` | POST | 4,120 ms | 1,204 |
+| `/api/v1/payments/confirm` | POST | 1,840 ms | 892 |
+| `/api/v1/inventory/stock` | GET | 1,210 ms | 3,450 |
+| `/api/v1/user/profile` | GET | 980 ms | 5,120 |
+| `/api/v1/orders/search` | GET | 760 ms | 2,310 |
+
+<Callout tone="warning" title="Checkout endpoint">`/api/v1/checkout` is 4× above its SLO of 1,000 ms — linked to INC-4821.</Callout>
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="1.0" name="error-threshold" unit="%" />
+<Slider label="CPU threshold" min="50" max="95" step="1" value="85" name="cpu-threshold" unit="%" />
+<Slider label="Memory threshold" min="50" max="95" step="1" value="85" name="memory-threshold" unit="%" />
+<Callout tone="neutral" title="Current settings">Page alerts will fire when any threshold is exceeded for 5 consecutive minutes. Changes apply immediately.</Callout>
+<Button variant="primary">Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- [ ] Show me the alert history for this service
+- [ ] What changed in the last deploy?
+- [ ] Open the incident timeline for INC-4821
+- [ ] Compare CPU/memory across all regions
+</FollowUps>

@@ -1,0 +1,176 @@
+# Speeding up large CSV processing in Python
+
+Reading a 2 GB CSV in Python can be slow for several reasons. Let's diagnose and fix the most common bottlenecks.
+
+<Card title="Quick wins: 3 things to try first">
+<Steps>
+<Step title="Use a faster parser" status="current" subtitle="Pandas with engine='pyarrow' or 'c'">
+Replace the default Python parser with a C-based one. If you're using pandas, this alone can give **5-10x speedup**.
+</Step>
+<Step title="Read only what you need" status="todo" subtitle="Columns + rows">
+Don't load the whole file. Specify columns with `usecols` and filter rows early.
+</Step>
+<Step title="Use chunking" status="todo" subtitle="Process in batches">
+For 2 GB, process the file in chunks of 50k-100k rows instead of loading it all at once.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Which approach fits your situation?">
+<Tabs>
+<Tab title="Using pandas">
+<Callout tone="info" title="Best for: data analysis, filtering, grouping">
+</Callout>
+
+```python
+# 🐌 Slow: default Python parser
+df = pd.read_csv('large_file.csv')
+
+# 🚀 Fast: C engine with specific dtypes
+df = pd.read_csv(
+    'large_file.csv',
+    engine='c',           # C parser, much faster than Python
+    low_memory=False,     # Avoid mixed-type inference per chunk
+    dtype={'col1': 'int32', 'col2': 'category'},  # Smaller dtypes
+    usecols=['col1', 'col2', 'col3'],  # Only needed columns
+    nrows=1000000         # Optional: limit rows for testing
+)
+
+# 🚀 Fastest: PyArrow backend (pandas 2.0+)
+df = pd.read_csv(
+    'large_file.csv',
+    engine='pyarrow',     # Arrow-based, parallelized
+    dtype_backend='pyarrow'
+)
+```
+
+<Stat label="Speed comparison" value="10-50x" change="faster" tone="success" />
+</Tab>
+
+<Tab title="Using Polars">
+<Callout tone="info" title="Best for: maximum speed, memory efficiency">
+</Callout>
+
+```python
+import polars as pl
+
+# 🚀 Polars is lazy and parallel by default
+df = pl.scan_csv('large_file.csv')  # Lazy: doesn't load yet
+result = (
+    df
+    .filter(pl.col('date') > '2024-01-01')
+    .select(['col1', 'col2'])
+    .collect(streaming=True)  # Process in streaming fashion
+)
+```
+
+<Stat label="Speed vs pandas" value="5-20x" change="faster" tone="success" />
+</Tab>
+
+<Tab title="Manual chunking">
+<Callout tone="info" title="Best for: custom processing, limited memory">
+</Callout>
+
+```python
+import csv
+from itertools import islice
+
+def process_chunk(chunk):
+    # Your processing logic here
+    return chunk
+
+chunk_size = 100000
+with open('large_file.csv', 'r') as f:
+    reader = csv.DictReader(f)
+    while True:
+        chunk = list(islice(reader, chunk_size))
+        if not chunk:
+            break
+        result = process_chunk(chunk)
+        # Save or aggregate result
+```
+
+<Stat label="Memory usage" value="~200 MB" unit="" tone="info" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Diagnose your bottleneck first">
+Run this to see where time is spent:
+
+```python
+import cProfile
+import pstats
+
+# Profile your current script
+cProfile.run('your_script()', 'profile_stats')
+p = pstats.Stats('profile_stats')
+p.sort_stats('cumtime').print_stats(10)
+```
+
+<KeyValue title="Common bottlenecks and fixes">
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| High CPU, slow parse | Python parser | Use `engine='c'` or `engine='pyarrow'` |
+| High memory, then slow | Loading all data | Use `chunksize` or streaming |
+| Slow after loading | Inefficient dtypes | Specify `dtype` as smaller types |
+| Disk I/O at 100% | Single-threaded read | Try `polars` or `dask` for parallel I/O |
+</KeyValue>
+</Card>
+
+<Card title="Memory-efficient dtypes cheat sheet">
+Saving memory = fewer disk reads = faster processing.
+
+| Data type | Default pandas | Optimized | Memory savings |
+|---|---|---|---|
+| Integer | `int64` | `int32` or `int16` | 50-75% |
+| Float | `float64` | `float32` | 50% |
+| String with repeats | `object` | `category` | 80-90% |
+| Date | `object` | `datetime64` | 60% |
+
+```python
+# Example: specify dtypes when reading
+dtype_spec = {
+    'user_id': 'int32',
+    'age': 'int8',
+    'salary': 'float32',
+    'department': 'category',
+    'signup_date': 'datetime64[ms]'
+}
+df = pd.read_csv('large.csv', dtype=dtype_spec, engine='c')
+```
+</Card>
+
+<Card title="Try this: benchmark your file">
+<Form name="benchmark">
+<File label="Upload a sample (first 100 MB)" name="csv_sample" accept=".csv" />
+<Button variant="primary">Analyze and recommend</Button>
+</Form>
+</Card>
+
+<Card title="Next steps">
+<Steps>
+<Step title="Profile your current code" status="todo">
+Run `cProfile` to see where time goes. Share the output and I'll give specific advice.
+</Step>
+<Step title="Pick a method" status="todo">
+- **Pandas + C engine**: simplest upgrade
+- **Polars**: best for speed
+- **Dask**: if you need distributed processing later
+</Step>
+<Step title="Process in chunks" status="todo">
+Always process 2 GB files in chunks unless you have 16+ GB RAM.
+</Step>
+</Steps>
+
+<Button ask="Show me a complete example with chunking and dtypes">Give me a full working example</Button>
+<Button ask="How do I handle CSV parsing errors in large files?">Handle bad rows</Button>
+<Button ask="Compare polars vs pandas vs dask for my use case">Compare libraries</Button>
+</Card>
+
+<FollowUps>
+- Show me how to use Dask for this 2 GB file
+- How do I parallelize CSV processing across CPU cores?
+- What if I need to join this CSV with another large file?
+- Can I convert to Parquet first to speed up future reads?
+</FollowUps>

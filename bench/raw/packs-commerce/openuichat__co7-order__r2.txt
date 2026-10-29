@@ -1,0 +1,33 @@
+root = Card([header, itemsBlock, summaryBlock, deliveryBlock, actionButtons])
+header = CardHeader("Order Confirmation", "Order #ORD-2026-047821 · Status: Delivered")
+itemsBlock = CompositeCardBlock([item1, item2, item3], "grid", false)
+item1 = CompositeCardItem("item-1", item1Header, [item1Desc, item1Price], { price: item1PriceBold })
+item1Header = ImageText("https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop", "Wireless Headphones", "Sony WH-1000XM5 Wireless Headphones", "Black · Noise Cancelling", true, "horizontal", 80)
+item1Desc = Text("text", "Qty: 1 × $349.99", "In stock · Ships from warehouse")
+item1Price = BoldText("number", "$349.99")
+item1PriceBold = BoldText("number", "$349.99")
+item2 = CompositeCardItem("item-2", item2Header, [item2Desc, item2Price], { price: item2PriceBold })
+item2Header = ImageText("https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop", "Phone Case", "Premium Leather Phone Case", "Tan · iPhone 15 Pro", true, "horizontal", 80)
+item2Desc = Text("text", "Qty: 1 × $59.99", "In stock · Ships from warehouse")
+item2Price = BoldText("number", "$59.99")
+item2PriceBold = BoldText("number", "$59.99")
+item3 = CompositeCardItem("item-3", item3Header, [item3Desc, item3Price], { price: item3PriceBold })
+item3Header = ImageText("https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop", "USB-C Cable", "Anker PowerLine III USB-C to USB-C 2.0 Cable", "6ft · Black", true, "horizontal", 80)
+item3Desc = Text("text", "Qty: 2 × $18.99", "In stock · Ships from warehouse")
+item3Price = BoldText("number", "$37.98")
+item3PriceBold = BoldText("number", "$37.98")
+summaryBlock = EntityList([sum1, sum2, sum3, sum4, sum5], "default", { left: "Order Summary", right: "", rightVariant: "text" }, { left: "Total Paid", right: "$472.96", rightVariant: "number" })
+sum1 = { left: "Subtotal", right: "$447.96", rightVariant: "number" }
+sum2 = { left: "Shipping", right: "FREE", rightVariant: "text" }
+sum3 = { left: "Tax (8.25%)", right: "$25.00", rightVariant: "number" }
+sum4 = { left: "Discount", right: "-$0.00", rightVariant: "number" }
+sum5 = { left: "Payment Method", right: "Visa ending in 4242", rightVariant: "text" }
+deliveryBlock = EntityList([del1, del2, del3, del4], "default", { left: "Delivery Details", right: "", rightVariant: "text" })
+del1 = { left: "Delivery Address", right: "Sarah Johnson\n1245 Maple Street, Apt 3B\nSan Francisco, CA 94117\nUnited States", rightVariant: "text" }
+del2 = { left: "Delivery Date", right: "Delivered · June 15, 2026 at 2:34 PM", rightVariant: "text" }
+del3 = { left: "Carrier", right: "FedEx Ground · Tracking: 7728 4938 1029", rightVariant: "text" }
+del4 = { left: "Signature", right: "Signed by S. Johnson", rightVariant: "text" }
+actionButtons = Buttons([btnReturn, btnReceipt, btnSupport], "row")
+btnReturn = Button("Start a Return", { type: "continue_conversation", context: "I want to start a return for order ORD-2026-047821" }, "primary")
+btnReceipt = Button("Download Receipt", { type: "continue_conversation", context: "Download receipt for order ORD-2026-047821" }, "secondary")
+btnSupport = Button("Contact Support", { type: "continue_conversation", context: "Contact support about order ORD-2026-047821" }, "tertiary")

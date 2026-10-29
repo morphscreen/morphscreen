@@ -1,0 +1,48 @@
+# Low-Inventory Warning
+
+<Badge tone="warning">3 items below threshold</Badge>
+
+<Card title="Warning Settings" subtitle="Items are flagged when remaining units fall at or below this threshold">
+<Slider label="Reorder threshold" min="1" max="50" step="1" value="10" name="threshold" />
+<Callout tone="info" title="How it works">When an item's remaining stock reaches the threshold above, it appears in the list below and a reorder is recommended.</Callout>
+</Card>
+
+<Card title="Search inventory">
+<Input label="Search items" name="search" type="search" placeholder="Search by item name or SKU…" hint="Type to filter the low-stock list below" />
+</Card>
+
+<Card title="Items running low" subtitle="Showing 3 of 3 items at or below the 10-unit threshold">
+<Columns>
+<Card title="Arabica Coffee Beans — 1kg">
+<Stat label="Remaining" value="4 units" tone="danger" icon="warning" />
+<Progress value="4" max="50" label="4 of 50 units left" tone="danger" />
+<Badge tone="danger">Below threshold</Badge>
+<Button variant="primary" size="small">Reorder 10 units</Button>
+</Card>
+
+<Card title="Oat Milk — 1L carton">
+<Stat label="Remaining" value="9 units" tone="warning" icon="warning" />
+<Progress value="9" max="50" label="9 of 50 units left" tone="warning" />
+<Badge tone="warning">Near threshold</Badge>
+<Button variant="primary" size="small">Reorder 12 units</Button>
+</Card>
+
+<Card title="Paper Cups — 12oz">
+<Stat label="Remaining" value="10 units" tone="warning" icon="warning" />
+<Progress value="10" max="100" label="10 of 100 units left" tone="warning" />
+<Badge tone="warning">At threshold</Badge>
+<Button variant="primary" size="small">Reorder 50 units</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Reorder all low items">
+<Button variant="secondary">Reorder all 3 items</Button>
+<Button variant="tertiary">Export low-stock list</Button>
+</Card>
+
+<FollowUps>
+- Show me reorder history for these items
+- Which items are out of stock entirely?
+- Adjust the threshold for specific categories
+</FollowUps>

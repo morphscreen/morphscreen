@@ -1,0 +1,152 @@
+# Factory floor supervisor console
+
+Shift A · Monday 24 June 2025 · <Badge tone="success">Live</Badge>
+
+<Button variant="primary" icon="download">Export shift report</Button>
+
+<Columns>
+<Card title="Overall equipment effectiveness">
+<Progress value="78.4" max="100" label="OEE 78.4%" tone="success" />
+| Factor | Value |
+|---|---|
+| Availability | 92.1% |
+| Performance | 88.4% |
+| Quality | 96.3% |
+</Card>
+<Card title="Units produced vs today's target">
+<Progress value="9840" max="12000" label="9,840 / 12,000" tone="info" />
+**Pace:** 82% of target · ahead of schedule
+</Card>
+<Card title="Safety">
+<Stat label="Incidents this year" value="2" tone="warning" icon="shield-warning" />
+<Stat label="Days since last incident" value="47" tone="info" icon="calendar" />
+</Card>
+<Card title="Energy used today">
+<Stat label="Energy use" value="4.82 MWh" tone="info" icon="bolt" />
+**Pace:** on forecast for the shift
+</Card>
+</Columns>
+
+<Card title="Live andon alerts" subtitle="Updated 10:12">
+- <Badge tone="danger">Line 2</Badge> **Conveyor jam** — 09:42 · 4 min · M. Costa
+- <Badge tone="warning">Line 4</Badge> **Material shortage** — 10:05 · waiting on stores
+- <Badge tone="info">Line 1</Badge> **Sensor warning** — 10:12 · auto-monitoring
+</Card>
+
+<Card title="Production lines" subtitle="Live rates and status">
+<Form name="focus-line">
+<Select label="Focus on one line" name="focused-line" options="All lines | Line 1 · Assembly A | Line 2 · Assembly B | Line 3 · Finishing | Line 4 · Packaging" />
+<Button variant="secondary">Apply focus</Button>
+</Form>
+<Columns>
+<Card title="Line 1 · Assembly A">
+<Badge tone="success">Running</Badge>
+- **Rate:** 1,240 u/h
+- **Shift target:** 76%
+<Progress value="76" max="100" label="Target" tone="success" />
+</Card>
+<Card title="Line 2 · Assembly B">
+<Badge tone="danger">Stalled</Badge>
+- **Rate:** 0 u/h
+- **Shift target:** 45%
+<Progress value="45" max="100" label="Target" tone="danger" />
+</Card>
+<Card title="Line 3 · Finishing">
+<Badge tone="success">Running</Badge>
+- **Rate:** 1,100 u/h
+- **Shift target:** 82%
+<Progress value="82" max="100" label="Target" tone="success" />
+</Card>
+<Card title="Line 4 · Packaging">
+<Badge tone="warning">Reduced speed</Badge>
+- **Rate:** 820 u/h
+- **Shift target:** 61%
+<Progress value="61" max="100" label="Target" tone="warning" />
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Defect rate · past month">
+<Chart type="line" title="Defect rate" x="Week" y="Percent">
+| Week | Defect rate |
+|---|---|
+| W1 | 1.8 |
+| W2 | 1.5 |
+| W3 | 1.7 |
+| W4 | 1.4 |
+| W5 | 1.2 |
+</Chart>
+</Card>
+<Card title="Downtime split by cause">
+<Chart type="donut" title="Downtime" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Material shortage | 8.2 |
+| Changeover | 5.4 |
+| Breakdown | 4.6 |
+| Quality | 3.1 |
+| Other | 2.8 |
+</Chart>
+</Card>
+<Card title="Shift output comparison">
+<Chart type="bar" title="Output" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 4100 |
+| Afternoon | 3860 |
+| Night | 1880 |
+</Chart>
+Night shift is still in progress.
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines due for maintenance">
+- **Welding Robot 2** — due in 1 day <Badge tone="warning">Due soon</Badge>
+- **Injection Press #3** — due in 3 days <Badge tone="neutral">Scheduled</Badge>
+- **Conveyor 5** — overdue by 1 day <Badge tone="danger">Overdue</Badge>
+</Card>
+<Card title="Schedule maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="Injection Press #3 | Welding Robot 2 | Conveyor 5 | CNC Mill 1" />
+<Date label="Date" name="maintenance-date" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Raw material stock">
+**Steel** — 68% · 272 t
+<Progress value="68" max="100" label="Steel" />
+**Resin** — 22% · 4.4 t <Badge tone="warning">Low</Badge>
+<Progress value="22" max="100" label="Resin" tone="warning" />
+**Packaging** — 45% · 5,400 units
+<Progress value="45" max="100" label="Packaging" />
+</Card>
+
+<Columns>
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| Nippon Steel | Steel coil · 40 t | Thu 14:00 | On time |
+| ChemResin | Resin P-9 · 5 t | Fri 08:30 | On time |
+| PkgPro | Cartons · 12,000 | Fri 11:00 | On time |
+| FastMetals | Aluminium strip · 8 t | Sat 09:00 | On time |
+</Card>
+<Card title="Batches on quality hold">
+| Batch | Line | Reason | Since |
+|---|---|---|---|
+| B-2104 | Line 2 | Wall thickness | 09:40 |
+| B-2107 | Line 3 | Color variance | 11:15 |
+| B-2112 | Line 4 | Material traceability | 12:02 |
+
+Total value on hold: $12,400.
+</Card>
+<Card title="Open work orders">
+- **WO-4821** · Line 2 — Motor replacement <Badge tone="danger">Urgent</Badge>
+- **WO-4822** · Line 1 — Sensor calibration <Badge tone="info">Normal</Badge>
+- **WO-4823** · Line 3 — Safety guard inspection <Badge tone="warning">High</Badge>
+- **WO-4824** · Line 4 — Belt lubrication <Badge tone="neutral">Low</Badge>
+</Card>
+</Columns>

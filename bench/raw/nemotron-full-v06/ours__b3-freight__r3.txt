@@ -1,0 +1,85 @@
+# Logistics Coordinator Board
+
+Last refreshed: **2025-01-15 14:32 UTC** <Badge tone="info">Live</Badge>
+
+---
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-time this month" value="87.3%" change="+2.1% vs last month" tone="success" />
+<Stat label="Avg cost per shipment" value="$1,847" change="-$83 vs last month" tone="neutral" />
+<Stat label="Active shipments" value="142" change="+8 vs yesterday" tone="info" />
+<Stat label="Delayed shipments" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Shipments in Transit">
+<Input label="Search by route" placeholder="e.g. LAX → JFK, SEA → ORD" type="search" hint="Filter origin → destination" />
+<br/><br/>
+
+| # | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|--------|-------------|---------|-----|--------|---------|
+| SH-8842 | Los Angeles (LAX) | New York (JFK) | FedEx Freight | 2025-01-16 08:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8843 | Seattle (SEA) | Chicago (ORD) | UPS Supply Chain | 2025-01-16 14:30 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8844 | Miami (MIA) | Dallas (DFW) | XPO Logistics | 2025-01-16 22:00 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8845 | Atlanta (ATL) | San Francisco (SFO) | Old Dominion | 2025-01-17 06:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8846 | Houston (IAH) | Boston (BOS) | YRC Worldwide | 2025-01-17 10:30 | <Badge tone="danger">At risk</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8847 | Denver (DEN) | Philadelphia (PHL) | FedEx Freight | 2025-01-17 18:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | Phoenix (PHX) | Washington (IAD) | UPS Supply Chain | 2025-01-18 02:00 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8849 | San Diego (SAN) | Detroit (DTW) | XPO Logistics | 2025-01-18 12:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8850 | Portland (PDX) | Minneapolis (MSP) | Old Dominion | 2025-01-18 20:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Las Vegas (LAS) | Baltimore (BWI) | YRC Worldwide | 2025-01-19 04:00 | <Badge tone="danger">At risk</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+</Card>
+
+---
+
+<Callout tone="warning" title="18 Delayed / At-Risk Shipments">
+<strong>SH-8844</strong> (MIA→DFW, XPO) — Weather delay in TX, new ETA 01-17 04:00<br/>
+<strong>SH-8846</strong> (IAH→BOS, YRC) — Mechanical issue, driver reassigned<br/>
+<strong>SH-8848</strong> (PHX→IAD, UPS) — Customs hold at PHX, docs submitted<br/>
+<strong>SH-8851</strong> (LAS→BWI, YRC) — Terminal congestion, 12hr delay<br/>
+<em>+14 more — tap Flag to escalate or view details</em>
+</Callout>
+
+---
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier (This Month)">
+| Carrier | Shipments |
+|---|---|
+| FedEx Freight | 42 |
+| UPS Supply Chain | 38 |
+| XPO Logistics | 29 |
+| Old Dominion | 21 |
+| YRC Worldwide | 12 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Shipments per Week" x="Week" y="Volume">
+| Week | Volume |
+|---|---|
+| 2024-W47 | 89 |
+| 2024-W48 | 94 |
+| 2024-W49 | 102 |
+| 2024-W50 | 97 |
+| 2024-W51 | 108 |
+| 2024-W52 | 115 |
+| 2025-W01 | 124 |
+| 2025-W02 | 131 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Create New Shipment</Button>
+<Button variant="secondary" size="large">Bulk Import Routes</Button>
+<Button variant="tertiary" size="large">Export Delayed List</Button>
+</Columns>
+</Card>

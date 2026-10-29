@@ -1,0 +1,199 @@
+# Trading Desk — Morning Workspace
+
+<Columns>
+<Stat label="Portfolio Value" value="$12,847,320" change="+$234,180 (1.85%)" tone="success" />
+<Stat label="P&L Today" value="+$87,450" change="+0.68% vs open" tone="success" />
+<Stat label="Margin in Use" value="$3,210,500" change="42.3% of available" tone="neutral" />
+</Columns>
+
+<Card title="Positions" subtitle="12 active positions • Long 8 / Short 4">
+| Ticker | Side | Size | Entry | Current | Unrealized P&L | P&L % |
+|---|---|---|---|---|---|---|
+| AAPL | Long | 15,000 | $172.40 | $178.92 | +$97,800 | +3.78% |
+| MSFT | Long | 8,500 | $318.20 | $324.55 | +$53,975 | +1.99% |
+| NVDA | Long | 3,200 | $412.80 | $428.10 | +$48,960 | +3.71% |
+| GOOGL | Long | 12,000 | $138.50 | $141.20 | +$32,400 | +1.95% |
+| TSLA | Short | -4,000 | $248.60 | $241.30 | +$29,200 | +2.94% |
+| JPM | Long | 6,500 | $165.30 | $168.90 | +$23,400 | +2.18% |
+| META | Long | 4,200 | $298.40 | $305.80 | +$31,080 | +2.48% |
+| AMD | Long | 5,500 | $142.70 | $146.30 | +$19,800 | +2.52% |
+| INTC | Short | -8,000 | $34.20 | $32.85 | +$10,800 | +3.95% |
+| CRM | Long | 3,800 | $215.60 | $219.40 | +$14,440 | +1.76% |
+| PYPL | Short | -6,000 | $62.80 | $60.20 | +$15,600 | +4.14% |
+| NFLX | Long | 2,100 | $445.30 | $452.10 | +$14,280 | +1.53% |
+</Card>
+
+<Columns>
+<Card title="Exposure by Sector">
+<Chart type="donut" title="Sector Allocation" x="Sector" y="Exposure">
+| Sector | Exposure |
+|---|---|
+| Technology | 42.3% |
+| Financials | 18.7% |
+| Consumer Discretionary | 15.2% |
+| Communication Services | 11.8% |
+| Healthcare | 7.4% |
+| Industrials | 4.6% |
+</Chart>
+</Card>
+
+<Card title="Value at Risk (95%, 1-Day)">
+<Stat label="Portfolio VaR" value="$342,180" change="2.66% of NAV" tone="warning" />
+<Stat label="Incremental VaR (AAPL)" value="$48,920" tone="neutral" />
+<Stat label="Incremental VaR (NVDA)" value="$41,350" tone="neutral" />
+<Progress value="68" max="100" label="VaR Utilization" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Risk Limits — Near Breach">
+<Table>
+| Limit | Current | Threshold | Utilization | Status |
+|---|---|---|---|---|
+| Single Name Concentration (AAPL) | 20.8% | 25% | 83% | <Badge tone="warning">Watch</Badge> |
+| Sector Concentration (Tech) | 42.3% | 45% | 94% | <Badge tone="danger">Near Breach</Badge> |
+| Gross Leverage | 2.34x | 2.5x | 94% | <Badge tone="danger">Near Breach</Badge> |
+| Net Leverage | 0.87x | 1.0x | 87% | <Badge tone="warning">Watch</Badge> |
+| Daily Loss Limit | -$87,450 | -$250,000 | 35% | <Badge tone="success">OK</Badge> |
+| VaR Limit | $342,180 | $500,000 | 68% | <Badge tone="info">OK</Badge> |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Today's Biggest Movers">
+**Gainers**
+| Ticker | Change | P&L |
+|---|---|---|
+| AAPL | +3.78% | +$97,800 |
+| PYPL (short) | -4.14% | +$15,600 |
+| INTC (short) | -3.95% | +$10,800 |
+| NVDA | +3.71% | +$48,960 |
+| TSLA (short) | -2.94% | +$29,200 |
+
+**Losers**
+| Ticker | Change | P&L |
+|---|---|---|
+| *All positions positive today* | — | — |
+</Card>
+
+<Card title="Watchlist">
+| Ticker | Last | Change | Bid / Ask | Volume |
+|---|---|---|---|---|
+| SPY | $438.20 | +0.42% | 438.18 / 438.22 | 42.1M |
+| QQQ | $368.45 | +0.68% | 368.42 / 368.48 | 28.7M |
+| IWM | $187.30 | +0.15% | 187.28 / 187.33 | 18.4M |
+| VIX | 14.82 | -3.21% | 14.80 / 14.85 | — |
+| DXY | 103.45 | -0.18% | 103.43 / 103.47 | — |
+| TNX | 4.28% | +2.1bps | 4.278 / 4.282 | — |
+| GLD | $189.60 | +0.33% | 189.58 / 189.63 | 5.2M |
+| BTC-USD | $63,820 | +1.24% | 63,810 / 63,835 | — |
+</Card>
+</Columns>
+
+<Card title="Working Orders">
+| Ticket | Ticker | Side | Type | Qty | Limit/Stop | TIF | Status | Time |
+|---|---|---|---|---|---|---|---|---|
+| #884721 | AAPL | Buy | Limit | 2,000 | $177.50 | DAY | Working | 09:31:12 |
+| #884718 | MSFT | Sell | Stop | 1,500 | $320.00 | GTC | Working | 09:28:45 |
+| #884715 | NVDA | Buy | Limit | 800 | $425.00 | DAY | Working | 09:30:02 |
+| #884712 | TSLA | Buy to Cover | Limit | 1,000 | $238.00 | DAY | Working | 09:29:33 |
+| #884709 | JPM | Sell | Limit | 1,000 | $170.50 | DAY | Working | 09:30:58 |
+| #884705 | AMD | Buy | Stop | 1,200 | $148.00 | GTC | Working | 09:27:11 |
+</Card>
+
+<Columns>
+<Card title="Market Headlines">
+<Table>
+| Time | Headline | Source | Sentiment |
+|---|---|---|---|
+| 08:42 | Fed's Powell: Rate cuts unlikely before September | Reuters | <Badge tone="danger">Negative</Badge> |
+| 08:15 | Tech earnings beat estimates; AI spending accelerates | Bloomberg | <Badge tone="success">Positive</Badge> |
+| 07:58 | China PMI expands to 51.2, beating forecasts | FT | <Badge tone="success">Positive</Badge> |
+| 07:30 | US Initial Jobless Claims 218K vs 220K est | Econoday | <Badge tone="info">Neutral</Badge> |
+| 06:45 | Oil drops 2% on demand concerns | WSJ | <Badge tone="warning">Mixed</Badge> |
+| 06:12 | EU inflation cools to 2.4%, core sticky | ECB | <Badge tone="info">Neutral</Badge> |
+</Table>
+</Card>
+
+<Card title="Economic Releases This Week">
+| Date | Time (ET) | Event | Prior | Forecast | Importance |
+|---|---|---|---|---|---|
+| Mon | 10:00 | ISM Manufacturing PMI | 48.7 | 49.0 | <Badge tone="warning">High</Badge> |
+| Tue | 08:30 | JOLTS Job Openings | 8.14M | 8.00M | <Badge tone="warning">High</Badge> |
+| Wed | 08:15 | ADP Employment Change | 155K | 160K | <Badge tone="info">Medium</Badge> |
+| Wed | 10:00 | ISM Services PMI | 51.4 | 51.0 | <Badge tone="warning">High</Badge> |
+| Thu | 08:30 | Initial Jobless Claims | 218K | 220K | <Badge tone="info">Medium</Badge> |
+| Fri | 08:30 | Nonfarm Payrolls | 272K | 190K | <Badge tone="danger">Critical</Badge> |
+| Fri | 08:30 | Unemployment Rate | 4.0% | 4.0% | <Badge tone="danger">Critical</Badge> |
+| Fri | 08:30 | Average Hourly Earnings MoM | 0.4% | 0.3% | <Badge tone="warning">High</Badge> |
+</Card>
+</Columns>
+
+<Card title="Strategy Returns YTD">
+<Chart type="bar" title="YTD Return by Strategy" x="Strategy" y="Return %">
+| Strategy | Return % |
+|---|---|
+| Long/Short Equity | +18.4% |
+| Global Macro | +12.7% |
+| Event Driven | +9.3% |
+| Quantitative Market Neutral | +6.8% |
+| Fixed Income Relative Value | +4.2% |
+| Commodity Trend | -2.1% |
+</Chart>
+</Card>
+
+<Card title="Portfolio Drawdown — Past 12 Months">
+<Chart type="area" title="Drawdown %" x="Month" y="Drawdown %">
+| Month | Drawdown % |
+|---|---|
+| Jul 2023 | 0.0% |
+| Aug 2023 | -2.1% |
+| Sep 2023 | -4.8% |
+| Oct 2023 | -6.2% |
+| Nov 2023 | -3.5% |
+| Dec 2023 | -1.2% |
+| Jan 2024 | -0.8% |
+| Feb 2024 | 0.0% |
+| Mar 2024 | -1.5% |
+| Apr 2024 | -3.8% |
+| May 2024 | -2.0% |
+| Jun 2024 | 0.0% |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Rebalance Portfolio">
+<Form name="rebalance-form">
+<Select label="Target Profile" placeholder="Select target allocation" options="Current (Tech 42%, Fin 19%, Disc 15%, Comm 12%, HC 7%, Ind 5%) | Balanced (Tech 25%, Fin 20%, Disc 15%, Comm 10%, HC 12%, Ind 8%, Energy 5%, Utils 5%) | Defensive (Tech 15%, Fin 15%, Disc 10%, Comm 8%, HC 20%, Ind 10%, Energy 5%, Utils 10%, Staples 7%) | Custom" />
+<Input label="Custom Tech %" type="number" placeholder="25" min="0" max="100" hint="Only used if Custom selected" />
+<Input label="Custom Financials %" type="number" placeholder="20" min="0" max="100" hint="Only used if Custom selected" />
+<Input label="Custom Healthcare %" type="number" placeholder="15" min="0" max="100" hint="Only used if Custom selected" />
+<Checkboxes label="Execution Options" options="Allow crossing spread up to 5bps | Use VWAP algos for large tickets | Skip names with working orders | Generate tax-loss harvest trades" />
+<Button>Generate Rebalance Orders</Button>
+<Button variant="secondary">Preview Impact</Button>
+</Form>
+</Card>
+
+<Card title="Place Order">
+<Form name="order-form">
+<Input label="Ticker" placeholder="AAPL" />
+<Radio label="Side" options="Buy | Sell | Sell Short | Buy to Cover" />
+<Input label="Quantity" type="number" placeholder="1,000" min="1" step="100" />
+<Select label="Order Type" options="Market | Limit | Stop | Stop Limit | Trailing Stop" />
+<Input label="Limit Price" type="number" placeholder="178.50" step="0.01" hint="Required for Limit, Stop Limit" />
+<Input label="Stop Price" type="number" placeholder="175.00" step="0.01" hint="Required for Stop, Stop Limit, Trailing Stop" />
+<Select label="Time in Force" options="DAY | GTC | IOC | FOK | GTD" />
+<Input label="GTD Date" type="date" hint="Only for GTD" />
+<Checkboxes label="Options" options="Route to dark pool preferred | Allow partial fills | Display size (iceberg)" />
+<Button variant="primary">Submit Order</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Timeframe Selector">
+<Form name="timeframe-form">
+<Radio label="View Timeframe" options="Intraday (1m, 5m, 15m, 1h) | Daily | Weekly | Monthly | Quarterly | YTD | 1 Year | 3 Years | 5 Years | All" value="Daily" />
+<Button variant="secondary" href="#">Apply to All Charts</Button>
+<Button variant="tertiary" href="#">Reset to Default</Button>
+</Form>
+</Card>

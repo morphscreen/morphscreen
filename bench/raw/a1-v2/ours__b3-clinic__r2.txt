@@ -1,0 +1,67 @@
+# Clinic Reception — Day View
+
+<Card title="Today's Appointments" subtitle="Monday, January 15, 2024">
+| Time | Patient | Reason | Room | Status |
+|---|---|---|---|---|
+| 08:30 | Maria Santos | Annual checkup | Room 1 | ✅ Checked in |
+| 09:00 | James Chen | Follow-up | Room 2 | ⏳ Waiting |
+| 09:30 | Aisha Patel | Vaccination | Room 1 | 📅 Scheduled |
+| 10:00 | Robert Kim | Consultation | Room 3 | 📅 Scheduled |
+| 10:30 | Elena Rodriguez | Physical therapy | Room 2 | 📅 Scheduled |
+| 11:00 | David Thompson | Blood work | Room 1 | 📅 Scheduled |
+| 11:30 | Lisa Nguyen | Dermatology | Room 3 | 📅 Scheduled |
+| 14:00 | Carlos Mendez | Orthopedic follow-up | Room 2 | 📅 Scheduled |
+| 14:30 | Priya Sharma | Pediatric visit | Room 1 | 📅 Scheduled |
+| 15:00 | Michael Brown | Cardiology | Room 3 | 📅 Scheduled |
+</Card>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="Patients Expected Today" value="10" change="+2 vs yesterday" tone="info" />
+<Stat label="No-Show Rate This Month" value="8.2%" change="-1.3% vs last month" tone="success" />
+<Stat label="Checked In So Far" value="1 / 10" change="10% complete" tone="neutral" />
+</Card>
+
+<Card title="Room Availability" subtitle="Current status">
+<Stat label="Room 1" value="Occupied" change="Maria Santos • 08:30–09:15" tone="warning" />
+<Stat label="Room 2" value="Free" change="Next: James Chen at 09:00" tone="success" />
+<Stat label="Room 3" value="Free" change="Next: Robert Kim at 10:00" tone="success" />
+<Stat label="Treatment Bay" value="Free" change="Available for walk-ins" tone="info" />
+</Card>
+</Columns>
+
+<Callout tone="info" title="Next Patient Called">
+<strong>James Chen</strong> — 09:00 appointment • Follow-up • Room 2
+<br />
+<Badge tone="info">Waiting in lobby</Badge>
+</Callout>
+
+<Card title="Check In Patient">
+<Form name="checkin-form">
+<Select label="Select Patient" name="patient" placeholder="Choose from today's schedule" options="James Chen (09:00) | Aisha Patel (09:30) | Robert Kim (10:00) | Elena Rodriguez (10:30) | David Thompson (11:00) | Lisa Nguyen (11:30) | Carlos Mendez (14:00) | Priya Sharma (14:30) | Michael Brown (15:00)" required="true" />
+<Select label="Assign Room" name="room" placeholder="Select room" options="Room 1 | Room 2 | Room 3 | Treatment Bay" required="true" />
+<Checkboxes label="Confirm" name="confirm" options="Patient verified ID | Insurance confirmed | Consent forms signed" hint="Check all that apply" required="true" />
+<Button size="large">Check In Patient</Button>
+<Button variant="secondary">Walk-In Instead</Button>
+</Form>
+</Card>
+
+<Card title="Navigate Days">
+<Columns>
+<Card>
+<Date label="Jump to Date" name="nav-date" value="2024-01-15" />
+</Card>
+<Card>
+<Button variant="secondary" href="#">← Previous Day</Button>
+<Button variant="secondary" href="#">Next Day →</Button>
+<Button variant="tertiary" href="#">Today</Button>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- View patient chart for James Chen
+- Print daily schedule
+- Send appointment reminders for tomorrow
+- View provider schedules
+</FollowUps>

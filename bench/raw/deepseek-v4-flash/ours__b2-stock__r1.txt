@@ -1,0 +1,31 @@
+# Low-inventory warnings
+
+<Callout tone="danger" title="6 items are running low">The reorder point is 10 units. Every item in the table below has remaining stock at or below that threshold.</Callout>
+
+<Card title="Overview">
+<Columns>
+<Stat label="Items below threshold" value="6" tone="danger" icon="warning" />
+<Stat label="Units to reorder" value="134" tone="warning" icon="package" />
+<Stat label="Reorder point" value="10 units" tone="info" icon="sliders" />
+</Columns>
+</Card>
+
+<Card title="Search & threshold">
+<Input label="Search items" type="search" name="search" placeholder="Search by name or SKU..." hint="Filters the low-stock list below as you type." />
+<Slider label="Reorder point" min="1" max="50" value="10" name="threshold" hint="Items at or below this number of remaining units trigger the warning." />
+</Card>
+
+<Card title="Low-stock items">
+| Product | SKU | Remaining | Reorder point | Status | Reorder |
+|---|---|---|---|---|---|
+| Organic Apple Juice | BJ-101 | 6 | 10 | <Badge tone="danger">Low</Badge> | <Button size="small">Reorder 24</Button> |
+| Rustic Sourdough Loaf | BK-118 | 9 | 10 | <Badge tone="danger">Low</Badge> | <Button size="small">Reorder 20</Button> |
+| Whole Milk 2% | DA-309 | 4 | 10 | <Badge tone="danger">Low</Badge> | <Button size="small">Reorder 18</Button> |
+| Free-Range Eggs | DA-410 | 7 | 10 | <Badge tone="danger">Low</Badge> | <Button size="small">Reorder 36</Button> |
+| Cold Brew Coffee | BE-207 | 5 | 10 | <Badge tone="danger">Low</Badge> | <Button size="small">Reorder 24</Button> |
+| Almond Butter | PA-512 | 8 | 10 | <Badge tone="danger">Low</Badge> | <Button size="small">Reorder 12</Button> |
+
+<Button variant="secondary">Reorder all (134 units)</Button>
+</Card>
+
+<Callout tone="info" title="How reordering works">Each “Reorder” button creates a purchase order for that item’s suggested quantity. The quantity is based on the reorder point and typical weekly sales; adjust it in your supplier settings.</Callout>

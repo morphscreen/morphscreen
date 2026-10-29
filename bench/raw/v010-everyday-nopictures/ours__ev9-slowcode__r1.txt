@@ -1,0 +1,192 @@
+# Speeding Up Your 2 GB CSV Processing
+
+<Callout tone="warning" title="First: check your bottleneck">
+Before optimizing, confirm whether the slowness comes from reading, parsing, or processing. Run this quick test to isolate it:
+</Callout>
+
+```python
+import time
+import pandas as pd
+
+# Time reading only (no parsing)
+t0 = time.time()
+with open('large.csv', 'rb') as f:
+    data = f.read()
+print(f"Raw read: {time.time()-t0:.2f}s")
+
+# Time pandas read
+t0 = time.time()
+df = pd.read_csv('large.csv')
+print(f"Pandas read: {time.time()-t0:.2f}s")
+```
+
+<Card title="The 5 biggest wins" subtitle="Ordered by impact vs. effort">
+<Columns>
+<div>
+**1. Use chunking** — process in pieces instead of loading everything
+**2. Pick a faster engine** — PyArrow or Polars
+**3. Specify dtypes** — stop pandas from guessing
+**4. Use `usecols`** — only load what you need
+**5. Parallelize** — split the work across cores
+</div>
+</Columns>
+</Card>
+
+## 1. Chunking (easiest win)
+
+<Card title="Process in chunks">
+```python
+import pandas as pd
+
+chunk_size = 100_000  # tune: 50k-500k works well
+results = []
+
+for chunk in pd.read_csv('large.csv', chunksize=chunk_size):
+    # Process each chunk
+    chunk['new_col'] = chunk['existing_col'] * 2
+    results.append(chunk.groupby('category').sum())
+
+# Combine results
+final = pd.concat(results).groupby(level=0).sum()
+```
+<Callout tone="info" title="Why this helps">
+Memory stays flat instead of ballooning, and you can start processing before the file is fully read
+</Callout>
+</Card>
+
+## 2. Faster engines
+
+<Card title="Try Polars (Rust-based)">
+```python
+import polars as pl
+
+# Often 5-10x faster than pandas
+df = pl.read_csv('large.csv')
+# Use lazy API for even better performance
+df = pl.scan_csv('large.csv').filter(pl.col('value') > 100).collect()
+```
+</Card>
+
+<Card title="PyArrow with pandas">
+```python
+import pandas as pd
+
+# Use Arrow backend (available in pandas 2.0+)
+df = pd.read_csv('large.csv', engine='pyarrow')
+# Or convert after reading
+df = pd.read_csv('large.csv').convert_dtypes(dtype_backend='pyarrow')
+```
+</Card>
+
+## 3. Specify dtypes upfront
+
+<Card title="Stop type guessing">
+```python
+import pandas as pd
+
+dtypes = {
+    'id': 'int32',           # smaller than int64
+    'name': 'string',        # faster than object
+    'price': 'float32',      # enough precision for most
+    'date': 'str',           # parse later if needed
+    'category': 'category'   # great for repeated strings
+}
+
+df = pd.read_csv('large.csv', dtype=dtypes)
+```
+<Callout tone="success" title="Typical gains">
+40-60% faster reads and 50% less memory when you specify dtypes instead of letting pandas infer
+</Callout>
+</Card>
+
+## 4. Load only what you need
+
+<Card title="Column and row filtering">
+```python
+import pandas as pd
+
+# Only load specific columns
+df = pd.read_csv('large.csv', usecols=['id', 'date', 'amount'])
+
+# Skip rows you don't need (e.g., only 2024 data)
+df = pd.read_csv('large.csv', 
+                 usecols=['id', 'date', 'amount'],
+                 parse_dates=['date'],
+                 skiprows=lambda i: i>0 and '2024' not in open('large.csv').readlines()[i])
+```
+</Card>
+
+## 5. Parallel processing
+
+<Card title="Split across cores">
+```python
+import pandas as pd
+from multiprocessing import Pool
+
+def process_chunk(chunk):
+    # Your processing logic here
+    return chunk.groupby('category').size()
+
+# Split the file into N parts
+n_cores = 8
+chunk_size = 2_000_000_000 // n_cores  # bytes
+
+with Pool(n_cores) as pool:
+    # Read and process in parallel
+    results = []
+    for chunk in pd.read_csv('large.csv', chunksize=chunk_size):
+        results.append(pool.apply_async(process_chunk, (chunk,)))
+    
+    final = pd.concat([r.get() for r in results]).groupby(level=0).sum()
+```
+</Card>
+
+## Quick comparison
+
+<Card title="What to use when">
+<Compare title="Approach comparison">
+| Factor | Chunking | Polars | PyArrow | dtypes | Parallel |
+|---|---|---|---|---|---|
+| Speed gain | 2-4x | 5-10x | 3-5x | 1.5-2x | 4-8x |
+| Memory use | Low | Low | Low | Medium | High |
+| Code changes | Minimal | Rewrite | Minimal | Small | Moderate |
+| Best for | Quick fix | Production | Pandas users | Any pandas code | Big servers |
+</Compare>
+</Card>
+
+<Card title="Recommended approach for your case">
+1. **Start with chunking + dtypes** — 30 minutes of work, likely 3-5x faster
+2. **If still slow, try PyArrow engine** — one-line change, another 2x
+3. **For production, switch to Polars** — best performance but requires rewriting
+
+<Callout tone="success" title="Expected outcome">
+With all three combined (chunking + dtypes + PyArrow), a 2 GB file that took 5 minutes should process in under 30 seconds
+</Callout>
+</Card>
+
+## Your next step
+
+<Card title="Try the fastest setup first">
+```python
+import pandas as pd
+
+# Fastest pure-pandas approach
+df = pd.read_csv(
+    'large.csv',
+    engine='pyarrow',
+    usecols=['id', 'date', 'amount'],  # only needed columns
+    dtype={'id': 'int32', 'amount': 'float32'},
+    parse_dates=['date']
+)
+```
+</Card>
+
+<Button ask="Show me how to profile my specific CSV">Profile my CSV</Button>
+<Button ask="What's the best way to handle missing values in large CSVs?">Handle missing data</Button>
+
+<FollowUps>
+- How do I handle a CSV that doesn't fit in memory at all?
+- What's the best format to convert my CSV to for faster future reads?
+- How can I speed up the processing logic itself, not just reading?
+- Are there cloud solutions that handle this automatically?
+</FollowUps>

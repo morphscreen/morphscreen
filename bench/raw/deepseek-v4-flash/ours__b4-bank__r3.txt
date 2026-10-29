@@ -1,0 +1,85 @@
+# Personal banking
+
+<Card title="Account balances" subtitle="Overview of your money">
+<Columns>
+<Stat label="Checking" value="$4,230.18" change="+2.1%" tone="success" icon="bank" />
+<Stat label="Savings" value="$12,847.50" change="+0.4%" tone="success" icon="piggy-bank" />
+<Stat label="Credit card" value="$1,204.32" change="-$48.20" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Move money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" hint="USD" />
+<Select label="From" options="Checking •• 4821 | Savings •• 9034" />
+<Select label="To" options="Savings •• 9034 | Checking •• 4821 | Credit card •• 7741" />
+<Button>Review transfer</Button>
+</Form>
+</Card>
+<Card title="Card controls" subtitle="Your credit line and statements">
+<Switch label="Freeze credit line" hint="Blocks new purchases; recurring payments still go through" />
+<Select label="Statement period" options="November 1 – December 1 | October 1 – November 1 | September 1 – October 1" hint="Download date and due date follow this period" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recent transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods | <span style="color:#e11d48">-$68.42</span> | Nov 14 |
+| Shell | <span style="color:#e11d48">-$45.00</span> | Nov 13 |
+| Netflix | <span style="color:#e11d48">-$15.49</span> | Nov 12 |
+| Trader Joe’s | <span style="color:#e11d48">-$112.73</span> | Nov 11 |
+| Apple Store | <span style="color:#e11d48">-$9.99</span> | Nov 10 |
+</Card>
+<Card title="Spending this month" subtitle="Where your money went">
+<Chart type="donut" title="By category" y="Spent">
+| Category | Amount |
+|---|---|
+| Groceries | 482 |
+| Dining | 315 |
+| Transport | 198 |
+| Utilities | 240 |
+| Shopping | 567 |
+| Other | 86 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Bills due soon">
+| Bill | Amount | Due |
+|---|---|---|
+| Electric | $96.20 | Nov 18 <Badge tone="warning">2 days</Badge> |
+| Internet | $64.99 | Nov 20 |
+| Car insurance | $118.40 | Nov 25 |
+</Card>
+<Card title="Vacation savings" subtitle="Portugal trip, June 2025">
+<Stat label="Saved" value="$7,200" note="of $10,000 goal" icon="airplane" />
+<Progress value="7200" max="10000" label="72% funded" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Credit score" subtitle="Updated today">
+<Stat label="FICO® Score" value="742" note="Excellent" tone="success" icon="chart-line" />
+</Card>
+<Card title="Alert triggers" subtitle="Choose what notifies you">
+<Checkboxes label="Alerts" name="alerts" options="Balance below $100 | Transaction over $500 | Bill due in 3 days | Login from a new device | Credit score change" value="Balance below $100 | Bill due in 3 days" />
+</Card>
+</Columns>
+
+<Card title="Dispute a transaction" subtitle="We’ll investigate within 10 business days">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods • $68.42 on Nov 14 | Shell • $45.00 on Nov 13 | Netflix • $15.49 on Nov 12" />
+<TextArea label="Reason" placeholder="Tell us what happened" rows="3" />
+<Button variant="secondary">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the last credit card statement
+- Pause all card payments temporarily
+- Compare this month’s spending with last month
+</FollowUps>

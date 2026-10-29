@@ -1,0 +1,118 @@
+# CEO Quarterly Command View
+
+<Columns>
+<Select label="Quarter" name="quarter" value="Q4 2024" options="Q1 2024 | Q2 2024 | Q3 2024 | Q4 2024 | Q1 2025" />
+<Select label="Region" name="region" value="Global" options="Global | Americas | EMEA | APAC" />
+</Columns>
+
+<Columns>
+<Stat label="Revenue (QTD)" value="$42.3M" change="+12% vs plan" tone="success" icon="currency-dollar" />
+<Stat label="Costs (QTD)" value="$28.7M" change="-3% vs plan" tone="success" icon="currency-dollar" />
+<Stat label="Profit (QTD)" value="$13.6M" change="+28% vs plan" tone="success" icon="chart-line-up" />
+<Stat label="Months of Runway" value="18.2" change="+2.1 vs last quarter" tone="info" icon="calendar" />
+</Columns>
+
+<Columns>
+<Stat label="Sales Pipeline" value="$89.4M" change="+15% QoQ" tone="info" icon="briefcase" />
+<Stat label="Win Rate" value="24.3%" change="+2.1pp QoQ" tone="success" icon="trophy" />
+<Stat label="Customers" value="2,847" change="+312 QoQ" tone="info" icon="users" />
+<Stat label="NPS" value="67" change="+4 vs last quarter" tone="success" icon="star" />
+</Columns>
+
+<Card title="Revenue & Costs — Last 4 Quarters">
+<Tabs>
+<Tab title="Revenue">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Revenue | Plan |
+|---|---|---|
+| Q1 2024 | 32.1 | 30.5 |
+| Q2 2024 | 35.8 | 34.0 |
+| Q3 2024 | 38.9 | 37.2 |
+| Q4 2024 | 42.3 | 37.8 |
+</Chart>
+</Tab>
+<Tab title="Costs">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Costs | Plan |
+|---|---|---|
+| Q1 2024 | 24.5 | 25.0 |
+| Q2 2024 | 26.2 | 26.5 |
+| Q3 2024 | 27.8 | 28.0 |
+| Q4 2024 | 28.7 | 29.5 |
+</Chart>
+</Tab>
+<Tab title="Profit Margin">
+<Chart type="line" x="Quarter" y="Margin %">
+| Quarter | Margin % |
+|---|---|
+| Q1 2024 | 23.7 |
+| Q2 2024 | 26.8 |
+| Q3 2024 | 28.5 |
+| Q4 2024 | 32.2 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Budget by Department vs Plan (Q4 2024)">
+<Chart type="horizontal" x="Department" y="USD (M)">
+| Department | Actual | Plan | Variance % |
+|---|---|---|---|
+| Engineering | 9.2 | 9.5 | -3.2 |
+| Sales & Marketing | 11.8 | 12.0 | -1.7 |
+| G&A | 4.1 | 4.3 | -4.7 |
+| Customer Success | 2.3 | 2.4 | -4.2 |
+| Product | 1.3 | 1.3 | 0.0 |
+</Chart>
+</Card>
+
+<Card title="Headcount by Department">
+<Chart type="horizontal" x="Department" y="Headcount">
+| Department | Current | Plan | Open Roles |
+|---|---|---|---|
+| Engineering | 142 | 150 | 12 |
+| Sales & Marketing | 89 | 95 | 8 |
+| G&A | 34 | 36 | 3 |
+| Customer Success | 41 | 45 | 5 |
+| Product | 18 | 20 | 2 |
+</Chart>
+</Card>
+
+<Card title="Top Risks">
+| Risk | Likelihood | Impact | Owner | Mitigation Status |
+|---|---|---|---|---|
+| Key competitor launches AI product | High | High | CTO | <Badge tone="warning">In progress</Badge> |
+| Enterprise deal slippage (Q1) | Medium | High | VP Sales | <Badge tone="info">Monitoring</Badge> |
+| Cloud cost overrun | Medium | Medium | CFO | <Badge tone="success">Controlled</Badge> |
+| Talent retention in engineering | High | Medium | CPO | <Badge tone="warning">In progress</Badge> |
+| Regulatory changes in EU | Low | High | General Counsel | <Badge tone="info">Watching</Badge> |
+</Card>
+
+<Card title="Strategic Initiatives">
+| Initiative | Owner | Status | Target | Progress |
+|---|---|---|---|---|
+| AI Platform v2 Launch | CTO | <Badge tone="success">On track</Badge> | Q1 2025 | <Progress value="75" max="100" label="75%" tone="success" /> |
+| Enterprise Expansion (EMEA) | VP Sales | <Badge tone="warning">At risk</Badge> | Q2 2025 | <Progress value="45" max="100" label="45%" tone="warning" /> |
+| Pricing Model Overhaul | CPO/CFO | <Badge tone="info">Planning</Badge> | Q2 2025 | <Progress value="20" max="100" label="20%" tone="info" /> |
+| Customer Health Scoring | VP CS | <Badge tone="success">On track</Badge> | Q1 2025 | <Progress value="80" max="100" label="80%" tone="success" /> |
+| SOC 2 Type II Certification | Security Lead | <Badge tone="success">Complete</Badge> | Q4 2024 | <Progress value="100" max="100" label="100%" tone="success" /> |
+</Card>
+
+<Card title="Customer Metrics Detail">
+<Columns>
+<Stat label="Churn Rate (Quarterly)" value="2.8%" change="-0.4pp QoQ" tone="success" icon="user-minus" />
+<Stat label="Net Revenue Retention" value="118%" change="+3pp QoQ" tone="success" icon="chart-line-up" />
+<Stat label="Expansion Revenue" value="$4.2M" change="+22% QoQ" tone="info" icon="plus-circle" />
+<Stat label="Avg Contract Value" value="$48.7K" change="+8% QoQ" tone="info" icon="calculator" />
+</Columns>
+</Card>
+
+<Card title="Next Board Meeting — Agenda Items">
+<Checkboxes label="Board Pack Items" name="board-items" options="Q4 Financial Results & Q1 Forecast | AI Platform v2 Go-to-Market Plan | EMEA Expansion Investment Request | Pricing Model Recommendation | Risk Register Update | Executive Compensation Review" value="Q4 Financial Results & Q1 Forecast | AI Platform v2 Go-to-Market Plan | EMEA Expansion Investment Request" />
+</Card>
+
+<Columns>
+<Button variant="primary" icon="download">Export Board Pack (PDF)</Button>
+<Button variant="secondary" icon="share">Share Live Link</Button>
+<Button variant="tertiary" icon="calendar">Schedule Deep-Dive</Button>
+</Columns>

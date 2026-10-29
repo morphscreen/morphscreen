@@ -1,0 +1,150 @@
+# Hospital Operations Command Center
+
+<Badge tone="info">Live View</Badge> <Badge tone="success">All Systems Normal</Badge>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="425 total beds">
+<Progress value="342" max="425" label="342 / 425 occupied (80.5%)" tone="warning" />
+</Card>
+
+<Card title="Current ER Wait" subtitle="Average door-to-provider">
+<Stat label="Wait Time" value="42 min" change="+8 min vs 1hr ago" tone="warning" />
+</Card>
+
+<Card title="Admissions (Last 14 Days)">
+<Chart type="line" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Day 1 | 18 |
+| Day 2 | 22 |
+| Day 3 | 19 |
+| Day 4 | 25 |
+| Day 5 | 28 |
+| Day 6 | 31 |
+| Day 7 | 24 |
+| Day 8 | 20 |
+| Day 9 | 23 |
+| Day 10 | 27 |
+| Day 11 | 29 |
+| Day 12 | 26 |
+| Day 13 | 30 |
+| Day 14 | 28 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 48 |
+| ICU | 24 |
+| Cardiology | 38 |
+| Orthopedics | 31 |
+| Neurology | 22 |
+| Oncology | 19 |
+| Pediatrics | 15 |
+| General Medicine | 42 |
+| Surgery | 18 |
+| OB/GYN | 12 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="147 total staff">
+| Role | On Shift | Scheduled | Status |
+|---|---|---|---|
+| Physicians | 28 | 30 | <Badge tone="warning">2 short</Badge> |
+| RNs | 62 | 65 | <Badge tone="warning">3 short</Badge> |
+| LPNs | 18 | 20 | <Badge tone="warning">2 short</Badge> |
+| Techs | 24 | 24 | <Badge tone="success">Full</Badge> |
+| Respiratory | 8 | 8 | <Badge tone="success">Full</Badge> |
+| Pharmacy | 7 | 7 | <Badge tone="success">Full</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Critical Patients" subtitle="Requiring immediate attention">
+| Patient | Unit | Condition | Time Critical |
+|---|---|---|---|
+| M. Rodriguez, 67 | ICU-3 | Septic shock, lactate 5.2 | 12 min |
+| J. Chen, 45 | ER-12 | STEMI, cath lab activated | 8 min |
+| K. Williams, 32 | ICU-7 | Post-op bleed, Hb 6.8 | 15 min |
+| R. Patel, 71 | Stepdown | Acute resp failure, BiPAP | 22 min |
+</Card>
+
+<Card title="Ready for Discharge" subtitle="12 patients cleared">
+| Patient | Unit | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| A. Thompson, 54 | Cardiology | 3 days | Transport arranged | 10:30 |
+| D. Kim, 28 | Orthopedics | 2 days | Home health confirmed | 11:00 |
+| S. Garcia, 61 | Gen Med | 5 days | Family pickup 11:30 | 11:30 |
+| L. Nguyen, 37 | Surgery | 1 day | Prescriptions ready | 10:00 |
+| P. Okafor, 49 | Neurology | 4 days | SNF bed confirmed | 12:00 |
+| M. Rossi, 56 | Oncology | 6 days | Hospice arranged | 14:00 |
+</Card>
+</Columns>
+
+<Card title="Today's Operating Room Bookings">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|---|
+| OR-1 | 07:00–10:30 | CABG x3 | Dr. Ahmad | Dr. Park | <Badge tone="info">In Progress</Badge> |
+| OR-2 | 08:00–11:00 | Whipple | Dr. Chen | Dr. Liu | <Badge tone="info">In Progress</Badge> |
+| OR-3 | 09:30–12:00 | TKA Bilateral | Dr. Foster | Dr. Kim | <Badge tone="neutral">Prepping</Badge> |
+| OR-4 | 10:00–12:30 | Craniotomy | Dr. Patel | Dr. Ross | <Badge tone="neutral">Prepping</Badge> |
+| OR-5 | 11:00–13:00 | Lap Chole | Dr. Williams | Dr. Park | <Badge tone="neutral">Waiting</Badge> |
+| OR-6 | 13:00–16:00 | Spinal Fusion | Dr. Ahmad | Dr. Liu | <Badge tone="neutral">Scheduled</Badge> |
+| OR-1 | 14:00–17:00 | Valve Replacement | Dr. Chen | Dr. Ross | <Badge tone="neutral">Scheduled</Badge> |
+| OR-3 | 15:30–18:00 | THA | Dr. Foster | Dr. Kim | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Critical & warning thresholds">
+| Item | Current | Par Level | Days Left | Status |
+|---|---|---|---|---|
+| O-negative Blood | 4 units | 12 | <1 | <Badge tone="danger">Critical</Badge> |
+| Platelets | 8 units | 20 | 1 | <Badge tone="danger">Critical</Badge> |
+| Propofol 1% | 15 vials | 50 | 2 | <Badge tone="warning">Low</Badge> |
+| Rocuronium | 22 vials | 60 | 2 | <Badge tone="warning">Low</Badge> |
+| N95 Masks (M) | 180 | 500 | 3 | <Badge tone="warning">Low</Badge> |
+| Central Line Kits | 12 | 30 | 4 | <Badge tone="warning">Low</Badge> |
+| Heparin Drip Bags | 18 | 40 | 5 | <Badge tone="info">Monitor</Badge> |
+</Card>
+
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Incident Type" name="type" placeholder="Select type" options="Patient Safety | Medication Error | Equipment Failure | Staff Injury | Security | Near Miss | Other" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened, who was involved, immediate actions taken" rows="4" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Severe Harm | Level 5 - Death" required="true" />
+<Checkboxes label="Notifications" name="notifications" options="Charge Nurse | Unit Manager | Quality & Safety | Risk Management | Medical Director" value="Charge Nurse | Unit Manager" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" name="patient" placeholder="Last, First" required="true" />
+<Input label="MRN" name="mrn" placeholder="Medical Record Number" required="true" />
+<Select label="From Unit" name="fromUnit" placeholder="Current location" options="ER | ICU | Stepdown | Med-Surg | Telemetry | Ortho | Neuro | Oncology | Peds | OB/GYN" required="true" />
+<Select label="To Unit" name="toUnit" placeholder="Requested destination" options="ICU | Stepdown | Med-Surg | Telemetry | Ortho | Neuro | Oncology | Peds | OB/GYN | External Facility" required="true" />
+<Select label="Urgency" name="urgency" placeholder="Select urgency" options="Emergent (immediate) | Urgent (within 1 hr) | Semi-Urgent (within 4 hrs) | Routine (next available)" required="true" />
+<TextArea label="Clinical Reason" name="reason" placeholder="Clinical justification for transfer" rows="3" required="true" />
+<Input label="Accepting Provider" name="acceptingProvider" placeholder="Name of receiving physician" />
+<Button>Request Transfer</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="View Another Day">
+<Form name="date-selector">
+<Columns>
+<Date label="Select Date" name="viewDate" value="2025-01-15" />
+<Select label="View Type" name="viewType" placeholder="Select view" options="Daily Census | Weekly Trend | Monthly Summary | Custom Range" value="Daily Census" />
+</Columns>
+<Button>Load View</Button>
+<Button variant="tertiary">Today</Button>
+</Form>
+</Card>

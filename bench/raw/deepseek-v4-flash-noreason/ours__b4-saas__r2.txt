@@ -1,0 +1,126 @@
+# Admin Overview
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$248,320" change="+3.2%" tone="success" icon="chart-line" />
+<Stat label="Annual Recurring Revenue" value="$2,979,840" change="+12.8%" tone="success" icon="chart-line" />
+<Stat label="Churn This Month" value="1.8%" change="-0.4 pts" tone="success" icon="trend-down" />
+<Stat label="Current NPS" value="42" change="+5 pts" tone="info" icon="smiley" />
+</Columns>
+
+<Card title="Reporting Period">
+<Radio label="View data for" options="Last 30 days | Last 90 days | Last 12 months | Custom range" name="reporting-period" value="Last 90 days" />
+</Card>
+
+<Card title="New Signups — Past 90 Days">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 55 |
+| W3 | 48 |
+| W4 | 61 |
+| W5 | 73 |
+| W6 | 68 |
+| W7 | 82 |
+| W8 | 91 |
+| W9 | 87 |
+| W10 | 104 |
+| W11 | 98 |
+| W12 | 116 |
+| W13 | 124 |
+</Chart>
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 268 |
+| Enterprise | 74 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress value="78" max="100" label="Overall utilization: 78%" tone="info" />
+<Progress value="64" max="100" label="Starter: 64%" tone="neutral" />
+<Progress value="83" max="100" label="Growth: 83%" tone="success" />
+<Progress value="91" max="100" label="Enterprise: 91%" tone="warning" />
+</Card>
+
+<Card title="Largest Customers" subtitle="Top 10 by monthly spend">
+| Company | Plan | Seats | Monthly Spend |
+|---|---|---|---|
+| Acme Corp | Enterprise | 340 | $12,400 |
+| Globex | Enterprise | 285 | $10,850 |
+| Initech | Enterprise | 210 | $8,700 |
+| Umbrella Co | Enterprise | 175 | $7,200 |
+| Stark Industries | Enterprise | 160 | $6,850 |
+| Wayne Enterprises | Growth | 148 | $5,900 |
+| Cyberdyne | Growth | 132 | $5,400 |
+| Soylent Corp | Growth | 118 | $4,950 |
+| Hooli | Growth | 96 | $4,100 |
+| Pied Piper | Growth | 84 | $3,650 |
+</Card>
+
+<Card title="Accounts at Risk">
+<Tabs>
+<Tab title="Churn risk">
+| Company | Risk Reason | Action |
+|---|---|---|
+| Hooli | Usage down 60% for 3 weeks | <Button size="small" variant="secondary">Reach out</Button> |
+| Umbrella Co | Renewal in 7 days, no response | <Button size="small" variant="secondary">Send reminder</Button> |
+| Soylent Corp | Competitor evaluation in progress | <Button size="small" variant="secondary">Schedule call</Button> |
+| Initech | Contract dispute on billing | <Button size="small" variant="secondary">View ticket</Button> |
+</Tab>
+<Tab title="Overdue accounts">
+| Company | Risk Reason | Action |
+|---|---|---|
+| Globex | Feature requests unanswered (5 tickets) | <Button size="small" variant="secondary">Review tickets</Button> |
+| Stark Industries | Admin churned, no new contact | <Button size="small" variant="secondary">Find contact</Button> |
+| Cyberdyne | Contract expires in 14 days | <Button size="small" variant="secondary">Start renewal</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Failed Payments">
+| Company | Amount | Failed On | Status |
+|---|---|---|---|
+| Acme Corp | $12,400 | Mar 12, 2025 | <Badge tone="danger">Failed</Badge> |
+| Wayne Enterprises | $5,900 | Mar 10, 2025 | <Badge tone="danger">Failed</Badge> |
+| Pied Piper | $3,650 | Mar 9, 2025 | <Badge tone="danger">Failed</Badge> |
+
+<Button variant="primary">Retry all failed payments</Button>
+<Button variant="secondary">Retry Acme Corp</Button>
+<Button variant="secondary">Retry Wayne Enterprises</Button>
+<Button variant="secondary">Retry Pied Piper</Button>
+</Card>
+
+<Card title="Feature Adoption" subtitle="% of active accounts using each feature">
+<Progress value="68" max="100" label="AI Reports — 68%" tone="success" />
+<Progress value="41" max="100" label="Workflow Automations — 41%" tone="info" />
+<Progress value="23" max="100" label="SSO / SAML — 23%" tone="warning" />
+</Card>
+
+<Card title="Invite an Admin">
+<Form name="invite-admin">
+<Input label="Admin email" type="email" placeholder="admin@company.com" hint="They'll receive an invite link" required="true" />
+<Select label="Role" options="Admin (full access) | Billing admin | Support admin" name="role" placeholder="Choose a role" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<Details title="View methodology">
+<Callout tone="info" title="How metrics are calculated">
+- MRR and ARR are based on active subscriptions as of the last day of the reporting period.
+- Churn is calculated as MRR lost from cancellations and downgrades ÷ MRR at the start of the period.
+- Seat utilization is seats in use ÷ seats purchased, averaged across the reporting period.
+- NPS is collected from in-app surveys sent in the last 30 days.
+</Callout>
+</Details>
+
+<FollowUps>
+- Show me churn by plan
+- Which features are underperforming in adoption?
+- List accounts with seat utilization above 90%
+</FollowUps>

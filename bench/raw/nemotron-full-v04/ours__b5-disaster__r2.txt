@@ -1,0 +1,256 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="ACTIVE EMERGENCY — Regional Flood Event">Level 3 Activation | Incident Command: Unified Command Post Alpha | Last Updated: 2024-03-15 14:32 UTC</Callout>
+
+<Card title="Zone Focus" subtitle="Filter all views to a specific operational zone">
+<Select label="Select Zone" name="zone-focus" placeholder="All Zones" options="All Zones | Zone Alpha (North) | Zone Bravo (East) | Zone Charlie (South) | Zone Delta (West) | Zone Echo (Central)" value="All Zones" />
+</Card>
+
+<Columns>
+<Card title="1. Active Incidents by Zone">
+| Zone | Incident ID | Type | Severity | Status | Since |
+|---|---|---|---|---|---|
+| Alpha | INC-0042 | Flash Flood | Critical | Active | 08:15 |
+| Alpha | INC-0045 | Levee Breach | Critical | Active | 10:30 |
+| Bravo | INC-0038 | Landslide | High | Active | 06:45 |
+| Bravo | INC-0047 | Bridge Collapse | High | Contained | 11:20 |
+| Charlie | INC-0041 | Urban Flooding | High | Active | 09:10 |
+| Charlie | INC-0049 | Hazmat Spill | Medium | Active | 12:05 |
+| Delta | INC-0035 | River Overflow | High | Active | 05:30 |
+| Echo | INC-0044 | Power Substation | Medium | Monitoring | 10:00 |
+| Echo | INC-0050 | Water Contamination | Medium | Active | 13:15 |
+</Card>
+
+<Card title="2. Overall Severity Summary">
+<Stat label="Critical Incidents" value="2" change="+1 vs 1hr ago" tone="danger" />
+<Stat label="High Severity" value="5" change="0" tone="warning" />
+<Stat label="Medium Severity" value="3" change="-1" tone="info" />
+<Stat label="Low/Monitoring" value="1" change="0" tone="success" />
+<Stat label="Total Active" value="11" change="+2" tone="danger" />
+<Progress value="2" max="11" label="Critical" />
+<Progress value="7" max="11" label="High" />
+<Progress value="3" max="11" label="Medium" />
+<Progress value="1" max="11" label="Low" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="3. Resources Available">
+<Stat label="Vehicles Deployed / Total" value="47 / 62" change="15 staged" tone="info" />
+<Stat label="Personnel on Duty" value="318" change="+24 since 06:00" tone="success" />
+<Stat label="Water (liters)" value="18,400" change="-2,100 used today" tone="warning" />
+<Stat label="Food Rations (meals)" value="12,600" change="-1,800 distributed" tone="warning" />
+<Stat label="Medical Kits" value="420" change="-35 used" tone="info" />
+<Stat label="Generators" value="28 / 35" change="7 in maintenance" tone="neutral" />
+<Stat label="Pumps (High-Capacity)" value="14 / 18" change="4 deployed" tone="info" />
+<Stat label="Comms Units" value="32 / 40" change="8 reserved" tone="neutral" />
+</Card>
+
+<Card title="4. Shelters — Capacity & Occupancy">
+| Shelter | Zone | Capacity | Occupied | Available | Status |
+|---|---|---|---|---|---|
+| North Community Center | Alpha | 400 | 382 | 18 | Near Full |
+| East High School Gym | Bravo | 600 | 415 | 185 | Open |
+| South Convention Hall | Charlie | 800 | 720 | 80 | Near Full |
+| West Sports Complex | Delta | 500 | 290 | 210 | Open |
+| Central Arena | Echo | 1,200 | 650 | 550 | Open |
+| Mobile Shelter Unit 1 | Alpha | 50 | 48 | 2 | Full |
+| Mobile Shelter Unit 2 | Charlie | 50 | 35 | 15 | Open |
+| Faith Fellowship Church | Bravo | 150 | 142 | 8 | Near Full |
+| **Totals** | | **3,750** | **2,682** | **1,068** | **71% Utilized** |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="5. Evacuation Route Status">
+| Route | Zone | Status | Est. Clear Time | Notes |
+|---|---|---|---|---|
+| Highway 101 North | Alpha | **Closed** | Unknown | Levee breach at MM 14 |
+| State Route 9 East | Bravo | **Open** | — | Heavy traffic, 45 min delay |
+| County Rd 22 South | Charlie | **Partial** | 2 hrs | One lane, debris clearance ongoing |
+| Interstate 5 West | Delta | **Open** | — | Contraflow active |
+| Main St / Central Ave | Echo | **Closed** | 4 hrs | Structural collapse at 4th & Main |
+| Old Mill Bridge | Alpha | **Closed** | Unknown | Bridge washed out |
+| Rail Crossing 7 | Bravo | **Open** | — | Train traffic halted, road clear |
+| Riverside Drive | Charlie | **Closed** | 6+ hrs | Severe erosion, impassable |
+</Card>
+
+<Card title="6. Weather Forecast — Next 48 Hours">
+| Time (UTC) | Condition | Temp (°C) | Precip | Wind | Alert |
+|---|---|---|---|---|---|
+| Now (14:32) | Heavy Rain | 12 | 95% | SW 28 km/h | **Flash Flood Warning** |
+| +3 hrs (17:32) | Heavy Rain | 11 | 90% | SW 32 km/h | **Flash Flood Warning** |
+| +6 hrs (20:32) | Moderate Rain | 10 | 70% | W 25 km/h | Flood Watch |
+| +9 hrs (23:32) | Light Rain | 9 | 40% | W 20 km/h | Flood Watch |
+| +12 hrs (02:32) | Cloudy | 8 | 15% | NW 15 km/h | — |
+| +18 hrs (08:32) | Partly Cloudy | 9 | 10% | NW 12 km/h | — |
+| +24 hrs (14:32) | Mostly Sunny | 13 | 5% | N 10 km/h | — |
+| +36 hrs (02:32) | Clear | 7 | 0% | NE 8 km/h | — |
+| +48 hrs (14:32) | Sunny | 15 | 0% | E 10 km/h | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="7. Casualties & Rescues">
+<Stat label="People Rescued" value="1,247" change="+89 since 12:00" tone="success" />
+<Stat label="Injuries (Minor)" value="156" change="+12" tone="warning" />
+<Stat label="Injuries (Serious)" value="23" change="+3" tone="danger" />
+<Stat label="Fatalities Confirmed" value="4" change="+1" tone="danger" />
+<Stat label="Missing / Unaccounted" value="18" change="-5 located" tone="warning" />
+<Stat label="Evacuated to Shelters" value="2,682" change="+340" tone="info" />
+<Stat label="Shelter-in-Place" value="1,450" change="-200 evacuated" tone="neutral" />
+</Card>
+
+<Card title="8. Volunteers On Duty">
+| Name | Role | Assignment | Zone | Shift End |
+|---|---|---|---|---|
+| M. Rodriguez | Team Lead | Shelter Ops — North Center | Alpha | 22:00 |
+| J. Chen | Medic | Triage — East High School | Bravo | 20:00 |
+| K. Okafor | Driver | Supply Run — Depot to Charlie | Charlie | 18:00 |
+| S. Patel | Comms | Radio Relay — Hilltop Tower | Echo | 22:00 |
+| A. Kowalski | Engineer | Pump Ops — Levee Site Alpha | Alpha | 02:00 |
+| R. Silva | Logistics | Donations Sorting — Central Arena | Echo | 20:00 |
+| T. Nguyen | SAR | Swift Water Team 3 | Alpha | 02:00 |
+| L. Dubois | Coordinator | Volunteer Check-in — West Complex | Delta | 22:00 |
+| **Total On Duty** | | **84 volunteers** | | **Next rotation: 22:00** |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="9. Donations Received (Last 24 hrs)">
+<Stat label="Monetary" value="$487,200" change="+$124k today" tone="success" />
+<Stat label="Water (liters)" value="24,500" change="+8,200" tone="info" />
+<Stat label="Food (meals)" value="18,300" change="+5,600" tone="info" />
+<Stat label="Clothing (units)" value="6,200" change="+1,800" tone="neutral" />
+<Stat label="Medical Supplies" value="1,150 kits" change="+300" tone="success" />
+<Stat label="Volunteer Hours Pledged" value="3,400 hrs" change="+850" tone="neutral" />
+</Card>
+
+<Card title="10. Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Requested | Since | Status |
+|---|---|---|---|---|---|---|
+| REQ-1124 | Alpha | High-capacity pumps (3) | Critical | 09:15 | 5 hrs ago | **Pending Dispatch** |
+| REQ-1127 | Bravo | Medical evac helicopters (2) | Critical | 10:40 | 4 hrs ago | **Sourcing** |
+| REQ-1130 | Charlie | Potable water tankers (4) | High | 11:20 | 3 hrs ago | **En Route** |
+| REQ-1133 | Delta | Temporary bridging equip | High | 12:05 | 2 hrs ago | **Pending Approval** |
+| REQ-1136 | Echo | Dialysis machines (2) | High | 12:50 | 1.5 hrs ago | **Locating** |
+| REQ-1139 | Alpha | Sandbags (10,000) | Medium | 13:30 | 1 hr ago | **Staged** |
+| REQ-1142 | Bravo | Generators 50kW (3) | Medium | 13:45 | 45 min ago | **Pending** |
+| REQ-1145 | Charlie | Insulin refrigeration units | Medium | 14:00 | 30 min ago | **New** |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="11. Communication Channels">
+| Channel | Status | Last Test | Coverage | Notes |
+|---|---|---|---|---|
+| VHF Radio Net 1 (Command) | **Operational** | 14:30 | Regional | Primary command net |
+| VHF Radio Net 2 (Ops) | **Operational** | 14:28 | Regional | Tactical operations |
+| UHF Radio Net (SAR) | **Operational** | 14:25 | Zones A,B,C | Search & Rescue |
+| Satellite Phones (12 units) | **Operational** | 14:15 | Global | 3 at ICP, 9 field |
+| Cellular (Public) | **Degraded** | 14:00 | Partial | Towers on backup power |
+| Cellular (FirstNet) | **Operational** | 14:20 | Regional | Priority access active |
+| Mesh Network (GoTenna) | **Operational** | 14:10 | Local | 45 nodes deployed |
+| Amateur Radio (ARES) | **Operational** | 14:05 | Regional | Net control: W7EMC |
+| Internet / Starlink (4) | **Operational** | 14:22 | ICP + 3 shelters | 120 Mbps avg |
+| Emergency Alert System | **Standby** | 13:00 | County-wide | Ready to activate |
+</Card>
+
+<Card title="12. Roads Closed">
+| Road | Zone | Reason | Since | Detour |
+|---|---|---|---|---|
+| Hwy 101 (MM 12-18) | Alpha | Levee breach, flooding | 08:15 | Hwy 99 via Exit 4 |
+| Old Mill Bridge | Alpha | Bridge washed out | 06:30 | County Rd 44 |
+| Riverside Dr (full) | Charlie | Severe erosion | 09:45 | I-5 to Exit 12 |
+| Main St (4th-8th) | Echo | Structural collapse | 11:20 | Central Ave / 2nd St |
+| County Rd 22 (partial) | Charlie | Debris / one lane | 10:10 | Use SR 9 |
+| Rail Crossing 7 access | Bravo | Track washout | 07:20 | Old Hwy 12 |
+| Dam Access Road | Delta | Landslide | 05:45 | None — use air |
+| Industrial Blvd | Echo | Hazmat containment | 12:15 | Commerce Way |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="13. Nearby Hospitals — Free Beds">
+| Hospital | Zone | Total Beds | Free ICU | Free Med/Surg | Free ED | Status |
+|---|---|---|---|---|---|---|
+| Mercy General | Alpha | 320 | 3 / 24 | 18 / 120 | 6 / 40 | **Accepting** |
+| St. Luke's Regional | Bravo | 450 | 7 / 36 | 32 / 180 | 12 / 50 | **Accepting** |
+| County Medical Center | Charlie | 280 | 1 / 18 | 12 / 95 | 4 / 30 | **Diverting ICU** |
+| Valley View Hospital | Delta | 180 | 4 / 12 | 22 / 70 | 8 / 25 | **Accepting** |
+| Central University Med | Echo | 520 | 12 / 48 | 45 / 220 | 15 / 60 | **Accepting** |
+| Riverside Community | Charlie | 95 | 0 / 6 | 5 / 35 | 2 / 15 | **Full — Divert** |
+| **Totals** | | **1,845** | **27 / 144** | **134 / 720** | **47 / 220** | **19% ICU / 19% MedSurg / 21% ED free** |
+</Card>
+
+<Card title="14. Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|---|
+| TASK-401 | Coordinate pump deployment to Alpha levee | Eng. Kowalski | Alpha | Critical | 15:00 | **In Progress** |
+| TASK-402 | Establish comms relay at Hilltop Tower | S. Patel | Echo | Critical | 15:30 | **In Progress** |
+| TASK-403 | Evacuate Riverside Dr remaining residents | SAR Team 3 | Charlie | Critical | 16:00 | **Assigned** |
+| TASK-404 | Set up dialysis at Central Arena shelter | Dr. Chen / R. Silva | Echo | High | 17:00 | **Pending Resources** |
+| TASK-405 | Clear debris County Rd 22 for full opening | PW Crew Delta | Charlie | High | 18:00 | **In Progress** |
+| TASK-406 | Distribute sandbags to Alpha neighborhoods | Volunteer Team 2 | Alpha | High | 16:30 | **Staged** |
+| TASK-407 | Verify shelter occupancy counts (all) | L. Dubois | All | Medium | 16:00 | **In Progress** |
+| TASK-408 | Submit 14:00 SITREP to State EOC | Planning Section | All | High | 14:30 | **Due Now** |
+| TASK-409 | Arrange hazmat cleanup Industrial Blvd | Hazmat Team 1 | Echo | Medium | 20:00 | **Pending** |
+| TASK-410 | Coordinate helicopter medevac (REQ-1127) | Air Ops / J. Chen | Bravo | Critical | ASAP | **Coordinating** |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="15. Request Additional Resources">
+<Form name="resource-request">
+<Select label="Resource Type" name="resource-type" placeholder="Select type" options="High-Capacity Pumps | Helicopters (Medevac) | Helicopters (Heavy Lift) | Water Tankers | Sandbags | Generators (50kW+) | Medical Equipment | Temporary Bridging | Personnel (SAR) | Personnel (Medical) | Personnel (Engineering) | Comms Equipment | Vehicles (4x4) | Vehicles (Heavy Transport) | Food Rations | Water (Bulk) | Shelter Supplies | Fuel (Diesel) | Fuel (Aviation)" required="true" />
+<Input label="Quantity" name="quantity" type="number" placeholder="Enter quantity" required="true" step="1" min="1" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Critical — Life Safety | High — Incident Stabilization | Medium — Property Protection | Low — Support" value="High — Incident Stabilization" required="true" />
+<Select label="Delivery Zone" name="delivery-zone" placeholder="Select zone" options="Zone Alpha (North) | Zone Bravo (East) | Zone Charlie (South) | Zone Delta (West) | Zone Echo (Central) | Incident Command Post" required="true" />
+<TextArea label="Justification / Details" name="justification" placeholder="Operational need, specific location, point of contact..." rows="3" required="true" />
+<Button variant="primary">Submit Resource Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="16. Broadcast Emergency Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="channels" placeholder="Select channels" options="All Channels | VHF Net 1 (Command) | VHF Net 2 (Ops) | UHF SAR Net | FirstNet Cellular | EAS / IPAWS | Amateur Radio (ARES) | Shelter PA Systems | Public Alert (Wireless)" value="All Channels" required="true" />
+<Select label="Message Type" name="msg-type" placeholder="Select type" options="Evacuation Order | Shelter-in-Place | Road Closure | Weather Warning | Safety Instruction | Situation Update | Resource Available | All Clear" required="true" />
+<Select label="Target Zone(s)" name="target-zones" placeholder="Select zones" options="All Zones | Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta | Zone Echo" value="All Zones" required="true" />
+<TextArea label="Message Text" name="message" placeholder="Enter clear, concise message for broadcast..." rows="4" required="true" hint="Use plain language. Include specific locations, times, and actions required." />
+<Checkboxes label="Confirm" options="I authorize this broadcast | Message reviewed for accuracy | Urgency justified" name="confirm" value="" required="true" />
+<Button variant="danger">Broadcast Now</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="17. Situation Report (SITREP) Filing">
+<Form name="sitrep-filing">
+<Input label="Report Number" name="sitrep-num" placeholder="Auto: SITREP-20240315-014" value="SITREP-20240315-014" hint="Auto-generated" />
+<Date label="Report Date/Time" name="sitrep-dt" value="2024-03-15T14:30" required="true" />
+<Select label="Reporting Period" name="period" placeholder="Select period" options="06:00-14:00 | 14:00-22:00 | 22:00-06:00 | Custom" value="06:00-14:00" required="true" />
+<Select label="Prepared By" name="prepared-by" placeholder="Select role" options="Planning Section Chief | Operations Section Chief | Logistics Section Chief | Finance/Admin Chief | Liaison Officer | Safety Officer | Public Information Officer | Incident Commander" required="true" />
+<Select label="Classification" name="classification" placeholder="Select classification" options="UNCLASSIFIED | LAW ENFORCEMENT SENSITIVE | FOR OFFICIAL USE ONLY | CLASSIFIED" value="UNCLASSIFIED" required="true" />
+<TextArea label="Executive Summary" name="exec-summary" placeholder="2-3 sentence overview of current situation..." rows="3" required="true" />
+<TextArea label="Current Operations" name="curr-ops" placeholder="Summary of ongoing operations by zone..." rows="4" required="true" )
+<TextArea label="Resource Status" name="resource-status" placeholder="Critical resource shortfalls, requests pending..." rows="3" />
+<TextArea label="Planned Operations (Next Period)" name="planned-ops" placeholder="Objectives and tasks for next operational period..." rows="3" required="true" />
+<TextArea label="Issues / Concerns / Recommendations" name="issues" placeholder="Policy decisions needed, safety concerns, resource gaps..." rows="3" />
+<Button variant="primary">File SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+</Columns>
+
+<Callout tone="info" title="Next Operational Period Briefing">15:00 UTC at ICP Main Conference | All Section Chiefs Required | SITREP-014 will be baseline</Callout>
+
+<FollowUps>
+- Request mutual aid from neighboring jurisdictions
+- Activate Emergency Operations Center at State level
+- Coordinate with National Guard for aviation assets
+- Establish family reunification center
+- Plan for long-term sheltering (72+ hours)
+</FollowUps>

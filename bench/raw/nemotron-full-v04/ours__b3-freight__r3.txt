@@ -1,0 +1,85 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">Updated 2 minutes ago — <Badge tone="neutral">Live</Badge></Callout>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time This Month" value="92.4%" change="+1.2% vs last month" tone="success" />
+<Stat label="Avg Cost / Shipment" value="$1,847" change="-$83 vs last month" tone="info" />
+<Stat label="Active Shipments" value="147" change="+12 vs yesterday" tone="neutral" />
+<Stat label="Delayed" value="11" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Search Shipments">
+<Form name="route-search">
+<Input label="Route Search" name="route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin → destination or carrier name" />
+<Select label="Carrier Filter" name="carrier" placeholder="All carriers" options="All | FedEx | UPS | DHL | USPS | Regional | Ocean | Rail" />
+<Select label="Status Filter" name="status" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" />
+<Button>Apply Filters</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Shipments in Transit" subtitle="147 active • 11 delayed • Sort by ETA">
+| # | Shipment ID | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|---|
+| 1 | SH-2024-08921 | Los Angeles (LAX) | New York (JFK) | FedEx | 2024-01-15 14:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 2 | SH-2024-08922 | Seattle (SEA) | Chicago (ORD) | UPS | 2024-01-15 18:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 3 | SH-2024-08923 | Miami (MIA) | Dallas (DFW) | DHL | 2024-01-15 22:15 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 4 | SH-2024-08924 | Atlanta (ATL) | San Francisco (SFO) | FedEx | 2024-01-16 06:45 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 5 | SH-2024-08925 | Houston (IAH) | Boston (BOS) | UPS | 2024-01-16 11:20 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 6 | SH-2024-08926 | Denver (DEN) | Phoenix (PHX) | Regional | 2024-01-15 20:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 7 | SH-2024-08927 | Portland (PDX) | Minneapolis (MSP) | FedEx | 2024-01-16 03:30 | <Badge tone="danger">Exception</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 8 | SH-2024-08928 | Las Vegas (LAS) | Detroit (DTW) | DHL | 2024-01-16 09:15 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 9 | SH-2024-08929 | San Diego (SAN) | Philadelphia (PHL) | UPS | 2024-01-16 13:40 | <Badge tone="warning">Delayed</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| 10 | SH-2024-08930 | Orlando (MCO) | St. Louis (STL) | Regional | 2024-01-15 16:55 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+</Card>
+
+<Callout tone="warning" title="⚠ 11 Delayed Shipments Require Attention">
+<strong>Top 3 by delay:</strong> SH-2024-08923 (MIA→DFW, +4.5 hrs weather) • SH-2024-08925 (IAH→BOS, +3.2 hrs mechanical) • SH-2024-08929 (SAN→PHL, +2.8 hrs volume surge). <Button variant="secondary" size="small">View All Delayed</Button>
+</Callout>
+
+<Card title="Volume Split by Carrier (This Month)">
+<Chart type="donut" title="Shipments by Carrier">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 42 |
+| UPS | 38 |
+| DHL | 24 |
+| Regional | 18 |
+| USPS | 12 |
+| Ocean | 8 |
+| Rail | 5 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Shipments per Week" x="Week" y="Volume">
+| Week | Volume |
+|---|---|
+| Week 1 (Nov 18) | 112 |
+| Week 2 (Nov 25) | 128 |
+| Week 3 (Dec 2) | 145 |
+| Week 4 (Dec 9) | 167 |
+| Week 5 (Dec 16) | 189 |
+| Week 6 (Dec 23) | 134 |
+| Week 7 (Dec 30) | 156 |
+| Week 8 (Jan 6) | 178 |
+</Chart>
+</Card>
+
+<Card title="Flagged Shipments" subtitle="3 currently flagged for review">
+| Shipment ID | Route | Flagged By | Reason | Time |
+|---|---|---|---|---|
+| SH-2024-08923 | MIA → DFW | M. Chen | Weather delay — customer notification needed | 10 min ago |
+| SH-2024-08927 | PDX → MSP | J. Rodriguez | Exception scan — possible damage | 45 min ago |
+| SH-2024-08891 | LAX → JFK | A. Patel | High-value — requires signature confirmation | 2 hrs ago |
+</Card>
+
+<FollowUps>
+- Show me all delayed shipments with root causes
+- Export this week's shipment data to CSV
+- Set up alerts for shipments exceeding 2-hour delay threshold
+- Compare carrier performance for Q4
+</FollowUps>

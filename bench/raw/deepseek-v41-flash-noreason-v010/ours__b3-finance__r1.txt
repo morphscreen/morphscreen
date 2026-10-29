@@ -1,0 +1,83 @@
+# Month-end finance view
+
+<Callout tone="info" title="Close period: November 2025">
+All figures below are for the selected month. Switch months or download the statement at the bottom of this page.
+</Callout>
+
+<Card title="Headline numbers" subtitle="November 2025 · close status: draft">
+<Columns>
+<Stat label="Cash on hand" value="$412,800" change="-8.4% vs Oct" tone="warning" icon="wallet" />
+<Stat label="Monthly burn" value="$38,900" change="+6.1% vs Oct" tone="danger" icon="flame" />
+<Stat label="Months of runway" value="10.6" change="-0.9 mo vs Oct" tone="warning" icon="hourglass" />
+<Stat label="Net cash change" value="-$34,200" change="vs -$31,100 in Oct" tone="neutral" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Runway at a glance">
+<Progress value="10.6" max="24" label="10.6 of 24 months covered by current cash" tone="warning" />
+<Callout tone="warning" title="Under 12 months of runway">
+At the current burn of $38,900/mo, cash runs out around <strong>October 2026</strong>. Cutting burn by $6,000/mo would push that past 12.5 months.
+</Callout>
+</Card>
+
+<Card title="Expenses by category" subtitle="November 2025 · total $41,300">
+<Chart type="donut" title="Expense split" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Payroll | 22400 |
+| Cloud & infra | 6800 |
+| Software & tools | 4100 |
+| Marketing | 3600 |
+| Office & admin | 2400 |
+| Legal & accounting | 2000 |
+</Chart>
+</Card>
+
+<Card title="Expense detail">
+| Category | Amount | Share | vs Oct |
+|---|---|---|---|
+| Payroll | $22,400 | 54.2% | +2.1% |
+| Cloud & infra | $6,800 | 16.5% | +11.4% |
+| Software & tools | $4,100 | 9.9% | +4.8% |
+| Marketing | $3,600 | 8.7% | -6.2% |
+| Office & admin | $2,400 | 5.8% | flat |
+| Legal & accounting | $2,000 | 4.8% | flat |
+| **Total** | **$41,300** | **100%** | **+5.3%** |
+</Card>
+
+<Card title="Transactions above $10,000" subtitle="November 2025 · 4 transactions, $58,200 total">
+| Date | Vendor | Category | Amount |
+|---|---|---|---|
+| Nov 01 | Gusto payroll run | Payroll | $22,400 |
+| Nov 12 | AWS | Cloud & infra | $14,900 |
+| Nov 18 | Ramp card settlement | Software & tools | $11,300 |
+| Nov 27 | Series A legal counsel | Legal & accounting | $9,600 |
+</Card>
+
+<Callout tone="danger" title="One item needs review">
+The Nov 27 legal invoice is <strong>$9,600</strong> — just under the $10,000 threshold, so it is not in the list above. Flag it if it should be included.
+</Callout>
+
+<Card title="Look at a different month">
+<Form name="month-switcher">
+<Select label="Period" options="November 2025 | October 2025 | September 2025 | August 2025 | Custom range" value="November 2025" hint="Figures reload for the month you pick" />
+<Radio label="View" options="Month to date | Full month close" />
+<Button>Load month</Button>
+</Form>
+</Card>
+
+<Card title="Download the statement">
+<Form name="statement-download">
+<Select label="Format" options="PDF | CSV | XLSX" />
+<Checkboxes label="Include" options="Transactions | Expense breakdown | Runway projection | Bank reconciliation" value="Transactions | Expense breakdown" />
+<Input label="Email to" type="email" placeholder="finance@company.com" hint="Sent as a secure link, expires in 7 days" />
+<Button icon="download">Download statement</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which categories grew fastest versus October?
+- What would 12 months of runway require in monthly cuts?
+- Show me all transactions from AWS this year
+- Reconcile the November bank feed against these numbers
+</FollowUps>

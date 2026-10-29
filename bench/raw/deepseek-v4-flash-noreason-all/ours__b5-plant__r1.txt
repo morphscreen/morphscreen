@@ -1,0 +1,231 @@
+# Factory Floor Supervisor's Console
+
+<Callout tone="info" title="Live view">Data refreshes every 30 seconds. Last update: 14:32.</Callout>
+
+## Overall Performance
+
+<Columns>
+<Stat label="Overall Equipment Effectiveness" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Units Produced" value="4,218" note="Target: 5,000" tone="info" icon="cube" />
+<Stat label="Defect Rate (MTD)" value="1.8%" change="-0.3% vs last month" tone="success" icon="check" />
+<Stat label="Days Since Last Incident" value="47" tone="success" icon="shield-check" />
+</Columns>
+
+<Progress value="4218" max="5000" label="Today's target progress: 4,218 / 5,000 units" tone="info" />
+
+## Production Lines
+
+<Tabs>
+<Tab title="All Lines">
+<Compare title="Production line status">
+| Metric | Line A | Line B | Line C | Line D |
+|---|---|---|---|---|
+| Status | Running | Running | Idle | Running |
+| Rate (units/hr) | 320 | 285 | 0 | 240 |
+| OEE | 82% | 76% | 0% | 71% |
+| Operator | Maria G. | John D. | — | Ana P. |
+| Alert | Normal | Normal | **Maint.** | Normal |
+</Compare>
+</Tab>
+<Tab title="Line A">
+<Card title="Line A — Injection Molding">
+<Columns>
+<Stat label="Rate" value="320 u/hr" tone="success" icon="speedometer" />
+<Stat label="OEE" value="82%" tone="success" icon="chart-line" />
+<Stat label="Since last changeover" value="2h 15m" />
+</Columns>
+<Callout tone="success" title="Running normally">No issues detected. Next scheduled changeover at 16:00.</Callout>
+<Button variant="secondary" ask="Show me Line A in more detail">Focus on Line A</Button>
+</Card>
+</Tab>
+</Tabs>
+
+## Quality — Defect Rate (Past Month)
+
+<Card title="Defect rate by week">
+<Chart type="line" x="Week" y="%">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.4 |
+| W2 | 2.1 |
+| W3 | 1.9 |
+| W4 | 1.8 |
+</Chart>
+<Callout tone="success" title="Trend improving">Defect rate down 0.6 percentage points over the month.</Callout>
+</Card>
+
+## Downtime by Cause (Today)
+
+<Card title="Downtime allocation">
+<Chart type="donut" title="Downtime by cause">
+| Cause | Minutes |
+|---|---|
+| Changeover | 42 |
+| Machine breakdown | 28 |
+| Material shortage | 15 |
+| Quality inspection | 10 |
+| Operator break | 8 |
+</Chart>
+</Card>
+
+## Machines Due for Maintenance
+
+<Card title="Scheduled maintenance">
+<KeyValue>
+| Machine | Due date | Priority | Est. duration |
+|---|---|---|---|
+| Press #3 | Today 16:00 | High | 2h |
+| Conveyor B | Tomorrow | Medium | 1h |
+| Compressor #2 | Thu | High | 3h |
+| Robot arm D | Fri | Low | 30m |
+</KeyValue>
+</Card>
+
+## Raw Material Stock
+
+<Columns>
+<Card title="Steel">
+<Stat label="Current stock" value="12.4 t" note="Min: 8 t" tone="success" icon="warehouse" />
+<Progress value="124" max="200" label="62% of capacity" tone="success" />
+</Card>
+<Card title="Resin">
+<Stat label="Current stock" value="340 kg" note="Min: 500 kg" tone="danger" icon="warehouse" />
+<Progress value="34" max="100" label="34% — below minimum" tone="danger" />
+</Card>
+<Card title="Packaging">
+<Stat label="Current stock" value="1,850 units" note="Min: 1,000" tone="success" icon="box" />
+<Progress value="74" max="100" label="74% of capacity" tone="info" />
+</Card>
+</Columns>
+
+## Supplier Deliveries This Week
+
+<Card title="Incoming deliveries">
+<KeyValue>
+| Supplier | Material | Qty | ETA |
+|---|---|---|---|
+| SteelCo | Steel coils | 20 t | Wed 08:00 |
+| PolyChem | Resin | 800 kg | Thu 10:30 |
+| PackRight | Boxes | 2,000 | Fri 12:00 |
+</KeyValue>
+<Callout tone="warning" title="Resin delivery critical">Resin will drop below minimum before Thursday's delivery arrives. Consider expediting.</Callout>
+</Card>
+
+## Shift Comparison
+
+<Card title="Output by shift (today)">
+<Chart type="bar" title="Units per shift" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning (06–14) | 2,140 |
+| Afternoon (14–22) | 1,682 |
+| Night (22–06) | 396 |
+</Chart>
+</Card>
+
+## Safety
+
+<Columns>
+<Stat label="Incidents this year" value="2" tone="warning" icon="warning" />
+<Stat label="Days since last incident" value="47" tone="success" icon="shield-check" />
+</Columns>
+
+<Card title="Safety record 2025">
+<Chart type="bar" title="Incidents by month" x="Month" y="Count">
+| Month | Incidents |
+|---|---|
+| Jan | 1 |
+| Feb | 0 |
+| Mar | 1 |
+| Apr | 0 |
+| May | 0 |
+| Jun | 0 |
+</Chart>
+</Card>
+
+## Quality Hold — Batches
+
+<Card title="Batches on hold">
+| Batch ID | Product | Qty | Reason | Since |
+|---|---|---|---|---|
+| B-2041 | Housing X2 | 240 | Dimensional check | 2h |
+| B-2038 | Cap Y7 | 120 | Color deviation | 5h |
+| B-2032 | Bracket Z1 | 80 | Material cert pending | 26h |
+</Card>
+
+<Callout tone="warning" title="Action needed">B-2032 has been on hold over 24 hours. Material certificate expected from supplier today.</Callout>
+
+## Energy Use Today
+
+<Card title="Energy consumption">
+<Columns>
+<Stat label="Total (today)" value="18.4 MWh" tone="info" icon="lightning" />
+<Stat label="vs yesterday" value="-6%" change="Good" tone="success" />
+</Columns>
+<Chart type="area" title="Hourly usage" x="Hour" y="MWh">
+| Hour | Usage |
+|---|---|
+| 06 | 1.1 |
+| 08 | 1.4 |
+| 10 | 1.5 |
+| 12 | 1.3 |
+| 14 | 1.2 |
+</Chart>
+</Card>
+
+## Open Work Orders
+
+<Card title="Work orders by priority">
+| # | Order | Line | Priority | Due | Status |
+|---|---|---|---|---|---|
+| WO-118 | Housing X2 ×2,000 | A | **High** | Today 18:00 | In progress |
+| WO-119 | Cap Y7 ×1,500 | B | **High** | Today 20:00 | In progress |
+| WO-120 | Bracket Z1 ×800 | C | Medium | Tomorrow | Waiting material |
+| WO-121 | Base W4 ×600 | D | Low | Thu | Scheduled |
+</Card>
+
+## Schedule Maintenance
+
+<Card title="Plan maintenance">
+<Form name="maintenance-schedule">
+<Select label="Machine" name="machine" options="Press #3 | Press #4 | Conveyor B | Conveyor C | Compressor #2 | Robot arm D | Robot arm E" placeholder="Select machine" required="true" />
+<Date label="Date" name="date" required="true" />
+<Time label="Start time" name="time" value="08:00" required="true" />
+<Select label="Priority" name="priority" options="Low | Medium | High | Critical" placeholder="Select priority" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Describe the maintenance task…" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+## Focus on One Line
+
+<Card title="Select a line to focus">
+<Radio label="Focus line" name="focus-line" options="Line A — Injection Molding | Line B — Assembly | Line C — Packaging | Line D — Finishing" value="Line A" />
+<Button variant="primary" ask="Show me the detailed view for Line A">Apply focus</Button>
+</Card>
+
+## Live Andon Alerts
+
+<Card title="Active andon alerts">
+<Callout tone="danger" title="Line C — Maintenance needed">Press #3 fault code E-42. Waiting for technician.</Callout>
+<Callout tone="warning" title="Line B — Material low">Resin hopper below 15%. Reorder triggered.</Callout>
+<Callout tone="info" title="Line A — Changeover due">Scheduled changeover in 25 minutes.</Callout>
+</Card>
+
+## Export Shift Report
+
+<Card title="Shift report">
+<Form name="shift-report">
+<Select label="Shift" name="shift" options="Morning (06–14) | Afternoon (14–22) | Night (22–06)" placeholder="Select shift" required="true" />
+<Date label="Date" name="date" required="true" />
+<Checkboxes label="Include sections" name="sections" options="Production summary | Quality | Downtime | Maintenance | Safety | Energy | Work orders" value="Production summary | Quality | Downtime" />
+<Button>Export shift report (PDF)</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed maintenance history for Press #3
+- What caused the downtime on Line C this morning?
+- Which work orders are at risk of missing their deadline?
+- Compare today's energy use with last Tuesday
+</FollowUps>

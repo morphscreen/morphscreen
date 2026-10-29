@@ -1,0 +1,46 @@
+<Card title="Warehouse Stock Check" subtitle="Scan a product to view inventory across locations">
+
+### 1. Scan Product Barcode
+<Form name="stock-scan">
+<Scan label="Scan barcode" name="barcode" kind="barcode" hint="Point camera at product barcode" required="true" />
+<Button variant="primary">Look up stock</Button>
+</Form>
+
+---
+
+### 2. Stock by Warehouse
+<Callout tone="warning" title="Low Stock Alert">
+SKU **WH-7842** (Blue Widget) is below reorder threshold in 2 of 3 warehouses.
+</Callout>
+
+| Warehouse | Current Stock | Reorder Point | Status |
+|---|---|---|---|
+| North (Seattle) | 12 | 25 | <Badge tone="danger">Critical</Badge> |
+| Central (Chicago) | 8 | 20 | <Badge tone="danger">Critical</Badge> |
+| South (Atlanta) | 42 | 15 | <Badge tone="success">OK</Badge> |
+| West (Los Angeles) | 156 | 30 | <Badge tone="success">OK</Badge> |
+
+<Chart type="bar" title="Stock vs Reorder Point" x="Warehouse" y="Units">
+| Warehouse | Current Stock | Reorder Point |
+|---|---|---|
+| North | 12 | 25 |
+| Central | 8 | 20 |
+| South | 42 | 15 |
+| West | 156 | 30 |
+</Chart>
+
+---
+
+### 3. Request Restock
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-7842" hint="Auto-filled from scan" />
+<Input label="Product Name" name="product" value="Blue Widget" hint="Auto-filled from scan" />
+<Select label="Priority" name="priority" options="Standard (3-5 days) | Expedited (1-2 days) | Emergency (24 hrs)" value="Expedited (1-2 days)" required="true" />
+<Checkboxes label="Warehouses to restock" name="warehouses" options="North (Seattle) | Central (Chicago) | South (Atlanta) | West (Los Angeles)" value="North (Seattle) | Central (Chicago)" hint="Low-stock locations pre-selected" required="true" />
+<Input label="Quantity per location" name="quantity" type="number" value="50" hint="Units to order for each selected warehouse" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Special instructions, preferred carrier, etc." rows="3" />
+<Button variant="primary">Submit Restock Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+
+</Card>

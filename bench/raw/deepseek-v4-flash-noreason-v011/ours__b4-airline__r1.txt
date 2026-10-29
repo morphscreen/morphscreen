@@ -1,0 +1,93 @@
+# Hub Operations Dashboard
+
+<Card title="Hub Overview">
+<Columns>
+<Stat label="On-Time Performance" value="87.3%" change="+2.1%" tone="success" icon="chart-line" />
+<Stat label="Avg Passenger Load" value="78.4%" change="-1.2%" tone="info" icon="users" />
+<Stat label="Avg Turnaround Time" value="42 min" change="+3 min" tone="warning" icon="clock" />
+<Stat label="Cancellations Today" value="4" change="+1" tone="danger" icon="x-circle" />
+</Columns>
+</Card>
+
+<Card title="Current Flights">
+<Tabs>
+<Tab title="All Flights">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA123 | JFK → ORD | B12 | <Badge tone="success">On Time</Badge> |
+| UA456 | SFO → ORD | C7 | <Badge tone="warning">Delayed 25 min</Badge> |
+| DL789 | ATL → ORD | A3 | <Badge tone="success">On Time</Badge> |
+| WN101 | DEN → ORD | B8 | <Badge tone="danger">Cancelled</Badge> |
+| BA202 | LHR → ORD | C12 | <Badge tone="warning">Delayed 45 min</Badge> |
+| NK303 | MCO → ORD | A9 | <Badge tone="success">On Time</Badge> |
+| AA404 | LAX → ORD | B15 | <Badge tone="warning">Delayed 15 min</Badge> |
+</Tabs>
+<Tab title="Delayed Only">
+<Callout tone="warning" title="3 Delayed Flights">
+- **UA456** (SFO → ORD) - Gate C7 - Delayed 25 min
+- **BA202** (LHR → ORD) - Gate C12 - Delayed 45 min
+- **AA404** (LAX → ORD) - Gate B15 - Delayed 15 min
+</Callout>
+</Tabs>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | Old Gate | New Gate |
+|---|---|---|---|
+| 14:32 | UA456 | C5 | C7 |
+| 14:15 | DL789 | A1 | A3 |
+| 13:58 | BA202 | C10 | C12 |
+<Button ask="Show all gate changes today">View All Changes</Button>
+</Card>
+
+<Card title="Crews Available for Reassignment">
+<Columns>
+<Avatar name="Capt. Maria Santos" subtitle="Available until 18:00" />
+<Avatar name="FO James Chen" subtitle="Available until 20:30" />
+<Avatar name="FA Lisa Kim" subtitle="Available until 17:45" />
+<Avatar name="FA David Brown" subtitle="Available until 19:15" />
+</Columns>
+<Button ask="Show full crew roster">View All Available Crew</Button>
+</Card>
+
+<Card title="Weather Advisories">
+<Callout tone="warning" title="Thunderstorm Watch">
+Isolated thunderstorms expected near ORD between 16:00-19:00 local. Potential for 30-60 min ground stops.
+</Callout>
+<Callout tone="info" title="Visibility Advisory">
+Low visibility (1-2 miles) due to fog expected 06:00-09:00 tomorrow.
+</Callout>
+<Button ask="What's the extended weather outlook?">Extended Forecast</Button>
+</Card>
+
+<Card title="Connections at Risk">
+| Passenger | Flight | Connecting To | Time to Connection |
+|---|---|---|---|
+| John D. | UA456 (Delayed) | UA789 → SEA | 35 min |
+| Sarah M. | BA202 (Delayed) | AA123 → MIA | 20 min |
+| Robert K. | UA456 (Delayed) | UA321 → SFO | 45 min |
+<Button ask="Show all missed connection options">View All At-Risk</Button>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook">
+<Select label="Select Flight" options="UA456 (Delayed) | BA202 (Delayed) | AA404 (Delayed) | WN101 (Cancelled)" placeholder="Choose flight" />
+<Input label="Passenger Name" placeholder="Enter full name or booking ref" />
+<Input label="Preferred Alternate Time" type="time" />
+<Button variant="primary">Search Available Flights</Button>
+<Button variant="secondary">Auto-Rebook All Affected</Button>
+</Form>
+</Card>
+
+<Card title="Hub Selection">
+<Select label="Current Hub" options="ORD - Chicago O'Hare | ATL - Atlanta | DFW - Dallas/Fort Worth | DEN - Denver | JFK - New York JFK" value="ORD - Chicago O'Hare" />
+<Button ask="Switch to ATL hub view">Switch Hub</Button>
+</Card>
+
+<FollowUps>
+- Show me the full delay breakdown
+- Which crews are closest to being legal?
+- List passengers needing hotel accommodations
+- What's the ground stop probability?
+- Compare today's performance to yesterday
+</FollowUps>

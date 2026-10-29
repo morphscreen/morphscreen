@@ -1,0 +1,112 @@
+# Airline Hub Operations Desk
+
+<Card title="Hub Overview" subtitle="Current shift · 14:32 UTC">
+<Columns>
+<Stat label="On‑Time Performance" value="87%" change="+3% vs yesterday" icon="chart-line" tone="success" />
+<Stat label="Avg Passenger Load" value="78%" change="+2% vs yesterday" icon="users" tone="info" />
+<Stat label="Avg Turnaround" value="42 min" change="−5 min vs target" icon="clock" tone="warning" />
+<Stat label="Cancellations Today" value="4" icon="x-circle" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Flight Board">
+<Tabs>
+<Tab title="All Flights">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA 101 | JFK → LHR | B12 | <Badge tone="success">On Time</Badge> |
+| AA 202 | LHR → JFK | C7 | <Badge tone="success">On Time</Badge> |
+| BA 303 | LHR → CDG | A3 | <Badge tone="warning">Delayed 22 min</Badge> |
+| LH 404 | FRA → LHR | B8 | <Badge tone="danger">Cancelled</Badge> |
+| AA 505 | LHR → DXB | D1 | <Badge tone="success">On Time</Badge> |
+| EK 606 | DXB → LHR | C2 | <Badge tone="warning">Delayed 15 min</Badge> |
+| VS 707 | LHR → JFK | A10 | <Badge tone="success">On Time</Badge> |
+</Tabs>
+<Tab title="Delayed Only">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| BA 303 | LHR → CDG | A3 | <Badge tone="warning">Delayed 22 min</Badge> |
+| EK 606 | DXB → LHR | C2 | <Badge tone="warning">Delayed 15 min</Badge> |
+<Button ask="Show me all delayed flights with ETAs">View all delays</Button>
+</Tabs>
+</Tabs>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | Old Gate | New Gate |
+|---|---|---|---|
+| 14:15 | AA 101 | B10 | B12 |
+| 14:05 | BA 303 | A5 | A3 |
+<Button ask="Show all gate changes today">View all changes</Button>
+</Card>
+
+<Card title="Crews Available for Reassignment">
+| Crew ID | Role | Base | Hours Left |
+|---|---|---|---|
+| CRW‑421 | Captain | LHR | 6 h |
+| CRW‑318 | First Officer | LHR | 8 h |
+| CRW‑209 | Cabin Lead | LHR | 5 h |
+| CRW‑112 | Flight Attendant | LHR | 7 h |
+<Button ask="Assign a crew to a flight">Assign crew</Button>
+</Card>
+
+<Card title="Weather Advisories at Hub (LHR)">
+<Callout tone="warning" title="Advisory in effect">
+<strong>Low visibility</strong> expected 16:00–19:00 UTC. Wind shear possible on runways 27L/27R. Expect holding delays of 15–30 min.
+</Callout>
+<Button ask="What weather is forecast for the next 12 hours?">View full advisory</Button>
+</Card>
+
+<Card title="Connections at Risk of Being Missed">
+| Passenger | From Flight | To Flight | Connection Time | Risk |
+|---|---|---|---|---|
+| J. Smith | BA 303 (delayed) | AA 202 LHR→JFK | 35 min | <Badge tone="danger">High</Badge> |
+| L. Chen | EK 606 (delayed) | AA 505 LHR→DXB | 40 min | <Badge tone="warning">Medium</Badge> |
+| M. Patel | AA 101 (on time) | BA 303 LHR→CDG | 25 min | <Badge tone="danger">High</Badge> |
+<Button ask="Rebook affected passengers">Rebook passengers</Button>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook">
+<Input label="Passenger Name" placeholder="e.g. J. Smith" hint="Or booking reference" />
+<Select label="Reason" options="Missed connection | Cancellation | Delay" placeholder="Select reason" />
+<Input label="New Flight Number" placeholder="e.g. AA 203" />
+<Button>Find alternatives</Button>
+<Button variant="secondary">Confirm rebooking</Button>
+</Form>
+</Card>
+
+<Card title="Look at a Different Hub">
+<Select label="Select hub" options="LHR (London Heathrow) | JFK (New York Kennedy) | DXB (Dubai) | CDG (Paris Charles de Gaulle) | FRA (Frankfurt)" placeholder="Choose a hub" />
+<Button ask="Switch to JFK hub view">Switch hub</Button>
+</Card>
+
+<Card title="Cancellations Today">
+| Flight | Route | Time | Reason |
+|---|---|---|---|
+| LH 404 | FRA → LHR | 13:45 | Crew shortage |
+| BA 808 | LHR → MAD | 10:20 | Technical issue |
+| VS 909 | LHR → BOS | 08:15 | Weather |
+| AA 110 | LHR → ORD | 06:30 | Crew shortage |
+<Button ask="Show details for a cancelled flight">View details</Button>
+</Card>
+
+<Card title="Average Turnaround Time">
+<Chart type="bar" x="Aircraft" y="Minutes">
+| Aircraft | Turnaround (min) |
+|---|---|
+| A320 (G‑ABCD) | 38 |
+| B787 (G‑EFGH) | 45 |
+| A380 (G‑IJKL) | 52 |
+| B777 (G‑MNOP) | 42 |
+</Chart>
+<Stat label="Fleet Average" value="42 min" note="Target: 35 min" tone="warning" />
+<Button ask="How can we improve turnaround time?">Improve turnaround</Button>
+</Card>
+
+<FollowUps>
+- Show me the full delay report
+- Which flights are boarding now?
+- List all stand‑by crew
+- Compare today's OTP to last week
+</FollowUps>

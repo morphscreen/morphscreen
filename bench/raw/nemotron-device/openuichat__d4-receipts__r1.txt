@@ -1,0 +1,44 @@
+root = Card([header, claimForm, totalSection, submitButtons])
+header = CardHeader("Expense Claim", "Capture receipts, categorize expenses, and submit for reimbursement")
+claimForm = Form("expense-claim", formButtons, [fcExpenses, fcNotes])
+formButtons = Buttons([btnSubmit, btnSaveDraft], "row")
+btnSubmit = Button("Submit Claim", { type: "continue_conversation", context: "Submit this expense claim for approval" }, "primary")
+btnSaveDraft = Button("Save as Draft", { type: "continue_conversation", context: "Save this expense claim as a draft" }, "secondary")
+fcExpenses = FormControl("Expense Line Items", expensesTable, "Add each expense with its receipt. Use the camera icon to photograph paper receipts or upload PDF invoices.")
+expensesTable = EditableTable("expense-items", expenseColumns, expenseData)
+expenseColumns = [
+  { type: "date-single", key: "date", header: "Date", width: 120 },
+  { type: "select", key: "category", header: "Category", width: 160, options: categoryOptions },
+  { type: "text", key: "description", header: "Description", width: 200 },
+  { type: "number", key: "amount", header: "Amount", width: 100 },
+  { type: "url", key: "receipt", header: "Receipt (Photo/PDF)", width: 200 }
+]
+categoryOptions = [
+  { value: "meals", label: "Meals & Entertainment" },
+  { value: "travel", label: "Travel & Transport" },
+  { value: "lodging", label: "Lodging" },
+  { value: "office", label: "Office Supplies" },
+  { value: "software", label: "Software & Subscriptions" },
+  { value: "training", label: "Training & Development" },
+  { value: "client", label: "Client Gifts" },
+  { value: "other", label: "Other" }
+]
+expenseData = [
+  { id: "exp-1", values: ["2026-01-15", "meals", "Team lunch - project kickoff", 84.50, ""] },
+  { id: "exp-2", values: ["2026-01-16", "travel", "Taxi to client site", 28.00, ""] },
+  { id: "exp-3", values: ["2026-01-17", "lodging", "Hotel - 2 nights conference", 312.00, ""] },
+  { id: "exp-4", values: ["2026-01-18", "office", "Monitor stand and cables", 67.99, ""] }
+]
+fcNotes = FormControl("Additional Notes", notesArea, "Any context for the approver (project codes, client names, etc.)")
+notesArea = TextArea("notes", "e.g. Project Alpha - client meeting expenses", 3)
+totalSection = EntityList(totalRows, "default", totalHeader, totalFooter)
+totalRows = [
+  { left: "Subtotal", right: "$492.49", rightVariant: "number" },
+  { left: "Tax (8%)", right: "$39.40", rightVariant: "number" },
+  { left: "Less Advances", right: "$0.00", rightVariant: "number" }
+]
+totalHeader = { left: "Claim Summary", right: "", rightVariant: "text" }
+totalFooter = { left: "Total Claim", right: "$531.89", rightVariant: "number" }
+submitButtons = Buttons([btnSubmitClaim, btnCancel], "row")
+btnSubmitClaim = Button("Submit Claim", { type: "continue_conversation", context: "Submit this expense claim for approval" }, "primary", "normal", "large")
+btnCancel = Button("Cancel", { type: "continue_conversation", context: "Cancel and discard this expense claim" }, "tertiary", "normal", "large")

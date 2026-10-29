@@ -1,0 +1,128 @@
+# ATL Hub Operations Desk
+
+<Select label="Select Hub" options="ATL - Atlanta | ORD - Chicago | DFW - Dallas | DEN - Denver | LAX - Los Angeles | JFK - New York" value="ATL - Atlanta" name="hub-select" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Gauge label="On-Time %" value="82" min="0" max="100" unit="%" tone="warning" />
+<Stat label="Total Flights" value="487" />
+<Stat label="On Time" value="400" tone="success" />
+<Stat label="Delayed" value="68" tone="warning" />
+<Stat label="Cancelled" value="19" tone="danger" />
+</Card>
+
+<Card title="Average Passenger Load">
+<Gauge label="Load Factor" value="87" min="0" max="100" unit="%" tone="info" />
+<Stat label="Avg Pax/Flight" value="156" />
+<Stat label="Total Pax Today" value="75,972" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Gauge label="Turnaround" value="42" min="0" max="60" unit="min" tone="success" />
+<Stat label="Target" value="45 min" />
+<Stat label="Best Today" value="28 min" tone="success" />
+<Stat label="Worst Today" value="67 min" tone="danger" />
+</Card>
+</Columns>
+
+<Card title="Flights Today">
+<Chart type="bar" x="Flight" y="Status">
+| Flight | Route | Gate | Status | Delay |
+|---|---|---|---|---|
+| DL 1243 | ATL→LAX | A12 | On Time | 0 |
+| DL 892 | ATL→JFK | B4 | On Time | 0 |
+| DL 2156 | ATL→ORD | C18 | Delayed | 45 |
+| DL 441 | ATL→MIA | D7 | On Time | 0 |
+| DL 3098 | ATL→SEA | A22 | Delayed | 32 |
+| DL 1776 | ATL→BOS | B11 | Cancelled | - |
+| DL 555 | ATL→SFO | C3 | On Time | 0 |
+| DL 2889 | ATL→DEN | D14 | Delayed | 28 |
+| DL 612 | ATL→LAS | A8 | On Time | 0 |
+| DL 934 | ATL→PHX | B19 | Delayed | 55 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Delayed Flights Requiring Attention">
+<Callout tone="warning" title="DL 2156 ATL→ORD">Gate C18 • Delayed 45 min • Crew timing issue • 12 connections at risk</Callout>
+<Callout tone="warning" title="DL 3098 ATL→SEA">Gate A22 • Delayed 32 min • Weather at SEA • 8 connections at risk</Callout>
+<Callout tone="danger" title="DL 2889 ATL→DEN">Gate D14 • Delayed 28 min • Mechanical • 15 connections at risk</Callout>
+<Callout tone="danger" title="DL 934 ATL→PHX">Gate B19 • Delayed 55 min • ATC hold • 6 connections at risk</Callout>
+<Callout tone="info" title="DL 1776 ATL→BOS">Cancelled • Rebooked 142 pax • 8 still need assistance</Callout>
+</Card>
+
+<Card title="Recent Gate Changes">
+<Timeline title="Gate Changes">
+- 10:15: DL 441 ATL→MIA moved from D12 → D7 (equipment swap)
+- 10:08: DL 555 ATL→SFO moved from C9 → C3 (gate conflict)
+- 09:52: DL 612 ATL→LAS moved from A15 → A8 (early arrival)
+- 09:41: DL 1243 ATL→LAX moved from A18 → A12 (maintenance)
+- 09:30: DL 892 ATL→JFK moved from B1 → B4 (weather diversion)
+</Timeline>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+<Chart type="bar" x="Crew" y="Hours Left">
+| Crew | Position | Hours Left | Current Assignment | Status |
+|---|---|---|---|---|
+| Crew 7 | Captain/FO | 6.5 | Reserve | Available |
+| Crew 12 | FA ×4 | 8.0 | Reserve | Available |
+| Crew 3 | Captain/FO | 4.2 | DL 441 (arr 10:45) | Releasing soon |
+| Crew 19 | FA ×3 | 5.5 | DL 555 (arr 11:10) | Releasing soon |
+| Crew 2 | Captain/FO | 7.0 | Reserve | Available |
+</Chart>
+</Card>
+
+<Card title="Weather Advisories - ATL">
+<Callout tone="warning" title="Convective SIGMET Valid Until 14:00Z">Scattered thunderstorms moving NE across terminal area. Expect 20-30 min departure delays. Wind shear reported on final RWY 27R.</Callout>
+<Callout tone="info" title="METAR 10:53Z">ATL 101553Z 26012G22KT 8SM TSRA SCT025 BKN040 OVC060 24/20 A3001 RMK AO2 LTG DSNT NE</Callout>
+<Callout tone="neutral" title="TAF 10:00Z">ATL 1012/1118 26015G25KT P6SM SCT030 BKN050 PROB30 1214/1218 3SM TSRA BKN020CB</Callout>
+</Card>
+</Columns>
+
+<Card title="Connections at Risk of Being Missed">
+<Chart type="bar" x="Connection" y="Risk">
+| Inbound | Outbound | Pax | Min Connect | Status | Action |
+|---|---|---|---|---|---|
+| DL 2156 (ORD) | DL 1882 (ORD→MSP) | 12 | 35 | High Risk | Hold DL 1882 15 min |
+| DL 3098 (SEA) | DL 2445 (SEA→PDX) | 8 | 40 | Medium | Monitor |
+| DL 2889 (DEN) | DL 911 (DEN→SLC) | 15 | 30 | Critical | Rebook to DL 915 |
+| DL 2889 (DEN) | DL 337 (DEN→BOI) | 7 | 45 | Medium | Monitor |
+| DL 934 (PHX) | DL 560 (PHX→TUS) | 6 | 50 | Low | Auto-rebook |
+| DL 1776 (BOS) | DL 888 (BOS→MHT) | 8 | - | Cancelled | Rebook all |
+</Chart>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Columns>
+<Input label="Passenger Name" placeholder="Search by name or PNR" name="pax-search" />
+<Select label="Original Flight" options="DL 1776 ATL→BOS | DL 2156 ATL→ORD | DL 2889 ATL→DEN | DL 3098 ATL→SEA | DL 934 ATL→PHX" name="orig-flight" placeholder="Select delayed/cancelled flight" />
+</Columns>
+<Columns>
+<Select label="New Flight" options="DL 1782 ATL→BOS (12:30) | DL 1790 ATL→BOS (14:15) | DL 2160 ATL→ORD (13:00) | DL 2895 ATL→DEN (13:45) | DL 3102 ATL→SEA (14:30) | DL 940 ATL→PHX (15:00)" name="new-flight" placeholder="Select available alternative" />
+<Select label="Cabin" options="Main Cabin | Comfort+ | First Class" name="cabin" value="Main Cabin" />
+</Columns>
+<Columns>
+<Checkboxes label="Options" options="Send notification to passenger | Print new boarding pass | Check bags through | Meal voucher (delay >3hr)" name="rebook-options" value="Send notification to passenger | Print new boarding pass" />
+<Input label="Notes" placeholder="Special handling instructions" name="notes" />
+</Columns>
+<Button>Rebook Passenger</Button>
+<Button variant="secondary">Bulk Rebook Flight</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations Today">
+<Chart type="bar" x="Flight" y="Impact">
+| Flight | Route | Reason | Pax Affected | Rebooked | Pending |
+|---|---|---|---|---|---|
+| DL 1776 | ATL→BOS | Crew timeout | 150 | 142 | 8 |
+| DL 445 | ATL→TPA | Mechanical | 178 | 165 | 13 |
+| DL 221 | ATL→MSY | Weather | 143 | 128 | 15 |
+| DL 889 | ATL→RSW | ATC | 162 | 155 | 7 |
+| DL 334 | ATL→CHS | Mechanical | 76 | 71 | 5 |
+</Chart>
+</Card>

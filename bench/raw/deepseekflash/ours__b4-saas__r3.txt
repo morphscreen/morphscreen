@@ -1,0 +1,118 @@
+<Card title="Admin overview" subtitle="All plans · USD · Real-time data">
+<Select label="Reporting period" options="Last 30 days | Last 90 days | Last 12 months | This quarter" name="period" value="Last 90 days" />
+
+<Columns>
+<Stat label="MRR" value="$128,400" change="+6.2% vs last month" />
+<Stat label="ARR" value="$1,540,800" change="+18.4% YoY" />
+<Stat label="Churn this month" value="2.1%" change="−0.4 pts vs last month" />
+<Stat label="Current NPS" value="42" change="+5 vs last quarter" />
+</Columns>
+</Card>
+
+<Card title="New signups — last 90 days" subtitle="Weekly new accounts · 1,770 total">
+<Chart type="area" title="New signups over the last 90 days" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 96 |
+| W2 | 88 |
+| W3 | 112 |
+| W4 | 124 |
+| W5 | 98 |
+| W6 | 131 |
+| W7 | 145 |
+| W8 | 137 |
+| W9 | 152 |
+| W10 | 166 |
+| W11 | 158 |
+| W12 | 174 |
+| W13 | 189 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers split by plan" subtitle="Across all 661 accounts">
+<Chart type="pie" title="Customers by plan" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Enterprise | 165 |
+| Growth | 410 |
+| Startup | 86 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization" subtitle="Company-wide · last 30 days">
+<Progress value="78" max="100" label="Overall seat utilization: 78%" />
+
+| Metric | Value |
+|---|---|
+| Total seats purchased | 4,850 |
+| Active seats | 3,783 |
+| Idle seats | 1,067 |
+| Enterprise | 82% utilized |
+| Growth | 74% utilized |
+| Startup | 55% utilized |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Ten largest customers" subtitle="Ranked by monthly spend">
+| # | Customer | Seats | Monthly spend |
+|---|---|---|---|
+| 1 | Northwind Trading | 640 | $142,000 |
+| 2 | Contoso Labs | 512 | $98,500 |
+| 3 | Fabrikam Inc | 480 | $92,000 |
+| 4 | Adventure Works | 350 | $74,200 |
+| 5 | Tailwind Traders | 322 | $61,800 |
+| 6 | Litware Digital | 289 | $55,400 |
+| 7 | Proseware Systems | 251 | $49,900 |
+| 8 | Wide World Importers | 212 | $40,100 |
+| 9 | Woodgrove Bank | 198 | $38,700 |
+| 10 | Margie's Travel | 174 | $33,200 |
+</Card>
+
+<Card title="Accounts at risk" subtitle="Flagged by usage & renewal signals">
+- **Contoso Labs** — Renews in 18 days; no admin login in 30+ days; 620 of 640 seats unused.
+- **Fabrikam Inc** — Support tickets up 3× and sentiment negative; usage down 41% in the last 14 days.
+- **Litware Digital** — Only 2 of 289 seats active; expansion champion left the company.
+- **Wide World Importers** — POC ended 12 days ago; no renewal owner assigned; contract expires in 26 days.
+- **Woodgrove Bank** — Security review blocked for 2 weeks; 40 new seats waiting to onboard.
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Failed payments" subtitle="Requires action · 4 invoices">
+<Callout tone="warning" title="Action needed">$12,390 in payments failed this billing cycle. Retry each invoice below.</Callout>
+
+**Initech** — $4,850 · due May 10 · card declined
+<Button>Retry payment</Button>
+
+**Globex** — $2,900 · due May 8 · insufficient funds
+<Button>Retry payment</Button>
+
+**Umbrella Corp** — $3,400 · due May 6 · bank rejected ACH
+<Button>Retry payment</Button>
+
+**Acme Industries** — $1,240 · due May 12 · card expired
+<Button>Retry payment</Button>
+</Card>
+
+<Card title="New feature adoption" subtitle="% of active accounts that used the feature at least once">
+**AI Copilot** · released Mar 18 (v2.4)
+<Progress value="34" max="100" label="AI Copilot — 34% adoption" />
+
+**Usage Alerts** · released Apr 2 (v2.5)
+<Progress value="18" max="100" label="Usage Alerts — 18% adoption" />
+
+**SSO Enforcement** · released Apr 2 (v2.5)
+<Progress value="41" max="100" label="SSO Enforcement — 41% adoption" />
+</Card>
+</Columns>
+
+<Card title="Invite another admin" subtitle="They'll receive an email with a secure sign-in link">
+<Form name="invite-admin">
+<Input label="Work email" type="email" placeholder="colleague@company.com" required="true" />
+<Select label="Role" options="Admin (full access) | Billing admin | Read-only" name="role" value="Admin (full access)" />
+<TextArea label="Personal note (optional)" placeholder="Briefly say why you're inviting them" rows="3" />
+<Button>Send invite</Button>
+</Form>
+</Card>

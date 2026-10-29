@@ -1,0 +1,64 @@
+# Low-Inventory Warning
+
+<Badge tone="warning">3 items need attention</Badge>
+
+<Callout tone="info" title="Reorder threshold">Items at or below **10 units** trigger this warning. Update the threshold below if needed.</Callout>
+
+<Card title="Search inventory">
+<Form name="inventory-search">
+<Input label="Search items" name="search" placeholder="Search by name or SKU…" hint="Try “olive oil” or “SKU-104”" />
+<Button variant="primary">Search</Button>
+</Form>
+</Card>
+
+<Card title="Items running low">
+<Columns>
+<Product name="Olive Oil 500ml" price="$6.50" was="$7.00" image="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400" rating={4.5} count={123} badge="Low stock">
+Only 6 units left. Reorder to avoid running out.
+<Button variant="primary" ask="Reorder Olive Oil 500ml (6 units)">Reorder 6 units</Button>
+<Button variant="secondary" ask="Tell me more about Olive Oil 500ml">Details</Button>
+</Product>
+<Product name="Basmati Rice 1kg" price="$4.20" image="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" rating={4.8} count={89} badge="Low stock">
+Only 3 units left. Reorder to avoid running out.
+<Button variant="primary" ask="Reorder Basmati Rice 1kg (3 units)">Reorder 3 units</Button>
+<Button variant="secondary" ask="Tell me more about Basmati Rice 1kg">Details</Button>
+</Product>
+<Product name="Ground Cinnamon 100g" price="$3.80" image="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400" rating={4.2} count={67} badge="Low stock">
+Only 8 units left. Reorder to avoid running out.
+<Button variant="primary" ask="Reorder Ground Cinnamon 100g (8 units)">Reorder 8 units</Button>
+<Button variant="secondary" ask="Tell me more about Ground Cinnamon 100g">Details</Button>
+</Product>
+</Columns>
+</Card>
+
+<Card title="Inventory status">
+<Chart type="bar" title="Units remaining vs threshold" x="Item" y="Units">
+| Item | Remaining | Threshold |
+|---|---|---|
+| Olive Oil 500ml | 6 | 10 |
+| Basmati Rice 1kg | 3 | 10 |
+| Ground Cinnamon 100g | 8 | 10 |
+</Chart>
+</Card>
+
+<Card title="Set reorder threshold">
+<Form name="threshold">
+<Slider label="Reorder threshold" min={0} max={50} step={1} value={10} name="threshold" unit=" units" />
+<Button>Update threshold</Button>
+</Form>
+</Card>
+
+<Card title="How reordering works">
+<Steps>
+<Step title="Check stock" status="done" subtitle="You see items at or below the threshold." />
+<Step title="Tap Reorder" status="current" subtitle="Choose the quantity to reorder for each item." />
+<Step title="Confirm order" status="todo" subtitle="Your supplier receives the order automatically." />
+</Steps>
+</Card>
+
+<FollowUps>
+- Show me items that are out of stock entirely
+- What’s the total cost to reorder all low items?
+- Adjust the threshold to 5 units
+- Show recent sales for these items
+</FollowUps>

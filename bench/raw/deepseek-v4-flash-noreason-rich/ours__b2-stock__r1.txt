@@ -1,0 +1,93 @@
+# Low Inventory Warning
+
+<Callout tone="warning" title="Action needed">
+Below are items at or under their reorder threshold. Reorder before stock runs out to avoid missed sales.
+</Callout>
+
+<Card title="Inventory Alerts" subtitle="Items at or below threshold">
+<Columns>
+<Stat label="Low stock items" value="6" note="2 critical" tone="warning" icon="warning" />
+<Stat label="Units to reorder" value="142" note="Suggested total" tone="info" icon="shopping-cart" />
+<Stat label="Threshold" value="10 units" note="Per item" tone="neutral" icon="sliders" />
+</Columns>
+</Card>
+
+<Card title="Search items">
+<Form name="search-low-stock">
+<Input label="Search inventory" name="search" type="search" placeholder="Search by SKU or name" hint="Filter results as you type" />
+<Button variant="primary">Search</Button>
+</Form>
+</Card>
+
+<Card title="Low stock items" subtitle="6 items need attention — threshold is 10 units per item">
+| Item | SKU | Remaining | Status | Suggested reorder |
+|---|---|---|---|---|
+| Organic Coffee Beans | COF-001 | 4 | <Badge tone="danger">Critical</Badge> | 20 units |
+| Almond Milk 1L | MLK-002 | 7 | <Badge tone="warning">Low</Badge> | 15 units |
+| Sourdough Bread | BRD-003 | 9 | <Badge tone="warning">Low</Badge> | 12 units |
+| Free-Range Eggs (doz) | EGG-004 | 10 | <Badge tone="warning">At threshold</Badge> | 10 units |
+| Greek Yogurt 500g | YOG-005 | 3 | <Badge tone="danger">Critical</Badge> | 25 units |
+| Honey 250g | HNY-006 | 8 | <Badge tone="warning">Low</Badge> | 18 units |
+
+<Details title="How the threshold works" open="false">
+The warning triggers when remaining units drop to **10 or fewer**. Items with 5 or fewer are marked **critical** and should be reordered today. Suggested reorder quantities are based on your average weekly sales to cover two weeks.
+</Details>
+</Card>
+
+<Card title="Reorder actions">
+<Columns>
+<Card title="Organic Coffee Beans" subtitle="SKU COF-001">
+<Stat label="Remaining" value="4 units" tone="danger" icon="box" />
+<Progress value="4" max="10" label="Stock level" tone="danger" />
+<Button variant="primary" label="Reorder 20 units">Reorder 20 units</Button>
+<Button variant="secondary" label="Reorder 10 units">Reorder 10 units</Button>
+</Card>
+
+<Card title="Almond Milk 1L" subtitle="SKU MLK-002">
+<Stat label="Remaining" value="7 units" tone="warning" icon="box" />
+<Progress value="7" max="10" label="Stock level" tone="warning" />
+<Button variant="primary" label="Reorder 15 units">Reorder 15 units</Button>
+<Button variant="secondary" label="Reorder 10 units">Reorder 10 units</Button>
+</Card>
+
+<Card title="Sourdough Bread" subtitle="SKU BRD-003">
+<Stat label="Remaining" value="9 units" tone="warning" icon="box" />
+<Progress value="9" max="10" label="Stock level" tone="warning" />
+<Button variant="primary" label="Reorder 12 units">Reorder 12 units</Button>
+<Button variant="secondary" label="Reorder 6 units">Reorder 6 units</Button>
+</Card>
+
+<Card title="Free-Range Eggs" subtitle="SKU EGG-004">
+<Stat label="Remaining" value="10 units" tone="warning" icon="box" />
+<Progress value="10" max="10" label="Stock level" tone="warning" />
+<Button variant="primary" label="Reorder 10 units">Reorder 10 units</Button>
+<Button variant="secondary" label="Reorder 5 units">Reorder 5 units</Button>
+</Card>
+
+<Card title="Greek Yogurt 500g" subtitle="SKU YOG-005">
+<Stat label="Remaining" value="3 units" tone="danger" icon="box" />
+<Progress value="3" max="10" label="Stock level" tone="danger" />
+<Button variant="primary" label="Reorder 25 units">Reorder 25 units</Button>
+<Button variant="secondary" label="Reorder 15 units">Reorder 15 units</Button>
+</Card>
+
+<Card title="Honey 250g" subtitle="SKU HNY-006">
+<Stat label="Remaining" value="8 units" tone="warning" icon="box" />
+<Progress value="8" max="10" label="Stock level" tone="warning" />
+<Button variant="primary" label="Reorder 18 units">Reorder 18 units</Button>
+<Button variant="secondary" label="Reorder 10 units">Reorder 10 units</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Bulk actions">
+<Button variant="primary">Reorder all suggested quantities</Button>
+<Button variant="secondary">Export low stock list</Button>
+</Card>
+
+<FollowUps>
+- What is the total cost of reordering all suggested quantities?
+- Show items that are out of stock entirely
+- Adjust the low-stock threshold for all items
+- See reorder history for the last 30 days
+</FollowUps>

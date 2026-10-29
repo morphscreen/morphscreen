@@ -1,0 +1,249 @@
+# Emergency Response Coordination Center
+
+<Select label="Focus Zone" name="focus-zone" placeholder="All Zones" options="All Zones | Zone Alpha (Downtown) | Zone Bravo (Riverside) | Zone Charlie (Hillside) | Zone Delta (Industrial) | Zone Echo (Suburban)" />
+
+<Columns>
+<Card title="Overall Severity Summary">
+<Stat label="Critical Incidents" value="3" tone="danger" />
+<Stat label="High Severity" value="7" tone="warning" />
+<Stat label="Medium Severity" value="12" tone="info" />
+<Stat label="Low Severity" value="8" tone="success" />
+<Stat label="Total Active" value="30" tone="neutral" />
+</Card>
+
+<Card title="People Rescued & Casualties">
+<Stat label="Rescued" value="1,247" tone="success" change="+23 since last hour" />
+<Stat label="Injured" value="342" tone="warning" change="+12 since last hour" />
+<Stat label="Fatalities" value="18" tone="danger" change="+2 since last hour" />
+<Stat label="Missing" value="67" tone="info" change="-5 since last hour" />
+</Card>
+</Columns>
+
+<Card title="Active Incidents by Zone">
+<Chart type="bar" x="Zone" y="Incidents" title="Incidents by Zone and Severity">
+| Zone | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| Alpha | 1 | 2 | 3 | 2 |
+| Bravo | 1 | 1 | 4 | 1 |
+| Charlie | 0 | 2 | 2 | 2 |
+| Delta | 1 | 1 | 2 | 2 |
+| Echo | 0 | 1 | 1 | 1 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Vehicles Available">
+<Stat label="Ambulances" value="12 / 18" tone="warning" note="6 deployed" />
+<Stat label="Fire Trucks" value="8 / 12" tone="warning" note="4 deployed" />
+<Stat label="Rescue Boats" value="5 / 7" tone="info" note="2 deployed" />
+<Stat label="Helicopters" value="2 / 3" tone="info" note="1 deployed" />
+<Stat label="Transport Buses" value="15 / 20" tone="success" note="5 deployed" />
+<Stat label="Supply Trucks" value="10 / 14" tone="success" note="4 deployed" />
+</Card>
+
+<Card title="Personnel Available">
+<Stat label="EMTs/Paramedics" value="45 / 68" tone="warning" note="23 deployed" />
+<Stat label="Firefighters" value="38 / 52" tone="warning" note="14 deployed" />
+<Stat label="Search & Rescue" value="22 / 30" tone="info" note="8 deployed" />
+<Stat label="Police Officers" value="60 / 85" tone="info" note="25 deployed" />
+<Stat label="Volunteers" value="120 / 200" tone="success" note="80 deployed" />
+<Stat label="Coordination Staff" value="15 / 15" tone="success" note="All on duty" />
+</Card>
+
+<Card title="Supplies Available">
+<Stat label="Medical Kits" value="450" tone="success" />
+<Stat label="Water (liters)" value="12,000" tone="success" />
+<Stat label="Food Rations" value="8,500" tone="success" />
+<Stat label="Blankets" value="3,200" tone="success" />
+<Stat label="Generators" value="18 / 25" tone="warning" note="7 deployed" />
+<Stat label="Fuel (gallons)" value="4,500" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Shelters — Capacity & Occupancy">
+<Chart type="bar" x="Shelter" y="People" title="Shelter Occupancy vs Capacity">
+| Shelter | Capacity | Occupied | Available |
+|---|---|---|---|
+| Central High School | 500 | 423 | 77 |
+| Riverside Community Center | 300 | 287 | 13 |
+| Hillside Church | 200 | 156 | 44 |
+| Industrial Warehouse | 400 | 312 | 88 |
+| Suburban Elementary | 250 | 198 | 52 |
+| Downtown Convention Center | 800 | 645 | 155 |
+| Mobile Shelter Units | 150 | 89 | 61 |
+</Chart>
+</Card>
+
+<Card title="Evacuation Route Status">
+<Chart type="bar" x="Route" y="Status" title="Route Status (1=Open, 0.5=Partial, 0=Closed)">
+| Route | Status | Notes |
+|---|---|---|
+| Highway 101 North | 1 | Clear |
+| Highway 101 South | 0.5 | Debris partial block |
+| River Road | 0 | Flooded |
+| Hilltop Drive | 1 | Clear |
+| Industrial Blvd | 0.5 | Hazmat cleanup |
+| Suburban Loop | 1 | Clear |
+| Downtown Expressway | 0 | Bridge damage |
+| Coastal Highway | 0.5 | High winds |
+</Chart>
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+<Chart type="line" x="Time" y="Value" title="Temperature (°F) & Precipitation (%)">
+| Time | Temp (°F) | Precip (%) | Wind (mph) | Conditions |
+|---|---|---|---|---|
+| Now | 68 | 10 | 12 | Partly Cloudy |
+| +3 hrs | 65 | 15 | 15 | Cloudy |
+| +6 hrs | 62 | 35 | 18 | Light Rain |
+| +9 hrs | 59 | 60 | 22 | Rain |
+| +12 hrs | 57 | 80 | 25 | Heavy Rain |
+| +15 hrs | 55 | 90 | 28 | Thunderstorms |
+| +18 hrs | 54 | 70 | 24 | Rain |
+| +21 hrs | 56 | 40 | 20 | Light Rain |
+| +24 hrs | 58 | 20 | 15 | Cloudy |
+| +27 hrs | 61 | 10 | 12 | Partly Cloudy |
+| +30 hrs | 64 | 5 | 10 | Mostly Sunny |
+| +33 hrs | 67 | 5 | 8 | Sunny |
+| +36 hrs | 70 | 0 | 6 | Clear |
+| +39 hrs | 72 | 0 | 5 | Clear |
+| +42 hrs | 73 | 0 | 5 | Clear |
+| +45 hrs | 74 | 0 | 6 | Clear |
+| +48 hrs | 75 | 0 | 7 | Clear |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Volunteers On Duty">
+| Name | Role | Assignment | Shift End |
+|---|---|---|---|
+| Maria Santos | Medical | Shelter Alpha - Triage | 06:00 |
+| James Chen | Logistics | Supply Depot Bravo | 06:00 |
+| Aisha Patel | Communications | Comm Center | 06:00 |
+| Robert Kim | Search & Rescue | Zone Charlie | 06:00 |
+| Lisa Thompson | Shelter Ops | Riverside Center | 14:00 |
+| David Rodriguez | Transport | Evacuation Route 3 | 14:00 |
+| Karen Wilson | Admin | Aid Request Processing | 14:00 |
+| Michael Brown | Engineering | Road Clearance Delta | 22:00 |
+</Card>
+
+<Card title="Donations Received">
+<Stat label="Monetary" value="$247,500" tone="success" />
+<Stat label="Water (pallets)" value="85" tone="success" />
+<Stat label="Food (pallets)" value="62" tone="success" />
+<Stat label="Medical Supplies (kits)" value="340" tone="success" />
+<Stat label="Clothing (boxes)" value="210" tone="info" />
+<Stat label="Volunteer Hours Pledged" value="1,850" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Aid Requests Awaiting Action">
+| ID | Zone | Type | Priority | Requested | Status |
+|---|---|---|---|---|---|
+| REQ-047 | Alpha | Medical evacuation | Critical | 2 hrs ago | Pending |
+| REQ-052 | Bravo | Water purification | High | 1 hr ago | Pending |
+| REQ-058 | Charlie | Structural assessment | High | 45 min ago | Assigned |
+| REQ-061 | Delta | Hazmat containment | Critical | 30 min ago | Pending |
+| REQ-063 | Echo | Shelter overflow | Medium | 20 min ago | Pending |
+| REQ-065 | Alpha | Generator fuel | High | 15 min ago | Pending |
+| REQ-067 | Bravo | Search team | Medium | 10 min ago | Assigned |
+| REQ-069 | Charlie | Road clearance | High | 5 min ago | Pending |
+</Card>
+
+<Columns>
+<Card title="Communication Channels">
+| Channel | Status | Last Check | Notes |
+|---|---|---|---|
+| Primary Radio (VHF) | Up | 2 min ago | Clear |
+| Secondary Radio (UHF) | Up | 2 min ago | Clear |
+| Satellite Phone | Up | 5 min ago | Good signal |
+| Cellular Network | Degraded | 3 min ago | 60% capacity |
+| Internet (Fiber) | Down | 15 min ago | Line cut |
+| Mesh Network | Up | 1 min ago | 12 nodes |
+| Emergency Alert System | Up | 1 min ago | Active |
+| Ham Radio Relay | Up | 3 min ago | 3 operators |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Segment | Reason | Est. Reopen |
+|---|---|---|---|
+| River Road | Full length | Flooding | Unknown |
+| Downtown Expressway | Bridge sector | Structural damage | 72+ hrs |
+| Coastal Highway | Mile 12-18 | Landslide | 24 hrs |
+| Industrial Blvd | Factory zone | Hazmat spill | 12 hrs |
+| Highway 101 South | Exit 4-7 | Debris | 6 hrs |
+| Hilltop Drive | Summit section | Rockfall risk | 48 hrs |
+</Card>
+</Columns>
+
+<Card title="Nearby Hospitals — Free Beds">
+<Chart type="bar" x="Hospital" y="Beds" title="Available Beds by Type">
+| Hospital | ICU | Med/Surg | ER | Burn | Pediatric |
+|---|---|---|---|---|---|
+| Central Medical | 3 | 12 | 8 | 0 | 5 |
+| Riverside General | 2 | 18 | 6 | 1 | 3 |
+| Hillside Clinic | 0 | 8 | 4 | 0 | 2 |
+| University Hospital | 5 | 25 | 12 | 3 | 8 |
+| Veterans Memorial | 1 | 15 | 5 | 0 | 0 |
+| Children's Hospital | 2 | 0 | 3 | 0 | 15 |
+</Chart>
+</Card>
+
+<Card title="Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due |
+|---|---|---|---|---|---|
+| TASK-201 | Establish comms relay at Hilltop | Team Radio-3 | Charlie | Critical | 30 min |
+| TASK-202 | Deliver generators to Shelter Bravo | Logistics-7 | Bravo | High | 1 hr |
+| TASK-203 | Clear Route 101 South debris | Engineering-2 | Alpha | High | 2 hrs |
+| TASK-204 | Set up triage at Convention Center | Medical-4 | Alpha | Critical | 45 min |
+| TASK-205 | Distribute water to Zone Echo | Logistics-9 | Echo | Medium | 3 hrs |
+| TASK-206 | Inspect Delta bridge damage | Engineering-5 | Delta | Critical | 4 hrs |
+| TASK-207 | Register new volunteers | Admin-3 | All | Low | 6 hrs |
+| TASK-208 | Coordinate helo medevac | Air Ops-1 | Charlie | Critical | ASAP |
+</Card>
+
+<Columns>
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource Type" name="resource-type" placeholder="Select type" options="Ambulances | Fire Trucks | Rescue Boats | Helicopters | Transport Buses | Supply Trucks | EMTs/Paramedics | Firefighters | Search & Rescue | Police Officers | Volunteers | Medical Kits | Water (pallets) | Food Rations | Blankets | Generators | Fuel" required="true" />
+<Input label="Quantity" name="quantity" type="number" placeholder="Enter quantity" min="1" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Critical | High | Medium | Low" required="true" />
+<TextArea label="Justification / Details" name="justification" placeholder="Explain the need and deployment location" rows="3" required="true" />
+<Button>Submit Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="channels" placeholder="Select channels" options="All Channels | Primary Radio (VHF) | Secondary Radio (UHF) | Satellite Phone | Cellular Network | Mesh Network | Emergency Alert System | Ham Radio Relay" required="true" />
+<Radio label="Audience" name="audience" options="All Personnel | Field Teams Only | Shelter Staff | Command Staff | Volunteers | Public Alert" value="All Personnel" required="true" />
+<TextArea label="Message" name="message" placeholder="Enter broadcast message" rows="4" required="true" hint="Keep concise. Include zone references if applicable." />
+<Button>Send Broadcast</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="File Situation Report">
+<Form name="situation-report">
+<Select label="Report Type" name="report-type" placeholder="Select type" options="Periodic Update (Hourly) | Incident-Specific | Resource Status | Casualty Report | Infrastructure Damage | Weather Impact | All Clear / Stand Down" required="true" />
+<Select label="Zone" name="report-zone" placeholder="Select zone" options="All Zones | Zone Alpha (Downtown) | Zone Bravo (Riverside) | Zone Charlie (Hillside) | Zone Delta (Industrial) | Zone Echo (Suburban)" required="true" />
+<Input label="Prepared By" name="prepared-by" placeholder="Your name / callsign" required="true" />
+<TextArea label="Situation Summary" name="summary" placeholder="Current situation, changes since last report, key developments" rows="4" required="true" />
+<TextArea label="Actions Taken" name="actions" placeholder="Response actions, deployments, decisions made" rows="3" required="true" />
+<TextArea label="Resource Needs" name="needs" placeholder="Critical resource gaps, requested support" rows="3" />
+<TextArea label="Projected Outlook" name="outlook" placeholder="Expected developments, concerns, next 6-12 hours" rows="3" />
+<Button>Submit Report</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Request mutual aid from neighboring jurisdictions
+- Escalate to state/federal emergency management
+- Initiate damage assessment teams deployment
+- Coordinate media briefing schedule
+- Plan for 72-hour sustained operations
+</FollowUps>

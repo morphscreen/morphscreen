@@ -1,0 +1,95 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">Data updated 2 minutes ago · <span style="font-family: monospace">2025-01-15 14:32 UTC</span></Callout>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-time this month" value="92.4%" change="+1.2% vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg cost / shipment" value="$1,847" change="-$83 vs last month" tone="neutral" icon="currency-usd" />
+<Stat label="Active shipments" value="147" change="+12 vs yesterday" tone="info" icon="truck" />
+<Stat label="Flagged for review" value="8" change="+3 vs yesterday" tone="warning" icon="flag" />
+</Columns>
+</Card>
+
+<Card title="Search Shipments">
+<Form name="route-search">
+<Columns>
+<Input label="Search by route" name="route" placeholder="e.g. LAX → JFK, Shanghai → Rotterdam" hint="Type origin, destination, or carrier" />
+<Select label="Status filter" name="status" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" />
+<Select label="Carrier" name="carrier" placeholder="All carriers" options="All | Maersk | MSC | CMA CGM | Hapag-Lloyd | COSCO | Evergreen" />
+</Columns>
+</Form>
+</Card>
+
+<Card title="Shipments in Transit">
+<Table>
+| Shipment | Origin → Destination | Carrier | ETA | Status | Cost | Flag |
+|---|---|---|---|---|---|---|
+| MSK-2025-004821 | Shanghai → Los Angeles | Maersk | 2025-01-18 06:00 | <Badge tone="success">On Time</Badge> | $2,140 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| MSC-2025-011934 | Ningbo → Long Beach | MSC | 2025-01-19 14:30 | <Badge tone="success">On Time</Badge> | $1,980 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| CMA-2025-008756 | Singapore → Rotterdam | CMA CGM | 2025-01-17 22:00 | <Badge tone="danger">Delayed</Badge> | $2,890 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| HLC-2025-015672 | Busan → Savannah | Hapag-Lloyd | 2025-01-20 08:00 | <Badge tone="success">On Time</Badge> | $1,750 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| COSCO-2025-009234 | Qingdao → New York | COSCO | 2025-01-16 18:00 | <Badge tone="warning">At Risk</Badge> | $2,340 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| EMC-2025-012890 | Kaohsiung → Houston | Evergreen | 2025-01-21 12:00 | <Badge tone="success">On Time</Badge> | $1,680 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| MSK-2025-004822 | Shenzhen → Oakland | Maersk | 2025-01-18 03:00 | <Badge tone="danger">Delayed</Badge> | $2,010 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+| MSC-2025-011935 | Xiamen → Tacoma | MSC | 2025-01-19 20:00 | <Badge tone="success">On Time</Badge> | $1,890 | <Button variant="tertiary" size="small" icon="flag">Flag</Button> |
+</Table>
+</Card>
+
+<Callout tone="danger" title="Delayed Shipments Requiring Attention">
+<Columns>
+<Card title="CMA-2025-008756" subtitle="Singapore → Rotterdam · CMA CGM">
+<strong>Original ETA:</strong> 2025-01-15 10:00<br>
+<strong>Revised ETA:</strong> 2025-01-17 22:00<br>
+<strong>Delay:</strong> 2 days 12 hrs · Port congestion at Rotterdam
+</Card>
+<Card title="MSK-2025-004822" subtitle="Shenzhen → Oakland · Maersk">
+<strong>Original ETA:</strong> 2025-01-16 14:00<br>
+<strong>Revised ETA:</strong> 2025-01-18 03:00<br>
+<strong>Delay:</strong> 1 day 13 hrs · Weather deviation in Pacific
+</Card>
+</Columns>
+</Callout>
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments this month by carrier">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 34 |
+| MSC | 28 |
+| CMA CGM | 22 |
+| Hapag-Lloyd | 19 |
+| COSCO | 16 |
+| Evergreen | 14 |
+| Other | 14 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Weekly shipment volume" x="Week" y="Shipments">
+| Week | Volume |
+|---|---|
+| W1 (Nov 18) | 38 |
+| W2 (Nov 25) | 42 |
+| W3 (Dec 2) | 45 |
+| W4 (Dec 9) | 41 |
+| W5 (Dec 16) | 47 |
+| W6 (Dec 23) | 35 |
+| W7 (Dec 30) | 39 |
+| W8 (Jan 6) | 44 |
+| W9 (Jan 13) | 41 |
+</Chart>
+</Card>
+
+<Card title="On-Time Performance Trend">
+<Chart type="line" title="Monthly on-time %" x="Month" y="On-Time %">
+| Month | On-Time % |
+|---|---|
+| Aug | 88.2 |
+| Sep | 89.5 |
+| Oct | 90.1 |
+| Nov | 91.3 |
+| Dec | 91.8 |
+| Jan | 92.4 |
+</Chart>
+</Card>

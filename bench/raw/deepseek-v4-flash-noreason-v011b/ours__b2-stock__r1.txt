@@ -1,0 +1,73 @@
+# Low-Inventory Warning Dashboard
+
+<Badge tone="warning">3 items below threshold</Badge>
+
+<Card title="Warning Threshold" subtitle="Items are flagged when stock drops below this level">
+<Stat label="Current threshold" value="10 units" icon="bell" />
+<Slider label="Adjust threshold" min="1" max="50" step="1" value="10" name="threshold" unit="units" />
+<Button variant="secondary" ask="Set low-inventory threshold to 5 units">Set to 5 units</Button>
+<Button variant="secondary" ask="Set low-inventory threshold to 20 units">Set to 20 units</Button>
+</Card>
+
+<Card title="Search Inventory">
+<Form name="search-items">
+<Input label="Search items" name="search" placeholder="Search by item name or SKU..." hint="Filter the list below" />
+<Button variant="primary">Search</Button>
+<Button variant="tertiary" ask="Clear search and show all items">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Items Running Low" subtitle="3 items at or below 10 units remaining">
+<Columns>
+<Card title="Organic Cotton Tote Bag">
+<Stat label="Remaining units" value="3" icon="package" tone="danger" />
+<Progress value="3" max="50" label="3 of 50" tone="danger" />
+<Badge tone="danger">Critical</Badge>
+<Button ask="Reorder Organic Cotton Tote Bag, quantity 20">Reorder 20 units</Button>
+<Button variant="secondary" ask="Reorder Organic Cotton Tote Bag, quantity 50">Reorder 50 units</Button>
+</Card>
+
+<Card title="Bamboo Water Bottle">
+<Stat label="Remaining units" value="7" icon="package" tone="warning" />
+<Progress value="7" max="40" label="7 of 40" tone="warning" />
+<Badge tone="warning">Low</Badge>
+<Button ask="Reorder Bamboo Water Bottle, quantity 25">Reorder 25 units</Button>
+<Button variant="secondary" ask="Reorder Bamboo Water Bottle, quantity 50">Reorder 50 units</Button>
+</Card>
+
+<Card title="Recycled Notebook Set">
+<Stat label="Remaining units" value="10" icon="package" tone="warning" />
+<Progress value="10" max="60" label="10 of 60" tone="warning" />
+<Badge tone="warning">At threshold</Badge>
+<Button ask="Reorder Recycled Notebook Set, quantity 30">Reorder 30 units</Button>
+<Button variant="secondary" ask="Reorder Recycled Notebook Set, quantity 60">Reorder 60 units</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="All Inventory (Full List)">
+<Chart type="bar" x="Item" y="Units remaining">
+| Item | Remaining |
+|---|---|
+| Organic Cotton Tote Bag | 3 |
+| Bamboo Water Bottle | 7 |
+| Recycled Notebook Set | 10 |
+| Wool Beanie | 22 |
+| Canvas Backpack | 34 |
+| Stainless Steel Straw Set | 41 |
+| Beeswax Food Wraps | 18 |
+</Chart>
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="secondary" ask="Show items that are out of stock">View out-of-stock items</Button>
+<Button variant="secondary" ask="Show items with more than 20 units remaining">Show well-stocked items</Button>
+<Button variant="secondary" ask="Export low-inventory report as CSV">Export report</Button>
+</Card>
+
+<FollowUps>
+- [Reorder all 3 low-inventory items](#)
+- [Set a custom threshold per item](#)
+- [View inventory history for Organic Cotton Tote Bag](#)
+- [Add a new inventory item](#)
+</FollowUps>

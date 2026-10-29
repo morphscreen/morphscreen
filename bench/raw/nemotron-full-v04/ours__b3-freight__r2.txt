@@ -1,0 +1,131 @@
+# Logistics Coordinator Board
+
+<Card title="Shipments Overview" subtitle="Last refreshed: 2024-01-15 14:32 UTC">
+<Badge tone="info">Live data</Badge>
+</Card>
+
+<Card title="Filters">
+<Form name="route-search">
+<Columns>
+<Input label="Search by route" name="route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin → destination" />
+<Select label="Carrier" name="carrier" placeholder="All carriers" options="All | FedEx | UPS | DHL | USPS | Regional" />
+<Select label="Status" name="status" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" />
+<Button variant="primary">Apply</Button>
+<Button variant="tertiary">Clear</Button>
+</Columns>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="On-Time % (This Month)" value="92.4%" change="+1.2% vs last month" tone="success" />
+<Stat label="Avg Cost / Shipment" value="$1,247" change="-$32 vs last month" tone="info" />
+<Stat label="Active Shipments" value="247" change="+12 vs yesterday" tone="neutral" />
+<Stat label="Delayed Count" value="19" change="-3 vs yesterday" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Shipments in Transit">
+<Tabs>
+<Tab title="All (247)">
+| Shipment ID | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|
+| SHP-8842 | Los Angeles (LAX) | New York (JFK) | FedEx | 2024-01-16 14:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8843 | Seattle (SEA) | Chicago (ORD) | UPS | 2024-01-16 18:30 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8844 | Miami (MIA) | Dallas (DFW) | DHL | 2024-01-17 09:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8845 | Atlanta (ATL) | San Francisco (SFO) | FedEx | 2024-01-17 12:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8846 | Denver (DEN) | Boston (BOS) | UPS | 2024-01-18 10:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8847 | Phoenix (PHX) | Philadelphia (PHL) | Regional | 2024-01-18 16:00 | Delayed | <Button variant="danger" size="small">Flag</Button> |
+| SHP-8848 | Houston (IAH) | Washington (IAD) | FedEx | 2024-01-19 08:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8849 | San Diego (SAN) | Detroit (DTW) | DHL | 2024-01-19 14:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8850 | Portland (PDX) | Minneapolis (MSP) | UPS | 2024-01-20 11:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| SHP-8851 | Las Vegas (LAS) | Charlotte (CLT) | Regional | 2024-01-20 15:00 | Delayed | <Button variant="danger" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (19)">
+| Shipment ID | Origin | Destination | Carrier | ETA | Delay Reason | Actions |
+|---|---|---|---|---|---|---|
+| SHP-8847 | Denver (DEN) | Boston (BOS) | Regional | 2024-01-18 16:00 | Weather delay - snowstorm | <Button variant="danger" size="small">Flag</Button> |
+| SHP-8851 | Las Vegas (LAS) | Charlotte (CLT) | Regional | 2024-01-20 15:00 | Carrier capacity issue | <Button variant="danger" size="small">Flag</Button> |
+| SHP-8853 | Orlando (MCO) | Newark (EWR) | UPS | 2024-01-16 20:00 | Mechanical issue | <Button variant="danger" size="small">Flag</Button> |
+| SHP-8855 | Salt Lake City (SLC) | Nashville (BNA) | FedEx | 2024-01-17 14:00 | Customs hold | <Button variant="danger" size="small">Flag</Button> |
+| SHP-8858 | Tampa (TPA) | St. Louis (STL) | DHL | 2024-01-18 10:00 | Route deviation | <Button variant="danger" size="small">Flag</Button> |
+</Tab>
+<Tab title="Flagged (3)">
+| Shipment ID | Origin | Destination | Flag Reason | Flagged By | Flagged At | Actions |
+|---|---|---|---|---|---|---|
+| SHP-8847 | Denver (DEN) | Boston (BOS) | Weather delay escalation | m.chen | 2024-01-15 10:22 | <Button variant="secondary" size="small">Resolve</Button> |
+| SHP-8862 | Chicago (ORD) | Seattle (SEA) | High-value cargo monitor | j.rodriguez | 2024-01-15 08:45 | <Button variant="secondary" size="small">Resolve</Button> |
+| SHP-8839 | Boston (BOS) | Miami (MIA) | Customer escalation | m.chen | 2024-01-14 16:10 | <Button variant="secondary" size="small">Resolve</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Callout tone="warning" title="⚠ 19 Delayed Shipments Require Attention">
+<strong>Top issues:</strong> Weather impacts on DEN/BOS routes (3 shipments), Regional carrier capacity constraints (5 shipments), Customs holds on international lanes (2 shipments). <Button variant="secondary" size="small">View all delayed</Button> <Button variant="primary" size="small">Escalate top 5</Button>
+</Callout>
+
+<Columns>
+<Card title="Volume Split by Carrier (This Month)">
+<Chart type="donut" title="Shipments by Carrier" x="Carrier" y="Volume">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 89 |
+| UPS | 76 |
+| DHL | 42 |
+| Regional | 28 |
+| USPS | 12 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Volume | On-Time | Delayed |
+|---|---|---|---|
+| 2024-W01 | 234 | 218 | 16 |
+| 2024-W02 | 251 | 235 | 16 |
+| 2024-W03 | 267 | 248 | 19 |
+| 2024-W04 | 243 | 226 | 17 |
+| 2024-W05 | 258 | 241 | 17 |
+| 2024-W06 | 272 | 254 | 18 |
+| 2024-W07 | 261 | 243 | 18 |
+| 2024-W08 | 247 | 228 | 19 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Cost Analysis">
+<Columns>
+<Stat label="Avg Cost / Shipment" value="$1,247" change="-2.5% MoM" tone="info" />
+<Stat label="Total Monthly Spend" value="$308,009" change="+$12,400 MoM" tone="neutral" />
+<Stat label="Cost per Mile (Avg)" value="$2.84" change="+$0.03 MoM" tone="warning" />
+<Stat label="Fuel Surcharge %" value="18.2%" change="-0.4pp MoM" tone="success" />
+</Columns>
+<Chart type="line" title="Avg Cost per Shipment Trend (8 Weeks)" x="Week" y="USD">
+| Week | Avg Cost |
+|---|---|
+| 2024-W01 | 1285 |
+| 2024-W02 | 1262 |
+| 2024-W03 | 1248 |
+| 2024-W04 | 1255 |
+| 2024-W05 | 1241 |
+| 2024-W06 | 1238 |
+| 2024-W07 | 1244 |
+| 2024-W08 | 1247 |
+</Chart>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Create New Shipment</Button>
+<Button variant="secondary" size="large">Bulk Flag Delayed</Button>
+<Button variant="tertiary" size="large">Export Report</Button>
+<Button variant="danger" size="large">Escalate All Delayed</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the top 5 most expensive routes this month
+- Which carrier has the best on-time performance?
+- Set up alerts for shipments delayed > 24 hours
+- Compare this month's volume vs same month last year
+</FollowUps>

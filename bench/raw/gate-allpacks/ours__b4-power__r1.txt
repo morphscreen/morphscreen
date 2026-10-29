@@ -1,0 +1,146 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="System Overview" subtitle="Live network status">
+<Columns>
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Stat label="Available Capacity" value="58,200 MW" change="−1.1% vs 1hr ago" tone="neutral" />
+<Stat label="Reserve Margin" value="15,353 MW" change="+3.2% vs 1hr ago" tone="success" />
+<Stat label="Current Price" value="$87.42 /MWh" change="+$4.18 vs 1hr ago" tone="warning" />
+</Columns>
+
+<Progress value="73.6" max="100" label="Network Utilization: 73.6% of capacity" tone="info" />
+<Progress value="42.1" max="100" label="Spinning Reserve: 42.1% of requirement" tone="success" />
+</Card>
+
+<Card title="Emissions Today" subtitle="CO₂ intensity tracking">
+<Columns>
+<Stat label="Total Emissions" value="1,284 tCO₂" change="−2.1% vs yesterday" tone="success" />
+<Stat label="Carbon Intensity" value="299 gCO₂/kWh" change="−8 gCO₂/kWh vs yesterday" tone="success" />
+<Stat label="Renewable Share" value="38.4%" change="+1.2% vs yesterday" tone="success" />
+</Columns>
+<Progress value="38.4" max="100" label="Renewable Generation Share" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Generation Mix" subtitle="Real-time output by source">
+<Chart type="donut" title="Current Generation by Source (MW)">
+| Source | Output (MW) | Share |
+|---|---|---|
+| Natural Gas | 14,820 | 34.6% |
+| Nuclear | 9,640 | 22.5% |
+| Wind | 8,950 | 20.9% |
+| Solar | 4,120 | 9.6% |
+| Hydro | 3,280 | 7.7% |
+| Coal | 1,850 | 4.3% |
+| Battery Storage | 187 | 0.4% |
+</Chart>
+</Card>
+
+<Card title="Power Plants" subtitle="All generating units — click a row for details">
+<Table>
+| Plant | Region | Type | Capacity (MW) | Output (MW) | Status | Availability | Last Update |
+|---|---|---|---|---|---|---|---|
+| Kincardine CCGT | North East | Natural Gas | 880 | 842 | <Badge tone="success">Online</Badge> | 96% | 10:42 |
+| Torness Nuclear | Scotland | Nuclear | 1,250 | 1,180 | <Badge tone="success">Online</Badge> | 94% | 10:42 |
+| Beatrice Offshore | North Sea | Wind | 588 | 412 | <Badge tone="success">Online</Badge> | 70% | 10:42 |
+| Drax Unit 1–4 | Yorkshire | Biomass/Coal | 2,600 | 1,850 | <Badge tone="success">Online</Badge> | 71% | 10:41 |
+| Dinorwig Pumped Storage | Wales | Hydro | 1,728 | 320 | <Badge tone="info">Standby</Badge> | 100% | 10:42 |
+| London Array | Thames Estuary | Wind | 630 | 380 | <Badge tone="success">Online</Badge> | 60% | 10:42 |
+| Hinkley Point B | South West | Nuclear | 1,220 | 0 | <Badge tone="danger">Offline</Badge> | 0% | 09:15 |
+| West Burton CCGT | East Midlands | Natural Gas | 1,300 | 1,120 | <Badge tone="success">Online</Badge> | 86% | 10:42 |
+| Hornsea Two | North Sea | Wind | 1,386 | 980 | <Badge tone="success">Online</Badge> | 71% | 10:42 |
+| Sutton Bridge | East Anglia | Natural Gas | 790 | 760 | <Badge tone="success">Online</Badge> | 96% | 10:41 |
+</Table>
+</Card>
+
+<Card title="Active Outages" subtitle="Unplanned interruptions — auto-refreshes every 30s">
+<Table>
+| Outage ID | Region | Substations Affected | Customers | Est. Restoration | Cause | Status |
+|---|---|---|---|---|---|---|
+| OUT-2024-0847 | North West | Penrith, Keswick | 12,430 | 2024-01-15 14:30 | Storm damage — 132kV tower | <Badge tone="warning">Crew dispatched</Badge> |
+| OUT-2024-0851 | South Wales | Port Talbot, Neath | 8,210 | 2024-01-15 16:00 | Cable fault — 33kV underground | <Badge tone="info">Investigating</Badge> |
+| OUT-2024-0853 | East Anglia | Norwich North | 3,890 | 2024-01-15 12:45 | Transformer failure — 11kV | <Badge tone="success">Restoring</Badge> |
+| OUT-2024-0856 | Scotland Central | Stirling, Falkirk | 15,670 | 2024-01-15 18:00 | Multiple faults — ice accumulation | <Badge tone="warning">Assessing</Badge> |
+</Table>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Weather-adjusted, updated hourly">
+<Chart type="area" title="Forecast Demand (MW)" x="Time" y="MW">
+| Time | Forecast (MW) | Confidence Band | Actual (MW) |
+|---|---|---|---|
+| 00:00 | 34,200 | ±800 | 34,150 |
+| 03:00 | 31,800 | ±600 | 31,920 |
+| 06:00 | 33,500 | ±700 | 33,410 |
+| 09:00 | 39,200 | ±900 | 39,050 |
+| 12:00 | 43,800 | ±1,100 | 42,847 |
+| 15:00 | 45,600 | ±1,200 | — |
+| 18:00 | 48,900 | ±1,300 | — |
+| 21:00 | 44,200 | ±1,000 | — |
+| 00:00 | 37,500 | ±900 | — |
+</Chart>
+<Callout tone="info" title="Peak Alert">Evening peak forecast at 48,900 MW (18:00) — 84% of capacity. Reserve margin tightening to 9,300 MW.</Callout>
+</Card>
+
+<Columns>
+<Card title="Planned Maintenance — January 2025" subtitle="Scheduled outages affecting capacity">
+<Calendar month="2025-01" title="Maintenance Schedule">
+| Date | Plant | Capacity (MW) | Type | Status |
+|---|---|---|---|---|
+| 2025-01-16 | Sizewell B Unit 1 | 1,198 | Nuclear refueling | Confirmed |
+| 2025-01-18 | Peterhead CCGT | 1,180 | Major inspection | Confirmed |
+| 2025-01-20 | Walney Extension | 659 | Gearbox replacement | Tentative |
+| 2025-01-22 | Fiddlers Ferry | 1,510 | Boiler overhaul | Confirmed |
+| 2025-01-25 | Dungeness B | 1,040 | Statutory outage | Confirmed |
+| 2025-01-28 | Humber Gateway | 219 | Cable inspection | Tentative |
+</Calendar>
+</Card>
+
+<Card title="Live Alerts" subtitle="Real-time events — newest first">
+<Timeline title="System Alerts">
+- 10:42: **Frequency deviation** — 50.02 Hz (above normal band). Automatic generation response activated.
+- 10:38: **Voltage alert** — North East 400kV bus at 412 kV. Reactive power dispatch initiated.
+- 10:35: **Wind forecast update** — Beatrice output revised down 120 MW for 14:00–16:00 window.
+- 10:30: **Interconnector trip** — IFA2 (France) tripped offline. 1,000 MW import lost. Investigating.
+- 10:25: **Reserve activation** — 300 MW STOR dispatched in South East for frequency support.
+- 10:18: **Market notice** — Balancing Mechanism price spike to £2,450/MWh for 10:30 settlement period.
+- 10:12: **Weather warning** — Met Office amber warning for ice: Scotland Central, North West (14:00–22:00).
+</Timeline>
+</Card>
+</Columns>
+
+<Card title="Regional Focus" subtitle="Filter all views to a specific region">
+<Columns>
+<Select label="Select Region" name="region-focus" placeholder="All Regions" value="All Regions" options="All Regions | North East | North West | Yorkshire | East Midlands | West Midlands | East Anglia | London | South East | South West | Wales | Scotland North | Scotland Central | Scotland South" />
+<Button variant="secondary" size="small">Apply Filter</Button>
+<Button variant="tertiary" size="small">Clear</Button>
+</Columns>
+<Callout tone="neutral" title="Current View">Showing **All Regions** — 14 regions, 42,847 MW total load, 73.6% utilization</Callout>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Instruct a generator to reduce output — requires authorization">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant" name="curtail-plant" placeholder="Select plant" required="true" options="Beatrice Offshore (Wind, 588 MW) | Hornsea Two (Wind, 1,386 MW) | London Array (Wind, 630 MW) | West Burton CCGT (Gas, 1,300 MW) | Kincardine CCGT (Gas, 880 MW) | Sutton Bridge (Gas, 790 MW) | Drax Unit 1–4 (Biomass, 2,600 MW)" />
+<Input label="Curtailment Amount (MW)" name="curtail-mw" type="number" placeholder="e.g., 150" min="1" max="2600" step="1" required="true" hint="Must not exceed current output" />
+<Select label="Reason" name="curtail-reason" placeholder="Select reason" required="true" options="System security — voltage | System security — frequency | Thermal constraint — line loading | Thermal constraint — transformer | Minimum generation constraint | Negative pricing | Instruction from NESO" />
+<Date label="Effective From" name="curtail-start" required="true" hint="Immediate if left blank" />
+<Time label="Duration (hours)" name="curtail-duration" value="02:00" min="00:30" max="24:00" required="true" hint="Maximum 24 hours per instruction" />
+</Columns>
+<TextArea label="Operator Notes" name="curtail-notes" placeholder="Reason, reference numbers, coordination details..." rows="3" hint="Required for audit trail" required="true" />
+<Columns>
+<Button variant="danger">Submit Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+<Callout tone="warning" title="Authorization Required">Curtailment orders require Level 2 operator approval. All actions are logged and reported to the market operator within 30 minutes.</Callout>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Declare Emergency</Button>
+<Button variant="secondary" size="large">Activate Reserve</Button>
+<Button variant="secondary" size="large">Request Interconnector Support</Button>
+<Button variant="tertiary" size="large">Export Situation Report</Button>
+</Columns>
+</Card>

@@ -1,0 +1,44 @@
+<Card title="Service Health Overview">
+  <Columns>
+    <Stat label="Uptime this quarter" value="99.9%" change="±0.1%" tone="success" />
+    <Chart type="area" title="CPU & Memory Usage (24h)" x="Hour" y="Usage (%)">
+| Metric | Usage (%) |
+|---|---|
+| CPU | 70% |
+| Memory | 55% |
+</Chart>
+  </Columns>
+
+  <Columns>
+    <Stat label="Error rate" value="0.45%" change="−0.02%" tone="warning" />
+    <Details title="Open incidents" open=true>
+      <Steps>
+        <Step title="Incident #123" status="current">Critical - API gateway down</Step>
+        <Step title="Incident #124" status="todo">Warning - DB latency high</Step>
+      </Steps>
+      <Callout tone="danger" title="Active incidents">
+        <Badge tone="danger">Critical</Badge> Incident #123: API gateway down
+        <Badge tone="warning">Warning</Badge> Incident #124: DB latency high
+      </Callout>
+      <Button variant="danger">Acknowledge selected</Button>
+    </Details>
+    <Select label="Region" placeholder="All regions" options="All | us-east | us-west | eu-central" required="false" />
+  </Columns>
+
+  <Card title="Slowest Endpoints">
+    <Chart type="bar" title="Top 5 Slowest Endpoints" x="Endpoint" y="Latency (ms)">
+| Endpoint | Latency (ms) |
+|---|---|
+| /api/v1/users | 420 |
+| /api/v1/orders | 380 |
+| /api/v1/products | 350 |
+| /api/v1/payments | 320 |
+| /api/v1/reports | 290 |
+</Chart>
+  </Card>
+
+  <Form name="alert-threshold">
+    <Input label="Alert threshold (ms)" name="threshold" type="number" placeholder="Enter threshold" value="" step="1" min="0" max="300" hint="Set the latency limit that triggers an alert" required="true" />
+    <Button variant="primary">Set threshold</Button>
+  </Form>
+</Card>

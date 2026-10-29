@@ -1,0 +1,180 @@
+# Factory Floor Console
+
+<Callout tone="warning" title="Live andon alert — Line 3">Bearing temperature 92°C, above limit. Operator paged 4 min ago.</Callout>
+
+<Columns>
+<Stat label="OEE (shift)" value="87.4%" change="+2.1 pts" tone="success" icon="chart-line" />
+<Stat label="Units produced" value="14,820" note="of 16,000 target" tone="info" icon="chart-line" />
+<Stat label="Defect rate (30d)" value="1.8%" change="-0.4 pts" tone="success" icon="chart-line" />
+<Stat label="Days since last incident" value="46" tone="success" icon="users" />
+</Columns>
+
+<Card title="Live andon alerts" subtitle="Updated 12 seconds ago">
+| Line | Alert | Severity | Raised |
+|---|---|---|---|
+| Line 3 | Bearing overheat | High | 09:14 |
+| Line 1 | Resin feed low | Medium | 08:52 |
+| Line 5 | Vision check failed | Low | 08:31 |
+</Card>
+
+<Card title="Focus a line" subtitle="Filter the console to one production line">
+<Select label="Production line" name="line-focus" options="All lines | Line 1 — Stamping | Line 2 — Molding | Line 3 — Assembly | Line 4 — Welding | Line 5 — Finishing" value="All lines" />
+<Button variant="primary" ask="Focus the console on Line 3 — Assembly">Focus Line 3</Button>
+<Button variant="tertiary" ask="Show all production lines again">Show all lines</Button>
+</Card>
+
+<Card title="Production lines" subtitle="Rate and status, live">
+| Line | Rate (units/hr) | Target | Status |
+|---|---|---|---|
+| Line 1 — Stamping | 412 | 450 | Running |
+| Line 2 — Molding | 388 | 400 | Running |
+| Line 3 — Assembly | 0 | 380 | Down |
+| Line 4 — Welding | 355 | 360 | Running |
+| Line 5 — Finishing | 298 | 340 | Degraded |
+</Card>
+
+<Card title="Units produced vs today's target">
+<Progress value="14820" max="16000" label="14,820 of 16,000 units" tone="info" />
+<Chart type="bar" title="Output by hour" x="Hour" y="Units">
+| Hour | Units |
+|---|---|
+| 06:00 | 1820 |
+| 07:00 | 2140 |
+| 08:00 | 2260 |
+| 09:00 | 1980 |
+| 10:00 | 2340 |
+| 11:00 | 2210 |
+| 12:00 | 2070 |
+</Chart>
+</Card>
+
+<Card title="Defect rate — past 30 days">
+<Chart type="line" title="Defect rate %" x="Week" y="Percent">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.4 |
+| W2 | 2.2 |
+| W3 | 1.9 |
+| W4 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Downtime by cause" subtitle="This shift, minutes">
+<Chart type="donut" title="Downtime split" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Changeover | 42 |
+| Mechanical | 68 |
+| Material shortage | 31 |
+| Quality hold | 22 |
+| Operator | 14 |
+</Chart>
+</Card>
+
+<Card title="Shift output comparison">
+<Chart type="bar" title="Units by shift" x="Shift" y="Units">
+| Shift | Units | Target |
+|---|---|---|
+| A (06–14) | 5120 | 5400 |
+| B (14–22) | 4980 | 5400 |
+| C (22–06) | 4720 | 5200 |
+</Chart>
+</Card>
+
+<Card title="Machines due for maintenance">
+| Machine | Line | Due | Type |
+|---|---|---|---|
+| Press P-12 | Line 1 | In 2 days | 500 hr service |
+| Mold M-04 | Line 2 | In 4 days | Seal replacement |
+| Robot R-07 | Line 3 | Overdue 1 day | Bearing check |
+| Welder W-02 | Line 4 | In 6 days | Calibration |
+</Card>
+
+<Card title="Schedule maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Choose a machine" options="Press P-12 | Mold M-04 | Robot R-07 | Welder W-02 | Finisher F-03" />
+<Date label="Date" name="date" hint="Pick a slot during planned downtime" />
+<TextArea label="Notes" name="notes" placeholder="Parts needed, technician, access requirements" rows="3" />
+<Button variant="primary">Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Material stock">
+<Columns>
+<Stat label="Steel" value="62%" note="18.4 t of 30 t" tone="warning" icon="chart-line" />
+<Stat label="Resin" value="28%" note="2.8 t of 10 t" tone="danger" icon="chart-line" />
+<Stat label="Packaging" value="81%" note="12,900 of 16,000" tone="success" icon="chart-line" />
+</Columns>
+<Progress value="62" max="100" label="Steel" tone="warning" />
+<Progress value="28" max="100" label="Resin" tone="danger" />
+<Progress value="81" max="100" label="Packaging" tone="success" />
+</Card>
+
+<Card title="Supplier deliveries this week">
+| Supplier | Material | Arrives | Status |
+|---|---|---|---|
+| Northgate Steel | Steel coil | Tue 07:00 | Confirmed |
+| PolySource | Resin pellets | Wed 11:30 | In transit |
+| Carton Co. | Packaging | Thu 09:00 | Confirmed |
+| Vega Fasteners | Bolts | Fri 14:00 | Delayed |
+</Card>
+
+<Card title="Batches on quality hold">
+| Batch | Line | Units | Reason | Held since |
+|---|---|---|---|---|
+| B-2291 | Line 2 | 480 | Dimensional drift | 06:40 |
+| B-2304 | Line 5 | 210 | Surface finish | 08:15 |
+| B-2312 | Line 1 | 640 | Weld porosity | 09:05 |
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents this year" value="3" tone="warning" icon="users" />
+<Stat label="Days since last" value="46" tone="success" icon="users" />
+<Stat label="Near misses (30d)" value="7" tone="info" icon="users" />
+</Columns>
+</Card>
+
+<Card title="Energy use today">
+<Columns>
+<Stat label="Electricity" value="4,180 kWh" change="+6%" tone="warning" icon="chart-line" />
+<Stat label="Gas" value="310 m³" change="-3%" tone="success" icon="chart-line" />
+<Stat label="Cost" value="$742" tone="info" icon="chart-line" />
+</Columns>
+<Chart type="area" title="kWh by hour" x="Hour" y="kWh">
+| Hour | kWh |
+|---|---|
+| 06:00 | 480 |
+| 07:00 | 610 |
+| 08:00 | 660 |
+| 09:00 | 590 |
+| 10:00 | 640 |
+| 11:00 | 620 |
+| 12:00 | 580 |
+</Chart>
+</Card>
+
+<Card title="Open work orders">
+| WO | Task | Line | Priority | Owner |
+|---|---|---|---|---|
+| WO-1182 | Replace R-07 bearing | Line 3 | High | M. Okafor |
+| WO-1187 | Recalibrate W-02 | Line 4 | Medium | J. Reyes |
+| WO-1190 | Resin feed sensor | Line 1 | High | M. Okafor |
+| WO-1193 | Guard rail repair | Line 5 | Low | S. Patel |
+</Card>
+
+<Card title="Shift report">
+<Form name="shift-report">
+<Select label="Shift" name="shift" options="A (06–14) | B (14–22) | C (22–06)" value="A (06–14)" />
+<Checkboxes label="Include" name="sections" options="OEE and output | Downtime | Quality holds | Safety | Energy" value="OEE and output | Downtime" />
+<Button variant="primary">Export shift report</Button>
+<Button variant="secondary" ask="Email the shift report to the plant manager">Email to plant manager</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Why is Line 3 down and what's the ETA?
+- Show me only the batches on quality hold
+- What's the OEE trend over the last 7 days?
+- Which machines are overdue for maintenance?
+</FollowUps>

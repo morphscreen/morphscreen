@@ -1,0 +1,98 @@
+# Async Standup — Remote Team
+
+<Columns>
+<div>
+
+<Stat label="Updates posted" value="5/8" change="3 still missing" icon="chat-circle" tone="warning" />
+</div>
+<div>
+
+<Stat label="Blocked" value="2" change="Needs attention" icon="warning-circle" tone="danger" />
+</div>
+<div>
+
+<Stat label="Date" value="Tue, Jun 11" change="Week 24" icon="calendar" />
+</div>
+</Columns>
+
+<Card title="Today's Updates" subtitle="All times in UTC">
+<Tabs>
+<Tab title="All updates">
+<Columns>
+<div>
+
+<Card title="Amara Okafor" subtitle="Frontend Engineer · 08:02">
+<Badge tone="success">Done</Badge> Shipped the checkout flow redesign — all tests passing.
+<Badge tone="neutral">Next</Badge> Start on payment error states.
+</Card>
+
+<Card title="Liam Chen" subtitle="Backend Engineer · 08:15">
+<Badge tone="success">Done</Badge> Deployed rate limiter v2 to staging.
+<Badge tone="neutral">Next</Badge> Write migration script for user sessions table.
+</Card>
+
+<Card title="Priya Sharma" subtitle="Product Designer · 08:31">
+<Badge tone="success">Done</Badge> Delivered final mockups for the dashboard.
+<Badge tone="neutral">Next</Badge> Handoff to devs and update the design system.
+</Card>
+</div>
+<div>
+
+<Card title="Diego Ramírez" subtitle="DevOps Engineer · 08:47">
+<Badge tone="warning">Blocked</Badge> CI pipeline keeps failing on the `build` step — need access to the new runner logs.
+<Badge tone="neutral">Next</Badge> Debug with support ticket #4821.
+</Card>
+
+<Card title="Sofia Andersson" subtitle="QA Engineer · 09:05">
+<Badge tone="success">Done</Badge> Ran regression suite on the notification service.
+<Badge tone="neutral">Next</Badge> Document edge cases for the new onboarding flow.
+</Card>
+</div>
+</Columns>
+</Tab>
+<Tab title="Blocked (2)">
+<Callout tone="danger" title="2 teammates are blocked">
+Please check in on these — they can't move forward without help.
+</Callout>
+
+<Card title="Diego Ramírez" subtitle="DevOps Engineer">
+<Badge tone="danger">Blocked</Badge> CI pipeline failing — need access to runner logs. Escalate to #infra.
+</Card>
+
+<Card title="Mei Lin" subtitle="Mobile Engineer">
+<Badge tone="danger">Blocked</Badge> Waiting on API contract for the new upload endpoint. Blocked since yesterday.
+</Card>
+</Column>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Missing Updates" subtitle="3 teammates haven't posted yet">
+<Progress value="5" max="8" label="5 of 8 updates received" tone="warning" />
+
+| Teammate | Role | Last update |
+|---|---|---|
+| Mei Lin | Mobile Engineer | Yesterday, 16:20 |
+| Jonas Weber | Data Scientist | Yesterday, 09:45 |
+| Aisha Bello | Marketing Lead | Monday, 14:10 |
+
+<Callout tone="info" title="Reminder">
+A gentle nudge was sent at 09:00. You can ping them again from here.
+</Callout>
+</Card>
+
+<Card title="Post Your Update" subtitle="Share what you've done and what's next">
+<Form name="standup-update">
+<Input label="Your name" placeholder="e.g. Jordan Lee" required="true" />
+<TextArea label="What did you do yesterday?" placeholder="Shipped the new API endpoint, fixed a bug in the auth flow…" rows="3" required="true" />
+<TextArea label="What will you do today?" placeholder="Review PRs, start on the dashboard widget…" rows="3" required="true" />
+<Checkboxes label="Any blockers?" options="Yes, I'm blocked | No, I'm good" name="blocker" />
+<Button>Post update</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Who is blocked and needs help right now?
+- Show me the last 5 standup updates from Mei Lin
+- Set a reminder to post my update tomorrow at 8am
+</FollowUps>

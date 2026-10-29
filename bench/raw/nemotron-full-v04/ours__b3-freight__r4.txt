@@ -1,0 +1,90 @@
+# Logistics Coordinator Board
+
+<Badge tone="info">Last refreshed: 2024-01-15 14:32 UTC</Badge>
+
+<Card title="Search Shipments">
+<Input label="Search by route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin, destination, or route code" />
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % This Month" value="87.3%" change="+2.1% vs last month" tone="success" />
+<Stat label="Avg Cost / Shipment" value="$2,847" change="-$112 vs last month" tone="info" />
+<Stat label="Active Shipments" value="142" change="+8 vs yesterday" tone="neutral" />
+<Stat label="Delayed Shipments" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in Transit">
+<Columns>
+<Input label="Filter by status" type="search" placeholder="All statuses" />
+<Select label="Carrier" placeholder="All carriers" options="All | FedEx | UPS | DHL | Maersk | C.H. Robinson | XPO | Old Dominion" />
+</Columns>
+
+| # | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|
+| SH-8842 | Los Angeles, CA | New York, NY | FedEx | 2024-01-16 14:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8843 | Seattle, WA | Chicago, IL | UPS | 2024-01-16 18:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8844 | Miami, FL | Dallas, TX | DHL | 2024-01-15 22:00 | <Badge tone="warning">Delayed</Badge> | <Button variant="danger" size="small">Flag</Button> |
+| SH-8845 | Atlanta, GA | Boston, MA | Maersk | 2024-01-17 09:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8846 | Houston, TX | San Francisco, CA | C.H. Robinson | 2024-01-15 20:45 | <Badge tone="danger">Critical Delay</Badge> | <Button variant="danger" size="small">Flag</Button> |
+| SH-8847 | Denver, CO | Phoenix, AZ | XPO | 2024-01-16 11:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | Portland, OR | Salt Lake City, UT | Old Dominion | 2024-01-15 16:20 | <Badge tone="warning">Delayed</Badge> | <Button variant="danger" size="small">Flag</Button> |
+| SH-8849 | Charlotte, NC | Philadelphia, PA | FedEx | 2024-01-17 13:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8850 | Las Vegas, NV | Minneapolis, MN | UPS | 2024-01-16 08:15 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Orlando, FL | Detroit, MI | DHL | 2024-01-15 19:30 | <Badge tone="danger">Critical Delay</Badge> | <Button variant="danger" size="small">Flag</Button> |
+
+<Callout tone="warning" title="Delayed Shipments Requiring Attention">
+<strong>3 critical delays</strong> (SH-8846, SH-8851, SH-8844) and <strong>15 standard delays</strong>. Top causes: weather (TX, FL), carrier capacity (West Coast), customs hold (MI).
+</Callout>
+</Card>
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier (This Month)">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 38 |
+| UPS | 32 |
+| DHL | 24 |
+| Maersk | 18 |
+| C.H. Robinson | 15 |
+| XPO | 10 |
+| Old Dominion | 5 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments | On Time | Delayed |
+|---|---|---|---|
+| W1 (Dec 18) | 156 | 142 | 14 |
+| W2 (Dec 25) | 134 | 118 | 16 |
+| W3 (Jan 1) | 112 | 98 | 14 |
+| W4 (Jan 8) | 148 | 132 | 16 |
+| W5 (Jan 15) | 162 | 145 | 17 |
+| W6 (Jan 22) | 158 | 141 | 17 |
+| W7 (Jan 29) | 167 | 150 | 17 |
+| W8 (Feb 5) | 173 | 155 | 18 |
+</Chart>
+</Card>
+
+<Card title="Flagged Shipments">
+<Details title="View flagged shipment history (12 this month)">
+| Shipment | Flagged By | Reason | Date | Resolved |
+|---|---|---|---|---|
+| SH-8821 | M. Chen | Temperature excursion | 2024-01-10 | Yes |
+| SH-8833 | J. Patel | Wrong pallet count | 2024-01-12 | No |
+| SH-8839 | K. Williams | Documentation missing | 2024-01-14 | No |
+| SH-8846 | M. Chen | Critical delay — weather | 2024-01-15 | No |
+| SH-8851 | J. Patel | Critical delay — customs | 2024-01-15 | No |
+</Details>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary">Export Transit List</Button>
+<Button variant="secondary">Notify Carriers</Button>
+<Button variant="tertiary">View Delay Report</Button>
+<Button variant="danger">Escalate Critical</Button>
+</Columns>
+</Card>

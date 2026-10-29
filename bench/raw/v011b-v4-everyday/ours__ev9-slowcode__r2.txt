@@ -1,0 +1,172 @@
+# Speeding up a 2 GB CSV read in Python
+
+Reading a 2 GB CSV is slow because Python loads everything into memory and parses every row one by one. Here's a structured approach to make it faster.
+
+<Card title="Quick wins — try first">
+<Columns>
+<Stat label="Memory use" value="2 GB+" tone="warning" icon="chart-line" />
+<Stat label="Typical speedup" value="5-10×" tone="success" icon="chart-line" />
+</Columns>
+
+1. **Use `pandas` with the right engine** — `pandas.read_csv('file.csv', engine='c')` is 10× faster than pure Python `csv.reader`.
+2. **Only read the columns you need** — add `usecols=['col_a', 'col_b']`.
+3. **Set data types** — `dtype={'col': 'int32'}` reduces memory and parsing.
+4. **Read in chunks** — `chunksize=100_000` processes rows in batches instead of all at once.
+
+<Button ask="Show me a code example with pandas">Pandas example</Button>
+</Card>
+
+<Card title="Chunked processing pattern">
+<Code file="chunked_read.py" highlight="1,5,7">
+import pandas as pd
+
+chunks = pd.read_csv(
+    'large_file.csv',
+    usecols=['id', 'timestamp', 'value'],
+    dtype={'id': 'int32', 'value': 'float32'},
+    chunksize=100_000
+)
+
+results = []
+for chunk in chunks:
+    # Process each chunk
+    chunk['value'] = chunk['value'] * 2
+    results.append(chunk)
+
+final = pd.concat(results)
+</Code>
+<Button ask="How do I choose the right dtype for each column">Choose dtypes</Button>
+</Card>
+
+<Card title="When pandas isn't enough">
+<Tabs>
+<Tab title="DuckDB">
+<Code file="duckdb_query.py">
+import duckdb
+
+# Queries the CSV directly, no full load
+result = duckdb.sql("""
+    SELECT id, SUM(value)
+    FROM 'large_file.csv'
+    WHERE date > '2025-01-01'
+    GROUP BY id
+""").fetchdf()
+</Code>
+<Badge tone="success">10-50× faster</Badge>
+</Tab>
+<Tab title="Polars">
+<Code file="polars_lazy.py">
+import polars as pl
+
+# Lazy evaluation — only processes what you need
+df = pl.scan_csv(
+    'large_file.csv',
+    low_memory=True
+).filter(
+    pl.col('date') > '2025-01-01'
+).group_by('id').agg(
+    pl.col('value').sum()
+).collect()
+</Code>
+<Badge tone="success">5-20× faster</Badge>
+</Tab>
+<Tab title="Dask">
+<Code file="dask_parallel.py">
+import dask.dataframe as dd
+
+# Parallel execution across CPU cores
+df = dd.read_csv('large_file.csv')
+result = df.groupby('id').value.sum().compute()
+</Code>
+<Badge tone="info">Parallel, good for clusters</Badge>
+</Tab>
+</Tabs>
+<Button ask="Compare DuckDB vs Polars vs Dask for my use case">Compare for my case</Button>
+</Card>
+
+<Card title="Diagnose your bottleneck first">
+<Steps>
+<Step title="Time the current read" status="current">
+```bash
+time python -c "
+import pandas as pd
+df = pd.read_csv('large_file.csv')
+print(df.shape)
+"
+```
+</Step>
+<Step title="Check memory usage" status="todo">
+```python
+import psutil
+print(psutil.virtual_memory().percent)
+```
+</Step>
+<Step title="Profile with py-spy" status="todo">
+```bash
+pip install py-spy
+py-spy record -o profile.svg -- python script.py
+```
+</Step>
+</Steps>
+<Button ask="Help me interpret my profiling results">Interpret results</Button>
+</Card>
+
+<Card title="Quick decision guide">
+<Compare title="Which tool should you pick?">
+| Factor | pandas | DuckDB | Polars | Dask |
+|---|---|---|---|---|
+| Setup time | Instant | 1 minute | 1 minute | 5 minutes |
+| Memory efficient | ❌ | ✅ | ✅ | ✅ |
+| SQL-like queries | ❌ | ✅ | ❌ | ❌ |
+| Parallel processing | ❌ | ✅ | ✅ | ✅ |
+| Best for | Quick scripts | Analytical queries | Data pipelines | Large clusters |
+</Compare>
+</Card>
+
+<Card title="Memory-saving checklist">
+<Checklist title="Before you run again" name="memory-tips">
+- [ ] Read only needed columns (`usecols`)
+- [ ] Set explicit dtypes (`dtype={'col': 'int32'}`)
+- [ ] Use `low_memory=True` in pandas
+- [ ] Filter rows early (`pd.read_csv(..., chunksize=...)`)
+- [ ] Convert to Parquet for future reads
+</Checklist>
+<Button ask="Show me how to convert CSV to Parquet">Convert to Parquet</Button>
+</Card>
+
+<Card title="Convert to Parquet — one-time speedup">
+Converting to Parquet makes future reads **10-100× faster** and uses **50-80% less disk space**.
+
+<Code file="csv_to_parquet.py">
+import pandas as pd
+
+# Read in chunks to save memory
+chunks = pd.read_csv('large_file.csv', chunksize=500_000)
+for i, chunk in enumerate(chunks):
+    mode = 'w' if i == 0 else 'a'
+    chunk.to_parquet('large_file.parquet', engine='pyarrow', mode=mode)
+</Code>
+
+Then read instantly:
+```python
+df = pd.read_parquet('large_file.parquet')
+```
+
+<Button ask="What are the downsides of Parquet">Parquet trade-offs</Button>
+</Card>
+
+<Card title="Your next step">
+<Form name="csv-help">
+<Input label="File size (GB)" name="size" type="number" placeholder="2" hint="Approximate size of your CSV" />
+<Select label="What do you need to do?" name="task" options="Filter rows | Aggregate/group by | Join with another file | Just load into memory | Other" />
+<Input label="How many columns?" name="cols" type="number" placeholder="10" />
+<Button>Get a tailored recommendation</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How do I handle a CSV with mixed data types?
+- What if my CSV has no header row?
+- Can I speed up writing the results too?
+- How do I process 50 GB files?
+</FollowUps>

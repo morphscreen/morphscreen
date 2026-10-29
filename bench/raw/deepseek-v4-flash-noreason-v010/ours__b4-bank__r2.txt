@@ -1,0 +1,106 @@
+# Personal Banking Home
+
+Welcome back, Alex. Here's your money at a glance.
+
+<Card title="Account Balances" subtitle="Updated just now">
+<Columns>
+<Stat label="Checking" value="$4,850.32" change="+$320 this month" icon="bank" tone="info" />
+<Stat label="Savings" value="$12,409.15" change="+$180 this month" icon="piggy-bank" tone="success" />
+<Stat label="Credit" value="$2,340.00" change="67% used" icon="credit-card" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions" subtitle="Last 5 activities">
+<Columns>
+<Avatar name="Whole Foods" src="WF" subtitle="Groceries · Today" />
+<Avatar name="Netflix" src="NF" subtitle="Subscription · Yesterday" />
+<Avatar name="Shell Gas" src="SH" subtitle="Fuel · 2 days ago" />
+<Avatar name="Amazon" src="AM" subtitle="Shopping · 3 days ago" />
+<Avatar name="Rent Payment" src="RP" subtitle="Housing · 5 days ago" />
+</Columns>
+| Transaction | Merchant | Amount |
+|---|---|---|
+| Groceries | Whole Foods | -$84.20 |
+| Streaming | Netflix | -$15.99 |
+| Fuel | Shell Gas | -$48.75 |
+| Online shopping | Amazon | -$132.40 |
+| Monthly rent | Landlord | -$1,200.00 |
+<Button variant="secondary" size="small">View all transactions</Button>
+</Card>
+
+<Card title="Spending by Category This Month" subtitle="March 2025">
+<Chart type="donut" title="Category split" x="Category" y="Spend">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Groceries | 340 |
+| Dining | 210 |
+| Transport | 160 |
+| Entertainment | 95 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+<Columns>
+<Stat label="Electric" value="$78.50" note="Due Apr 5" icon="lightbulb" tone="warning" />
+<Stat label="Internet" value="$59.99" note="Due Apr 8" icon="wifi" tone="info" />
+<Stat label="Phone" value="$45.00" note="Due Apr 12" icon="phone" tone="neutral" />
+</Columns>
+<Button variant="secondary" size="small">Pay all bills</Button>
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Hawaii trip — target $5,000">
+<Progress value="2480" max="5000" label="49.6% funded" tone="success" />
+<Columns>
+<Stat label="Saved" value="$2,480" icon="plane" />
+<Stat label="To go" value="$2,520" icon="target" />
+</Columns>
+<Button variant="primary" size="small">Add to goal</Button>
+</Card>
+
+<Card title="Credit Score" subtitle="FICO® Score 8">
+<Columns>
+<Stat label="Current score" value="742" change="+12 this quarter" icon="chart-line" tone="success" />
+<Stat label="Range" value="Good" note="680–749" tone="info" />
+</Columns>
+<Button variant="secondary" size="small">View credit report</Button>
+</Card>
+
+<Card title="Move Money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Select label="From" placeholder="Choose source account" options="Checking (•••• 4821) | Savings (•••• 9034) | Credit (•••• 1172)" />
+<Select label="To" placeholder="Choose destination account" options="Checking (•••• 4821) | Savings (•••• 9034) | Credit (•••• 1172)" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Control" subtitle="Instantly freeze or unfreeze your credit line">
+<Switch label="Freeze credit line" name="freeze" value="false" hint="When frozen, no new purchases or cash advances are allowed." />
+<Callout tone="warning" title="What freezing does">Freezing blocks new transactions but keeps recurring payments and your credit score unaffected. You can unfreeze anytime.</Callout>
+</Card>
+
+<Card title="Statement Period" subtitle="Choose how your monthly statement is generated">
+<Radio label="Statement period" options="Calendar month (1st–last day) | Billing cycle (day of account opening) | Custom dates" name="statement-period" />
+<Button variant="secondary">Apply period</Button>
+</Card>
+
+<Card title="Alert Preferences" subtitle="Manage what triggers notifications">
+<Checkboxes label="Alert me when" options="Balance drops below $500 | Large purchase over $200 | Payment due in 3 days | Credit score changes | New transaction over $100 | Suspicious activity detected" name="alerts" value="Large purchase over $200 | Payment due in 3 days" />
+<Button>Save preferences</Button>
+</Card>
+
+<Card title="Dispute a Transaction" subtitle="Report an unrecognized or incorrect charge">
+<Form name="dispute">
+<Select label="Transaction" placeholder="Select the charge to dispute" options="Whole Foods -$84.20 | Netflix -$15.99 | Shell Gas -$48.75 | Amazon -$132.40 | Rent -$1,200.00" />
+<TextArea label="Reason" placeholder="Describe why you're disputing this charge (e.g., not recognized, incorrect amount, service not received)" rows="4" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my upcoming recurring payments
+- How much can I safely transfer to savings this month?
+- What's my credit utilization breakdown?
+- Which transactions qualify for dispute?
+</FollowUps>

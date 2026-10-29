@@ -1,0 +1,169 @@
+# Hospital Operations Command
+
+<Columns>
+<Stat label="Bed occupancy" value="86%" change="+4 pts vs yesterday" tone="warning" icon="bed" />
+<Stat label="ER wait (current)" value="47 min" change="+12 min in last hour" tone="danger" icon="clock" />
+<Stat label="Admissions today" value="38" change="+6 vs 14-day avg" tone="info" icon="chart-line" />
+<Stat label="Discharge-ready" value="12" tone="success" icon="check-circle" />
+</Columns>
+
+<Card title="Admissions — past two weeks" subtitle="Daily inpatient admissions">
+<Chart type="bar" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon W1 | 31 |
+| Tue W1 | 28 |
+| Wed W1 | 34 |
+| Thu W1 | 30 |
+| Fri W1 | 39 |
+| Sat W1 | 22 |
+| Sun W1 | 19 |
+| Mon W2 | 33 |
+| Tue W2 | 36 |
+| Wed W2 | 29 |
+| Thu W2 | 41 |
+| Fri W2 | 44 |
+| Sat W2 | 24 |
+| Sun W2 | 21 |
+</Chart>
+</Card>
+
+<Card title="Patients per department" subtitle="Census and capacity right now">
+| Department | Patients | Beds | Status |
+|---|---|---|---|
+| Emergency | 42 | 40 | <Badge tone="danger">Over capacity</Badge> |
+| ICU | 28 | 30 | <Badge tone="warning">Near full</Badge> |
+| Cardiology | 34 | 40 | <Badge tone="info">Busy</Badge> |
+| Oncology | 26 | 35 | <Badge tone="neutral">Stable</Badge> |
+| Pediatrics | 18 | 30 | <Badge tone="success">Open</Badge> |
+| Maternity | 22 | 28 | <Badge tone="info">Busy</Badge> |
+| Surgery (post-op) | 31 | 36 | <Badge tone="warning">Near full</Badge> |
+</Card>
+
+<Card title="Critical patients" subtitle="Escalated — needs eyes on them now">
+| Room | Patient | Issue | Assigned |
+|---|---|---|---|
+| ICU-04 | M. Okafor | Septic shock, vasopressors | Dr. Reyes |
+| ICU-11 | J. Lindqvist | Post-arrest, intubated | Dr. Chen |
+| CCU-02 | A. Delgado | STEMI, awaiting cath | Dr. Patel |
+| ED-07 | T. Novak | Trauma, active bleed | Dr. Bauer |
+</Card>
+
+<Callout tone="danger" title="4 critical patients">
+ICU-04 has been on vasopressors for 6 hours with no improvement. Consider escalation review.
+</Callout>
+
+<Card title="Staff on shift" subtitle="Current roster by role">
+| Name | Role | Unit | Shift ends |
+|---|---|---|---|
+| Dr. L. Reyes | Attending physician | ICU | 19:00 |
+| Dr. S. Chen | Intensivist | ICU | 07:00 |
+| Dr. R. Patel | Cardiologist | CCU | 18:00 |
+| Dr. M. Bauer | Emergency physician | ED | 20:00 |
+| N. Adeyemi, RN | Charge nurse | ICU | 19:00 |
+| P. Kowalski, RN | Staff nurse | ED | 19:00 |
+| H. Sato, RN | Staff nurse | Pediatrics | 19:00 |
+| J. Ferreira, RN | Staff nurse | Maternity | 19:00 |
+| D. Whitfield | Respiratory therapist | ICU | 19:00 |
+| C. Mbeki | Pharmacist | Central | 17:00 |
+| A. Ivanova | Surgical tech | OR | 16:00 |
+</Card>
+
+<Card title="Patients ready for discharge" subtitle="Awaiting paperwork or transport">
+| Room | Patient | Cleared by | Blocker |
+|---|---|---|---|
+| 3B-12 | R. Mwangi | Dr. Patel | Pharmacy pickup |
+| 4A-08 | K. Sørensen | Dr. Chen | Transport |
+| 2C-15 | L. Duarte | Dr. Reyes | Paperwork |
+| 5B-03 | F. Al-Rashid | Dr. Patel | Family arrival |
+| 3A-21 | G. Petrov | Dr. Bauer | — |
+| 4C-07 | S. Nakamura | Dr. Chen | Transport |
+| 2B-19 | O. Haddad | Dr. Reyes | Pharmacy pickup |
+| 5A-02 | E. Vasquez | Dr. Patel | — |
+| 3C-11 | B. Achebe | Dr. Bauer | Paperwork |
+| 4B-06 | N. Ivanov | Dr. Chen | Transport |
+| 2A-14 | M. Costa | Dr. Reyes | — |
+| 5C-09 | T. Yamamoto | Dr. Patel | Family arrival |
+</Card>
+
+<Card title="Today's operating room bookings" subtitle="Thursday schedule">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR-1 | CABG | Dr. Patel | <Badge tone="success">In progress</Badge> |
+| 08:00 | OR-2 | Appendectomy | Dr. Bauer | <Badge tone="success">In progress</Badge> |
+| 09:15 | OR-3 | Hip replacement | Dr. Osei | <Badge tone="info">Prepping</Badge> |
+| 10:30 | OR-1 | Cholecystectomy | Dr. Reyes | <Badge tone="neutral">Scheduled</Badge> |
+| 11:00 | OR-4 | Tonsillectomy | Dr. Lindqvist | <Badge tone="neutral">Scheduled</Badge> |
+| 13:00 | OR-2 | Cesarean section | Dr. Ferreira | <Badge tone="neutral">Scheduled</Badge> |
+| 14:30 | OR-3 | Knee arthroscopy | Dr. Osei | <Badge tone="neutral">Scheduled</Badge> |
+| 16:00 | OR-1 | Hernia repair | Dr. Reyes | <Badge tone="neutral">Scheduled</Badge> |
+| 18:00 | OR-4 | Emergency — open | On call | <Badge tone="warning">Held</Badge> |
+</Card>
+
+<Card title="Supplies running low" subtitle="Below reorder threshold">
+| Item | On hand | Threshold | Status |
+|---|---|---|---|
+| IV saline 1L | 42 | 120 | <Badge tone="danger">Critical</Badge> |
+| N95 masks | 310 | 500 | <Badge tone="warning">Low</Badge> |
+| Insulin pens | 28 | 60 | <Badge tone="warning">Low</Badge> |
+| Surgical gloves (M) | 640 | 900 | <Badge tone="warning">Low</Badge> |
+| Blood — O-neg | 6 | 15 | <Badge tone="danger">Critical</Badge> |
+| Propofol 20ml | 55 | 80 | <Badge tone="info">Watch</Badge> |
+</Card>
+
+<Progress value="42" max="120" label="IV saline (42 of 120)" tone="danger" />
+<Progress value="6" max="15" label="O-neg blood (6 of 15)" tone="danger" />
+
+<Card title="Actions">
+<Columns>
+<Button variant="primary" ask="File an incident report" icon="warning">File an incident</Button>
+<Button variant="secondary" ask="Show the command view for another day" icon="calendar">View another day</Button>
+<Button variant="secondary" ask="Request a patient transfer" icon="arrows-left-right">Request transfer</Button>
+</Columns>
+</Card>
+
+<Card title="File an incident" subtitle="Goes to the duty safety officer immediately">
+<Form name="incident-report">
+<Select label="Incident type" placeholder="Choose a type" options="Patient safety | Medication error | Equipment failure | Staff injury | Security | Other" required="true" />
+<Select label="Location" placeholder="Choose a unit" options="Emergency | ICU | CCU | Cardiology | Oncology | Pediatrics | Maternity | Surgery (post-op) | OR" required="true" />
+<Radio label="Severity" options="Near miss | Minor | Moderate | Serious | Sentinel" required="true" />
+<TextArea label="What happened" placeholder="Describe the event, who was involved, and what was done at the time" rows="4" required="true" />
+<Input label="Your name" placeholder="Reporter" required="true" />
+<Input label="Contact" type="tel" placeholder="Extension or mobile" hint="Only used if the officer needs to follow up" />
+<Switch label="Notify the attending physician now" value="true" />
+<Button>Submit incident</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="Look at another day" subtitle="Pick a date to reload the whole board">
+<Form name="day-picker">
+<Date label="Date" name="view-date" value="2024-06-13" hint="Defaults to today" />
+<Select label="Shift" options="All day | Day (07:00–19:00) | Night (19:00–07:00)" />
+<Button>Load day</Button>
+</Form>
+</Card>
+
+<Card title="Request a patient transfer" subtitle="Internal or external bed movement">
+<Form name="transfer-request">
+<Input label="Patient name" placeholder="Full name" required="true" />
+<Input label="Current room" placeholder="e.g. ED-07" required="true" />
+<Select label="Destination" placeholder="Choose a unit" options="ICU | CCU | Cardiology | Oncology | Pediatrics | Maternity | Surgery (post-op) | Another facility" required="true" />
+<Radio label="Urgency" options="Routine | Within 4 hours | Emergent" required="true" />
+<TextArea label="Clinical reason" placeholder="Why this patient needs to move" rows="3" required="true" />
+<Input label="Accepting clinician" placeholder="Name of the receiving physician" />
+<Switch label="Patient is on isolation precautions" value="false" />
+<Button>Submit transfer request</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Two items are critical">
+IV saline and O-neg blood are below safe thresholds. Both need a restock order before the night shift.
+</Callout>
+
+<FollowUps>
+- Which patients are closest to discharge right now?
+- Show the ICU roster for the night shift
+- What's driving the ER wait up this hour?
+- Draft a restock order for the critical supplies
+</FollowUps>

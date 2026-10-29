@@ -1,0 +1,20 @@
+[workspace]
+members = ["core", "cli", "ffi"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+publish = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+# The WASM build: smallest code, still fast enough.
+[profile.wasm]
+inherits = "release"
+opt-level = "s"
+strip = true
+panic = "abort"

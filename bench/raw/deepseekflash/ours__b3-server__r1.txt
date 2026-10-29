@@ -1,0 +1,78 @@
+This is the on-call engineer's service health screen. Every panel is filtered by the region selector at the top, and all eight required capabilities are on one view.
+
+<Card title="Service Health" subtitle="On-call engineer view · auto-refresh every 2 minutes">
+<Select label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-south-1" value="All regions" name="region" />
+<Callout tone="info" title="Regional filter">All panels below update to the selected region.</Callout>
+</Card>
+
+<Columns>
+<Card>
+<Stat label="Uptime this quarter" value="99.95%" change="+0.02% vs Q2" />
+</Card>
+<Card>
+<Stat label="Error rate right now" value="0.42%" note="Baseline: 0.15%" />
+<Badge tone="warning">Elevated</Badge>
+</Card>
+<Card>
+<Stat label="Open incidents" value="3" note="1 SEV-1 · 1 SEV-2 · 1 SEV-3" />
+</Card>
+</Columns>
+
+<Chart type="area" title="CPU & memory usage — past 24 hours" x="Time (UTC)" y="% used">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 60 |
+| 04:00 | 35 | 59 |
+| 06:00 | 33 | 58 |
+| 08:00 | 41 | 62 |
+| 10:00 | 55 | 68 |
+| 12:00 | 63 | 72 |
+| 14:00 | 58 | 70 |
+| 16:00 | 52 | 67 |
+| 18:00 | 47 | 65 |
+| 20:00 | 44 | 63 |
+| 22:00 | 43 | 62 |
+</Chart>
+
+<Columns>
+<Card title="Open incidents" subtitle="Click Acknowledge to take ownership">
+<Badge tone="danger">SEV-1</Badge> **Payment API timeouts** — us-east-1 · 09:41 UTC
+<Button variant="danger" ask="Acknowledge incident: Payment API timeouts">Acknowledge</Button>
+
+---
+
+<Badge tone="warning">SEV-2</Badge> **Checkout latency spike** — eu-west-1 · 08:15 UTC
+<Button variant="secondary" ask="Acknowledge incident: Checkout latency spike">Acknowledge</Button>
+
+---
+
+<Badge tone="info">SEV-3</Badge> **Search relevance degraded** — ap-south-1 · 07:02 UTC
+<Button variant="secondary" ask="Acknowledge incident: Search relevance degraded">Acknowledge</Button>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="p95 latency, past 24 hours">
+| Endpoint | Latency (p95) |
+|---|---|
+| POST /v1/payments | 1.42s |
+| GET /v1/orders | 890ms |
+| POST /v1/checkout | 760ms |
+| GET /v1/inventory | 645ms |
+| GET /v1/reports | 510ms |
+</Card>
+</Columns>
+
+<Card title="Alert threshold" subtitle="Applies to the selected region">
+<Form name="alert-thresholds">
+<Slider label="CPU alert threshold" min="50" max="95" step="5" value="80" name="cpu-threshold" />
+<Slider label="Memory alert threshold" min="50" max="95" step="5" value="85" name="memory-threshold" />
+<Button>Save threshold</Button>
+</Form>
+<Callout tone="info" title="Current policy">You are paged when CPU or memory stays above the threshold for 5 consecutive minutes.</Callout>
+</Card>
+
+<FollowUps>
+- What changed in the last deploy before the SEV-1?
+- Which pods are restarting in us-east-1?
+- Create a postmortem for the Payment API timeouts incident?
+</FollowUps>

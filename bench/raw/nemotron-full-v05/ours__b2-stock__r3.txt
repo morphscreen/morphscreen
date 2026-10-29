@@ -1,0 +1,66 @@
+# Low Inventory Warning
+
+<Input label="Search items" placeholder="Search by name, SKU, or category" type="search" name="inventory-search" hint="Type to filter the list below" />
+
+<Card title="Warning Threshold" subtitle="Items appear here when stock falls below this level">
+<Columns>
+<Stat label="Default threshold" value="10 units" tone="warning" />
+<Stat label="Critical threshold" value="3 units" tone="danger" />
+<Stat label="Items currently low" value="7" tone="info" />
+</Columns>
+<Callout tone="info" title="Threshold settings">Thresholds can be configured per category in Settings → Inventory → Thresholds. The default applies to all categories without a custom setting.</Callout>
+</Card>
+
+<Card title="Items Running Low">
+<Chart type="bar" title="Low Stock Items" x="Item" y="Units Remaining">
+| Item | Units Remaining |
+|---|---|
+| Organic Almond Milk 1L | 2 |
+| Gluten-Free Bread Loaf | 4 |
+| Free-Range Eggs (12pk) | 6 |
+| Greek Yogurt 500g | 7 |
+| Artisan Sourdough | 3 |
+| Cold-Press Juice 330ml | 8 |
+| Plant-Based Burger Patties | 5 |
+</Chart>
+</Card>
+
+<Card title="Reorder Actions">
+<Tabs>
+<Tab title="All Low Stock (7)">
+| Item | Category | Units Left | Threshold | Status | Action |
+|---|---|---|---|---|---|
+| Organic Almond Milk 1L | Dairy Alternatives | 2 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Artisan Sourdough | Bakery | 3 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Free-Range Eggs (12pk) | Dairy & Eggs | 6 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Plant-Based Burger Patties | Frozen | 5 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Gluten-Free Bread Loaf | Bakery | 4 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Greek Yogurt 500g | Dairy & Eggs | 7 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Cold-Press Juice 330ml | Beverages | 8 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+</Tab>
+<Tab title="Critical Only (2)">
+| Item | Category | Units Left | Threshold | Status | Action |
+|---|---|---|---|---|---|
+| Organic Almond Milk 1L | Dairy Alternatives | 2 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="danger">Urgent Reorder</Button> |
+| Artisan Sourdough | Bakery | 3 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="danger">Urgent Reorder</Button> |
+</Tab>
+<Tab title="By Category">
+<Select label="Filter by category" placeholder="All categories" options="All categories | Dairy Alternatives | Bakery | Dairy & Eggs | Frozen | Beverages" name="category-filter" />
+<Callout tone="neutral" title="Category view">Select a category above to see low-stock items grouped by department. Reorder buttons will create purchase orders for the default supplier of each category.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Quick Reorder">
+<Callout tone="success" title="Bulk actions available">Select multiple items below and use the bulk reorder button to create a single purchase order for all selected items.</Callout>
+<Checkboxes label="Select items for bulk reorder" options="Organic Almond Milk 1L | Artisan Sourdough | Free-Range Eggs (12pk) | Plant-Based Burger Patties | Gluten-Free Bread Loaf | Greek Yogurt 500g | Cold-Press Juice 330ml" name="bulk-reorder" />
+<Button variant="primary">Create Bulk Purchase Order (7 items)</Button>
+<Button variant="secondary">Export Low Stock Report</Button>
+</Card>
+
+<FollowUps>
+- Set custom thresholds for specific categories
+- View reorder history for Organic Almond Milk
+- Configure automatic reorder points
+- Check supplier lead times for critical items
+</FollowUps>

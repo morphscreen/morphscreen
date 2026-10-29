@@ -1,0 +1,39 @@
+root = Card([header, statsSection, nextPatient, appointmentsSection, roomsSection, checkinSection, moveDaySection])
+
+header = CardHeader("Clinic Receptionist", "Tuesday, Oct 15 — Day view")
+
+statsSection = Card([expectedTag, noShowTag], "sunk", "row", "l")
+expectedTag = Tag("24 patients expected", null, "md", "info")
+noShowTag = Tag("No-show rate 12%", null, "md", "warning")
+
+nextPatient = Callout("info", "Next patient", "Alex Rivera — 10:15 AM · Room 3")
+
+appointmentsSection = Card([appointmentsHeading, appointmentsTable], "sunk")
+appointmentsHeading = Heading("Today's appointments", "h3")
+appointmentsTable = Table([timeCol, patientCol, statusCol])
+timeCol = Col("Time", ["9:00 AM", "9:30 AM", "10:15 AM", "11:00 AM", "11:30 AM", "1:00 PM"])
+patientCol = Col("Patient", ["Maya Chen", "Liam Patel", "Alex Rivera", "Sofia Garcia", "Noah Kim", "Emma Wilson"])
+statusCol = Col("Status", ["Checked in", "Arrived", "Up next", "Scheduled", "Scheduled", "Scheduled"])
+
+roomsSection = Card([roomsHeading, roomsLabel, freeRooms], "sunk")
+roomsHeading = Heading("Rooms now", "h3")
+roomsLabel = TextContent("Free right now:", "small")
+freeRooms = TagBlock(["Room 1", "Room 2", "Room 4", "Room 5"])
+
+checkinSection = Card([checkinHeading, checkinForm], "sunk")
+checkinHeading = Heading("Check in patient", "h3")
+checkinForm = Form("checkin", checkinButtons, [patientField])
+patientField = FormControl("Patient", patientSelect, "Select the patient arriving")
+patientSelect = Select("patient", [patient1, patient2, patient3], "Choose patient")
+patient1 = SelectItem("maya", "Maya Chen")
+patient2 = SelectItem("liam", "Liam Patel")
+patient3 = SelectItem("alex", "Alex Rivera")
+checkinButtons = Buttons([checkinBtn])
+checkinBtn = Button("Check In", null, "primary")
+
+moveDaySection = Card([moveHeading, dayPicker, dayNav], "sunk")
+moveHeading = Heading("Move to another day", "h3")
+dayPicker = DatePicker("day", "single")
+dayNav = Buttons([prevDay, nextDay])
+prevDay = Button("← Previous day")
+nextDay = Button("Next day →")

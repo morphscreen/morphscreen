@@ -1,0 +1,123 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Plant 2 · Shift C · 14:32">
+<Columns>
+<Select label="Focus line" name="focus-line" options="All lines | Line 1 – Stamping | Line 2 – Welding | Line 3 – Assembly | Line 4 – Packaging" placeholder="All lines" hint="Filters every card on this console to the selected line" />
+<Button variant="primary" ask="Generating shift report CSV…">Export Shift Report</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" />
+<Callout tone="info" title="Target 85%">Availability is the main gap; performance is at 91%.</Callout>
+</Card>
+<Card title="Units vs Today's Target">
+<Stat label="Produced" value="4,382" note="Target 5,000" />
+<Progress value="4382" max="5000" label="87.6% complete" />
+</Card>
+<Card title="Safety">
+<Stat label="Incidents YTD" value="2" note="87 days since last recordable" />
+</Card>
+<Card title="Energy Use Today">
+<Stat label="Consumption" value="38.4 MWh" note="Peak demand 2.1 MW at 11:00" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Production Lines" subtitle="Live rate and status">
+| Line | Product | Rate (u/hr) | Status |
+|---|---|---|---|
+| Line 1 – Stamping | Bracket A | 98 | Running |
+| Line 2 – Welding | Frame B | 87 | Running slow |
+| Line 3 – Assembly | Unit C | 102 | Running |
+| Line 4 – Packaging | Unit C | 0 | Down |
+</Card>
+<Card title="Live Andon Alerts" subtitle="Auto-refreshes every 30 s">
+<Callout tone="danger" title="Line 4 – Packaging down">Conveyor jam at station 3 · 12 min ago · M. Ruiz</Callout>
+<Callout tone="warning" title="Line 2 – Welding slow">Robot weld tip worn · 34 min ago · T. Okafor</Callout>
+<Callout tone="warning" title="Line 3 – Material low">Resin hopper at 12% · 5 min ago</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Defect Rate – Past Month" subtitle="% failing final inspection">
+<Chart type="line" x="Week" y="Defect rate (%)">
+| Week | Defect rate |
+|---|---|
+| W1 | 1.8 |
+| W2 | 2.4 |
+| W3 | 1.9 |
+| W4 | 1.4 |
+</Chart>
+</Card>
+<Card title="Downtime by Cause" subtitle="Last 7 days">
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Changeover | 14.5 |
+| Breakdown | 9.2 |
+| Material shortage | 6.8 |
+| Quality checks | 4.1 |
+| Other | 2.3 |
+</Chart>
+</Card>
+<Card title="Shift Output Comparison" subtitle="Units per shift today">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A | 1540 |
+| Shift B | 1486 |
+| Shift C | 1356 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance" subtitle="Next 14 days">
+| Machine | Component | Due | Priority |
+|---|---|---|---|
+| Press P-04 | Hydraulic pump | Today 18:00 | High |
+| Welder W-12 | Weld tip | Tomorrow | Medium |
+| Conveyor C-02 | Drive belt | Thu 09:00 | Medium |
+| Robot R-07 | Servo motor | Fri | Low |
+| Compressor K-01 | Air filter | 12 Mar | Low |
+</Card>
+<Card title="Schedule Maintenance" subtitle="Book a machine for service">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="Press P-04 | Welder W-12 | Conveyor C-02 | Robot R-07 | Compressor K-01" placeholder="Select machine" />
+<Date label="Date" name="maintenance-date" hint="Pick a date for service" />
+<Select label="Priority" name="priority" options="Low | Medium | High" placeholder="Medium" />
+<Button>Schedule</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock" subtitle="Current levels">
+<Stat label="Steel" value="12.4 t" note="Reorder at 8 t" />
+<Stat label="Resin" value="3.8 t" note="Below reorder point (4 t)" />
+<Stat label="Packaging" value="8,200 units" note="Reorder at 6,000" />
+</Card>
+<Card title="Supplier Deliveries This Week">
+| Day | Supplier | Material |
+|---|---|---|
+| Today | SteelCo | 20 t steel coil |
+| Wed | PolyMere | 5 t resin |
+| Thu | Boxes Ltd | 10,000 cartons |
+| Fri | FastFix | Spare parts |
+</Card>
+<Card title="Batches on Quality Hold">
+| Batch | Product | Reason | Since |
+|---|---|---|---|
+| B-2204 | Bracket A | Dimension out of spec | 09:20 |
+| B-2207 | Frame B | Weld porosity | 11:05 |
+| B-2211 | Unit C | Paint adhesion | 13:40 |
+</Card>
+<Card title="Open Work Orders" subtitle="Sorted by priority">
+| WO | Line | Priority |
+|---|---|---|
+| WO-1182 | Line 4 | High |
+| WO-1183 | Line 2 | High |
+| WO-1184 | Line 3 | Medium |
+| WO-1185 | Line 1 | Low |
+</Card>
+</Columns>

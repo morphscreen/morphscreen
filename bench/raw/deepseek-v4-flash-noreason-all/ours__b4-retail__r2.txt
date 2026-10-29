@@ -1,0 +1,160 @@
+# Store Manager's Daily Console
+
+<Badge tone="info">Daily snapshot</Badge> <Badge tone="success">Store #204 – Downtown</Badge>
+
+<Card title="Sales today vs. target">
+<Columns>
+<Stat label="Sales today" value="$8,420" change="+12.4% vs. yesterday" icon="trend-up" tone="success" />
+<Stat label="Daily target" value="$10,000" note="84.2% achieved" icon="target" />
+<Stat label="Time remaining" value="3h 12m" note="Closes at 9 PM" icon="clock" />
+</Columns>
+<Progress value="8420" max="10000" label="84% of target" tone="info" />
+</Card>
+
+<Card title="Foot traffic through the day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 42 |
+| 10 AM | 78 |
+| 11 AM | 124 |
+| 12 PM | 156 |
+| 1 PM | 138 |
+| 2 PM | 112 |
+| 3 PM | 148 |
+| 4 PM | 173 |
+| 5 PM | 189 |
+| 6 PM | 165 |
+| 7 PM | 121 |
+| 8 PM | 74 |
+</Chart>
+<Callout tone="info" title="Peak hour">5 PM saw the highest traffic at 189 visitors. Consider scheduling an extra cashier then.</Callout>
+</Card>
+
+<Card title="Best sellers today">
+| Product | Units sold |
+|---|---|
+| Organic Almond Butter (16 oz) | 34 |
+| Cold Brew Coffee (12-pack) | 28 |
+| Greek Yogurt – Vanilla (4-pack) | 22 |
+| Sourdough Baguette | 19 |
+| Free-Range Eggs (dozen) | 17 |
+</Card>
+
+<Card title="Out of stock">
+<Callout tone="warning" title="6 items need attention">
+These items are below reorder point and need action today.
+</Callout>
+| Item | SKU | Status |
+|---|---|---|
+| Oat Milk – Barista Blend | 44127 | <Badge tone="danger">Out</Badge> |
+| Blueberries (6 oz) | 88312 | <Badge tone="danger">Out</Badge> |
+| Protein Bars – Chocolate | 22904 | <Badge tone="warning">Low (3 left)</Badge> |
+| Sparkling Water – Lime | 55781 | <Badge tone="warning">Low (5 left)</Badge> |
+| Cheddar Cheese – Aged | 99234 | <Badge tone="warning">Low (2 left)</Badge> |
+| Whole Wheat Pasta | 33567 | <Badge tone="warning">Low (4 left)</Badge> |
+<Button variant="primary" ask="Reorder the out-of-stock items">Reorder out-of-stock items</Button>
+</Card>
+
+<Card title="Who's on shift today">
+<Columns>
+<Avatar name="Maria Lopez" src="find" subtitle="7 AM – 3 PM · Manager" />
+<Avatar name="James Chen" src="find" subtitle="7 AM – 1 PM · Cashier" />
+<Avatar name="Aisha Patel" src="find" subtitle="9 AM – 5 PM · Stocker" />
+<Avatar name="Tom O'Brien" src="find" subtitle="11 AM – 7 PM · Cashier" />
+<Avatar name="Sofia Reyes" src="find" subtitle="2 PM – 10 PM · Assistant" />
+<Avatar name="David Kim" src="find" subtitle="2 PM – 10 PM · Stocker" />
+</Columns>
+</Card>
+
+<Card title="Average basket size">
+<Columns>
+<Stat label="Today" value="$38.50" change="+$2.10 vs. last week" icon="shopping-bag" tone="success" />
+<Stat label="This week" value="$36.90" note="Target: $35.00" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Returns this week">
+<Columns>
+<Stat label="Returns" value="14" note="vs. 9 last week" icon="arrow-counter-clockwise" tone="warning" />
+<Stat label="Return value" value="$412.80" note="1.2% of sales" icon="currency-dollar" />
+</Columns>
+<Chart type="bar" x="Day" y="Returns">
+| Day | Returns |
+|---|---|
+| Mon | 1 |
+| Tue | 2 |
+| Wed | 3 |
+| Thu | 2 |
+| Fri | 4 |
+| Sat | 2 |
+| Sun | 0 |
+</Chart>
+</Card>
+
+<Card title="Running promotions">
+<Columns>
+<Product name="Buy 1 Get 1 – Chips" price="$4.99" was="$9.98" badge="BOGO" rating="4.5" count="32">
+<Badge tone="success">On track</Badge> 62 units sold today, 45% above forecast.
+<Button variant="primary" ask="Show details for the BOGO chips promo">View details</Button>
+</Product>
+<Product name="20% Off – Organic Produce" price="20% off" badge="Seasonal" rating="4.2" count="18">
+<Badge tone="warning">Behind pace</Badge> 38 units sold, 22% below forecast.
+<Button variant="primary" ask="Show details for the produce promo">View details</Button>
+</Product>
+<Product name="$2 Off – Coffee Beans" price="$2 off" badge="Weekly" rating="4.8" count="45">
+<Badge tone="success">Exceeding</Badge> 51 units sold, 30% above forecast.
+<Button variant="primary" ask="Show details for the coffee promo">View details</Button>
+</Product>
+</Columns>
+</Card>
+
+<Card title="Registers">
+| Register | Status | Opened by |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | James Chen |
+| Register 2 | <Badge tone="success">Open</Badge> | Tom O'Brien |
+| Register 3 | <Badge tone="danger">Closed</Badge> | — |
+| Register 4 | <Badge tone="success">Open</Badge> | Sofia Reyes |
+| Self-checkout A | <Badge tone="success">Open</Badge> | — |
+| Self-checkout B | <Badge tone="warning">Paused</Badge> | — |
+</Card>
+
+<Card title="Reorder an item">
+<Form name="reorder-item">
+<Combobox label="Item" name="item" options="Oat Milk – Barista Blend | Blueberries (6 oz) | Protein Bars – Chocolate | Sparkling Water – Lime | Cheddar Cheese – Aged | Whole Wheat Pasta" placeholder="Search or type an item" required="true" />
+<Stepper label="Quantity" name="quantity" value="12" min="1" max="100" step="1" unit="units" />
+<Select label="Supplier" options="Fresh Foods Co. | Valley Distributors | GreenGrocer Direct" placeholder="Choose supplier" required="true" hint="Default supplier is pre-selected for each item" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="View a different store">
+<Select label="Store" options="Store #204 – Downtown | Store #118 – Riverside | Store #332 – Maplewood | Store #451 – Lakeside | Store #509 – Hillcrest" placeholder="Choose a store" name="store-select" hint="Switching stores updates all data on this console" />
+<Button variant="secondary" ask="Show me the console for Store #118 – Riverside">Switch store</Button>
+</Card>
+
+<Card title="This week vs. last week">
+<Chart type="line" x="Day" y="Sales ($)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 7400 | 6900 |
+| Tue | 8100 | 7600 |
+| Wed | 7900 | 7300 |
+| Thu | 8600 | 8000 |
+| Fri | 9200 | 8700 |
+| Sat | 10400 | 9800 |
+| Sun | 0 | 0 |
+</Chart>
+<Columns>
+<Stat label="This week (so far)" value="$49,600" change="+6.8% vs. last week" icon="chart-line" tone="success" />
+<Stat label="Last week" value="$46,400" note="Full week total" icon="calendar" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the sales breakdown by department
+- Which employees have the highest scan rates?
+- What's the forecast for tomorrow?
+- Show me inventory levels for the top 10 items
+</FollowUps>

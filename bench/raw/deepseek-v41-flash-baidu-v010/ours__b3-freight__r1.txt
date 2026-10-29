@@ -1,0 +1,107 @@
+# Logistics Control Board
+
+<Card title="Network snapshot" subtitle="Last refreshed 14 min ago — 09:42 local">
+<Columns>
+<Stat label="On-time this month" value="91.4%" change="+2.1 pts vs Aug" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$184.20" change="+$6.40 vs Aug" tone="warning" icon="receipt" />
+<Stat label="In transit now" value="1,286" note="of 1,410 active" icon="truck" />
+<Stat label="Delayed" value="37" change="+9 since yesterday" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Input label="Origin" name="origin" placeholder="e.g. Rotterdam" hint="City, port code or hub name" />
+<Input label="Destination" name="destination" placeholder="e.g. Chicago" />
+<Select label="Carrier" name="carrier" placeholder="Any carrier" options="Any carrier | Maersk | DHL Freight | Kuehne+Nagel | DB Schenker | XPO" />
+<Date label="Departing after" name="depart_after" hint="Leave blank to search all open shipments" />
+<Button>Search routes</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Delayed shipments" subtitle="Action needed — 37 total, 6 shown">
+<Callout tone="danger" title="Two delays over 48h">Rotterdam → Chicago and Shenzhen → Hamburg have breached SLA. Customer notifications are overdue.</Callout>
+
+| Shipment | Route | ETA | Delay | Status |
+|---|---|---|---|---|
+| SHP-40218 | Rotterdam → Chicago | Sep 14, 18:00 | <Badge tone="danger">52h late</Badge> | Held at customs |
+| SHP-40233 | Shenzhen → Hamburg | Sep 15, 09:30 | <Badge tone="danger">49h late</Badge> | Port congestion |
+| SHP-40251 | Memphis → Monterrey | Sep 15, 14:00 | <Badge tone="warning">21h late</Badge> | Weather reroute |
+| SHP-40266 | Lyon → Barcelona | Sep 15, 22:00 | <Badge tone="warning">14h late</Badge> | Driver shortage |
+| SHP-40279 | Singapore → Sydney | Sep 16, 06:00 | <Badge tone="warning">9h late</Badge> | Missed connection |
+| SHP-40284 | Oslo → Antwerp | Sep 16, 11:00 | <Badge tone="warning">6h late</Badge> | Awaiting docs |
+
+<Button variant="secondary">Show all 37 delayed</Button>
+<Button variant="danger">Notify affected customers</Button>
+</Card>
+
+<Card title="In transit" subtitle="1,286 shipments moving — 8 shown">
+| Shipment | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-40301 | Rotterdam | Chicago | Sep 16, 18:00 | <Badge tone="success">On time</Badge> |
+| SHP-40304 | Shanghai | Los Angeles | Sep 17, 04:00 | <Badge tone="success">On time</Badge> |
+| SHP-40309 | Shenzhen | Hamburg | Sep 17, 09:30 | <Badge tone="danger">Delayed</Badge> |
+| SHP-40312 | Memphis | Monterrey | Sep 17, 14:00 | <Badge tone="warning">At risk</Badge> |
+| SHP-40318 | Lyon | Barcelona | Sep 17, 22:00 | <Badge tone="success">On time</Badge> |
+| SHP-40322 | Singapore | Sydney | Sep 18, 06:00 | <Badge tone="warning">At risk</Badge> |
+| SHP-40327 | Oslo | Antwerp | Sep 18, 11:00 | <Badge tone="success">On time</Badge> |
+| SHP-40331 | Mumbai | Dubai | Sep 18, 19:00 | <Badge tone="success">On time</Badge> |
+
+<Button variant="secondary">Load more shipments</Button>
+</Card>
+
+<Card title="Volume by carrier" subtitle="September to date — 1,410 shipments">
+<Chart type="donut" title="Share of volume" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 452 |
+| DHL Freight | 388 |
+| Kuehne+Nagel | 271 |
+| DB Schenker | 184 |
+| XPO | 115 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume" subtitle="Past two months — 8 weeks">
+<Chart type="bar" title="Shipments per week" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W31 | 298 |
+| W32 | 312 |
+| W33 | 341 |
+| W34 | 366 |
+| W35 | 352 |
+| W36 | 389 |
+| W37 | 401 |
+| W38 | 410 |
+</Chart>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Input label="Shipment ID" name="shipment_id" placeholder="SHP-40309" required="true" hint="Find it in the tables above" />
+<Select label="Reason" name="reason" placeholder="Choose a reason" options="Delay risk | Damaged goods | Address issue | Customs hold | Cost anomaly | Other" required="true" />
+<TextArea label="Notes" name="notes" placeholder="What should the next coordinator know?" rows="3" />
+<Switch label="Escalate to account manager" name="escalate" value="false" hint="Sends an alert to the customer's AM immediately" />
+<Button>Flag shipment</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Refresh status">
+<Steps>
+<Step title="Data pulled from carrier APIs" status="done" subtitle="09:28 — 5 of 5 carriers responded" />
+<Step title="Route matching and ETA recalc" status="done" subtitle="09:36 — 1,286 shipments updated" />
+<Step title="Board published" status="current" subtitle="09:42 — live now, next auto-refresh 10:12" />
+</Steps>
+
+<Progress value="14" max="30" label="Minutes until next refresh" tone="info" />
+</Card>
+
+<FollowUps>
+- Which shipments are at risk of missing their ETA tomorrow?
+- Show me the cost breakdown for Maersk shipments
+- Why did on-time percentage drop from August?
+- Flag every shipment delayed more than 24 hours
+</FollowUps>

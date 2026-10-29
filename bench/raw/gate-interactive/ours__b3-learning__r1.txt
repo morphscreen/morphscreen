@@ -1,0 +1,63 @@
+# Training Platform Analytics
+
+<Card subtitle="Filter all metrics below by cohort">
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Q1 2024 Onboarding | Engineering Bootcamp | Sales Certification | Leadership Track | Data Science Intensive" />
+</Card>
+
+<Columns>
+<Stat label="Active learners this week" value="1,247" change="+8% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="73%" change="+4pp vs last month" tone="info" icon="chart-line" />
+<Stat label="Average quiz score" value="84%" change="-1pp vs last week" tone="neutral" icon="award" />
+</Columns>
+
+<Card title="Engagement across past 8 weeks">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active learners | Sessions | Avg session (min) |
+|---|---|---|---|
+| W1 | 980 | 3,420 | 22 |
+| W2 | 1,050 | 3,890 | 24 |
+| W3 | 1,120 | 4,100 | 25 |
+| W4 | 1,180 | 4,350 | 26 |
+| W5 | 1,150 | 4,200 | 25 |
+| W6 | 1,210 | 4,480 | 27 |
+| W7 | 1,230 | 4,550 | 28 |
+| W8 | 1,247 | 4,620 | 28 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Courses ranked by enrollment">
+<Chart type="bar" x="Course" y="Enrollments">
+| Course | Enrollments | Completion rate |
+|---|---|---|
+| Python Fundamentals | 482 | 78% |
+| React Advanced | 356 | 71% |
+| SQL for Analytics | 312 | 82% |
+| Product Management | 289 | 69% |
+| ML Foundations | 245 | 65% |
+| DevOps Basics | 198 | 74% |
+| UX Design | 167 | 77% |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out">
+| Learner | Cohort | Last active | Progress | Risk score | Action |
+|---|---|---|---|---|---|
+| Alex Chen | Engineering Bootcamp | 12 days ago | 34% | 92 | Message |
+| Priya Patel | Q1 2024 Onboarding | 9 days ago | 41% | 87 | Message |
+| Marcus Johnson | Sales Certification | 15 days ago | 28% | 94 | Message |
+| Sarah Kim | Data Science Intensive | 8 days ago | 39% | 85 | Message |
+| James Wilson | Leadership Track | 11 days ago | 31% | 89 | Message |
+| Emily Davis | Engineering Bootcamp | 14 days ago | 36% | 83 | Message |
+</Card>
+</Columns>
+
+<Card title="Message a cohort">
+<Form name="cohort-message">
+<Select label="Recipient cohort" name="recipient" placeholder="Select cohort" options="Q1 2024 Onboarding | Engineering Bootcamp | Sales Certification | Leadership Track | Data Science Intensive" required="true" />
+<Input label="Subject" name="subject" placeholder="e.g., Check-in: Your progress this week" required="true" />
+<TextArea label="Message" name="message" placeholder="Write your message here. You can use {{name}} for personalization." rows="5" required="true" hint="Markdown supported. Variables: {{name}}, {{course}}, {{progress}}" />
+<Button variant="primary">Send to cohort</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>

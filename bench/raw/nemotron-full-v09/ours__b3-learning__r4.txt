@@ -1,0 +1,70 @@
+# Training Platform Analytics
+
+<Card title="Cohort filter">
+<Select label="Select cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Cohort A — Jan 2025 | Cohort B — Feb 2025 | Cohort C — Mar 2025 | Cohort D — Apr 2025" />
+</Card>
+
+<Columns>
+<Stat label="Active learners this week" value="1,247" change="+8% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="73%" change="+4 pts vs last month" tone="info" icon="chart-line" />
+<Stat label="Average quiz score" value="84%" change="+2 pts vs last month" tone="success" icon="award" />
+</Columns>
+
+<Card title="Engagement across the past 8 weeks" subtitle="Weekly active learners and session time">
+<Chart type="line" x="Week" y="Value">
+| Week | Active learners | Avg session (min) |
+|---|---|---|
+| W1 | 980 | 42 |
+| W2 | 1050 | 45 |
+| W3 | 1120 | 48 |
+| W4 | 1180 | 51 |
+| W5 | 1210 | 53 |
+| W6 | 1230 | 55 |
+| W7 | 1240 | 54 |
+| W8 | 1247 | 56 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Courses ranked by enrollment">
+<Chart type="horizontal" x="Enrollments" y="Course">
+| Course | Enrollments |
+|---|---|
+| Python Fundamentals | 1,240 |
+| Data Analysis with Pandas | 980 |
+| Web Development Basics | 870 |
+| SQL for Beginners | 760 |
+| Machine Learning Intro | 650 |
+| DevOps Essentials | 540 |
+| React Fundamentals | 480 |
+| Cloud Architecture | 390 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="12 learners flagged — inactivity > 14 days or quiz scores < 60%">
+| Learner | Cohort | Last active | Avg quiz | Risk factors |
+|---|---|---|---|---|
+| Alex Chen | Cohort B | 18 days ago | 52% | Low scores, no login |
+| Maria Santos | Cohort A | 22 days ago | 58% | Inactivity, missed deadlines |
+| James Wilson | Cohort C | 15 days ago | 45% | Low scores, no forum posts |
+| Priya Patel | Cohort B | 20 days ago | 55% | Inactivity, dropped 2 courses |
+| Ryan Okafor | Cohort D | 16 days ago | 48% | Low scores, no video views |
+</Card>
+</Columns>
+
+<Card title="Message a cohort" subtitle="Send an announcement or reminder to the selected cohort">
+<Form name="message-cohort">
+<Select label="Recipient cohort" name="recipient" placeholder="Select cohort" options="Cohort A — Jan 2025 | Cohort B — Feb 2025 | Cohort C — Mar 2025 | Cohort D — Apr 2025" required="true" />
+<TextArea label="Message" name="message" placeholder="Write your message here…" rows="4" hint="Supports markdown. Learners receive this via email and in-app notification." required="true" />
+<Checkboxes label="Delivery channels" name="channels" options="Email | In-app notification | SMS" value="Email | In-app notification" />
+<Button variant="primary" icon="send">Send message</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show completion trends by course
+- Export at-risk learner list
+- Compare cohort performance side by side
+- Set up automated nudges for inactive learners
+</FollowUps>

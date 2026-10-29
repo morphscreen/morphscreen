@@ -1,0 +1,244 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="danger" title="Live Andon Alerts">
+<Badge tone="danger">CRITICAL</Badge> Line 3 — Machine 7: Emergency stop activated (10:42 AM)
+<Badge tone="warning">WARNING</Badge> Line 1 — Conveyor B: Speed variance >15% (10:38 AM)
+<Badge tone="info">INFO</Badge> Line 4 — Packaging: Low label roll (10:35 AM)
+</Callout>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Progress value="82" max="100" label="OEE: 82% (Target: 85%)" />
+<Stat label="Availability" value="91%" change="+2.1%" tone="success" />
+<Stat label="Performance" value="88%" change="-1.3%" tone="warning" />
+<Stat label="Quality" value="96%" change="+0.5%" tone="success" />
+</Card>
+
+<Card title="Today's Production">
+<Progress value="8470" max="10000" label="Units Produced: 8,470 / 10,000 (84.7%)" />
+<Stat label="Target" value="10,000" />
+<Stat label="Remaining" value="1,530" />
+<Stat label="Rate" value="1,058/hr" change="+42/hr" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Production Lines Overview">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | Actual | OEE | Active Alerts |
+|---|---|---|---|---|---|---|
+| Line 1 | <Badge tone="success">Running</Badge> | 1,120 | 1,200 | 9,840 | 87% | 1 Warning |
+| Line 2 | <Badge tone="success">Running</Badge> | 980 | 1,000 | 8,920 | 84% | 0 |
+| Line 3 | <Badge tone="danger">Stopped</Badge> | 0 | 1,100 | 7,200 | 62% | 1 Critical |
+| Line 4 | <Badge tone="success">Running</Badge> | 1,050 | 1,050 | 9,450 | 89% | 1 Info |
+| Line 5 | <Badge tone="warning">Degraded</Badge> | 720 | 900 | 6,480 | 71% | 0 |
+</Tab>
+<Tab title="Line 1 Detail">
+| Metric | Value | Trend |
+|---|---|---|
+| Current Rate | 1,120 units/hr | ▲ +3.2% |
+| Shift Output | 9,840 units | ▲ +5.1% |
+| OEE | 87% | ▲ +1.4% |
+| Defect Rate | 1.8% | ▼ -0.3% |
+| Active Work Orders | 3 | — |
+| Next Maintenance | 2025-01-28 | — |
+</Tab>
+<Tab title="Line 2 Detail">
+| Metric | Value | Trend |
+|---|---|---|
+| Current Rate | 980 units/hr | ▼ -1.1% |
+| Shift Output | 8,920 units | ▼ -2.3% |
+| OEE | 84% | ▼ -0.8% |
+| Defect Rate | 2.1% | ▲ +0.2% |
+| Active Work Orders | 2 | — |
+| Next Maintenance | 2025-02-03 | — |
+</Tab>
+<Tab title="Line 3 Detail">
+| Metric | Value | Trend |
+|---|---|---|
+| Current Rate | 0 units/hr | ▼ -100% |
+| Shift Output | 7,200 units | ▼ -34% |
+| OEE | 62% | ▼ -18% |
+| Defect Rate | 4.5% | ▲ +1.8% |
+| Active Work Orders | 5 | — |
+| Next Maintenance | 2025-01-22 (Overdue) | — |
+</Tab>
+<Tab title="Line 4 Detail">
+| Metric | Value | Trend |
+|---|---|---|
+| Current Rate | 1,050 units/hr | ▲ +2.0% |
+| Shift Output | 9,450 units | ▲ +4.8% |
+| OEE | 89% | ▲ +2.1% |
+| Defect Rate | 1.2% | ▼ -0.4% |
+| Active Work Orders | 1 | — |
+| Next Maintenance | 2025-02-10 | — |
+</Tab>
+<Tab title="Line 5 Detail">
+| Metric | Value | Trend |
+|---|---|---|
+| Current Rate | 720 units/hr | ▼ -12% |
+| Shift Output | 6,480 units | ▼ -18% |
+| OEE | 71% | ▼ -8% |
+| Defect Rate | 3.8% | ▲ +0.9% |
+| Active Work Orders | 4 | — |
+| Next Maintenance | 2025-01-30 | — |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| 2024-12-22 | 2.1 |
+| 2024-12-23 | 2.3 |
+| 2024-12-24 | 1.9 |
+| 2024-12-25 | 2.0 |
+| 2024-12-26 | 2.4 |
+| 2024-12-27 | 2.2 |
+| 2024-12-28 | 2.5 |
+| 2024-12-29 | 2.1 |
+| 2024-12-30 | 1.8 |
+| 2024-12-31 | 1.7 |
+| 2025-01-01 | 1.9 |
+| 2025-01-02 | 2.0 |
+| 2025-01-03 | 2.2 |
+| 2025-01-04 | 2.1 |
+| 2025-01-05 | 1.8 |
+| 2025-01-06 | 1.6 |
+| 2025-01-07 | 1.7 |
+| 2025-01-08 | 1.9 |
+| 2025-01-09 | 2.0 |
+| 2025-01-10 | 1.8 |
+| 2025-01-11 | 1.7 |
+| 2025-01-12 | 1.6 |
+| 2025-01-13 | 1.8 |
+| 2025-01-14 | 1.9 |
+| 2025-01-15 | 2.1 |
+| 2025-01-16 | 2.0 |
+| 2025-01-17 | 1.8 |
+| 2025-01-18 | 1.7 |
+| 2025-01-19 | 1.6 |
+| 2025-01-20 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause (This Month)">
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Mechanical Failure | 48 |
+| Changeover | 32 |
+| Material Shortage | 24 |
+| Quality Hold | 18 |
+| Planned Maintenance | 12 |
+| Operator Break | 8 |
+| Software/Control | 6 |
+| Other | 4 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Status |
+|---|---|---|---|---|
+| CNC-07 | Line 3 | 2025-01-22 | Preventive | <Badge tone="danger">Overdue</Badge> |
+| Press-12 | Line 1 | 2025-01-28 | Preventive | <Badge tone="warning">Due Soon</Badge> |
+| Injection-04 | Line 2 | 2025-02-03 | Predictive | <Badge tone="info">Scheduled</Badge> |
+| Conveyor-B | Line 1 | 2025-02-05 | Corrective | <Badge tone="warning">Due Soon</Badge> |
+| Packager-09 | Line 4 | 2025-02-10 | Preventive | <Badge tone="info">Scheduled</Badge> |
+| Welder-03 | Line 5 | 2025-01-30 | Predictive | <Badge tone="warning">Due Soon</Badge> |
+</Card>
+
+<Card title="Raw Material Stock">
+| Material | Current Stock | Reorder Point | Days Remaining | Status |
+|---|---|---|---|---|
+| Steel (tons) | 42.5 | 15.0 | 18 | <Badge tone="success">OK</Badge> |
+| Resin (kg) | 8,200 | 3,000 | 12 | <Badge tone="warning">Low</Badge> |
+| Packaging (units) | 145,000 | 50,000 | 22 | <Badge tone="success">OK</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel coil | 25 tons | 2025-01-22 | <Badge tone="info">In Transit</Badge> |
+| PolymerWorks | Resin pellets | 5,000 kg | 2025-01-23 | <Badge tone="info">Confirmed</Badge> |
+| BoxCo | Corrugated boxes | 50,000 | 2025-01-24 | <Badge tone="info">Confirmed</Badge> |
+| Apex Metals | Steel sheet | 15 tons | 2025-01-25 | <Badge tone="warning">At Risk</Badge> |
+| SealTech | Adhesive | 2,000 L | 2025-01-26 | <Badge tone="info">Confirmed</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units Produced | Target | Variance |
+|---|---|---|---|
+| Shift A (6AM-2PM) | 3,820 | 3,500 | +9.1% |
+| Shift B (2PM-10PM) | 3,150 | 3,500 | -10.0% |
+| Shift C (10PM-6AM) | 1,500 | 3,000 | -50.0% |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Safety Metrics">
+<Stat label="Incidents This Year" value="3" change="-2 vs last year" tone="success" />
+<Stat label="Days Since Last Incident" value="127" change="+127" tone="success" />
+<Stat label="Near Misses (YTD)" value="12" change="-3" tone="info" />
+<Stat label="LTIFR" value="0.82" change="-0.15" tone="success" />
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since |
+|---|---|---|---|---|---|
+| B-20250120-04 | Line 3 | Widget-XL | 500 | Dimensional variance | 2025-01-20 08:15 |
+| B-20250120-07 | Line 5 | Gear-200 | 300 | Surface finish | 2025-01-20 11:30 |
+| B-20250119-12 | Line 2 | Bracket-A | 450 | Material cert missing | 2025-01-19 16:45 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use Today">
+<Stat label="Electricity" value="1,840 kWh" change="+3.2% vs avg" tone="neutral" />
+<Stat label="Natural Gas" value="2,150 m³" change="-1.8% vs avg" tone="success" />
+<Stat label="Water" value="4,200 L" change="+0.5% vs avg" tone="neutral" />
+<Stat label="Cost" value="$427" change="+$12 vs avg" tone="warning" />
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Machine | Description | Assigned | Due |
+|---|---|---|---|---|---|---|
+| WO-4821 | <Badge tone="danger">Critical</Badge> | Line 3 | CNC-07 | Emergency stop investigation | M. Torres | Today |
+| WO-4825 | <Badge tone="warning">High</Badge> | Line 1 | Conveyor-B | Speed sensor replacement | J. Chen | Today |
+| WO-4818 | <Badge tone="warning">High</Badge> | Line 5 | Welder-03 | Torch alignment | R. Patel | 2025-01-22 |
+| WO-4830 | <Badge tone="info">Medium</Badge> | Line 2 | Injection-04 | Nozzle cleaning | S. Kim | 2025-01-23 |
+| WO-4832 | <Badge tone="info">Medium</Badge> | Line 4 | Packager-09 | Seal bar adjustment | L. Nguyen | 2025-01-24 |
+| WO-4815 | <Badge tone="neutral">Low</Badge> | Line 1 | Press-12 | Lubrication PM | M. Torres | 2025-01-28 |
+</Card>
+</Columns>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="CNC-07 (Line 3) | Press-12 (Line 1) | Injection-04 (Line 2) | Conveyor-B (Line 1) | Packager-09 (Line 4) | Welder-03 (Line 5) | Other" required="true" />
+<Date label="Date" name="date" required="true" />
+</Columns>
+<Select label="Maintenance Type" name="type" placeholder="Select type" options="Preventive | Predictive | Corrective | Calibration" required="true" />
+<TextArea label="Description / Notes" name="notes" placeholder="Describe the work required..." rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Focus on Line">
+<Radio label="Select a line to view detailed metrics" name="focus-line" options="Line 1 | Line 2 | Line 3 | Line 4 | Line 5" value="Line 1" />
+</Card>
+
+<Columns>
+<Button size="large">Export Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Shift Report (CSV)</Button>
+<Button variant="tertiary" size="large">Email Report</Button>
+</Columns>

@@ -1,0 +1,52 @@
+# Personal Budget Check
+
+<Card title="Monthly Overview" subtitle="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,147" change="+$147 vs last month" tone="warning" />
+<Stat label="Remaining" value="$853" tone="success" />
+</Columns>
+
+<Progress value="2147" max="3000" label="Budget utilization: 71.6%" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Food & Dining | 420 |
+| Transportation | 280 |
+| Utilities | 180 |
+| Entertainment | 150 |
+| Shopping | 110 |
+| Other | 57 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense This Month">
+<Callout tone="info" title="Rent Payment — $950">
+**Category:** Housing  
+**Date:** January 1, 2025  
+**Payment method:** Bank transfer  
+**Recurring:** Yes (monthly)
+</Callout>
+</Card>
+
+<Card title="Select Month">
+<Select label="View month" options="January 2025 | December 2024 | November 2024 | October 2024" value="January 2025" />
+</Card>
+
+<Card title="Add New Expense">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" required="true" />
+<Date label="Date" name="date" required="true" />
+</Columns>
+<Select label="Category" name="category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Other" required="true" />
+<Input label="Description (optional)" name="description" placeholder="Groceries, rent, etc." />
+<Input label="Payment Method" name="payment" placeholder="Credit card, cash, bank transfer" />
+<Button>Add Expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

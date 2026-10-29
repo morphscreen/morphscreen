@@ -1,0 +1,51 @@
+# Support desk — morning view
+
+<Columns>
+<Stat label="Open tickets" value="47" change="+6 since yesterday" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="38 min" change="-4 min vs. last week" tone="success" icon="timer" />
+<Stat label="High priority open" value="9" change="3 breached SLA" tone="danger" icon="warning" />
+</Columns>
+
+<Card title="Five most recent tickets" subtitle="Newest first, with priority">
+| Ticket | Subject | Priority | Age |
+|---|---|---|---|
+| #4821 | Checkout fails on Safari 17 | <Badge tone="danger">Urgent</Badge> | 4 min |
+| #4820 | SSO login loop for Acme Corp | <Badge tone="danger">Urgent</Badge> | 11 min |
+| #4819 | Export CSV missing last row | <Badge tone="warning">High</Badge> | 26 min |
+| #4818 | Billing invoice shows wrong tax | <Badge tone="warning">High</Badge> | 41 min |
+| #4817 | How do I rename a workspace? | <Badge tone="neutral">Normal</Badge> | 58 min |
+
+<Button ask="Show me the full details of ticket #4821">Open #4821</Button>
+<Button variant="secondary" ask="Show all open tickets sorted by oldest first">See all 47 open tickets</Button>
+</Card>
+
+<Card title="Filter the queue">
+<Form name="ticket-filter">
+<Checkboxes label="Show only" options="High priority | Urgent | Breaching SLA | Unassigned" value="High priority | Urgent" name="priority-filter" />
+<Select label="Assigned to" placeholder="Anyone" options="Anyone | Me | Team inbox | Unassigned" />
+<Switch label="Hide tickets I'm already viewing" name="hide-viewing" value="false" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="New ticket">
+<Form name="new-ticket">
+<Input label="Requester email" type="email" name="requester" placeholder="customer@example.com" required="true" />
+<Input label="Subject" name="subject" placeholder="Short summary of the issue" required="true" />
+<TextArea label="Description" name="description" rows="5" placeholder="What happened, what was expected, steps to reproduce" hint="Paste any error text or logs here" />
+<Radio label="Priority" options="Urgent | High | Normal | Low" name="priority" value="Normal" />
+<Select label="Assign to" placeholder="Unassigned" options="Unassigned | Me | Tier 2 | Billing" />
+<Button>Create ticket</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="SLA reminder">Urgent tickets need a first response within 15 minutes. Three are already past that.</Callout>
+
+<FollowUps>
+- Which tickets are breaching SLA right now?
+- Draft a reply to ticket #4821
+- Show first-response time by agent this week
+- Summarize yesterday's ticket volume
+</FollowUps>

@@ -1,0 +1,155 @@
+{
+  "name": "device",
+  "version": "0.2.0",
+  "about": "The device's own hardware and apps: maps, camera, scanning, location, files, contacts, the calendar, sharing, voice notes and QR codes. Native on every platform, with a web fallback that needs no JavaScript.",
+  "components": {
+    "Map": {
+      "about": "places on a map; add one whenever the answer suggests places to go (a trip, places to eat, walks), even when not asked for a map. A Markdown table inside: the place first, then its Lat and Lng (an Address only for a place you can't locate), then anything else; route draws a path through them in order",
+      "attrs": {
+        "title": "string",
+        "route": "boolean"
+      },
+      "content": "table"
+    },
+    "Camera": {
+      "about": "a form field that takes a photo with the camera",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "facing": {
+          "type": [
+            "back",
+            "front"
+          ],
+          "default": "back"
+        },
+        "multiple": "boolean",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Scan": {
+      "about": "a form field filled by scanning a barcode or QR code",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "kind": {
+          "type": [
+            "any",
+            "qr",
+            "barcode"
+          ],
+          "default": "any"
+        },
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Location": {
+      "about": "a form field holding the user's location once they choose to share it",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "precision": {
+          "type": [
+            "approximate",
+            "precise"
+          ],
+          "default": "approximate"
+        },
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "File": {
+      "about": "a form field for attaching files",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "accept": "list",
+        "multiple": "boolean",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Contact": {
+      "about": "a form field: a person picked from the user's contacts",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "AddToCalendar": {
+      "about": "a button that adds an event to the user's calendar; the button's label between the tags",
+      "attrs": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "start": {
+          "type": "string",
+          "required": true
+        },
+        "end": "string",
+        "where": "string",
+        "note": "string"
+      },
+      "content": "text"
+    },
+    "Share": {
+      "about": "a button that opens the share sheet with this text or link; the button's label between the tags",
+      "attrs": {
+        "text": "string",
+        "href": "url"
+      },
+      "content": "text"
+    },
+    "VoiceNote": {
+      "about": "a form field: the user records a short voice note",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "max": "number",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "QR": {
+      "about": "a QR code for a link or short text, for another phone to scan",
+      "attrs": {
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "label": "string"
+      },
+      "content": "none"
+    }
+  }
+}

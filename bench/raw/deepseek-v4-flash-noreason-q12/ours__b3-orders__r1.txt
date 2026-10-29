@@ -1,0 +1,56 @@
+# E-commerce Operations Desk
+
+<Card title="Today's Performance">
+<Columns>
+<Stat label="Orders Today" value="128" change="+12% vs yesterday" icon="shopping-bag" tone="info" />
+<Stat label="Revenue Today" value="$18,420" change="+8% vs yesterday" icon="currency-dollar" tone="success" />
+<Stat label="Avg Order Value" value="$143.91" change="-3% vs yesterday" icon="chart-line" tone="warning" />
+<Stat label="Refund Rate (Month)" value="2.4%" change="−0.6 pts vs last month" icon="arrow-counter-clockwise" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Order Volume — Past 4 Weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 742 |
+| Week 2 | 815 |
+| Week 3 | 908 |
+| Week 4 | 1,024 |
+</Chart>
+</Card>
+
+<Card title="Recent Orders" subtitle="Filter by status or search by customer">
+<Tabs>
+<Tab title="All Orders">
+<Form name="order-filters">
+<Columns>
+<Select label="Status" options="All | Pending | Paid | Fulfilled | Shipped | Refunded" name="status-filter" value="All" />
+<Input label="Search customer" name="customer-search" type="search" placeholder="e.g. Sarah, Mike, Chen…" />
+</Columns>
+</Form>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Sarah Mitchell | $214.50 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10481 | James Okafor | $89.99 | <Badge tone="success">Shipped</Badge> | — |
+| #10480 | Lena Fischer | $342.00 | <Badge tone="info">Paid</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10479 | Miguel Torres | $67.25 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10478 | Aisha Khan | $156.80 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10477 | David Chen | $98.40 | <Badge tone="danger">Refunded</Badge> | — |
+| #10476 | Emma Wilson | $431.20 | <Badge tone="success">Shipped</Badge> | — |
+| #10475 | Noah Berg | $72.10 | <Badge tone="info">Paid</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+</Card>
+
+<Callout tone="info" title="How this works">
+- Use the **Status** dropdown to narrow orders (e.g. show only *Pending*).
+- Type in the **Search customer** field to find orders by customer name.
+- Click **Mark fulfilled** on any *Paid* or *Pending* order to update its status to *Fulfilled*.
+</Callout>
+
+<FollowUps>
+- Show me orders that are still pending from yesterday
+- Which customers have the highest order value this week?
+- What's the refund rate trend over the last three months?
+- Export today's fulfilled orders as a CSV
+</FollowUps>

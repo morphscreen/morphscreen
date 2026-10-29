@@ -1,0 +1,131 @@
+<Card title="Account Balances" subtitle="Total: $42,847.32">
+<Columns>
+<Stat label="Checking" value="$12,450.18" change="+$1,200.00 this month" />
+<Stat label="Savings" value="$28,500.00" change="+$500.00 this month" />
+<Stat label="Credit Card" value="-$1,897.14" change="Due: Oct 28" note="Available: $8,102.86" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+<Table>
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Oct 15 | Whole Foods | Groceries | -$127.43 |
+| Oct 14 | Shell Gas | Transportation | -$45.00 |
+| Oct 13 | Netflix | Subscriptions | -$15.99 |
+| Oct 12 | Amazon | Shopping | -$89.99 |
+| Oct 11 | Salary Deposit | Income | +$3,200.00 |
+| Oct 10 | Starbucks | Dining | -$12.50 |
+| Oct 9 | Electric Bill | Utilities | -$145.32 |
+</Table>
+<Button variant="secondary" href="#">View all transactions</Button>
+</Card>
+
+<Columns>
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="October Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Transportation | 340 |
+| Groceries | 420 |
+| Dining | 280 |
+| Shopping | 180 |
+| Subscriptions | 45 |
+| Utilities | 145 |
+| Other | 95 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+<Table>
+| Bill | Amount | Due Date | Status |
+|---|---|---|---|
+| Credit Card | $1,897.14 | Oct 28 | Pending |
+| Car Payment | $385.00 | Nov 1 | Pending |
+| Internet | $79.99 | Nov 5 | Pending |
+| Phone | $120.00 | Nov 12 | Pending |
+| Insurance | $165.00 | Nov 15 | Pending |
+</Table>
+<Button variant="secondary" href="#">Manage bills</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Vacation Savings Goal">
+<Progress value="18500" max="25000" label="$18,500 of $25,000 (74%)" />
+<Stat label="Monthly contribution" value="$500" change="On track for June 2025" />
+<Button variant="secondary">Adjust goal</Button>
+</Card>
+
+<Card title="Credit Score">
+<Stat label="Current Score" value="742" change="+12 since last month" note="Good" />
+<Progress value="742" max="850" label="Score range: 300–850" />
+<Details title="Score factors">
+- Payment history: Excellent
+- Credit utilization: 19% (Good)
+- Credit age: 4.2 years (Fair)
+- Total accounts: 6 (Good)
+- Hard inquiries: 1 (Good)
+</Details>
+</Card>
+</Columns>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Columns>
+<Select label="From account" name="fromAccount" placeholder="Select account" options="Checking (*••• 4502) | Savings (*••• 7891) | Credit Card (*••• 3344)" required="true" />
+<Select label="To account" name="toAccount" placeholder="Select account" options="Checking (*••• 4502) | Savings (*••• 7891) | Credit Card (*••• 3344)" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Max $12,450.18 from Checking" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation fund, rent, etc." />
+<Button>Transfer now</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Columns>
+<Stat label="Credit limit" value="$10,000" />
+<Stat label="Current balance" value="$1,897.14" />
+<Stat label="Available credit" value="$8,102.86" />
+</Columns>
+<Switch label="Freeze credit line" name="freezeCredit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Callout tone="info" title="Credit freeze active">Your credit line is currently unfrozen. New transactions will be approved normally.</Callout>
+</Card>
+
+<Card title="Statement Period">
+<Form name="statement-period">
+<Select label="Select period" name="period" placeholder="Choose statement period" options="October 2024 (Oct 1–Oct 31) | September 2024 (Sep 1–Sep 30) | August 2024 (Aug 1–Aug 31) | July 2024 (Jul 1–Jul 31) | Custom range..." value="October 2024 (Oct 1–Oct 31)" />
+<Button variant="secondary">Download PDF</Button>
+<Button variant="tertiary">Email statement</Button>
+</Form>
+</Card>
+
+<Card title="Alert Preferences">
+<Form name="alert-preferences">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" hint="Get notified via push, email, or SMS" />
+<Checkboxes label="Account alerts" name="acctAlerts" options="Low balance (<$500) | Direct deposit received | Bill payment due | Payment posted | Credit limit near max" hint="Get notified via push, email, or SMS" />
+<Checkboxes label="Security alerts" name="secAlerts" options="New device login | Password changed | Contact info updated | Credit freeze toggled | Dispute filed" hint="Always sent via email for security" />
+<Button>Save preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select transaction" name="disputeTx" placeholder="Choose a transaction to dispute" options="Whole Foods — $127.43 (Oct 15) | Shell Gas — $45.00 (Oct 14) | Netflix — $15.99 (Oct 13) | Amazon — $89.99 (Oct 12) | Starbucks — $12.50 (Oct 10) | Electric Bill — $145.32 (Oct 9)" required="true" />
+<Select label="Dispute reason" name="reason" placeholder="Select reason" options="Unauthorized charge | Incorrect amount | Duplicate charge | Goods not received | Goods not as described | Service not rendered | Canceled subscription" required="true" />
+<TextArea label="Additional details" name="details" placeholder="Describe what happened, include any merchant communication, tracking numbers, etc." rows="4" hint="Optional but helpful for investigation" />
+<Button variant="primary">Submit dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+<Callout tone="info" title="What happens next">We'll investigate within 10 business days. You may see a provisional credit while we review. Most disputes resolve in 30–90 days.</Callout>
+</Card>
+
+<FollowUps>
+- Set up automatic savings transfer
+- Increase credit limit
+- Order new debit card
+- Link external account
+- Schedule bill payment
+</FollowUps>

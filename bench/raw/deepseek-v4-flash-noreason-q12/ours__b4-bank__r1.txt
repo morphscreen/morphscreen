@@ -1,0 +1,141 @@
+# Personal Banking Home
+
+<Card title="Account Balances">
+<Columns>
+<div>
+
+**Checking** <Badge tone="info">••4521</Badge>
+
+**$12,480.32**
+
+</div>
+<div>
+
+**Savings** <Badge tone="info">••7834</Badge>
+
+**$28,905.17**
+
+</div>
+<div>
+
+**Credit Card** <Badge tone="warning">••9023</Badge>
+
+**$4,238.50** <Badge tone="success">Paid on time</Badge>
+
+</div>
+</Columns>
+<Button variant="secondary" size="small">View all accounts</Button>
+</Card>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Amount |
+|---|---|---|
+| Today | Whole Foods Market | -$84.20 |
+| Today | Shell Gas Station | -$52.10 |
+| Yesterday | Starbucks | -$6.75 |
+| Yesterday | Amazon | -$129.99 |
+| Feb 12 | Netflix | -$15.49 |
+| Feb 11 | Trader Joe's | -$63.38 |
+| Feb 10 | Uber | -$24.60 |
+| Feb 9 | Target | -$112.84 |
+</Card>
+
+<Card title="Spending This Month">
+<Chart type="donut" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 310 |
+| Transportation | 185 |
+| Shopping | 240 |
+| Utilities | 195 |
+| Entertainment | 88 |
+| Other | 120 |
+</Chart>
+<Callout tone="info" title="Total spent">$1,558 this month — 12% under your $1,750 budget</Callout>
+</Card>
+
+<Columns>
+<Card title="Bills Due Soon">
+| Bill | Due | Amount |
+|---|---|---|
+| Electric | Feb 18 | $96.40 |
+| Internet | Feb 20 | $65.00 |
+| Phone | Feb 22 | $48.75 |
+| Rent | Mar 1 | $1,850.00 |
+<Button variant="secondary" size="small">Pay all bills</Button>
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Stat label="Goal" value="$10,000" note="$6,400 saved (64%)" icon="piggy-bank" />
+<Progress value="6400" max="10000" label="Hawaii trip — June 2026" tone="success" />
+<Stat label="Monthly auto-transfer" value="$400" note="Next transfer: Mar 1" icon="calendar" />
+</Card>
+</Columns>
+
+<Card title="Credit Score">
+<Stat label="Current score" value="742" note="Good (670–739)" icon="chart-line" tone="success" />
+<Chart type="line" x="Month" y="Score">
+| Month | Score |
+|---|---|
+| Sep | 718 |
+| Oct | 725 |
+| Nov | 730 |
+| Dec | 731 |
+| Jan | 738 |
+| Feb | 742 |
+</Chart>
+<Callout tone="success" title="On track">Your score is up 24 points over the last 6 months.</Callout>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer">
+<Select label="From" options="Checking ••4521 | Savings ••7834 | Credit Card ••9023" placeholder="Select account" />
+<Select label="To" options="Checking ••4521 | Savings ••7834 | Credit Card ••9023" placeholder="Select account" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" />
+<Select label="When" options="Now | Tomorrow | Custom date" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Credit Line">
+<Stat label="Available credit" value="$15,761.50" note="$20,000 limit" icon="credit-card" />
+<Button variant="danger" ask="Freeze your credit card to block new purchases, cash advances and balance transfers? You can unfreeze anytime.">Freeze credit line</Button>
+</Card>
+
+<Card title="Statement Period">
+<Form name="statement">
+<Select label="Statement cycle" options="1st – 30th | 5th – 4th | 10th – 9th | 15th – 14th | 20th – 19th | 25th – 24th" placeholder="Choose cycle" hint="Changes take effect next statement" />
+<Button>Update statement period</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Alert Preferences">
+<Form name="alerts">
+<Checkboxes label="Transaction alerts" options="Purchases over $100 | Online purchases | Foreign transactions | Large deposits | Withdrawals over $200" value="Purchases over $100 | Online purchases" hint="Sent instantly via push notification" />
+<Checkboxes label="Balance alerts" options="Low balance (below $500) | Negative balance | Credit utilization over 30% | Large transfers out" value="Low balance (below $500)" />
+<Checkboxes label="Billing alerts" options="Upcoming bill reminders | Payment due date | Statement available | Autopay confirmation" value="Upcoming bill reminders | Payment due date | Statement available | Autopay confirmation" />
+<Checkboxes label="Security alerts" options="New device login | Password change | Card frozen/unfrozen | PIN change | Suspicious activity" value="New device login | Suspicious activity" />
+<Select label="Alert channel" options="Push notification | Email | SMS text | All channels" />
+<Button>Save alert preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute">
+<Select label="Transaction to dispute" options="Whole Foods Market -$84.20 (Feb 12) | Amazon -$129.99 (Feb 11) | Uber -$24.60 (Feb 10) | Target -$112.84 (Feb 9) | Other" placeholder="Select transaction" />
+<Select label="Reason" options="I don't recognize it | Wrong amount | Charged twice | Never received item/service | Canceled subscription | Fraudulent charge" placeholder="Select reason" />
+<TextArea label="Details" placeholder="Describe what happened…" rows="4" hint="Include any supporting details or order numbers" />
+<Radio label="Refund method" options="Back to original card | Back to checking account | Bank check by mail" />
+<Button>Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my full transaction history
+- Compare my spending to last month
+- What are the best rates on my savings?
+- Explain how my credit score is calculated
+</FollowUps>

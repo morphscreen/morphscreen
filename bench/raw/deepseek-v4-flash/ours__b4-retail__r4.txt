@@ -1,0 +1,122 @@
+# Store manager console
+
+<Card title="Store" subtitle="Downtown Market · Tuesday, June 18, 2025">
+<Badge tone="success">Open now</Badge>
+
+Switch to another location to view its daily console.
+
+<Form name="store-switcher">
+<Select label="View a different store" options="Downtown Market | Uptown Market | Riverside Store" value="Downtown Market" />
+<Button variant="secondary">Switch store</Button>
+</Form>
+</Card>
+
+<Card title="Today's numbers">
+<Columns>
+<Stat label="Sales today" value="$8,240" change="+5.2% vs last Tuesday" icon="trend-up" tone="success" />
+<Stat label="Daily target" value="$10,000" note="82% reached" icon="bullseye" />
+<Stat label="Average basket" value="$46.20" change="+3.1% vs last week" icon="shopping-bag" />
+<Stat label="Returns this week" value="$1,240" note="18 returns · −8.4% vs last week" icon="arrow-counter-clockwise" tone="warning" />
+</Columns>
+<Progress value="8240" max="10000" label="Sales today vs target" tone="info" />
+</Card>
+
+<Columns>
+<Card title="Foot traffic through the day">
+Peak at 5 PM with 420 visitors.
+
+<Chart type="area" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 7 AM | 45 |
+| 8 AM | 120 |
+| 9 AM | 210 |
+| 10 AM | 245 |
+| 11 AM | 190 |
+| 12 PM | 230 |
+| 1 PM | 280 |
+| 2 PM | 260 |
+| 3 PM | 310 |
+| 4 PM | 355 |
+| 5 PM | 420 |
+| 6 PM | 390 |
+| 7 PM | 240 |
+| 8 PM | 160 |
+</Chart>
+</Card>
+
+<Card title="This week vs last week">
+This week $61,820 vs last week $55,000 — <Badge tone="success">+12.4%</Badge>
+
+<Chart type="bar" x="Day" y="Sales">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 7100 | 6500 |
+| Tue | 8240 | 7300 |
+| Wed | 7900 | 6900 |
+| Thu | 8400 | 7400 |
+| Fri | 9100 | 8100 |
+| Sat | 10800 | 9600 |
+| Sun | 10280 | 9200 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Best sellers today">
+| Product | Units sold | Revenue |
+|---|---|---|
+| House Blend Coffee 1 lb | 84 | $1,176 |
+| Avocados | 72 | $101 |
+| Sourdough Loaf | 63 | $252 |
+| Organic Milk 1 gal | 58 | $261 |
+| Strawberries 1 lb | 51 | $306 |
+</Card>
+
+<Card title="Out of stock">
+<Callout tone="danger" title="3 items out">Reorder before tomorrow's delivery cutoff.</Callout>
+
+| Item | Last in stock | Status |
+|---|---|---|
+| Almond Butter 16 oz | Jun 16 | Out |
+| Jasmine Rice 5 lb | Jun 15 | Out |
+| Sparkling Water 12 pk | Jun 14 | Out |
+| Greek Yogurt 32 oz | Jun 18 | Low — 4 left |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Running promotions">
+<Progress value="71" max="100" label="Summer fruit sale · $1,420 of $2,000" tone="info" />
+<Progress value="82" max="100" label="Bakery buy 1 get 1 · $980 of $1,200" tone="success" />
+<Progress value="84" max="100" label="Loyalty double points · $2,110 of $2,500" tone="warning" />
+</Card>
+
+<Card title="Registers">
+| Register | Status | Cash drawer | Cashier |
+|---|---|---|---|
+| Reg 1 | Open | $220 | Maria G. |
+| Reg 2 | Open | $185 | David C. |
+| Reg 3 | Closed | — | — |
+| Reg 4 | Open | $240 | Priya P. |
+
+Reg 3 is closed for maintenance until 4 PM.
+</Card>
+</Columns>
+
+<Columns>
+<Card title="On shift today">
+<Avatar name="Maria Gomez" subtitle="Cashier · 8 AM – 4 PM" />
+<Avatar name="David Chen" subtitle="Floor lead · 8 AM – 4 PM" />
+<Avatar name="Priya Patel" subtitle="Cashier · 12 PM – 8 PM" />
+<Avatar name="James Wright" subtitle="Stocker · 6 AM – 2 PM" />
+</Card>
+
+<Card title="Reorder an item">
+<Form name="reorder">
+<Select label="Item" options="Almond Butter 16 oz | Jasmine Rice 5 lb | Sparkling Water 12 pk | Greek Yogurt 32 oz" placeholder="Choose a product" />
+<Input label="Quantity" type="number" min="1" max="100" placeholder="24" hint="Cases, not individual units" />
+<Button>Send reorder</Button>
+</Form>
+</Card>
+</Columns>

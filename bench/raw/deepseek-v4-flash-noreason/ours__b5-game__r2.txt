@@ -1,0 +1,171 @@
+# Live-Ops Command Center
+
+<Callout tone="success" title="All systems nominal">No critical alerts. Crash rate is within the 2% target. Two experiments running, one hotfix staged for review.</Callout>
+
+<Card title="Player Pulse" subtitle="Real-time metrics">
+<Columns>
+<Stat label="Players Online" value="48,291" change="+6.2% vs. 1h ago" icon="users" tone="success" />
+<Stat label="Daily Active Players" value="1.24M" change="+3.1% vs. yesterday" icon="chart-line" tone="info" />
+<Stat label="Monthly Active Players" value="8.7M" change="+12.4% vs. last month" icon="calendar" tone="info" />
+<Stat label="Revenue Today" value="$214,380" change="+8.7% vs. yesterday" icon="currency-dollar" tone="success" />
+<Stat label="Revenue per User" value="$0.173" change="+5.4% vs. yesterday" icon="chart-pie" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Session Length — Last 14 Days" subtitle="Average minutes per session">
+<Chart type="line" x="Day" y="Avg. session (min)">
+| Day | Avg. session |
+|---|---|
+| Day 1 | 22.4 |
+| Day 2 | 23.1 |
+| Day 3 | 21.8 |
+| Day 4 | 24.2 |
+| Day 5 | 23.6 |
+| Day 6 | 25.0 |
+| Day 7 | 24.4 |
+| Day 8 | 23.2 |
+| Day 9 | 26.1 |
+| Day 10 | 25.8 |
+| Day 11 | 27.3 |
+| Day 12 | 26.9 |
+| Day 13 | 28.2 |
+| Day 14 | 27.6 |
+</Chart>
+<Callout tone="info" title="Trend">Session length up 23% over two weeks, driven by the new raid content.</Callout>
+</Card>
+
+<Card title="Top-Selling Items" subtitle="Last 24 hours">
+<Columns>
+<Stat label="Dragon's Hoard Chest" value="4,210 units" change="$63,150" icon="box" />
+<Stat label="Season Pass — Premium" value="3,875 units" change="$58,125" icon="ticket" />
+<Stat label="Phoenix Mount" value="1,942 units" change="$29,130" icon="horse" />
+<Stat label="Starter Bundle" value="3,120 units" change="$15,600" icon="gift" />
+<Stat label="XP Boost — 7 Day" value="5,480 units" change="$10,960" icon="lightning" />
+</Columns>
+</Card>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Stat label="NA East" value="Operational" change="12,480 online" icon="map-pin" tone="success" />
+<Stat label="NA West" value="Operational" change="8,210 online" icon="map-pin" tone="success" />
+<Stat label="EU Central" value="Operational" change="14,930 online" icon="map-pin" tone="success" />
+<Stat label="Asia Pacific" value="Degraded" change="9,420 online" icon="map-pin" tone="warning" />
+<Stat label="South America" value="Operational" change="3,251 online" icon="map-pin" tone="success" />
+</Columns>
+<Details title="Focus on a region" open="false">
+<Form name="region-focus">
+<Select label="Region to focus" placeholder="Choose a region" options="NA East | NA West | EU Central | Asia Pacific | South America" />
+<Button>Focus on region</Button>
+</Form>
+</Details>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash rate (%)">
+| Version | Crash rate |
+|---|---|
+| 2.4.0 | 0.8 |
+| 2.4.1 | 1.2 |
+| 2.3.9 | 2.4 |
+| 2.3.8 | 3.1 |
+| 2.2.7 | 4.6 |
+</Chart>
+<Callout tone="warning" title="Legacy versions">Versions older than 2.4.0 exceed the 2% crash threshold. Consider a forced update.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Tabs>
+<Tab title="Running now">
+| Event | Ends in | Players engaged |
+|---|---|---|
+| Summer Solstice Raid | 2d 14h | 312,400 |
+| Double XP Weekend | 1d 06h | 1.02M |
+| Community Fishing Contest | 3d 22h | 88,200 |
+</Tab>
+<Tab title="Upcoming">
+| Event | Starts in | Duration |
+|---|---|---|
+| Autumn Harvest Festival | 4d 08h | 7 days |
+| Halloween Haunted Dungeon | 11d 00h | 10 days |
+| Black Friday Mega Sale | 18d 12h | 3 days |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Moderation Queue">
+<Columns>
+<Stat label="Player Reports" value="1,284" change="214 new in last hour" icon="flag" tone="warning" />
+<Stat label="Ban Appeals" value="392" change="58 new in last hour" icon="shield-warning" tone="warning" />
+</Columns>
+<Details title="Review player reports" open="false">
+| Report ID | Player | Reason | Submitted |
+|---|---|---|---|
+| #48291 | xX_DragonSlayer_Xx | Cheating | 12 min ago |
+| #48290 | LunaGamer | Toxic chat | 18 min ago |
+| #48289 | NoScopePro | Exploit abuse | 31 min ago |
+| #48288 | QueenBee | Scamming | 47 min ago |
+</Details>
+<Details title="Review ban appeals" open="false">
+| Appeal ID | Player | Ban reason | Appeals text |
+|---|---|---|---|
+| #23104 | ShadowRogue | Botting | "Was using an autoclicker for fishing, sorry." |
+| #23103 | MightyMage | Toxicity | "It was a joke, won't happen again." |
+| #23102 | PixelPete | Chargeback | "Card was stolen, not my chargeback." |
+</Details>
+</Card>
+
+<Card title="Economy Health" subtitle="In-game currency inflation">
+<Columns>
+<Stat label="Gold in circulation" value="4.82B" change="+1.2% this week" icon="coins" tone="warning" />
+<Stat label="Gold sinks vs. faucets" value="0.94" change="Sinks slightly behind" icon="scale" tone="warning" />
+<Stat label="Item price index" value="104.2" change="+4.1% vs. last month" icon="trend-up" tone="warning" />
+</Columns>
+<Progress value="94" max="100" label="Faucet / sink balance (target ≤ 100)" tone="warning" />
+<Callout tone="warning" title="Inflation watch">Gold faucets are outpacing sinks. Consider a sink event or adjusting drop rates.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Stat label="A/B: New Onboarding" value="Day 9 of 14" change="+12% D1 retention" icon="flask" tone="success" />
+<Stat label="A/B: Boss Difficulty" value="Day 5 of 14" change="+8% playtime, −3% clears" icon="flask" tone="info" />
+</Columns>
+<Details title="Experiment details" open="false">
+**Onboarding Flow** — *Control vs. new guided tutorial*
+- D1 retention: **+12%** (statistically significant, p < 0.01)
+- Tutorial completion: **+18%**
+- Recommendation: **Ship new flow**
+
+**Boss Difficulty** — *Current vs. tuned-down boss*
+- Avg. playtime: **+8%**
+- Boss clear rate: **−3%**
+- Player satisfaction survey: **+0.4** (4.2 vs. 3.8)
+- Status: **Continue running**
+</Details>
+</Card>
+
+<Card title="Patch Notes & Hotfix">
+<Columns>
+<Card title="Draft patch notes" subtitle="Version 2.4.2">
+<Form name="patch-notes">
+<TextArea label="Patch notes draft" rows="8" placeholder="## Changes&#10;- Fixed crash on Android 14&#10;- Reduced gold drop rate in Zone 3&#10;- New Halloween event items&#10;- Balance changes to Mage class" />
+<Button>Preview</Button>
+<Button variant="secondary">Save draft</Button>
+</Form>
+</Card>
+<Card title="Ship hotfix" subtitle="Version 2.4.1 → 2.4.2">
+<Form name="hotfix">
+<Select label="Hotfix target" placeholder="Choose a version" options="2.4.2 (crash fix) | 2.4.2 (economy tune) | 2.4.2 (both)" />
+<Radio label="Rollout strategy" options="Gradual (10% → 50% → 100%) | All at once | Phased by region" />
+<Checkboxes label="Checks" options="Staged on QA | Crash rate below 2% | Economy script tested" value="Staged on QA" />
+<Button>Ship hotfix</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the crash report for version 2.2.7
+- What's driving the revenue spike today?
+- Summarize the Asia Pacific server degradation
+- Compare experiment results side by side
+</FollowUps>

@@ -1,0 +1,152 @@
+<Card title="St. Mary's Medical Center" subtitle="Operations Command Center">
+<Badge tone="success">Live</Badge> <Badge tone="info">Tue, Oct 15 · 14:32</Badge> <Badge tone="neutral">Auto-refresh 60s</Badge>
+
+<Date label="View another day" name="ops-date" value="2025-10-15" hint="Loads the full command view for the selected date" />
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="Current hospital census">
+<Stat label="Occupied beds" value="298 / 342" note="87.1% overall" />
+<Progress value="87" max="100" label="Occupancy" />
+
+| Status | Beds |
+|---|---|
+| Occupied | 298 |
+| Available | 38 |
+| Maintenance | 6 |
+
+<Callout tone="warning" title="Near capacity">Med/Surg is at 94% — consider holding elective admits.</Callout>
+</Card>
+
+<Card title="Current ER Wait" subtitle="Door-to-provider average">
+<Stat label="Average wait" value="42 min" change="+8 min vs 2h ago" />
+<Badge tone="warning">Above 30-min target</Badge>
+
+| Triage level | Wait |
+|---|---|
+| Resuscitation | 5 min |
+| Emergent | 18 min |
+| Urgent | 47 min |
+| Non-urgent | 1h 25m |
+</Card>
+
+<Card title="Admissions" subtitle="Past two weeks">
+<Stat label="14-day total" value="640" change="+4.2% vs prior 14 days" />
+<Chart type="area" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Oct 1 | 42 |
+| Oct 2 | 38 |
+| Oct 3 | 51 |
+| Oct 4 | 47 |
+| Oct 5 | 55 |
+| Oct 6 | 36 |
+| Oct 7 | 33 |
+| Oct 8 | 44 |
+| Oct 9 | 49 |
+| Oct 10 | 58 |
+| Oct 11 | 52 |
+| Oct 12 | 61 |
+| Oct 13 | 39 |
+| Oct 14 | 35 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department" subtitle="Current census by unit">
+<Chart type="horizontal" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Med/Surg | 51 |
+| Cardiology | 48 |
+| Pediatrics | 41 |
+| General Surgery | 35 |
+| Neurology | 32 |
+| Orthopedics | 27 |
+| Oncology | 24 |
+| Maternity | 22 |
+| ICU | 18 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Staff on Shift" subtitle="42 currently clocked in">
+<Avatar name="Dr. Sarah Chen" subtitle="Attending Physician — ER" />
+<Avatar name="Dr. Marcus Webb" subtitle="Surgeon — OR" />
+<Avatar name="Nurse Priya Patel" subtitle="Charge Nurse — ICU" />
+<Avatar name="Nurse James Okafor" subtitle="RN — Med/Surg" />
+<Avatar name="Dr. Elena Rodriguez" subtitle="Neurologist — Neurology" />
+<Avatar name="David Kim, RRT" subtitle="Respiratory Therapist — ICU" />
+<Avatar name="Aisha Bello, PharmD" subtitle="Pharmacist — Pharmacy" />
+<Avatar name="Nurse Tom Becker" subtitle="RN — Pediatrics" />
+</Card>
+
+<Card title="Critical Patients" subtitle="Requires immediate attention">
+<Callout tone="danger" title="Code Stroke — Room 214">
+J. Alvarez, 68 · Onset 20 min ago · Dr. Chen responding
+</Callout>
+<Callout tone="danger" title="Septic Shock — Room 307">
+M. Osei, 54 · Lactate 4.8 · Dr. Webb paged
+</Callout>
+<Callout tone="danger" title="Post-Arrest — ICU 4">
+R. Sullivan, 71 · Ventilated, on norepinephrine · Dr. Patel
+</Callout>
+</Card>
+
+<Card title="Ready for Discharge" subtitle="Cleared by care teams">
+| Patient | Room | Status |
+|---|---|---|
+| L. Nguyen | 118 | <Badge tone="success">Awaiting transport</Badge> |
+| P. Kowalski | 203 | <Badge tone="info">Meds ready</Badge> |
+| S. Ahmed | 221 | <Badge tone="info">Paperwork done</Badge> |
+| D. Foster | 305 | <Badge tone="success">Pickup arranged</Badge> |
+| A. Rossi | 112 | <Badge tone="warning">Pending family call</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Today's OR Bookings" subtitle="October 15, 2025">
+| Time | Room | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR 1 | Total knee replacement | Dr. Webb | <Badge tone="info">In progress</Badge> |
+| 09:00 | OR 2 | Laparoscopic cholecystectomy | Dr. Lin | <Badge tone="neutral">Scheduled</Badge> |
+| 10:30 | OR 3 | Cesarean section | Dr. Osei | <Badge tone="neutral">Scheduled</Badge> |
+| 12:00 | OR 1 | Hernia repair | Dr. Webb | <Badge tone="neutral">Scheduled</Badge> |
+| 14:00 | OR 2 | Colonoscopy | Dr. Ruiz | <Badge tone="neutral">Scheduled</Badge> |
+| 15:30 | OR 3 | Appendectomy | Dr. Lin | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies Running Low" subtitle="At or below reorder point">
+| Supply | Stock | Reorder at | Status |
+|---|---|---|---|
+| N95 masks | 120 | 500 | <Badge tone="danger">Critical</Badge> |
+| Propofol 20 mL | 30 vials | 75 | <Badge tone="danger">Critical</Badge> |
+| IV saline 1L | 80 cases | 200 | <Badge tone="warning">Low</Badge> |
+| Ceftriaxone 1g | 45 vials | 100 | <Badge tone="warning">Low</Badge> |
+| Glucose test strips | 60 boxes | 150 | <Badge tone="warning">Low</Badge> |
+| Sterile gloves (M) | 140 boxes | 300 | <Badge tone="warning">Low</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="File an Incident" subtitle="Report a patient safety event">
+<Form name="incident-report">
+<Select label="Incident type" options="Medication error | Fall | Equipment failure | Behavioral event | Other" placeholder="Select type" required="true" />
+<Input label="Location" placeholder="e.g., Room 214, ICU" />
+<Radio label="Severity" options="Low | Medium | High | Critical" />
+<TextArea label="Description" placeholder="What happened? Include any immediate actions taken." rows="4" />
+<Button>Submit incident</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer" subtitle="Move a patient between units">
+<Form name="transfer-request">
+<Input label="Patient" placeholder="Full name or MRN" />
+<Select label="From unit" options="ER | ICU | Med/Surg | Cardiology | Neurology | Pediatrics | Orthopedics | Maternity | General Surgery" placeholder="Current unit" />
+<Select label="To unit" options="ICU | Med/Surg | Cardiology | Neurology | Pediatrics | Orthopedics | Maternity | General Surgery | Step-down" placeholder="Destination" />
+<Radio label="Priority" options="Routine | Urgent | Emergency" />
+<TextArea label="Reason" placeholder="Clinical justification for transfer…" rows="3" />
+<Button>Request transfer</Button>
+</Form>
+</Card>
+</Columns>

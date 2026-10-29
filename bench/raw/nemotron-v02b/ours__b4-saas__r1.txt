@@ -1,0 +1,195 @@
+<Card title="Admin Overview" subtitle="SaaS Company Dashboard">
+<Select label="Reporting Period" name="period" options="Last 30 days | Last 90 days | Last 6 months | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Card>
+
+<Columns>
+<Card title="Monthly Recurring Revenue">
+<Stat label="MRR" value="$247,850" change="+12.3% vs last month" tone="success" />
+<Chart type="line" x="Month" y="USD" title="MRR Trend (12 months)">
+| Month | MRR |
+|---|---|
+| Jan | 198000 |
+| Feb | 205000 |
+| Mar | 212000 |
+| Apr | 218000 |
+| May | 225000 |
+| Jun | 231000 |
+| Jul | 238000 |
+| Aug | 241000 |
+| Sep | 244000 |
+| Oct | 246000 |
+| Nov | 247850 |
+| Dec | 247850 |
+</Chart>
+</Card>
+
+<Card title="Annual Recurring Revenue">
+<Stat label="ARR" value="$2,974,200" change="+14.8% YoY" tone="success" />
+<Chart type="area" x="Quarter" y="USD" title="ARR Growth">
+| Quarter | ARR |
+|---|---|
+| Q1 2023 | 2100000 |
+| Q2 2023 | 2350000 |
+| Q3 2023 | 2580000 |
+| Q4 2023 | 2720000 |
+| Q1 2024 | 2890000 |
+| Q2 2024 | 2974200 |
+</Chart>
+</Card>
+
+<Card title="Churn This Month">
+<Stat label="Revenue Churn" value="2.1%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Customer Churn" value="3.4%" change="-0.2pp vs last month" tone="info" />
+<Callout tone="info" title="Top churn reason">Budget cuts (42%), Competitor switch (28%), Low usage (18%), Other (12%)</Callout>
+</Card>
+
+<Card title="Current NPS">
+<Stat label="NPS Score" value="62" change="+5 vs last quarter" tone="success" />
+<Progress value="62" max="100" label="Promoters: 68% | Passives: 26% | Detractors: 6%" />
+<Callout tone="success" title="Latest feedback">"The new workflow automation saved our team 15 hrs/week"</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="New Signups (Past 90 Days)">
+<Chart type="bar" x="Week" y="Signups" title="Weekly Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 38 |
+| W3 | 45 |
+| W4 | 51 |
+| W5 | 47 |
+| W6 | 53 |
+| W7 | 58 |
+| W8 | 62 |
+| W9 | 59 |
+| W10 | 65 |
+| W11 | 71 |
+| W12 | 68 |
+| W13 | 74 |
+</Chart>
+<Stat label="Total (90d)" value="633" change="+23% vs prior 90d" tone="success" />
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Business | 420 |
+| Enterprise | 85 |
+</Chart>
+<Stat label="Total Customers" value="2,635" change="+187 this quarter" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Revenue">
+<Chart type="horizontal" x="Customer" y="ARR" title="Largest Accounts">
+| Customer | ARR | Seats | Plan |
+|---|---|---|---|
+| Acme Corporation | $185,000 | 240 | Enterprise |
+| Globex Inc | $142,000 | 180 | Enterprise |
+| Wayne Enterprises | $128,000 | 165 | Enterprise |
+| Stark Industries | $115,000 | 150 | Enterprise |
+| Umbrella Corp | $98,000 | 130 | Business |
+| Cyberdyne Systems | $87,000 | 115 | Business |
+| Massive Dynamic | $76,000 | 100 | Business |
+| Initech | $65,000 | 85 | Professional |
+| Pied Piper | $58,000 | 75 | Professional |
+| Hooli | $52,000 | 68 | Professional |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Accounts at Risk">
+<Chart type="table" x="Account" y="Risk Score" title="At-Risk Accounts">
+| Account | Risk Score | Reason | Last Activity | Owner |
+|---|---|---|---|---|
+| TechStart.io | 92 | No login 21 days, feature adoption <10% | 21 days ago | Sarah Chen |
+| DataFlow Labs | 87 | Failed payment ×2, support tickets ↑ | 3 days ago | Marcus Webb |
+| CloudNine | 83 | Seat utilization 12%, no admin activity | 14 days ago | Priya Patel |
+| NextGen Solutions | 79 | NPS detractor, contract renewal in 30d | 7 days ago | James Liu |
+| Vertex Systems | 75 | Key champion left, usage dropped 40% | 10 days ago | Emma Ross |
+</Chart>
+<Button variant="secondary">View all 12 at-risk accounts</Button>
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+<Chart type="table" x="Customer" y="Amount" title="Failed Payments - Last 7 Days">
+| Customer | Amount | Attempts | Last Attempt | Status | Action |
+|---|---|---|---|---|---|
+| DataFlow Labs | $2,400 | 2 | 2 hours ago | Retrying | <Button variant="primary" size="small">Retry now</Button> |
+| SmallBiz Co | $299 | 1 | 5 hours ago | Failed | <Button variant="primary" size="small">Retry now</Button> |
+| FreelancePro | $89 | 3 | 1 day ago | Card expired | <Button variant="secondary" size="small">Update card</Button> |
+| LocalMarket | $1,200 | 1 | 3 hours ago | Insufficient funds | <Button variant="primary" size="small">Retry now</Button> |
+| CreativeStudio | $599 | 2 | 6 hours ago | Bank decline | <Button variant="secondary" size="small">Contact bank</Button> |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Feature Adoption - Newest Releases">
+<Columns>
+<Card title="AI-Powered Insights (launched 3 weeks ago)">
+<Progress value="34" max="100" label="34% of eligible users adopted" />
+<Stat label="Active Users" value="892 / 2,635" />
+<Callout tone="info" title="Top action">"Weekly summary email" - 67% open rate</Callout>
+</Card>
+<Card title="Workflow Automations (launched 5 weeks ago)">
+<Progress value="52" max="100" label="52% of eligible users adopted" />
+<Stat label="Active Users" value="1,370 / 2,635" />
+<Callout tone="success" title="Top action">"Auto-assign tickets" - 1,240 workflows created</Callout>
+</Card>
+<Card title="Custom Dashboards (launched 7 weeks ago)">
+<Progress value="41" max="100" label="41% of eligible users adopted" />
+<Stat label="Active Users" value="1,080 / 2,635" />
+<Callout tone="info" title="Top action">"Revenue dashboard template" - 43% usage</Callout>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Seat Utilization Across Company">
+<Progress value="68" max="100" label="Overall: 68% (18,420 / 27,150 seats used)" />
+<Columns>
+<Card title="By Plan">
+<Chart type="bar" x="Plan" y="Utilization %" title="Seat Utilization by Plan">
+| Plan | Utilization % |
+|---|---|
+| Starter | 72 |
+| Professional | 68 |
+| Business | 64 |
+| Enterprise | 71 |
+</Chart>
+</Card>
+<Card title="Top Underutilized Accounts">
+<Chart type="table" x="Account" y="Utilization" title="Accounts < 30% Utilization">
+| Account | Plan | Seats | Used | Utilization |
+|---|---|---|---|---|
+| CloudNine | Business | 150 | 18 | 12% |
+| Vertex Systems | Professional | 80 | 22 | 28% |
+| NextGen Solutions | Professional | 60 | 15 | 25% |
+| TechStart.io | Starter | 25 | 5 | 20% |
+| DataFlow Labs | Business | 120 | 34 | 28% |
+</Chart>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Email Address" name="email" type="email" placeholder="admin@company.com" required="true" hint="They'll receive an invitation link valid for 7 days" />
+<Select label="Role" name="role" options="Full Admin | Billing Admin | Read-only Admin | Support Admin" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Access audit logs" hint="Select additional permissions beyond role defaults" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the churn cohort analysis for the past 6 months
+- Export the top 10 customers list to CSV
+- Set up automated alerts for accounts at risk
+- View detailed NPS verbatims from last survey
+- Compare feature adoption across customer segments
+</FollowUps>

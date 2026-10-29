@@ -1,0 +1,44 @@
+# Low Inventory Warning
+
+<Card title="Inventory Alert Settings" subtitle="Configure when low-stock warnings appear">
+<Columns>
+<Stat label="Warning Threshold" value="10 units" note="Items at or below this level trigger alerts" tone="warning" />
+<Stat label="Critical Threshold" value="3 units" note="Urgent reorder required" tone="danger" />
+</Columns>
+<Slider label="Adjust warning threshold" min="1" max="50" step="1" value="10" name="warning-threshold" />
+</Card>
+
+<Card title="Search Items">
+<Input label="Search products" name="search" placeholder="Search by name, SKU, or category..." type="search" hint="Type to filter the list below" />
+</Card>
+
+<Card title="Low Stock Items" subtitle="12 items need attention">
+<Table>
+| Product | SKU | Category | Current Stock | Status | Action |
+|---|---|---|---|---|---|
+| Wireless Headphones Pro | WHP-001 | Electronics | 8 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Organic Cotton T-Shirt | OCT-202 | Apparel | 5 | <Badge tone="danger">Critical</Badge> | <Button variant="danger" size="small">Reorder</Button> |
+| Stainless Steel Water Bottle | SSW-303 | Accessories | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Bluetooth Speaker Mini | BSM-404 | Electronics | 3 | <Badge tone="danger">Critical</Badge> | <Button variant="danger" size="small">Reorder</Button> |
+| Yoga Mat Premium | YMP-505 | Fitness | 7 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Ceramic Coffee Mug Set | CCM-606 | Home | 9 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Running Shoes Trail | RST-707 | Footwear | 2 | <Badge tone="danger">Critical</Badge> | <Button variant="danger" size="small">Reorder</Button> |
+| LED Desk Lamp | LDL-808 | Electronics | 6 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Resistance Bands Set | RBS-909 | Fitness | 4 | <Badge tone="danger">Critical</Badge> | <Button variant="danger" size="small">Reorder</Button> |
+| Insulated Lunch Bag | ILB-010 | Accessories | 8 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Mechanical Keyboard | MKB-111 | Electronics | 1 | <Badge tone="danger">Critical</Badge> | <Button variant="danger" size="small">Reorder</Button> |
+| Microfiber Towel Pack | MTP-222 | Home | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+</Table>
+</Card>
+
+<Card title="Bulk Actions">
+<Columns>
+<Button variant="primary">Reorder All Low Stock</Button>
+<Button variant="secondary">Export to CSV</Button>
+<Button variant="tertiary">Adjust Thresholds</Button>
+</Columns>
+</Card>
+
+<Callout tone="info" title="Reorder Process">
+Clicking "Reorder" opens a purchase order form pre-filled with the suggested restock quantity (default: 50 units for low, 100 for critical). You can modify quantities before submitting to your supplier.
+</Callout>

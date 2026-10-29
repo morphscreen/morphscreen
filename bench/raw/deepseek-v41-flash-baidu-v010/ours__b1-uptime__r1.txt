@@ -1,0 +1,41 @@
+# Platform Status
+
+<Card title="API uptime" subtitle="This month, rolling 30 days">
+<Stat label="API uptime" value="99.94%" change="+0.02 pts vs last month" tone="success" icon="chart-line" />
+<Progress value="99.94" max="100" label="Monthly uptime target: 99.90%" tone="success" />
+<Badge tone="success">Above SLO</Badge>
+</Card>
+
+<Card title="Most recent incident" subtitle="Resolved">
+<Callout tone="info" title="Elevated 5xx on /v2/orders — resolved">
+A bad config rollout to two of six API nodes caused elevated 5xx responses on `POST /v2/orders` for 18 minutes. Traffic was drained from the affected nodes and the config reverted.
+
+**Resolved:** today at 14:42 UTC · **Duration:** 18 min · **Impact:** ~3% of order requests failed, no data loss.
+</Callout>
+<Button variant="secondary" ask="Show me the full incident timeline and postmortem">View incident timeline</Button>
+</Card>
+
+<Card title="At a glance">
+<Columns>
+<Stat label="Current status" value="Operational" tone="success" icon="users" />
+<Stat label="Incidents this month" value="1" note="1 resolved, 0 open" tone="neutral" />
+<Stat label="Mean time to resolve" value="18 min" change="-6 min vs last month" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Components">
+| Component | Status | Uptime |
+|---|---|---|
+| API (v2) | Operational | 99.94% |
+| Web app | Operational | 99.99% |
+| Auth | Operational | 100% |
+| Webhooks | Degraded | 99.71% |
+| Dashboard | Operational | 99.98% |
+</Card>
+
+<FollowUps>
+- What caused the config rollout to fail?
+- Show uptime for the last 90 days
+- Which components are currently degraded?
+- Subscribe me to incident updates
+</FollowUps>

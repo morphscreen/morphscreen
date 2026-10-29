@@ -1,0 +1,165 @@
+# Shop Sales Dashboard — 2026
+
+<Badge tone="success">Year to date</Badge> <Badge tone="info">Updated 2026-10-25</Badge>
+
+<Callout tone="info" title="How to read this">
+These are sample figures for a single shop, running Jan 1 – Oct 25, 2026. Change any number you like and I'll rebuild the whole page around your real data.
+</Callout>
+
+<Card title="The headline numbers" subtitle="Jan 1 – Oct 25, 2026">
+<Columns>
+<Stat label="Revenue" value="$412,600" change="+18.4% vs last year" tone="success" icon="chart-line" />
+<Stat label="Orders" value="6,840" change="+9.1%" tone="success" icon="receipt" />
+<Stat label="Average order" value="$60.32" change="+8.5%" tone="success" icon="currency-dollar" />
+<Stat label="Refunds" value="$9,740" change="2.4% of revenue" tone="warning" icon="arrow-u-down-left" />
+</Columns>
+</Card>
+
+<Card title="Revenue by month" subtitle="In USD">
+<Chart type="bar" x="Month" y="Revenue">
+| Month | Revenue |
+|---|---|
+| Jan | 28400 |
+| Feb | 31200 |
+| Mar | 35600 |
+| Apr | 33800 |
+| May | 39400 |
+| Jun | 42100 |
+| Jul | 44800 |
+| Aug | 43600 |
+| Sep | 47200 |
+| Oct | 66500 |
+</Chart>
+</Card>
+
+<Card title="Where the money comes from">
+<Tabs>
+<Tab title="By channel">
+<Chart type="donut" x="Channel" y="Share">
+| Channel | Revenue |
+|---|---|
+| Walk-in shop | 231000 |
+| Online store | 124000 |
+| Market stalls | 38600 |
+| Wholesale | 19000 |
+</Chart>
+</Tab>
+<Tab title="By category">
+<Chart type="horizontal" x="Category" y="Revenue">
+| Category | Revenue |
+|---|---|
+| Coffee & drinks | 148000 |
+| Baked goods | 112000 |
+| Merch & beans | 84000 |
+| Gift sets | 68600 |
+</Chart>
+</Tab>
+<Tab title="By day of week">
+<Chart type="bar" x="Day" y="Revenue">
+| Day | Revenue |
+|---|---|
+| Mon | 41200 |
+| Tue | 44800 |
+| Wed | 47600 |
+| Thu | 52300 |
+| Fri | 68900 |
+| Sat | 94100 |
+| Sun | 63700 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="How the year is tracking">
+<Progress value="412600" max="520000" label="Revenue vs $520,000 target" tone="success" />
+<Progress value="6840" max="8000" label="Orders vs 8,000 target" tone="info" />
+<Progress value="9740" max="12000" label="Refunds budget used" tone="warning" />
+<Callout tone="success" title="Ahead of plan">At this pace you finish the year near $510,000 — about 98% of target, with November and December still to come.</Callout>
+</Card>
+
+<Card title="Best sellers this year">
+| Product | Units | Revenue |
+|---|---|---|
+| House blend beans, 1 kg | 1,240 | $37,200 |
+| Cold brew, 6-pack | 980 | $29,400 |
+| Sourdough loaf | 3,410 | $27,280 |
+| Ceramic mug | 1,860 | $24,180 |
+| Seasonal gift box | 610 | $21,350 |
+</Card>
+
+<Card title="What happened, in order">
+<Timeline title="2026 so far">
+- 2026-02: Raised bean prices 6% — no drop in units sold
+- 2026-04: Launched the online store; now 30% of revenue
+- 2026-06: Started Saturday market stall
+- 2026-08: Hired a second weekend barista
+- 2026-09: Gift box pre-orders opened; strongest month yet
+- 2026-10: October already the best month of the year
+</Timeline>
+</Card>
+
+<Card title="Where you are against last year">
+<Compare title="2026 vs 2025">
+| Metric | 2026 | 2025 |
+|---|---|---|
+| Revenue | $412,600 | $348,500 |
+| Orders | 6,840 | 6,270 |
+| Average order | $60.32 | $55.58 |
+| Online share | 30% | 0% |
+| Refund rate | 2.4% | 3.1% |
+</Compare>
+</Card>
+
+<Card title="Try a different finish to the year" subtitle="Move the sliders — the numbers update">
+<WhatIf title="Rest of year forecast">
+<Slider label="November + December revenue" min="60000" max="160000" step="5000" value="105000" name="q4" unit="$" />
+<Slider label="Average order value" min="45" max="85" step="1" value="60" name="aov" unit="$" />
+<Slider label="Refund rate" min="0" max="6" step="0.1" value="2.4" name="refund" unit="%" />
+<Result label="Full-year revenue" value="412600 + q4" unit="$" decimals="0" />
+<Result label="Full-year orders" value="round((412600 + q4) / aov)" unit="orders" decimals="0" />
+<Result label="Refunds paid" value="round((412600 + q4) * refund / 100)" unit="$" decimals="0" />
+</WhatIf>
+</Card>
+
+<Card title="Things to do before year end">
+<Checklist title="Year-end checklist" name="year-end">
+- [x] Set the 2026 revenue target
+- [x] Launch the online store
+- [x] Add a second weekend barista
+- [ ] Order gift box stock for December
+- [ ] Raise bean prices again in January
+- [ ] Review the wholesale contract
+- [ ] Set the 2027 target
+</Checklist>
+</Card>
+
+<Card title="Key dates ahead">
+<Countdown label="Black Friday" until="2026-11-27T08:00" />
+<Countdown label="Last shipping day before Christmas" until="2026-12-18T17:00" />
+<Agenda title="This week">
+| Time | What |
+|---|---|
+| Mon 09:00 | Stock count, beans and merch |
+| Wed 14:00 | Wholesale order to the café on Mill St |
+| Thu 16:00 | Gift box pre-orders close |
+| Sat 08:00 | Market stall setup |
+</Agenda>
+</Card>
+
+<Card title="Your dashboard, your numbers">
+<Form name="dashboard-setup">
+<Input label="Shop name" placeholder="e.g. Corner Roasters" />
+<Select label="What matters most" options="Revenue growth | Profit margin | Repeat customers | Online orders" />
+<Slider label="This year's revenue target" min="100000" max="2000000" step="10000" value="520000" name="target" unit="$" />
+<Radio label="How should I show the year?" options="Monthly bars | Weekly line | Compared to last year" />
+<Switch label="Include a profit section" value="true" />
+<Button>Build my dashboard</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Use my real monthly revenue — here are the numbers
+- Add a profit and cost section
+- Which products should I drop next year?
+- Show me a staffing plan for December
+</FollowUps>

@@ -1,0 +1,91 @@
+# E-commerce Operations Desk
+
+<Callout tone="info" title="Live view">
+Data refreshes automatically every 60 seconds. All times are in the store's local timezone (UTC-5).
+</Callout>
+
+<Card title="Today's key metrics">
+<Columns>
+<Stat label="Orders placed today" value="47" change="+12% vs yesterday" icon="shopping-bag" tone="success" />
+<Stat label="Revenue today" value="$8,412.35" change="+8% vs yesterday" icon="currency-dollar" tone="success" />
+<Stat label="Average order value" value="$178.99" change="-3% vs yesterday" icon="chart-line" tone="warning" />
+<Stat label="Refund rate this month" value="2.4%" change="+0.3 pts vs last month" icon="arrow-counter-clockwise" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Order volume — last 4 weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| 4 weeks ago | 312 |
+| 3 weeks ago | 358 |
+| 2 weeks ago | 391 |
+| Last week | 426 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Narrow by status or search by customer name">
+<Form name="order-filters">
+<Columns>
+<Select label="Filter by status" placeholder="All statuses" options="Pending | Paid | Fulfilled | Shipped | Delivered | Cancelled | Refunded" />
+<Input label="Search by customer name" placeholder="e.g. Jane Smith" type="search" hint="Matches first name or last name" />
+</Columns>
+<Button variant="secondary" label="Apply filters" />
+<Button variant="tertiary" label="Clear" />
+</Form>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Jane Smith | $214.50 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="primary" label="Mark fulfilled" /> |
+| #10481 | Michael Chen | $89.99 | <Badge tone="info">Paid</Badge> | <Button size="small" variant="primary" label="Mark fulfilled" /> |
+| #10480 | Priya Patel | $342.00 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="secondary" label="Mark fulfilled" disabled="true" /> |
+| #10479 | Carlos Rivera | $156.75 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="primary" label="Mark fulfilled" /> |
+| #10478 | Emily Watson | $67.20 | <Badge tone="info">Paid</Badge> | <Button size="small" variant="primary" label="Mark fulfilled" /> |
+| #10477 | David Kim | $428.99 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="secondary" label="Mark fulfilled" disabled="true" /> |
+| #10476 | Sofia Garcia | $125.40 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="primary" label="Mark fulfilled" /> |
+| #10475 | James Wilson | $89.99 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="secondary" label="Mark fulfilled" disabled="true" /> |
+| #10474 | Aisha Rahman | $267.30 | <Badge tone="info">Paid</Badge> | <Button size="small" variant="primary" label="Mark fulfilled" /> |
+| #10473 | Tom Anderson | $54.00 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="secondary" label="Mark fulfilled" disabled="true" /> |
+</Card>
+
+<Card title="Refund rate — this month">
+<Columns>
+<Stat label="Refund rate" value="2.4%" note="Target: under 3%" icon="arrow-counter-clockwise" tone="warning" />
+<Stat label="Refunds issued" value="14" note="Of 583 orders" icon="receipt" tone="neutral" />
+<Stat label="Refund total" value="$1,286.55" note="2.9% of monthly revenue" icon="currency-dollar" tone="neutral" />
+</Columns>
+<Progress value="14" max="583" label="Refunded orders vs total" tone="warning" />
+</Card>
+
+<Card title="How to use this desk">
+<Steps>
+<Step title="Filter orders" status="current" subtitle="Use the status dropdown or search bar to find specific orders">
+The table updates instantly. You can combine both filters — for example, search "Smith" with status "Paid" to find all paid orders from that customer.
+</Step>
+<Step title="Review order details" status="todo" subtitle="Click any order ID to see the full order">
+Each order shows the customer name, order total, and current status. The status badge color indicates where the order is in the fulfillment flow.
+</Step>
+<Step title="Mark orders fulfilled" status="todo" subtitle="Click the button in the Action column">
+Only orders with status "Pending" or "Paid" can be marked fulfilled. Once marked, the status updates to "Fulfilled" and the button becomes disabled. A confirmation email is sent to the customer automatically.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Status legend">
+| Status | Meaning | Next step |
+|---|---|---|
+| <Badge tone="warning">Pending</Badge> | Payment received, order awaiting processing | Mark as fulfilled |
+| <Badge tone="info">Paid</Badge> | Payment confirmed, order in queue | Mark as fulfilled |
+| <Badge tone="success">Fulfilled</Badge> | Items picked, packed, and handed to carrier | Await shipment scan |
+| <Badge tone="neutral">Shipped</Badge> | Carrier has the package in transit | Track delivery |
+| <Badge tone="neutral">Delivered</Badge> | Package delivered to customer | No action needed |
+| <Badge tone="danger">Cancelled</Badge> | Order cancelled by customer or staff | Process refund if paid |
+| <Badge tone="danger">Refunded</Badge> | Payment returned to customer | No action needed |
+</Card>
+
+<FollowUps>
+- Show me orders that need attention today
+- What's the revenue breakdown by product category?
+- Which customers have the highest lifetime value?
+- Export today's orders as a CSV file
+</FollowUps>

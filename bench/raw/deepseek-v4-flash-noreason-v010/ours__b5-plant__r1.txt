@@ -1,0 +1,191 @@
+# Factory Floor Supervisor Console
+
+Live operational view for shift management. <Badge tone="success">All systems nominal</Badge>
+
+<Callout tone="warning" title="Andon alert">Line 3 has an active andon — operator assistance requested 4 min ago.</Callout>
+
+## Overall Equipment Effectiveness
+
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="91.2%" change="-1.4%" tone="info" />
+<Stat label="Performance" value="87.6%" change="+3.0%" tone="info" />
+<Stat label="Quality" value="98.1%" change="+0.5%" tone="success" />
+</Columns>
+
+<Progress value="78.4" max="100" label="OEE target: 85%" tone="info" />
+
+## Production vs Target
+
+<Card title="Units produced today">
+<Stat label="Produced" value="4,382" change="Target: 5,000" tone="info" icon="production" />
+<Stat label="Remaining" value="618" note="At current rate: 1h 12m" tone="warning" />
+<Progress value="87.6" max="100" label="87.6% of daily target" tone="info" />
+</Card>
+
+## Production Lines
+
+<Card title="Line status">
+| Line | Rate (units/h) | Status | Speed |
+|---|---|---|---|
+| Line 1 | 142 | <Badge tone="success">Running</Badge> | 96% |
+| Line 2 | 138 | <Badge tone="success">Running</Badge> | 94% |
+| Line 3 | 0 | <Badge tone="danger">Stopped — andon</Badge> | 0% |
+| Line 4 | 120 | <Badge tone="warning">Slow cycle</Badge> | 82% |
+
+<Button variant="secondary" icon="map-pin">Focus on Line 3</Button>
+</Card>
+
+## Defect Rate — Past Month
+
+<Card title="Monthly defect trend">
+<Chart type="line" x="Week" y="Defect rate %">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.1 |
+| W2 | 1.8 |
+| W3 | 2.4 |
+| W4 | 1.9 |
+</Chart>
+</Card>
+
+## Downtime by Cause
+
+<Card title="Downtime split (last 7 days)">
+<Chart type="donut" title="Hours by cause">
+| Cause | Hours |
+|---|---|
+| Changeover | 14.2 |
+| Machine fault | 9.8 |
+| Material shortage | 6.1 |
+| Operator break | 4.5 |
+| Quality hold | 2.3 |
+</Chart>
+</Card>
+
+## Maintenance
+
+<Card title="Machines due for maintenance">
+| Machine | Due date | Type | Priority |
+|---|---|---|---|
+| Press 3 | Today | Hydraulic service | <Badge tone="danger">High</Badge> |
+| Conveyor 2 | Tomorrow | Belt replacement | <Badge tone="warning">Medium</Badge> |
+| Welder 1 | 3 days | Calibration | <Badge tone="info">Low</Badge> |
+
+<Details title="Schedule maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" placeholder="Select machine" options="Press 3 | Press 4 | Conveyor 2 | Welder 1 | Robot 5" />
+<Date label="Date" />
+<Select label="Priority" options="Low | Medium | High" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Details>
+</Card>
+
+## Raw Materials Stock
+
+<Card title="Stock levels">
+| Material | Current | Reorder at | Status |
+|---|---|---|---|
+| Steel coil | 42.3 t | 30 t | <Badge tone="success">OK</Badge> |
+| Resin pellets | 1,240 kg | 2,000 kg | <Badge tone="danger">Low</Badge> |
+| Packaging boxes | 8,500 | 5,000 | <Badge tone="success">OK</Badge> |
+
+<Callout tone="danger" title="Resin low">Resin below reorder point. Delivery due Friday — confirm with supplier.</Callout>
+</Card>
+
+## Supplier Deliveries — This Week
+
+<Card title="Incoming deliveries">
+| Supplier | Material | Day | Qty | Status |
+|---|---|---|---|---|
+| SteelWorks Inc. | Steel coil | Mon | 25 t | <Badge tone="success">Confirmed</Badge> |
+| PolymerPlus | Resin pellets | Wed | 3,000 kg | <Badge tone="warning">Pending</Badge> |
+| BoxCo | Packaging | Fri | 10,000 | <Badge tone="success">Confirmed</Badge> |
+</Card>
+
+## Shift Comparison
+
+<Card title="Output by shift (this week)">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 21,450 |
+| Afternoon | 19,830 |
+| Night | 18,215 |
+</Chart>
+</Card>
+
+## Safety
+
+<Card title="Safety overview">
+<Columns>
+<Stat label="Incidents (YTD)" value="3" change="Target: 0" tone="warning" icon="warning" />
+<Stat label="Days since last" value="42" note="Last: minor cut — Line 2" tone="success" />
+</Columns>
+</Card>
+
+## Quality Hold
+
+<Card title="Batches on quality hold">
+| Batch | Line | Qty | Reason | Since |
+|---|---|---|---|---|
+| B-2041 | Line 2 | 320 | Dimensional check | 2h |
+| B-2038 | Line 4 | 150 | Material variance | 5h |
+
+<Button variant="secondary" icon="clipboard">Review holds</Button>
+</Card>
+
+## Energy Consumption
+
+<Card title="Energy use today">
+<Stat label="Energy used" value="18.4 MWh" change="Target: 22 MWh" tone="success" icon="lightning" />
+<Stat label="Cost" value="$1,840" note="Rate: $0.10/kWh" tone="info" />
+<Progress value="83.6" max="100" label="83.6% of daily budget" tone="success" />
+</Card>
+
+## Work Orders
+
+<Card title="Open work orders by priority">
+| Order | Line | Priority | Due |
+|---|---|---|---|
+| WO-1182 | Line 3 | <Badge tone="danger">Critical</Badge> | Today |
+| WO-1183 | Line 1 | <Badge tone="warning">High</Badge> | Tomorrow |
+| WO-1184 | Line 2 | <Badge tone="info">Medium</Badge> | Thu |
+| WO-1185 | Line 4 | <Badge tone="neutral">Low</Badge> | Fri |
+</Card>
+
+## Live Andon Alerts
+
+<Card title="Active andon">
+| Line | Station | Issue | Time |
+|---|---|---|---|
+| Line 3 | Station 7 | Operator help | 4 min |
+| Line 4 | Station 2 | Part jam | 1 min |
+
+<Callout tone="danger" title="Line 3 blocked">Production stopped. Operator waiting for parts restock.</Callout>
+</Card>
+
+## Line Focus
+
+<Card title="Focus on one line">
+<Select label="Select line" placeholder="Choose line" options="Line 1 | Line 2 | Line 3 | Line 4" />
+</Card>
+
+## Export Shift Report
+
+<Card title="Shift report">
+<Form name="export-report">
+<Date label="Shift date" />
+<Select label="Shift" options="Morning | Afternoon | Night" />
+<Button icon="download">Export PDF</Button>
+<Button variant="secondary">Export CSV</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me Line 3's detailed status
+- What caused today's downtime on Line 2?
+- Reschedule the Press 3 maintenance
+- Which work orders are critical today?
+</FollowUps>

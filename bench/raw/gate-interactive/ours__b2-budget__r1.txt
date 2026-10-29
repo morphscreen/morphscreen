@@ -1,0 +1,54 @@
+# Personal Budget Check
+
+## Month Selector
+<Card>
+<Select label="Select month" name="month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Card>
+
+## Budget Overview
+<Card title="January 2025 Budget">
+<Columns>
+<Stat label="Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent" value="$2,147" change="$853 remaining" tone="success" icon="credit-card" />
+<Stat label="Progress" value="71.6%" tone="info" icon="chart-line" />
+</Columns>
+<Progress value="2147" max="3000" label="Budget used: $2,147 of $3,000" tone="success" />
+</Card>
+
+## Spending by Category
+<Card title="Spending Split by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 850 |
+| Food & Dining | 420 |
+| Transportation | 280 |
+| Utilities | 180 |
+| Entertainment | 150 |
+| Shopping | 120 |
+| Health & Fitness | 80 |
+| Other | 67 |
+</Chart>
+</Card>
+
+## Largest Expense
+<Card title="Largest Expense This Month">
+<Callout tone="warning" title="Rent Payment — $850">
+**Category:** Housing  
+**Date:** January 1, 2025  
+**Note:** Monthly rent for apartment lease
+</Callout>
+</Card>
+
+## Add an Expense
+<Card title="Add New Expense">
+<Form name="add-expense">
+<Input label="Expense name" placeholder="e.g., Grocery shopping" required="true" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" />
+<Select label="Category" name="category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Health & Fitness | Other" placeholder="Select category" required="true" />
+<Date label="Date" name="date" required="true" />
+<TextArea label="Notes (optional)" placeholder="Any details..." rows="3" />
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

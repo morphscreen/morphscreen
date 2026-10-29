@@ -1,0 +1,191 @@
+# Store Manager's Daily Console
+
+<Callout tone="info" title="Store Overview">All data is live as of 10:42 AM. Select a different store to switch views.</Callout>
+
+<Card title="Store Selection">
+<Columns>
+<Select label="Viewing store" options="Downtown Mall (Store #104) | Riverside Plaza (Store #215) | Oakwood Junction (Store #302) | Harbor View (Store #418)" name="store-select" value="Downtown Mall (Store #104)" />
+<Button variant="secondary">Switch Store</Button>
+</Columns>
+</Card>
+
+## 1. Sales Today vs. Target
+
+<Card title="Sales Today">
+<Columns>
+<Stat label="Sales Today" value="$8,420" change="+12% vs. same time last week" tone="success" icon="trend-up" />
+<Stat label="Daily Target" value="$15,000" change="56% of target reached" tone="info" icon="target" />
+<Stat label="Hours Remaining" value="9.5" change="Closing at 8:00 PM" icon="clock" />
+</Columns>
+<Progress value="8420" max="15000" label="Progress toward daily target" tone="success" />
+</Card>
+
+## 2. Foot Traffic Through the Day
+
+<Card title="Foot Traffic by Hour">
+<Chart type="bar" x="Hour" y="Shoppers">
+| Hour | Shoppers |
+|---|---|
+| 9 AM | 45 |
+| 10 AM | 82 |
+| 11 AM | 118 |
+| 12 PM | 156 |
+| 1 PM | 134 |
+| 2 PM | 98 |
+| 3 PM | 76 |
+| 4 PM | 42 |
+</Chart>
+<Callout tone="info" title="Peak hours">Lunchtime rush (12–1 PM) is your busiest period. Consider scheduling an extra cashier between 11:30 AM and 1:30 PM.</Callout>
+</Card>
+
+## 3. Best Sellers
+
+<Card title="Top 5 Best Sellers Today">
+| Product | Units Sold | Stock Remaining | Status |
+|---|---|---|---|
+| Organic Cold Brew (12oz) | 48 | 120 | <Badge tone="success">In Stock</Badge> |
+| Avocado Toast Kit | 37 | 54 | <Badge tone="success">In Stock</Badge> |
+| Protein Bar – Chocolate | 29 | 12 | <Badge tone="warning">Low Stock</Badge> |
+| Kombucha – Ginger | 24 | 0 | <Badge tone="danger">Out of Stock</Badge> |
+| Granola – Maple Pecan | 18 | 45 | <Badge tone="success">In Stock</Badge> |
+</Card>
+
+## 4. Items Out of Stock
+
+<Card title="Out of Stock Items">
+| Item | SKU | Last Sold | Reorder Status |
+|---|---|---|---|
+| Kombucha – Ginger | KB-221 | Yesterday | <Badge tone="danger">Needs Reorder</Badge> |
+| Almond Milk – Unsweetened | AM-104 | 2 days ago | <Badge tone="danger">Needs Reorder</Badge> |
+| Sourdough Loaf | SD-332 | 3 days ago | <Badge tone="warning">On Order</Badge> |
+| Greek Yogurt – Plain | GY-118 | Today | <Badge tone="danger">Needs Reorder</Badge> |
+| Honey – Wildflower | HN-045 | 5 days ago | <Badge tone="warning">On Order</Badge> |
+</Card>
+
+## 5. Who Is on Shift Today
+
+<Card title="Today's Shift (Tuesday)">
+<Columns>
+<div>
+<Avatar name="Sarah Kim" subtitle="Store Manager · 8 AM – 4 PM" />
+<Avatar name="James Rodriguez" subtitle="Assistant Manager · 8 AM – 4 PM" />
+<Avatar name="Emily Chen" subtitle="Cashier · 8 AM – 2 PM" />
+<Avatar name="Marcus Webb" subtitle="Cashier · 10 AM – 6 PM" />
+</div>
+<div>
+<Avatar name="Priya Patel" subtitle="Stock Clerk · 6 AM – 2 PM" />
+<Avatar name="David Okafor" subtitle="Barista · 8 AM – 4 PM" />
+<Avatar name="Lisa Nguyen" subtitle="Cashier · 2 PM – 8 PM" />
+<Avatar name="Tom Becker" subtitle="Stock Clerk · 2 PM – 8 PM" />
+</div>
+</Columns>
+<Callout tone="warning" title="Callout">Lisa Nguyen called in sick. Coverage needed for the 2 PM – 8 PM cashier shift.</Callout>
+</Card>
+
+## 6. Average Basket Size
+
+<Card title="Average Basket Size">
+<Columns>
+<Stat label="Today" value="$24.80" change="+$1.20 vs. last Tuesday" tone="success" icon="shopping-cart" />
+<Stat label="This Week Avg" value="$23.15" change="+3.4% vs. last week" tone="success" icon="chart-line" />
+<Stat label="Target" value="$25.00" change="99% of target" tone="info" icon="target" />
+</Columns>
+</Card>
+
+## 7. Returns This Week
+
+<Card title="Returns This Week">
+<Chart type="line" x="Day" y="Returns ($)">
+| Day | Returns |
+|---|---|
+| Mon | 185 |
+| Tue | 120 |
+| Wed | 210 |
+| Thu | 95 |
+| Fri | 0 |
+| Sat | 0 |
+| Sun | 0 |
+</Chart>
+<Columns>
+<Stat label="Returns This Week" value="$610" change="−8% vs. last week" tone="success" icon="arrow-down" />
+<Stat label="Return Rate" value="2.1%" change="Below 3% threshold" tone="success" icon="percent" />
+</Columns>
+</Card>
+
+## 8. Running Promotions
+
+<Card title="Promotion Performance">
+| Promotion | Type | Sales Attributed | Goal | Progress | Status |
+|---|---|---|---|---|---|
+| Summer Refresh – 20% off cold drinks | Discount | $1,240 | $3,000 | <Progress value="41" max="100" label="41%" tone="info" /> | <Badge tone="info">On Track</Badge> |
+| Buy 1 Get 1 on Granola | BOGO | $680 | $1,500 | <Progress value="45" max="100" label="45%" tone="info" /> | <Badge tone="info">On Track</Badge> |
+| Loyalty Double Points Weekend | Loyalty | $2,150 | $2,000 | <Progress value="108" max="100" label="108%" tone="success" /> | <Badge tone="success">Exceeding</Badge> |
+| New Snack Bundle Launch | New Product | $310 | $1,000 | <Progress value="31" max="100" label="31%" tone="warning" /> | <Badge tone="warning">Behind</Badge> |
+</Card>
+
+## 9. Register Status
+
+<Card title="Registers">
+<Columns>
+<div>
+<Stat label="Register 1" value="Open" tone="success" icon="cash-register" />
+<Stat label="Register 2" value="Open" tone="success" icon="cash-register" />
+<Stat label="Register 3" value="Open" tone="success" icon="cash-register" />
+</div>
+<div>
+<Stat label="Register 4" value="Closed" tone="neutral" icon="power" />
+<Stat label="Register 5" value="Open" tone="success" icon="cash-register" />
+<Stat label="Self-Checkout" value="Open" tone="success" icon="monitor" />
+</div>
+</Columns>
+<Callout tone="warning" title="Register 4">Register 4 is down due to a paper jam. Maintenance has been notified (ETA 20 min).</Callout>
+</Card>
+
+## 10. Reorder an Item
+
+<Card title="Reorder Item">
+<Form name="reorder">
+<Select label="Item to reorder" options="Kombucha – Ginger (KB-221) | Almond Milk – Unsweetened (AM-104) | Greek Yogurt – Plain (GY-118) | Protein Bar – Chocolate (PB-087) | Sourdough Loaf (SD-332)" name="item" />
+<Input label="Quantity" type="number" min="1" step="1" placeholder="24" hint="Standard case size: 12 units" />
+<Select label="Supplier" options="Fresh Foods Distributors | Organic Suppliers Co. | Local Bakery Collective" name="supplier" />
+<Select label="Delivery Speed" options="Standard (2–3 days) | Express (Next day, +$15 fee) | Rush (Same day, +$30 fee)" name="delivery" />
+<Button>Place Reorder</Button>
+</Form>
+</Card>
+
+## 11. View a Different Store
+
+<Card title="Compare Stores">
+<Select label="Compare with" options="Riverside Plaza (Store #215) | Oakwood Junction (Store #302) | Harbor View (Store #418)" name="compare-store" value="Riverside Plaza (Store #215)" />
+<Button variant="secondary">View Store Console</Button>
+<Callout tone="neutral" title="Multi-store tip">Switch the main view using the selector at the top, or compare metrics side by side using this section.</Callout>
+</Card>
+
+## 12. This Week vs. Last Week
+
+<Card title="Weekly Comparison">
+<Chart type="line" x="Day" y="Sales ($)">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 11200 | 10400 |
+| Tue | 8420 | 7950 |
+| Wed | 0 | 9100 |
+| Thu | 0 | 8800 |
+| Fri | 0 | 12400 |
+| Sat | 0 | 15800 |
+| Sun | 0 | 13200 |
+</Chart>
+<Columns>
+<Stat label="This Week (so far)" value="$19,620" change="+7.2% vs. same period last week" tone="success" icon="trend-up" />
+<Stat label="Last Week (full)" value="$77,650" change="Baseline" tone="neutral" icon="calendar" />
+<Stat label="Projected This Week" value="$82,400" change="+6.1% vs. last week" tone="success" icon="chart-line" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the hourly sales breakdown for today
+- Which promotions should I extend or end early?
+- Generate a restock list for all low inventory items
+- Compare store performance across all locations
+- View the schedule for tomorrow
+</FollowUps>

@@ -1,0 +1,45 @@
+# Platform Status
+
+<Card title="API Uptime — This Month">
+<Columns>
+<Stat label="Current uptime" value="99.98%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+<Stat label="Incidents this month" value="1" change="Resolved" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="99.98" max="100" label="Uptime target: 99.9%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Badge tone="success">Resolved</Badge>
+
+**Brief API timeout spike** — Resolved on **March 14, 2025, 09:42 UTC**
+
+A temporary increase in database connection latency caused intermittent timeouts on the `/v1/orders` and `/v1/inventory` endpoints. The issue was detected by automated monitoring at 09:05 UTC and fully resolved by 09:42 UTC after scaling the read replicas. No data loss occurred.
+
+<Details title="Full timeline" open="false">
+| Time (UTC) | Event |
+|---|---|
+| 09:05 | Monitoring alert triggered — p95 latency above 2s |
+| 09:12 | On-call engineer paged, investigation started |
+| 09:18 | Root cause identified — connection pool exhaustion |
+| 09:26 | Read replicas scaled up |
+| 09:42 | Latency back to normal, incident closed |
+</Details>
+</Card>
+
+<Card title="Service Health Overview">
+| Service | Status | Uptime (30d) |
+|---|---|---|
+| API Gateway | <Badge tone="success">Operational</Badge> | 99.99% |
+| Authentication | <Badge tone="success">Operational</Badge> | 100% |
+| Orders Service | <Badge tone="success">Operational</Badge> | 99.98% |
+| Inventory Service | <Badge tone="success">Operational</Badge> | 99.98% |
+| Payments | <Badge tone="success">Operational</Badge> | 100% |
+| Notifications | <Badge tone="success">Operational</Badge> | 99.95% |
+</Card>
+
+<FollowUps>
+- What caused the incident on March 14?
+- Show me the last 7 days of latency data
+- Which endpoints were affected by the timeout spike?
+- What is the current error rate for the API?
+</FollowUps>

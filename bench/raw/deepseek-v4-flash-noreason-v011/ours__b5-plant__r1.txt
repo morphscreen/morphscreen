@@ -1,0 +1,231 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="info" title="Live View">Last updated 14:23 — All data refreshes every 30 seconds</Callout>
+
+## Overall Performance
+
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1%" tone="success" icon="chart-line" />
+<Stat label="Units Produced" value="3,842" note="Target: 5,000" icon="package" />
+<Stat label="Defect Rate (MTD)" value="1.8%" change="-0.3%" tone="success" icon="check-circle" />
+<Stat label="Energy Use Today" value="14.7 MWh" note="vs 16.2 MWh avg" icon="lightning" />
+</Columns>
+
+<Card title="Today's Target Progress">
+<Progress value="3842" max="5000" label="Units produced" tone="info" />
+</Card>
+
+---
+
+## Production Lines
+
+<Tabs>
+<Tab title="All Lines">
+
+| Line | Rate (units/hr) | Status | OEE | Priority |
+|---|---|---|---|---|
+| Line A | 142 | <Badge tone="success">Running</Badge> | 82% | — |
+| Line B | 98 | <Badge tone="warning">Slowed</Badge> | 71% | <Badge tone="danger">High</Badge> |
+| Line C | 0 | <Badge tone="danger">Down</Badge> | 0% | <Badge tone="danger">Critical</Badge> |
+| Line D | 128 | <Badge tone="success">Running</Badge> | 79% | — |
+| Line E | 76 | <Badge tone="warning">Reduced</Badge> | 65% | <Badge tone="warning">Medium</Badge> |
+
+<Button ask="Show me only Line A">Focus on Line A</Button>
+<Button ask="Show me only Line B">Focus on Line B</Button>
+<Button ask="Show me only Line C">Focus on Line C</Button>
+<Button ask="Show me only Line D">Focus on Line D</Button>
+<Button ask="Show me only Line E">Focus on Line E</Button>
+
+</Tab>
+
+<Tab title="Line A">
+<Stat label="Rate" value="142 u/hr" icon="speedometer" />
+<Stat label="OEE" value="82%" tone="success" />
+<Stat label="Status" value="Running" icon="play-circle" />
+
+<Button ask="Show all lines again">Back to all lines</Button>
+</Tab>
+
+<Tab title="Line B">
+<Stat label="Rate" value="98 u/hr" icon="speedometer" />
+<Stat label="OEE" value="71%" tone="warning" />
+<Stat label="Status" value="Slowed — material feed issue" icon="warning-circle" />
+
+<Button ask="Show all lines again">Back to all lines</Button>
+</Tab>
+
+<Tab title="Line C">
+<Stat label="Rate" value="0 u/hr" icon="speedometer" />
+<Stat label="OEE" value="0%" tone="danger" />
+<Stat label="Status" value="Down — motor replacement in progress" icon="stop-circle" />
+
+<Button ask="Show all lines again">Back to all lines</Button>
+</Tab>
+
+<Tab title="Line D">
+<Stat label="Rate" value="128 u/hr" icon="speedometer" />
+<Stat label="OEE" value="79%" tone="success" />
+<Stat label="Status" value="Running" icon="play-circle" />
+
+<Button ask="Show all lines again">Back to all lines</Button>
+</Tab>
+
+<Tab title="Line E">
+<Stat label="Rate" value="76 u/hr" icon="speedometer" />
+<Stat label="OEE" value="65%" tone="warning" />
+<Stat label="Status" value="Reduced — operator training shift" icon="users" />
+
+<Button ask="Show all lines again">Back to all lines</Button>
+</Tab>
+</Tabs>
+
+---
+
+## Quality & Defects
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Week" y="Defect Rate %">
+| Week | Defect Rate |
+|---|---|
+| W1 | 2.1 |
+| W2 | 1.9 |
+| W3 | 1.6 |
+| W4 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Product | Line | Reason | Held Since |
+|---|---|---|---|---|
+| B-4281 | Bracket A | Line A | Dimensional variance | 14:10 |
+| B-4290 | Sleeve C | Line B | Surface defect | 13:45 |
+| B-4295 | Gasket F | Line D | Hardness out of spec | 12:30 |
+
+<Button ask="Release batch B-4281 from quality hold">Release B-4281</Button>
+<Button ask="Release batch B-4290 from quality hold">Release B-4290</Button>
+<Button ask="Release batch B-4295 from quality hold">Release B-4295</Button>
+</Card>
+
+---
+
+## Downtime & Maintenance
+
+<Card title="Downtime Split by Cause (Today)">
+<Chart type="donut" title="Downtime causes">
+| Cause | Hours |
+|---|---|
+| Mechanical failure | 2.4 |
+| Material shortage | 1.2 |
+| Changeover | 0.8 |
+| Operator absence | 0.5 |
+| Quality checks | 0.3 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Priority |
+|---|---|---|---|---|
+| Press #3 | Line A | Today | Oil change | <Badge tone="danger">Overdue</Badge> |
+| Conveyor B2 | Line C | Tomorrow | Belt inspection | <Badge tone="warning">Due soon</Badge> |
+| Robot Arm #1 | Line D | 3 days | Calibration | <Badge tone="info">Scheduled</Badge> |
+| Mixer #7 | Line E | 5 days | Seal replacement | <Badge tone="info">Scheduled</Badge> |
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" options="Press #3 — Line A | Conveyor B2 — Line C | Robot Arm #1 — Line D | Mixer #7 — Line E" name="machine" placeholder="Select machine" required />
+<Date label="Date" name="maintenance-date" required />
+<Select label="Maintenance type" options="Oil change | Belt inspection | Calibration | Seal replacement | General service" name="type" required />
+<Button>Schedule Maintenance</Button>
+</Form>
+</Card>
+
+---
+
+## Inventory & Supply Chain
+
+<Card title="Stock Levels">
+<Columns>
+<Stat label="Steel" value="12.4 tonnes" note="Reorder at 8 t" icon="cube" />
+<Stat label="Resin" value="3.2 tonnes" note="Reorder at 5 t" tone="warning" icon="cube" />
+<Stat label="Packaging" value="8,500 units" note="Reorder at 10,000" tone="warning" icon="box" />
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| MetalCorp | Steel sheets | 15 t | Today | <Badge tone="warning">In transit</Badge> |
+| PolyChem | Resin pellets | 8 t | Tomorrow | <Badge tone="success">Confirmed</Badge> |
+| PackRight | Cartons | 5,000 | Thu | <Badge tone="info">Processing</Badge> |
+| FastFix | Bearings | 200 | Fri | <Badge tone="info">Processing</Badge> |
+
+<Button ask="Check MetalCorp delivery status">Track MetalCorp</Button>
+<Button ask="Check PolyChem delivery status">Track PolyChem</Button>
+</Card>
+
+---
+
+## Shifts & Incidents
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 1,820 |
+| Afternoon | 1,450 |
+| Night | 572 |
+</Chart>
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents This Year" value="3" tone="warning" icon="warning" />
+<Stat label="Days Since Last Incident" value="47" tone="success" icon="calendar" />
+</Columns>
+
+| Date | Type | Severity | Line |
+|---|---|---|---|
+| Feb 12 | Slip/trip | Minor | Line B |
+| Jan 28 | Chemical exposure | Moderate | Line D |
+| Jan 5 | Equipment pinch | Minor | Line A |
+
+<Button ask="Report a safety incident">Report Incident</Button>
+</Card>
+
+---
+
+## Work Orders & Alerts
+
+<Card title="Open Work Orders">
+| Order ID | Line | Product | Qty | Priority | Due |
+|---|---|---|---|---|---|
+| WO-3821 | Line C | Bracket A | 500 | <Badge tone="danger">Critical</Badge> | Today 16:00 |
+| WO-3820 | Line A | Sleeve C | 1,200 | <Badge tone="danger">High</Badge> | Today 18:00 |
+| WO-3819 | Line D | Gasket F | 800 | <Badge tone="warning">Medium</Badge> | Tomorrow 08:00 |
+| WO-3818 | Line B | Spacer K | 300 | <Badge tone="info">Low</Badge> | Tomorrow 14:00 |
+| WO-3817 | Line E | Bushing M | 600 | <Badge tone="info">Low</Badge> | Thu 10:00 |
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="Line C — Down">Motor replacement in progress. ETA: 15:30</Callout>
+<Callout tone="warning" title="Line B — Material shortage">Resin hopper running low. Restock needed within 30 min</Callout>
+<Callout tone="info" title="Line A — Quality check">Batch B-4281 on hold. Inspector dispatched</Callout>
+</Card>
+
+---
+
+## Export & Actions
+
+<Columns>
+<Button variant="primary" ask="Export the shift report for today">📄 Export Shift Report</Button>
+<Button variant="secondary" ask="Export the shift report for yesterday">📄 Export Yesterday's Report</Button>
+<Button variant="secondary" ask="Export the shift report for this week">📄 Export Weekly Report</Button>
+</Columns>
+
+<FollowUps>
+- Show me the detailed OEE breakdown
+- What caused the downtime on Line C?
+- Schedule maintenance for Press #3 tomorrow
+- Which suppliers are late this week?
+- Compare morning and afternoon shift efficiency
+</FollowUps>

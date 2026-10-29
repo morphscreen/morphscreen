@@ -1,0 +1,50 @@
+# Identity Verification
+
+<Card title="Verification Progress">
+<Steps>
+<Step title="ID Document" status="current">Photograph front and back of your ID card</Step>
+<Step title="Selfie" status="todo">Take a live selfie for face matching</Step>
+<Step title="Address" status="todo">Confirm your home address</Step>
+<Step title="Review & Submit" status="todo">Review and submit your application</Step>
+</Steps>
+</Card>
+
+<Card title="Step 1: ID Document" subtitle="Take clear photos of both sides of your government-issued ID">
+<Columns>
+<Card title="ID Front">
+<Camera label="Photograph ID front" name="id_front" facing="back" hint="Place ID on dark background, ensure all corners visible" required="true" />
+</Card>
+<Card title="ID Back">
+<Camera label="Photograph ID back" name="id_back" facing="back" hint="Capture barcode/magnetic stripe if present" required="true" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Step 2: Selfie Verification" subtitle="Take a live photo of your face for biometric matching">
+<Camera label="Take selfie" name="selfie" facing="front" hint="Face the camera directly, ensure good lighting, no glasses" required="true" />
+</Card>
+
+<Card title="Step 3: Home Address">
+<Form name="address-form">
+<Input label="Street Address" name="street" placeholder="123 Main Street" required="true" />
+<Columns>
+<Card>
+<Input label="City" name="city" placeholder="San Francisco" required="true" />
+</Card>
+<Card>
+<Input label="State" name="state" placeholder="CA" required="true" />
+</Card>
+<Card>
+<Input label="ZIP Code" name="zip" placeholder="94105" required="true" />
+</Card>
+</Columns>
+<Location label="Or use current location" name="current_location" precision="approximate" hint="We'll fill in your address automatically" />
+</Form>
+</Card>
+
+<Card title="Submit Application">
+<Form name="identity-check">
+<Button size="large">Submit for Review</Button>
+<Button variant="secondary" href="#">Save & Continue Later</Button>
+</Form>
+</Card>

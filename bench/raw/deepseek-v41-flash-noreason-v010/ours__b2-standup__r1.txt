@@ -1,0 +1,64 @@
+# Async standup — remote team
+
+<Card title="Tuesday 10 June" subtitle="Remote team · posts due by 11:00 local time" icon="calendar">
+<Columns>
+<Stat label="Posted" value="4 of 6" tone="info" icon="users" />
+<Stat label="Blocked" value="2" tone="danger" icon="warning" />
+<Stat label="Not posted yet" value="2" tone="warning" icon="clock" />
+</Columns>
+
+<Progress value="4" max="6" label="Updates received today" tone="info" />
+</Card>
+
+<Card title="Blocked — needs help today" subtitle="Anyone blocked gets called out here first" icon="warning">
+<Callout tone="danger" title="2 teammates are blocked and waiting on someone else">
+Neither blocker clears itself. Both need a person to act, not more debugging.
+
+- **Marco Silva** → waiting on **sandbox API keys** from Finance (raised 09:15)
+- **Tom Okafor** → waiting on **staging queue broker** to be restarted by Infra (raised 08:40)
+</Callout>
+
+<Avatar name="Marco Silva" subtitle="Payments webhook — blocked on sandbox keys · needs Finance" />
+<Avatar name="Tom Okafor" subtitle="Queue load test — blocked on staging broker · needs Infra" />
+
+<Button variant="primary" ask="Assign an owner to unblock Marco Silva on the payments webhook">Assign an owner</Button>
+<Button variant="secondary" ask="Ask Finance for sandbox keys to unblock Marco">Chase Finance</Button>
+</Card>
+
+<Card title="Everyone's update" subtitle="4 posted · 2 still missing" icon="list-checks">
+| Teammate | Yesterday | Today | Status |
+|---|---|---|---|
+| Priya Raman | Finished the auth refactor | Ship token refresh to staging | On track |
+| Marco Silva | Reviewed API contracts | Wire the payments webhook | Blocked |
+| Aisha Bello | Wrote onboarding tests | Fix flaky CI on main | On track |
+| Tom Okafor | Debugged retry logic | Load-test the queue workers | Blocked |
+| Lena Fischer | — | — | Not posted |
+| Jordan Avery (you) | — | — | Not posted |
+</Card>
+
+<Card title="Missing updates" subtitle="2 people haven't posted and it's past the cutoff" icon="clock">
+| Who | Last posted | Nudge |
+|---|---|---|
+| Lena Fischer | Yesterday, 10:58 | Send a nudge |
+| Jordan Avery (you) | Yesterday, 16:20 | Post below |
+
+<Button variant="secondary" ask="Nudge Lena Fischer to post today's standup update">Nudge Lena</Button>
+</Card>
+
+<Card title="Post your update" subtitle="Takes about a minute · visible to the whole team">
+<Form name="standup-update">
+<Select label="Your status today" name="status" options="On track | Blocked | Focus day, low availability | Out today" placeholder="Pick a status" required="true" />
+<TextArea label="What you did yesterday" name="yesterday" rows="2" placeholder="Shipped, reviewed, unblocked…" required="true" />
+<TextArea label="What you're doing today" name="today" rows="2" placeholder="The one or two things that matter most" required="true" />
+<TextArea label="Anything blocking you?" name="blockers" rows="2" placeholder="Name the person or team who can unblock you" hint="Leave blank if nothing is in your way" />
+<Switch label="Ping the team channel when I post" name="notify" value=true />
+<Button>Post update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Nudge everyone who hasn't posted
+- Show me only today's blockers
+- Post my update as "On track"
+</FollowUps>

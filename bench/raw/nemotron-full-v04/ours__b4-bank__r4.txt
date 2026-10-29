@@ -1,0 +1,134 @@
+# Personal Banking Home
+
+<Columns>
+<Card title="Checking" subtitle="Primary Account">
+<Stat label="Available Balance" value="$12,450.32" change="+$1,200.00 this month" tone="success" />
+</Card>
+<Card title="Savings" subtitle="Emergency Fund">
+<Stat label="Available Balance" value="$28,750.00" change="+$500.00 this month" tone="info" />
+</Card>
+<Card title="Credit Card" subtitle="Platinum • ending in 4281">
+<Stat label="Current Balance" value="-$3,240.18" change="$1,759.82 available" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recent Transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods Market | -$127.45 | Today |
+| Shell Gas Station | -$65.00 | Yesterday |
+| Netflix | -$15.99 | 2 days ago |
+| Amazon | -$89.99 | 3 days ago |
+| Payroll Deposit | +$3,500.00 | 4 days ago |
+| Starbucks | -$12.50 | 5 days ago |
+| Uber | -$24.30 | 6 days ago |
+| Rent Payment | -$1,800.00 | 7 days ago |
+</Card>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="Category Spend" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Food & Dining | 650 |
+| Transportation | 320 |
+| Shopping | 280 |
+| Entertainment | 180 |
+| Utilities | 240 |
+| Other | 150 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Bills Due Soon">
+| Bill | Amount | Due Date | Status |
+|---|---|---|---|
+| Electric Bill | $145.30 | Oct 15 | <Badge tone="warning">Due in 3 days</Badge> |
+| Internet | $79.99 | Oct 18 | <Badge tone="info">Due in 6 days</Badge> |
+| Car Insurance | $189.00 | Oct 22 | <Badge tone="neutral">Due in 10 days</Badge> |
+| Phone Bill | $85.00 | Oct 25 | <Badge tone="neutral">Due in 13 days</Badge> |
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="6200" max="10000" label="$6,200 of $10,000 saved (62%)" />
+<Stat label="Monthly Target" value="$500" change="On track" tone="success" />
+<Stat label="Projected Completion" value="April 2025" change="8 months" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Credit Score">
+<Columns>
+<Card title="Current Score">
+<Stat label="FICO Score 8" value="742" change="+12 points since last month" tone="success" />
+<Badge tone="success">Very Good</Badge>
+</Card>
+<Card title="Key Factors">
+| Factor | Impact |
+|---|---|
+| Payment History | Positive |
+| Credit Utilization | 18% (Good) |
+| Credit Age | 4.2 years |
+| Total Accounts | 6 |
+| Recent Inquiries | 1 (Low) |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Columns>
+<Select label="From Account" name="fromAccount" placeholder="Select source" options="Checking • $12,450.32 | Savings • $28,750.00 | Credit Card • -$3,240.18" required="true" />
+<Select label="To Account" name="toAccount" placeholder="Select destination" options="Checking • $12,450.32 | Savings • $28,750.00 | Credit Card • -$3,240.18" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" hint="Minimum $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation fund, rent, etc." />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Columns>
+<Card title="Freeze Credit Line">
+<Callout tone="info" title="Freezing your credit line prevents new charges, balance transfers, and cash advances. Recurring payments and returns will still process.">
+<Switch label="Freeze Credit Card ending in 4281" name="freezeCredit" value="false" hint="Toggle to freeze or unfreeze instantly" />
+</Callout>
+</Card>
+<Card title="Statement Period">
+<Select label="Select Period" name="statementPeriod" placeholder="Choose a statement period" options="Current (Oct 1–Oct 31) | Last Month (Sep 1–Sep 30) | Aug 1–Aug 31 | Jul 1–Jul 31 | Custom Range" />
+<Button variant="secondary" size="small">View Statement</Button>
+<Button variant="tertiary" size="small">Download PDF</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Alert Preferences">
+<Callout tone="neutral" title="Manage what triggers notifications">
+<Checkboxes label="Transaction Alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions | ATM withdrawals" hint="Get push, email, or SMS for each" />
+<Checkboxes label="Account Alerts" name="accountAlerts" options="Low balance (<$500) | Direct deposit received | Bill payment posted | Payment due soon | Credit limit near max" value="Low balance (<$500) | Direct deposit received | Bill payment posted | Payment due soon" />
+<Checkboxes label="Security Alerts" name="securityAlerts" options="New device login | Password changed | Contact info updated | Credit freeze/unfreeze | Dispute filed" value="New device login | Password changed | Credit freeze/unfreeze" />
+</Callout>
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Callout tone="warning" title="Before you start">
+Have you contacted the merchant? Most issues resolve faster directly. If not resolved, we'll investigate — typically 10–45 business days.
+</Callout>
+<Select label="Transaction to Dispute" name="disputeTx" placeholder="Select a recent transaction" options="Whole Foods Market • -$127.45 • Today | Shell Gas Station • -$65.00 • Yesterday | Netflix • -$15.99 • 2 days ago | Amazon • -$89.99 • 3 days ago | Starbucks • -$12.50 • 5 days ago | Uber • -$24.30 • 6 days ago" required="true" />
+<Radio label="Dispute Reason" name="disputeReason" options="Unauthorized charge | Wrong amount charged | Duplicate charge | Goods/services not received | Goods/services not as described | Canceled subscription still charged | Other" required="true" />
+<TextArea label="Additional Details" name="disputeDetails" placeholder="Describe what happened, include dates, merchant communication, and any evidence..." rows="4" hint="Be specific — this helps us resolve faster" required="true" />
+<Checkboxes label="Supporting Documents" name="documents" options="Receipt uploaded | Email confirmation | Chat transcript | Photos of items | Shipping tracking | Other" hint="Optional but recommended" />
+<Button variant="primary">Submit Dispute</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Set up automatic savings for vacation goal
+- Increase credit limit on Platinum card
+- Link external accounts for full picture
+- Enable biometric login for faster access
+</FollowUps>

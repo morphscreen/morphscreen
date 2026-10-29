@@ -1,0 +1,83 @@
+# Training Analytics
+
+<Badge tone="info">Cohort view</Badge> <Badge tone="success">Synced 8 min ago</Badge>
+
+<Card title="Filter" subtitle="Narrow the whole screen to one cohort">
+<Form name="cohort-filter">
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Spring 2025 — Onboarding | Spring 2025 — Data Foundations | Winter 2024 — Onboarding | Winter 2024 — Leadership" hint="Changes every metric below" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="This week at a glance">
+<Columns>
+<Stat label="Active learners" value="3,412" change="+8.4%" tone="success" icon="users" note="vs last week" />
+<Stat label="Completion rate" value="72%" change="+2.1 pts" tone="success" icon="chart-line" note="vs last week" />
+<Stat label="Avg quiz score" value="81.6%" change="-0.9 pts" tone="warning" icon="chart-line" note="vs last week" />
+</Columns>
+</Card>
+
+<Card title="Engagement — past 8 weeks">
+<Chart type="line" title="Weekly engagement" x="Week" y="Learners">
+| Week | Active learners | Lessons completed |
+|---|---|---|
+| W1 | 2810 | 9420 |
+| W2 | 2945 | 10080 |
+| W3 | 3020 | 10310 |
+| W4 | 3110 | 10640 |
+| W5 | 3180 | 10890 |
+| W6 | 3260 | 11120 |
+| W7 | 3340 | 11460 |
+| W8 | 3412 | 11870 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="horizontal" title="Enrollments by course" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Data Foundations | 1840 |
+| Onboarding Essentials | 1520 |
+| SQL for Analysts | 1180 |
+| Leadership Basics | 860 |
+| Security & Compliance | 640 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Ranked by risk score — low activity, missed deadlines, or failing quizzes">
+| Learner | Cohort | Last active | Quiz avg | Risk |
+|---|---|---|---|---|
+| Priya Raman | Data Foundations | 14 days ago | 54% | <Badge tone="danger">High</Badge> |
+| Marcus Webb | Onboarding Essentials | 11 days ago | 61% | <Badge tone="danger">High</Badge> |
+| Elena Costa | SQL for Analysts | 9 days ago | 66% | <Badge tone="warning">Medium</Badge> |
+| Tomás Ferreira | Data Foundations | 8 days ago | 69% | <Badge tone="warning">Medium</Badge> |
+| Aisha Bello | Leadership Basics | 6 days ago | 74% | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Risk breakdown">
+<Progress value="128" max="3412" label="High risk" tone="danger" />
+<Progress value="294" max="3412" label="Medium risk" tone="warning" />
+<Progress value="2990" max="3412" label="On track" tone="success" />
+</Card>
+
+<Card title="Message a cohort" subtitle="Send an email or in-app nudge to everyone in the selected cohort">
+<Form name="cohort-message">
+<Select label="Cohort" name="cohort" placeholder="Choose a cohort" options="Spring 2025 — Onboarding | Spring 2025 — Data Foundations | Winter 2024 — Onboarding | Winter 2024 — Leadership" required="true" />
+<Select label="Audience" name="audience" options="Everyone in cohort | At-risk learners only | Learners who haven't started" />
+<Input label="Subject" name="subject" placeholder="Time to finish Module 3" required="true" />
+<TextArea label="Message" name="body" rows="5" placeholder="Hi {{first_name}}, you're close to finishing…" hint="Merge tags: {{first_name}}, {{course}}, {{deadline}}" required="true" />
+<Switch label="Also send as in-app notification" name="in_app" value="true" />
+<Button>Send message</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="warning" title="Quiz scores slipping">Average quiz score fell 0.9 points this week, driven mostly by SQL for Analysts. Consider a review session before the next assessment.</Callout>
+
+<FollowUps>
+- Which learners are at high risk in Data Foundations?
+- Show quiz scores by question for SQL for Analysts
+- Compare completion rate across all cohorts
+- Draft a re-engagement message for at-risk learners
+</FollowUps>

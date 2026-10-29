@@ -1,0 +1,98 @@
+# Service Health Dashboard
+
+<Callout tone="info" title="On-call view">
+Live view of service health. Auto-refreshes every 60 seconds. You are covering the **US-East** region.
+</Callout>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Uptime (this quarter)" value="99.94%" change="+0.02% vs last quarter" tone="success" icon="trend-up" />
+<Stat label="Error rate (right now)" value="0.42%" change="Threshold: 1.0%" tone="warning" icon="warning" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 high" tone="danger" icon="siren" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory — past 24 hours">
+<Chart type="line" x="Time (UTC)" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 58 |
+| 04:00 | 35 | 57 |
+| 06:00 | 41 | 60 |
+| 08:00 | 55 | 64 |
+| 10:00 | 62 | 68 |
+| 12:00 | 58 | 66 |
+| 14:00 | 49 | 63 |
+| 16:00 | 52 | 65 |
+| 18:00 | 61 | 69 |
+| 20:00 | 57 | 67 |
+| 22:00 | 50 | 64 |
+| Now | 47 | 62 |
+</Chart>
+</Card>
+
+<Card title="Region filter">
+<Radio label="View region" options="All regions | US-East | US-West | EU-West | AP-South" name="region" value="US-East" />
+</Card>
+
+<Card title="Open incidents">
+| Incident | Severity | Status | Region | Opened |
+|---|---|---|---|---|
+| API timeouts in checkout | <Badge tone="danger">Critical</Badge> | Unacknowledged | US-East | 14 min ago |
+| Elevated 5xx on payments | <Badge tone="warning">High</Badge> | Unacknowledged | US-West | 32 min ago |
+| Increased latency on search | <Badge tone="warning">High</Badge> | Acknowledged | EU-West | 2 h ago |
+
+<Details title="Acknowledge incident — INC-4821 (Critical)" open="true">
+<Callout tone="danger" title="INC-4821">API timeouts in checkout — US-East. Started 14 minutes ago. Impacting ~3% of checkout requests.</Callout>
+<Form name="ack-incident">
+<Input label="Your name" placeholder="Jane Oncall" required="true" />
+<TextArea label="Ack note (optional)" placeholder="Taking over, investigating…" rows="2" />
+<Button variant="primary">Acknowledge incident</Button>
+</Form>
+</Details>
+
+<Details title="Acknowledge incident — INC-4820 (High)" open="false">
+<Callout tone="warning" title="INC-4820">Elevated 5xx on payments — US-West. Started 32 minutes ago.</Callout>
+<Form name="ack-incident-2">
+<Input label="Your name" placeholder="Jane Oncall" required="true" />
+<TextArea label="Ack note (optional)" placeholder="Taking over, investigating…" rows="2" />
+<Button variant="primary">Acknowledge incident</Button>
+</Form>
+</Details>
+</Card>
+
+<Card title="Slowest endpoints (last 5 min)">
+| Endpoint | P95 latency | Status |
+|---|---|---|
+| `POST /api/v1/checkout` | 1,240 ms | <Badge tone="danger">Critical</Badge> |
+| `GET /api/v1/orders/recent` | 890 ms | <Badge tone="warning">High</Badge> |
+| `POST /api/v1/payments/refund` | 720 ms | <Badge tone="warning">High</Badge> |
+| `GET /api/v1/search/products` | 610 ms | <Badge tone="neutral">Normal</Badge> |
+| `GET /api/v1/users/profile` | 480 ms | <Badge tone="neutral">Normal</Badge> |
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="1.0" name="error-threshold" unit="%" />
+<Button>Save threshold</Button>
+</Form>
+<Callout tone="info" title="Alerting rules">Alert when error rate exceeds threshold for 5 consecutive minutes. Current notification channel: **PagerDuty + Slack #oncall**.</Callout>
+</Card>
+
+<Card title="Recent activity">
+<Steps>
+<Step title="INC-4821 opened" status="done" subtitle="14 min ago — Alert triggered at 1.2% error rate">API timeouts in checkout, US-East.</Step>
+<Step title="INC-4820 opened" status="done" subtitle="32 min ago — Alert triggered at 1.4% error rate">Elevated 5xx on payments, US-West.</Step>
+<Step title="Threshold check" status="done" subtitle="43 min ago">Error rate back under 1.0% in EU-West.</Step>
+<Step title="INC-4819 closed" status="done" subtitle="1 h ago — Resolved">Search latency issue in AP-South.</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- Show me the incident timeline for INC-4821
+- What changed in the last hour that could explain the CPU spike?
+- Compare error rates across all regions this week
+- Which deployments happened in the last 24 hours?
+- What's the full runbook for checkout timeouts?
+</FollowUps>

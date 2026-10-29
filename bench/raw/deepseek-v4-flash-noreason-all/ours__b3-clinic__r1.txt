@@ -1,0 +1,104 @@
+# Clinic Receptionist — Day View
+
+<Card title="Tuesday, June 3">
+<Columns>
+<Stat label="Patients expected today" value="24" icon="users" />
+<Stat label="No-show rate (this month)" value="12%" tone="warning" icon="chart-line" />
+<Stat label="Rooms free now" value="3 of 6" tone="success" icon="door" />
+</Columns>
+</Card>
+
+<Card title="Today's appointments">
+<Tabs>
+<Tab title="All (24)">
+<Agenda title="Schedule">
+| Time | Patient |
+|---|---|
+| 08:00 | Marcus Webb |
+| 08:30 | Elena Ruiz |
+| 09:00 | David Chen |
+| 09:30 | Priya Sharma |
+| 10:00 | Tom O'Brien |
+| 10:30 | Grace Kim |
+| 11:00 | Ahmed Hassan |
+| 11:30 | — Break — |
+| 12:00 | Lucy Foster |
+| 12:30 | James Park |
+| 13:00 | Sofia Müller |
+| 13:30 | Noah Williams |
+| 14:00 | Amara Okafor |
+| 14:30 | Leo Martin |
+| 15:00 | Hannah Scott |
+| 15:30 | Omar Farouk |
+| 16:00 | Yuki Tanaka |
+| 16:30 | Ben Carter |
+| 17:00 | Ava Thompson |
+| 17:30 | Miguel Santos |
+</Agenda>
+</Tab>
+<Tab title="Checked in (6)">
+<Agenda title="Checked in">
+| Time | Patient |
+|---|---|
+| 08:00 | Marcus Webb |
+| 08:30 | Elena Ruiz |
+| 09:00 | David Chen |
+| 09:30 | Priya Sharma |
+| 10:00 | Tom O'Brien |
+| 10:30 | Grace Kim |
+</Agenda>
+</Tab>
+<Tab title="Waiting (3)">
+<Agenda title="In waiting room">
+| Time | Patient |
+|---|---|
+| 08:00 | Marcus Webb |
+| 08:30 | Elena Ruiz |
+| 09:00 | David Chen |
+</Agenda>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Next patient to call">
+<Columns>
+<Avatar name="Marcus Webb" src="find" subtitle="Room 2 · Dr. Patel" />
+<Button variant="primary">Call Marcus Webb</Button>
+</Columns>
+</Card>
+
+<Card title="Room availability">
+<KeyValue title="Right now">
+| Room | Status |
+|---|---|
+| Room 1 | In use — Dr. Patel |
+| Room 2 | In use — Dr. Nguyen |
+| Room 3 | **Free** |
+| Room 4 | **Free** |
+| Room 5 | **Free** |
+| Room 6 | In use — Dr. Osei |
+</KeyValue>
+</Card>
+
+<Card title="Check in a patient">
+<Form name="checkin">
+<Combobox label="Find patient" placeholder="Type name or search…" options="Marcus Webb | Elena Ruiz | David Chen | Priya Sharma | Tom O'Brien | Grace Kim | Ahmed Hassan | Lucy Foster | James Park | Sofia Müller | Noah Williams | Amara Okafor | Leo Martin | Hannah Scott | Omar Farouk | Yuki Tanaka | Ben Carter | Ava Thompson | Miguel Santos" />
+<Select label="Room" placeholder="Assign room" options="Room 3 | Room 4 | Room 5" />
+<Button variant="primary">Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Jump to another day">
+<Form name="change-day">
+<Date label="Select date" />
+<Button variant="secondary">View that day</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Reminder">The 12% no-show rate is up from 8% last month — consider sending reminder texts.</Callout>
+
+<FollowUps>
+- Show me tomorrow's schedule
+- Who's been waiting longest?
+- Which doctor has the most appointments today?
+</FollowUps>

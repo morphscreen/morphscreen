@@ -1,0 +1,243 @@
+# Emergency Response Coordination Center
+
+<Select label="Focus Zone" placeholder="All Zones" options="All Zones | Zone Alpha (Downtown) | Zone Bravo (Riverside) | Zone Charlie (Hillside) | Zone Delta (Industrial)" />
+
+<Columns>
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical Incidents" value="3" tone="danger" icon="alert-triangle" />
+<Stat label="High Severity" value="7" tone="warning" icon="alert" />
+<Stat label="Medium Severity" value="12" tone="info" icon="info" />
+<Stat label="Low Severity" value="8" tone="success" icon="check-circle" />
+</Columns>
+</Card>
+
+<Card title="People Rescued & Casualties">
+<Columns>
+<Stat label="Rescued" value="1,247" tone="success" icon="users" change="+127 today" />
+<Stat label="Injured" value="342" tone="warning" icon="heart" change="+23 today" />
+<Stat label="Fatalities" value="18" tone="danger" icon="skull" change="+2 today" />
+<Stat label="Missing" value="41" tone="danger" icon="user-circle" change="-5 today" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Active Incidents by Zone">
+<Chart type="bar" title="Incidents by Zone & Severity" x="Zone" y="Count">
+| Zone | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| Zone Alpha | 1 | 3 | 4 | 2 |
+| Zone Bravo | 1 | 2 | 3 | 3 |
+| Zone Charlie | 1 | 1 | 3 | 2 |
+| Zone Delta | 0 | 1 | 2 | 1 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Resources Available">
+<Columns>
+<Stat label="Fire Engines" value="12 / 18" tone="warning" icon="truck" />
+<Stat label="Ambulances" value="8 / 14" tone="warning" icon="truck" />
+<Stat label="Rescue Boats" value="4 / 6" tone="info" icon="anchor" />
+<Stat label="Helicopters" value="2 / 3" tone="success" icon="helicopter" />
+</Columns>
+
+<Columns>
+<Stat label="Firefighters" value="84 / 120" tone="warning" icon="users" />
+<Stat label="Paramedics" value="42 / 60" tone="warning" icon="users" />
+<Stat label="Police Officers" value="67 / 95" tone="info" icon="users" />
+<Stat label="Volunteers" value="156 / 200" tone="success" icon="users" />
+</Columns>
+
+<Columns>
+<Stat label="Water (liters)" value="45,000" tone="success" icon="droplet" />
+<Stat label="Food Rations" value="12,500" tone="success" icon="package" />
+<Stat label="Medical Kits" value="850" tone="warning" icon="briefcase-medical" />
+<Stat label="Blankets" value="3,200" tone="success" icon="bed" />
+</Columns>
+</Card>
+
+<Card title="Shelters — Capacity & Occupancy">
+| Shelter | Capacity | Occupied | Available | Status |
+|---|---|---|---|---|
+| Central High School | 500 | 412 | 88 | <Badge tone="warning">Near Capacity</Badge> |
+| Riverside Community Center | 300 | 198 | 102 | <Badge tone="success">Open</Badge> |
+| Hillside Church | 200 | 156 | 44 | <Badge tone="warning">Near Capacity</Badge> |
+| Industrial Warehouse | 800 | 324 | 476 | <Badge tone="success">Open</Badge> |
+| Downtown Convention Center | 1,000 | 687 | 313 | <Badge tone="success">Open</Badge> |
+| Eastside Elementary | 250 | 250 | 0 | <Badge tone="danger">Full</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Evacuation Route Status">
+| Route | Status | Congestion | Notes |
+|---|---|---|---|
+| Highway 101 North | <Badge tone="success">Open</Badge> | Moderate | Clear for all traffic |
+| Highway 101 South | <Badge tone="danger">Closed</Badge> | — | Bridge collapse at Mile 12 |
+| Route 46 East | <Badge tone="warning">Partial</Badge> | Heavy | One lane only, debris clearance ongoing |
+| Route 46 West | <Badge tone="success">Open</Badge> | Light | Recommended primary route |
+| County Road 9 | <Badge tone="danger">Closed</Badge> | — | Flooding, impassable |
+| Old Mill Road | <Badge tone="warning">Partial</Badge> | Moderate | High-clearance vehicles only |
+| Rail Line Access | <Badge tone="success">Open</Badge> | None | Train evacuation available |
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+| Time | Condition | Temp | Precip | Wind | Alert |
+|---|---|---|---|---|---|
+| Now | Heavy Rain | 14°C | 95% | 28 km/h NE | <Badge tone="danger">Flash Flood Watch</Badge> |
+| +3 hrs | Heavy Rain | 13°C | 90% | 32 km/h NE | <Badge tone="danger">Flash Flood Watch</Badge> |
+| +6 hrs | Moderate Rain | 12°C | 70% | 25 km/h N | <Badge tone="warning">Flood Advisory</Badge> |
+| +12 hrs | Light Rain | 11°C | 40% | 18 km/h NW | <Badge tone="info">Clearing Trend</Badge> |
+| +18 hrs | Overcast | 12°C | 15% | 15 km/h NW | <Badge tone="success">Improving</Badge> |
+| +24 hrs | Partly Cloudy | 14°C | 10% | 12 km/h W | <Badge tone="success">Stable</Badge> |
+| +36 hrs | Mostly Sunny | 17°C | 5% | 10 km/h SW | <Badge tone="success">Stable</Badge> |
+| +48 hrs | Sunny | 19°C | 0% | 8 km/h SW | <Badge tone="success">Stable</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Volunteers On Duty">
+| Name | Role | Assignment | Shift End |
+|---|---|---|---|
+| Maria Santos | Medical Team Lead | Central High Shelter | 06:00 |
+| James Chen | Logistics Coordinator | Warehouse Distribution | 06:00 |
+| Aisha Rahman | Communications | EOC Radio Room | 06:00 |
+| David Park | Search & Rescue | Zone Bravo | 06:00 |
+| Lisa Thompson | Shelter Manager | Riverside Center | 06:00 |
+| Robert Kim | Supply Driver | Depot → Shelters | 06:00 |
+| Fatima Al-Rashid | Translator | All Shelters | 14:00 |
+| Kevin O'Brien | Heavy Equipment | Route 46 Clearance | 14:00 |
+| Priya Sharma | Mental Health | Convention Center | 14:00 |
+| Carlos Mendoza | Security | Perimeter Checkpoints | 14:00 |
+</Card>
+
+<Card title="Donations Received">
+<Columns>
+<Stat label="Monetary" value="$2.4M" tone="success" icon="currency-dollar" change="+$340K today" />
+<Stat label="Food (kg)" value="18,500" tone="success" icon="package" change="+2,100 today" />
+<Stat label="Water (L)" value="42,000" tone="success" icon="droplet" change="+5,000 today" />
+<Stat label="Clothing (items)" value="8,200" tone="info" icon="shirt" change="+1,200 today" />
+</Columns>
+
+| Donor | Type | Amount | Status |
+|---|---|---|---|
+| Red Cross Regional | Monetary | $500,000 | <Badge tone="success">Received</Badge> |
+| Local Food Bank | Food | 5,000 kg | <Badge tone="success">Received</Badge> |
+| AquaPure Corp | Water | 20,000 L | <Badge tone="success">Received</Badge> |
+| City Transit Authority | Vehicles | 4 buses | <Badge tone="success">Deployed</Badge> |
+| TechCorp Industries | Monetary | $250,000 | <Badge tone="info">Pledged</Badge> |
+| Community Drive | Clothing | 3,500 items | <Badge tone="warning">In Transit</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Aid Requests Awaiting Action">
+| ID | Requester | Location | Need | Priority | Status |
+|---|---|---|---|---|---|
+| REQ-047 | Hillside Clinic | Zone Charlie | Medical supplies, oxygen | <Badge tone="danger">Critical</Badge> | <Badge tone="warning">Dispatching</Badge> |
+| REQ-052 | Riverside Shelter | Zone Bravo | 200 blankets, heaters | <Badge tone="warning">High</Badge> | <Badge tone="info">Sourcing</Badge> |
+| REQ-038 | Elderly Center | Zone Alpha | Evacuation transport (35) | <Badge tone="danger">Critical</Badge> | <Badge tone="warning">En Route</Badge> |
+| REQ-061 | Mobile Kitchen | Zone Delta | Generator, fuel | <Badge tone="warning">High</Badge> | <Badge tone="info">Pending</Badge> |
+| REQ-029 | Family Services | Zone Alpha | Baby formula, diapers | <Badge tone="info">Medium</Badge> | <Badge tone="info">Pending</Badge> |
+| REQ-055 | Search Team 3 | Zone Charlie | Rope, harnesses, lights | <Badge tone="warning">High</Badge> | <Badge tone="success">Fulfilled</Badge> |
+</Card>
+
+<Card title="Communication Channels">
+| Channel | Status | Last Test | Notes |
+|---|---|---|---|
+| EOC Radio (VHF) | <Badge tone="success">Operational</Badge> | 02:15 | Primary command net |
+| EOC Radio (UHF) | <Badge tone="success">Operational</Badge> | 02:15 | Tactical ops net |
+| Cellular Network | <Badge tone="warning">Degraded</Badge> | 01:45 | 60% coverage, towers on backup |
+| Satellite Phones | <Badge tone="success">Operational</Badge> | 02:00 | 12 units deployed |
+| Mesh Network (LoRa) | <Badge tone="success">Operational</Badge> | 02:10 | 47 nodes active |
+| Internet (Fiber) | <Badge tone="danger">Down</Badge> | 23:30 | Cut at river crossing |
+| Internet (Starlink) | <Badge tone="success">Operational</Badge> | 02:12 | 4 terminals at EOC |
+| Amateur Radio (HF) | <Badge tone="success">Operational</Badge> | 01:30 | Regional net check-in |
+| Public Alert System | <Badge tone="success">Operational</Badge> | 02:00 | IPAWS tested OK |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roads Closed">
+| Road | Segment | Reason | Est. Reopen | Detour |
+|---|---|---|---|---|
+| Highway 101 S | Mile 10–14 | Bridge collapse | Unknown | Route 46 W → I-5 |
+| County Road 9 | Mile 3–8 | Severe flooding | 48+ hrs | Highway 101 N |
+| Old Mill Road | Mile 1–5 | Landslide | 24 hrs | Route 46 E |
+| Bridge St Bridge | Full span | Structural damage | Unknown | Riverside Dr Bridge |
+| Industrial Blvd | Mile 0–2 | Chemical spill | 12 hrs | Zone Delta access via Rail |
+| Hillside Drive | Mile 4–7 | Downed power lines | 6 hrs | Use Highway 101 N |
+</Card>
+
+<Card title="Nearby Hospitals — Free Beds">
+| Hospital | Distance | Total Beds | Free ICU | Free General | Status |
+|---|---|---|---|---|---|
+| Mercy General | 3.2 km | 450 | 4 / 42 | 28 / 180 | <Badge tone="warning">High Census</Badge> |
+| Riverside Medical | 5.8 km | 320 | 2 / 28 | 15 / 140 | <Badge tone="warning">High Census</Badge> |
+| Hillside Regional | 8.1 km | 275 | 6 / 24 | 42 / 120 | <Badge tone="success">Accepting</Badge> |
+| St. Luke's Trauma | 12.4 km | 500 | 12 / 50 | 65 / 200 | <Badge tone="success">Accepting</Badge> |
+| Veterans Hospital | 15.0 km | 380 | 8 / 36 | 55 / 160 | <Badge tone="success">Accepting</Badge> |
+| Children's Hospital | 18.2 km | 220 | 3 / 20 | 18 / 90 | <Badge tone="info">Pediatric Only</Badge> |
+</Card>
+</Columns>
+
+<Card title="Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|---|
+| TASK-201 | Clear Route 46 E landslide | Kevin O'Brien / Heavy Eq. | Bravo | <Badge tone="danger">Critical</Badge> | 08:00 | <Badge tone="warning">In Progress</Badge> |
+| TASK-202 | Restore fiber at river crossing | Telecom Strike Team | Alpha | <Badge tone="warning">High</Badge> | 12:00 | <Badge tone="info">Pending</Badge> |
+| TASK-203 | Distribute heaters to Riverside | James Chen / Logistics | Bravo | <Badge tone="warning">High</Badge> | 06:00 | <Badge tone="warning">In Progress</Badge> |
+| TASK-204 | Evacuate Elderly Center (35) | David Park / SAR Team | Alpha | <Badge tone="danger">Critical</Badge> | 04:00 | <Badge tone="warning">En Route</Badge> |
+| TASK-205 | Set up triage at Convention Ctr | Maria Santos / Medical | Delta | <Badge tone="warning">High</Badge> | 06:00 | <Badge tone="info">Pending</Badge> |
+| TASK-206 | Inspect Bridge St structural | Engineering Team | Alpha | <Badge tone="danger">Critical</Badge> | 10:00 | <Badge tone="info">Pending</Badge> |
+| TASK-207 | Deliver oxygen to Hillside Clinic | Robert Kim / Supply | Charlie | <Badge tone="danger">Critical</Badge> | 03:30 | <Badge tone="warning">En Route</Badge> |
+| TASK-208 | Register volunteers at Depot | Aisha Rahman / Comms | All | <Badge tone="info">Medium</Badge> | 08:00 | <Badge tone="warning">In Progress</Badge> |
+</Card>
+
+<Columns>
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Select label="Resource Type" placeholder="Select resource type" options="Fire Engine | Ambulance | Rescue Boat | Helicopter | Firefighters | Paramedics | Police Officers | Volunteers | Water (liters) | Food Rations | Medical Kits | Blankets | Generators | Fuel (liters) | Pumps | Sandbags" required="true" />
+<Input label="Quantity" type="number" placeholder="Enter quantity" min="1" required="true" />
+<Select label="Priority" placeholder="Select priority" options="Critical — Immediate | High — Within 2 hrs | Medium — Within 6 hrs | Low — Next shift" required="true" />
+<Select label="Delivery Zone" placeholder="Select zone" options="Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta | EOC / Central Depot" required="true" />
+<TextArea label="Justification / Notes" placeholder="Brief justification for request..." rows="3" />
+<Button>Submit Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Emergency Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" placeholder="Select channels" options="All Channels | EOC Radio (VHF) | EOC Radio (UHF) | Cellular Alert (IPAWS) | Satellite Phone Net | Mesh Network | Amateur Radio (HF) | Public Address Sirens" required="true" />
+<Select label="Message Type" placeholder="Select type" options="Evacuation Order | Shelter-in-Place | Route Update | Weather Warning | All Clear | Resource Available | General Info" required="true" />
+<Select label="Target Zone(s)" placeholder="Select zones" options="All Zones | Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta" required="true" />
+<TextArea label="Message Text" placeholder="Enter broadcast message..." rows="5" required="true" hint="Keep messages concise. Include specific instructions, locations, and timeframes." />
+<Button>Broadcast Now</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="File Situation Report (SITREP)">
+<Form name="situation-report">
+<Columns>
+<Select label="Report Type" placeholder="Select type" options="Initial | Update | Final" required="true" />
+<Date label="Report Date" required="true" />
+<Input label="Report Number" placeholder="Auto-generated" value="SITREP-2024-0315-007" required="true" />
+</Columns>
+<Select label="Prepared By" placeholder="Select your name/role" options="Incident Commander | Operations Chief | Planning Chief | Logistics Chief | Finance/Admin Chief | Liaison Officer | Safety Officer | Public Info Officer" required="true" />
+<Select label="Classification" placeholder="Select classification" options="UNCLASSIFIED | FOR OFFICIAL USE ONLY | LAW ENFORCEMENT SENSITIVE" required="true" />
+<TextArea label="Situation Summary" placeholder="Current situation overview..." rows="4" required="true" />
+<TextArea label="Actions Taken" placeholder="Actions completed since last report..." rows="3" required="true" />
+<TextArea label="Planned Actions" placeholder="Actions planned for next operational period..." rows="3" required="true" />
+<TextArea label="Resource Status" placeholder="Resources committed, available, needed..." rows="3" />
+<TextArea label="Issues / Concerns / Requests" placeholder="Any issues, safety concerns, or requests for assistance..." rows="3" />
+<Button>Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Last Updated">Dashboard refreshed: 2024-03-15 02:18 UTC | Next auto-refresh: 02:23 UTC | Data sources: EOC Ops, 911 Dispatch, NWS, DOT, Hospital Network, Red Cross</Callout>

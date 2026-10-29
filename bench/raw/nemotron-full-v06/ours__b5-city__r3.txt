@@ -1,0 +1,330 @@
+# City Operations Center
+
+<Columns>
+<Card title="District Focus">
+<Select label="Select District" name="district" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastside | Westside | Riverside | University | Industrial | Harbor" />
+</Card>
+<Card title="Current Weather">
+<Stat label="Temperature" value="72°F" change="+2°F from 1hr ago" tone="neutral" />
+<Stat label="Conditions" value="Partly Cloudy" tone="info" />
+<Stat label="Wind" value="8 mph SW" tone="neutral" />
+<Stat label="Humidity" value="58%" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Congestion Right Now">
+<Stat label="Citywide Index" value="67/100" change="Moderate" tone="warning" />
+<Progress value="67" max="100" label="Congestion Level" tone="warning" />
+<Badge tone="info">Updated 2 min ago</Badge>
+</Card>
+
+<Card title="Transit Punctuality">
+<Stat label="On-Time Performance" value="92%" change="+1.2% vs yesterday" tone="success" />
+<Progress value="92" max="100" label="Punctuality" tone="success" />
+<Badge tone="neutral">Bus: 90% | Rail: 95% | Tram: 93%</Badge>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI" title="Air Quality Index (Lower is Better)">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Northside | 42 |
+| Eastside | 55 |
+| Westside | 38 |
+| Riverside | 31 |
+| University | 47 |
+| Industrial | 112 |
+| Harbor | 65 |
+</Chart>
+<Badge tone="warning">Industrial: Unhealthy for Sensitive Groups</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use (Past 7 Days)">
+<Chart type="line" x="Day" y="MW" title="Megawatts Consumed">
+| Day | Residential | Commercial | Industrial | Municipal |
+|---|---|---|---|---|
+| Mon | 420 | 380 | 650 | 120 |
+| Tue | 435 | 395 | 670 | 118 |
+| Wed | 410 | 370 | 640 | 122 |
+| Thu | 445 | 410 | 680 | 125 |
+| Fri | 460 | 425 | 690 | 128 |
+| Sat | 380 | 290 | 520 | 95 |
+| Sun | 365 | 275 | 490 | 90 |
+</Chart>
+<Stat label="Total This Week" value="12,840 MW" change="-3.2% vs last week" tone="success" />
+</Card>
+
+<Card title="Water Use Today">
+<Stat label="Current Rate" value="18.4M gal/hr" change="+0.8M vs avg" tone="warning" />
+<Stat label="Reservoir Level" value="78%" change="-1% from yesterday" tone="info" />
+<Progress value="78" max="100" label="Reservoir Capacity" tone="info" />
+<Chart type="line" x="Hour" y="M gal" title="Hourly Consumption">
+| Hour | Consumption |
+|---|---|
+| 00:00 | 12.1 |
+| 04:00 | 10.8 |
+| 08:00 | 16.2 |
+| 12:00 | 19.5 |
+| 16:00 | 21.3 |
+| 20:00 | 18.7 |
+</Chart>
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="🚨 Open Incidents (12)">
+<Columns>
+<Card title="Active Incidents">
+| # | Type | Location | District | Severity | Since | Status |
+|---|---|---|---|---|---|---|
+| IN-0442 | Water Main Break | 5th & Main | Downtown | Critical | 08:15 | Crew En Route |
+| IN-0445 | Power Outage | Grid Sector 7 | Industrial | High | 09:30 | Assessing |
+| IN-0448 | Traffic Signal Failure | Oak & 12th | Eastside | High | 10:05 | Dispatched |
+| IN-0451 | Gas Leak | 200 Harbor Blvd | Harbor | Critical | 10:42 | Evacuating |
+| IN-0453 | Sewer Backup | Riverside Dr | Riverside | Medium | 11:10 | Contained |
+| IN-0456 | Tree Down | University Ave | University | Medium | 11:45 | Clearing |
+| IN-0458 | Sinkhole | Northside Blvd | Northside | High | 12:20 | Secured |
+| IN-0460 | Chemical Spill | Industrial Pkwy | Industrial | Critical | 13:00 | Hazmat Active |
+| IN-0462 | Bridge Inspection | Harbor Bridge | Harbor | Low | 13:30 | Scheduled |
+| IN-0464 | Flooding | Westside Underpass | Westside | High | 14:10 | Pumps Deployed |
+| IN-0466 | Elevator Entrapment | City Hall | Downtown | Medium | 14:45 | Fire Dept |
+| IN-0468 | Noise Complaint | Eastside Park | Eastside | Low | 15:20 | Logged |
+</Card>
+<Card title="Incident Map">
+<Callout tone="info" title="Map View">Interactive map showing all 12 incidents with color-coded severity markers. Critical: Red (4), High: Orange (4), Medium: Yellow (3), Low: Green (1).</Callout>
+<Badge tone="danger">4 Critical</Badge>
+<Badge tone="warning">4 High</Badge>
+<Badge tone="neutral">3 Medium</Badge>
+<Badge tone="success">1 Low</Badge>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🚑 Emergency Vehicles">
+<Columns>
+<Card title="Deployed Units (28 Active)">
+| Unit | Type | Status | Location | Incident | ETA |
+|---|---|---|---|---|---|
+| ENG-1 | Fire Engine | En Route | 5th & Main | IN-0442 | 3 min |
+| ENG-3 | Fire Engine | On Scene | 200 Harbor Blvd | IN-0451 | — |
+| HAZ-1 | Hazmat | On Scene | Industrial Pkwy | IN-0460 | — |
+| RES-2 | Rescue | En Route | Westside Underpass | IN-0464 | 5 min |
+| AMB-4 | Ambulance | On Scene | 5th & Main | IN-0442 | — |
+| AMB-7 | Ambulance | Staging | Harbor Bridge | IN-0462 | — |
+| POL-12 | Patrol | Securing | Northside Blvd | IN-0458 | — |
+| POL-18 | Patrol | Traffic Control | Oak & 12th | IN-0448 | — |
+| PUMP-2 | Pump Truck | Operating | Westside Underpass | IN-0464 | — |
+| VAC-1 | Vactor Truck | Clearing | Riverside Dr | IN-0453 | — |
+| TOW-3 | Heavy Tow | En Route | University Ave | IN-0456 | 8 min |
+| CHF-1 | Battalion Chief | Command | 200 Harbor Blvd | IN-0451 | — |
+</Card>
+<Card title="Available Reserve Units">
+<Stat label="Fire Engines" value="3" tone="success" />
+<Stat label="Ambulances" value="2" tone="success" />
+<Stat label="Rescue Units" value="1" tone="success" />
+<Stat label="Hazmat" value="0" tone="danger" />
+<Stat label="Pump Trucks" value="1" tone="info" />
+<Stat label="Patrol Cars" value="8" tone="success" />
+<Progress value="28" max="45" label="Fleet Utilization" tone="warning" />
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🅿️ Parking Downtown">
+<Columns>
+<Card title="Real-Time Availability">
+| Facility | Total | Available | Rate | Status | Trend |
+|---|---|---|---|---|---|
+| Civic Center Garage | 850 | 234 | $3.50/hr | 28% Full | ↗ Filling |
+| Market Street Lot | 320 | 89 | $2.75/hr | 72% Full | → Steady |
+| Riverside Deck | 600 | 156 | $4.00/hr | 74% Full | ↗ Filling |
+| Arts District Garage | 480 | 198 | $3.00/hr | 59% Full | ↘ Easing |
+| Transit Center Lot | 250 | 12 | $5.00/hr | 95% Full | ↗ Full Soon |
+| Convention Center | 1200 | 445 | $4.50/hr | 63% Full | → Steady |
+| Waterfront Garage | 700 | 301 | $3.75/hr | 57% Full | ↘ Easing |
+| Library Plaza | 180 | 67 | $2.50/hr | 63% Full | → Steady |
+</Card>
+<Card title="Summary">
+<Stat label="Total Spaces" value="4,580" tone="neutral" />
+<Stat label="Available Now" value="1,502" change="33% citywide" tone="info" />
+<Stat label="Avg Occupancy" value="67%" tone="warning" />
+<Progress value="67" max="100" label="Downtown Occupancy" tone="warning" />
+<Badge tone="info">Transit Center near capacity</Badge>
+<Badge tone="success">Arts District & Waterfront easing</Badge>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🎪 Public Events (Weekend)">
+<Columns>
+<Card title="This Weekend's Events">
+| Event | Date | Time | District | Expected | Impact | Permits |
+|---|---|---|---|---|---|---|
+| Riverside Music Festival | Sat | 12:00-22:00 | Riverside | 15,000 | High | ✓ Approved |
+| Downtown Art Walk | Sat | 17:00-23:00 | Downtown | 8,000 | Medium | ✓ Approved |
+| University Homecoming | Sat | 10:00-16:00 | University | 12,000 | High | ✓ Approved |
+| Harbor Food Festival | Sun | 11:00-20:00 | Harbor | 10,000 | Medium | ✓ Approved |
+| Eastside 5K Run | Sun | 07:00-10:00 | Eastside | 3,000 | Low | ✓ Approved |
+| Westside Farmers Market | Sun | 08:00-14:00 | Westside | 2,500 | Low | ✓ Approved |
+| Industrial Job Fair | Sat | 09:00-15:00 | Industrial | 1,500 | Low | ✓ Approved |
+| Northside Block Party | Sat | 14:00-22:00 | Northside | 500 | Low | Pending |
+</Card>
+<Card title="Operational Notes">
+<Callout tone="warning" title="Traffic Impact">Riverside Festival + Downtown Art Walk = major congestion Sat 5-10PM. Coordinate with transit for extra shuttles.</Callout>
+<Callout tone="info" title="Staffing">12 officers, 4 medics, 2 tow trucks pre-positioned for weekend events.</Callout>
+<Badge tone="success">7/8 permits approved</Badge>
+<Badge tone="warning">1 pending (Northside)</Badge>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="📱 Citizen Reports (Live)">
+<Columns>
+<Card title="Incoming Reports (Last 30 Min)">
+| Time | Type | Location | District | Description | Status |
+|---|---|---|---|---|---|
+| 15:42 | Pothole | Elm St & 3rd | Downtown | Large pothole, damaged tire | Triaged |
+| 15:38 | Graffiti | Alley behind Main | Downtown | Tagging on business wall | Assigned |
+| 15:35 | Streetlight Out | Oak Ave | Eastside | Pole #4472 dark | Dispatched |
+| 15:31 | Trash Overflow | Riverside Park | Riverside | Bins full, litter spreading | Scheduled |
+| 15:28 | Noise | 400 University | University | Loud party, 20+ people | Police Notified |
+| 15:24 | Water Leak | 120 Harbor | Harbor | Sidewalk bubbling | Crew En Route |
+| 15:20 | Signal Timing | 5th & Pine | Downtown | Left turn too short | Engineering Review |
+| 15:15 | Abandoned Vehicle | Industrial Lot B | Industrial | White sedan, 3+ days | Tagged for Tow |
+| 15:10 | Tree Limb Down | Northside Blvd | Northside | Blocking bike lane | Clearing |
+| 15:05 | Illegal Dumping | Westside Alley | Westside | Construction debris | Code Enforcement |
+</Card>
+<Card title="Report Stats">
+<Stat label="Today Total" value="147" change="+23 vs yesterday" tone="neutral" />
+<Stat label="Avg Response" value="4.2 hrs" change="-0.5 hrs" tone="success" />
+<Stat label="Resolution Rate" value="87%" tone="success" />
+<Chart type="pie" title="Reports by Category">
+| Category | Count |
+|---|---|
+| Infrastructure | 42 |
+| Sanitation | 28 |
+| Traffic/Signals | 21 |
+| Noise/Nuisance | 19 |
+| Parks/Trees | 15 |
+| Water/Sewer | 12 |
+| Other | 10 |
+</Chart>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="📋 Service Request Backlog">
+<Columns>
+<Card title="Open Requests by Department">
+| Dept | Open | >30 Days | >60 Days | >90 Days | Avg Age | Trend |
+|---|---|---|---|---|---|---|
+| Public Works | 234 | 45 | 18 | 7 | 22 days | ↗ Rising |
+| Water & Sewer | 156 | 28 | 12 | 3 | 18 days | → Steady |
+| Transportation | 189 | 38 | 15 | 6 | 25 days | ↗ Rising |
+| Parks & Rec | 87 | 12 | 4 | 1 | 14 days | ↘ Improving |
+| Code Enforcement | 112 | 22 | 9 | 2 | 19 days | ↗ Rising |
+| Facilities | 64 | 8 | 3 | 0 | 11 days | ↘ Improving |
+| **Total** | **842** | **153** | **61** | **19** | **19 days** | **↗ Rising** |
+</Card>
+<Card title="Priority Actions">
+<Callout tone="danger" title="Critical Backlog">19 requests over 90 days — 7 Public Works (sidewalk repairs), 6 Transportation (signal upgrades), 3 Water (meter replacements), 2 Code (vacant properties), 1 Facilities (HVAC).</Callout>
+<Callout tone="warning" title="Staffing Gap">Public Works down 3 crews. Transportation signal shop at 60% capacity.</Callout>
+<Button variant="primary">Export Backlog Report</Button>
+<Button variant="secondary">Assign Priority Batch</Button>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🚧 Roadworks This Month">
+<Columns>
+<Card title="Planned Roadworks (October)">
+| Project | Location | District | Start | End | Type | Impact | Status |
+|---|---|---|---|---|---|---|---|
+| Main St Reconstruction | Main St (1st-10th) | Downtown | Oct 3 | Oct 28 | Full Rebuild | Road Closed | In Progress |
+| Oak Ave Resurfacing | Oak Ave (5th-15th) | Eastside | Oct 7 | Oct 18 | Mill & Overlay | Lane Shifts | Scheduled |
+| Bridge Deck Repair | Harbor Bridge | Harbor | Oct 10 | Oct 31 | Structural | Single Lane | Scheduled |
+| Utility Relocation | Industrial Pkwy | Industrial | Oct 14 | Oct 25 | Underground | Detour | Permitted |
+| Bike Lane Install | University Ave | University | Oct 15 | Nov 5 | New Build | Parking Loss | Approved |
+| ADA Ramp Upgrades | Citywide | All | Oct 1 | Oct 31 | Accessibility | Minor | Ongoing |
+| Sewer Lining | Riverside Dr | Riverside | Oct 21 | Nov 8 | Trenchless | Night Work | Scheduled |
+| Traffic Calming | Northside Blvd | Northside | Oct 28 | Nov 15 | Speed Tables | Lane Narrow | Design Review |
+</Card>
+<Card title="Coordination Notes">
+<Callout tone="warning" title="Conflict Alert">Main St reconstruction overlaps Downtown Art Walk (Oct 19). Coordinate pedestrian access.</Callout>
+<Callout tone="info" title="Permits">Harbor Bridge repair requires Coast Guard notification 14 days prior.</Callout>
+<Badge tone="success">3 in progress</Badge>
+<Badge tone="info">4 scheduled</Badge>
+<Badge tone="neutral">1 design review</Badge>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🔧 Maintenance Due">
+<Columns>
+<Card title="Infrastructure Jobs Due">
+| Asset | Type | Location | District | Due Date | Days Overdue | Priority | Status |
+|---|---|---|---|---|---|---|---|
+| Pump Station #4 | Wastewater | Riverside | Riverside | Sep 15 | 30 | Critical | Parts Ordered |
+| Substation 12 | Electrical | Industrial | Industrial | Sep 28 | 17 | Critical | Scheduled Oct 8 |
+| Bridge #7 | Structural | Harbor | Harbor | Oct 1 | 14 | High | Inspection Done |
+| Water Tower N | Storage | Northside | Northside | Oct 5 | 10 | High | Contractor Bid |
+| HVAC City Hall | Facilities | Downtown | Downtown | Oct 10 | 5 | Medium | In Progress |
+| Signal Cabinet 44 | Traffic | Eastside | Eastside | Oct 12 | 3 | Medium | Parts Received |
+| Reservoir Valve | Water | Westside | Westside | Oct 15 | 0 | High | Not Started |
+| Elevator Library | Facilities | University | University | Oct 18 | -3 | Low | Scheduled |
+| Generator Fire #3 | Emergency | Downtown | Downtown | Oct 20 | -5 | Critical | Testing |
+| Storm Drain C-12 | Drainage | Industrial | Industrial | Oct 22 | -7 | Medium | Cleaning |
+</Card>
+<Card title="Maintenance Summary">
+<Stat label="Overdue (Critical)" value="2" tone="danger" />
+<Stat label="Overdue (High)" value="3" tone="warning" />
+<Stat label="Due This Week" value="4" tone="warning" />
+<Stat label="Due Next Week" value="3" tone="info" />
+<Stat label="On Schedule" value="12" tone="success" />
+<Progress value="68" max="100" label="Preventive Maintenance Compliance" tone="warning" />
+<Button variant="primary">Generate Work Orders</Button>
+<Button variant="secondary">View Calendar</Button>
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Dispatch Crew">
+<Form name="dispatch-crew">
+<Input label="Incident ID" name="incident_id" placeholder="e.g., IN-0442" required="true" />
+<Select label="Crew Type" name="crew_type" placeholder="Select crew type" options="Water Repair | Electrical | Roads/Paving | Sewer/Drainage | Tree/Vegetation | Traffic Signals | Facilities | General Maintenance" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Routine | Urgent | Emergency" value="Urgent" required="true" />
+<TextArea label="Notes / Instructions" name="notes" placeholder="Special instructions, hazards, access info..." rows="3" />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="Alert Type" name="alert_type" placeholder="Select alert type" options="Traffic Advisory | Service Disruption | Emergency | Weather | Air Quality | Event Notice | General" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Informational | Advisory | Warning | Critical" value="Advisory" required="true" />
+<Select label="Channels" name="channels" placeholder="Select channels" options="Mobile App Push | SMS | Email | Social Media | Website Banner | Variable Message Signs | All Channels" value="All Channels" required="true" />
+<Input label="Headline" name="headline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" name="message" placeholder="Full alert message for public..." rows="4" required="true" />
+<Input label="Affected Areas" name="areas" placeholder="Districts, neighborhoods, or 'Citywide'" />
+<Input label="Expires" name="expires" type="datetime-local" hint="When alert should auto-expire" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the incident timeline for IN-0442
+- What's the staffing plan for Saturday's Riverside Festival?
+- Generate a work order for Pump Station #4
+- View traffic camera feeds for Downtown
+- Export the service request backlog to CSV
+</FollowUps>

@@ -1,0 +1,113 @@
+# Admin Overview
+
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Custom range" value="Last 30 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$127,400" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$1,528,800" change="+11.8% vs last year" tone="success" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+3 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)" subtitle="Daily signups with 7-day moving average">
+<Chart type="line" x="Date" y="Signups">
+| Date | Signups |
+|---|---|
+| 2024-01-01 | 12 |
+| 2024-01-08 | 18 |
+| 2024-01-15 | 22 |
+| 2024-01-22 | 19 |
+| 2024-01-29 | 25 |
+| 2024-02-05 | 28 |
+| 2024-02-12 | 31 |
+| 2024-02-19 | 27 |
+| 2024-02-26 | 33 |
+| 2024-03-04 | 35 |
+| 2024-03-11 | 38 |
+| 2024-03-18 | 41 |
+| 2024-03-25 | 44 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 342 |
+| Professional | 187 |
+| Enterprise | 43 |
+| Custom | 12 |
+</Chart>
+</Card>
+
+<Card title="Feature Adoption (Newest 3)">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34% |
+| Advanced Analytics Dashboard | 28% |
+| SSO/SAML Integration | 19% |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Seat Utilization Across Company">
+<Progress value="78" max="100" label="Overall utilization: 78% of 2,840 seats" />
+<Chart type="horizontal" x="Utilization %" y="Team">
+| Team | Utilization % |
+|---|---|
+| Engineering | 92% |
+| Sales | 85% |
+| Marketing | 71% |
+| Customer Success | 68% |
+| Product | 88% |
+| Design | 63% |
+| Operations | 54% |
+</Chart>
+</Card>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 240 | $12,000 | Active |
+| Globex Inc | Enterprise | 180 | $9,000 | Active |
+| Wayne Enterprises | Custom | 150 | $8,500 | Active |
+| Stark Industries | Enterprise | 120 | $7,200 | Active |
+| Umbrella Corp | Professional | 95 | $4,750 | Active |
+| Cyberdyne Systems | Enterprise | 85 | $5,100 | Active |
+| Massive Dynamic | Professional | 80 | $4,000 | Active |
+| Initech | Professional | 75 | $3,750 | Active |
+| Soylent Corp | Starter | 70 | $1,750 | Active |
+| Oscorp Industries | Professional | 65 | $3,250 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Health Score | Risk Reason | Since | Owner |
+|---|---|---|---|---|
+| TechFlow Solutions | 23% | No login in 21 days, feature adoption <10% | 2024-03-01 | Sarah Chen |
+| DataBridge Inc | 31% | Failed payment ×2, support tickets ↑ 300% | 2024-03-10 | Mike Torres |
+| CloudNine Labs | 38% | Key champion left, renewal in 30 days | 2024-03-15 | Sarah Chen |
+| Vertex Analytics | 42% | Usage dropped 45% MoM, no response to outreach | 2024-03-18 | James Park |
+| Nexus Digital | 45% | Downgrade requested, evaluating competitors | 2024-03-20 | Mike Torres |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed On | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Meridian Health | $2,400 | 2024-03-22 | 3 | Card declined | <Button size="small" variant="primary">Retry</Button> |
+| Apex Logistics | $1,850 | 2024-03-21 | 2 | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| BlueWave Media | $950 | 2024-03-20 | 1 | Expired card | <Button size="small" variant="primary">Retry</Button> |
+| Summit Consulting | $3,200 | 2024-03-19 | 4 | Card declined | <Button size="small" variant="primary">Retry</Button> |
+| Horizon Tech | $675 | 2024-03-18 | 1 | Bank declined | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="Invite Another Admin" subtitle="Send an invitation to join as an administrator">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" name="role" options="Owner | Admin | Billing Admin | Read-only" value="Admin" required="true" />
+<Checkboxes label="Permissions" name="perms" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

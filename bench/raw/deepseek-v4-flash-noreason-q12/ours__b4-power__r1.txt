@@ -1,0 +1,124 @@
+# Power Network Operator Console
+
+<Callout tone="warning" title="Live alert">Grid frequency below 49.8 Hz in North Region — automatic load shedding initiated in Zone 4</Callout>
+
+<Columns>
+<Card title="Current network load" subtitle="Live reading">
+<Stat label="Total load" value="8.42 GW" change="+3.2% vs forecast" tone="info" icon="chart-line" />
+<Stat label="Capacity" value="10.5 GW" change="80.2% utilised" tone="warning" icon="warning-circle" />
+<Progress value="80.2" max="100" label="Load vs capacity" tone="warning" />
+</Card>
+
+<Card title="Current price">
+<Stat label="Price per MWh" value="£64.20" change="+£5.10 vs yesterday" tone="info" icon="currency-gbp" />
+</Card>
+
+<Card title="Emissions today">
+<Stat label="CO₂ emitted" value="1,842 t" change="−8% vs same time yesterday" tone="success" icon="leaf" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation split by source" subtitle="Live mix">
+<Chart type="donut" x="Source" y="Share">
+| Source | Share |
+|---|---|
+| Wind | 34 |
+| Gas | 28 |
+| Nuclear | 22 |
+| Solar | 10 |
+| Hydro | 4 |
+| Biomass | 2 |
+</Chart>
+</Card>
+
+<Card title="Regional focus" subtitle="Select a region to filter all views">
+<Select label="Region" options="All regions | North | South | East | West | Midlands" name="region" value="All regions" hint="Filters plants, outages and alerts below" />
+<Radio label="Show only" options="All assets | Plants at risk | Plants offline" name="filter" value="All assets" />
+</Card>
+</Columns>
+
+<Card title="Plant output and status" subtitle="All generating units">
+| Plant | Source | Output (MW) | Capacity (MW) | Status |
+|---|---|---|---|---|
+| Beacon Hill Wind Farm | Wind | 412 | 450 | <Badge tone="success">Online</Badge> |
+| Humber Gas CCGT | Gas | 780 | 900 | <Badge tone="success">Online</Badge> |
+| Sizewell B | Nuclear | 1,190 | 1,200 | <Badge tone="success">Online</Badge> |
+| South Coast Solar Park | Solar | 310 | 350 | <Badge tone="warning">Derated</Badge> |
+| Rheidol Hydro | Hydro | 48 | 60 | <Badge tone="success">Online</Badge> |
+| Drax Biomass | Biomass | 220 | 400 | <Badge tone="danger">Offline — maintenance</Badge> |
+| Westwind Offshore | Wind | 0 | 500 | <Badge tone="danger">Offline — fault</Badge> |
+
+<Callout tone="danger" title="Westwind Offshore fault">Turbine #12 bearing failure — estimated return 14:00. Loss of 500 MW capacity.</Callout>
+</Card>
+
+<Card title="Outages" subtitle="Current supply interruptions">
+| Affected region | Households | Est. restoration | Cause |
+|---|---|---|---|
+| North — Zone 4 | 12,400 | 21:30 | Load shedding |
+| East — Bellham | 3,200 | 18:45 | Storm damage |
+| South — Portwick | 850 | 19:10 | Transformer fault |
+
+<Callout tone="info" title="North — Zone 4">Rotating outages in 30-minute blocks to reduce demand by 180 MW.</Callout>
+</Card>
+
+<Card title="Demand forecast — next 24 hours" subtitle="Forecast vs actual">
+<Chart type="line" x="Hour" y="GW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 7.1 | 7.0 |
+| 02:00 | 6.4 | 6.5 |
+| 04:00 | 6.0 | 6.1 |
+| 06:00 | 6.8 | 6.9 |
+| 08:00 | 8.6 | 8.8 |
+| 10:00 | 8.9 | 9.1 |
+| 12:00 | 8.5 | 8.6 |
+| 14:00 | 8.8 | 8.9 |
+| 16:00 | 9.2 | 9.4 |
+| 18:00 | 9.8 | — |
+| 20:00 | 9.5 | — |
+| 22:00 | 8.2 | — |
+</Chart>
+</Card>
+
+<Card title="Maintenance planned this month" subtitle="Scheduled work">
+| Date | Plant | Work | Duration |
+|---|---|---|---|
+| 12–14 Mar | Drax Biomass | Turbine overhaul | 3 days |
+| 18 Mar | Rheidol Hydro | Valve inspection | 1 day |
+| 20–22 Mar | Beacon Hill Wind | Gearbox service | 3 days |
+| 25 Mar | South Coast Solar | Inverter replacement | 1 day |
+</Card>
+
+<Card title="Live alerts" subtitle="Most recent first">
+<Details title="14:32 — Grid frequency low (North)" open="true">
+Frequency dropped to 49.7 Hz. Load shedding in Zone 4 active. Monitor recovery.
+</Details>
+<Details title="14:05 — Westwind Offshore fault">
+Turbine #12 bearing failure. Crew dispatched. Estimated return 14:00.
+</Details>
+<Details title="13:47 — South Coast Solar derated">
+Cloud cover reducing output to 89% of capacity.
+</Details>
+<Details title="12:20 — Price spike warning">
+Price above £70/MWh expected 17:00–20:00. Consider demand response.
+</Details>
+</Card>
+
+<Card title="Order curtailment" subtitle="Reduce generation or demand">
+<Form name="curtailment">
+<Select label="Asset or region" options="Beacon Hill Wind | Humber Gas CCGT | South Coast Solar | North region | East region" name="asset" placeholder="Choose target" />
+<Slider label="Curtailment amount" min="0" max="500" step="10" value="100" name="amount" unit="MW" />
+<Radio label="Type" options="Generation reduction | Demand reduction (load shed)" name="type" value="Generation reduction" />
+<TextArea label="Reason" name="reason" placeholder="e.g. Grid constraint, price negative, emergency" rows="2" />
+<Button>Submit curtailment order</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the North region in detail
+- What is the projected cost of curtailment?
+- Which plants are at risk of exceeding capacity?
+- Compare today's emissions with last week
+</FollowUps>

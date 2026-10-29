@@ -1,0 +1,82 @@
+<Card title="Invoice #INV-2024-0412" subtitle="Sent to Acme Corporation · March 15, 2024">
+  <Badge tone="warning">Pending</Badge>
+</Card>
+
+<Card title="Amount due">
+  <Stat label="Total" value="$4,750.00" icon="currency-dollar" />
+  <Stat label="Currency" value="USD" icon="coin" />
+</Card>
+
+<Card title="Due date">
+  <Stat label="Payment due by" value="April 15, 2024" icon="calendar" />
+  <Stat label="Days remaining" value="14" change="Due in 2 weeks" tone="info" icon="clock" />
+</Card>
+
+<Card title="Line items">
+  <table>
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th style="text-align: right">Qty</th>
+        <th style="text-align: right">Rate</th>
+        <th style="text-align: right">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Frontend development (React/TypeScript)</td>
+        <td style="text-align: right">40</td>
+        <td style="text-align: right">$85.00</td>
+        <td style="text-align: right">$3,400.00</td>
+      </tr>
+      <tr>
+        <td>API integration & testing</td>
+        <td style="text-align: right">10</td>
+        <td style="text-align: right">$95.00</td>
+        <td style="text-align: right">$950.00</td>
+      </tr>
+      <tr>
+        <td>Code review & documentation</td>
+        <td style="text-align: right">4</td>
+        <td style="text-align: right">$100.00</td>
+        <td style="text-align: right">$400.00</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" style="text-align: right"><strong>Subtotal</strong></td>
+        <td style="text-align: right"><strong>$4,750.00</strong></td>
+      </tr>
+      <tr>
+        <td colspan="3" style="text-align: right">Tax (0%)</td>
+        <td style="text-align: right">$0.00</td>
+      </tr>
+      <tr>
+        <td colspan="3" style="text-align: right"><strong>Total</strong></td>
+        <td style="text-align: right"><strong>$4,750.00</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+</Card>
+
+<Card title="Payment options">
+  <p>Choose your preferred payment method:</p>
+  <Radio label="Payment method" name="payment-method" options="Bank transfer (ACH) | Credit/Debit card | PayPal | Wise" value="Bank transfer (ACH)" />
+  
+  <Details title="Bank transfer details" open="false">
+    <p><strong>Account holder:</strong> Jane Developer</p>
+    <p><strong>Bank:</strong> Chase Bank</p>
+    <p><strong>Routing:</strong> 021000021</p>
+    <p><strong>Account:</strong> 9876543210</p>
+    <p><strong>Reference:</strong> INV-2024-0412</p>
+  </Details>
+</Card>
+
+<Card>
+  <Button variant="primary" size="large" icon="credit-card">Pay $4,750.00 now</Button>
+  <Button variant="secondary" style="margin-top: 8px">Download PDF</Button>
+</Card>
+
+<Callout tone="info" title="Payment terms">
+  Net 30 days. Late payments may incur a 1.5% monthly fee. Please include the invoice number with your payment.
+</Callout>

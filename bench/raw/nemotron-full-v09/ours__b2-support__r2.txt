@@ -1,0 +1,34 @@
+# Support Lead Morning View
+
+<Card title="Overview" subtitle="Current queue status">
+<Columns>
+<Stat label="Open Tickets" value="47" change="+3 since yesterday" tone="warning" icon="ticket" />
+<Stat label="Avg First Response" value="2.4 hrs" change="-0.3 hrs vs last week" tone="success" icon="clock" />
+<Stat label="High Priority" value="12" change="5 critical" tone="danger" icon="flag" />
+</Columns>
+</Card>
+
+<Card title="Filters">
+<Switch label="Show high-priority only" name="high-priority-filter" value="false" hint="Filters the ticket list below to Critical and High only" />
+</Card>
+
+<Card title="Recent Tickets" subtitle="5 most recent">
+| ID | Subject | Priority | Status | Assignee | Created |
+|---|---|---|---|---|---|
+| #1847 | Payment failure on checkout | <Badge tone="danger">Critical</Badge> | Open | — | 8:12 AM |
+| #1846 | API rate limit errors | <Badge tone="warning">High</Badge> | In progress | Sarah Chen | 7:45 AM |
+| #1845 | Mobile app crash on login | <Badge tone="warning">High</Badge> | Open | — | 7:30 AM |
+| #1844 | Export CSV missing columns | <Badge tone="info">Medium</Badge> | Open | Marcus Lee | 6:55 AM |
+| #1843 | Password reset email delayed | <Badge tone="neutral">Low</Badge> | Waiting | — | 6:20 AM |
+</Card>
+
+<Card title="Actions">
+<Button variant="primary" icon="plus">Open New Ticket</Button>
+<Button variant="secondary" href="/tickets">View All Tickets</Button>
+</Card>
+
+<FollowUps>
+- Assign #1847 to on-call engineer
+- Escalate #1846 to platform team
+- Check SLA breach risk for #1845
+</FollowUps>

@@ -1,0 +1,183 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="View data for a specific day">
+<Columns>
+<Date label="Select Date" name="view-date" value="2025-01-15" />
+<Select label="Quick Select" name="quick-date" placeholder="Choose preset" options="Today | Yesterday | Last 7 Days | Last 30 Days" value="Today" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="342 total beds">
+<Progress value="287" max="342" label="Occupied: 287 / 342 (84%)" />
+<Columns>
+<Stat label="Available" value="55" tone="success" />
+<Stat label="Isolation" value="12" tone="warning" />
+<Stat label="Maintenance" value="8" tone="neutral" />
+</Columns>
+<Chart type="donut" title="Bed Status">
+| Status | Count |
+|---|---|
+| Occupied | 287 |
+| Available | 55 |
+| Isolation | 12 |
+| Maintenance | 8 |
+</Chart>
+</Card>
+
+<Card title="ER Wait Time" subtitle="Current average">
+<Stat label="Avg Wait" value="42 min" change="+3 min vs 1hr ago" tone="warning" />
+<Stat label="Patients Waiting" value="23" tone="info" />
+<Stat label="Left Without Seen" value="2" tone="danger" />
+<Progress value="42" max="120" label="Target: < 60 min" />
+<Badge tone="warning">Above Target</Badge>
+</Card>
+</Columns>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" title="Daily Admissions" x="Date" y="Count">
+| Date | Admissions |
+|---|---|
+| 2025-01-02 | 42 |
+| 2025-01-03 | 38 |
+| 2025-01-04 | 45 |
+| 2025-01-05 | 51 |
+| 2025-01-06 | 47 |
+| 2025-01-07 | 44 |
+| 2025-01-08 | 39 |
+| 2025-01-09 | 41 |
+| 2025-01-10 | 48 |
+| 2025-01-11 | 53 |
+| 2025-01-12 | 46 |
+| 2025-01-13 | 44 |
+| 2025-01-14 | 49 |
+| 2025-01-15 | 43 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Patients per Department">
+<Chart type="bar" title="Current Census by Department" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Internal Medicine | 68 |
+| Surgery | 45 |
+| Cardiology | 38 |
+| Orthopedics | 32 |
+| Neurology | 28 |
+| Oncology | 24 |
+| Pediatrics | 22 |
+| ICU | 18 |
+| OB/GYN | 16 |
+| Psychiatry | 12 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current shift: 07:00–19:00">
+| Role | Scheduled | Present | Gap |
+|---|---|---|---|
+| Physicians | 28 | 27 | 1 |
+| RNs | 84 | 81 | 3 |
+| LPNs | 22 | 22 | 0 |
+| Techs | 36 | 34 | 2 |
+| Respiratory | 14 | 14 | 0 |
+| Pharmacy | 8 | 8 | 0 |
+| Support | 42 | 40 | 2 |
+<Badge tone="warning">5 total gaps</Badge>
+</Card>
+</Columns>
+
+<Card title="Critical Patients — Requiring Attention">
+| Patient | MRN | Location | Condition | Since | Attending |
+|---|---|---|---|---|---|
+| J. Martinez | 884721 | ICU-3 | Septic shock, on vasopressors | 2h 14m | Dr. Chen |
+| R. Thompson | 910334 | ER-Bay 2 | STEMI, awaiting cath lab | 47m | Dr. Patel |
+| M. Kowalski | 772156 | Stepdown-1 | Post-op respiratory failure | 1h 32m | Dr. Kim |
+| A. Washington | 889012 | ICU-7 | TBI, ICP rising | 3h 08m | Dr. Singh |
+| L. Nguyen | 765432 | ER-Bay 5 | DKA, pH 7.12 | 1h 05m | Dr. Chen |
+<Badge tone="danger">5 Critical</Badge>
+</Card>
+
+<Columns>
+<Card title="Ready for Discharge" subtitle="12 patients pending discharge">
+| Patient | MRN | Dept | LOS | Barrier | Est. D/C |
+|---|---|---|---|---|---|
+| S. Johnson | 882341 | Med | 4d | Transport | 10:00 |
+| P. Garcia | 901234 | Surg | 3d | Home health | 11:30 |
+| K. O'Brien | 778901 | Cardio | 5d | Insurance | 14:00 |
+| T. Brown | 883456 | Ortho | 2d | PT eval | 12:00 |
+| V. Patel | 779012 | Neuro | 6d | SNF bed | 15:00 |
+| D. Wilson | 884567 | Onc | 3d | Meds | 11:00 |
+| C. Lee | 770123 | Peds | 2d | Parent | 10:30 |
+| R. Davis | 885678 | Psych | 7d | Housing | 16:00 |
+<Badge tone="info">12 Pending</Badge>
+</Card>
+
+<Card title="Today's OR Bookings" subtitle="8 rooms • 22 cases scheduled">
+| Time | Room | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|---|
+| 07:30 | OR-1 | Lap Chole | Dr. Martinez | Dr. Wong | In Progress |
+| 07:30 | OR-2 | Total Knee | Dr. Kim | Dr. Park | In Progress |
+| 08:00 | OR-3 | CABG | Dr. Chen | Dr. Liu | Pre-op |
+| 08:30 | OR-4 | Hip ORIF | Dr. Patel | Dr. Singh | Pre-op |
+| 09:00 | OR-5 | Thyroidectomy | Dr. Brown | Dr. Wong | Waiting |
+| 10:00 | OR-1 | Appendectomy | Dr. Martinez | Dr. Park | Scheduled |
+| 11:00 | OR-6 | Craniotomy | Dr. Singh | Dr. Liu | Scheduled |
+| 12:30 | OR-2 | Colectomy | Dr. Kim | Dr. Wong | Scheduled |
+| 13:00 | OR-3 | Valve Replace | Dr. Chen | Dr. Liu | Scheduled |
+| 14:00 | OR-7 | Mastectomy | Dr. Patel | Dr. Park | Scheduled |
+<Badge tone="success">2 In Progress</Badge>
+<Badge tone="info">8 Scheduled</Badge>
+</Card>
+</Columns>
+
+<Card title="Supplies Running Low" subtitle="Items below 2-day par level">
+| Item | Current | Par | Days Left | Vendor | Ordered |
+|---|---|---|---|---|---|
+| Normal Saline 1L | 180 | 500 | 1.2 | McKesson | Yes |
+| Heparin 5000u | 45 | 200 | 0.8 | Cardinal | Yes |
+| Fentanyl 100mcg | 120 | 400 | 1.5 | McKesson | No |
+| Propofol 20mL | 85 | 300 | 1.1 | Cardinal | Yes |
+| N95 Masks | 2,100 | 10,000 | 1.8 | Owens | No |
+| Central Line Kits | 28 | 80 | 1.3 | Teleflex | Yes |
+| Blood Culture Bottles | 150 | 500 | 1.0 | BD | No |
+| Foley Catheters 16Fr | 95 | 300 | 1.4 | Bard | Yes |
+<Progress value="8" max="8" label="8 items critical" />
+</Card>
+
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Input label="Reporter Name" name="reporter" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="type" options="Patient Safety | Medication Error | Equipment Failure | Fall | Pressure Injury | Near Miss | Security | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Severe Harm | Level 5 - Death" placeholder="Select severity" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened..." rows="4" required="true" />
+<Input label="Patient MRN (if applicable)" name="mrn" placeholder="Medical Record Number" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" name="patient-name" placeholder="Full name" required="true" />
+<Input label="MRN" name="patient-mrn" placeholder="Medical Record Number" required="true" />
+<Input label="Current Unit/Room" name="current-location" placeholder="e.g., ICU-3" required="true" />
+<Select label="Requested Destination" name="destination" options="ICU | Stepdown | Med-Surg | Telemetry | Rehab | LTAC | SNF | Home Health | Other Hospital" placeholder="Select destination" required="true" />
+<Select label="Urgency" name="urgency" options="Emergent (within 1hr) | Urgent (within 4hr) | Routine (within 24hr) | Scheduled (specific date/time)" placeholder="Select urgency" required="true" />
+<TextArea label="Clinical Reason" name="reason" placeholder="Clinical justification for transfer..." rows="3" required="true" />
+<Input label="Accepting Physician" name="accepting-md" placeholder="Name of accepting provider" />
+<Button>Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me ICU bed availability details
+- List all patients with LOS > 7 days
+- View staffing plan for next shift
+- Check blood product inventory
+- Review pending consults
+</FollowUps>

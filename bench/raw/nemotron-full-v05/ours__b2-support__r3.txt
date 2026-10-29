@@ -1,0 +1,41 @@
+# Support Lead Morning View
+
+<Card title="Queue Overview">
+<Columns>
+<Stat label="Open Tickets" value="47" change="+3 since yesterday" tone="warning" />
+<Stat label="Avg First Response" value="2h 14m" change="-12m vs last week" tone="success" />
+<Stat label="High Priority" value="8" change="+2" tone="danger" />
+<Stat label="SLA at Risk" value="3" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Filters">
+<Columns>
+<Switch label="High priority only" name="high-priority-filter" value="false" hint="Show only P1 and P2 tickets" />
+<Select label="Assignee" placeholder="All agents" options="All agents | Me | Unassigned | Sarah Chen | Marcus Webb | Priya Patel" />
+<Select label="Status" placeholder="All statuses" options="All statuses | Open | In Progress | Waiting on Customer | On Hold" />
+</Columns>
+</Card>
+
+<Card title="Recent Tickets" subtitle="Five most recent — click to open">
+| ID | Subject | Priority | Status | Assignee | Created | First Response |
+|---|---|---|---|---|---|---|
+| #1847 | API returning 500 on /v2/webhooks | <Badge tone="danger">P1 Critical</Badge> | Open | Unassigned | 8:12 AM | — |
+| #1846 | Billing: duplicate charge on invoice #9421 | <Badge tone="warning">P2 High</Badge> | In Progress | Sarah Chen | 7:58 AM | 1h 22m |
+| #1845 | SSO login fails for Okta users | <Badge tone="danger">P1 Critical</Badge> | In Progress | Marcus Webb | 7:41 AM | 38m |
+| #1844 | Feature request: dark mode for dashboard | <Badge tone="info">P3 Medium</Badge> | Open | Unassigned | 6:55 AM | — |
+| #1843 | Export CSV missing custom fields | <Badge tone="warning">P2 High</Badge> | Waiting on Customer | Priya Patel | 6:30 AM | 2h 04m |
+</Card>
+
+<Card>
+<Columns>
+<Button variant="primary" size="large">+ Open New Ticket</Button>
+<Button variant="secondary" size="large" href="/tickets">View All Tickets</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me tickets assigned to me
+- What's our SLA breach rate this week?
+- Create a ticket for the webhook 500 errors
+</FollowUps>

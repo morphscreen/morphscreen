@@ -1,0 +1,152 @@
+# Hub Operations Dashboard
+
+<Card title="Hub Overview" subtitle="Live operations status">
+<Columns>
+<Stat label="On-Time Performance" value="87%" change="+2% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Flights Today" value="342" tone="info" icon="airplane" />
+<Stat label="Average Passenger Load" value="78%" change="+5% vs yesterday" tone="success" icon="users" />
+<Stat label="Average Turnaround" value="47 min" change="-3 min vs target" tone="warning" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Flight Status Board">
+<Tabs>
+<Tab title="All Flights">
+<Chart type="horizontal" x="Flight" y="Status">
+| Flight | On Time | Delayed | Cancelled |
+|---|---|---|---|
+| UA 1234 | 1 | 0 | 0 |
+| AA 5678 | 0 | 1 | 0 |
+| DL 9012 | 1 | 0 | 0 |
+| SW 3456 | 0 | 0 | 1 |
+| BA 7890 | 1 | 0 | 0 |
+| LH 2345 | 0 | 1 | 0 |
+</Chart>
+</Tab>
+<Tab title="Delayed Flights">
+<Callout tone="warning" title="6 Flights Delayed">
+Average delay: 34 minutes. Gate holds in effect.
+</Callout>
+
+| Flight | Route | Gate | Status | Delay |
+|---|---|---|---|---|
+| AA 5678 | JFK → ORD | B12 | Delayed | 45 min |
+| LH 2345 | FRA → ORD | C7 | Delayed | 28 min |
+| AC 8901 | YYZ → ORD | A3 | Delayed | 52 min |
+| NH 4567 | NRT → ORD | B9 | Delayed | 38 min |
+| EK 6789 | DXB → ORD | C2 | Delayed | 22 min |
+| QR 1234 | DOH → ORD | A8 | Delayed | 31 min |
+
+<Button ask="Show me all delayed flights in detail">View all delays</Button>
+</Tab>
+<Tab title="Cancelled">
+<Callout tone="danger" title="3 Cancellations Today">
+Weather-related cancellations. Passengers being rebooked.
+</Callout>
+
+| Flight | Route | Gate | Status | Reason |
+|---|---|---|---|---|
+| SW 3456 | DEN → ORD | C4 | Cancelled | Weather |
+| TK 5678 | IST → ORD | B5 | Cancelled | Crew |
+| AF 9012 | CDG → ORD | A1 | Cancelled | Weather |
+
+<Button ask="Show rebooking options for cancelled flights">Rebook passengers</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Recent Gate Changes">
+<Callout tone="info" title="4 Gate Changes in Last Hour">
+Monitor affected flights for passenger notifications.
+</Callout>
+
+| Flight | Route | Old Gate | New Gate | Time |
+|---|---|---|---|---|
+| UA 1234 | ORD → LAX | B14 | B17 | 14:32 |
+| DL 9012 | ORD → ATL | C3 | C5 | 14:45 |
+| BA 7890 | ORD → LHR | A2 | A6 | 15:00 |
+| AC 8901 | ORD → YYZ | B8 | B11 | 15:15 |
+
+<Button ask="Notify passengers of gate changes">Send notifications</Button>
+</Card>
+
+<Card title="Crew Availability">
+<Columns>
+<Stat label="Available Crew" value="12" tone="success" icon="users" />
+<Stat label="On Standby" value="8" tone="info" icon="clock" />
+</Columns>
+
+| Name | Role | Hours Left | Status |
+|---|---|---|---|
+| Sarah Chen | Captain | 4:30 | Available |
+| Marcus Johnson | First Officer | 6:15 | Available |
+| Emily Rodriguez | Purser | 5:00 | Available |
+| David Kim | Flight Attendant | 7:45 | Available |
+| Lisa Thompson | Flight Attendant | 3:30 | Available |
+
+<Button ask="Assign available crew to delayed flights">Assign crew</Button>
+</Card>
+
+<Card title="Connections at Risk">
+<Callout tone="danger" title="8 Passengers at Risk of Missing Connections">
+Average connection time: 35 min. Minimum required: 45 min.
+</Callout>
+
+| Passenger | From Flight | To Flight | Connection Time | Risk Level |
+|---|---|---|---|---|
+| John Smith | UA 1234 (Gate B17) | AA 5678 (Gate B12) | 25 min | High |
+| Maria Garcia | DL 9012 (Gate C5) | SW 3456 (Gate C4) | 30 min | High |
+| James Wilson | BA 7890 (Gate A6) | LH 2345 (Gate C7) | 20 min | Critical |
+| Anna Lee | AC 8901 (Gate B11) | NH 4567 (Gate B9) | 35 min | Medium |
+
+<Button ask="Rebook passengers at risk of missing connections">Rebook affected</Button>
+</Card>
+
+<Card title="Weather Advisories">
+<Callout tone="warning" title="Winter Storm Warning">
+Active until 22:00 CST. Snow accumulation 3-5 inches. Visibility reduced to 1/4 mile.
+</Callout>
+
+<Columns>
+<Stat label="Wind" value="18 mph" icon="wind" />
+<Stat label="Visibility" value="0.5 mi" tone="warning" icon="eye" />
+<Stat label="Temperature" value="28°F" icon="thermometer" />
+<Stat label="Ceiling" value="800 ft" tone="warning" icon="cloud" />
+</Columns>
+
+<Button ask="Show extended weather forecast">Extended forecast</Button>
+</Card>
+
+<Card title="Passenger Rebooking">
+<Form name="rebooking">
+<Input label="Passenger Name" placeholder="Enter passenger name or confirmation number" />
+<Select label="Reason for Rebooking" options="Cancelled Flight | Missed Connection | Schedule Change | Weather | Other" placeholder="Select reason" />
+<Radio label="Rebooking Priority" options="Same Day | Next Day | Flexible" />
+<Button variant="primary">Find alternate flights</Button>
+</Form>
+</Card>
+
+<Card title="Hub Selection">
+<Form name="hub-selector">
+<Select label="Select Hub" options="ORD - Chicago O'Hare | ATL - Atlanta | DFW - Dallas/Fort Worth | DEN - Denver | JFK - New York JFK | LAX - Los Angeles" placeholder="Choose a hub" />
+<Button variant="primary" ask="Switch to selected hub operations">Switch Hub</Button>
+</Form>
+</Card>
+
+<Map>
+<Place Lat="41.9742" Lng="-87.9073" label="ORD - Chicago O'Hare" />
+<Place Lat="33.6407" Lng="-84.4277" label="ATL - Atlanta" />
+<Place Lat="32.8998" Lng="-97.0403" label="DFW - Dallas/Fort Worth" />
+<Place Lat="39.8561" Lng="-104.6737" label="DEN - Denver" />
+<Place Lat="40.6413" Lng="-73.7781" label="JFK - New York JFK" />
+<Place Lat="33.9416" Lng="-118.4085" label="LAX - Los Angeles" />
+</Map>
+
+<FollowUps>
+- Show me the full flight schedule for today
+- Which flights are most likely to be delayed next?
+- How many standby passengers are there?
+- What's the crew overtime situation?
+- Show me the weather radar
+- Generate an operations summary report
+</FollowUps>

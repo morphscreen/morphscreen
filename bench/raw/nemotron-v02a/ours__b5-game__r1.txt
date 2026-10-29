@@ -1,0 +1,288 @@
+<Card title="Live-Ops Dashboard" subtitle="Last refreshed: 2 min ago">
+<Columns>
+<Stat label="Players Online" value="247,832" change="+3.2% vs 1hr ago" tone="success" />
+<Stat label="DAU / MAU" value="1.2M / 4.8M" change="DAU +1.8% WoW" tone="info" />
+<Stat label="Revenue Today" value="$342,180" change="+12% vs avg" tone="success" />
+<Stat label="Rev / User (ARPDAU)" value="$0.28" change="+$0.03 vs yesterday" tone="neutral" />
+</Columns>
+
+<Tabs>
+<Tab title="Engagement">
+<Columns>
+<Card title="Session Length (14 days)" subtitle="Median minutes per session">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Median | P75 | P90 |
+|---|---|---|---|
+| Day -13 | 18 | 32 | 58 |
+| Day -12 | 19 | 33 | 60 |
+| Day -11 | 18 | 31 | 57 |
+| Day -10 | 20 | 35 | 62 |
+| Day -9 | 22 | 38 | 68 |
+| Day -8 | 24 | 41 | 72 |
+| Day -7 | 26 | 44 | 78 |
+| Day -6 | 23 | 39 | 70 |
+| Day -5 | 21 | 36 | 65 |
+| Day -4 | 20 | 35 | 63 |
+| Day -3 | 22 | 38 | 67 |
+| Day -2 | 24 | 42 | 73 |
+| Day -1 | 25 | 43 | 75 |
+| Today | 23 | 40 | 71 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items (Last 7 Days)" subtitle="Units sold & revenue">
+<Chart type="bar" x="Item" y="Units">
+| Item | Units | Revenue |
+|---|---|---|
+| Battle Pass S12 | 84,200 | $842,000 |
+| Crimson Skin Bundle | 31,500 | $472,500 |
+| XP Boost 30d | 28,900 | $289,000 |
+| Legendary Crate Key | 19,800 | $396,000 |
+| Emote Pack "Dance" | 15,600 | $78,000 |
+| Weapon Charm Set | 12,400 | $62,000 |
+| Profile Frame Gold | 9,200 | $46,000 |
+</Chart>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Infrastructure">
+<Card title="Server Regions & Health">
+<Columns>
+<Card title="NA-East (us-east-1)" subtitle="Primary">
+<Progress value="98" max="100" label="CPU" />
+<Progress value="72" max="100" label="Memory" />
+<Progress value="45" max="100" label="Network" />
+<Badge tone="success">Healthy</Badge>
+<Stat label="Players" value="68,420" />
+<Stat label="Avg Latency" value="42ms" />
+</Card>
+
+<Card title="NA-West (us-west-2)" subtitle="Primary">
+<Progress value="87" max="100" label="CPU" />
+<Progress value="68" max="100" label="Memory" />
+<Progress value="52" max="100" label="Network" />
+<Badge tone="success">Healthy</Badge>
+<Stat label="Players" value="52,180" />
+<Stat label="Avg Latency" value="38ms" />
+</Card>
+
+<Card title="EU-Central (eu-central-1)" subtitle="Primary">
+<Progress value="94" max="100" label="CPU" />
+<Progress value="79" max="100" label="Memory" />
+<Progress value="61" max="100" label="Network" />
+<Badge tone="success">Healthy</Badge>
+<Stat label="Players" value="71,300" />
+<Stat label="Avg Latency" value="51ms" />
+</Card>
+
+<Card title="AP-Southeast (ap-southeast-1)" subtitle="Secondary">
+<Progress value="76" max="100" label="CPU" />
+<Progress value="82" max="100" label="Memory" />
+<Progress value="88" max="100" label="Network" />
+<Badge tone="warning">Degraded</Badge>
+<Stat label="Players" value="34,650" />
+<Stat label="Avg Latency" value="89ms" />
+</Card>
+
+<Card title="SA-East (sa-east-1)" subtitle="Secondary">
+<Progress value="65" max="100" label="CPU" />
+<Progress value="58" max="100" label="Memory" />
+<Progress value="71" max="100" label="Network" />
+<Badge tone="warning">Degraded</Badge>
+<Stat label="Players" value="12,840" />
+<Stat label="Avg Latency" value="112ms" />
+</Card>
+
+<Card title="Oceania (ap-southeast-2)" subtitle="Tertiary">
+<Progress value="42" max="100" label="CPU" />
+<Progress value="38" max="100" label="Memory" />
+<Progress value="55" max="100" label="Network" />
+<Badge tone="success">Healthy</Badge>
+<Stat label="Players" value="8,442" />
+<Stat label="Avg Latency" value="67ms" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Crash Rate by App Version (Last 24h)">
+<Chart type="bar" x="Version" y="Crash %">
+| Version | Crash % | Sessions | Crashes |
+|---|---|---|---|
+| 3.4.1 | 0.12% | 445,200 | 534 |
+| 3.4.0 | 0.38% | 89,400 | 340 |
+| 3.3.2 | 1.24% | 12,800 | 159 |
+| 3.3.1 | 2.11% | 4,200 | 89 |
+| 3.3.0 | 3.87% | 1,100 | 43 |
+| < 3.3.0 | 8.92% | 2,400 | 214 |
+</Chart>
+<Callout tone="warning" title="Action needed">Versions 3.3.x account for 94% of crashes but only 4% of sessions. Force-update recommended.</Callout>
+</Card>
+</Tab>
+
+<Tab title="Live Events">
+<Card title="Running Events">
+<Columns>
+<Card title="🎃 Hallow's Eve Festival" subtitle="Oct 25 – Nov 8 | 14 days remaining">
+<Progress value="6" max="14" label="Progress" />
+<Stat label="Active Participants" value="892,400" />
+<Stat label="Event Currency Earned" value="2.4B" />
+<Badge tone="success">Live</Badge>
+</Card>
+
+<Card title="⚔️ Clan War Season 3" subtitle="Oct 1 – Oct 31 | 5 days remaining">
+<Progress value="26" max="31" label="Progress" />
+<Stat label="Active Clans" value="12,840" />
+<Stat label="Matches Played" value="342,100" />
+<Badge tone="success">Live</Badge>
+</Card>
+
+<Card title="🎁 Daily Login Bonuses" subtitle="Ongoing">
+<Stat label="Claim Rate (Day 1)" value="94.2%" />
+<Stat label="Claim Rate (Day 7)" value="67.8%" />
+<Stat label="Claim Rate (Day 14)" value="41.3%" />
+<Badge tone="info">Evergreen</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Upcoming Events">
+<Columns>
+<Card title="❄️ Winter Festival" subtitle="Starts Nov 15 | 22 days">
+<Stat label="Expected Participation" value="1.1M+" />
+<Stat label="New Skins" value="12" />
+<Badge tone="info">Scheduled</Badge>
+</Card>
+
+<Card title="🏆 Anniversary Tournament" subtitle="Starts Dec 1 | 38 days">
+<Stat label="Prize Pool" value="$50,000" />
+<Stat label="Qualifiers Open" value="Nov 15" />
+<Badge tone="info">Scheduled</Badge>
+</Card>
+
+<Card title="💝 Valentine's Event" subtitle="Starts Feb 8 | 109 days">
+<Stat label="Planning Phase" value="Design review" />
+<Badge tone="neutral">Planning</Badge>
+</Card>
+</Columns>
+</Card>
+</Tab>
+
+<Tab title="Moderation">
+<Columns>
+<Card title="Player Reports Awaiting Review" subtitle="1,247 total | 234 high priority">
+<Chart type="donut" x="Category" y="Count">
+| Category | Count |
+|---|---|
+| Cheating / Hacking | 412 |
+| Toxic Chat | 387 |
+| Griefing / Throwing | 198 |
+| Inappropriate Name | 124 |
+| Account Trading | 76 |
+| Other | 50 |
+</Chart>
+<Button variant="primary">Open Review Queue</Button>
+<Button variant="secondary">Auto-resolve Low Priority</Button>
+</Card>
+
+<Card title="Ban Appeals Awaiting Review" subtitle="89 total | 12 escalated">
+<Chart type="donut" x="Status" y="Count">
+| Status | Count |
+|---|---|
+| Pending Review | 67 |
+| Escalated | 12 |
+| Awaiting Evidence | 10 |
+</Chart>
+<Stat label="Avg Resolution Time" value="4.2 hrs" />
+<Stat label="Overturn Rate (30d)" value="18%" />
+<Button variant="primary">Open Appeal Queue</Button>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Economy & Experiments">
+<Columns>
+<Card title="In-Game Currency Inflation" subtitle="Gold (primary) vs Gems (premium)">
+<Chart type="line" x="Week" y="Index (Week 1 = 100)">
+| Week | Gold Index | Gem Index | Player Avg Gold |
+|---|---|---|---|
+| W1 | 100 | 100 | 12,400 |
+| W2 | 103 | 100 | 13,100 |
+| W3 | 107 | 100 | 13,850 |
+| W4 | 112 | 100 | 14,620 |
+| W5 | 118 | 100 | 15,400 |
+| W6 | 125 | 100 | 16,350 |
+| W7 | 131 | 100 | 17,100 |
+| W8 | 138 | 100 | 18,050 |
+</Chart>
+<Callout tone="warning" title="Inflation accelerating">Gold supply up 38% in 8 weeks. Sinks (repair, crafting, taxes) not keeping pace. Consider: increased repair costs, new gold sinks, or supply reduction.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Card title="Exp A: Daily Quest Rewards +25%" subtitle="Variant B (treatment) vs Control | Day 7 of 14">
+<Stat label="Retention D1" value="+2.3%" tone="success" />
+<Stat label="Retention D7" value="+1.1%" tone="success" />
+<Stat label="ARPDAU" value="+0.8%" tone="neutral" />
+<Stat label="Session Length" value="+4.2%" tone="success" />
+<Progress value="73" max="100" label="Statistical Significance" />
+<Badge tone="success">Promising</Badge>
+</Card>
+
+<Card title="Exp B: Battle Pass XP Curve Flattened" subtitle="Variant B (treatment) vs Control | Day 10 of 21">
+<Stat label="Pass Completion Rate" value="+8.7%" tone="success" />
+<Stat label="Avg Tier Reached" value="+3.2 tiers" tone="success" />
+<Stat label="Premium Upgrade Rate" value="-1.4%" tone="warning" />
+<Stat label="Churn (Pass holders)" value="-2.1%" tone="success" />
+<Progress value="58" max="100" label="Statistical Significance" />
+<Badge tone="info">Inconclusive</Badge>
+</Card>
+</Columns>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Tools">
+<Columns>
+<Card title="Draft Patch Notes" subtitle="v3.4.2 — Target: Nov 5">
+<Form name="patch-notes">
+<TextArea label="General Changes" placeholder="• Fixed crash on startup for iOS 17.2+&#10;• Improved matchmaking queue times by ~15%&#10;• Reduced memory usage on low-end devices" rows="5" hint="Markdown supported" />
+<TextArea label="Balance Changes" placeholder="• Crimson Blade: Damage 48 → 45&#10;• Shadow Step: Cooldown 12s → 14s&#10;• Healing Orb: Heal amount 120 → 110" rows="5" hint="Markdown supported" />
+<TextArea label="Bug Fixes" placeholder="• Fixed exploit allowing infinite ammo&#10;• Resolved desync when using dash near walls&#10;• Clan chat messages now appear in correct order" rows="4" hint="Markdown supported" />
+<TextArea label="Known Issues (Ships With)" placeholder="• Minor visual artifact on Legendary skin 'Phoenix'&#10;• Friends list occasionally shows offline players as online" rows="3" hint="Optional — shown in 'Known Issues' section" />
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Discard</Button>
+</Form>
+</Card>
+
+<Card title="Region Focus">
+<Select label="Focus Region" options="Global (all regions) | NA-East (us-east-1) | NA-West (us-west-2) | EU-Central (eu-central-1) | AP-Southeast (ap-southeast-1) | SA-East (sa-east-1) | Oceania (ap-southeast-2)" placeholder="Select a region to filter all metrics" />
+<Callout tone="info" title="Region filter active">When a region is selected, all charts, stats, and tables on this dashboard will filter to that region's data. Server health, crash rates, revenue, and events will scope accordingly.</Callout>
+<Button variant="secondary">Clear Filter</Button>
+</Card>
+
+<Card title="Ship Hotfix" subtitle="Emergency client/server patch deployment">
+<Form name="hotfix-deploy">
+<Input label="Hotfix Version" value="3.4.1-hf.3" placeholder="e.g., 3.4.1-hf.3" />
+<Select label="Target" options="Server-only (no client update) | Client + Server (requires app store review) | Client-only (config push)" placeholder="Select deployment target" />
+<Checkboxes label="Affected Regions" options="NA-East | NA-West | EU-Central | AP-Southeast | SA-East | Oceania" hint="Select all for global rollout" />
+<TextArea label="Changes / Fixes" placeholder="• Fix crash when opening inventory with 200+ items&#10;• Revert matchmaking change causing high latency in EU&#10;• Disable 'Crimson Blade' weapon temporarily (balance hotfix)" rows="4" required="true" />
+<Switch label="Require QA Sign-off" name="qa-signoff" value="true" hint="Recommended for client hotfixes" />
+<Switch label="Staged Rollout (10% → 50% → 100%)" name="staged" value="true" hint="Automatically pause on error rate spike" />
+<Button variant="danger" ask="true">Deploy Hotfix</Button>
+<Button variant="tertiary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show me the full crash stack traces for v3.3.0
+- Compare revenue per user across all regions
+- What's the projected gold inflation for next month?
+- List all players with >50 reports in the last 30 days
+- Generate patch notes markdown for v3.4.2
+</FollowUps>

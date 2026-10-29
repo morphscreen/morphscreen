@@ -1,0 +1,57 @@
+{
+  "name": "interactive",
+  "version": "0.1.0",
+  "about": "Things the reader does on the page, kept on their device and reported back: a quiz, flashcards, a poll, a checklist, and what-if sliders.",
+  "components": {
+    "Quiz": {
+      "about": "questions with one right answer each: the reader picks, sees right or wrong and why, then a score. End with one when the reader is learning something",
+      "attrs": { "title": "string" },
+      "content": "only:Question"
+    },
+    "Question": {
+      "about": "one question inside Quiz; its choices are the Markdown list inside; answer, always given, names the right one (its letter or words)",
+      "attrs": {
+        "text": { "type": "string", "required": true },
+        "answer": { "type": "string", "required": true },
+        "explain": "string"
+      },
+      "content": "list",
+      "parent": "Quiz"
+    },
+    "Flashcards": {
+      "about": "cards the reader flips, from the Markdown table inside: the front, then the back. For words, terms or facts to remember",
+      "attrs": { "title": "string" },
+      "content": "table"
+    },
+    "Poll": {
+      "about": "a vote with one choice",
+      "attrs": {
+        "label": { "type": "string", "required": true },
+        "options": { "type": "list", "required": true },
+        "name": "string"
+      },
+      "content": "none"
+    },
+    "Checklist": {
+      "about": "tasks to tick off, one per Markdown list item ([x] marks one done), with progress. For things the reader has to do, pack or buy",
+      "attrs": { "title": "string", "name": "string" },
+      "content": "list"
+    },
+    "WhatIf": {
+      "about": "Sliders and the Results they change, worked out as the reader moves them. For an answer that turns on numbers the reader could change",
+      "attrs": { "title": "string" },
+      "content": "any"
+    },
+    "Result": {
+      "about": "a number inside WhatIf; value is a formula of the Sliders' names (+ - * / ^, min, max, round)",
+      "attrs": {
+        "label": { "type": "string", "required": true },
+        "value": { "type": "string", "required": true },
+        "unit": "string",
+        "decimals": "number"
+      },
+      "content": "none",
+      "parent": "WhatIf"
+    }
+  }
+}

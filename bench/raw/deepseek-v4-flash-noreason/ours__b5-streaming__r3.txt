@@ -1,0 +1,177 @@
+# Streaming Operations Room
+
+Live view of the platform's performance, content, and delivery health. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Live audience" subtitle="Updated every 10 seconds">
+<Columns>
+<Stat label="Viewers right now" value="1,284,392" change="+4.2% vs last hour" tone="success" icon="users" />
+<Stat label="Avg watch time / viewer" value="2h 14m" change="+6 min vs yesterday" icon="clock" />
+<Stat label="Buffering rate" value="0.8%" change="-0.3 pts" tone="success" icon="pulse" />
+</Columns>
+</Card>
+
+<Card title="Most-watched titles" subtitle="Last 24 hours">
+<Chart type="bar" x="Title" y="Hours watched (M)">
+| Title | Hours |
+|---|---|
+| Midnight Protocol | 12.4 |
+| The Last Signal | 10.8 |
+| Northern Lights | 9.2 |
+| Copper & Clay | 7.6 |
+| Echo Valley | 6.1 |
+| Stray Frequencies | 5.3 |
+</Chart>
+</Card>
+
+<Card title="Watch time — past month" subtitle="Millions of hours per day">
+<Chart type="line" x="Day" y="M hours">
+| Day | Hours |
+|---|---|
+| Oct 1 | 42.1 |
+| Oct 5 | 44.8 |
+| Oct 10 | 43.2 |
+| Oct 15 | 47.6 |
+| Oct 20 | 49.3 |
+| Oct 25 | 51.0 |
+| Oct 30 | 52.7 |
+</Chart>
+</Card>
+
+<Card title="Subscribers vs cancellations" subtitle="This month">
+<Chart type="line" x="Week" y="Count">
+| Week | New subs | Cancellations |
+|---|---|---|
+| W1 | 48,200 | 21,400 |
+| W2 | 52,800 | 19,700 |
+| W3 | 61,300 | 18,900 |
+| W4 | 58,400 | 17,200 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre" subtitle="Share of total watch time">
+<Chart type="donut" x="Genre" y="Share">
+| Genre | Share |
+|---|---|
+| Drama | 34 |
+| Comedy | 22 |
+| Documentary | 16 |
+| Sci-Fi | 14 |
+| Thriller | 9 |
+| Animation | 5 |
+</Chart>
+</Card>
+
+<Card title="Delivery health by region" subtitle="Buffering rate per region">
+<Chart type="horizontal" x="Region" y="Buffering %">
+| Region | Buffering |
+|---|---|
+| North America | 0.6 |
+| Europe | 0.7 |
+| Latin America | 1.2 |
+| Asia-Pacific | 1.4 |
+| Middle East | 1.8 |
+| Africa | 2.1 |
+</Chart>
+<Callout tone="warning" title="Africa above target">Buffering exceeds the 2% threshold. CDN edge nodes in Johannesburg and Lagos are being scaled.</Callout>
+</Card>
+
+<Card title="Region focus" subtitle="Zoom into one region's metrics">
+<Select label="Region" options="All regions | North America | Europe | Latin America | Asia-Pacific | Middle East | Africa" />
+<Radio label="Metric set" options="Viewers + buffering | Titles + watch time | Subs + cancellations" />
+</Card>
+
+<Card title="Coming this month" subtitle="Release schedule">
+| Date | Title | Type | Expected demand |
+|---|---|---|---|
+| Nov 7 | Iron Harvest | Film | High |
+| Nov 12 | The Quiet Divide | Series S1 | Very high |
+| Nov 18 | Paper Planets | Documentary | Medium |
+| Nov 24 | Neon Alley | Series S2 | High |
+| Nov 29 | Winter Circuit | Film | Medium |
+</Card>
+
+<Card title="Licenses expiring soon" subtitle="Next 90 days">
+| Title | Rights | Expires | Status |
+|---|---|---|---|
+| Stray Frequencies | Global SVOD | Dec 15 | <Badge tone="warning">Renegotiating</Badge> |
+| Copper & Clay | US only | Dec 28 | <Badge tone="danger">Expires</Badge> |
+| Echo Valley | EMEA | Jan 8 | <Badge tone="warning">Renegotiating</Badge> |
+| The Last Signal | Global SVOD | Jan 20 | <Badge tone="success">Renewed</Badge> |
+</Card>
+
+<Card title="Recommendation clicks" subtitle="Click-through rate on home row">
+<Chart type="line" x="Week" y="CTR %">
+| Week | CTR |
+|---|---|
+| W1 | 3.1 |
+| W2 | 3.4 |
+| W3 | 3.2 |
+| W4 | 3.8 |
+</Chart>
+</Card>
+
+<Card title="Searches without playback" subtitle="Top dead-end queries — last 7 days">
+| Search term | Attempts | % exited |
+|---|---|---|
+| "inception 2" | 12,400 | 96% |
+| "the office" | 9,800 | 88% |
+| "dune part 3" | 7,200 | 94% |
+| "friends reunion" | 6,500 | 91% |
+</Card>
+
+<Card title="Revenue split by plan" subtitle="Monthly recurring revenue">
+<Chart type="pie" x="Plan" y="Revenue share">
+| Plan | Share |
+|---|---|
+| Premium | 48 |
+| Standard | 34 |
+| Basic | 12 |
+| Mobile-only | 6 |
+</Chart>
+</Card>
+
+<Card title="Viewing split by device" subtitle="Share of total streams">
+<Chart type="bar" x="Device" y="Share %">
+| Device | Share |
+|---|---|
+| Smart TV | 42 |
+| Mobile | 31 |
+| Tablet | 12 |
+| Web | 9 |
+| Console | 6 |
+</Chart>
+</Card>
+
+<Card title="Feature flags" subtitle="Toggle capabilities per region">
+| Flag | State | Regions |
+|---|---|---|
+| 4K streaming | <Badge tone="success">On</Badge> | All |
+| Offline downloads | <Badge tone="success">On</Badge> | All |
+| Kids profile | <Badge tone="success">On</Badge> | All except Africa |
+| Live sports | <Badge tone="warning">Canary</Badge> | US, UK |
+| AI recommendations | <Badge tone="danger">Off</Badge> | — |
+| Audio descriptions | <Badge tone="success">On</Badge> | All |
+</Card>
+
+<Card title="Promote a title" subtitle="Pin to the top of the home screen">
+<Form name="promote-title">
+<Select label="Title" options="Midnight Protocol | The Last Signal | Northern Lights | Copper & Clay | Echo Valley | Stray Frequencies" placeholder="Choose title" />
+<Select label="Region" options="All regions | North America | Europe | Latin America | Asia-Pacific | Middle East | Africa" placeholder="Choose region" />
+<Radio label="Placement" options="Hero banner | Top row | Continue watching row" />
+<Input label="Duration (hours)" type="number" min="1" max="72" value="24" />
+<Button>Promote title</Button>
+</Form>
+</Card>
+
+<Card title="Quick actions" subtitle="Common operational tasks">
+<Button>View full analytics</Button>
+<Button variant="secondary">Open incident log</Button>
+<Button variant="secondary">Export all metrics</Button>
+</Card>
+
+<FollowUps>
+- Compare this week's watch time to last month
+- Show me which titles are underperforming in their genres
+- What happens if I turn off the AI recommendations flag?
+- Which licenses should we prioritise renewing first?
+</FollowUps>

@@ -1,0 +1,111 @@
+# Hub Operations Desk — ORD (Chicago O'Hare)
+
+<Columns>
+<Select label="Hub" name="hub-select" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles | JFK — New York JFK | SFO — San Francisco | SEA — Seattle | MIA — Miami | LAS — Las Vegas" value="ORD — Chicago O'Hare" />
+<Stat label="On-time performance today" value="78%" change="-3% vs yesterday" tone="warning" />
+<Stat label="Average passenger load" value="84%" change="+2% vs avg" tone="info" />
+<Stat label="Average turnaround time" value="42 min" change="-3 min vs target" tone="success" />
+</Columns>
+
+<Card title="Flights Today" subtitle="124 departures • 118 arrivals • 8 cancellations">
+| Flight | Route | Gate | Status | ETD/ETA |
+|---|---|---|---|---|
+| UA 245 | ORD → LAX | B12 | **Delayed** | 10:45 (was 10:15) |
+| UA 1182 | ORD → DEN | C24 | Boarding | 11:00 |
+| UA 567 | ORD → SFO | B8 | On time | 11:15 |
+| UA 3341 | ORD → JFK | C18 | **Delayed** | 11:30 (was 11:00) |
+| UA 902 | ORD → LHR | E4 | On time | 11:45 |
+| UA 1456 | ORD → MIA | B22 | **Delayed** | 12:00 (was 11:20) |
+| UA 778 | ORD → SEA | C30 | Boarding | 12:15 |
+| UA 2210 | ORD → IAH | B15 | On time | 12:30 |
+| UA 445 | ORD → LAS | C12 | **Cancelled** | — |
+| UA 312 | ORD → PHX | B10 | On time | 12:45 |
+</Card>
+
+<Columns>
+<Card title="Delayed Flights (Called Out)">
+<Callout tone="danger" title="UA 245 — ORD→LAX">Mechanical: lavatory system. New ETD 10:45. 156 pax. 23 connecting.</Callout>
+<Callout tone="warning" title="UA 3341 — ORD→JFK">Weather holding at JFK. Ground stop until 11:15. 142 pax. 31 connecting.</Callout>
+<Callout tone="warning" title="UA 1456 — ORD→MIA">Crew timing out. Replacement en route. ETD 12:00. 138 pax. 18 connecting.</Callout>
+<Callout tone="info" title="UA 445 — ORD→LAS">**Cancelled** — Aircraft AOG. Rebooked on UA 447 (13:15) & UA 449 (14:30).</Callout>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From → To | Reason |
+|---|---|---|---|
+| 09:42 | UA 1182 | C28 → C24 | Congestion at C28 |
+| 09:55 | UA 567 | B14 → B8 | Inbound late, swap |
+| 10:03 | UA 902 | E6 → E4 | Widebody stand needed |
+| 10:11 | UA 778 | C34 → C30 | Gate equipment issue |
+| 10:18 | UA 2210 | B18 → B15 | Adjacent delay cascade |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Weather Advisories — ORD">
+<Callout tone="warning" title="Low Visibility Advisory">RVRs 1800-2400 ft. CAT II/III approaches in use. Expect 15-20 min arrival delays. Valid until 14:00Z.</Callout>
+<Callout tone="info" title="Wind">280° at 18 kts, gusting 28. Crosswind component 12 kts on 22L/27R. Runway 28 preferred.</Callout>
+<Callout tone="neutral" title="Forecast">Improving after 15:00Z. VFR by 18:00Z. No precip expected.</Callout>
+</Card>
+
+<Card title="Crews Available for Reassignment">
+| Crew ID | Position | Current Duty | Available At | Qualifications |
+|---|---|---|---|---|
+| CRW-8842 | Captain | Reserve | Now | 737, 757, 767 |
+| CRW-9103 | FO | Reserve | Now | 737, 757 |
+| CRW-7721 | FA Lead | Off-duty (call-out) | 11:30 | All narrowbody |
+| CRW-5568 | FA | Reserve | Now | 737, 777, 787 |
+| CRW-3340 | Captain | Deadhead inbound | 12:15 | 737, 757, 767, 777 |
+</Card>
+</Columns>
+
+<Card title="Connections at Risk of Being Missed">
+| Inbound | From | Arrival | Connecting To | Gate | Pax | Min Connect | Risk |
+|---|---|---|---|---|---|---|---|
+| UA 1843 | LAX | 10:52 (est) | UA 245 → LAX | B12 | 23 | 38 | **High** |
+| UA 2201 | DEN | 11:08 (est) | UA 3341 → JFK | C18 | 31 | 22 | **High** |
+| UA 554 | SFO | 11:15 (est) | UA 1456 → MIA | B22 | 18 | 45 | Medium |
+| UA 918 | LHR | 11:28 (est) | UA 778 → SEA | C30 | 12 | 47 | Medium |
+| UA 1122 | IAH | 11:40 (est) | UA 2210 → IAH | B15 | 8 | 50 | Low |
+</Card>
+
+<Columns>
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-form">
+<Input label="Passenger Name / PNR" placeholder="Enter name or 6-char PNR" hint="Search by name, PNR, or ticket number" />
+<Select label="Original Flight" name="orig-flight" placeholder="Select delayed/cancelled flight" options="UA 245 — ORD→LAX (delayed) | UA 3341 — ORD→JFK (delayed) | UA 1456 — ORD→MIA (delayed) | UA 445 — ORD→LAS (cancelled)" />
+<Select label="New Flight" name="new-flight" placeholder="Choose alternative" options="UA 247 — ORD→LAX 12:30 | UA 249 — ORD→LAX 14:15 | UA 3343 — ORD→JFK 12:45 | UA 3345 — ORD→JFK 14:20 | UA 1458 — ORD→MIA 13:30 | UA 1460 — ORD→MIA 15:10 | UA 447 — ORD→LAS 13:15 | UA 449 — ORD→LAS 14:30" />
+<Select label="Cabin" name="cabin" placeholder="Match original cabin" options="Economy | Economy Plus | Business | First" />
+<Switch label="Send notification to passenger" name="notify" value="true" />
+<Button variant="primary">Rebook Passenger</Button>
+<Button variant="secondary">Bulk Rebook (CSV)</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Total cancellations" value="8" change="+3 vs yesterday" tone="danger" />
+<Stat label="Weather-related" value="2" tone="neutral" />
+<Stat label="Mechanical/AOG" value="4" tone="warning" />
+<Stat label="Crew/Operational" value="2" tone="info" />
+<Details title="Cancelled flights detail" open="false">
+| Flight | Route | Reason | Pax Affected | Rebooked |
+|---|---|---|---|---|
+| UA 445 | ORD→LAS | Aircraft AOG | 162 | 148 (91%) |
+| UA 1102 | ORD→ATL | Crew illegal | 148 | 132 (89%) |
+| UA 2287 | ORD→DFW | Weather (DFW) | 156 | 141 (90%) |
+| UA 3391 | ORD→BOS | Mechanical | 134 | 119 (89%) |
+| UA 556 | ORD→SAN | Weather (SAN) | 142 | 128 (90%) |
+| UA 771 | ORD→PDX | Crew timing | 138 | 124 (90%) |
+| UA 889 | ORD→FLL | Mechanical | 151 | 136 (90%) |
+| UA 992 | ORD→TPA | Operational | 129 | 115 (89%) |
+</Details>
+</Card>
+</Columns>
+
+<Callout tone="success" title="Quick Actions">
+<Button variant="primary" size="small">Page Crew Scheduling</Button>
+<Button variant="secondary" size="small">Request Gate Hold</Button>
+<Button variant="secondary" size="small">Coordinate with Ramp</Button>
+<Button variant="tertiary" size="small">View Hub Dashboard (ATL)</Button>
+<Button variant="tertiary" size="small">View Hub Dashboard (DFW)</Button>
+</Callout>

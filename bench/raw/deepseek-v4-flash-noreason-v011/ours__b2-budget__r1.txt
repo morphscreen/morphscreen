@@ -1,0 +1,52 @@
+# Personal Budget Check
+
+<Card title="April 2025 Budget Overview">
+<Columns>
+<Stat label="Budget" value="$3,000.00" icon="wallet" />
+<Stat label="Spent" value="$2,145.50" change="-28.5%" tone="success" icon="trend-down" />
+<Stat label="Remaining" value="$854.50" icon="currency-circle-dollar" />
+</Columns>
+
+<Progress value="2145.50" max="3000" label="$2,145.50 of $3,000.00 spent" tone="info" />
+
+<Callout tone="warning" title="Largest expense this month">
+Rent — $1,200.00 (55.9% of total spending)
+</Callout>
+</Card>
+
+<Card title="Spending by category">
+<Chart type="donut" title="April 2025 spending">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Groceries | 380 |
+| Transportation | 175 |
+| Utilities | 150 |
+| Entertainment | 120 |
+| Other | 120.50 |
+</Chart>
+</Card>
+
+<Card title="Browse other months">
+<Form name="select-month">
+<Date label="Pick a month" name="budget-month" />
+<Button>View that month</Button>
+</Form>
+</Card>
+
+<Card title="Add an expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run" required="true" />
+<Input label="Amount ($)" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" />
+<Select label="Category" name="category" options="Housing | Food & Groceries | Transportation | Utilities | Entertainment | Other" placeholder="Choose a category" required="true" />
+<Date label="Date" name="expense-date" />
+<Button>Add expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me last month's budget
+- Which category can I cut back on?
+- Add a $45 dinner out for tonight
+- Set a budget limit alert
+</FollowUps>

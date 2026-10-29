@@ -1,0 +1,86 @@
+# Hub Operations — Atlanta (ATL)
+
+<Callout tone="warning" title="Weather advisory active">Thunderstorms expected 14:00–18:00 ET. Expect ground stops and extended taxi times.</Callout>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="On-time performance" value="87.4%" change="+2.1% vs yesterday" tone="success" icon="check-circle" />
+<Stat label="Average passenger load" value="82%" change="−3% vs yesterday" tone="info" icon="users" />
+<Stat label="Cancellations today" value="6" change="2 weather-related" tone="warning" icon="x-circle" />
+<Stat label="Avg turnaround time" value="41 min" change="+5 min vs target" tone="warning" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Departures & Arrivals" subtitle="All times local (ET)">
+<Chart type="bar" x="Hour" y="Flights">
+| Hour | Scheduled | On time | Delayed |
+|---|---|---|---|
+| 06–08 | 24 | 22 | 2 |
+| 08–10 | 31 | 27 | 4 |
+| 10–12 | 28 | 25 | 3 |
+| 12–14 | 26 | 22 | 4 |
+| 14–16 | 22 | 14 | 8 |
+| 16–18 | 25 | 12 | 13 |
+| 18–20 | 27 | 19 | 8 |
+</Chart>
+</Card>
+
+<Card title="Flight board" subtitle="Next 2 hours — showing 12 of 48">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 402 | Atlanta → New York (JFK) | B12 | <Badge tone="success">On time</Badge> |
+| DL 118 | Atlanta → Chicago (ORD) | C21 | <Badge tone="success">On time</Badge> |
+| AA 731 | Atlanta → Dallas (DFW) | A07 | <Badge tone="success">Boarding</Badge> |
+| UA 556 | Atlanta → Denver (DEN) | B04 | <Badge tone="warning">Delayed 25 min</Badge> |
+| DL 903 | Atlanta → Miami (MIA) | C15 | <Badge tone="success">On time</Badge> |
+| WN 284 | Atlanta → Houston (HOU) | D03 | <Badge tone="danger">Delayed 55 min</Badge> |
+| DL 671 | Atlanta → Boston (BOS) | A11 | <Badge tone="success">On time</Badge> |
+| AA 214 | Atlanta → Phoenix (PHX) | D09 | <Badge tone="warning">Delayed 30 min</Badge> |
+| DL 335 | Atlanta → Seattle (SEA) | B18 | <Badge tone="success">On time</Badge> |
+| UA 892 | Atlanta → San Francisco (SFO) | C05 | <Badge tone="danger">Delayed 70 min</Badge> |
+| DL 508 | Atlanta → Orlando (MCO) | A02 | <Badge tone="success">Boarding</Badge> |
+| WN 419 | Atlanta → Nashville (BNA) | D11 | <Badge tone="warning">Delayed 20 min</Badge> |
+
+<Callout tone="danger" title="Delayed flights — 8 total">UA 556 (25 min), WN 284 (55 min), AA 214 (30 min), UA 892 (70 min), WN 419 (20 min), plus 3 more on the full board.</Callout>
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 30 minutes">
+| Time | Flight | From → To | Status |
+|---|---|---|---|
+| 13:42 | DL 903 | C15 → C12 | <Badge tone="warning">Changed</Badge> |
+| 13:35 | AA 731 | A07 → A09 | <Badge tone="warning">Changed</Badge> |
+| 13:28 | WN 284 | D03 → D05 | <Badge tone="warning">Changed</Badge> |
+</Card>
+
+<Card title="Crews available for reassignment">
+<Columns>
+<Stat label="Pilots" value="7" note="4 captains, 3 first officers" tone="success" icon="user" />
+<Stat label="Flight attendants" value="12" note="6 certified for international" tone="success" icon="users" />
+<Stat label="Deadheading crews" value="3" note="Can be reassigned after 16:00" tone="info" icon="airplane" />
+</Columns>
+</Card>
+
+<Card title="Connections at risk" subtitle="Passengers may miss their next flight">
+| Passenger | Connection | Next flight | Time to connection |
+|---|---|---|---|
+| J. Martinez | DL 402 → DL 118 | Atlanta → Chicago | <Badge tone="danger">12 min</Badge> |
+| S. Chen | AA 731 → AA 214 | Atlanta → Phoenix | <Badge tone="danger">18 min</Badge> |
+| R. Okafor | UA 556 → UA 892 | Atlanta → San Francisco | <Badge tone="warning">28 min</Badge> |
+| L. Novak | WN 284 → WN 419 | Atlanta → Nashville | <Badge tone="warning">35 min</Badge> |
+
+<Button variant="primary" label="Rebook affected passengers">Rebook affected passengers</Button>
+</Card>
+
+<Card title="Rebook passengers" subtitle="Select a passenger to view options">
+<Form name="rebooking">
+<Select label="At-risk passenger" placeholder="Choose passenger" options="J. Martinez (DL 402→118) | S. Chen (AA 731→214) | R. Okafor (UA 556→892) | L. Novak (WN 284→419)" />
+<Radio label="Rebooking preference" options="Next available flight | Same airline only | Any airline (priority) | Hold for later today" />
+<Input label="Notes for passenger" placeholder="e.g., meal voucher issued" />
+<Button>Process rebooking</Button>
+</Form>
+</Card>
+
+<Card title="Select hub">
+<Select label="Operations hub" placeholder="Choose a hub" options="Atlanta (ATL) — current | New York (JFK) | Chicago (ORD) | Dallas (DFW) | Los Angeles (LAX) | Seattle (SEA)" />
+<Button variant="secondary">Switch hub view</Button>
+</Card>

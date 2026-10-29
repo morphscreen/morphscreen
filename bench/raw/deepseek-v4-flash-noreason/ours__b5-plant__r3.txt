@@ -1,0 +1,172 @@
+# Factory Floor Supervisor's Console
+
+<Callout tone="warning" title="Live Alerts">Line 3 has a live andon alert — press 1 for assistance. Line 5 is running below target rate.</Callout>
+
+<Card title="Key Metrics Today">
+<Columns>
+<div>
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Units Produced" value="12,480" change="Target: 15,000" icon="gear" />
+<Stat label="Energy Use" value="34.2 MWh" change="+4% vs same time yesterday" tone="warning" icon="lightning" />
+</div>
+<div>
+<Stat label="Safety Incidents (YTD)" value="3" change="0 this month" tone="success" icon="shield-check" />
+<Stat label="Days Since Last Incident" value="47" tone="success" icon="calendar" />
+<Stat label="Defect Rate (30d)" value="1.8%" change="−0.3% vs last month" tone="success" icon="bug" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Production vs Target — Today">
+<Chart type="bar" title="Units per hour vs target" x="Hour" y="Units">
+| Hour | Produced | Target |
+|---|---|---|
+| 06:00 | 420 | 500 |
+| 07:00 | 510 | 500 |
+| 08:00 | 540 | 500 |
+| 09:00 | 490 | 500 |
+| 10:00 | 460 | 500 |
+| 11:00 | 520 | 500 |
+| 12:00 | 380 | 500 |
+| 13:00 | 560 | 500 |
+| 14:00 | 530 | 500 |
+</Chart>
+<Progress value="83" max="100" label="83% of daily target" tone="info" />
+</Card>
+
+<Card title="Production Lines">
+<Columns>
+<div>
+<Badge tone="success">Line 1 — Running</Badge>
+<Stat label="Rate" value="98% of target" tone="success" />
+</div>
+<div>
+<Badge tone="success">Line 2 — Running</Badge>
+<Stat label="Rate" value="102% of target" tone="success" />
+</div>
+<div>
+<Badge tone="warning">Line 3 — Andon</Badge>
+<Stat label="Rate" value="45% of target" tone="warning" />
+</div>
+<div>
+<Badge tone="success">Line 4 — Running</Badge>
+<Stat label="Rate" value="96% of target" tone="success" />
+</div>
+<div>
+<Badge tone="warning">Line 5 — Below target</Badge>
+<Stat label="Rate" value="78% of target" tone="warning" />
+</div>
+<div>
+<Badge tone="neutral">Line 6 — Changeover</Badge>
+<Stat label="Rate" value="—" tone="neutral" />
+</div>
+</Columns>
+<Button variant="secondary" label="Focus on Line 1" icon="crosshair">Focus on Line 1</Button>
+<Button variant="secondary" label="Focus on Line 3" icon="crosshair">Focus on Line 3</Button>
+</Card>
+
+<Card title="Defect Rate — Last 30 Days">
+<Chart type="line" title="Daily defect rate %" x="Day" y="%">
+| Day | Defect rate |
+|---|---|
+| Oct 1 | 2.1 |
+| Oct 5 | 1.9 |
+| Oct 10 | 2.2 |
+| Oct 15 | 1.7 |
+| Oct 20 | 1.6 |
+| Oct 25 | 1.8 |
+| Oct 30 | 1.5 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause — This Week">
+<Chart type="donut" title="Downtime split" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Mechanical failure | 8.5 |
+| Changeover | 6.2 |
+| Material shortage | 4.0 |
+| Quality checks | 2.8 |
+| Waiting on operators | 1.5 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due date | Hours used | Priority |
+|---|---|---|---|---|
+| Press P-102 | 1 | Nov 2 | 2,100 | <Badge tone="warning">High</Badge> |
+| Conveyor C-220 | 3 | Nov 3 | 1,850 | <Badge tone="neutral">Normal</Badge> |
+| Robot R-310 | 5 | Nov 4 | 2,000 | <Badge tone="warning">High</Badge> |
+| Mixer M-115 | 2 | Nov 6 | 1,600 | <Badge tone="neutral">Normal</Badge> |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="maintenance-schedule">
+<Select label="Machine" placeholder="Select machine" options="Press P-102 | Conveyor C-220 | Robot R-310 | Mixer M-115" required />
+<Date label="Date" required />
+<Button>Schedule Maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Stock Levels">
+<Columns>
+<div>
+<Stat label="Steel" value="124 t" change="Min: 80 t" tone="success" icon="warehouse" />
+<Stat label="Resin" value="38 t" change="Min: 50 t" tone="warning" icon="warehouse" />
+<Stat label="Packaging" value="15,000 units" change="Min: 10,000" tone="success" icon="box" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries — This Week">
+| Supplier | Material | ETA | Status |
+|---|---|---|---|
+| SteelWorks Co. | Steel coils (40 t) | Wed 14:00 | <Badge tone="info">On time</Badge> |
+| Polymers Inc. | Resin (20 t) | Thu 09:00 | <Badge tone="info">On time</Badge> |
+| BoxIt Ltd. | Packaging (5,000) | Fri 11:00 | <Badge tone="warning">Delayed 2h</Badge> |
+| FastenerPro | Bolts, nuts | Tue 16:00 | <Badge tone="success">Delivered</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Units by shift — last 7 days" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 14,200 |
+| Afternoon | 13,800 |
+| Night | 11,900 |
+</Chart>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch | Product | Qty | Reason | Since |
+|---|---|---|---|---|
+| B-8421 | Valve body | 320 | Dimensional variance | 3h |
+| B-8427 | Flange | 150 | Material hardness | 1h |
+| B-8430 | Gasket | 500 | Visual defect | 30 min |
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Line | Product | Qty | Due | Priority |
+|---|---|---|---|---|---|
+| WO-5011 | 2 | Valve body | 2,000 | Nov 2 | <Badge tone="danger">Critical</Badge> |
+| WO-5012 | 1 | Flange | 1,500 | Nov 3 | <Badge tone="warning">High</Badge> |
+| WO-5013 | 4 | Gasket | 3,000 | Nov 5 | <Badge tone="neutral">Normal</Badge> |
+| WO-5014 | 6 | Bracket | 800 | Nov 7 | <Badge tone="neutral">Normal</Badge> |
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="Line 3 — Station 2">Press jam detected. Operator requested assistance. 5 min ago.</Callout>
+<Callout tone="warning" title="Line 5 — Station 4">Material low. Replenishment requested. 12 min ago.</Callout>
+</Card>
+
+<Card title="Export Shift Report">
+<Button label="Export PDF" icon="download">Export PDF</Button>
+<Button variant="secondary" label="Export CSV" icon="download">Export CSV</Button>
+</Card>
+
+<FollowUps>
+- Show detailed OEE breakdown for Line 1
+- List all safety incidents this year
+- Compare energy use by line
+- Show quality hold details for batch B-8421
+</FollowUps>

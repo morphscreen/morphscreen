@@ -1,0 +1,139 @@
+# Store Manager Console
+
+<Select label="Store" name="store-select" options="Downtown Flagship | Mall Location | Airport Express | University District" value="Downtown Flagship" />
+
+<Columns>
+<Card title="Sales Today">
+<Stat label="Revenue" value="$18,450" change="+12% vs target" tone="success" icon="currency-dollar" />
+<Progress value="18450" max="20000" label="Daily Target: $20,000" tone="success" />
+</Card>
+
+<Card title="Average Basket Size">
+<Stat label="Avg. Basket" value="$42.30" change="+$3.10 vs last week" tone="info" icon="shopping-cart" />
+</Card>
+
+<Card title="Returns This Week">
+<Stat label="Returns" value="23" change="-5 vs last week" tone="success" icon="arrow-return-left" />
+<Stat label="Return Rate" value="2.1%" change="-0.3pp" tone="neutral" icon="percent" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Foot Traffic Today">
+<Chart type="area" x="Hour" y="Visitors" title="Hourly Foot Traffic">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 28 |
+| 10 AM | 45 |
+| 11 AM | 67 |
+| 12 PM | 89 |
+| 1 PM | 102 |
+| 2 PM | 95 |
+| 3 PM | 88 |
+| 4 PM | 76 |
+| 5 PM | 92 |
+| 6 PM | 105 |
+| 7 PM | 87 |
+| 8 PM | 54 |
+</Chart>
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Revenue" title="Daily Revenue Comparison">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 16200 | 15800 |
+| Tue | 17800 | 16900 |
+| Wed | 19100 | 18200 |
+| Thu | 18450 | 17600 |
+| Fri | 0 | 22100 |
+| Sat | 0 | 28400 |
+| Sun | 0 | 19800 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Best Sellers Today">
+<Chart type="horizontal" x="Units" y="Product" title="Top 5 by Units Sold">
+| Product | Units |
+|---|---|
+| Organic Oat Milk 1L | 47 |
+| Sourdough Loaf | 42 |
+| Free-Range Eggs 12ct | 38 |
+| Greek Yogurt 500g | 35 |
+| Artisan Granola | 29 |
+</Chart>
+</Card>
+
+<Card title="Running Promotions">
+<Chart type="bar" x="Promotion" y="Revenue" title="Promotion Performance">
+| Promotion | Revenue | Units | Margin |
+|---|---|---|---|
+| Buy 2 Get 1 Free - Snacks | 3200 | 180 | 28% |
+| 20% Off Dairy | 2850 | 142 | 22% |
+| Weekend Bakery Bundle | 1950 | 65 | 35% |
+| Loyalty Double Points | 4100 | 210 | 31% |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Items Out of Stock">
+<Details title="8 items need attention" open="true">
+| Item | Category | Days OOS | Reorder Qty | Action |
+|---|---|---|---|---|
+| Almond Milk 1L | Dairy Alt. | 2 | 24 | <Button size="small" variant="primary">Reorder</Button> |
+| Gluten-Free Bread | Bakery | 1 | 16 | <Button size="small" variant="primary">Reorder</Button> |
+| Cold Brew Concentrate | Beverages | 3 | 12 | <Button size="small" variant="primary">Reorder</Button> |
+| Vegan Cheese Shreds | Dairy Alt. | 1 | 20 | <Button size="small" variant="primary">Reorder</Button> |
+| Protein Bars (Box) | Snacks | 2 | 30 | <Button size="small" variant="primary">Reorder</Button> |
+| Kombucha Variety Pack | Beverages | 4 | 15 | <Button size="small" variant="primary">Reorder</Button> |
+| Organic Baby Spinach | Produce | 1 | 25 | <Button size="small" variant="primary">Reorder</Button> |
+| Sourdough Starter Kit | Bakery | 5 | 8 | <Button size="small" variant="primary">Reorder</Button> |
+</Details>
+</Card>
+
+<Card title="Registers">
+| Register | Status | Cashier | Sales Today | Transactions |
+|---|---|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Maria S. | $4,200 | 87 |
+| Register 2 | <Badge tone="success">Open</Badge> | James K. | $3,850 | 79 |
+| Register 3 | <Badge tone="success">Open</Badge> | Priya M. | $4,100 | 82 |
+| Register 4 | <Badge tone="warning">Opening</Badge> | — | $0 | 0 |
+| Register 5 | <Badge tone="neutral">Closed</Badge> | — | $0 | 0 |
+| Self-Checkout 1 | <Badge tone="success">Open</Badge> | Auto | $3,400 | 94 |
+| Self-Checkout 2 | <Badge tone="success">Open</Badge> | Auto | $2,900 | 81 |
+</Card>
+</Columns>
+
+<Card title="Team On Shift Today">
+<Columns>
+<Avatar name="Maria Santos" subtitle="Shift Lead · 8AM–4PM" src="find" />
+<Avatar name="James Kim" subtitle="Cashier · 8AM–4PM" src="find" />
+<Avatar name="Priya Mehta" subtitle="Cashier · 8AM–4PM" src="find" />
+<Avatar name="Alex Rivera" subtitle="Floor Lead · 12PM–8PM" src="find" />
+<Avatar name="Sam Chen" subtitle="Stock · 6AM–2PM" src="find" />
+<Avatar name="Jordan Lee" subtitle="Cashier · 12PM–8PM" src="find" />
+<Avatar name="Taylor Brooks" subtitle="Bakery · 5AM–1PM" src="find" />
+<Avatar name="Casey Park" subtitle="Produce · 6AM–2PM" src="find" />
+</Columns>
+</Card>
+
+<Card title="Quick Reorder Form">
+<Form name="quick-reorder">
+<Select label="Item to Reorder" name="reorder-item" placeholder="Select out-of-stock item" options="Almond Milk 1L | Gluten-Free Bread | Cold Brew Concentrate | Vegan Cheese Shreds | Protein Bars (Box) | Kombucha Variety Pack | Organic Baby Spinach | Sourdough Starter Kit" required="true" />
+<Input label="Quantity" name="reorder-qty" type="number" placeholder="Enter quantity" min="1" max="500" step="1" required="true" />
+<Select label="Priority" name="reorder-priority" options="Standard (2-3 days) | Express (next day) | Emergency (same day)" placeholder="Select priority" required="true" />
+<Button>Submit Reorder</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- View detailed sales report for this week
+- Check inventory levels for top 20 SKUs
+- Review staff scheduling for next week
+- Compare promotion ROI across all stores
+</FollowUps>

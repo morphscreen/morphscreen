@@ -1,0 +1,117 @@
+# Hiring Overview
+
+Your single screen for all hiring metrics at a glance.
+
+<Card title="Key metrics" subtitle="Live figures as of today">
+<Columns>
+<Stat label="Current headcount" value="342" change="+12 this quarter" tone="success" icon="users" />
+<Stat label="Open roles" value="18" change="5 new this week" tone="info" icon="briefcase" />
+<Stat label="Avg. time to hire" value="32 days" change="-4 days vs last quarter" tone="success" icon="clock" />
+<Stat label="Attrition (6 mo)" value="8.2%" change="+1.1 pts vs last period" tone="warning" icon="trend-down" />
+</Columns>
+</Card>
+
+<Card title="Open roles by department">
+<Columns>
+<Chart type="bar" title="Open positions" x="Department" y="Count">
+| Department | Open roles |
+|---|---|
+| Engineering | 6 |
+| Product | 3 |
+| Sales | 4 |
+| Marketing | 2 |
+| Operations | 2 |
+| Finance | 1 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Candidate pipeline" subtitle="All active candidates across stages">
+<Chart type="bar" title="Candidates per stage" x="Stage" y="Candidates">
+| Stage | Candidates |
+|---|---|
+| Applied | 148 |
+| Screening | 96 |
+| Interview | 54 |
+| Offer | 12 |
+| Hired | 8 |
+</Chart>
+
+<Progress value="8" max="148" label="Hired so far from this pipeline" tone="success" />
+</Card>
+
+<Card title="Headcount split by department">
+<Chart type="donut" title="Headcount share" x="Department" y="Employees">
+| Department | Employees |
+|---|---|
+| Engineering | 142 |
+| Sales | 78 |
+| Product | 44 |
+| Marketing | 36 |
+| Operations | 28 |
+| Finance | 14 |
+</Chart>
+</Card>
+
+<Card title="Attrition trend (last 6 months)">
+<Chart type="area" title="Monthly attrition %" x="Month" y="Attrition %">
+| Month | Attrition % |
+|---|---|
+| Aug | 1.1 |
+| Sep | 1.4 |
+| Oct | 1.2 |
+| Nov | 1.6 |
+| Dec | 1.5 |
+| Jan | 1.4 |
+</Chart>
+</Card>
+
+<Card title="Interviews this week" subtitle="Scheduled across all teams">
+<Columns>
+<Stat label="Total interviews" value="23" icon="calendar" />
+<Stat label="Done today" value="5" icon="check-circle" />
+<Stat label="Upcoming" value="18" icon="calendar-plus" />
+</Columns>
+
+| Day | Candidate | Role | Interviewer |
+|---|---|---|---|
+| Mon | Aisha Patel | Senior Frontend Engineer | Tomás Rivera |
+| Mon | Liam Chen | Product Designer | Sarah Okafor |
+| Tue | Elena García | Sales Manager | Marcus Webb |
+| Tue | Noah Kim | Data Analyst | Priya Sharma |
+| Wed | Sofia Rossi | DevOps Engineer | James Lee |
+| Wed | Omar Hassan | Marketing Lead | Chloe Martin |
+| Thu | Grace Liu | Backend Engineer | David Park |
+| Thu | Mateo Silva | Product Manager | Nina Kowalski |
+| Fri | Emma Brown | UX Researcher | Oliver Schmidt |
+| Fri | Lucas Meyer | Account Executive | Hannah Grant |
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="primary" label="Open new role" icon="plus-circle">Open new role</Button>
+<Button variant="secondary" label="View all candidates" icon="users">View all candidates</Button>
+<Button variant="secondary" label="Review pipeline" icon="chart-line">Review pipeline</Button>
+</Columns>
+</Card>
+
+<Card title="Open a new role" subtitle="Fill in the details to create a posting">
+<Form name="new-role">
+<Input label="Role title" placeholder="e.g. Senior Data Engineer" required />
+<Select label="Department" placeholder="Select department" options="Engineering | Product | Sales | Marketing | Operations | Finance" required />
+<Select label="Employment type" options="Full-time | Part-time | Contract | Internship" placeholder="Select type" />
+<Input label="Hiring manager" placeholder="Name of the hiring lead" />
+<TextArea label="Role description" placeholder="Short summary of responsibilities and requirements" rows="4" />
+<Input label="Target start date" type="date" />
+<Slider label="Salary range (annual)" min="40000" max="250000" step="5000" value="120000" unit="$" />
+<Checkboxes label="Interview steps" options="Phone screen | Technical test | Panel interview | Final round" value="Phone screen" hint="Select the stages you want candidates to go through" />
+<Button variant="primary">Create role</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me candidates in the offer stage
+- Which roles have been open the longest?
+- Compare attrition by department
+- What’s the pipeline for Engineering roles?
+</FollowUps>

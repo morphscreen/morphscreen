@@ -1,0 +1,133 @@
+<Card title="Personal Banking" subtitle="Welcome back, Alex">
+<Columns>
+<Stat label="Checking" value="$12,450.32" change="+$1,200 this month" tone="success" />
+<Stat label="Savings" value="$28,900.00" change="+$500 this month" tone="info" />
+<Stat label="Credit Card" value="-$2,340.18" change="Due in 12 days" tone="warning" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Recent Transactions" subtitle="Last 10">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods | -$87.43 | Today |
+| Shell Gas | -$45.00 | Yesterday |
+| Netflix | -$15.99 | 2 days ago |
+| Amazon | -$124.99 | 3 days ago |
+| Salary Deposit | +$3,500.00 | 4 days ago |
+| Uber | -$22.50 | 5 days ago |
+| Spotify | -$9.99 | 6 days ago |
+| Target | -$67.82 | 7 days ago |
+| Rent | -$1,800.00 | 8 days ago |
+| Apple | -$2.99 | 9 days ago |
+</Card>
+
+<Card title="Spending This Month" subtitle="By category">
+<Chart type="donut" title="Category Split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Food & Dining | 650 |
+| Transportation | 320 |
+| Shopping | 420 |
+| Entertainment | 180 |
+| Utilities | 280 |
+| Other | 150 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Bills Due Soon">
+| Bill | Amount | Due Date |
+|---|---|---|
+| Credit Card Payment | $2,340.18 | Oct 28 |
+| Internet | $79.99 | Oct 25 |
+| Electric | $145.32 | Oct 30 |
+| Phone | $85.00 | Nov 2 |
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Hawaii Trip - Target $5,000">
+<Progress value="3200" max="5000" label="$3,200 of $5,000 saved (64%)" />
+<Stat label="Monthly contribution" value="$400" tone="info" />
+<Stat label="Estimated completion" value="May 2025" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Credit Score">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 from last month" tone="success" />
+<Stat label="Rating" value="Very Good" tone="info" />
+</Columns>
+<Callout tone="info" title="Score factors">On-time payments: Excellent | Credit utilization: 23% | Age of credit: 4.2 years</Callout>
+</Card>
+
+<Tabs>
+<Tab title="Move Money">
+<Card title="Transfer Between Accounts">
+<Form name="transfer-form">
+<Select label="From account" name="fromAccount" options="Checking ($12,450.32) | Savings ($28,900.00) | Credit Card (-$2,340.18)" placeholder="Select source account" required="true" />
+<Select label="To account" name="toAccount" options="Checking ($12,450.32) | Savings ($28,900.00) | Credit Card (-$2,340.18)" placeholder="Select destination account" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Minimum $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation fund, rent, etc." />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Credit Freeze">
+<Card title="Freeze Credit Line">
+<Callout tone="warning" title="What this does">Freezing your credit line prevents new charges, balance transfers, and cash advances. Recurring payments and returns will still process.</Callout>
+<Switch label="Freeze credit card ending in 4281" name="creditFreeze" value="false" hint="Toggle to freeze or unfreeze your credit line" />
+<Details title="When to use this">
+- Lost or stolen card
+- Suspected fraudulent activity
+- Want to control spending
+- Traveling internationally
+</Details>
+</Card>
+</Tab>
+
+<Tab title="Statement Period">
+<Card title="Choose Statement Period">
+<Form name="statement-period">
+<Radio label="Period" name="period" options="This month (Oct 1–31) | Last month (Sep 1–30) | Last 3 months | Custom range" value="This month (Oct 1–31)" />
+<Date label="Start date" name="startDate" hint="Custom range start" />
+<Date label="End date" name="endDate" hint="Custom range end" />
+<Button>Generate Statement</Button>
+<Button variant="secondary" href="#">Download PDF</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Alert Settings">
+<Card title="Manage Alert Triggers">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online purchases | Gas station purchases | ATM withdrawals" hint="Get notified for these transaction types" />
+<Checkboxes label="Account alerts" name="acctAlerts" options="Low balance (<$500) | Large deposit (>$1,000) | Payment due soon | Payment posted | Statement ready" hint="Account status notifications" />
+<Checkboxes label="Security alerts" name="secAlerts" options="Login from new device | Password changed | Contact info updated | Credit freeze toggled | Dispute filed" hint="Security-related changes" required="true" />
+<Checkboxes label="Delivery methods" name="delivery" options="Push notification | Email | SMS" hint="How you receive alerts" />
+<Button>Save Preferences</Button>
+</Card>
+</Tab>
+
+<Tab title="Dispute Transaction">
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select transaction" name="transaction" options="Whole Foods - $87.43 (Today) | Shell Gas - $45.00 (Yesterday) | Netflix - $15.99 (2 days ago) | Amazon - $124.99 (3 days ago) | Uber - $22.50 (5 days ago) | Target - $67.82 (7 days ago) | Apple - $2.99 (9 days ago)" placeholder="Choose a transaction to dispute" required="true" />
+<Radio label="Dispute reason" name="reason" options="Unauthorized charge | Incorrect amount | Goods not received | Goods not as described | Duplicate charge | Canceled subscription" required="true" />
+<TextArea label="Additional details" name="details" placeholder="Describe what happened, include any communication with merchant..." rows="4" hint="Provide as much detail as possible" required="true" />
+<Checkboxes label="Supporting documents" name="documents" options="Receipt | Email confirmation | Screenshot | Chat transcript | Other" hint="Attach any evidence (optional)" />
+<Button variant="primary">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Set up automatic savings transfer
+- View annual spending report
+- Increase credit limit
+- Order new debit card
+</FollowUps>

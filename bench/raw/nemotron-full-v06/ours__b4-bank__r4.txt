@@ -1,0 +1,98 @@
+# Personal Banking Dashboard
+
+<Card title="Account Balances" subtitle="As of today">
+<Columns>
+<Stat label="Checking" value="$4,231.58" change="+$124.32 this month" tone="success" />
+<Stat label="Savings" value="$18,750.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,842.31" change="-$234.12 this month" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Amount | Category |
+|---|---|---|---|
+| Dec 14 | Whole Foods Market | -$87.43 | Groceries |
+| Dec 13 | Shell Gas Station | -$45.00 | Transportation |
+| Dec 12 | Netflix | -$15.99 | Subscriptions |
+| Dec 11 | Amazon | -$124.99 | Shopping |
+| Dec 10 | Salary Deposit | +$3,200.00 | Income |
+| Dec 9 | Starbucks | -$6.75 | Dining |
+| Dec 8 | Electric Bill | -$142.30 | Utilities |
+</Card>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="December Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Transportation | 180 |
+| Dining | 290 |
+| Shopping | 350 |
+| Subscriptions | 45 |
+| Utilities | 142 |
+| Other | 180 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Due Date | Bill | Amount | Status |
+|---|---|---|---|
+| Dec 18 | Internet | $79.99 | Pending |
+| Dec 20 | Car Insurance | $165.00 | Pending |
+| Dec 22 | Phone Bill | $85.00 | Pending |
+| Dec 25 | Rent | $1,800.00 | Pending |
+| Dec 28 | Credit Card | $1,842.31 | Pending |
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="11250" max="15000" label="Vacation Fund" tone="success" />
+<Columns>
+<Stat label="Saved" value="$11,250" tone="neutral" />
+<Stat label="Target" value="$15,000" tone="neutral" />
+<Stat label="Remaining" value="$3,750" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Credit Score">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 vs last month" tone="success" />
+<Stat label="Rating" value="Very Good" tone="info" />
+</Columns>
+<Callout tone="info" title="Score factors">On-time payments: Excellent • Credit utilization: 24% • Age of credit: Good • Recent inquiries: 2</Callout>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Select label="From Account" name="fromAccount" options="Checking •••• 4231 | Savings •••• 7500 | Credit Card •••• 8421" placeholder="Select source account" required="true" />
+<Select label="To Account" name="toAccount" options="Checking •••• 4231 | Savings •••• 7500 | Credit Card •••• 8421" placeholder="Select destination account" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" hint="Available: $4,231.58 (Checking)" required="true" />
+<Button>Transfer</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Switch label="Freeze Credit Card" name="freezeCredit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Callout tone="warning" title="Freeze active?">When frozen, new purchases, cash advances, and balance transfers are blocked. Automatic payments and returns still go through.</Callout>
+</Card>
+
+<Card title="Statement Period">
+<Select label="Select Period" name="statementPeriod" options="Current Month (Dec 1–31) | Last Month (Nov 1–30) | Last 3 Months | Last 6 Months | Custom Range" placeholder="Current Month (Dec 1–31)" />
+<Button variant="secondary">Download PDF</Button>
+</Card>
+
+<Card title="Alert Preferences">
+<Checkboxes label="Transaction Alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions" hint="Get push notifications for selected transaction types" />
+<Checkboxes label="Account Alerts" name="acctAlerts" options="Low balance (<$100) | Large deposit (>$500) | Bill payment due | Payment posted | Profile changes" value="Low balance (<$100) | Bill payment due" />
+<Checkboxes label="Security Alerts" name="secAlerts" options="New device login | Password changed | Contact info updated | Travel notice added | Credit freeze toggled" value="New device login | Password changed | Contact info updated" />
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Transaction to Dispute" name="disputeTx" options="Whole Foods Market - $87.43 (Dec 14) | Shell Gas Station - $45.00 (Dec 13) | Netflix - $15.99 (Dec 12) | Amazon - $124.99 (Dec 11) | Starbucks - $6.75 (Dec 9) | Electric Bill - $142.30 (Dec 8)" placeholder="Select a transaction" required="true" />
+<Radio label="Dispute Reason" name="disputeReason" options="Unauthorized charge | Incorrect amount | Goods not received | Services not rendered | Duplicate charge | Other" required="true" />
+<TextArea label="Additional Details" name="disputeDetails" placeholder="Describe what happened, include any merchant communication..." rows="4" hint="Provide as much detail as possible" required="true" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

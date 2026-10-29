@@ -1,0 +1,248 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view · Last updated: 2025-01-15 14:32">
+<Columns>
+<Stat label="Overall Equipment Effectiveness" value="84.7%" change="+2.1% vs last week" tone="success" />
+<Stat label="Units Produced Today" value="12,847 / 15,000" change="85.6% of target" tone="info" />
+<Stat label="Defect Rate (30d)" value="1.23%" change="-0.18% vs prior month" tone="success" />
+<Stat label="Energy Use Today" value="2,847 kWh" change="+4.2% vs avg" tone="warning" />
+</Columns>
+
+<Columns>
+<Stat label="Safety Incidents (YTD)" value="3" change="0 lost-time" tone="success" />
+<Stat label="Days Since Last Incident" value="47" change="Target: 90+" tone="info" />
+<Stat label="Batches on Quality Hold" value="4" change="2 awaiting disposition" tone="warning" />
+<Stat label="Open Work Orders" value="18" change="5 High priority" tone="danger" />
+</Columns>
+
+<Tabs>
+<Tab title="Production Lines">
+<Columns>
+<Card title="Line A — Injection Molding" subtitle="Status: Running">
+<Stat label="Current Rate" value="1,240 units/hr" change="Target: 1,200" tone="success" />
+<Stat label="OEE" value="87.3%" change="Availability 92% · Performance 95% · Quality 99.8%" tone="success" />
+<Stat label="Output This Shift" value="8,920" change="+3.2% vs plan" tone="info" />
+<Badge tone="success">● Live</Badge>
+</Card>
+<Card title="Line B — Extrusion" subtitle="Status: Running">
+<Stat label="Current Rate" value="980 units/hr" change="Target: 1,050" tone="warning" />
+<Stat label="OEE" value="78.9%" change="Availability 85% · Performance 93% · Quality 99.5%" tone="warning" />
+<Stat label="Output This Shift" value="6,410" change="-4.1% vs plan" tone="warning" />
+<Badge tone="success">● Live</Badge>
+</Card>
+<Card title="Line C — Assembly" subtitle="Status: Changeover">
+<Stat label="Current Rate" value="0 units/hr" change="Changeover: 22 min remaining" tone="neutral" />
+<Stat label="OEE" value="71.2%" change="Availability 78% · Performance 91% · Quality 99.9%" tone="warning" />
+<Stat label="Output This Shift" value="4,180" change="Shift just started" tone="neutral" />
+<Badge tone="warning">⏳ Changeover</Badge>
+</Card>
+<Card title="Line D — Packaging" subtitle="Status: Down — Material Shortage">
+<Stat label="Current Rate" value="0 units/hr" change="Waiting on resin delivery" tone="danger" />
+<Stat label="OEE" value="42.1%" change="Availability 48% · Performance 88% · Quality 99.7%" tone="danger" />
+<Stat label="Output This Shift" value="1,350" change="Down since 11:14" tone="danger" />
+<Badge tone="danger">■ Down</Badge>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Defects & Downtime">
+<Columns>
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %" title="Daily Defect Rate Trend">
+| Date | Defect Rate % |
+|---|---|
+| 2024-12-16 | 1.42 |
+| 2024-12-17 | 1.38 |
+| 2024-12-18 | 1.35 |
+| 2024-12-19 | 1.31 |
+| 2024-12-20 | 1.28 |
+| 2024-12-21 | 1.25 |
+| 2024-12-22 | 1.23 |
+| 2024-12-23 | 1.21 |
+| 2024-12-24 | 1.19 |
+| 2024-12-25 | 1.22 |
+| 2024-12-26 | 1.24 |
+| 2024-12-27 | 1.26 |
+| 2024-12-28 | 1.23 |
+| 2024-12-29 | 1.21 |
+| 2024-12-30 | 1.20 |
+| 2024-12-31 | 1.18 |
+| 2025-01-01 | 1.22 |
+| 2025-01-02 | 1.25 |
+| 2025-01-03 | 1.23 |
+| 2025-01-04 | 1.21 |
+| 2025-01-05 | 1.19 |
+| 2025-01-06 | 1.20 |
+| 2025-01-07 | 1.22 |
+| 2025-01-08 | 1.24 |
+| 2025-01-09 | 1.23 |
+| 2025-01-10 | 1.21 |
+| 2025-01-11 | 1.20 |
+| 2025-01-12 | 1.23 |
+| 2025-01-13 | 1.22 |
+| 2025-01-14 | 1.23 |
+| 2025-01-15 | 1.23 |
+</Chart>
+</Card>
+<Card title="Downtime by Cause — This Week">
+<Chart type="pie" x="Cause" y="Minutes" title="Total: 4h 37m">
+| Cause | Minutes |
+|---|---|
+| Material Shortage | 112 |
+| Tooling Change | 68 |
+| Equipment Fault | 45 |
+| Quality Hold | 32 |
+| Planned Maintenance | 28 |
+| Operator Break | 15 |
+</Chart>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Shifts & Inventory">
+<Columns>
+<Card title="Shift Output Comparison — This Week">
+<Chart type="bar" x="Shift" y="Units" title="Mon–Fri Aggregate">
+| Shift | Units |
+|---|---|
+| Shift 1 (06:00–14:00) | 42,180 |
+| Shift 2 (14:00–22:00) | 38,950 |
+| Shift 3 (22:00–06:00) | 31,240 |
+</Chart>
+</Card>
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 t" change="Reorder at 15 t" tone="success" />
+<Stat label="Resin Pellets" value="8.7 t" change="Reorder at 5 t · Delivery tomorrow" tone="warning" />
+<Stat label="Packaging Film" value="1,240 rolls" change="Reorder at 300" tone="success" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel Coil (Grade 304) | 25 t | 2025-01-16 | Confirmed |
+| PolymerWorks | PP Resin | 12 t | 2025-01-17 | In Transit |
+| FlexFilm Co. | Packaging Film | 800 rolls | 2025-01-18 | Confirmed |
+| Apex Metals | Steel Coil (Grade 316) | 10 t | 2025-01-19 | Pending PO |
+| ChemSupply | Color Masterbatch | 500 kg | 2025-01-20 | Confirmed |
+</Card>
+</Tab>
+
+<Tab title="Maintenance & Work Orders">
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Status |
+|---|---|---|---|---|
+| IM-04 | A | 2025-01-16 | Preventive (500h) | Scheduled |
+| EX-02 | B | 2025-01-17 | Predictive (vibration) | Planned |
+| AS-01 | C | 2025-01-18 | Preventive (1000h) | Not Scheduled |
+| PK-03 | D | 2025-01-19 | Corrective (seal leak) | Urgent |
+| IM-01 | A | 2025-01-20 | Preventive (500h) | Not Scheduled |
+</Card>
+<Card title="Open Work Orders">
+| WO # | Machine | Line | Priority | Description | Assigned | Created |
+|---|---|---|---|---|---|---|
+| WO-2025-0142 | PK-03 | D | High | Seal replacement — resin leak | M. Torres | 2025-01-14 |
+| WO-2025-0138 | EX-02 | B | High | Bearing vibration alarm | J. Chen | 2025-01-13 |
+| WO-2025-0135 | IM-04 | A | Medium | Nozzle heater band replacement | R. Patel | 2025-01-12 |
+| WO-2025-0131 | AS-01 | C | Medium | Gripper alignment check | K. Nguyen | 2025-01-11 |
+| WO-2025-0128 | CNC-05 | — | Low | Coolant filter change | — | 2025-01-10 |
+| WO-2025-0124 | IM-01 | A | Low | Preventive lubrication | — | 2025-01-09 |
+| WO-2025-0119 | PK-01 | D | Medium | Conveyor belt tracking | — | 2025-01-08 |
+| WO-2025-0115 | EX-01 | B | Low | Die cleaning | — | 2025-01-07 |
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Quality & Safety">
+<Columns>
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| B-20250115-003 | A | Housing-A4 | 1,200 | Dimensional OOS (wall thickness) | 2025-01-15 08:22 | Awaiting CMM |
+| B-20250115-001 | B | Pipe-110mm | 850 | Surface finish defect | 2025-01-15 06:45 | Root cause analysis |
+| B-20250114-012 | C | Bracket-Assy | 2,400 | Missing torque record | 2025-01-14 22:10 | Paperwork review |
+| B-20250113-008 | D | Carton-Seal | 5,000 | Seal integrity test fail | 2025-01-13 14:30 | Rework queued |
+</Card>
+<Card title="Safety Summary">
+<Columns>
+<Stat label="Recordable Incidents (YTD)" value="3" change="0 Lost-time · 3 First-aid only" tone="success" />
+<Stat label="Days Since Last Recordable" value="47" change="Best: 127 days" tone="info" />
+<Stat label="Near Misses This Month" value="7" change="2 resolved · 5 open" tone="warning" />
+<Stat label="Safety Observations" value="142" change="94% participation" tone="success" />
+</Columns>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Andon Alerts">
+<Card title="Live Andon Alerts" subtitle="Auto-refreshes every 15 seconds">
+<Columns>
+<Card title="🔴 Line D — Material Shortage" subtitle="2025-01-15 11:14 · Duration: 3h 18m">
+<Badge tone="danger">CRITICAL</Badge>
+<p>Resin silo empty. Delivery ETA 15:30 from PolymerWorks. Line stopped. Packaging line starved.</p>
+<Button variant="primary" href="#">Acknowledge</Button>
+<Button variant="secondary" href="#">Escalate</Button>
+</Card>
+<Card title="🟡 Line B — Quality Check" subtitle="2025-01-15 13:52 · Duration: 40m">
+<Badge tone="warning">WARNING</Badge>
+<p>Dimension drift detected on Pipe-110mm. Operator holding batch B-20250115-001 for CMM verification.</p>
+<Button variant="primary" href="#">Acknowledge</Button>
+<Button variant="secondary" href="#">View Details</Button>
+</Card>
+<Card title="🟡 Line A — Maintenance Due" subtitle="2025-01-15 14:00 · Duration: 32m">
+<Badge tone="info">NOTICE</Badge>
+<p>IM-04 preventive maintenance (500h) due today. Scheduled for 16:00 changeover window.</p>
+<Button variant="primary" href="#">Acknowledge</Button>
+<Button variant="tertiary" href="#">View Schedule</Button>
+</Card>
+<Card title="🟢 Line C — Changeover Complete" subtitle="2025-01-15 14:28 · Resolved">
+<Badge tone="success">RESOLVED</Badge>
+<p>Changeover from Housing-A4 to Bracket-Assy completed in 18 min (target 20 min). Line restarted.</p>
+<Button variant="tertiary" href="#">Close</Button>
+</Card>
+</Columns>
+</Card>
+</Tab>
+
+<Tab title="Actions">
+<Columns>
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Select machine" options="IM-01 (Line A) | IM-04 (Line A) | EX-01 (Line B) | EX-02 (Line B) | AS-01 (Line C) | PK-01 (Line D) | PK-03 (Line D) | CNC-05 (Toolroom)" required="true" />
+<Select label="Maintenance Type" name="type" placeholder="Select type" options="Preventive | Predictive | Corrective | Calibration" required="true" />
+<Date label="Scheduled Date" name="date" required="true" />
+<Input label="Estimated Duration (hours)" name="duration" type="number" placeholder="e.g., 4" hint="Planned downtime" required="true" />
+<TextArea label="Notes / Work Scope" name="notes" placeholder="Describe work to be performed, parts needed, special instructions..." rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Focus on Line">
+<Form name="focus-line">
+<Select label="Select Production Line" name="line" placeholder="Choose a line to focus" options="Line A — Injection Molding | Line B — Extrusion | Line C — Assembly | Line D — Packaging" required="true" />
+<Button>Open Line Detail View</Button>
+</Form>
+<Callout tone="info" title="Line Detail View">Opens a dedicated full-screen view with real-time machine telemetry, alarm history, trend charts, and operator notes for the selected line.</Callout>
+</Card>
+</Columns>
+
+<Card title="Export Shift Report">
+<Callout tone="neutral" title="Shift Report Export">Generate a PDF/CSV summary of the current shift including: OEE by line, production vs target, defect rate, downtime breakdown, quality holds, safety events, energy consumption, and open work orders.</Callout>
+<Columns>
+<Button variant="primary">Export PDF Report</Button>
+<Button variant="secondary">Export CSV Data</Button>
+<Button variant="tertiary">Email to Shift Manager</Button>
+</Columns>
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show me Line D recovery plan once resin arrives
+- List all overdue preventive maintenance tasks
+- Compare this week's OEE to same week last year
+- Generate a Pareto of top 5 defect types this month
+</FollowUps>

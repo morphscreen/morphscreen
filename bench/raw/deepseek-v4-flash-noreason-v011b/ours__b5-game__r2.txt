@@ -1,0 +1,173 @@
+# Game Studio Live-Ops Dashboard
+
+<Badge tone="success">All systems nominal</Badge> <Badge tone="warning">2 reports pending</Badge>
+
+## Live Overview
+
+<Columns>
+<Stat label="Players Online" value="14,382" icon="users" />
+<Stat label="Daily Active" value="487,201" change="+3.2%" tone="success" icon="chart-line" />
+<Stat label="Monthly Active" value="4.2M" change="+1.1%" tone="success" icon="chart-line" />
+<Stat label="Revenue Today" value="$84,210" change="+5.8%" tone="success" icon="currency-dollar" />
+<Stat label="Revenue Per User" value="$0.173" icon="chart-line" />
+</Columns>
+
+## Session Length (Last 2 Weeks)
+
+<Card title="Average Session Length">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Minutes |
+|---|---|
+| Mon | 24.5 |
+| Tue | 26.1 |
+| Wed | 25.8 |
+| Thu | 27.3 |
+| Fri | 29.0 |
+| Sat | 32.4 |
+| Sun | 31.7 |
+| Mon | 25.2 |
+| Tue | 26.8 |
+| Wed | 25.1 |
+| Thu | 27.9 |
+| Fri | 28.6 |
+| Sat | 33.1 |
+| Sun | 32.0 |
+</Chart>
+</Card>
+
+## Best-Selling Items
+
+<Card title="Top Items by Units Sold (Today)">
+| Item | Units Sold |
+|---|---|
+| Dragon's Fury Sword | 2,341 |
+| Phoenix Wings Glider | 1,892 |
+| Crystal Armor Set | 1,567 |
+| Golden Loot Box | 1,234 |
+| Speed Boost Potion | 987 |
+</Card>
+
+## Server Regions & Health
+
+<Card title="Server Status">
+<Columns>
+<Stat label="NA East" value="98.7%" tone="success" icon="map-pin" />
+<Stat label="NA West" value="97.2%" tone="success" icon="map-pin" />
+<Stat label="EU West" value="99.1%" tone="success" icon="map-pin" />
+<Stat label="EU East" value="95.4%" tone="info" icon="map-pin" />
+<Stat label="Asia" value="96.8%" tone="success" icon="map-pin" />
+<Stat label="Oceania" value="94.3%" tone="info" icon="map-pin" />
+<Stat label="South America" value="91.2%" tone="warning" icon="map-pin" />
+</Columns>
+</Card>
+
+## Crash Rate by App Version
+
+<Card title="Crash Rate">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Rate |
+|---|---|
+| v2.5.0 | 0.12% |
+| v2.4.9 | 0.08% |
+| v2.4.8 | 0.15% |
+| v2.4.7 | 0.21% |
+| v2.4.6 | 0.09% |
+</Chart>
+</Card>
+
+## Live Events & Upcoming
+
+<Card title="Event Schedule">
+<Tabs>
+<Tab title="Running Now">
+- **Summer Solstice Festival** — Ends in 2d 14h
+- **Double XP Weekend** — Ends in 1d 6h
+</Tab>
+<Tab title="Upcoming">
+- **Boss Rush Challenge** — Starts in 3d
+- **Season 4 Launch** — Starts in 7d
+</Tab>
+</Tabs>
+</Card>
+
+## Player Reports & Ban Appeals
+
+<Columns>
+<Card title="Reports Awaiting Review">
+<Stat label="Open Reports" value="23" icon="flag" tone="warning" />
+<Button variant="secondary" ask="Show player reports queue">Review Reports</Button>
+</Card>
+<Card title="Ban Appeals Awaiting Review">
+<Stat label="Open Appeals" value="7" icon="shield-check" tone="info" />
+<Button variant="secondary" ask="Show ban appeals queue">Review Appeals</Button>
+</Card>
+</Columns>
+
+## In-Game Currency Inflation
+
+<Card title="Gold Inflation Tracker">
+<Chart type="line" x="Week" y="Gold Supply (M)">
+| Week | Supply |
+|---|---|
+| W1 | 12.4 |
+| W2 | 13.1 |
+| W3 | 14.0 |
+| W4 | 14.8 |
+| W5 | 15.6 |
+| W6 | 16.3 |
+</Chart>
+<Callout tone="warning" title="Inflation Alert">Gold supply up 31% in 6 weeks. Consider sink events or tax adjustments.</Callout>
+</Card>
+
+## Running Experiments
+
+<Card title="A/B Test Results">
+<Columns>
+<Card title="Experiment A: New Shop Layout">
+- **Control:** 2.1% purchase rate
+- **Variant:** 2.8% purchase rate
+- **Lift:** +33% ✅
+- **Confidence:** 99.2%
+<Button variant="secondary" ask="Roll out experiment A">Roll Out</Button>
+</Card>
+<Card title="Experiment B: Harder Boss Difficulty">
+- **Control:** 68% completion rate
+- **Variant:** 52% completion rate
+- **Lift:** -23% ❌
+- **Confidence:** 98.7%
+<Button variant="secondary" ask="Stop experiment B">Stop Experiment</Button>
+</Card>
+</Columns>
+</Card>
+
+## Actions
+
+<Columns>
+<Card title="Draft Patch Notes">
+<Form name="patch-notes">
+<Input label="Patch Version" placeholder="v2.5.1" />
+<TextArea label="Notes" placeholder="Enter patch notes..." rows="4" />
+<Button>Save Draft</Button>
+</Form>
+</Card>
+<Card title="Focus on One Region">
+<Select label="Select Region" options="All Regions | NA East | NA West | EU West | EU East | Asia | Oceania | South America" name="region" />
+<Button variant="secondary" ask="Focus dashboard on selected region">Apply Filter</Button>
+</Card>
+<Card title="Ship Hotfix">
+<Form name="hotfix">
+<Input label="Hotfix Version" placeholder="v2.5.1-hotfix" />
+<TextArea label="Description" placeholder="Describe the fix..." rows="2" />
+<Select label="Target Region" options="All Regions | NA East | NA West | EU West | EU East | Asia | Oceania | South America" name="target" />
+<Button variant="danger">Ship Hotfix</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the player reports queue
+- What's the inflation trend by region?
+- Compare session length by platform
+- Show crash rate for the last hotfix
+- Schedule a new live event
+</FollowUps>

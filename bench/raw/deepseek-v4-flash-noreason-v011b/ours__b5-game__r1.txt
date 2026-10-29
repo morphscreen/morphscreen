@@ -1,0 +1,160 @@
+# Live-Ops Command Center
+
+<Columns>
+<Card title="Players Online Now" subtitle="Global">
+<Stat label="Concurrent" value="18,432" icon="users" />
+<Stat label="Daily Active" value="284,109" change="+3.2%" note="vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Monthly Active" value="4,812,667" change="-0.7%" note="vs last month" tone="warning" icon="calendar" />
+</Card>
+
+<Card title="Revenue Today" subtitle="USD">
+<Stat label="Revenue" value="$42,380" icon="chart-line" />
+<Stat label="Revenue Per User" value="$0.15" note="today's DAU" icon="users" />
+<Stat label="ARPDAU (7-day)" value="$0.13" note="avg" />
+</Card>
+</Columns>
+
+<Card title="Session Length (Last 2 Weeks)">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session |
+|---|---|
+| May 1 | 18.2 |
+| May 2 | 17.8 |
+| May 3 | 19.1 |
+| May 4 | 20.3 |
+| May 5 | 18.9 |
+| May 6 | 17.5 |
+| May 7 | 16.8 |
+| May 8 | 17.2 |
+| May 9 | 18.0 |
+| May 10 | 19.4 |
+| May 11 | 20.1 |
+| May 12 | 18.7 |
+| May 13 | 17.9 |
+| May 14 | 18.5 |
+</Chart>
+<Button variant="secondary" ask="Show session length by game mode">By game mode</Button>
+</Card>
+
+<Card title="Best-Selling Items" subtitle="Today">
+| Item | Units Sold | Revenue |
+|---|---|---|
+| Legendary Sword Skin | 1,204 | $18,060 |
+| Epic Pet Bundle | 892 | $13,380 |
+| Battle Pass Season 7 | 654 | $9,810 |
+| 500 Gems Pack | 512 | $5,120 |
+| Rare Emote Pack | 378 | $3,780 |
+</Card>
+<Button ask="Show full item catalog with margins">Full catalog</Button>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Stat label="US East" value="6,421" note="Online" tone="success" icon="map-pin" />
+<Stat label="US West" value="3,894" note="Online" tone="success" icon="map-pin" />
+<Stat label="Europe" value="4,567" note="Online" tone="success" icon="map-pin" />
+<Stat label="Asia" value="2,980" note="Online" tone="warning" icon="map-pin" />
+<Stat label="South America" value="570" note="Online" tone="danger" icon="map-pin" />
+</Columns>
+<Badge tone="warning">Asia: 85% capacity</Badge>
+<Badge tone="danger">South America: high latency</Badge>
+<Button ask="Focus on South America region">Focus on South America</Button>
+<Button ask="Focus on Asia region">Focus on Asia</Button>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash Rate (%)">
+| Version | Crash Rate |
+|---|---|
+| v3.2.0 | 0.12% |
+| v3.1.5 | 0.08% |
+| v3.1.4 | 0.21% |
+| v3.1.3 | 0.35% |
+| v3.0.9 | 0.18% |
+</Chart>
+<Callout tone="warning" title="v3.1.3 spike">0.35% — investigate memory leak on Android</Callout>
+<Button ask="Show crash details for v3.1.3">Investigate v3.1.3</Button>
+</Card>
+
+<Card title="Live Events">
+<Columns>
+<Card title="Running Now" subtitle="2 events">
+<Badge tone="success">Dragon Hunt</Badge> — ends in 4h
+<Badge tone="success">Double XP Weekend</Badge> — ends in 26h
+</Card>
+<Card title="Upcoming" subtitle="3 events">
+<Badge tone="info">Summer Festival</Badge> — starts May 20
+<Badge tone="info">Boss Rush</Badge> — starts May 22
+<Badge tone="info">Guild Wars</Badge> — starts May 25
+</Card>
+</Columns>
+<Button ask="Show detailed event calendar">Event calendar</Button>
+</Card>
+
+<Card title="Player Reports & Ban Appeals">
+<Columns>
+<Stat label="Reports Awaiting Review" value="47" icon="users" tone="danger" />
+<Stat label="Ban Appeals Awaiting Review" value="23" icon="users" tone="warning" />
+</Columns>
+<Button ask="Show first pending report">Review reports</Button>
+<Button ask="Show first pending ban appeal">Review ban appeals</Button>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="line" x="Week" y="Total Gold Supply (millions)">
+| Week | Gold Supply |
+|---|---|
+| W1 | 12.4 |
+| W2 | 13.1 |
+| W3 | 14.0 |
+| W4 | 15.2 |
+| W5 | 16.8 |
+| W6 | 18.5 |
+| W7 | 20.3 |
+| W8 | 22.1 |
+</Chart>
+<Callout tone="warning" title="Inflation accelerating">Supply up 78% in 8 weeks. Consider gold sinks.</Callout>
+<Button ask="Suggest gold sink options">Suggest gold sinks</Button>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Card title="Experiment A: New Onboarding">
+<Badge tone="info">Running</Badge>
+<Stat label="Conversion Rate" value="34.2%" note="+5.1% vs control" tone="success" />
+<Stat label="Sample Size" value="12,400" />
+</Card>
+<Card title="Experiment B: Hard Mode Unlock">
+<Badge tone="info">Running</Badge>
+<Stat label="Retention (D7)" value="22.8%" note="-1.3% vs control" tone="danger" />
+<Stat label="Sample Size" value="8,700" />
+</Card>
+</Columns>
+<Button ask="Show detailed results for Experiment A">Experiment A details</Button>
+<Button ask="Show detailed results for Experiment B">Experiment B details</Button>
+</Card>
+
+<Card title="Draft Patch Notes">
+<Form name="patch-notes">
+<Input label="Version" placeholder="e.g. v3.2.1" required />
+<TextArea label="Patch Notes" placeholder="Write your patch notes here..." rows="6" required />
+<Checkboxes label="Tag" options="Bug Fix | Balance Change | New Content | Performance | UI" name="tags" />
+<Button>Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button ask="Focus on South America region" icon="map-pin">Focus on South America</Button>
+<Button ask="Ship hotfix for v3.1.3 crash" icon="chart-line">Ship Hotfix</Button>
+<Button ask="Show full live-ops dashboard" icon="chart-line">Full Dashboard</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the crash details for v3.1.3
+- What gold sinks do you recommend?
+- Draft the patch notes for the hotfix
+- Show the South America region in detail
+- What's the status of Experiment A?
+</FollowUps>

@@ -1,0 +1,99 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">2024-01-15 14:32 UTC — Auto-refresh every 5 min</Callout>
+
+<Card title="Search shipments">
+<Form name="route-search">
+<Input label="Route search" placeholder="e.g. LAX → JFK, SEA → ORD" name="route" hint="Type origin → destination or carrier name" />
+<Select label="Status filter" name="status" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" value="All" />
+<Select label="Carrier filter" name="carrier" placeholder="All carriers" options="All | FedEx | UPS | DHL | USPS | Regional" value="All" />
+<Button variant="secondary">Clear filters</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Key metrics">
+<Stat label="On-time % (Jan)" value="92.4%" change="+1.2% vs Dec" tone="success" icon="chart-line" />
+<Stat label="Avg cost/shipment" value="$147.82" change="-$3.41 vs last month" tone="info" icon="currency-usd" />
+<Stat label="Active shipments" value="1,247" change="+23 vs yesterday" tone="neutral" icon="truck" />
+<Stat label="Delayed now" value="18" change="-5 vs 1hr ago" tone="warning" icon="warning" />
+</Card>
+
+<Card title="Volume by carrier (Jan)">
+<Chart type="donut" title="Carrier share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 482 |
+| UPS | 391 |
+| DHL | 215 |
+| USPS | 108 |
+| Regional | 51 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Weekly volume (past 8 weeks)">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| 2024-W01 | 1,180 |
+| 2024-W02 | 1,245 |
+| 2024-W03 | 1,310 |
+| 2024-W04 | 1,195 |
+| 2024-W05 | 1,280 |
+| 2024-W06 | 1,340 |
+| 2024-W07 | 1,295 |
+| 2024-W08 | 1,247 |
+</Chart>
+</Card>
+
+<Card title="Shipments in transit">
+<Tabs>
+<Tab title="All (1,247)">
+| Shipment | Origin → Destination | Carrier | ETA | Status | Flag |
+|---|---|---|---|---|---|
+| FDX-884721 | LAX → JFK | FedEx | 2024-01-16 09:30 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-939102 | ORD → ATL | UPS | 2024-01-16 14:15 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| DHL-445819 | SEA → MIA | DHL | 2024-01-17 11:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FDX-884933 | DFW → LAX | FedEx | 2024-01-16 18:45 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-939287 | JFK → SFO | UPS | 2024-01-17 08:20 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| USPS-112044 | DEN → BOS | USPS | 2024-01-16 16:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FDX-885001 | ATL → SEA | FedEx | 2024-01-17 10:30 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| REG-55218 | PDX → PHX | Regional | 2024-01-16 12:45 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (18)">
+<Callout tone="warning" title="18 shipments delayed">Weather impacting Midwest hubs; carrier notifications sent</Callout>
+| Shipment | Origin → Destination | Carrier | Original ETA | Revised ETA | Delay | Flag |
+|---|---|---|---|---|---|---|
+| FDX-883109 | MEM → ORD | FedEx | 2024-01-15 08:00 | 2024-01-16 14:00 | +30h | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-938451 | IND → CLE | UPS | 2024-01-15 11:30 | 2024-01-16 18:00 | +30.5h | <Button variant="tertiary" size="small">Flag</Button> |
+| DHL-444203 | CVG → DTW | DHL | 2024-01-15 16:45 | 2024-01-16 22:30 | +29.75h | <Button variant="tertiary" size="small">Flag</Button> |
+| FDX-883887 | STL → MSP | FedEx | 2024-01-15 09:15 | 2024-01-16 15:45 | +30.5h | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-938662 | MCI → OMA | UPS | 2024-01-15 13:00 | 2024-01-16 19:30 | +30.5h | <Button variant="tertiary" size="small">Flag</Button> |
+| USPS-111892 | DSM → CID | USPS | 2024-01-15 10:20 | 2024-01-16 17:00 | +30.7h | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Flagged shipments (3)">
+| Shipment | Route | Flagged by | Reason | Time |
+|---|---|---|---|---|
+| FDX-884721 | LAX → JFK | M. Chen | Temperature excursion alert | 2024-01-15 13:42 |
+| UPS-938451 | IND → CLE | A. Rodriguez | Customer escalation — medical supplies | 2024-01-15 11:18 |
+| DHL-445819 | SEA → MIA | J. Park | Customs hold — documentation | 2024-01-15 09:55 |
+</Card>
+
+<Details title="Bulk actions">
+<Checkboxes label="Select shipments" options="FDX-884721 | UPS-939102 | DHL-445819 | FDX-884933 | UPS-939287 | USPS-112044 | FDX-885001 | REG-55218" name="bulk-select" />
+<Button variant="secondary">Flag selected</Button>
+<Button variant="secondary">Reassign carrier</Button>
+<Button variant="secondary">Notify recipients</Button>
+<Button variant="danger">Cancel selected</Button>
+</Details>
+
+<FollowUps>
+- Show me shipments delayed >24 hours
+- Export delayed shipments to CSV
+- Compare on-time % by carrier
+- Set up delay alerts for medical routes
+</FollowUps>

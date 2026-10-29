@@ -1,0 +1,88 @@
+# Budget check — March
+
+<Callout tone="warning" title="You're 82% through the month">Spent $2,058 of $2,500 with 9 days left. At this pace you'll finish around $2,610.</Callout>
+
+<Card title="This month vs budget">
+<Columns>
+<Stat label="Spent" value="$2,058" change="+6% vs Feb" tone="warning" icon="chart-line" />
+<Stat label="Budget" value="$2,500" note="Monthly limit" icon="wallet" />
+<Stat label="Left" value="$442" note="9 days remaining" tone="danger" icon="hourglass" />
+<Stat label="Daily safe spend" value="$49" note="To stay on budget" icon="calendar" />
+</Columns>
+<Progress value="2058" max="2500" label="Budget used" tone="warning" />
+</Card>
+
+<Card title="Where it went">
+<Chart type="donut" title="Spending by category" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Housing | 900 |
+| Groceries | 412 |
+| Dining out | 318 |
+| Transport | 186 |
+| Subscriptions | 142 |
+| Other | 100 |
+</Chart>
+</Card>
+
+<Card title="Category detail">
+| Category | Spent | Budget | Status |
+|---|---|---|---|
+| Housing | $900 | $900 | On limit |
+| Groceries | $412 | $450 | OK |
+| Dining out | $318 | $200 | Over |
+| Transport | $186 | $220 | OK |
+| Subscriptions | $142 | $120 | Over |
+| Other | $100 | $150 | OK |
+</Card>
+
+<Card title="Largest single expense">
+<Stat label="Biggest charge this month" value="$900" change="Rent — Mar 1" tone="danger" icon="arrow-up" />
+That one payment is 36% of everything you've spent, and 44% of your dining + subscriptions combined. Nothing else comes close: the next largest is $148.
+<Button ask="Show me the 5 largest expenses this month">See top 5 expenses</Button>
+</Card>
+
+<Card title="Look at another month">
+<Tabs>
+<Tab title="February">
+Spent $1,941 of $2,500. Under budget by $559. Dining out was $204, subscriptions $142.
+</Tab>
+<Tab title="January">
+Spent $2,388 of $2,500. Over on groceries ($498) and dining out ($341). Holiday travel pushed transport to $390.
+</Tab>
+<Tab title="December">
+Spent $2,712 of $2,500. Over budget by $212, driven by gifts ($430) and dining out ($362).
+</Tab>
+</Tabs>
+<Select label="Jump to month" name="month" options="March 2026 | February 2026 | January 2026 | December 2025" placeholder="Choose a month" hint="Totals and charts update to that month" />
+<Button variant="secondary" ask="Compare March and February side by side">Compare two months</Button>
+</Card>
+
+<Card title="Add an expense" subtitle="Log it now so the month stays accurate">
+<Form name="add-expense">
+<Input label="What was it" name="description" placeholder="Coffee, groceries, bus fare" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="24.50" step="0.01" min="0" hint="In dollars" required="true" />
+<Date label="Date" name="date" value="2026-03-22" required="true" />
+<Select label="Category" name="category" options="Housing | Groceries | Dining out | Transport | Subscriptions | Other" placeholder="Pick a category" required="true" />
+<Radio label="Paid with" name="method" options="Card | Cash | Transfer" />
+<Switch label="Recurring monthly" name="recurring" value="false" hint="Adds it to subscriptions each month" />
+<Button>Add expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Trim the overspend">
+<Steps>
+<Step title="Dining out is $118 over" status="current" subtitle="Biggest fixable gap">Cutting two takeout dinners a week saves roughly $90 by Mar 31.</Step>
+<Step title="Subscriptions are $22 over" status="todo">Three services renew this week. Cancelling one covers the gap.</Step>
+<Step title="Groceries have $38 of room" status="todo">No action needed — just don't let it drift.</Step>
+<Step title="Housing is fixed" status="done">Rent is set. Nothing to change here.</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- How much would I save by cutting dining out in half?
+- Show my subscriptions and renewal dates
+- What's my average monthly spend this year?
+- Set a lower budget for dining out next month
+</FollowUps>

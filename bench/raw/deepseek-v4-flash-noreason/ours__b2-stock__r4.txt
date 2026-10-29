@@ -1,0 +1,62 @@
+# Low Inventory Alerts
+
+<Callout tone="warning" title="Stock threshold">
+Items at or below **10 units** trigger a low-inventory warning. Reorder before stock runs out.
+</Callout>
+
+<Card title="Search inventory">
+<Form name="search-inventory">
+<Input label="Search items" name="search" type="search" placeholder="Search by name or SKU…" hint="Filters the table below as you type" />
+</Form>
+</Card>
+
+<Card title="Items running low">
+<Columns>
+<div>
+<Stat label="Low stock items" value="8" icon="warning" tone="warning" />
+</div>
+<div>
+<Stat label="Units remaining (total)" value="47" icon="box" tone="info" />
+</div>
+<div>
+<Stat label="Threshold" value="10 units" icon="sliders" tone="neutral" />
+</div>
+</Columns>
+
+| Item | SKU | Remaining units | Status | Reorder |
+|---|---|---|---|---|
+| Organic Green Tea 500g | TEA-500 | 3 | <Badge tone="danger">Critical</Badge> | <Button size="small">Reorder 20</Button> |
+| Whole Bean Coffee 1kg | COF-1K | 7 | <Badge tone="warning">Low</Badge> | <Button size="small">Reorder 15</Button> |
+| Dark Chocolate Bar 100g | CHOC-100 | 5 | <Badge tone="danger">Critical</Badge> | <Button size="small">Reorder 40</Button> |
+| Almond Milk 1L | MLK-1L | 9 | <Badge tone="warning">Low</Badge> | <Button size="small">Reorder 24</Button> |
+| Sourdough Loaf | BRD-SD | 2 | <Badge tone="danger">Critical</Badge> | <Button size="small">Reorder 12</Button> |
+| Honey Jar 250g | HNY-250 | 8 | <Badge tone="warning">Low</Badge> | <Button size="small">Reorder 18</Button> |
+| Olive Oil 750ml | OIL-750 | 6 | <Badge tone="warning">Low</Badge> | <Button size="small">Reorder 10</Button> |
+| Sea Salt Flakes 200g | SALT-200 | 4 | <Badge tone="danger">Critical</Badge> | <Button size="small">Reorder 25</Button> |
+
+</Card>
+
+<Card title="How reordering works">
+<Steps>
+<Step title="Review items" status="done" subtitle="Items at or below 10 units appear in the table above" />
+<Step title="Choose quantity" status="done" subtitle="Click the Reorder button to send the suggested quantity to your supplier" />
+<Step title="Confirm order" status="current" subtitle="You'll see a confirmation with estimated delivery date" />
+</Steps>
+</Card>
+
+<Card title="Set your threshold">
+<Form name="threshold-form">
+<Slider label="Low-stock threshold" min="1" max="50" step="1" value="10" name="threshold" />
+<Button variant="secondary">Save threshold</Button>
+</Form>
+<Callout tone="info" title="Tip">
+Lower thresholds reduce alerts but risk running out. Higher thresholds keep more buffer but may overstock.
+</Callout>
+</Card>
+
+<FollowUps>
+- Show me which items are below 5 units
+- What reorder quantities are recommended for each item?
+- Can I export this low-inventory list?
+- Which supplier handles each of these items?
+</FollowUps>

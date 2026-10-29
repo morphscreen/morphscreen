@@ -1,0 +1,89 @@
+# Personal Banking Home
+
+<Card title="Account Balances" subtitle="Total balance: $42,847.32">
+<Columns>
+<Stat label="Checking" value="$12,450.18" change="+$1,200 this month" tone="success" />
+<Stat label="Savings" value="$28,900.00" change="+$500 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,497.14" change="Due in 12 days" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+| Merchant | Category | Amount | Date |
+|---|---|---|---|
+| Whole Foods Market | Groceries | -$87.43 | 2025-01-14 |
+| Shell Gas Station | Transportation | -$45.00 | 2025-01-13 |
+| Netflix | Subscriptions | -$15.99 | 2025-01-12 |
+| Amazon | Shopping | -$124.99 | 2025-01-11 |
+| Salary Deposit | Income | +$3,200.00 | 2025-01-10 |
+| Starbucks | Food & Drink | -$6.75 | 2025-01-10 |
+| Electric Bill | Utilities | -$142.30 | 2025-01-09 |
+</Card>
+
+<Card title="Spending by Category (January)">
+<Chart type="donut" title="Monthly Spend" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Transportation | 340 |
+| Food & Drink | 480 |
+| Groceries | 520 |
+| Shopping | 280 |
+| Subscriptions | 45 |
+| Utilities | 180 |
+| Other | 150 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Amount | Due Date | Status |
+|---|---|---|---|
+| Credit Card Payment | $1,497.14 | 2025-01-28 | Pending |
+| Internet Bill | $79.99 | 2025-01-20 | Scheduled |
+| Car Insurance | $185.00 | 2025-02-01 | Upcoming |
+| Phone Bill | $65.00 | 2025-01-25 | Upcoming |
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="3400" max="5000" label="Bali Trip — $3,400 of $5,000 saved (68%)" tone="success" />
+<Stat label="Monthly target" value="$400" change="On track" tone="info" />
+</Card>
+
+<Card title="Credit Score">
+<Gauge label="FICO Score" value="742" min="300" max="850" unit="pts" tone="success" />
+<Stat label="Last updated" value="Jan 12, 2025" tone="neutral" />
+<Badge tone="info">Good</Badge>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Select label="From account" name="fromAccount" placeholder="Select account" options="Checking (*4501) — $12,450.18 | Savings (*8902) — $28,900.00" required="true" />
+<Select label="To account" name="toAccount" placeholder="Select account" options="Checking (*4501) — $12,450.18 | Savings (*8902) — $28,900.00 | Credit Card (*1234) — -$1,497.14" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="1" max="12450.18" required="true" hint="Available in selected 'From' account" />
+<Button>Transfer</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Freeze">
+<Switch label="Freeze credit card (*1234)" name="creditFreeze" value="false" hint="No new charges will be authorized. Recurring payments still process." />
+</Card>
+
+<Card title="Statement Period">
+<Select label="Select period" name="statementPeriod" placeholder="Choose a period" options="January 2025 (Jan 1–31) | December 2024 (Dec 1–31) | November 2024 (Nov 1–30) | Custom range…" value="January 2025 (Jan 1–31)" />
+<Button variant="secondary">Download PDF</Button>
+</Card>
+
+<Card title="Alert Preferences">
+<Checkboxes label="Notify me when…" name="alertTriggers" options="Large transaction (>$100) | Low balance (<$500) | Bill due in 3 days | Direct deposit received | Credit score change | International transaction | ATM withdrawal" value="Large transaction (>$100) | Low balance (<$500) | Bill due in 3 days | Direct deposit received" hint="Choose which events send push notifications" />
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Transaction" name="disputeTransaction" placeholder="Select a transaction" options="Whole Foods Market — -$87.43 (Jan 14) | Shell Gas Station — -$45.00 (Jan 13) | Netflix — -$15.99 (Jan 12) | Amazon — -$124.99 (Jan 11) | Starbucks — -$6.75 (Jan 10) | Electric Bill — -$142.30 (Jan 9)" required="true" />
+<Select label="Reason" name="disputeReason" placeholder="Choose a reason" options="Unauthorized charge | Wrong amount | Duplicate charge | Item not received | Service not as described | Cancelled subscription | Other" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Describe what happened…" rows="4" hint="Include any relevant info: merchant communication, order numbers, etc." required="true" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

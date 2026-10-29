@@ -1,0 +1,46 @@
+# Personal Budget Check
+
+<Badge tone="info">November 2025</Badge>
+
+<Card title="Budget Overview" subtitle="November 2025">
+<Stat label="Total spent" value="$1,840.25" note="of $2,500 budget" />
+<Stat label="Remaining" value="$659.75" note="26% left" />
+<Progress value="1840.25" max="2500" label="Budget used" />
+</Card>
+
+<Card title="Spending Split by Category" subtitle="November 2025">
+<Chart type="donut" title="Spending by category" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 850 |
+| Groceries | 320 |
+| Dining | 240 |
+| Transport | 180 |
+| Utilities | 150 |
+| Entertainment | 100.25 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="Highlighted">
+<Badge tone="danger">Largest</Badge>
+<Callout tone="warning" title="Rent — $850.00">
+Single biggest expense this month · Nov 1 · Housing
+</Callout>
+</Card>
+
+<Card title="View a Different Month" subtitle="Load a previous or upcoming month">
+<Form name="select-month">
+<Select label="Month" options="October 2025 | November 2025 | December 2025" name="month" value="November 2025" hint="Pick a month to load its budget" />
+<Button>View month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense" subtitle="New expense for the selected month">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" />
+<Select label="Category" options="Housing | Groceries | Dining | Transport | Utilities | Entertainment | Other" name="category" placeholder="Choose a category" />
+<Date label="Date" name="date" value="2025-11-15" />
+<Button>Add expense</Button>
+</Form>
+</Card>

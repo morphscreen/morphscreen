@@ -1,0 +1,126 @@
+# How Photosynthesis Works
+
+Photosynthesis is the process plants, algae, and some bacteria use to turn **light energy into chemical energy** stored in sugar. Almost all life on Earth depends on it — it's where the energy in your food ultimately comes from, and it's where the oxygen you're breathing right now was made.
+
+<Card title="The big picture" subtitle="One equation, two halves">
+The overall reaction:
+
+<Math tex="6CO_2 + 6H_2O + \text{light} \rightarrow C_6H_{12}O_6 + 6O_2" label="Overall equation" />
+
+Six carbon dioxide molecules plus six water molecules, powered by light, become one glucose molecule plus six oxygen molecules. But this doesn't happen in one step — it happens in **two connected stages** in different parts of the chloroplast.
+</Card>
+
+## The two stages
+
+<Columns>
+<Card title="1. Light-dependent reactions" subtitle="In the thylakoid membrane">
+Light strikes chlorophyll and excites electrons. Those electrons are passed down a chain, and their energy is used to:
+
+- Split water (**H₂O → 2H⁺ + 2e⁻ + ½O₂**), releasing **oxygen** as waste
+- Pump protons across the membrane, building a gradient
+- Make **ATP** (energy currency) and **NADPH** (electron carrier)
+
+Net output: **ATP, NADPH, and O₂**.
+</Card>
+<Card title="2. Light-independent reactions (Calvin cycle)" subtitle="In the stroma">
+No light needed directly. This stage spends the ATP and NADPH made above to build sugar:
+
+- **Carbon fixation:** the enzyme RuBisCO attaches CO₂ to a 5-carbon sugar
+- **Reduction:** ATP and NADPH turn that into G3P
+- **Regeneration:** most G3P is recycled to keep the cycle going; some becomes **glucose**
+
+Net output: **sugar**.
+</Card>
+</Columns>
+
+<Callout tone="info" title="Why the two stages are linked">
+The light reactions can't run without somewhere to put their electrons, and the Calvin cycle can't run without ATP and NADPH. Cut the light, and the Calvin cycle stalls within seconds because its fuel runs out.
+</Callout>
+
+## Where it happens
+
+<FileTree title="Inside a chloroplast">
+
+- chloroplast/
+  - thylakoid/ ← light reactions happen here
+    - granum/ (stacks of thylakoids)
+    - chlorophyll/ (the green pigment that catches light)
+  - stroma/ ← Calvin cycle happens here
+    - rubisco/
+    - DNA + ribosomes/
+
+</FileTree>
+
+<Card title="The flow of energy and matter">
+<Steps>
+<Step title="Light is absorbed" status="done" subtitle="Thylakoid membrane">
+Chlorophyll absorbs mostly red and blue light, reflecting green — which is why plants look green.
+</Step>
+<Step title="Water is split" status="done">
+Electrons replace the ones lost by chlorophyll. Oxygen is released here.
+</Step>
+<Step title="ATP and NADPH are made" status="done">
+Energy is temporarily stored in these two carrier molecules.
+</Step>
+<Step title="Carbon dioxide is fixed" status="current">
+RuBisCO grabs CO₂ from the air and locks it into an organic molecule.
+</Step>
+<Step title="Sugar is built" status="todo">
+Glucose is assembled, then used for energy or stored as starch.
+</Step>
+</Steps>
+</Card>
+
+## What changes the rate
+
+<WhatIf title="Try changing the conditions">
+<Slider label="Light intensity" min="0" max="100" step="5" value="60" name="light" unit="%" />
+<Slider label="CO₂ concentration" min="0" max="100" step="5" value="40" name="co2" unit="%" />
+<Slider label="Temperature" min="0" max="45" step="1" value="25" name="temp" unit="°C" />
+<Result label="Relative rate of photosynthesis" value="min(light, co2) * max(0, 1 - ((temp - 30) / 15) ^ 2)" unit="%" decimals="0" />
+</WhatIf>
+
+<Callout tone="warning" title="Two limits, not one">
+At low light, light is the limiting factor. Once light is plentiful, **CO₂ usually becomes the limit**. Push temperature too high and enzymes like RuBisCO lose their shape and the rate collapses — that's why photosynthesis peaks well below boiling.
+</Callout>
+
+## Check yourself
+
+<Quiz title="Photosynthesis basics">
+<Question text="Which stage releases the oxygen we breathe?" answer="The light-dependent reactions" explain="Splitting water in the thylakoid membrane is what frees O₂. The Calvin cycle uses CO₂ and makes sugar — it produces no oxygen.">
+- The Calvin cycle
+- The light-dependent reactions
+- Both stages equally
+</Question>
+<Question text="What does the Calvin cycle actually spend?" answer="ATP and NADPH" explain="The light reactions make ATP and NADPH; the Calvin cycle consumes them to fix carbon and build sugar.">
+- Light and water
+- ATP and NADPH
+- Oxygen and glucose
+</Question>
+<Question text="Why do most plants look green?" answer="Chlorophyll reflects green light" explain="Chlorophyll absorbs red and blue wavelengths most strongly and reflects green, so green is what reaches your eyes.">
+- Chlorophyll reflects green light
+- Green is the most efficient wavelength to absorb
+- The stroma is green
+</Question>
+</Quiz>
+
+## Terms to remember
+
+<Flashcards title="Key vocabulary">
+| Front | Back |
+|---|---|
+| Chlorophyll | The green pigment that absorbs light energy |
+| Thylakoid | The membrane stack where light reactions occur |
+| Stroma | The fluid around thylakoids where the Calvin cycle runs |
+| RuBisCO | The enzyme that fixes CO₂ into an organic molecule |
+| ATP | The cell's short-term energy currency |
+| NADPH | An electron carrier made in the light reactions |
+| Carbon fixation | Pulling CO₂ into an organic molecule |
+</Flashcards>
+
+<FollowUps>
+- How is photosynthesis different in C4 and CAM plants?
+- Why is RuBisCO considered an inefficient enzyme?
+- How do plants respire, and how does that relate to photosynthesis?
+- What would happen to Earth's atmosphere if photosynthesis stopped?
+</FollowUps>

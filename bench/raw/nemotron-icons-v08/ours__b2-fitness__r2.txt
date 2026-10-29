@@ -1,0 +1,46 @@
+# Daily Fitness Summary
+
+<Card title="Today's Progress" icon="target">
+<Columns>
+<Stat label="Steps" value="8,432 / 10,000" change="+1,200 vs yesterday" tone="info" icon="footprint" />
+<Stat label="Calories Burned" value="2,340 kcal" change="+320 vs avg" tone="success" icon="fire" />
+</Columns>
+
+<Progress value="8432" max="10000" label="Step goal progress" tone="info" />
+</Card>
+
+<Card title="Calories Breakdown" icon="chart-line">
+<Chart type="donut" title="Calorie sources" x="Source" y="kcal">
+| Source | kcal |
+|---|---|
+| Basal Metabolic Rate | 1,580 |
+| Active Movement | 460 |
+| Workout | 300 |
+</Chart>
+</Card>
+
+<Card title="Workouts This Week" icon="calendar">
+<Chart type="bar" title="Workout duration (minutes)" x="Day" y="Minutes">
+| Day | Cardio | Strength | Yoga |
+|---|---|---|---|
+| Mon | 30 | 45 | 0 |
+| Tue | 0 | 0 | 20 |
+| Wed | 40 | 0 | 0 |
+| Thu | 0 | 50 | 0 |
+| Fri | 35 | 0 | 15 |
+| Sat | 0 | 60 | 0 |
+| Sun | 0 | 0 | 0 |
+</Chart>
+</Card>
+
+<Card title="Log New Workout" icon="plus-circle">
+<Form name="log-workout">
+<Select label="Workout Type" placeholder="Select type" options="Running | Cycling | Swimming | Strength Training | Yoga | Walking | HIIT | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="45" min="1" max="300" step="5" required="true" />
+<Input label="Calories Burned" type="number" placeholder="320" min="0" max="2000" step="10" hint="Optional — auto-estimated if left blank" />
+<Date label="Date" required="true" />
+<TextArea label="Notes" placeholder="How did it feel? Any details to remember..." rows="3" />
+<Button>Save Workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

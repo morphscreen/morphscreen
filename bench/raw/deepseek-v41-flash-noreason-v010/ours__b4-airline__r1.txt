@@ -1,0 +1,110 @@
+# Hub Operations Desk — ATL
+
+<Callout tone="warning" title="Active irregular ops">Thunderstorms in the 18:00–22:00 window. Ground stop possible. Two runway configurations in use.</Callout>
+
+<Columns>
+<Stat label="On-time performance" value="78.4%" change="-6.1 pts vs. 7-day avg" tone="warning" icon="clock" />
+<Stat label="Cancellations today" value="14" change="+9 vs. yesterday" tone="danger" icon="x-circle" />
+<Stat label="Avg passenger load" value="86.2%" note="1,142 departures counted" tone="info" icon="users" />
+<Stat label="Avg turnaround time" value="47 min" change="+5 min vs. target" tone="warning" icon="arrows-clockwise" />
+</Columns>
+
+<Card title="Flights" subtitle="Live board — departures and arrivals">
+<Tabs>
+<Tab title="Departures">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1428 | ATL → JFK | B12 | On time |
+| DL 903 | ATL → ORD | C04 | Delayed 40m |
+| DL 2210 | ATL → LAX | A19 | On time |
+| DL 664 | ATL → MIA | D07 | Boarding |
+| DL 1187 | ATL → SEA | B22 | Delayed 1h 10m |
+| DL 305 | ATL → BOS | C11 | Cancelled |
+</Tab>
+<Tab title="Arrivals">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 512 | DEN → ATL | A04 | Landed 14:22 |
+| DL 774 | SFO → ATL | B09 | On time |
+| DL 1892 | PHX → ATL | C16 | Delayed 25m |
+| DL 441 | MCO → ATL | D02 | Landed 14:41 |
+| DL 1023 | LAS → ATL | A21 | Diverted → BHM |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Delayed flights" subtitle="Called out for the desk">
+<Callout tone="danger" title="3 flights need action">DL 903, DL 1187 and DL 1892 are holding on weather and crew legality.</Callout>
+| Flight | Route | Gate | Delay | Reason |
+|---|---|---|---|---|
+| DL 903 | ATL → ORD | C04 | 40m | Crew legality |
+| DL 1187 | ATL → SEA | B22 | 1h 10m | Weather at destination |
+| DL 1892 | PHX → ATL | C16 | 25m | Late inbound aircraft |
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 90 minutes">
+| Flight | From | To | Time |
+|---|---|---|---|
+| DL 664 | D11 | D07 | 14:05 |
+| DL 2210 | A07 | A19 | 13:48 |
+| DL 512 | A02 | A04 | 13:31 |
+</Card>
+
+<Card title="Crews available for reassignment">
+| Crew | Base | Status | Duty remaining |
+|---|---|---|---|
+| Crew 218 | ATL | <Badge tone="success">Available</Badge> | 4h 20m |
+| Crew 447 | ATL | <Badge tone="success">Available</Badge> | 2h 55m |
+| Crew 091 | ATL | <Badge tone="warning">On standby</Badge> | 5h 10m |
+| Crew 336 | ATL | <Badge tone="warning">On standby</Badge> | 1h 40m |
+</Card>
+
+<Card title="Weather advisories at hub">
+<Callout tone="danger" title="Convective SIGMET">Embedded thunderstorms within 40 nm of ATL. Expect ground stops after 18:00.</Callout>
+<Callout tone="info" title="Winds">Gusts to 28 kt from 220°. Crosswind runway 27L in use.</Callout>
+</Card>
+
+<Card title="Connections at risk" subtitle="MCT buffer under 35 minutes">
+| Inbound | Outbound | Passengers | Risk |
+|---|---|---|---|
+| DL 1892 | DL 1187 | 34 | <Badge tone="danger">High</Badge> |
+| DL 512 | DL 903 | 21 | <Badge tone="warning">Medium</Badge> |
+| DL 774 | DL 2210 | 12 | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Rebook affected passengers">
+<Form name="rebook">
+<Input label="Flight number" name="flight" placeholder="DL 1187" required="true" />
+<Input label="Passengers to rebook" name="pax" type="number" min="1" placeholder="34" required="true" />
+<Select label="Rebooking option" name="option" placeholder="Choose an option" options="Next available flight today | Tomorrow morning | Partner airline | Refund" />
+<Checkboxes label="Notify via" name="notify" options="SMS | Email | App push" />
+<TextArea label="Agent notes" name="notes" rows="3" placeholder="Connection details, priority status..." />
+<Button>Rebook passengers</Button>
+<Button variant="secondary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="Look at a different hub">
+<Select label="Hub" name="hub" placeholder="Currently viewing ATL" options="ATL — Atlanta | JFK — New York | LAX — Los Angeles | ORD — Chicago | SEA — Seattle | DEN — Denver" />
+<Button variant="secondary">Switch hub</Button>
+</Card>
+
+<Card title="Turnaround performance" subtitle="Minutes, last 8 hours">
+<Chart type="line" x="Hour" y="Minutes">
+| Hour | Target | Actual |
+|---|---|---|
+| 08:00 | 42 | 41 |
+| 10:00 | 42 | 44 |
+| 12:00 | 42 | 46 |
+| 14:00 | 42 | 47 |
+| 16:00 | 42 | 49 |
+| 18:00 | 42 | 52 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me the full delay list for DL 1187
+- Which crews can cover DL 903?
+- What are the rebooking options for the 34 at-risk passengers?
+- Switch to JFK hub operations
+</FollowUps>

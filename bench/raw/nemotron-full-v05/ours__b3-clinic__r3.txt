@@ -1,0 +1,121 @@
+# Clinic Reception — Day View
+
+<Card subtitle="Tuesday, March 18, 2025">
+<Columns>
+<Columns>
+<Button variant="tertiary" size="small">◀ Prev</Button>
+<Button variant="primary" size="medium">Today</Button>
+<Button variant="tertiary" size="small">Next ▶</Button>
+</Columns>
+<Columns>
+<Input type="date" value="2025-03-18" style={{width: '160px'}} />
+</Columns>
+</Columns>
+</Card>
+
+<Card title="At a glance">
+<Columns>
+<Stat label="Patients expected today" value="24" change="+3 vs yesterday" tone="info" />
+<Stat label="No-show rate this month" value="8.2%" change="−0.4 pp vs last month" tone="success" />
+<Stat label="Checked in" value="7 / 24" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Next patient called">
+<Callout tone="info" title="Exam Room 2 — Dr. Patel">
+<strong>Maria Santos</strong> • 10:15 AM • Annual wellness • <Badge tone="success">Checked in</Badge>
+</Callout>
+<Button variant="secondary" size="small">Recall</Button>
+<Button variant="tertiary" size="small">Move to Room 3</Button>
+</Card>
+
+<Card title="Today's appointments">
+<Tabs>
+<Tab title="All (24)">
+| Time | Patient | Reason | Provider | Room | Status | Action |
+|---|---|---|---|---|---|---|
+| 8:00 AM | James Chen | Follow-up: hypertension | Dr. Kim | Room 1 | ✅ Done | — |
+| 8:30 AM | Olivia Brown | Sore throat | Dr. Patel | Room 2 | ✅ Done | — |
+| 9:00 AM | Robert Davis | Skin rash | Dr. Kim | Room 1 | ✅ Done | — |
+| 9:30 AM | Aisha Khan | Vaccination | Dr. Lee | Room 3 | 🟢 In room | — |
+| 10:00 AM | **Maria Santos** | **Annual wellness** | **Dr. Patel** | **Room 2** | **🟡 Called** | — |
+| 10:30 AM | Thomas Wright | Back pain | Dr. Kim | Room 1 | 🔵 Waiting | <Button size="small">Check in</Button> |
+| 11:00 AM | Priya Sharma | Medication review | Dr. Lee | Room 3 | 🔵 Waiting | <Button size="small">Check in</Button> |
+| 11:30 AM | Carlos Mendez | Sports physical | Dr. Patel | Room 2 | 🔵 Waiting | <Button size="small">Check in</Button> |
+| 1:00 PM | Fatima Al-Sayed | Prenatal check | Dr. Kim | Room 1 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+| 1:30 PM | David Park | Allergy consult | Dr. Lee | Room 3 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+| 2:00 PM | Elena Rossi | Diabetes follow-up | Dr. Patel | Room 2 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+| 2:30 PM | Marcus Johnson | Ear infection | Dr. Kim | Room 1 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+| 3:00 PM | Sophie Turner | Anxiety screening | Dr. Lee | Room 3 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+| 3:30 PM | Ahmed Hassan | Stitches removal | Dr. Patel | Room 2 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+| 4:00 PM | Lisa Wang | Migraine consult | Dr. Kim | Room 1 | ⚪ Scheduled | <Button size="small">Check in</Button> |
+</Tab>
+<Tab title="Waiting (10)">
+| Time | Patient | Reason | Provider | Room |
+|---|---|---|---|---|
+| 10:30 AM | Thomas Wright | Back pain | Dr. Kim | Room 1 |
+| 11:00 AM | Priya Sharma | Medication review | Dr. Lee | Room 3 |
+| 11:30 AM | Carlos Mendez | Sports physical | Dr. Patel | Room 2 |
+| 1:00 PM | Fatima Al-Sayed | Prenatal check | Dr. Kim | Room 1 |
+| 1:30 PM | David Park | Allergy consult | Dr. Lee | Room 3 |
+| 2:00 PM | Elena Rossi | Diabetes follow-up | Dr. Patel | Room 2 |
+| 2:30 PM | Marcus Johnson | Ear infection | Dr. Kim | Room 1 |
+| 3:00 PM | Sophie Turner | Anxiety screening | Dr. Lee | Room 3 |
+| 3:30 PM | Ahmed Hassan | Stitches removal | Dr. Patel | Room 2 |
+| 4:00 PM | Lisa Wang | Migraine consult | Dr. Kim | Room 1 |
+</Tab>
+<Tab title="Completed (5)">
+| Time | Patient | Reason | Provider | Room |
+|---|---|---|---|---|
+| 8:00 AM | James Chen | Follow-up: hypertension | Dr. Kim | Room 1 |
+| 8:30 AM | Olivia Brown | Sore throat | Dr. Patel | Room 2 |
+| 9:00 AM | Robert Davis | Skin rash | Dr. Kim | Room 1 |
+| 9:30 AM | Aisha Khan | Vaccination | Dr. Lee | Room 3 |
+| 10:00 AM | Maria Santos | Annual wellness | Dr. Patel | Room 2 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Room status (right now)">
+<Columns>
+<Card title="Room 1 — Dr. Kim" subtitle="Occupied until ~10:45">
+<Badge tone="warning">In use</Badge>
+<p style={{marginTop: 8}}>Thomas Wright (10:30) — Back pain</p>
+</Card>
+<Card title="Room 2 — Dr. Patel" subtitle="Current patient">
+<Badge tone="info">Active</Badge>
+<p style={{marginTop: 8}}>Maria Santos (10:15) — Annual wellness</p>
+</Card>
+<Card title="Room 3 — Dr. Lee" subtitle="Occupied until ~10:15">
+<Badge tone="warning">In use</Badge>
+<p style={{marginTop: 8}}>Aisha Khan (9:30) — Vaccination</p>
+</Card>
+<Card title="Room 4 — Procedure" subtitle="Available">
+<Badge tone="success">Free</Badge>
+<p style={{marginTop: 8, color: 'var(--muted)'}}>No appointments scheduled</p>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Quick check-in">
+<Form name="quick-checkin">
+<Columns>
+<Select label="Patient" placeholder="Search or select patient" options="Thomas Wright (10:30) | Priya Sharma (11:00) | Carlos Mendez (11:30) | Fatima Al-Sayed (1:00) | David Park (1:30) | Elena Rossi (2:00) | Marcus Johnson (2:30) | Sophie Turner (3:00) | Ahmed Hassan (3:30) | Lisa Wang (4:00)" />
+<Select label="Room" placeholder="Assign room" options="Room 1 — Dr. Kim | Room 2 — Dr. Patel | Room 3 — Dr. Lee | Room 4 — Procedure" />
+</Columns>
+<Columns>
+<Checkboxes label="Confirm" options="Insurance verified | Consent forms signed | Copay collected" />
+</Columns>
+<Button>Check in patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="secondary">Print day sheet</Button>
+<Button variant="secondary">Message Dr. Patel</Button>
+<Button variant="tertiary">View waitlist (3)</Button>
+<Button variant="tertiary" href="/reports">No-show report</Button>
+</Columns>
+</Card>

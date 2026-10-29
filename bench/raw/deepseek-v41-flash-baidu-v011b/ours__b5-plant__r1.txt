@@ -1,0 +1,189 @@
+# Shift Console — Line A–D
+
+<Columns>
+<Stat label="OEE (shift to date)" value="82.4%" change="+2.1 pts vs. yesterday" tone="success" icon="gauge" />
+<Stat label="Units produced" value="18,420 / 22,000" note="Target 22,000" tone="info" icon="package" />
+<Stat label="Defect rate (30d)" value="1.8%" change="-0.4 pts" tone="success" icon="chart-line" />
+<Stat label="Days since last incident" value="47" note="2 recordables YTD" tone="success" icon="shield-check" />
+</Columns>
+
+<Callout tone="danger" title="Andon — Line C, Station 7">Torque fault, 3 cycles. Line stopped 4 min ago. Operator paged.</Callout>
+
+<Tabs>
+<Tab title="Lines">
+<Card title="Production lines" subtitle="Rate, status and focus">
+| Line | Rate (u/hr) | Target | Status | OEE |
+|---|---|---|---|---|
+| Line A | 412 | 420 | Running | 86% |
+| Line B | 305 | 380 | Slow | 74% |
+| Line C | 0 | 400 | Stopped | 61% |
+| Line D | 388 | 390 | Running | 83% |
+
+<Button ask="Focus on Line C and show its detail">Focus Line C</Button>
+<Button variant="secondary" ask="Focus on Line B and show its detail">Focus Line B</Button>
+<Button variant="tertiary" ask="Show all four lines side by side">Compare all lines</Button>
+</Card>
+
+<Card title="Shift output comparison" subtitle="Units per shift, today">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Night | 5,940 |
+| Morning | 6,880 |
+| Afternoon | 5,600 |
+</Chart>
+</Card>
+</Tab>
+
+<Tab title="Quality">
+<Card title="Defect rate — past month">
+<Chart type="line" x="Week" y="Defect %">
+| Week | Defect % |
+|---|---|
+| W1 | 2.4 |
+| W2 | 2.1 |
+| W3 | 1.9 |
+| W4 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Batches on quality hold">
+| Batch | Line | Units | Reason | Held since |
+|---|---|---|---|---|
+| B-2291 | Line B | 640 | Weld porosity | 06:10 |
+| B-2288 | Line C | 410 | Torque out of spec | 04:45 |
+| B-2274 | Line A | 980 | Coating thickness | Yesterday 22:30 |
+
+<Button ask="Show the full quality hold list with dispositions">All held batches</Button>
+</Card>
+</Tab>
+
+<Tab title="Downtime">
+<Card title="Downtime by cause — today">
+<Chart type="donut" title="Downtime by cause" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical | 96 |
+| Changeover | 74 |
+| Material wait | 52 |
+| Quality stop | 38 |
+| Operator | 21 |
+</Chart>
+</Card>
+</Tab>
+
+<Tab title="Maintenance">
+<Card title="Machines due for maintenance">
+| Machine | Line | Due | Last service | Priority |
+|---|---|---|---|---|
+| Press 04 | Line B | Today | 41 days ago | High |
+| Conveyor 12 | Line C | Tomorrow | 62 days ago | High |
+| Welder 07 | Line A | In 3 days | 28 days ago | Medium |
+| Compressor 02 | Plant | In 6 days | 55 days ago | Low |
+
+<Progress value="3" max="4" label="Due within 7 days" tone="warning" />
+</Card>
+
+<Card title="Schedule maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="Press 04 | Conveyor 12 | Welder 07 | Compressor 02 | Other" placeholder="Choose a machine" required={true} />
+<Date label="Date" name="date" required={true} hint="Next available slot: tomorrow 06:00" />
+<Select label="Window" name="window" options="Night shift | Morning shift | Afternoon shift" />
+<TextArea label="Work description" name="notes" placeholder="What needs doing, parts required…" rows={3} />
+<Button>Schedule maintenance</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Materials">
+<Card title="Stock on hand">
+<Chart type="horizontal" title="Stock on hand" x="Material" y="Days of cover">
+| Material | Days cover |
+|---|---|
+| Steel coil | 9 |
+| Resin | 4 |
+| Packaging | 14 |
+</Chart>
+
+<Callout tone="warning" title="Resin below reorder point">4 days cover against a 7-day minimum. Raise a PO today.</Callout>
+</Card>
+
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Due | Qty | Status |
+|---|---|---|---|---|
+| Northgate Steel | Steel coil | Tue | 24 t | Confirmed |
+| Polytek | Resin | Wed | 8 t | At risk |
+| Carton Co | Packaging | Thu | 40k | Confirmed |
+| Northgate Steel | Steel coil | Fri | 18 t | Booked |
+
+<Button ask="Chase Polytek about the at-risk resin delivery">Chase Polytek</Button>
+</Card>
+</Tab>
+
+<Tab title="Work orders">
+<Card title="Open work orders">
+| WO | Task | Line | Priority | Age |
+|---|---|---|---|---|
+| WO-4471 | Torque fault, Station 7 | Line C | <Badge tone="danger">P1</Badge> | 0h 12m |
+| WO-4468 | Weld porosity investigation | Line B | <Badge tone="warning">P2</Badge> | 3h |
+| WO-4465 | Press 04 service | Line B | <Badge tone="warning">P2</Badge> | 6h |
+| WO-4459 | Guard rail repair | Line D | <Badge tone="neutral">P3</Badge> | 1d |
+| WO-4452 | Lighting replacement | Plant | <Badge tone="neutral">P3</Badge> | 3d |
+
+<Button ask="Assign WO-4471 to the on-call technician">Assign WO-4471</Button>
+</Card>
+</Tab>
+
+<Tab title="Energy">
+<Card title="Energy use today">
+<Chart type="area" x="Hour" y="kWh">
+| Hour | kWh |
+|---|---|
+| 06:00 | 410 |
+| 09:00 | 620 |
+| 12:00 | 585 |
+| 15:00 | 640 |
+| 18:00 | 470 |
+</Chart>
+<Stat label="Today so far" value="2,725 kWh" change="-6% vs. last Tuesday" tone="success" icon="lightning" />
+</Card>
+</Tab>
+</Tabs>
+
+<Card title="Safety — year to date">
+<Columns>
+<Stat label="Recordable incidents" value="2" note="Both minor, no lost time" tone="neutral" icon="first-aid" />
+<Stat label="Days since last incident" value="47" tone="success" icon="calendar-check" />
+<Stat label="Near misses logged" value="9" change="+2 this month" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Live andon alerts">
+| Station | Line | Alert | Since |
+|---|---|---|---|
+| Station 7 | Line C | Torque fault | 00:12 |
+| Station 2 | Line B | Material call | 00:04 |
+| Station 11 | Line D | Quality check request | 00:01 |
+
+<Button ask="Acknowledge the Line C andon alert">Acknowledge Line C</Button>
+<Button variant="secondary" ask="Show andon history for this shift">Andon history</Button>
+</Card>
+
+<Card title="Shift report">
+<Form name="shift-report">
+<Radio label="Report scope" name="scope" options="This shift | Today | Last 24 hours" />
+<Checkboxes label="Include" name="sections" options="OEE and output | Quality and holds | Downtime | Maintenance | Materials | Safety" value="OEE and output | Quality and holds | Downtime" />
+<Input label="Recipient email" name="email" type="email" placeholder="shift.manager@plant.com" />
+<Button icon="download">Export shift report</Button>
+<Button variant="tertiary" ask="Preview the shift report before exporting">Preview</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Why is Line C stopped and what does the fix need?
+- Which machine should I service first this week?
+- Draft a PO for resin from Polytek
+- Compare today's OEE with the same shift last week
+- Show every batch on hold and its disposition
+</FollowUps>

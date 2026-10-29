@@ -1,0 +1,177 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="View data for a specific day">
+<Columns>
+<Date label="Select date" name="view-date" value="2025-01-15" />
+<Button variant="secondary" label="Today" icon="calendar" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Progress value="87" max="100" label="87 of 100 beds occupied" tone="warning" />
+<Stat label="Available" value="13" change="3 ICU, 5 Med-Surg, 5 Step-down" tone="info" icon="bed" />
+</Card>
+
+<Card title="Current ER Wait Time">
+<Stat label="Average Wait" value="42 min" change="Target: <30 min" tone="danger" icon="clock" />
+<Stat label="Patients Waiting" value="18" change="3 critical, 7 urgent, 8 stable" tone="warning" icon="users" />
+</Card>
+
+<Card title="Admissions (Past 14 Days)">
+<Chart type="line" x="Date" y="Admissions" title="Daily Admissions">
+| Date | Admissions |
+|---|---|
+| Jan 1 | 24 |
+| Jan 2 | 31 |
+| Jan 3 | 28 |
+| Jan 4 | 35 |
+| Jan 5 | 42 |
+| Jan 6 | 38 |
+| Jan 7 | 33 |
+| Jan 8 | 29 |
+| Jan 9 | 36 |
+| Jan 10 | 41 |
+| Jan 11 | 39 |
+| Jan 12 | 34 |
+| Jan 13 | 30 |
+| Jan 14 | 27 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patients per Department">
+<Chart type="horizontal" x="Count" y="Department" title="Current Census">
+| Department | Count |
+|---|---|
+| Emergency | 18 |
+| ICU | 14 |
+| Med-Surg | 32 |
+| Step-down | 16 |
+| Pediatrics | 8 |
+| OB/GYN | 12 |
+| Psychiatry | 6 |
+| Oncology | 10 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+| Role | Scheduled | Present | Gap |
+|---|---|---|---|
+| Physicians | 12 | 11 | 1 |
+| RNs | 38 | 36 | 2 |
+| LPNs | 14 | 13 | 1 |
+| Techs | 18 | 17 | 1 |
+| Respiratory | 6 | 6 | 0 |
+| Pharmacists | 4 | 4 | 0 |
+| Case Managers | 5 | 5 | 0 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Critical Patients Requiring Attention">
+| Patient | Unit | Condition | Time Critical | Action Needed |
+|---|---|---|---|---|
+| M. Rodriguez, 67 | ICU-3 | Septic shock, lactate 5.2 | 15 min | Vasopressor titration, central line |
+| J. Chen, 45 | ER-2 | STEMI, door-to-balloon 72 min | 8 min | Cath lab activation |
+| K. Williams, 32 | ICU-7 | Post-op bleed, Hb 6.8 | 20 min | Blood products, surgical consult |
+| R. Patel, 78 | Step-4 | Respiratory failure, pH 7.18 | 10 min | Intubation, vent management |
+</Card>
+
+<Card title="Patients Ready for Discharge">
+| Patient | Unit | LOS | Barrier | Est. Discharge |
+|---|---|---|---|---|
+| S. Johnson, 54 | Med-12 | 4 days | Transport arranged | 10:00 AM |
+| L. Garcia, 61 | Step-2 | 6 days | Home health pending | 12:00 PM |
+| D. Kim, 38 | Peds-5 | 2 days | Prescription ready | 11:00 AM |
+| P. Thompson, 72 | Onc-3 | 5 days | SNF bed confirmed | 2:00 PM |
+| A. Martinez, 29 | OB-8 | 2 days | Lactation consult done | 10:30 AM |
+</Card>
+</Columns>
+
+<Card title="Today's Operating Room Bookings">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| OR-1 | 07:00-11:30 | CABG x3 | Dr. Ahmed | Dr. Park | In progress | 4.5h |
+| OR-2 | 07:30-10:00 | Lap chole | Dr. Brooks | Dr. Lee | Pre-op | 2.5h |
+| OR-3 | 08:00-12:00 | THA | Dr. Chen | Dr. Wilson | Setup | 4h |
+| OR-4 | 09:00-11:00 | Craniotomy | Dr. Davis | Dr. Taylor | Waiting | 2h |
+| OR-5 | 10:00-13:00 | Whipple | Dr. Foster | Dr. Anderson | Scheduled | 3h |
+| OR-6 | 11:00-13:00 | TKA | Dr. Brooks | Dr. Lee | Scheduled | 2h |
+| OR-1 | 13:00-17:00 | Aortic valve | Dr. Ahmed | Dr. Park | Scheduled | 4h |
+| OR-2 | 12:00-15:00 | Colectomy | Dr. Garcia | Dr. Martinez | Scheduled | 3h |
+</Card>
+
+<Columns>
+<Card title="Supplies Running Low">
+| Item | Current | Par Level | Days Left | Status |
+|---|---|---|---|---|
+| O-negative blood | 4 units | 12 units | 1 day | Critical |
+| Platelets | 6 units | 20 units | 2 days | Critical |
+| Propofol 1% | 15 vials | 50 vials | 3 days | Low |
+| Rocuronium | 22 vials | 60 vials | 4 days | Low |
+| N95 masks (M) | 180 | 500 | 5 days | Low |
+| Central line kits | 8 | 25 | 3 days | Low |
+| Chest tubes (28Fr) | 3 | 10 | 2 days | Critical |
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="primary" label="File Incident Report" icon="alert-triangle" />
+<Button variant="secondary" label="Request Patient Transfer" icon="arrow-right-left" />
+<Button variant="tertiary" label="Page House Supervisor" icon="phone" />
+<Button variant="tertiary" label="Activate Surge Plan" icon="shield-alert" />
+</Card>
+</Columns>
+
+<Card title="File Incident Report">
+<Form name="incident-report">
+<Columns>
+<Input label="Reporter Name" placeholder="Your name" required="true" />
+<Select label="Incident Type" options="Patient Safety | Medication Error | Equipment Failure | Fall | Pressure Injury | Security | Other" required="true" />
+</Columns>
+<Columns>
+<Input label="Location" placeholder="Unit / Room" required="true" />
+<Date label="Date & Time of Incident" name="incident-datetime" required="true" />
+</Columns>
+<TextArea label="Description" placeholder="Describe what happened, who was involved, immediate actions taken..." rows="4" required="true" />
+<Columns>
+<Select label="Severity" options="Near Miss | Minor Harm | Moderate Harm | Severe Harm | Death" required="true" />
+<Checkboxes label="Notifications Sent" options="Charge Nurse | House Supervisor | Risk Management | Pharmacy | Biomedical" />
+</Columns>
+<Button label="Submit Incident Report" />
+<Button variant="tertiary" label="Cancel" />
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Columns>
+<Input label="Patient Name" placeholder="Last, First" required="true" />
+<Input label="MRN" placeholder="Medical Record Number" required="true" />
+</Columns>
+<Columns>
+<Select label="Current Unit" options="ER | ICU | Step-down | Med-Surg | Pediatrics | OB/GYN | Psychiatry | Oncology" required="true" />
+<Select label="Requested Unit" options="ICU | Step-down | Med-Surg | Pediatrics | OB/GYN | Psychiatry | Oncology | External Facility" required="true" />
+</Columns>
+<Columns>
+<Select label="Urgency" options="Emergent (immediate) | Urgent (<1 hour) | Semi-urgent (<4 hours) | Routine (<24 hours)" required="true" />
+<Input label="Receiving Physician" placeholder="Accepting provider name" />
+</Columns>
+<TextArea label="Clinical Reason for Transfer" placeholder="Include current condition, treatments, lines, drips, isolation status..." rows="3" required="true" />
+<Columns>
+<Switch label="Bed Confirmed at Receiving Unit" name="bed-confirmed" />
+<Switch label="Transport Arranged" name="transport-arranged" />
+</Columns>
+<Button label="Submit Transfer Request" />
+<Button variant="tertiary" label="Cancel" />
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the 24-hour capacity forecast
+- List all patients with LOS > 7 days
+- Display staffing gaps for next shift
+- Show medication shortage report
+- Generate bed management summary for leadership huddle
+</FollowUps>

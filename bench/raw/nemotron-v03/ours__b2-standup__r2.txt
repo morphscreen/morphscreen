@@ -1,0 +1,110 @@
+<Card title="Async Standup" subtitle="Monday, January 15, 2024">
+<Columns>
+<Stat label="Updates posted" value="8" change="of 12 teammates" tone="info" />
+<Stat label="Missing updates" value="4" change="Alex, Jordan, Casey, Riley" tone="warning" />
+<Stat label="Blocked" value="2" change="Sam, Taylor" tone="danger" />
+</Columns>
+
+<Callout tone="warning" title="2 teammates blocked">
+Sam is waiting on design review for the checkout flow. Taylor needs API credentials from the platform team.
+</Callout>
+
+### Team updates
+
+<Details title="Sam Chen — Frontend" open="true">
+<Columns>
+<Avatar name="Sam Chen" subtitle="Frontend Engineer" />
+<Badge tone="danger">Blocked</Badge>
+</Columns>
+**Yesterday:** Finished the new checkout flow components  
+**Today:** Waiting on design review for the updated payment step — sent to design team Friday, no response yet  
+**Blocker:** Design review needed before I can merge and deploy
+</Details>
+
+<Details title="Taylor Kim — Backend" open="true">
+<Columns>
+<Avatar name="Taylor Kim" subtitle="Backend Engineer" />
+<Badge tone="danger">Blocked</Badge>
+</Columns>
+**Yesterday:** Implemented webhook retry logic with exponential backoff  
+**Today:** Need API credentials from platform team to test the new payment provider integration  
+**Blocker:** Platform team hasn't provisioned sandbox credentials yet (ticket #PLAT-442)
+</Details>
+
+<Details title="Morgan Lee — Full Stack" open="false">
+<Columns>
+<Avatar name="Morgan Lee" subtitle="Full Stack Engineer" />
+<Badge tone="success">On track</Badge>
+</Columns>
+**Yesterday:** Shipped the user profile edit page with avatar upload  
+**Today:** Starting work on the notification preferences refactor  
+**No blockers**
+</Details>
+
+<Details title="Avery Park — DevOps" open="false">
+<Columns>
+<Avatar name="Avery Park" subtitle="DevOps Engineer" />
+<Badge tone="success">On track</Badge>
+</Columns>
+**Yesterday:** Updated CI pipeline to run integration tests in parallel (cut build time 40%)  
+**Today:** Rolling out the new staging environment with feature flags  
+**No blockers**
+</Details>
+
+<Details title="Quinn Brooks — Product" open="false">
+<Columns>
+<Avatar name="Quinn Brooks" subtitle="Product Manager" />
+<Badge tone="info">In meetings</Badge>
+</Columns>
+**Yesterday:** Finalized Q1 roadmap with stakeholders  
+**Today:** Sprint planning prep + 1:1s with engineering leads  
+**No blockers**
+</Details>
+
+<Details title="River Torres — Design" open="false">
+<Columns>
+<Avatar name="River Torres" subtitle="Product Designer" />
+<Badge tone="success">On track</Badge>
+</Columns>
+**Yesterday:** Delivered checkout flow redesign to Sam for review  
+**Today:** Working on empty states for the new dashboard  
+**No blockers**
+</Details>
+
+<Details title="Dakota Reyes — QA" open="false">
+<Columns>
+<Avatar name="Dakota Reyes" subtitle="QA Engineer" />
+<Badge tone="success">On track</Badge>
+</Columns>
+**Yesterday:** Wrote test cases for webhook retry feature  
+**Today:** Exploratory testing on staging + updating regression suite  
+**No blockers**
+</Details>
+
+<Details title="Phoenix Wu — Security" open="false">
+<Columns>
+<Avatar name="Phoenix Wu" subtitle="Security Engineer" />
+<Badge tone="success">On track</Badge>
+</Columns>
+**Yesterday:** Completed dependency audit for payment library  
+**Today:** Reviewing PR #2847 for auth token handling  
+**No blockers**
+</Details>
+
+<Callout tone="neutral" title="Missing updates (4)">
+Alex Foster, Jordan Park, Casey Morgan, Riley Chen — haven't posted yet today
+</Callout>
+
+<hr />
+
+### Post your update
+
+<Form name="standup-update">
+<Select label="Your name" placeholder="Select your name" options="Sam Chen | Taylor Kim | Morgan Lee | Avery Park | Quinn Brooks | River Torres | Dakota Reyes | Phoenix Wu | Alex Foster | Jordan Park | Casey Morgan | Riley Chen" required="true" />
+<TextArea label="What did you do yesterday?" placeholder="Finished the checkout flow components..." rows="3" required="true" />
+<TextArea label="What will you do today?" placeholder="Waiting on design review..." rows="3" required="true" />
+<Checkboxes label="Blockers" options="I'm blocked | No blockers" hint="Check 'I'm blocked' if something is stopping you" />
+<Button>Post update</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

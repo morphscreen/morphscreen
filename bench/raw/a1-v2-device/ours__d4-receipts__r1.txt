@@ -1,0 +1,34 @@
+# Expense Claim
+
+Create a new claim by adding receipts or invoices, categorizing each expense, and submitting for approval.
+
+<Card title="Expense Claim Form">
+<Form name="expense-claim">
+  <Card title="Expense 1" subtitle="Receipt or invoice">
+    <Input label="Amount" name="amount1" type="number" placeholder="0.00" hint="Enter the expense amount" required="true" />
+    <Camera label="Photograph receipt" name="receipt1" facing="back" hint="Take a photo of the paper receipt" />
+    <File label="Upload PDF invoice" name="invoice1" accept="application/pdf" hint="Or upload a PDF invoice" />
+    <Select label="Category" name="category1" options="Meals | Travel | Accommodation | Office Supplies | Other" placeholder="Select category" required="true" />
+  </Card>
+
+  <Card title="Expense 2" subtitle="Receipt or invoice">
+    <Input label="Amount" name="amount2" type="number" placeholder="0.00" hint="Enter the expense amount" required="true" />
+    <Camera label="Photograph receipt" name="receipt2" facing="back" hint="Take a photo of the paper receipt" />
+    <File label="Upload PDF invoice" name="invoice2" accept="application/pdf" hint="Or upload a PDF invoice" />
+    <Select label="Category" name="category2" options="Meals | Travel | Accommodation | Office Supplies | Other" placeholder="Select category" required="true" />
+  </Card>
+
+  <Card title="Claim Total">
+    <Stat label="Total Amount" value="$0.00" note="Calculated from expense amounts above" tone="info" />
+  </Card>
+
+  <Button variant="primary">Submit Claim</Button>
+  <Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Notes">
+- Attach either a photo **or** a PDF for each expense (at least one required).
+- Categories help the finance team process claims faster.
+- Drafts are saved locally and can be edited before submission.
+</Callout>

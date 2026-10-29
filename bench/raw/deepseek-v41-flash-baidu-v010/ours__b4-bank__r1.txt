@@ -1,0 +1,125 @@
+# Good morning, Maya
+
+<Badge tone="success">All accounts in good standing</Badge>
+
+<Columns>
+<Stat label="Total balance" value="$18,942.16" change="+$412 this month" tone="success" icon="wallet" />
+<Stat label="Credit score" value="782" change="+6 since May" tone="success" icon="chart-line" />
+<Stat label="Bills due in 14 days" value="3" note="$1,284.90 total" tone="warning" icon="calendar" />
+</Columns>
+
+<Card title="Your accounts" subtitle="Balances as of today">
+| Account | Balance | Available |
+|---|---|---|
+| Everyday Checking ••4821 | $4,218.55 | $4,218.55 |
+| Vacation Savings ••7390 | $9,640.11 | $9,640.11 |
+| Platinum Credit Line ••1147 | −$1,083.50 | $8,916.50 |
+</Card>
+
+<Card title="Recent transactions" subtitle="Last 5 posted">
+| Merchant | Category | Amount |
+|---|---|---|
+| Whole Foods Market | Groceries | −$86.42 |
+| Pacific Gas & Electric | Utilities | −$142.00 |
+| Blue Bottle Coffee | Dining | −$6.75 |
+| Spotify | Subscriptions | −$11.99 |
+| Payroll — Northwind Co. | Income | +$3,240.00 |
+</Card>
+
+<Card title="Spending by category" subtitle="This month, $1,742.18 total">
+<Chart type="donut" title="July spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 620 |
+| Groceries | 412 |
+| Dining | 238 |
+| Transport | 196 |
+| Utilities | 142 |
+| Subscriptions | 74 |
+| Other | 60 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+<Steps>
+<Step title="Rent — $1,850.00" status="current" subtitle="Due Aug 1 · autopay on">
+Leaves Everyday Checking ••4821.
+</Step>
+<Step title="Platinum Credit Line — $142.00" status="todo" subtitle="Due Aug 4 · autopay off">
+Minimum payment. <Button variant="tertiary" size="small" ask="Set autopay for the Platinum Credit Line minimum payment">Set autopay</Button>
+</Step>
+<Step title="Car insurance — $92.90" status="todo" subtitle="Due Aug 9 · autopay on">
+Leaves Everyday Checking ••4821.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Vacation savings goal" subtitle="Lisbon, May 2026">
+<Progress value="9640" max="12000" label="$9,640 of $12,000" tone="success" />
+<Stat label="Remaining" value="$2,359.89" note="At $400/month, funded by Feb 2026" icon="target" />
+<Button variant="secondary" ask="Move money into the vacation savings goal">Add to this goal</Button>
+</Card>
+
+<Card title="Move money" subtitle="Between your accounts">
+<Form name="transfer">
+<Select label="From" name="from" options="Everyday Checking ••4821 | Vacation Savings ••7390 | Platinum Credit Line ••1147" />
+<Select label="To" name="to" options="Vacation Savings ••7390 | Everyday Checking ••4821 | Platinum Credit Line ••1147" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" hint="Transfers post instantly between your accounts" required="true" />
+<Date label="Send on" name="send_on" hint="Leave blank to send now" />
+<Button>Review transfer</Button>
+</Form>
+</Card>
+
+<Card title="Credit line controls" subtitle="Platinum Credit Line ••1147">
+<Switch label="Freeze card" name="freeze" value="false" hint="Blocks new purchases immediately. Recurring bills and autopay keep working." />
+<Callout tone="info" title="What freezing does">Your card stays frozen until you turn it back on. Nothing is closed, and your score isn't affected.</Callout>
+</Card>
+
+<Card title="Statements">
+<Tabs>
+<Tab title="Pick a period">
+<Form name="statement-period">
+<Select label="Statement period" name="period" options="July 2026 | June 2026 | May 2026 | April 2026 | Custom range" />
+<Radio label="Format" options="PDF | CSV | Both" />
+<Button variant="secondary">Download statement</Button>
+</Form>
+</Tab>
+<Tab title="Recent statements">
+| Period | Closing balance | Status |
+|---|---|---|
+| July 2026 | $4,218.55 | Current |
+| June 2026 | $3,901.20 | Available |
+| May 2026 | $5,112.88 | Available |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Alerts" subtitle="Choose what triggers a notification">
+<Form name="alert-settings">
+<Checkboxes label="Notify me for" name="alerts" options="Low balance (under $500) | Large purchase (over $200) | Bill due in 3 days | Deposit posted | International charge | Credit score change" value="Low balance (under $500) | Bill due in 3 days" />
+<Radio label="How to reach me" options="Push | Text message | Email | Push and email" />
+<Slider label="Low balance threshold" name="threshold" min="100" max="2000" step="50" value="500" unit="$" />
+<Button>Save alert settings</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a transaction" subtitle="Tell us what went wrong">
+<Form name="dispute">
+<Select label="Transaction" name="transaction" options="Whole Foods Market — $86.42, Jul 28 | Pacific Gas & Electric — $142.00, Jul 26 | Blue Bottle Coffee — $6.75, Jul 25 | Spotify — $11.99, Jul 22" required="true" />
+<Select label="Reason" name="reason" options="I didn't make this purchase | Wrong amount charged | Duplicate charge | Item or service not received | Cancelled subscription still billing" required="true" />
+<TextArea label="What happened" name="details" rows="4" placeholder="Add any details that help us review this" required="true" />
+<Input label="Contact email" name="email" type="email" placeholder="maya@example.com" hint="We'll send updates here" required="true" />
+<Button variant="primary">Submit dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="warning" title="Heads up">Your Platinum Credit Line minimum payment of $142.00 is due Aug 4 and autopay is off.</Callout>
+
+<FollowUps>
+- How much did I spend on dining last month?
+- Move $400 into vacation savings
+- Show me my June statement
+- Why did my credit score change?
+- Freeze my card for the weekend
+</FollowUps>

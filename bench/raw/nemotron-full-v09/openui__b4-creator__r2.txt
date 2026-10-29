@@ -1,0 +1,94 @@
+root = Card([header, platformFilter, kpiSection, growthChart, bestPostsSection, audienceSplit, scheduledPosts, bestHourChart, commentsSection, collaborationsSection, scheduleForm], "card", "column", "l")
+
+header = CardHeader("Creator Studio", "Cross-platform analytics & scheduling")
+
+platformFilter = Select("platform_filter", platformOptions, "All platforms", null, "medium")
+platformOptions = [optAll, optIG, optTT, optYT, optTW, optLI]
+optAll = SelectItem("all", "All platforms")
+optIG = SelectItem("instagram", "Instagram")
+optTT = SelectItem("tiktok", "TikTok")
+optYT = SelectItem("youtube", "YouTube")
+optTW = SelectItem("twitter", "X (Twitter)")
+optLI = SelectItem("linkedin", "LinkedIn")
+
+kpiSection = Card([kpiHeading, kpiTable], "sunk", "column", "m")
+kpiHeading = Heading("Overview", "h3")
+kpiTable = Table([kpiMetric, kpiValue, kpiChange])
+kpiMetric = Col("Metric", ["Total Followers", "Engagement Rate", "Earnings This Month"])
+kpiValue = Col("Value", ["247.3K", "4.8%", "$12,840"])
+kpiChange = Col("Change", ["+12.3% vs last month", "+0.4pp vs last month", "+23% vs last month"])
+
+growthChart = Card([growthHeading, followerGrowth], "sunk", "column", "m")
+growthHeading = Heading("Follower Growth (30 days)", "h3")
+followerGrowth = LineChart(growthLabels, [growthSeries], "natural", "Date", "Followers")
+growthLabels = ["Day 1", "Day 5", "Day 10", "Day 15", "Day 20", "Day 25", "Day 30"]
+growthSeries = Series("Followers", [220100, 224500, 229800, 235200, 240100, 244300, 247300])
+
+bestPostsSection = Card([bestPostsHeading, bestPostsTable], "sunk", "column", "m")
+bestPostsHeading = Heading("Best Posts This Month", "h3")
+bestPostsTable = Table([postPlatform, postPreview, postReach, postEngagement, postDate])
+postPlatform = Col("Platform", ["Instagram", "TikTok", "YouTube", "Instagram", "X"])
+postPreview = Col("Post", ["Reel: Morning routine", "TikTok: Day in life", "Short: Tips #3", "Carousel: Tools", "Thread: Growth"])
+postReach = Col("Reach", ["142.3K", "287.1K", "98.4K", "67.2K", "45.8K"])
+postEngagement = Col("Engagement", ["8.2%", "12.4%", "6.1%", "5.8%", "4.3%"])
+postDate = Col("Date", ["Mar 12", "Mar 8", "Mar 18", "Mar 22", "Mar 5"])
+
+audienceSplit = Card([audienceHeading, audienceChart], "sunk", "column", "m")
+audienceHeading = Heading("Audience Split by Platform", "h3")
+audienceChart = PieChart(audienceLabels, audienceValues, "donut", "circular")
+audienceLabels = ["Instagram", "TikTok", "YouTube", "X", "LinkedIn"]
+audienceValues = [89200, 78500, 45300, 24100, 10200]
+
+scheduledPosts = Card([schedHeading, schedList], "sunk", "column", "m")
+schedHeading = Heading("Posts Scheduled This Week", "h3")
+schedList = ListBlock(schedItems, "number")
+schedItems = [sched1, sched2, sched3, sched4]
+sched1 = ListItem("Instagram Reel", "Caption ready • Mar 26, 10:00 AM", null, "Edit")
+sched2 = ListItem("TikTok Video", "Draft • Mar 27, 2:00 PM", null, "Edit")
+sched3 = ListItem("YouTube Short", "Scheduled • Mar 28, 9:00 AM", null, "View")
+sched4 = ListItem("X Thread", "Caption ready • Mar 29, 11:00 AM", null, "Edit")
+
+bestHourChart = Card([hourHeading, hourBarChart], "sunk", "column", "m")
+hourHeading = Heading("Best Hour to Post (Historical)", "h3")
+hourBarChart = HorizontalBarChart(hourLabels, [hourSeries], "grouped", "Avg Engagement %", "Hour")
+hourLabels = ["6 AM", "9 AM", "12 PM", "3 PM", "6 PM", "9 PM", "12 AM"]
+hourSeries = Series("Engagement", [3.2, 4.1, 5.8, 6.4, 7.2, 5.9, 2.8])
+
+commentsSection = Card([commentsHeading, commentsList], "sunk", "column", "m")
+commentsHeading = Heading("Comments Waiting for Reply (23)", "h3")
+commentsList = ListBlock(commentItems, "number")
+commentItems = [c1, c2, c3, c4, c5]
+c1 = ListItem("@sarah_creates", "Love this workflow! What camera?", ["Instagram", "2h ago"], "Reply")
+c2 = ListItem("@mike_tech", "Been waiting for this comparison", ["YouTube", "4h ago"], "Reply")
+c3 = ListItem("@jen_design", "Saved! Trying this tomorrow", ["TikTok", "6h ago"], "Reply")
+c4 = ListItem("@alex_dev", "Great breakdown as always", ["X", "8h ago"], "Reply")
+c5 = ListItem("@priya_marketing", "Question about the scheduling tool", ["LinkedIn", "12h ago"], "Reply")
+
+collaborationsSection = Card([collabHeading, collabList], "sunk", "column", "m")
+collabHeading = Heading("Pending Collaboration Requests (3)", "h3")
+collabList = ListBlock(collabItems, "number")
+collabItems = [col1, col2, col3]
+col1 = ListItem("TechGear Co.", "Sponsored review • $2,500 • 30-day exclusive", ["Email received Mar 20"], "Review")
+col2 = ListItem("SkillShare", "Affiliate partnership • 30% rev share", ["DM received Mar 22"], "Review")
+col3 = ListItem("Notion", "Template creator program • $1,200 + credits", ["Email received Mar 24"], "Review")
+
+scheduleForm = Card([formHeading, postForm], "sunk", "column", "m")
+formHeading = Heading("Schedule a New Post", "h3")
+postForm = Form("schedule-post", formButtons, [captionField, platformField, dateField, timeField])
+captionField = FormControl("Caption", captionInput, "Include hashtags & mentions")
+captionInput = TextArea("caption", "Write your caption here...", 4, null, "")
+platformField = FormControl("Platform(s)", platformSelect, "Select one or more")
+platformSelect = Select("platforms", platformSelectItems, "Choose platforms", null, "medium")
+platformSelectItems = [psIG, psTT, psYT, psTW, psLI]
+psIG = SelectItem("instagram", "Instagram")
+psTT = SelectItem("tiktok", "TikTok")
+psYT = SelectItem("youtube", "YouTube")
+psTW = SelectItem("twitter", "X (Twitter)")
+psLI = SelectItem("linkedin", "LinkedIn")
+dateField = FormControl("Date", datePicker, "When to publish")
+datePicker = DatePicker("publish_date", "single", null, null)
+timeField = FormControl("Time", timeInput, "Local timezone")
+timeInput = Input("publish_time", "10:00 AM", "time", null, "")
+formButtons = Buttons([scheduleBtn, cancelBtn])
+scheduleBtn = Button("Schedule Post", null, "primary")
+cancelBtn = Button("Cancel", null, "tertiary")

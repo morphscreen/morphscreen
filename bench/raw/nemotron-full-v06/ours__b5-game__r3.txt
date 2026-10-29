@@ -1,0 +1,222 @@
+# Live Operations Dashboard
+
+<Card title="Global Filters" subtitle="Changes apply to all widgets below">
+<Columns>
+<Select label="Focus Region" name="region-focus" placeholder="All regions" options="Global | NA-East | NA-West | EU-Central | EU-West | APAC-Singapore | APAC-Tokyo | SA-São Paulo" />
+<Select label="Time Window" name="time-window" placeholder="Last 24h" options="Last hour | Last 6h | Last 24h | Last 7d | Last 30d" value="Last 24h" />
+<Button variant="secondary" size="small">Apply to all</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Real-time Players">
+<Stat label="Online Now" value="247,832" change="+3.2% vs 1h ago" tone="success" />
+</Card>
+<Card title="Daily Active Players">
+<Stat label="DAU" value="1.24M" change="+1.8% WoW" tone="info" />
+</Card>
+<Card title="Monthly Active Players">
+<Stat label="MAU" value="8.7M" change="+0.9% MoM" tone="info" />
+</Card>
+<Card title="Revenue Today">
+<Stat label="Gross Revenue" value="$487,230" change="+12.4% vs yesterday" tone="success" />
+</Card>
+<Card title="Revenue Per User">
+<Stat label="ARPDAU" value="$0.39" change="+0.02 vs 7d avg" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Session Length — Last 14 Days">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session (min) | Median Session (min) |
+|---|---|---|
+| 2025-01-02 | 24.3 | 18.0 |
+| 2025-01-03 | 25.1 | 19.2 |
+| 2025-01-04 | 28.7 | 22.5 |
+| 2025-01-05 | 31.2 | 24.8 |
+| 2025-01-06 | 26.8 | 20.1 |
+| 2025-01-07 | 25.9 | 19.5 |
+| 2025-01-08 | 24.6 | 18.3 |
+| 2025-01-09 | 25.4 | 19.0 |
+| 2025-01-10 | 27.1 | 21.2 |
+| 2025-01-11 | 30.5 | 23.8 |
+| 2025-01-12 | 32.0 | 25.1 |
+| 2025-01-13 | 27.8 | 21.0 |
+| 2025-01-14 | 26.2 | 19.8 |
+| 2025-01-15 | 25.7 | 19.3 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best-Selling Items (Last 7 Days)">
+| Item | Category | Units Sold | Revenue |
+|---|---|---|---|
+| Battle Pass S12 | Battle Pass | 84,200 | $842,000 |
+| Crimson Phantom Skin | Cosmetic | 42,150 | $421,500 |
+| 5,000 Coin Bundle | Currency | 31,800 | $318,000 |
+| Golden Weapon Charm | Cosmetic | 28,900 | $144,500 |
+| XP Boost 7-Day | Consumable | 67,400 | $202,200 |
+| Seasonal Emote Pack | Cosmetic | 19,600 | $98,000 |
+| Starter Bundle | Bundle | 12,300 | $246,000 |
+</Card>
+
+<Card title="Server Region Health">
+| Region | Status | Players | Latency (ms) | Error Rate | Capacity |
+|---|---|---|---|---|---|
+| NA-East | <Badge tone="success">Healthy</Badge> | 52,400 | 38 | 0.02% | 68% |
+| NA-West | <Badge tone="success">Healthy</Badge> | 41,200 | 42 | 0.03% | 61% |
+| EU-Central | <Badge tone="success">Healthy</Badge> | 48,700 | 35 | 0.01% | 72% |
+| EU-West | <Badge tone="warning">Degraded</Badge> | 39,100 | 67 | 0.18% | 84% |
+| APAC-Singapore | <Badge tone="success">Healthy</Badge> | 28,900 | 48 | 0.04% | 55% |
+| APAC-Tokyo | <Badge tone="success">Healthy</Badge> | 22,400 | 31 | 0.02% | 48% |
+| SA-São Paulo | <Badge tone="danger">Critical</Badge> | 15,132 | 142 | 1.24% | 94% |
+</Card>
+</Columns>
+
+<Card title="Crash Rate by App Version (Last 24h)">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Crash Rate % | Sessions | Crashes |
+|---|---|---|---|
+| 3.2.1 | 0.12% | 892,000 | 1,070 |
+| 3.2.0 | 0.34% | 234,000 | 796 |
+| 3.1.5 | 0.89% | 67,000 | 596 |
+| 3.1.4 | 1.24% | 28,000 | 347 |
+| 3.1.3 | 2.11% | 12,000 | 253 |
+| Older | 3.87% | 15,000 | 581 |
+</Chart>
+</Card>
+
+<Tabs>
+<Tab title="Running Events (3)">
+<Card>
+| Event | Type | Started | Ends | Participants | Completion |
+|---|---|---|---|---|---|
+| Winter Festival 2025 | Seasonal | Jan 10 | Jan 24 | 2.1M | 34% |
+| Double XP Weekend | Recurring | Jan 17 18:00 | Jan 19 23:59 | — | — |
+| Community Challenge: 50M Kills | Community | Jan 13 | Jan 20 | 847K | 62% |
+</Card>
+</Tab>
+<Tab title="Upcoming Events (4)">
+<Card>
+| Event | Type | Starts | Ends | Status |
+|---|---|---|---|---|
+| Lunar New Year Festival | Seasonal | Jan 25 | Feb 8 | <Badge tone="info">Scheduled</Badge> |
+| Ranked Season 13 Launch | Competitive | Feb 1 | Mar 31 | <Badge tone="info">Scheduled</Badge> |
+| Valentine's Limited Skins | Cosmetic | Feb 10 | Feb 17 | <Badge tone="info">Scheduled</Badge> |
+| Anniversary Celebration | Major | Mar 15 | Mar 29 | <Badge tone="info">Planning</Badge> |
+</Card>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Player Reports Awaiting Review">
+<Stat label="Open Reports" value="1,247" change="+89 since last hour" tone="warning" />
+<Details title="Top Categories" open="true">
+| Category | Count | Avg Resolution |
+|---|---|---|
+| Cheating/Hacks | 412 | 4.2h |
+| Toxicity/Harassment | 387 | 2.8h |
+| Griefing/Team Killing | 198 | 3.1h |
+| Exploits/Bugs | 134 | 6.5h |
+| Inappropriate Name | 116 | 1.2h |
+</Details>
+</Card>
+
+<Card title="Ban Appeals Awaiting Review">
+<Stat label="Open Appeals" value="342" change="-12 since last hour" tone="info" />
+<Details title="By Verdict Type" open="true">
+| Original Action | Appeals | Overturned Rate |
+|---|---|---|
+| Permanent Ban | 156 | 8% |
+| 30-Day Suspension | 98 | 14% |
+| 7-Day Suspension | 54 | 22% |
+| Chat Restriction | 34 | 35% |
+</Details>
+</Card>
+</Columns>
+
+<Card title="In-Game Currency Inflation Index">
+<Chart type="line" x="Date" y="Index (Base=100)">
+| Date | Gold Index | Gem Index | USD Equivalent |
+|---|---|---|---|
+| 2024-12-01 | 100.0 | 100.0 | $1.00 = 1,000 Gold |
+| 2024-12-15 | 103.2 | 101.5 | $1.00 = 969 Gold |
+| 2025-01-01 | 108.7 | 104.2 | $1.00 = 920 Gold |
+| 2025-01-08 | 112.4 | 106.8 | $1.00 = 890 Gold |
+| 2025-01-15 | 115.9 | 108.3 | $1.00 = 863 Gold |
+</Chart>
+</Card>
+
+<Card title="Running Experiments">
+<Tabs>
+<Tab title="Exp: New Player Onboarding Flow">
+<Columns>
+<Stat label="Variant A (Control)" value="28.4% D1 Retention" tone="neutral" />
+<Stat label="Variant B (New Flow)" value="31.7% D1 Retention" change="+3.3pp" tone="success" />
+</Columns>
+<Progress value="87" max="100" label="Statistical Significance: 87% (target 95%)" tone="warning" />
+<Callout tone="info" title="Status">Running since Jan 8. 42,000 users enrolled. Expected conclusion: Jan 22.</Callout>
+</Tab>
+<Tab title="Exp: Battle Pass Price Elasticity">
+<Columns>
+<Stat label="Variant A ($9.99)" value="12.3% Purchase Rate" tone="neutral" />
+<Stat label="Variant B ($7.99)" value="18.7% Purchase Rate" change="+6.4pp" tone="success" />
+</Columns>
+<Progress value="72" max="100" label="Statistical Significance: 72% (target 95%)" tone="warning" />
+<Callout tone="info" title="Status">Running since Jan 10. 28,000 users enrolled. Revenue per user: A=$1.23, B=$1.49.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Draft Patch Notes">
+<Form name="patch-notes-draft">
+<TextArea label="Patch Notes (Markdown)" name="patch-notes" placeholder="## Version 3.2.2 - January 20, 2025
+
+### Bug Fixes
+- Fixed crash when opening inventory during combat (SA region)
+- Resolved desync issue in ranked matchmaking
+- Corrected Winter Festival reward claim error
+
+### Balance Changes
+- Reduced Crimson Phantom damage by 5%
+- Increased XP Boost duration from 6d to 7d
+
+### Known Issues
+- Minor UI overlap in Korean locale (fix in 3.2.3)" rows="14" hint="Use Markdown. Preview renders below." />
+<Columns>
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Discard</Button>
+</Columns>
+</Form>
+</Card>
+
+<Card title="Ship Hotfix">
+<Form name="hotfix-deploy">
+<Columns>
+<Input label="Hotfix ID" name="hotfix-id" placeholder="HF-2025-01-15-001" required="true" />
+<Select label="Target Region(s)" name="hotfix-regions" placeholder="Select regions" options="Global | NA-East | NA-West | EU-Central | EU-West | APAC-Singapore | APAC-Tokyo | SA-São Paulo" required="true" />
+</Columns>
+<Columns>
+<Select label="Severity" name="hotfix-severity" placeholder="Select severity" options="Critical (immediate) | High (within 2h) | Medium (next maintenance) | Low (next patch)" required="true" />
+<Input label="Build Version" name="hotfix-build" placeholder="3.2.1-hf.3" required="true" />
+</Columns>
+<TextArea label="Changes Included" name="hotfix-changes" placeholder="- Fix SA-São Paulo server crash (OOM in entity manager)
+- Patch memory leak in Winter Festival event handler
+- Rollback Battle Pass price experiment Variant B" rows="5" required="true" />
+<Checkboxes label="Confirmation" name="hotfix-confirm" options="QA sign-off obtained | Rollback plan documented | On-call notified | Player comms drafted" required="true" />
+<Columns>
+<Button variant="danger">Deploy Hotfix</Button>
+<Button variant="secondary">Save as Staged</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the SA-São Paulo incident timeline
+- Compare experiment revenue impact projections
+- List all players affected by the Winter Festival reward bug
+- Generate patch notes from last 5 hotfixes
+- Export today's KPI snapshot for leadership
+</FollowUps>

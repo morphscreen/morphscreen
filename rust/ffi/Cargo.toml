@@ -1,0 +1,22 @@
+[package]
+name = "morphscreen-ffi"
+description = "C ABI and WASM exports of the core."
+version.workspace = true
+edition.workspace = true
+license = "Apache-2.0"
+publish.workspace = true
+
+[lib]
+name = "morphscreen"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[dependencies]
+morphscreen-core = { path = "../core" }
+
+[features]
+default = ["agent"]
+# The AG-UI client (morphscreen_core::agui) in the WASM exports; the web SDK
+# builds without it too, for pages that don't talk to an agent.
+agent = []
+# JNI exports for the Kotlin SDK (sdk/android): com.morphscreen.core.Native.
+jni = []

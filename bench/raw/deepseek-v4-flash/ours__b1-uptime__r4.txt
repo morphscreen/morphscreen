@@ -1,0 +1,25 @@
+# Platform Status
+
+<Badge tone="success">All systems operational</Badge>
+
+<Card title="1. API uptime — this month">
+<Columns>
+<Stat label="Uptime" value="99.97%" tone="success" icon="chart-line" note="SLA target 99.95%" />
+<Stat label="Incidents" value="3" note="All resolved" />
+<Stat label="Longest downtime" value="1h 14m" note="Most recent incident" />
+</Columns>
+<Progress value="99.97" max="100" label="Uptime percentage" tone="success" />
+</Card>
+
+<Card title="2. Most recent incident">
+<Callout tone="success" title="Resolved: Elevated API error rates">
+Brief 5xx error spike between 13:02 and 14:16 UTC on June 23, caused by database connection-pool exhaustion after a bad dependency deploy. Fixed by scaling read replicas and restarting the pool.
+
+<Badge tone="success">Resolved</Badge> Resolved at 14:16 UTC on June 23.
+</Callout>
+</Card>
+
+<Details title="Other incidents this month">
+- June 12 — Deploy blip, 4-minute latency increase; resolved at 09:32 UTC.
+- June 3 — Scheduled maintenance; no customer-facing downtime.
+</Details>

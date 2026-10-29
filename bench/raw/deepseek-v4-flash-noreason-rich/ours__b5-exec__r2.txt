@@ -1,0 +1,154 @@
+# Quarterly Command View
+
+<Card title="Quarter Selector & Region Focus">
+<Columns>
+<div>
+<Select label="Reporting quarter" options="Q1 FY25 | Q2 FY25 | Q3 FY25 | Q4 FY25" name="quarter" value="Q3 FY25" />
+</div>
+<div>
+<Select label="Region" options="All regions | North America | Europe | APAC | LATAM" name="region" value="All regions" />
+</div>
+<div>
+<Button variant="secondary" icon="download">Export pack (PDF)</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Financial Summary — Q3 FY25">
+<Columns>
+<Stat label="Revenue" value="$48.2M" change="+12.4% QoQ" tone="success" icon="trend-up" />
+<Stat label="Costs" value="$41.7M" change="+8.1% QoQ" tone="warning" icon="receipt" />
+<Stat label="Profit" value="$6.5M" change="+38.3% QoQ" tone="success" icon="chart-line" />
+<Stat label="Runway" value="14 months" change="Stable vs last quarter" tone="info" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Revenue & Costs — Trailing Four Quarters">
+<Columns>
+<div>
+<Chart type="line" title="Revenue by Quarter" x="Quarter" y="USD (M)">
+| Quarter | Revenue |
+|---|---|
+| Q4 FY24 | 34.2 |
+| Q1 FY25 | 37.8 |
+| Q2 FY25 | 42.9 |
+| Q3 FY25 | 48.2 |
+</Chart>
+</div>
+<div>
+<Chart type="line" title="Costs by Quarter" x="Quarter" y="USD (M)">
+| Quarter | Costs |
+|---|---|
+| Q4 FY24 | 31.5 |
+| Q1 FY25 | 34.0 |
+| Q2 FY25 | 38.6 |
+| Q3 FY25 | 41.7 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Budget vs Plan by Department">
+<Chart type="horizontal" title="Spend vs Plan — Q3 FY25" x="Department" y="USD (M)">
+| Department | Plan | Actual |
+|---|---|---|
+| Engineering | 12.5 | 13.1 |
+| Sales & Marketing | 9.8 | 11.2 |
+| Operations | 7.4 | 7.1 |
+| Product | 5.6 | 6.0 |
+| G&A | 4.2 | 4.3 |
+</Chart>
+<Callout tone="warning" title="Over budget">Sales & Marketing is 14% over plan. Engineering is 5% over. Review with owners before month-end.</Callout>
+</Card>
+
+<Card title="Headcount by Department">
+<Chart type="bar" title="FTE by Department — Q3 FY25" x="Department" y="Employees">
+| Department | Headcount |
+|---|---|
+| Engineering | 142 |
+| Sales & Marketing | 98 |
+| Operations | 76 |
+| Product | 54 |
+| G&A | 38 |
+</Chart>
+<Stat label="Total headcount" value="408" change="+6.3% QoQ" icon="users" />
+</Card>
+
+<Card title="Sales Pipeline & Win Rate">
+<Columns>
+<Stat label="Pipeline value" value="$86.4M" change="+18% QoQ" tone="success" icon="funnel" />
+<Stat label="Win rate" value="27%" change="+2 pts QoQ" tone="success" icon="target" />
+</Columns>
+<Chart type="bar" title="Pipeline by Stage" x="Stage" y="USD (M)">
+| Stage | Value |
+|---|---|
+| Qualification | 18.2 |
+| Discovery | 24.6 |
+| Proposal | 21.9 |
+| Negotiation | 21.7 |
+</Chart>
+</Card>
+
+<Card title="Customers & NPS">
+<Columns>
+<Stat label="Customers" value="1,284" change="+3.1% QoQ" tone="success" icon="building-office" />
+<Stat label="Churn rate" value="4.2%" change="−0.8 pts QoQ" tone="success" icon="user-minus" />
+<Stat label="NPS" value="52" change="+6 pts QoQ" tone="success" icon="star" />
+</Columns>
+</Card>
+
+<Card title="Top Risks">
+| Risk | Owner | Mitigation | Status |
+|---|---|---|---|
+| Key customer concentration (top 3 = 31% revenue) | CRO | Diversify mid-market; enterprise expansion plan | <Badge tone="warning">Monitoring</Badge> |
+| Supply chain delay on hardware line | COO | Dual-source suppliers; buffer stock +2 weeks | <Badge tone="danger">Elevated</Badge> |
+| Engineering attrition (12% trailing 6 mo) | CTO | Retention program; comp benchmarking | <Badge tone="warning">Monitoring</Badge> |
+| FX exposure in APAC | CFO | Hedging contracts; local pricing review | <Badge tone="info">Mitigated</Badge> |
+</Card>
+
+<Card title="Strategic Initiatives">
+<Columns>
+<div>
+<Badge tone="success">On track</Badge>
+**Enterprise expansion** — 18 new logos signed; pipeline $12.4M. On track for FY25 goal.
+<Progress value="72" max="100" label="Progress" tone="success" />
+</div>
+<div>
+<Badge tone="warning">At risk</Badge>
+**AI product launch** — Beta delayed 3 weeks; engineering capacity constrained.
+<Progress value="45" max="100" label="Progress" tone="warning" />
+</div>
+<div>
+<Badge tone="success">On track</Badge>
+**Global ops consolidation** — EU warehouse live; APAC hub Q4.
+<Progress value="68" max="100" label="Progress" tone="success" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Board Meeting — Next Items">
+<Steps>
+<Step title="Approve Q4 hiring plan" status="todo" subtitle="Add 24 roles across Sales & Engineering" />
+<Step title="Review AI launch timeline" status="todo" subtitle="Decision needed on slip vs. scope cut" />
+<Step title="Approve APAC office lease" status="todo" subtitle="Singapore, 5-yr term, $2.1M total" />
+<Step title="Ratify executive comp changes" status="todo" subtitle="Legal reviewed; board vote required" />
+<Step title="Discuss M&A candidate (Alpha Labs)" status="todo" subtitle="NDA signed; initial due diligence done" />
+</Steps>
+<Button variant="primary" ask>Generate board pack</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="secondary" ask>Drill into revenue by product line</Button>
+<Button variant="secondary" ask>Show cost breakdown by vendor</Button>
+<Button variant="secondary" ask>Compare this quarter to Q3 FY24</Button>
+<Button variant="secondary" ask>See detailed churn cohort analysis</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- What's driving the sales & marketing budget overrun?
+- Show the top 5 deals in the pipeline
+- Which initiatives need board attention most?
+- Break down revenue by region for this quarter
+</FollowUps>

@@ -1,0 +1,177 @@
+# Airline Hub Operations Desk
+
+<Badge tone="info">Live Operations View</Badge> <Badge tone="warning">Weather Advisory Active</Badge>
+
+<Card title="Hub Selection">
+<Form name="hub-select">
+<Select label="Select Hub" options="JFK — New York | ATL — Atlanta | DFW — Dallas | DEN — Denver | ORD — Chicago" name="hub" value="ATL — Atlanta" />
+<Button>Switch Hub</Button>
+</Form>
+</Card>
+
+<Card title="Today's Performance">
+<Columns>
+<Stat label="On-Time Performance" value="78.4%" note="Target: 85%" tone="warning" icon="chart-line" />
+<Stat label="Average Passenger Load" value="87.2%" note="+3.1% vs yesterday" tone="success" icon="users" />
+<Stat label="Average Turnaround Time" value="42 min" note="Sector avg: 38 min" tone="neutral" icon="clock" />
+<Stat label="Cancellations Today" value="7" note="3 weather-related" tone="danger" icon="x-circle" />
+</Columns>
+</Card>
+
+<Card title="Flights Overview">
+<Tabs>
+<Tab title="All Flights">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 2041 | ATL → LGA | B12 | <Badge tone="success">On Time</Badge> |
+| DL 1187 | ATL → LAX | C4 | <Badge tone="warning">Delayed 35 min</Badge> |
+| DL 552 | ATL → MIA | A7 | <Badge tone="success">On Time</Badge> |
+| DL 993 | ATL → SFO | C9 | <Badge tone="danger">Cancelled</Badge> |
+| DL 301 | ATL → ORD | B3 | <Badge tone="warning">Delayed 20 min</Badge> |
+| DL 774 | ATL → JFK | A2 | <Badge tone="success">On Time</Badge> |
+| DL 1655 | ATL → DEN | C11 | <Badge tone="warning">Delayed 50 min</Badge> |
+| DL 421 | ATL → DFW | B8 | <Badge tone="success">On Time</Badge> |
+</Tabs>
+<Tab title="Delayed Only">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1187 | ATL → LAX | C4 | <Badge tone="warning">Delayed 35 min</Badge> |
+| DL 301 | ATL → ORD | B3 | <Badge tone="warning">Delayed 20 min</Badge> |
+| DL 1655 | ATL → DEN | C11 | <Badge tone="warning">Delayed 50 min</Badge> |
+</Tabs>
+<Tab title="Cancelled Only">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 993 | ATL → SFO | C9 | <Badge tone="danger">Cancelled</Badge> |
+| DL 410 | ATL → SEA | A5 | <Badge tone="danger">Cancelled</Badge> |
+| DL 227 | ATL → BOS | B10 | <Badge tone="danger">Cancelled</Badge> |
+</Tabs>
+</Tabs>
+</Card>
+
+<Card title="Delayed Flights — Action Required">
+<Callout tone="warning" title="3 flights delayed over 15 minutes">
+Crew rest constraints approaching for DL 1655. Reassignment pool available.
+</Callout>
+
+<Columns>
+<Card title="DL 1187 → LAX">
+<Badge tone="warning">+35 min</Badge>
+- **Gate:** C4
+- **New departure:** 14:50 (was 14:15)
+- **Reason:** Late inbound aircraft
+- **Connections at risk:** 12 passengers
+</Card>
+<Card title="DL 1655 → DEN">
+<Badge tone="warning">+50 min</Badge>
+- **Gate:** C11
+- **New departure:** 15:40 (was 14:50)
+- **Reason:** Weather hold en route
+- **Connections at risk:** 8 passengers
+</Card>
+<Card title="DL 301 → ORD">
+<Badge tone="warning">+20 min</Badge>
+- **Gate:** B3
+- **New departure:** 15:10 (was 14:50)
+- **Reason:** Ramp congestion
+- **Connections at risk:** 3 passengers
+</Card>
+</Columns>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | Old Gate | New Gate |
+|---|---|---|---|
+| 14:22 | DL 2041 | B11 | **B12** |
+| 14:05 | DL 552 | A9 | **A7** |
+| 13:48 | DL 774 | A1 | **A2** |
+| 13:30 | DL 421 | B7 | **B8** |
+</Card>
+
+<Card title="Crews Available for Reassignment">
+<Columns>
+<Card title="Flight Deck">
+<Avatar name="Capt. R. Okafor" subtitle="A320 — 4h25m remaining" />
+<Avatar name="FO M. Lindqvist" subtitle="A320 — 4h25m remaining" />
+<Avatar name="Capt. J. Alvarez" subtitle="B737 — 6h10m remaining" />
+</Card>
+<Card title="Cabin Crew">
+<Avatar name="S. Whitfield" subtitle="Lead FA — 5h40m remaining" />
+<Avatar name="T. Nakamura" subtitle="FA — 5h40m remaining" />
+<Avatar name="L. Ferreira" subtitle="FA — 5h40m remaining" />
+<Avatar name="D. Kowalski" subtitle="FA — 3h55m remaining" />
+</Card>
+</Columns>
+<Button variant="secondary" label="Assign to DL 1655">Assign to DL 1655</Button>
+</Card>
+
+<Card title="Weather Advisories — ATL Hub">
+<Callout tone="warning" title="Thunderstorm Watch until 18:00 EST">
+Scattered thunderstorms within 15 nm of ATL. Expect ground stops and holding delays of 30–60 minutes. Ramp operations may pause during lightning within 5 nm.
+</Callout>
+<Columns>
+<Stat label="Wind" value="12 kt SW" note="Gusts to 22 kt" />
+<Stat label="Visibility" value="6 mi" note="Reducing to 3 mi in rain" />
+<Stat label="Ceiling" value="4,000 ft" note="Broken" />
+<Stat label="Temp" value="28°C" note="Feels like 31°C" />
+</Columns>
+</Card>
+
+<Card title="Connections at Risk of Being Missed">
+<Callout tone="danger" title="23 passengers across 6 itineraries">
+Minimum connection times may be missed. Rebooking recommended.
+</Callout>
+
+| Passenger | Flight | Connection | Time | Risk |
+|---|---|---|---|---|
+| M. Chen | DL 1187 → LAX | DL 2201 LAX → SFO | 45 min | <Badge tone="danger">High</Badge> |
+| A. Rodriguez | DL 1187 → LAX | DL 314 LAX → SEA | 55 min | <Badge tone="warning">Medium</Badge> |
+| P. Osei | DL 1655 → DEN | UA 822 DEN → SLC | 40 min | <Badge tone="danger">High</Badge> |
+| K. Tanaka | DL 1655 → DEN | WN 445 DEN → PHX | 60 min | <Badge tone="warning">Medium</Badge> |
+| S. Ivanova | DL 301 → ORD | AA 128 ORD → MIA | 50 min | <Badge tone="warning">Medium</Badge> |
+
+<Button>View all 23 at-risk passengers</Button>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebooking">
+<Input label="Passenger confirmation or name" name="passenger-search" placeholder="e.g. M. Chen or DL-88213" />
+<Select label="Replacement flight" options="DL 2041 → LGA 15:10 | DL 552 → MIA 15:25 | DL 774 → JFK 16:05 | DL 421 → DFW 16:40 | DL 301 → ORD 17:15" name="replacement" placeholder="Select flight" />
+<Radio label="Rebooking preference" options="Next available flight | Same day only | Any day this week" name="preference" />
+<Checkboxes label="Notify via" options="SMS | Email | App push" name="notify" value="SMS | Email" />
+<Button>Rebook Selected Passengers</Button>
+<Button variant="secondary">View fare difference</Button>
+</Form>
+</Card>
+
+<Card title="Turnaround Time Analysis">
+<Chart type="bar" title="Average turnaround by airline group (minutes)" x="Airline" y="Minutes">
+| Airline | Turnaround |
+|---|---|
+| Delta | 42 |
+| Southwest | 35 |
+| American | 48 |
+| United | 45 |
+| Regional | 38 |
+</Chart>
+<Callout tone="info" title="Optimization opportunity">
+Delta mainline turnaround is 7 minutes above the hub average. Ramp staffing during peak bank (14:00–16:00) is the primary constraint.
+</Callout>
+</Card>
+
+<Card title="Operational Summary">
+<Columns>
+<Stat label="On-Time Performance" value="78.4%" note="11 of 14 departures on time" tone="warning" icon="chart-line" />
+<Stat label="Average Passenger Load" value="87.2%" note="1,842 passengers today" tone="success" icon="users" />
+<Stat label="Cancellations Today" value="7" note="3 weather, 2 mechanical, 2 crew" tone="danger" icon="x-circle" />
+<Stat label="Average Turnaround" value="42 min" note="Sector avg: 38 min" tone="neutral" icon="clock" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full list of 23 at-risk passengers
+- What is the weather outlook for the next 6 hours?
+- Which crews can cover DL 1655 to DEN?
+- Compare today's performance to yesterday
+- Show gate assignments for the next 2 hours
+</FollowUps>

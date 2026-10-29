@@ -1,0 +1,76 @@
+<Card title="Budget Check" subtitle="March 2025">
+<Columns>
+<Select label="Month" name="month" value="March 2025" options="January 2025 | February 2025 | March 2025 | April 2025" />
+</Columns>
+
+<Callout tone="info" title="Budget Overview">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,145" change="+$245 vs last month" />
+<Stat label="Remaining" value="$855" />
+</Columns>
+<Progress value="2145" max="3000" label="71.5% of budget used" />
+</Callout>
+
+<Columns>
+<Card title="Spending by Category">
+<Chart type="pie" title="Category Breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Food | 480 |
+| Transport | 320 |
+| Utilities | 180 |
+| Entertainment | 120 |
+| Other | 95 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="warning" title="Rent Payment">
+<Badge tone="danger">$950</Badge>
+<p>Paid to Oakwood Apartments on March 1st</p>
+<p>Category: Housing • Recurring monthly</p>
+</Callout>
+</Card>
+</Columns>
+
+<Details title="All Expenses This Month">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Mar 1 | Housing | Rent - Oakwood Apartments | $950 |
+| Mar 3 | Food | Groceries - Whole Foods | $142 |
+| Mar 5 | Transport | Gas - Shell | $55 |
+| Mar 7 | Food | Dinner - Luigi's | $89 |
+| Mar 10 | Utilities | Electric bill | $120 |
+| Mar 12 | Food | Groceries - Trader Joe's | $98 |
+| Mar 15 | Entertainment | Netflix + Spotify | $35 |
+| Mar 18 | Transport | Uber to airport | $42 |
+| Mar 20 | Food | Lunch meetings | $67 |
+| Mar 22 | Other | Pharmacy | $38 |
+| Mar 25 | Utilities | Internet bill | $60 |
+| Mar 28 | Entertainment | Movie tickets | $45 |
+| Mar 30 | Transport | Car wash + maintenance | $223 |
+</Details>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Columns>
+<Input label="Date" name="date" type="date" value="2025-03-31" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transport | Utilities | Entertainment | Other" required="true" />
+</Columns>
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="USD" required="true" />
+<Columns>
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+</Card>
+
+<FollowUps>
+- Show me a trend of my spending over the last 6 months
+- Set up budget alerts for when I exceed 80% in any category
+- Export this month's expenses to CSV
+</FollowUps>

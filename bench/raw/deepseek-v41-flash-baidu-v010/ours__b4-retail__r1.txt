@@ -1,0 +1,148 @@
+# Store Manager Console — Riverside #412
+
+<Columns>
+<Stat label="Sales today" value="$18,240" change="+6.2% vs plan" tone="success" icon="chart-line" />
+<Stat label="Target" value="$21,000" note="86.9% to goal" tone="info" icon="target" />
+<Stat label="Foot traffic" value="1,412" change="+11% vs last Tue" tone="success" icon="users" />
+<Stat label="Avg basket" value="$34.18" change="+$1.05" tone="success" icon="basket" />
+</Columns>
+
+<Progress value={18240} max={21000} label="Sales vs daily target" tone="info" />
+
+<Card title="Today at a glance" subtitle="Tuesday, 4:10 PM — 2h 50m left in trading">
+| Metric | Today | Same day last week |
+|---|---|---|
+| Sales | $18,240 | $17,180 |
+| Transactions | 534 | 512 |
+| Avg basket | $34.18 | $33.13 |
+| Returns | $412 | $530 |
+| Items out of stock | 6 | 3 |
+</Card>
+
+<Card title="Foot traffic through the day" subtitle="Entries per hour, counted at the door">
+<Chart type="bar" x="Hour" y="Entries">
+| Hour | Entries |
+|---|---|
+| 8am | 62 |
+| 9am | 94 |
+| 10am | 138 |
+| 11am | 171 |
+| 12pm | 208 |
+| 1pm | 196 |
+| 2pm | 154 |
+| 3pm | 187 |
+| 4pm | 202 |
+</Chart>
+</Card>
+
+<Card title="Best sellers today" subtitle="Ranked by units sold">
+| Rank | Item | SKU | Units | Revenue |
+|---|---|---|---|---|
+| 1 | Cold Brew 1L | BEV-1042 | 96 | $576 |
+| 2 | Sourdough Loaf | BAK-2210 | 71 | $390 |
+| 3 | Free-Range Eggs (12) | DAI-3301 | 64 | $288 |
+| 4 | Bananas (per kg) | PRO-1108 | 58 | $104 |
+| 5 | Sparkling Water 6pk | BEV-1180 | 43 | $215 |
+</Card>
+
+<Card title="Out of stock" subtitle="6 items need action">
+| Item | SKU | Shelf | Last sold | Status |
+|---|---|---|---|---|
+| Whole Milk 2L | DAI-3305 | Aisle 4 | 11:20 AM | <Badge tone="danger">Out</Badge> |
+| Greek Yogurt 500g | DAI-3320 | Aisle 4 | 9:45 AM | <Badge tone="danger">Out</Badge> |
+| Olive Oil 750ml | GRO-4410 | Aisle 7 | Yesterday | <Badge tone="danger">Out</Badge> |
+| Paper Towels 4pk | HOM-5521 | Aisle 9 | Yesterday | <Badge tone="danger">Out</Badge> |
+| Cheddar Block 400g | DAI-3344 | Aisle 4 | 10:05 AM | <Badge tone="warning">Low (2)</Badge> |
+| Still Water 6pk | BEV-1190 | Aisle 2 | 1:30 PM | <Badge tone="warning">Low (3)</Badge> |
+</Card>
+
+<Card title="Reorder an item">
+<Form name="reorder">
+<Select label="Item" name="item" placeholder="Choose an item" options="Whole Milk 2L (DAI-3305) | Greek Yogurt 500g (DAI-3320) | Olive Oil 750ml (GRO-4410) | Paper Towels 4pk (HOM-5521) | Cheddar Block 400g (DAI-3344)" required="true" />
+<Input label="Quantity" name="qty" type="number" min={1} max={200} value="24" hint="Cases or units, per your supplier's pack size" required="true" />
+<Select label="Delivery" name="delivery" options="Next-day AM | Next-day PM | Standard (2-3 days)" />
+<TextArea label="Note to supplier" name="note" placeholder="Optional — e.g. urgent, shelf is empty" rows={2} />
+<Button>Send reorder</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="On shift today" subtitle="9 scheduled, 8 clocked in">
+<Columns>
+<Avatar name="Dana Whitfield" subtitle="Store manager · 7am–4pm" />
+<Avatar name="Marcus Lee" subtitle="Supervisor · 7am–4pm" />
+<Avatar name="Priya Raman" subtitle="Checkout · 8am–4pm" />
+<Avatar name="Tom Okafor" subtitle="Produce · 6am–2pm" />
+<Avatar name="Sofia Marchetti" subtitle="Bakery · 5am–1pm" />
+<Avatar name="Ken Adeyemi" subtitle="Stock · 9am–6pm" />
+<Avatar name="Lena Fischer" subtitle="Checkout · 12pm–8pm" />
+<Avatar name="Jonah Pike" subtitle="Checkout · 2pm–10pm" />
+</Columns>
+<Callout tone="warning" title="Cover gap">Ravi Nair called in sick — 4pm–8pm checkout is one person short.</Callout>
+</Card>
+
+<Card title="Registers">
+| Register | Operator | Status | Sales today |
+|---|---|---|---|
+| Till 1 | Priya Raman | <Badge tone="success">Open</Badge> | $6,410 |
+| Till 2 | Lena Fischer | <Badge tone="success">Open</Badge> | $5,980 |
+| Till 3 | — | <Badge tone="neutral">Closed</Badge> | $0 |
+| Self-checkout A | — | <Badge tone="success">Open</Badge> | $2,740 |
+| Self-checkout B | — | <Badge tone="warning">Needs cash</Badge> | $2,110 |
+| Customer service | Marcus Lee | <Badge tone="success">Open</Badge> | $1,000 |
+</Card>
+
+<Card title="Returns this week" subtitle="Monday–Tuesday to date">
+<Columns>
+<Stat label="Returns" value="$1,284" change="-8% vs last week" tone="success" icon="arrow-u-up-left" />
+<Stat label="Return rate" value="3.1%" change="of sales" tone="info" icon="percent" />
+<Stat label="Items" value="47" note="Mostly apparel" />
+</Columns>
+| Reason | Count | Value |
+|---|---|---|
+| Wrong size | 19 | $512 |
+| Damaged | 12 | $341 |
+| Changed mind | 11 | $298 |
+| Faulty | 5 | $133 |
+</Card>
+
+<Card title="Running promotions" subtitle="3 live, 1 ending tonight">
+| Promotion | Mechanic | Redemptions | Lift | Status |
+|---|---|---|---|---|
+| Bakery 20% off | 20% off all loaves | 214 | +18% units | <Badge tone="success">On track</Badge> |
+| 2-for-1 Sparkling Water | Buy 2 get 1 free | 96 | +11% units | <Badge tone="success">On track</Badge> |
+| Member points x2 | Loyalty double points | 341 | +4% basket | <Badge tone="info">Steady</Badge> |
+| Fresh Veg Bundle | $9.99 fixed bundle | 58 | +2% units | <Badge tone="warning">Ends tonight</Badge> |
+</Card>
+
+<Card title="This week vs last week" subtitle="Week to date, both stores combined below">
+<Chart type="line" x="Day" y="Sales">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 16400 | 15800 |
+| Tue | 18240 | 17180 |
+| Wed | 0 | 17600 |
+| Thu | 0 | 18900 |
+| Fri | 0 | 24300 |
+| Sat | 0 | 29800 |
+| Sun | 0 | 21400 |
+</Chart>
+| Metric | This week | Last week | Change |
+|---|---|---|---|
+| Sales | $34,640 | $32,980 | +5.0% |
+| Transactions | 1,041 | 998 | +4.3% |
+| Avg basket | $33.27 | $33.05 | +0.7% |
+| Returns | $1,284 | $1,396 | -8.0% |
+</Card>
+
+<Card title="Switch store">
+<Select label="Store" name="store" options="Riverside #412 (current) | Northgate #208 | Harbour Point #517 | Elmwood #330" hint="Switching reloads sales, traffic, and shift data for that store" />
+<Button variant="secondary">View store</Button>
+</Card>
+
+<FollowUps>
+- Which items should I reorder first?
+- Show me the full shift schedule for tomorrow
+- Why did returns drop this week?
+- Compare Riverside with Northgate
+</FollowUps>

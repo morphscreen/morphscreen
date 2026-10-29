@@ -1,0 +1,110 @@
+# Power Network Operator Console
+
+<Stat label="Current Load" value="4,823 MW" change="+2.1%" tone="info" icon="lightning" />
+<Stat label="Network Capacity" value="5,200 MW" tone="warning" icon="chart-line" />
+<Stat label="Price per MWh" value="$47.20" change="-0.8%" tone="info" icon="currency-circle-dollar" />
+<Stat label="Emissions Today" value="1,842 tCO₂" tone="neutral" icon="leaf" />
+
+<Progress value="4823" max="5200" label="Network load vs capacity (92.8%)" tone="warning" />
+
+<Card title="Generation Mix" subtitle="Live split by source">
+<Chart type="donut" title="Generation by source">
+| Source | MW |
+|---|---|
+| Natural Gas | 2150 |
+| Nuclear | 1200 |
+| Wind | 780 |
+| Solar | 490 |
+| Hydro | 203 |
+</Chart>
+</Card>
+
+<Card title="Power Plants" subtitle="Output and status">
+| Plant | Output (MW) | Status |
+|---|---|---|
+| Riverside CCGT | 1,100 | <Badge tone="success">Online</Badge> |
+| Valley Nuclear | 1,200 | <Badge tone="success">Online</Badge> |
+| Hilltop Wind Farm | 780 | <Badge tone="warning">Reduced (low wind)</Badge> |
+| Desert Solar Array | 490 | <Badge tone="warning">Reduced (dusk)</Badge> |
+| Dam Hydro | 203 | <Badge tone="success">Online</Badge> |
+| Backup Gas Peaker | 50 | <Badge tone="neutral">Standby</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected Customers | Cause | Status |
+|---|---|---|---|
+| North Suburbs | 12,400 | Transformer fire | <Badge tone="danger">Critical</Badge> |
+| East Industrial Zone | 3,100 | Cable fault | <Badge tone="warning">In repair</Badge> |
+| West County | 890 | Planned maintenance | <Badge tone="info">Scheduled</Badge> |
+
+<Button ask="Show outage details for North Suburbs">North Suburbs details</Button>
+<Button ask="Show outage details for East Industrial Zone">East Industrial Zone details</Button>
+<Button ask="Show outage details for West County">West County details</Button>
+</Card>
+
+<Card title="Demand Forecast" subtitle="Next 24 hours">
+<Chart type="line" x="Hour" y="MW">
+| Hour | Forecast |
+|---|---|
+| 00:00 | 4200 |
+| 02:00 | 3900 |
+| 04:00 | 3700 |
+| 06:00 | 4000 |
+| 08:00 | 4600 |
+| 10:00 | 4900 |
+| 12:00 | 5100 |
+| 14:00 | 5000 |
+| 16:00 | 4800 |
+| 18:00 | 4700 |
+| 20:00 | 4500 |
+| 22:00 | 4300 |
+</Chart>
+</Card>
+
+<Card title="Planned Maintenance" subtitle="This month">
+| Date | Plant | Work | Duration |
+|---|---|---|---|
+| Mar 12-14 | Riverside CCGT | Turbine inspection | 3 days |
+| Mar 18 | Valley Nuclear | Control rod test | 1 day |
+| Mar 22-23 | Hilltop Wind Farm | Gearbox replacement | 2 days |
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="Critical: Transformer fire North Substation">12,400 customers affected. ETA for repair: 6 hours.</Callout>
+<Callout tone="warning" title="Wind farm output dropping">Hilltop Wind Farm at 65% capacity due to low wind. Expected recovery in 4 hours.</Callout>
+<Callout tone="info" title="Solar generation declining">Desert Solar Array ramping down for sunset. Grid load shifting to gas peaker.</Callout>
+</Card>
+
+<Card title="Focus on a Region">
+<Form name="region-focus">
+<Select label="Select region" options="All Regions | North | South | East | West | Central" placeholder="Choose a region" />
+<Button>Apply filter</Button>
+</Form>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Request load reduction">
+<Form name="curtailment-order">
+<Select label="Target region" options="North | South | East | West | Central" placeholder="Select region" />
+<Slider label="Load reduction target" min="0" max="500" step="10" value="100" name="reduction" unit="MW" />
+<Select label="Duration" options="30 minutes | 1 hour | 2 hours | 4 hours | Until further notice" placeholder="Select duration" />
+<TextArea label="Reason" placeholder="e.g., Grid stability, equipment overload" />
+<Button variant="danger">Order curtailment</Button>
+</Form>
+</Card>
+
+<Map title="Network map" lat="51.5074" lng="-0.1278" zoom="8">
+<Marker lat="51.5" lng="-0.13" label="Riverside CCGT" />
+<Marker lat="51.6" lng="-0.2" label="Valley Nuclear" />
+<Marker lat="51.8" lng="-0.5" label="Hilltop Wind Farm" />
+<Marker lat="51.3" lng="0.1" label="Desert Solar Array" />
+<Marker lat="51.4" lng="-0.05" label="Dam Hydro" />
+<Marker lat="51.55" lng="-0.15" label="North Substation (Outage)" />
+</Map>
+
+<FollowUps>
+- What is the current reserve margin?
+- Show me the last 7 days of emissions data
+- Which plants are available for dispatch right now?
+- What caused the North Substation transformer fire?
+- Compare today's load to the same day last week
+</FollowUps>

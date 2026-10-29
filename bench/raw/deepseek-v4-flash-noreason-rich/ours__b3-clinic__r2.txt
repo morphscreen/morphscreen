@@ -1,0 +1,96 @@
+# Clinic Reception Dashboard
+
+<Badge tone="info">Today · Tue, Mar 11</Badge>
+
+<Card title="Today's Overview">
+<Columns>
+<Stat label="Patients expected" value="24" icon="users" note="6 more than yesterday" />
+<Stat label="No-show rate (Mar)" value="8.3%" change="-2.1% vs Feb" tone="success" icon="chart-line" />
+<Stat label="Free rooms now" value="2 of 5" icon="door" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Next Patient to Call">
+<Callout tone="success" title="Ready to call now">
+**Amelia Chen** — 10:30 AM · Room 3 · Dr. Patel
+</Callout>
+<Button variant="primary">Call patient to room</Button>
+</Card>
+
+<Card title="Today's Appointments" subtitle="Tap a row to check in">
+<Tabs>
+<Tab title="Upcoming (14)">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 10:30 | Amelia Chen | 3 | <Badge tone="success">Ready</Badge> |
+| 10:45 | Marcus Webb | 1 | <Badge tone="warning">Arrived</Badge> |
+| 11:00 | Sofia Reyes | 2 | <Badge tone="neutral">Waiting</Badge> |
+| 11:15 | James Okafor | 4 | <Badge tone="neutral">Waiting</Badge> |
+| 11:30 | Priya Nair | 5 | <Badge tone="neutral">Waiting</Badge> |
+| 11:45 | Tom Becker | 3 | <Badge tone="neutral">Waiting</Badge> |
+| 12:00 | Lena Fischer | 1 | <Badge tone="neutral">Waiting</Badge> |
+| 13:30 | Owen Doyle | 2 | <Badge tone="neutral">Waiting</Badge> |
+| 13:45 | Maya Singh | 4 | <Badge tone="neutral">Waiting</Badge> |
+| 14:00 | Hugo Larsen | 5 | <Badge tone="neutral">Waiting</Badge> |
+| 14:15 | Nadia Patel | 3 | <Badge tone="neutral">Waiting</Badge> |
+| 14:30 | Leo Martin | 1 | <Badge tone="neutral">Waiting</Badge> |
+| 14:45 | Emma Wilson | 2 | <Badge tone="neutral">Waiting</Badge> |
+| 15:00 | Noah Kim | 4 | <Badge tone="neutral">Waiting</Badge> |
+</Tab>
+<Tab title="Completed (10)">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 08:00 | Grace Liu | 1 | <Badge tone="success">Done</Badge> |
+| 08:15 | Ethan Brooks | 2 | <Badge tone="success">Done</Badge> |
+| 08:30 | Ava Torres | 3 | <Badge tone="success">Done</Badge> |
+| 08:45 | Liam Johnson | 4 | <Badge tone="success">Done</Badge> |
+| 09:00 | Mia Patel | 5 | <Badge tone="success">Done</Badge> |
+| 09:15 | Noah Williams | 1 | <Badge tone="success">Done</Badge> |
+| 09:30 | Isla Brown | 2 | <Badge tone="success">Done</Badge> |
+| 09:45 | Lucas Garcia | 3 | <Badge tone="success">Done</Badge> |
+| 10:00 | Zoe Davis | 4 | <Badge tone="success">Done</Badge> |
+| 10:15 | Oliver Smith | 5 | <Badge tone="success">Done</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Check In Patient">
+<Form name="check-in">
+<Input label="Patient name" placeholder="Search or type full name" />
+<Select label="Appointment time" placeholder="Select time" options="10:30 AM | 10:45 AM | 11:00 AM | 11:15 AM | 11:30 AM | 11:45 AM | 12:00 PM | 1:30 PM | 1:45 PM | 2:00 PM | 2:15 PM | 2:30 PM | 2:45 PM | 3:00 PM" />
+<Switch label="Mark as arrived" value="true" hint="Notifies the medical team" />
+<Button variant="primary">Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Room Availability" subtitle="Live status right now">
+<Columns>
+<Stat label="Free rooms" value="2 of 5" icon="door" tone="warning" />
+<Stat label="Next free in" value="~20 min" icon="clock" note="Room 3 at 10:50" />
+</Columns>
+
+| Room | Status | Free at |
+|---|---|---|
+| Room 1 | <Badge tone="danger">In use</Badge> | 11:15 |
+| Room 2 | <Badge tone="danger">In use</Badge> | 11:00 |
+| Room 3 | <Badge tone="success">Free</Badge> | Now |
+| Room 4 | <Badge tone="danger">In use</Badge> | 11:30 |
+| Room 5 | <Badge tone="success">Free</Badge> | Now |
+
+<Progress value="60" max="100" label="Rooms occupied: 60%" tone="warning" />
+</Card>
+
+<Card title="Move to Another Day">
+<Form name="date-nav">
+<Date label="Select date" hint="Shows appointments for that day" />
+<Button variant="secondary">View that day</Button>
+<Button variant="tertiary">Back to today</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show tomorrow's schedule
+- List patients who haven't arrived yet
+- Mark a patient as no-show
+- Which patients are due for a follow-up?
+</FollowUps>

@@ -1,0 +1,132 @@
+# Daily Console — Downtown Store #1042
+
+**Wednesday, June 11, 2025 · 2:00 PM**
+
+<Form name="store-switcher">
+<Select label="View a different store" name="store" options="Downtown #1042 | Riverside #1077 | Northgate #1093" placeholder="Choose a store" />
+<Button variant="secondary">View store</Button>
+</Form>
+
+<Columns>
+<Stat label="Sales today" value="$8,420" change="84% of $10,000 target" />
+<Stat label="Average basket" value="$12.40" change="+$0.80 vs last week" />
+<Stat label="Returns this week" value="7" note="$186 total" />
+<Stat label="Foot traffic" value="1,284" change="+5.2% vs same day last week" />
+</Columns>
+
+<Callout tone="warning" title="Needs attention">
+4 items out of stock · BOGO Pastry promotion behind target · Register 3 closed
+</Callout>
+
+<Columns>
+<Card title="Sales today vs target" subtitle="Updated every 15 minutes">
+<Progress value="84" max="100" label="$8,420 of $10,000 target" />
+<Badge tone="warning">Behind pace — 6% below expected at 2 PM</Badge>
+
+| Metric | Value |
+|---|---|
+| Sales today | $8,420 |
+| Target | $10,000 |
+| Remaining | $1,580 |
+| Expected at 2 PM | $8,950 |
+</Card>
+
+<Card title="Foot traffic through the day" subtitle="Hourly visitors">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 45 |
+| 9 AM | 82 |
+| 10 AM | 120 |
+| 11 AM | 98 |
+| 12 PM | 145 |
+| 1 PM | 210 |
+| 2 PM | 185 |
+| 3 PM | 240 |
+| 4 PM | 310 |
+| 5 PM | 265 |
+| 6 PM | 180 |
+| 7 PM | 120 |
+| 8 PM | 75 |
+| 9 PM | 40 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="This week vs last week" subtitle="Mon–Wed actuals">
+<Chart type="bar" x="Day" y="Sales ($)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 7200 | 6850 |
+| Tue | 8100 | 7640 |
+| Wed | 8420 | 7950 |
+</Chart>
+
+| Metric | This week | Last week | Change |
+|---|---|---|---|
+| Sales | $23,720 | $22,440 | +5.7% |
+| Transactions | 1,610 | 1,548 | +4.0% |
+| Foot traffic | 4,120 | 3,980 | +3.5% |
+</Card>
+
+<Card title="Best sellers" subtitle="Units sold today">
+| # | Item | Units |
+|---|---|---|
+| 1 | Organic Cold Brew 16 oz | 87 |
+| 2 | Sourdough Loaf | 64 |
+| 3 | Avocado Toast | 58 |
+| 4 | Blueberry Muffin | 52 |
+| 5 | Smoked Salmon Bagel | 47 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Out of stock" subtitle="4 items need attention">
+- **Oat Milk Latte 12 oz** <Badge tone="danger">Out</Badge> <Button variant="secondary">Reorder</Button>
+- **Almond Croissant** <Badge tone="danger">Out</Badge> <Button variant="secondary">Reorder</Button>
+- **Ginger Kombucha** <Badge tone="danger">Out</Badge> <Button variant="secondary">Reorder</Button>
+- **Turkey Pesto Sandwich** <Badge tone="danger">Out</Badge> <Button variant="secondary">Reorder</Button>
+</Card>
+
+<Card title="Running promotions" subtitle="As of 2 PM">
+**Summer Sippers** — 15% off cold drinks
+<Progress value="82" max="100" label="214 / 260 redemptions" />
+<Badge tone="success">On track</Badge>
+
+**BOGO Pastry** — after 3 PM
+<Progress value="65" max="100" label="98 / 150 redemptions" />
+<Badge tone="warning">Behind</Badge>
+
+**Loyalty Double Points**
+<Progress value="100" max="100" label="342 / 290 redemptions" />
+<Badge tone="success">Exceeded</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Registers" subtitle="Current status">
+| Register | Status | Staffed by |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Tom Okafor |
+| Register 2 | <Badge tone="success">Open</Badge> | Maya Chen |
+| Register 3 | <Badge tone="danger">Closed</Badge> | — |
+| Register 4 | <Badge tone="success">Open</Badge> | Self-checkout |
+</Card>
+
+<Card title="On shift today" subtitle="5 team members">
+<Avatar name="Maya Chen" subtitle="Shift Lead · 7 AM – 3 PM" />
+<Avatar name="James Rivera" subtitle="Barista · 7 AM – 1 PM" />
+<Avatar name="Priya Patel" subtitle="Barista · 9 AM – 5 PM" />
+<Avatar name="Tom Okafor" subtitle="Cashier · 11 AM – 7 PM" />
+<Avatar name="Sofia Reyes" subtitle="Barista · 1 PM – 9 PM" />
+</Card>
+
+<Card title="Reorder stock" subtitle="Place a purchase order">
+<Form name="reorder">
+<Select label="Item" name="item" placeholder="Choose an item" options="Oat Milk Latte 12 oz | Almond Croissant | Ginger Kombucha | Turkey Pesto Sandwich | Other" />
+<Input label="Quantity" name="quantity" type="number" placeholder="12" hint="Case sizes vary by item" />
+<Button>Place order</Button>
+</Form>
+</Card>
+</Columns>

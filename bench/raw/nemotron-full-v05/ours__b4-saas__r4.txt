@@ -1,0 +1,116 @@
+# Admin Overview
+
+<Card title="Reporting period">
+<Select label="Period" name="period" options="Last 30 days | Last 90 days | Last 6 months | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Card>
+
+<Columns>
+<Card title="Monthly recurring revenue">
+<Stat label="MRR" value="$284,750" change="+12.3% vs last month" tone="success" />
+</Card>
+<Card title="Annual recurring revenue">
+<Stat label="ARR" value="$3,417,000" change="+11.8% vs last year" tone="success" />
+</Card>
+<Card title="Churn this month">
+<Stat label="Revenue churn" value="2.1%" change="-0.4 pp vs last month" tone="success" />
+<Stat label="Customer churn" value="3.8%" change="+0.2 pp vs last month" tone="warning" />
+</Card>
+<Card title="Net Promoter Score">
+<Stat label="NPS" value="62" change="+4 vs last quarter" tone="success" note="Based on 342 responses" />
+</Card>
+</Columns>
+
+<Card title="New signups (past 90 days)">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 38 |
+| W3 | 51 |
+| W4 | 47 |
+| W5 | 55 |
+| W6 | 62 |
+| W7 | 58 |
+| W8 | 65 |
+| W9 | 71 |
+| W10 | 68 |
+| W11 | 74 |
+| W12 | 79 |
+| W13 | 82 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Business | 420 |
+| Enterprise | 68 |
+</Chart>
+</Card>
+<Card title="Seat utilization">
+<Progress label="Starter (1,240 companies)" value="67" max="100" tone="info" />
+<Progress label="Professional (890 companies)" value="78" max="100" tone="success" />
+<Progress label="Business (420 companies)" value="84" max="100" tone="success" />
+<Progress label="Enterprise (68 companies)" value="91" max="100" tone="success" />
+<Progress label="Company-wide average" value="73" max="100" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Top 10 customers by revenue">
+| Customer | Plan | Seats | Monthly spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 450 | $18,750 | Active |
+| Globex Inc | Enterprise | 380 | $15,200 | Active |
+| Wayne Enterprises | Business | 220 | $11,000 | Active |
+| Stark Industries | Enterprise | 310 | $14,880 | Active |
+| Umbrella Corp | Business | 180 | $9,000 | Active |
+| Cyberdyne Systems | Professional | 150 | $7,500 | Active |
+| Oscorp | Business | 140 | $7,000 | Active |
+| Tyrell Corporation | Enterprise | 200 | $12,000 | Active |
+| Massive Dynamic | Professional | 120 | $6,000 | Active |
+| Initech | Business | 110 | $5,500 | Active |
+</Card>
+
+<Columns>
+<Card title="Accounts at risk">
+| Account | Plan | Seats | Risk reason | Health score |
+|---|---|---|---|---|
+| Dunder Mifflin | Professional | 85 | Low feature adoption (12%) | 34 |
+| Pied Piper | Starter | 12 | No login in 21 days | 28 |
+| Hooli | Business | 95 | Failed payment ×2 | 41 |
+| Bluth Company | Professional | 42 | Support tickets ↑ 300% | 38 |
+| Vought International | Enterprise | 280 | Champion left company | 45 |
+</Card>
+<Card title="Failed payments (retry available)">
+| Customer | Amount | Failed on | Attempts | Action |
+|---|---|---|---|---|
+| Hooli | $4,750 | 2 days ago | 2 | <Button size="small" variant="primary">Retry</Button> |
+| Soylent Corp | $1,200 | 5 days ago | 1 | <Button size="small" variant="primary">Retry</Button> |
+| Gekko & Co | $890 | 1 day ago | 1 | <Button size="small" variant="primary">Retry</Button> |
+| Sterling Cooper | $2,100 | 7 days ago | 3 | <Button size="small" variant="primary">Retry</Button> |
+| Wonka Industries | $3,400 | 3 days ago | 2 | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+</Columns>
+
+<Card title="Newest feature adoption">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Insights (launched 3 weeks ago) | 34 |
+| Team Workspaces (launched 5 weeks ago) | 52 |
+| Advanced Analytics (launched 7 weeks ago) | 41 |
+</Chart>
+</Card>
+
+<Card title="Invite another admin">
+<Form name="invite-admin">
+<Input label="Email" name="email" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" name="role" options="Owner | Admin | Billing admin | Support admin" placeholder="Select role" required="true" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

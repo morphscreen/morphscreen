@@ -1,0 +1,65 @@
+# Daily Fitness Summary
+
+<Card title="Today's Progress" subtitle="Monday, January 15, 2024">
+<Columns>
+<Stat label="Steps" value="8,432 / 10,000" change="+1,234 vs yesterday" tone="info" />
+<Stat label="Active Calories" value="487 kcal" change="+52 vs goal" tone="success" />
+<Stat label="Exercise Minutes" value="42 min" change="Goal: 30 min" tone="success" />
+</Columns>
+
+<Progress value="8432" max="10000" label="Step Goal Progress" tone="info" />
+</Card>
+
+<Card title="Calories Burned">
+<Columns>
+<Stat label="Total Burned" value="2,341 kcal" change="BMR: 1,650 + Active: 691" tone="neutral" />
+<Stat label="Active Calories" value="691 kcal" change="From 3 workouts + daily activity" tone="success" />
+<Stat label="Net Calories" value="1,850 kcal" change="Intake: 2,541 - Burned: 2,341" tone="warning" />
+</Columns>
+
+<Chart type="donut" title="Calorie Breakdown">
+| Source | Calories |
+|---|---|
+| Basal Metabolic Rate | 1650 |
+| Workout: Morning Run | 320 |
+| Workout: Strength Training | 185 |
+| Daily Activity | 186 |
+</Chart>
+</Card>
+
+<Card title="Workouts This Week">
+<Chart type="bar" title="Weekly Workout Minutes" x="Day" y="Minutes">
+| Day | Cardio | Strength | Yoga | Total |
+|---|---|---|---|---|
+| Mon | 35 | 25 | 0 | 60 |
+| Tue | 0 | 40 | 20 | 60 |
+| Wed | 45 | 0 | 0 | 45 |
+| Thu | 30 | 30 | 0 | 60 |
+| Fri | 0 | 0 | 30 | 30 |
+| Sat | 50 | 20 | 0 | 70 |
+| Sun | 0 | 0 | 45 | 45 |
+</Chart>
+
+<Callout tone="info" title="Weekly Summary">
+<strong>4 workouts completed</strong> • 370 total minutes • 5/7 days active • <Badge tone="success">Streak: 3 days</Badge>
+</Callout>
+</Card>
+
+<Card title="Log New Workout">
+<Form name="log-workout">
+<Select label="Workout Type" placeholder="Select workout type" options="Running | Walking | Cycling | Swimming | Strength Training | Yoga | HIIT | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="30" min="1" max="300" step="1" required="true" />
+<Input label="Calories Burned" type="number" placeholder="250" min="1" max="2000" step="1" hint="Optional - will estimate based on type and duration" />
+<Date label="Date" required="true" />
+<TextArea label="Notes" placeholder="How did it feel? Any details to remember..." rows="3" />
+<Button>Save Workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my monthly trends
+- Set a new step goal
+- View my personal records
+- Sync with Apple Health / Google Fit
+</FollowUps>

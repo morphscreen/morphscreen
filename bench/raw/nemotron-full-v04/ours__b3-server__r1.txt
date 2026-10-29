@@ -1,0 +1,98 @@
+# Service Health Dashboard
+
+<Card subtitle="Last updated: 2024-01-15 14:32 UTC">
+<Select label="Region" name="region" value="us-east-1" options="us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | ap-northeast-1" />
+</Card>
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+</Card>
+
+<Card title="Error rate (now)">
+<Stat label="Error rate" value="0.23%" change="+0.05% from 1h ago" tone="warning" />
+<Progress value="23" max="100" label="Threshold: 1%" />
+</Card>
+
+<Card title="Current resource usage">
+<Stat label="CPU" value="67%" change="Peak: 89% at 10:15" tone="info" />
+<Stat label="Memory" value="72%" change="Peak: 84% at 11:30" tone="info" />
+</Card>
+</Columns>
+
+<Card title="CPU & Memory — Past 24 hours">
+<Tabs>
+<Tab title="CPU %">
+<Chart type="area" x="Time" y="CPU %" title="CPU Utilization">
+| Time | CPU % |
+|---|---|
+| 00:00 | 45 |
+| 02:00 | 38 |
+| 04:00 | 32 |
+| 06:00 | 41 |
+| 08:00 | 58 |
+| 10:00 | 89 |
+| 12:00 | 76 |
+| 14:00 | 67 |
+| 16:00 | 71 |
+| 18:00 | 65 |
+| 20:00 | 59 |
+| 22:00 | 52 |
+</Chart>
+</Tab>
+<Tab title="Memory %">
+<Chart type="area" x="Time" y="Memory %" title="Memory Utilization">
+| Time | Memory % |
+|---|---|
+| 00:00 | 55 |
+| 02:00 | 51 |
+| 04:00 | 48 |
+| 06:00 | 50 |
+| 08:00 | 62 |
+| 10:00 | 78 |
+| 12:00 | 84 |
+| 14:00 | 72 |
+| 16:00 | 68 |
+| 18:00 | 64 |
+| 20:00 | 60 |
+| 22:00 | 57 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open incidents">
+| ID | Title | Severity | Region | Started | Owner | Action |
+|---|---|---|---|---|---|---|
+| INC-2847 | Payment API latency spike | <Badge tone="danger">SEV-1</Badge> | us-east-1 | 14:12 UTC | a.chen | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2845 | Redis cache miss rate elevated | <Badge tone="warning">SEV-2</Badge> | us-east-1 | 13:45 UTC | — | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2842 | Async job queue backlog | <Badge tone="warning">SEV-2</Badge> | eu-west-1 | 12:30 UTC | m.rodriguez | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2839 | CDN purge incomplete | <Badge tone="info">SEV-3</Badge> | ap-southeast-1 | 10:15 UTC | — | <Button variant="primary" size="small">Acknowledge</Button> |
+| INC-2835 | Intermittent 502s on /webhooks | <Badge tone="info">SEV-3</Badge> | us-west-2 | 08:00 UTC | s.kim | <Button variant="primary" size="small">Acknowledge</Button> |
+</Card>
+
+<Card title="Five slowest endpoints (p99 latency, last 15 min)">
+| Endpoint | Method | p99 Latency | p50 Latency | Requests/min | Trend |
+|---|---|---|---|---|---|
+| /api/v2/payments/process | POST | 2,840 ms | 420 ms | 1,240 | <Badge tone="danger">↑ 340%</Badge> |
+| /api/v1/reports/generate | POST | 1,920 ms | 680 ms | 340 | <Badge tone="warning">↑ 180%</Badge> |
+| /api/v3/users/batch | POST | 1,450 ms | 310 ms | 890 | <Badge tone="warning">↑ 95%</Badge> |
+| /api/v1/exports/create | POST | 1,180 ms | 540 ms | 210 | <Badge tone="info">↑ 42%</Badge> |
+| /api/v2/search/advanced | GET | 980 ms | 180 ms | 2,100 | <Badge tone="neutral">→ 3%</Badge> |
+</Card>
+
+<Card title="Alert threshold configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error_threshold" type="number" value="1.0" step="0.1" hint="Triggers SEV-2 when exceeded for 5 min" />
+<Input label="CPU threshold (%)" name="cpu_threshold" type="number" value="85" step="1" hint="Triggers warning when sustained >10 min" />
+<Input label="Memory threshold (%)" name="memory_threshold" type="number" value="90" step="1" hint="Triggers warning when sustained >10 min" />
+<Input label="Latency p99 threshold (ms)" name="latency_threshold" type="number" value="2000" step="100" hint="Per-endpoint, evaluated over 5 min window" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Auto-refresh">Dashboard refreshes every 30 seconds. Last refresh: 14:32:15 UTC</Callout>

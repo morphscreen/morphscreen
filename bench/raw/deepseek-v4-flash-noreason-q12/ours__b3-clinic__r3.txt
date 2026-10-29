@@ -1,0 +1,94 @@
+<Card title="Front Desk — Today" subtitle="Wednesday, October 16 · 8:00 AM – 5:00 PM">
+<Columns>
+<Stat label="Patients expected today" value="24" icon="calendar" tone="info" />
+<Stat label="No-show rate (Oct)" value="8.3%" change="▼ 2.1% vs Sep" tone="success" icon="chart-line" />
+<Stat label="Rooms free right now" value="3 / 6" icon="door" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Today's appointments">
+<Chart type="bar" x="Hour" y="Appointments">
+| Hour | Appointments |
+|---|---|
+| 8 AM | 2 |
+| 9 AM | 4 |
+| 10 AM | 3 |
+| 11 AM | 2 |
+| 12 PM | 1 |
+| 1 PM | 3 |
+| 2 PM | 4 |
+| 3 PM | 3 |
+| 4 PM | 2 |
+</Chart>
+</Card>
+
+<Card title="Schedule">
+<Columns>
+<Card title="Morning">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 8:00 | James Carter | 2 | ✅ Done |
+| 8:30 | Maria Lopez | 1 | ✅ Done |
+| 9:00 | Ethan Wu | 3 | ✅ Done |
+| 9:30 | Priya Sharma | 4 | ✅ Done |
+| 10:00 | David Kim | 2 | ✅ Done |
+| 10:30 | Sophie Turner | 5 | ✅ Done |
+| 11:00 | Liam O'Brien | 1 | ✅ Done |
+| 11:30 | Ava Patel | 3 | ✅ Done |
+</Card>
+<Card title="Afternoon">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 1:00 | Noah Garcia | 2 | ⏳ Waiting |
+| 1:30 | Emma Johnson | 4 | ⏳ Waiting |
+| 2:00 | Lucas Brown | 1 | ⏳ Waiting |
+| 2:30 | Mia Nguyen | 5 | ⏳ Waiting |
+| 3:00 | Oliver Smith | 3 | ⏳ Waiting |
+| 3:30 | Isabella Rossi | 2 | ⏳ Waiting |
+| 4:00 | Mateo Fernandez | 4 | ⏳ Waiting |
+| 4:30 | Charlotte Hill | 1 | ⏳ Waiting |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Next patient called">
+<Columns>
+<Avatar name="Noah Garcia" src="find" subtitle="1:00 PM · Room 2 · Checked in" />
+<Callout tone="info" title="Calling now">Noah Garcia — please proceed to Room 2.</Callout>
+</Columns>
+</Card>
+
+<Card title="Check-in patient">
+<Form name="checkin">
+<Input label="Search patient" placeholder="Name or appointment ID" />
+<Select label="Appointment" options="1:00 PM — Noah Garcia | 1:30 PM — Emma Johnson | 2:00 PM — Lucas Brown | 2:30 PM — Mia Nguyen" placeholder="Select appointment" />
+<Radio label="Arrival status" options="On time | Late (under 15 min) | Late (over 15 min)" />
+<Button>Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Room availability">
+| Room | Status | Next use |
+|---|---|---|
+| 1 | 🟢 Free | 4:30 PM |
+| 2 | 🟢 Free | 3:30 PM |
+| 3 | 🟢 Free | 3:00 PM |
+| 4 | 🔴 In use | 1:30 PM |
+| 5 | 🟢 Free | 2:30 PM |
+| 6 | 🔴 In use | 2:00 PM |
+</Card>
+
+<Card title="Jump to another day">
+<Form name="day-nav">
+<Date label="Pick a date" name="date" />
+<Button variant="secondary">View that day</Button>
+<Button variant="tertiary">Back to today</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me tomorrow's schedule
+- List all no-shows this month
+- Which rooms are booked for the rest of the day?
+- Reschedule Noah Garcia's appointment
+</FollowUps>

@@ -1,0 +1,137 @@
+# Speeding up a 2 GB CSV read in Python
+
+Reading a 2 GB CSV is slow because Python's standard tools read row by row, converting every value to a Python object. Here's how to make it faster, from quickest wins to the biggest gains.
+
+<Card title="Quick fixes (no code changes)">
+<Columns>
+<Stat label="Use chunks" value="2–5× faster" icon="arrow-circle-right" note="Read in batches of 50,000 rows" />
+<Stat label="Drop unused columns" value="1.5–3× faster" icon="funnel" note="Only load what you need" />
+<Stat label="Set low_memory=False" value="1.2× faster" icon="gear" note="Stops dtype guessing per chunk" />
+</Columns>
+</Card>
+
+<Card title="The fastest approaches">
+<Tabs>
+<Tab title="Pandas with engine='pyarrow'">
+<Callout tone="success" title="Best for most cases">2–10× faster than default pandas</Callout>
+
+```python
+import pandas as pd
+
+df = pd.read_csv(
+    "large_file.csv",
+    engine="pyarrow",
+    dtype_backend="pyarrow",
+    usecols=["col1", "col2", "col3"],  # only needed columns
+    chunksize=50000,                    # optional: process in chunks
+)
+```
+
+<Badge tone="info">Requires: `pip install pyarrow`</Badge>
+</Tab>
+<Tab title="Polars">
+<Callout tone="success" title="Fastest option">5–20× faster than pandas default</Callout>
+
+```python
+import polars as pl
+
+df = pl.read_csv(
+    "large_file.csv",
+    columns=["col1", "col2"],  # select columns
+    n_rows=1000000,            # optional: limit rows
+)
+```
+
+<Badge tone="info">Requires: `pip install polars`</Badge>
+</Tab>
+<Tab title="DuckDB">
+<Callout tone="info" title="Best for SQL queries">Query the CSV directly without loading it fully</Callout>
+
+```python
+import duckdb
+
+result = duckdb.sql("""
+    SELECT col1, AVG(col2) 
+    FROM 'large_file.csv' 
+    WHERE col3 > 100
+    GROUP BY col1
+""").fetchdf()  # or .fetchall()
+```
+
+<Badge tone="info">Requires: `pip install duckdb`</Badge>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Performance comparison">
+<Chart type="bar" x="Method" y="Time (seconds)">
+| Method | Time (seconds) |
+|---|---|
+| pandas default | 45 |
+| pandas + chunks | 22 |
+| pandas + pyarrow | 8 |
+| Polars | 4 |
+| DuckDB | 3 |
+</Chart>
+<Callout tone="neutral">Tested on a 2 GB CSV with 10 columns, 8 million rows. Your results will vary by hardware and data.</Callout>
+</Card>
+
+<Card title="Step-by-step: Pick your approach">
+<Steps>
+<Step title="Know your task" status="current">
+<Radio label="What are you doing?" options="I need all the data in memory | I only need aggregates or filtered results | I'm doing one pass and done" name="task" />
+</Step>
+<Step title="Choose the tool" status="todo">
+| If you need… | Use… |
+|---|---|
+| All data in memory, familiar pandas API | `pandas + pyarrow` |
+| Maximum speed, modern syntax | `Polars` |
+| SQL queries without loading | `DuckDB` |
+| Streaming / low memory | `pandas chunks + pyarrow` |
+</Step>
+<Step title="Optimize further" status="todo">
+- **Use `dtype` dict** to pre-declare column types (avoids guessing)
+- **Filter early** with `pd.read_csv(…, skiprows=lambda i: i % 10 != 0)` for sampling
+- **Parallelize** with `polars` (it uses all cores automatically)
+- **Convert to Parquet** after first read for 3× faster future reads
+</Step>
+</Steps>
+</Card>
+
+<Card title="Try it: Convert CSV to Parquet">
+```python
+import pandas as pd
+
+# Read once (slow), then save as Parquet
+df = pd.read_csv("large_file.csv", engine="pyarrow")
+df.to_parquet("large_file.parquet")
+
+# Next time: 3–5× faster
+df = pd.read_parquet("large_file.parquet")
+```
+<Badge tone="success">Best long-term investment</Badge>
+</Card>
+
+<Card title="Common mistakes to avoid">
+<Checklist title="Checklist" name="optimize">
+- [ ] Don't read the whole file if you only need a subset
+- [ ] Don't use `df.iterrows()` — use vectorized operations
+- [ ] Don't open the file in Excel first (it can corrupt large CSVs)
+- [ ] Don't use `csv.DictReader` for 2 GB — it's 10× slower than pandas
+- [ ] Don't forget to close the file or use context managers
+</Checklist>
+</Card>
+
+<Card title="What's your use case?">
+<Button ask="Help me set up pandas + pyarrow">I want pandas + pyarrow</Button>
+<Button ask="Help me set up Polars for my CSV">I want Polars</Button>
+<Button ask="Help me query my CSV with DuckDB">I want DuckDB</Button>
+<Button ask="I have a different problem with large CSV files">Something else</Button>
+</Card>
+
+<FollowUps>
+- How do I handle mixed data types in a large CSV?
+- Can I read a CSV from a URL or S3 bucket?
+- How do I write the results back to CSV efficiently?
+- What's the best file format for large datasets?
+</FollowUps>

@@ -1,0 +1,155 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="Network Overview" subtitle="Real-time system status">
+<Columns>
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Stat label="System Capacity" value="58,200 MW" tone="neutral" />
+<Stat label="Reserve Margin" value="26.4%" change="Adequate" tone="success" />
+<Stat label="Current Price" value="$67.40/MWh" change="+$4.20 vs yesterday" tone="warning" />
+</Columns>
+
+<Progress value="42847" max="58200" label="Network Utilization: 73.6%" tone="info" />
+
+<Columns>
+<Stat label="Emissions Today" value="1,847 tCO₂" change="-3.2% vs avg" tone="success" />
+<Stat label="Renewable Share" value="38.2%" change="+1.1% vs avg" tone="success" />
+<Stat label="Frequency" value="50.02 Hz" change="Normal" tone="success" />
+<Stat label="Active Alerts" value="3" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Region Focus" subtitle="Filter all views by region">
+<Select label="Select Region" name="region-filter" placeholder="All Regions" options="All Regions | North Grid | South Grid | East Grid | West Grid | Central Hub" value="All Regions" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Current output mix">
+<Chart type="donut" title="Generation Mix (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 14,200 |
+| Coal | 9,800 |
+| Nuclear | 8,500 |
+| Wind | 6,200 |
+| Solar | 4,800 |
+| Hydro | 3,100 |
+| Battery | 1,200 |
+| Other | 847 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Hourly projection vs capacity">
+<Chart type="line" title="Demand Forecast (MW)" x="Hour" y="MW">
+| Hour | Forecast | Capacity |
+|---|---|---|
+| 00:00 | 38200 | 58200 |
+| 01:00 | 36800 | 58200 |
+| 02:00 | 35900 | 58200 |
+| 03:00 | 35200 | 58200 |
+| 04:00 | 34800 | 58200 |
+| 05:00 | 35100 | 58200 |
+| 06:00 | 37400 | 58200 |
+| 07:00 | 41200 | 58200 |
+| 08:00 | 45800 | 58200 |
+| 09:00 | 48600 | 58200 |
+| 10:00 | 50200 | 58200 |
+| 11:00 | 51400 | 58200 |
+| 12:00 | 52100 | 58200 |
+| 13:00 | 52800 | 58200 |
+| 14:00 | 53200 | 58200 |
+| 15:00 | 53500 | 58200 |
+| 16:00 | 53800 | 58200 |
+| 17:00 | 54200 | 58200 |
+| 18:00 | 54500 | 58200 |
+| 19:00 | 53800 | 58200 |
+| 20:00 | 52100 | 58200 |
+| 21:00 | 49800 | 58200 |
+| 22:00 | 46200 | 58200 |
+| 23:00 | 42800 | 58200 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status" subtitle="All generating units">
+| Plant | Region | Source | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Northridge CCGT | North Grid | Natural Gas | 1,200 | 1,080 | <Badge tone="success">Online</Badge> | 98% |
+| Blackstone Coal | Central Hub | Coal | 1,800 | 1,620 | <Badge tone="success">Online</Badge> | 92% |
+| Apex Nuclear | East Grid | Nuclear | 2,200 | 2,100 | <Badge tone="success">Online</Badge> | 100% |
+| Windridge Farm | West Grid | Wind | 800 | 520 | <Badge tone="success">Online</Badge> | 65% |
+| Solar Valley | South Grid | Solar | 600 | 480 | <Badge tone="success">Online</Badge> | 80% |
+| Hydro Peak | North Grid | Hydro | 900 | 720 | <Badge tone="success">Online</Badge> | 95% |
+| Greenfield Battery | Central Hub | Battery | 300 | 200 | <Badge tone="success">Online</Badge> | 100% |
+| Old Harbor Oil | East Grid | Oil | 400 | 0 | <Badge tone="warning">Standby</Badge> | 85% |
+| Riverside CCGT | South Grid | Natural Gas | 1,100 | 935 | <Badge tone="success">Online</Badge> | 97% |
+| Mountain Wind | West Grid | Wind | 700 | 380 | <Badge tone="info">Curtailed</Badge> | 54% |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Current service interruptions">
+| Outage ID | Region | Affected Customers | Cause | Est. Restoration | Crew Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North Grid — Sector 4 | 12,400 | Storm damage — fallen trees | 2024-01-15 18:30 | <Badge tone="info">En route</Badge> |
+| OUT-2024-0849 | East Grid — Riverside | 8,200 | Equipment failure — transformer | 2024-01-15 22:00 | <Badge tone="success">On site</Badge> |
+| OUT-2024-0851 | West Grid — Mountain Pass | 3,600 | Planned maintenance overrun | 2024-01-16 02:00 | <Badge tone="warning">Delayed</Badge> |
+| OUT-2024-0852 | Central Hub — Industrial Park | 1,100 | Vehicle collision — pole down | 2024-01-15 20:45 | <Badge tone="success">On site</Badge> |
+</Card>
+
+<Card title="Planned Maintenance — This Month" subtitle="Scheduled work impacting capacity">
+| Date | Plant / Asset | Region | Type | Capacity Impact | Status |
+|---|---|---|---|---|---|
+| 2024-01-18 | Blackstone Coal Unit 2 | Central Hub | Boiler inspection | -600 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-01-22 | Apex Nuclear | East Grid | Refueling outage | -2,200 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-01-25 | Northridge CCGT | North Grid | Turbine maintenance | -400 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-01-28 | Hydro Peak | North Grid | Penstock inspection | -300 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-02-03 | Riverside CCGT | South Grid | Combustor replacement | -550 MW | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Columns>
+<Callout tone="warning" title="⚠ Voltage Deviation — West Grid" >
+14:23 — 138kV bus at Mountain Pass substation reading 132kV (-4.3%). Investigating capacitor bank status.
+</Callout>
+<Callout tone="danger" title="🔴 Line Overload — North Grid" >
+14:18 — Circuit N-402 at 103% thermal limit. Windridge Farm output being curtailed automatically.
+</Callout>
+<Callout tone="info" title="ℹ Frequency Response Activated" >
+14:15 — Primary frequency response triggered at 49.98 Hz. Battery storage injecting 180 MW.
+</Callout>
+<Callout tone="success" title="✅ Outage Restored — Central Hub" >
+13:52 — OUT-2024-0845 cleared. 4,200 customers restored. Root cause: squirrel contact on 12kV feeder.
+</Callout>
+<Callout tone="warning" title="⚠ Solar Forecast Deviation — South Grid" >
+13:40 — Actual solar output 12% below forecast. Ramping Riverside CCGT to compensate.
+</Callout>
+</Columns>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Reduce generation output to maintain system stability">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant" name="curtail-plant" placeholder="Select plant" options="Mountain Wind (West Grid) — 380 MW | Windridge Farm (North Grid) — 520 MW | Solar Valley (South Grid) — 480 MW | Old Harbor Oil (East Grid) — 0 MW (Standby) | Greenfield Battery (Central Hub) — 200 MW" required="true" />
+<Input label="Curtailment Amount (MW)" name="curtail-mw" type="number" placeholder="e.g., 150" min="1" max="500" step="1" required="true" hint="Must not exceed current output" />
+</Columns>
+<Columns>
+<Select label="Reason" name="curtail-reason" placeholder="Select reason" options="Thermal limit exceeded | Voltage stability | Frequency regulation | Economic dispatch | Renewable oversupply | Transmission constraint" required="true" />
+<Select label="Duration" name="curtail-duration" placeholder="Expected duration" options="15 minutes | 30 minutes | 1 hour | 2 hours | 4 hours | Until further notice" required="true" />
+</Columns>
+<TextArea label="Operator Notes" name="curtail-notes" placeholder="Reason detail, coordination notes, restoration plan..." rows="3" hint="Visible to plant operators and shift log" />
+<Columns>
+<Button variant="danger" label="Issue Curtailment Order" />
+<Button variant="secondary" label="Cancel" />
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed SCADA view for North Grid
+- Export today's generation & emissions report
+- Review pending maintenance approvals
+- Simulate contingency: loss of Apex Nuclear
+- Open market price dashboard
+</FollowUps>

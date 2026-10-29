@@ -1,0 +1,43 @@
+<Card title="Async Standup" subtitle="Thursday, June 12, 2025 · Remote Team">
+<Columns>
+<Stat label="Updates posted" value="5/8" note="63% complete" />
+<Stat label="Still missing" value="3" note="Sam, Nina, Tom" />
+<Stat label="Blocked" value="2" note="Priya, Diego" />
+</Columns>
+
+<Progress value="5" max="8" label="5 of 8 updates received" />
+
+<Callout tone="danger" title="🚨 2 teammates blocked">
+- **Priya Patel** — Blocked on staging DB access; needs admin credentials.
+- **Diego Alvarez** — Waiting on legal approval for vendor contract.
+</Callout>
+
+<Callout tone="warning" title="⏳ 3 updates still missing">
+Sam Okafor, Nina Petrova, and Tom Becker haven't posted yet.
+<Button variant="secondary">Send reminder</Button>
+</Callout>
+
+### Today's updates
+
+| Teammate | Status | Update |
+|---|---|---|
+| <Avatar name="Ava Chen" subtitle="Product Designer" /> | <Badge tone="success">Done</Badge> | Shipped the new onboarding flow 🎉 Waiting on design review for dashboard polish. |
+| <Avatar name="Marcus Rivera" subtitle="Backend Engineer" /> | <Badge tone="info">In progress</Badge> | Finalizing API integration; ETA tomorrow. No blockers. |
+| <Avatar name="Priya Patel" subtitle="Data Analyst" /> | <Badge tone="danger">Blocked</Badge> | Blocked on staging DB access. Need admin credentials to run queries. |
+| <Avatar name="Lena Fischer" subtitle="Product Manager" /> | <Badge tone="success">Done</Badge> | Presented Q3 roadmap to stakeholders; feedback was positive. |
+| <Avatar name="Diego Alvarez" subtitle="Frontend Engineer" /> | <Badge tone="danger">Blocked</Badge> | Waiting on legal approval for vendor contract before shipping. |
+| <Avatar name="Sam Okafor" subtitle="DevOps" /> | <Badge tone="neutral">Missing</Badge> | No update yet. |
+| <Avatar name="Nina Petrova" subtitle="UX Researcher" /> | <Badge tone="neutral">Missing</Badge> | No update yet. |
+| <Avatar name="Tom Becker" subtitle="QA Engineer" /> | <Badge tone="neutral">Missing</Badge> | No update yet. |
+
+</Card>
+
+<Card title="Post your update" subtitle="Let the team know what you're working on today">
+<Form name="standup-update">
+<Select label="Your name" placeholder="Select your name" options="Ava Chen | Marcus Rivera | Priya Patel | Lena Fischer | Diego Alvarez | Sam Okafor | Nina Petrova | Tom Becker" required="true" />
+<TextArea label="What did you work on today?" placeholder="Summarize progress, next steps..." rows="3" required="true" />
+<TextArea label="Blockers?" placeholder="Anything in your way? Leave blank if none." rows="2" />
+<Checkboxes label="Status" options="I'm on track | I'm blocked | I need help" hint="Select all that apply" />
+<Button>Post update</Button>
+</Form>
+</Card>

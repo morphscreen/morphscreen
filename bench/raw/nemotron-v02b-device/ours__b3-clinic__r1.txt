@@ -1,0 +1,59 @@
+<Card title="Clinic Day View" subtitle="Monday, January 15, 2024">
+<Columns>
+<Date label="Select day" name="day" value="2024-01-15" />
+<Button variant="secondary" href="#">Today</Button>
+</Columns>
+
+<Columns>
+<Stat label="Patients Expected" value="18" change="+2 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Jan)" value="12%" change="−1.2% vs Dec" tone="success" />
+</Columns>
+
+<Callout tone="info" title="Next Patient Called">
+<strong>Maria Gonzalez</strong> — 10:15 AM · Room 2 · Dr. Patel
+<Button variant="primary" ask>Mark Arrived</Button>
+<Button variant="secondary" ask>Reschedule</Button>
+</Callout>
+
+### Today's Appointments
+
+| Time | Patient | Provider | Room | Status |
+|---|---|---|---|---|
+| 08:30 | James Wilson | Dr. Chen | 1 | ✓ Checked in |
+| 09:00 | Sarah Kim | Dr. Patel | 2 | ✓ Checked in |
+| 09:30 | Robert Taylor | Dr. Chen | 1 | Waiting |
+| 10:00 | Linda Park | Dr. Ahmed | 3 | Waiting |
+| 10:15 | Maria Gonzalez | Dr. Patel | 2 | **Called** |
+| 10:45 | David Chen | Dr. Chen | 1 | Scheduled |
+| 11:00 | Emily Ross | Dr. Ahmed | 3 | Scheduled |
+| 11:30 | Michael Lee | Dr. Patel | 2 | Scheduled |
+| 13:00 | Jennifer Wu | Dr. Chen | 1 | Scheduled |
+| 13:30 | Kevin Brown | Dr. Ahmed | 3 | Scheduled |
+| 14:00 | Amanda Davis | Dr. Patel | 2 | Scheduled |
+| 14:30 | Chris Martinez | Dr. Chen | 1 | Scheduled |
+| 15:00 | Nicole Anderson | Dr. Ahmed | 3 | Scheduled |
+| 15:30 | Brian Thomas | Dr. Patel | 2 | Scheduled |
+| 16:00 | Lisa Jackson | Dr. Chen | 1 | Scheduled |
+| 16:30 | Daniel White | Dr. Ahmed | 3 | Scheduled |
+| 17:00 | Michelle Harris | Dr. Patel | 2 | Scheduled |
+| 17:30 | Ryan Clark | Dr. Chen | 1 | Scheduled |
+
+<Details title="Room Availability (Right Now)" open="true">
+<Columns>
+<Badge tone="success">Room 1 — Free at 10:30</Badge>
+<Badge tone="danger">Room 2 — Occupied (Maria Gonzalez)</Badge>
+<Badge tone="success">Room 3 — Free now</Badge>
+</Columns>
+</Details>
+
+<Card title="Check In Patient" subtitle="Walk-in or scheduled">
+<Form name="check-in">
+<Select label="Patient" placeholder="Search or select patient" options="Maria Gonzalez (10:15) | David Chen (10:45) | Emily Ross (11:00) | Walk-in / Other" required="true" />
+<Select label="Provider" placeholder="Assign provider" options="Dr. Chen | Dr. Patel | Dr. Ahmed" required="true" />
+<Select label="Room" placeholder="Assign room" options="Room 1 (free at 10:30) | Room 3 (free now)" required="true" />
+<Input label="Reason for Visit" placeholder="e.g., Follow-up, New symptoms" />
+<Button>Check In</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Card>

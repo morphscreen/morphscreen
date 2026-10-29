@@ -1,0 +1,44 @@
+<Card title="Personal budget check" subtitle="Track your spending, spot trends, and stay on top of your budget.">
+<Columns>
+<Stat label="Budget this month" value="$2,500" note="May 2025" icon="wallet" />
+<Stat label="Spent so far" value="$1,847" note="74% of budget" icon="chart-line" tone="info" />
+<Stat label="Remaining" value="$653" note="26% left" icon="piggy-bank" tone="success" />
+</Columns>
+<Progress value="74" max="100" label="Budget used" tone="info" />
+</Card>
+
+<Card title="Month selector" subtitle="Choose a month to view its budget and spending">
+<Form name="month-selector">
+<Date label="Select month" name="month" value="2025-05-01" />
+<Button variant="secondary" size="medium">View month</Button>
+</Form>
+</Card>
+
+<Card title="Spending by category" subtitle="May 2025">
+<Chart type="donut" title="Category split">
+| Category | Amount |
+|---|---|
+| Housing | 850 |
+| Food | 420 |
+| Transport | 210 |
+| Utilities | 180 |
+| Entertainment | 120 |
+| Other | 67 |
+</Chart>
+</Card>
+
+<Card title="Largest expense" subtitle="Highlighted for May 2025">
+<Callout tone="warning" title="Rent payment">
+The single largest expense this month is **Rent — $850**, which is 46% of your total spending.
+</Callout>
+</Card>
+
+<Card title="Add an expense" subtitle="Record a new expense to update your budget">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g., Grocery run" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" min="0" step="0.01" required="true" />
+<Select label="Category" name="category" options="Housing | Food | Transport | Utilities | Entertainment | Other" placeholder="Choose a category" required="true" />
+<Date label="Date" name="date" value="2025-05-15" required="true" />
+<Button>Add expense</Button>
+</Form>
+</Card>

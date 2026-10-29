@@ -1,0 +1,84 @@
+# Budget check — March 2026
+
+<Card title="This month" subtitle="1–20 March, all accounts">
+<Columns>
+<Stat label="Spent so far" value="$1,842" change="+6% vs Feb" tone="warning" icon="chart-line" />
+<Stat label="Monthly budget" value="$2,400" note="You have $558 left" icon="target" />
+<Stat label="Days remaining" value="11" note="≈ $50/day to stay on budget" icon="calendar" />
+</Columns>
+<Progress value="1842" max="2400" label="Budget used — 77%" tone="warning" />
+</Card>
+
+<Card title="Where the money went" subtitle="Spending split by category, March 2026">
+<Chart type="donut" title="Spending by category" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Groceries | 386 |
+| Transport | 172 |
+| Dining out | 168 |
+| Subscriptions | 96 |
+| Other | 70 |
+</Chart>
+</Card>
+
+<Card title="Largest single expense" subtitle="Highlighted">
+<Columns>
+<Stat label="Rent — 1 March" value="$950" note="Housing · 52% of all spending this month" tone="danger" icon="house" />
+<Stat label="Next biggest" value="$148" note="Car insurance, 4 March" icon="car" />
+</Columns>
+<Callout tone="info" title="Nothing unusual">Rent is your only expense above $200 this month. Everything else is under $150.</Callout>
+</Card>
+
+<Card title="Look at another month">
+<Tabs>
+<Tab title="February 2026">
+<Stat label="Spent" value="$1,738" change="Under budget by $662" tone="success" icon="chart-line" />
+<Chart type="bar" title="February by category" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Groceries | 341 |
+| Transport | 158 |
+| Dining out | 141 |
+| Subscriptions | 96 |
+| Other | 52 |
+</Chart>
+</Tab>
+<Tab title="January 2026">
+<Stat label="Spent" value="$2,510" change="Over budget by $110" tone="danger" icon="chart-line" />
+<Chart type="bar" title="January by category" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Groceries | 402 |
+| Transport | 190 |
+| Dining out | 288 |
+| Subscriptions | 96 |
+| Other | 584 |
+</Chart>
+</Tab>
+<Tab title="Pick a month">
+<Date label="Month to review" name="review-month" value="2026-03" hint="Pick any date in the month you want to see" />
+<Button variant="secondary" ask="Show me my budget for the month I picked">Show that month</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an expense" subtitle="It updates the totals above right away">
+<Form name="add-expense">
+<Input label="What was it?" name="description" placeholder="e.g. Weekly shop" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0" hint="In dollars, e.g. 42.75" required="true" />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Groceries | Transport | Dining out | Subscriptions | Other" required="true" />
+<Date label="Date" name="date" value="2026-03-20" required="true" />
+<Switch label="This was a one-off, not a recurring cost" name="one_off" value="true" />
+<Button>Add expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How much do I need to cut to stay under $2,400 this month?
+- Which category grew the most since January?
+- Show me every expense over $100 this month
+</FollowUps>

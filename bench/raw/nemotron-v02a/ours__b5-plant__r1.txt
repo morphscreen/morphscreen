@@ -1,0 +1,242 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view • Updated 10 seconds ago">
+<Columns>
+<Card title="Overall Equipment Effectiveness" subtitle="Target: 85%">
+<Stat label="OEE" value="82.4%" change="+1.2% vs yesterday" tone="success" />
+<Progress value="82.4" max="100" label="Availability 91.2% • Performance 94.1% • Quality 96.3%" />
+</Card>
+
+<Card title="Today's Production" subtitle="Shift A • 06:00–14:00">
+<Stat label="Units Produced" value="12,847" change="+347 vs target" tone="success" />
+<Stat label="Target" value="12,500" />
+<Progress value="12847" max="12500" label="102.8% of daily target" />
+</Card>
+
+<Card title="Safety & Quality Snapshot">
+<Columns>
+<Stat label="Incidents YTD" value="3" change="-2 vs last year" tone="success" />
+<Stat label="Days Since Last Incident" value="147" tone="info" />
+<Stat label="Batches on Hold" value="4" tone="warning" />
+</Columns>
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Production Lines">
+<Card title="Line Status & Rates">
+<Columns>
+<Card title="Line 1 – Stamping" subtitle="Status: Running">
+<Stat label="Rate" value="482 units/hr" change="Target: 500" tone="info" />
+<Badge tone="success">Running</Badge>
+<Progress value="96.4" max="100" label="Efficiency" />
+</Card>
+<Card title="Line 2 – Injection" subtitle="Status: Running">
+<Stat label="Rate" value="315 units/hr" change="Target: 320" tone="info" />
+<Badge tone="success">Running</Badge>
+<Progress value="98.4" max="100" label="Efficiency" />
+</Card>
+<Card title="Line 3 – Assembly" subtitle="Status: Minor Stop">
+<Stat label="Rate" value="210 units/hr" change="Target: 250" tone="warning" />
+<Badge tone="warning">Minor Stop</Badge>
+<Progress value="84.0" max="100" label="Efficiency" />
+</Card>
+<Card title="Line 4 – Packaging" subtitle="Status: Running">
+<Stat label="Rate" value="520 units/hr" change="Target: 500" tone="success" />
+<Badge tone="success">Running</Badge>
+<Progress value="104.0" max="100" label="Efficiency" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Focus on One Line">
+<Select label="Select line to focus" name="focus-line" placeholder="Choose a line" options="Line 1 – Stamping | Line 2 – Injection | Line 3 – Assembly | Line 4 – Packaging" />
+</Card>
+</Tab>
+
+<Tab title="Quality & Defects">
+<Card title="Defect Rate – Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %" title="Daily Defect Rate Trend">
+| Date | Defect Rate % |
+|---|---|
+| 2025-01-01 | 2.1 |
+| 2025-01-02 | 1.9 |
+| 2025-01-03 | 2.3 |
+| 2025-01-04 | 1.8 |
+| 2025-01-05 | 2.0 |
+| 2025-01-06 | 1.7 |
+| 2025-01-07 | 1.9 |
+| 2025-01-08 | 2.2 |
+| 2025-01-09 | 1.8 |
+| 2025-01-10 | 1.6 |
+| 2025-01-11 | 1.7 |
+| 2025-01-12 | 1.9 |
+| 2025-01-13 | 2.0 |
+| 2025-01-14 | 1.8 |
+| 2025-01-15 | 1.7 |
+| 2025-01-16 | 1.6 |
+| 2025-01-17 | 1.8 |
+| 2025-01-18 | 1.9 |
+| 2025-01-19 | 1.7 |
+| 2025-01-20 | 1.6 |
+| 2025-01-21 | 1.5 |
+| 2025-01-22 | 1.7 |
+| 2025-01-23 | 1.8 |
+| 2025-01-24 | 1.6 |
+| 2025-01-25 | 1.5 |
+| 2025-01-26 | 1.4 |
+| 2025-01-27 | 1.6 |
+| 2025-01-28 | 1.5 |
+| 2025-01-29 | 1.4 |
+| 2025-01-30 | 1.3 |
+</Chart>
+<Stat label="Current Month Avg" value="1.72%" change="-0.18% vs last month" tone="success" />
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since |
+|---|---|---|---|---|---|
+| B-20250130-04 | Line 2 | Housing-A | 1,200 | Dimensional variance | 2 hrs ago |
+| B-20250130-07 | Line 3 | Bracket-C | 850 | Surface finish | 5 hrs ago |
+| B-20250129-12 | Line 1 | Panel-B | 2,100 | Material cert missing | 18 hrs ago |
+| B-20250129-15 | Line 4 | Kit-D | 3,400 | Label mismatch | 22 hrs ago |
+</Card>
+</Tab>
+
+<Tab title="Downtime & Maintenance">
+<Card title="Downtime by Cause – This Month">
+<Chart type="pie" title="Downtime Hours by Cause">
+| Cause | Hours |
+|---|---|
+| Planned Maintenance | 42 |
+| Tooling Changeover | 28 |
+| Material Shortage | 18 |
+| Equipment Fault | 15 |
+| Quality Hold | 12 |
+| Operator Break | 8 |
+| Other | 5 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Last Service | Due Date | Type | Status |
+|---|---|---|---|---|---|
+| STM-01 | Line 1 | 2025-01-15 | 2025-02-01 | Preventive | Due Soon |
+| INJ-03 | Line 2 | 2025-01-10 | 2025-02-03 | Preventive | Due Soon |
+| ASM-02 | Line 3 | 2025-01-08 | 2025-01-31 | Corrective | Overdue |
+| PKG-04 | Line 4 | 2025-01-20 | 2025-02-05 | Predictive | Scheduled |
+| STM-02 | Line 1 | 2025-01-18 | 2025-02-10 | Preventive | OK |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="STM-01 (Line 1) | STM-02 (Line 1) | INJ-01 (Line 2) | INJ-02 (Line 2) | INJ-03 (Line 2) | ASM-01 (Line 3) | ASM-02 (Line 3) | PKG-01 (Line 4) | PKG-02 (Line 4) | PKG-03 (Line 4) | PKG-04 (Line 4)" placeholder="Select machine" required="true" />
+<Select label="Maintenance Type" name="maint-type" options="Preventive | Corrective | Predictive | Calibration" placeholder="Select type" required="true" />
+<Date label="Scheduled Date" name="maint-date" required="true" />
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="4" hint="Planned downtime" required="true" />
+<TextArea label="Notes / Work Scope" name="notes" placeholder="Describe work to be performed..." rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Materials & Supply">
+<Card title="Raw Material Stock">
+<Columns>
+<Card title="Steel Coil">
+<Stat label="On Hand" value="42.3 tonnes" change="-3.2 vs yesterday" tone="neutral" />
+<Stat label="Reorder Point" value="15.0 tonnes" />
+<Progress value="42.3" max="80" label="53% of capacity" />
+</Card>
+<Card title="Resin Pellets">
+<Stat label="On Hand" value="18.7 tonnes" change="-1.1 vs yesterday" tone="warning" />
+<Stat label="Reorder Point" value="10.0 tonnes" />
+<Progress value="18.7" max="40" label="47% of capacity" />
+</Card>
+<Card title="Packaging Film">
+<Stat label="On Hand" value="8,450 kg" change="-620 vs yesterday" tone="info" />
+<Stat label="Reorder Point" value="3,000 kg" />
+<Progress value="8450" max="20000" label="42% of capacity" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | PO # | Status |
+|---|---|---|---|---|---|
+| AcerSteel Ltd | Hot-rolled coil | 25 t | 2025-02-03 | PO-2025-0142 | Confirmed |
+| PolySource Inc | PP Resin Grade 4 | 12 t | 2025-02-04 | PO-2025-0145 | In Transit |
+| PackWell Co | Stretch film 500mm | 5,000 kg | 2025-02-05 | PO-2025-0148 | Confirmed |
+| AcerSteel Ltd | Cold-rolled sheet | 18 t | 2025-02-06 | PO-2025-0151 | Pending |
+| ChemResin GmbH | ABS Resin | 8 t | 2025-02-07 | PO-2025-0153 | Confirmed |
+</Card>
+</Tab>
+
+<Tab title="Shifts & Energy">
+<Card title="Shift Output Comparison – This Week">
+<Chart type="bar" x="Shift" y="Units" title="Units Produced by Shift">
+| Shift | Mon | Tue | Wed | Thu | Fri |
+|---|---|---|---|---|---|
+| Shift A (06-14) | 12400 | 12650 | 12800 | 12550 | 12847 |
+| Shift B (14-22) | 11800 | 12100 | 11950 | 12200 | 12050 |
+| Shift C (22-06) | 9200 | 9450 | 9100 | 9300 | 9250 |
+</Chart>
+</Card>
+
+<Card title="Energy Use Today">
+<Columns>
+<Stat label="Electricity" value="1,847 kWh" change="+47 vs avg" tone="neutral" />
+<Stat label="Gas" value="2,340 m³" change="-120 vs avg" tone="success" />
+<Stat label="Water" value="12.4 m³" change="+0.8 vs avg" tone="neutral" />
+<Stat label="Cost Today" value="$1,240" change="+$32 vs avg" tone="info" />
+</Columns>
+<Progress value="1847" max="2200" label="83.9% of daily budget" />
+</Card>
+</Tab>
+
+<Tab title="Work Orders & Alerts">
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Machine | Description | Assigned | Created | Status |
+|---|---|---|---|---|---|---|---|
+| WO-2025-0412 | Critical | Line 3 | ASM-02 | Replace worn gripper fingers | M. Torres | 2025-01-29 | In Progress |
+| WO-2025-0415 | High | Line 1 | STM-01 | Die alignment check | J. Chen | 2025-01-30 | Queued |
+| WO-2025-0418 | High | Line 2 | INJ-03 | Nozzle heater replacement | K. Patel | 2025-01-30 | Queued |
+| WO-2025-0420 | Medium | Line 4 | PKG-02 | Conveyor belt tracking | R. Silva | 2025-01-30 | Assigned |
+| WO-2025-0422 | Low | Line 1 | STM-02 | Lubrication PM | Auto | 2025-01-31 | Scheduled |
+</Card>
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="ANDON: Line 3 – Assembly">
+Machine ASM-02: Gripper fault detected. Cycle stopped. Maintenance dispatched.
+</Callout>
+<Callout tone="warning" title="ANDON: Line 2 – Injection">
+Machine INJ-01: Temperature deviation +4°C on Zone 3. Monitoring.
+</Callout>
+<Callout tone="info" title="ANDON: Line 1 – Stamping">
+Machine STM-01: Tool changeover in progress. ETA 12 min.
+</Callout>
+<Callout tone="success" title="ANDON: Line 4 – Packaging">
+Machine PKG-03: Cleared – Jam resolved. Resumed production.
+</Callout>
+</Columns>
+</Card>
+</Tab>
+</Tabs>
+
+<Card title="Actions">
+<Columns>
+<Button variant="primary">Export Shift Report (PDF)</Button>
+<Button variant="secondary">Export Shift Report (CSV)</Button>
+<Button variant="tertiary">Print Dashboard</Button>
+<Button variant="tertiary" href="#">View Historical Reports</Button>
+</Columns>
+</Card>
+</Card>
+
+<FollowUps>
+- Show me Line 3 assembly details and the gripper fault history
+- List all overdue preventive maintenance tasks
+- Compare this week's OEE vs same week last year
+- Generate a material shortage risk report for next week
+- Show energy cost breakdown by line for January
+</FollowUps>

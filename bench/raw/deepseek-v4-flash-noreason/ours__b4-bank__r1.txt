@@ -1,0 +1,146 @@
+# Personal Banking Home
+
+Welcome back, Alex. Here's your financial snapshot.
+
+<Columns>
+<div>
+<Stat label="Checking" value="$4,208.55" change="+$1,240 this month" icon="wallet" tone="info" />
+</div>
+<div>
+<Stat label="Savings" value="$12,640.30" change="+$320 this month" icon="piggy-bank" tone="success" />
+</div>
+<div>
+<Stat label="Credit Card" value="$2,340.18" change="-$180 this month" icon="credit-card" tone="warning" />
+</div>
+</Columns>
+
+---
+
+## Recent Transactions
+
+<Card title="Last 5 transactions">
+| Date | Merchant | Amount |
+|---|---|---|
+| Mar 12 | Whole Foods Market | -$86.42 |
+| Mar 11 | Uber | -$24.50 |
+| Mar 10 | Netflix | -$15.99 |
+| Mar 09 | Shell Gas Station | -$48.20 |
+| Mar 08 | Direct Deposit — Employer | +$3,500.00 |
+
+<Button variant="secondary" size="small">View all transactions</Button>
+</Card>
+
+---
+
+## Spending by Category — This Month
+
+<Card title="March spending">
+<Chart type="donut" title="Spending breakdown">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 310 |
+| Transport | 180 |
+| Utilities | 150 |
+| Entertainment | 95 |
+| Other | 240 |
+</Chart>
+</Card>
+
+---
+
+## Bills Due Soon
+
+<Card title="Upcoming bills">
+| Bill | Due Date | Amount | Status |
+|---|---|---|---|
+| Electricity | Mar 15 | $78.40 | <Badge tone="warning">Due in 3 days</Badge> |
+| Internet | Mar 18 | $59.99 | <Badge tone="neutral">Due in 6 days</Badge> |
+| Rent | Apr 01 | $1,450.00 | <Badge tone="neutral">Due in 20 days</Badge> |
+</Card>
+
+---
+
+## Vacation Savings Goal — Japan Trip
+
+<Card title="Goal: $5,000 by August">
+<Progress value="72" max="100" label="$3,600 of $5,000 saved" tone="success" />
+<Callout tone="info" title="You're on track!">Saving $400/month will reach your goal by August 15.</Callout>
+</Card>
+
+---
+
+## Credit Score
+
+<Card title="Current credit score">
+<Columns>
+<div>
+<Stat label="Score" value="742" change="+12 from last month" icon="chart-line" tone="success" />
+</div>
+<div>
+<Badge tone="success">Good</Badge>
+</div>
+</Columns>
+</Card>
+
+---
+
+## Move Money Between Accounts
+
+<Card title="Transfer funds">
+<Form name="transfer">
+<Select label="From account" options="Checking ($4,208.55) | Savings ($12,640.30) | Credit Card ($2,340.18)" name="from" placeholder="Select account" />
+<Select label="To account" options="Checking ($4,208.55) | Savings ($12,640.30) | Credit Card ($2,340.18)" name="to" placeholder="Select account" />
+<Input label="Amount" type="number" name="amount" placeholder="0.00" min="0" step="0.01" required />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+---
+
+## Manage Your Credit Line
+
+<Card title="Credit card controls">
+<Switch label="Freeze credit line" name="freeze" value="false" hint="Temporarily block new charges" />
+<Callout tone="warning" title="Important">Freezing your credit line will block all new purchases, but recurring payments and refunds still process.</Callout>
+</Card>
+
+---
+
+## Statement Period
+
+<Card title="Choose statement period">
+<Select label="Statement cycle" options="1st – 30th of month | 5th – 4th of next month | 15th – 14th of next month | Custom range" name="statement" placeholder="Select period" />
+<Button variant="secondary">Apply</Button>
+</Card>
+
+---
+
+## Alert Preferences
+
+<Card title="Manage alerts">
+<Form name="alerts">
+<Checkboxes label="Alert me when…" options="Balance drops below $100 | Large transaction over $500 | Payment due in 3 days | New login detected | Credit score changes | Card used abroad" name="alerts" value="Balance drops below $100 | Large transaction over $500" />
+<Button>Save preferences</Button>
+</Form>
+</Card>
+
+---
+
+## Dispute a Transaction
+
+<Card title="Dispute a charge">
+<Form name="dispute">
+<Select label="Transaction to dispute" options="Whole Foods Market — $86.42 | Uber — $24.50 | Netflix — $15.99 | Shell Gas Station — $48.20" name="transaction" placeholder="Select transaction" />
+<TextArea label="Reason for dispute" name="reason" placeholder="Explain what happened…" rows="4" required />
+<Radio label="Dispute type" options="Unauthorized charge | Incorrect amount | Goods not received | Service not provided | Other" name="type" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What are the details of my most recent direct deposit?
+- Can you show me a breakdown of my dining spending?
+- When was my credit card last charged?
+- How much more do I need to save for my vacation goal?
+</FollowUps>

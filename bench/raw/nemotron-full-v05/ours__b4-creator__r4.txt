@@ -1,0 +1,133 @@
+# Creator Studio Dashboard
+
+<Select label="Filter by platform" placeholder="All platforms" options="All platforms | Instagram | TikTok | YouTube | X (Twitter) | LinkedIn" name="platform-filter" />
+
+<Columns>
+<Card title="Followers">
+<Stat label="Total followers" value="247.3K" change="+12.4% vs last month" tone="success" />
+<Chart type="line" title="Follower growth (30 days)" x="Date" y="Followers">
+| Date | Followers |
+|---|---|
+| 2024-10-01 | 220100 |
+| 2024-10-08 | 228400 |
+| 2024-10-15 | 235200 |
+| 2024-10-22 | 241800 |
+| 2024-10-29 | 247300 |
+</Chart>
+</Card>
+
+<Card title="Engagement">
+<Stat label="Engagement rate" value="4.8%" change="+0.3pp vs last month" tone="success" note="Industry avg: 3.2%" />
+<Chart type="bar" title="Engagement by type" x="Type" y="Rate %">
+| Type | Rate % |
+|---|---|
+| Likes | 3.2 |
+| Comments | 0.8 |
+| Shares | 0.5 |
+| Saves | 0.3 |
+</Chart>
+</Card>
+
+<Card title="Earnings this month">
+<Stat label="Total earnings" value="$8,420" change="+18% vs last month" tone="success" />
+<Stat label="Per platform" value="$8,420" change="IG: $3.2k | TT: $2.8k | YT: $1.9k | X: $0.5k" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Best posts this month">
+<Chart type="bar" title="Top 5 posts by reach" x="Post" y="Reach">
+| Post | Reach |
+|---|---|
+| Reel: Morning routine | 142000 |
+| Carousel: 5 productivity tips | 98500 |
+| Short: Desk setup tour | 87200 |
+| Photo: Behind the scenes | 65400 |
+| Tweet: Hot take on AI | 43100 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Audience split by platform">
+<Chart type="donut" title="Followers by platform" x="Platform" y="Followers">
+| Platform | Followers |
+|---|---|
+| Instagram | 89200 |
+| TikTok | 76500 |
+| YouTube | 48100 |
+| X (Twitter) | 23400 |
+| LinkedIn | 10200 |
+</Chart>
+</Card>
+
+<Card title="Best hour to post">
+<Chart type="bar" title="Avg engagement by hour (local time)" x="Hour" y="Engagement %">
+| Hour | Engagement % |
+|---|---|
+| 6 AM | 2.1 |
+| 9 AM | 3.8 |
+| 12 PM | 4.2 |
+| 3 PM | 3.9 |
+| 6 PM | 5.1 |
+| 9 PM | 4.7 |
+| 12 AM | 2.8 |
+</Chart>
+<Callout tone="info" title="Peak window">6 PM local time drives 5.1% engagement — schedule your best content then.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Posts scheduled this week">
+<Steps>
+<Step title="Mon 9:00 AM — Carousel: Q4 planning tips" status="done" />
+<Step title="Tue 6:00 PM — Reel: Day in the life" status="done" />
+<Step title="Wed 12:00 PM — Photo: New gear unboxing" status="current" />
+<Step title="Thu 6:00 PM — Short: Quick editing hack" status="todo" />
+<Step title="Fri 9:00 AM — Thread: Lessons from 100 videos" status="todo" />
+<Step title="Sat 10:00 AM — Photo: Weekend workspace" status="todo" />
+</Steps>
+</Card>
+
+<Card title="Comments waiting for reply">
+<Stat label="Pending replies" value="23" change="18 Instagram | 5 TikTok" tone="warning" />
+<Details title="Oldest unread comments" open="false">
+| Platform | Post | Comment | Age |
+|---|---|---|---|
+| Instagram | Morning routine reel | "What camera do you use?" | 4h |
+| Instagram | Productivity carousel | "Love tip #3!" | 6h |
+| TikTok | Desk setup tour | "Where's the lamp from?" | 2h |
+| TikTok | Desk setup tour | "Monitor arm model?" | 3h |
+</Details>
+</Card>
+</Columns>
+
+<Card title="Pending collaboration requests">
+<Stat label="Open requests" value="7" change="3 paid | 4 gifted | 2 affiliate" tone="info" />
+<Details title="View requests" open="false">
+| Brand | Type | Platform | Status | Value |
+|---|---|---|---|---|
+| Notion | Paid | YouTube | Negotiating | $2,500 |
+| Logitech | Gifted | Instagram | Awaiting reply | — |
+| Skillshare | Affiliate | TikTok | New | 30% rev share |
+| Adobe | Paid | Multi-platform | Reviewing | $4,000 |
+| Notion | Gifted | X (Twitter) | New | — |
+| Riverside | Paid | LinkedIn | Negotiating | $1,200 |
+| Descript | Affiliate | YouTube | New | 25% rev share |
+</Details>
+</Card>
+
+<Card title="Schedule a new post">
+<Form name="schedule-post">
+<Columns>
+<Select label="Platform" placeholder="Select platform" options="Instagram | TikTok | YouTube | X (Twitter) | LinkedIn" name="post-platform" required="true" />
+<Select label="Format" placeholder="Select format" options="Reel/Short/Video | Carousel/Thread | Single image | Story | Text only" name="post-format" required="true" />
+</Columns>
+<TextArea label="Caption" placeholder="Write your caption... #hashtags @mentions" name="post-caption" rows="4" required="true" hint="Max 2,200 chars for Instagram, 4,000 for LinkedIn" />
+<Columns>
+<Date label="Date" name="post-date" required="true" />
+<Input label="Time (24h)" type="time" name="post-time" placeholder="18:00" required="true" hint="Best hour: 18:00 based on your history" />
+</Columns>
+<Checkboxes label="Cross-post to" options="Instagram | TikTok | YouTube | X (Twitter) | LinkedIn" name="cross-post" hint="Adapt caption per platform automatically" />
+<Button variant="primary" size="large">Schedule post</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>

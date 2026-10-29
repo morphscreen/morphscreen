@@ -1,0 +1,53 @@
+# Warehouse Stock Check
+
+<Card title="Scan Product">
+<Scan label="Scan barcode" name="product-barcode" kind="barcode" hint="Point camera at product barcode" required="true" />
+</Card>
+
+<Card title="Product Details" subtitle="SKU: WH-7842 | Category: Electronics">
+| Field | Value |
+|---|---|
+| **Product** | Wireless Headphones Pro |
+| **SKU** | WH-7842 |
+| **Category** | Electronics |
+| **Unit Cost** | $42.50 |
+| **Reorder Point** | 50 units |
+</Card>
+
+<Card title="Stock by Warehouse">
+| Warehouse | Location | Current Stock | Status |
+|---|---|---|---|
+| **WH-NYC-01** | New York, NY | 127 | <Badge tone="success">In Stock</Badge> |
+| **WH-LAX-02** | Los Angeles, CA | 89 | <Badge tone="success">In Stock</Badge> |
+| **WH-CHI-03** | Chicago, IL | 42 | <Badge tone="warning">Low Stock</Badge> |
+| **WH-MIA-04** | Miami, FL | 15 | <Badge tone="danger">Critical</Badge> |
+| **WH-SEA-05** | Seattle, WA | 203 | <Badge tone="success">In Stock</Badge> |
+| **WH-DAL-06** | Dallas, TX | 67 | <Badge tone="success">In Stock</Badge> |
+| **WH-ATL-07** | Atlanta, GA | 8 | <Badge tone="danger">Critical</Badge> |
+| **WH-DEN-08** | Denver, CO | 94 | <Badge tone="success">In Stock</Badge> |
+</Card>
+
+<Callout tone="warning" title="Low Stock Alert">
+<strong>2 warehouses below reorder point:</strong> WH-MIA-04 (15 units) and WH-ATL-07 (8 units) are critically low. WH-CHI-03 (42 units) is approaching reorder threshold of 50 units.
+</Callout>
+
+<Card title="Request Restock">
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-7842" hint="Auto-filled from scan" required="true" />
+<Select label="Destination Warehouse" name="warehouse" placeholder="Select warehouse" options="WH-MIA-04 (Miami) - Critical | WH-ATL-07 (Atlanta) - Critical | WH-CHI-03 (Chicago) - Low | WH-NYC-01 (New York) | WH-LAX-02 (Los Angeles) | WH-SEA-05 (Seattle) | WH-DAL-06 (Dallas) | WH-DEN-08 (Denver)" required="true" />
+<Input label="Quantity to Order" name="quantity" type="number" placeholder="Enter units" hint="Minimum order: 100 units" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Standard (5-7 business days) | Expedited (2-3 business days) | Emergency (24-48 hours)" value="Expedited (2-3 business days)" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Special instructions, preferred carrier, etc." rows="3" />
+<Button>Submit Restock Request</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Recent Restock Requests">
+| Date | Warehouse | Qty | Priority | Status |
+|---|---|---|---|---|
+| 2024-01-15 | WH-MIA-04 | 200 | Emergency | <Badge tone="success">Delivered</Badge> |
+| 2024-01-12 | WH-ATL-07 | 150 | Expedited | <Badge tone="info">In Transit</Badge> |
+| 2024-01-10 | WH-CHI-03 | 300 | Standard | <Badge tone="success">Delivered</Badge> |
+| 2024-01-08 | WH-NYC-01 | 500 | Standard | <Badge tone="success">Delivered</Badge> |
+</Card>

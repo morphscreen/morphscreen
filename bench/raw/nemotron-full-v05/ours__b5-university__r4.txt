@@ -1,0 +1,209 @@
+# University Administrator Dashboard
+
+<Select label="Focus Department" name="department" placeholder="All Departments" options="All Departments | Computer Science | Business | Engineering | Arts & Humanities | Sciences | Health Sciences" />
+
+<Columns>
+<Stat label="Total Enrollment" value="12,847" change="+3.2% vs last year" tone="success" />
+<Stat label="Acceptance Rate" value="28.4%" change="-1.1pp vs last year" tone="neutral" />
+<Stat label="Tuition Revenue (YTD)" value="$42.3M" change="+5.8% vs budget" tone="success" />
+<Stat label="Housing Occupancy" value="94.2%" change="+2.1pp vs last year" tone="success" />
+</Columns>
+
+---
+
+<Card title="Enrollment Trend (5 Years)">
+<Chart type="line" x="Year" y="Students">
+| Year | Enrollment |
+|---|---|
+| 2020 | 11,200 |
+| 2021 | 11,580 |
+| 2022 | 12,010 |
+| 2023 | 12,450 |
+| 2024 | 12,847 |
+</Chart>
+</Card>
+
+---
+
+<Columns>
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Computer Science | 3,240 |
+| Business | 2,890 |
+| Engineering | 2,560 |
+| Health Sciences | 1,980 |
+| Arts & Humanities | 1,420 |
+| Sciences | 1,210 |
+</Chart>
+</Card>
+
+<Card title="Acceptance Rate by Program">
+<Chart type="bar" x="Program" y="Rate %">
+| Program | Rate % |
+|---|---|
+| Computer Science | 18.2 |
+| Business | 24.5 |
+| Engineering | 22.8 |
+| Health Sciences | 31.4 |
+| Arts & Humanities | 42.1 |
+| Sciences | 38.7 |
+</Chart>
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Course Capacity Utilization">
+<Chart type="horizontal" x="Utilization %" y="Course">
+| Course | Utilization % |
+|---|---|
+| CS101 Intro to Programming | 98 |
+| BUS200 Financial Accounting | 95 |
+| ENG301 Thermodynamics | 92 |
+| HSC150 Anatomy & Physiology | 89 |
+| ART110 Art History Survey | 76 |
+| SCI220 Organic Chemistry | 84 |
+| CS350 Machine Learning | 102 |
+| BUS450 Strategic Management | 88 |
+</Chart>
+</Card>
+
+<Card title="Teaching Load by Faculty">
+<Chart type="bar" x="Faculty" y="Course Credits">
+| Faculty | Course Credits |
+|---|---|
+| Dr. Chen (CS) | 12 |
+| Prof. Williams (Bus) | 9 |
+| Dr. Patel (Eng) | 10 |
+| Prof. Garcia (Art) | 6 |
+| Dr. Kim (Sci) | 11 |
+| Prof. Johnson (HSC) | 8 |
+| Dr. Brown (CS) | 9 |
+| Prof. Davis (Bus) | 7 |
+</Chart>
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Students at Academic Risk">
+<Stat label="Total At Risk" value="342" change="+23 vs last semester" tone="warning" />
+<Stat label="Probation" value="187" tone="danger" />
+<Stat label="Warning" value="155" tone="warning" />
+<Progress label="Probation" value="187" max="342" tone="danger" />
+<Progress label="Warning" value="155" max="342" tone="warning" />
+<Details title="View at-risk student list (click to expand)" open="false">
+| Student ID | Program | GPA | Status | Advisor |
+|---|---|---|---|---|
+| S2024001 | CS | 1.82 | Probation | Dr. Chen |
+| S2024045 | Business | 1.95 | Warning | Prof. Williams |
+| S2023089 | Engineering | 1.76 | Probation | Dr. Patel |
+| S2024112 | Health Sci | 1.88 | Warning | Prof. Johnson |
+</Details>
+</Card>
+
+<Card title="Scholarship Budget">
+<Stat label="Total Budget" value="$4.2M" tone="neutral" />
+<Stat label="Awarded" value="$3.68M" tone="info" />
+<Stat label="Remaining" value="$520K" tone="success" />
+<Progress label="Budget Utilization" value="3680000" max="4200000" tone="info" />
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Campus Events This Month">
+| Date | Event | Location | Expected Attendance |
+|---|---|---|---|
+| Oct 5 | Career Fair | Student Center | 800 |
+| Oct 12 | Research Symposium | Science Hall | 350 |
+| Oct 19 | Homecoming Game | Stadium | 4,200 |
+| Oct 26 | Alumni Mixer | Alumni House | 200 |
+| Oct 28 | Diversity Summit | Conference Center | 150 |
+</Card>
+
+<Card title="Alumni Giving (4 Years)">
+<Chart type="line" x="Year" y="Donations ($M)">
+| Year | Donations |
+|---|---|
+| 2021 | 8.2 |
+| 2022 | 9.1 |
+| 2023 | 10.4 |
+| 2024 | 11.7 |
+</Chart>
+</Card>
+</Columns>
+
+---
+
+<Card title="Semester Comparison: Fall 2024 vs Fall 2023">
+<Columns>
+<Stat label="Enrollment" value="12,847" change="+412 vs Fall 2023" tone="success" />
+<Stat label="Credit Hours" value="158,230" change="+5,180" tone="success" />
+<Stat label="Avg Class Size" value="28.4" change="-0.6" tone="success" />
+<Stat label="Retention Rate" value="91.2%" change="+0.8pp" tone="success" />
+<Stat label="Int'l Students" value="1,840" change="+120" tone="success" />
+<Stat label="First-Gen" value="3,210" change="+180" tone="success" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 187 |
+| Business | 142 |
+| Engineering | 98 |
+| Health Sciences | 76 |
+| Arts & Humanities | 34 |
+| Sciences | 28 |
+</Chart>
+</Card>
+
+---
+
+<Columns>
+<Card title="Approve New Course">
+<Form name="course-approval">
+<Input label="Course Code" placeholder="e.g., CS490" required="true" />
+<Input label="Course Title" placeholder="e.g., Advanced Topics in AI" required="true" />
+<Select label="Department" options="Computer Science | Business | Engineering | Arts & Humanities | Sciences | Health Sciences" required="true" />
+<Input label="Credits" type="number" placeholder="3" min="1" max="6" step="1" required="true" />
+<Select label="Level" options="Undergraduate | Graduate" required="true" />
+<TextArea label="Description" placeholder="Course description..." rows="3" required="true" />
+<Input label="Proposed Instructor" placeholder="Faculty name" required="true" />
+<Select label="Schedule Type" options="Lecture | Seminar | Lab | Studio | Hybrid | Online" required="true" />
+<Button>Submit for Approval</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Recipient Group" options="All Students | Undergraduates | Graduates | Computer Science Majors | Business Majors | Engineering Majors | At-Risk Students | International Students | First-Year Students | Seniors | Housing Residents | Scholarship Recipients" required="true" />
+<Input label="Subject" placeholder="Message subject" required="true" />
+<TextArea label="Message" placeholder="Compose your message..." rows="5" required="true" />
+<Checkboxes label="Delivery Channels" options="Email | SMS | Portal Notification | Mobile App Push" value="Email | Portal Notification" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>
+</Columns>
+
+---
+
+<FollowUps>
+- Show detailed enrollment projections for next year
+- Generate accreditation report for Computer Science department
+- Review faculty hiring plan for Fall 2025
+- Analyze yield rates by admission round
+- Export financial aid utilization report
+</FollowUps>

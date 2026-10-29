@@ -1,0 +1,269 @@
+# City Operations Center
+
+Live operations dashboard for the City of Springfield. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Current Conditions">
+<Columns>
+<div>
+<Stat label="Congestion Index" value="6.2 / 10" note="Moderate · Down 0.4 from peak" tone="warning" icon="chart-line" />
+<Stat label="Transit Punctuality" value="87.4%" note="On-time arrivals last 60 min" tone="info" icon="bus" />
+<Stat label="Water Use Today" value="42.3M L" note="12% below daily average" tone="success" icon="drop" />
+<Stat label="Open Incidents" value="14" note="3 critical · 5 major · 6 minor" tone="danger" icon="warning-circle" />
+</div>
+<div>
+<Stat label="Weather" value="18°C · Cloudy" note="Humidity 72% · Wind 12 km/h N" icon="cloud-sun" />
+<Stat label="Parking Available" value="1,847 spots" note="Downtown · 62% occupancy" tone="info" icon="parking" />
+<Stat label="Service Backlog" value="312 requests" note="Median wait 3.4 days" tone="warning" icon="clipboard-text" />
+<Stat label="Public Events" value="6 this weekend" note="2 require traffic diversions" icon="calendar" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Congestion & Transit">
+<Columns>
+<div>
+<Stat label="Congestion Right Now" value="6.2 / 10" note="High on I-94 westbound · Moderate downtown" tone="warning" icon="car" />
+<Chart type="line" title="Congestion Index by Hour" x="Hour" y="Index">
+| Hour | Today | Last Week |
+|---|---|---|
+| 06:00 | 3.1 | 2.8 |
+| 08:00 | 8.4 | 8.1 |
+| 10:00 | 5.2 | 5.0 |
+| 12:00 | 4.8 | 5.1 |
+| 14:00 | 5.5 | 5.3 |
+| 16:00 | 7.9 | 7.6 |
+| 18:00 | 8.8 | 8.5 |
+| 20:00 | 5.4 | 5.0 |
+</Chart>
+</div>
+<div>
+<Stat label="Transit Punctuality" value="87.4%" note="Target: 90%" tone="info" icon="bus" />
+<Chart type="bar" title="Punctuality by Line" x="Line" y="% On-time">
+| Line | % On-time |
+|---|---|
+| Green | 92 |
+| Blue | 88 |
+| Red | 85 |
+| Orange | 79 |
+| Purple | 93 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" title="AQI by District (Lower is better)" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 58 |
+| Riverside | 42 |
+| Northgate | 67 |
+| Hillcrest | 39 |
+| Eastside | 74 |
+| Westfield | 51 |
+</Chart>
+<Callout tone="warning" title="Eastside elevated">AQI of 74 is above WHO guidance. Sensitive groups should limit outdoor exertion.</Callout>
+</Card>
+
+<Card title="Energy Use — Past Week">
+<Chart type="area" title="Daily Energy Consumption (MWh)" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 1,240 |
+| Tue | 1,310 |
+| Wed | 1,280 |
+| Thu | 1,350 |
+| Fri | 1,420 |
+| Sat | 1,180 |
+| Sun | 1,050 |
+</Chart>
+<Stat label="Weekly Total" value="8,830 MWh" note="3.2% above same week last year" tone="neutral" />
+</Card>
+
+<Card title="Water Use Today">
+<Columns>
+<div>
+<Stat label="Consumption" value="42.3M L" note="12% below daily average" tone="success" icon="drop" />
+<Chart type="line" title="Hourly Water Use (M L)" x="Hour" y="M L">
+| Hour | Water |
+|---|---|
+| 06:00 | 2.1 |
+| 08:00 | 3.4 |
+| 10:00 | 2.8 |
+| 12:00 | 2.5 |
+| 14:00 | 2.6 |
+| 16:00 | 3.0 |
+| 18:00 | 3.8 |
+| 20:00 | 2.9 |
+</Chart>
+</div>
+<div>
+<Stat label="Water Quality" value="Excellent" note="All samples within limits" tone="success" icon="shield-check" />
+<Stat label="Leak Alerts" value="2 active" note="Both minor · crews dispatched" tone="warning" icon="warning" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Open Incidents">
+| ID | Type | Location | Severity | Status |
+|---|---|---|---|---|
+| INC-1042 | Traffic accident | I-94 W at Exit 23 | <Badge tone="danger">Critical</Badge> | Crew en route |
+| INC-1041 | Water main break | 5th & Main | <Badge tone="danger">Critical</Badge> | Crew on site |
+| INC-1040 | Structure fire | 12th Ave & Oak | <Badge tone="danger">Critical</Badge> | Fire on scene |
+| INC-1039 | Fallen tree | Riverside Park | <Badge tone="warning">Major</Badge> | Scheduled |
+| INC-1038 | Power outage | Northgate blocks 4-7 | <Badge tone="warning">Major</Badge> | Utility notified |
+| INC-1037 | Signal failure | 3rd & Pine | <Badge tone="warning">Major</Badge> | Technician dispatched |
+| INC-1036 | Pothole | Hillcrest Rd & 2nd | <Badge tone="neutral">Minor</Badge> | Queued |
+| INC-1035 | Graffiti | Underpass 9 | <Badge tone="neutral">Minor</Badge> | Queued |
+| INC-1034 | Streetlight out | 8th Ave & Elm | <Badge tone="neutral">Minor</Badge> | Queued |
+</Card>
+
+<Card title="Emergency Vehicle Deployment">
+<Columns>
+<div>
+<Stat label="Active Units" value="23" note="9 fire · 8 police · 6 EMS" tone="info" icon="siren" />
+</div>
+<div>
+| Unit | Type | Location | Status |
+|---|---|---|---|
+| E-12 | Fire engine | Riverside Station | <Badge tone="success">Available</Badge> |
+| E-07 | Fire engine | 12th & Oak | <Badge tone="danger">On call</Badge> |
+| P-04 | Patrol car | Downtown core | <Badge tone="success">Available</Badge> |
+| P-09 | Patrol car | Northgate | <Badge tone="warning">En route</Badge> |
+| A-02 | Ambulance | Central Hospital | <Badge tone="success">Available</Badge> |
+| A-05 | Ambulance | I-94 W | <Badge tone="danger">On call</Badge> |
+</div>
+</Columns>
+</Card>
+
+<Card title="Parking Availability — Downtown">
+<Columns>
+<div>
+<Stat label="Available Spots" value="1,847" note="Out of 4,860 total" tone="info" icon="parking" />
+<Progress value="62" max="100" label="Occupancy" tone="warning" />
+</div>
+<div>
+| Garage | Available | Status |
+|---|---|---|
+| City Center Garage | 412 | <Badge tone="success">Open</Badge> |
+| Riverfront Lot | 208 | <Badge tone="success">Open</Badge> |
+| Transit Plaza | 96 | <Badge tone="warning">Filling</Badge> |
+| Grand Avenue | 34 | <Badge tone="danger">Almost full</Badge> |
+</div>
+</Columns>
+</Card>
+
+<Card title="Public Events — This Weekend">
+| Event | Location | Time | Impact |
+|---|---|---|---|
+| Farmers Market | Riverside Park | Sat 8–14 | Street closure on 2nd |
+| City Marathon | Downtown route | Sun 6–12 | Multiple closures |
+| Summer Concert Series | Amphitheater | Sat 18–22 | Parking restrictions |
+| Art in the Park | Hillcrest Gardens | Sat 10–16 | None |
+| Food Truck Festival | Transit Plaza | Sun 11–17 | Lane closures |
+| Outdoor Cinema | Northgate Field | Fri 20–23 | None |
+</Card>
+
+<Card title="Citizen Reports — Live Feed">
+<Columns>
+<div>
+<Stat label="Reports Today" value="47" note="12 in last hour" tone="info" icon="chat-circle" />
+</div>
+<div>
+| Time | District | Report | Status |
+|---|---|---|---|
+| 14:32 | Eastside | Fallen branch on sidewalk | <Badge tone="warning">Assigned</Badge> |
+| 14:28 | Downtown | Broken water fountain | <Badge tone="neutral">New</Badge> |
+| 14:21 | Northgate | Loud construction after hours | <Badge tone="warning">Investigating</Badge> |
+| 14:15 | Riverside | Dead deer near trail | <Badge tone="neutral">New</Badge> |
+| 14:08 | Hillcrest | Graffiti on bus shelter | <Badge tone="neutral">Queued</Badge> |
+| 13:55 | Westfield | Sewer odor on Maple St | <Badge tone="danger">Escalated</Badge> |
+| 13:47 | Downtown | Pothole at 5th & Main | <Badge tone="success">Resolved</Badge> |
+</div>
+</Columns>
+</Card>
+
+<Card title="Service Request Backlog">
+<Columns>
+<div>
+<Stat label="Total Backlog" value="312" note="Median wait 3.4 days" tone="warning" icon="clipboard-text" />
+<Chart type="bar" title="Backlog by Category" x="Category" y="Requests">
+| Category | Requests |
+|---|---|
+| Potholes | 86 |
+| Streetlights | 64 |
+| Parks | 52 |
+| Sanitation | 48 |
+| Other | 62 |
+</Chart>
+</div>
+<div>
+<Stat label="Resolved Today" value="38" note="Target: 45/day" tone="success" />
+<Stat label="Overdue (>7 days)" value="27" note="Mostly sanitation" tone="danger" />
+</div>
+</Columns>
+</Card>
+
+<Card title="District Focus">
+<Select label="Select District" options="All Districts | Downtown | Riverside | Northgate | Hillcrest | Eastside | Westfield" name="district" placeholder="Choose a district" />
+<Columns>
+<div>
+<Stat label="Congestion" value="7.8 / 10" note="High · peak traffic" tone="danger" icon="car" />
+<Stat label="Air Quality" value="AQI 58" note="Moderate" tone="warning" />
+</div>
+<div>
+<Stat label="Open Incidents" value="3" note="1 critical" tone="danger" />
+<Stat label="Parking" value="412 spots" note="62% full" tone="info" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch">
+<Select label="Incident" options="INC-1042 Traffic accident | INC-1041 Water main break | INC-1040 Structure fire | INC-1039 Fallen tree | INC-1038 Power outage | INC-1037 Signal failure" name="incident" />
+<Select label="Crew Type" options="Fire | Police | EMS | Utility | Public Works | Parks" name="crew-type" />
+<Input label="Number of Units" name="units" type="number" min="1" max="10" value="1" />
+<TextArea label="Dispatch Notes" name="notes" placeholder="Additional instructions for the crew" rows="3" />
+<Button>Dispatch Now</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="alert">
+<Select label="Alert Type" options="Weather Warning | Traffic Advisory | Safety Alert | Utility Notice | Public Event | Test" name="alert-type" />
+<Input label="Affected Districts" name="districts" placeholder="Downtown, Northgate" />
+<Input label="Subject" name="subject" placeholder="Water outage on 5th & Main" />
+<TextArea label="Message" name="message" placeholder="Write the alert message citizens will receive…" rows="4" required="true" />
+<Checkboxes label="Channels" options="SMS | Email | App Push | Social Media | Website" name="channels" value="SMS | App Push" />
+<Button variant="danger">Send Alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks — This Month">
+| Location | Dates | Type | Traffic Impact |
+|---|---|---|---|
+| 5th Ave & Main | Jul 8–12 | Water main replacement | <Badge tone="warning">Lane closed</Badge> |
+| I-94 E, km 14–18 | Jul 10–19 | Resurfacing | <Badge tone="danger">Night closures</Badge> |
+| Riverside Dr | Jul 15–16 | Bridge inspection | <Badge tone="neutral">Minor delays</Badge> |
+| 12th Ave & Oak | Jul 18–22 | Sewer repairs | <Badge tone="warning">Road closed</Badge> |
+| Northgate Blvd | Jul 20–31 | Streetlight upgrade | <Badge tone="neutral">Shoulder work</Badge> |
+| Hillcrest Rd | Jul 25–28 | Paving | <Badge tone="warning">One lane</Badge> |
+</Card>
+
+<Card title="Infrastructure Maintenance — Due">
+| Asset | Location | Due Date | Priority | Status |
+|---|---|---|---|---|
+| Bridge #12 | Riverside Dr over Creek | Jul 14 | <Badge tone="danger">High</Badge> | <Badge tone="warning">Overdue</Badge> |
+| Water pump station | Northgate | Jul 18 | <Badge tone="danger">High</Badge> | <Badge tone="warning">Overdue</Badge> |
+| Traffic signals | Downtown core (12) | Jul 22 | <Badge tone="warning">Medium</Badge> | Scheduled |
+| Sewer line | Eastside Main St | Jul 25 | <Badge tone="warning">Medium</Badge> | Scheduled |
+| Streetlight network | Westfield | Jul 30 | <Badge tone="info">Low</Badge> | Planned |
+| Park irrigation | Hillcrest Gardens | Aug 2 | <Badge tone="info">Low</Badge> | Planned |
+</Card>
+
+<FollowUps>
+- Show me the incident map for Downtown
+- What's the status of INC-1041 water main break?
+- Which roads are closed for the marathon on Sunday?
+- Compare air quality trends across districts this month
+</FollowUps>

@@ -1,0 +1,167 @@
+# Warpath Online — Live-ops Room
+
+<Badge tone="success">All systems nominal</Badge>
+
+<Card title="Command deck" subtitle="Every metric below is filtered by the region focus">
+<Select label="Region focus" name="region-focus" options="All regions | NA East | NA West | EU Central | Asia Pacific | South America | Middle East" hint="Applies to every metric on this screen" />
+
+<Columns>
+<Stat label="Players online right now" value="84,219" change="+6.2%" note="Peak 92,400 today" icon="pulse" />
+<Stat label="Daily active players" value="1,204,802" change="+2.1%" note="vs yesterday" icon="users" />
+<Stat label="Monthly active players" value="6,803,417" change="+0.8%" note="28-day window" icon="calendar" />
+<Stat label="Revenue today" value="$148,320" change="+12.4%" note="vs last Tuesday" icon="chart-line" />
+<Stat label="Revenue per user" value="$0.12" change="+1.9%" note="Revenue today ÷ DAU" icon="coin" />
+</Columns>
+</Card>
+
+<Card title="Session length" subtitle="Past two weeks, all modes">
+<Chart type="line" x="Day" y="Avg session (min)">
+| Day | Avg session (min) |
+|---|---|
+| D-13 | 23.2 |
+| D-12 | 19.8 |
+| D-11 | 21.4 |
+| D-10 | 24.7 |
+| D-9 | 18.6 |
+| D-8 | 22.3 |
+| D-7 | 26.1 |
+| D-6 | 25.4 |
+| D-5 | 20.9 |
+| D-4 | 23.8 |
+| D-3 | 22.6 |
+| D-2 | 27.3 |
+| D-1 | 24.5 |
+| Today | 26.2 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best-selling items" subtitle="Last 7 days, by units sold">
+| Item | Units | Revenue |
+|---|---|---|
+| Ember Wolf Skin | 12,840 | $89,880 |
+| Starlight Pass — Season 7 | 9,302 | $46,510 |
+| Dragon Egg Pack | 7,481 | $52,367 |
+| Ancient Relic Chest | 5,208 | $36,456 |
+| Frostmane Mount | 4,619 | $64,666 |
+</Card>
+
+<Card title="Currency inflation" subtitle="Gold supply index, baseline November">
+<Chart type="area" x="Month" y="Gold index">
+| Month | Gold index |
+|---|---|
+| Nov | 100 |
+| Dec | 101 |
+| Jan | 103 |
+| Feb | 105 |
+| Mar | 108 |
+| Apr | 112 |
+</Chart>
+
+<Callout tone="warning" title="Above target">Gold supply is growing +4.2% month-over-month, above the 3% target. The Solstice Festival currency sink is underperforming.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Server regions" subtitle="Live health per region">
+| Region | Players | Load | Status |
+|---|---|---|---|
+| NA East | 21,304 | 72% | Healthy |
+| NA West | 9,812 | 88% | Degraded — 4% packet loss |
+| EU Central | 18,247 | 64% | Healthy |
+| Asia Pacific | 23,918 | 70% | Healthy |
+| South America | 7,522 | 95% | Overloaded — queue > 3 min |
+| Middle East | 3,416 | 55% | Healthy |
+
+<Callout tone="danger" title="South America overloaded">Queue times above 3 minutes. A hotfix is ready to ship — see the Ship hotfix section.</Callout>
+</Card>
+
+<Card title="Crash rate by app version" subtitle="Last 24 hours">
+<Chart type="bar" x="Version" y="Crash rate %">
+| Version | Crash rate % |
+|---|---|
+| 4.12.0 | 0.8 |
+| 4.11.2 | 0.6 |
+| 4.11.1 | 1.9 |
+| 4.10.0 | 2.4 |
+| 4.9.3 | 3.1 |
+</Chart>
+
+<Callout tone="warning" title="Old version tripwire">4.9.3 is above the 2.5% tripwire. Consider a forced update for that line.</Callout>
+</Card>
+</Columns>
+
+<Card title="Live events" subtitle="Running and upcoming">
+<Columns>
+<Card title="Solstice Festival">
+<Badge tone="success">Running</Badge>
+Ends in 2 days · Double XP in all modes · New festival shop
+</Card>
+<Card title="Double XP Weekend">
+<Badge tone="info">Running</Badge>
+Ends tomorrow · All modes grant 2× XP
+</Card>
+<Card title="Frozen Throne">
+<Badge tone="neutral">Upcoming</Badge>
+Starts in 3 days · 10-player PvE raid
+</Card>
+<Card title="Lunar New Year">
+<Badge tone="neutral">Upcoming</Badge>
+Starts in 7 days · Seasonal cosmetics and emotes
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Player reports" subtitle="Awaiting review">
+<Stat label="Pending" value="43" tone="warning" note="Oldest 9h · 12 escalated" icon="flag" />
+
+Recent breakdown: 14× toxic chat · 9× cheating · 5× exploit abuse · 4× griefing · 3× name violations
+</Card>
+
+<Card title="Ban appeals" subtitle="Awaiting review">
+<Stat label="Pending" value="17" tone="warning" note="Oldest 14h · 3 escalated" icon="gavel" />
+
+Appeals from: 8× permanently banned · 6× 7-day suspensions · 3× chat restricted
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Exp A — Matchmaking 2.0" subtitle="Started 3 weeks ago · 480k players">
+<Stat label="Retention vs control" value="+0.8%" tone="success" change="p = 0.04" note="Statistically significant" />
+<Badge tone="success">Winner</Badge> Roll out to all regions next Tuesday.
+</Card>
+
+<Card title="Exp B — Shop prices −10%" subtitle="Started 2 weeks ago · 210k players">
+<Stat label="ARPU vs control" value="+6.0%" tone="warning" change="p = 0.12" note="Not statistically significant" />
+<Badge tone="warning">Not significant</Badge> Extend one more week to reach power.
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patch notes" subtitle="Draft for 4.13.0">
+<Form name="patch-notes">
+<TextArea label="Draft" name="patch-body" rows="10" placeholder="## 4.13.0 — Solstice Festival&#10;&#10;- New event: Solstice Festival&#10;- Balance: Ember Wolf hitbox reduced 10%&#10;- Fix: crash on loading into NA West&#10;- Known issue: Frostmane audio stutter" required="true" />
+<Button>Save draft</Button>
+</Form>
+
+<Details title="Preview rendered notes">
+### 4.13.0 — Solstice Festival
+
+- New event: Solstice Festival
+- Balance: Ember Wolf hitbox reduced 10%
+- Fix: crash on loading into NA West
+- Known issue: Frostmane audio stutter
+</Details>
+</Card>
+
+<Card title="Ship hotfix" subtitle="Targets current client and focused region">
+<Form name="hotfix">
+<Select label="Target version" name="hotfix-version" options="4.12.0 (current) | 4.11.2 (previous) | 4.11.1 (degraded)" hint="Only versions ≥ 4.10 can be hotfixed" required="true" />
+<Select label="Regions" name="hotfix-region" options="All regions | NA West (focused) | South America (overloaded)" required="true" />
+<Input label="Reason" name="hotfix-reason" placeholder="e.g. crash spike on NA West" required="true" hint="Written to the audit log" />
+<Checkboxes label="Confirmation" options="I confirm this hotfix is tested and ready to ship" name="hotfix-confirm" required="true" />
+<Button variant="danger">Ship hotfix</Button>
+</Form>
+</Card>
+</Columns>

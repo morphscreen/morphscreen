@@ -1,0 +1,83 @@
+# Month-end finance view
+
+Cash is healthy, but burn ticked up in March. Everything below is for **March 2026**.
+
+<Columns>
+<Stat label="Cash on hand" value="$1,842,000" change="+$96k vs Feb" tone="success" icon="bank" />
+<Stat label="Monthly burn" value="$214,500" change="+8.2% vs Feb" tone="warning" icon="fire" />
+<Stat label="Months of runway" value="8.6 mo" change="-0.6 mo vs Feb" tone="warning" icon="hourglass" />
+</Columns>
+
+<Callout tone="warning" title="Runway under 9 months">Burn rose faster than revenue in March. At the current rate, runway drops below 6 months in July.</Callout>
+
+<Card title="Runway trend" subtitle="Cash, burn and runway over the last 6 months">
+<Chart type="line" x="Month" y="USD">
+| Month | Cash | Burn |
+|---|---|---|
+| Oct 2025 | 2210000 | 168000 |
+| Nov 2025 | 2142000 | 172000 |
+| Dec 2025 | 2058000 | 181000 |
+| Jan 2026 | 1986000 | 189500 |
+| Feb 2026 | 1904000 | 198200 |
+| Mar 2026 | 1842000 | 214500 |
+</Chart>
+</Card>
+
+<Card title="Expenses by category" subtitle="March 2026 · $214,500 total">
+<Chart type="donut" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Payroll | 118000 |
+| Cloud & infra | 34200 |
+| Sales & marketing | 28600 |
+| Software & tools | 17400 |
+| Office & admin | 9800 |
+| Legal & other | 6500 |
+</Chart>
+</Card>
+
+<Card title="Transactions above $10,000" subtitle="March 2026 · 5 transactions, $186,400">
+| Date | Vendor | Category | Amount |
+|---|---|---|---|
+| Mar 1 | Gusto payroll run | Payroll | $118,000 |
+| Mar 4 | AWS | Cloud & infra | $21,400 |
+| Mar 11 | Google Ads | Sales & marketing | $16,800 |
+| Mar 18 | Datadog | Cloud & infra | $12,800 |
+| Mar 27 | Wilson Sonsini | Legal & other | $17,400 |
+
+<Badge tone="info">5 of 214 transactions</Badge>
+</Card>
+
+<Card title="Look at a different month">
+<Form name="month-picker">
+<Select label="Month" name="month" options="March 2026 | February 2026 | January 2026 | December 2025 | November 2025 | October 2025" value="March 2026" hint="Switches every figure on this screen" />
+<Radio label="View" name="view" options="Month-end close | Live / accrual" />
+<Button>Show this month</Button>
+<Button variant="tertiary">Compare to prior month</Button>
+</Form>
+</Card>
+
+<Card title="Download the statement">
+<Form name="statement-export">
+<Select label="Statement" name="statement" options="March 2026 — full statement | March 2026 — transactions over $10k | Q1 2026 — combined" />
+<Select label="Format" name="format" options="PDF | CSV | XLSX" />
+<Checkboxes label="Include" name="include" options="Category breakdown | Vendor detail | Bank reconciliation" value="Category breakdown | Vendor detail" />
+<Button variant="primary" icon="download">Download statement</Button>
+</Form>
+</Card>
+
+<Card title="Close checklist" subtitle="March 2026">
+<Steps>
+<Step title="Bank feeds reconciled" status="done" subtitle="All 4 accounts matched through Mar 31" />
+<Step title="Payroll & contractor invoices posted" status="done" />
+<Step title="Accruals and prepaids adjusted" status="current" subtitle="2 vendor accruals outstanding" />
+<Step title="Board pack generated" status="todo" subtitle="Due Apr 5" />
+</Steps>
+</Card>
+
+<FollowUps>
+- Break down cloud & infra spend by service
+- What would runway look like if burn stayed flat at $198k?
+- Show me February's statement instead
+- Which vendors are on annual contracts renewing in Q2?
+</FollowUps>

@@ -1,0 +1,131 @@
+# Admin Overview
+
+<Select label="Reporting period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$247,850" change="+12.4% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$2,974,200" change="+14.1% vs last year" tone="success" />
+<Stat label="Churn this month" value="2.3%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+3 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)" subtitle="Daily signups with 7-day moving average">
+<Chart type="line" x="Date" y="Signups">
+| Date | Signups |
+|---|---|
+| 2024-01-15 | 12 |
+| 2024-01-16 | 8 |
+| 2024-01-17 | 15 |
+| 2024-01-18 | 11 |
+| 2024-01-19 | 19 |
+| 2024-01-20 | 7 |
+| 2024-01-21 | 5 |
+| 2024-01-22 | 14 |
+| 2024-01-23 | 16 |
+| 2024-01-24 | 13 |
+| 2024-01-25 | 21 |
+| 2024-01-26 | 9 |
+| 2024-01-27 | 6 |
+| 2024-01-28 | 18 |
+| 2024-01-29 | 17 |
+| 2024-01-30 | 22 |
+| 2024-01-31 | 14 |
+| 2024-02-01 | 11 |
+| 2024-02-02 | 8 |
+| 2024-02-03 | 5 |
+| 2024-02-04 | 16 |
+| 2024-02-05 | 19 |
+| 2024-02-06 | 15 |
+| 2024-02-07 | 20 |
+| 2024-02-08 | 13 |
+| 2024-02-09 | 10 |
+| 2024-02-10 | 7 |
+| 2024-02-11 | 4 |
+| 2024-02-12 | 14 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Enterprise | 230 |
+| Custom | 45 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization" subtitle="Company-wide license usage">
+<Progress label="Overall utilization" value="68" max="100" tone="info" />
+<Progress label="Starter plan" value="45" max="100" tone="neutral" />
+<Progress label="Professional plan" value="72" max="100" tone="success" />
+<Progress label="Enterprise plan" value="84" max="100" tone="success" />
+<Progress label="Custom plans" value="91" max="100" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Feature Adoption (Newest Features)">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34 |
+| Advanced Analytics Dashboard | 52 |
+| SSO/SCIM Provisioning | 28 |
+</Chart>
+</Card>
+
+<Card title="Top 10 Customers by Spend">
+| Rank | Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|---|
+| 1 | Acme Corporation | Enterprise | 450 | $45,000 | <Badge tone="success">Active</Badge> |
+| 2 | Globex Inc | Enterprise | 320 | $32,000 | <Badge tone="success">Active</Badge> |
+| 3 | Wayne Enterprises | Custom | 280 | $28,500 | <Badge tone="success">Active</Badge> |
+| 4 | Stark Industries | Enterprise | 210 | $21,000 | <Badge tone="success">Active</Badge> |
+| 5 | Umbrella Corp | Professional | 180 | $16,200 | <Badge tone="success">Active</Badge> |
+| 6 | Cyberdyne Systems | Enterprise | 150 | $15,000 | <Badge tone="success">Active</Badge> |
+| 7 | Massive Dynamic | Professional | 140 | $12,600 | <Badge tone="success">Active</Badge> |
+| 8 | Initech | Professional | 120 | $10,800 | <Badge tone="warning">At Risk</Badge> |
+| 9 | Pied Piper | Starter | 95 | $4,750 | <Badge tone="success">Active</Badge> |
+| 10 | Hooli | Professional | 85 | $7,650 | <Badge tone="success">Active</Badge> |
+</Card>
+
+<Columns>
+<Card title="Accounts at Risk">
+| Customer | Plan | Seats | Risk Reason | Health Score |
+|---|---|---|---|---|
+| Initech | Professional | 120 | Low feature adoption (12%), no login in 14 days | <Badge tone="danger">23</Badge> |
+| Dunder Mifflin | Starter | 45 | Failed payment ×2, support tickets unresolved | <Badge tone="warning">41</Badge> |
+| Vandelay Industries | Professional | 80 | Champion left, no renewal contact identified | <Badge tone="warning">38</Badge> |
+| Sterling Cooper | Enterprise | 200 | Contract expires in 30 days, no renewal signal | <Badge tone="warning">45</Badge> |
+| Bluth Company | Starter | 30 | Usage dropped 60% MoM, no API calls | <Badge tone="danger">19</Badge> |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed On | Attempts | Action |
+|---|---|---|---|---|
+| Dunder Mifflin | $450 | 2024-02-10 | 2/3 | <Button size="small" variant="primary">Retry</Button> |
+| Bluth Company | $150 | 2024-02-08 | 3/3 | <Button size="small" variant="danger" disabled="true">Max retries</Button> |
+| Pearson Hardman | $2,100 | 2024-02-12 | 1/3 | <Button size="small" variant="primary">Retry</Button> |
+| Lockhart Gardner | $890 | 2024-02-11 | 2/3 | <Button size="small" variant="primary">Retry</Button> |
+| Specter Litt | $3,200 | 2024-02-09 | 1/3 | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+</Columns>
+
+<Card title="Invite Another Admin" subtitle="Send an invitation to join as an administrator">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="admin@company.com" required="true" hint="Must be a work email" />
+<Select label="Role" name="role" options="Owner | Admin | Billing Admin | Read-only" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me churn breakdown by plan
+- Export top 10 customers to CSV
+- Set up automated retry for failed payments
+- Create a health score alert for accounts below 30
+</FollowUps>

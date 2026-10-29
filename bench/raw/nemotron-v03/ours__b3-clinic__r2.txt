@@ -1,0 +1,60 @@
+<Card title="Clinic Day View" subtitle="Monday, January 15, 2024">
+<Columns>
+<Card title="Today's Appointments">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 8:00 AM | Sarah Johnson | 1 | Checked In |
+| 8:30 AM | Michael Chen | 2 | Waiting |
+| 9:00 AM | Emily Davis | 1 | Scheduled |
+| 9:30 AM | James Wilson | 3 | Scheduled |
+| 10:00 AM | Lisa Anderson | 2 | Scheduled |
+| 10:30 AM | Robert Taylor | 1 | Scheduled |
+| 11:00 AM | Jennifer Martinez | 3 | Scheduled |
+| 11:30 AM | David Brown | 2 | Scheduled |
+| 1:00 PM | Amanda Garcia | 1 | Scheduled |
+| 1:30 PM | Christopher Lee | 3 | Scheduled |
+| 2:00 PM | Ashley White | 2 | Scheduled |
+| 2:30 PM | Matthew Harris | 1 | Scheduled |
+
+<Form name="check-in">
+<Select label="Select Patient" placeholder="Choose patient to check in" options="Michael Chen (8:30 AM) | Emily Davis (9:00 AM) | James Wilson (9:30 AM) | Lisa Anderson (10:00 AM) | Robert Taylor (10:30 AM) | Jennifer Martinez (11:00 AM) | David Brown (11:30 AM) | Amanda Garcia (1:00 PM) | Christopher Lee (1:30 PM) | Ashley White (2:00 PM) | Matthew Harris (2:30 PM)" />
+<Select label="Assign Room" placeholder="Choose room" options="Room 1 | Room 2 | Room 3" />
+<Button>Check In Patient</Button>
+</Form>
+</Card>
+
+<Card title="Quick Stats">
+<Stat label="Patients Expected Today" value="12" change="+2 vs yesterday" tone="info" />
+<Stat label="No-Show Rate This Month" value="8.5%" change="-1.2% vs last month" tone="success" />
+<Stat label="Checked In" value="1" change="of 12" tone="neutral" />
+<Stat label="Waiting" value="1" change="" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Room Status (Right Now)">
+<Badge tone="success">Room 1: Occupied (Sarah Johnson)</Badge>
+<Badge tone="warning">Room 2: Free</Badge>
+<Badge tone="info">Room 3: Free</Badge>
+<Progress value="1" max="3" label="1 of 3 rooms in use" />
+</Card>
+
+<Card title="Next Patient Called Out">
+<Callout tone="info" title="Now Calling">
+**Michael Chen** — 8:30 AM appointment
+<br />Please proceed to **Room 2**
+</Callout>
+<Button variant="primary" size="large">Call Next Patient</Button>
+<Button variant="secondary">Recall Michael Chen</Button>
+</Card>
+</Columns>
+
+<Card title="Navigate Days">
+<Form name="date-nav">
+<Date label="Select Date" name="appointment-date" value="2024-01-15" />
+<Button variant="secondary" href="#">← Previous Day</Button>
+<Button variant="primary">Go to Date</Button>
+<Button variant="secondary" href="#">Next Day →</Button>
+</Form>
+</Card>
+</Card>

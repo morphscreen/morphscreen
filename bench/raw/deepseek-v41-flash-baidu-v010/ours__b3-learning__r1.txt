@@ -1,0 +1,81 @@
+# Training Analytics — Week of Mar 10
+
+<Callout tone="info" title="Cohort filter is off">
+Showing all cohorts. Pick a cohort below to narrow every number on this screen.
+</Callout>
+
+<Card title="Filter" subtitle="Narrow the whole screen to one cohort">
+<Form name="cohort-filter">
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Spring 2025 — Cohort A | Spring 2025 — Cohort B | Fall 2024 — Cohort C | Self-paced (open enrollment)" hint="Applies to every card on this page" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Columns>
+<Stat label="Active learners this week" value="1,842" change="+6.2% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="68%" change="-2.1 pts vs last week" tone="warning" icon="chart-line" />
+<Stat label="Average quiz score" value="81.4" change="+1.8 pts" tone="success" icon="chart-line" />
+<Stat label="Learners at risk" value="127" change="+14 this week" tone="danger" icon="warning" />
+</Columns>
+
+<Card title="Engagement, past eight weeks" subtitle="Weekly active learners and quiz attempts">
+<Chart type="line" x="Week" y="Learners">
+| Week | Active learners | Quiz attempts |
+|---|---|---|
+| W1 | 1,510 | 2,940 |
+| W2 | 1,588 | 3,120 |
+| W3 | 1,642 | 3,205 |
+| W4 | 1,701 | 3,388 |
+| W5 | 1,733 | 3,410 |
+| W6 | 1,779 | 3,562 |
+| W7 | 1,734 | 3,498 |
+| W8 | 1,842 | 3,701 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+| Rank | Course | Enrolled | Completion | Avg quiz |
+|---|---|---|---|---|
+| 1 | Data Foundations | 612 | 74% | 84.1 |
+| 2 | Workplace Safety | 548 | 81% | 79.6 |
+| 3 | Intro to Python | 471 | 61% | 77.2 |
+| 4 | Customer Service Essentials | 398 | 69% | 82.8 |
+| 5 | Leadership Basics | 244 | 52% | 80.3 |
+| 6 | Compliance Refresher | 189 | 88% | 86.0 |
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="No activity in 10+ days, or quiz score below 60">
+| Learner | Cohort | Last active | Progress | Avg quiz | Risk |
+|---|---|---|---|---|---|
+| Priya Raman | Spring 2025 — A | 16 days ago | 34% | 52 | <Badge tone="danger">High</Badge> |
+| Marcus Bell | Spring 2025 — B | 12 days ago | 41% | 58 | <Badge tone="danger">High</Badge> |
+| Dana Okafor | Fall 2024 — C | 11 days ago | 57% | 61 | <Badge tone="warning">Medium</Badge> |
+| Tomas Lind | Self-paced | 10 days ago | 63% | 59 | <Badge tone="warning">Medium</Badge> |
+| Aisha Karim | Spring 2025 — A | 10 days ago | 48% | 64 | <Badge tone="warning">Medium</Badge> |
+
+<Button variant="secondary">See all 127 at-risk learners</Button>
+</Card>
+
+<Card title="Message a cohort" subtitle="Send a nudge to everyone in one cohort">
+<Form name="cohort-message">
+<Select label="Cohort" name="message-cohort" placeholder="Choose a cohort" options="Spring 2025 — Cohort A | Spring 2025 — Cohort B | Fall 2024 — Cohort C | Self-paced (open enrollment) | At-risk learners only" required="true" />
+<Input label="Subject" name="subject" placeholder="Check in on your progress" required="true" />
+<TextArea label="Message" name="body" rows="5" placeholder="Hi everyone — we noticed a few of you have fallen behind on Module 3. Here are two live sessions this week..." required="true" />
+<Checkboxes label="Also send as" name="channels" options="Email | In-app notification | SMS" value="Email | In-app notification" />
+<Switch label="Schedule for Monday 9:00 AM instead of sending now" name="schedule" value="false" />
+<Button>Send message</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Details title="How risk score is calculated">
+A learner is flagged when **any two** of these hold: no activity for 10+ days, course progress below 50%, average quiz score below 60, or two missed live sessions in a row. High risk means three or more.
+</Details>
+
+<FollowUps>
+- Which cohort has the lowest completion rate?
+- Show me the at-risk learners in Spring 2025 — Cohort A
+- Compare quiz scores across the last four cohorts
+- Draft a re-engagement message for at-risk learners
+</FollowUps>

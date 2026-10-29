@@ -1,0 +1,8 @@
+root = Card([header, taskDetails, statusRow, actionBtn])
+header = CardHeader("Q3 Budget Forecast", "Due today · Highest priority")
+taskDetails = EntityList([deadlineRow, assigneeRow], "default", { left: "Field", right: "Value" })
+deadlineRow = { left: "Deadline", right: "Today, 5:00 PM", rightVariant: "text" }
+assigneeRow = { left: "Assigned to", right: "You", rightVariant: "text" }
+statusRow = TagBlock(["In Progress", "Blocked: awaiting finance data"], "md")
+actionBtn = Buttons([doneBtn], "row")
+doneBtn = Button("Mark Complete", { type: "continue_conversation", context: "Mark 'Q3 Budget Forecast' as complete and show next priority" }, "primary", "normal", "large")

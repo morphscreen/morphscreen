@@ -1,0 +1,44 @@
+<Card title="Platform Status" subtitle="Live view for the platform team">
+  <Stat label="API Uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+  <Callout tone="info" title="Most recent incident">
+    **Database connection pool exhaustion** – resolved at 2025-03-28 14:32 UTC.  
+    Affected endpoints returned 503 for 11 minutes. Root cause: a burst of unauthenticated retries from a misconfigured client. Rate limiting and connection pool sizing have been updated.
+  </Callout>
+</Card>
+
+<Card title="Incident timeline">
+  <Steps>
+    <Step title="2025-03-28 14:21 UTC" status="done" subtitle="Incident detected">Alert fired: P1 – API error rate >5%.</Step>
+    <Step title="2025-03-28 14:23 UTC" status="done" subtitle="Root cause identified">Database connection pool at 100%. Rolled out emergency rate‑limit rule.</Step>
+    <Step title="2025-03-28 14:32 UTC" status="done" subtitle="Resolved">Pool usage dropped below 50%. All endpoints healthy.</Step>
+    <Step title="2025-03-28 15:00 UTC" status="done" subtitle="Post‑mortem started">Team reviewing logs and tuning pool max from 50 to 120.</Step>
+  </Steps>
+  <Button ask="Show the full post‑mortem for the March 28 incident">Full post‑mortem</Button>
+</Card>
+
+<Card title="Uptime breakdown by component">
+  <Columns>
+    <Stat label="REST API" value="99.99%" note="Last 7 days" tone="success" />
+    <Stat label="GraphQL API" value="99.97%" note="Last 7 days" tone="success" />
+    <Stat label="WebSocket" value="100%" note="Last 7 days" tone="success" />
+    <Stat label="Auth service" value="99.95%" note="Last 7 days" tone="info" />
+  </Columns>
+</Card>
+
+<Card title="Uptime trend (this month)">
+  <Chart type="line" x="Week" y="% uptime">
+| Week | Uptime |
+|---|---|
+| W1 | 100.00 |
+| W2 | 100.00 |
+| W3 | 99.87 |
+| W4 | 100.00 |
+  </Chart>
+  <Button ask="Show daily uptime for March">Daily breakdown</Button>
+</Card>
+
+<FollowUps>
+- What was the exact impact on users during the March 28 incident?
+- Which services are still above the 99.95% SLO?
+- Show the on‑call rotation for this week.
+</FollowUps>

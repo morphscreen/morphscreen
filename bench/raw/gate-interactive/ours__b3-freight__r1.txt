@@ -1,0 +1,79 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">2025-01-15 14:32 UTC · Auto-refresh every 5 min</Callout>
+
+<Card title="Shipments in Transit" subtitle="Search by route">
+<Form name="route-search">
+<Input label="Route search" name="route" placeholder="e.g., LAX → JFK, Shanghai → Rotterdam" />
+</Form>
+
+| # | Origin | Destination | Carrier | ETA | Status | Cost | Flag |
+|---|---|---|---|---|---|---|---|
+| SH-8472 | Shanghai, CN | Los Angeles, US | Maersk | 2025-01-18 06:00 | In Transit | $4,200 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8491 | Rotterdam, NL | New York, US | MSC | 2025-01-17 14:00 | In Transit | $3,850 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8503 | Singapore, SG | Long Beach, US | CMA CGM | 2025-01-19 22:00 | In Transit | $4,500 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8510 | Hamburg, DE | Savannah, US | Hapag-Lloyd | 2025-01-16 10:00 | **Delayed** | $3,950 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8522 | Busan, KR | Tacoma, US | ONE | 2025-01-20 08:00 | In Transit | $4,100 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8534 | Ningbo, CN | Houston, US | COSCO | 2025-01-17 18:00 | **Delayed** | $4,300 | <Button variant="danger" size="small">Flag</Button> |
+| SH-8541 | Antwerp, BE | Charleston, US | Evergreen | 2025-01-18 12:00 | In Transit | $3,750 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8556 | Qingdao, CN | Oakland, US | Yang Ming | 2025-01-19 04:00 | In Transit | $4,050 | <Button variant="tertiary" size="small">Flag</Button> |
+</Card>
+
+<Callout tone="danger" title="Delayed Shipments — 2 flagged">
+<strong>SH-8510</strong> (Hamburg → Savannah) — ETA missed by 18 hrs, weather delay at Bremerhaven transshipment<br />
+<strong>SH-8534</strong> (Ningbo → Houston) — ETA missed by 6 hrs, port congestion at Ningbo
+</Callout>
+
+<Columns>
+<Card title="On-Time Performance (Jan)">
+<Stat label="On-time %" value="78%" change="-4% vs Dec" tone="warning" icon="chart-line" />
+<Stat label="Total shipments" value="47" change="+3 this week" tone="neutral" icon="package" />
+<Stat label="Delayed" value="11" change="+2 vs last week" tone="danger" icon="alert-triangle" />
+</Card>
+
+<Card title="Average Cost per Shipment">
+<Stat label="Avg cost" value="$4,088" change="+$112 vs Dec" tone="info" icon="currency-usd" />
+<Stat label="Lowest" value="$3,750" tone="success" icon="arrow-down" subtitle="SH-8541 (Antwerp → Charleston)" />
+<Stat label="Highest" value="$4,500" tone="warning" icon="arrow-up" subtitle="SH-8503 (Singapore → Long Beach)" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by carrier this month">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 12 |
+| MSC | 9 |
+| CMA CGM | 8 |
+| Hapag-Lloyd | 6 |
+| ONE | 5 |
+| COSCO | 4 |
+| Evergreen | 3 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Shipments per week" x="Week" y="Count">
+| Week | Shipments |
+|---|---|
+| W1 (Nov 25) | 14 |
+| W2 (Dec 2) | 18 |
+| W3 (Dec 9) | 16 |
+| W4 (Dec 16) | 22 |
+| W5 (Dec 23) | 12 |
+| W6 (Dec 30) | 10 |
+| W7 (Jan 6) | 19 |
+| W8 (Jan 13) | 21 |
+</Chart>
+</Card>
+</Columns>
+
+<Details title="Flagged shipments log" open="false">
+| Shipment | Flagged by | Reason | Timestamp |
+|---|---|---|---|
+| SH-8510 | M. Chen | Weather delay — Bremerhaven | 2025-01-14 09:15 |
+| SH-8534 | M. Chen | Port congestion — Ningbo | 2025-01-14 11:42 |
+| SH-8421 | A. Patel | Customs hold — Long Beach | 2025-01-10 16:30 |
+| SH-8398 | A. Patel | Vessel mechanical issue | 2025-01-08 08:45 |
+</Details>

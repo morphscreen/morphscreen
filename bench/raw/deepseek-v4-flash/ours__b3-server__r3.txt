@@ -1,0 +1,66 @@
+# Service Health — On-call view
+
+Last refreshed: 14:02 UTC · <Badge tone="warning">2 unacknowledged incidents</Badge> <Badge tone="success">Region filter active</Badge>
+
+<Card title="Region scope" subtitle="Narrows every metric and endpoint below to a single region.">
+<Form name="region-filter">
+<Select label="Region" name="region" placeholder="Choose region" options="All regions | us-east-1 | eu-west-1 | ap-southeast-2" />
+<Button variant="primary" size="small">Apply</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Uptime" value="99.95%" tone="success" change="+0.01 vs last quarter" />
+</Card>
+<Card title="Error rate right now">
+<Stat label="Error rate" value="1.2%" tone="warning" change="Above 0.8% target" />
+</Card>
+</Columns>
+
+<Card title="CPU and memory use" subtitle="Past 24 hours">
+<Chart type="area" x="Time" y="Usage %">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 24h ago | 38 | 55 |
+| 18h ago | 44 | 59 |
+| 12h ago | 61 | 64 |
+| 6h ago | 73 | 71 |
+| 2h ago | 68 | 68 |
+| Now | 52 | 63 |
+</Chart>
+</Card>
+
+<Card title="Open incidents" subtitle="P1 is critical, P2 is high, P3 is medium">
+| Incident | Severity | Summary | Region | Status |
+|---|---|---|---|---|
+| INC-4821 | P1 | Checkout failures at high traffic | us-east-1 | Unacknowledged |
+| INC-4819 | P2 | Payment webhook latency | eu-west-1 | Unacknowledged |
+| INC-4815 | P3 | Search result delays | all regions | Acknowledged |
+| INC-4802 | P2 | Login timeouts on mobile | ap-southeast-2 | Unacknowledged |
+</Card>
+
+<Card title="Acknowledge incident" subtitle="Mark the selected incident as acknowledged from this screen.">
+<Form name="acknowledge-incident">
+<Select label="Incident" name="incident" placeholder="Choose incident" options="INC-4821 — Checkout failures (P1) | INC-4819 — Payment webhook latency (P2) | INC-4815 — Search result delays (P3) | INC-4802 — Login timeouts (P2)" />
+<Button variant="primary">Acknowledge</Button>
+</Form>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="P95 latency over the past hour">
+| Endpoint | Method | P95 latency |
+|---|---|---|
+| /api/checkout | POST | 1240 ms |
+| /v1/catalog/search | GET | 986 ms |
+| /api/payment/webhook | POST | 875 ms |
+| /v1/users/login | POST | 640 ms |
+| /graphql | POST | 512 ms |
+</Card>
+
+<Card title="Alert threshold" subtitle="Configures when the on-call engineer gets paged.">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold (%)" min="0" max="10" step="0.5" value="2" name="error_rate_threshold" />
+<Button variant="primary">Save threshold</Button>
+</Form>
+<Callout tone="info">If error rate stays above the threshold for 5 minutes, the on-call engineer is paged.</Callout>
+</Card>

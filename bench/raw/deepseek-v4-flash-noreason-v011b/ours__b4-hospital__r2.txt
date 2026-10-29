@@ -1,0 +1,145 @@
+# Hospital Operations Command View
+
+<Card title="Hospital Command Center" subtitle="Real-time operations overview">
+<Badge tone="info">Live</Badge> <Badge tone="warning">Updated 2 min ago</Badge>
+</Card>
+
+<Card title="Bed Occupancy & ER Wait">
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="+3% from yesterday" tone="warning" icon="bed" />
+<Stat label="ER Wait Time" value="34 min" change="+8 min from peak" tone="danger" icon="clock" />
+<Stat label="Admissions (14 days)" value="847" change="+12% vs prior 14 days" tone="info" icon="trend-up" />
+</Columns>
+<Progress value="78" max="100" label="Bed Occupancy" tone="warning" />
+</Card>
+
+<Card title="Patients Per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 42 |
+| Cardiology | 28 |
+| Orthopedics | 19 |
+| Pediatrics | 15 |
+| ICU | 12 |
+| Neurology | 10 |
+| Oncology | 8 |
+| Maternity | 22 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+<Columns>
+<Avatar name="Dr. Sarah Chen" subtitle="Emergency - Attending" />
+<Avatar name="Nurse Mike Torres" subtitle="ICU - Charge Nurse" />
+<Avatar name="Dr. James Park" subtitle="Cardiology - Fellow" />
+<Avatar name="Nurse Lisa Kim" subtitle="Orthopedics - RN" />
+<Avatar name="Dr. Amina Patel" subtitle="Pediatrics - Attending" />
+<Avatar name="Nurse Carlos Ruiz" subtitle="Maternity - L&D" />
+<Avatar name="Tech David Okafor" subtitle="Radiology - Tech" />
+<Avatar name="Admin Rachel Green" subtitle="Administration - Supervisor" />
+</Columns>
+<Details title="View all 47 staff on shift">
+<Columns>
+<Avatar name="Dr. Emily Watson" subtitle="Neurology - Attending" />
+<Avatar name="Nurse John Smith" subtitle="Oncology - RN" />
+<Avatar name="Dr. Kevin Lee" subtitle="ICU - Fellow" />
+<Avatar name="Nurse Maria Santos" subtitle="ER - Triage Nurse" />
+</Columns>
+</Details>
+</Card>
+
+<Card title="Critical Patients">
+<Callout tone="danger" title="3 Critical Patients Require Attention">
+- Room 214: Cardiac arrest watch - Dr. Chen assigned
+- Room 307: Stroke evaluation pending - Neurology notified
+- Room 112: Severe trauma - OR booked in 20 min
+</Callout>
+<Button ask="Show critical patient details">View all critical patients</Button>
+</Card>
+
+<Card title="Ready for Discharge & Supplies Running Low">
+<Columns>
+<Stat label="Ready for Discharge" value="12 patients" tone="success" icon="check-circle" />
+<Stat label="Supplies Running Low" value="5 items" tone="warning" icon="warning-circle" />
+</Columns>
+<Details title="Patients ready for discharge" open=true>
+| Room | Patient | Department | Doctor |
+|---|---|---|---|
+| 105 | John Doe | Orthopedics | Dr. Park |
+| 203 | Jane Smith | Cardiology | Dr. Chen |
+| 310 | Bob Johnson | Pediatrics | Dr. Patel |
+</Details>
+<Details title="Supplies running low">
+| Supply | Current Stock | Reorder Level |
+|---|---|---|
+| IV Fluids (Saline) | 12 boxes | 20 boxes |
+| Surgical Gloves (Size 7) | 5 boxes | 10 boxes |
+| Blood Culture Kits | 3 units | 8 units |
+| Oxygen Masks | 8 units | 15 units |
+| Disposable Syringes (5ml) | 20 units | 50 units |
+</Details>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<Chart type="bar" x="Time Slot" y="Bookings">
+| Time Slot | Bookings |
+|---|---|
+| 07:00-08:00 | 2 |
+| 08:00-09:00 | 3 |
+| 09:00-10:00 | 4 |
+| 10:00-11:00 | 2 |
+| 11:00-12:00 | 3 |
+| 12:00-13:00 | 1 |
+| 13:00-14:00 | 2 |
+| 14:00-15:00 | 3 |
+| 15:00-16:00 | 1 |
+| 16:00-17:00 | 2 |
+</Chart>
+<Button ask="Show OR schedule details">View full OR schedule</Button>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Button ask="File an incident report">File an Incident</Button>
+<Button ask="Look at another day's data">Look at Another Day</Button>
+<Button ask="Request a patient transfer">Request Patient Transfer</Button>
+</Columns>
+</Card>
+
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Incident Type" placeholder="e.g., Medication error, Fall, Equipment failure" required />
+<Input label="Location" placeholder="e.g., Room 214, ER Bay 3" required />
+<TextArea label="Description" placeholder="Describe what happened..." rows="4" required />
+<Input label="Date & Time" type="datetime-local" required />
+<Input label="Reported By" placeholder="Your name" required />
+<Button>Submit Incident Report</Button>
+</Form>
+</Card>
+
+<Card title="Look at Another Day">
+<Form name="view-date">
+<Date label="Select Date" required />
+<Button>View Operations for This Date</Button>
+</Form>
+</Card>
+
+<Card title="Request a Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" placeholder="Full name" required />
+<Input label="Current Room/Unit" placeholder="e.g., ICU Room 307" required />
+<Select label="Transfer To" options="Cardiology | Orthopedics | Neurology | Pediatrics | ICU | Maternity | Oncology | Radiology | Other" required />
+<TextArea label="Reason for Transfer" placeholder="Clinical justification..." rows="3" required />
+<Input label="Requesting Physician" placeholder="Doctor's name" required />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed bed occupancy report
+- List all critical patients with their conditions
+- What supplies need reordering urgently?
+- Show the OR schedule for tomorrow
+- How many patients are waiting in the ER?
+</FollowUps>

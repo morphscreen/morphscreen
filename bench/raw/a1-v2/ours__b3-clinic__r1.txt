@@ -1,0 +1,91 @@
+# Clinic Reception — Day View
+
+<Card title="Today's Appointments" subtitle="Monday, January 20, 2025">
+| Time | Patient | Room | Type | Status |
+|---|---|---|---|---|
+| 08:00 | Sarah Johnson | 1 | Annual Checkup | ✓ Checked In |
+| 08:30 | Michael Chen | 2 | Follow-up | ⏳ Waiting |
+| 09:00 | Emily Rodriguez | 1 | Consultation | ⏳ Waiting |
+| 09:30 | James Wilson | 3 | Physical Therapy | 🕐 Scheduled |
+| 10:00 | Lisa Anderson | 2 | Blood Work | 🕐 Scheduled |
+| 10:30 | Robert Taylor | 1 | Vaccination | 🕐 Scheduled |
+| 11:00 | Jennifer Martinez | 3 | Dermatology | 🕐 Scheduled |
+| 11:30 | David Brown | 2 | Cardiology | 🕐 Scheduled |
+| 14:00 | Amanda White | 1 | Neurology | 🕐 Scheduled |
+| 14:30 | Christopher Lee | 3 | Orthopedics | 🕐 Scheduled |
+| 15:00 | Michelle Garcia | 2 | Pediatrics | 🕐 Scheduled |
+| 15:30 | Daniel Harris | 1 | Ophthalmology | 🕐 Scheduled |
+</Card>
+
+<Columns>
+<Card title="Expected Patients">
+<Stat label="Total Appointments" value="12" change="+2 vs last Mon" tone="info" />
+<Stat label="Checked In" value="1" change="8:00 AM" tone="success" />
+<Stat label="Waiting" value="1" change="8:30 AM" tone="warning" />
+<Stat label="Remaining" value="10" change="9:00 AM – 3:30 PM" tone="neutral" />
+</Card>
+
+<Card title="No-Show Rate (This Month)">
+<Stat label="No-Show Rate" value="8.2%" change="0.5% ↓ vs last month" tone="success" />
+<Stat label="No-Shows" value="14" change="of 171 appointments" tone="neutral" />
+<Stat label="Target" value="< 10%" change="On track" tone="success" />
+<Progress value="8.2" max="10" label="Monthly no-show rate" />
+</Card>
+</Columns>
+
+<Card title="Room Status (Right Now)">
+<Columns>
+<Card subtitle="Room 1 — General">
+<Badge tone="success">Occupied</Badge>
+<p><strong>Sarah Johnson</strong> — Annual Checkup</p>
+<p>Started 8:00 AM · Est. 25 min remaining</p>
+</Card>
+<Card subtitle="Room 2 — Consultation">
+<Badge tone="warning">Next: 8:30 AM</Badge>
+<p><strong>Michael Chen</strong> — Follow-up</p>
+<p>Patient checked in, waiting</p>
+</Card>
+<Card subtitle="Room 3 — Therapy">
+<Badge tone="info">Free</Badge>
+<p>Available until 9:30 AM</p>
+<p>Next: James Wilson (Physical Therapy)</p>
+</Card>
+<Card subtitle="Room 4 — Procedure">
+<Badge tone="success">Free</Badge>
+<p>Available all morning</p>
+<p>No appointments until 2:00 PM</p>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Next Patient Called Out">
+<Callout tone="info" title="Now Calling">
+<strong>Michael Chen</strong> — Room 2 (Follow-up)<br />
+Appointment: 8:30 AM · Checked in at 8:15 AM
+</Callout>
+<Button variant="primary" size="large">Mark as Seen</Button>
+<Button variant="secondary">Call Again</Button>
+<Button variant="tertiary">Patient Not Here</Button>
+</Card>
+
+<Card title="Check In Patient">
+<Form name="checkin-form">
+<Select label="Select Patient" placeholder="Choose from today's schedule" options="Michael Chen (08:30) | Emily Rodriguez (09:00) | James Wilson (09:30) | Lisa Anderson (10:00) | Robert Taylor (10:30) | Jennifer Martinez (11:00) | David Brown (11:30) | Amanda White (14:00) | Christopher Lee (14:30) | Michelle Garcia (15:00) | Daniel Harris (15:30)" required="true" />
+<Select label="Room Assignment" placeholder="Assign room" options="Room 1 — General | Room 2 — Consultation | Room 3 — Therapy | Room 4 — Procedure" required="true" />
+<Checkboxes label="Verify" options="Insurance verified | Consent forms signed | Copay collected" hint="Check all that apply" />
+<Button variant="primary">Check In Patient</Button>
+<Button variant="secondary">Walk-In (No Appointment)</Button>
+</Form>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="day-nav">
+<Columns>
+<Input label="Jump to Date" type="date" value="2025-01-20" required="true" />
+<Select label="Quick Select" placeholder="Or choose a preset" options="Tomorrow | This Friday | Next Monday | Next Week" />
+</Columns>
+<Button variant="primary">Go to Day</Button>
+<Button variant="secondary" href="#">View Week</Button>
+<Button variant="tertiary" href="#">View Month</Button>
+</Form>
+</Card>

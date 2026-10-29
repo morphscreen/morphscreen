@@ -1,0 +1,141 @@
+# Hub Operations Dashboard — ORD (Chicago O'Hare)
+
+<Card title="Hub Selector" subtitle="Switch between operational hubs">
+<Select label="Select Hub" name="hub-selector" placeholder="Choose a hub" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles | JFK — New York JFK | SEA — Seattle | MIA — Miami | LAS — Las Vegas | PHX — Phoenix" value="ORD — Chicago O'Hare" />
+</Card>
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="78%" change="-4% vs target" tone="warning" />
+<Stat label="On-Time Arrivals" value="82%" change="-2% vs target" tone="warning" />
+<Progress value="78" max="100" label="Departure Target: 85%" tone="warning" />
+<Progress value="82" max="100" label="Arrival Target: 88%" tone="warning" />
+</Card>
+
+<Card title="Average Passenger Load Today">
+<Stat label="System Load Factor" value="87%" change="+3% vs yesterday" tone="info" />
+<Stat label="Total Passengers" value="142,340" change="+1,240 vs yesterday" tone="neutral" />
+<Progress value="87" max="100" label="Load Factor" tone="info" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Avg Turnaround" value="42 min" change="+5 min vs target" tone="warning" />
+<Stat label="Target" value="37 min" tone="neutral" />
+<Progress value="42" max="60" label="Minutes (Target: 37)" tone="warning" />
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Cancelled Flights" value="12" change="+4 vs yesterday" tone="danger" />
+<Stat label="Passengers Affected" value="1,480" tone="danger" />
+<Stat label="Cancellation Rate" value="2.1%" tone="danger" />
+</Card>
+</Columns>
+
+<Card title="Weather Advisories at ORD">
+<Callout tone="warning" title="⛈️ Thunderstorm Warning — Active until 22:00 CDT">
+Scattered thunderstorms with wind gusts 35-45 kts. Expect ground stops 15-30 min. Reduced arrival rate to 68/hr. Deicing operations may be required after 18:00.
+</Callout>
+<Callout tone="info" title="🌫️ Low Visibility Advisory — 16:00-20:00 CDT">
+Ceiling 800 ft, visibility 2 SM in mist. CAT II/III approaches in use. Expect 15-min delays for non-equipped aircraft.
+</Callout>
+</Card>
+
+<Columns>
+<Card title="Flights — All Departures/Arrivals (Next 6 Hours)">
+| Flight | Route | Gate | STD/STA | Status | Pax | Aircraft |
+|---|---|---|---|---|---|---|
+| UA 124 | ORD → LAX | B12 | 14:25 | **Delayed** (14:55) | 168/180 | B737-900 |
+| UA 203 | ORD → SFO | B18 | 14:30 | Boarding | 172/180 | B737-900 |
+| UA 445 | ORD → JFK | C24 | 14:35 | On Time | 156/160 | A319 |
+| UA 311 | ORD → DEN | B8 | 14:40 | **Delayed** (15:10) | 142/166 | B737-800 |
+| UA 567 | ORD → SEA | B22 | 14:45 | On Time | 158/166 | B737-800 |
+| UA 789 | ORD → LAS | C12 | 14:50 | On Time | 164/180 | A320 |
+| UA 102 | ORD → MIA | B15 | 14:55 | **Delayed** (15:25) | 148/160 | B737-800 |
+| UA 234 | ORD → PHX | B20 | 15:00 | On Time | 152/166 | B737-800 |
+| UA 881 | LAX → ORD | B12 | 14:18 | Landed 14:22 | 176/180 | B737-900 |
+| UA 912 | SFO → ORD | B18 | 14:28 | Final Approach | 168/180 | B737-900 |
+| UA 356 | DEN → ORD | C24 | 14:35 | **Delayed** (14:58) | 144/166 | B737-800 |
+| UA 478 | SEA → ORD | B8 | 14:42 | Holding | 154/166 | B737-800 |
+</Card>
+
+<Card title="Delayed Flights — Called Out">
+<Callout tone="danger" title="UA 124 — ORD→LAX — Gate B12 — Delayed 30 min">
+Reason: Inbound aircraft (UA 881) arrived 4 min late + thunderstorm ground stop. New ETD: 14:55. 12 connecting passengers at risk.
+</Callout>
+<Callout tone="danger" title="UA 311 — ORD→DEN — Gate B8 — Delayed 30 min">
+Reason: Crew timing — awaiting reserve FA. New ETD: 15:10. 8 connecting passengers at risk.
+</Callout>
+<Callout tone="warning" title="UA 102 — ORD→MIA — Gate B15 — Delayed 30 min">
+Reason: Mechanical — coffee maker replacement. Mx complete, paperwork pending. New ETD: 15:25. 5 connecting passengers at risk.
+</Callout>
+<Callout tone="warning" title="UA 356 — DEN→ORD — Gate C24 — Arrival Delayed 23 min">
+Reason: Weather holding at DEN. New ETA: 14:58. 18 connecting passengers at risk for onward flights.
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recent Gate Changes (Last 2 Hours)">
+| Time | Flight | From → To | Reason |
+|---|---|---|---|
+| 13:42 | UA 203 | B14 → B18 | Gate conflict with UA 881 arrival |
+| 13:55 | UA 445 | C21 → C24 | Aircraft swap (A320→A319) |
+| 14:08 | UA 789 | C15 → C12 | Deicing pad assignment |
+| 14:15 | UA 234 | B23 → B20 | Adjacent gate blocked by UA 311 |
+| 14:20 | UA 567 | B19 → B22 | RON aircraft repositioning |
+</Card>
+
+<Card title="Connections at Risk of Being Missed">
+| Pax | Inbound | Connecting To | MCT | Time Left | Action |
+|---|---|---|---|---|---|
+| 12 | UA 881 (14:22) | UA 124→LAX | 40 min | 18 min | **Rebook to UA 148 (16:10)** |
+| 8 | UA 881 (14:22) | UA 311→DEN | 35 min | 23 min | Hold UA 311 5 min |
+| 18 | UA 356 (14:58) | UA 445→JFK | 45 min | -8 min | **Rebook to UA 502 (17:30)** |
+| 5 | UA 912 (14:35) | UA 102→MIA | 30 min | 10 min | **Rebook to UA 210 (17:15)** |
+| 7 | UA 478 (15:05) | UA 789→LAS | 40 min | -5 min | **Rebook to UA 333 (18:20)** |
+| 9 | UA 912 (14:35) | UA 234→PHX | 35 min | 20 min | Monitor — likely make |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Role | Current Base | Duty Time Left | Qualifications | Status |
+|---|---|---|---|---|---|
+| CRW-4421 | Captain | ORD | 6:42 | B737, A320 | **Available** |
+| CRW-4422 | FO | ORD | 6:42 | B737, A320 | **Available** |
+| CRW-3891 | FA Lead | ORD | 8:15 | All narrowbody | **Available** |
+| CRW-3892 | FA | ORD | 8:15 | All narrowbody | **Available** |
+| CRW-3893 | FA | ORD | 8:15 | All narrowbody | **Available** |
+| CRW-3894 | FA | ORD | 8:15 | All narrowbody | **Available** |
+| CRW-5102 | Captain | ORD | 4:30 | B777, B787 | Reserve (long-haul) |
+| CRW-5103 | FO | ORD | 4:30 | B777, B787 | Reserve (long-haul) |
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebooking-form">
+<Input label="Passenger Name / PNR" name="pax-pnr" placeholder="Enter name or 6-char PNR" hint="Auto-populates from connections at risk table" required="true" />
+<Select label="Original Flight" name="orig-flight" placeholder="Select original flight" options="UA 124 — ORD→LAX (14:25) | UA 311 — ORD→DEN (14:40) | UA 102 — ORD→MIA (14:55) | UA 445 — ORD→JFK (14:35) | UA 789 — ORD→LAS (14:50) | UA 234 — ORD→PHX (15:00)" required="true" />
+<Select label="New Flight" name="new-flight" placeholder="Select replacement flight" options="UA 148 — ORD→LAX (16:10) | UA 502 — ORD→JFK (17:30) | UA 210 — ORD→MIA (17:15) | UA 333 — ORD→LAS (18:20) | UA 278 — ORD→DEN (16:45) | UA 412 — ORD→PHX (17:40) | Next available (waitlist)" required="true" />
+<Checkboxes label="Options" name="rebook-options" options="Auto-assign seat | Check bags through | Send SMS notification | Email itinerary" value="Send SMS notification | Email itinerary" />
+<Button>Confirm Rebooking</Button>
+<Button variant="secondary">Clear Form</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">📋 Print Gate Assignments</Button>
+<Button variant="secondary" size="large">📊 Export Ops Report (CSV)</Button>
+<Button variant="tertiary" size="large">🔔 Notify Crew Scheduling</Button>
+<Button variant="danger" size="large">🛑 Initiate Ground Stop</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full delay root-cause analysis for UA 124
+- What's the crew legality status for the reserve captains?
+- Pull up the weather radar loop for the next 4 hours
+- List all widebody turns at ORD today
+- Show me the baggage claim carousel assignments
+</FollowUps>

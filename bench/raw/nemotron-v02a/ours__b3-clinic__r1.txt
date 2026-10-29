@@ -1,0 +1,65 @@
+<Card title="Clinic Reception — Today" subtitle="Monday, January 15, 2024">
+<Columns>
+<Stat label="Patients Expected" value="18" change="+2 vs last Mon" tone="success" />
+<Stat label="No-Show Rate (Month)" value="8.2%" change="-1.4% vs last month" tone="success" />
+</Columns>
+
+### Next Patient Called
+<Callout tone="info" title="Now Calling: Exam Room 2">
+**Maria Santos** — 10:15 AM — Annual Physical
+</Callout>
+
+### Today's Appointments
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 8:00 AM | James Wilson | Follow-up | Room 1 | ✓ Checked In | — |
+| 8:30 AM | Linda Chen | New Patient | Room 2 | ✓ Checked In | — |
+| 9:00 AM | Robert Kim | Consultation | Room 1 | Waiting | <Button variant="secondary" ask="checkin-Robert Kim">Check In</Button> |
+| 9:30 AM | Sarah Johnson | Annual Physical | Room 3 | Waiting | <Button variant="secondary" ask="checkin-Sarah Johnson">Check In</Button> |
+| 10:00 AM | David Park | Follow-up | Room 1 | Scheduled | <Button variant="secondary" ask="checkin-David Park">Check In</Button> |
+| 10:15 AM | Maria Santos | Annual Physical | Room 2 | **Called** | — |
+| 10:45 AM | Emily Davis | Consultation | Room 3 | Scheduled | <Button variant="secondary" ask="checkin-Emily Davis">Check In</Button> |
+| 11:00 AM | Michael Brown | New Patient | Room 1 | Scheduled | <Button variant="secondary" ask="checkin-Michael Brown">Check In</Button> |
+| 11:30 AM | Jennifer Lee | Follow-up | Room 2 | Scheduled | <Button variant="secondary" ask="checkin-Jennifer Lee">Check In</Button> |
+| 1:00 PM | Thomas Garcia | Annual Physical | Room 1 | Scheduled | <Button variant="secondary" ask="checkin-Thomas Garcia">Check In</Button> |
+| 1:30 PM | Patricia Martinez | Consultation | Room 3 | Scheduled | <Button variant="secondary" ask="checkin-Patricia Martinez">Check In</Button> |
+| 2:00 PM | Christopher Lee | Follow-up | Room 2 | Scheduled | <Button variant="secondary" ask="checkin-Christopher Lee">Check In</Button> |
+| 2:30 PM | Amanda White | New Patient | Room 1 | Scheduled | <Button variant="secondary" ask="checkin-Amanda White">Check In</Button> |
+| 3:00 PM | Daniel Harris | Annual Physical | Room 3 | Scheduled | <Button variant="secondary" ask="checkin-Daniel Harris">Check In</Button> |
+| 3:30 PM | Michelle Clark | Consultation | Room 2 | Scheduled | <Button variant="secondary" ask="checkin-Michelle Clark">Check In</Button> |
+| 4:00 PM | Kevin Lewis | Follow-up | Room 1 | Scheduled | <Button variant="secondary" ask="checkin-Kevin Lewis">Check In</Button> |
+| 4:30 PM | Stephanie Walker | Annual Physical | Room 3 | Scheduled | <Button variant="secondary" ask="checkin-Stephanie Walker">Check In</Button> |
+
+### Room Availability (Right Now)
+<Columns>
+<Card title="Room 1" subtitle="Dr. Patel">
+<Badge tone="danger">Occupied</Badge>
+<Callout tone="info" title="Current">James Wilson (8:00 AM)</Callout>
+<Callout tone="neutral" title="Next">Robert Kim (9:00 AM)</Callout>
+</Card>
+<Card title="Room 2" subtitle="Dr. Nguyen">
+<Badge tone="success">Free</Badge>
+<Callout tone="info" title="Current">Maria Santos (10:15 AM) — <strong>In Progress</strong></Callout>
+<Callout tone="neutral" title="Next">Jennifer Lee (11:30 AM)</Callout>
+</Card>
+<Card title="Room 3" subtitle="Dr. Kim">
+<Badge tone="success">Free</Badge>
+<Callout tone="neutral" title="Next">Sarah Johnson (9:30 AM)</Callout>
+</Card>
+</Columns>
+
+### Navigate
+<Form name="day-nav">
+<Date label="Jump to Date" name="targetDate" value="2024-01-15" />
+<Button>Go</Button>
+<Button variant="tertiary" ask="prev-day">← Previous Day</Button>
+<Button variant="tertiary" ask="next-day">Next Day →</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Check in Robert Kim for 9:00 AM appointment
+- View patient chart for Maria Santos
+- Print daily schedule
+- Open waitlist for today
+</FollowUps>

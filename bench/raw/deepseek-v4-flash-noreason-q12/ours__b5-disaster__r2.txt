@@ -1,0 +1,190 @@
+# Emergency Response Coordination Center
+
+<Columns>
+<Stat label="Active Incidents" value="7" tone="danger" icon="warning" />
+<Stat label="People Rescued" value="1,243" tone="success" icon="lifebuoy" />
+<Stat label="Casualties" value="86" tone="danger" icon="cross" />
+<Stat label="Volunteers On Duty" value="312" tone="info" icon="users" />
+</Columns>
+
+<Card title="Active Incidents by Zone" subtitle="Severity: Critical / Major / Moderate / Minor">
+<Chart type="bar" x="Zone" y="Incidents">
+| Zone | Critical | Major | Moderate | Minor |
+|---|---|---|---|---|
+| Zone A – Coastal | 2 | 1 | 1 | 0 |
+| Zone B – River Valley | 1 | 2 | 0 | 1 |
+| Zone C – Upland | 0 | 1 | 2 | 1 |
+| Zone D – Industrial | 0 | 0 | 1 | 1 |
+</Chart>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical" value="3" tone="danger" icon="alert" />
+<Stat label="Major" value="4" tone="warning" icon="warning" />
+<Stat label="Moderate" value="4" tone="info" icon="info" />
+<Stat label="Minor" value="3" tone="neutral" icon="circle" />
+</Columns>
+<Progress value="3" max="14" label="Critical share of incidents" tone="danger" />
+</Card>
+
+<Card title="Resources Available">
+<Columns>
+<Stat label="Vehicles" value="48" note="12 ambulances, 18 trucks, 8 boats, 10 ATVs" tone="info" icon="truck" />
+<Stat label="Personnel" value="312" note="incl. 94 medics, 118 rescue, 100 support" tone="info" icon="users" />
+<Stat label="Supplies" value="74%" note="of target stock for food, water, medicine, blankets" tone="success" icon="package" />
+</Columns>
+</Card>
+
+<Card title="Shelters">
+| Shelter | Zone | Capacity | Occupancy | Status |
+|---|---|---|---|---|
+| Harbor Hall | A | 500 | 420 | <Badge tone="warning">84% full</Badge> |
+| Riverside School | B | 300 | 275 | <Badge tone="danger">92% full</Badge> |
+| Hilltop Community Center | C | 200 | 110 | <Badge tone="success">55% full</Badge> |
+| Factory Annex | D | 150 | 95 | <Badge tone="info">63% full</Badge> |
+| Central Arena | A | 800 | 640 | <Badge tone="warning">80% full</Badge> |
+</Card>
+
+<Card title="Evacuation Routes">
+| Route | Status | Notes |
+|---|---|---|
+| Route 1 – Coastal Highway | <Badge tone="success">Open</Badge> | Light traffic |
+| Route 2 – River Bridge Rd | <Badge tone="warning">Partial</Badge> | One lane open |
+| Route 3 – Mountain Pass | <Badge tone="danger">Closed</Badge> | Landslide at km 12 |
+| Route 4 – Valley Loop | <Badge tone="success">Open</Badge> | Detour in effect |
+</Card>
+
+<Card title="Weather Forecast – Next 48 Hours">
+<Chart type="line" x="Hour" y="°C / mm">
+| Hour | Temp °C | Rainfall mm |
+|---|---|---|
+| Now | 22 | 2 |
+| +6h | 21 | 5 |
+| +12h | 19 | 12 |
+| +18h | 18 | 18 |
+| +24h | 17 | 25 |
+| +30h | 16 | 30 |
+| +36h | 16 | 22 |
+| +42h | 17 | 10 |
+| +48h | 19 | 4 |
+</Chart>
+<Callout tone="warning" title="Heavy rain expected">Peak rainfall (30mm/h) forecast in 30 hours. Monitor Zone B river levels.</Callout>
+</Card>
+
+<Card title="Rescue & Casualty Dashboard">
+<Columns>
+<Stat label="People Rescued" value="1,243" tone="success" icon="lifebuoy" />
+<Stat label="Casualties" value="86" note="24 critical, 38 serious, 24 minor" tone="danger" icon="cross" />
+</Columns>
+</Card>
+
+<Card title="Volunteers on Duty">
+| Volunteer | Assignment | Zone |
+|---|---|---|
+| <Avatar name="Maria Chen" /> | Search & rescue team lead | A |
+| <Avatar name="James Okafor" /> | Medical triage | B |
+| <Avatar name="Priya Sharma" /> | Shelter management | C |
+| <Avatar name="David Reyes" /> | Supply distribution | A |
+| <Avatar name="Aisha Bello" /> | Communications relay | D |
+| <Avatar name="Tom Novak" /> | Evacuation driver | B |
+</Card>
+
+<Card title="Donations Received">
+<Columns>
+<Stat label="Total Donations" value="$284,500" tone="success" icon="hand-heart" />
+<Stat label="In-Kind Items" value="3,200" note="food, water, blankets, medical kits" tone="info" icon="package" />
+</Columns>
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Submitted |
+|---|---|---|---|---|
+| AR-104 | B | <Badge tone="danger">Medical supplies</Badge> | Critical | 25 min ago |
+| AR-105 | A | <Badge tone="warning">Drinking water</Badge> | High | 40 min ago |
+| AR-106 | C | <Badge tone="info">Blankets & tents</Badge> | Medium | 1h ago |
+| AR-107 | D | <Badge tone="warning">Fuel</Badge> | High | 2h ago |
+</Card>
+
+<Card title="Communication Channels">
+| Channel | Status |
+|---|---|
+| Radio (VHF) | <Badge tone="success">Up</Badge> |
+| Satellite Phone | <Badge tone="success">Up</Badge> |
+| Cellular Network | <Badge tone="warning">Degraded</Badge> |
+| Internet / Fiber | <Badge tone="danger">Down</Badge> |
+| Emergency Alert System | <Badge tone="success">Up</Badge> |
+| Amateur Radio (HAM) | <Badge tone="success">Up</Badge> |
+</Card>
+
+<Card title="Road Closures">
+| Road | Zone | Reason | Est. Reopen |
+|---|---|---|---|
+| Coastal Hwy (km 4–9) | A | Flooding | 24h |
+| River Bridge Rd | B | Structural damage | 48h |
+| Mountain Pass | C | Landslide | 72h |
+| Industrial Access Rd | D | Debris | 12h |
+</Card>
+
+<Card title="Nearby Hospitals – Free Beds">
+| Hospital | Zone | Free Beds | Distance |
+|---|---|---|---|
+| St. Mary's General | A | 42 | 3 km |
+| Valley Medical Center | B | 18 | 5 km |
+| Hillcrest Regional | C | 27 | 8 km |
+| Industrial Health Clinic | D | 9 | 2 km |
+</Card>
+
+<Card title="Open Tasks">
+| Task | Assignee | Due |
+|---|---|---|
+| Evacuate Harbor Hall residents | Maria Chen | 2h |
+| Deliver medical supplies to Zone B | James Okafor | 1h |
+| Repair River Bridge Rd | Tom Novak | 6h |
+| Set up mobile comms relay | Aisha Bello | 3h |
+| Distribute water to Zone A | David Reyes | 4h |
+</Card>
+
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource Type" options="Vehicles | Medical Supplies | Food & Water | Blankets & Tents | Fuel | Personnel | Heavy Equipment" placeholder="Select type" required />
+<Input label="Quantity" type="number" placeholder="e.g. 50" required hint="Units depend on resource type" />
+<Select label="Priority" options="Critical | High | Medium | Low" placeholder="Select priority" />
+<TextArea label="Additional Details" placeholder="Describe specific needs, delivery location, etc." rows="3" />
+<Button>Submit Request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<TextArea label="Message" placeholder="Type the update to broadcast to all teams and shelters…" rows="4" required />
+<Radio label="Audience" options="All teams | Zone-specific | Shelters only | Command staff" />
+<Checkboxes label="Channels" options="Radio | SMS | Email | Siren | Social Media" hint="Select at least one" />
+<Button>Broadcast Now</Button>
+</Form>
+</Card>
+
+<Card title="Focus on One Zone">
+<Select label="Select Zone" placeholder="Choose a zone to focus" options="Zone A – Coastal | Zone B – River Valley | Zone C – Upland | Zone D – Industrial | All Zones" />
+<Button>Apply Focus</Button>
+<Callout tone="info" title="Focus mode">When a zone is selected, the dashboard filters incidents, shelters, roads, hospitals, and tasks to that zone only.</Callout>
+</Card>
+
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Input label="Prepared By" placeholder="Your name" required />
+<Input label="Zone / Area" placeholder="e.g. Zone B" />
+<Select label="Overall Status" options="Stable | Deteriorating | Improving | Critical" placeholder="Select status" required />
+<TextArea label="Summary" placeholder="Describe the current situation, actions taken, and needs…" rows="5" required />
+<TextArea label="Recommendations" placeholder="Recommended next steps…" rows="3" />
+<Button>Submit SitRep</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the incident details for Zone B
+- What is the status of Route 2 reopening?
+- List shelters that are over 90% full
+- Generate a full situation report for the last 12 hours
+- Which hospitals have the most free beds right now?
+</FollowUps>

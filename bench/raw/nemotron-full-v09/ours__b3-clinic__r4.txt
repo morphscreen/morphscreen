@@ -1,0 +1,61 @@
+# Clinic Reception — Day View
+
+<Card subtitle="Monday, January 15, 2024">
+<Columns>
+<Button variant="tertiary" size="small" icon="chevron-left">Previous day</Button>
+<Button variant="primary" size="small" icon="calendar">Today</Button>
+<Button variant="tertiary" size="small" icon="chevron-right">Next day</Button>
+</Columns>
+</Card>
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Expected patients" value="24" change="+3 vs yesterday" tone="info" icon="users" />
+<Stat label="No-show rate (Jan)" value="8.2%" change="−1.1% vs Dec" tone="success" icon="chart-line" />
+<Stat label="Checked in" value="7 / 24" change="5 more waiting" tone="neutral" icon="check-circle" />
+</Columns>
+</Card>
+
+<Card title="Next patient called">
+<Callout tone="info" title="Exam Room 2 — Ready for patient">
+<strong>Maria Santos</strong> • 10:15 AM • Follow-up • <Badge tone="success">Checked in</Badge>
+</Callout>
+<Button variant="secondary" size="small" icon="phone">Call again</Button>
+<Button variant="tertiary" size="small" icon="user-clock">Mark no-show</Button>
+</Card>
+
+<Card title="Today's appointments">
+<Table>
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 08:00 | James Wilson | New patient | 1 | <Badge tone="success">Done</Badge> | — |
+| 08:30 | Priya Patel | Annual physical | 3 | <Badge tone="success">Done</Badge> | — |
+| 09:00 | Robert Chen | Follow-up | 2 | <Badge tone="warning">In progress</Badge> | — |
+| 09:30 | Aisha Diallo | Consultation | 1 | <Badge tone="info">Checked in</Badge> | <Button variant="tertiary" size="small">Undo</Button> |
+| 10:00 | **Maria Santos** | **Follow-up** | **2** | **<Badge tone="success">Called</Badge>** | **<Button variant="primary" size="small" icon="check">Check in</Button>** |
+| 10:30 | David Kim | Vaccination | 3 | <Badge tone="neutral">Waiting</Badge> | <Button variant="primary" size="small" icon="check">Check in</Button> |
+| 11:00 | Elena Rossi | New patient | 1 | <Badge tone="neutral">Waiting</Badge> | <Button variant="primary" size="small" icon="check">Check in</Button> |
+| 11:30 | Marcus Johnson | Follow-up | 2 | <Badge tone="neutral">Waiting</Badge> | <Button variant="primary" size="small" icon="check">Check in</Button> |
+| 13:00 | Sofia Alvarez | Annual physical | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="secondary" size="small" icon="user-plus">Check in</Button> |
+| 13:30 | Kevin O'Brien | Consultation | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="secondary" size="small" icon="user-plus">Check in</Button> |
+| 14:00 | Leila Hassan | Follow-up | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="secondary" size="small" icon="user-plus">Check in</Button> |
+| 14:30 | Thomas Nguyen | New patient | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="secondary" size="small" icon="user-plus">Check in</Button> |
+</Table>
+</Card>
+
+<Card title="Room status (right now)">
+<Columns>
+<Stat label="Room 1" value="Occupied" change="Aisha Diallo • 9:30–10:15" tone="warning" icon="door-open" />
+<Stat label="Room 2" value="Occupied" change="Robert Chen • 9:00–9:45" tone="warning" icon="door-open" />
+<Stat label="Room 3" value="Free" change="Available since 8:45" tone="success" icon="door-open" />
+<Stat label="Room 4" value="Free" change="Not scheduled today" tone="info" icon="door-open" />
+</Columns>
+</Card>
+
+<Card title="Quick check-in" subtitle="Walk-in or manual entry">
+<Form name="quick-checkin">
+<Select label="Patient" placeholder="Search or select patient" options="David Kim (10:30) | Elena Rossi (11:00) | Marcus Johnson (11:30) | Walk-in / Other" />
+<Select label="Room" placeholder="Assign room" options="Room 3 (free) | Room 4 (free)" />
+<Button icon="user-plus">Check in patient</Button>
+</Form>
+</Card>

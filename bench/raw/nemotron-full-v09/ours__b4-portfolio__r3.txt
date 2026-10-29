@@ -1,0 +1,134 @@
+# PMO Portfolio Review — Q3 2025
+
+<Badge tone="info">Portfolio Health: On Track — 82% of projects green, 2 at risk, 0 critical</Badge>
+
+<Card subtitle="Select reporting quarter">
+<Select label="Quarter" name="quarter" value="Q3 2025" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" />
+</Card>
+
+<Columns>
+<Card title="Active Projects">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Apollo Platform Rewrite | Sarah Chen | 2025-10-15 | <Badge tone="success">Green</Badge> |
+| Customer 360 Dashboard | Marcus Johnson | 2025-09-30 | <Badge tone="warning">Yellow</Badge> |
+| Payment Gateway v2 | Priya Patel | 2025-11-01 | <Badge tone="success">Green</Badge> |
+| Mobile App Redesign | James Wilson | 2025-10-20 | <Badge tone="danger">Red</Badge> |
+| Data Lake Migration | Lisa Park | 2025-12-15 | <Badge tone="success">Green</Badge> |
+| API Rate Limiting | Ahmed Hassan | 2025-09-15 | <Badge tone="warning">Yellow</Badge> |
+</Card>
+
+<Card title="Overdue Milestones">
+| Project | Milestone | Due | Days Overdue | Owner |
+|---|---|---|---|---|
+| Mobile App Redesign | Design System Handoff | 2025-08-20 | 12 | James Wilson |
+| Customer 360 Dashboard | Data Integration Complete | 2025-08-25 | 7 | Marcus Johnson |
+| API Rate Limiting | Load Test Execution | 2025-08-28 | 4 | Ahmed Hassan |
+| Apollo Platform Rewrite | Security Audit | 2025-08-30 | 2 | Sarah Chen |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Budget: Spent vs Allocation">
+<Chart type="horizontal" x="Project" y="USD (thousands)">
+| Project | Allocated | Spent |
+|---|---|---|
+| Apollo Platform Rewrite | 850 | 620 |
+| Customer 360 Dashboard | 420 | 380 |
+| Payment Gateway v2 | 600 | 310 |
+| Mobile App Redesign | 350 | 340 |
+| Data Lake Migration | 750 | 410 |
+| API Rate Limiting | 180 | 95 |
+</Chart>
+</Card>
+
+<Card title="Team Utilization">
+<Chart type="bar" x="Team" y="Utilization %">
+| Team | Utilization |
+|---|---|
+| Platform Engineering | 92 |
+| Data Engineering | 78 |
+| Frontend | 85 |
+| Backend | 88 |
+| QA / Test | 65 |
+| DevOps | 71 |
+| Design | 58 |
+| Product | 82 |
+</Chart>
+<Callout tone="warning" title="Capacity Alert">Platform Engineering at 92% — consider hiring or rebalancing</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Risks by Severity">
+| Project | Risk | Severity | Mitigation |
+|---|---|---|---|
+| Mobile App Redesign | Key designer on leave | <Badge tone="danger">Critical</Badge> | Contractor onboarded 9/1 |
+| Customer 360 Dashboard | Data quality issues | <Badge tone="warning">High</Badge> | Dedicated cleanup sprint |
+| API Rate Limiting | Vendor API deprecation | <Badge tone="warning">High</Badge> | Migration plan drafted |
+| Apollo Platform Rewrite | Scope creep from stakeholders | <Badge tone="info">Medium</Badge> | Change control board weekly |
+| Payment Gateway v2 | PCI compliance timeline | <Badge tone="info">Medium</Badge> | External auditor engaged |
+| Data Lake Migration | Legacy data format complexity | <Badge tone="info">Medium</Badge> | Proof-of-concept complete |
+</Card>
+
+<Card title="Deadlines — Next 2 Weeks">
+| Project | Deliverable | Date | Status |
+|---|---|---|---|
+| API Rate Limiting | Production Release | 2025-09-15 | <Badge tone="warning">At Risk</Badge> |
+| Customer 360 Dashboard | Beta Launch | 2025-09-18 | <Badge tone="success">On Track</Badge> |
+| Apollo Platform Rewrite | Security Audit | 2025-09-20 | <Badge tone="success">On Track</Badge> |
+| Payment Gateway v2 | Integration Testing Complete | 2025-09-22 | <Badge tone="success">On Track</Badge> |
+| Mobile App Redesign | Accessibility Audit | 2025-09-25 | <Badge tone="danger">Blocked</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Delivery Pace — Last 6 Sprints">
+<Chart type="line" x="Sprint" y="Story Points">
+| Sprint | Planned | Delivered |
+|---|---|---|
+| Sprint 18 | 320 | 298 |
+| Sprint 19 | 340 | 335 |
+| Sprint 20 | 350 | 312 |
+| Sprint 21 | 330 | 328 |
+| Sprint 22 | 360 | 345 |
+| Sprint 23 | 340 | 338 |
+</Chart>
+<Stat label="Velocity (6-sprint avg)" value="326" change="+4% vs prior 6" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Blocked Work Items">
+| Project | Item | Blocker | Since | Owner |
+|---|---|---|---|---|
+| Mobile App Redesign | Design token migration | Design system v2 not ready | 2025-08-15 | James Wilson |
+| Customer 360 Dashboard | Event streaming setup | Kafka cluster upgrade pending | 2025-08-22 | Marcus Johnson |
+| API Rate Limiting | Redis cluster provisioning | Infra ticket INFRA-4421 | 2025-08-28 | Ahmed Hassan |
+| Data Lake Migration | Schema validation failures | Legacy null handling | 2025-08-30 | Lisa Park |
+</Card>
+</Columns>
+
+<Card title="Actions">
+<Form name="request-people">
+<Select label="Project" name="project" placeholder="Select project" options="Apollo Platform Rewrite | Customer 360 Dashboard | Payment Gateway v2 | Mobile App Redesign | Data Lake Migration | API Rate Limiting" required="true" />
+<Input label="Roles Needed" name="roles" placeholder="e.g., 2 Backend Engineers, 1 QA" required="true" />
+<TextArea label="Justification" name="justification" placeholder="Why are these roles needed? What's the impact of not hiring?" rows="3" required="true" />
+<Button variant="primary" icon="users">Request Additional People</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+
+<Details title="Archive a Finished Project" open="false">
+<Form name="archive-project">
+<Select label="Project to Archive" name="archiveProject" placeholder="Select completed project" options="Legacy Billing Migration (Done) | Internal Tools Consolidation (Done) | Q2 Marketing Site Refresh (Done)" required="true" />
+<Checkboxes label="Confirm" name="confirm" options="All deliverables accepted | Documentation complete | Budget closed | Stakeholder sign-off obtained" required="true" />
+<Button variant="danger" icon="archive">Archive Project</Button>
+</Form>
+</Details>
+</Card>
+
+<Columns>
+<Card>
+<Button variant="primary" icon="download">Export Full Review (PDF)</Button>
+<Button variant="secondary" icon="download">Export Data (CSV)</Button>
+<Button variant="tertiary" icon="share">Share with Leadership</Button>
+</Card>
+</Columns>

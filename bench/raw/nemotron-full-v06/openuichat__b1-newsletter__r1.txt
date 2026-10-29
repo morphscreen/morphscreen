@@ -1,0 +1,8 @@
+root = Card([header, description, form])
+header = CardHeader("Weekly Product Digest", "Curated insights delivered every Monday")
+description = TextContent("Get one concise email each week with the top product launches, feature deep-dives, and industry trends — no fluff, just signal.")
+form = Form("newsletter-signup", formButtons, [emailField])
+formButtons = Buttons([submitBtn], "row")
+submitBtn = Button("Subscribe", { type: "continue_conversation", context: "User subscribed to weekly product newsletter" }, "primary")
+emailField = FormControl("Email Address", emailInput, "We respect your inbox. Unsubscribe anytime.")
+emailInput = Input("email", "you@example.com", "email", { required: true, email: true })

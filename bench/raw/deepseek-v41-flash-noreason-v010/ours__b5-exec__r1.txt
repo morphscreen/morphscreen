@@ -1,0 +1,134 @@
+# Quarterly Command View
+
+<Card title="Quarter control" subtitle="Set the view before you read anything below">
+<Form name="quarter-controls">
+<Select label="Quarter" name="quarter" options="Q1 FY26 | Q2 FY26 | Q3 FY26 | Q4 FY26" value="Q3 FY26" hint="Switches every number on this screen" />
+<Select label="Region focus" name="region" options="Global | North America | EMEA | APAC | LATAM" value="Global" />
+<Switch label="Compare to plan" name="compare_plan" value=true hint="Show plan vs. actual deltas" />
+<Button variant="primary" icon="download-simple">Export board pack</Button>
+<Button variant="secondary" icon="chart-line">Open full financials</Button>
+</Form>
+</Card>
+
+<Card title="Q3 FY26 at a glance" subtitle="Global · vs. plan">
+<Columns>
+<Stat label="Revenue" value="$128.4M" change="+9.2% QoQ" tone="success" icon="currency-dollar" />
+<Stat label="Costs" value="$96.1M" change="+4.1% QoQ" tone="warning" icon="receipt" />
+<Stat label="Profit" value="$32.3M" change="+27.6% QoQ" tone="success" icon="chart-line" />
+<Stat label="Months of runway" value="22 mo" change="+2 mo" tone="success" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Revenue and costs over four quarters" subtitle="USD millions">
+<Tabs>
+<Tab title="Revenue">
+<Chart type="bar" x="Quarter" y="USD millions">
+| Quarter | Revenue |
+|---|---|
+| Q4 FY25 | 98.2 |
+| Q1 FY26 | 104.6 |
+| Q2 FY26 | 117.6 |
+| Q3 FY26 | 128.4 |
+</Chart>
+</Tab>
+<Tab title="Costs">
+<Chart type="line" x="Quarter" y="USD millions">
+| Quarter | Costs |
+|---|---|
+| Q4 FY25 | 84.1 |
+| Q1 FY26 | 88.9 |
+| Q2 FY26 | 92.3 |
+| Q3 FY26 | 96.1 |
+</Chart>
+</Tab>
+<Tab title="Profit">
+<Chart type="area" x="Quarter" y="USD millions">
+| Quarter | Profit |
+|---|---|
+| Q4 FY25 | 14.1 |
+| Q1 FY26 | 15.7 |
+| Q2 FY26 | 25.3 |
+| Q3 FY26 | 32.3 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Budget by department against plan" subtitle="Q3 FY26 · USD millions">
+<Chart type="horizontal" x="Department" y="USD millions">
+| Department | Plan | Actual |
+|---|---|---|
+| Engineering | 34.0 | 36.2 |
+| Sales | 22.0 | 21.4 |
+| Marketing | 18.0 | 19.8 |
+| G&A | 12.0 | 11.1 |
+| Support | 9.0 | 7.6 |
+</Chart>
+</Card>
+
+<Card title="Headcount by department" subtitle="End of Q3 FY26">
+<Chart type="bar" x="Department" y="Headcount">
+| Department | Headcount |
+|---|---|
+| Engineering | 412 |
+| Sales | 268 |
+| Support | 154 |
+| Marketing | 96 |
+| G&A | 71 |
+</Chart>
+</Card>
+
+<Card title="Top risks" subtitle="Owner accountable for each">
+| Risk | Owner | Severity | Mitigation |
+|---|---|---|---|
+| EMEA renewal concentration (3 accounts = 18% of ARR) | Dana Whitfield, CRO | <Badge tone="danger">High</Badge> | Exec sponsor program, Q4 renewal war room |
+| Cloud cost per active user up 11% | Marcus Oyelaran, CTO | <Badge tone="warning">Medium</Badge> | Commit-tier renegotiation, workload right-sizing |
+| Senior engineer attrition in Platform | Priya Raman, CPO | <Badge tone="warning">Medium</Badge> | Retention grants, backfill pipeline |
+| APAC partner pipeline thinner than plan | Lena Fischer, VP Partnerships | <Badge tone="info">Low</Badge> | Two new partners signed for Q4 |
+</Card>
+
+<Card title="Strategic initiatives" subtitle="Status as of week 12">
+| Initiative | Owner | Status | Progress |
+|---|---|---|---|
+| Enterprise tier launch | Priya Raman | <Badge tone="success">On track</Badge> | <Progress value="78" max="100" tone="success" /> |
+| EMEA data residency | Marcus Oyelaran | <Badge tone="warning">At risk</Badge> | <Progress value="45" max="100" tone="warning" /> |
+| Self-serve funnel rebuild | Dana Whitfield | <Badge tone="success">On track</Badge> | <Progress value="62" max="100" tone="success" /> |
+| Support automation | Ana Duarte | <Badge tone="info">Scoping</Badge> | <Progress value="18" max="100" tone="info" /> |
+| SOC 2 Type II renewal | Marcus Oyelaran | <Badge tone="success">Done</Badge> | <Progress value="100" max="100" tone="success" /> |
+</Card>
+
+<Card title="Commercial health" subtitle="Q3 FY26 · Global">
+<Columns>
+<Stat label="Sales pipeline value" value="$412M" change="+6.8% QoQ" tone="info" icon="funnel" />
+<Stat label="Win rate" value="31.4%" change="+2.1 pts" tone="success" icon="trophy" />
+<Stat label="Customers" value="4,182" change="+164 net" tone="success" icon="users" />
+<Stat label="Monthly churn" value="0.9%" change="-0.2 pts" tone="success" icon="user-minus" />
+<Stat label="NPS" value="+48" change="+5 pts" tone="success" icon="smiley" />
+<Stat label="Months of runway" value="22 mo" note="At current burn" tone="success" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Next board meeting" subtitle="Scheduled 14 November · 09:00 ET">
+<Steps>
+<Step title="CEO narrative and quarter recap" status="done" subtitle="Circulated 7 Nov">Two-page summary plus the three decisions we need.</Step>
+<Step title="Financial pack and runway model" status="done" subtitle="Owner: CFO">Revenue, costs, profit, and the 22-month runway bridge.</Step>
+<Step title="Go-to-market review" status="current" subtitle="Owner: CRO">Pipeline coverage, win rate trend, EMEA renewal exposure.</Step>
+<Step title="Product and platform update" status="todo" subtitle="Owner: CTO / CPO">Enterprise tier launch and EMEA data residency risk.</Step>
+<Step title="People and retention" status="todo" subtitle="Owner: CPO">Headcount plan vs. actual, senior attrition in Platform.</Step>
+<Step title="Board resolutions and closed session" status="todo" subtitle="Owner: General Counsel">Option grants, audit committee sign-off.</Step>
+</Steps>
+<Callout tone="warning" title="Decision needed">EMEA data residency slip would push the enterprise launch past Q1 FY27 — board input requested on resourcing.</Callout>
+</Card>
+
+<Card title="Export and drill-down">
+<Button variant="primary" icon="download-simple" ask="Export the Q3 FY26 board pack as PDF">Export board pack (PDF)</Button>
+<Button variant="secondary" icon="table" ask="Give me the Q3 FY26 financials as a spreadsheet">Export financials (XLSX)</Button>
+<Button variant="tertiary" icon="map-pin" ask="Focus the whole view on EMEA for Q3 FY26">Focus on EMEA</Button>
+</Card>
+
+<FollowUps>
+- What changed in EMEA versus last quarter?
+- Which department is most over budget and why?
+- Show the pipeline coverage by region
+- What drives the 22-month runway number?
+</FollowUps>

@@ -1,0 +1,95 @@
+# Service Health
+
+<Callout tone="info" title="On-call shift">You're covering the 12:00–20:00 UTC window. Two open incidents need attention.</Callout>
+
+<Columns>
+<Stat label="Uptime (this quarter)" value="99.94%" note="Target 99.9%" tone="success" icon="trend-up" />
+<Stat label="Error rate (now)" value="0.42%" note="Baseline 0.2%" tone="warning" icon="warning-circle" />
+<Stat label="Open incidents" value="2" note="1 critical, 1 high" tone="danger" icon="siren" />
+</Columns>
+
+<Card title="Region filter" subtitle="Scope all metrics below to a single region">
+<Radio label="Region" name="region" options="All regions | us-east-1 | eu-west-1 | ap-southeast-2" value="All regions" />
+<Button variant="secondary" label="Apply filter" ask>Apply filter</Button>
+</Card>
+
+<Card title="CPU & memory — past 24 hours" subtitle="Averages across selected region">
+<Tabs>
+<Tab title="CPU">
+<Chart type="line" x="Time" y="Usage %">
+| Time | CPU % |
+|---|---|
+| 00:00 | 42 |
+| 04:00 | 55 |
+| 08:00 | 68 |
+| 12:00 | 72 |
+| 16:00 | 61 |
+| 20:00 | 58 |
+| 24:00 | 49 |
+</Chart>
+</Tab>
+<Tab title="Memory">
+<Chart type="line" x="Time" y="Usage %">
+| Time | Memory % |
+|---|---|
+| 00:00 | 61 |
+| 04:00 | 64 |
+| 08:00 | 70 |
+| 12:00 | 78 |
+| 16:00 | 74 |
+| 20:00 | 69 |
+| 24:00 | 65 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open incidents" subtitle="Sorted by severity">
+<Columns>
+<Card title="Critical">
+<Badge tone="danger">SEV-1</Badge>
+<Stat label="Incident #4821" value="API timeouts" tone="danger" />
+<p>Started 09:14 UTC · us-east-1 · <Avatar name="Maya Chen" subtitle="Primary responder" /></p>
+<Button variant="danger" label="Acknowledge #4821" ask>Acknowledge</Button>
+</Card>
+<Card title="High">
+<Badge tone="warning">SEV-2</Badge>
+<Stat label="Incident #4823" value="Elevated 5xx" tone="warning" />
+<p>Started 11:02 UTC · eu-west-1 · <Avatar name="Diego Ruiz" subtitle="Primary responder" /></p>
+<Button variant="secondary" label="Acknowledge #4823" ask>Acknowledge</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="Past 5 minutes, p95 latency">
+| Endpoint | Latency |
+|---|---|
+| POST /api/v2/orders | 1,240 ms |
+| GET /api/v1/reports/summary | 980 ms |
+| PATCH /api/v1/users/{id} | 742 ms |
+| POST /api/v2/payments | 688 ms |
+| GET /api/v1/search | 534 ms |
+</Card>
+
+<Card title="Alert threshold" subtitle="Trigger a page when error rate exceeds this">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="1.0" unit="%" name="error-threshold" />
+<Switch label="Notify on-call immediately" name="notify-immediate" value={true} hint="Sends a page via PagerDuty" />
+<Button>Save threshold</Button>
+<Button variant="tertiary">Reset to default</Button>
+</Form>
+</Card>
+
+<Details title="Acknowledged incidents (recent)" open={false}>
+| Incident | Severity | Acknowledged by | Time |
+|---|---|---|---|
+| #4818 | SEV-3 | Priya Kapoor | 08:32 UTC |
+| #4815 | SEV-2 | Tom Becker | 06:17 UTC |
+</Details>
+
+<FollowUps>
+- What's the error rate breakdown by service?
+- Show the timeline for incident #4821
+- Which region has the highest CPU usage?
+- What changed in the last deploy?
+</FollowUps>

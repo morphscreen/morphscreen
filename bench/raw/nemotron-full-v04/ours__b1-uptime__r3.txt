@@ -1,0 +1,31 @@
+# Platform Status
+
+## API Uptime This Month
+
+<Card title="API Availability" subtitle="Current month rolling uptime">
+<Columns>
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Stat label="Downtime" value="12.9 min" change="-3.2 min vs last month" tone="info" />
+</Columns>
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+</Card>
+
+## Most Recent Incident
+
+<Card title="Incident #INC-2024-089" subtitle="Resolved · Aug 18, 2024 · 14:22 UTC">
+<Callout tone="success" title="Resolved">
+<strong>API latency spike</strong> — Elevated p99 latency (2.1s → 8.4s) affecting /v1/payments and /v1/refunds endpoints for ~23 minutes.
+</Callout>
+
+**Root cause:** Connection pool exhaustion in the payment gateway proxy after a downstream provider deployed a breaking change to their timeout defaults.
+
+**Resolution:** Rolled proxy config to increase pool size and timeout ceiling; added circuit-breaker fallback to cached responses for idempotent GETs.
+
+**Timeline:**
+- 13:58 UTC — Alert fired (p99 > 5s)
+- 14:03 UTC — On-call engaged, identified proxy pool saturation
+- 14:11 UTC — Config rollback deployed
+- 14:22 UTC — Latency normalized, incident closed
+
+**Follow-up:** PR #4,211 adds automated canary check for provider timeout changes; scheduled for next sprint.
+</Card>

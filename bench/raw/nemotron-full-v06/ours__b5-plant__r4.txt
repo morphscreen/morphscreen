@@ -1,0 +1,200 @@
+# Factory Floor Supervisor Console
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Stat label="OEE" value="82.4%" change="+2.1% vs yesterday" tone="success" />
+<Stat label="Availability" value="91.2%" tone="info" />
+<Stat label="Performance" value="88.7%" tone="info" />
+<Stat label="Quality" value="96.8%" tone="info" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Progress value="12450" max="15000" label="12,450 / 15,000 units (83%)" tone="info" />
+<Stat label="Target" value="15,000" tone="neutral" />
+<Stat label="Remaining" value="2,550" tone="warning" />
+</Card>
+
+<Card title="Safety">
+<Stat label="Incidents YTD" value="3" change="0 this month" tone="success" />
+<Stat label="Days Since Last Incident" value="47" tone="success" />
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Consumption" value="1,847 kWh" change="-3.2% vs avg" tone="success" />
+<Stat label="Cost" value="$2,142" tone="neutral" />
+<Progress value="1847" max="2200" label="84% of daily budget" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Production Lines" subtitle="Select a line to focus">
+<Select label="Focus Line" name="focus-line" placeholder="All lines" options="All lines | Line A - Assembly | Line B - Molding | Line C - Packaging | Line D - Finishing" value="All lines" />
+<Table>
+| Line | Status | Rate (units/hr) | Target | Actual | OEE |
+|---|---|---|---|---|---|
+| Line A - Assembly | <Badge tone="success">Running</Badge> | 420 | 450 | 412 | 86% |
+| Line B - Molding | <Badge tone="warning">Slow</Badge> | 310 | 380 | 298 | 78% |
+| Line C - Packaging | <Badge tone="success">Running</Badge> | 580 | 600 | 575 | 91% |
+| Line D - Finishing | <Badge tone="danger">Down</Badge> | 0 | 200 | 0 | 0% |
+</Table>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="Line D - Finishing">EMERGENCY STOP: Conveyor jam at station 4. Maintenance dispatched. 12 min downtime.</Callout>
+<Callout tone="warning" title="Line B - Molding">Cycle time 15% above threshold. Mold temperature drifting.</Callout>
+<Callout tone="info" title="Line A - Assembly">Tool change required in 45 min. Prep next batch.</Callout>
+<Callout tone="info" title="Warehouse">Resin delivery delayed 2 hrs. ETA 14:30.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %">
+| Date | Defect Rate % |
+|---|---|
+| Day 1 | 2.1 |
+| Day 2 | 1.8 |
+| Day 3 | 2.3 |
+| Day 4 | 1.9 |
+| Day 5 | 2.0 |
+| Day 6 | 2.4 |
+| Day 7 | 2.1 |
+| Day 8 | 1.7 |
+| Day 9 | 2.2 |
+| Day 10 | 1.9 |
+| Day 11 | 2.0 |
+| Day 12 | 1.8 |
+| Day 13 | 2.1 |
+| Day 14 | 1.9 |
+| Day 15 | 2.2 |
+| Day 16 | 2.0 |
+| Day 17 | 1.8 |
+| Day 18 | 2.1 |
+| Day 19 | 1.9 |
+| Day 20 | 2.3 |
+| Day 21 | 2.0 |
+| Day 22 | 1.7 |
+| Day 23 | 1.9 |
+| Day 24 | 2.1 |
+| Day 25 | 2.0 |
+| Day 26 | 1.8 |
+| Day 27 | 1.9 |
+| Day 28 | 2.0 |
+| Day 29 | 1.8 |
+| Day 30 | 1.9 |
+</Chart>
+<Stat label="Current 30-day avg" value="2.0%" tone="info" />
+</Card>
+
+<Card title="Downtime by Cause - This Week">
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Mechanical Failure | 18.5 |
+| Changeover | 12.0 |
+| Material Shortage | 8.5 |
+| Quality Hold | 6.0 |
+| Planned Maintenance | 4.0 |
+| Operator Break | 3.5 |
+| Power/Utility | 2.0 |
+</Chart>
+<Stat label="Total Downtime" value="54.5 hrs" tone="warning" />
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift 1 (06-14) | 5,200 |
+| Shift 2 (14-22) | 4,850 |
+| Shift 3 (22-06) | 2,400 |
+</Chart>
+<Stat label="Best Shift" value="Shift 1" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+<Table>
+| Machine | Line | Due Date | Type | Priority |
+|---|---|---|---|---|
+| CNC-04 | Line A | 2025-01-18 | Preventive | High |
+| Injection Mold #3 | Line B | 2025-01-19 | Predictive | Medium |
+| Conveyor Sys D | Line D | 2025-01-17 | Corrective | Critical |
+| Packaging Unit 2 | Line C | 2025-01-22 | Preventive | Low |
+| Laser Welder | Line A | 2025-01-25 | Preventive | Medium |
+</Table>
+</Card>
+
+<Card title="Material Stock Levels">
+<Stat label="Steel Coil" value="42.3 tons" change="Reorder at 15t" tone="success" />
+<Progress value="42.3" max="80" label="53% of capacity" tone="success" />
+<Stat label="Resin (PE/PP)" value="18.7 tons" change="Reorder at 10t" tone="warning" />
+<Progress value="18.7" max="40" label="47% of capacity" tone="warning" />
+<Stat label="Packaging Film" value="3,200 rolls" change="Reorder at 1,000" tone="info" />
+<Progress value="3200" max="8000" label="40% of capacity" tone="info" />
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+<Table>
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| AcerSteel Ltd | Steel Coil Grade 50 | 25 tons | 2025-01-16 | <Badge tone="info">In Transit</Badge> |
+| PolySource Inc | PE Resin | 15 tons | 2025-01-17 | <Badge tone="warning">Delayed</Badge> |
+| PackWell Co | Stretch Film | 5,000 rolls | 2025-01-18 | <Badge tone="success">Confirmed</Badge> |
+| AcerSteel Ltd | Steel Coil Grade 80 | 10 tons | 2025-01-19 | <Badge tone="info">Scheduled</Badge> |
+| ChemSupply | Additives | 500 kg | 2025-01-20 | <Badge tone="success">Confirmed</Badge> |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+<Table>
+| Batch ID | Line | Product | Qty | Hold Reason | Since |
+|---|---|---|---|---|---|
+| B-20250114-003 | Line B | Widget-XL | 1,200 | Dimensional variance | 2025-01-14 14:22 |
+| B-20250115-007 | Line C | Gasket-Pro | 850 | Surface finish | 2025-01-15 09:15 |
+| B-20250115-012 | Line A | Bracket-Std | 2,100 | Material cert missing | 2025-01-15 11:30 |
+</Table>
+<Stat label="Total Units on Hold" value="4,150" tone="warning" />
+</Card>
+
+<Card title="Open Work Orders">
+<Table>
+| WO # | Machine | Description | Priority | Assigned | Due |
+|---|---|---|---|---|---|
+| WO-2025-0412 | Conveyor Sys D | Replace damaged roller section | <Badge tone="danger">Critical</Badge> | M. Torres | 2025-01-17 |
+| WO-2025-0418 | Injection Mold #3 | Rebuild hydraulic cylinder | <Badge tone="warning">High</Badge> | J. Chen | 2025-01-19 |
+| WO-2025-0421 | CNC-04 | Spindle bearing replacement | <Badge tone="warning">High</Badge> | R. Patel | 2025-01-20 |
+| WO-2025-0425 | Packaging Unit 2 | Sensor calibration | <Badge tone="info">Medium</Badge> | A. Kim | 2025-01-22 |
+| WO-2025-0430 | Laser Welder | Optics cleaning & alignment | <Badge tone="info">Medium</Badge> | M. Torres | 2025-01-25 |
+| WO-2025-0435 | Facility | HVAC filter replacement | <Badge tone="neutral">Low</Badge> | Facilities | 2025-01-31 |
+</Table>
+</Card>
+</Columns>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="CNC-04 (Line A) | Injection Mold #3 (Line B) | Conveyor Sys D (Line D) | Packaging Unit 2 (Line C) | Laser Welder (Line A) | Other..." required="true" />
+<Date label="Date" name="maint-date" required="true" />
+</Columns>
+<Select label="Maintenance Type" name="maint-type" placeholder="Choose type" options="Preventive | Predictive | Corrective | Calibration | Inspection" required="true" />
+<Select label="Priority" name="priority" placeholder="Set priority" options="Low | Medium | High | Critical" value="Medium" required="true" />
+<TextArea label="Notes / Work Description" name="maint-notes" placeholder="Describe the work needed..." rows="3" />
+<Columns>
+<Button variant="primary">Schedule Maintenance</Button>
+<Button variant="secondary">Clear Form</Button>
+</Columns>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Shift Report Export">
+<Callout tone="info" title="Shift Report Ready">Current shift data compiled. Includes OEE, production counts, downtime, quality, safety, and energy metrics.</Callout>
+<Button variant="primary" size="large">Export Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Shift Report (CSV)</Button>
+<Button variant="tertiary" size="large">Email to Management</Button>
+</Card>
+</Columns>

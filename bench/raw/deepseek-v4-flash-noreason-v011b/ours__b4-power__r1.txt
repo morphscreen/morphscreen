@@ -1,0 +1,132 @@
+# Power Network Operator Console
+
+<Card title="Network Status Overview" subtitle="Live monitoring dashboard">
+<Columns>
+<Stat label="Current Load" value="4,723 MW" change="+2.1%" tone="info" icon="lightning" />
+<Stat label="Capacity Used" value="78.7%" change="+1.3%" tone="warning" icon="gauge" />
+<Stat label="Price/MWh" value="$47.20" change="+$3.15" tone="info" icon="currency-dollar" />
+<Stat label="Emissions Today" value="1,842 tCO₂" change="-5.4%" tone="success" icon="leaf" />
+</Columns>
+</Card>
+
+<Card title="Generation Mix & Capacity">
+<Columns>
+<Chart type="donut" title="Generation by Source" x="Source" y="MW">
+| Source | Output |
+|---|---|
+| Natural Gas | 2,150 |
+| Coal | 1,100 |
+| Nuclear | 720 |
+| Hydro | 480 |
+| Wind | 210 |
+| Solar | 63 |
+</Chart>
+
+<Progress value="78.7" max="100" label="Network Capacity" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Plant Status">
+| Plant | Output (MW) | Status | Source |
+|---|---|---|---|
+| Riverbend Gas #1 | 850 | <Badge tone="success">Online</Badge> | Natural Gas |
+| Riverbend Gas #2 | 780 | <Badge tone="success">Online</Badge> | Natural Gas |
+| North Coal Unit 3 | 520 | <Badge tone="warning">Reduced</Badge> | Coal |
+| North Coal Unit 4 | 580 | <Badge tone="success">Online</Badge> | Coal |
+| Lakeside Nuclear | 720 | <Badge tone="success">Online</Badge> | Nuclear |
+| Pine Valley Hydro | 480 | <Badge tone="success">Online</Badge> | Hydro |
+| East Ridge Wind | 210 | <Badge tone="info">Variable</Badge> | Wind |
+| Solar Array Delta | 63 | <Badge tone="info">Variable</Badge> | Solar |
+
+<Button variant="secondary" size="small" ask="Show detailed plant information">View Plant Details</Button>
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected Area | Status | Customers |
+|---|---|---|---|
+| Northern District | Townsville, Millbrook | <Badge tone="danger">Outage</Badge> | 12,400 |
+| Eastern Corridor | Harbor Point, Eastside | <Badge tone="warning">Partial</Badge> | 3,800 |
+| Western Rural | Oak Valley, Pine Ridge | <Badge tone="danger">Outage</Badge> | 2,100 |
+
+<Button ask="Show outage map for Northern District">View Northern District Outage Map</Button>
+<Button variant="secondary" ask="Show all outages by region">All Outages</Button>
+</Card>
+
+<Card title="Demand Forecast (Next 24 Hours)">
+<Chart type="line" x="Hour" y="MW">
+| Hour | Forecast | Peak Threshold |
+|---|---|---|
+| 00:00 | 4,200 | 6,000 |
+| 02:00 | 3,950 | 6,000 |
+| 04:00 | 3,800 | 6,000 |
+| 06:00 | 4,100 | 6,000 |
+| 08:00 | 5,200 | 6,000 |
+| 10:00 | 5,600 | 6,000 |
+| 12:00 | 5,800 | 6,000 |
+| 14:00 | 5,950 | 6,000 |
+| 16:00 | 6,000 | 6,000 |
+| 18:00 | 5,700 | 6,000 |
+| 20:00 | 5,100 | 6,000 |
+| 22:00 | 4,500 | 6,000 |
+</Chart>
+<Callout tone="info" title="Peak Alert">Demand expected to reach capacity at 16:00. Consider curtailment planning.</Callout>
+</Card>
+
+<Card title="Live Alerts">
+<Details title="⚠️ High Load Warning — 14:32 UTC" open=true>
+<Callout tone="warning" title="Action Required">Load approaching 80% threshold. Consider pre-curtailment measures.</Callout>
+</Details>
+<Details title="🔧 North Coal Unit 3 Reduced Output — 13:15 UTC">
+Unit operating at 65% capacity due to maintenance. Expected restoration: 19:00 UTC.
+</Details>
+<Details title="🌐 Eastern Corridor Partial Outage — 11:40 UTC">
+Transformer failure affecting 3,800 customers. Crew dispatched. ETA: 16:00 UTC.
+</Details>
+<Details title="☀️ Solar Output Drop — 10:05 UTC">
+Cloud cover reducing Solar Array Delta output by 40%. Expected recovery by 15:00 UTC.
+</Details>
+</Card>
+
+<Card title="Maintenance Planned This Month">
+| Plant | Component | Date | Duration | Status |
+|---|---|---|---|---|
+| Riverbend Gas #1 | Turbine inspection | Jun 12–14 | 3 days | <Badge tone="warning">Scheduled</Badge> |
+| North Coal Unit 4 | Boiler cleaning | Jun 18–20 | 3 days | <Badge tone="info">Planned</Badge> |
+| Lakeside Nuclear | Control rod test | Jun 22 | 1 day | <Badge tone="info">Planned</Badge> |
+| Pine Valley Hydro | Dam gate check | Jun 25–26 | 2 days | <Badge tone="neutral">Pending</Badge> |
+
+<Button ask="Show full maintenance calendar for June">View Maintenance Calendar</Button>
+</Card>
+
+<Card title="Regional Focus & Control">
+<Columns>
+<Radio label="Focus Region" options="All Regions | Northern District | Eastern Corridor | Western Rural | Central Metro | Southern Zone" name="region" value="All Regions" />
+
+<Card title="Curtailment Order">
+<Form name="curtailment">
+<Select label="Region" options="Northern District | Eastern Corridor | Western Rural | Central Metro | Southern Zone" name="curtail-region" placeholder="Select region" />
+<Slider label="Curtailment Amount" min="0" max="500" step="10" value="100" name="curtail-mw" unit="MW" />
+<Select label="Priority" options="Low (load reduction) | Medium (shed non-critical) | High (emergency shed)" name="curtail-priority" />
+<Button variant="primary">Issue Curtailment Order</Button>
+<Button variant="tertiary">Preview Impact Analysis</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button ask="Show live load graph for Northern District">Northern District Load</Button>
+<Button ask="Show emissions breakdown by plant">Emissions Breakdown</Button>
+<Button ask="Show curtailment history for last 7 days">Curtailment History</Button>
+<Button variant="secondary" ask="Generate system status report">Generate Report</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the load graph for the last hour
+- Which plants are closest to capacity?
+- What's the forecast for tomorrow?
+- Show me the emissions trend
+- List all active curtailment orders
+</FollowUps>

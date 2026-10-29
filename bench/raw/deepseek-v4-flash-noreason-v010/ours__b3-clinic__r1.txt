@@ -1,0 +1,87 @@
+# Clinic Receptionist — Day View
+
+<Columns>
+<Stat label="Patients expected today" value="24" icon="users" tone="info" />
+<Stat label="No-show rate this month" value="6.9%" change="-1.2 pts" tone="success" icon="chart-line" note="Better than last month" />
+<Stat label="Rooms free now" value="3 / 8" icon="door" tone="warning" />
+</Columns>
+
+<Card title="Today's appointments" subtitle="Tuesday, 12 November">
+<Chart type="bar" title="Appointments by hour" x="Hour" y="Patients">
+| Hour | Patients |
+|---|---|
+| 08:00 | 3 |
+| 09:00 | 4 |
+| 10:00 | 5 |
+| 11:00 | 3 |
+| 12:00 | 2 |
+| 13:00 | 4 |
+| 14:00 | 3 |
+</Chart>
+
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 08:00 | Maria Lopez | Room 1 | <Badge tone="success">Checked in</Badge> |
+| 08:15 | James Chen | Room 2 | <Badge tone="info">Waiting</Badge> |
+| 08:30 | Aisha Patel | Room 3 | <Badge tone="success">Checked in</Badge> |
+| 08:45 | Tom Baker | Room 4 | <Badge tone="warning">Late</Badge> |
+| 09:00 | Elena Rossi | Room 5 | <Badge tone="info">Waiting</Badge> |
+| 09:15 | David Kim | Room 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 09:30 | Sara Novak | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 09:45 | Omar Haddad | Room 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:00 | Lily Wang | Room 4 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:15 | Pedro Silva | Room 5 | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Next patient to call out">
+<Columns>
+<Avatar name="James Chen" src="https://i.pravatar.cc/80?img=11" subtitle="08:15 — Room 2" />
+<Callout tone="info" title="Ready for vitals">James is checked in and in the waiting area. Call him to Room 2 when Dr. Nguyen is free.</Callout>
+</Columns>
+<Button variant="primary" icon="megaphone">Call James Chen</Button>
+</Card>
+
+<Card title="Room availability right now">
+| Room | Status | Current / Next patient |
+|---|---|---|
+| Room 1 | <Badge tone="success">Free</Badge> | — |
+| Room 2 | <Badge tone="warning">In use</Badge> | James Chen (until 08:45) |
+| Room 3 | <Badge tone="success">Free</Badge> | — |
+| Room 4 | <Badge tone="warning">In use</Badge> | Tom Baker (late) |
+| Room 5 | <Badge tone="success">Free</Badge> | — |
+| Room 6 | <Badge tone="success">Free</Badge> | — |
+| Room 7 | <Badge tone="warning">In use</Badge> | Aisha Patel (until 09:00) |
+| Room 8 | <Badge tone="warning">In use</Badge> | Elena Rossi (until 09:15) |
+</Card>
+
+<Card title="Check in a patient">
+<Form name="checkin">
+<Input label="Patient name or ID" placeholder="Search by name or ID" />
+<Select label="Appointment time" placeholder="Select from today's list" options="08:00 Maria Lopez | 08:15 James Chen | 08:30 Aisha Patel | 08:45 Tom Baker | 09:00 Elena Rossi | 09:15 David Kim | 09:30 Sara Novak" />
+<Radio label="Arrival status" options="On time | Late | Walk-in" />
+<Switch label="Send SMS reminder to patient" value="true" hint="Auto-sends to the number on file" />
+<Button variant="primary" icon="check">Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Form name="change-day">
+<Date label="Select date" hint="Shows appointments for that day" />
+<Button variant="secondary" icon="calendar">Go to selected day</Button>
+<Button variant="tertiary" icon="arrow-left">Back to today</Button>
+</Form>
+</Card>
+
+<Details title="No-show details this month" open="false">
+<Stat label="Appointments scheduled" value="87" icon="calendar" />
+<Stat label="No-shows" value="6" icon="user-x" tone="danger" />
+<Stat label="Cancellations" value="11" icon="x-circle" tone="warning" />
+<Progress value="6" max="87" label="No-show rate 6.9%" tone="success" />
+</Details>
+
+<FollowUps>
+- Show me tomorrow's schedule
+- Which patients still need confirmation calls?
+- List all no-shows from this month
+- How long is the current wait time?
+</FollowUps>

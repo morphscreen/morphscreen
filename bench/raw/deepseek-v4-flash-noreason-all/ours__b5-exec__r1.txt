@@ -1,0 +1,190 @@
+# CEO Quarterly Command View
+
+<Callout tone="info" title="Q3 FY2025 snapshot">All figures below are for Q3 FY2025 unless you change the quarter. Data as of Oct 12, 2025.</Callout>
+
+<Card title="Quarter selector & region filter">
+<Columns>
+<div>
+<Select label="Quarter" options="Q1 FY2025 | Q2 FY2025 | Q3 FY2025 | Q4 FY2025" name="quarter" value="Q3 FY2025" />
+</div>
+<div>
+<Select label="Region focus" options="All regions | North America | EMEA | APAC | LATAM" name="region" value="All regions" placeholder="Choose a region" hint="Filters all numbers below" />
+</div>
+</Columns>
+</Card>
+
+## Financial health
+
+<Columns>
+<Card title="Revenue">
+<Stat label="Revenue" value="$48.2M" change="+8.3% vs Q2" tone="success" icon="trend-up" />
+<Sparkline label="Quarterly" values="41.2 | 43.8 | 44.5 | 48.2" value="$48.2M" change="+8.3%" />
+</Card>
+<Card title="Costs">
+<Stat label="Total costs" value="$36.1M" change="+5.1% vs Q2" tone="warning" icon="trend-down" />
+<Sparkline label="Quarterly" values="33.0 | 34.2 | 34.4 | 36.1" value="$36.1M" change="+5.1%" />
+</Card>
+<Card title="Profit">
+<Stat label="Operating profit" value="$12.1M" change="+18.6% vs Q2" tone="success" icon="chart-line" />
+<Gauge label="Margin" value="25.1" min="0" max="40" unit="%" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Revenue & costs by quarter">
+<Columns>
+<Chart type="bar" title="Revenue" x="Quarter" y="$M">
+| Quarter | Revenue |
+|---|---|
+| Q1 | 41.2 |
+| Q2 | 43.8 |
+| Q3 | 44.5 |
+| Q4 | 48.2 |
+</Chart>
+<Chart type="bar" title="Costs" x="Quarter" y="$M">
+| Quarter | Costs |
+|---|---|
+| Q1 | 33.0 |
+| Q2 | 34.2 |
+| Q3 | 34.4 |
+| Q4 | 36.1 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Runway">
+<Stat label="Months of runway" value="14.2" change="+1.1 months vs Q2" tone="success" icon="hourglass" />
+<Progress value="14.2" max="18" label="Months of cash remaining" tone="success" />
+</Card>
+
+## Budget vs plan by department
+
+<Card title="Budget by department">
+<Chart type="horizontal" title="Spend vs plan" x="Department" y="$M">
+| Department | Plan | Actual |
+|---|---|---|
+| Engineering | 12.5 | 13.8 |
+| Sales & Marketing | 9.8 | 10.2 |
+| Operations | 6.2 | 5.9 |
+| Product | 4.5 | 4.7 |
+| Finance & Admin | 2.1 | 1.5 |
+| HR | 1.0 | 0.9 |
+</Chart>
+</Card>
+
+<Callout tone="warning" title="Overspend">Engineering is 10.4% over plan at $13.8M vs $12.5M planned. Sales & Marketing is 4.1% over. Review before year-end.</Callout>
+
+<Card title="Headcount by department">
+<Chart type="bar" title="FTE by department" x="Department" y="FTE">
+| Department | FTE |
+|---|---|
+| Engineering | 184 |
+| Sales & Marketing | 96 |
+| Operations | 58 |
+| Product | 41 |
+| Finance & Admin | 22 |
+| HR | 12 |
+</Chart>
+</Card>
+
+## Strategic initiatives
+
+<Card title="Strategic initiatives status">
+| Initiative | Owner | Status | Progress |
+|---|---|---|---|
+| Enterprise SaaS launch | Priya Sharma | <Badge tone="success">On track</Badge> | 78% |
+| APAC expansion (Japan) | Tom Becker | <Badge tone="warning">At risk</Badge> | 45% |
+| AI support assistant | Lena Fischer | <Badge tone="success">On track</Badge> | 62% |
+| SOC 2 Type II certification | Marcus Webb | <Badge tone="info">In review</Badge> | 90% |
+| Legacy platform migration | Aisha Khan | <Badge tone="danger">Behind</Badge> | 30% |
+</Card>
+
+## Top risks
+
+<Card title="Top risks — with owners">
+| Risk | Owner | Likelihood | Impact | Mitigation |
+|---|---|---|---|---|
+| Key enterprise customer churn (Acme Corp, $4.2M ARR) | Priya Sharma | <Badge tone="warning">Medium</Badge> | <Badge tone="danger">High</Badge> | Executive sponsor call weekly; renewal workshop Nov 5 |
+| APAC regulatory delay (Japan data residency) | Tom Becker | <Badge tone="warning">Medium</Badge> | <Badge tone="warning">Medium</Badge> | Legal review complete; submitted to JFSA Oct 3 |
+| Engineering attrition (3 senior ICs resigned) | Lena Fischer | <Badge tone="danger">High</Badge> | <Badge tone="warning">Medium</Badge> | Counter-offers made; hiring plan accelerated |
+| Cloud cost overrun (AWS spend +22%) | Marcus Webb | <Badge tone="warning">Medium</Badge> | <Badge tone="warning">Medium</Badge> | Reserved instances purchased; FinOps review weekly |
+| FX volatility (EUR/USD) | Aisha Khan | <Badge tone="info">Low</Badge> | <Badge tone="info">Low</Badge> | Hedging in place through Q4 |
+</Card>
+
+## Commercial performance
+
+<Columns>
+<Card title="Sales pipeline">
+<Stat label="Pipeline value" value="$86.4M" change="+12% vs Q2" tone="success" icon="funnel" />
+<Funnel title="Pipeline stages">
+| Stage | Count |
+|---|---|
+| Qualified leads | 420 |
+| Discovery done | 265 |
+| Proposal sent | 148 |
+| Negotiation | 62 |
+| Closed won | 38 |
+</Funnel>
+</Card>
+<Card title="Win rate">
+<Stat label="Win rate" value="24.6%" change="+2.1 pts vs Q2" tone="success" icon="target" />
+<Progress value="24.6" max="40" label="Deals won / all deals" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Customers & NPS">
+<Columns>
+<Card title="Customers">
+<Stat label="Active customers" value="1,847" change="+63 net new" tone="success" icon="users" />
+<Stat label="Churn rate" value="2.8%" change="-0.4 pts vs Q2" tone="success" icon="user-minus" />
+</Card>
+<Card title="NPS">
+<Stat label="NPS" value="48" change="+6 vs Q2" tone="success" icon="smiley" />
+<Gauge label="NPS" value="48" min="-100" max="100" unit="pts" tone="success" />
+</Card>
+</Columns>
+</Card>
+
+## Next board meeting
+
+<Card title="Items for the board — Nov 15, 2025">
+<Agenda title="Agenda">
+| Time | Item |
+|---|---|
+| 09:00 | Call to order & CEO report |
+| 09:20 | Q3 financials review (revenue, costs, profit) |
+| 09:45 | Enterprise SaaS launch — go/no-go decision |
+| 10:15 | APAC expansion — Japan market entry proposal |
+| 10:45 | Break |
+| 11:00 | Risk review — Acme Corp retention plan |
+| 11:30 | Headcount & attrition update |
+| 12:00 | Executive session |
+| 12:30 | Adjourn |
+</Agenda>
+<AddToCalendar title="Board Meeting Q3 FY2025" start="2025-11-15T09:00" end="2025-11-15T12:30" where="Boardroom A / Zoom" note="Quarterly board meeting — see agenda above">Add to calendar</AddToCalendar>
+</Card>
+
+## Export
+
+<Card title="Export the pack">
+<Columns>
+<div>
+<Button variant="primary" icon="download">Export PDF pack</Button>
+</div>
+<div>
+<Button variant="secondary" icon="file-xls">Export Excel workbook</Button>
+</div>
+<div>
+<Button variant="secondary" icon="presentation-chart">Export PPT deck</Button>
+</div>
+<div>
+<Share text="Q3 FY2025 CEO command view — revenue $48.2M, profit $12.1M, NPS 48" href="https://board.example.com/q3">Share as link</Share>
+</div>
+</Columns>
+</Card>
+
+<FollowUps>
+- Drill into Engineering budget overspend
+- Show Acme Corp account health details
+- What's driving the NPS improvement?
+- Compare Q3 vs Q3 last year
+</FollowUps>

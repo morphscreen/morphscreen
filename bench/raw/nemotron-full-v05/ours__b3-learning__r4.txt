@@ -1,0 +1,64 @@
+# Training Platform Analytics
+
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Cohort A (Jan 2024) | Cohort B (Feb 2024) | Cohort C (Mar 2024) | Cohort D (Apr 2024)" value="All cohorts" />
+
+<Columns>
+<Stat label="Active learners this week" value="1,247" change="+8% vs last week" tone="success" />
+<Stat label="Course completion rate" value="73%" change="+4% vs last month" tone="info" />
+<Stat label="Average quiz score" value="82.4" change="-1.2 pts vs last month" tone="warning" />
+</Columns>
+
+<Card title="Engagement across past 8 weeks" subtitle="Weekly active learners and session time">
+<Chart type="line" x="Week" y="Value">
+| Week | Active Learners | Avg Session (min) |
+|---|---|---|
+| Week 1 | 980 | 42 |
+| Week 2 | 1050 | 45 |
+| Week 3 | 1120 | 48 |
+| Week 4 | 1080 | 44 |
+| Week 5 | 1180 | 47 |
+| Week 6 | 1210 | 50 |
+| Week 7 | 1190 | 46 |
+| Week 8 | 1247 | 52 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Courses ranked by enrollment">
+<Chart type="horizontal" x="Enrollments" y="Course">
+| Course | Enrollments |
+|---|---|
+| Python Fundamentals | 892 |
+| Data Analysis with Pandas | 654 |
+| Web Development Basics | 587 |
+| Machine Learning Intro | 423 |
+| DevOps Essentials | 312 |
+| Advanced JavaScript | 289 |
+| Cloud Architecture | 198 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="12 learners flagged (inactive 14+ days)">
+| Learner | Cohort | Last Active | Courses Enrolled | Risk Score |
+|---|---|---|---|---|
+| Alex Chen | Cohort B | 18 days ago | 3 | 92 |
+| Maria Santos | Cohort A | 22 days ago | 2 | 89 |
+| James Wilson | Cohort C | 15 days ago | 4 | 87 |
+| Priya Patel | Cohort B | 20 days ago | 1 | 85 |
+| Robert Kim | Cohort D | 16 days ago | 2 | 83 |
+| Lisa Thompson | Cohort A | 19 days ago | 3 | 81 |
+| David Park | Cohort C | 14 days ago | 2 | 79 |
+| Sarah Johnson | Cohort D | 21 days ago | 1 | 77 |
+</Card>
+</Columns>
+
+<Card title="Message a cohort">
+<Form name="message-cohort">
+<Select label="Recipient cohort" name="recipient" placeholder="Select cohort" options="Cohort A (Jan 2024) | Cohort B (Feb 2024) | Cohort C (Mar 2024) | Cohort D (Apr 2024)" required="true" />
+<Input label="Subject" name="subject" placeholder="e.g., Reminder: Assignment due Friday" required="true" />
+<TextArea label="Message" name="message" placeholder="Write your message here..." rows="5" hint="Supports markdown formatting" required="true" />
+<Checkboxes label="Delivery options" name="delivery" options="Send as email | Send as in-app notification | Schedule for later" value="Send as in-app notification" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>

@@ -1,0 +1,255 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view · Updated 14:32">
+<Badge tone="info">Live</Badge>
+<Badge tone="success">All Systems Nominal</Badge>
+</Card>
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="OEE" value="87.3%" change="+2.1% vs yesterday" tone="success" />
+<Stat label="Availability" value="92.1%" change="+0.8%" tone="info" />
+<Stat label="Performance" value="94.5%" change="-0.3%" tone="neutral" />
+<Stat label="Quality" value="99.2%" change="+0.1%" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Today's Production">
+<Columns>
+<Stat label="Units Produced" value="12,847" change="Target: 15,000" tone="info" />
+<Stat label="Progress" value="85.6%" change="2,153 remaining" tone="neutral" />
+<Stat label="Current Rate" value="1,420/hr" change="+3.2% vs avg" tone="success" />
+<Stat label="Projected EOD" value="15,200" change="On track" tone="success" />
+</Columns>
+<Progress value="12847" max="15000" label="Daily Target Progress" />
+</Card>
+
+<Card title="Focus Line">
+<Select label="Select Production Line" name="focus-line" placeholder="All Lines" options="All Lines | Line A - Injection Molding | Line B - Assembly | Line C - Packaging | Line D - Finishing" value="All Lines" />
+</Card>
+
+<Card title="Production Lines">
+<Columns>
+<Stat label="Line A" value="1,420/hr" change="Running" tone="success" />
+<Stat label="Line B" value="980/hr" change="Running" tone="success" />
+<Stat label="Line C" value="0/hr" change="Maintenance" tone="warning" />
+<Stat label="Line D" value="720/hr" change="Starved" tone="danger" />
+</Columns>
+<Chart type="bar" title="Hourly Rate by Line" x="Line" y="Units/hr">
+| Line | Rate |
+|---|---|
+| Line A | 1420 |
+| Line B | 980 |
+| Line C | 0 |
+| Line D | 720 |
+</Chart>
+</Card>
+
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" title="Daily Defect Rate %" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| Day 1 | 0.8 |
+| Day 2 | 0.7 |
+| Day 3 | 0.9 |
+| Day 4 | 0.6 |
+| Day 5 | 0.8 |
+| Day 6 | 0.7 |
+| Day 7 | 0.5 |
+| Day 8 | 0.8 |
+| Day 9 | 0.9 |
+| Day 10 | 0.7 |
+| Day 11 | 0.6 |
+| Day 12 | 0.8 |
+| Day 13 | 0.7 |
+| Day 14 | 0.5 |
+| Day 15 | 0.8 |
+| Day 16 | 0.9 |
+| Day 17 | 0.7 |
+| Day 18 | 0.6 |
+| Day 19 | 0.8 |
+| Day 20 | 0.7 |
+| Day 21 | 0.5 |
+| Day 22 | 0.8 |
+| Day 23 | 0.9 |
+| Day 24 | 0.7 |
+| Day 25 | 0.6 |
+| Day 26 | 0.8 |
+| Day 27 | 0.7 |
+| Day 28 | 0.5 |
+| Day 29 | 0.8 |
+| Day 30 | 0.7 |
+</Chart>
+<Stat label="30-Day Avg Defect Rate" value="0.73%" change="Target < 1.0%" tone="success" />
+</Card>
+
+<Card title="Downtime by Cause (This Week)">
+<Chart type="donut" title="Downtime Hours by Cause" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Planned Maintenance | 18.5 |
+| Material Shortage | 12.2 |
+| Equipment Failure | 8.7 |
+| Changeover | 6.3 |
+| Quality Hold | 4.1 |
+| Operator Break | 3.8 |
+| Power Issue | 2.4 |
+</Chart>
+<Stat label="Total Downtime" value="56 hrs" change="4.2% of scheduled time" tone="info" />
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<Details title="7 machines due within 7 days" open="true">
+| Machine | Line | Due In | Type | Priority |
+|---|---|---|---|---|
+| INJ-04 | Line A | 2 days | Preventive | High |
+| ASM-12 | Line B | 3 days | Calibration | Medium |
+| PKG-03 | Line C | 1 day | Blade Change | Critical |
+| FIN-07 | Line D | 5 days | Lubrication | Low |
+| INJ-01 | Line A | 6 days | Preventive | Medium |
+| ASM-05 | Line B | 4 days | Sensor Check | Medium |
+| PKG-09 | Line C | 7 days | Preventive | Low |
+</Details>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tons" change="Reorder at 15t" tone="success" />
+<Stat label="Resin Pellets" value="18.7 tons" change="Reorder at 10t" tone="warning" />
+<Stat label="Packaging Film" value="3,240 rolls" change="Reorder at 1,000" tone="success" />
+<Stat label="Corrugate Boxes" value="18,500 units" change="Reorder at 5,000" tone="info" />
+</Columns>
+<Progress value="42.3" max="60" label="Steel (% of capacity)" />
+<Progress value="18.7" max="30" label="Resin (% of capacity)" />
+<Progress value="3240" max="5000" label="Packaging Film (% of capacity)" />
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel Coil - Grade 50 | 25 tons | Mon 14:00 | Confirmed |
+| PolySource | PP Resin - Natural | 15 tons | Tue 09:00 | In Transit |
+| PackWell Films | Stretch Film 20μm | 2,000 rolls | Wed 11:00 | Confirmed |
+| BoxCo | RSC Boxes 24x18x12 | 10,000 units | Thu 08:00 | Pending |
+| Apex Metals | Steel Coil - Grade 80 | 10 tons | Fri 13:00 | Confirmed |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Units per Shift (Last 7 Days)" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Day (06-14) | 4200 | 4350 | 4100 | 4400 | 4250 | 3800 | 3600 |
+| Swing (14-22) | 3800 | 3950 | 3700 | 4000 | 3850 | 3400 | 3200 |
+| Night (22-06) | 2900 | 3050 | 2800 | 3100 | 2950 | 2600 | 2400 |
+</Chart>
+<Columns>
+<Stat label="Day Shift Avg" value="4,100" change="Best: 4,400" tone="success" />
+<Stat label="Swing Shift Avg" value="3,728" change="Best: 4,000" tone="info" />
+<Stat label="Night Shift Avg" value="2,900" change="Best: 3,100" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents YTD" value="3" change="Target: 0" tone="danger" />
+<Stat label="Days Since Last Incident" value="47" change="Record: 182 days" tone="success" />
+<Stat label="Near Misses YTD" value="12" change="-3 vs last year" tone="info" />
+<Stat label="LTIFR" value="0.82" change="Industry: 1.2" tone="success" />
+</Columns>
+<Callout tone="success" title="Safety Milestone">47 days without a recordable incident. Keep it up!</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| B-20241128-044 | Line A | Widget-XL | 500 | Dimensional variance | 2 hrs ago | Under review |
+| B-20241128-039 | Line B | Gadget-Pro | 320 | Surface finish | 5 hrs ago | Awaiting lab |
+| B-20241127-056 | Line C | Component-Z | 1,200 | Weight out of spec | 18 hrs ago | Rework queued |
+</Card>
+
+<Card title="Energy Use Today">
+<Columns>
+<Stat label="Electricity" value="2,847 kWh" change="Avg: 3,100 kWh" tone="success" />
+<Stat label="Natural Gas" value="1,240 m³" change="Avg: 1,350 m³" tone="success" />
+<Stat label="Compressed Air" value="48,200 m³" change="Avg: 52,000 m³" tone="info" />
+<Stat label="Cost" value="$1,423" change="Budget: $1,650" tone="success" />
+</Columns>
+<Chart type="line" title="Hourly Energy Consumption" x="Hour" y="kWh">
+| Hour | Electricity | Gas (kWh equiv) |
+|---|---|---|
+| 06 | 180 | 95 |
+| 07 | 220 | 110 |
+| 08 | 260 | 125 |
+| 09 | 280 | 130 |
+| 10 | 290 | 135 |
+| 11 | 285 | 130 |
+| 12 | 270 | 120 |
+| 13 | 260 | 115 |
+| 14 | 275 | 125 |
+| 15 | 280 | 130 |
+| 16 | 270 | 120 |
+| 17 | 260 | 115 |
+| 18 | 250 | 110 |
+| 19 | 240 | 105 |
+| 20 | 230 | 100 |
+| 21 | 220 | 95 |
+| 22 | 200 | 90 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Machine | Description | Assigned | Due |
+|---|---|---|---|---|---|---|
+| WO-20241128-001 | Critical | Line C | PKG-03 | Replace sealing jaws | M. Torres | Today 16:00 |
+| WO-20241128-002 | High | Line A | INJ-04 | Cooling leak repair | J. Chen | Today 20:00 |
+| WO-20241128-003 | High | Line B | ASM-12 | Feeder jam clearance | R. Patel | Tomorrow 08:00 |
+| WO-20241128-004 | Medium | Line D | FIN-07 | Conveyor belt tracking | S. Kim | Tomorrow 14:00 |
+| WO-20241128-005 | Low | Line A | INJ-01 | Lubrication PM | M. Torres | Fri 10:00 |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Select machine" options="INJ-01 | INJ-04 | INJ-07 | ASM-05 | ASM-12 | ASM-18 | PKG-03 | PKG-09 | PKG-14 | FIN-07 | FIN-11" required="true" />
+<Select label="Maintenance Type" name="type" placeholder="Select type" options="Preventive | Corrective | Calibration | Lubrication | Blade Change | Sensor Check | Inspection" required="true" />
+<Date label="Scheduled Date" name="date" required="true" />
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="e.g., 4" hint="Whole hours" required="true" />
+<Select label="Assigned Technician" name="tech" placeholder="Select tech" options="M. Torres | J. Chen | R. Patel | S. Kim | A. Brooks | L. Nguyen" required="true" />
+<TextArea label="Notes / Special Instructions" name="notes" placeholder="Any special tools, parts, or safety considerations..." rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="🔴 CRITICAL - Line C, PKG-03">Sealing jaw temperature exceeded 220°C. Auto-stop engaged. Maintenance dispatched.</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line D, FIN-07">Conveyor belt tracking drift detected. Quality check recommended at next changeover.</Callout>
+<Callout tone="info" title="🔵 INFO - Line A, INJ-04">Preventive maintenance due in 2 days. Schedule confirmation needed.</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line B, ASM-12">Feeder bowl low on components. Refill requested - ETA 15 min.</Callout>
+</Card>
+
+<Card title="Export Shift Report">
+<Columns>
+<Button variant="primary" size="large">Export Full Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Data (CSV)</Button>
+<Button variant="tertiary" size="large">Email Report to Management</Button>
+</Columns>
+<Details title="Report Contents" open="false">
+- OEE Summary & Trends
+- Production vs Target by Line
+- Defect Analysis
+- Downtime Pareto
+- Maintenance Completed/Scheduled
+- Material Consumption & Stock Levels
+- Safety Incidents & Near Misses
+- Energy Consumption & Cost
+- Work Order Status
+- Quality Hold Details
+- Shift Handover Notes
+</Details>
+</Card>
+
+<FollowUps>
+- Show me Line A's detailed OEE breakdown for the past week
+- Which machines have the highest downtime this month?
+- Create a preventive maintenance schedule for Q1
+- Compare resin consumption across all lines
+- Generate the weekly production summary for plant manager
+</FollowUps>

@@ -1,0 +1,195 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="View operations for any day">
+<Columns>
+<Date label="Select Date" name="ops-date" value="2025-01-15" />
+<Select label="Quick Select" name="quick-date" options="Today | Yesterday | Last 7 Days | Last 30 Days" value="Today" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="247 of 300 beds occupied">
+<Gauge label="Occupancy" value="82" min="0" max="100" unit="%" tone="warning" />
+<Stat label="Available" value="53" change="-3 vs yesterday" tone="info" />
+<Stat label="Isolation" value="8" change="+2" tone="danger" />
+<Stat label="ICU" value="18/24" change="+1" tone="danger" />
+</Card>
+
+<Card title="Current ER Wait Time">
+<Stat label="Average Wait" value="47 min" change="+8 min vs 1hr ago" tone="danger" />
+<Stat label="Patients Waiting" value="23" change="+5" tone="warning" />
+<Stat label="LWBS (Left Without Being Seen)" value="2" change="+1" tone="danger" />
+<Progress value="78" max="100" label="ER Capacity" tone="warning" />
+</Card>
+
+<Card title="Critical Patients" subtitle="Requiring immediate attention">
+<Table>
+| Patient | Location | Condition | Time Critical | Attending |
+|---|---|---|---|---|
+| M. Rodriguez, 67 | ICU Bed 3 | Septic shock, lactate 5.2 | 12 min | Dr. Chen |
+| J. Thompson, 45 | ER Bay 2 | STEMI, cath lab activated | 8 min | Dr. Patel |
+| K. Williams, 32 | OR 1 | Ruptured AAA | In OR | Dr. Kim |
+| R. Davis, 58 | ICU Bed 7 | Status epilepticus | 22 min | Dr. Lee |
+</Table>
+</Card>
+</Columns>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="bar" x="Date" y="Admissions" title="Daily Admissions">
+| Date | Admissions | Discharges | Net Change |
+|---|---|---|---|
+| 2025-01-01 | 42 | 38 | +4 |
+| 2025-01-02 | 38 | 41 | -3 |
+| 2025-01-03 | 45 | 35 | +10 |
+| 2025-01-04 | 41 | 39 | +2 |
+| 2025-01-05 | 36 | 42 | -6 |
+| 2025-01-06 | 44 | 37 | +7 |
+| 2025-01-07 | 39 | 40 | -1 |
+| 2025-01-08 | 47 | 34 | +13 |
+| 2025-01-09 | 43 | 41 | +2 |
+| 2025-01-10 | 40 | 38 | +2 |
+| 2025-01-11 | 35 | 44 | -9 |
+| 2025-01-12 | 37 | 36 | +1 |
+| 2025-01-13 | 44 | 39 | +5 |
+| 2025-01-14 | 41 | 42 | -1 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Patients by Department">
+<Chart type="horizontal" x="Count" y="Department" title="Current Census">
+| Department | Patients | Capacity | Occupancy |
+|---|---|---|---|
+| Medical/Surgical | 68 | 80 | 85% |
+| ICU | 18 | 24 | 75% |
+| Emergency | 23 | 30 | 77% |
+| Labor & Delivery | 12 | 16 | 75% |
+| Pediatrics | 15 | 20 | 75% |
+| Psychiatry | 8 | 12 | 67% |
+| Oncology | 22 | 28 | 79% |
+| Cardiology | 19 | 24 | 79% |
+| Neurology | 14 | 18 | 78% |
+| Orthopedics | 21 | 26 | 81% |
+</Chart>
+</Card>
+
+<Card title="Staff On Shift" subtitle="147 total staff currently clocked in">
+<Table>
+| Role | Scheduled | Present | On Break | Overtime |
+|---|---|---|---|---|
+| RN | 52 | 49 | 3 | 4 |
+| LPN | 18 | 17 | 1 | 2 |
+| CNA | 24 | 23 | 1 | 3 |
+| Physicians | 16 | 15 | 1 | 2 |
+| Residents | 12 | 12 | 0 | 0 |
+| Respiratory Therapy | 8 | 8 | 0 | 1 |
+| Pharmacy | 6 | 6 | 0 | 0 |
+| Radiology Tech | 5 | 5 | 0 | 0 |
+| Lab Tech | 4 | 4 | 0 | 0 |
+| Transport | 6 | 5 | 1 | 1 |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patients Ready for Discharge" subtitle="12 patients awaiting discharge processing">
+<Table>
+| Patient | Department | LOS (days) | Barrier | Expected DC Time |
+|---|---|---|---|---|
+| A. Johnson, 72 | Med/Surg | 4 | Transport arranged | 10:30 |
+| B. Smith, 55 | Cardiology | 3 | Pharmacy clearance | 11:00 |
+| C. Lee, 68 | Ortho | 5 | Home health pending | 12:00 |
+| D. Brown, 41 | Oncology | 6 | Insurance auth | 14:00 |
+| E. Wilson, 79 | Med/Surg | 7 | SNF bed hold | 15:30 |
+| F. Garcia, 34 | L&D | 2 | Car seat check | 10:00 |
+| G. Martinez, 61 | Neuro | 4 | PT clearance | 11:30 |
+| H. Anderson, 47 | Psych | 8 | Outpatient appt | 13:00 |
+| I. Taylor, 29 | Peds | 3 | Parent education | 10:45 |
+| J. Thomas, 73 | ICU→Stepdown | 10 | Stepdown bed | 16:00 |
+| K. Jackson, 58 | Med/Surg | 5 | DME delivery | 12:30 |
+| L. White, 36 | Gen Surg | 4 | Wound care teaching | 11:15 |
+</Table>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<Agenda title="OR Schedule">
+| Time | OR | Procedure | Surgeon | Anesthesia | Status |
+|---|---|---|---|---|---|
+| 07:00-09:30 | OR 1 | Laparoscopic Cholecystectomy | Dr. Kim | Dr. Brooks | In Progress |
+| 07:30-10:00 | OR 2 | Total Knee Arthroplasty | Dr. Chen | Dr. Rivera | In Progress |
+| 08:00-12:00 | OR 3 | CABG x3 | Dr. Patel | Dr. Foster | In Progress |
+| 09:00-11:00 | OR 4 | Laminectomy L4-L5 | Dr. Lee | Dr. Chen | Prepped |
+| 10:00-12:30 | OR 1 | Thyroidectomy | Dr. Kim | Dr. Brooks | Scheduled |
+| 10:30-13:00 | OR 5 | ORIF Femur | Dr. Rodriguez | Dr. Park | Scheduled |
+| 11:00-14:00 | OR 2 | Colectomy | Dr. Chen | Dr. Rivera | Scheduled |
+| 12:00-15:00 | OR 3 | Valve Replacement | Dr. Patel | Dr. Foster | Scheduled |
+| 13:00-15:30 | OR 4 | Hernia Repair | Dr. Lee | Dr. Chen | Scheduled |
+| 14:00-16:00 | OR 1 | Appendectomy | Dr. Kim | Dr. Brooks | Scheduled |
+| 15:00-17:00 | OR 5 | Carpal Tunnel Release | Dr. Rodriguez | Dr. Park | Scheduled |
+</Agenda>
+</Card>
+</Columns>
+
+<Card title="Supplies Running Low" subtitle="Items below par level — reorder urgent">
+<Table>
+| Item | Current Stock | Par Level | Days Remaining | Vendor | Auto-Order |
+|---|---|---|---|---|---|
+| Normal Saline 1L | 42 | 100 | 2 | Cardinal | ✓ |
+| Heparin 5000u | 18 | 50 | 1 | McKesson | ✓ |
+| Propofol 20mL | 24 | 60 | 2 | Cardinal | ✓ |
+| Fentanyl 100mcg | 35 | 80 | 3 | McKesson | ✓ |
+| N95 Masks (M) | 120 | 300 | 4 | Owens & Minor | ✓ |
+| Central Line Kits | 8 | 25 | 2 | Teleflex | ✓ |
+| Chest Tube Trays | 6 | 15 | 2 | Cook Medical | ✓ |
+| Blood Culture Bottles | 45 | 120 | 3 | BD | ✓ |
+| IV Catheters 18G | 85 | 200 | 4 | BD | ✓ |
+| Surgical Drapes (Major) | 22 | 50 | 3 | Cardinal | ✓ |
+</Table>
+</Card>
+
+<Columns>
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Reporter Name" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="incident-type" options="Patient Safety | Medication Error | Fall | Equipment Failure | Security | Near Miss | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Severe Harm | Level 5 - Death" placeholder="Select severity" required="true" />
+<Input label="Location" placeholder="Unit/Room (e.g., ICU Bed 3, OR 2)" required="true" />
+<Date label="Date of Incident" name="incident-date" value="2025-01-15" required="true" />
+<Time label="Time of Incident" name="incident-time" value="14:30" required="true" />
+<TextArea label="Description" placeholder="Describe what happened, contributing factors, immediate actions taken..." rows="4" required="true" />
+<Input label="Patient MRN (if applicable)" placeholder="Medical Record Number" />
+<Checkboxes label="Notifications" name="notifications" options="Risk Management | Unit Manager | Quality Dept | Medical Director" value="Risk Management | Unit Manager" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" placeholder="Last, First" required="true" />
+<Input label="MRN" placeholder="Medical Record Number" required="true" />
+<Select label="Current Location" name="from-location" options="ER | ICU | Med/Surg 3E | Med/Surg 4W | Stepdown | Telemetry | Ortho | Neuro | Oncology | Peds | L&D | Psych" placeholder="Select current unit" required="true" />
+<Select label="Requested Destination" name="to-location" options="ICU | Stepdown | Med/Surg 3E | Med/Surg 4W | Telemetry | Ortho | Neuro | Oncology | Peds | L&D | Psych | Outside Facility" placeholder="Select destination" required="true" />
+<Select label="Transfer Reason" name="reason" options="Higher Level of Care | Lower Level of Care | Specialty Service | Bed Management | Patient/Family Request | Procedure/OR | Isolation Needs" placeholder="Select reason" required="true" />
+<Select label="Urgency" name="urgency" options="STAT (<30 min) | Urgent (1-2 hrs) | Routine (4-6 hrs) | Scheduled (Next 24 hrs)" placeholder="Select urgency" required="true" />
+<Select label="Transport Mode" name="transport" options="Bedside RN + Monitor | RN + RT | CNA + Wheelchair | EMS/ALS | Critical Care Transport Team" placeholder="Select transport" required="true" />
+<TextArea label="Clinical Summary / Notes" placeholder="Current condition, lines, drips, isolation, code status, special needs..." rows="3" required="true" />
+<Input label="Requesting Provider" placeholder="Dr. Name" required="true" />
+<Input label="Contact Phone/Pager" placeholder="Callback number" required="true" />
+<Button variant="primary">Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Callout tone="info" title="Command Center Notes">
+<strong>Last updated:</strong> 2025-01-15 14:32 | <strong>Next refresh:</strong> 14:37 | <strong>Active alerts:</strong> 3 critical patients, 10 supply items below par, 12 discharge-ready patients | <strong>Census trend:</strong> +2 net admissions vs yesterday
+</Callout>
+
+<FollowUps>
+- View detailed bed board by unit
+- Check pharmacy medication shortage report
+- Review staffing matrix for next shift
+- Open transfer center dashboard
+- Generate daily operations summary PDF
+</FollowUps>

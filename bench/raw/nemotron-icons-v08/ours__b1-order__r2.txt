@@ -1,0 +1,35 @@
+<Card title="Package Tracking" subtitle="Order #ORD-847291" icon="package">
+  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+    <Avatar name="Express Logistics" src="find" subtitle="Carrier" />
+    <div>
+      <strong>Express Logistics</strong>
+      <br />
+      <small>Tracking: 1Z999AA10123456784</small>
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #f5f5f5; border-radius: 8px;">
+    <span style="font-size: 24px;">📍</span>
+    <div>
+      <strong>Current Location:</strong> Springfield Distribution Center
+      <br />
+      <small>Last scan: Today, 08:42 AM — "Arrived at facility"</small>
+    </div>
+  </div>
+</Card>
+
+<Card title="Estimated Delivery" icon="calendar" subtitle="Expected arrival">
+  <Stat label="Delivery Date" value="Tomorrow, Dec 15" change="By end of day" tone="info" icon="truck" />
+  <Progress value={75} max={100} label="In transit • 3 of 4 checkpoints complete" tone="info" />
+  <p style="margin-top: 12px; color: #666;">Delivery window: 9:00 AM – 7:00 PM. Signature required.</p>
+</Card>
+
+<Card title="Report a Problem" icon="flag" subtitle="Issue with this delivery?">
+  <Form name="delivery-issue">
+    <Select label="Issue type" placeholder="Select an issue" options="Package not delivered | Damaged package | Wrong item received | Missing items | Delivery attempt failed | Other" name="issueType" required="true" />
+    <TextArea label="Describe the problem" placeholder="Add details, timestamps, or reference numbers…" rows={4} name="description" required="true" hint="Include photos if possible" />
+    <Checkboxes label="Preferred resolution" options="Redelivery | Refund | Replacement | Carrier investigation" name="resolution" hint="Select all that apply" />
+    <Button variant="primary" icon="send">Submit Report</Button>
+    <Button variant="tertiary">Cancel</Button>
+  </Form>
+</Card>

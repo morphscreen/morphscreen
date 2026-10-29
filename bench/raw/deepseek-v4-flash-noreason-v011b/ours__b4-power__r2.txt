@@ -1,0 +1,130 @@
+# Power Network Operator Console
+
+<Card title="System Overview">
+<Columns>
+<Stat label="Current Load" value="4,832 MW" change="+3.2%" icon="lightning" tone="info" />
+<Stat label="Capacity Used" value="78.4%" icon="gauge" tone="warning" />
+<Stat label="Price" value="$47.20 / MWh" icon="currency-circle-dollar" tone="neutral" />
+<Stat label="Emissions Today" value="2,184 tCO₂" icon="leaf" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Network Capacity">
+<Progress value="78.4" max="100" label="78.4% of 6,160 MW capacity" tone="warning" />
+<Callout tone="warning" title="Approaching peak">Load is expected to reach 92% capacity by 18:00 today.</Callout>
+</Card>
+
+<Card title="Generation Mix">
+<Chart type="donut" x="Source" y="MW">
+| Source | Output |
+|---|---|
+| Natural Gas | 2100 |
+| Coal | 1200 |
+| Nuclear | 800 |
+| Hydro | 420 |
+| Solar | 250 |
+| Wind | 62 |
+</Chart>
+</Card>
+
+<Card title="Power Plants">
+| Plant | Output | Status |
+|---|---|---|
+| Riverside Gas | 720 MW | <Badge tone="success">Online</Badge> |
+| North Coal Unit 3 | 540 MW | <Badge tone="success">Online</Badge> |
+| Valley Nuclear | 800 MW | <Badge tone="success">Online</Badge> |
+| East Hydro | 420 MW | <Badge tone="success">Online</Badge> |
+| Solar Field 1 | 250 MW | <Badge tone="success">Online</Badge> |
+| Wind Farm A | 62 MW | <Badge tone="warning">Reduced</Badge> |
+| South Coal Unit 1 | 660 MW | <Badge tone="danger">Offline</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected | Duration | Cause |
+|---|---|---|---|
+| Northern District | 12,400 customers | 47 min | Transformer fire |
+| Eastside Industrial | 3 substations | 2h 15m | Cable fault |
+| Harbor Zone | 8,200 customers | 1h 05m | Storm damage |
+<Button ask="Show outage details for Northern District">Northern District details</Button>
+<Button ask="Show outage details for Eastside Industrial">Eastside Industrial details</Button>
+<Button ask="Show outage details for Harbor Zone">Harbor Zone details</Button>
+</Card>
+
+<Card title="24-Hour Demand Forecast">
+<Chart type="line" x="Hour" y="MW">
+| Hour | Forecast |
+|---|---|
+| 00:00 | 4100 |
+| 02:00 | 3800 |
+| 04:00 | 3600 |
+| 06:00 | 3900 |
+| 08:00 | 4700 |
+| 10:00 | 5100 |
+| 12:00 | 5300 |
+| 14:00 | 5500 |
+| 16:00 | 5600 |
+| 18:00 | 5700 |
+| 20:00 | 5400 |
+| 22:00 | 4800 |
+</Chart>
+<Callout tone="info" title="Peak forecast">Peak demand of 5,700 MW expected at 18:00.</Callout>
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Plant | Unit | Date | Duration |
+|---|---|---|---|
+| Riverside Gas | Turbine 2 | Mar 12–14 | 48h |
+| North Coal | Boiler B | Mar 18–20 | 72h |
+| Solar Field 1 | Inverters | Mar 22 | 8h |
+| Wind Farm A | Tower 7 | Mar 25 | 12h |
+<Button ask="Show full maintenance schedule">Full schedule</Button>
+</Card>
+
+<Card title="Live Alerts">
+<Columns>
+<Callout tone="danger" title="Critical — North Coal Unit 1">Unplanned outage at 14:23. 660 MW offline. Estimated restoration: 06:00 Mar 11.</Callout>
+<Callout tone="warning" title="Warning — Wind Farm A">Output reduced to 62 MW due to low wind. Forecast: improving by 20:00.</Callout>
+<Callout tone="info" title="Advisory — Northern District">Crew dispatched to transformer fire. ETA: 12 min.</Callout>
+</Columns>
+<Button ask="Acknowledge all alerts">Acknowledge all</Button>
+</Card>
+
+<Card title="Focus on Region">
+<Select label="Select region" options="All Regions | Northern District | Eastside Industrial | Harbor Zone | Southern Grid | Western Valley" name="region" placeholder="Choose region" />
+<Button ask="Focus on Northern District">Apply</Button>
+</Card>
+
+<Card title="Order Curtailment">
+<Form name="curtailment">
+<Select label="Plant / Unit" options="North Coal Unit 3 | Riverside Gas Turbine 1 | East Hydro | Wind Farm A" name="plant" placeholder="Select plant" required="true" />
+<Slider label="Curtailment amount" min="0" max="800" step="10" value="200" name="amount" unit="MW" />
+<Select label="Duration" options="1 hour | 2 hours | 4 hours | 6 hours | Until further notice" name="duration" placeholder="Select duration" required="true" />
+<Select label="Reason" options="Grid stability | Over-generation | Transmission constraint | Emergency" name="reason" placeholder="Select reason" required="true" />
+<Button>Submit curtailment order</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂" value="2,184 t" icon="leaf" tone="neutral" />
+<Stat label="SO₂" value="3.7 t" icon="warning-circle" tone="warning" />
+<Stat label="NOₓ" value="4.2 t" icon="warning-circle" tone="warning" />
+<Chart type="bar" x="Hour" y="tCO₂">
+| Hour | Emissions |
+|---|---|
+| 00-04 | 320 |
+| 04-08 | 340 |
+| 08-12 | 390 |
+| 12-16 | 410 |
+| 16-20 | 430 |
+| 20-24 | 294 |
+</Chart>
+<Button ask="Show emissions breakdown by plant">Breakdown by plant</Button>
+</Card>
+
+<FollowUps>
+- Show me the full maintenance schedule for this month
+- What's the current status of North Coal Unit 1?
+- Which regions are most affected by the outages?
+- Forecast demand for tomorrow
+- Show emissions trend for the past week
+</FollowUps>

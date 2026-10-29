@@ -1,0 +1,137 @@
+# Admin Overview
+
+<Select label="Reporting period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" name="period" />
+
+<Columns>
+<Card title="Monthly Recurring Revenue">
+<Stat label="MRR" value="$127,450" change="+12.3% vs last month" tone="success" />
+</Card>
+
+<Card title="Annual Recurring Revenue">
+<Stat label="ARR" value="$1,529,400" change="+14.1% vs last year" tone="success" />
+</Card>
+
+<Card title="Churn This Month">
+<Stat label="Revenue churn" value="2.1%" change="-0.4 pp vs last month" tone="success" />
+<Stat label="Customer churn" value="1.8%" change="-0.2 pp vs last month" tone="success" />
+</Card>
+
+<Card title="Current NPS">
+<Gauge label="NPS" value="62" min="-100" max="100" unit="" tone="success" />
+<Stat label="Responses" value="342" change="+28 this month" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups" title="Weekly signups trend">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 51 |
+| Week 4 | 47 |
+| Week 5 | 55 |
+| Week 6 | 62 |
+| Week 7 | 58 |
+| Week 8 | 67 |
+| Week 9 | 71 |
+| Week 10 | 69 |
+| Week 11 | 74 |
+| Week 12 | 78 |
+| Week 13 | 82 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 680 |
+| Enterprise | 142 |
+| Custom | 28 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress label="Starter (1,240 customers)" value="68" max="100" tone="info" />
+<Progress label="Professional (680 customers)" value="74" max="100" tone="info" />
+<Progress label="Enterprise (142 customers)" value="82" max="100" tone="success" />
+<Progress label="Custom (28 customers)" value="91" max="100" tone="success" />
+<Stat label="Overall utilization" value="73%" change="+3% vs last quarter" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+<Table>
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 450 | $18,500 | Active |
+| Globex Inc | Enterprise | 320 | $14,200 | Active |
+| Wayne Enterprises | Enterprise | 280 | $12,800 | Active |
+| Stark Industries | Enterprise | 210 | $9,600 | Active |
+| Umbrella Corp | Professional | 180 | $7,200 | Active |
+| Cyberdyne Systems | Enterprise | 165 | $6,800 | Active |
+| Massive Dynamic | Professional | 140 | $5,600 | Active |
+| Initech | Professional | 120 | $4,800 | At risk |
+| Pied Piper | Starter | 95 | $3,800 | Active |
+| Hooli | Enterprise | 85 | $3,400 | Active |
+</Table>
+</Card>
+
+<Card title="Accounts at Risk">
+<Table>
+| Customer | Plan | Seats | Risk Reason | Health Score | Last Activity |
+|---|---|---|---|---|---|
+| Initech | Professional | 120 | Low feature adoption, no login in 14 days | 32/100 | 14 days ago |
+| Dunder Mifflin | Starter | 45 | Failed payment ×2, support tickets unresolved | 41/100 | 8 days ago |
+| SPECTRE | Enterprise | 60 | Champion left, no renewal contact identified | 38/100 | 21 days ago |
+| Oscorp | Professional | 75 | Usage dropped 60% MoM, competitor eval underway | 45/100 | 5 days ago |
+| Vandelay Industries | Starter | 30 | Contract renewal in 30 days, no engagement | 48/100 | 12 days ago |
+</Table>
+</Card>
+
+<Card title="Failed Payments">
+<Table>
+| Customer | Amount | Failed On | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Dunder Mifflin | $290 | 2025-01-12 | 2 | Card declined | <Button size="small" variant="primary">Retry</Button> |
+| Vandelay Industries | $89 | 2025-01-10 | 1 | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| Sterling Cooper | $450 | 2025-01-08 | 3 | Card expired | <Button size="small" variant="primary">Retry</Button> |
+| Pied Piper | $199 | 2025-01-05 | 1 | Network error | <Button size="small" variant="primary">Retry</Button> |
+| Hooli | $3,400 | 2025-01-03 | 2 | Fraud hold | <Button size="small" variant="primary">Retry</Button> |
+</Table>
+</Card>
+
+<Card title="New Feature Adoption">
+<Columns>
+<Card title="AI-Powered Insights (launched 2025-01-05)">
+<Progress label="Adoption rate" value="34" max="100" tone="info" />
+<Stat label="Active users" value="1,247" change="+234 this week" tone="success" />
+<Stat label="Daily active" value="412" tone="neutral" />
+</Card>
+
+<Card title="Team Workspaces (launched 2024-12-20)">
+<Progress label="Adoption rate" value="52" max="100" tone="success" />
+<Stat label="Active users" value="1,892" change="+156 this week" tone="success" />
+<Stat label="Daily active" value="728" tone="neutral" />
+</Card>
+
+<Card title="Advanced Analytics Export (launched 2024-12-08)">
+<Progress label="Adoption rate" value="28" max="100" tone="warning" />
+<Stat label="Active users" value="1,024" change="+89 this week" tone="info" />
+<Stat label="Daily active" value="267" tone="neutral" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" options="Owner | Admin | Billing Admin | Read-only" value="Admin" required="true" />
+<Checkboxes label="Permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

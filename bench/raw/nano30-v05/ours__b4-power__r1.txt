@@ -1,0 +1,80 @@
+<Card title="Power Network Console">
+<Columns>
+<Stat label="Current Load" value="1,200 MW" change="±50 MW" tone="info" />
+<Progress value="78" max="100" label="Capacity Utilization" tone="warning" />
+</Columns>
+<Card title="Generation Mix">
+<Chart type="pie" x="Source" y="MWh" title="Generation Mix">
+| Source | MWh |
+|---|---|
+| Solar | 800 |
+| Wind | 600 |
+| Gas | 500 |
+| Coal | 300 |
+| Nuclear | 200 |
+</Chart>
+</Card>
+<Card title="Plant Status">
+<TextArea label="Plant Details" name="plant-details" placeholder="Plant output and status" rows="8" hint="List of plants" required="false">
+Plant A: 150 MW (Online)  
+Plant B: 100 MW (Offline)  
+Plant C: 200 MW (Online)  
+Plant D: 80 MW (Online)  
+Plant E: 120 MW (Online)  
+Plant F: 90 MW (Offline)  
+</TextArea>
+</Card>
+<Card title="Outages">
+<TextArea label="Outage Details" name="outage-details" placeholder="Region and status" rows="6" hint="Active outages" required="false">
+North Region: 200 MW loss (Investigating)  
+East Suburb: 50 MW loss (Repair scheduled)  
+South Valley: 150 MW loss (Resolved)  
+</TextArea>
+</Card>
+<Card title="Demand Forecast">
+<Chart type="line" x="Hour" y="Demand (MW)" title="Demand Forecast">
+| Hour | Demand (MW) |
+|---|---|
+| 0 | 800 |
+| 1 | 750 |
+| 2 | 720 |
+| 3 | 700 |
+| 4 | 680 |
+| 5 | 660 |
+| 6 | 650 |
+| 7 | 660 |
+| 8 | 680 |
+| 9 | 700 |
+|10 | 720 |
+|11 | 750 |
+|12 | 780 |
+|13 | 800 |
+|14 | 820 |
+|15 | 850 |
+|16 | 880 |
+|17 | 900 |
+|18 | 920 |
+|19 | 950 |
+|20 | 970 |
+|21 | 960 |
+|22 | 940 |
+|23 | 910 |
+</Chart>
+</Card>
+<Stat label="Current Price" value="$85 / MWh" change="±$2" tone="info" />
+<Details title="Maintenance Planned This Month" open="true">
+<TextArea label="Maintenance Schedule" name="maint-schedule" placeholder="Planned maintenance" rows="5" hint="Monthly maintenance tasks" required="false">
+2025-10-05: Turbine A inspection (2 hrs)  
+2025-10-12: Boiler B overhaul (4 hrs)  
+2025-10-20: Generator C tune‑up (3 hrs)  
+</TextArea>
+</Details>
+<Steps>
+<Step title="Alert: Voltage dip in North Region" status="current">Voltage dip detected, corrective action initiated.</Step>
+<Step title="Alert: Load surge in East Suburb" status="current">Load surge observed, demand response triggered.</Step>
+<Step title="Alert: Generator outage at Plant D" status="current">Generator D offline, backup generation engaged.</Step>
+</Steps>
+<Select label="Region" options="North | East | South | West" placeholder="Select region" name="region" required="false" />
+<Radio label="Curtailment Order" options="High | Medium | Low" name="curtailment" required="false" />
+<Stat label="CO2 Emissions" value="1,200 t" change="±50 t" tone="info" />
+</Card>

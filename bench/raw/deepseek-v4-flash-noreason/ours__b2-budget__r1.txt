@@ -1,0 +1,117 @@
+# Personal Budget Check
+
+<Card title="Budget Overview" subtitle="Track your spending and stay on target">
+<Columns>
+<div>
+<Stat label="Monthly Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent This Month" value="$2,240" change="75% of budget used" tone="warning" icon="chart-line" />
+<Stat label="Remaining" value="$760" change="25% left to spend" tone="success" icon="piggy-bank" />
+</div>
+<div>
+<Progress value="75" max="100" label="Budget used" tone="warning" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Spending by Category">
+<Columns>
+<div>
+<Chart type="donut" title="Category breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 900 |
+| Food | 420 |
+| Transport | 310 |
+| Entertainment | 250 |
+| Utilities | 180 |
+| Other | 180 |
+</Chart>
+</div>
+<div>
+| Category | Amount | Share |
+|---|---|---|
+| Housing | $900 | 40% |
+| Food | $420 | 19% |
+| Transport | $310 | 14% |
+| Entertainment | $250 | 11% |
+| Utilities | $180 | 8% |
+| Other | $180 | 8% |
+</div>
+</Columns>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="danger" title="Top spend this month">
+**Rent — $900** on Housing (40% of total spending). Consider reviewing if this aligns with your budget goals.
+</Callout>
+</Card>
+
+<Card title="Monthly View">
+<Tabs>
+<Tab title="October 2025">
+<Chart type="bar" title="Daily spending" x="Day" y="USD">
+| Day | Spent |
+|---|---|
+| 1 | 120 |
+| 5 | 45 |
+| 8 | 900 |
+| 12 | 60 |
+| 15 | 210 |
+| 19 | 85 |
+| 22 | 150 |
+| 26 | 40 |
+| 29 | 630 |
+</Chart>
+</Tab>
+<Tab title="September 2025">
+<Chart type="bar" title="Daily spending" x="Day" y="USD">
+| Day | Spent |
+|---|---|
+| 2 | 85 |
+| 6 | 320 |
+| 9 | 900 |
+| 13 | 55 |
+| 17 | 175 |
+| 21 | 90 |
+| 24 | 140 |
+| 28 | 65 |
+</Chart>
+</Tab>
+<Tab title="August 2025">
+<Chart type="bar" title="Daily spending" x="Day" y="USD">
+| Day | Spent |
+|---|---|
+| 3 | 95 |
+| 7 | 180 |
+| 11 | 900 |
+| 14 | 70 |
+| 18 | 240 |
+| 22 | 110 |
+| 25 | 160 |
+| 30 | 55 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Columns>
+<div>
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" required="true" />
+<Select label="Category" placeholder="Choose a category" options="Housing | Food | Transport | Entertainment | Utilities | Other" required="true" />
+</div>
+<div>
+<Input label="Date" type="date" required="true" />
+<Input label="Description" placeholder="e.g. Groceries at Market" />
+</div>
+</Columns>
+<Button variant="primary">Add Expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How can I reduce my entertainment spending?
+- Show me my spending trend over the last 6 months
+- Suggest a new budget for next month based on this
+</FollowUps>

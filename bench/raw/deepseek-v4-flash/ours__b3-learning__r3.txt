@@ -1,0 +1,64 @@
+# Training platform analytics
+
+<Badge tone="info">Updated hourly</Badge>
+
+<Card title="Cohort" subtitle="Narrow every metric on this screen to a single cohort">
+<Select label="Cohort" name="cohort-filter" placeholder="Choose a cohort" options="All cohorts | Data Science – Spring 2025 | Web Dev – Summer 2025 | UX Design – Fall 2025 | Marketing – Spring 2025" hint="Applies to every metric below" />
+</Card>
+
+<Card title="This week" subtitle="Platform-wide performance, all cohorts">
+<Columns>
+<Stat label="Active learners this week" value="1,284" change="+12% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="78%" change="+4 pts vs last month" tone="info" icon="graduation-cap" />
+<Stat label="Average quiz score" value="84%" change="+3 pts vs last month" tone="info" icon="chart-line" />
+</Columns>
+<Progress value="78" max="100" label="Course completion rate vs 75% target" tone="success" />
+</Card>
+
+<Columns>
+<Card title="Engagement — last 8 weeks" subtitle="Active learners by week">
+<Chart type="area" x="Week" y="Learners">
+| Week | Learners |
+|---|---|
+| W1 | 980 |
+| W2 | 1,045 |
+| W3 | 1,120 |
+| W4 | 1,090 |
+| W5 | 1,180 |
+| W6 | 1,240 |
+| W7 | 1,195 |
+| W8 | 1,284 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Top 5 courses, all cohorts">
+<Chart type="horizontal" x="Course" y="Enrolled learners">
+| Course | Enrolled |
+|---|---|
+| Python for Data Analysis | 486 |
+| SQL Fundamentals | 412 |
+| Machine Learning Basics | 358 |
+| Excel for Business | 287 |
+| Communication Skills | 196 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Learners at risk of dropping out" subtitle="Flagged by inactivity and declining quiz scores">
+| Learner | Course | Last active | Risk |
+|---|---|---|---|
+| Maya Chen | Python for Data Analysis | 6 days ago | <Badge tone="danger">High</Badge> |
+| Daniel Ortiz | SQL Fundamentals | 9 days ago | <Badge tone="danger">High</Badge> |
+| Priya Patel | Machine Learning Basics | 12 days ago | <Badge tone="warning">Medium</Badge> |
+| Liam Walsh | Excel for Business | 15 days ago | <Badge tone="warning">Medium</Badge> |
+| Sofia Rossi | Communication Skills | 20 days ago | <Badge tone="neutral">Low</Badge> |
+</Card>
+
+<Card title="Message a cohort" subtitle="Reach every learner in the selected cohort — or all cohorts">
+<Form name="cohort-message">
+<Select label="Send to" name="message-cohort" placeholder="Choose a cohort" options="All cohorts | Data Science – Spring 2025 | Web Dev – Summer 2025 | UX Design – Fall 2025 | Marketing – Spring 2025" hint="Matches the cohort filter above by default" />
+<TextArea label="Message" name="message" placeholder="Hi team — don't lose momentum. This week's office hours are Thursday at 3pm." rows="5" hint="Sent as an email and in-app notification" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>

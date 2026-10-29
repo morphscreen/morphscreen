@@ -1,0 +1,46 @@
+<Card title="Invoice #INV-2024-018" subtitle="Client: Acme Studio LLC">
+<KeyValue title="Invoice details">
+| Field | Value |
+|---|---|
+| Amount due | $4,850.00 USD |
+| Due date | March 15, 2025 |
+| Issued | February 14, 2025 |
+| Project | Website redesign & branding |
+</KeyValue>
+
+<Callout tone="warning" title="Payment reminder">This invoice is due in 14 days. Late fees of 1.5% per month apply after the due date.</Callout>
+
+<Card title="Amount summary">
+<Columns>
+<Stat label="Amount due" value="$4,850.00" tone="warning" icon="currency-dollar" />
+<Stat label="Due date" value="Mar 15, 2025" tone="info" icon="calendar" />
+</Columns>
+<Progress value="0" max="4850" label="Paid: $0 of $4,850" tone="warning" />
+</Card>
+
+<Card title="Pay now">
+<Form name="payment">
+<Radio label="Payment method" options="Credit / debit card | Bank transfer (ACH) | PayPal" name="method" />
+<Button variant="primary" size="large">Pay $4,850.00 now</Button>
+</Form>
+<Callout tone="info" title="Secure payment">Payments are processed securely via Stripe. You'll receive a receipt by email immediately after payment.</Callout>
+</Card>
+
+<Details title="View line items">
+<Chart type="bar" title="Invoice breakdown" x="Service" y="USD">
+| Service | Amount |
+|---|---|
+| Web design (40 hrs) | 3200 |
+| Branding (15 hrs) | 1200 |
+| Project management | 450 |
+</Chart>
+</Details>
+
+<Button variant="secondary" ask>I have a question about this invoice</Button>
+<Button variant="tertiary" ask>Request a payment plan</Button>
+
+<FollowUps>
+- What happens if I miss the due date?
+- Can I pay in installments?
+- Where do I find my previous invoices?
+</FollowUps>

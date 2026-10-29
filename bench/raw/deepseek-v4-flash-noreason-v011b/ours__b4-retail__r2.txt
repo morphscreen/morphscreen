@@ -1,0 +1,137 @@
+# Store Manager's Daily Console
+
+<Card title="Daily Overview" subtitle="Tuesday, October 15">
+<Columns>
+<Stat label="Sales Today" value="$8,420" change="+12%" note="Target: $7,500" tone="success" icon="trend-up" />
+<Stat label="Foot Traffic" value="1,247" change="+8%" note="vs yesterday" tone="info" icon="users" />
+<Stat label="Avg Basket" value="$42.80" change="+3.2%" note="Target: $40" tone="success" icon="shopping-cart" />
+<Stat label="Returns This Week" value="$1,230" change="-5%" note="vs last week" tone="warning" icon="arrow-counter-clockwise" />
+</Columns>
+</Card>
+
+<Card title="Sales vs Target">
+<Chart type="bar" x="Hour" y="Sales ($)">
+| Hour | Today | Target |
+|---|---|---|
+| 8 AM | 420 | 500 |
+| 9 AM | 680 | 600 |
+| 10 AM | 850 | 750 |
+| 11 AM | 1,020 | 900 |
+| 12 PM | 1,150 | 1,000 |
+| 1 PM | 980 | 900 |
+| 2 PM | 1,100 | 1,000 |
+| 3 PM | 1,220 | 1,100 |
+| 4 PM | 1,000 | 900 |
+</Chart>
+<Progress value="8420" max="7500" label="Target achieved: 112%" tone="success" />
+</Card>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="area" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 45 |
+| 9 AM | 120 |
+| 10 AM | 180 |
+| 11 AM | 210 |
+| 12 PM | 195 |
+| 1 PM | 140 |
+| 2 PM | 165 |
+| 3 PM | 130 |
+| 4 PM | 62 |
+</Chart>
+<Callout tone="info" title="Peak hour">11 AM had the highest traffic with 210 visitors.</Callout>
+</Card>
+
+<Card title="Best Sellers">
+| Item | Units Sold |
+|---|---|
+| Wireless Headphones | 34 |
+| USB-C Cable 2m | 28 |
+| Phone Case - Clear | 22 |
+| Screen Protector | 19 |
+| Bluetooth Speaker | 15 |
+<Button ask="Show more best sellers">View all best sellers</Button>
+</Card>
+
+<Card title="Items Out of Stock">
+<Badge tone="danger">3 items need restocking</Badge>
+| Item | Last Sold |
+|---|---|
+| Wireless Charger Pad | 2 days ago |
+| HDMI Cable 3m | 5 days ago |
+| Laptop Sleeve 15" | 1 week ago |
+<Button ask="Reorder Wireless Charger Pad">Reorder Wireless Charger Pad</Button>
+<Button ask="Reorder HDMI Cable 3m">Reorder HDMI Cable 3m</Button>
+<Button ask="Reorder Laptop Sleeve 15 inch">Reorder Laptop Sleeve 15"</Button>
+</Card>
+
+<Card title="Today's Shift">
+<Columns>
+<Avatar name="Sarah Chen" subtitle="Manager" />
+<Avatar name="Mike Johnson" subtitle="Cashier" />
+<Avatar name="Emma Davis" subtitle="Sales Associate" />
+<Avatar name="James Lee" subtitle="Stock Clerk" />
+<Avatar name="Olivia Brown" subtitle="Cashier" />
+</Columns>
+<Button ask="View full schedule">View full schedule</Button>
+</Card>
+
+<Card title="Promotions Performance">
+| Promotion | Sales | Redemptions | Status |
+|---|---|---|---|
+| Buy 1 Get 1 50% Off | $2,340 | 47 | <Badge tone="success">Active</Badge> |
+| $10 Off Orders $50+ | $1,890 | 38 | <Badge tone="success">Active</Badge> |
+| Free Shipping Over $75 | $980 | 22 | <Badge tone="warning">Ending Today</Badge> |
+| Student Discount 15% | $560 | 14 | <Badge tone="info">Running</Badge> |
+<Button ask="Show promotion details">View promotion details</Button>
+</Card>
+
+<Card title="Register Status">
+| Register | Status | Cashier |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Mike Johnson |
+| Register 2 | <Badge tone="success">Open</Badge> | Olivia Brown |
+| Register 3 | <Badge tone="danger">Closed</Badge> | — |
+| Register 4 | <Badge tone="success">Open</Badge> | Emma Davis |
+<Button ask="Open Register 3">Open Register 3</Button>
+</Card>
+
+<Card title="Reordering an Item">
+<Form name="reorder-item">
+<Select label="Select Item" placeholder="Choose an item" options="Wireless Charger Pad | HDMI Cable 3m | Laptop Sleeve 15 inch | Other" />
+<Input label="Quantity" type="number" placeholder="e.g., 20" min="1" />
+<Input label="Notes (optional)" placeholder="e.g., urgent restock" />
+<Button>Submit Reorder</Button>
+</Form>
+</Card>
+
+<Card title="View Different Store">
+<Form name="switch-store">
+<Select label="Select Store" placeholder="Choose a store" options="Downtown (Current) | Uptown | Mall Location | Airport | Westside" />
+<Button>Switch to Store</Button>
+</Form>
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="line" x="Day" y="Sales ($)">
+| Day | This Week | Last Week |
+|---|---|---|
+| Monday | 7,200 | 6,800 |
+| Tuesday | 8,420 | 7,900 |
+| Wednesday | — | 7,500 |
+| Thursday | — | 8,100 |
+| Friday | — | 9,200 |
+| Saturday | — | 10,500 |
+| Sunday | — | 8,800 |
+</Chart>
+<Stat label="Week-to-Date" value="$15,620" change="+6.3%" note="vs $14,700 last week" tone="success" icon="chart-line" />
+</Card>
+
+<FollowUps>
+- Show me the daily sales breakdown by hour
+- Which promotions are ending soon?
+- Who is available for overtime today?
+- Compare today's foot traffic to last Tuesday
+- Show me the inventory report for out-of-stock items
+</FollowUps>

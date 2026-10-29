@@ -1,0 +1,38 @@
+<Card title="Monthly Budget" subtitle="Track your spending">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,340" change="$660 remaining" tone="success" />
+<Stat label="Largest Expense" value="$450" note="Rent" tone="info" />
+</Columns>
+
+<Progress value="2340" max="3000" label="Budget used: 78%" />
+
+<Select label="View month" name="month" value="2025-01" options="2025-01 | 2024-12 | 2024-11 | 2024-10 | 2024-09" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 480 |
+| Transport | 320 |
+| Utilities | 180 |
+| Entertainment | 160 |
+</Chart>
+
+<Callout tone="info" title="Largest single expense">
+<strong>Rent payment</strong> — $450 on Jan 1st (Housing)
+</Callout>
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="Groceries, Uber, etc." required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="USD" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transport | Utilities | Entertainment | Other" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

@@ -1,0 +1,154 @@
+# City Operations Center
+
+<Card title="Current Conditions">
+<Columns>
+<Stat label="Congestion" value="72%" change="+5%" tone="warning" icon="map-pin" />
+<Stat label="Transit Punctuality" value="89%" change="-2%" tone="info" icon="clock" />
+<Stat label="Water Use Today" value="3.2M L" change="+1.2%" tone="info" icon="drop" />
+<Stat label="Temperature" value="22°C" note="Partly Cloudy" icon="sun" />
+</Columns>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Riverside | 45 |
+| Northgate | 82 |
+| Southside | 53 |
+| Eastwood | 91 |
+| Westpark | 61 |
+</Chart>
+<Callout tone="warning" title="Eastwood Alert">AQI 91 — Unhealthy for sensitive groups. Limit outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy Use – Past Week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 1,240 |
+| Tue | 1,310 |
+| Wed | 1,280 |
+| Thu | 1,350 |
+| Fri | 1,420 |
+| Sat | 1,150 |
+| Sun | 1,100 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+| Severity | Location | Status |
+|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Downtown – Main & 5th | Fire reported |
+| <Badge tone="warning">High</Badge> | Northgate – I-94 exit | Multi-vehicle collision |
+| <Badge tone="info">Low</Badge> | Riverside – Elm St | Water main leak |
+| <Badge tone="warning">High</Badge> | Eastwood – Park Ave | Gas leak suspected |
+</Card>
+
+<Card title="Emergency Vehicle Deployments">
+| Unit | Location | Type |
+|---|---|---|
+| Engine 12 | Downtown – 5th & Pine | Fire |
+| Ambulance 4 | Northgate – I-94 | Medical |
+| Patrol 7 | Southside – Oak & 3rd | Police |
+| Rescue 2 | Eastwood – Park Ave | Hazmat |
+</Card>
+
+<Card title="Parking Availability Downtown">
+| Garage | Spaces Free | Occupancy |
+|---|---|---|
+| City Hall Garage | 42 | 72% |
+| Metro Center | 18 | 88% |
+| Waterfront Lot | 103 | 38% |
+<Progress value="72" max="100" label="City Hall" tone="warning" />
+<Progress value="88" max="100" label="Metro Center" tone="danger" />
+<Progress value="38" max="100" label="Waterfront" tone="success" />
+</Card>
+
+<Card title="Public Events This Weekend">
+- **Saturday** – Riverside Music Festival (12–10 PM, Riverside Park)
+- **Saturday** – Downtown Farmers Market (8 AM–2 PM, Main St)
+- **Sunday** – Northgate Community Run (7–10 AM, Northgate Trail)
+- **Sunday** – Eastwood Art Fair (10 AM–6 PM, Eastwood Square)
+</Card>
+
+<Card title="Citizen Reports (Live Feed)">
+- 14:32 – Pothole on Oak & 3rd (Southside)
+- 14:28 – Streetlight out on Elm St (Riverside)
+- 14:20 – Illegal dumping near Eastwood Park
+- 14:15 – Noise complaint on 5th Ave (Downtown)
+</Card>
+
+<Card title="Service Request Backlog">
+<Stat label="Open Requests" value="347" tone="warning" />
+<Stat label="Avg Response Time" value="4.2 hrs" change="-12%" tone="success" />
+| Category | Count | Oldest |
+|---|---|---|
+| Potholes | 89 | 6 days |
+| Streetlights | 54 | 4 days |
+| Graffiti | 73 | 3 days |
+| Trash | 131 | 2 days |
+</Card>
+
+<Card title="Roadworks Planned This Month">
+| Project | Location | Duration |
+|---|---|---|
+| Main St Resurfacing | Downtown – Main St | Oct 12–18 |
+| I-94 Bridge Inspection | Northgate | Oct 15–16 |
+| Riverside Sewer Upgrade | Riverside – Elm St | Oct 20–25 |
+| Eastwood Roundabout | Eastwood – Park Ave | Oct 22–29 |
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+| Asset | District | Due Date | Priority |
+|---|---|---|---|
+| Water Pump #4 | Riverside | Oct 18 | <Badge tone="danger">High</Badge> |
+| Transformer S-12 | Eastwood | Oct 20 | <Badge tone="warning">Medium</Badge> |
+| Traffic Signal 7-3 | Downtown | Oct 25 | <Badge tone="info">Low</Badge> |
+| Sewage Lift Station | Northgate | Oct 30 | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="District Focus">
+<Select label="Select District" options="All Districts | Downtown | Riverside | Northgate | Southside | Eastwood | Westpark" name="district" />
+<Button variant="primary" ask="Focus on Downtown district">Apply Filter</Button>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Crew Type" options="Fire | Police | Ambulance | Utilities | Roadworks" name="crew-type" placeholder="Choose type" />
+<Input label="Location" placeholder="e.g. Downtown – Main & 5th" />
+<TextArea label="Instructions" placeholder="Describe the task" rows="3" />
+<Button variant="primary">Dispatch Now</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="District" options="All Districts | Downtown | Riverside | Northgate | Southside | Eastwood | Westpark" name="alert-district" />
+<Select label="Severity" options="Info | Warning | Emergency" name="alert-severity" />
+<TextArea label="Message" placeholder="Enter alert message..." rows="4" required />
+<Button variant="danger">Send Alert</Button>
+</Form>
+</Card>
+
+<Map>
+| Place | Lat | Lng |
+|---|---|---|
+| Downtown | 40.7128 | -74.0060 |
+| Riverside | 40.7282 | -74.0776 |
+| Northgate | 40.7580 | -73.9855 |
+| Southside | 40.7061 | -74.0087 |
+| Eastwood | 40.6892 | -74.0445 |
+| Westpark | 40.7484 | -73.9857 |
+| City Hall | 40.7127 | -74.0059 |
+| Waterfront Lot | 40.7033 | -74.0170 |
+</Map>
+
+<FollowUps>
+- Show me the congestion heatmap for downtown
+- What incidents are critical right now?
+- Which district has the worst air quality?
+- How can I reduce water use today?
+- List all roadworks starting this week
+</FollowUps>

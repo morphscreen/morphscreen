@@ -1,0 +1,69 @@
+# Standard Deviation Reference
+
+<Card title="1. Formula">
+<Math tex="\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2}" label="Population standard deviation" />
+<Math tex="s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}" label="Sample standard deviation (Bessel's correction)" />
+<Callout tone="info" title="Notation">
+- <strong>σ</strong> (sigma) = population standard deviation  
+- <strong>s</strong> = sample standard deviation  
+- <strong>N</strong> = population size  
+- <strong>n</strong> = sample size  
+- <strong>μ</strong> (mu) = population mean  
+- <strong>x̄</strong> (x-bar) = sample mean  
+- <strong>xᵢ</strong> = each data point
+</Callout>
+</Card>
+
+<Card title="2. Python Implementation">
+<Code file="std_dev.py" highlight="4 | 11">
+import math
+from typing import List
+
+def population_std(data: List[float]) -> float:
+    """Standard deviation for an entire population."""
+    n = len(data)
+    if n == 0:
+        raise ValueError("Empty data")
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / n
+    return math.sqrt(variance)
+
+def sample_std(data: List[float]) -> float:
+    """Standard deviation for a sample (n-1 denominator)."""
+    n = len(data)
+    if n < 2:
+        raise ValueError("Need at least 2 data points")
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / (n - 1)
+    return math.sqrt(variance)
+
+# Quick demo
+if __name__ == "__main__":
+    data = [10, 12, 23, 23, 16, 23, 21, 16]
+    print(f"Population σ: {population_std(data):.3f}")
+    print(f"Sample s:     {sample_std(data):.3f}")
+    # Using statistics module (stdlib)
+    import statistics
+    print(f"statistics.stdev (sample): {statistics.stdev(data):.3f}")
+    print(f"statistics.pstdev (pop):   {statistics.pstdev(data):.3f}")
+</Code>
+</Card>
+
+<Card title="3. When to Use the Sample Version (n−1)">
+<Callout tone="success" title="Use sample standard deviation (s) when:">
+- Your data is a **subset** of a larger population
+- You want to **estimate** the population standard deviation from a sample
+- You're doing **inferential statistics** (confidence intervals, hypothesis tests)
+- The data comes from a **survey, experiment, or random sample**
+</Callout>
+
+<Callout tone="warning" title="Use population standard deviation (σ) when:">
+- You have **every member** of the population (census, full dataset)
+- You're describing **only this specific dataset** with no generalization
+- You're computing **descriptive statistics** for a complete, fixed set
+</Callout>
+
+<Details title="Why n−1? (Bessel's correction)">
+Using <code>n</code> in the denominator underestimates the true population variance because the sample mean <code>x̄</code> is itself calculated from the data and sits closer to the sample points than the true population mean <code>μ</code>. Dividing by <code>n−1</code> corrects this bias, making <code>s²</code> an **unbiased estimator** of <code>σ²</code>.
+</Details>
+</Card>

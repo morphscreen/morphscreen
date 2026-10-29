@@ -1,0 +1,132 @@
+# Power Network Operator Console
+
+<Columns>
+<Card title="Network Overview" subtitle="Real-time system status">
+<Columns>
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Stat label="System Capacity" value="58,200 MW" change="73.6% utilized" tone="neutral" />
+<Stat label="Current Price" value="$87.40 / MWh" change="+$4.20 vs yesterday" tone="warning" />
+<Stat label="Emissions Today" value="18,420 tCO₂" change="-3.1% vs same day last year" tone="success" />
+</Columns>
+
+<Progress value="42847" max="58200" label="Capacity Utilization: 73.6%" />
+</Card>
+
+<Card title="Region Focus" subtitle="Filter all views by region">
+<Select label="Select Region" placeholder="All Regions" options="All Regions | North Grid | Central Grid | South Grid | West Grid | East Grid" name="region-filter" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Current output mix">
+<Chart type="donut" title="Generation by Source (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 14,200 |
+| Nuclear | 11,800 |
+| Wind | 8,450 |
+| Solar | 4,320 |
+| Hydro | 3,100 |
+| Coal | 977 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Hourly projection">
+<Chart type="line" title="Forecast Demand (MW)" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38,200 | 38,200 |
+| 01:00 | 36,800 | 36,800 |
+| 02:00 | 35,400 | 35,400 |
+| 03:00 | 34,600 | 34,600 |
+| 04:00 | 34,200 | 34,200 |
+| 05:00 | 35,100 | 35,100 |
+| 06:00 | 38,400 | 38,400 |
+| 07:00 | 42,100 | 42,100 |
+| 08:00 | 45,800 | 45,800 |
+| 09:00 | 47,200 | 47,200 |
+| 10:00 | 48,100 | 48,100 |
+| 11:00 | 48,900 | 48,900 |
+| 12:00 | 49,400 | 49,400 |
+| 13:00 | 49,800 | 49,800 |
+| 14:00 | 50,100 | 50,100 |
+| 15:00 | 50,300 | 50,300 |
+| 16:00 | 50,200 | 50,200 |
+| 17:00 | 50,500 | 50,500 |
+| 18:00 | 50,800 | 50,800 |
+| 19:00 | 50,600 | 50,600 |
+| 20:00 | 49,900 | 49,900 |
+| 21:00 | 48,400 | 48,400 |
+| 22:00 | 45,200 | 45,200 |
+| 23:00 | 41,800 | 41,800 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Generation Plants — Live Output & Status" subtitle="All connected facilities">
+| Plant | Region | Source | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Northridge Nuclear | North Grid | Nuclear | 2,200 | 2,180 | <Badge tone="success">Online</Badge> | 99.1% |
+| Riverbend Hydro | Central Grid | Hydro | 1,800 | 1,450 | <Badge tone="success">Online</Badge> | 80.6% |
+| Westwind Farm | West Grid | Wind | 1,200 | 980 | <Badge tone="success">Online</Badge> | 81.7% |
+| Solar Mesa | South Grid | Solar | 950 | 620 | <Badge tone="success">Online</Badge> | 65.3% |
+| Coal Creek | East Grid | Coal | 1,100 | 977 | <Badge tone="warning">Derated</Badge> | 88.8% |
+| Gas Peak Unit 1 | North Grid | Natural Gas | 800 | 720 | <Badge tone="success">Online</Badge> | 90.0% |
+| Gas Peak Unit 2 | North Grid | Natural Gas | 800 | 0 | <Badge tone="neutral">Standby</Badge> | 100% |
+| Offshore Wind Alpha | West Grid | Wind | 1,500 | 1,340 | <Badge tone="success">Online</Badge> | 89.3% |
+| Desert Sun Solar | South Grid | Solar | 1,200 | 890 | <Badge tone="success">Online</Badge> | 74.2% |
+| Lakeview Hydro | Central Grid | Hydro | 900 | 650 | <Badge tone="warning">Maintenance</Badge> | 72.2% |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Current supply interruptions">
+| Outage ID | Region | Affected Customers | Cause | Est. Restoration | Crew Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North Grid | 12,400 | Equipment failure | 2024-01-15 14:30 | <Badge tone="info">En route</Badge> |
+| OUT-2024-0851 | Central Grid | 8,200 | Storm damage | 2024-01-15 18:00 | <Badge tone="warning">Assessing</Badge> |
+| OUT-2024-0853 | South Grid | 3,100 | Vegetation contact | 2024-01-15 12:45 | <Badge tone="success">Restoring</Badge> |
+</Card>
+
+<Card title="Planned Maintenance — This Month" subtitle="Scheduled work affecting capacity">
+| Asset | Region | Type | Start | End | Capacity Impact |
+|---|---|---|---|---|---|
+| Lakeview Hydro Unit 2 | Central Grid | Turbine overhaul | 2024-01-10 | 2024-01-20 | -250 MW |
+| Gas Peak Unit 2 | North Grid | Combustion inspection | 2024-01-18 | 2024-01-22 | -800 MW (standby) |
+| Northridge Nuclear | North Grid | Refueling outage | 2024-02-01 | 2024-02-21 | -2,200 MW |
+| Westwind Farm Row 4 | West Grid | Blade replacement | 2024-01-25 | 2024-01-28 | -180 MW |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Callout tone="danger" title="⚠ Voltage Deviation — North Grid 230kV Bus 4">Voltage at 218kV (-5.2%), reactive support activated. <Badge tone="danger">CRITICAL</Badge> — 10:23:14</Callout>
+<Callout tone="warning" title="⚡ Frequency Excursion — Interconnection West">Frequency dipped to 59.92 Hz, primary response deployed. <Badge tone="warning">WARNING</Badge> — 10:21:47</Callout>
+<Callout tone="info" title="🌬 Wind Ramp Event — West Grid">Output dropping 400 MW/hr, reserves deploying. <Badge tone="info">ADVISORY</Badge> — 10:19:02</Callout>
+<Callout tone="success" title="✅ Restoration Complete — OUT-2024-0842">South Grid feeder restored, 4,200 customers back online. <Badge tone="success">RESOLVED</Badge> — 10:15:33</Callout>
+<Callout tone="neutral" title="📋 Maintenance Started — Lakeview Hydro Unit 2">Planned turbine overhaul commenced on schedule. <Badge tone="neutral">INFO</Badge> — 10:00:00</Callout>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Reduce generation or load to maintain system reliability">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Curtailment Type" placeholder="Select type" options="Generation Reduction | Load Shedding | Demand Response" name="curtailment-type" required="true" />
+<Select label="Target Region" placeholder="Select region" options="North Grid | Central Grid | South Grid | West Grid | East Grid" name="target-region" required="true" />
+</Columns>
+<Columns>
+<Input label="Plant / Feeder ID" placeholder="e.g., Westwind Farm Row 3" name="target-asset" required="true" />
+<Input label="Reduction Amount (MW)" type="number" placeholder="e.g., 150" name="reduction-mw" step="1" required="true" />
+</Columns>
+<TextArea label="Reason / Justification" placeholder="Describe system condition requiring curtailment..." name="reason" rows="3" required="true" hint="This will be logged for regulatory review" />
+<Columns>
+<Button variant="danger" size="large">Issue Curtailment Order</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show real-time frequency and voltage trends
+- Display reserve margins by region
+- Open interconnection flow dashboard
+- View emissions forecast for next 48 hours
+- Check ancillary services market prices
+</FollowUps>

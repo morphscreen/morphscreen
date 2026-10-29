@@ -1,0 +1,58 @@
+<Card title="Service Health" subtitle="On-call engineer view · Updated 14:32 UTC">
+  <Form name="region-filter">
+    <Select label="Narrow to one region" placeholder="Choose a region" options="All regions | us-east-1 | eu-west-1 | ap-southeast-2" name="region" />
+    <Button variant="secondary">Apply</Button>
+  </Form>
+
+  <Columns>
+    <Card title="Uptime this quarter">
+      <Stat label="Uptime" value="99.95%" change="+0.02 pp vs Q2" />
+      <Progress value="99.95" max="100" label="SLO target: 99.9%" />
+    </Card>
+    <Card title="Error rate right now">
+      <Stat label="Error rate" value="0.42%" note="Threshold: 1.5%" />
+      <Badge tone="success">Below threshold</Badge>
+    </Card>
+    <Card title="Open incidents">
+      <Stat label="Active incidents" value="3" note="1 Sev1 · 1 Sev2 · 1 Sev3" />
+    </Card>
+  </Columns>
+
+  <Columns>
+    <Card title="CPU & memory — past 24 hours" subtitle="Region filter applied">
+      <Chart type="line" x="Time" y="Percent">
+        | Time | CPU | Memory |
+        | -24h | 42 | 68 |
+        | -20h | 38 | 66 |
+        | -16h | 55 | 71 |
+        | -12h | 61 | 74 |
+        | -8h | 47 | 69 |
+        | -4h | 52 | 72 |
+        | now | 48 | 70 |
+      </Chart>
+    </Card>
+    <Card title="Slowest endpoints" subtitle="Past 24h · p95 latency">
+      | Endpoint | Method | p95 latency |
+      | /v1/export | POST | 812 ms |
+      | /v1/search | GET | 645 ms |
+      | /v1/reports | GET | 503 ms |
+      | /v1/sync | POST | 428 ms |
+      | /v1/auth/token | POST | 391 ms |
+    </Card>
+  </Columns>
+
+  <Columns>
+    <Card title="Open incidents" subtitle="Tap Acknowledge to take ownership">
+      | Incident | Severity | Region | Status | Action |
+      | INC-3042 | <Badge tone="danger">Sev1</Badge> | us-east-1 | Unacknowledged | <Button variant="primary" ask="Acknowledge INC-3042">Acknowledge</Button> |
+      | INC-3041 | <Badge tone="warning">Sev2</Badge> | eu-west-1 | Unacknowledged | <Button variant="primary" ask="Acknowledge INC-3041">Acknowledge</Button> |
+      | INC-3039 | <Badge tone="info">Sev3</Badge> | ap-southeast-2 | Unacknowledged | <Button variant="primary" ask="Acknowledge INC-3039">Acknowledge</Button> |
+    </Card>
+    <Card title="Alert threshold" subtitle="Error rate · current 1.5%">
+      <Form name="alert-threshold">
+        <Slider label="Error rate threshold (%)" min="0" max="5" step="0.1" value="1.5" name="error_threshold" />
+        <Button>Save threshold</Button>
+      </Form>
+    </Card>
+  </Columns>
+</Card>

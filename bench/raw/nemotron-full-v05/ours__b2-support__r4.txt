@@ -1,0 +1,39 @@
+# Support Lead — Morning View
+
+<Card title="Queue health">
+<Columns>
+<Stat label="Open tickets" value="47" change="+3 vs yesterday" tone="warning" />
+<Stat label="Avg first response" value="1h 22m" change="-8m vs target" tone="success" />
+<Stat label="SLA breaches (24h)" value="2" change="+1" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Filters">
+<Columns>
+<Switch label="High priority only" name="high-priority-filter" value="false" hint="Show only P1 and P2 tickets" />
+<Select label="Assignee" placeholder="All agents" options="All agents | Alice Chen | Bob Rivera | Cara Singh | Unassigned" name="assignee-filter" />
+<Select label="Channel" placeholder="All channels" options="All channels | Email | Chat | Phone | Portal" name="channel-filter" />
+</Columns>
+</Card>
+
+<Card title="Five most recent tickets">
+| # | Ticket | Priority | Customer | Channel | Created | Status |
+|---|---|---|---|---|---|---|
+| 1 | **#T-8842** Payment failure on renewal | <Badge tone="danger">P1 — Critical</Badge> | Acme Corp | Email | 8:12 AM | <Badge tone="warning">Open</Badge> |
+| 2 | **#T-8841** SSO login loop | <Badge tone="warning">P2 — High</Badge> | Globex Inc | Chat | 7:58 AM | <Badge tone="info">In progress</Badge> |
+| 3 | **#T-8840** Export CSV truncates rows | <Badge tone="info">P3 — Medium</Badge> | Wayne Enterprises | Portal | 7:45 AM | <Badge tone="neutral">Waiting on customer</Badge> |
+| 4 | **#T-8839** Mobile app crash on iOS 17.4 | <Badge tone="danger">P1 — Critical</Badge> | Stark Industries | Phone | 7:30 AM | <Badge tone="warning">Open</Badge> |
+| 5 | **#T-8838** Feature request: dark mode scheduler | <Badge tone="neutral">P4 — Low</Badge> | Umbrella Corp | Email | 6:55 AM | <Badge tone="neutral">Triaged</Badge> |
+</Card>
+
+<Card title="Actions">
+<Button variant="primary" size="large">+ Open new ticket</Button>
+<Button variant="secondary" href="#">View full queue</Button>
+<Button variant="tertiary" href="#">SLA dashboard</Button>
+</Card>
+
+<FollowUps>
+- Show me tickets assigned to me
+- What's our current SLA compliance rate?
+- List all P1 tickets older than 2 hours
+</FollowUps>

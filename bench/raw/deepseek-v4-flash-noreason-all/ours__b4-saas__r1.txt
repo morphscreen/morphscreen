@@ -1,0 +1,119 @@
+# Admin Overview
+
+<Callout tone="info" title="Reporting period">Showing data for the last 30 days. Use the selector below to change the period.</Callout>
+
+<Card title="Reporting period">
+<Select label="Period" options="Last 7 days | Last 30 days | Last 90 days | This quarter | Year to date" name="reporting-period" />
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Monthly recurring revenue" value="$128,400" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="Annual recurring revenue" value="$1,540,800" change="+4.2%" tone="success" icon="trend-up" />
+<Stat label="Churn this month" value="2.8%" change="-0.3 pts" tone="warning" icon="user-minus" />
+<Stat label="Current NPS" value="62" change="+5" tone="success" icon="star" />
+</Columns>
+</Card>
+
+<Card title="New signups — past 90 days">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 55 |
+| Week 3 | 48 |
+| Week 4 | 61 |
+| Week 5 | 73 |
+| Week 6 | 68 |
+| Week 7 | 82 |
+| Week 8 | 91 |
+| Week 9 | 87 |
+| Week 10 | 104 |
+| Week 11 | 98 |
+| Week 12 | 112 |
+| Week 13 | 124 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 268 |
+| Enterprise | 97 |
+</Chart>
+</Card>
+
+<Card title="Ten largest customers — by monthly spend">
+| Customer | Seats | Monthly spend |
+|---|---|---|
+| Acme Corp | 240 | $9,600 |
+| Globex Inc | 185 | $7,400 |
+| Initech | 160 | $6,400 |
+| Umbrella Corp | 142 | $5,680 |
+| Stark Industries | 128 | $5,120 |
+| Wayne Enterprises | 115 | $4,600 |
+| Hooli | 98 | $3,920 |
+| Pied Piper | 87 | $3,480 |
+| Vandelay Industries | 76 | $3,040 |
+| Dunder Mifflin | 64 | $2,560 |
+</Card>
+
+<Card title="Accounts at risk">
+<Table>
+| Customer | Reason | MRR at risk |
+|---|---|---|
+| Acme Corp | Usage down 40% in 30 days | $9,600 |
+| Initech | 3 failed payments | $6,400 |
+| Hooli | Contract renewal in 14 days, no response | $3,920 |
+| Dunder Mifflin | Support tickets up 5x | $2,560 |
+</Table>
+<Button variant="primary">Review at-risk accounts</Button>
+</Card>
+
+<Card title="Failed payments — need action">
+<Table>
+| Customer | Amount | Date | 
+|---|---|---|
+| Initech | $6,400 | 2025-02-10 |
+| Globex Inc | $7,400 | 2025-02-12 |
+| Vandelay Industries | $3,040 | 2025-02-14 |
+| Pied Piper | $3,480 | 2025-02-15 |
+</Table>
+<Button>Retry all failed payments</Button>
+</Card>
+
+<Card title="Adoption — newest features">
+<Chart type="bar" title="Feature adoption (last 30 days)">
+| Feature | Active users |
+|---|---|
+| AI Insights | 342 |
+| API v2 | 289 |
+| SSO | 156 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization">
+<Columns>
+<Stat label="Total seats purchased" value="2,847" />
+<Stat label="Active seats" value="2,198" />
+<Stat label="Utilization" value="77.2%" tone="warning" icon="users" />
+</Columns>
+<Progress value="77.2" max="100" label="Seat utilization" tone="warning" />
+</Card>
+
+<Card title="Invite another admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="admin@company.com" hint="They'll get an invite link" />
+<Select label="Role" options="Admin — full access | Billing admin — invoices & payments | Read-only" name="role" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the churn breakdown by plan
+- Which at-risk accounts should I prioritize?
+- Compare adoption of AI Insights by plan
+- What's the revenue forecast for next quarter?
+</FollowUps>

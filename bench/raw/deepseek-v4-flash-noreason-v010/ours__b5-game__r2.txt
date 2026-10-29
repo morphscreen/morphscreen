@@ -1,0 +1,218 @@
+# Live-Ops Command Center
+
+<Callout tone="info" title="Live now">All metrics refresh every 30 seconds. Critical thresholds trigger alerts at the top of the screen.</Callout>
+
+## Headline Metrics
+
+<Columns>
+<Stat label="Players Online" value="12,847" change="+8.2%" tone="success" icon="users" />
+<Stat label="Daily Active" value="1,204,331" change="+3.1%" tone="success" icon="calendar" />
+<Stat label="Monthly Active" value="8,942,510" change="-1.4%" tone="warning" icon="chart-line" />
+<Stat label="Revenue Today" value="$184,290" change="+12.6%" tone="success" icon="currency-dollar" />
+<Stat label="Revenue / User" value="$0.153" change="+9.1%" tone="success" icon="trend-up" />
+</Columns>
+
+---
+
+## Session Length — Last 14 Days
+
+<Card title="Average Session Duration">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Session Length |
+|---|---|
+| D-13 | 18.2 |
+| D-12 | 19.1 |
+| D-11 | 17.8 |
+| D-10 | 20.4 |
+| D-9 | 21.7 |
+| D-8 | 22.3 |
+| D-7 | 19.5 |
+| D-6 | 23.1 |
+| D-5 | 24.8 |
+| D-4 | 22.9 |
+| D-3 | 25.6 |
+| D-2 | 26.1 |
+| D-1 | 24.3 |
+| Today | 25.9 |
+</Chart>
+<Callout tone="success" title="Trend">Session length is up 42% from two weeks ago — the new dungeon content is sticking.</Callout>
+</Card>
+
+---
+
+## Store Performance
+
+<Card title="Best-Selling Items Today">
+| Item | Units Sold | Revenue |
+|---|---|---|
+| Dragon's Hoard Chest | 4,210 | $42,100 |
+| Season Pass: Emberfall | 2,980 | $29,800 |
+| 500 Gems Pack | 2,540 | $25,400 |
+| Legendary Skin — Ashen Knight | 1,870 | $18,700 |
+| XP Booster (7-day) | 1,650 | $8,250 |
+</Card>
+
+---
+
+## Server Health by Region
+
+<Card title="Region Status">
+<Columns>
+<Stat label="NA-East" value="98.2%" tone="success" icon="server" />
+<Stat label="NA-West" value="99.1%" tone="success" icon="server" />
+<Stat label="EU-Central" value="94.7%" tone="warning" icon="server" />
+<Stat label="APAC-SE" value="87.3%" tone="danger" icon="server" />
+</Columns>
+
+<Progress value="98.2" max="100" label="NA-East — 21 servers, 4,210 players" tone="success" />
+<Progress value="99.1" max="100" label="NA-West — 18 servers, 3,890 players" tone="success" />
+<Progress value="94.7" max="100" label="EU-Central — 24 servers, 5,120 players" tone="warning" />
+<Progress value="87.3" max="100" label="APAC-SE — 16 servers, 3,620 players" tone="danger" />
+
+<Callout tone="danger" title="APAC-SE degradation">Packet loss at 6.2%, elevated latency (180ms vs 90ms baseline). Auto-scaling triggered — expect recovery in ~20 minutes.</Callout>
+
+<Button variant="primary" ask="Focus on the APAC-SE region and show me mitigation steps">Focus on APAC-SE</Button>
+</Card>
+
+---
+
+## Crash Rate by App Version
+
+<Card title="Crash Rate — Last 24h">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Crash Rate |
+|---|---|
+| 3.4.0 | 0.42 |
+| 3.4.1 | 0.38 |
+| 3.5.0 | 1.24 |
+| 3.5.1 | 2.87 |
+| 3.5.2 | 0.91 |
+</Chart>
+
+<Callout tone="danger" title="3.5.1 regression">Crash rate 2.87% is 7x above baseline. Root cause: memory leak in the new ember particle system. Hotfix recommended.</Callout>
+
+<Button variant="danger" ask="Prepare a hotfix for the 3.5.1 crash regression">Ship hotfix</Button>
+</Card>
+
+---
+
+## Live Events
+
+<Card title="Events Calendar">
+<Tabs>
+<Tab title="Running Now">
+| Event | Ends In | Players Engaged | Status |
+|---|---|---|---|
+| Emberfall Festival | 2d 14h | 342,110 | <Badge tone="success">Healthy</Badge> |
+| Double XP Weekend | 1d 08h | 518,204 | <Badge tone="success">Healthy</Badge> |
+| Midnight Raid Challenge | 4h 12m | 89,430 | <Badge tone="warning">Low engagement</Badge> |
+</Tab>
+<Tab title="Upcoming">
+| Event | Starts In | Duration | Status |
+|---|---|---|---|
+| Winter Forge | 3d 00h | 7 days | <Badge tone="info">Scheduled</Badge> |
+| Community Boss Rush | 5d 12h | 48 hours | <Badge tone="info">Scheduled</Badge> |
+| Anniversary Login Streak | 7d 00h | 14 days | <Badge tone="info">Scheduled</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+## Moderation Queue
+
+<Columns>
+<Card title="Player Reports" subtitle="Awaiting review">
+<Stat label="Total Queue" value="1,284" tone="warning" icon="flag" />
+<Stat label="Oldest" value="6h 22m" tone="danger" icon="clock" />
+<Stat label="High priority" value="312" tone="danger" icon="alert" />
+<Button variant="secondary" ask="Show me the top 10 player reports to review">Review reports</Button>
+</Card>
+
+<Card title="Ban Appeals" subtitle="Awaiting review">
+<Stat label="Total Queue" value="437" tone="warning" icon="gavel" />
+<Stat label="Oldest" value="19h 05m" tone="danger" icon="clock" />
+<Stat label="Approved rate" value="23%" tone="info" icon="check" />
+<Button variant="secondary" ask="Show me the ban appeals queue sorted by age">Review appeals</Button>
+</Card>
+</Columns>
+
+---
+
+## Economy Health
+
+<Card title="In-Game Currency Inflation">
+<Chart type="area" x="Month" y="Gems in circulation (millions)">
+| Month | Gems |
+|---|---|
+| Jan | 142 |
+| Feb | 151 |
+| Mar | 158 |
+| Apr | 167 |
+| May | 179 |
+| Jun | 194 |
+| Jul | 212 |
+</Chart>
+
+<Stat label="Monthly inflation" value="+9.3%" change="+2.1 pts vs last month" tone="danger" icon="trend-up" />
+<Stat label="Gems minted / burned" value="38.4M / 22.1M" tone="warning" icon="scale" />
+
+<Callout tone="warning" title="Inflation accelerating">Gem supply growing 9.3% monthly vs 5% target. Consider reducing daily quest rewards or adding a gem sink.</Callout>
+</Card>
+
+---
+
+## Running Experiments
+
+<Card title="A/B Test Results">
+<Tabs>
+<Tab title="Experiment A — Onboarding Flow">
+<Stat label="Variant A (control)" value="42.1%" tone="info" icon="test-tube" />
+<Stat label="Variant B (new flow)" value="48.7%" tone="success" icon="test-tube" />
+<Stat label="Lift" value="+6.6 pts" tone="success" icon="trend-up" />
+<Stat label="Significance" value="p = 0.003" tone="success" icon="check" />
+<Callout tone="success" title="Winner">Variant B onboarding flow significantly improves Day-1 retention. Recommend shipping to 100%.</Callout>
+<Button ask="Ship Experiment A winner to all players">Ship to all players</Button>
+</Tab>
+<Tab title="Experiment B — Battle Pass Pricing">
+<Stat label="Variant A ($9.99)" value="$1.24M" tone="info" icon="test-tube" />
+<Stat label="Variant B ($12.99)" value="$1.31M" tone="info" icon="test-tube" />
+<Stat label="Variant C ($14.99)" value="$1.08M" tone="warning" icon="test-tube" />
+<Stat label="Significance" value="Inconclusive (p = 0.14)" tone="warning" icon="alert" />
+<Callout tone="warning" title="Not significant yet">Variant B trending higher but not significant. Need 3 more days or 40k more players. Let it run.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+## Patch Notes Draft
+
+<Card title="Draft Patch Notes — v3.5.3">
+<Form name="patch-notes">
+<Input label="Version" value="3.5.3" />
+<Input label="Title" value="Emberfall Balance & Stability" />
+<TextArea label="Notes" rows="8" placeholder="### Balance Changes&#10;- Reduced Emberfall Festival token drop rate by 15%&#10;- Ash Knight skin now emits correct particle effects&#10;&#10;### Bug Fixes&#10;- Fixed memory leak causing crashes on low-end devices (3.5.1 regression)&#10;- Fixed APAC-SE server routing issue&#10;&#10;### Economy&#10;- Added new gem sink: Legendary Reroll Orb" />
+<Checkboxes label="Include in notes" options="Balance changes | Bug fixes | Economy adjustments | New content" value="Balance changes | Bug fixes | Economy adjustments" />
+<Button>Save draft</Button>
+<Button variant="secondary" ask="Review the patch notes draft and suggest improvements">Review draft</Button>
+</Card>
+
+---
+
+## Quick Actions
+
+<Card title="Operations">
+<Columns>
+<Button variant="danger" ask="Ship hotfix for 3.5.1 crash now">🚀 Ship hotfix</Button>
+<Button variant="primary" ask="Focus the dashboard on APAC-SE region only">Focus on APAC-SE</Button>
+<Button variant="secondary" ask="Show me the full incident report for APAC-SE">APAC-SE incident report</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full crash report for version 3.5.1
+- What's driving the revenue spike today?
+- Draft a player communication about the APAC-SE issues
+- Compare today's metrics to last week's averages
+</FollowUps>

@@ -1,0 +1,205 @@
+# Emergency Response Coordination Center
+
+<Badge tone="danger">ACTIVE OPERATIONS</Badge> <Badge tone="warning">HIGH ALERT</Badge>
+
+## Incident Overview
+
+<Columns>
+<Stat label="Active Incidents" value="7" tone="danger" icon="warning-circle" />
+<Stat label="People Rescued" value="312" change="+24 today" tone="success" icon="lifebuoy" />
+<Stat label="Casualties" value="18" tone="warning" icon="cross" />
+<Stat label="Shelters Open" value="12" tone="info" icon="house" />
+</Columns>
+
+<Card title="Active Incidents by Zone" subtitle="Severity: Critical / High / Moderate / Low">
+<Chart type="bar" x="Zone" y="Incidents">
+| Zone | Critical | High | Moderate | Low |
+|---|---|---|---|---|
+| North | 1 | 2 | 1 | 0 |
+| Central | 2 | 1 | 0 | 1 |
+| South | 0 | 1 | 2 | 1 |
+| East | 1 | 0 | 1 | 0 |
+</Chart>
+</Card>
+
+<Card title="Zone Focus">
+<Form name="zone-focus">
+<Select label="Focus on zone" placeholder="Select zone" options="North | Central | South | East | All zones" />
+<Button>Apply Focus</Button>
+</Form>
+</Card>
+
+## Resources
+
+<Card title="Available Resources">
+<Columns>
+<Stat label="Vehicles" value="24" note="12 ambulances, 8 trucks, 4 boats" icon="truck" />
+<Stat label="Personnel" value="156" note="78 on shift now" icon="users" />
+<Stat label="Supplies" value="68%" note="of target stocks" icon="package" />
+</Columns>
+</Card>
+
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource type" options="Ambulance | Truck | Boat | Medical supplies | Food | Water | Blankets | Generators | Rescue equipment" />
+<Input label="Quantity" type="number" placeholder="e.g. 5" min="1" />
+<Select label="Priority" options="Routine | Urgent | Critical" />
+<Button>Submit Request</Button>
+</Form>
+</Card>
+
+## Shelters & Evacuation
+
+<Card title="Shelter Capacity">
+| Shelter | Zone | Occupancy | Capacity | Status |
+|---|---|---|---|---|
+| North High School | North | 84 | 120 | <Badge tone="warning">78% full</Badge> |
+| Central Community Hall | Central | 145 | 150 | <Badge tone="danger">97% full</Badge> |
+| East Civic Center | East | 62 | 100 | <Badge tone="success">62% full</Badge> |
+| South Recreation Center | South | 38 | 80 | <Badge tone="success">48% full</Badge> |
+</Card>
+
+<Card title="Evacuation Route Status">
+| Route | Zone | Status |
+|---|---|---|
+| Route 1 – Highway 9 | North | <Badge tone="success">Open</Badge> |
+| Route 2 – River Road | Central | <Badge tone="danger">Closed – flooded</Badge> |
+| Route 3 – Mountain Pass | East | <Badge tone="warning">Partially open</Badge> |
+| Route 4 – Coastal Drive | South | <Badge tone="success">Open</Badge> |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Zone | Reason |
+|---|---|---|
+| River Road | Central | Flooding |
+| Oak St Bridge | North | Structural damage |
+| Pine Hill Rd | East | Landslide |
+| Harbor Blvd | South | Debris |
+</Card>
+
+## Weather Forecast
+
+<Card title="Next 48 Hours">
+<Chart type="line" x="Hour" y="Temperature (°C) / Precipitation (mm)">
+| Hour | Temp | Precip |
+|---|---|---|
+| +6h | 22 | 2 |
+| +12h | 19 | 8 |
+| +18h | 18 | 15 |
+| +24h | 17 | 22 |
+| +30h | 18 | 18 |
+| +36h | 20 | 10 |
+| +42h | 21 | 4 |
+| +48h | 23 | 1 |
+</Chart>
+<Callout tone="warning" title="Heavy rain expected">Rainfall peaks around +24h in Central and South zones. Monitor river levels.</Callout>
+</Card>
+
+## Personnel & Volunteers
+
+<Card title="Volunteers on Duty">
+| Volunteer | Assignment | Zone |
+|---|---|---|
+| Maria González | Shelter manager | North |
+| James Chen | Medical triage | Central |
+| Sarah Okafor | Supply distribution | East |
+| David Kim | Boat rescue team | South |
+| Elena Petrova | Communication relay | Central |
+| Ahmed Hassan | Evacuation driver | North |
+</Card>
+
+<Card title="Open Tasks">
+| Task | Assignee | Priority |
+|---|---|---|
+| Restock medical supplies at Central Hall | Maria G. | <Badge tone="danger">High</Badge> |
+| Repair Route 2 pump station | Public Works | <Badge tone="warning">Medium</Badge> |
+| Deliver water to East Civic Center | James C. | <Badge tone="danger">High</Badge> |
+| Clear debris on Harbor Blvd | Road Crew | <Badge tone="warning">Medium</Badge> |
+| Set up generator at South Rec Center | David K. | <Badge tone="success">Low</Badge> |
+</Card>
+
+## Medical & Aid
+
+<Card title="Nearby Hospitals – Free Beds">
+| Hospital | Zone | Free Beds | Total Beds |
+|---|---|---|---|
+| St. Mary’s General | North | 12 | 45 |
+| Central City Hospital | Central | 3 | 60 |
+| East Valley Medical | East | 18 | 40 |
+| South Shore Clinic | South | 9 | 25 |
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+| Request | Zone | Submitted | Priority |
+|---|---|---|---|
+| Drinking water – 200 bottles | Central | 2h ago | <Badge tone="danger">Critical</Badge> |
+| Insulin supplies | North | 1h ago | <Badge tone="danger">Critical</Badge> |
+| Baby formula | East | 4h ago | <Badge tone="warning">High</Badge> |
+| Blankets – 50 units | South | 3h ago | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Donations Received">
+<Columns>
+<Stat label="Monetary" value="$45,200" icon="currency-circle-dollar" />
+<Stat label="In-kind" value="1,340" note="items" icon="box" />
+<Stat label="Blood units" value="86" icon="drop" />
+</Columns>
+</Card>
+
+## Communications
+
+<Card title="Communication Channels Status">
+| Channel | Status | Notes |
+|---|---|---|
+| Radio – Emergency band | <Badge tone="success">UP</Badge> | Primary channel |
+| Radio – Secondary | <Badge tone="warning">DEGRADED</Badge> | Intermittent in North |
+| Satellite phone | <Badge tone="success">UP</Badge> | Backup operational |
+| Cellular network | <Badge tone="danger">DOWN</Badge> | Central & South zones |
+| Internet / Fiber | <Badge tone="warning">PARTIAL</Badge> | East zone working |
+| Public address system | <Badge tone="success">UP</Badge> | All zones |
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<TextArea label="Message" placeholder="Enter the update to broadcast to all zones…" rows="4" required="true" />
+<Select label="Channel" options="All channels | Radio only | Public address | Satellite phone" />
+<Button>Broadcast Now</Button>
+</Form>
+</Card>
+
+## Reports
+
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Select label="Zone" options="North | Central | South | East | All zones" />
+<Select label="Situation level" options="Stable | Deteriorating | Improving | Critical" />
+<TextArea label="Summary" placeholder="Describe the current situation…" rows="4" required="true" />
+<Input label="Reported by" placeholder="Your name / ID" />
+<Button>Submit Report</Button>
+</Form>
+</Card>
+
+<Card title="Operations Summary">
+<Tabs>
+<Tab title="Rescue">
+<Steps>
+<Step title="Rescue operations ongoing" status="current">312 people rescued; 18 casualties reported. Search teams active in Central flood zone.</Step>
+<Step title="Evacuation in progress" status="current">Route 3 partially open; Route 2 closed. Shelters at 72% average occupancy.</Step>
+<Step title="Medical support" status="current">42 free beds across hospitals. Critical supply request for insulin in North.</Step>
+</Steps>
+</Tab>
+<Tab title="Logistics">
+<Steps>
+<Step title="Supplies distribution" status="current">68% of target stocks available. Water shortage in Central zone.</Step>
+<Step title="Road clearing" status="current">Harbor Blvd debris removal in progress. Oak St Bridge awaiting inspection.</Step>
+</Steps>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show detailed incident reports for the Central zone
+- List all volunteers available for reassignment
+- Compare hospital capacity across all zones
+- Generate a printable situation report summary
+</FollowUps>

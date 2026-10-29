@@ -1,0 +1,49 @@
+root = Card([header, status, alert, revenue<unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk> "C" for "Clear" (transparent)
+   - "s" = small
+   - "m" = medium
+   - "l" = large
+   - "xl" = extra large
+   - "2xl" = extra large
+   - "xs" = extra small
+   - "s" = small
+   - "m" = medium
+   - "l" = large
+   - "xl" = extra large
+   - "2xl" = extra extra large
+
+5. EVERY variable (except root) MUST be referenced by at least one other variable. Unreferenced variables are silently dropped and will NOT render. Always include defined variables in their parent's children/items array.
+
+Let's construct the final response.
+
+root = Card([header, stats, stats_row, stats_grid, filters, incident_list, slow_endpoints, filter_row, action_buttons], "card", "row", "m", "center", "stretch")
+header = CardHeader("Health Dashboard", "Dashboard Overview")
+uptime = TextContent("Uptime this quarter: 99.9%", "large")
+uptime_container = Card([uptimeText], "sunk")
+cpu_memory_series = [
+    Series("CPU", [10, 12, 15, 14, 13, 16, 18, 20, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8]),
+    "Memory", [30, 32, 28, 27, 29, 31, 33, 35, 34, 32, 30, 28, 27, 26, 25, 24, 23, 22, 19, 18, 18, 17, 16]
+]
+cpu_memory_chart = LineChart(
+    ["0", "1", "2", "4", "6", "6", "7", "8", "9", "10", "11", "11", "12", "13", "14", "14", "14", "13", "13", "12", "13", "13", "6", "7", "4"],
+    [cpuSeries, memorySeries],
+    "natural",
+    "Hour",
+    "Usage (%)"
+)
+incidents = ListBlock([
+    "Database connection timeout (Critical)",
+    "API rate limit exceeded (Warning)",
+    "Memory leak detected (Info)"
+]
+)
+region_filter = Select(
+    "region_filter",
+    [
+        "SelectItem('All', 'All')",
+        SelectItem("us-east", "US East"),
+        SelectItem("eu-west", "EU West"),
+        SelectItem("ap-southeast", "AP Southeast")
+    ],
+    "Select region<unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk>
+
+root = Card([header, uptimeText, cpuMemoryChart, errorRateText, incidentsList, regionSelect, slowEndpointsTable, alertSlider, acknowledgeBtn])

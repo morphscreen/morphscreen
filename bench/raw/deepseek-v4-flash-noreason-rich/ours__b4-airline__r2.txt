@@ -1,0 +1,169 @@
+# Hub Operations — Today
+
+<Callout tone="warning" title="Weather advisory in effect">Thunderstorm cell approaching from the west, expected 14:00–18:00 local. Ground stops possible.</Callout>
+
+<Columns>
+<Stat label="On-time performance" value="78%" change="+4% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Avg passenger load" value="86%" change="+2% vs yesterday" tone="info" icon="users" />
+<Stat label="Avg turnaround time" value="42 min" change="−3 min vs yesterday" tone="success" icon="clock" />
+<Stat label="Cancellations today" value="6" change="2 weather, 4 mechanical" tone="danger" icon="x-circle" />
+</Columns>
+
+<Card title="Flights" subtitle="All departures and arrivals today — sorted by departure time">
+<Tabs>
+<Tab title="All flights">
+<Chart type="bar" title="Flights by status" x="Status" y="Count">
+| Status | Flights |
+|---|---|
+| On time | 142 |
+| Boarding | 18 |
+| Delayed | 27 |
+| Cancelled | 6 |
+| Arrived | 96 |
+</Chart>
+</Tab>
+<Tab title="Delayed flights">
+<Chart type="bar" title="Delay minutes by flight" x="Flight" y="Minutes">
+| Flight | Delay |
+|---|---|
+| AC 112 | 45 |
+| UA 884 | 38 |
+| DL 209 | 35 |
+| BA 118 | 30 |
+| LH 445 | 25 |
+| AF 332 | 20 |
+</Chart>
+</Tab>
+<Tab title="Connections at risk">
+<Chart type="bar" title="Passengers at risk by connection" x="Route" y="Pax">
+| Route | Passengers |
+|---|---|
+| YYZ→LHR | 34 |
+| YYZ→CDG | 28 |
+| YYZ→JFK | 22 |
+| YYZ→LAX | 18 |
+| YYZ→MIA | 15 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Flight board" subtitle="Tap a flight for details">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AC 112 | Toronto → London | B22 | <Badge tone="warning">Delayed 45 min</Badge> |
+| UA 884 | Toronto → Chicago | C14 | <Badge tone="warning">Delayed 38 min</Badge> |
+| DL 209 | Toronto → Atlanta | A07 | <Badge tone="warning">Delayed 35 min</Badge> |
+| BA 118 | Toronto → Heathrow | B31 | <Badge tone="warning">Delayed 30 min</Badge> |
+| LH 445 | Toronto → Frankfurt | C02 | <Badge tone="warning">Delayed 25 min</Badge> |
+| AF 332 | Toronto → Paris | A19 | <Badge tone="warning">Delayed 20 min</Badge> |
+| AC 101 | Toronto → Vancouver | B11 | <Badge tone="success">On time</Badge> |
+| WS 555 | Toronto → Calgary | C09 | <Badge tone="success">On time</Badge> |
+| AC 220 | Toronto → New York | A03 | <Badge tone="success">Boarding</Badge> |
+| EK 241 | Toronto → Dubai | B28 | <Badge tone="neutral">On time</Badge> |
+
+<Button>View full flight board</Button>
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 2 hours">
+| Time | Flight | From → To | Reason |
+|---|---|---|---|
+| 11:42 | AC 112 | B18 → B22 | Weather reroute |
+| 11:36 | UA 884 | C08 → C14 | Gate conflict |
+| 11:28 | DL 209 | A12 → A07 | Equipment move |
+| 11:15 | BA 118 | B25 → B31 | Crew availability |
+| 11:02 | LH 445 | C10 → C02 | Schedule change |
+
+<Button variant="secondary">Acknowledge all</Button>
+</Card>
+
+<Card title="Crews available for reassignment" subtitle="Qualified and on standby">
+<Columns>
+<div>
+**Flight deck** — 4 crews
+- Capt. M. Chen — A320
+- Capt. R. Okafor — B737
+- F/O L. Dubois — A320
+- F/O S. Patel — B737
+</div>
+<div>
+**Cabin** — 11 crews
+- 6 × lead flight attendants
+- 5 × flight attendants
+</div>
+</Columns>
+<Button>Assign crew</Button>
+</Card>
+
+<Card title="Weather advisories at hub (YYZ)">
+<Callout tone="warning" title="Thunderstorm watch">14:00–18:00 local. Gusts to 45 kt. Expect holding and ground stops.</Callout>
+<Callout tone="info" title="Ceiling & visibility">Ceiling 2,500 ft, visibility 6 mi, improving after 18:00.</Callout>
+<Callout tone="info" title="Winds">WSW at 18 kt gusting 28 kt.</Callout>
+<Button>View radar loop</Button>
+</Card>
+
+<Card title="Connections at risk" subtitle="Passengers who may miss their connection">
+| Passenger | From → To | Connection time | Risk |
+|---|---|---|---|
+| A. Singh | YYZ → LHR → DEL | 35 min | <Badge tone="danger">High</Badge> |
+| J. Kim | YYZ → CDG → ICN | 40 min | <Badge tone="danger">High</Badge> |
+| T. Brown | YYZ → JFK → SFO | 50 min | <Badge tone="warning">Medium</Badge> |
+| M. Garcia | YYZ → LAX → MEX | 55 min | <Badge tone="warning">Medium</Badge> |
+| P. Novak | YYZ → MIA → GRU | 60 min | <Badge tone="warning">Medium</Badge> |
+
+<Button>Rebook affected passengers</Button>
+</Card>
+
+<Card title="Rebook affected passengers" subtitle="Select passengers to rebook">
+<Form name="rebook">
+<Checkboxes label="Passengers to rebook" options="A. Singh (YYZ→LHR→DEL) | J. Kim (YYZ→CDG→ICN) | T. Brown (YYZ→JFK→SFO) | M. Garcia (YYZ→LAX→MEX) | P. Novak (YYZ→MIA→GRU)" name="pax" />
+<Select label="Preferred rebooking" options="Next available flight | Same day, any airline | Next day, same airline" name="preference" />
+<Select label="Notify via" options="SMS | Email | Both" name="notify" />
+<Button>Rebook selected</Button>
+<Button variant="secondary">View alternatives</Button>
+</Form>
+</Card>
+
+<Card title="Switch hub" subtitle="View another hub's operations">
+<Form name="hub-switch">
+<Select label="Hub" options="Toronto (YYZ) | Montreal (YUL) | Vancouver (YVR) | Calgary (YYC) | Halifax (YHZ)" name="hub" />
+<Button>Switch hub</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations today" subtitle="6 total — 2 weather, 4 mechanical">
+| Flight | Route | Reason | Passengers rebooked |
+|---|---|---|---|
+| AC 118 | Toronto → Boston | Weather | ✅ 112/112 |
+| WS 442 | Toronto → Winnipeg | Weather | ✅ 98/98 |
+| AC 305 | Toronto → Ottawa | Mechanical | ✅ 45/45 |
+| UA 771 | Toronto → Newark | Mechanical | ✅ 67/67 |
+| DL 500 | Toronto → Detroit | Mechanical | ✅ 89/89 |
+| AC 660 | Toronto → Montreal | Mechanical | ✅ 120/120 |
+
+<Button>View rebooking status</Button>
+</Card>
+
+<Card title="Average turnaround time" subtitle="Aircraft on ground — last 24 hours">
+<Stat label="Today's avg" value="42 min" change="Target: 45 min" tone="success" icon="clock" />
+<Chart type="line" title="Turnaround by hour" x="Hour" y="Minutes">
+| Hour | Turnaround |
+|---|---|
+| 06 | 38 |
+| 08 | 41 |
+| 10 | 44 |
+| 12 | 47 |
+| 14 | 45 |
+| 16 | 40 |
+| 18 | 39 |
+| 20 | 43 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show delayed flights longer than 60 minutes
+- List gate conflicts for the next 3 hours
+- Show crew availability by qualification
+- Weather outlook for the next 12 hours
+- Rebook all passengers on AC 112
+</FollowUps>

@@ -1,0 +1,78 @@
+# Logistics Coordinator Board
+
+<Badge tone="info">Last refreshed: 2024-01-15 14:32 UTC</Badge>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % This Month" value="87.3%" change="+2.1% vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg Cost / Shipment" value="$2,847" change="-$124 vs last month" tone="info" icon="currency-usd" />
+<Stat label="Active Shipments" value="234" change="+12 vs yesterday" tone="neutral" icon="truck" />
+<Stat label="Delayed" value="18" change="-3 vs yesterday" tone="warning" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Search Shipments">
+<Form name="route-search">
+<Input label="Search by route" name="route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin → destination or carrier name" />
+<Button variant="secondary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Shipments in Transit" subtitle="234 active • 18 delayed">
+| # | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|
+| SH-8472 | Los Angeles (LAX) | New York (JFK) | FedEx Freight | 2024-01-16 08:00 | <Badge tone="success">On Time</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8473 | Seattle (SEA) | Chicago (ORD) | UPS Supply Chain | 2024-01-16 14:30 | <Badge tone="success">On Time</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8474 | Miami (MIA) | Dallas (DFW) | XPO Logistics | 2024-01-15 22:00 | <Badge tone="warning">Delayed</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8475 | Atlanta (ATL) | San Francisco (SFO) | Old Dominion | 2024-01-17 10:15 | <Badge tone="success">On Time</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8476 | Houston (IAH) | Boston (BOS) | YRC Worldwide | 2024-01-15 18:45 | <Badge tone="danger">Late</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8477 | Denver (DEN) | Phoenix (PHX) | FedEx Freight | 2024-01-16 12:00 | <Badge tone="success">On Time</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8478 | Portland (PDX) | Minneapolis (MSP) | UPS Supply Chain | 2024-01-15 20:30 | <Badge tone="warning">Delayed</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8479 | Charlotte (CLT) | Detroit (DTW) | XPO Logistics | 2024-01-17 09:00 | <Badge tone="success">On Time</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8480 | San Diego (SAN) | Philadelphia (PHL) | Old Dominion | 2024-01-16 16:20 | <Badge tone="success">On Time</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+| SH-8481 | Las Vegas (LAS) | Baltimore (BWI) | YRC Worldwide | 2024-01-15 19:10 | <Badge tone="danger">Late</Badge> | <Button size="small" variant="tertiary">Flag</Button> |
+</Card>
+
+<Callout tone="warning" title="Delayed Shipments Requiring Attention">
+<strong>SH-8474</strong> MIA → DFW (XPO) — ETA missed by 4h 32m • Weather hold at DFW<br/>
+<strong>SH-8476</strong> IAH → BOS (YRC) — ETA missed by 1h 47m • Driver hours violation<br/>
+<strong>SH-8478</strong> PDX → MSP (UPS) — ETA missed by 2h 15m • Mechanical issue<br/>
+<strong>SH-8481</strong> LAS → BWI (YRC) — ETA missed by 53m • Congestion at BWI
+</Callout>
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier (This Month)">
+| Carrier | Shipments |
+|---|---|
+| FedEx Freight | 68 |
+| UPS Supply Chain | 54 |
+| XPO Logistics | 42 |
+| Old Dominion | 38 |
+| YRC Worldwide | 32 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| 2024-W01 | 182 |
+| 2024-W02 | 195 |
+| 2024-W03 | 201 |
+| 2024-W04 | 218 |
+| 2024-W05 | 224 |
+| 2024-W06 | 231 |
+| 2024-W07 | 228 |
+| 2024-W08 | 234 |
+</Chart>
+</Card>
+
+<Card title="Flag Shipment">
+<Form name="flag-shipment">
+<Select label="Shipment" name="shipment" options="SH-8472 | SH-8473 | SH-8474 | SH-8475 | SH-8476 | SH-8477 | SH-8478 | SH-8479 | SH-8480 | SH-8481" placeholder="Select a shipment" required="true" />
+<Select label="Flag Reason" name="reason" options="Damage risk | Temperature excursion | Security concern | Documentation issue | Customer request | Other" placeholder="Select reason" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Add details..." rows="3" />
+<Button>Submit Flag</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

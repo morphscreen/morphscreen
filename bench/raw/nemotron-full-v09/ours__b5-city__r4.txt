@@ -1,0 +1,247 @@
+# City Operations Center
+
+<Card title="District Focus" subtitle="Filter all metrics by district">
+<Select label="Select District" name="district" placeholder="Citywide" options="Citywide | Downtown | Northside | Eastside | Westside | Riverside | University District | Industrial Zone" />
+</Card>
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="Live traffic index">
+<Stat label="Congestion Level" value="67%" change="+4% vs 1hr ago" tone="warning" icon="chart-line" />
+<Progress value="67" max="100" label="Traffic Flow" tone="warning" />
+<Stat label="Avg Speed" value="28 km/h" change="-3 km/h" tone="neutral" />
+<Stat label="Active Incidents" value="12" change="+2" tone="danger" icon="alert-triangle" />
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance">
+<Stat label="System Wide" value="92%" change="+1.2% vs yesterday" tone="success" icon="train" />
+<Stat label="Bus Network" value="89%" change="-0.5%" tone="warning" />
+<Stat label="Light Rail" value="96%" change="+0.3%" tone="success" />
+<Stat label="Ferry" value="94%" change="0%" tone="info" />
+<Progress value="92" max="100" label="Target: 90%" tone="success" />
+</Card>
+
+<Card title="Air Quality by District" subtitle="AQI (lower is better)">
+<Chart type="horizontal" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Northside | 42 |
+| Eastside | 55 |
+| Westside | 38 |
+| Riverside | 31 |
+| University District | 47 |
+| Industrial Zone | 112 |
+</Chart>
+<Badge tone="danger">Industrial Zone: Unhealthy</Badge>
+<Badge tone="warning">Downtown: Moderate</Badge>
+<Badge tone="success">Riverside: Good</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use (Past Week)" subtitle="MWh consumed">
+<Chart type="line" x="Day" y="MWh">
+| Day | Residential | Commercial | Industrial | Municipal |
+|---|---|---|---|---|
+| Mon | 1240 | 2100 | 3800 | 420 |
+| Tue | 1180 | 2050 | 3750 | 410 |
+| Wed | 1220 | 2150 | 3900 | 430 |
+| Thu | 1260 | 2200 | 3850 | 425 |
+| Fri | 1300 | 2180 | 3800 | 440 |
+| Sat | 1150 | 1800 | 3200 | 380 |
+| Sun | 1100 | 1650 | 2900 | 360 |
+</Chart>
+<Stat label="Total This Week" value="48,720 MWh" change="-2.1% vs last week" tone="success" />
+</Card>
+
+<Card title="Water Use Today" subtitle="Real-time consumption">
+<Stat label="Current Rate" value="1.24M gal/hr" change="+3% vs avg" tone="warning" icon="drop" />
+<Stat label="Today Total" value="28.6M gal" change="-1.2% vs yesterday" tone="neutral" />
+<Stat label="Reservoir Level" value="78%" change="-0.5%" tone="info" />
+<Progress value="78" max="100" label="Reservoir Capacity" tone="info" />
+<Callout tone="info" title="Conservation Alert">Stage 1 restrictions active — odd/even watering in effect</Callout>
+</Card>
+
+<Card title="Current Weather" subtitle="Updated 2 min ago">
+<Columns>
+<Stat label="Temperature" value="22°C" icon="thermometer" />
+<Stat label="Humidity" value="65%" icon="drop" />
+<Stat label="Wind" value="12 km/h NE" icon="wind" />
+<Stat label="UV Index" value="6" icon="sun" />
+</Columns>
+<Callout tone="neutral" title="Forecast">Partly cloudy, high 24°C, low 15°C. 10% chance of rain after 6 PM.</Callout>
+</Card>
+</Columns>
+
+<Card title="Open Incidents" subtitle="12 active incidents">
+<Chart type="table" x="Incident" y="Severity">
+| Incident | Location | Type | Severity | Since | Status |
+|---|---|---|---|---|---|
+| INC-2024-0451 | I-5 & Mercer St | Multi-vehicle collision | Critical | 14 min ago | Responding |
+| INC-2024-0450 | 3rd Ave & Pine St | Water main break | High | 32 min ago | Crew en route |
+| INC-2024-0449 | University Bridge | Bridge strike | High | 45 min ago | Lanes closed |
+| INC-2024-0448 | Capitol Hill | Power outage | Medium | 1 hr 12 min | Investigating |
+| INC-2024-0447 | Industrial Zone | Hazmat spill | Critical | 2 hr 8 min | Contained |
+| INC-2024-0446 | Northgate Mall | Elevator entrapment | Low | 3 hr 20 min | Resolved |
+| INC-2024-0445 | Ballard Bridge | Signal malfunction | Medium | 4 hr 5 min | Repair scheduled |
+| INC-2024-0444 | Pioneer Square | Gas leak | High | 5 hr 30 min | Monitoring |
+| INC-2024-0443 | Lake Union | Boat collision | Medium | 6 hr 15 min | Cleared |
+| INC-2024-0442 | Rainier Valley | Tree down on lines | Low | 7 hr 40 min | Crew assigned |
+| INC-2024-0441 | Magnolia Blvd | Sewer backup | Medium | 8 hr 22 min | Pumping |
+| INC-2024-0440 | Queen Anne | Traffic signal out | Low | 9 hr 10 min | Parts ordered |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Emergency Vehicles Deployed" subtitle="24 units active">
+<Chart type="table" x="Unit" y="Status">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| ENG-12 | Engine | I-5 & Mercer | INC-0451 | On scene |
+| LAD-03 | Ladder | I-5 & Mercer | INC-0451 | On scene |
+| MED-07 | Medic | I-5 & Mercer | INC-0451 | Transporting |
+| BAT-02 | Battalion | I-5 & Mercer | INC-0451 | Command |
+| ENG-08 | Engine | 3rd & Pine | INC-0450 | On scene |
+| RES-01 | Rescue | 3rd & Pine | INC-0450 | On scene |
+| HAZ-01 | Hazmat | Industrial Zone | INC-0447 | Monitoring |
+| ENG-15 | Engine | Industrial Zone | INC-0447 | Standby |
+| MED-03 | Medic | Capitol Hill | INC-0448 | Staging |
+| ENG-21 | Engine | Pioneer Square | INC-0444 | Monitoring |
+| MAR-02 | Marine | Lake Union | INC-0443 | Patrolling |
+| BRU-01 | Brush | Magnolia Blvd | INC-0441 | Working |
+</Chart>
+</Card>
+
+<Card title="Parking Availability Downtown" subtitle="Real-time occupancy">
+<Stat label="Overall" value="68% full" change="+5% vs 1hr ago" tone="warning" icon="car" />
+<Progress value="68" max="100" label="Downtown Core" tone="warning" />
+<Stat label="Street Parking" value="72% full" tone="warning" />
+<Stat label="Garage A (Main)" value="85% full" tone="danger" />
+<Stat label="Garage B (Waterfront)" value="54% full" tone="success" />
+<Stat label="Garage C (Convention)" value="61% full" tone="info" />
+<Stat label="Garage D (Stadium)" value="42% full" tone="success" />
+<Stat label="EV Charging" value="12/48 free" tone="info" />
+<Stat label="Accessible Spaces" value="28/156 free" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public Events This Weekend" subtitle="Permitted events affecting operations">
+<Chart type="table" x="Event" y="Impact">
+| Event | Date | Time | Location | Expected Attendance | Impact |
+|---|---|---|---|---|---|
+| Summer Music Festival | Sat Aug 17 | 12:00-22:00 | Waterfront Park | 25,000 | High — road closures |
+| Marathon | Sun Aug 18 | 07:00-12:00 | Citywide route | 15,000 runners | High — rolling closures |
+| Farmers Market | Sat Aug 17 | 09:00-14:00 | Pike Place | 8,000 | Medium — parking |
+| Art Walk | Sat Aug 17 | 17:00-21:00 | Capitol Hill | 12,000 | Medium — traffic |
+| Food Truck Rally | Sun Aug 18 | 11:00-16:00 | South Lake Union | 5,000 | Low — local only |
+| Pride Parade Prep | Sat Aug 17 | 06:00-10:00 | Broadway | 3,000 | Medium — staging |
+</Chart>
+</Card>
+
+<Card title="Citizen Reports (Live Feed)" subtitle="Last 20 reports">
+<Chart type="table" x="Time" y="Category">
+| Time | Category | Location | Description | Status |
+|---|---|---|---|---|
+| 14:32 | Pothole | 15th Ave NE & 65th | Large pothole in right lane | Triaged |
+| 14:28 | Graffiti | Ballard Bridge | Tagging on north face | Assigned |
+| 14:25 | Streetlight | 3rd Ave W & Nickerson | Flickering, then out | Dispatched |
+| 14:22 | Noise | Capitol Hill | Construction after hours | Verified |
+| 14:19 | Trash | University Way | Overflowing bins at 3 corners | Scheduled |
+| 14:15 | Tree | Ravenna Park | Large branch down on path | Crew sent |
+| 14:12 | Signal | 23rd Ave & Union | Left turn arrow stuck red | Investigating |
+| 14:08 | Water | Green Lake | Leaking hydrant near CC | Dispatched |
+| 14:05 | Parking | Fremont | Abandoned vehicle 72+ hrs | Ticketed |
+| 14:01 | Sidewalk | Queen Anne Ave | Heaved slab, trip hazard | Marked |
+| 13:58 | Drainage | Madison Park | Catch basin clogged, pooling | Scheduled |
+| 13:54 | Signage | I-90 exit | Missing merge sign | Ordered |
+| 13:50 | Animal | Discovery Park | Injured deer near loop | Animal control |
+| 13:47 | Debris | Alaskan Way | Pallets in bike lane | Cleared |
+| 13:43 | Lighting | Gas Works Park | Path lights out (section 3) | Parts ordered |
+| 13:40 | Encampment | Under I-5 at 45th | New structure appearing | Outreach notified |
+| 13:36 | Bike Lane | Dexter Ave N | Bollards damaged, cars parking | Cones placed |
+| 13:32 | Fountain | Occidental Park | Not running, algae buildup | Maintenance |
+| 13:28 | Crosswalk | 5th & Columbia | Faded, low visibility | Scheduled |
+| 13:25 | Bench | Volunteer Park | Broken slats, unsafe | Work order |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Service Request Backlog" subtitle="Open work orders">
+<Stat label="Total Backlog" value="1,847" change="+23 vs yesterday" tone="warning" icon="clipboard-text" />
+<Stat label="Critical (P1)" value="12" change="+2" tone="danger" />
+<Stat label="High (P2)" value="156" change="+8" tone="warning" />
+<Stat label="Medium (P3)" value="689" change="+11" tone="info" />
+<Stat label="Low (P4)" value="990" change="+2" tone="neutral" />
+<Progress value="42" max="100" label="Avg completion rate (7-day)" tone="neutral" />
+<Callout tone="info" title="Oldest Request">REQ-2023-11842 — Sidewalk repair, 312 days open</Callout>
+</Card>
+
+<Card title="Roadworks Planned This Month" subtitle="Scheduled construction">
+<Chart type="table" x="Project" y="Impact">
+| Project | Location | Start | End | Type | Impact | Status |
+|---|---|---|---|---|---|---|
+| Aurora Ave Repaving | N 85th - N 145th | Aug 19 | Sep 13 | Resurfacing | Lane shifts | Permitted |
+| 23rd Ave Corridor | E Union - E John | Aug 21 | Oct 18 | Complete street | Full closure phases | Permitted |
+| Bridge Seismic Retrofit | University Bridge | Aug 26 | Dec 20 | Structural | Night closures | Permitted |
+| Water Main Replacement | 15th Ave NW | Sep 3 | Sep 28 | Utility | Detour required | Permitted |
+| Bike Lane Protection | Dexter Ave N | Sep 9 | Sep 27 | Safety | Parking removal | Permitted |
+| Signal Modernization | Downtown core | Sep 16 | Nov 8 | Tech upgrade | Intermittent | Design review |
+| Pedestrian Plaza | Pike/Pine | Sep 23 | Oct 25 | Public realm | Street closure | Permitted |
+| Stormwater Upgrade | South Park | Sep 30 | Jan 15 | Drainage | Local access only | Permitted |
+</Chart>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets approaching service intervals">
+<Chart type="table" x="Asset" y="Priority">
+| Asset ID | Type | Location | Last Service | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|---|
+| BRG-042 | Bridge bearings | Fremont Bridge | 2022-03-15 | 2024-03-15 | 154 | Critical |
+| PMP-018 | Pump station | Thornton Creek | 2023-08-20 | 2024-08-20 | 0 | Critical |
+| SGN-312 | Traffic cabinet | 3rd & Pine | 2023-02-10 | 2024-02-10 | 187 | High |
+| LGT-889 | Streetlight circuit | Rainier Ave S | 2023-11-05 | 2024-05-05 | 102 | High |
+| VLV-156 | Water valve | Capitol Hill | 2022-09-12 | 2024-09-12 | 0 | Medium |
+| SWR-077 | Sewer interceptor | Duwamish | 2023-01-30 | 2024-07-30 | 16 | Medium |
+| BRG-019 | Expansion joints | Ballard Bridge | 2023-06-22 | 2024-06-22 | 54 | Medium |
+| PMP-033 | Lift station | Magnolia | 2023-12-01 | 2024-12-01 | -109 | Low |
+| SGN-145 | Pedestrian beacon | Green Lake | 2023-04-18 | 2024-10-18 | -75 | Low |
+| LGT-421 | Tunnel lighting | Battery St Tunnel | 2023-08-14 | 2024-08-14 | 6 | High |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Dispatch Crew" subtitle="Send a team to an incident or location">
+<Form name="dispatch-crew">
+<Columns>
+<Select label="Crew Type" name="crewType" placeholder="Select crew" options="Roads & Paving | Traffic Signals | Water/Sewer | Electrical | Parks & Trees | Signage/Markings | Bridge/Structural | General Maintenance" required="true" />
+<Select label="Priority" name="priority" placeholder="Priority" options="Routine | Urgent | Emergency" value="Routine" required="true" />
+</Columns>
+<Input label="Location / Address" name="location" placeholder="e.g., 3rd Ave & Pine St, or intersection" required="true" />
+<TextArea label="Details / Instructions" name="details" placeholder="Describe the work needed, safety concerns, equipment required..." rows="3" required="true" />
+<Checkboxes label="Notify" name="notify" options="Incident Commander | District Supervisor | Public Info Officer | Traffic Management" value="Incident Commander | District Supervisor" />
+<Button label="Dispatch Crew" icon="send" />
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Broadcast message to citizens via app, SMS, and social media">
+<Form name="public-alert">
+<Radio label="Alert Level" name="alertLevel" options="Info — General information | Advisory — Situational awareness | Warning — Action recommended | Emergency — Immediate action required" value="Advisory — Situational awareness" required="true" />
+<Select label="Target Area" name="targetArea" placeholder="Geographic scope" options="Citywide | Downtown | Northside | Eastside | Westside | Riverside | University District | Industrial Zone | Custom polygon" required="true" />
+<Input label="Headline" name="headline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" name="message" placeholder="Full alert text. Include what happened, what to do, how long, and where to get more info." rows="4" required="true" />
+<Checkboxes label="Channels" name="channels" options="Mobile Push | SMS | Email | Social Media | Website Banner | Highway Signs | Radio/TV (EAS)" value="Mobile Push | SMS | Social Media | Website Banner" required="true" />
+<Switch label="Send test to me first" name="testFirst" value="true" />
+<Button label="Send Alert" variant="danger" icon="megaphone" />
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the congestion heatmap for Downtown
+- List all P1 service requests older than 30 days
+- Generate a weekly operations summary report
+- What's the status of the University Bridge retrofit?
+- Show citizen reports for the Industrial Zone only
+</FollowUps>

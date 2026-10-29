@@ -1,0 +1,84 @@
+# E-commerce Operations Desk
+
+Today's snapshot at a glance.
+
+<Columns>
+<Stat label="Orders today" value="142" change="+12% vs yesterday" icon="shopping-cart" />
+<Stat label="Revenue today" value="$18,420" change="+8% vs yesterday" icon="currency-dollar" />
+<Stat label="Avg. order value" value="$129.72" change="+2.1% vs yesterday" icon="chart-line" />
+<Stat label="Refund rate (month)" value="3.4%" change="-0.6 pts vs last month" tone="success" icon="arrow-counter-clockwise" />
+</Columns>
+
+<Card title="Order volume — past 4 weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 890 |
+| Week 2 | 1,024 |
+| Week 3 | 968 |
+| Week 4 | 1,142 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Filter by status or search by customer name">
+<Tabs>
+<Tab title="All">
+<Input label="Search by customer name" placeholder="e.g. Jane Smith" />
+<Select label="Filter by status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Delivered | Refunded" />
+<Columns>
+<Stat label="Showing" value="142" note="All orders today" />
+</Columns>
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #10482 | Jane Smith | $156.00 | <Badge tone="warning">Pending</Badge> |
+| #10481 | Carlos Mendez | $89.50 | <Badge tone="info">Paid</Badge> |
+| #10480 | Aisha Khan | $210.75 | <Badge tone="success">Fulfilled</Badge> |
+| #10479 | Tom O'Brien | $45.20 | <Badge tone="success">Fulfilled</Badge> |
+| #10478 | Lena Fischer | $132.90 | <Badge tone="info">Paid</Badge> |
+| #10477 | Raj Patel | $78.00 | <Badge tone="neutral">Shipped</Badge> |
+| #10476 | Mia Wong | $264.30 | <Badge tone="success">Delivered</Badge> |
+| #10475 | Sam Rivera | $52.40 | <Badge tone="warning">Pending</Badge> |
+| #10474 | Eva Novak | $198.15 | <Badge tone="danger">Refunded</Badge> |
+| #10473 | Liam Byrne | $67.80 | <Badge tone="success">Fulfilled</Badge> |
+</Tab>
+<Tab title="Pending">
+<Input label="Search by customer name" placeholder="e.g. Jane Smith" />
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #10482 | Jane Smith | $156.00 | <Badge tone="warning">Pending</Badge> |
+| #10475 | Sam Rivera | $52.40 | <Badge tone="warning">Pending</Badge> |
+</Tab>
+<Tab title="Paid">
+<Input label="Search by customer name" placeholder="e.g. Jane Smith" />
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #10481 | Carlos Mendez | $89.50 | <Badge tone="info">Paid</Badge> |
+| #10478 | Lena Fischer | $132.90 | <Badge tone="info">Paid</Badge> |
+</Tab>
+<Tab title="Fulfilled">
+<Input label="Search by customer name" placeholder="e.g. Jane Smith" />
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #10480 | Aisha Khan | $210.75 | <Badge tone="success">Fulfilled</Badge> |
+| #10479 | Tom O'Brien | $45.20 | <Badge tone="success">Fulfilled</Badge> |
+| #10473 | Liam Byrne | $67.80 | <Badge tone="success">Fulfilled</Badge> |
+</Tab>
+</Tabs>
+
+<Card title="Mark order as fulfilled">
+<Form name="fulfill-order">
+<Input label="Order ID" placeholder="#10482" hint="Enter the order ID you wish to fulfill" />
+<Button>Mark as fulfilled</Button>
+</Form>
+</Card>
+</Card>
+
+<Callout tone="info" title="Refund rate this month">
+3.4% of orders placed this month were refunded. This is down from 4.0% last month.
+</Callout>
+
+<FollowUps>
+- Show orders that need fulfillment right now
+- Compare today's revenue with the same day last week
+- Which products have the highest refund rate this month?
+</FollowUps>

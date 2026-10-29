@@ -1,0 +1,59 @@
+# Month-End Finance View
+
+<Card title="November 2024" subtitle="Month-end summary">
+<Columns>
+<Select label="Select month" name="month-select" options="November 2024 | October 2024 | September 2024 | August 2024 | July 2024 | June 2024" value="November 2024" />
+<Button variant="secondary" size="small">Download statement</Button>
+</Columns>
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Cash on hand" value="$847,200" change="-$42,300 vs last month" tone="info" />
+<Stat label="Monthly burn" value="$128,500" change="+$8,200 vs last month" tone="warning" />
+<Stat label="Runway" value="6.6 months" change="-0.4 months vs last month" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Expenses by category">
+<Chart type="donut" title="November 2024 expenses" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Payroll | 78,400 |
+| Cloud & Infrastructure | 18,200 |
+| Marketing & Ads | 12,500 |
+| Professional Services | 8,900 |
+| Office & Operations | 6,300 |
+| Software & Tools | 4,200 |
+</Chart>
+</Card>
+
+<Card title="Expenses breakdown">
+| Category | Amount | % of Total | vs Last Month |
+|---|---|---|---|
+| Payroll | $78,400 | 61.0% | +$3,200 |
+| Cloud & Infrastructure | $18,200 | 14.2% | +$1,800 |
+| Marketing & Ads | $12,500 | 9.7% | +$2,100 |
+| Professional Services | $8,900 | 6.9% | -$500 |
+| Office & Operations | $6,300 | 4.9% | +$1,200 |
+| Software & Tools | $4,200 | 3.3% | +$400 |
+| **Total** | **$128,500** | **100%** | **+$8,200** |
+</Card>
+
+<Card title="Transactions above $10,000">
+| Date | Vendor | Category | Amount | Description |
+|---|---|---|---|---|
+| Nov 3 | AWS | Cloud & Infrastructure | $18,200 | Monthly cloud infrastructure |
+| Nov 5 | Rippling Payroll | Payroll | $78,400 | November payroll run |
+| Nov 7 | Google Ads | Marketing & Ads | $12,500 | Q4 campaign spend |
+| Nov 12 | Orrick Legal | Professional Services | $11,200 | Series A legal fees (partial) |
+| Nov 15 | Stripe Atlas | Professional Services | $4,800 | *Below threshold* |
+| Nov 20 | WeWork | Office & Operations | $6,300 | *Below threshold* |
+</Card>
+
+<Callout tone="info" title="Notes">
+- Runway calculated as cash on hand ÷ monthly burn (excluding one-time items)
+- Payroll includes salaries, benefits, and contractor payments
+- Professional services includes legal, accounting, and consulting
+- Download button generates PDF statement with all transactions and reconciliation
+</Callout>

@@ -1,0 +1,156 @@
+<Card title="Service Health Dashboard" subtitle="Production • Last updated 2 minutes ago">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Current error rate" value="0.23%" change="+0.08% vs 1h ago" tone="warning" />
+<Stat label="Open incidents" value="3" change="2 critical, 1 warning" tone="danger" />
+<Stat label="P99 latency" value="1.2s" change="+150ms vs baseline" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Region filter">
+<Select label="Select region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="All regions" />
+</Card>
+
+<Columns>
+<Card title="CPU & Memory Usage (24h)" subtitle="Aggregated across all instances">
+<Chart type="area" x="Time" y="Percentage" title="Resource Utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 45 | 60 |
+| 08:00 | 62 | 68 |
+| 10:00 | 71 | 73 |
+| 12:00 | 78 | 79 |
+| 14:00 | 82 | 81 |
+| 16:00 | 75 | 77 |
+| 18:00 | 68 | 72 |
+| 20:00 | 55 | 65 |
+| 22:00 | 48 | 60 |
+</Chart>
+</Card>
+
+<Card title="Error Rate Trend (24h)" subtitle="Errors per minute across all services">
+<Chart type="line" x="Time" y="Errors/min" title="Error Rate">
+| Time | Errors/min |
+|---|---|
+| 00:00 | 12 |
+| 02:00 | 8 |
+| 04:00 | 5 |
+| 06:00 | 15 |
+| 08:00 | 28 |
+| 10:00 | 42 |
+| 12:00 | 55 |
+| 14:00 | 61 |
+| 16:00 | 48 |
+| 18:00 | 35 |
+| 20:00 | 22 |
+| 22:00 | 18 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (3)">
+<Details title="INC-2024-0847 • Critical • Payment API timeouts" open="true">
+**Service:** payment-api (us-east-1)  
+**Started:** 2024-01-15 14:22 UTC  
+**Impact:** ~12% of checkout requests timing out  
+**Owner:** @sarah-chen (on-call)  
+**Runbook:** [Payment API Timeout Runbook](https://runbooks.company.com/payment-timeout)
+<Button variant="danger" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View details</Button>
+</Details>
+<Details title="INC-2024-0846 • Critical • Database connection pool exhaustion">
+**Service:** user-db (eu-west-1)  
+**Started:** 2024-01-15 13:45 UTC  
+**Impact:** Elevated 500s on user profile endpoints  
+**Owner:** @marcus-johnson (on-call)  
+**Runbook:** [DB Connection Pool Runbook](https://runbooks.company.com/db-pool)
+<Button variant="danger" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View details</Button>
+</Details>
+<Details title="INC-2024-0845 • Warning • Elevated latency on search endpoints">
+**Service:** search-api (us-west-2)  
+**Started:** 2024-01-15 15:10 UTC  
+**Impact:** P99 latency 3.2s (threshold: 2s)  
+**Owner:** @priya-sharma (on-call)  
+**Runbook:** [Search Latency Runbook](https://runbooks.company.com/search-latency)
+<Button variant="warning" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View details</Button>
+</Details>
+</Tab>
+<Tab title="Critical (2)">
+<Details title="INC-2024-0847 • Critical • Payment API timeouts" open="true">
+**Service:** payment-api (us-east-1)  
+**Started:** 2024-01-15 14:22 UTC  
+**Impact:** ~12% of checkout requests timing out  
+**Owner:** @sarah-chen (on-call)  
+<Button variant="danger" size="small">Acknowledge</Button>
+</Details>
+<Details title="INC-2024-0846 • Critical • Database connection pool exhaustion">
+**Service:** user-db (eu-west-1)  
+**Started:** 2024-01-15 13:45 UTC  
+**Impact:** Elevated 500s on user profile endpoints  
+**Owner:** @marcus-johnson (on-call)  
+<Button variant="danger" size="small">Acknowledge</Button>
+</Details>
+</Tab>
+<Tab title="Warning (1)">
+<Details title="INC-2024-0845 • Warning • Elevated latency on search endpoints" open="true">
+**Service:** search-api (us-west-2)  
+**Started:** 2024-01-15 15:10 UTC  
+**Impact:** P99 latency 3.2s (threshold: 2s)  
+**Owner:** @priya-sharma (on-call)  
+<Button variant="warning" size="small">Acknowledge</Button>
+</Details>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Five Slowest Endpoints (P99 latency, last 5 min)">
+| Endpoint | Service | Region | P50 | P95 | P99 | Requests/min | Trend |
+|---|---|---|---|---|---|---|---|
+| `POST /api/v1/checkout` | payment-api | us-east-1 | 1.8s | 3.2s | **5.4s** | 1,240 | ↗️ +42% |
+| `GET /api/v1/users/{id}/profile` | user-service | eu-west-1 | 890ms | 2.1s | **3.8s** | 3,450 | ↗️ +18% |
+| `POST /api/v1/search` | search-api | us-west-2 | 1.2s | 2.8s | **3.5s** | 890 | ↗️ +31% |
+| `PUT /api/v1/orders/{id}` | order-service | us-east-1 | 650ms | 1.9s | **2.9s** | 2,100 | → stable |
+| `GET /api/v1/products/{id}/reviews` | review-service | ap-southeast-1 | 420ms | 1.4s | **2.3s** | 5,600 | ↘️ -12% |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Select label="Metric" name="metric" placeholder="Select metric" options="Error rate (%) | P99 latency (ms) | CPU utilization (%) | Memory utilization (%) | Request latency P95 (ms) | Queue depth" required="true" />
+<Input label="Warning threshold" name="warning" type="number" placeholder="e.g. 1" hint="Triggers warning alert" required="true" />
+<Input label="Critical threshold" name="critical" type="number" placeholder="e.g. 5" hint="Triggers critical alert + page" required="true" />
+</Columns>
+<Columns>
+<Select label="Evaluation window" name="window" options="1 minute | 5 minutes | 15 minutes | 1 hour" value="5 minutes" />
+<Select label="Notification channel" name="channel" options="PagerDuty (on-call) | Slack #alerts | Email team | Webhook" value="PagerDuty (on-call)" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+<Callout tone="info" title="Current active thresholds">
+**Error rate:** Warning > 1% (5m), Critical > 5% (5m) • **P99 latency:** Warning > 2000ms (5m), Critical > 5000ms (5m) • **CPU:** Warning > 80% (15m), Critical > 95% (5m)
+</Callout>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">📞 Page on-call</Button>
+<Button variant="secondary" size="large">📝 Create postmortem</Button>
+<Button variant="tertiary" size="large">🔄 Deploy rollback</Button>
+<Button variant="danger" size="large">🚨 Declare incident</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the deployment history for payment-api
+- What's the error budget burn rate this quarter?
+- List all incidents from the last 7 days
+- Compare latency across regions for search-api
+</FollowUps>

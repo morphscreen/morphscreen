@@ -1,0 +1,57 @@
+# Training Platform Analytics
+
+<Select label="Cohort" name="cohort-filter" placeholder="Select a cohort" options="All Cohorts | Cohort A (Q1 2024) | Cohort B (Q2 2024) | Cohort C (Q3 2024)" value="All Cohorts" />
+
+<Columns>
+<Stat label="Active Learners This Week" value="1,247" change="+12.3% vs last week" tone="success" />
+<Stat label="Course Completion Rate" value="78.5%" change="+4.2% vs last month" tone="info" />
+<Stat label="Average Quiz Score" value="84.2%" change="-1.1% vs last month" tone="warning" />
+</Columns>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="horizontal" x="Enrollment" y="Course" title="Top 6 Courses by Enrollment">
+| Course | Enrollment |
+|---|---|
+| Python Fundamentals | 342 |
+| Data Analysis with Pandas | 287 |
+| Web Development Bootcamp | 256 |
+| Machine Learning Basics | 198 |
+| Cloud Architecture | 167 |
+| DevOps Essentials | 134 |
+</Chart>
+</Card>
+
+<Card title="Engagement Across Past 8 Weeks">
+<Chart type="line" x="Week" y="Count" title="Weekly Engagement Metrics">
+| Week | Active Users | Session Hours | Completions |
+|---|---|---|---|
+| Week 1 | 892 | 2140 | 156 |
+| Week 2 | 1023 | 2567 | 189 |
+| Week 3 | 1156 | 2890 | 223 |
+| Week 4 | 1089 | 2712 | 198 |
+| Week 5 | 1234 | 3105 | 267 |
+| Week 6 | 1198 | 3012 | 245 |
+| Week 7 | 1267 | 3234 | 289 |
+| Week 8 | 1247 | 3189 | 278 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+| Learner | Course | Last Activity | Risk Score | Action |
+|---|---|---|---|---|
+| Sarah Chen | Machine Learning Basics | 14 days ago | 92% | <Button variant="tertiary" size="small">Reach out</Button> |
+| Marcus Johnson | Cloud Architecture | 11 days ago | 87% | <Button variant="tertiary" size="small">Reach out</Button> |
+| Priya Patel | DevOps Essentials | 18 days ago | 84% | <Button variant="tertiary" size="small">Reach out</Button> |
+| James Wilson | Web Development Bootcamp | 9 days ago | 79% | <Button variant="tertiary" size="small">Reach out</Button> |
+| Aisha Rahman | Data Analysis with Pandas | 16 days ago | 76% | <Button variant="tertiary" size="small">Reach out</Button> |
+</Card>
+
+<Card title="Message a Cohort" subtitle="Send an announcement or reminder to selected learners">
+<Form name="cohort-message">
+<Select label="Recipient Cohort" name="recipient-cohort" placeholder="Choose cohort" options="Cohort A (Q1 2024) | Cohort B (Q2 2024) | Cohort C (Q3 2024) | All Active Learners | At-Risk Learners Only" required="true" />
+<Input label="Subject" name="subject" placeholder="e.g., Upcoming deadline reminder" required="true" />
+<TextArea label="Message" name="message" placeholder="Write your message here..." rows="5" required="true" hint="Supports markdown formatting" />
+<Button>Send Message</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>

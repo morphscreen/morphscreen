@@ -1,0 +1,209 @@
+# City Operations Center
+
+<Card title="District Focus">
+<Combobox label="Select district to focus" options="Downtown | Northside | Eastport | Westfield | Riverside | Lakeside | Hillcrest | University" placeholder="All districts" />
+</Card>
+
+<Columns>
+<Card title="Congestion Right Now">
+<Gauge label="Traffic Index" value="72" min="0" max="100" unit="%" tone="warning" />
+<Stat label="Avg Speed" value="28 km/h" change="-12% vs normal" tone="warning" />
+<Stat label="Active Jams" value="14" change="+3 from 1hr ago" tone="danger" />
+</Card>
+
+<Card title="Transit Punctuality">
+<Gauge label="On-Time %" value="87" min="0" max="100" unit="%" tone="success" />
+<Stat label="Buses Delayed" value="23" change="-5 from last hour" tone="info" />
+<Stat label="Trains Delayed" value="4" change="0" tone="neutral" />
+</Card>
+
+<Card title="Current Weather">
+<KeyValue title="Conditions">
+| Metric | Value |
+|---|---|
+| Temperature | 18°C |
+| Condition | Partly Cloudy |
+| Humidity | 62% |
+| Wind | 14 km/h NW |
+| Precipitation | 0 mm |
+| Alert Level | None |
+</KeyValue>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 89 |
+| Northside | 42 |
+| Eastport | 67 |
+| Westfield | 38 |
+| Riverside | 51 |
+| Lakeside | 29 |
+| Hillcrest | 45 |
+| University | 58 |
+</Chart>
+<Stat label="City Average" value="52" tone="info" />
+</Card>
+
+<Card title="Energy Use — Past 7 Days">
+<Chart type="line" x="Day" y="MW">
+| Day | Consumption |
+|---|---|
+| Mon | 1,840 |
+| Tue | 1,920 |
+| Wed | 1,880 |
+| Thu | 1,950 |
+| Fri | 2,010 |
+| Sat | 1,780 |
+| Sun | 1,650 |
+</Chart>
+<Stat label="Peak Demand" value="2,010 MW" change="Friday 6 PM" tone="warning" />
+</Card>
+
+<Card title="Water Use Today">
+<Gauge label="Consumption" value="342" min="0" max="500" unit="ML" tone="info" />
+<Stat label="vs Yesterday" value="-3.2%" tone="success" />
+<Stat label="Reservoir Level" value="78%" tone="neutral" />
+<Progress value="342" max="500" label="Daily capacity" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents">
+<Table>
+| ID | Type | Location | District | Severity | Since | Status |
+|---|---|---|---|---|---|---|
+| INC-2024-0847 | Water Main Break | 12th & Main | Downtown | Critical | 08:12 | Dispatched |
+| INC-2024-0846 | Power Outage | Oak St & 5th | Northside | High | 07:45 | Investigating |
+| INC-2024-0845 | Traffic Signal Fault | Riverside Dr | Riverside | Medium | 09:02 | Queued |
+| INC-2024-0844 | Gas Leak Report | 200 Lake Ave | Lakeside | Critical | 09:18 | Dispatched |
+| INC-2024-0843 | Sewer Backup | University Blvd | University | High | 08:55 | On Scene |
+| INC-2024-0842 | Downed Tree | Hillcrest Rd | Hillcrest | Low | 09:30 | Assigned |
+</Table>
+</Card>
+
+<Card title="Emergency Vehicles Deployed">
+<Map route="false" title="Active Units">
+| Unit | Type | Location | Status | Incident |
+|---|---|---|---|---|
+| ENG-12 | Fire Engine | 12th & Main | On Scene | INC-2024-0847 |
+| AMB-7 | Ambulance | 200 Lake Ave | En Route | INC-2024-0844 |
+| PD-23 | Police Cruiser | Oak St & 5th | On Scene | INC-2024-0846 |
+| UTIL-4 | Utility Truck | University Blvd | On Scene | INC-2024-0843 |
+| TOW-3 | Tow Truck | Riverside Dr | En Route | INC-2024-0845 |
+| ENG-19 | Fire Engine | Hillcrest Rd | Staged | INC-2024-0842 |
+</Map>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Parking Availability — Downtown">
+<Stat label="Total Spaces" value="3,240" tone="neutral" />
+<Stat label="Available Now" value="847" change="26% free" tone="info" />
+<Progress value="847" max="3240" label="Overall occupancy" tone="warning" />
+<KeyValue title="By Zone">
+| Zone | Capacity | Available | % Free |
+|---|---|---|---|
+| Zone A (Core) | 850 | 112 | 13% |
+| Zone B (Ring) | 1,200 | 387 | 32% |
+| Zone C (Periphery) | 1,190 | 348 | 29% |
+</KeyValue>
+</Card>
+
+<Card title="Public Events This Weekend">
+<Agenda title="Weekend Schedule">
+| Time | Event | Location | District | Expected |
+|---|---|---|---|---|
+| Sat 10:00 | Farmers Market | Central Plaza | Downtown | 3,500 |
+| Sat 14:00 | Marathon Start | Riverside Park | Riverside | 8,000 |
+| Sat 19:00 | Concert Series | Lakeside Amphitheater | Lakeside | 5,200 |
+| Sun 09:00 | Cycling Race | Hillcrest Loop | Hillcrest | 1,200 |
+| Sun 12:00 | Food Festival | University Quad | University | 4,800 |
+| Sun 16:00 | Art Walk | Northside Arts District | Northside | 2,500 |
+</Agenda>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen Reports (Live)">
+<Timeline title="Incoming Reports">
+- 09:42: Pothole reported at 4th & Elm (Northside) — *Triaged*
+- 09:38: Streetlight out on Maple Ave (Westfield) — *Assigned*
+- 09:35: Illegal dumping behind 210 Oak St (Downtown) — *New*
+- 09:31: Noise complaint: construction after hours (Eastport) — *Investigating*
+- 09:28: Crosswalk signal not working at University & 3rd (University) — *Dispatched*
+- 09:24: Graffiti on park restroom (Lakeside) — *Queued*
+</Timeline>
+</Card>
+
+<Card title="Service Request Backlog">
+<Funnel title="Request Pipeline">
+| Stage | Count |
+|---|---|
+| Submitted | 1,247 |
+| Triaged | 892 |
+| Assigned | 634 |
+| In Progress | 418 |
+| Awaiting Parts | 156 |
+| Completed (7d) | 2,103 |
+</Funnel>
+<Stat label="Avg Resolution" value="3.2 days" change="-0.4 vs last month" tone="success" />
+<Stat label="Overdue (>7d)" value="87" tone="danger" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks Planned This Month">
+<Calendar month="2024-11" title="November Roadworks">
+| Date | Description | Location | Impact | Duration |
+|---|---|---|---|---|
+| 2024-11-04 | Resurfacing | Main St (5th-12th) | Lane closure | 5 days |
+| 2024-11-06 | Bridge inspection | Riverside Bridge | Full closure (night) | 3 nights |
+| 2024-11-11 | Utility trenching | Oak Ave (Northside) | Detour | 7 days |
+| 2024-11-18 | Bike lane install | University Blvd | Lane shift | 10 days |
+| 2024-11-25 | Signal upgrade | 12th & Main | Intersection closure | 2 days |
+</Calendar>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+<Table>
+| Asset ID | Type | Location | District | Due Date | Priority | Status |
+|---|---|---|---|---|---|---|
+| BRG-042 | Bridge | Riverside Bridge | Riverside | 2024-11-15 | High | Scheduled |
+| PMP-118 | Pump Station | Lakeside Lift | Lakeside | 2024-11-10 | Critical | Overdue |
+| SIG-207 | Traffic Signal | 12th & Main | Downtown | 2024-11-08 | Medium | Scheduled |
+| TNK-055 | Water Tank | Hillcrest Reservoir | Hillcrest | 2024-11-20 | High | Planning |
+| SUB-033 | Substation | Northside Grid | Northside | 2024-11-12 | Critical | Scheduled |
+| PIPE-412 | Sewer Main | Eastport Industrial | Eastport | 2024-11-18 | Medium | Planning |
+</Table>
+</Card>
+</Columns>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Crew Type" options="Road Repair | Water/Sewer | Electrical | Traffic Signals | Tree Removal | General Maintenance" placeholder="Select crew type" required="true" />
+<Select label="District" options="Downtown | Northside | Eastport | Westfield | Riverside | Lakeside | Hillcrest | University" placeholder="Select district" required="true" />
+<Input label="Address / Location" placeholder="e.g., 12th & Main" required="true" />
+<TextArea label="Details / Notes" placeholder="Describe the work needed..." rows="3" />
+<Radio label="Priority" options="Routine | Urgent | Emergency" value="Routine" />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="Alert Type" options="Traffic Advisory | Air Quality Alert | Weather Warning | Service Disruption | Emergency Evacuation | General Notice" placeholder="Select alert type" required="true" />
+<Select label="Target Area" options="Citywide | Downtown | Northside | Eastport | Westfield | Riverside | Lakeside | Hillcrest | University" value="Citywide" required="true" />
+<Input label="Headline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" placeholder="Full alert text for public distribution..." rows="4" required="true" />
+<Checkboxes label="Channels" options="Mobile Push | SMS | Email | Social Media | Website Banner | Digital Signs | Radio" value="Mobile Push | SMS | Website Banner" />
+<Radio label="Severity" options="Informational | Advisory | Warning | Critical" value="Advisory" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

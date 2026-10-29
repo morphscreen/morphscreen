@@ -1,0 +1,186 @@
+# Live-Ops Command Center
+
+<Callout tone="warning" title="Two alerts need a human">
+Crash rate on 4.2.1 is above the 1% gate, and APAC-East is degraded. Both are covered below.
+</Callout>
+
+<Columns>
+<Stat label="Players online" value="184,320" change="+6.2% vs 1h ago" tone="success" icon="users" />
+<Stat label="Daily active players" value="1.42M" change="+3.1% WoW" tone="success" icon="chart-line" />
+<Stat label="Monthly active players" value="9.87M" change="+0.8% MoM" tone="neutral" icon="calendar" />
+<Stat label="Revenue today" value="$1,284,900" change="+11.4% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="ARPPU (today)" value="$0.91" change="-2.3% vs 7d avg" tone="warning" icon="chart-line" />
+</Columns>
+
+<Card title="Session length — last 14 days" subtitle="Average minutes per session, all platforms">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Avg session |
+|---|---|
+| D-13 | 26.4 |
+| D-12 | 27.1 |
+| D-11 | 25.8 |
+| D-10 | 28.9 |
+| D-9 | 29.4 |
+| D-8 | 30.2 |
+| D-7 | 31.0 |
+| D-6 | 29.7 |
+| D-5 | 30.5 |
+| D-4 | 32.1 |
+| D-3 | 33.4 |
+| D-2 | 31.8 |
+| D-1 | 34.2 |
+| Today | 35.1 |
+</Chart>
+</Card>
+
+<Card title="Best-selling items today" subtitle="Units sold and gross revenue">
+| Item | Units | Revenue | Trend |
+|---|---|---|---|
+| Voidblade Skin — Mythic | 41,208 | $412,080 | <Badge tone="success">Up</Badge> |
+| Season 12 Battle Pass | 18,940 | $188,400 | <Badge tone="success">Up</Badge> |
+| 2,000 Gem Bundle | 15,332 | $153,320 | <Badge tone="neutral">Flat</Badge> |
+| Founder's Mount | 6,114 | $122,280 | <Badge tone="success">Up</Badge> |
+| Emote Pack — Neon | 9,871 | $49,355 | <Badge tone="warning">Down</Badge> |
+| Rename Token | 22,004 | $44,008 | <Badge tone="neutral">Flat</Badge> |
+</Card>
+
+<Card title="Server regions" subtitle="Live health across all shards">
+| Region | Players | Latency | Uptime 24h | Health |
+|---|---|---|---|---|
+| NA-East | 61,240 | 28 ms | 99.99% | <Badge tone="success">Healthy</Badge> |
+| NA-West | 42,110 | 34 ms | 99.97% | <Badge tone="success">Healthy</Badge> |
+| EU-West | 38,905 | 31 ms | 99.95% | <Badge tone="success">Healthy</Badge> |
+| EU-Central | 21,470 | 39 ms | 99.91% | <Badge tone="warning">Elevated</Badge> |
+| APAC-East | 14,880 | 118 ms | 98.42% | <Badge tone="danger">Degraded</Badge> |
+| SA-East | 5,715 | 72 ms | 99.88% | <Badge tone="neutral">Watch</Badge> |
+
+<Button ask="Focus the dashboard on APAC-East">Focus on APAC-East</Button>
+<Button variant="secondary" ask="Focus the dashboard on EU-Central">Focus on EU-Central</Button>
+</Card>
+
+<Card title="Crash rate by app version" subtitle="Crashes per 100 sessions, last 24h">
+<Chart type="bar" x="Version" y="Crash rate %">
+| Version | Crash rate |
+|---|---|
+| 4.2.1 | 1.84 |
+| 4.2.0 | 0.42 |
+| 4.1.9 | 0.31 |
+| 4.1.8 | 0.29 |
+| 4.0.7 | 0.24 |
+</Chart>
+<Progress value="1.84" max="3" label="4.2.1 vs 1% release gate" tone="danger" />
+<Button variant="danger" ask="Ship a hotfix for the 4.2.1 crash rate">Ship hotfix for 4.2.1</Button>
+</Card>
+
+<Tabs>
+<Tab title="Live events">
+<Card title="Running now">
+| Event | Region | Ends in | Participation |
+|---|---|---|---|
+| Siege of the Hollow King | Global | 2d 4h | 68% |
+| Double XP Weekend | NA / EU | 18h | 81% |
+| Neon Nights Crate | APAC | 5d 1h | 44% |
+</Card>
+</Tab>
+<Tab title="Upcoming">
+<Card title="Scheduled">
+| Event | Starts | Duration | Status |
+|---|---|---|---|
+| Season 13 Pre-Patch | in 6d | 3d | <Badge tone="info">Scheduled</Badge> |
+| Guild Wars: Open Bracket | in 9d | 10d | <Badge tone="info">Scheduled</Badge> |
+| Anniversary Login Rewards | in 21d | 14d | <Badge tone="neutral">Draft</Badge> |
+</Card>
+<Button variant="secondary" ask="Add a new live event to the schedule">Add an event</Button>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Player reports" subtitle="Awaiting moderator review">
+| Queue | Count | Oldest |
+|---|---|---|
+| Harassment | 214 | 6h |
+| Cheating | 388 | 11h |
+| Exploiting | 97 | 3h |
+| Naming | 61 | 22h |
+
+<Stat label="Total awaiting review" value="760" change="+58 in last hour" tone="warning" />
+<Button ask="Open the player report review queue">Open review queue</Button>
+</Card>
+
+<Card title="Ban appeals" subtitle="Awaiting review">
+| Appeal type | Count | SLA breach |
+|---|---|---|
+| Permanent bans | 143 | 12 |
+| 7-day bans | 88 | 4 |
+| Chat mutes | 52 | 0 |
+
+<Stat label="Total awaiting review" value="283" change="16 past SLA" tone="danger" />
+<Button ask="Open the ban appeal review queue">Open appeal queue</Button>
+</Card>
+</Columns>
+
+<Card title="In-game currency inflation" subtitle="Gold sink vs. faucet, rolling 30 days">
+<Chart type="area" x="Week" y="Gold (millions)">
+| Week | Faucet | Sink | Net supply |
+|---|---|---|---|
+| W1 | 412 | 388 | 24 |
+| W2 | 431 | 402 | 29 |
+| W3 | 448 | 419 | 29 |
+| W4 | 470 | 431 | 39 |
+| W5 | 486 | 438 | 48 |
+</Chart>
+<Callout tone="warning" title="Net supply up 100% over 5 weeks">
+Gold per active player is up 14% while auction prices for tier-3 mats are up 22%. Consider a sink event or vendor price adjustment.
+</Callout>
+<Button variant="secondary" ask="Draft a gold sink event to curb inflation">Draft a gold sink</Button>
+</Card>
+
+<Card title="Running experiments" subtitle="Two A/B tests in flight">
+| Experiment | Variant A | Variant B | Lift | Confidence | Status |
+|---|---|---|---|---|---|
+| Storefront layout | Grid | Carousel | +7.2% conversion | 96% | <Badge tone="success">Winner: B</Badge> |
+| Matchmaking window | 30s | 45s | -0.4% retention | 61% | <Badge tone="warning">Inconclusive</Badge> |
+
+<Progress value="96" max="100" label="Storefront layout confidence" tone="success" />
+<Progress value="61" max="100" label="Matchmaking window confidence" tone="warning" />
+
+<Button ask="Roll out the carousel storefront layout to 100%">Ship carousel to 100%</Button>
+<Button variant="secondary" ask="Extend the matchmaking window experiment by one week">Extend matchmaking test</Button>
+</Card>
+
+<Card title="Draft patch notes" subtitle="Compose, review, then publish">
+<Form name="patch-notes">
+<Input label="Version" name="version" placeholder="4.2.2" hint="Must match the build you intend to ship" />
+<Input label="Release date" type="date" name="release-date" />
+<Select label="Release channel" name="channel" options="Hotfix | Minor patch | Major patch | Seasonal" />
+<TextArea label="Notes" name="notes" rows="8" placeholder="- Fixed a crash when opening the guild vault&#10;- Voidblade skin VFX now render correctly on low settings&#10;- Reduced APAC-East matchmaking queue time" />
+<Checkboxes label="Include sections" name="sections" options="Balance changes | Bug fixes | Known issues | Store updates" value="Bug fixes | Known issues" />
+<Switch label="Publish to all regions" name="publish" value="false" hint="Turn off to stage in NA-East first" />
+<Button>Save draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Ship a hotfix" subtitle="Targeted, reversible, logged">
+<Steps>
+<Step title="Confirm the target build" status="done" subtitle="4.2.1 identified as the crash source" />
+<Step title="Attach the fix" status="done" subtitle="Patch 4.2.2 built and signed" />
+<Step title="Stage in NA-East" status="current" subtitle="Canary at 5% of players" />
+<Step title="Roll out globally" status="todo" subtitle="Gated on crash rate under 0.5%" />
+<Step title="Post-mortem" status="todo" subtitle="Due within 48h of full rollout" />
+</Steps>
+
+<Form name="hotfix">
+<Select label="Target regions" name="regions" options="All regions | NA-East | NA-West | EU-West | EU-Central | APAC-East | SA-East" />
+<Slider label="Canary rollout" name="canary" min="1" max="100" step="5" value="5" unit="%" />
+<Switch label="Auto-rollback on crash spike" name="rollback" value="true" hint="Reverts if crash rate exceeds 1% for 10 minutes" />
+<Button variant="danger" icon="warning">Ship hotfix</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Why is APAC-East degraded, and what's the fix?
+- Show me the full moderation queue backlog trend
+- Break down revenue per user by region
+- What's driving the gold inflation this month?
+</FollowUps>

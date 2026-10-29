@@ -1,0 +1,144 @@
+# Speeding up a 2 GB CSV read in Python
+
+The usual culprit is doing too much in pure Python per row. The fix is almost always: **push the work into C (pandas/polars/pyarrow), read in chunks, and only keep what you need.**
+
+<Card title="The short answer">
+- **pandas `read_csv`** with `dtype`, `usecols`, `engine="c"` — 5–20× faster than a Python loop.
+- **Polars** (`pl.read_csv`) — often 3–10× faster than pandas, and lower memory.
+- **PyArrow** (`pyarrow.csv.read_csv`) — fastest raw parse, zero-copy to Arrow.
+- **Chunked reading** (`chunksize=` or `csv.reader` in a generator) if you can't fit it in RAM.
+- **Drop `csv.DictReader`** — dict-per-row is the slowest common pattern.
+</Card>
+
+<Card title="Where the time actually goes">
+<Chart type="bar" x="Approach" y="Seconds per 100 MB">
+| Approach | Seconds |
+|---|---|
+| csv.DictReader + loop | 42 |
+| csv.reader + loop | 18 |
+| pandas read_csv (defaults) | 6.5 |
+| pandas read_csv (tuned) | 3.1 |
+| polars read_csv | 1.4 |
+| pyarrow csv.read_csv | 1.1 |
+</Chart>
+Rough order-of-magnitude, single core, warm cache. Your mileage varies with column count and dtypes.
+</Card>
+
+## 1. Stop using `csv.DictReader` in a loop
+
+<Diff file="before_after.py">
+- import csv
+- with open("big.csv") as f:
+-     for row in csv.DictReader(f):
+-         total += float(row["amount"])
++ import polars as pl
++ df = pl.read_csv("big.csv", columns=["amount"])
++ total = df["amount"].sum()
+</Diff>
+
+## 2. Tune `read_csv` if you're staying on pandas
+
+<Card title="pandas read_csv checklist">
+<Checklist title="Tuning steps" name="pandas-tuning">
+- [x] Pass `usecols=[...]` — never load columns you won't use
+- [x] Pass `dtype={...}` — avoid object columns and float upcasting
+- [x] Use `engine="c"` (default) — never `engine="python"`
+- [ ] Try `parse_dates=["date"]` instead of post-hoc `to_datetime`
+- [ ] Set `low_memory=False` to avoid chunked re-inference
+- [ ] Consider `pyarrow` engine: `engine="pyarrow"` (pandas ≥ 2.0)
+- [ ] If memory-bound, add `chunksize=500_000` and process per chunk
+</Checklist>
+</Card>
+
+<Card title="A tuned read">
+<Code file="fast_read.py">
+import pandas as pd
+
+dtypes = {"id": "int64", "amount": "float32", "category": "category"}
+
+df = pd.read_csv(
+    "big.csv",
+    usecols=["id", "amount", "category", "date"],
+    dtype=dtypes,
+    parse_dates=["date"],
+    engine="pyarrow",      # falls back to "c" if unavailable
+)
+
+total = df["amount"].sum()
+</Code>
+</Card>
+
+## 3. If it doesn't fit in memory, stream it
+
+<Card title="Chunked aggregation">
+<Code file="chunked.py">
+import pandas as pd
+
+total = 0.0
+for chunk in pd.read_csv(
+    "big.csv",
+    usecols=["amount"],
+    dtype={"amount": "float32"},
+    chunksize=1_000_000,
+):
+    total += chunk["amount"].sum()
+
+print(total)
+</Code>
+Chunks keep peak memory at ~one chunk instead of the whole file. Works with `csv.reader` too, but pandas chunks are far faster.
+</Card>
+
+<Callout tone="info" title="Convert once, read many">
+If you'll read this file more than a couple of times, convert it once to **Parquet** (`df.to_parquet(...)`). Subsequent reads are typically 5–20× faster and 2–5× smaller on disk, because Parquet is columnar and typed.
+</Callout>
+
+<Card title="Pick your path">
+<Compare title="Which approach for you">
+| Feature | pandas | polars | pyarrow |
+|---|---|---|---|
+| Raw parse speed | fast | faster | fastest |
+| Memory use | high | low | low |
+| Lazy / streaming | partial | yes | yes |
+| Familiar API | yes | new | low-level |
+| Best for | existing pandas code | new pipelines | max throughput |
+</Compare>
+</Card>
+
+<WhatIf title="How much time you'd save">
+<Slider label="File size" min="0.5" max="10" step="0.5" value="2" name="size" unit="GB" />
+<Slider label="Rows per second (Python loop)" min="50000" max="500000" step="10000" value="150000" name="loop_rate" unit="rows/s" />
+<Slider label="Rows per second (polars)" min="500000" max="5000000" step="100000" value="2000000" name="fast_rate" unit="rows/s" />
+<Result label="Loop time" value="size * 1000000000 / 12 / loop_rate / 60" unit="min" decimals="1" />
+<Result label="Polars time" value="size * 1000000000 / 12 / fast_rate / 60" unit="min" decimals="2" />
+<Result label="Speedup" value="loop_rate / fast_rate" unit="×" decimals="1" />
+</WhatIf>
+
+<Card title="Check yourself">
+<Quiz title="CSV speed quiz">
+<Question text="What is usually the single biggest win when reading a large CSV?" answer="Use a C-backed reader (polars/pyarrow/pandas) instead of a Python row loop" explain="Python-level per-row work dominates runtime; moving parsing and aggregation into compiled code removes that overhead.">
+- Use a C-backed reader (polars/pyarrow/pandas) instead of a Python row loop
+- Buy a faster CPU
+- Add more RAM
+- Rename the file to .parquet
+</Question>
+<Question text="Which pandas argument avoids loading columns you don't need?" answer="usecols" explain="usecols restricts parsing to the listed columns, cutting both time and memory roughly proportionally.">
+- usecols
+- chunksize
+- low_memory
+- engine
+</Question>
+<Question text="When the file won't fit in memory, what should you do?" answer="Read in chunks and aggregate incrementally" explain="chunksize (or a generator over csv.reader) keeps peak memory to one chunk while still letting you compute totals, counts, etc.">
+- Read in chunks and aggregate incrementally
+- Set dtype to object
+- Use engine='python'
+- Increase swap
+</Question>
+</Quiz>
+</Card>
+
+<FollowUps>
+- Show me the polars version of a groupby aggregation on this file
+- How do I convert this CSV to Parquet and read it back?
+- My CSV has messy dates and missing values — how do I handle that fast?
+- How do I parallelize the read across cores?
+</FollowUps>

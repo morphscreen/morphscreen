@@ -1,0 +1,33 @@
+# Low Inventory Warning
+
+<Card title="Inventory Alert Threshold" subtitle="Items appear here when stock falls below the reorder point">
+<Columns>
+<Stat label="Warning Threshold" value="15 units" note="Default for all items" tone="warning" />
+<Stat label="Items Below Threshold" value="7" note="Requires attention" tone="danger" />
+<Stat label="Total Value at Risk" value="$2,840" note="Based on cost price" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Search Items">
+<Input label="Search low-stock items" placeholder="Search by name, SKU, or category..." type="search" hint="Filters the list below in real time" />
+</Card>
+
+<Card title="Items Running Low">
+| Item | SKU | Category | Current Stock | Threshold | Status | Action |
+|---|---|---|---|---|---|---|
+| Organic Almond Milk 1L | BEV-042 | Beverages | 8 | 15 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Whole Grain Bread | BAK-011 | Bakery | 12 | 15 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Greek Yogurt 500g | DAI-023 | Dairy | 5 | 15 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Free-Range Eggs 12pk | DAI-045 | Dairy | 9 | 15 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Avocados (bag of 6) | PRO-089 | Produce | 11 | 15 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Chicken Breast 1kg | MEA-012 | Meat | 7 | 15 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Spinach 200g | PRO-034 | Produce | 14 | 15 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+</Card>
+
+<Card title="Bulk Actions">
+<Columns>
+<Button variant="primary">Reorder All 7 Items</Button>
+<Button variant="secondary">Export to CSV</Button>
+<Button variant="tertiary">Adjust Thresholds</Button>
+</Columns>
+</Card>

@@ -1,0 +1,158 @@
+# Hospital Operations Command View
+
+<Badge tone="info">Live feed · Updated 2 min ago</Badge>
+
+<Card title="Critical Alert" tone="danger">
+<Callout tone="danger" title="3 critical patients require immediate attention">
+- **Room 214** – M. Alvarez, cardiac arrest risk, awaiting ICU bed
+- **Room 108** – J. Chen, post-op hemorrhage, OR on standby
+- **ER Bay 4** – S. Okafor, stroke code, CT completed, neuro consult pending
+</Callout>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Stat label="Total Beds" value="312" />
+<Stat label="Occupied" value="247" change="79.2%" tone="warning" icon="bed" />
+<Stat label="Available" value="65" tone="success" icon="check-circle" />
+<Progress value="247" max="312" label="Occupancy rate" tone="warning" />
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="Avg. Wait Time" value="42 min" tone="danger" icon="clock" />
+<Stat label="Patients in Queue" value="18" />
+<Stat label="Longest Wait" value="1h 15m" tone="danger" />
+<Callout tone="warning" title="Peak hours">Wait times expected to rise until 8 PM.</Callout>
+</Card>
+</Columns>
+
+<Card title="Admissions – Past Two Weeks">
+<Chart type="area" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon 1 | 34 |
+| Tue 2 | 41 |
+| Wed 3 | 38 |
+| Thu 4 | 45 |
+| Fri 5 | 52 |
+| Sat 6 | 47 |
+| Sun 7 | 39 |
+| Mon 8 | 36 |
+| Tue 9 | 43 |
+| Wed 10 | 40 |
+| Thu 11 | 49 |
+| Fri 12 | 55 |
+| Sat 13 | 51 |
+| Sun 14 | 44 |
+</Chart>
+<Stat label="14-Day Total" value="614" change="+7.5% vs prior 14d" tone="info" icon="trend-up" />
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Cardiology | 42 |
+| Oncology | 35 |
+| Neurology | 28 |
+| Orthopedics | 31 |
+| Pediatrics | 24 |
+| ICU | 19 |
+| Maternity | 22 |
+| General Medicine | 46 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current roster">
+<Columns>
+<Avatar name="Dr. R. Patel" subtitle="ER Attending" />
+<Avatar name="Nurse L. Gomez" subtitle="ICU – Charge Nurse" />
+<Avatar name="Dr. M. Thompson" subtitle="Cardiology Fellow" />
+<Avatar name="Nurse A. Kim" subtitle="OR – Scrub Nurse" />
+<Avatar name="Dr. S. Hassan" subtitle="Neurology Resident" />
+<Avatar name="Nurse T. Brooks" subtitle="Pediatrics" />
+</Columns>
+<Stat label="Total on Shift" value="86" icon="users" />
+<Stat label="Nurses" value="52" />
+<Stat label="Physicians" value="21" />
+<Stat label="Support Staff" value="13" />
+</Card>
+
+<Card title="Ready for Discharge" subtitle="7 patients cleared">
+| Patient | Dept | Waiting On |
+|---|---|---|
+| R. Diaz | General | Transport (30 min) |
+| K. Miller | Ortho | Meds pickup |
+| F. Ahmed | Maternity | Pediatrician sign-off |
+| G. Novak | Cardiology | Follow-up appt |
+| H. Lee | Pediatrics | Parent arrival |
+| B. Wilson | General | Insurance approval |
+| C. Osei | Neuro | Discharge summary |
+
+<Button variant="primary" icon="check">Process discharge</Button>
+</Card>
+
+<Card title="Today’s OR Bookings" subtitle="6 surgeries scheduled">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR-1 | Total knee replacement | Dr. M. Thompson | <Badge tone="success">Completed</Badge> |
+| 09:00 | OR-2 | Laparoscopic cholecystectomy | Dr. R. Patel | <Badge tone="info">In Progress</Badge> |
+| 10:30 | OR-3 | C-section | Dr. S. Hassan | <Badge tone="info">In Progress</Badge> |
+| 13:00 | OR-1 | Cardiac bypass | Dr. L. Nguyen | <Badge tone="warning">Up Next</Badge> |
+| 15:30 | OR-2 | Hernia repair | Dr. J. O’Brien | <Badge tone="neutral">Scheduled</Badge> |
+| 17:00 | OR-3 | Appendectomy | Dr. E. Costa | <Badge tone="neutral">Scheduled</Badge> |
+
+<Button icon="calendar">View OR schedule</Button>
+</Card>
+
+<Card title="Supplies Running Low" tone="warning">
+<Callout tone="warning" title="Reorder soon">These items are below the 20% threshold.</Callout>
+
+| Supply | Stock Level | Reorder Point |
+|---|---|---|
+| Saline bags (500 mL) | 12% | 15% |
+| Surgical gloves (M) | 8% | 10% |
+| Insulin pens | 14% | 15% |
+| IV catheters (18G) | 9% | 12% |
+| Oxygen masks (adult) | 16% | 20% |
+
+<Button variant="secondary" icon="package">Create purchase order</Button>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Type" placeholder="Select type" options="Medication error | Fall | Equipment failure | Patient complaint | Safety hazard | Other" />
+<Input label="Location" placeholder="e.g., Room 214, ER Bay 3" />
+<TextArea label="Description" placeholder="Briefly describe what happened" rows="3" />
+<Button variant="danger" icon="flag">Submit incident</Button>
+</Form>
+</Card>
+
+<Card title="View Another Day">
+<Form name="view-date">
+<Date label="Select date" name="ops-date" />
+<Button variant="secondary" icon="calendar">Load day</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient ID / Name" placeholder="e.g., M. Alvarez" />
+<Select label="From Dept" placeholder="Current unit" options="ER | ICU | Cardiology | Neuro | Ortho | General | Pediatrics | Maternity" />
+<Select label="To Dept" placeholder="Destination unit" options="ICU | Cardiology | Neuro | Ortho | General | Pediatrics | Maternity | Step-down" />
+<TextArea label="Reason" placeholder="Clinical justification" rows="2" />
+<Button variant="primary" icon="arrows-left-right">Submit transfer</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the current ICU capacity
+- Who is the charge nurse tonight?
+- List all pending lab results for critical patients
+- What’s the status of the stroke code patient?
+- Show OR schedule for tomorrow
+</FollowUps>

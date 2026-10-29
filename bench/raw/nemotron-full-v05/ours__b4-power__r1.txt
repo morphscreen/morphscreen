@@ -1,0 +1,130 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="Network Overview" subtitle="Real-time system status">
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Stat label="Available Capacity" value="58,200 MW" change="73.6% utilized" tone="warning" />
+<Stat label="Current Price" value="$84.50 / MWh" change="-$3.20 vs yesterday" tone="success" />
+<Stat label="CO₂ Emissions Today" value="18,420 t" change="0.43 t/MWh avg" tone="danger" />
+</Card>
+
+<Card title="Capacity Utilization" subtitle="System-wide headroom">
+<Progress value="73.6" max="100" label="Network Load: 73.6% of rated capacity" tone="warning" />
+<Progress value="68.2" max="100" label="Transmission Corridors: 68.2% utilized" tone="info" />
+<Progress value="81.4" max="100" label="Transformer Banks: 81.4% loaded" tone="danger" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Mix" subtitle="Live output by source">
+<Chart type="donut" title="Current Generation Split (MW)">
+| Source | Output (MW) |
+|---|---|
+| Natural Gas | 14,200 |
+| Nuclear | 11,800 |
+| Wind | 8,450 |
+| Solar | 5,200 |
+| Hydro | 2,100 |
+| Coal | 1,097 |
+</Chart>
+</Card>
+
+<Card title="Regional Focus" subtitle="Select a zone to filter all views">
+<Select label="Region" name="region-filter" placeholder="All Regions" options="All Regions | Northeast | Midwest | Southeast | Southwest | Northwest | California ISO | Texas ERCOT | PJM | NYISO | ISO-NE" value="All Regions" />
+<Badge tone="info">Showing: All Regions</Badge>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Diablo Canyon | California | Nuclear | 2,240 | 2,256 | 99.3% | <Badge tone="success">Online</Badge> |
+| Palo Verde | Southwest | Nuclear | 3,937 | 3,942 | 99.9% | <Badge tone="success">Online</Badge> |
+| Grand Coulee | Northwest | Hydro | 4,200 | 6,809 | 61.7% | <Badge tone="success">Online</Badge> |
+| West County | Southeast | Natural Gas | 1,850 | 3,657 | 50.6% | <Badge tone="success">Online</Badge> |
+| Alta Wind | California | Wind | 1,320 | 1,550 | 85.2% | <Badge tone="success">Online</Badge> |
+| Roscoe Wind | Texas | Wind | 780 | 782 | 99.7% | <Badge tone="warning">Curtailed</Badge> |
+| Topaz Solar | California | Solar | 550 | 550 | 100% | <Badge tone="success">Online</Badge> |
+| Martin Plant | Southeast | Natural Gas | 1,200 | 2,200 | 54.5% | <Badge tone="warning">Ramping</Badge> |
+| Gibson Station | Midwest | Coal | 1,097 | 3,345 | 32.8% | <Badge tone="neutral">Standby</Badge> |
+| Hoover Dam | Southwest | Hydro | 1,100 | 2,080 | 52.9% | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Current service interruptions">
+| Outage ID | Region | Affected Customers | Est. Restoration | Cause |
+|---|---|---|---|---|
+| OUT-2024-0847 | Northeast (MA) | 12,400 | 2024-01-15 14:30 | Tree contact — 115kV line |
+| OUT-2024-0851 | Midwest (IL) | 8,200 | 2024-01-15 16:00 | Transformer failure — Substation 12 |
+| OUT-2024-0853 | Southeast (GA) | 3,100 | 2024-01-15 12:45 | Equipment damage — Storm |
+| OUT-2024-0856 | Texas (ERCOT) | 22,500 | 2024-01-15 18:00 | Generation trip — Unit 3 offline |
+</Card>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Callout tone="danger" title="⚠ ALERT: Generation Trip — ERCOT">Unit 3 at Comanche Peak (1,150 MW) tripped offline at 10:42. Frequency deviation: -0.08 Hz. Spinning reserves deployed.</Callout>
+<Callout tone="warning" title="⚠ WARNING: Voltage Deviation — PJM">230kV corridor Reading→Whitpain running 2.3% above nominal. Reactive support requested.</Callout>
+<Callout tone="info" title="INFO: Wind Forecast Update — CAISO">Production revised +420 MW for 14:00–18:00 window. Ramp rate manageable.</Callout>
+<Callout tone="neutral" title="NOTICE: Planned Maintenance — ISO-NE">Mystic 8&9 offline 01-16 through 01-18. 1,500 MW reduction. Already reflected in forecast.</Callout>
+</Card>
+</Columns>
+
+<Card title="24-Hour Demand Forecast" subtitle="Hourly load projection vs actual">
+<Chart type="area" title="Demand Forecast (MW)" x="Hour" y="MW">
+| Hour | Forecast (MW) | Actual (MW) |
+|---|---|---|
+| 00:00 | 38,200 | 38,150 |
+| 01:00 | 36,800 | 36,750 |
+| 02:00 | 35,900 | 35,880 |
+| 03:00 | 35,400 | 35,380 |
+| 04:00 | 35,600 | 35,590 |
+| 05:00 | 36,800 | 36,820 |
+| 06:00 | 39,200 | 39,180 |
+| 07:00 | 42,500 | 42,480 |
+| 08:00 | 45,800 | 45,750 |
+| 09:00 | 47,200 | 47,150 |
+| 10:00 | 48,100 | 47,950 |
+| 11:00 | 48,600 | 48,400 |
+| 12:00 | 48,900 | 48,700 |
+| 13:00 | 49,200 | — |
+| 14:00 | 49,500 | — |
+| 15:00 | 49,800 | — |
+| 16:00 | 50,100 | — |
+| 17:00 | 50,400 | — |
+| 18:00 | 50,200 | — |
+| 19:00 | 49,600 | — |
+| 20:00 | 48,300 | — |
+| 21:00 | 46,100 | — |
+| 22:00 | 43,200 | — |
+| 23:00 | 40,500 | — |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Planned Maintenance — January 2024" subtitle="Scheduled outages this month">
+| Date Range | Plant / Asset | Region | Capacity Impact | Type |
+|---|---|---|---|---|
+| Jan 16–18 | Mystic 8 & 9 | ISO-NE | -1,500 MW | Gas turbine overhaul |
+| Jan 20–25 | Comanche Peak Unit 2 | ERCOT | -1,150 MW | Refueling outage |
+| Jan 22–28 | Palo Verde Unit 3 | Southwest | -1,314 MW | Scheduled maintenance |
+| Jan 25–29 | 500kV Line: Path 26 | California | -3,200 MW transfer | Conductor replacement |
+| Jan 28–Feb 2 | Grand Coulee Unit 6 | Northwest | -805 MW | Turbine inspection |
+</Card>
+
+<Card title="Order Curtailment" subtitle="Issue a curtailment instruction">
+<Form name="curtailment-order">
+<Select label="Plant / Resource" name="curtail-plant" placeholder="Select resource" options="Roscoe Wind (TX) — 782 MW | Alta Wind (CA) — 1,550 MW | Topaz Solar (CA) — 550 MW | Martin Plant (FL) — 2,200 MW | Gibson Station (IN) — 3,345 MW | Other (specify)" required="true" />
+<Input label="Curtailment Amount (MW)" name="curtail-mw" type="number" placeholder="e.g., 200" min="1" max="5000" step="1" required="true" hint="Must not exceed current output" />
+<Select label="Reason" name="curtail-reason" placeholder="Select reason" options="Transmission congestion | Oversupply / negative pricing | Frequency regulation | Voltage support | Market instruction | Emergency reliability" required="true" />
+<TextArea label="Operator Notes" name="curtail-notes" placeholder="Additional context for the resource operator..." rows="3" />
+<Button variant="danger">Issue Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Acknowledge alert OUT-2024-0856 (ERCOT generation trip)
+- Review curtailment order for Roscoe Wind (currently at 99.7% utilization)
+- Confirm maintenance window for Palo Verde Unit 3 (Jan 22–28)
+- Adjust forecast for CAISO wind revision (+420 MW, 14:00–18:00)
+</FollowUps>

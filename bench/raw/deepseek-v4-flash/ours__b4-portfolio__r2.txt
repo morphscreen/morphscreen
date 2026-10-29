@@ -1,0 +1,128 @@
+# PMO Project Portfolio Review
+
+<Card title="Review controls" subtitle="Q2 2025 · Consolidated view across all workstreams">
+<Columns>
+<Form name="quarter-selector">
+<Select label="Quarter" name="quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" placeholder="Q2 2025" />
+<Button>Apply quarter</Button>
+</Form>
+<Button variant="secondary" icon="download">Export review</Button>
+</Columns>
+</Card>
+
+<Callout tone="warning" title="Portfolio health summary">Yellow — 3 projects at risk, 3 overdue milestones, 5 blocked work items, budget 73% spent. Data Migration needs immediate attention.</Callout>
+
+<Card title="Portfolio at a glance">
+<Columns>
+<Stat label="Active projects" value="5" note="3 at risk" tone="warning" icon="briefcase" />
+<Stat label="Budget consumed" value="73%" note="$1.35M of $1.85M" tone="info" icon="chart-bar" />
+<Stat label="Team utilization" value="88%" note="2 overallocated" tone="warning" icon="users" />
+<Stat label="Open risks" value="7" note="1 critical, 1 high" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Active projects" subtitle="Owner, deadline and health">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Alpha Platform | Jay Chen | Jun 30 | <Badge tone="success">Green</Badge> |
+| Mobile App 2.0 | Priya Sharma | Jul 15 | <Badge tone="warning">Yellow</Badge> |
+| Data Migration | Tomás Rivera | Jun 05 | <Badge tone="danger">Red</Badge> |
+| CRM Rollout | Lena Fischer | Jul 30 | <Badge tone="success">Green</Badge> |
+| Billing Upgrade | Omar Haddad | Jun 20 | <Badge tone="warning">Yellow</Badge> |
+</Card>
+<Card title="Overdue milestones" subtitle="As of Jun 5">
+| Milestone | Project | Due | Days late |
+|---|---|---|---|
+| UAT sign-off | Data Migration | May 28 | 8 |
+| API v2 freeze | Billing Upgrade | May 30 | 6 |
+| Design handoff | Mobile App 2.0 | Jun 01 | 3 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Budget spent vs allocation" subtitle="Allocated vs spent per project, $k">
+<Chart type="bar" x="Project" y="USD (k)">
+| Project | Allocated | Spent |
+|---|---|---|
+| Alpha Platform | 500 | 340 |
+| Mobile App 2.0 | 420 | 385 |
+| Data Migration | 300 | 296 |
+| CRM Rollout | 350 | 120 |
+| Billing Upgrade | 280 | 210 |
+</Chart>
+</Card>
+<Card title="Delivery pace" subtitle="Story points delivered vs planned, last six sprints">
+<Chart type="line" x="Sprint" y="Story points">
+| Sprint | Delivered | Planned |
+|---|---|---|
+| S1 | 82 | 90 |
+| S2 | 75 | 88 |
+| S3 | 94 | 91 |
+| S4 | 68 | 85 |
+| S5 | 88 | 84 |
+| S6 | 79 | 86 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Deadlines in the next two weeks" subtitle="Jun 5 – Jun 20">
+| Deliverable | Project | Due |
+|---|---|---|
+| Beta release | Alpha Platform | Jun 12 |
+| Invoice module | Billing Upgrade | Jun 14 |
+| Cutover plan | Data Migration | Jun 18 |
+| Design review | Mobile App 2.0 | Jun 20 |
+| CRM dataload | CRM Rollout | Jun 20 |
+</Card>
+<Card title="Blocked work items" subtitle="Needs unblocking this week">
+| Work item | Project | Blocked by | Since |
+|---|---|---|---|
+| Payment webhook | Billing Upgrade | Vendor response | 3 days |
+| Import dedupe | Data Migration | Schema decision | 5 days |
+| Push notifications | Mobile App 2.0 | App Store review | 2 days |
+| SSO upgrade | CRM Rollout | Security review | 1 day |
+| Landing page A/B test | Alpha Platform | Analytics access | 4 days |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Team utilization" subtitle="Allocation by team member">
+- Jay Chen — <Progress value="92" max="100" label="92%" tone="warning" />
+- Priya Sharma — <Progress value="108" max="100" label="108%" tone="danger" />
+- Tomás Rivera — <Progress value="78" max="100" label="78%" tone="neutral" />
+- Lena Fischer — <Progress value="85" max="100" label="85%" tone="success" />
+- Omar Haddad — <Progress value="102" max="100" label="102%" tone="danger" />
+- Aisha Bello — <Progress value="64" max="100" label="64%" tone="info" />
+</Card>
+<Card title="Risks" subtitle="By severity">
+| Risk | Project | Severity |
+|---|---|---|
+| Data loss during migration | Data Migration | <Badge tone="danger">Critical</Badge> |
+| Vendor delay on CRM integrations | CRM Rollout | <Badge tone="danger">High</Badge> |
+| Scope creep in mobile features | Mobile App 2.0 | <Badge tone="warning">Medium</Badge> |
+| API instability after upgrade | Billing Upgrade | <Badge tone="warning">Medium</Badge> |
+| Capacity dip over summer | Alpha Platform | <Badge tone="neutral">Low</Badge> |
+| Key-person dependency | Data Migration | <Badge tone="neutral">Low</Badge> |
+| Compliance delay | CRM Rollout | <Badge tone="neutral">Low</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Request more people" subtitle="Raise a capacity request for a project">
+<Form name="capacity-request">
+<Select label="Project" name="project" options="Alpha Platform | Mobile App 2.0 | Data Migration | CRM Rollout | Billing Upgrade" placeholder="Select project" />
+<Input label="Role needed" name="role" placeholder="e.g., QA engineer" />
+<Input label="Number of people" name="count" type="number" value="1" min="1" max="10" />
+<TextArea label="Justification" name="justification" rows="3" placeholder="Why these roles are needed and for how long" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+<Card title="Archive a finished project" subtitle="Move a completed project out of the active review">
+<Form name="archive-project">
+<Select label="Completed project" name="project" options="Legacy Portal (Done) | Mobile App 1.0 (Done) | Website Refresh (Done)" placeholder="Select a finished project" />
+<Button variant="secondary" icon="archive">Archive project</Button>
+</Form>
+</Card>
+</Columns>

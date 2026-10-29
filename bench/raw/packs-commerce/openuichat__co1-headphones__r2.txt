@@ -1,0 +1,39 @@
+root = Card([header, productGrid])
+header = CardHeader("Headphones", "Top picks — tap Add to Cart on any model")
+productGrid = CompositeCardBlock([card1, card2, card3, card4], "grid", true)
+card1 = CompositeCardItem("sony-wh1000xm5", card1Header, card1Body, card1Footer)
+card1Header = ImageTextLarge(card1Img, "Sony WH-1000XM5", "Industry-leading noise cancellation", true)
+card1Img = "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&h=500&fit=crop"
+card1Body = [card1Rating, card1Specs]
+card1Rating = Text("text", "★★★★★ 4.8", "2,847 reviews")
+card1Specs = TagBlock(["30hr Battery", "LDAC", "Multipoint"])
+card1Footer = { price: card1Price, button: card1Btn }
+card1Price = MetricIndicatorWithStrikethrough("$348.00", "Sale: was $399.99", "$399.99", { direction: "down", value: 13 })
+card1Btn = Button("Add to Cart", { type: "continue_conversation", context: "Add Sony WH-1000XM5 to cart" }, "primary")
+card2 = CompositeCardItem("bose-qc45", card2Header, card2Body, card2Footer)
+card2Header = ImageTextLarge(card2Img, "Bose QuietComfort 45", "Legendary comfort & balanced sound", true)
+card2Img = "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800&h=500&fit=crop"
+card2Body = [card2Rating, card2Specs]
+card2Rating = Text("text", "★★★★☆ 4.6", "1,923 reviews")
+card2Specs = TagBlock(["24hr Battery", "AAC/SBC", "Quick Charge"])
+card2Footer = { price: card2Price, button: card2Btn }
+card2Price = MetricIndicatorInline("$329.00", "Standard price")
+card2Btn = Button("Add to Cart", { type: "continue_conversation", context: "Add Bose QuietComfort 45 to cart" }, "primary")
+card3 = CompositeCardItem("apple-airpods-max", card3Header, card3Body, card3Footer)
+card3Header = ImageTextLarge(card3Img, "Apple AirPods Max", "Premium build & spatial audio", true)
+card3Img = "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&h=500&fit=crop"
+card3Body = [card3Rating, card3Specs]
+card3Rating = Text("text", "★★★★☆ 4.7", "3,112 reviews")
+card3Specs = TagBlock(["20hr Battery", "AAC", "H1 Chip", "Spatial Audio"])
+card3Footer = { price: card3Price, button: card3Btn }
+card3Price = MetricIndicatorWithStrikethrough("$479.00", "Sale: was $549.00", "$549.00", { direction: "down", value: 12.8 })
+card3Btn = Button("Add to Cart", { type: "continue_conversation", context: "Add Apple AirPods Max to cart" }, "primary")
+card4 = CompositeCardItem("sennheiser-momentum4", card4Header, card4Body, card4Footer)
+card4Header = ImageTextLarge(card4Img, "Sennheiser Momentum 4", "Audiophile sound & 60hr battery", true)
+card4Img = "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&h=500&fit=crop"
+card4Body = [card4Rating, card4Specs]
+card4Rating = Text("text", "★★★★★ 4.7", "1,456 reviews")
+card4Specs = TagBlock(["60hr Battery", "aptX Adaptive", "Multipoint", "EQ App"])
+card4Footer = { price: card4Price, button: card4Btn }
+card4Price = MetricIndicatorInline("$349.95", "Standard price")
+card4Btn = Button("Add to Cart", { type: "continue_conversation", context: "Add Sennheiser Momentum 4 to cart" }, "primary")

@@ -1,0 +1,38 @@
+<Card title="Identity Verification" subtitle="Please complete all steps to verify your identity for a new bank account">
+
+<Steps>
+<Step title="Photograph ID front" status="current">
+Capture a clear photo of the front of your government‑issued ID card.
+</Step>
+<Step title="Photograph ID back" status="todo">
+Capture a clear photo of the back of your ID card.
+</Step>
+<Step title="Take a selfie" status="todo">
+Take a live selfie for facial comparison.
+</Step>
+<Step title="Enter home address" status="todo">
+Provide your residential address or use your current location.
+</Step>
+<Step title="Submit for review" status="todo">
+Send your documents for verification.
+</Step>
+</Steps>
+
+<Form name="identity-check">
+<Camera label="Photograph ID front" name="id_front" facing="back" hint="Place the front of your ID card fully in the frame. Ensure all text is readable." required="true" />
+
+<Camera label="Photograph ID back" name="id_back" facing="back" hint="Flip the card and photograph the back side. Include any barcodes or signatures." required="true" />
+
+<Camera label="Take a selfie" name="selfie" facing="front" hint="Center your face in the oval. Remove glasses and ensure good lighting." required="true" />
+
+<Input label="Street address" name="street" placeholder="123 Main Street" required="true" />
+<Input label="City" name="city" placeholder="New York" required="true" />
+<Input label="Postal code" name="postal_code" placeholder="10001" required="true" />
+<Input label="Country" name="country" placeholder="United States" required="true" />
+
+<Location label="Or use current location" name="current_location" precision="precise" hint="Tap to automatically fill your address from GPS" required="false" />
+
+<Button>Submit for verification</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

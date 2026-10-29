@@ -1,0 +1,323 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="info">Live · Updated 14:32</Badge>
+<Badge tone="success">All lines running</Badge>
+
+---
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="Availability" value="92.4%" change="+1.2% vs yesterday" tone="success" />
+<Stat label="Performance" value="87.1%" change="-0.8% vs yesterday" tone="warning" />
+<Stat label="Quality" value="96.8%" change="+0.3% vs yesterday" tone="success" />
+<Stat label="OEE" value="78.2%" change="+0.5% vs target" tone="info" />
+</Columns>
+<Progress value="78.2" max="100" label="Target: 85%" />
+</Card>
+
+---
+
+<Card title="Today's Production">
+<Columns>
+<Stat label="Target" value="12,500 units" />
+<Stat label="Produced" value="9,847 units" change="78.8% of target" tone="info" />
+<Stat label="Rate" value="1,142 units/hr" change="+42 vs avg" tone="success" />
+<Stat label="Remaining" value="2,653 units" tone="warning" />
+</Columns>
+<Progress value="78.8" max="100" label="Shift ends in 4h 28m" />
+</Card>
+
+---
+
+<Card title="Production Lines">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | Output | OEE | Andon |
+|---|---|---|---|---|---|---|
+| Line A | <Badge tone="success">Running</Badge> | 1,240 | 1,200 | 3,820 | 82.1% | — |
+| Line B | <Badge tone="success">Running</Badge> | 1,085 | 1,100 | 3,312 | 76.4% | <Badge tone="warning">Low resin</Badge> |
+| Line C | <Badge tone="warning">Slow</Badge> | 890 | 1,050 | 2,715 | 68.9% | <Badge tone="danger">Jam at Stn 4</Badge> |
+| Line D | <Badge tone="neutral">Changeover</Badge> | 0 | 1,150 | 0 | 0% | <Badge tone="info">Setup 12 min</Badge> |
+</Tab>
+<Tab title="Line A">
+<Columns>
+<Stat label="Current Rate" value="1,240/hr" />
+<Stat label="Shift Output" value="3,820" />
+<Stat label="OEE" value="82.1%" />
+<Stat label="Defects" value="12 (0.31%)" />
+</Columns>
+<Callout tone="success" title="Line A performing above target">Running 3.3% above planned rate. No active alerts.</Callout>
+</Tab>
+<Tab title="Line B">
+<Columns>
+<Stat label="Current Rate" value="1,085/hr" />
+<Stat label="Shift Output" value="3,312" />
+<Stat label="OEE" value="76.4%" />
+<Stat label="Defects" value="28 (0.84%)" />
+</Columns>
+<Callout tone="warning" title="Resin feed low">Resin hopper at 18%. Refill scheduled in 15 min.</Callout>
+</Tab>
+<Tab title="Line C">
+<Columns>
+<Stat label="Current Rate" value="890/hr" />
+<Stat label="Shift Output" value="2,715" />
+<Stat label="OEE" value="68.9%" />
+<Stat label="Defects" value="41 (1.51%)" />
+</Columns>
+<Callout tone="danger" title="Jam at Station 4">Conveyor jam cleared. Root cause: misaligned guide rail. Maintenance en route.</Callout>
+</Tab>
+<Tab title="Line D">
+<Columns>
+<Stat label="Current Rate" value="0/hr" />
+<Stat label="Shift Output" value="0" />
+<Stat label="OEE" value="0%" />
+<Stat label="Defects" value="—" />
+</Columns>
+<Callout tone="info" title="Changeover in progress">SKU change: 500ml → 750ml bottles. ETA to run: 12 min.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| Oct 20 | 1.2 |
+| Oct 21 | 0.9 |
+| Oct 22 | 1.1 |
+| Oct 23 | 0.8 |
+| Oct 24 | 1.0 |
+| Oct 25 | 0.7 |
+| Oct 26 | 0.9 |
+| Oct 27 | 1.3 |
+| Oct 28 | 1.0 |
+| Oct 29 | 0.8 |
+| Oct 30 | 0.6 |
+| Oct 31 | 0.9 |
+| Nov 1 | 0.7 |
+| Nov 2 | 0.8 |
+| Nov 3 | 0.9 |
+| Nov 4 | 1.1 |
+| Nov 5 | 0.8 |
+| Nov 6 | 0.7 |
+| Nov 7 | 0.6 |
+| Nov 8 | 0.8 |
+| Nov 9 | 0.9 |
+| Nov 10 | 0.7 |
+| Nov 11 | 0.8 |
+| Nov 12 | 0.9 |
+| Nov 13 | 1.0 |
+| Nov 14 | 0.8 |
+| Nov 15 | 0.7 |
+| Nov 16 | 0.9 |
+| Nov 17 | 0.8 |
+| Nov 18 | 0.84 |
+</Chart>
+<Callout tone="info" title="Trend">30-day average: 0.89% · Best day: 0.6% (Nov 7) · Worst day: 1.3% (Oct 27)</Callout>
+</Card>
+
+---
+
+<Card title="Downtime by Cause — This Week">
+<Columns>
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Changeover | 18.5 |
+| Mechanical | 12.2 |
+| Material shortage | 8.7 |
+| Quality hold | 6.3 |
+| Planned maintenance | 4.0 |
+| Operator break | 3.1 |
+| Electrical | 2.8 |
+| Software | 1.4 |
+</Chart>
+<Stat label="Total Downtime" value="57.0 hrs" change="vs 62.3 hrs last week" tone="success" />
+<Stat label="Unplanned %" value="63.2%" change="Target < 40%" tone="warning" />
+<Stat label="MTBF" value="14.2 hrs" change="+1.1 hrs" tone="info" />
+<Stat label="MTTR" value="1.8 hrs" change="-0.2 hrs" tone="success" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Hours Since Last | Status |
+|---|---|---|---|---|---|
+| Filler-03 | Line B | Today | Lubrication | 720 | <Badge tone="warning">Due today</Badge> |
+| Capper-01 | Line A | Tomorrow | Seal replacement | 1,450 | <Badge tone="info">Scheduled</Badge> |
+| Labeler-02 | Line C | Nov 21 | Full PM | 2,100 | <Badge tone="warning">Overdue 2 days</Badge> |
+| Conveyor-04 | Line C | Nov 22 | Belt tension | 890 | <Badge tone="info">Planned</Badge> |
+| Palletizer-01 | Line D | Nov 25 | Sensor calibration | 1,200 | <Badge tone="neutral">Upcoming</Badge> |
+| Mixer-02 | Resin | Nov 28 | Bearing check | 1,800 | <Badge tone="neutral">Upcoming</Badge> |
+</Card>
+
+---
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tonnes" change="Reorder at 15t" tone="success" />
+<Stat label="Resin (PET)" value="18.7 tonnes" change="Reorder at 8t" tone="warning" />
+<Stat label="Packaging (Cases)" value="3,240" change="Reorder at 1,000" tone="success" />
+<Stat label="Labels" value="845,000" change="Reorder at 200k" tone="success" />
+<Stat label="Caps" value="1.2M" change="Reorder at 300k" tone="success" />
+<Stat label="Ink/Solvent" value="240 L" change="Reorder at 50L" tone="info" />
+</Columns>
+<Progress value="42" max="100" label="Steel: 42% of max capacity" />
+<Progress value="62" max="100" label="Resin: 62% of max capacity" />
+<Progress value="38" max="100" label="Packaging: 38% of max capacity" />
+</Card>
+
+---
+
+<Card title="Supplier Deliveries — This Week">
+| Supplier | Material | Qty | Due Date | Status | PO |
+|---|---|---|---|---|---|
+| Apex Metals | Steel coil (Grade 304) | 25 tonnes | Nov 20 | <Badge tone="info">Confirmed</Badge> | PO-8842 |
+| PolySource | PET Resin | 15 tonnes | Nov 21 | <Badge tone="warning">Delayed 1 day</Badge> | PO-8851 |
+| PackWell | Corrugated cases | 5,000 | Nov 22 | <Badge tone="info">Confirmed</Badge> | PO-8839 |
+| CapTech | 28mm caps | 500,000 | Nov 23 | <Badge tone="info">Confirmed</Badge> | PO-8847 |
+| LabelFlex | Pressure-sensitive labels | 250,000 | Nov 24 | <Badge tone="success">Early</Badge> | PO-8855 |
+| ChemSupply | Solvent blend | 500 L | Nov 24 | <Badge tone="info">Confirmed</Badge> | PO-8844 |
+</Card>
+
+---
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift 1 (06-14) | 11200 | 11800 | 11500 | 12100 | 11900 | 9800 | 0 |
+| Shift 2 (14-22) | 10800 | 11200 | 11000 | 11600 | 11400 | 9200 | 0 |
+| Shift 3 (22-06) | 9200 | 9800 | 9500 | 10100 | 9900 | 8100 | 0 |
+</Chart>
+<Callout tone="neutral" title="Weekly totals">Shift 1: 68,300 · Shift 2: 65,200 · Shift 3: 56,600 · Best day: Thursday (33,800 combined)</Callout>
+</Card>
+
+---
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents This Year" value="7" change="Target: 0" tone="danger" />
+<Stat label="Days Since Last Incident" value="42" change="Record: 127 days" tone="success" />
+<Stat label="Near Misses (YTD)" value="23" change="+3 vs last year" tone="warning" />
+<Stat label="LTIFR" value="1.8" change="Industry avg: 2.4" tone="info" />
+</Columns>
+<Details title="Recent Incidents">
+| Date | Type | Line | Severity | Status |
+|---|---|---|---|---|
+| Oct 7 | Slip/trip | Line B | First aid | Closed |
+| Sep 15 | Pinch point | Line C | Medical treatment | Closed |
+| Aug 3 | Chemical splash | Resin | First aid | Closed |
+| Jun 22 | Forklift near-miss | Warehouse | Near miss | Closed |
+</Details>
+</Card>
+
+---
+
+<Card title="Batches on Quality Hold">
+| Batch | Line | Product | Qty | Reason | Held Since | Disposition |
+|---|---|---|---|---|---|---|
+| B-20241118-04 | Line C | 500ml Water | 2,400 | Cap torque variance | 08:15 | <Badge tone="warning">Under review</Badge> |
+| B-20241118-02 | Line A | 750ml Juice | 1,800 | Label misalignment | 06:42 | <Badge tone="info">Rework queued</Badge> |
+| B-20241117-08 | Line B | 1L Sport | 3,200 | Fill weight -2.1% | Nov 17 22:10 | <Badge tone="danger">Scrap approved</Badge> |
+| B-20241117-05 | Line D | 500ml Tea | 1,500 | Seal integrity | Nov 17 18:30 | <Badge tone="warning">Testing</Badge> |
+</Card>
+
+---
+
+<Card title="Energy Use — Today">
+<Columns>
+<Stat label="Electricity" value="1,847 kWh" change="vs 1,920 kWh avg" tone="success" />
+<Stat label="Gas" value="1,240 m³" change="vs 1,180 m³ avg" tone="warning" />
+<Stat label="Water" value="18.7 m³" change="vs 19.2 m³ avg" tone="success" />
+<Stat label="Cost" value="$4,280" change="vs $4,450 avg" tone="success" />
+</Columns>
+<Chart type="area" x="Hour" y="kW">
+| Hour | kW |
+|---|---|
+| 06 | 420 |
+| 07 | 580 |
+| 08 | 620 |
+| 09 | 645 |
+| 10 | 660 |
+| 11 | 655 |
+| 12 | 640 |
+| 13 | 630 |
+| 14 | 635 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Asset | Description | Assigned | Due | Status |
+|---|---|---|---|---|---|---|---|
+| WO-14421 | <Badge tone="danger">Critical</Badge> | Line C | Conveyor-04 | Replace damaged belt section | M. Torres | Today 16:00 | <Badge tone="warning">In progress</Badge> |
+| WO-14418 | <Badge tone="warning">High</Badge> | Line B | Filler-03 | Lubrication PM (720h) | J. Chen | Today 14:00 | <Badge tone="info">Queued</Badge> |
+| WO-14415 | <Badge tone="warning">High</Badge> | Line A | Capper-01 | Seal kit replacement | R. Patel | Tomorrow 08:00 | <Badge tone="info">Parts staged</Badge> |
+| WO-14409 | <Badge tone="info">Medium</Badge> | Line C | Labeler-02 | Full preventive maintenance | M. Torres | Nov 21 | <Badge tone="neutral">Scheduled</Badge> |
+| WO-14402 | <Badge tone="info">Medium</Badge> | Utilities | Compressor-2 | Oil change & filter | S. Kim | Nov 22 | <Badge tone="neutral">Planned</Badge> |
+| WO-14398 | <Badge tone="neutral">Low</Badge> | Warehouse | Dock leveler-3 | Hydraulic fluid top-up | R. Patel | Nov 25 | <Badge tone="neutral">Deferred</Badge> |
+</Card>
+
+---
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" options="Filler-03 (Line B) | Capper-01 (Line A) | Labeler-02 (Line C) | Conveyor-04 (Line C) | Palletizer-01 (Line D) | Mixer-02 (Resin) | Other" placeholder="Select machine" required="true" />
+<Select label="Maintenance Type" name="type" options="Lubrication | Seal Replacement | Full PM | Belt Tension | Sensor Calibration | Bearing Check | Other" placeholder="Select type" required="true" />
+</Columns>
+<Columns>
+<Date label="Preferred Date" name="date" required="true" />
+<Input label="Preferred Time" name="time" type="time" placeholder="14:00" required="true" />
+</Columns>
+<TextArea label="Notes / Special Instructions" name="notes" placeholder="e.g., Parts already staged, coordinate with shift lead" rows="3" />
+<Columns>
+<Button variant="primary">Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+---
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="LINE C — Station 4">
+<Badge tone="danger">CRITICAL</Badge> Conveyor jam — Maintenance dispatched. ETA 3 min.
+</Callout>
+<Callout tone="warning" title="LINE B — Resin Feed">
+<Badge tone="warning">WARNING</Badge> Hopper level 18% — Refill in progress.
+</Callout>
+<Callout tone="info" title="LINE D — Changeover">
+<Badge tone="info">INFO</Badge> SKU changeover 65% complete. ETA to run: 12 min.
+</Callout>
+<Callout tone="warning" title="QUALITY — Batch Hold">
+<Badge tone="warning">WARNING</Badge> Batch B-20241118-04 on hold: cap torque variance.
+</Callout>
+</Columns>
+<Details title="Alert History (Last 2 Hours)">
+| Time | Line | Severity | Message | Acknowledged By |
+|---|---|---|---|---|
+| 14:28 | Line C | Critical | Conveyor jam at Station 4 | — |
+| 14:15 | Line B | Warning | Resin hopper < 20% | J. Chen |
+| 13:52 | Line D | Info | Changeover started | R. Patel |
+| 13:40 | Line A | Info | Shift 1 handover complete | M. Torres |
+| 13:15 | Quality | Warning | Batch hold: label misalignment | S. Kim |
+</Details>
+</Card>
+
+---
+
+<Card title="Actions">
+<Columns>
+<Button variant="primary" size="large">Export Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Shift Report (CSV)</Button>
+<Button variant="tertiary" size="large">Email to Plant Manager</Button>
+<Button variant="tertiary" size="large">Print Dashboard</Button>
+</Columns>
+</Card>

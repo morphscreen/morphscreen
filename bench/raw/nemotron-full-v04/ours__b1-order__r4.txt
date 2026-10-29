@@ -1,0 +1,36 @@
+<Card title="Package Tracking" subtitle="Order #ORD-847291">
+  <Columns>
+    <Stat label="Current Status" value="Out for Delivery" change="Last scan: 14 min ago" tone="info" />
+    <Stat label="Current Location" value="Local Distribution Center" change="Springfield, IL" tone="neutral" />
+  </Columns>
+
+  <Progress value={85} max={100} label="Delivery Progress" />
+
+  <Details title="Tracking History" open={true}>
+    <Steps>
+      <Step title="Order Placed" status="done">Jun 12, 2024 • 10:00 AM</Step>
+      <Step title="Package Picked Up" status="done">Jun 13, 2024 • 8:30 AM</Step>
+      <Step title="Arrived at Regional Hub" status="done">Jun 14, 2024 • 2:15 PM</Step>
+      <Step title="Out for Delivery" status="current">Jun 15, 2024 • 7:45 AM</Step>
+      <Step title="Delivered" status="todo">Estimated today by 8:00 PM</Step>
+    </Steps>
+  </Details>
+</Card>
+
+<Card title="Estimated Delivery">
+  <Columns>
+    <Stat label="Delivery Date" value="Today, Jun 15" change="By 8:00 PM" tone="success" />
+    <Stat label="Delivery Window" value="2:00 PM – 8:00 PM" change="6-hour window" tone="neutral" />
+  </Columns>
+  <Callout tone="info" title="Delivery Instructions">Leave at front door if no one answers. Ring doorbell twice.</Callout>
+</Card>
+
+<Card title="Report a Problem">
+  <Form name="delivery-issue">
+    <Select label="Issue Type" placeholder="Select an issue" options="Package not delivered | Damaged package | Wrong item received | Missing items | Delivery driver issue | Other" name="issueType" required={true} />
+    <TextArea label="Description" placeholder="Describe the problem in detail..." rows={4} name="description" required={true} hint="Include any tracking numbers, photos, or reference details." />
+    <Checkboxes label="Preferred Resolution" options="Refund | Replacement | Redelivery | Store credit" name="resolution" hint="Select all that apply" />
+    <Button>Submit Report</Button>
+    <Button variant="secondary">Cancel</Button>
+  </Form>
+</Card>

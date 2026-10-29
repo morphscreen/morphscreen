@@ -1,0 +1,35 @@
+We need to produce a single screen UI using openui-lang. Must include root Card with children list covering all items 1-18. Must define components and references accordingly. Must ensure every defined variable is referenced from root (or its children). Must follow positional arguments, no named arguments. Must use correct component signatures.
+
+Let's outline needed components:
+
+1. revenue - likely a number or maybe a card with revenue value. Could be a Tag or TextContent. Probably a Tag with "Revenue" and value. But we need to show revenue value. Maybe a CardHeader + TextContent. Or a Card with revenue value. Let's design:
+
+Define revenueSection = Card([revenueHeader, revenueValue])? But revenue is item 1, maybe just a Card with revenue value. Let's create a Card for revenue: revenueCard = Card([revenueTitle, revenueValue])? But we need to embed in root children. However root children must be list of components; we can have a component that itself contains subcomponents.
+
+Simplify: We'll create a series of components:
+
+- revenueCard = Card([revenueHeader, revenueValue]) with variant maybe "card" default.
+
+Revenue header: CardHeader(title: "Revenue", subtitle: maybe empty). revenue value: TextContent(text: "$12M", size: "large")? Or maybe use a Badge? But we need to show revenue number. Use TextContent.
+
+But we must ensure positional arguments. Card signature: Card(children: [...], variant?, direction?, gap?, align?, justify?, wrap?). So we need children list. Let's define revenueHeader = CardHeader("Revenue", null). revenueValue = TextContent("12M", "large")? But need to show currency. Maybe TextContent("12M"). We'll just use "12M".
+
+But better: TextContent("12M") with size "large". We'll define revenueCard = Card([revenueHeader, revenueValue]).
+
+But revenueCard is a component; we need to reference it in root children.
+
+Similarly costsCard, profitCard maybe as a single Card with profit value (maybe profit = revenue - costs). Could be TextContent.
+
+Revenue over four quarters: need a LineChart showing revenue series over quarters. We'll need data series. Define revSeries = Series("Revenue", [24100, 30800, 34600, 38900]) as in example. Use LineChart(labels: ["Q1","Q2","Q3","Q4"], series: [revSeries], variant "linear", xLabel: "Quarter", yLabel: "USD"). But need to define labels array and series.
+
+Similarly costs over four quarters: costsSeries = Series("Costs", [10000, 11500, 13000, 14500]) etc. Use LineChart.
+
+Budget by department against plan: maybe a Table showing budget vs plan for each department. Define columns: department, budget, plan, variance. Use Table columns: each Col with label and data array. But need same number of rows. Let's define departments: ["Engineering","Marketing","Sales","Support"]; budget values and plan values.
+
+We'll need to create Table columns: each Col has label and data array. For each department we need rows, so each column's data array must have same length (4). So we can have Col("Department", ["Engineering","Marketing","Sales","Support"], "string")? Actually label is column header, data is array of values per row. So label: "Department", data: ["Engineering","Marketing","Sales","Support"]; type string. Then other columns: "Budget", "Plan", "Variance". Data arrays accordingly.
+
+But need to define each column as a separate variable? Could define tableCols = [colDept, colBudget, colPlan, colVar]; then Table(columns: tableCols). That satisfies requirement.
+
+Headcount by department: maybe a ListBlock or a Table. Could use ListBlock with items showing department and headcount. Simpler: ListBlock(items: (ListItem)[]) where each ListItem has title department and subtitle headcount. Define ListItem for each dept.
+
+Top risks with owner for each: maybe a ListBlock with FollowUpBlock? Or maybe a Card with list of risks. Could use ListBlock where each item is a TextContent with "Risk - Owner". Or use CardHeader + ListBlock. Let's create risksSection = Card([riskHeader, riskList]) where riskHeader = CardHeader("Top Risks", null). riskList = ListBlock(items: (riskItem)

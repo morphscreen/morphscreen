@@ -1,0 +1,221 @@
+# Emergency Response Coordination Center
+
+<Card title="Active Incidents by Zone" subtitle="Severity levels across all zones">
+<Tabs>
+<Tab title="Zone A - Downtown">
+<Badge tone="danger">Critical</Badge> Fire at Commerce Tower
+<Badge tone="warning">High</Badge> Gas leak on 5th Avenue
+<Badge tone="info">Moderate</Badge> Traffic accident at Main & 3rd
+</Tab>
+<Tab title="Zone B - Industrial">
+<Badge tone="danger">Critical</Badge> Chemical spill at Plant 12
+<Badge tone="warning">High</Badge> Structural collapse at Warehouse 4
+</Tab>
+<Tab title="Zone C - Residential">
+<Badge tone="warning">High</Badge> Flooding in Riverside neighborhood
+<Badge tone="info">Moderate</Badge> Power outage in Hillcrest
+</Tab>
+<Tab title="Zone D - Coastal">
+<Badge tone="danger">Critical</Badge> Storm surge warning
+<Badge tone="neutral">Low</Badge> Minor coastal erosion
+</Tab>
+</Tabs>
+<Button ask="Focus on Zone A - Downtown">Focus on Zone A</Button>
+<Button ask="Focus on Zone B - Industrial">Focus on Zone B</Button>
+<Button ask="Focus on Zone C - Residential">Focus on Zone C</Button>
+<Button ask="Focus on Zone D - Coastal">Focus on Zone D</Button>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical Incidents" value="3" tone="danger" icon="warning-circle" />
+<Stat label="High Severity" value="4" tone="warning" icon="arrow-up" />
+<Stat label="Moderate" value="2" tone="info" icon="minus" />
+<Stat label="Low Severity" value="1" tone="neutral" icon="arrow-down" />
+</Columns>
+<Progress value="3" max="10" label="Critical incidents resolved: 3/10" tone="danger" />
+</Card>
+
+<Card title="Resources Available">
+<Columns>
+<Stat label="Vehicles" value="24" icon="truck" note="12 ambulances, 8 fire trucks, 4 SUVs" />
+<Stat label="Personnel" value="187" icon="users" note="62 medics, 75 firefighters, 50 support" />
+<Stat label="Supplies" value="1,240" icon="package" note="Food, water, medical kits, blankets" />
+</Columns>
+</Card>
+
+<Card title="Shelters & Evacuation">
+<Columns>
+<Card title="Shelter Status">
+<Stat label="North High School" value="245/400" note="61% occupancy" tone="success" />
+<Stat label="Community Center" value="180/250" note="72% occupancy" tone="warning" />
+<Stat label="Sports Arena" value="320/800" note="40% occupancy" tone="success" />
+<Stat label="Church Hall" value="95/120" note="79% occupancy" tone="warning" />
+</Card>
+<Card title="Evacuation Routes">
+<Badge tone="success">Route 1 - Northbound: Open</Badge>
+<Badge tone="warning">Route 2 - Eastbound: Congested</Badge>
+<Badge tone="danger">Route 3 - Southbound: Closed (flooding)</Badge>
+<Badge tone="success">Route 4 - Westbound: Open</Badge>
+<Badge tone="danger">Route 5 - Coastal: Closed (storm)</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Weather Forecast - Next 48 Hours">
+<Chart type="line" x="Hour" y="Temperature (°C)">
+| Hour | Temp | Wind (km/h) | Rain (%) |
+|---|---|---|---|
+| Now | 22 | 15 | 30 |
+| +6h | 20 | 20 | 60 |
+| +12h | 18 | 25 | 80 |
+| +18h | 16 | 30 | 90 |
+| +24h | 15 | 35 | 95 |
+| +30h | 14 | 40 | 85 |
+| +36h | 13 | 45 | 70 |
+| +42h | 12 | 40 | 50 |
+| +48h | 14 | 30 | 40 |
+</Chart>
+<Callout tone="warning" title="Storm Alert">Heavy rainfall expected in 12-24 hours. Winds up to 45 km/h.</Callout>
+</Card>
+
+<Card title="Casualty & Rescue Report">
+<Columns>
+<Stat label="People Rescued" value="347" tone="success" icon="heart" />
+<Stat label="Casualties" value="12" tone="danger" icon="cross" note="6 critical, 4 moderate, 2 minor" />
+</Columns>
+</Card>
+
+<Card title="Volunteers on Duty">
+<Columns>
+<Avatar name="Sarah Chen" subtitle="Medical Triage - Zone A" />
+<Avatar name="Marcus Johnson" subtitle="Search & Rescue - Zone B" />
+<Avatar name="Elena Rodriguez" subtitle="Supply Distribution - Zone C" />
+<Avatar name="David Kim" subtitle="Shelter Management - North HS" />
+<Avatar name="Amara Okafor" subtitle="Communications - HQ" />
+<Avatar name="Liam Patel" subtitle="Evacuation Coordination - Zone D" />
+</Columns>
+<Button ask="Show all 47 volunteers">View All Volunteers</Button>
+</Card>
+
+<Card title="Donations & Aid Requests">
+<Columns>
+<Card title="Donations Received">
+<Stat label="Monetary" value="$128,450" icon="currency-dollar" />
+<Stat label="Food (kg)" value="3,200" icon="bread" />
+<Stat label="Water (L)" value="8,500" icon="drop" />
+<Stat label="Medical Kits" value="450" icon="first-aid" />
+<Stat label="Clothing" value="1,200" icon="shirt" />
+</Card>
+<Card title="Pending Aid Requests">
+<Badge tone="danger">Zone B: 5 ventilators - Urgent</Badge>
+<Badge tone="warning">Zone A: 200 blankets</Badge>
+<Badge tone="warning">Zone C: 3 water pumps</Badge>
+<Badge tone="info">Zone D: 50 sandbags</Badge>
+<Badge tone="info">HQ: 2 satellite phones</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Communications Status">
+<Columns>
+<Badge tone="success">Radio Network: Up</Badge>
+<Badge tone="success">Cell Towers: Up (3/4 operational)</Badge>
+<Badge tone="danger">Fiber Internet: Down (Zone B)</Badge>
+<Badge tone="success">Satellite Link: Up</Badge>
+<Badge tone="warning">Emergency Alerts: Partial (Zone D affected)</Badge>
+<Badge tone="success">Intercom System: Up</Badge>
+</Columns>
+</Card>
+
+<Card title="Road Closures">
+<Badge tone="danger">I-95 Southbound: Closed (flooding at mile 42)</Badge>
+<Badge tone="danger">Route 17: Closed (landslide)</Badge>
+<Badge tone="warning">Main Street: Partially open (debris removal)</Badge>
+<Badge tone="danger">Coastal Highway: Closed (storm surge)</Badge>
+<Badge tone="warning">Bridge Ave: One lane open (structural inspection)</Badge>
+</Card>
+
+<Card title="Nearby Hospitals">
+<Columns>
+<Card title="St. Mary's Medical">
+<Stat label="Free Beds" value="12/45" note="3 ICU, 5 ER, 4 general" tone="warning" />
+<Badge tone="success">15 min away</Badge>
+</Card>
+<Card title="County General">
+<Stat label="Free Beds" value="8/30" note="2 ICU, 3 ER, 3 general" tone="danger" />
+<Badge tone="warning">25 min away</Badge>
+</Card>
+<Card title="University Hospital">
+<Stat label="Free Beds" value="22/60" note="6 ICU, 8 ER, 8 general" tone="success" />
+<Badge tone="success">20 min away</Badge>
+</Card>
+<Card title="Coastal Medical Center">
+<Stat label="Free Beds" value="4/20" note="1 ICU, 1 ER, 2 general" tone="danger" />
+<Badge tone="danger">40 min away (road closures)</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Open Tasks">
+<Columns>
+<Card>
+<Badge tone="danger">Evacuate Riverside neighborhood</Badge> — Assigned to: <Avatar name="Capt. Rivera" subtitle="Zone C Lead" />
+</Card>
+<Card>
+<Badge tone="warning">Set up mobile medical station</Badge> — Assigned to: <Avatar name="Dr. Thompson" subtitle="Medical Director" />
+</Card>
+<Card>
+<Badge tone="warning">Restore power to Hillcrest</Badge> — Assigned to: <Avatar name="Engineer Park" subtitle="Power Crew Lead" />
+</Card>
+<Card>
+<Badge tone="info">Distribute supplies to Zone B</Badge> — Assigned to: <Avatar name="Coord. Davis" subtitle="Logistics" />
+</Card>
+<Card>
+<Badge tone="danger">Repair Route 17 landslide</Badge> — Assigned to: <Avatar name="Foreman Garcia" subtitle="Road Crew" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource Type" options="Vehicles | Personnel | Medical Supplies | Food & Water | Equipment | Other" name="resource-type" />
+<Input label="Quantity" type="number" name="quantity" placeholder="e.g., 10" />
+<Select label="Priority" options="Low | Medium | High | Critical" name="priority" />
+<Select label="Zone" options="Zone A - Downtown | Zone B - Industrial | Zone C - Residential | Zone D - Coastal | HQ" name="zone" />
+<TextArea label="Additional Details" name="details" placeholder="Describe what's needed and why" rows="3" />
+<Button>Submit Request</Button>
+</Form>
+</Card>
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<Select label="Target Audience" options="All Zones | Zone A | Zone B | Zone C | Zone D | All Personnel | Volunteers Only" name="audience" />
+<Select label="Priority" options="Info | Warning | Alert | Emergency" name="priority" />
+<TextArea label="Message" name="message" placeholder="Type your broadcast message..." rows="4" required="true" />
+<Button variant="danger">Send Broadcast</Button>
+</Form>
+</Card>
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Select label="Zone" options="Zone A - Downtown | Zone B - Industrial | Zone C - Residential | Zone D - Coastal | General" name="zone" />
+<Input label="Report Title" type="text" name="title" placeholder="e.g., Fire containment update" />
+<Select label="Report Type" options="Incident Update | Resource Status | Casualty Report | Weather Impact | Evacuation Progress | Other" name="type" />
+<TextArea label="Situation Details" name="details" placeholder="Describe current situation, actions taken, and needs" rows="5" required="true" />
+<Input label="Reported By" type="text" name="reporter" placeholder="Your name & role" required="true" />
+<Button>Submit SitRep</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full resource inventory
+- Update me on Zone B specifically
+- What's the latest on the chemical spill?
+- List all volunteers available for night shift
+- Show hospitals with the most free beds
+- Generate an incident timeline
+- Send a status update to all personnel
+</FollowUps>

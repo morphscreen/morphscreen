@@ -1,0 +1,23 @@
+root = Card([header, urgentTask, statusSection, actions, followups])
+
+header = CardHeader("Today's Focus", "One task at a time")
+
+urgentTask = Card([taskTitle, taskDeadline, taskMeta], "sunk")
+taskTitle = Heading("Ship final Q3 report", "h2")
+taskDeadline = Callout("warning", "Deadline", "Due today at 5:00 PM")
+taskMeta = TextContent("**Owner:** Alex Chen  •  **Priority:** Critical", "small")
+
+statusSection = Card([statusHeading, statusBadges], "sunk")
+statusHeading = Heading("Current status", "h3")
+statusBadges = Card([inProgressBadge, progressBar], "clear")
+inProgressBadge = Tag("In progress", null, "md", "info")
+progressBar = Progress(65, "65% complete")
+
+actions = Buttons([markDoneBtn, postponeBtn])
+markDoneBtn = Button("Mark as done", null, "primary")
+postponeBtn = Button("Postpone to tomorrow", null, "tertiary")
+
+followups = FollowUpBlock([f1, f2, f3])
+f1 = FollowUpItem("Show me tasks due this week")
+f2 = FollowUpItem("Which tasks are overdue?")
+f3 = FollowUpItem("Create a new task")

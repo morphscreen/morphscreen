@@ -1,0 +1,21 @@
+root = Card([header, amountDue, dueDate, separator, lineItems, separator, paySection], "card", "column", "l")
+
+header = CardHeader("Invoice #INV-2024-001", "Billed to: Acme Corporation")
+
+amountDue = TextContent("**$12,450.00 USD**", "large-heavy")
+
+dueDate = TextContent("**Due: January 15, 2025**", "default")
+
+separator = Separator("horizontal", false)
+
+lineItems = Table([itemCol, qtyCol, rateCol, totalCol])
+
+itemCol = Col("Item", ["Website redesign", "SEO optimization", "Content migration", "QA & testing"])
+qtyCol = Col("Qty", [1, 1, 1, 1])
+rateCol = Col("Rate", ["$8,500.00", "$2,200.00", "$1,200.00", "$550.00"])
+totalCol = Col("Total", ["$8,500.00", "$2,200.00", "$1,200.00", "$550.00"])
+
+paySection = Card([payLabel, payBtn], "sunk", "column", "m")
+payLabel = TextContent("Pay this invoice now:", "default")
+payBtn = Buttons([payNowBtn], "row")
+payNowBtn = Button("Pay Now — $12,450.00", null, "primary", "normal", "large")

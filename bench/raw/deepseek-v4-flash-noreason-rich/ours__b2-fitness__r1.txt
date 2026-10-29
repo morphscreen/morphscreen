@@ -1,0 +1,54 @@
+# Daily Summary
+
+<Card title="Today's Activity">
+<Columns>
+<Stat label="Steps" value="8,432" note="Goal: 10,000" icon="footprints" tone="info" />
+<Stat label="Calories Burned" value="1,240 kcal" note="Active: 486 kcal" icon="flame" tone="success" />
+</Columns>
+<Progress value="8432" max="10000" label="Daily step goal" tone="info" />
+<Progress value="1240" max="2000" label="Calorie target (62%)" tone="success" />
+</Card>
+
+<Card title="Workouts — Past Week">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Minutes |
+|---|---|
+| Mon | 45 |
+| Tue | 30 |
+| Wed | 60 |
+| Thu | 0 |
+| Fri | 50 |
+| Sat | 75 |
+| Sun | 20 |
+</Chart>
+<Columns>
+<Stat label="Total Time" value="280 min" note="4.7 hrs" icon="clock" />
+<Stat label="Sessions" value="6" note="Rest day: Thu" icon="barbell" />
+</Columns>
+<Callout tone="success" title="Great week">You hit 5 of 7 active days — only Thursday was skipped.</Callout>
+</Card>
+
+<Card title="Log a New Workout">
+<Form name="workout-log">
+<Select label="Workout type" placeholder="Choose type" options="Running | Cycling | Strength | Yoga | Swimming | Walking | HIIT" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="30" min="1" max="600" required="true" hint="Whole minutes" />
+<Slider label="Intensity" min="1" max="10" step="1" value="5" name="intensity" unit="/10" />
+<Radio label="Feeling after" options="Easy | Moderate | Hard | Exhausting" name="feeling" />
+<Checkboxes label="Add extras" options="Stretching | Hydration reminder | Music playlist" name="extras" />
+<TextArea label="Notes" placeholder="How did it go?" rows="3" />
+<Button variant="primary">Save Workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Today's Quick Stats">
+| Metric | Value |
+|---|---|
+| Steps remaining | 1,568 |
+| Distance (est.) | 6.3 km |
+| Floors climbed | 12 |
+| Active minutes | 38 / 30 goal |
+</Card>
+
+<Button variant="secondary" ask>Show my weekly step chart</Button>
+<Button variant="tertiary" ask>Suggest a recovery workout</Button>

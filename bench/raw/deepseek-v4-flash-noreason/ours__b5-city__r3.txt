@@ -1,0 +1,172 @@
+# City Operations Center
+
+Live overview of the city. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Current weather" subtitle="Downtown station">
+<Columns>
+<div>
+- **Temperature:** 18°C (feels like 17°C)
+- **Conditions:** Partly cloudy
+- **Humidity:** 62% | **Wind:** 12 km/h SW
+- **Precipitation:** 10% chance
+</div>
+<Stat label="AQI" value="42" tone="success" note="Good" icon="leaf" />
+</Columns>
+</Card>
+
+<Card title="Traffic & transit">
+<Columns>
+<div>
+<Stat label="Congestion" value="72%" tone="warning" icon="car" note="Moderate – 4 zones heavy" />
+</div>
+<div>
+<Stat label="Transit punctuality" value="91%" tone="success" icon="train" note="On time today" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Air quality by district">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 42 |
+| Riverside | 58 |
+| Northgate | 35 |
+| Eastside | 67 |
+| Westfield | 48 |
+| Southport | 51 |
+</Chart>
+</Card>
+
+<Card title="Energy use – past week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 820 |
+| Tue | 845 |
+| Wed | 830 |
+| Thu | 860 |
+| Fri | 910 |
+| Sat | 780 |
+| Sun | 750 |
+</Chart>
+</Card>
+
+<Card title="Water use today">
+<Columns>
+<Stat label="Total use" value="3.2M L" icon="droplet" note="vs. 3.0M L daily avg" />
+<Stat label="Peak hour" value="8–9 AM" icon="clock" note="1,450 L/min" />
+</Columns>
+</Card>
+
+<Card title="Open incidents" subtitle="Live from dispatch">
+| Incident | Location | Severity |
+|---|---|---|
+| Gas leak | 5th & Main | <Badge tone="danger">Critical</Badge> |
+| Structure fire | 1200 Oak Ave | <Badge tone="danger">Critical</Badge> |
+| Multi-vehicle collision | I-94 exit 12 | <Badge tone="warning">High</Badge> |
+| Sewer overflow | 8th & Pine | <Badge tone="warning">High</Badge> |
+| Traffic signal outage | 14th & Maple | <Badge tone="neutral">Moderate</Badge> |
+| Downed power line | River Rd | <Badge tone="warning">High</Badge> |
+</Card>
+
+<Card title="Emergency vehicles deployed">
+<Columns>
+<Stat label="Active units" value="14" icon="truck" note="3 in transit" />
+<Stat label="Fire" value="4" icon="flame" />
+<Stat label="EMS" value="5" icon="plus" />
+<Stat label="Police" value="5" icon="shield" />
+</Columns>
+</Card>
+
+<Card title="Parking availability – downtown">
+<Chart type="bar" x="Garage" y="Spaces free">
+| Garage | Spaces free |
+|---|---|
+| Central | 45 |
+| Market St | 120 |
+| Union Sq | 38 |
+| Harbor | 210 |
+| Civic | 75 |
+</Chart>
+</Card>
+
+<Card title="Public events – this weekend">
+- **City Marathon** – Sat 7 AM, Downtown streets closed until 2 PM
+- **Farmers Market** – Sat 9 AM–2 PM, Northgate Plaza
+- **Riverfest Concert** – Sat 6 PM, Riverside Park
+- **Art Walk** – Sun 11 AM–5 PM, Westfield Gallery District
+</Card>
+
+<Card title="Citizen reports – live feed">
+<Columns>
+<div>
+- **Pothole** – 3rd & Elm – 2 min ago
+- **Streetlight out** – 22nd & Broadway – 5 min ago
+- **Graffiti** – 7th & Main – 9 min ago
+- **Abandoned vehicle** – Oak St lot – 12 min ago
+- **Water main leak** – 9th & Pine – 15 min ago
+</div>
+<div>
+<Stat label="Reports today" value="87" icon="chat-text" note="Avg 62/day" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Service request backlog">
+<Columns>
+<Stat label="Open requests" value="1,240" tone="warning" icon="clipboard" note="−8% this week" />
+<Stat label="Avg resolution" value="4.2 days" icon="clock" note="Target: 5 days" />
+</Columns>
+</Card>
+
+<Card title="Focus on a district">
+<Select label="Select district" name="district" options="Downtown | Riverside | Northgate | Eastside | Westfield | Southport" placeholder="Choose a district" />
+<Callout tone="info" title="District view">
+Select a district to see its specific traffic, air quality, incidents, and service data.
+</Callout>
+</Card>
+
+<Card title="Dispatch a crew">
+<Form name="dispatch">
+<Select label="Crew type" options="Fire | EMS | Police | Utilities | Roadworks | Sanitation" placeholder="Choose type" />
+<Input label="Location" placeholder="Street address or intersection" />
+<TextArea label="Notes" rows="2" placeholder="Situation details for the crew" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a public alert">
+<Form name="alert">
+<Select label="Alert type" options="Weather advisory | Traffic | Safety | Utility outage | Public health | Other" placeholder="Choose type" />
+<Input label="Affected areas" placeholder="Districts or streets" />
+<TextArea label="Message" rows="3" placeholder="Write the alert message citizens will receive" required="true" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks – this month">
+| Project | Location | Dates |
+|---|---|---|
+| Sewer replacement | 5th Ave, Downtown | Mar 3–14 |
+| Resurfacing | Oak Ave, Eastside | Mar 8–22 |
+| Bridge inspection | River Bridge | Mar 10–11 |
+| Water main upgrade | Maple St, Westfield | Mar 15–29 |
+| Traffic signal install | 14th & Pine | Mar 20–31 |
+</Card>
+
+<Card title="Infrastructure maintenance due">
+| Asset | Location | Due date | Status |
+|---|---|---|---|
+| Water pump station | Northgate | Mar 12 | <Badge tone="danger">Overdue</Badge> |
+| Street lighting – panel C | Downtown | Mar 18 | <Badge tone="warning">Due soon</Badge> |
+| Bridge joints | River Bridge | Mar 25 | <Badge tone="neutral">Scheduled</Badge> |
+| Sewer lift station | Southport | Mar 30 | <Badge tone="neutral">Scheduled</Badge> |
+| Traffic camera – node 7 | Eastside | Apr 5 | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<FollowUps>
+- Show me the Eastside district dashboard
+- What incidents are critical right now?
+- Schedule a crew for the overdue pump station
+</FollowUps>

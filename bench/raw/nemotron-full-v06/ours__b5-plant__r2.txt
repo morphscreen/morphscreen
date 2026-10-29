@@ -1,0 +1,227 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="info">Live</Badge> <Badge tone="success">All Systems Nominal</Badge> <Badge tone="neutral">Shift B Active</Badge>
+
+---
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Stat label="OEE" value="87.3%" change="+2.1% vs yesterday" tone="success" />
+<Stat label="Availability" value="92.1%" change="+0.8%" tone="info" />
+<Stat label="Performance" value="94.5%" change="-0.3%" tone="neutral" />
+<Stat label="Quality" value="99.2%" change="+0.1%" tone="success" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Progress value="14250" max="18000" label="14,250 / 18,000 units (79.2%)" tone="info" />
+<Stat label="Target" value="18,000" />
+<Stat label="Current Rate" value="1,180/hr" change="+40 vs avg" tone="success" />
+<Stat label="Projected EOD" value="17,850" change="-150 vs target" tone="warning" />
+</Card>
+</Columns>
+
+---
+
+<Card title="Production Lines">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alarms |
+|---|---|---|---|---|---|
+| Line 1 - Stamping | <Badge tone="success">Running</Badge> | 420 | 400 | 89.2% | 0 |
+| Line 2 - Injection | <Badge tone="success">Running</Badge> | 380 | 350 | 91.5% | 1 |
+| Line 3 - Assembly | <Badge tone="warning">Slowed</Badge> | 290 | 320 | 82.1% | 2 |
+| Line 4 - Packaging | <Badge tone="success">Running</Badge> | 410 | 380 | 88.7% | 0 |
+| Line 5 - QC/Finish | <Badge tone="danger">Stopped</Badge> | 0 | 250 | 0% | 3 |
+</Card>
+
+---
+
+<Columns>
+<Card title="Defect Rate (Past 30 Days)">
+<Chart type="line" x="Date" y="Defect Rate %">
+| Date | Defect Rate % |
+|---|---|
+| 2025-01-01 | 1.2 |
+| 2025-01-05 | 0.9 |
+| 2025-01-10 | 1.1 |
+| 2025-01-15 | 0.8 |
+| 2025-01-20 | 0.7 |
+| 2025-01-25 | 0.9 |
+| 2025-01-30 | 0.8 |
+</Chart>
+<Stat label="Current Month Avg" value="0.92%" change="-0.15% vs last month" tone="success" />
+</Card>
+
+<Card title="Downtime by Cause (This Week)">
+<Chart type="pie" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Planned Maintenance | 180 |
+| Material Shortage | 95 |
+| Equipment Fault | 67 |
+| Changeover | 45 |
+| Quality Hold | 38 |
+| Operator Break | 22 |
+</Chart>
+<Stat label="Total Downtime" value="447 min" change="-52 min vs last week" tone="success" />
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Priority |
+|---|---|---|---|---|
+| STM-04 | Line 1 | 2025-02-01 | Preventive | High |
+| INJ-12 | Line 2 | 2025-02-03 | Predictive | Medium |
+| ASM-07 | Line 3 | 2025-02-05 | Corrective | Critical |
+| PKG-03 | Line 4 | 2025-02-07 | Preventive | Low |
+| QCF-01 | Line 5 | 2025-02-08 | Calibration | Medium |
+</Card>
+
+<Card title="Raw Material Stock">
+<Stat label="Steel Coil" value="42.3 t" change="-3.2 t today" tone="warning" />
+<Stat label="Resin Pellets" value="18.7 t" change="-1.1 t today" tone="info" />
+<Stat label="Packaging Film" value="8,450 m" change="-620 m today" tone="neutral" />
+<Stat label="Steel Reorder" value="< 15 t" tone="danger" />
+<Stat label="Resin Reorder" value="< 5 t" tone="warning" />
+<Stat label="Film Reorder" value="< 2,000 m" tone="info" />
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel Coil | 25 t | 2025-02-03 | <Badge tone="info">Confirmed</Badge> |
+| PolySource | Resin PP | 12 t | 2025-02-04 | <Badge tone="info">In Transit</Badge> |
+| PackWell | Film Roll | 5,000 m | 2025-02-05 | <Badge tone="info">Confirmed</Badge> |
+| Apex Metals | Steel Sheet | 10 t | 2025-02-06 | <Badge tone="warning">Pending</Badge> |
+| ChemLogix | Additives | 500 kg | 2025-02-07 | <Badge tone="info">Confirmed</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A (06-14) | 5,820 |
+| Shift B (14-22) | 5,410 |
+| Shift C (22-06) | 3,020 |
+</Chart>
+<Stat label="Shift A Efficiency" value="97.2%" tone="success" />
+<Stat label="Shift B Efficiency" value="90.5%" tone="info" />
+<Stat label="Shift C Efficiency" value="84.1%" tone="warning" />
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Safety Tracker">
+<Stat label="Incidents YTD" value="3" change="-2 vs last year" tone="success" />
+<Stat label="Lost Time Injuries" value="1" change="0 vs last year" tone="info" />
+<Stat label="Near Misses" value="12" change="+3 vs last year" tone="warning" />
+<Stat label="Days Since Last Incident" value="47" change="+12 vs target" tone="success" />
+<Progress value="47" max="90" label="Target: 90 days incident-free" tone="success" />
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since |
+|---|---|---|---|---|---|
+| B-20250128-04 | Line 3 | Widget-A | 1,200 | Dimensional variance | 2025-01-28 14:30 |
+| B-20250129-02 | Line 5 | Gasket-C | 850 | Surface finish | 2025-01-29 09:15 |
+| B-20250130-01 | Line 2 | Housing-B | 2,100 | Material cert missing | 2025-01-30 11:00 |
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Energy Use Today">
+<Stat label="Total Consumption" value="2,847 kWh" change="-156 vs avg" tone="success" />
+<Stat label="Current Draw" value="1,420 kW" tone="info" />
+<Stat label="Cost Today" value="$341.64" change="-$18.72" tone="success" />
+<Chart type="area" x="Hour" y="kWh">
+| Hour | kWh |
+|---|---|
+| 06:00 | 85 |
+| 08:00 | 142 |
+| 10:00 | 168 |
+| 12:00 | 155 |
+| 14:00 | 172 |
+| 16:00 | 180 |
+| 18:00 | 165 |
+| 20:00 | 148 |
+| 22:00 | 132 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Machine | Description | Priority | Assigned | Due |
+|---|---|---|---|---|---|
+| WO-20250130-001 | ASM-07 | Replace worn gripper fingers | <Badge tone="danger">Critical</Badge> | J. Torres | Today |
+| WO-20250130-002 | INJ-12 | Nozzle heater calibration | <Badge tone="warning">High</Badge> | M. Chen | Tomorrow |
+| WO-20250130-003 | STM-04 | Die alignment check | <Badge tone="warning">High</Badge> | R. Patel | 2025-02-01 |
+| WO-20250130-004 | PKG-03 | Conveyor belt tracking | <Badge tone="info">Medium</Badge> | S. Kim | 2025-02-03 |
+| WO-20250130-005 | QCF-01 | CMM probe replacement | <Badge tone="info">Medium</Badge> | A. Rossi | 2025-02-04 |
+</Card>
+</Columns>
+
+---
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="STM-01 | STM-02 | STM-03 | STM-04 | INJ-10 | INJ-11 | INJ-12 | ASM-05 | ASM-06 | ASM-07 | PKG-01 | PKG-02 | PKG-03 | QCF-01" required="true" />
+<Date label="Date" name="date" required="true" />
+</Columns>
+<Select label="Type" name="type" placeholder="Maintenance type" options="Preventive | Predictive | Corrective | Calibration | Inspection" required="true" />
+<Select label="Priority" name="priority" placeholder="Priority" options="Low | Medium | High | Critical" required="true" value="Medium" />
+<TextArea label="Notes / Work Scope" name="notes" placeholder="Describe work to be performed..." rows="3" />
+<Button>Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+---
+
+<Columns>
+<Card title="Focus Line">
+<Radio label="Select line to focus" name="focus-line" options="Line 1 - Stamping | Line 2 - Injection | Line 3 - Assembly | Line 4 - Packaging | Line 5 - QC/Finish" value="Line 1 - Stamping" />
+<Callout tone="info" title="Line 1 - Stamping Details">
+**Current Rate:** 420 units/hr | **OEE:** 89.2% | **Active WO:** 1 (Critical) | **Next Maint:** STM-04 due 2025-02-01 | **Material:** Steel 42.3t | **Shift Output:** A: 2,100 | B: 1,950 | C: 1,050
+</Callout>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="🔴 ANDON - Line 5 QC/Finish STOPPED">
+CMM probe failure on QCF-01. Batch B-20250130-01 on hold. Maintenance dispatched. ETA 15 min.
+</Callout>
+<Callout tone="warning" title="🟡 ANDON - Line 3 Assembly SLOWED">
+Feeder jam on ASM-06. Operator clearing. Rate reduced 15%.
+</Callout>
+<Callout tone="warning" title="🟡 ANDON - Line 2 Injection">
+Resin hopper INJ-12 below 20%. Refill requested.
+</Callout>
+<Callout tone="info" title="🔵 ANDON - Line 1 Stamping">
+Die changeover complete. Ramping to target rate.
+</Callout>
+</Card>
+</Columns>
+
+---
+
+<Card title="Actions">
+<Button variant="primary" size="large">Export Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Shift Report (CSV)</Button>
+<Button variant="tertiary" size="large">Email Report to Management</Button>
+</Card>
+
+<FollowUps>
+- Show detailed OEE breakdown for Line 3
+- List all overdue maintenance tasks
+- Generate material reorder recommendations
+- View safety incident details for YTD
+- Open work order WO-20250130-001
+</FollowUps>

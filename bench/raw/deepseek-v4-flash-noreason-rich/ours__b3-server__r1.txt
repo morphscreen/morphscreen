@@ -1,0 +1,69 @@
+# Service Health Dashboard
+
+<Badge tone="success">All systems operational</Badge>
+
+<Card title="Quarterly uptime">
+<Stat label="Uptime (Q3)" value="99.97%" tone="success" icon="chart-line" note="Target 99.9%" />
+<Progress value="99.97" max="100" label="Uptime vs target" tone="success" />
+</Card>
+
+<Card title="CPU & Memory — last 24h">
+<Chart type="line" x="Time" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 04:00 | 38 | 58 |
+| 08:00 | 55 | 64 |
+| 12:00 | 61 | 68 |
+| 16:00 | 58 | 66 |
+| 20:00 | 47 | 63 |
+| Now | 44 | 62 |
+</Chart>
+</Card>
+
+<Card title="Error rate — right now">
+<Columns>
+<Stat label="Error rate" value="0.42%" tone="warning" icon="warning" note="Threshold: 0.5%" />
+<Stat label="Requests/min" value="12,400" icon="activity" />
+</Columns>
+</Card>
+
+<Card title="Open incidents">
+| Severity | Incident | Region | Opened |
+|---|---|---|---|
+| <Badge tone="danger">SEV-1</Badge> | Payment API timeouts | us-east-1 | 14 min ago |
+| <Badge tone="warning">SEV-2</Badge> | Elevated 5xx on checkout | eu-west-1 | 2h ago |
+| <Badge tone="info">SEV-3</Badge> | Slow search suggestions | ap-south-1 | 5h ago |
+
+<Button variant="danger" label="Acknowledge SEV-1">Acknowledge SEV-1</Button>
+<Button variant="secondary">Acknowledge SEV-2</Button>
+<Button variant="secondary">Acknowledge SEV-3</Button>
+</Card>
+
+<Card title="Narrow by region">
+<Select label="Region" placeholder="All regions" options="All regions | us-east-1 | eu-west-1 | ap-south-1 | us-west-2" name="region" />
+</Card>
+
+<Card title="Slowest endpoints — last 5 min">
+| Endpoint | Latency (p95) |
+|---|---|
+| `POST /v1/payments` | 1,240 ms |
+| `GET /v1/orders?include=items` | 890 ms |
+| `POST /v1/checkout` | 760 ms |
+| `GET /v1/inventory` | 640 ms |
+| `PUT /v1/users/{id}` | 510 ms |
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="0.5" unit="%" name="error-threshold" />
+<Slider label="Latency threshold (p95)" min="200" max="2000" step="50" value="1000" unit="ms" name="latency-threshold" />
+<Button>Save thresholds</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What does the SEV-1 incident detail look like?
+- Which region has the highest error rate?
+- Show me the last 7 days of uptime
+</FollowUps>

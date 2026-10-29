@@ -1,0 +1,46 @@
+# Month-End Finance Dashboard
+
+<Card title="Period" subtitle="Select the month to review">
+<Select label="Month" name="period" placeholder="Choose month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025" value="June 2025" />
+</Card>
+
+<Columns>
+<Stat label="Cash on Hand" value="$487,200" change="-$42,800 vs last month" tone="info" icon="bank" />
+<Stat label="Monthly Burn" value="$142,500" change="+$8,200 vs last month" tone="warning" icon="fire" />
+<Stat label="Months of Runway" value="3.4" change="Down from 4.1 last month" tone="danger" icon="hourglass" />
+</Columns>
+
+<Card title="Expenses by Category">
+<Chart type="donut" title="June 2025 Expense Split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Payroll | 85000 |
+| Cloud & Infrastructure | 22000 |
+| Marketing | 18500 |
+| Professional Services | 9200 |
+| Office & Operations | 4800 |
+| Travel & Events | 3000 |
+</Chart>
+</Card>
+
+<Card title="Transactions Above $10,000 This Month">
+| Date | Vendor | Category | Amount | Status |
+|---|---|---|---|---|
+| Jun 3 | AWS | Cloud & Infrastructure | $22,000 | Cleared |
+| Jun 5 | Payroll (May) | Payroll | $85,000 | Cleared |
+| Jun 10 | Stripe Atlas Legal | Professional Services | $12,500 | Cleared |
+| Jun 14 | Meta Ads | Marketing | $15,000 | Pending |
+| Jun 18 | Google Cloud | Cloud & Infrastructure | $11,200 | Cleared |
+| Jun 22 | Conference Sponsorship | Marketing | $18,500 | Cleared |
+| Jun 28 | Payroll (Jun) | Payroll | $85,000 | Pending |
+</Card>
+
+<Card title="Actions">
+<Button variant="primary" icon="download">Download Statement (PDF)</Button>
+<Button variant="secondary" icon="file-text">Export CSV</Button>
+<Button variant="tertiary" icon="share-2">Share with Board</Button>
+</Card>
+
+<Callout tone="info" title="Runway Alert">
+At current burn rate, runway extends to mid-October 2025. Consider cost reductions or fundraising initiation by early September.
+</Callout>

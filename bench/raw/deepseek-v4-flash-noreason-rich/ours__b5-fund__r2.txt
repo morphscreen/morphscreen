@@ -1,0 +1,164 @@
+# Trading Desk Morning Workspace
+
+<Callout tone="warning" title="Risk Alert">2 risk limits are close to breach. See section below.</Callout>
+
+<Card title="Portfolio Overview">
+<Columns>
+<Stat label="Portfolio Value" value="$12.4M" change="+1.2%" tone="success" icon="chart-line" />
+<Stat label="P&L Today" value="+$148,200" change="+1.21%" tone="success" icon="trend-up" />
+<Stat label="Value at Risk (95%, 1d)" value="$312,000" change="2.5% of NAV" tone="warning" icon="shield-warning" />
+<Stat label="Margin in Use" value="$2.1M" change="17% of NAV" tone="info" icon="scale" />
+</Columns>
+
+<Select label="Timeframe" options="1D | 1W | 1M | 3M | 1Y | YTD" name="timeframe" value="1D" />
+</Card>
+
+<Card title="Positions">
+<Chart type="table">
+| Ticker | Size | Entry | Current | P&L |
+|---|---|---|---|---|
+| AAPL | 25,000 | $182.40 | $189.20 | +$170,000 |
+| MSFT | 18,000 | $410.10 | $421.50 | +$205,200 |
+| NVDA | 12,000 | $118.30 | $132.80 | +$174,000 |
+| JPM | 8,500 | $196.20 | $193.40 | -$23,800 |
+| XOM | 15,000 | $108.10 | $105.30 | -$42,000 |
+| TLT | 20,000 | $94.50 | $92.80 | -$34,000 |
+| SPY | 10,000 | $540.20 | $545.10 | +$49,000 |
+</Chart>
+</Card>
+
+<Card title="Exposure by Sector">
+<Chart type="donut" title="Sector Allocation">
+| Sector | Exposure |
+|---|---|
+| Technology | 38 |
+| Financials | 18 |
+| Energy | 12 |
+| Healthcare | 10 |
+| Consumer | 8 |
+| Government Bonds | 14 |
+</Chart>
+</Card>
+
+<Card title="Today's Biggest Movers">
+<Columns>
+<Card title="Gainers">
+| Ticker | Change |
+|---|---|
+| NVDA | +12.2% |
+| MSFT | +2.8% |
+| AAPL | +3.7% |
+</Card>
+<Card title="Losers">
+| Ticker | Change |
+|---|---|
+| XOM | -2.6% |
+| TLT | -1.8% |
+| JPM | -1.4% |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Watchlist">
+| Instrument | Price | Change |
+|---|---|---|
+| TSLA | $248.50 | +1.2% |
+| AMZN | $186.30 | +0.8% |
+| GOOGL | $176.20 | -0.4% |
+| BRK.B | $415.10 | +0.3% |
+| VTI | $272.40 | +0.5% |
+</Card>
+
+<Card title="Working Orders">
+| Ticker | Side | Qty | Type | Limit | Status |
+|---|---|---|---|---|---|
+| AAPL | Buy | 2,000 | Limit | $188.00 | Working |
+| MSFT | Sell | 1,500 | Limit | $425.00 | Working |
+| NVDA | Buy | 500 | Market | — | Filled |
+| XOM | Sell | 3,000 | Stop | $104.00 | Working |
+</Card>
+
+<Card title="Market Headlines">
+<Columns>
+<Card title="Bullish">
+<Badge tone="success">Positive</Badge> Fed signals rate cut in September
+<Badge tone="success">Positive</Badge> AI chip demand beats estimates
+<Badge tone="info">Neutral</Badge> Oil inventories drop 2.1M barrels
+</Card>
+<Card title="Bearish">
+<Badge tone="danger">Negative</Badge> Consumer confidence falls to 6-month low
+<Badge tone="danger">Negative</Badge> EU opens antitrust probe into big tech
+</Card>
+</Columns>
+</Card>
+
+<Card title="Economic Calendar — This Week">
+| Date | Release | Forecast | Prior |
+|---|---|---|---|
+| Mon | CPI (MoM) | 0.2% | 0.3% |
+| Tue | PPI (YoY) | 2.3% | 2.1% |
+| Wed | Retail Sales | 0.4% | 0.1% |
+| Thu | Jobless Claims | 220K | 218K |
+| Fri | Michigan Sentiment | 68.5 | 67.4 |
+</Card>
+
+<Card title="Strategy Performance — YTD">
+<Chart type="bar" title="Returns by Strategy" x="Strategy" y="Return %">
+| Strategy | Return |
+|---|---|
+| Momentum | 18.4 |
+| Mean Reversion | 9.2 |
+| Carry | 6.8 |
+| Volatility | -2.1 |
+| Event Driven | 12.5 |
+</Chart>
+
+<Card title="Drawdown (1Y)">
+<Chart type="area" title="Portfolio Drawdown" x="Month" y="Drawdown %">
+| Month | Drawdown |
+|---|---|
+| Jan | 0 |
+| Feb | -2.1 |
+| Mar | -4.8 |
+| Apr | -3.2 |
+| May | -6.5 |
+| Jun | -5.1 |
+| Jul | -2.8 |
+| Aug | 0 |
+</Chart>
+</Card>
+
+<Card title="Risk Limits">
+<Columns>
+<Stat label="Concentration Limit (Tech)" value="38%" note="Limit: 40%" tone="warning" icon="warning" />
+<Stat label="VaR Limit" value="$312K" note="Limit: $350K" tone="info" icon="shield" />
+<Stat label="Leverage Ratio" value="2.1x" note="Limit: 3.0x" tone="success" icon="scale" />
+<Stat label="Sector Limit (Energy)" value="12%" note="Limit: 15%" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Rebalance Portfolio">
+<Callout tone="info" title="Suggestion">Reduce tech exposure by 2% and increase healthcare allocation by 1.5% to align with target weights.</Callout>
+<Button variant="primary">Rebalance to Target Weights</Button>
+<Button variant="secondary">Rebalance Only Overweight Sectors</Button>
+</Card>
+
+<Card title="Place Order">
+<Form name="order">
+<Select label="Ticker" options="AAPL | MSFT | NVDA | JPM | XOM | TLT | SPY | TSLA | AMZN | GOOGL" name="ticker" placeholder="Select ticker" />
+<Radio label="Side" options="Buy | Sell" name="side" value="Buy" />
+<Input label="Quantity" type="number" name="qty" placeholder="1000" min="1" required="true" />
+<Select label="Order Type" options="Market | Limit | Stop | Stop-Limit" name="orderType" placeholder="Select type" />
+<Input label="Limit Price" type="number" name="limit" placeholder="Optional" step="0.01" />
+<Button>Submit Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the P&L breakdown by strategy
+- What happens if NVDA drops 10%?
+- Rebalance my portfolio automatically
+- Show me the last 5 executed orders
+- What's the expected impact of Friday's CPI release?
+</FollowUps>

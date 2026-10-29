@@ -1,0 +1,174 @@
+# Streaming Operations Dashboard
+
+<Select label="Focus Region" name="region-filter" placeholder="All regions" options="Global | North America | Europe | APAC | Latin America | Middle East & Africa" />
+
+<Columns>
+<Card title="Live Viewers">
+<Stat label="Watching Now" value="2.4M" change="+12% vs 1hr ago" tone="success" />
+</Card>
+<Card title="Buffering Rate">
+<Stat label="Buffering %" value="0.84%" change="-0.03pp" tone="success" />
+</Card>
+<Card title="Recommendation CTR">
+<Stat label="Click-Through" value="4.2%" change="+0.3pp" tone="info" />
+</Card>
+<Card title="Search Abandonment">
+<Stat label="No Playback" value="18.7%" change="-1.1pp" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Most-Watched Titles (Last 24h)">
+<Chart type="horizontal" x="Hours" y="Title">
+| Title | Hours |
+|---|---|
+| The Crown S6 | 1,240,000 |
+| Stranger Things S4 | 980,000 |
+| Wednesday S1 | 890,000 |
+| Squid Game S1 | 760,000 |
+| Bridgerton S2 | 650,000 |
+| The Witcher S3 | 540,000 |
+| Ozark S4 | 480,000 |
+| Black Mirror S6 | 420,000 |
+</Chart>
+</Card>
+<Card title="Watch Time — Past 30 Days">
+<Chart type="line" x="Date" y="Hours (M)">
+| Date | Hours (M) |
+|---|---|
+| Nov 1 | 42.1 |
+| Nov 4 | 45.3 |
+| Nov 7 | 48.7 |
+| Nov 10 | 51.2 |
+| Nov 13 | 49.8 |
+| Nov 16 | 53.4 |
+| Nov 19 | 56.1 |
+| Nov 22 | 54.9 |
+| Nov 25 | 58.3 |
+| Nov 28 | 61.7 |
+| Dec 1 | 64.2 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Subscribers: New vs Cancelled">
+<Chart type="bar" x="Week" y="Count">
+| Week | New | Cancelled |
+|---|---|---|
+| W1 | 142,000 | 38,000 |
+| W2 | 156,000 | 41,000 |
+| W3 | 168,000 | 39,000 |
+| W4 | 181,000 | 42,000 |
+| W5 | 174,000 | 37,000 |
+</Chart>
+</Card>
+<Card title="Performance by Genre">
+<Chart type="bar" x="Genre" y="Completion %">
+| Genre | Completion % |
+|---|---|
+| Drama | 78% |
+| Thriller | 74% |
+| Comedy | 71% |
+| Documentary | 68% |
+| Sci-Fi | 65% |
+| Horror | 62% |
+| Reality | 58% |
+| Kids | 54% |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Delivery Health by Region">
+<Chart type="bar" x="Region" y="Health Score">
+| Region | Health Score |
+|---|---|
+| North America | 99.2% |
+| Europe | 98.8% |
+| APAC | 97.5% |
+| Latin America | 96.1% |
+| Middle East & Africa | 94.3% |
+</Chart>
+</Card>
+<Card title="Revenue Split by Plan">
+<Chart type="donut" x="Plan" y="Revenue">
+| Plan | Revenue |
+|---|---|
+| Premium 4K | $4.2M |
+| Standard HD | $3.8M |
+| Basic SD | $1.5M |
+| Mobile Only | $0.9M |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Viewing Split by Device">
+<Chart type="pie" x="Device" y="Share">
+| Device | Share |
+|---|---|
+| Smart TV | 42% |
+| Mobile | 28% |
+| Desktop | 18% |
+| Tablet | 9% |
+| Game Console | 3% |
+</Chart>
+</Card>
+<Card title="Releases Coming This Month">
+| Date | Title | Type | Genre |
+|---|---|---|---|
+| Dec 5 | The Crown S6 Finale | Series | Drama |
+| Dec 12 | Rebel Moon | Film | Sci-Fi |
+| Dec 15 | Squid Game: The Challenge | Series | Reality |
+| Dec 20 | Maestro | Film | Biography |
+| Dec 22 | Berlin (Money Heist) | Series | Thriller |
+| Dec 26 | The Brothers Sun | Series | Action |
+| Dec 29 | Society of the Snow | Film | Survival |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Licenses Expiring Soon">
+| Title | Expires | Region | Action |
+|---|---|---|---|
+| The Office (US) | Dec 31, 2024 | NA | Renew pending |
+| Parks & Recreation | Dec 31, 2024 | NA | Renew pending |
+| Friends | Jan 15, 2025 | Global | In negotiation |
+| Harry Potter Films | Jan 31, 2025 | EU/UK | Reviewing |
+| Studio Ghibli Collection | Feb 1, 2025 | APAC | Auto-renew |
+</Card>
+<Card title="Feature Flags">
+| Flag | State | Description |
+|---|---|---|
+| <Switch label="" name="ff-shuffle" value="true" /> Shuffle Play | Enabled | Random episode playback |
+| <Switch label="" name="ff-download-q" value="true" /> Download Quality Selector | Enabled | User picks quality |
+| <Switch label="" name="ff-live-chat" value="false" /> Live Event Chat | Disabled | Moderation review |
+| <Switch label="" name="ff-ai-recs" value="true" /> AI Recommendations v2 | Enabled | A/B 50/50 |
+| <Switch label="" name="ff-kids-profiles" value="true" /> Kids Profiles PIN | Enabled | Required for exit |
+| <Switch label="" name="ff-spatial-audio" value="false" /> Spatial Audio | Disabled | Hardware dependency |
+| <Switch label="" name="ff-share-play" value="true" /> SharePlay Support | Enabled | iOS 17+ only |
+</Card>
+</Columns>
+
+<Card title="Promote Title on Home Screen">
+<Form name="promote-title">
+<Input label="Title ID" placeholder="e.g., tt1234567" hint="Internal content ID" required="true" />
+<Input label="Display Title" placeholder="The Crown Season 6" required="true" />
+<Select label="Placement" options="Hero Banner | Row 1: Continue Watching | Row 2: Trending Now | Row 3: New Releases | Row 4: Because You Watched" placeholder="Select placement" required="true" />
+<Date label="Start Date" name="promo-start" required="true" />
+<Date label="End Date" name="promo-end" required="true" />
+<Input label="CTA Text" placeholder="Watch Now" value="Watch Now" />
+<Select label="Target Audience" options="All Users | New Subscribers | Lapsed >30d | Genre: Drama Fans | Completed: The Crown S5" placeholder="All Users" />
+<Checkboxes label="Devices" options="Smart TV | Mobile | Desktop | Tablet | Game Console" value="Smart TV | Mobile | Desktop | Tablet | Game Console" />
+<Button>Publish Promotion</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the top 10 titles by completion rate this week
+- Compare buffering rates across CDN providers
+- List all feature flags changed in the last 7 days
+- Export subscriber churn cohort analysis
+</FollowUps>

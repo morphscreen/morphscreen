@@ -1,0 +1,51 @@
+# Month-End Finance View
+
+<Card title="Month selector" subtitle="Choose the reporting period">
+<Select label="Reporting month" name="reporting-month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025" value="June 2025" />
+</Card>
+
+<Columns>
+<Card title="Key metrics">
+<Stat label="Cash on hand" value="$487,200" change="-$42,800 vs last month" tone="info" icon="bank" />
+<Stat label="Monthly burn" value="$84,500" change="+$3,200 vs last month" tone="warning" icon="fire" />
+<Stat label="Months of runway" value="5.8" change="-0.3 months" tone="danger" icon="hourglass" />
+</Card>
+
+<Card title="Runway projection" subtitle="Based on current burn rate">
+<Progress value="58" max="100" label="5.8 of 10 months remaining" tone="danger" />
+<Callout tone="info" title="Projection">At current spend, cash runs out in late November 2025. Reducing burn by 15% extends runway to 7+ months.</Callout>
+</Card>
+</Columns>
+
+<Card title="Expenses by category" subtitle="June 2025 actuals">
+<Chart type="donut" title="Expense breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Payroll & Benefits | 48200 |
+| Cloud & Infrastructure | 12800 |
+| Marketing & Ads | 9500 |
+| Professional Services | 6200 |
+| Office & Operations | 4100 |
+| Travel & Events | 2700 |
+| Software & Tools | 1000 |
+</Chart>
+</Card>
+
+<Card title="Transactions above $10,000" subtitle="June 2025">
+| Date | Vendor | Category | Amount | Description |
+|---|---|---|---|---|
+| 2025-06-03 | Gusto Payroll | Payroll & Benefits | $48,200 | June payroll + benefits |
+| 2025-06-05 | AWS | Cloud & Infrastructure | $12,800 | Monthly infrastructure bill |
+| 2025-06-07 | Meta Ads | Marketing & Ads | $9,500 | *Below threshold — shown for context* |
+| 2025-06-10 | Orrick Legal | Professional Services | $6,200 | *Below threshold — shown for context* |
+| 2025-06-12 | Stripe Atlas | Professional Services | $15,000 | Series A legal setup |
+| 2025-06-18 | WeWork | Office & Operations | $4,100 | *Below threshold — shown for context* |
+| 2025-06-22 | Conference Sponsor | Travel & Events | $12,500 | SaaStr Annual sponsorship |
+| 2025-06-28 | DataDog | Software & Tools | $1,000 | *Below threshold — shown for context* |
+</Card>
+
+<Card title="Actions">
+<Button variant="primary" icon="download">Download statement (PDF)</Button>
+<Button variant="secondary" icon="file-spreadsheet">Export CSV</Button>
+<Button variant="tertiary" icon="share-network">Share with board</Button>
+</Card>

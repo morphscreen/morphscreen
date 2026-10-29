@@ -1,0 +1,81 @@
+# Receptionist Dashboard
+
+<Card title="Today's Overview" subtitle="Wednesday, October 16">
+<Columns>
+<Stat label="Patients Expected Today" value="24" icon="users" />
+<Stat label="No-Show Rate (This Month)" value="8.3%" change="-2.1% vs last month" tone="success" icon="chart-line" />
+<Stat label="Next Patient Called" value="Emma Wilson" note="Room 3 · 10:30 AM" icon="megaphone" />
+</Columns>
+</Card>
+
+<Card title="Today's Appointments">
+<Chart type="bar" x="Hour" y="Appointments">
+| Time | Appointments |
+|---|---|
+| 9 AM | 4 |
+| 10 AM | 6 |
+| 11 AM | 5 |
+| 12 PM | 2 |
+| 1 PM | 3 |
+| 2 PM | 4 |
+</Chart>
+
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 9:00 AM | James Carter | Room 1 | <Badge tone="success">Checked in</Badge> |
+| 9:15 AM | Sophia Nguyen | Room 2 | <Badge tone="info">Waiting</Badge> |
+| 9:30 AM | Liam O'Connor | Room 3 | <Badge tone="info">Waiting</Badge> |
+| 9:45 AM | Ava Patel | Room 1 | <Badge tone="warning">Late</Badge> |
+| 10:00 AM | Noah Kim | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:15 AM | Emma Wilson | Room 3 | <Badge tone="success">Called</Badge> |
+| 10:30 AM | Oliver Brown | Room 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:45 AM | Mia Garcia | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:00 AM | Ethan Davis | Room 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:15 AM | Isabella Martinez | Room 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:30 AM | Lucas Anderson | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:45 AM | Amelia Thomas | Room 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:00 PM | Mason White | Room 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:15 PM | Harper Lewis | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:30 PM | Logan Hall | Room 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:45 PM | Evelyn Allen | Room 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:00 PM | Aiden Young | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:15 PM | Ella Hernandez | Room 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:30 PM | Jacob King | Room 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:45 PM | Chloe Wright | Room 2 | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Room Availability">
+<Columns>
+<Stat label="Room 1" value="Free now" tone="success" icon="door" />
+<Stat label="Room 2" value="In use" tone="warning" icon="door" />
+<Stat label="Room 3" value="In use" tone="warning" icon="door" />
+</Columns>
+</Card>
+
+<Card title="Patient Check-In">
+<Form name="check-in">
+<Select label="Select patient" placeholder="Choose patient" options="Emma Wilson (10:15 AM) | Noah Kim (10:00 AM) | Oliver Brown (10:30 AM) | Mia Garcia (10:45 AM)" />
+<Input label="Arrival time" type="time" value="10:20" />
+<Button>Check In Patient</Button>
+</Form>
+</Card>
+
+<Card title="Next Patient Called">
+<Columns>
+<Avatar name="Emma Wilson" subtitle="Appointment 10:15 AM · Room 3" />
+<Button variant="primary" label="Call Next Patient">Call Next Patient</Button>
+</Columns>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="day-navigation">
+<Date label="Select date" />
+<Button variant="secondary">View Day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the full list of today's patients with contact details
+- See the weekly no-show trend chart
+- View room cleaning and maintenance schedule
+</FollowUps>

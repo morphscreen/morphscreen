@@ -1,0 +1,67 @@
+# Service Health Overview
+
+<Callout tone="warning" title="2 open incidents">Both incidents are affecting the US-East region. See below for details.</Callout>
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.94%" tone="success" icon="chart-line" />
+<Stat label="Error rate now" value="0.42%" tone="warning" icon="warning-circle" note="Above 0.3% threshold" />
+<Stat label="Open incidents" value="2" tone="danger" icon="siren" />
+</Columns>
+
+<Card title="CPU & Memory — Past 24 hours" subtitle="All regions combined">
+<Chart type="area" x="Time" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 58 |
+| 04:00 | 35 | 57 |
+| 06:00 | 40 | 60 |
+| 08:00 | 55 | 66 |
+| 10:00 | 62 | 71 |
+| 12:00 | 58 | 69 |
+| 14:00 | 64 | 73 |
+| 16:00 | 60 | 70 |
+| 18:00 | 52 | 68 |
+| 20:00 | 47 | 65 |
+| 22:00 | 44 | 63 |
+| Now | 45 | 64 |
+</Chart>
+</Card>
+
+<Card title="Region filter">
+<Radio label="Narrow view to region" options="All regions | US-East | US-West | EU-Central | AP-Southeast" name="region" value="All regions" />
+</Card>
+
+<Card title="Open incidents">
+| Incident | Severity | Region | Status | Started |
+|---|---|---|---|---|
+| **INC-4821** — Elevated 5xx on checkout API | <Badge tone="danger">Critical</Badge> | US-East | Unacknowledged | 14:32 UTC |
+| **INC-4820** — Increased latency on auth service | <Badge tone="warning">High</Badge> | US-East | Unacknowledged | 13:05 UTC |
+
+<Callout tone="danger" title="INC-4821 requires acknowledgement">
+<Button variant="primary">Acknowledge INC-4821</Button>
+<Button variant="secondary">Acknowledge INC-4820</Button>
+</Callout>
+</Card>
+
+<Card title="Slowest endpoints — Last 5 minutes">
+| Endpoint | p95 Latency | Region |
+|---|---|---|
+| `POST /api/v1/checkout` | 1,840 ms | US-East |
+| `GET /api/v1/auth/validate` | 1,210 ms | US-East |
+| `GET /api/v1/orders/recent` | 890 ms | All |
+| `POST /api/v1/payment/refund` | 720 ms | EU-Central |
+| `GET /api/v1/inventory/stock` | 540 ms | AP-Southeast |
+</Card>
+
+<Card title="Alert threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="0.3" name="threshold" unit="%" />
+<Callout tone="info" title="Current setting">You'll be paged when the error rate exceeds **0.3%** for 5 consecutive minutes.</Callout>
+<Button variant="secondary">Save threshold</Button>
+</Card>
+
+<FollowUps>
+- Show me the timeline of INC-4821
+- Which service is causing the elevated error rate?
+- Compare CPU usage across regions
+</FollowUps>

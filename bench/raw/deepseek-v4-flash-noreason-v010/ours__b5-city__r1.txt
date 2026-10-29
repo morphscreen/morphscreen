@@ -1,0 +1,150 @@
+# City Operations Center
+
+Live overview of the city. <Badge tone="info">Updated 2 min ago</Badge>
+
+<Card title="Current conditions">
+<Columns>
+<Stat label="Congestion" value="72%" note="Heavy on I-5 North" tone="warning" icon="traffic-sign" />
+<Stat label="Transit punctuality" value="91%" note="+3% vs yesterday" tone="success" icon="bus" />
+<Stat label="Water use today" value="84 ML" note="−6% vs daily avg" tone="info" icon="droplet" />
+<Stat label="Weather" value="18°C" note="Light rain, wind 12 km/h" tone="info" icon="cloud-rain" />
+</Columns>
+</Card>
+
+<Card title="Air quality by district">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Northgate | 42 |
+| Riverside | 58 |
+| Downtown | 67 |
+| Eastside | 51 |
+| Southport | 74 |
+| Westfield | 39 |
+</Chart>
+<Callout tone="warning" title="Southport elevated">AQI 74 — sensitive groups should limit outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy use — past week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Usage |
+|---|---|
+| Mon | 4120 |
+| Tue | 4380 |
+| Wed | 4210 |
+| Thu | 4560 |
+| Fri | 4890 |
+| Sat | 3720 |
+| Sun | 3540 |
+</Chart>
+</Card>
+
+<Card title="Open incidents">
+| Severity | Location | Type | Status |
+|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | 5th & Main | Water main break | Crew en route |
+| <Badge tone="warning">High</Badge> | I-5 North, km 14 | Multi-vehicle collision | On scene |
+| <Badge tone="warning">High</Badge> | Riverside Park | Fallen tree on trail | Assessed |
+| <Badge tone="info">Moderate</Badge> | Eastside Mall | Elevator outage | Parts ordered |
+| <Badge tone="info">Moderate</Badge> | Southport Dr | Traffic signal outage | Technician assigned |
+| <Badge tone="neutral">Low</Badge> | Westfield Library | Graffiti report | Scheduled |
+</Card>
+
+<Card title="Emergency vehicles deployed">
+<Columns>
+<Stat label="Ambulances" value="12" note="3 available" icon="truck" />
+<Stat label="Fire engines" value="8" note="2 available" icon="flame" />
+<Stat label="Police units" value="21" note="6 available" icon="shield-check" />
+</Columns>
+<Details title="View deployment map">
+| Unit | Type | District | Status |
+|---|---|---|---|
+| A-3 | Ambulance | Northgate | On call |
+| A-7 | Ambulance | Downtown | Returning |
+| F-2 | Fire engine | Riverside | On scene |
+| F-5 | Fire engine | Eastside | Available |
+| P-14 | Police | Southport | Patrolling |
+</Details>
+</Card>
+
+<Card title="Parking availability downtown">
+<Progress value="68" max="100" label="Downtown garages — 68% full" tone="warning" />
+<Columns>
+<Stat label="Garage A" value="42%" note="82 spots free" tone="success" />
+<Stat label="Garage B" value="81%" note="23 spots free" tone="danger" />
+<Stat label="Street parking" value="57%" note="114 spots free" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Public events this weekend">
+| Event | Location | Time | District |
+|---|---|---|---|
+| Farmers Market | Central Plaza | Sat 8:00–14:00 | Downtown |
+| Riverfest Concert | Riverside Amphitheater | Sat 18:00–22:00 | Riverside |
+| Marathon | Route along Harbor Blvd | Sun 6:00–12:00 | Southport |
+| Art Walk | Westfield Gallery District | Sun 10:00–17:00 | Westfield |
+</Card>
+
+<Card title="Citizen reports — live feed">
+<Columns>
+<Stat label="Last 24 hours" value="147" note="12 open" icon="chat-circle-text" />
+<Stat label="Service backlog" value="89" note="−14 vs last week" tone="info" icon="clipboard-text" />
+</Columns>
+<Details title="Latest reports">
+| Time | District | Report | Status |
+|---|---|---|---|
+| 14:32 | Downtown | Pothole on Oak St | New |
+| 14:25 | Northgate | Streetlight out | Assigned |
+| 14:18 | Eastside | Noise complaint | Resolved |
+| 14:05 | Southport | Overflowing bin | New |
+| 13:58 | Westfield | Blocked drain | In progress |
+</Details>
+</Card>
+
+<Card title="Roadworks planned this month">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| Oak St — 3rd to 5th | Downtown | Jun 10–14 | Lane closure |
+| Harbor Blvd | Southport | Jun 12–18 | Night work |
+| Riverside Dr | Riverside | Jun 16–20 | Full closure |
+| Northgate Ave | Northgate | Jun 24–28 | Lane closure |
+</Card>
+
+<Card title="Infrastructure maintenance due">
+| Asset | District | Due date | Priority |
+|---|---|---|---|
+| Bridge 12 — deck inspection | Riverside | Jun 15 | <Badge tone="danger">High</Badge> |
+| Pump station 3 | Eastside | Jun 18 | <Badge tone="warning">Medium</Badge> |
+| Traffic signal #204 | Downtown | Jun 20 | <Badge tone="warning">Medium</Badge> |
+| Water main valve 7 | Westfield | Jun 25 | <Badge tone="info">Low</Badge> |
+</Card>
+
+<Card title="Focus on a district">
+<Select label="Select district" options="All districts | Northgate | Riverside | Downtown | Eastside | Southport | Westfield" name="district-filter" />
+<Callout tone="info" title="District view">Choose a district to filter incidents, air quality, events, and maintenance across this screen.</Callout>
+</Card>
+
+<Card title="Dispatch a crew">
+<Form name="dispatch">
+<Select label="Incident" options="Water main break — 5th & Main | Multi-vehicle collision — I-5 | Fallen tree — Riverside Park | Elevator outage — Eastside Mall | Traffic signal — Southport Dr" placeholder="Select incident" />
+<Select label="Crew type" options="Water | Traffic | Parks | Electrical | Street maintenance" placeholder="Select crew type" />
+<Input label="Crew size" type="number" placeholder="e.g. 3" min="1" max="12" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send public alert">
+<Form name="alert">
+<Select label="Audience" options="All districts | Northgate | Riverside | Downtown | Eastside | Southport | Westfield" placeholder="Select audience" />
+<Select label="Severity" options="Info | Advisory | Warning | Emergency" placeholder="Select severity" />
+<TextArea label="Message" placeholder="e.g. Avoid Oak St — water main repair until 18:00." rows="3" />
+<Button>Send alert</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the incident list for Southport
+- What's planned for roadworks in June?
+- Which crews are available right now?
+- Send a test alert to Downtown
+</FollowUps>

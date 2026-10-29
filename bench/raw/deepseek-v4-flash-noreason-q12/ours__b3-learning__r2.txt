@@ -1,0 +1,76 @@
+# Training Platform Analytics
+
+<Columns>
+<Stat label="Active learners this week" value="1,284" change="+8.2%" tone="success" icon="users" />
+<Stat label="Course completion rate" value="72%" change="+3.1%" tone="info" icon="check-circle" />
+<Stat label="Average quiz score" value="84%" change="+1.4%" tone="info" icon="chart-line" />
+</Columns>
+
+<Card title="Cohort filter" subtitle="Narrow all metrics below to a specific group">
+<Form name="cohort-filter">
+<Select label="Cohort" placeholder="All cohorts" options="All cohorts | Marketing Q3 | Sales Onboarding | Engineering Interns | Customer Success | Leadership Dev" />
+<Button variant="secondary" size="small">Apply filter</Button>
+</Form>
+</Card>
+
+<Card title="Engagement — past 8 weeks" subtitle="Active sessions per week">
+<Chart type="area" x="Week" y="Sessions">
+| Week | Sessions |
+|---|---|
+| 8 weeks ago | 820 |
+| 7 weeks ago | 910 |
+| 6 weeks ago | 875 |
+| 5 weeks ago | 1,040 |
+| 4 weeks ago | 1,120 |
+| 3 weeks ago | 1,180 |
+| 2 weeks ago | 1,240 |
+| This week | 1,284 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Courses ranked by enrollment" subtitle="Top 5 by active learners">
+| Rank | Course | Enrolled | Completion |
+|---|---|---|---|
+| 1 | Data Analytics Fundamentals | 486 | 78% |
+| 2 | Leadership Essentials | 412 | 64% |
+| 3 | Python for Beginners | 358 | 71% |
+| 4 | Customer Success Playbook | 301 | 69% |
+| 5 | Agile Project Management | 247 | 82% |
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Low activity or poor scores in last 14 days">
+<Columns>
+<Stat label="At risk" value="37" tone="warning" icon="warning" />
+<Stat label="High risk" value="12" tone="danger" icon="warning" />
+</Columns>
+
+| Learner | Risk | Last active | Quiz avg |
+|---|---|---|---|
+| Maria Chen | <Badge tone="danger">High</Badge> | 12 days ago | 51% |
+| James Okafor | <Badge tone="warning">Medium</Badge> | 9 days ago | 63% |
+| Priya Sharma | <Badge tone="danger">High</Badge> | 14 days ago | 47% |
+| Diego Torres | <Badge tone="warning">Medium</Badge> | 7 days ago | 66% |
+| Emma Wilson | <Badge tone="warning">Medium</Badge> | 6 days ago | 58% |
+
+<Button variant="primary" size="small">View all 37 learners</Button>
+</Card>
+</Columns>
+
+<Card title="Message a cohort" subtitle="Send an email or in-platform notification">
+<Form name="cohort-message">
+<Select label="Recipients" options="All cohorts | Marketing Q3 | Sales Onboarding | Engineering Interns | Customer Success | Leadership Dev" required />
+<Input label="Subject" placeholder="Quick check-in on your progress" required />
+<TextArea label="Message" placeholder="Hi team, we noticed you've been making great progress…" rows="4" required />
+<Switch label="Send as email too" hint="Also delivers a copy to their inbox" />
+<Button>Send message</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the trend for at-risk learners over time
+- Draft a re-engagement message for inactive learners
+- Compare completion rates across cohorts
+- What's driving the drop in engagement for the Sales Onboarding cohort?
+</FollowUps>

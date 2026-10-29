@@ -1,0 +1,119 @@
+# Power Network Operator Console
+
+Live operational view of the national grid. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Network Overview">
+<Columns>
+<Stat label="Current Load" value="38.2 GW" change="+2.1% vs forecast" tone="info" icon="chart-line" />
+<Stat label="Capacity Used" value="76%" change="24% headroom" tone="success" icon="gauge" />
+<Stat label="Price / MWh" value="€84.50" change="-€3.20 vs yesterday" tone="info" icon="currency-eur" />
+<Stat label="Emissions Today" value="12,480 tCO₂" change="-8% vs avg" tone="success" icon="leaf" />
+</Columns>
+<Progress value="76" max="100" label="Grid capacity utilization" tone="info" />
+</Card>
+
+<Card title="Generation Mix by Source">
+<Chart type="donut" title="Live generation split" x="Source" y="GW">
+| Source | GW |
+|---|---|
+| Wind | 14.2 |
+| Solar | 6.8 |
+| Gas | 8.4 |
+| Nuclear | 5.9 |
+| Hydro | 2.1 |
+| Biomass | 0.8 |
+</Chart>
+</Card>
+
+<Card title="Plant Status" subtitle="Live output and operational state">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Hornsea Wind Farm | Wind | 1,240 | <Badge tone="success">Online</Badge> |
+| Dogger Bank | Wind | 980 | <Badge tone="success">Online</Badge> |
+| Drax BECCS | Biomass | 640 | <Badge tone="success">Online</Badge> |
+| Hinkley Point C | Nuclear | 3,200 | <Badge tone="success">Online</Badge> |
+| West Burton B | Gas | 890 | <Badge tone="warning">Partial</Badge> |
+| Grain LNG | Gas | 1,100 | <Badge tone="success">Online</Badge> |
+| Solar Parks UK | Solar | 420 | <Badge tone="info">Ramping</Badge> |
+| Ffestiniog Hydro | Hydro | 180 | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected Area | Outage Type | Est. Restoration |
+|---|---|---|---|
+| North West | Manchester & Salford | Transformer failure | 14:30 |
+| South East | Brighton & Hove | Cable fault | 18:00 |
+| Midlands | Coventry | Substation maintenance | 23:00 |
+| Scotland | Aberdeen | Storm damage | Tomorrow 06:00 |
+</Card>
+
+<Callout tone="warning" title="Outage escalation">Manchester outage affecting 12,000 customers — crew dispatched, ETA 14:30.</Callout>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="area" title="Forecast demand (GW)" x="Hour" y="GW">
+| Hour | Forecast |
+|---|---|
+| 00:00 | 34.8 |
+| 02:00 | 33.2 |
+| 04:00 | 32.5 |
+| 06:00 | 35.1 |
+| 08:00 | 40.2 |
+| 10:00 | 41.8 |
+| 12:00 | 42.5 |
+| 14:00 | 43.1 |
+| 16:00 | 42.8 |
+| 18:00 | 44.6 |
+| 20:00 | 41.2 |
+| 22:00 | 37.4 |
+</Chart>
+</Card>
+
+<Card title="Maintenance Planned — This Month">
+| Date | Asset | Region | Duration |
+|---|---|---|---|
+| 12–14 Mar | Substation 44A | Yorkshire | 48h |
+| 16 Mar | Transformer T7 | Wales | 6h |
+| 19–21 Mar | Transmission line 220 | East Anglia | 60h |
+| 24 Mar | SCADA upgrade | National | 4h |
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="Critical — Grid frequency deviation">Frequency at 49.7 Hz, below nominal. Balancing reserves activated.</Callout>
+<Callout tone="warning" title="High wind forecast">Gusts > 70 mph expected in Scotland — potential for curtailment.</Callout>
+<Callout tone="info" title="Solar ramp-up">Solar output increasing faster than forecast — re-dispatch advised.</Callout>
+</Card>
+
+<Card title="Regional Focus">
+<Form name="region-focus">
+<Select label="Select region to focus" placeholder="Choose a region" options="North West | North East | Midlands | South East | South West | Scotland | Wales | Northern Ireland" />
+<Button>Apply focus</Button>
+<Button variant="secondary">Clear focus</Button>
+</Form>
+</Card>
+
+<Card title="Curtailment Order">
+<Form name="curtailment">
+<Select label="Plant to curtail" placeholder="Select plant" options="Hornsea Wind Farm | Dogger Bank | Solar Parks UK | Ffestiniog Hydro" />
+<Input label="Curtailment amount (MW)" type="number" min="0" max="1000" placeholder="e.g. 250" />
+<Date label="Start time" />
+<Date label="End time" />
+<Radio label="Reason" options="Grid congestion | Oversupply | Frequency control | Maintenance" />
+<Button variant="danger">Submit curtailment order</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today">
+<Columns>
+<Stat label="Total CO₂" value="12,480 t" change="-8% vs weekly avg" tone="success" icon="leaf" />
+<Stat label="Carbon intensity" value="327 g/kWh" change="-35 vs yesterday" tone="info" icon="factory" />
+<Stat label="Avoided vs coal" value="18,200 t" note="Equivalent to 4,000 cars/yr" tone="success" icon="car" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the detailed breakdown for the North West region
+- What caused the Manchester transformer failure?
+- Prepare a curtailment order for Hornsea Wind Farm
+- Show me the emissions trend for the last 30 days
+- What's the maintenance impact on capacity this week?
+</FollowUps>

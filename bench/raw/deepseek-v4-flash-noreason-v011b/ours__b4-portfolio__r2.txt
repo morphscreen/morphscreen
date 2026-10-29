@@ -1,0 +1,117 @@
+# PMO Project Portfolio Review
+
+<Card title="Portfolio Health Summary">
+<Badge tone="warning">At Risk</Badge> — 3 projects on track, 2 behind schedule, 1 critical. Budget 72% spent. 4 overdue milestones. 2 blocked items.
+</Card>
+
+<Card title="Quarter Selection & Export">
+<Columns>
+<Select label="View Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" placeholder="Select quarter" />
+<Button variant="secondary" icon="download">Export Review</Button>
+</Columns>
+</Card>
+
+<Card title="Active Projects">
+| Project | Owner | Deadline | Health | Budget Spent | Budget Allocated |
+|---|---|---|---|---|---|
+| Platform Migration | Sarah Chen | 2025-04-15 | <Badge tone="danger">Critical</Badge> | $245,000 | $320,000 |
+| Mobile App v3 | James Park | 2025-05-01 | <Badge tone="success">On Track</Badge> | $98,000 | $180,000 |
+| API Gateway | Maria Lopez | 2025-04-28 | <Badge tone="warning">At Risk</Badge> | $67,000 | $90,000 |
+| Data Lake | Alex Kim | 2025-06-10 | <Badge tone="success">On Track</Badge> | $42,000 | $150,000 |
+| Security Audit | David Ross | 2025-04-05 | <Badge tone="warning">At Risk</Badge> | $31,000 | $45,000 |
+| Customer Portal | Lisa Wang | 2025-05-20 | <Badge tone="success">On Track</Badge> | $76,000 | $120,000 |
+
+<Progress value="72" max="100" label="Overall Budget Spent" tone="warning" />
+</Card>
+
+<Card title="Overdue Milestones">
+| Milestone | Project | Due Date | Days Overdue |
+|---|---|---|---|
+| Database schema freeze | Platform Migration | 2025-03-20 | 18 |
+| UI component library | Mobile App v3 | 2025-03-25 | 13 |
+| Load testing complete | API Gateway | 2025-03-28 | 10 |
+| Vendor contract signed | Security Audit | 2025-03-15 | 23 |
+
+<Button variant="danger" icon="warning-circle">View all overdue items</Button>
+</Card>
+
+<Card title="Team Utilization">
+<Chart type="bar" x="Team Member" y="Utilization %">
+| Team | Utilization |
+|---|---|
+| Engineering | 87 |
+| Design | 72 |
+| QA | 64 |
+| DevOps | 91 |
+| Product | 78 |
+</Chart>
+<Stat label="Avg Utilization" value="78%" change="+3%" tone="info" icon="users" />
+</Card>
+
+<Card title="Risks Overview">
+| Risk | Project | Severity | Status |
+|---|---|---|---|
+| Key engineer leaving | Platform Migration | <Badge tone="danger">High</Badge> | Monitoring |
+| Third-party API deprecation | API Gateway | <Badge tone="warning">Medium</Badge> | Mitigating |
+| Budget overrun | Platform Migration | <Badge tone="danger">High</Badge> | Escalated |
+| Timeline compression | Security Audit | <Badge tone="warning">Medium</Badge> | Accepted |
+| Dependency on delayed vendor | Data Lake | <Badge tone="neutral">Low</Badge> | Tracking |
+
+<Button variant="secondary" icon="shield-check">Risk register</Button>
+</Card>
+
+<Card title="Upcoming Deadlines (Next 2 Weeks)">
+| Project | Deadline | Days Away |
+|---|---|---|
+| Security Audit | 2025-04-05 | 2 |
+| Platform Migration | 2025-04-15 | 12 |
+
+<Callout tone="info" title="Coming up">Two major deadlines approaching. Security Audit needs immediate attention.</Callout>
+</Card>
+
+<Card title="Delivery Pace (Last 6 Sprints)">
+<Chart type="line" x="Sprint" y="Story Points">
+| Sprint | Completed | Planned |
+|---|---|---|
+| Sprint 6 | 42 | 45 |
+| Sprint 7 | 38 | 40 |
+| Sprint 8 | 45 | 45 |
+| Sprint 9 | 36 | 50 |
+| Sprint 10 | 41 | 42 |
+| Sprint 11 | 39 | 44 |
+</Chart>
+<Stat label="Avg Velocity" value="40.2 pts" change="-5%" tone="warning" icon="chart-line" />
+</Card>
+
+<Card title="Blocked Work Items">
+| Item | Project | Blocked By | Days Blocked |
+|---|---|---|---|
+| Deploy to staging | Platform Migration | AWS quota limit | 4 |
+| User auth flow | Customer Portal | Pending security review | 2 |
+
+<Button variant="danger" icon="x-circle">Unblock requests</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Form name="request-people">
+<Select label="Project" options="Platform Migration | Mobile App v3 | API Gateway | Data Lake | Security Audit | Customer Portal" placeholder="Select project" required="true" />
+<Input label="Number of people needed" type="number" placeholder="e.g. 2" min="1" max="20" required="true" />
+<TextArea label="Justification" placeholder="Why do you need more people?" rows="3" required="true" />
+<Button variant="primary" icon="user-plus">Request More People</Button>
+</Form>
+
+<Form name="archive-project">
+<Select label="Project to archive" options="Platform Migration | Mobile App v3 | API Gateway | Data Lake | Security Audit | Customer Portal" placeholder="Select finished project" required="true" />
+<Input label="Completion date" type="date" required="true" />
+<Button variant="tertiary" icon="archive">Archive Project</Button>
+</Form>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the detailed view for Platform Migration
+- What are the top 3 risks I should address today?
+- Compare this quarter's velocity to last quarter
+- Who is overallocated and by how much?
+</FollowUps>

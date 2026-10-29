@@ -1,0 +1,110 @@
+# Hub Operations — Today
+
+<Callout tone="warning" title="Weather advisory active">
+Thunderstorm cell over the field 14:00–18:00 local. Ground stops possible; expect gate holds and reroutes.
+</Callout>
+
+<Columns>
+<Stat label="On-time performance" value="78.4%" change="+2.1 pts vs yesterday" tone="warning" icon="airplane-takeoff" />
+<Stat label="Cancellations today" value="9" change="3 weather, 6 mechanical" tone="danger" icon="x-circle" />
+<Stat label="Avg passenger load" value="84.2%" change="+1.8 pts vs 30-day avg" tone="info" icon="users" />
+<Stat label="Avg turnaround time" value="52 min" change="+6 min vs target" tone="warning" icon="clock" />
+</Columns>
+
+<Card title="Flights at the hub" subtitle="Live board — 12 active departures/arrivals">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA 118 | ORD → DEN | B12 | On time |
+| AA 204 | ORD → SEA | B7 | Delayed 45m |
+| AA 331 | ORD → MIA | C4 | Boarding |
+| AA 452 | ORD → LGA | C9 | Delayed 1h 10m |
+| AA 507 | ORD → SFO | B2 | On time |
+| AA 619 | ORD → BOS | A15 | Cancelled |
+| AA 733 | ORD → PHX | A3 | On time |
+| AA 812 | ORD → DFW | D6 | Delayed 25m |
+| AA 940 | ORD → ATL | D1 | On time |
+| AA 1022 | ORD → LAX | B19 | Cancelled |
+| AA 1155 | ORD → EWR | C2 | On time |
+| AA 1288 | ORD → MCO | A9 | Delayed 40m |
+</Card>
+
+<Card title="Delayed flights" subtitle="Needs attention — 4 flights">
+<Badge tone="danger">AA 452</Badge> ORD → LGA, Gate C9, delayed 1h 10m — crew rest conflict
+<Badge tone="warning">AA 204</Badge> ORD → SEA, Gate B7, delayed 45m — late inbound aircraft
+<Badge tone="warning">AA 1288</Badge> ORD → MCO, Gate A9, delayed 40m — weather hold
+<Badge tone="warning">AA 812</Badge> ORD → DFW, Gate D6, delayed 25m — de-icing queue
+<Button ask="Show the recovery plan for AA 452">Recovery plan for AA 452</Button>
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 90 minutes">
+<Steps>
+<Step title="AA 331 moved B4 → C4" status="done" subtitle="14:12 — jet bridge maintenance at B4" />
+<Step title="AA 812 moved D2 → D6" status="done" subtitle="13:48 — inbound widebody occupying D2" />
+<Step title="AA 940 moved D8 → D1" status="done" subtitle="13:20 — taxiway congestion, shorter tow" />
+<Step title="AA 1155 moved C7 → C2" status="current" subtitle="13:55 — gate hold pending weather" />
+</Steps>
+</Card>
+
+<Card title="Crews available for reassignment" subtitle="Reserve pool at ORD">
+| Crew | Base | Hours left | Qualified on |
+|---|---|---|---|
+| CA-1042 | ORD | 6h 20m | A320, B737 |
+| CA-1088 | ORD | 4h 05m | B737, B757 |
+| CA-1131 | ORD | 7h 45m | A320, A321 |
+| FO-2210 | ORD | 5h 30m | B737, B777 |
+| FO-2264 | ORD | 3h 15m | A320, B737 |
+</Card>
+
+<Card title="Connections at risk" subtitle="Inbound flights feeding tight transfers">
+| Inbound | Outbound | Transfer window | Passengers at risk |
+|---|---|---|---|
+| AA 118 | AA 452 | 35 min | 22 |
+| AA 507 | AA 812 | 40 min | 14 |
+| AA 940 | AA 1288 | 30 min | 31 |
+| AA 1155 | AA 331 | 45 min | 9 |
+</Card>
+
+<Card title="Weather advisories at the hub" subtitle="ORD — updated 14:30 local">
+<Callout tone="danger" title="Thunderstorm warning">
+Cell over the field 14:00–18:00. Expect ground stops, gate holds, and possible diversions.
+</Callout>
+<Callout tone="info" title="Crosswind advisory">
+Winds 24 kt gusting 38 kt from 270°. Reduced arrival rate on parallel runways.
+</Callout>
+</Card>
+
+<Card title="Rebook affected passengers" subtitle="Applies to cancelled and delayed flights">
+<Form name="rebook">
+<Input label="Flight number" placeholder="e.g. AA 619" required="true" />
+<Input label="Passengers affected" type="number" placeholder="e.g. 148" min="1" required="true" />
+<Select label="Rebooking option" placeholder="Choose an option" options="Next available flight | Partner airline | Overnight + hotel | Full refund" required="true" />
+<Radio label="Notify passengers" options="Email and app push | App push only | No notification" />
+<TextArea label="Notes for the gate team" placeholder="Any special handling, unaccompanied minors, medical needs" rows="3" />
+<Button>Rebook passengers</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Look at a different hub" subtitle="Switch the board to another station">
+<Select label="Hub" options="ORD — Chicago O'Hare | DFW — Dallas/Fort Worth | MIA — Miami | LAX — Los Angeles | JFK — New York | PHX — Phoenix" name="hub" />
+<Button ask="Switch the operations board to DFW">View DFW board</Button>
+</Card>
+
+<Card title="Today at a glance">
+<Chart type="bar" x="Hour" y="On-time %">
+| Hour | On-time % |
+|---|---|
+| 06:00 | 92 |
+| 09:00 | 88 |
+| 12:00 | 81 |
+| 15:00 | 68 |
+| 18:00 | 74 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Which flights can be recovered fastest?
+- Show me the crew duty limits in detail
+- Draft a passenger notification for AA 619
+- Compare ORD on-time performance with DFW today
+</FollowUps>

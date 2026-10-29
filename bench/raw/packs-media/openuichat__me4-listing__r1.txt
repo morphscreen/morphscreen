@@ -1,0 +1,34 @@
+root = Card([header, photos, detailsHeader, detailsCards, contactHeader, contactInfo])
+header = CardHeader("Modern 2BR Apartment — Downtown", "Bright, renovated unit with city views · Available immediately")
+photos = ImageGallery(photoItems)
+photoItems = [
+  { src: "https://picsum.photos/seed/apartment-living/1200/800", alt: "Spacious living room with floor-to-ceiling windows", details: "Living area" },
+  { src: "https://picsum.photos/seed/apartment-kitchen/1200/800", alt: "Modern kitchen with stainless steel appliances", details: "Kitchen" },
+  { src: "https://picsum.photos/seed/apartment-bedroom1/1200/800", alt: "Primary bedroom with built-in wardrobes", details: "Primary bedroom" },
+  { src: "https://picsum.photos/seed/apartment-bedroom2/1200/800", alt: "Second bedroom with city view", details: "Second bedroom" },
+  { src: "https://picsum.photos/seed/apartment-bathroom/1200/800", alt: "Renovated bathroom with walk-in shower", details: "Bathroom" },
+  { src: "https://picsum.photos/seed/apartment-balcony/1200/800", alt: "Private balcony overlooking the street", details: "Balcony" }
+]
+detailsHeader = InlineHeader("Key Details", "Rent, size, and layout at a glance")
+detailsCards = SnippetCardBlock([rentCard, sizeCard, roomsCard], "grid", true)
+rentCard = SnippetCardItem("rent", rentLhs, rentRhs)
+rentLhs = IconText(rentIcon, "neutral", "m", "Monthly Rent", "Includes water & trash", false, "horizontal")
+rentIcon = Icon("circle-dollar-sign", "finance")
+rentRhs = BoldText("number", "$2,850", "/month", "text")
+sizeCard = SnippetCardItem("size", sizeLhs, sizeRhs)
+sizeLhs = IconText(sizeIcon, "neutral", "m", "Total Area", "Interior living space", false, "horizontal")
+sizeIcon = Icon("maximize-2", "layout")
+sizeRhs = BoldText("number", "1,150 sq ft", "≈ 107 m²", "text")
+roomsCard = SnippetCardItem("rooms", roomsLhs, roomsRhs)
+roomsLhs = IconText(roomsIcon, "neutral", "m", "Layout", "2 bed · 2 bath · 1 balcony", false, "horizontal")
+roomsIcon = Icon("home", "home")
+roomsRhs = BoldText("text", "2 BR / 2 BA", "Open-plan living", "text")
+contactHeader = InlineHeader("Landlord Contact", "Direct inquiries to the property owner")
+contactInfo = EntityList(contactRows, "default", { left: "Detail", right: "Value" }, { left: "", right: "Verified listing · Updated today" })
+contactRows = [
+  { left: "Name", right: "Marcus Chen", rightVariant: "text" },
+  { left: "Phone", right: "+1 (415) 555-0187", rightVariant: "text" },
+  { left: "Email", right: "marcus.chen@propertygroup.com", rightVariant: "text" },
+  { left: "Preferred Contact", right: "Text or email (9am–7pm)", rightVariant: "text" },
+  { left: "Response Time", right: "Usually within 2 hours", rightVariant: "text" }
+]

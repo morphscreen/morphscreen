@@ -1,0 +1,162 @@
+# Portfolio Review — Q3 2025
+
+<Callout tone="info" title="Portfolio health summary">
+Overall portfolio is **on track** — 6 of 8 active projects are green, one is amber, one is red. Two overdue milestones and three blocked items need attention before the next steering committee.
+</Callout>
+
+<Card title="Quarter selector">
+<Form name="quarter-select">
+<Select label="Reporting quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" value="Q3 2025" />
+<Button variant="secondary">View quarter</Button>
+<Button variant="secondary" icon="download">Export review (PDF)</Button>
+</Form>
+</Card>
+
+<Card title="Active projects" subtitle="8 active projects · 2 finishing this quarter">
+| Project | Owner | Deadline | Health | Budget | Spent |
+|---|---|---|---|---|---|
+| Atlas Migration | Sarah Chen | 2025-09-12 | <Badge tone="success">Green</Badge> | $120k | $74k |
+| Apollo CRM Rollout | Marcus Webb | 2025-10-01 | <Badge tone="success">Green</Badge> | $85k | $41k |
+| Data Lake Modernization | Priya Sharma | 2025-11-15 | <Badge tone="warning">Amber</Badge> | $200k | $158k |
+| Mobile App v2 | Diego Fuentes | 2025-09-30 | <Badge tone="success">Green</Badge> | $95k | $52k |
+| Security Hardening | Aisha Bello | 2025-12-01 | <Badge tone="success">Green</Badge> | $60k | $18k |
+| Billing System Upgrade | Tom Novak | 2025-10-20 | <Badge tone="danger">Red</Badge> | $150k | $139k |
+| Partner Portal | Lena Fischer | 2025-11-05 | <Badge tone="success">Green</Badge> | $75k | $33k |
+| Legacy Decommission | James Okafor | 2025-09-05 | <Badge tone="success">Green</Badge> | $50k | $46k |
+
+<Columns>
+<Stat label="Total allocated" value="$835k" note="across 8 projects" icon="wallet" />
+<Stat label="Total spent" value="$561k" note="67% of allocation" icon="chart-line" />
+<Stat label="Avg. budget burn" value="72%" note="vs. 62% time elapsed" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Budget spent vs. allocation">
+<Chart type="bar" title="Budget utilization by project" x="Project" y="USD">
+| Project | Allocated | Spent |
+|---|---|---|
+| Atlas Migration | 120000 | 74000 |
+| Apollo CRM Rollout | 85000 | 41000 |
+| Data Lake Modernization | 200000 | 158000 |
+| Mobile App v2 | 95000 | 52000 |
+| Security Hardening | 60000 | 18000 |
+| Billing System Upgrade | 150000 | 139000 |
+| Partner Portal | 75000 | 33000 |
+| Legacy Decommission | 50000 | 46000 |
+</Chart>
+<Callout tone="warning" title="Over budget risk">
+Billing System Upgrade is at 93% of allocation with 6 weeks remaining. Data Lake Modernization is at 79% with 10 weeks remaining — both need a reforecast.
+</Callout>
+</Card>
+
+<Card title="Overdue milestones">
+<Steps>
+<Step title="Payment Gateway Integration" subtitle="Billing System Upgrade · due 2025-08-18 · 14 days overdue" status="danger">
+Blocked on vendor API access. Escalated to procurement.
+</Step>
+<Step title="Data Quality Scorecard" subtitle="Data Lake Modernization · due 2025-08-25 · 7 days overdue" status="danger">
+Quality rules still being defined by business analysts.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Deadlines in the next two weeks">
+| Date | Project | Milestone | Owner |
+|---|---|---|---|
+| 2025-09-03 | Legacy Decommission | Final data purge sign-off | James Okafor |
+| 2025-09-05 | Legacy Decommission | Decommission complete | James Okafor |
+| 2025-09-08 | Atlas Migration | Cutover rehearsal | Sarah Chen |
+| 2025-09-10 | Mobile App v2 | App store submission | Diego Fuentes |
+| 2025-09-12 | Atlas Migration | Go-live | Sarah Chen |
+| 2025-09-15 | Apollo CRM Rollout | Pilot user training | Marcus Webb |
+</Card>
+
+<Card title="Delivery pace — last 6 sprints">
+<Chart type="line" title="Story points delivered per sprint" x="Sprint" y="Points">
+| Sprint | Delivered |
+|---|---|
+| Sprint 12 | 182 |
+| Sprint 13 | 195 |
+| Sprint 14 | 168 |
+| Sprint 15 | 204 |
+| Sprint 16 | 176 |
+| Sprint 17 | 191 |
+</Chart>
+<Stat label="6-sprint average" value="186 pts" note="velocity stable within ±10%" tone="success" icon="trend-up" />
+</Card>
+
+<Card title="Team utilization">
+<Chart type="bar" title="Utilization by team (last month)" x="Team" y="Utilization %">
+| Team | Utilization |
+|---|---|
+| Backend | 88 |
+| Frontend | 92 |
+| Data | 76 |
+| DevOps | 81 |
+| QA | 69 |
+| Design | 64 |
+| PMO | 55 |
+</Chart>
+<Callout tone="warning" title="Capacity risk">
+QA at 69% and Design at 64% are under-utilized, while Frontend at 92% is near capacity. Consider rebalancing work or cross-training.
+</Callout>
+</Card>
+
+<Card title="Risks by severity">
+<Columns>
+<Stat label="Critical" value="1" tone="danger" icon="warning" />
+<Stat label="High" value="3" tone="warning" icon="warning" />
+<Stat label="Medium" value="5" tone="info" icon="info" />
+<Stat label="Low" value="4" tone="neutral" icon="info" />
+</Columns>
+
+| Severity | Risk | Project | Mitigation |
+|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Vendor API contract delay | Billing System Upgrade | Legal drafting interim agreement; fallback to manual processing |
+| <Badge tone="warning">High</Badge> | Data quality gaps in source systems | Data Lake Modernization | Weekly data steward workshops; interim quality rules |
+| <Badge tone="warning">High</Badge> | Frontend team burnout risk | Mobile App v2 | Hiring 1 senior dev; scope freeze for 2 weeks |
+| <Badge tone="warning">High</Badge> | Security audit findings unresolved | Security Hardening | Weekly remediation sprint; CISO review |
+| <Badge tone="info">Medium</Badge> | Stakeholder churn on requirements | Partner Portal | Bi-weekly demos; requirements freeze |
+| <Badge tone="info">Medium</Badge> | Cloud cost overrun | Atlas Migration | Monthly cost review; reserved instances |
+| <Badge tone="info">Medium</Badge> | Key person dependency | Apollo CRM Rollout | Cross-training sessions; documentation |
+| <Badge tone="info">Medium</Badge> | Regulatory change pending | Security Hardening | Monitoring legislation; compliance check |
+| <Badge tone="info">Medium</Badge> | Third-party penetration test delay | Mobile App v2 | Backup vendor identified |
+</Card>
+
+<Card title="Blocked work items">
+| Item | Project | Blocked by | Days blocked | Owner |
+|---|---|---|---|---|
+| Payment retry logic | Billing System Upgrade | Vendor API access | 14 | Tom Novak |
+| Data lineage UI | Data Lake Modernization | Missing metadata | 6 | Priya Sharma |
+| Push notification cert | Mobile App v2 | Apple account access | 3 | Diego Fuentes |
+</Card>
+
+<Card title="Project actions">
+<Columns>
+<Card title="Request more people">
+<Form name="request-people">
+<Select label="Project" options="Atlas Migration | Apollo CRM Rollout | Data Lake Modernization | Mobile App v2 | Security Hardening | Billing System Upgrade | Partner Portal | Legacy Decommission" placeholder="Select project" required="true" />
+<Select label="Role needed" options="Developer | QA Engineer | Designer | DevOps Engineer | Business Analyst | Project Manager" placeholder="Select role" required="true" />
+<Input label="Number of people" type="number" min="1" max="10" placeholder="1" required="true" />
+<TextArea label="Justification" placeholder="Why is this needed and for how long?" rows="3" required="true" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Archive finished project">
+<Form name="archive-project">
+<Select label="Project to archive" options="Atlas Migration | Apollo CRM Rollout | Data Lake Modernization | Mobile App v2 | Security Hardening | Billing System Upgrade | Partner Portal | Legacy Decommission" placeholder="Select project" required="true" />
+<Input label="Completion date" type="date" required="true" />
+<TextArea label="Close-out notes" placeholder="Key outcomes, lessons learned, handover details" rows="3" />
+<Button variant="danger">Archive project</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the detailed risk register
+- Compare this quarter with Q2 2025
+- List all projects by budget overrun
+- What's the capacity plan for next quarter?
+</FollowUps>

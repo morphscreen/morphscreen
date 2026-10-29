@@ -1,0 +1,170 @@
+# Hospital Operations Command Center
+
+<Select label="View date" name="view-date" options="Today | Yesterday | 2 days ago | 3 days ago | 4 days ago | 5 days ago | 6 days ago" value="Today" />
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="342 of 400 beds occupied">
+<Progress value="342" max="400" label="85.5% occupancy" tone="warning" />
+<Stat label="Available" value="58" change="12 ICU | 23 Med-Surg | 15 Step-down | 8 Pediatrics" tone="info" />
+</Card>
+
+<Card title="ER Wait Time" subtitle="Current average door-to-provider">
+<Stat label="Wait time" value="42 min" change="+8 min vs 1hr ago" tone="danger" />
+<Stat label="Patients waiting" value="28" change="6 critical | 12 urgent | 10 stable" tone="warning" />
+<Stat label="LWBS today" value="3" change="Left without being seen" tone="danger" />
+</Card>
+</Columns>
+
+<Card title="Admissions — Last 14 Days">
+<Chart type="area" x="Date" y="Admissions" title="Daily admissions trend">
+| Date | Admissions |
+|---|---|
+| Oct 10 | 42 |
+| Oct 11 | 38 |
+| Oct 12 | 45 |
+| Oct 13 | 51 |
+| Oct 14 | 47 |
+| Oct 15 | 53 |
+| Oct 16 | 49 |
+| Oct 17 | 44 |
+| Oct 18 | 41 |
+| Oct 19 | 39 |
+| Oct 20 | 46 |
+| Oct 21 | 50 |
+| Oct 22 | 48 |
+| Oct 23 | 43 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Patients by Department">
+<Chart type="horizontal" x="Department" y="Patients" title="Current census">
+| Department | Patients |
+|---|---|
+| Med-Surg | 98 |
+| ICU | 28 |
+| Step-down | 34 |
+| Pediatrics | 22 |
+| L&D | 15 |
+| NICU | 12 |
+| Psych | 18 |
+| Telemetry | 36 |
+| Oncology | 24 |
+| Rehab | 15 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Total: 187 staff">
+| Role | On Shift | Scheduled | Gap |
+|---|---|---|---|
+| RN | 68 | 72 | -4 |
+| LPN | 24 | 24 | 0 |
+| CNA | 32 | 36 | -4 |
+| Resident | 18 | 18 | 0 |
+| Attending | 12 | 12 | 0 |
+| RT | 8 | 8 | 0 |
+| PharmD | 6 | 6 | 0 |
+| SW/Case Mgmt | 10 | 10 | 0 |
+| Transport | 9 | 11 | -2 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Critical Patients — Active Alerts">
+<Callout tone="danger" title="Room 314 — STEMI activation">
+68M, chest pain 45 min, en route via EMS, ETA 3 min. Cath lab activated.
+</Callout>
+<Callout tone="danger" title="ICU Bed 2 — Septic shock">
+54F, lactate 6.2, on norepi 0.15, CRRT consult placed. Family updated.
+</Callout>
+<Callout tone="warning" title="ER Bay 7 — Stroke alert">
+72F, L-sided weakness onset 62 min ago, NIHSS 14. tPA window closing in 18 min.
+</Callout>
+<Callout tone="warning" title="Step-down 12 — Resp failure">
+45M post-op day 2, SpO2 88% on 6L NC, ABG pending, ICU transfer discussed.
+</Callout>
+<Callout tone="info" title="Pediatrics 4 — DKA">
+11F, pH 7.18, glucose 580, insulin drip started, PICU bed requested.
+</Callout>
+</Card>
+
+<Card title="Ready for Discharge" subtitle="18 patients · 32 beds potentially freed">
+| Patient | Unit | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| M. Chen | Med-Surg 302 | 4d | Transport arranged | 10:00 |
+| R. Patel | Step-down 14 | 3d | Home health confirmed | 11:00 |
+| J. Williams | Telemetry 218 | 5d | Rx pickup needed | 10:30 |
+| S. Garcia | Oncology 412 | 6d | Family en route | 11:30 |
+| K. Thompson | Med-Surg 305 | 2d | D/C summary pending | 12:00 |
+| D. Kim | Rehab 504 | 14d | Equipment delivery | 13:00 |
+| L. Davis | Pediatrics 12 | 3d | Car seat check | 10:00 |
+| P. Rodriguez | Psych 201 | 7d | Outpatient appt set | 11:00 |
+</Card>
+</Columns>
+
+<Card title="Today's Operating Room Schedule">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Est. Duration |
+|---|---|---|---|---|---|---|
+| 1 | 07:00–11:30 | CABG ×2 | Dr. Ahmed | Dr. Park | In progress | 4h 30m |
+| 2 | 07:30–10:00 | Lap chole + appendectomy | Dr. Liu | Dr. Brooks | In progress | 2h 30m |
+| 3 | 08:00–12:00 | Total knee ×2 | Dr. Gupta | Dr. Nguyen | In progress | 4h 00m |
+| 4 | 09:00–13:00 | Whipple | Dr. Chen | Dr. Wilson | Pre-op | 4h 00m |
+| 5 | 10:00–12:30 | Craniotomy | Dr. Okonkwo | Dr. Martinez | Pre-op | 2h 30m |
+| 6 | 11:00–13:00 | C-section (elective) | Dr. Singh | Dr. Taylor | Scheduled | 2h 00m |
+| 7 | 13:00–16:00 | Spinal fusion | Dr. Ahmed | Dr. Park | Scheduled | 3h 00m |
+| 8 | 14:00–16:30 | Thyroidectomy + parathyroid | Dr. Liu | Dr. Brooks | Scheduled | 2h 30m |
+| 9 | 15:00–17:00 | Exploratory lap | Dr. Gupta | Dr. Nguyen | Scheduled | 2h 00m |
+| 10 | 16:00–18:00 | ORIF femur | Dr. Chen | Dr. Wilson | Scheduled | 2h 00m |
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Items below 2-day par level">
+| Item | Current | Par | Days Left | Unit | Action |
+|---|---|---|---|---|---|
+| <Badge tone="danger">0.9% NaCl 1L bags</Badge> | 142 | 500 | 1.2 | Central Supply | <Button variant="secondary" size="small">Reorder</Button> |
+| <Badge tone="danger">Epi 1:10k syringes</Badge> | 18 | 60 | 0.8 | Pharmacy / Code Carts | <Button variant="secondary" size="small">Reorder</Button> |
+| <Badge tone="warning">N95 respirators (M)</Badge> | 320 | 1200 | 1.5 | Materials Mgmt | <Button variant="secondary" size="small">Reorder</Button> |
+| <Badge tone="warning">Blood culture bottles (aerobic)</Badge> | 45 | 150 | 1.8 | Lab / Phlebotomy | <Button variant="secondary" size="small">Reorder</Button> |
+| <Badge tone="warning">Foley catheters 16Fr</Badge> | 28 | 100 | 1.9 | Central Supply | <Button variant="secondary" size="small">Reorder</Button> |
+| <Badge tone="info">IV tubing (primary)</Badge> | 180 | 400 | 2.1 | Central Supply | <Button variant="tertiary" size="small">Monitor</Button> |
+| <Badge tone="info">Suction canisters</Badge> | 95 | 250 | 2.3 | Materials Mgmt | <Button variant="tertiary" size="small">Monitor</Button> |
+</Card>
+
+<Columns>
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Select label="Incident type" name="incident-type" placeholder="Select category" options="Patient safety / near miss | Medication error | Fall | Equipment failure | Security | Infection control | Pressure injury | Other" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Level 1 — No harm | Level 2 — Minor harm | Level 3 — Moderate harm | Level 4 — Severe harm | Level 5 — Death" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room / Area" required="true" />
+<Date label="Date & time of event" name="incident-datetime" required="true" />
+<TextArea label="Description" name="description" placeholder="What happened? Include sequence of events, contributing factors, immediate actions taken." rows="4" required="true" />
+<TextArea label="Immediate actions taken" name="actions" placeholder="What was done right away?" rows="2" />
+<Input label="Reporter name (optional)" name="reporter" placeholder="Anonymous if preferred" />
+<Input label="Contact (optional)" name="contact" placeholder="Phone or email for follow-up" type="email" />
+<Button>Submit Incident Report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient name" name="pt-name" placeholder="Last, First" required="true" />
+<Input label="MRN" name="mrn" placeholder="Medical record number" required="true" />
+<Select label="Current unit" name="from-unit" placeholder="Select current location" options="ER | ICU | Step-down | Med-Surg | Telemetry | Pediatrics | NICU | L&D | Psych | Oncology | Rehab" required="true" />
+<Select label="Requested destination" name="to-unit" placeholder="Select destination" options="ICU | Step-down | Med-Surg | Telemetry | Pediatrics | NICU | L&D | Psych | Oncology | Rehab | External facility" required="true" />
+<Select label="Urgency" name="urgency" placeholder="Select urgency" options="STAT — Immediate | Urgent — Within 1 hour | Soon — Within 4 hours | Routine — Next available bed" required="true" />
+<TextArea label="Clinical reason for transfer" name="reason" placeholder="Clinical justification, acuity change, specialty needs, etc." rows="3" required="true" />
+<Input label="Requesting provider" name="requester" placeholder="Your name / pager / contact" required="true" />
+<Checkboxes label="Special requirements" name="special" options="Isolation precautions | Continuous monitoring | Ventilator | IV vasoactive drips | Blood products en route | Family notification needed" />
+<Button>Submit Transfer Request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- View ICU bed availability detail
+- Page the bed management coordinator
+- Run the 48-hour capacity forecast
+- Review pending discharge barriers list
+- Check blood product inventory
+</FollowUps>

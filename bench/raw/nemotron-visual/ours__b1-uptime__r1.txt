@@ -1,0 +1,30 @@
+<Card title="Platform Status" subtitle="Real-time API health overview">
+<Columns>
+<Stat label="API Uptime (This Month)" value="99.97%" change="+0.02% vs last month" note="Target: 99.95%" />
+<Stat label="Incidents This Month" value="1" change="0 critical" note="1 minor resolved" />
+</Columns>
+
+<Progress value="99.97" max="100" label="Uptime progress toward 100%" />
+
+<Callout tone="success" title="Most Recent Incident — Resolved">
+**Minor API latency spike** — October 12, 2024, 14:22–14:47 UTC  
+Elevated p99 latency (2.1s vs 180ms baseline) affecting `/v1/search` endpoint. Root cause: connection pool exhaustion in the read replica. Mitigated by scaling replica pool and adding circuit breaker. No data loss or write impact.
+</Callout>
+
+<Details title="Incident timeline">
+| Time (UTC) | Event |
+|---|---|
+| 14:22 | Alert triggered: p99 latency > 2s |
+| 14:25 | On-call engaged, identified replica pool saturation |
+| 14:32 | Scaled replica pool from 20 → 50 connections |
+| 14:38 | Latency returned to baseline |
+| 14:47 | Incident resolved, monitoring stabilized |
+| 15:15 | Postmortem scheduled for Oct 15 |
+</Details>
+</Card>
+
+<FollowUps>
+- View full incident postmortem
+- Subscribe to status notifications
+- Check SLA dashboard
+</FollowUps>

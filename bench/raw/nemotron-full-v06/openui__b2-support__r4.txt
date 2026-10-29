@@ -1,0 +1,30 @@
+root = Card([header, kpiRow, filterRow, ticketsSection, newTicketBtn], "card", "column", "l")
+
+header = CardHeader("Support Morning View", "Real-time queue snapshot")
+
+kpiRow = Card([openTicketsCard, avgResponseCard], "clear", "row", "l", "stretch", "center")
+
+openTicketsCard = Card([openTicketsLabel, openTicketsValue], "sunk", "column", "m", "center", "center")
+openTicketsLabel = TextContent("Open Tickets", "small-heavy")
+openTicketsValue = TextContent("24", "large-heavy")
+
+avgResponseCard = Card([avgResponseLabel, avgResponseValue], "sunk", "column", "m", "center", "center")
+avgResponseLabel = TextContent("Avg First Response", "small-heavy")
+avgResponseValue = TextContent("2h 14m", "large-heavy")
+
+filterRow = Card([filterLabel, highPriorityToggle], "clear", "row", "m", "center", "between")
+filterLabel = TextContent("Filter", "small-heavy")
+highPriorityToggle = Buttons([highPriorityBtn], "row")
+highPriorityBtn = Button("High Priority Only", ["filter-high"], "secondary", "normal", "medium")
+
+ticketsSection = Card([ticketsHeading, ticketsTable], "clear", "column", "m")
+ticketsHeading = Heading("Most Recent Tickets", "h3")
+ticketsTable = Table([colId, colSubject, colPriority, colStatus, colTime])
+colId = Col("ID", ["#T-1042", "#T-1041", "#T-1040", "#T-1039", "#T-1038"])
+colSubject = Col("Subject", ["Login failure on mobile", "Billing discrepancy Q3", "API rate limit exceeded", "Password reset not working", "Feature request: dark mode"])
+colPriority = Col("Priority", ["High", "High", "Medium", "Low", "Low"])
+colStatus = Col("Status", ["Open", "In Progress", "Open", "Waiting on Customer", "Open"])
+colTime = Col("Created", ["5 min ago", "23 min ago", "1h 12m ago", "3h 45m ago", "5h 20m ago"])
+
+newTicketBtn = Buttons([createTicketBtn], "row")
+createTicketBtn = Button("Open New Ticket", ["open-create-ticket"], "primary", "normal", "large")

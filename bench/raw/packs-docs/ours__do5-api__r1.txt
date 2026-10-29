@@ -1,0 +1,67 @@
+<Card title="GET /api/v1/users/{userId}" subtitle="Retrieve a single user by their unique identifier">
+**Description**: Fetches the complete profile for a specific user. Returns all public fields plus private fields if the requester has admin privileges or is the user themselves.
+
+**Authentication**: Required — Bearer token with `users:read` scope.
+
+**Path Parameters**:
+| Name | Type | Required | Description |
+|---|---|---|---|
+| `userId` | string | Yes | The user's UUID (format: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`) |
+
+**Query Parameters**:
+| Name | Type | Required | Description |
+|---|---|---|---|
+| `include` | string | No | Comma-separated list of related resources to embed (e.g., `teams,roles`) |
+| `fields` | string | No | Comma-separated list of fields to return (default: all) |
+
+**Rate Limit**: 100 requests/minute per token.
+</Card>
+
+<Card title="Example Request">
+<Code file="curl" highlight="3">
+curl -X GET "https://api.example.com/api/v1/users/550e8400-e29b-41d4-a716-446655440000?include=teams" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
+  -H "Accept: application/json"
+</Code>
+</Card>
+
+<Card title="Example Response (200 OK)">
+<Code file="response.json">
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "email": "alex.morgan@example.com",
+  "name": "Alex Morgan",
+  "avatarUrl": "https://cdn.example.com/avatars/550e8400-e29b-41d4-a716-446655440000.png",
+  "status": "active",
+  "createdAt": "2023-01-15T08:30:00Z",
+  "updatedAt": "2024-03-22T14:45:00Z",
+  "teams": [
+    {
+      "id": "team-eng-01",
+      "name": "Engineering",
+      "role": "member"
+    },
+    {
+      "id": "team-design-03",
+      "name": "Product Design",
+      "role": "lead"
+    }
+  ],
+  "metadata": {
+    "lastLogin": "2024-03-22T14:45:00Z",
+    "loginCount": 342
+  }
+}
+</Code>
+</Card>
+
+<Card title="Error Codes">
+| Status Code | Error Code | Message | Description |
+|---|---|---|---|
+| 400 | `INVALID_USER_ID` | Invalid user ID format | The `userId` path parameter is not a valid UUID. |
+| 401 | `UNAUTHORIZED` | Authentication required | Missing or invalid Authorization header. |
+| 403 | `FORBIDDEN` | Insufficient permissions | Token lacks `users:read` scope or access to this user. |
+| 404 | `USER_NOT_FOUND` | User not found | No user exists with the provided `userId`. |
+| 429 | `RATE_LIMIT_EXCEEDED` | Too many requests | Rate limit of 100 req/min exceeded. Retry after `Retry-After` header. |
+| 500 | `INTERNAL_ERROR` | Internal server error | Unexpected server error. Contact support with request ID. |
+</Card>

@@ -1,0 +1,130 @@
+# Hub Operations Desk — KJFK
+
+<Card title="Hub Selector" subtitle="Current: New York JFK (KJFK)">
+<Select label="Switch hub" name="hub-select" placeholder="Select hub" options="KJFK — New York JFK | KLAX — Los Angeles | KORD — Chicago O'Hare | KATL — Atlanta | KDFW — Dallas/Fort Worth | KDEN — Denver | KSFO — San Francisco | KLAS — Las Vegas | KSEA — Seattle | KMIA — Miami" value="KJFK — New York JFK" />
+</Card>
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="78%" change="+3% vs yesterday" tone="success" />
+<Stat label="On-Time Arrivals" value="82%" change="+2% vs yesterday" tone="success" />
+<Stat label="Cancellations" value="12" change="+4 vs yesterday" tone="danger" />
+<Progress value="78" max="100" label="Departure OTP Target: 85%" />
+<Progress value="82" max="100" label="Arrival OTP Target: 88%" />
+</Card>
+
+<Card title="Key Metrics">
+<Stat label="Avg Passenger Load" value="84%" change="+2% vs avg" tone="info" />
+<Stat label="Avg Turnaround Time" value="42 min" change="-3 min vs target" tone="success" />
+<Stat label="Connections at Risk" value="23" change="5 critical" tone="warning" />
+<Stat label="Crews on Reserve" value="18" change="4 reassigned" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Weather Advisories — KJFK">
+<Callout tone="warning" title="Wind Shear Advisory">LLWS alert active until 18:00Z. Expect 15-25kt crosswinds on 22L/22R. Recommend single-engine taxi where possible.</Callout>
+<Callout tone="info" title="Convective SIGMET">Line of TS moving NE at 25kt. ETA overhead 16:30Z. Brief holding possible for arrivals 16:30-17:30Z.</Callout>
+<Callout tone="neutral" title="Visibility">Currently 10SM. Forecast 6SM in BR after 20:00Z. CAT II/III approaches may be required.</Callout>
+</Card>
+
+<Card title="Active Flights — KJFK (Next 4 Hours)">
+| Flight | Route | Gate | STD/STA | Status | Pax | Load | Notes |
+|---|---|---|---|---|---|---|---|
+| AA106 | JFK → LHR | T8-B32 | 14:30 | **Delayed** 14:55 | 287/304 | 94% | ATC flow control |
+| AA234 | JFK → LAX | T8-B30 | 14:45 | Boarding | 156/180 | 87% | On time |
+| AA772 | JFK → MIA | T8-B28 | 15:00 | **Delayed** 15:25 | 142/160 | 89% | Crew reposition |
+| AA1420 | JFK → ORD | T8-B26 | 15:15 | Boarding | 134/150 | 89% | On time |
+| AA318 | JFK → DFW | T8-B24 | 15:30 | **Delayed** 16:00 | 167/178 | 94% | MX: coffee maker |
+| AA2596 | JFK → SFO | T8-B22 | 15:45 | **Gate Change** → B20 | 158/180 | 88% | Gate conflict |
+| AA1174 | JFK → LAS | T8-B18 | 16:00 | Boarding | 145/160 | 91% | On time |
+| AA456 | JFK → SEA | T8-B16 | 16:15 | **Delayed** 16:45 | 132/150 | 88% | Weather holding |
+| AA1892 | JFK → DEN | T8-B14 | 16:30 | **Cancelled** | — | — | Crew timeout |
+| AA678 | JFK → ATL | T8-B12 | 16:45 | Boarding | 128/150 | 85% | On time |
+| BA178 | LHR → JFK | T7-12 | 14:55 | **Delayed** 15:20 | 298/312 | 96% | ATC slot delay |
+| DL402 | ATL → JFK | T4-22 | 15:10 | **Gate Change** → T4-24 | 156/180 | 87% | Gate conflict |
+| UA945 | ORD → JFK | T7-18 | 15:35 | On approach | 142/160 | 89% | On time |
+| B6 526 | BOS → JFK | T5-28 | 15:50 | **Delayed** 16:15 | 134/150 | 89% | Weather holding |
+</Card>
+
+<Columns>
+<Card title="Delayed Flights — Action Required">
+<Callout tone="danger" title="AA1892 JFK→DEN — CANCELLED">Crew timeout. 142 passengers need reaccommodation. Next available: AA1894 18:30 (12 seats), UA567 19:15 (28 seats), F9 2210 20:00 (45 seats).</Callout>
+<Callout tone="warning" title="AA106 JFK→LHR — DELAYED 25 min">ATC flow control. 12 connecting passengers at risk for LHR→EDI, LHR→GLA, LHR→MAN. Protect on BA1442/1444/1446.</Callout>
+<Callout tone="warning" title="AA772 JFK→MIA — DELAYED 25 min">Crew reposition from AA2311 arriving 15:10. 8 connections at risk for MIA→SJU, MIA→NAS, MIA→GCM.</Callout>
+<Callout tone="warning" title="AA318 JFK→DFW — DELAYED 30 min">MX deferral (coffee maker). 15 connections at risk. Consider swap with AA320 (16:00) if crew legal.</Callout>
+<Callout tone="warning" title="AA456 JFK→SEA — DELAYED 30 min">Weather holding. 6 connections at risk for SEA→ANC, SEA→PDX.</Callout>
+<Callout tone="warning" title="BA178 LHR→JFK — DELAYED 25 min">ATC slot. 34 connecting passengers to domestic banks. Protect on 16:00/16:30 banks.</Callout>
+<Callout tone="warning" title="B6 526 BOS→JFK — DELAYED 25 min">Weather. 18 connections at risk. Coordinate with B6 ops for rebook.</Callout>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From | To | Reason |
+|---|---|---|---|---|
+| 14:12 | AA2596 | B22 | B20 | Gate conflict w/ AA1174 |
+| 13:58 | DL402 | T4-22 | T4-24 | Broken jetbridge T4-22 |
+| 13:45 | UA945 | T7-16 | T7-18 | Late arrival, stand conflict |
+| 13:30 | B6 526 | T5-26 | T5-28 | Weather delay, stand swap |
+| 13:15 | AA318 | B26 | B24 | MX tow to hangar, returned |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Base | Position | Legal Until | Current Duty | Qualifications | Status |
+|---|---|---|---|---|---|---|
+| CRW-4421 | JFK | CA | 22:00 | 8:15 | 737, 777, 787 | **Available** |
+| CRW-3387 | JFK | FO | 21:30 | 7:45 | 737, 777 | **Available** |
+| CRW-5592 | JFK | FA | 23:00 | 6:30 | All narrowbody | **Available** |
+| CRW-5593 | JFK | FA | 23:00 | 6:30 | All narrowbody | **Available** |
+| CRW-5594 | JFK | FA | 23:00 | 6:30 | All narrowbody | **Available** |
+| CRW-5595 | JFK | FA | 23:00 | 6:30 | All narrowbody | **Available** |
+| CRW-2210 | LGA | CA | 20:00 | 9:00 | 320, 321 | Reserve — 45 min |
+| CRW-2211 | LGA | FO | 20:00 | 9:00 | 320, 321 | Reserve — 45 min |
+| CRW-6671 | JFK | CA | 23:59 | 5:20 | 777, 787 | **Available** (long-haul) |
+| CRW-6672 | JFK | FO | 23:59 | 5:20 | 777, 787 | **Available** (long-haul) |
+</Card>
+
+<Card title="Connections at Risk — Missed Connection Protection">
+| Pax | Inbound | Arrival | Connection | Outbound | Dep | Status | Action |
+|---|---|---|---|---|---|---|---|
+| 12 | AA106 | 15:20 | LHR→EDI | BA1442 | 16:15 | **Critical** | Hold BA1442 10 min |
+| 8 | AA106 | 15:20 | LHR→GLA | BA1444 | 16:25 | **Critical** | Hold BA1444 10 min |
+| 15 | AA772 | 15:25 | MIA→SJU | AA1422 | 16:30 | **Critical** | Rebook AA1424 17:45 |
+| 6 | AA318 | 16:00 | DFW→ANC | AA2256 | 17:15 | High | Protect AA2258 18:30 |
+| 18 | BA178 | 15:20 | JFK→LAX | AA234 | 16:00 | **Critical** | Already boarded — OK |
+| 14 | BA178 | 15:20 | JFK→SFO | AA2596 | 16:15 | **Critical** | Gate change to B20 — OK |
+| 9 | DL402 | 15:10 | JFK→MIA | AA772 | 16:00 | High | Rebook AA774 17:30 |
+| 6 | B6 526 | 16:15 | JFK→ORD | AA1420 | 16:45 | **Critical** | Hold AA1420 5 min |
+</Card>
+</Columns>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Columns>
+<Input label="Passenger Name / PNR" name="pnr" placeholder="Enter PNR or last name" hint="Search by PNR, ticket number, or last name" required="true" />
+<Select label="Affected Flight" name="affected-flight" placeholder="Select flight" options="AA1892 JFK→DEN (Cancelled) | AA106 JFK→LHR (Delayed) | AA772 JFK→MIA (Delayed) | AA318 JFK→DFW (Delayed) | AA456 JFK→SEA (Delayed) | BA178 LHR→JFK (Delayed) | B6 526 BOS→JFK (Delayed)" required="true" />
+</Columns>
+<Columns>
+<Select label="New Flight" name="new-flight" placeholder="Select replacement" options="AA1894 JFK→DEN 18:30 (12 seats) | UA567 JFK→DEN 19:15 (28 seats) | F9 2210 JFK→DEN 20:00 (45 seats) | AA1424 MIA→SJU 17:45 (8 seats) | AA2258 DFW→ANC 18:30 (15 seats) | AA774 JFK→MIA 17:30 (22 seats) | Other — enter manually" required="true" />
+<Input label="Seat Count" name="seat-count" type="number" placeholder="1" value="1" min="1" max="9" required="true" />
+</Columns>
+<Columns>
+<Switch label="Auto-assign seats" name="auto-seat" value="true" hint="Automatically assign best available seats" />
+<Switch label="Send notification" name="notify" value="true" hint="Email/SMS passenger with new itinerary" />
+</Columns>
+<Button variant="primary" size="large">Rebook Passenger(s)</Button>
+<Button variant="secondary">View Waitlist</Button>
+<Button variant="tertiary">Manual Entry</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" href="#" ask="true">Page Crew Scheduling</Button>
+<Button variant="secondary" href="#" ask="true">Request Gate Hold</Button>
+<Button variant="secondary" href="#" ask="true">Coordinate with ATC</Button>
+<Button variant="tertiary" href="#" ask="true">Update Flight Status</Button>
+<Button variant="danger" href="#" ask="true">Cancel Flight</Button>
+<Button variant="tertiary" href="#" ask="true">Print Ops Summary</Button>
+</Columns>
+</Card>

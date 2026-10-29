@@ -1,0 +1,116 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">Live data as of **14:32 UTC** · auto-refreshes every 5 minutes</Callout>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="On-time % (this month)" value="94.2%" change="+1.8 pts" tone="success" icon="chart-line" />
+<Stat label="Avg cost / shipment" value="$312" change="−4.2%" tone="success" icon="currency-dollar" />
+<Stat label="Shipments in transit" value="48" change="12 arriving today" icon="truck" />
+<Stat label="Delayed shipments" value="6" change="12.5% of transit" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in transit">
+<Tabs>
+<Tab title="All (48)">
+
+| Shipment ID | Origin | Destination | ETA (UTC) | Status |
+|---|---|---|---|---|
+| SH-2041 | Shanghai, CN | Los Angeles, US | 18:30 today | <Badge tone="success">On time</Badge> |
+| SH-2042 | Rotterdam, NL | Chicago, US | 21:15 today | <Badge tone="success">On time</Badge> |
+| SH-2043 | Shenzhen, CN | Hamburg, DE | 02:45 tomorrow | <Badge tone="warning">Delayed 3h</Badge> |
+| SH-2044 | Ho Chi Minh, VN | Sydney, AU | 05:10 tomorrow | <Badge tone="success">On time</Badge> |
+| SH-2045 | Valencia, ES | New York, US | 09:30 tomorrow | <Badge tone="danger">Delayed 1d</Badge> |
+| SH-2046 | Busan, KR | Seattle, US | 12:00 tomorrow | <Badge tone="success">On time</Badge> |
+| SH-2047 | Antwerp, BE | Toronto, CA | 14:20 tomorrow | <Badge tone="success">On time</Badge> |
+| SH-2048 | Singapore, SG | Melbourne, AU | 16:45 tomorrow | <Badge tone="danger">Delayed 6h</Badge> |
+
+</Tab>
+<Tab title="Delayed (6)">
+
+| Shipment ID | Origin | Destination | ETA (UTC) | Status |
+|---|---|---|---|---|
+| SH-2043 | Shenzhen, CN | Hamburg, DE | 02:45 tomorrow | <Badge tone="warning">Delayed 3h</Badge> |
+| SH-2045 | Valencia, ES | New York, US | 09:30 tomorrow | <Badge tone="danger">Delayed 1d</Badge> |
+| SH-2048 | Singapore, SG | Melbourne, AU | 16:45 tomorrow | <Badge tone="danger">Delayed 6h</Badge> |
+| SH-2051 | Colombo, LK | Dubai, AE | 23:50 today | <Badge tone="danger">Delayed 2d</Badge> |
+| SH-2053 | Felixstowe, GB | Boston, US | 11:40 tomorrow | <Badge tone="warning">Delayed 4h</Badge> |
+| SH-2057 | Santos, BR | Miami, US | 19:20 tomorrow | <Badge tone="danger">Delayed 8h</Badge> |
+
+</Tab>
+</Tabs>
+
+<Callout tone="danger" title="Action needed">
+**SH-2051** (Colombo → Dubai) is delayed 2 days due to port congestion. Flagged for customer notification.
+</Callout>
+</Card>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Columns>
+<Input label="Origin" placeholder="e.g. Shanghai, CN" />
+<Input label="Destination" placeholder="e.g. Los Angeles, US" />
+</Columns>
+<Select label="Status" options="Any | On time | Delayed | At port | Customs hold" placeholder="Any" />
+<Button>Search routes</Button>
+</Form>
+
+<Callout tone="neutral" title="Example search">
+**Shanghai → Los Angeles**: 3 shipments found · 2 on time · 1 delayed (SH-2041, SH-2062, SH-2078)
+</Callout>
+</Card>
+
+<Card title="Volume by carrier">
+<Columns>
+<Chart type="donut" title="Share of shipments" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 18 |
+| MSC | 12 |
+| CMA CGM | 9 |
+| COSCO | 6 |
+| Hapag-Lloyd | 3 |
+</Chart>
+<Chart type="bar" title="Cost per carrier" x="Carrier" y="Avg cost ($)">
+| Carrier | Avg cost |
+|---|---|
+| Maersk | 285 |
+| MSC | 298 |
+| CMA CGM | 322 |
+| COSCO | 340 |
+| Hapag-Lloyd | 356 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Weekly volume — past 8 weeks">
+<Chart type="line" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 42 |
+| W2 | 47 |
+| W3 | 39 |
+| W4 | 51 |
+| W5 | 44 |
+| W6 | 53 |
+| W7 | 48 |
+| W8 | 56 |
+</Chart>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment ID" options="SH-2041 | SH-2042 | SH-2043 | SH-2044 | SH-2045 | SH-2046 | SH-2047 | SH-2048 | SH-2051 | SH-2053 | SH-2057" placeholder="Select shipment" required="true" />
+<Select label="Flag reason" options="Customs hold | Weather delay | Port congestion | Documentation issue | Customer request | Other" placeholder="Choose reason" required="true" />
+<TextArea label="Notes" placeholder="Add context for the team…" rows="3" />
+<Button>Flag shipment</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the full list of 48 in-transit shipments
+- What caused the delay on SH-2045?
+- Compare on-time rates by carrier
+- Export the flagged shipments list
+</FollowUps>

@@ -1,0 +1,62 @@
+# Operations desk — today
+
+<Columns>
+<Stat label="Orders today" value="318" change="+12% vs yesterday" tone="success" icon="shopping-cart" />
+<Stat label="Revenue today" value="$24,860" change="+8.4% vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Average order value" value="$78.18" change="-3.1% vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="Refund rate this month" value="2.4%" change="+0.6 pts vs last month" tone="warning" icon="arrow-u-up-left" />
+</Columns>
+
+<Card title="Order volume" subtitle="Past four weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| W1 | 1840 |
+| W2 | 2015 |
+| W3 | 1962 |
+| W4 | 2231 |
+</Chart>
+</Card>
+
+<Card title="Filter orders">
+<Form name="order-filters">
+<Input label="Search by customer" name="customer" type="search" placeholder="e.g. Maya Chen" hint="Matches partial names" />
+<Select label="Narrow by status" name="status" placeholder="All statuses" options="All statuses | Awaiting payment | Paid | Packing | Shipped | Fulfilled | Refunded | Cancelled" />
+<Checkboxes label="Quick filters" name="quick" options="Only today | High value ($150+) | Repeat customers" />
+<Button>Apply filters</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Recent orders" subtitle="Newest first">
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #48210 | Maya Chen | $142.00 | Paid |
+| #48209 | Diego Alvarez | $58.50 | Packing |
+| #48208 | Priya Nair | $219.90 | Shipped |
+| #48207 | Tom Becker | $34.00 | Awaiting payment |
+| #48206 | Lena Fischer | $96.75 | Fulfilled |
+| #48205 | Sam Okafor | $412.30 | Paid |
+| #48204 | Hana Sato | $27.99 | Refunded |
+| #48203 | Ravi Menon | $187.40 | Fulfilled |
+</Card>
+
+<Callout tone="info" title="Fulfilling an order">Pick an order below to mark it fulfilled. Fulfilled orders leave the packing queue and trigger a shipping email to the customer.</Callout>
+
+<Card title="Mark an order fulfilled">
+<Form name="fulfill-order">
+<Select label="Order ID" name="order_id" placeholder="Choose an order" options="#48210 — Maya Chen — Paid | #48209 — Diego Alvarez — Packing | #48208 — Priya Nair — Shipped | #48206 — Lena Fischer — Fulfilled | #48205 — Sam Okafor — Paid | #48203 — Ravi Menon — Fulfilled" required="true" />
+<Input label="Tracking number" name="tracking" placeholder="e.g. 1Z999AA10123456784" hint="Optional — leave blank for local pickup" />
+<TextArea label="Internal note" name="note" placeholder="Anything the packing team should know" rows="3" />
+<Switch label="Email the customer now" name="notify" value="true" hint="Sends a shipping confirmation" />
+<Button>Mark as fulfilled</Button>
+<Button variant="tertiary">Skip for now</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which orders are still awaiting payment?
+- Show me the refunds from this month
+- What is driving the refund rate up?
+- Break down today's revenue by product category
+</FollowUps>

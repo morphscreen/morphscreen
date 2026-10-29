@@ -1,0 +1,157 @@
+# CEO Quarterly Command View
+
+<Card title="Quarter Selector & Region Focus">
+<Columns>
+<div>
+<Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" placeholder="Q2 2025" />
+<Select label="Region" options="All Regions | North America | EMEA | APAC | LATAM" placeholder="All Regions" />
+</div>
+<div>
+<Button variant="primary" icon="download">Export Full Pack</Button>
+<Button variant="secondary" icon="file-pdf">Export Board PDF</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Financial Health Summary">
+<Columns>
+<Stat label="Revenue" value="$48.2M" change="+8.3% QoQ" tone="success" icon="trend-up" />
+<Stat label="Costs" value="$41.7M" change="+5.1% QoQ" tone="warning" icon="receipt" />
+<Stat label="Profit" value="$6.5M" change="+31% QoQ" tone="success" icon="chart-line" />
+<Stat label="Runway" value="14 months" note="At current burn rate" tone="success" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Revenue & Costs — Four Quarters">
+<Tabs>
+<Tab title="Revenue">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Revenue |
+|---|---|
+| Q3 2024 | 38.4 |
+| Q4 2024 | 41.2 |
+| Q1 2025 | 44.5 |
+| Q2 2025 | 48.2 |
+</Chart>
+</Tab>
+<Tab title="Costs">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Costs |
+|---|---|
+| Q3 2024 | 35.1 |
+| Q4 2024 | 37.8 |
+| Q1 2025 | 39.7 |
+| Q2 2025 | 41.7 |
+</Chart>
+</Tab>
+<Tab title="Combined">
+<Chart type="line" x="Quarter" y="USD (M)">
+| Quarter | Revenue | Costs |
+|---|---|
+| Q3 2024 | 38.4 | 35.1 |
+| Q4 2024 | 41.2 | 37.8 |
+| Q1 2025 | 44.5 | 39.7 |
+| Q2 2025 | 48.2 | 41.7 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Budget vs Plan by Department">
+<Chart type="horizontal" x="Department" y="USD (M)">
+| Department | Budget | Plan |
+|---|---|
+| Engineering | 12.4 | 11.8 |
+| Sales & Marketing | 9.8 | 9.2 |
+| Operations | 7.2 | 7.5 |
+| Product | 6.1 | 5.8 |
+| G&A | 4.3 | 4.1 |
+| Customer Success | 3.9 | 3.6 |
+</Chart>
+<Callout tone="warning" title="Overspend alert">Engineering is 5.1% over plan. Operations is 4% under plan.</Callout>
+</Card>
+
+<Card title="Headcount by Department">
+<Chart type="bar" x="Department" y="Employees">
+| Department | Headcount |
+|---|---|
+| Engineering | 142 |
+| Sales & Marketing | 98 |
+| Operations | 64 |
+| Product | 41 |
+| G&A | 28 |
+| Customer Success | 35 |
+</Chart>
+<Stat label="Total Headcount" value="408" change="+12 this quarter" icon="users" />
+</Card>
+
+<Card title="Commercial Performance">
+<Columns>
+<Stat label="Sales Pipeline" value="$86.3M" change="+14% QoQ" tone="success" icon="funnel" />
+<Stat label="Win Rate" value="34%" change="+2pts" tone="success" icon="target" />
+<Stat label="Customers" value="1,847" change="+86 this quarter" tone="success" icon="buildings" />
+<Stat label="Churn" value="2.1%" change="-0.4pts" tone="success" icon="user-minus" />
+<Stat label="NPS" value="52" change="+6" tone="success" icon="star" />
+</Columns>
+</Card>
+
+<Card title="Top Risks" subtitle="With owners and mitigation status">
+| Risk | Impact | Likelihood | Owner | Status |
+|---|---|---|---|---|
+| Key supplier disruption | High | Medium | Maria Chen | <Badge tone="warning">Mitigating</Badge> |
+| Talent retention in engineering | Medium | High | David Okafor | <Badge tone="danger">Elevated</Badge> |
+| Regulatory change in EU | High | Low | Anna Kowalski | <Badge tone="success">Monitored</Badge> |
+| FX volatility in APAC | Medium | Medium | James Park | <Badge tone="warning">Mitigating</Badge> |
+| Cloud cost overrun | Low | High | Priya Sharma | <Badge tone="success">Controlled</Badge> |
+
+<Avatar name="Maria Chen" subtitle="VP Operations" />
+<Avatar name="David Okafor" subtitle="VP Engineering" />
+<Avatar name="Anna Kowalski" subtitle="General Counsel" />
+<Avatar name="James Park" subtitle="CFO" />
+<Avatar name="Priya Sharma" subtitle="CTO" />
+</Card>
+
+<Card title="Strategic Initiatives">
+| Initiative | Owner | Status | Progress |
+|---|---|---|---|
+| AI-powered product launch | Priya Sharma | <Badge tone="success">On track</Badge> | <Progress value="65" max="100" label="65%" tone="success" /> |
+| EMEA market expansion | Sofia Reyes | <Badge tone="warning">At risk</Badge> | <Progress value="40" max="100" label="40%" tone="warning" /> |
+| Cost optimization program | James Park | <Badge tone="success">On track</Badge> | <Progress value="78" max="100" label="78%" tone="success" /> |
+| Customer onboarding revamp | Elena Petrova | <Badge tone="info">In progress</Badge> | <Progress value="52" max="100" label="52%" tone="info" /> |
+| Enterprise security certification | David Okafor | <Badge tone="info">In progress</Badge> | <Progress value="30" max="100" label="30%" tone="info" /> |
+</Card>
+
+<Card title="Next Board Meeting — Agenda Items">
+<Steps>
+<Step title="Q2 Financial Review" status="done" subtitle="Revenue, costs, and margin analysis" />
+<Step title="EMEA Expansion Update" status="current" subtitle="Market entry progress and revised timeline" />
+<Step title="AI Product Launch Plan" status="todo" subtitle="Beta results and go-to-market strategy" />
+<Step title="Executive Compensation Review" status="todo" subtitle="Benchmarking and proposals" />
+<Step title="FY2026 Budget Preview" status="todo" subtitle="Initial allocation scenarios" />
+</Steps>
+<Button variant="primary" icon="calendar">Add Board Item</Button>
+</Card>
+
+<Card title="Watchlist & Notes">
+<Details title="Key assumptions this quarter" open="false">
+- FX rate locked at 1.08 USD/EUR
+- Hiring freeze in G&A through Q3
+- Cloud cost per user down 12% after renegotiation
+</Details>
+<Details title="Questions for CFO" open="false">
+- When can we update the 12-month forecast with Q2 actuals?
+- What is the target cash buffer for the acquisition pipeline?
+</Details>
+</Card>
+
+<Callout tone="info" title="Region filter active">
+Showing **All Regions**. Use the Region selector above to focus on a specific geography — all metrics, charts, and risks will update.
+</Callout>
+
+<FollowUps>
+- Show the detailed P&L for Q2 2025
+- Compare this quarter to the same quarter last year
+- What drove the engineering budget overrun?
+- Drill into the EMEA expansion risks
+- Prepare a board-ready executive summary
+</FollowUps>

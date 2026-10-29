@@ -1,0 +1,119 @@
+# Service Health Dashboard
+
+<Card title="Service Overview" subtitle="Production • Last updated 2 minutes ago">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Error rate (5m)" value="0.23%" change="+0.08% vs 1h ago" tone="warning" />
+<Stat label="Active incidents" value="3" change="1 critical" tone="danger" />
+<Stat label="p99 latency" value="342ms" change="-18ms vs 1h ago" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Region Filter">
+<Select label="Select region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="All regions" />
+</Card>
+
+<Card title="CPU & Memory Usage (24h)">
+<Tabs>
+<Tab title="CPU Usage">
+<Chart type="line" x="Time" y="CPU %" title="CPU Utilization">
+| Time | CPU % |
+|---|---|
+| 00:00 | 42 |
+| 02:00 | 38 |
+| 04:00 | 35 |
+| 06:00 | 45 |
+| 08:00 | 58 |
+| 10:00 | 67 |
+| 12:00 | 72 |
+| 14:00 | 69 |
+| 16:00 | 71 |
+| 18:00 | 65 |
+| 20:00 | 55 |
+| 22:00 | 48 |
+</Chart>
+</Tab>
+<Tab title="Memory Usage">
+<Chart type="line" x="Time" y="Memory %" title="Memory Utilization">
+| Time | Memory % |
+|---|---|
+| 00:00 | 55 |
+| 02:00 | 52 |
+| 04:00 | 50 |
+| 06:00 | 53 |
+| 08:00 | 58 |
+| 10:00 | 62 |
+| 12:00 | 65 |
+| 14:00 | 63 |
+| 16:00 | 64 |
+| 18:00 | 61 |
+| 20:00 | 58 |
+| 22:00 | 56 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open Incidents">
+<Columns>
+<Details title="INC-2024-0847 • Critical • Payment API timeouts" open="true">
+**Started:** 2024-01-15 14:22 UTC  
+**Region:** us-east-1  
+**Impact:** 12% of payment requests timing out >30s  
+**Owner:** @sarah-chen  
+**Runbook:** [Payment API Timeout Runbook](https://runbooks.example.com/payment-timeout)
+
+<Button variant="danger" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View Details</Button>
+</Details>
+
+<Details title="INC-2024-0846 • High • Elevated 5xx on Auth Service" open="false">
+**Started:** 2024-01-15 13:45 UTC  
+**Region:** eu-west-1  
+**Impact:** 3.2% error rate on /auth/token endpoint  
+**Owner:** @marcus-johnson  
+**Runbook:** [Auth Service 5xx Runbook](https://runbooks.example.com/auth-5xx)
+
+<Button variant="danger" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View Details</Button>
+</Details>
+
+<Details title="INC-2024-0845 • Medium • Slow queries on Orders DB" open="false">
+**Started:** 2024-01-15 12:10 UTC  
+**Region:** us-west-2  
+**Impact:** p99 latency 2.1s on /orders endpoint  
+**Owner:** @priya-sharma  
+**Runbook:** [Slow Query Runbook](https://runbooks.example.com/slow-queries)
+
+<Button variant="danger" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View Details</Button>
+</Details>
+</Columns>
+</Card>
+
+<Card title="Slowest Endpoints (p99 latency)">
+| Endpoint | p50 | p95 | p99 | Error Rate | Region |
+|---|---|---|---|---|---|
+| POST /api/v1/payments/process | 1,240ms | 3,890ms | **5,210ms** | 2.1% | us-east-1 |
+| GET /api/v1/orders/history | 890ms | 2,100ms | **3,450ms** | 0.8% | us-west-2 |
+| POST /api/v1/auth/refresh | 420ms | 1,200ms | **2,890ms** | 3.2% | eu-west-1 |
+| GET /api/v1/products/search | 310ms | 980ms | **2,100ms** | 0.4% | ap-southeast-1 |
+| PUT /api/v1/users/profile | 180ms | 540ms | **1,240ms** | 0.1% | all |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error Rate Alert Threshold (%)" name="error-rate-threshold" type="number" placeholder="0.5" value="0.5" step="0.1" min="0" max="10" hint="Triggers when 5-min error rate exceeds this value" />
+<Input label="p99 Latency Alert Threshold (ms)" name="latency-threshold" type="number" placeholder="1000" value="1000" step="100" min="100" max="10000" hint="Triggers when p99 latency exceeds this value" />
+<Input label="CPU Usage Alert Threshold (%)" name="cpu-threshold" type="number" placeholder="80" value="80" step="5" min="50" max="100" hint="Triggers when CPU exceeds this for 5+ minutes" />
+<Input label="Memory Usage Alert Threshold (%)" name="memory-threshold" type="number" placeholder="85" value="85" step="5" min="50" max="100" hint="Triggers when memory exceeds this for 5+ minutes" />
+</Columns>
+<Button>Save Thresholds</Button>
+<Button variant="secondary">Reset to Defaults</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="On-call Notes">
+Current rotation: **Sarah Chen** (primary) • **Marcus Johnson** (secondary) • Escalation: **Priya Sharma** (lead). Next handoff: 2024-01-16 06:00 UTC.
+</Callout>

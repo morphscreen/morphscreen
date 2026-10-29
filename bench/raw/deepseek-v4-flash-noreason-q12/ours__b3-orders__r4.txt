@@ -1,0 +1,64 @@
+# E-commerce Operations Desk
+
+<Columns>
+<Card title="Today's Orders">
+<Stat label="Orders" value="142" icon="shopping-bag" />
+</Card>
+<Card title="Revenue Today">
+<Stat label="Revenue" value="$18,430" icon="currency-dollar" change="+12.4%" tone="success" />
+</Card>
+<Card title="Average Order Value">
+<Stat label="AOV" value="$129.79" icon="chart-line" change="+3.1%" tone="info" />
+</Card>
+<Card title="Refund Rate (This Month)">
+<Stat label="Refund Rate" value="2.8%" icon="arrow-counter-clockwise" change="-0.4%" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Order Volume — Past 4 Weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 812 |
+| Week 2 | 946 |
+| Week 3 | 1,034 |
+| Week 4 | 1,187 |
+</Chart>
+</Card>
+
+<Card title="Recent Orders">
+<Form name="order-filters">
+<Columns>
+<Select label="Filter by status" name="status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Delivered | Refunded" />
+<Input label="Search by customer" name="search" placeholder="Customer name…" />
+</Columns>
+<Button>Apply filters</Button>
+</Form>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Sarah Mitchell | $214.50 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10481 | James Rodriguez | $89.99 | <Badge tone="success">Delivered</Badge> | — |
+| #10480 | Emily Chen | $156.20 | <Badge tone="info">Fulfilled</Badge> | — |
+| #10479 | Michael Okafor | $342.75 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10478 | Priya Sharma | $67.30 | <Badge tone="success">Shipped</Badge> | — |
+| #10477 | Daniel Kim | $198.00 | <Badge tone="info">Fulfilled</Badge> | — |
+| #10476 | Anna Kowalski | $124.85 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10475 | Tomás Silva | $78.45 | <Badge tone="danger">Refunded</Badge> | — |
+| #10474 | Grace Ndubuisi | $265.10 | <Badge tone="success">Shipped</Badge> | — |
+| #10473 | Lucas Meyer | $143.95 | <Badge tone="info">Fulfilled</Badge> | — |
+</Card>
+
+<Card title="Fulfillment Queue">
+<Callout tone="info" title="Pending fulfillment">
+3 orders are awaiting fulfillment. Mark them completed to keep shipping on schedule.
+</Callout>
+<Progress value="3" max="10" label="Pending / Total today" tone="warning" />
+</Card>
+
+<FollowUps>
+- Show me orders that need fulfillment right now
+- What's the revenue breakdown by payment method?
+- Which products are driving today's sales?
+- Compare this week's volume to last month
+</FollowUps>

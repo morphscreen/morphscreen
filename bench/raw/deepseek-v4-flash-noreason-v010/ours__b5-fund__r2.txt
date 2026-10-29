@@ -1,0 +1,181 @@
+# Trading Desk Morning Workspace
+
+<Callout tone="info" title="Session overview">Pre-market snapshot as of 06:45 ET. All systems nominal, one risk limit approaching breach — see alert below.</Callout>
+
+<Columns>
+<Card title="Portfolio Value">
+<Stat label="Total portfolio" value="$48.2M" change="+1.2% today" tone="success" icon="chart-line" />
+<Stat label="P&L today" value="+$214,300" change="+0.45%" tone="success" icon="trend-up" />
+<Stat label="Value at Risk (95%, 1-day)" value="$1.42M" change="2.9% of portfolio" tone="neutral" icon="shield-warning" />
+</Card>
+<Card title="Margin & Risk">
+<Stat label="Margin in use" value="$6.84M" change="14.2% of equity" tone="info" icon="percent" />
+<Stat label="Buying power" value="$41.4M" tone="neutral" icon="bank" />
+<Stat label="Drawdown (1Y)" value="-8.4%" change="from peak" tone="warning" icon="trend-down" />
+</Card>
+</Columns>
+
+<Card title="Timeframe">
+<Radio label="Dashboard timeframe" name="timeframe" options="1D | 1W | 1M | 3M | 1Y | YTD" value="1D" />
+<Button variant="secondary" ask>View 1W instead</Button>
+<Button variant="secondary" ask>View 1M instead</Button>
+</Card>
+
+<Card title="Open Positions" subtitle="All positions marked to market">
+| Ticker | Size | Entry | Current | P&L |
+|---|---|---|---|---|
+| AAPL | 12,000 sh | $178.20 | $184.55 | +$76,200 |
+| MSFT | 8,500 sh | $402.10 | $415.30 | +$112,200 |
+| NVDA | 5,000 sh | $820.50 | $795.10 | -$127,000 |
+| TSLA | 3,200 sh | $245.60 | $238.40 | -$23,040 |
+| JPM | 10,000 sh | $195.30 | $201.75 | +$64,500 |
+| XOM | 15,000 sh | $112.40 | $109.85 | -$38,250 |
+| SPY | 20,000 sh | $512.60 | $518.90 | +$126,000 |
+
+<Callout tone="warning" title="Largest loss">NVDA — $127K unrealized loss, down 3.1% from entry</Callout>
+</Card>
+
+<Card title="Exposure by Sector">
+<Chart type="pie" title="Sector allocation" x="Sector" y="Allocation">
+| Sector | Allocation |
+|---|---|
+| Technology | 38% |
+| Financials | 17% |
+| Energy | 12% |
+| Healthcare | 11% |
+| Consumer Disc. | 9% |
+| Industrials | 7% |
+| Other | 6% |
+</Chart>
+</Card>
+
+<Card title="Today's Movers">
+<Columns>
+<Card title="Top Gainers">
+| Ticker | Price | Change |
+|---|---|---|
+| MSFT | $415.30 | +2.4% |
+| JPM | $201.75 | +1.9% |
+| AAPL | $184.55 | +1.6% |
+| SPY | $518.90 | +1.2% |
+</Card>
+<Card title="Top Losers">
+| Ticker | Price | Change |
+|---|---|---|
+| NVDA | $795.10 | -3.1% |
+| XOM | $109.85 | -2.2% |
+| TSLA | $238.40 | -1.4% |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Watchlist" subtitle="Instruments under observation">
+| Instrument | Type | Last Price | 24h Change |
+|---|---|---|---|
+| BTC/USD | Crypto | $67,240 | +3.8% |
+| EUR/USD | FX | 1.0842 | -0.2% |
+| CL (WTI) | Commodity | $78.15 | -1.1% |
+| US 10Y | Bond | 4.32% | +4 bps |
+| AMZN | Equity | $186.20 | +0.8% |
+| GOOGL | Equity | $172.45 | -0.5% |
+</Card>
+
+<Card title="Working Orders">
+| Ticket | Ticker | Side | Quantity | Type | Status |
+|---|---|---|---|---|---|
+| #4821 | NVDA | Sell | 2,000 | Limit @ $800 | Working |
+| #4822 | SPY | Buy | 5,000 | Market | Working |
+| #4823 | TSLA | Sell | 1,500 | Limit @ $242 | Partial fill |
+| #4824 | XOM | Buy | 3,000 | Stop @ $111 | Working |
+
+<Button variant="secondary" ask>Cancel order #4821</Button>
+<Button variant="secondary" ask>Cancel order #4823</Button>
+</Card>
+
+<Card title="Market Headlines" subtitle="With sentiment analysis">
+| Time | Headline | Sentiment |
+|---|---|---|
+| 06:32 | Fed signals patience on rate cuts | <Badge tone="neutral">Neutral</Badge> |
+| 06:15 | Nvidia announces new AI chip at GTC | <Badge tone="success">Bullish</Badge> |
+| 05:58 | Oil slides on OPEC+ surplus concerns | <Badge tone="danger">Bearish</Badge> |
+| 05:40 | JPMorgan beats Q1 earnings estimates | <Badge tone="success">Bullish</Badge> |
+| 05:22 | Retail sales miss, consumer confidence dips | <Badge tone="danger">Bearish</Badge> |
+| 05:05 | Microsoft expands Azure capacity in Europe | <Badge tone="success">Bullish</Badge> |
+</Card>
+
+<Card title="Economic Releases This Week">
+| Date | Release | Forecast | Prior | Importance |
+|---|---|---|---|---|
+| Mon 06:45 | CPI (MoM) | 0.3% | 0.4% | <Badge tone="danger">High</Badge> |
+| Tue 08:30 | PPI (YoY) | 2.1% | 1.9% | <Badge tone="warning">Medium</Badge> |
+| Wed 10:00 | FOMC Rate Decision | 5.50% | 5.50% | <Badge tone="danger">High</Badge> |
+| Thu 08:30 | Jobless Claims | 215K | 212K | <Badge tone="warning">Medium</Badge> |
+| Fri 08:30 | Nonfarm Payrolls | 180K | 175K | <Badge tone="danger">High</Badge> |
+</Card>
+
+<Card title="Strategy Performance — YTD Returns">
+<Chart type="bar" title="Returns by strategy" x="Strategy" y="Return %">
+| Strategy | Return % |
+|---|---|
+| Momentum | 14.2 |
+| Mean Reversion | 8.6 |
+| Event Driven | 6.1 |
+| Macro | -2.4 |
+| Statistical Arb | 4.8 |
+| Volatility | 9.3 |
+</Chart>
+</Card>
+
+<Card title="Drawdown — Past Year">
+<Chart type="area" title="Portfolio drawdown" x="Month" y="Drawdown %">
+| Month | Drawdown % |
+|---|---|
+| Jan | -1.2 |
+| Feb | -2.8 |
+| Mar | -1.5 |
+| Apr | -0.8 |
+| May | -3.4 |
+| Jun | -5.2 |
+| Jul | -4.1 |
+| Aug | -6.8 |
+| Sep | -5.5 |
+| Oct | -7.2 |
+| Nov | -6.0 |
+| Dec | -8.4 |
+</Chart>
+</Card>
+
+<Card title="Risk Limits — Near Breach">
+| Limit | Current | Threshold | Utilization |
+|---|---|---|---|
+| Sector concentration — Tech | 38% | 40% | <Progress value="38" max="40" label="95%" tone="warning" /> |
+| Gross exposure | $62.1M | $70M | <Progress value="62.1" max="70" label="89%" tone="info" /> |
+| Single-name VaR — NVDA | $420K | $450K | <Progress value="420" max="450" label="93%" tone="warning" /> |
+| Leverage ratio | 1.29x | 1.5x | <Progress value="1.29" max="1.5" label="86%" tone="success" /> |
+
+<Callout tone="danger" title="Action needed">Technology sector concentration at 95% of limit — rebalance recommended.</Callout>
+</Card>
+
+<Card title="Rebalance Portfolio">
+<Form name="rebalance">
+<Select label="Target sector allocation" placeholder="Choose preset" options="Reduce tech to 30% | Equal weight sectors | Risk parity | Custom" />
+<Button>Preview rebalance</Button>
+</Form>
+</Card>
+
+<Card title="Place Order">
+<Form name="place-order">
+<Input label="Ticker" placeholder="e.g. NVDA" />
+<Radio label="Side" options="Buy | Sell" name="side" />
+<Input label="Quantity" type="number" placeholder="1000" />
+<Select label="Order type" placeholder="Select type" options="Market | Limit | Stop | Stop-limit" />
+<Button>Submit order</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the limit orders for NVDA
+- What happens if tech hits 40% concentration?
+- Detail the drawdown recovery plan
+- Which strategies are underperforming?
+</FollowUps>

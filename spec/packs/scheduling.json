@@ -1,0 +1,48 @@
+{
+  "name": "scheduling",
+  "version": "0.1.0",
+  "about": "Time: a month calendar, events, time slots to pick, a day's agenda and countdowns.",
+  "components": {
+    "Calendar": {
+      "about": "a month with marked days, from the Markdown table inside: the date as YYYY-MM-DD, then what's on",
+      "attrs": { "month": "string", "title": "string" },
+      "content": "table"
+    },
+    "Event": {
+      "about": "one event; details between the tags",
+      "attrs": {
+        "title": { "type": "string", "required": true },
+        "start": { "type": "string", "required": true },
+        "end": "string",
+        "where": "string",
+        "tone": ["neutral", "info", "success", "warning", "danger"]
+      },
+      "content": "text"
+    },
+    "TimeSlots": {
+      "about": "a form field: pick one of the times",
+      "attrs": {
+        "label": { "type": "string", "required": true },
+        "options": { "type": "list", "required": true },
+        "name": "string",
+        "value": "string",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Agenda": {
+      "about": "a day in time order, from the Markdown table inside: the time, then what",
+      "attrs": { "title": "string" },
+      "content": "table"
+    },
+    "Countdown": {
+      "about": "time left until a moment, given as YYYY-MM-DDTHH:MM",
+      "attrs": {
+        "label": { "type": "string", "required": true },
+        "until": { "type": "string", "required": true }
+      },
+      "content": "none"
+    }
+  }
+}

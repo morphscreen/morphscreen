@@ -1,0 +1,191 @@
+# University Administrator Overview
+
+<Badge tone="info">Fall 2025 Semester</Badge> <Badge tone="success">All systems operational</Badge>
+
+<Card title="Department Focus" subtitle="Filter the entire dashboard by one department">
+<Select label="Department" name="department" options="All Departments | College of Arts | School of Engineering | Business School | School of Medicine | Law School" placeholder="Select a department" />
+</Card>
+
+<Card title="Total Enrollment — 5-Year Trend">
+<Chart type="line" x="Year" y="Students">
+| Year | Students |
+|---|---|
+| 2021 | 18,240 |
+| 2022 | 19,105 |
+| 2023 | 20,480 |
+| 2024 | 21,350 |
+| 2025 | 22,480 |
+</Chart>
+<Stat label="Total Enrollment" value="22,480" change="+1,130 vs last year" tone="success" icon="users" />
+</Card>
+
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Engineering | 4,820 |
+| Business | 3,940 |
+| Arts & Sciences | 3,610 |
+| Medicine | 2,480 |
+| Law | 1,890 |
+| Education | 1,240 |
+</Chart>
+</Card>
+
+<Card title="Acceptance Rate & Waitlists">
+<Columns>
+<div>
+<Stat label="Acceptance Rate" value="34.2%" change="-2.1 pts vs last year" tone="warning" icon="chart-line" />
+<Stat label="Applications Received" value="17,980" change="+8.4%" tone="success" />
+</div>
+<div>
+<Stat label="Waitlisted Students" value="1,240" change="+310 vs last year" tone="warning" />
+</div>
+</Columns>
+
+<Card title="Waitlisted Students per Program">
+<Chart type="bar" x="Program" y="Waitlisted">
+| Program | Waitlisted |
+|---|---|
+| Engineering | 410 |
+| Medicine | 280 |
+| Business | 220 |
+| Law | 150 |
+| Arts & Sciences | 120 |
+| Education | 60 |
+</Chart>
+</Card>
+</Card>
+
+<Card title="Tuition Revenue This Year">
+<Stat label="Tuition Revenue" value="$412.6M" change="+6.2% vs last year" tone="success" icon="chart-line" />
+<Progress value="68" max="100" label="Collected vs projected (68%)" tone="info" />
+</Card>
+
+<Card title="Course Fill Rates" subtitle="How full each course offering is">
+<Chart type="bar" x="Course" y="Fill %">
+| Course | Fill % |
+|---|---|
+| CS 101 | 96 |
+| BIO 210 | 88 |
+| ENG 310 | 82 |
+| MATH 120 | 79 |
+| HIST 250 | 64 |
+| ART 105 | 55 |
+</Chart>
+<Callout tone="warning" title="Over-enrolled">CS 101 is at 96% capacity — consider adding a section.</Callout>
+</Card>
+
+<Card title="Teaching Load by Faculty Member">
+<Chart type="horizontal" x="Faculty" y="Courses">
+| Faculty | Courses |
+|---|---|
+| Dr. Patel | 5 |
+| Dr. Chen | 4 |
+| Dr. Okafor | 4 |
+| Dr. Rivera | 3 |
+| Dr. Nguyen | 3 |
+| Dr. Kowalski | 2 |
+</Chart>
+</Card>
+
+<Card title="Students at Academic Risk">
+<Stat label="At Risk" value="1,842" change="+4.1% vs last semester" tone="danger" icon="warning" />
+<Progress value="8.2" max="100" label="Percent of student body (8.2%)" tone="danger" />
+<Callout tone="danger" title="Intervention needed">Engineering (412 students) and Medicine (298) have the highest risk counts.</Callout>
+</Card>
+
+<Card title="Scholarship Budget">
+<Columns>
+<div>
+<Stat label="Budget Used" value="$18.4M" tone="info" />
+<Stat label="Total Budget" value="$24.0M" />
+</div>
+<div>
+<Progress value="77" max="100" label="Budget utilization (77%)" tone="warning" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Housing Occupancy">
+<Stat label="Occupancy" value="92.4%" change="+1.8 pts vs last year" tone="success" icon="home" />
+<Progress value="92.4" max="100" label="Residence halls filled" tone="success" />
+<Callout tone="info" title="Waitlist">142 students on the housing waitlist for Spring.</Callout>
+</Card>
+
+<Card title="Campus Events This Month">
+<Agenda title="October 2025">
+| Time | Event |
+|---|---|
+| Oct 3, 10:00 | Career Fair — Main Quad |
+| Oct 7, 18:00 | Guest Lecture: AI Ethics — Auditorium |
+| Oct 12, 12:00 | Homecoming Parade — North Campus |
+| Oct 18, 19:30 | Fall Concert — Performing Arts Center |
+| Oct 24, 09:00 | Research Symposium — Library |
+| Oct 31, 20:00 | Halloween Festival — Student Union |
+</Agenda>
+</Card>
+
+<Card title="Alumni Giving — 4-Year Trend">
+<Chart type="area" x="Year" y="Donations ($M)">
+| Year | Donations |
+|---|---|
+| 2022 | 28.4 |
+| 2023 | 32.1 |
+| 2024 | 35.8 |
+| 2025 | 39.2 |
+</Chart>
+<Stat label="Total Raised" value="$39.2M" change="+9.5% vs last year" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="This Semester vs Last Semester">
+<Compare title="Key metrics comparison">
+| Metric | Fall 2025 | Spring 2025 |
+|---|---|---|
+| Enrollment | 22,480 | 21,940 |
+| Retention rate | 91.2% | 89.8% |
+| Avg. GPA | 3.24 | 3.18 |
+| Course fill rate | 78.4% | 74.1% |
+| At-risk students | 1,842 | 1,769 |
+</Compare>
+</Card>
+
+<Card title="Approve New Course">
+<Form name="course-approval">
+<Input label="Course Code" name="code" placeholder="e.g., CS 450" />
+<Input label="Course Title" name="title" placeholder="e.g., Machine Learning Systems" />
+<Select label="Department" name="dept" options="College of Arts | School of Engineering | Business School | School of Medicine | Law School" />
+<Input label="Instructor" name="instructor" placeholder="Dr. Name" />
+<Input label="Enrollment Cap" name="cap" type="number" min="1" max="500" />
+<Radio label="Approval Decision" name="decision" options="Approve | Return for revision | Reject" />
+<Button variant="primary">Submit Decision</Button>
+</Form>
+</Card>
+
+<Card title="Message Student Groups">
+<Form name="student-message">
+<Select label="Recipient Group" name="group" options="All Students | Engineering Students | Business Students | Medical Students | Freshmen | Graduate Students | Student Athletes" placeholder="Choose a group" />
+<Input label="Subject" name="subject" placeholder="e.g., Spring registration reminder" />
+<TextArea label="Message" name="message" rows="6" placeholder="Write your announcement..." />
+<Checkboxes label="Channels" name="channels" options="Email | SMS | In-app notification | Campus portal" />
+<Button variant="primary">Send Message</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" icon="calendar">Schedule Board Meeting</Button>
+<Button variant="secondary" icon="users">View Faculty Directory</Button>
+<Button variant="secondary" icon="chart-line">Generate Full Report</Button>
+<Button variant="danger" icon="warning">Review Risk List</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full enrollment breakdown by department
+- Which courses are closest to being over-enrolled?
+- Compare scholarship utilization across colleges
+- List the students at academic risk in Engineering
+- What events need additional staffing this month?
+</FollowUps>

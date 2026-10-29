@@ -1,0 +1,147 @@
+# Grid Control — Live Console
+
+<Callout tone="info" title="Shift status: normal operations">
+All regions synced. One active curtailment order in progress. Last telemetry update 12 s ago.
+</Callout>
+
+<Columns>
+<Stat label="Current load" value="18,420 MW" change="+2.1% vs 1h ago" tone="info" icon="lightning" />
+<Stat label="Capacity used" value="87.4%" change="+3.2 pts" tone="warning" icon="gauge" />
+<Stat label="Price (MWh)" value="$62.40" change="+$4.10" tone="info" icon="currency-dollar" />
+<Stat label="Emissions today" value="412 t CO₂e" change="-6% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+
+<Card title="Network capacity" subtitle="Headroom before reserve activation">
+<Progress value="87.4" max="100" label="87.4% of 21,070 MW capacity" tone="warning" />
+<Progress value="64" max="100" label="64% of spinning reserve committed" tone="neutral" />
+<Progress value="18" max="100" label="18% of demand-response pool armed" tone="success" />
+</Card>
+
+<Card title="Generation by source" subtitle="Live split, MW and share">
+<Chart type="donut" title="Generation mix" x="Source" y="MW">
+| Source | MW |
+|---|---|
+| Nuclear | 6200 |
+| Hydro | 4300 |
+| Gas | 3800 |
+| Wind | 2600 |
+| Solar | 1200 |
+| Coal | 320 |
+</Chart>
+</Card>
+
+<Card title="Plant status" subtitle="Output and operating state per plant">
+| Plant | Region | Output (MW) | Status |
+|---|---|---|---|
+| Northgate Nuclear | North | 3,100 | Online |
+| Harbor Point Nuclear | Coast | 3,100 | Online |
+| Cascade Hydro | North | 2,400 | Online |
+| Rivermouth Hydro | Coast | 1,900 | Online |
+| Kestrel Gas CCGT | Central | 2,300 | Online |
+| Ironbridge Gas | South | 1,500 | Online |
+| Ridge Wind Farm | North | 1,400 | Curtailed |
+| Cape Wind Array | Coast | 1,200 | Online |
+| Sunfield Solar | South | 1,200 | Online |
+| Blackmoor Coal | Central | 320 | Derated |
+</Card>
+
+<Card title="Active outages" subtitle="Affected region and estimated restoration">
+| Outage | Affected region | Impact | ETA |
+|---|---|---|---|
+| Feeder 12 fault | Central — Eastside | 4,200 customers | 01:40 |
+| Substation 7 trip | South — Port District | 1,800 customers | 00:55 |
+| Line 44 storm damage | North — Uplands | 900 customers | 03:10 |
+</Card>
+
+<Card title="Demand forecast — next 24 hours" subtitle="MW, actual vs forecast">
+<Chart type="line" title="Load forecast" x="Hour" y="MW">
+| Hour | Actual | Forecast |
+|---|---|---|
+| 00:00 | 16200 | 16100 |
+| 03:00 | 15100 | 15200 |
+| 06:00 | 17400 | 17300 |
+| 09:00 | 19800 | 19700 |
+| 12:00 | 20400 | 20300 |
+| 15:00 | 20100 | 20200 |
+| 18:00 | 21600 | 21500 |
+| 21:00 | 19300 | 19400 |
+| 24:00 | 16800 | 16900 |
+</Chart>
+</Card>
+
+<Card title="Maintenance planned this month">
+| Window | Asset | Region | Type | Status |
+|---|---|---|---|---|
+| Mar 14, 02:00–06:00 | Line 22 reconductor | North | Planned | <Badge tone="info">Scheduled</Badge> |
+| Mar 19, 01:00–05:00 | Turbine 3 bearing swap | Coast | Planned | <Badge tone="info">Scheduled</Badge> |
+| Mar 23, 03:00–07:00 | Breaker 9 inspection | Central | Planned | <Badge tone="warning">Awaiting approval</Badge> |
+| Mar 28, 00:00–04:00 | Transformer T4 oil change | South | Planned | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Live alerts" subtitle="Streaming as they arrive">
+<Steps>
+<Step title="Ridge Wind Farm curtailed to 1,400 MW" status="current" subtitle="12 s ago · North">Grid operator instruction, congestion on Line 22.</Step>
+<Step title="Feeder 12 fault — Eastside" status="current" subtitle="3 min ago · Central">4,200 customers affected. Crew dispatched.</Step>
+<Step title="Reserve margin below 12%" status="current" subtitle="8 min ago · System">Spinning reserve at 64%. Monitor for activation.</Step>
+<Step title="Substation 7 restored" status="done" subtitle="22 min ago · South">1,800 customers back online.</Step>
+</Steps>
+</Card>
+
+<Card title="Focus a region" subtitle="Filter the console to one area">
+<Form name="region-focus">
+<Select label="Region" options="All regions | North | Coast | Central | South" placeholder="Choose a region" />
+<Switch label="Show only regions with active outages" name="outage-only" value="false" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="Order curtailment" subtitle="Reduce output on selected assets">
+<Form name="curtailment">
+<Select label="Target plant" options="Ridge Wind Farm | Cape Wind Array | Sunfield Solar | Kestrel Gas CCGT | Ironbridge Gas" placeholder="Choose a plant" required="true" />
+<Slider label="Curtailment amount" min="0" max="100" step="5" value="25" name="curtail-pct" unit="%" />
+<Input label="Duration (minutes)" type="number" name="curtail-min" placeholder="30" min="5" max="240" step="5" hint="Max 240 minutes per order" />
+<TextArea label="Reason" name="curtail-reason" placeholder="Congestion on Line 22, reserve margin low" rows="3" />
+<Button variant="danger">Issue curtailment order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Emissions today" subtitle="Rolling 24h, tonnes CO₂e by source">
+<Chart type="bar" title="Emissions by source" x="Source" y="t CO2e">
+| Source | t CO2e |
+|---|---|
+| Coal | 210 |
+| Gas | 148 |
+| Hydro | 22 |
+| Nuclear | 14 |
+| Wind | 10 |
+| Solar | 8 |
+</Chart>
+<Stat label="Total today" value="412 t CO₂e" change="-6% vs yesterday" tone="success" />
+</Card>
+
+<Card title="Network map" subtitle="Plants and outage sites">
+<Map>
+<MapMarker lat="53.4808" lng="-2.2426" label="Northgate Nuclear — North" />
+<MapMarker lat="53.4084" lng="-2.9916" label="Harbor Point Nuclear — Coast" />
+<MapMarker lat="53.6000" lng="-2.4000" label="Cascade Hydro — North" />
+<MapMarker lat="53.3500" lng="-3.0000" label="Rivermouth Hydro — Coast" />
+<MapMarker lat="53.5000" lng="-2.7000" label="Kestrel Gas CCGT — Central" />
+<MapMarker lat="53.3000" lng="-2.9000" label="Ironbridge Gas — South" />
+<MapMarker lat="53.7000" lng="-2.5000" label="Ridge Wind Farm — North" />
+<MapMarker lat="53.3800" lng="-3.1000" label="Cape Wind Array — Coast" />
+<MapMarker lat="53.4200" lng="-2.8000" label="Sunfield Solar — South" />
+<MapMarker lat="53.5200" lng="-2.6000" label="Blackmoor Coal — Central" />
+<MapMarker lat="53.5500" lng="-2.4500" label="Feeder 12 fault — Eastside" />
+<MapMarker lat="53.3200" lng="-2.9500" label="Substation 7 trip — Port District" />
+<MapMarker lat="53.7500" lng="-2.3500" label="Line 44 storm damage — Uplands" />
+</Map>
+</Card>
+
+<FollowUps>
+- Show me the North region only
+- What happens if I curtail Ridge Wind Farm by 50%?
+- Forecast emissions for the rest of the shift
+- List all maintenance windows for next week
+- Who is on shift right now?
+</FollowUps>

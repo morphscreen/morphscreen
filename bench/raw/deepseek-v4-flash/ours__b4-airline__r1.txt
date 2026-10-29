@@ -1,0 +1,95 @@
+# Airline hub operations desk
+
+<Card title="Hub operations desk" subtitle="Hartsfield-Jackson Atlanta International (ATL) · Operating day 09:42 local">
+<Badge tone="success">Live feed</Badge>
+
+<Form name="switch-hub">
+<Select label="Look at a different hub" name="hub" options="ATL — Atlanta (current) | DFW — Dallas/Fort Worth | ORD — Chicago O'Hare | DEN — Denver" />
+<Button variant="secondary">Load hub</Button>
+</Form>
+</Card>
+
+<Card title="Today at a glance" subtitle="Through 09:42 local">
+<Columns>
+<Stat label="On-time performance" value="87.3%" change="+2.1 pts vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Average passenger load" value="82%" change="+4 pts vs last week" tone="info" icon="users" />
+<Stat label="Cancellations today" value="6" change="3 weather · 2 mechanical · 1 crew" tone="danger" icon="x-circle" />
+<Stat label="Average turnaround time" value="41 min" change="Target 45 min" tone="success" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Weather advisories — ATL" subtitle="Latest from meteorology, 09:35">
+<Callout tone="danger" title="Thunderstorm watch until 16:00">Convection building west of the field. Ground stop possible 12:00–14:00; plan for holding delays.</Callout>
+<Callout tone="warning" title="Crosswind advisory on 27L/9R">Crosswinds 18 kt gusting 25 kt until 11:30. Expect some approaches to use 28/10.</Callout>
+<Callout tone="info" title="Ceiling 4,500 ft broken">Visibility 3 mi in light showers; no de-icing conditions expected.</Callout>
+</Card>
+
+<Card title="Flight board" subtitle="Updated 09:42">
+<Callout tone="warning" title="5 delayed flights right now">
+- WN 339 · ATL → MCO · **40 min late** — crew availability
+- DL 1203 · ATL → ORD · **25 min late** — late inbound from SEA
+- DL 771 · ATL → LHR · **18 min late** — ATC flow into Europe
+- BA 226 · ATL → LHR · **15 min late** — cleaning delay
+- AS 204 · ATL → SEA · **12 min late** — late pushback
+
+Use the rebook panel below to move passengers whose connections are at risk.
+</Callout>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 412 | ATL → New York (LGA) | B16 | On time |
+| DL 1203 | ATL → Chicago (ORD) | C11 | **Delayed — 25 min** |
+| UA 551 | ATL → Denver (DEN) | A07 | On time |
+| AA 208 | ATL → Dallas (DFW) | T04 | Boarding |
+| DL 771 | ATL → London (LHR) | E12 | **Delayed — 18 min** |
+| WN 339 | ATL → Orlando (MCO) | D09 | **Delayed — 40 min** |
+| DL 910 | ATL → Los Angeles (LAX) | B22 | Boarding |
+| AF 335 | ATL → Paris (CDG) | F05 | On time |
+| BA 226 | ATL → London (LHR) | F03 | **Delayed — 15 min** |
+| AS 204 | ATL → Seattle (SEA) | B04 | **Delayed — 12 min** |
+| DL 1504 | ATL → Miami (MIA) | C14 | **Cancelled** |
+
+</Card>
+
+<Card title="Connections at risk of being missed" subtitle="Auto-protection flag when connection time drops below 25 min">
+| Arriving flight | Connection | Passengers | Connection time | Risk |
+|---|---|---|---|---|
+| WN 339 (delayed 40 min) | WN 2894 → Dallas (DAL) | 9 | 25 min | **High** |
+| DL 1203 (delayed 25 min) | DL 910 → Los Angeles (LAX) | 14 | 38 min | **High** |
+| UA 551 | UA 1667 → San Francisco (SFO) | 3 | 19 min | **Medium** |
+| BA 226 (delayed 15 min) | DL 771 → London (LHR) | 6 | 50 min | **Low** |
+
+<Callout tone="info" title="Auto-protect enabled">Passengers flagged High are already protected on the next available flight and will be notified by app and SMS.</Callout>
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 60 minutes">
+| Time | Flight | Route | Gate change |
+|---|---|---|---|
+| 09:35 | DL 1203 | ATL → ORD | C08 → **C11** |
+| 09:28 | WN 339 | ATL → MCO | D07 → **D09** |
+| 09:12 | UA 551 | ATL → DEN | A12 → **A07** |
+| 08:57 | AF 335 | ATL → CDG | F01 → **F05** |
+
+</Card>
+
+<Card title="Crews available for reassignment" subtitle="On standby at ATL · updated 09:40">
+| Crew | Role | Next available | Qualifications |
+|---|---|---|---|
+| CRW-118 | Captain | Now | 737 type-rated |
+| CRW-207 | First Officer | In 20 min | 737 / 757 type-rated |
+| CRW-342 | Flight Attendant | Now | International, crew lead |
+| CRW-155 | Flight Attendant | Now | Spanish, French |
+| CRW-089 | Captain | In 45 min | A320 family |
+
+<Callout tone="success" title="Reassignment suggestion">CRW-342 and CRW-155 can cover WN 339 if a crew swap is needed; CRW-118 is rated for DL 412's 737.</Callout>
+</Card>
+
+<Card title="Rebook affected passengers" subtitle="Manually move passengers from delayed or cancelled flights, or override auto-protection">
+<Form name="rebook">
+<Select label="Affected flight" name="affected-flight" options="WN 339 — ATL → MCO (delayed 40 min) | DL 1203 — ATL → ORD (delayed 25 min) | BA 226 — ATL → LHR (delayed 15 min) | DL 1504 — ATL → MIA (cancelled)" />
+<Select label="Rebooking strategy" name="strategy" options="Next available departure | Earliest arrival at destination | Hold connection on partner airline | Refund to original payment" />
+<Input label="Passengers to rebook" type="number" name="passengers" value="1" min="1" max="50" hint="Enter the number of passengers, or 0 for the full manifest of the selected flight" />
+<TextArea label="Notes / special assistance" name="notes" rows="2" placeholder="Wheelchair, unaccompanied minor, pet in cabin, etc." />
+<Button>Find options and confirm rebooking</Button>
+</Form>
+</Card>

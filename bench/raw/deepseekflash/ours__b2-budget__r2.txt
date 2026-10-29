@@ -1,0 +1,43 @@
+# Personal Budget Check
+
+<Card title="Budget Overview" subtitle="June 2025">
+<Select label="Month" options="May 2025 | June 2025 | July 2025" value="June 2025" hint="Choose a month to view its budget" />
+<Columns>
+<Stat label="Total spent" value="$2,420" change="+8% vs May" />
+<Stat label="Monthly budget" value="$3,000" />
+<Stat label="Remaining" value="$580" note="19% left" />
+</Columns>
+<Progress value="2420" max="3000" label="Budget used: 81%" />
+</Card>
+
+<Columns>
+<Card title="Spending by Category" subtitle="June 2025">
+<Chart type="donut" title="Category split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1450 |
+| Food | 420 |
+| Utilities | 210 |
+| Transport | 180 |
+| Entertainment | 95 |
+| Other | 65 |
+</Chart>
+</Card>
+<Card title="Largest Expense" subtitle="Highlighted">
+<Callout tone="warning" title="Rent is the biggest single expense">
+<Badge tone="danger">Largest</Badge> $1,450 on Housing — 60% of total spent.
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Add an Expense" subtitle="Log a new transaction for the selected month">
+<Form name="add-expense">
+<Columns>
+<Input label="Description" placeholder="e.g. Groceries" name="description" />
+<Input label="Amount" type="number" placeholder="0.00" name="amount" />
+<Select label="Category" options="Housing | Food | Transport | Entertainment | Utilities | Other" placeholder="Choose a category" name="category" />
+<Date label="Date" name="date" value="2025-06-14" />
+</Columns>
+<Button>Add expense</Button>
+</Form>
+</Card>

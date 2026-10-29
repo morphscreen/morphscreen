@@ -1,0 +1,90 @@
+# Shipment Control Board
+
+<Callout tone="warning" title="3 shipments delayed">
+Shanghai → Rotterdam, Memphis → Chicago, and Shenzhen → Los Angeles are running behind schedule. Review before the next dispatch window.
+</Callout>
+
+<Columns>
+<Stat label="On-time this month" value="91.4%" change="+2.1 pts vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$412" change="-$18 vs last month" tone="info" icon="currency-dollar" />
+<Stat label="Active shipments" value="48" note="12 arriving today" tone="neutral" icon="truck" />
+<Stat label="Last refreshed" value="Today, 09:42" note="Auto-sync every 15 min" tone="neutral" icon="clock" />
+</Columns>
+
+<Card title="Find a shipment by route" subtitle="Search origin or destination">
+<Form name="route-search">
+<Input label="Route" name="route" type="search" placeholder="e.g. Shanghai → Rotterdam" hint="Matches origin, destination, or carrier" />
+<Button icon="magnifying-glass">Search route</Button>
+</Form>
+</Card>
+
+<Card title="Shipments in transit" subtitle="Live status across all lanes">
+| Shipment | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-4821 | Shanghai | Rotterdam | Mar 14, 08:00 | On time |
+| SHP-4822 | Memphis | Chicago | Mar 12, 17:30 | Delayed |
+| SHP-4823 | Shenzhen | Los Angeles | Mar 13, 11:15 | Delayed |
+| SHP-4824 | Hamburg | New York | Mar 15, 06:45 | On time |
+| SHP-4825 | Singapore | Long Beach | Mar 14, 22:10 | On time |
+| SHP-4826 | Antwerp | Santos | Mar 16, 09:00 | At risk |
+</Card>
+
+<Card title="Delayed shipments" subtitle="Needs attention now">
+<Callout tone="danger" title="SHP-4822 — Memphis → Chicago">
+Weather hold at hub. New ETA Mar 12, 17:30. Customer notified.
+</Callout>
+<Callout tone="danger" title="SHP-4823 — Shenzhen → Los Angeles">
+Customs documentation gap. ETA slipped 14 hours.
+</Callout>
+<Button variant="primary" ask="Show me the delay details for SHP-4822">Open SHP-4822</Button>
+<Button variant="secondary" ask="Show me the delay details for SHP-4823">Open SHP-4823</Button>
+</Card>
+
+<Card title="Flag a shipment" subtitle="Escalate to the dispatch team">
+<Form name="flag-shipment">
+<Input label="Shipment ID" name="shipment-id" placeholder="SHP-4821" required="true" />
+<Select label="Reason" name="reason" placeholder="Choose a reason" options="Delay risk | Customs issue | Damage | Address problem | Other" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Add context for the dispatch team" rows="3" />
+<Switch label="Notify customer" name="notify" value="true" hint="Sends an update to the recipient" />
+<Button variant="danger" icon="flag">Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Volume by carrier" subtitle="Share of shipments this month">
+<Chart type="donut" title="Volume split by carrier">
+| Carrier | Share |
+|---|---|
+| Maersk | 34 |
+| MSC | 27 |
+| DHL | 21 |
+| FedEx | 12 |
+| Other | 6 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume" subtitle="Past two months">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 112 |
+| W2 | 128 |
+| W3 | 119 |
+| W4 | 134 |
+| W5 | 141 |
+| W6 | 137 |
+| W7 | 152 |
+| W8 | 146 |
+</Chart>
+</Card>
+
+<Card title="On-time performance" subtitle="Trend this month">
+<Progress value="91" max="100" label="On-time rate" tone="success" />
+<Button variant="secondary" ask="Break down on-time performance by carrier">Break down by carrier</Button>
+</Card>
+
+<FollowUps>
+- Show me only the delayed shipments
+- Which carrier has the best on-time rate?
+- Export this month's shipment report
+- What changed since the last refresh?
+</FollowUps>

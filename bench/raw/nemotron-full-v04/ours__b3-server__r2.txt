@@ -1,0 +1,67 @@
+# Service Health Dashboard
+
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" />
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Availability" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+</Card>
+
+<Card title="Error rate (now)">
+<Stat label="Errors/min" value="0.23%" change="-0.04% from 1h ago" tone="success" />
+<Progress value="0.23" max="1" label="Threshold: 1%" />
+</Card>
+</Columns>
+
+<Card title="CPU & Memory (24h)">
+<Chart type="line" x="Time" y="Usage %" title="Resource utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 41 | 56 |
+| 08:00 | 55 | 62 |
+| 10:00 | 68 | 71 |
+| 12:00 | 72 | 74 |
+| 14:00 | 69 | 73 |
+| 16:00 | 61 | 68 |
+| 18:00 | 58 | 65 |
+| 20:00 | 52 | 61 |
+| 22:00 | 47 | 59 |
+</Chart>
+</Card>
+
+<Card title="Open incidents">
+| Severity | Incident | Service | Since | Action |
+|---|---|---|---|---|
+| <Badge tone="danger">SEV-1</Badge> | Payment timeout spike | payments-api | 14 min ago | <Button variant="danger" size="small">Acknowledge</Button> |
+| <Badge tone="warning">SEV-2</Badge> | Elevated 5xx on checkout | checkout-svc | 32 min ago | <Button variant="warning" size="small">Acknowledge</Button> |
+| <Badge tone="warning">SEV-2</Badge> | Kafka consumer lag | order-processor | 1h 12m ago | <Button variant="warning" size="small">Acknowledge</Button> |
+| <Badge tone="info">SEV-3</Badge> | Slow query alerts | user-service | 2h 45m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| <Badge tone="info">SEV-3</Badge> | Cache miss rate high | catalog-api | 4h 20m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Card>
+
+<Card title="Slowest endpoints (p99 latency)">
+| Endpoint | Service | p99 Latency | Trend |
+|---|---|---|---|
+| POST /api/v1/checkout | checkout-svc | 2.84s | <Badge tone="danger">↑ 12%</Badge> |
+| GET /api/v1/orders/{id} | orders-api | 1.92s | <Badge tone="warning">↑ 5%</Badge> |
+| POST /api/v1/payments | payments-api | 1.67s | <Badge tone="neutral">→</Badge> |
+| GET /api/v1/users/{id}/recommendations | rec-engine | 1.43s | <Badge tone="warning">↑ 8%</Badge> |
+| PUT /api/v1/inventory/reserve | inventory-svc | 1.21s | <Badge tone="success">↓ 3%</Badge> |
+</Card>
+
+<Card title="Alert threshold configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="errorThreshold" type="number" value="1" step="0.1" hint="Alert when error rate exceeds this" />
+<Input label="Latency p99 threshold (ms)" name="latencyThreshold" type="number" value="2000" step="100" hint="Alert when p99 latency exceeds this" />
+<Input label="CPU threshold (%)" name="cpuThreshold" type="number" value="80" step="1" hint="Alert when CPU exceeds this" />
+<Input label="Memory threshold (%)" name="memoryThreshold" type="number" value="85" step="1" hint="Alert when memory exceeds this" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>

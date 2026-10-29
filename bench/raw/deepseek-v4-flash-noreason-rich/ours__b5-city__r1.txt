@@ -1,0 +1,205 @@
+# City Operations Center
+
+Live view of the city. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Current weather" subtitle="Downtown station">
+<Columns>
+<Stat label="Temperature" value="18°C" icon="thermometer-simple" />
+<Stat label="Wind" value="12 km/h" note="SW" icon="wind" />
+<Stat label="Humidity" value="64%" icon="drop" />
+<Stat label="Rain" value="0 mm" note="Next 6h dry" icon="cloud-rain" />
+</Columns>
+</Card>
+
+<Card title="Congestion right now" subtitle="Live traffic index by district">
+<Chart type="bar" x="District" y="Congestion index" title="0 = free flow, 100 = gridlock">
+| District | Index |
+|---|---|
+| Central | 78 |
+| North | 42 |
+| East | 55 |
+| South | 31 |
+| West | 63 |
+</Chart>
+<Callout tone="warning" title="Central district">Congestion above 70 for 2h. Recommend rerouting deliveries.</Callout>
+</Card>
+
+<Card title="Transit punctuality" subtitle="Last 15 minutes">
+<Columns>
+<Stat label="Buses" value="87%" note="On time" tone="success" icon="bus" />
+<Stat label="Metro" value="94%" note="On time" tone="success" icon="train" />
+<Stat label="Trams" value="91%" note="On time" tone="success" icon="tram" />
+</Columns>
+<Progress value="87" max="100" label="Bus punctuality" tone="success" />
+<Progress value="94" max="100" label="Metro punctuality" tone="success" />
+<Progress value="91" max="100" label="Tram punctuality" tone="success" />
+</Card>
+
+<Card title="Air quality by district" subtitle="PM2.5, µg/m³ – WHO guideline: 15">
+<Chart type="bar" x="District" y="PM2.5 (µg/m³)">
+| District | PM2.5 |
+|---|---|
+| Central | 28 |
+| North | 19 |
+| East | 22 |
+| South | 12 |
+| West | 16 |
+</Chart>
+<Callout tone="danger" title="Central district">PM2.5 above WHO limit. Sensitive groups: reduce outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy use – past week" subtitle="MWh per day, city-wide">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 1840 |
+| Tue | 1920 |
+| Wed | 1880 |
+| Thu | 2010 |
+| Fri | 2150 |
+| Sat | 1780 |
+| Sun | 1650 |
+</Chart>
+<Stat label="Week total" value="13,230 MWh" note="+2.1% vs last week" icon="lightning" />
+</Card>
+
+<Card title="Water use today" subtitle="Live cumulative, million litres">
+<Columns>
+<Stat label="Used so far" value="42.6 M L" note="Target: 48 M L" icon="droplet" />
+<Stat label="Peak hour" value="3.8 M L" note="07:00–08:00" icon="clock" />
+</Columns>
+<Progress value="89" max="100" label="Daily target" tone="info" />
+</Card>
+
+<Card title="Open incidents" subtitle="Live map feed">
+<Columns>
+<Stat label="Active" value="7" tone="warning" icon="siren" />
+<Stat label="Critical" value="2" tone="danger" icon="alert-octagon" />
+</Columns>
+
+<Card title="Incident list">
+| ID | Type | Location | Severity | Status |
+|---|---|---|---|---|
+| INC-1042 | Burst water main | Central, 5th & Main | <Badge tone="danger">Critical</Badge> | Crew en route |
+| INC-1043 | Traffic signal failure | North, Oak Ave | <Badge tone="warning">High</Badge> | Technician assigned |
+| INC-1044 | Fallen tree | East, Park Rd | <Badge tone="warning">High</Badge> | Crew on site |
+| INC-1045 | Streetlight outage | South, Elm St | <Badge tone="neutral">Low</Badge> | Scheduled PM |
+| INC-1046 | Sewer blockage | West, River Rd | <Badge tone="warning">High</Badge> | Jet truck dispatched |
+| INC-1047 | Pothole report | Central, Hill St | <Badge tone="neutral">Low</Badge> | Queued |
+| INC-1048 | Gas leak smell | North, Maple Ave | <Badge tone="danger">Critical</Badge> | Utility notified |
+</Card>
+</Card>
+
+<Card title="Emergency vehicles deployed" subtitle="Live positions">
+<Gallery>
+![Map view of emergency vehicle positions across the city, with ambulance, fire truck and police car icons on a street grid](find)
+</Gallery>
+<Columns>
+<Stat label="Ambulances" value="6" note="3 available" icon="ambulance" />
+<Stat label="Fire trucks" value="4" note="2 available" icon="fire-truck" />
+<Stat label="Police units" value="8" note="5 available" icon="police-car" />
+</Columns>
+</Card>
+
+<Card title="Parking availability downtown" subtitle="Live occupancy">
+<Chart type="bar" x="Garage" y="Free spaces">
+| Garage | Free |
+|---|---|
+| Central Plaza | 42 |
+| Market Street | 18 |
+| Riverside | 67 |
+| Civic Center | 25 |
+| Grand Hotel | 88 |
+</Chart>
+<Callout tone="info" title="Market Street Garage">Only 18 spaces left. Suggest directing drivers to Grand Hotel.</Callout>
+</Card>
+
+<Card title="Public events this weekend" subtitle="Permitted gatherings">
+| Event | Location | Time | Attendance |
+|---|---|---|---|
+| Farmers Market | Central Plaza | Sat 08:00–14:00 | 2,500 est. |
+| Riverside Jazz Fest | Riverside Park | Sat 16:00–22:00 | 4,000 est. |
+| City Marathon | Route through Central & East | Sun 07:00–12:00 | 8,000 est. |
+| Outdoor Cinema | South Meadow | Sat 20:00–23:00 | 1,200 est. |
+</Card>
+
+<Card title="Citizen reports – live feed" subtitle="Incoming, newest first">
+<Columns>
+<Stat label="Last hour" value="23" icon="chat-circle-dots" />
+<Stat label="Open today" value="141" icon="inbox" />
+</Columns>
+
+| Time | District | Category | Text |
+|---|---|---|---|
+| 14:32 | Central | Pothole | "Deep pothole near bus stop 42" |
+| 14:29 | North | Noise | "Loud construction after hours, Maple Ave" |
+| 14:25 | East | Lighting | "Streetlight flickering on Park Rd" |
+| 14:21 | South | Graffiti | "Graffiti on underpass wall, Elm St" |
+| 14:18 | West | Trash | "Overflowing bin at River Rd playground" |
+| 14:15 | Central | Traffic | "Signal stuck red at 5th & Main" |
+</Card>
+
+<Card title="Service request backlog" subtitle="By category">
+<Chart type="donut" title="Open requests by type">
+| Category | Count |
+|---|---|
+| Road maintenance | 84 |
+| Lighting | 52 |
+| Parks & trees | 38 |
+| Waste & recycling | 27 |
+| Water & sewer | 19 |
+| Other | 15 |
+</Chart>
+<Stat label="Total backlog" value="235" note="-8 vs yesterday" tone="info" icon="stack" />
+</Card>
+
+<Card title="Focus on one district" subtitle="Filter all views above">
+<Radio label="Select district" options="All districts | Central | North | East | South | West" name="district-focus" value="All districts" />
+<Callout tone="neutral" title="Tip">Choosing a district will update congestion, air quality, incidents, reports and roadworks to that area.</Callout>
+</Card>
+
+<Card title="Dispatch a crew" subtitle="Assign resources to an incident">
+<Form name="dispatch">
+<Select label="Incident" options="INC-1042 – Burst water main (Critical) | INC-1043 – Traffic signal failure (High) | INC-1044 – Fallen tree (High) | INC-1046 – Sewer blockage (High) | INC-1048 – Gas leak smell (Critical)" placeholder="Choose incident" />
+<Select label="Crew type" options="Water maintenance | Traffic signals | Tree services | Sewer jetting | Gas utility | General works" placeholder="Choose crew" />
+<Input label="Estimated arrival (minutes)" type="number" placeholder="15" min="1" max="120" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a public alert" subtitle="Broadcast to citizens via app, SMS and signage">
+<Form name="alert">
+<Select label="Audience" options="All residents | Central district | North district | East district | South district | West district" placeholder="Choose area" />
+<Select label="Severity" options="Info | Advisory | Warning | Emergency" placeholder="Choose level" />
+<TextArea label="Message" placeholder="Example: Boil water notice for Central district until 18:00 today. Use bottled water for drinking and cooking." rows="4" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks planned this month">
+| Project | District | Dates | Impact |
+|---|---|---|---|
+| 5th Ave resurfacing | Central | Mar 12–18 | Lane closure, 9:00–16:00 |
+| Oak Ave bridge inspection | North | Mar 15–16 | Full closure 22:00–05:00 |
+| Park Rd drainage upgrade | East | Mar 20–27 | One lane each direction |
+| Elm St utility works | South | Mar 22–24 | Sidewalk closed, detour signed |
+| River Rd paving | West | Mar 28–31 | Night works, noise expected |
+</Card>
+
+<Card title="Infrastructure jobs due for maintenance" subtitle="Scheduled within 30 days">
+| Asset | District | Due date | Priority |
+|---|---|---|---|
+| Central water pump #3 | Central | Mar 14 | <Badge tone="danger">Overdue</Badge> |
+| North substation transformers | North | Mar 19 | <Badge tone="warning">Due soon</Badge> |
+| East bridge joints | East | Mar 25 | <Badge tone="warning">Due soon</Badge> |
+| South sewer lift station | South | Apr 02 | <Badge tone="neutral">Scheduled</Badge> |
+| West traffic signal controllers | West | Apr 08 | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<FollowUps>
+- Show me the incident on a map
+- What's the status of INC-1042?
+- Prepare the public alert for the gas leak
+- Which garages have free EV charging?
+- Compare this week's energy use to last month
+</FollowUps>

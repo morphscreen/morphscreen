@@ -1,0 +1,67 @@
+# Support Lead Morning View
+
+<Card title="Ticket Overview">
+<Columns>
+<Stat label="Open tickets" value="24" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="1.8 h" tone="success" icon="clock" change="-12% vs last week" />
+<Stat label="Unassigned" value="5" tone="danger" icon="user-circle" />
+<Stat label="SLA at risk" value="3" tone="danger" icon="alert" />
+</Columns>
+</Card>
+
+<Card title="Recent Tickets">
+<Checkboxes label="Filter" options="High priority only" name="priority-filter" />
+<Columns>
+<Tabs>
+<Tab title="All tickets">
+| Ticket | Subject | Priority | Status |
+|---|---|---|---|
+| #4821 | Payment gateway timeout on checkout | <Badge tone="danger">High</Badge> | Open |
+| #4820 | Unable to reset password after SSO update | <Badge tone="danger">High</Badge> | Open |
+| #4819 | API rate limit question for enterprise plan | <Badge tone="info">Medium</Badge> | Open |
+| #4818 | Billing invoice missing line items | <Badge tone="warning">Medium</Badge> | Open |
+| #4817 | Feature request: dark mode for dashboard | <Badge tone="neutral">Low</Badge> | Open |
+</Tabs>
+<Tab title="High priority only">
+| Ticket | Subject | Priority | Status |
+|---|---|---|---|
+| #4821 | Payment gateway timeout on checkout | <Badge tone="danger">High</Badge> | Open |
+| #4820 | Unable to reset password after SSO update | <Badge tone="danger">High</Badge> | Open |
+</Tabs>
+</Columns>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="primary" icon="plus">New ticket</Button>
+<Button variant="secondary" icon="chart-line">View SLA report</Button>
+</Columns>
+</Card>
+
+<Card title="New ticket">
+<Form name="new-ticket">
+<Input label="Customer name" placeholder="Jane Smith" required="true" />
+<Input label="Subject" placeholder="Brief summary of the issue" required="true" />
+<Select label="Priority" options="Low | Medium | High" placeholder="Select priority" required="true" />
+<TextArea label="Description" placeholder="Full details of the issue" rows="4" required="true" />
+<Button>Create ticket</Button>
+</Form>
+</Card>
+
+<Card title="This week's trend">
+<Chart type="bar" title="Tickets created vs resolved" x="Day" y="Count">
+| Day | Created | Resolved |
+|---|---|---|
+| Mon | 14 | 11 |
+| Tue | 18 | 15 |
+| Wed | 12 | 14 |
+| Thu | 16 | 13 |
+| Fri | 9 | 8 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me the SLA breach details for the 3 at-risk tickets
+- Who's currently assigned to the high-priority tickets?
+- What's the trend in first-response time over the last month?
+</FollowUps>

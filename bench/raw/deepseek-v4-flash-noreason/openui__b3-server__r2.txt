@@ -1,0 +1,52 @@
+root = Card([header, regionFilter, kpis, charts, incidents, endpoints, alertForm, ackActions], "card", "column", "m")
+
+header = CardHeader("Service Health", "On-call overview for Q3 2025")
+
+regionFilter = Form("region-filter", regionButtons, [regionField])
+regionField = FormControl("Region", regionSelect)
+regionSelect = Select("region", [regionAll, regionUS, regionEU, regionAPAC], "All regions")
+regionAll = SelectItem("all", "All regions")
+regionUS = SelectItem("us-east", "US East")
+regionEU = SelectItem("eu-west", "EU West")
+regionAPAC = SelectItem("ap-southeast", "APAC Southeast")
+regionButtons = Buttons([applyRegionBtn])
+applyRegionBtn = Button("Apply region", null, "primary")
+
+kpis = Card([uptimeHeading, uptimeText, errorHeading, errorText], "sunk", "column", "s")
+uptimeHeading = Heading("Uptime this quarter", "h3")
+uptimeText = TextContent("**99.98%** — 9m 43s of downtime across 3 incidents", "large")
+errorHeading = Heading("Error rate right now", "h3")
+errorText = TextContent("**0.42%** of requests failing over the last 5 minutes", "large")
+
+charts = Card([chartHeading, cpuMemChart], "sunk")
+chartHeading = Heading("CPU & memory — past 24 hours", "h3")
+cpuMemChart = LineChart(["00:00", "04:00", "08:00", "12:00", "16:00", "20:00", "now"], [cpuSeries, memSeries], "natural", "Time", "Usage %")
+cpuSeries = Series("CPU", [42, 55, 48, 63, 71, 58, 49])
+memSeries = Series("Memory", [61, 66, 64, 72, 78, 74, 70])
+
+incidents = Card([incidentsHeading, incidentsTable], "sunk")
+incidentsHeading = Heading("Open incidents", "h3")
+incidentsTable = Table([incidentIdCol, incidentTitleCol, incidentSevCol, incidentRegionCol])
+incidentIdCol = Col("ID", ["INC-2041", "INC-2038", "INC-2035", "INC-2032"])
+incidentTitleCol = Col("Title", ["Checkout latency spike", "DB connection pool exhaustion", "Elevated 5xx on auth", "Degraded search indexing"])
+incidentSevCol = Col("Severity", ["SEV-1", "SEV-2", "SEV-2", "SEV-3"])
+incidentRegionCol = Col("Region", ["US East", "EU West", "US East", "APAC"])
+
+endpoints = Card([endpointsHeading, endpointsTable], "sunk")
+endpointsHeading = Heading("Slowest endpoints", "h3")
+endpointsTable = Table([endpointCol, latencyCol])
+endpointCol = Col("Endpoint", ["/api/orders/sync", "/api/reports/export", "/api/search", "/api/auth/refresh", "/api/checkout"])
+latencyCol = Col("P95 latency", ["1,842 ms", "1,376 ms", "984 ms", "812 ms", "743 ms"])
+
+alertForm = Form("alert-threshold", alertButtons, [alertField])
+alertField = FormControl("Set error-rate alert threshold", alertInput, "Alerts fire when the 5-minute error rate exceeds this %")
+alertInput = Input("alert_threshold", "0.5", "number")
+
+alertButtons = Buttons([saveAlertBtn])
+saveAlertBtn = Button("Save threshold", null, "primary")
+
+ackActions = Card([ackHeading, ackButtons], "sunk")
+ackHeading = Heading("Acknowledge incident", "h3")
+ackButtons = Buttons([ackSev1Btn, ackSev2Btn])
+ackSev1Btn = Button("Acknowledge INC-2041", null, "primary")
+ackSev2Btn = Button("Acknowledge INC-2038", null, "secondary")

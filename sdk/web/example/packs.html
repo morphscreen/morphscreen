@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Packs</title>
+<link rel="stylesheet" href="../dist/morphscreen.css"><link rel="stylesheet" href="../dist/morphscreen-page.css"></head>
+<body><main class="ms-answer" id="app"></main>
+<script type="module">
+import { loadCore, createAnswer } from "../dist/index.js";
+const core = await loadCore(new URL("../dist/morphscreen.wasm", import.meta.url));
+const text = await (await fetch("../../../test/fixtures/packs-all.md")).text();
+window.actions = [];
+const answer = createAnswer(document.getElementById("app"), { core, packs: ["data", "commerce", "scheduling", "media", "docs", "inputs", "device", "interactive"], onAction: (a) => window.actions.push(a) });
+for (let i = 0; i < text.length; i += 32) answer.push(text.slice(i, i + 32));
+answer.end();
+window.serverHtml = answer.html();
+window.ready = true;
+</script></body>
+</html>

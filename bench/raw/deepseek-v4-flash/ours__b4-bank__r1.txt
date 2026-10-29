@@ -1,0 +1,93 @@
+# Personal banking home
+
+Good morning, Alex — Friday, February 21, 2025. <Badge tone="success">All accounts synced</Badge>
+
+<Card title="Accounts overview" subtitle="Your current balances">
+<Columns>
+<Stat label="Checking" value="$4,850.20" change="+2.4%" note="••4821" tone="info" icon="bank" />
+<Stat label="Savings" value="$12,300.75" change="+1.8%" note="••1094" tone="success" icon="coins" />
+<Stat label="Credit card" value="$1,240.00" change="$3,760 available" note="••7730" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Move money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Input label="Amount" type="number" step="0.01" placeholder="0.00" name="amount" required="true" hint="Enter how much to move" />
+<Select label="From" options="Checking ••4821 | Savings ••1094" name="from" value="Checking ••4821" />
+<Select label="To" options="Checking ••4821 | Savings ••1094" name="to" value="Savings ••1094" />
+<Button icon="arrow-right">Review transfer</Button>
+</Form>
+</Card>
+
+<Card title="Credit health" subtitle="Score and card controls">
+<Stat label="Credit score" value="781" change="+12 this quarter" tone="success" icon="chart-line" />
+<Progress value="781" max="850" label="Excellent — 781 of 850" tone="success" />
+<Switch label="Freeze credit line" name="freeze" hint="Blocks new purchases and balance transfers" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Spending this month" subtitle="Where your money went in February">
+<Chart type="donut" x="Category" y="Spent">
+| Category | Spent |
+|---|---|
+| Groceries | 420 |
+| Dining out | 310 |
+| Transport | 180 |
+| Utilities | 150 |
+| Entertainment | 95 |
+| Other | 120 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon" subtitle="Next payments coming up">
+| Biller | Amount | Due | Status |
+|---|---|---|---|
+| Electric Co. | $85.00 | Feb 25 | <Badge tone="warning">Due soon</Badge> |
+| Fiber Internet | $49.99 | Mar 1 | <Badge tone="info">Upcoming</Badge> |
+| Mobile plan | $65.00 | Mar 5 | <Badge tone="neutral">Later</Badge> |
+</Card>
+</Columns>
+
+<Card title="Recent transactions" subtitle="Last 30 days">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Feb 20 | Trader Joe's | Groceries | -$68.42 |
+| Feb 19 | Shell | Transport | -$42.18 |
+| Feb 18 | Netflix | Entertainment | -$15.99 |
+| Feb 17 | ACME Payroll | Income | +$3,850.00 |
+| Feb 16 | Blue Bottle Coffee | Dining | -$8.75 |
+</Card>
+
+<Columns>
+<Card title="Dispute a transaction" subtitle="Flag a charge on your credit card">
+<Form name="dispute">
+<Select label="Transaction" options="Trader Joe's — Feb 20 — $68.42 | Shell — Feb 19 — $42.18 | Netflix — Feb 18 — $15.99" name="transaction" placeholder="Select transaction" />
+<Select label="Reason" options="Unauthorized charge | Wrong amount | Item not received | Service not provided" name="reason" placeholder="Select reason" />
+<TextArea label="Details" name="details" placeholder="Give us more context (optional)" rows="2" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<Card title="Alert preferences" subtitle="Choose what triggers a notification">
+<Checkboxes label="Alert me when" options="Purchase over $200 | Balance below $500 | Credit line near limit | New bill posted | Unusual sign-in" name="alerts" value="Purchase over $200 | Unusual sign-in" hint="Uncheck to silence an alert type" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Vacation savings goal" subtitle="Bali trip — October 2025">
+<Stat label="Saved so far" value="$3,200" note="of $5,000 goal" tone="info" icon="airplane" />
+<Progress value="64" max="100" label="64% funded" tone="info" />
+</Card>
+
+<Card title="Statement period" subtitle="Pick the billing window for your credit card">
+<Select label="Statement period" options="January 1 – 31 | February 1 – 28 | March 1 – 31" name="period" value="February 1 – 28" hint="Your statement and due date update to match" />
+</Card>
+</Columns>
+
+<FollowUps>
+- What are the transfer limits between accounts?
+- How do I increase my credit limit?
+- Can I automate contributions to my savings goal?
+</FollowUps>

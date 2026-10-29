@@ -1,0 +1,146 @@
+# Admin Overview Dashboard
+
+<Card title="Reporting Period">
+<Form name="reporting-period">
+<Radio label="Period" options="Last 30 days | Last 90 days | Last 12 months | Custom range" name="period" value="Last 90 days" />
+<Button variant="secondary" size="small">Apply</Button>
+</Form>
+</Card>
+
+<Card title="Revenue & Churn">
+<Columns>
+<div>
+<Stat label="Monthly Recurring Revenue" value="$84,320" change="+5.2%" tone="success" icon="trend-up" />
+<Stat label="Annual Recurring Revenue" value="$1,011,840" change="+5.2%" tone="success" icon="chart-line" />
+</div>
+<div>
+<Stat label="Churn This Month" value="3.1%" change="-0.4%" tone="warning" icon="trend-down" />
+<Stat label="Current NPS" value="62" change="+4" tone="info" icon="smiley" note="Good" />
+</div>
+</Columns>
+</Card>
+
+<Card title="New Signups (Last 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 51 |
+| Week 4 | 47 |
+| Week 5 | 55 |
+| Week 6 | 60 |
+| Week 7 | 58 |
+| Week 8 | 63 |
+| Week 9 | 71 |
+| Week 10 | 68 |
+| Week 11 | 74 |
+| Week 12 | 82 |
+| Week 13 | 79 |
+</Chart>
+<Stat label="Total New Signups" value="788" icon="user-plus" />
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 214 |
+| Professional | 147 |
+| Enterprise | 39 |
+</Chart>
+</Card>
+
+<Card title="Largest Customers">
+| Company | Seats | Monthly Spend |
+|---|---|---|
+| Acme Corp | 245 | $12,250 |
+| GlobalTech Inc | 189 | $9,450 |
+| MegaCorp Ltd | 156 | $7,800 |
+| InnovateCo | 134 | $6,700 |
+| DataStream | 112 | $5,600 |
+| CloudBase | 98 | $4,900 |
+| NexGen Systems | 87 | $4,350 |
+| Peak Solutions | 76 | $3,800 |
+| Alpha Ventures | 65 | $3,250 |
+| BlueSky Group | 54 | $2,700 |
+</Card>
+
+<Card title="Accounts at Risk">
+<Columns>
+<div>
+<Badge tone="danger">High Risk</Badge>
+**BrightPath Inc** — No login in 45 days
+<Button ask="Send re-engagement email to BrightPath Inc" variant="secondary" size="small">Re-engage</Button>
+</div>
+<div>
+<Badge tone="warning">Medium Risk</Badge>
+**SwiftLogistics** — Support ticket escalated, unresolved for 7 days
+<Button ask="Check SwiftLogistics support ticket" variant="secondary" size="small">View Ticket</Button>
+</div>
+<div>
+<Badge tone="warning">Medium Risk</Badge>
+**GreenLeaf Corp** — Usage dropped 60% this month
+<Button ask="Schedule check-in call with GreenLeaf Corp" variant="secondary" size="small">Schedule Call</Button>
+</div>
+<div>
+<Badge tone="danger">High Risk</Badge>
+**Pinnacle Media** — Billing dispute open, 14 days overdue
+<Button ask="Review Pinnacle Media billing dispute" variant="secondary" size="small">Review Dispute</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Failed Payments">
+| Company | Amount | Attempts | Last Attempt |
+|---|---|---|---|
+| RiverTech | $1,200 | 3 | 2 days ago |
+| Summit Software | $850 | 2 | 1 day ago |
+| Horizon Labs | $2,400 | 1 | Today |
+| NorthStar Inc | $600 | 4 | 3 days ago |
+
+<Columns>
+<Button ask="Retry payment for RiverTech" size="small">Retry RiverTech</Button>
+<Button ask="Retry payment for Summit Software" size="small">Retry Summit Software</Button>
+<Button ask="Retry payment for Horizon Labs" size="small">Retry Horizon Labs</Button>
+<Button ask="Retry payment for NorthStar Inc" size="small">Retry NorthStar Inc</Button>
+</Columns>
+</Card>
+
+<Card title="Feature Adoption (Newest Features)">
+<Columns>
+<div>
+<Stat label="AI Reports" value="34%" icon="robot" />
+<Progress value="34" max="100" label="34%" />
+</div>
+<div>
+<Stat label="Team Dashboards" value="52%" icon="layout" />
+<Progress value="52" max="100" label="52%" />
+</div>
+<div>
+<Stat label="API v3" value="18%" icon="code" />
+<Progress value="18" max="100" label="18%" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Seat Utilization">
+<Stat label="Seats Used" value="1,847 / 2,500" icon="users" note="73.9%" />
+<Progress value="73.9" max="100" label="73.9%" tone="info" />
+<Callout tone="info" title="Utilization Tip">You have 653 unused seats. Consider a plan review at renewal.</Callout>
+</Card>
+
+<Card title="Invite Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="colleague@company.com" required="true" hint="They'll receive an invite link" />
+<Select label="Role" options="Admin (full access) | Billing (finance only) | Support (tickets only)" name="role" />
+<Button>Send Invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the churn trend over the last 6 months
+- Which features have the lowest adoption?
+- Compare this quarter to last quarter
+- List all accounts with >50 seats
+</FollowUps>

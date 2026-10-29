@@ -1,0 +1,78 @@
+# Training Platform Analytics
+
+<Card title="Key metrics" subtitle="This week vs. last week">
+<Columns>
+<Stat label="Active learners" value="1,284" change="+8.2%" note="vs. last week" tone="success" icon="users" />
+<Stat label="Course completion" value="72%" change="+3.1%" note="vs. last week" tone="success" icon="check-circle" />
+<Stat label="Avg. quiz score" value="84%" change="-1.4%" note="vs. last week" tone="warning" icon="pencil-line" />
+</Columns>
+</Card>
+
+<Card title="Narrow to a cohort">
+<Form name="cohort-filter">
+<Select label="Cohort" placeholder="All cohorts" options="All cohorts | Marketing Q3 | Sales Onboarding | Engineering Bootcamp | Design Sprint | Leadership Cohort" />
+<Switch label="Show only active cohorts" name="active-only" value="true" hint="Excludes archived cohorts" />
+<Button>Apply filter</Button>
+</Form>
+</Card>
+
+<Card title="Engagement — last 8 weeks" subtitle="Active learners per week">
+<Chart type="area" x="Week" y="Active learners">
+| Week | Active learners |
+|---|---|
+| 8 weeks ago | 920 |
+| 7 weeks ago | 1,050 |
+| 6 weeks ago | 1,180 |
+| 5 weeks ago | 1,120 |
+| 4 weeks ago | 1,310 |
+| 3 weeks ago | 1,240 |
+| 2 weeks ago | 1,190 |
+| This week | 1,284 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Top 5 by current enrollment">
+<Chart type="bar" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Data Analytics Basics | 412 |
+| Python for Beginners | 368 |
+| Project Management | 295 |
+| UX Fundamentals | 241 |
+| SQL Essentials | 198 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Based on inactivity > 7 days or quiz score < 60%">
+| Learner | Course | Last active | Quiz avg | Risk |
+|---|---|---|---|---|
+| Maya Patel | Data Analytics Basics | 9 days ago | 58% | <Badge tone="danger">High</Badge> |
+| Liam Chen | Python for Beginners | 8 days ago | 62% | <Badge tone="warning">Medium</Badge> |
+| Sofia Rossi | UX Fundamentals | 12 days ago | 55% | <Badge tone="danger">High</Badge> |
+| Noah Kim | SQL Essentials | 7 days ago | 64% | <Badge tone="warning">Medium</Badge> |
+| Ava Thompson | Project Management | 6 days ago | 59% | <Badge tone="warning">Medium</Badge> |
+
+<Button variant="primary" icon="envelope">Message all at-risk learners</Button>
+</Card>
+
+<Card title="Message a cohort" subtitle="Send a nudge or announcement">
+<Form name="cohort-message">
+<Select label="Cohort" placeholder="Choose a cohort" options="Marketing Q3 | Sales Onboarding | Engineering Bootcamp | Design Sprint | Leadership Cohort" />
+<Select label="Audience" placeholder="All learners" options="All learners | At-risk only | Top performers | Inactive > 7 days" />
+<Input label="Subject" placeholder="Quick check-in" />
+<TextArea label="Message" placeholder="Hi team, we noticed…" rows="4" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Pro tip">
+Use the cohort filter at the top to see how each metric changes per cohort — the charts and at-risk list update automatically.
+</Callout>
+
+<FollowUps>
+- Which cohort has the highest completion rate?
+- Show me the trend for the Sales Onboarding cohort
+- Who are the top 5 learners this week?
+- How do quiz scores break down by course?
+</FollowUps>

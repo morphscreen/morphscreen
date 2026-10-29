@@ -1,0 +1,319 @@
+# Hospital Operations Command Center
+
+<Badge tone="warning">Live update: 5 min ago</Badge>
+
+<Card title="Critical Alerts">
+<Callout tone="danger" title="ICU at capacity">ICU bed occupancy at 100%. 2 patients waiting for ICU transfer.</Callout>
+<Callout tone="warning" title="Blood O-negative low">Only 4 units remaining. Reorder approved.</Callout>
+</Card>
+
+<Card title="Bed Occupancy">
+<Columns>
+<Stat label="Total beds" value="312" note="across all departments" icon="bed" />
+<Stat label="Occupied" value="247" note="79.2% overall" icon="activity" tone="warning" />
+<Stat label="Available" value="65" note="including 12 ICU-capable" icon="check-circle" tone="success" />
+</Columns>
+<Progress value="247" max="312" label="Overall occupancy" tone="warning" />
+<Chart type="bar" title="Occupancy by department" x="Department" y="Beds used">
+| Department | Used | Total |
+|---|---|---|
+| ICU | 12 | 12 |
+| ER | 18 | 20 |
+| Cardiology | 32 | 36 |
+| Pediatrics | 28 | 32 |
+| Surgery | 45 | 50 |
+| Oncology | 22 | 26 |
+| Maternity | 30 | 34 |
+| General | 60 | 102 |
+</Chart>
+</Card>
+
+<Card title="Emergency Department">
+<Columns>
+<Stat label="Current wait" value="2h 15m" note="average, down 20 min in last hour" icon="clock" tone="warning" />
+<Stat label="In ER now" value="18" note="4 critical, 6 stable, 8 waiting" icon="users" />
+<Stat label="Ambulances incoming" value="3" note="ETA 5-12 min" icon="truck" />
+</Columns>
+<Callout tone="danger" title="Critical patient in ER">Patient #4821 — STEMI, awaiting cath lab. <Button variant="primary" ask="Show ER critical patient details">View details</Button></Callout>
+</Card>
+
+<Card title="Admissions — Past Two Weeks">
+<Chart type="line" title="Daily admissions" x="Day" y="Patients">
+| Day | Admissions |
+|---|---|
+| 14 days ago | 32 |
+| 13 days ago | 28 |
+| 12 days ago | 35 |
+| 11 days ago | 41 |
+| 10 days ago | 29 |
+| 9 days ago | 33 |
+| 8 days ago | 38 |
+| 7 days ago | 30 |
+| 6 days ago | 36 |
+| 5 days ago | 42 |
+| 4 days ago | 31 |
+| 3 days ago | 34 |
+| 2 days ago | 29 |
+| Yesterday | 37 |
+</Chart>
+<Columns>
+<Stat label="7-day avg" value="34" note="per day" icon="chart-line" tone="info" />
+<Stat label="14-day total" value="475" note="admissions" icon="arrow-up-right" />
+<Stat label="Peak day" value="42" note="5 days ago" icon="trend-up" />
+</Columns>
+</Card>
+
+<Card title="Patients per Department (Current)">
+<Chart type="donut" title="Distribution" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| ICU | 12 |
+| ER | 18 |
+| Cardiology | 32 |
+| Pediatrics | 28 |
+| Surgery | 45 |
+| Oncology | 22 |
+| Maternity | 30 |
+| General | 60 |
+</Chart>
+</Card>
+
+<Card title="Critical Patients — Called Out">
+<Tabs>
+<Tab title="Active criticals (4)">
+<Columns>
+<Card title="ER">
+<KeyValue title="Patient #4821">
+| Field | Value |
+|---|---|
+| Condition | STEMI — awaiting cath lab |
+| Location | ER Bay 3 |
+| Attending | Dr. Patel |
+| Status | <Badge tone="danger">Critical</Badge> |
+</KeyValue>
+<Button ask="Update patient #4821">Update</Button>
+</Card>
+<Card title="ICU">
+<KeyValue title="Patient #1012">
+| Field | Value |
+|---|---|
+| Condition | Septic shock — on vasopressors |
+| Location | ICU Room 4 |
+| Attending | Dr. Okafor |
+| Status | <Badge tone="danger">Critical</Badge> |
+</KeyValue>
+<Button ask="Update patient #1012">Update</Button>
+</Card>
+<Card title="ICU">
+<KeyValue title="Patient #0978">
+| Field | Value |
+|---|---|
+| Condition | Post-arrest, hypothermic protocol |
+| Location | ICU Room 7 |
+| Attending | Dr. Chen |
+| Status | <Badge tone="danger">Critical</Badge> |
+</KeyValue>
+<Button ask="Update patient #0978">Update</Button>
+</Card>
+<Card title="Cardiology">
+<KeyValue title="Patient #1204">
+| Field | Value |
+|---|---|
+| Condition | Unstable arrhythmia — monitoring |
+| Location | Cardio Step-down |
+| Attending | Dr. Rossi |
+| Status | <Badge tone="warning">Deteriorating</Badge> |
+</KeyValue>
+<Button ask="Update patient #1204">Update</Button>
+</Card>
+</Columns>
+</Tab>
+<Tab title="Recently resolved (2)">
+<Card title="Resolved criticals">
+| Patient | Condition | Outcome | Time |
+|---|---|---|---|
+| #1103 | Stroke — tPA given | Stable, moved to floor | 09:15 |
+| #1045 | GI bleed | Controlled, transfused | 08:40 |
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Patients Ready for Discharge">
+<Columns>
+<Stat label="Ready now" value="8" note="awaiting transport or paperwork" icon="check" tone="success" />
+<Stat label="Discharged today" value="14" note="so far" icon="arrow-down-right" />
+</Columns>
+<table>
+| Patient | Dept | Ready since | Needs | Action |
+|---|---|---|---|---|
+| #2301 | General | 08:20 | Transport | <Button ask="Arrange transport for #2301">Arrange</Button> |
+| #2344 | Maternity | 08:45 | Paperwork | <Button ask="Complete discharge paperwork for #2344">Paperwork</Button> |
+| #2210 | Surgery | 09:10 | Rx pickup | <Button ask="Order medications for #2210">Medications</Button> |
+| #2287 | Pediatrics | 09:25 | Parent arrived | <Button ask="Check on #2287 discharge">Check</Button> |
+| #2352 | Cardiology | 09:40 | Follow-up appt | <Button ask="Book follow-up for #2352">Book</Button> |
+</table>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<table>
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30–09:00 | OR1 | Total knee replacement | Dr. Williams | <Badge tone="success">Completed</Badge> |
+| 08:00–09:30 | OR2 | Laparoscopic cholecystectomy | Dr. Kim | <Badge tone="success">Completed</Badge> |
+| 09:00–11:00 | OR3 | Emergency appendectomy | Dr. Brooks | <Badge tone="info">In progress</Badge> |
+| 10:00–12:00 | OR1 | Cataract surgery | Dr. Nguyen | <Badge tone="info">In progress</Badge> |
+| 11:30–14:00 | OR2 | Hernia repair | Dr. Williams | <Badge tone="neutral">Scheduled</Badge> |
+| 13:00–15:30 | OR3 | C-section | Dr. Alvarez | <Badge tone="neutral">Scheduled</Badge> |
+| 14:00–16:00 | OR1 | Knee arthroscopy | Dr. Kim | <Badge tone="neutral">Scheduled</Badge> |
+| 15:30–17:30 | OR2 | Thyroidectomy | Dr. Brooks | <Badge tone="neutral">Scheduled</Badge> |
+</table>
+<Columns>
+<Stat label="ORs in use" value="2" note="of 3" icon="activity" />
+<Stat label="Cases today" value="8" note="2 done, 2 active, 4 upcoming" icon="calendar" />
+<Stat label="On-time rate" value="87%" note="today" icon="check-circle" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Staff on Shift">
+<Tabs>
+<Tab title="Nurses (24)">
+<Columns>
+<Card title="ICU (6)">
+<Avatar name="Sarah Mitchell" src /> RN — Charge, ICU
+<Avatar name="James O'Connor" src /> RN — ICU
+<Avatar name="Priya Sharma" src /> RN — ICU
+<Avatar name="Tom Becker" src /> RN — ICU
+<Avatar name="Lena Fischer" src /> RN — ICU
+<Avatar name="David Park" src /> RN — ICU
+</Card>
+<Card title="ER (6)">
+<Avatar name="Maria Gomez" src /> RN — ER Charge
+<Avatar name="Kevin Lee" src /> RN — ER
+<Avatar name="Aisha Bello" src /> RN — ER
+<Avatar name="Mark Thompson" src /> RN — ER
+<Avatar name="Rachel Adams" src /> RN — ER
+<Avatar name="Omar Farouk" src /> RN — ER
+</Card>
+<Card title="Surgery (4)">
+<Avatar name="Nancy Wu" src /> RN — OR
+<Avatar name="Peter Novak" src /> RN — OR
+<Avatar name="Fatima Ali" src /> RN — OR
+<Avatar name="Chris Jensen" src /> RN — OR
+</Card>
+<Card title="Floors (8)">
+<Avatar name="Laura Davis" src /> RN — General
+<Avatar name="John Miller" src /> RN — General
+<Avatar name="Sofia Reyes" src /> RN — Cardiology
+<Avatar name="Andrew Kim" src /> RN — Pediatrics
+<Avatar name="Hannah Weiss" src /> RN — Oncology
+<Avatar name="Robert Chen" src /> RN — Maternity
+<Avatar name="Emma Larsen" src /> RN — General
+<Avatar name="Michael Brown" src /> RN — General
+</Card>
+</Columns>
+</Tab>
+<Tab title="Physicians (10)">
+<Columns>
+<Card title="Attendings (5)">
+<Avatar name="Dr. Patel" src /> ER Attending
+<Avatar name="Dr. Okafor" src /> ICU Attending
+<Avatar name="Dr. Chen" src /> ICU Attending
+<Avatar name="Dr. Rossi" src /> Cardiology Attending
+<Avatar name="Dr. Williams" src /> Orthopedic Surgeon
+</Card>
+<Card title="Residents (5)">
+<Avatar name="Dr. Kim" src /> Surgery Resident
+<Avatar name="Dr. Brooks" src /> Surgery Resident
+<Avatar name="Dr. Nguyen" src /> Ophthalmology Resident
+<Avatar name="Dr. Alvarez" src /> OB/GYN Resident
+<Avatar name="Dr. Park" src /> Internal Medicine Resident
+</Card>
+</Columns>
+</Tab>
+<Tab title="Support (6)">
+<Columns>
+<Card title="Ancillary">
+<Avatar name="Karen Smith" src /> Respiratory Therapist
+<Avatar name="José Martinez" src /> Pharmacist
+<Avatar name="Helen Clark" src /> Social Worker
+<Avatar name="George Wright" src /> Lab Tech
+<Avatar name="Anita Desai" src /> Radiology Tech
+<Avatar name="Sam Carter" src /> Transport Aide
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Supplies Running Low">
+<table>
+| Item | Stock | Reorder at | Status | Action |
+|---|---|---|---|---|
+| O-negative blood | 4 units | 10 units | <Badge tone="danger">Critical</Badge> | <Button ask="Reorder O-negative blood">Reorder</Button> |
+| N95 masks | 120 | 200 | <Badge tone="danger">Critical</Badge> | <Button ask="Reorder N95 masks">Reorder</Button> |
+| IV saline (1L) | 48 bags | 60 | <Badge tone="warning">Low</Badge> | <Button ask="Reorder IV saline">Reorder</Button> |
+| Insulin (rapid) | 15 vials | 20 | <Badge tone="warning">Low</Badge> | <Button ask="Reorder insulin">Reorder</Button> |
+| Surgical gloves (M) | 35 boxes | 50 | <Badge tone="warning">Low</Badge> | <Button ask="Reorder surgical gloves">Reorder</Button> |
+| Morphine (10mg) | 22 amps | 30 | <Badge tone="warning">Low</Badge> | <Button ask="Reorder morphine">Reorder</Button> |
+</table>
+<Button variant="secondary" ask="Show all supply inventory">View full inventory</Button>
+</Card>
+
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Type" placeholder="Select type" options="Medication error | Fall | Equipment failure | Patient safety | Staff injury | Security | Other" />
+<Select label="Severity" placeholder="Select severity" options="Near miss | Minor | Moderate | Severe | Critical" />
+<Input label="Location" placeholder="e.g., ICU Room 4, ER Bay 2" />
+<TextArea label="Description" placeholder="What happened? Include details, people involved, and immediate actions taken." rows="4" />
+<TextArea label="Immediate actions taken" placeholder="e.g., Notified charge nurse, provided care, isolated area" rows="2" />
+<Checkboxes label="Involved parties" options="Patient | Staff member | Visitor | Equipment | Medication" name="involved" />
+<File label="Attach photos or documents" accept=".jpg | .png | .pdf" multiple="true" hint="Optional — max 5 files" />
+<Button variant="danger">Submit incident report</Button>
+</Form>
+</Card>
+
+<Card title="View Another Day">
+<Form name="date-picker">
+<Columns>
+<Date label="Select date" name="view-date" hint="Operations data for the chosen day" />
+<Button variant="secondary">Load day</Button>
+</Columns>
+</Form>
+<Callout tone="neutral" title="Quick views">
+<Button variant="tertiary" ask="Show yesterday's operations">Yesterday</Button>
+<Button variant="tertiary" ask="Show last week's operations">Last week</Button>
+<Button variant="tertiary" ask="Show tomorrow's schedule">Tomorrow</Button>
+</Callout>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Select label="Patient" placeholder="Search patient" options="Patient #4821 (ER) | Patient #1012 (ICU) | Patient #0978 (ICU) | Patient #1204 (Cardiology) | Patient #2301 (General) | Patient #2344 (Maternity) | Other" />
+<Select label="From department" placeholder="Select" options="ER | ICU | Cardiology | Pediatrics | Surgery | Oncology | Maternity | General" />
+<Select label="To department" placeholder="Select" options="ICU | Cardiology | Step-down | General | Pediatrics | Maternity | Surgery | Rehab" />
+<Select label="Priority" placeholder="Select" options="Routine | Urgent | Emergency" />
+<TextArea label="Reason" placeholder="Clinical justification for the transfer" rows="2" />
+<Select label="Receiving physician" placeholder="Select" options="Dr. Patel | Dr. Okafor | Dr. Chen | Dr. Rossi | Dr. Williams | Dr. Kim | Dr. Brooks | Dr. Nguyen | Dr. Alvarez | Dr. Park" />
+<Button variant="primary">Submit transfer request</Button>
+</Form>
+</Card>
+
+<Card title="Operations Snapshot — Right Now">
+<Columns>
+<Stat label="Total patients" value="247" note="79.2% occupancy" icon="users" />
+<Stat label="ER wait" value="2h 15m" note="average" icon="clock" tone="warning" />
+<Stat label="Critical patients" value="4" note="1 in ER, 3 in ICU" icon="alert" tone="danger" />
+<Stat label="Ready to discharge" value="8" note="awaiting action" icon="check-circle" tone="success" />
+<Stat label="Staff on shift" value="40" note="24 RN, 10 MD, 6 support" icon="stethoscope" />
+<Stat label="ORs active" value="2" note="of 3" icon="activity" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full patient census
+- What's the staffing gap for tonight's shift?
+- Which supplies need reordering most urgently?
+- Pull up the transfer queue
+- Show me yesterday's incident reports
+</FollowUps>

@@ -1,0 +1,107 @@
+# Low-inventory warnings
+
+<Badge tone="danger">5 items below threshold</Badge>
+
+<Callout tone="info" title="Reorder point: 10 units">Items with 10 or fewer units remaining are flagged as running low. This threshold applies store-wide and can be changed per category in Inventory settings.</Callout>
+
+<Card title="At a glance">
+<Columns>
+<Stat label="Items below threshold" value="5" tone="danger" icon="warning" />
+<Stat label="Units to reorder" value="110" note="across 5 items" tone="info" icon="package" />
+<Stat label="Reorder point" value="10" note="units per item" tone="neutral" icon="sliders" />
+</Columns>
+</Card>
+
+<Card title="Items running low" subtitle="Showing 5 items at or below the 10-unit reorder point">
+<Input label="Search items" name="search" placeholder="Search by name, SKU, or supplier" hint="Type to filter the inventory list below" />
+
+<Columns>
+<div>
+**Organic Almond Milk**  
+SKU-2041 · Dairy · FreshCo
+<Badge tone="danger">Critical</Badge>
+</div>
+<div>
+<Stat label="Remaining" value="6" note="threshold: 10" tone="danger" />
+</div>
+<div>
+<Progress value="6" max="40" label="6 of 40 typical units left" tone="danger" />
+</div>
+<div>
+<Button variant="primary" size="small">Reorder 24</Button>
+</div>
+</Columns>
+
+<Columns>
+<div>
+**Cold Brew Concentrate**  
+SKU-1178 · Drinks · Peak Supply
+<Badge tone="warning">Low</Badge>
+</div>
+<div>
+<Stat label="Remaining" value="9" note="threshold: 10" tone="warning" />
+</div>
+<div>
+<Progress value="9" max="36" label="9 of 36 typical units left" tone="warning" />
+</div>
+<div>
+<Button variant="primary" size="small">Reorder 12</Button>
+</div>
+</Columns>
+
+<Columns>
+<div>
+**Sourdough Loaf**  
+SKU-3305 · Bakery · Daily Rise
+<Badge tone="danger">Critical</Badge>
+</div>
+<div>
+<Stat label="Remaining" value="4" note="threshold: 10" tone="danger" />
+</div>
+<div>
+<Progress value="4" max="30" label="4 of 30 typical units left" tone="danger" />
+</div>
+<div>
+<Button variant="primary" size="small">Reorder 20</Button>
+</div>
+</Columns>
+
+<Columns>
+<div>
+**Oat Milk, Barista**  
+SKU-2055 · Dairy · FreshCo
+<Badge tone="warning">Low</Badge>
+</div>
+<div>
+<Stat label="Remaining" value="8" note="threshold: 10" tone="warning" />
+</div>
+<div>
+<Progress value="8" max="40" label="8 of 40 typical units left" tone="warning" />
+</div>
+<div>
+<Button variant="primary" size="small">Reorder 24</Button>
+</div>
+</Columns>
+
+<Columns>
+<div>
+**Free-Range Eggs, dozen**  
+SKU-4402 · Dairy · Green Meadow
+<Badge tone="info">At threshold</Badge>
+</div>
+<div>
+<Stat label="Remaining" value="10" note="threshold: 10" tone="info" />
+</div>
+<div>
+<Progress value="10" max="30" label="10 of 30 typical units left" tone="info" />
+</div>
+<div>
+<Button variant="primary" size="small">Reorder 30</Button>
+</div>
+</Columns>
+</Card>
+
+<Details title="Change the reorder threshold" open="false">
+<Select label="Trigger when an item drops to" options="5 units | 10 units | 15 units | 20 units" value="10 units" name="threshold" hint="Applies to all inventory categories" />
+<Button variant="secondary" size="small">Save threshold</Button>
+</Details>

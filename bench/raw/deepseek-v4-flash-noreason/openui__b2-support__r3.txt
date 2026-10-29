@@ -1,0 +1,24 @@
+root = Card([header, statusCallout, priorityFilter, ticketTable, openTicketBtn])
+
+header = CardHeader("Support Lead — Morning Overview", "Live queue as of 8:42 AM")
+
+statusCallout = Callout("info", "Open tickets", "12 open tickets · Avg first response 14 min")
+
+priorityFilter = Tabs([tabAll, tabHigh])
+tabAll = TabItem("all", "All priorities", [tableAll])
+tabHigh = TabItem("high", "High priority only", [tableHigh])
+
+tableAll = Table([ticketId, ticketSubject, ticketPriority, ticketAge])
+ticketId = Col("ID", ["#4521", "#4520", "#4519", "#4518", "#4517"])
+ticketSubject = Col("Subject", ["Login timeout on EU region", "Billing invoice mismatch", "Webhook delivery failure", "UI broken on Safari 17", "Password reset email not sent"])
+ticketPriority = Col("Priority", ["High", "Medium", "Low", "High", "Medium"])
+ticketAge = Col("Age", ["2h", "5h", "9h", "11h", "1d"])
+
+tableHigh = Table([highId, highSubject, highPriority, highAge])
+highId = Col("ID", ["#4521", "#4518", "#4515"])
+highSubject = Col("Subject", ["Login timeout on EU region", "UI broken on Safari 17", "SSO outage — all tenants"])
+highPriority = Col("Priority", ["High", "High", "High"])
+highAge = Col("Age", ["2h", "11h", "3d"])
+
+openTicketBtn = Buttons([newTicketBtn])
+newTicketBtn = Button("Open new ticket", null, "primary")

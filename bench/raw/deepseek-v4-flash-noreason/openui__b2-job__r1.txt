@@ -1,0 +1,31 @@
+root = Card([header, description, qualsSection, salarySection, applyForm, shareButtons])
+
+header = CardHeader("Senior Product Designer", "Design Systems Team · Remote (US/CA)")
+description = TextContent("We are looking for a senior product designer to own and evolve our design system across web and mobile. You will partner with engineers, PMs, and other designers to ship consistent, accessible, and delightful experiences used by millions.", "default")
+
+qualsSection = Card([qualsHeading, qualsList], "sunk")
+qualsHeading = Heading("Qualifications", "h3")
+qualsList = ListBlock([qual1, qual2, qual3, qual4])
+qual1 = ListItem("5+ years of product design experience", "Strong portfolio showing shipped work")
+qual2 = ListItem("Deep Figma expertise", "Components, variables, and design tokens")
+qual3 = ListItem("Accessibility-first mindset", "WCAG 2.1 AA compliance experience")
+qual4 = ListItem("Cross-functional collaboration", "Comfortable presenting to leadership")
+
+salarySection = Card([salaryHeading, salaryText, salaryBar], "sunk")
+salaryHeading = Heading("Salary range", "h3")
+salaryText = TextContent("Base salary: **$130,000 – $165,000** plus equity and benefits.", "default")
+salaryBar = SingleStackedBarChart(["Min", "Mid", "Max"], [130000, 147500, 165000])
+
+applyForm = Form("apply", applyButtons, [nameField, emailField, resumeField])
+nameField = FormControl("Full name", nameInput)
+nameInput = Input("name", "Jane Doe")
+emailField = FormControl("Email", emailInput, "We will only use this to contact you about the role")
+emailInput = Input("email", "jane@example.com", "email")
+resumeField = FormControl("Resume link", resumeInput)
+resumeInput = Input("resume", "https://… (PDF or portfolio link)", "url")
+applyButtons = Buttons([applyBtn])
+applyBtn = Button("Apply now", null, "primary")
+
+shareButtons = Buttons([shareBtn, copyBtn])
+shareBtn = Button("Share posting")
+copyBtn = Button("Copy link", null, "secondary")

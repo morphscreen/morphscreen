@@ -1,0 +1,276 @@
+# Factory Floor Supervisor Console
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Columns>
+<Stat label="Availability" value="92.4%" change="+1.2% vs yesterday" tone="success" />
+<Stat label="Performance" value="87.1%" change="-0.8% vs yesterday" tone="warning" />
+<Stat label="Quality" value="96.8%" change="+0.3% vs yesterday" tone="success" />
+<Stat label="OEE" value="78.2%" change="+0.7% vs yesterday" tone="info" />
+</Columns>
+<Progress value="78.2" max="100" label="OEE Target: 85%" />
+</Card>
+
+<Card title="Today's Production">
+<Stat label="Units Produced" value="12,847" change="Target: 15,000" tone="info" />
+<Progress value="12847" max="15000" label="85.6% of daily target" />
+<Stat label="Current Rate" value="1,427 units/hr" change="Target rate: 1,563 units/hr" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Production Lines">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Current Rate | Target Rate | Efficiency | Active Alarms |
+|---|---|---|---|---|---|
+| Line A - Stamping | <Badge tone="success">Running</Badge> | 420/hr | 450/hr | 93.3% | 0 |
+| Line B - Injection | <Badge tone="success">Running</Badge> | 380/hr | 400/hr | 95.0% | 1 |
+| Line C - Assembly | <Badge tone="warning">Slowed</Badge> | 290/hr | 350/hr | 82.9% | 2 |
+| Line D - Packaging | <Badge tone="success">Running</Badge> | 337/hr | 363/hr | 92.8% | 0 |
+| Line E - Finishing | <Badge tone="danger">Down</Badge> | 0/hr | 300/hr | 0% | 3 |
+</Tab>
+<Tab title="Line A Detail">
+<Columns>
+<Stat label="OEE" value="88.2%" />
+<Stat label="Units Today" value="4,210" />
+<Stat label="Defect Rate" value="1.2%" />
+<Stat label="Downtime" value="47 min" />
+</Columns>
+<Callout tone="info" title="Line A Notes">Preventive maintenance scheduled for 22:00. Changeover to Part #B-402 at 14:30.</Callout>
+</Tab>
+<Tab title="Line B Detail">
+<Columns>
+<Stat label="OEE" value="82.7%" />
+<Stat label="Units Today" value="3,840" />
+<Stat label="Defect Rate" value="2.1%" />
+<Stat label="Downtime" value="68 min" />
+</Columns>
+<Callout tone="warning" title="Line B Alert">Mold temperature variance detected. Quality hold on batch #B-20241124-03.</Callout>
+</Tab>
+<Tab title="Line C Detail">
+<Columns>
+<Stat label="OEE" value="71.4%" />
+<Stat label="Units Today" value="2,610" />
+<Stat label="Defect Rate" value="3.8%" />
+<Stat label="Downtime" value="112 min" />
+</Columns>
+<Callout tone="danger" title="Line C Issue">Feeder jam on Station 3. Maintenance dispatched. ETA 15 min.</Callout>
+</Tab>
+<Tab title="Line D Detail">
+<Columns>
+<Stat label="OEE" value="85.9%" />
+<Stat label="Units Today" value="3,120" />
+<Stat label="Defect Rate" value="0.9%" />
+<Stat label="Downtime" value="38 min" />
+</Columns>
+</Tab>
+<Tab title="Line E Detail">
+<Columns>
+<Stat label="OEE" value="0%" />
+<Stat label="Units Today" value="0" />
+<Stat label="Defect Rate" value="N/A" />
+<Stat label="Downtime" value="480 min" />
+</Columns>
+<Callout tone="danger" title="Line E Down">Hydraulic pump failure. Parts on order. Estimated restart: Tomorrow 06:00.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| Oct 25 | 2.1 |
+| Oct 26 | 1.8 |
+| Oct 27 | 2.3 |
+| Oct 28 | 1.9 |
+| Oct 29 | 2.0 |
+| Oct 30 | 2.4 |
+| Oct 31 | 1.7 |
+| Nov 1 | 2.2 |
+| Nov 2 | 1.8 |
+| Nov 3 | 2.1 |
+| Nov 4 | 1.9 |
+| Nov 5 | 2.0 |
+| Nov 6 | 2.3 |
+| Nov 7 | 1.8 |
+| Nov 8 | 2.2 |
+| Nov 9 | 1.7 |
+| Nov 10 | 2.0 |
+| Nov 11 | 1.9 |
+| Nov 12 | 2.1 |
+| Nov 13 | 1.8 |
+| Nov 14 | 2.0 |
+| Nov 15 | 1.9 |
+| Nov 16 | 2.2 |
+| Nov 17 | 1.7 |
+| Nov 18 | 2.1 |
+| Nov 19 | 1.8 |
+| Nov 20 | 2.0 |
+| Nov 21 | 2.3 |
+| Nov 22 | 1.9 |
+| Nov 23 | 2.1 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause (This Month)">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical Failure | 420 |
+| Changeover | 380 |
+| Material Shortage | 210 |
+| Quality Hold | 180 |
+| Planned Maintenance | 150 |
+| Operator Break | 120 |
+| Power/Utility | 90 |
+| Software/Control | 60 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Priority | Status |
+|---|---|---|---|---|---|
+| Press-03 | Line A | Today 22:00 | Preventive | High | Scheduled |
+| Mold-07 | Line B | Tomorrow 06:00 | Predictive | High | Pending Parts |
+| Robot-12 | Line C | Tomorrow 14:00 | Corrective | Critical | Awaiting Tech |
+| Conveyor-04 | Line D | Nov 28 | Preventive | Medium | Not Scheduled |
+| Oven-02 | Line E | Nov 29 | Predictive | Medium | Not Scheduled |
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tons" change="Reorder at 15t" tone="success" />
+<Stat label="Resin Pellets" value="8.7 tons" change="Reorder at 5t" tone="warning" />
+<Stat label="Packaging Film" value="1,240 rolls" change="Reorder at 500" tone="success" />
+<Stat label="Corrugate" value="3,200 sheets" change="Reorder at 1,000" tone="success" />
+</Columns>
+<Progress value="42.3" max="60" label="Steel: 70.5%" />
+<Progress value="8.7" max="20" label="Resin: 43.5%" />
+<Progress value="1240" max="3000" label="Film: 41.3%" />
+<Progress value="3200" max="10000" label="Corrugate: 32%" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Qty | Due Date | Status | PO # |
+|---|---|---|---|---|---|
+| Apex Metals | Steel Coil - Grade 50 | 25 tons | Mon Nov 25 | In Transit | PO-2024-11892 |
+| PolymerWorks | PP Resin - Natural | 15 tons | Tue Nov 26 | Confirmed | PO-2024-11901 |
+| PackRight | Stretch Film 20µm | 500 rolls | Wed Nov 27 | Confirmed | PO-2024-11915 |
+| BoxCo | RSC 24x18x12 | 5,000 pcs | Thu Nov 28 | Pending | PO-2024-11922 |
+| LubriTech | Hydraulic Oil ISO 46 | 200 gal | Fri Nov 29 | Confirmed | PO-2024-11930 |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift 1 (06-14) | 4820 | 5100 | 4950 | 5020 | 4890 | 3200 | 0 |
+| Shift 2 (14-22) | 4650 | 4780 | 4720 | 4810 | 4690 | 2950 | 0 |
+| Shift 3 (22-06) | 3100 | 3250 | 3180 | 3300 | 3050 | 1800 | 0 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Safety Tracker">
+<Columns>
+<Stat label="Incidents YTD" value="7" change="Target: <5" tone="danger" />
+<Stat label="Days Since Last Incident" value="23" change="Record: 142 days" tone="success" />
+<Stat label="Near Misses YTD" value="34" change="+5 vs last month" tone="warning" />
+<Stat label="Safety Training Compliance" value="94%" change="Target: 100%" tone="info" />
+</Columns>
+<Callout tone="success" title="Current Streak">23 days without a recordable incident. Last incident: Nov 1 - minor laceration, Line C.</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch # | Line | Product | Qty | Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| B-20241124-03 | Line B | Housing-A4 | 450 | Dimensional variance | 08:15 | Under review |
+| B-20241124-01 | Line A | Bracket-B2 | 320 | Surface finish | 06:30 | Rework queued |
+| B-20241123-07 | Line C | Cover-C1 | 280 | Color mismatch | Yesterday 22:45 | Awaiting disposition |
+| B-20241123-04 | Line D | Insert-D3 | 500 | Weight out of spec | Yesterday 14:20 | Scrap authorized |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use Today">
+<Columns>
+<Stat label="Electricity" value="1,847 kWh" change="vs 1,920 kWh avg" tone="success" />
+<Stat label="Natural Gas" value="420 therms" change="vs 395 therms avg" tone="warning" />
+<Stat label="Compressed Air" value="8,450 m³" change="vs 8,200 m³ avg" tone="neutral" />
+<Stat label="Water" value="12,300 gal" change="vs 11,800 gal avg" tone="neutral" />
+</Columns>
+<Progress value="1847" max="2200" label="Electricity vs daily budget" />
+<Progress value="420" max="500" label="Gas vs daily budget" />
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Asset | Description | Assigned | Due |
+|---|---|---|---|---|---|---|
+| WO-2024-04521 | <Badge tone="danger">Critical</Badge> | Line E | Hydraulic Pump | Replace failed pump | M. Torres | Today 18:00 |
+| WO-2024-04518 | <Badge tone="warning">High</Badge> | Line B | Mold-07 | Install new temperature sensor | J. Chen | Tomorrow 06:00 |
+| WO-2024-04515 | <Badge tone="warning">High</Badge> | Line C | Feeder-03 | Clear jam, inspect drive | R. Patel | Today 14:30 |
+| WO-2024-04510 | <Badge tone="info">Medium</Badge> | Line A | Press-03 | PM - Lubrication & inspection | M. Torres | Today 22:00 |
+| WO-2024-04505 | <Badge tone="info">Medium</Badge> | Line D | Conveyor-04 | Belt tracking adjustment | K. Williams | Nov 28 |
+| WO-2024-04498 | <Badge tone="neutral">Low</Badge> | Facility | HVAC-02 | Filter replacement | Facilities | Nov 29 |
+</Card>
+</Columns>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" options="Press-01 | Press-02 | Press-03 | Mold-05 | Mold-06 | Mold-07 | Robot-10 | Robot-11 | Robot-12 | Conveyor-01 | Conveyor-02 | Conveyor-03 | Conveyor-04 | Oven-01 | Oven-02" placeholder="Select machine" required="true" />
+<Select label="Maintenance Type" name="type" options="Preventive | Predictive | Corrective | Calibration" placeholder="Select type" required="true" />
+</Columns>
+<Columns>
+<Date label="Scheduled Date" name="date" required="true" />
+<Select label="Shift" name="shift" options="Shift 1 (06-14) | Shift 2 (14-22) | Shift 3 (22-06)" placeholder="Select shift" required="true" />
+</Columns>
+<TextArea label="Description / Notes" name="notes" placeholder="Describe work to be performed, parts needed, special instructions..." rows="3" />
+<Columns>
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="e.g., 4" step="0.5" required="true" />
+<Select label="Assigned Technician" name="technician" options="M. Torres | J. Chen | R. Patel | K. Williams | Facilities Team" placeholder="Select technician" />
+</Columns>
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">View Calendar</Button>
+</Form>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="🔴 CRITICAL - Line E">Hydraulic pressure loss on Press-05. Line stopped. Maintenance en route. 09:42</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line C">Feeder jam Station 3. Auto-retry failed. Operator intervention needed. 09:38</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line B">Mold temperature +8°C above setpoint. Quality hold initiated. 09:35</Callout>
+<Callout tone="info" title="🔵 INFO - Line A">Changeover to Part B-402 in 15 min. Verify tooling. 09:30</Callout>
+<Callout tone="info" title="🔵 INFO - Line D">Preventive maintenance due in 2 hrs. 09:15</Callout>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Focus Line Selector">
+<Select label="Focus on Line" name="focus-line" options="Line A - Stamping | Line B - Injection | Line C - Assembly | Line D - Packaging | Line E - Finishing" placeholder="Select a line to view detailed metrics" />
+<Callout tone="info" title="Line Focus Mode">Select a line above to filter all charts, tables, and metrics to show only that line's data. Use "All Lines" to return to plant view.</Callout>
+</Card>
+
+<Card title="Export Shift Report">
+<Form name="export-report">
+<Columns>
+<Select label="Report Type" name="report-type" options="Shift Summary | Daily Production | OEE Detail | Downtime Analysis | Quality Report | Maintenance Log | Full Console Snapshot" placeholder="Select report type" required="true" />
+<Select label="Shift" name="shift-export" options="Current Shift | Shift 1 (06-14) | Shift 2 (14-22) | Shift 3 (22-06) | All Shifts" placeholder="Select shift" required="true" />
+</Columns>
+<Columns>
+<Date label="Date" name="report-date" required="true" />
+<Select label="Format" name="format" options="PDF | Excel (XLSX) | CSV | JSON" placeholder="Select format" required="true" />
+</Columns>
+<Checkboxes label="Include Sections" name="sections" options="OEE | Production | Lines | Defects | Downtime | Maintenance | Materials | Deliveries | Shifts | Safety | Quality | Energy | Work Orders | Andon" value="OEE | Production | Lines | Defects | Downtime | Maintenance | Materials | Deliveries | Shifts | Safety | Quality | Energy | Work Orders | Andon" />
+<Button>Generate & Download</Button>
+<Button variant="secondary">Email Report</Button>
+</Form>
+</Card>
+</Columns>

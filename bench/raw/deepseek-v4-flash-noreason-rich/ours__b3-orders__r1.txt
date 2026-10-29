@@ -1,0 +1,61 @@
+# E-commerce Operations Desk
+
+Today's snapshot at a glance.
+
+<Card title="Today's performance">
+<Columns>
+<Stat label="Orders placed today" value="142" change="+12 vs yesterday" tone="success" icon="shopping-bag-open" />
+<Stat label="Revenue today" value="$12,480" change="+8.4% vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Average order value" value="$87.89" change="+2.1% vs yesterday" tone="info" icon="chart-line" />
+<Stat label="Refund rate this month" value="3.2%" change="-0.4 pts vs last month" tone="success" icon="arrow-counter-clockwise" />
+</Columns>
+</Card>
+
+<Card title="Order volume — past four weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 812 |
+| Week 2 | 947 |
+| Week 3 | 1,034 |
+| Week 4 | 1,126 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Filter by status or search by customer">
+<Form name="order-filters">
+<Select label="Status" name="status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Refunded" />
+<Input label="Customer name" name="customer" type="search" placeholder="Search by name" />
+<Button>Apply filters</Button>
+</Form>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Emma Johnson | $124.50 | <Badge tone="warning">Pending</Badge> | <Button variant="secondary" size="small" ask="Mark order #10482 as fulfilled">Mark fulfilled</Button> |
+| #10481 | Liam Smith | $89.99 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10480 | Olivia Brown | $210.00 | <Badge tone="info">Paid</Badge> | <Button variant="secondary" size="small" ask="Mark order #10480 as fulfilled">Mark fulfilled</Button> |
+| #10479 | Noah Davis | $45.75 | <Badge tone="success">Shipped</Badge> | — |
+| #10478 | Ava Wilson | $156.20 | <Badge tone="warning">Pending</Badge> | <Button variant="secondary" size="small" ask="Mark order #10478 as fulfilled">Mark fulfilled</Button> |
+| #10477 | Ethan Martinez | $67.30 | <Badge tone="danger">Refunded</Badge> | — |
+| #10476 | Sophia Taylor | $98.40 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10475 | Mason Anderson | $134.85 | <Badge tone="info">Paid</Badge> | <Button variant="secondary" size="small" ask="Mark order #10475 as fulfilled">Mark fulfilled</Button> |
+</Card>
+
+<Card title="How to use this desk">
+<Steps>
+<Step title="Filter the list" status="done">Narrow orders by status using the dropdown, or search by customer name to find a specific one.</Step>
+<Step title="Review the order" status="current">Check the order ID, customer, and total. The status badge tells you where it stands.</Step>
+<Step title="Mark as fulfilled" status="todo">Tap **Mark fulfilled** on any pending or paid order to move it to fulfilled. The badge updates immediately.</Step>
+</Steps>
+</Card>
+
+<Callout tone="info" title="Refund rate context">
+The 3.2% refund rate this month is calculated as refunded orders ÷ total orders. It's trending down from last month's 3.6% — keep an eye on it if it creeps above 4%.
+</Callout>
+
+<FollowUps>
+- Show me the refunded orders this month
+- Which customers have ordered more than once?
+- What's the revenue breakdown by product category?
+- Show orders that are at risk of shipping late
+</FollowUps>

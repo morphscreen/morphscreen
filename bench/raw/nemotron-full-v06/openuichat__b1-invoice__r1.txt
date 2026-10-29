@@ -1,0 +1,11 @@
+root = Card([header, amountDue, details, payButton])
+header = CardHeader("Invoice #INV-2026-0417", "Freelance Design Services — Acme Corp")
+amountDue = SnippetCardBlock([dueItem], "grid", true)
+dueItem = SnippetCardItem("amount-due", dueLhs, dueRhs)
+dueLhs = IconText(dueIcon, "neutral", "l", "Amount Due", "Total outstanding", false, "vertical")
+dueIcon = Icon("circle-dollar-sign", "finance")
+dueRhs = BoldText("number", "$4,850.00", "USD", "metric")
+details = EntityList([detailRow], "default", { left: "Detail", right: "Value", rightVariant: "text" })
+detailRow = { left: "Due Date", right: "June 15, 2026", rightVariant: "text" }
+payButton = Buttons([payBtn], "row")
+payBtn = Button("Pay Now — $4,850.00", { type: "open_url", url: "https://pay.example.com/invoice/INV-2026-0417" }, "primary", "normal", "large")

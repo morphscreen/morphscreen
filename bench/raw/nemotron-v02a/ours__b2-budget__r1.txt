@@ -1,0 +1,60 @@
+<Card title="Personal Budget" subtitle="Track your spending this month">
+<Columns>
+<Select label="Month" name="month" placeholder="Select month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Columns>
+
+<Columns>
+<Stat label="Total Spent" value="$2,847" change="$153 over budget" tone="warning" />
+<Stat label="Budget" value="$3,000" change="$153 remaining" tone="neutral" />
+<Stat label="Largest Expense" value="$420" change="Rent payment" tone="info" />
+</Columns>
+
+<Progress value="2847" max="3000" label="Budget utilization: 94.9%" />
+
+<Callout tone="warning" title="⚠️ Over Budget Alert">
+You've exceeded your monthly budget by $153. Consider reducing discretionary spending.
+</Callout>
+
+<Columns>
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 650 |
+| Transportation | 380 |
+| Utilities | 220 |
+| Entertainment | 180 |
+| Shopping | 120 |
+| Other | 97 |
+</Chart>
+</Card>
+
+<Card title="Largest Single Expense">
+<Callout tone="info" title="🏠 Rent Payment">
+<strong>$420</strong> — Paid on January 1st
+<br />
+Category: Housing
+<br />
+This is your largest expense this month.
+</Callout>
+</Card>
+</Columns>
+
+<Details title="➕ Add New Expense" open="false">
+<Form name="add-expense">
+<Columns>
+<Input label="Description" name="description" placeholder="e.g., Groceries, Uber, Netflix" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Enter amount in dollars" required="true" />
+</Columns>
+<Columns>
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transportation | Utilities | Entertainment | Shopping | Other" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+</Columns>
+<Columns>
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Details>
+</Card>

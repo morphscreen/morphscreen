@@ -1,0 +1,37 @@
+<Card title="Identity Verification" subtitle="Complete these steps to open your account">
+<Steps>
+<Step title="Photograph ID card" status="current" />
+<Step title="Take a selfie" status="todo" />
+<Step title="Confirm address" status="todo" />
+<Step title="Submit for review" status="todo" />
+</Steps>
+
+<Callout tone="info" title="What you'll need">
+A valid government-issued ID (driver's license, passport, or national ID) and a well-lit space for your selfie.
+</Callout>
+
+### 1. Photograph your ID card
+<Columns>
+<Camera label="ID front" name="id_front" facing="back" hint="Place the front of your ID in the frame. Ensure all four corners are visible." required="true" />
+<Camera label="ID back" name="id_back" facing="back" hint="Capture the back of your ID. Include the barcode or magnetic strip if present." required="true" />
+</Columns>
+
+### 2. Take a selfie
+<Camera label="Selfie" name="selfie" facing="front" hint="Center your face in the oval. Remove glasses and ensure good lighting." required="true" />
+
+### 3. Home address
+<Columns>
+<TextArea label="Enter address manually" name="address_manual" placeholder="123 Main St, Apt 4B\nCity, State ZIP" rows="3" hint="Street, city, state, ZIP code" />
+<Location label="Or use current location" name="address_location" precision="precise" hint="We'll fill in your address automatically" required="false" />
+</Columns>
+
+### 4. Review and submit
+<Callout tone="neutral" title="Before you submit">
+- All photos are clear and legible
+- Your selfie matches the ID photo
+- The address matches your records
+</Callout>
+
+<Button size="large">Submit for verification</Button>
+<Button variant="secondary">Save and continue later</Button>
+</Card>

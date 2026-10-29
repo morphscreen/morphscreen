@@ -1,0 +1,79 @@
+# HR Hiring Overview
+
+<Columns>
+<Stat label="Current Headcount" value="342" note="+12 this quarter" icon="users" />
+<Stat label="Avg Time to Hire" value="38 days" note="-3 days vs last quarter" icon="clock" />
+<Stat label="Attrition (6mo)" value="8.2%" note="Down from 9.1%" icon="trend-down" tone="success" />
+<Stat label="Interviews This Week" value="24" note="12 completed, 12 remaining" icon="calendar" />
+</Columns>
+
+<Card title="Headcount by Department">
+<Chart type="bar" x="Department" y="Employees">
+| Department | Employees |
+|---|---|
+| Engineering | 128 |
+| Sales | 64 |
+| Marketing | 42 |
+| Operations | 38 |
+| Finance | 28 |
+| HR | 22 |
+| Product | 20 |
+</Chart>
+</Card>
+
+<Card title="Open Roles">
+| Role | Department | Status |
+|---|---|---|
+| Senior Backend Engineer | Engineering | <Badge tone="info">Active</Badge> |
+| Product Manager | Product | <Badge tone="info">Active</Badge> |
+| Sales Development Rep | Sales | <Badge tone="info">Active</Badge> |
+| Marketing Analyst | Marketing | <Badge tone="info">Active</Badge> |
+| HR Coordinator | HR | <Badge tone="info">Active</Badge> |
+| DevOps Engineer | Engineering | <Badge tone="info">Active</Badge> |
+| Customer Success Manager | Operations | <Badge tone="info">Active</Badge> |
+</Card>
+
+<Card title="Candidates by Pipeline Stage">
+<Chart type="funnel" x="Stage" y="Candidates">
+| Stage | Candidates |
+|---|---|
+| Applied | 142 |
+| Screening | 87 |
+| Interview | 53 |
+| Offer | 18 |
+| Hired | 12 |
+</Chart>
+</Card>
+
+<Card title="Attrition Over Past 6 Months">
+<Chart type="line" x="Month" y="Attrition Rate (%)">
+| Month | Attrition |
+|---|---|
+| Oct | 9.1 |
+| Nov | 8.7 |
+| Dec | 8.5 |
+| Jan | 8.3 |
+| Feb | 8.2 |
+| Mar | 8.2 |
+</Chart>
+</Card>
+
+<Card title="Open a New Role">
+<Callout tone="info" title="Create a new position">Fill in the details below to open a new role for hiring.</Callout>
+<Form name="new-role">
+<Input label="Role Title" placeholder="e.g. Senior Frontend Engineer" required />
+<Select label="Department" options="Engineering | Sales | Marketing | Operations | Finance | HR | Product" placeholder="Select department" required />
+<Input label="Reporting Manager" placeholder="e.g. Jane Smith" required />
+<Select label="Employment Type" options="Full-time | Part-time | Contract | Internship" placeholder="Select type" required />
+<TextArea label="Role Description" placeholder="Brief description of responsibilities and requirements" rows="3" required />
+<Slider label="Target Salary Range ($)" min="30000" max="250000" step="5000" value="100000" unit="$" name="salary" />
+<Button>Open Role</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me candidates for the Senior Backend Engineer role
+- What's the breakdown of interviews this week?
+- Which department has the highest attrition?
+- Show me hiring trends by month
+</FollowUps>

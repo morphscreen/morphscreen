@@ -1,0 +1,100 @@
+# Personal banking
+
+Welcome back, Alex. Here's everything at a glance.
+
+<Columns>
+<Card title="Balances" subtitle="All accounts">
+<Columns>
+<Stat label="Checking" value="$4,280.55" icon="bank" />
+<Stat label="Savings" value="$12,750.20" icon="piggy-bank" />
+<Stat label="Credit card" value="-$1,384.99" tone="danger" icon="credit-card" />
+</Columns>
+</Card>
+
+<Card title="Credit score" subtitle="Updated today">
+<Stat label="Current score" value="742" change="+8 pts" tone="success" icon="chart-line" />
+<Badge tone="success">Good · 680–739</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recent transactions" subtitle="March 2025">
+| Date | Merchant | Amount |
+|---|---|---|
+| Mar 18 | Whole Foods Market | -$86.20 |
+| Mar 17 | Chevron | -$54.00 |
+| Mar 16 | Netflix | -$15.99 |
+| Mar 15 | Amazon | -$129.99 |
+| Mar 14 | Payroll deposit | +$2,450.00 |
+| Mar 13 | Starbucks | -$6.75 |
+</Card>
+
+<Card title="Spending by category" subtitle="This month to date">
+<Chart type="donut" title="March spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 310 |
+| Transport | 180 |
+| Shopping | 260 |
+| Bills | 540 |
+| Other | 120 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Bills due soon" subtitle="Next 14 days">
+| Bill | Due | Amount | Status |
+|---|---|---|---|
+| Electric | Mar 24 | $96.40 | <Badge tone="warning">Due in 4 days</Badge> |
+| Internet | Mar 28 | $74.99 | <Badge tone="neutral">Due in 8 days</Badge> |
+| Rent | Apr 1 | $1,200.00 | <Badge tone="neutral">Due in 12 days</Badge> |
+</Card>
+
+<Card title="Vacation savings goal" subtitle="Hawaii trip · target Oct 2025">
+<Progress value="4200" max="6000" label="$4,200 of $6,000 saved" tone="success" />
+<p>Auto-save of $300/month from checking.</p>
+<Button variant="secondary" size="small">Add money</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Move money" subtitle="Transfer between accounts">
+<Form name="transfer">
+<Select label="From" placeholder="Choose account" options="Checking •••• 4821 | Savings •••• 9034" name="from" />
+<Select label="To" placeholder="Choose account" options="Checking •••• 4821 | Savings •••• 9034 | Credit card •••• 1122" name="to" />
+<Input label="Amount" type="number" min="0.01" step="0.01" placeholder="0.00" hint="Transfers between your own accounts are instant." name="amount" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Credit line controls" subtitle="Credit card •••• 1122">
+<Switch label="Freeze credit line" name="freeze-credit" hint="Instantly block new purchases, cash advances, and balance transfers." />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Statement period" subtitle="Select a billing cycle to view">
+<Select label="Statement period" placeholder="Choose a period" options="March 1 – March 31, 2025 | February 1 – February 28, 2025 | January 1 – January 31, 2025" name="statement-period" />
+<Button variant="secondary">View statement</Button>
+</Card>
+
+<Card title="Alert preferences" subtitle="Choose what we notify you about">
+<Checkboxes label="Notify me when" options="Checking balance drops below $500 | A purchase is over $1,000 | A bill is scheduled for payment | A new device signs in to my account | My credit score changes" name="alerts" />
+</Card>
+</Columns>
+
+<Card title="Dispute a transaction" subtitle="We'll investigate and typically respond within 10 business days">
+<Form name="dispute">
+<Select label="Transaction" placeholder="Choose the charge" options="Whole Foods Market – $86.20 on Mar 18 | Amazon – $129.99 on Mar 15 | Chevron – $54.00 on Mar 17" name="dispute-transaction" />
+<TextArea label="Reason" rows="3" placeholder="Tell us what went wrong — duplicate charge, item not received, etc." name="dispute-reason" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my full statement
+- Schedule a payment
+- Chat with support
+</FollowUps>

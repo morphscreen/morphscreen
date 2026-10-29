@@ -1,0 +1,84 @@
+# Training Platform Analytics
+
+<Card title="Key metrics" subtitle="Snapshot across all cohorts">
+<Columns>
+<Stat label="Active learners this week" value="1,284" change="+12.4%" tone="success" icon="users" note="vs. last week" />
+<Stat label="Course completion rate" value="68%" change="+3.1%" tone="success" icon="check-circle" note="vs. last month" />
+<Stat label="Average quiz score" value="82.4%" change="−1.8%" tone="warning" icon="chart-line" note="vs. last month" />
+<Stat label="At-risk learners" value="96" change="+8" tone="danger" icon="warning" note="need intervention" />
+</Columns>
+</Card>
+
+<Card title="Filter by cohort">
+<Select label="Cohort" options="All cohorts | Data Science – Spring 2025 | UX Design – Spring 2025 | Frontend – Winter 2025 | Backend – Winter 2025 | Marketing – Fall 2024" name="cohort-filter" placeholder="Select a cohort" />
+<Callout tone="info" title="What this changes">All charts and lists below update to show only learners in the selected cohort.</Callout>
+</Card>
+
+<Card title="Engagement over the past 8 weeks" subtitle="Average weekly active minutes per learner">
+<Chart type="area" x="Week" y="Minutes">
+| Week | All cohorts | Data Science | UX Design |
+|---|---|---|---|
+| W1 | 142 | 128 | 156 |
+| W2 | 155 | 141 | 169 |
+| W3 | 164 | 152 | 176 |
+| W4 | 158 | 149 | 167 |
+| W5 | 171 | 160 | 182 |
+| W6 | 183 | 172 | 194 |
+| W7 | 176 | 165 | 187 |
+| W8 | 189 | 178 | 201 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="bar" x="Course" y="Enrolled learners">
+| Course | Enrolled |
+|---|---|
+| Intro to Python | 342 |
+| Data Visualization | 287 |
+| UX Research Methods | 265 |
+| JavaScript Fundamentals | 241 |
+| SQL for Analysts | 218 |
+| Agile Project Management | 176 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Detected by low engagement, missed deadlines, and falling quiz scores">
+<Tabs>
+<Tab title="List view">
+| Learner | Course | Last active | Quiz trend | Risk score |
+|---|---|---|---|---|
+| Maya Chen | Intro to Python | 9 days ago | 84 → 61 | <Badge tone="danger">High</Badge> |
+| Omar Hassan | Data Visualization | 12 days ago | 78 → 55 | <Badge tone="danger">High</Badge> |
+| Priya Patel | UX Research Methods | 6 days ago | 91 → 72 | <Badge tone="warning">Medium</Badge> |
+| Tom Novak | JavaScript Fundamentals | 14 days ago | 69 → 48 | <Badge tone="danger">High</Badge> |
+| Elena Rossi | SQL for Analysts | 5 days ago | 88 → 74 | <Badge tone="warning">Medium</Badge> |
+| James Liu | Agile Project Management | 10 days ago | 75 → 63 | <Badge tone="warning">Medium</Badge> |
+</Tabs>
+<Tab title="Summary">
+<Columns>
+<Stat label="High risk" value="42" tone="danger" icon="warning" />
+<Stat label="Medium risk" value="54" tone="warning" icon="warning" />
+</Columns>
+<Callout tone="warning" title="Most common trigger">Three or more missed weekly deadlines in a row.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Message a cohort" subtitle="Send an email or in-platform notification to everyone in the selected cohort">
+<Form name="cohort-message">
+<Select label="Recipients" options="All cohorts | Data Science – Spring 2025 | UX Design – Spring 2025 | Frontend – Winter 2025 | Backend – Winter 2025 | Marketing – Fall 2024" name="recipients" placeholder="Choose a cohort" />
+<Select label="Message type" options="Email | In-platform notification" name="message-type" placeholder="Choose a type" />
+<Input label="Subject" name="subject" placeholder="Reminder: Week 4 assignment due Friday" />
+<TextArea label="Message" name="message" rows="6" placeholder="Hi team, don't forget the Week 4 quiz closes on Friday at 5 PM. If you're falling behind, reach out to your mentor. — Alex" />
+<Checkboxes label="Include" options="Link to course materials | Link to help center | Personalize with first name" name="include" value="Personalize with first name" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the at-risk list for the Data Science cohort
+- What's driving the drop in quiz scores?
+- Compare engagement between two cohorts
+- Schedule a recurring reminder for this cohort
+</FollowUps>

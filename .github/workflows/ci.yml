@@ -1,0 +1,173 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rust:
+    name: Rust (core, bindings, conformance)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust -> target.nosync
+      - name: Tests
+        working-directory: rust
+        run: cargo test --release --workspace
+      - name: Conformance (every recorded answer, split everywhere, gives the same tree)
+        working-directory: rust
+        run: cargo run --release -q -p morphscreen-cli -- conformance ../bench/raw/*
+
+  web:
+    name: Web SDK
+    runs-on: ubuntu-24.04
+    env:
+      CHROME: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust -> target.nosync
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: wasm-opt (binaryen 133)
+        run: |
+          curl -sSL https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-x86_64-linux.tar.gz | tar xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/binaryen-version_133/bin" >> "$GITHUB_PATH"
+      - name: Build and test tools (sdk/web/tools)
+        run: |
+          mkdir -p ~/.cache/morphscreen-web
+          cp sdk/web/tools/package.json sdk/web/tools/package-lock.json ~/.cache/morphscreen-web/
+          npm ci --prefix ~/.cache/morphscreen-web
+          ln -sfn ~/.cache/morphscreen-web/node_modules sdk/web/node_modules
+      # Ubuntu 24.04 blocks the user namespaces Chrome's sandbox needs.
+      - name: Let Chrome run sandboxed
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: CLI (the parity test reads its verdicts)
+        working-directory: rust
+        run: cargo build --release -p morphscreen-cli
+      - run: node sdk/web/build.mjs
+      - name: The SDK's download within its budget, and every bundled piece's licence (roadmap H4, H6)
+        run: node sdk/web/size.mjs && node tools/sbom.mjs
+      - run: node --test test/*.test.ts
+      - run: node sdk/web/example/test.mjs
+      - run: node sdk/web/example/packs-test.mjs
+      - run: node sdk/web/test-charts.mjs
+      - run: node sdk/web/test-media.mjs
+      - run: node sdk/web/test-interactive.mjs
+      - run: node sdk/web/test-motion.mjs
+      - run: node sdk/web/test-agent.mjs
+      - run: node sdk/web/test-states.mjs
+      - run: node sdk/web/test-forms.mjs
+      - run: node sdk/web/test-theme.mjs
+      - run: node sdk/web/test-react.mjs
+      - run: node sdk/web/test-stream.mjs
+      - run: node sdk/web/test-embed.mjs
+      - run: node sdk/web/test-csp.mjs
+      - run: node sdk/web/test-custom.mjs
+      - run: node sdk/web/test-narrow.mjs
+      - name: The same web tests in Firefox (roadmap C3)
+        env:
+          BROWSER: firefox
+          FIREFOX: /usr/bin/firefox
+        run: for t in sdk/web/example/test.mjs sdk/web/example/packs-test.mjs sdk/web/test-*.mjs; do node "$t"; done
+      - name: MorphScreenUI's contrast, chart order and no coloured text (roadmap Z1)
+        run: node ui/build.mjs
+      - name: The docs' build tools (site/tools)
+        run: |
+          mkdir -p ~/.cache/morphscreen-site
+          cp site/tools/package.json site/tools/package-lock.json ~/.cache/morphscreen-site/
+          npm ci --prefix ~/.cache/morphscreen-site
+      - name: morphscreen.com and its docs, built from the repository, in Chrome and Firefox (roadmap N1, H1)
+        run: node site/build.mjs && node site/test.mjs && BROWSER=firefox FIREFOX=/usr/bin/firefox node site/test.mjs
+      - name: The API reference matches the API's description
+        run: node tools/api-reference.mjs --check
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: The LangGraph example agent into the web SDK (scripted model)
+        run: |
+          python -m venv "$RUNNER_TEMP/agent"
+          "$RUNNER_TEMP/agent/bin/pip" install -q -r examples/langgraph/requirements.txt
+          PYTHON="$RUNNER_TEMP/agent/bin/python" MORPHSCREEN_AGENT_MODEL=script node examples/langgraph/check.mjs
+
+  kotlin:
+    name: Compose SDK (JVM)
+    runs-on: ubuntu-24.04
+    env:
+      # JVM only: the runner's Android SDK stays unused until the Android build
+      # is set up on purpose (sdk/android/setup-android.sh).
+      ANDROID_HOME: /nonexistent
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust -> target.nosync
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: The core over JNI
+        working-directory: rust
+        run: cargo build --release -p morphscreen-ffi --features jni
+      - name: Tests
+        working-directory: sdk/android
+        run: ./gradlew :core:jvmTest :ui:jvmTest --console=plain
+
+  # The packed SDK installed into fresh apps (roadmap H4): every package manager
+  # under Vite, every framework under npm. About 2 GB and a few minutes, so
+  # weekly and by hand rather than on every push.
+  install:
+    name: Install in fresh projects
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    env:
+      CHROME: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.8.0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.12
+      - name: wasm-opt (binaryen 133)
+        run: |
+          curl -sSL https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-x86_64-linux.tar.gz | tar xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/binaryen-version_133/bin" >> "$GITHUB_PATH"
+      - name: Build and test tools (sdk/web/tools)
+        run: |
+          mkdir -p ~/.cache/morphscreen-web
+          cp sdk/web/tools/package.json sdk/web/tools/package-lock.json ~/.cache/morphscreen-web/
+          npm ci --prefix ~/.cache/morphscreen-web
+          ln -sfn ~/.cache/morphscreen-web/node_modules sdk/web/node_modules
+      - name: Let Chrome run sandboxed
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - run: node sdk/web/build.mjs
+      - run: node sdk/web/install/run.mjs

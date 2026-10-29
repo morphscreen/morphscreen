@@ -1,0 +1,63 @@
+# Support Lead Dashboard
+
+Good morning! Here's your at-a-glance view of the support queue.
+
+<Card title="Key metrics" subtitle="Updated just now">
+<Columns>
+<Stat label="Open tickets" value="23" change="+4 vs yesterday" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="1h 42m" change="-18m vs last week" tone="success" icon="timer" />
+</Columns>
+</Card>
+
+<Card title="Recent tickets" subtitle="Five most recent, sorted by newest first">
+<Switch label="High-priority only" name="priority-filter" hint="Shows only tickets marked High or Urgent" />
+
+<Columns>
+<Card title="Ticket #4821" subtitle="Billing — High">
+<Badge tone="danger">High</Badge> <Badge tone="info">Open 2h</Badge>
+**"Invoice duplicate charged"** — Maria Chen, Enterprise plan
+<Button variant="secondary" size="small">View ticket</Button>
+</Card>
+
+<Card title="Ticket #4820" subtitle="Login — Normal">
+<Badge tone="neutral">Normal</Badge> <Badge tone="info">Open 4h</Badge>
+**"Can't reset password after update"** — James Okafor, Pro plan
+<Button variant="secondary" size="small">View ticket</Button>
+</Card>
+
+<Card title="Ticket #4819" subtitle="API — Urgent">
+<Badge tone="danger">Urgent</Badge> <Badge tone="warning">Open 1h</Badge>
+**"Webhook deliveries failing since 9am"** — Acme Corp, Enterprise plan
+<Button variant="secondary" size="small">View ticket</Button>
+</Card>
+
+<Card title="Ticket #4818" subtitle="Feature request — Normal">
+<Badge tone="neutral">Normal</Badge> <Badge tone="info">Open 6h</Badge>
+**"Export to CSV for custom fields"** — Priya Sharma, Pro plan
+<Button variant="secondary" size="small">View ticket</Button>
+</Card>
+
+<Card title="Ticket #4817" subtitle="Mobile app — High">
+<Badge tone="danger">High</Badge> <Badge tone="info">Open 3h</Badge>
+**"App crashes on iOS 18 when uploading"** — Tom Becker, Pro plan
+<Button variant="secondary" size="small">View ticket</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Open a new ticket">
+<Form name="new-ticket">
+<Input label="Customer name" placeholder="Jane Smith" required />
+<Input label="Email" type="email" placeholder="jane@company.com" required />
+<Select label="Priority" options="Low | Normal | High | Urgent" placeholder="Select priority" required />
+<Select label="Category" options="Billing | Login | API | Mobile app | Feature request | Other" placeholder="Select category" required />
+<TextArea label="Issue description" placeholder="Describe the problem in detail…" rows="4" required />
+<Button>Create ticket</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the oldest unassigned tickets
+- What's the SLA breach risk right now?
+- Summarize today's ticket volume by category
+</FollowUps>

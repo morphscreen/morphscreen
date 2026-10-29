@@ -1,0 +1,184 @@
+# Live-Ops Dashboard
+
+<Card title="Real-Time Overview" subtitle="Updated 3 seconds ago">
+<Columns>
+<Stat label="Players Online" value="127,842" change="+2.3% vs 1hr ago" tone="success" icon="users" />
+<Stat label="DAU" value="412,300" change="+1.8% vs yesterday" tone="info" icon="calendar" />
+<Stat label="MAU" value="2.1M" change="+0.4% vs last week" tone="info" icon="users" />
+<Stat label="Revenue Today" value="$184,720" change="+12% vs same day last week" tone="success" icon="currency-dollar" />
+<Stat label="ARPU (Daily)" value="$0.45" change="+$0.03 vs yesterday" tone="neutral" icon="chart-line" />
+<Stat label="Avg Session Length" value="24m 12s" change="-1m 4s vs yesterday" tone="warning" icon="clock" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Session Length (Last 14 Days)">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Session Length |
+|---|---|
+| Day 1 | 25.2 |
+| Day 2 | 24.8 |
+| Day 3 | 25.5 |
+| Day 4 | 26.1 |
+| Day 5 | 24.9 |
+| Day 6 | 23.7 |
+| Day 7 | 22.4 |
+| Day 8 | 23.1 |
+| Day 9 | 24.3 |
+| Day 10 | 25.0 |
+| Day 11 | 24.7 |
+| Day 12 | 24.2 |
+| Day 13 | 23.9 |
+| Day 14 | 24.2 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items (Last 7 Days)">
+<Chart type="bar" x="Item" y="Units Sold">
+| Item | Units Sold |
+|---|---|
+| Battle Pass S12 | 45,200 |
+| Crystal Pack (Large) | 38,100 |
+| Legendary Skin: Voidwalker | 22,400 |
+| XP Boost 30-Day | 18,900 |
+| Cosmetic Bundle: Neon | 15,600 |
+| Crystal Pack (Medium) | 12,300 |
+| Emote Pack: Celebration | 9,800 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Server Regions & Health">
+<Select label="Focus Region" name="region-focus" placeholder="All regions" options="All regions | NA-East | NA-West | EU-West | EU-East | APAC-SG | APAC-TOKYO | SA-Brazil | ME-Dubai" />
+<Columns>
+<Stat label="NA-East" value="Healthy" change="99.9% uptime" tone="success" icon="server" />
+<Stat label="NA-West" value="Healthy" change="99.8% uptime" tone="success" icon="server" />
+<Stat label="EU-West" value="Degraded" change="High latency 2.3%" tone="warning" icon="server" />
+<Stat label="EU-East" value="Healthy" change="99.9% uptime" tone="success" icon="server" />
+<Stat label="APAC-SG" value="Healthy" change="99.9% uptime" tone="success" icon="server" />
+<Stat label="APAC-TOKYO" value="Maintenance" change="Scheduled 02:00 UTC" tone="info" icon="server" />
+<Stat label="SA-Brazil" value="Healthy" change="99.7% uptime" tone="success" icon="server" />
+<Stat label="ME-Dubai" value="Healthy" change="99.8% uptime" tone="success" icon="server" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Crash Rate % |
+|---|---|
+| 3.2.1 | 0.12 |
+| 3.2.0 | 0.34 |
+| 3.1.5 | 0.08 |
+| 3.1.4 | 0.15 |
+| 3.1.3 | 0.42 |
+| 3.0.9 | 0.67 |
+| Older | 1.23 |
+</Chart>
+</Card>
+
+<Card title="In-Game Currency Inflation (30 Days)">
+<Chart type="line" x="Day" y="Gold per USD">
+| Day | Gold per USD |
+|---|---|
+| Day 1 | 1,250 |
+| Day 5 | 1,280 |
+| Day 10 | 1,310 |
+| Day 15 | 1,295 |
+| Day 20 | 1,340 |
+| Day 25 | 1,380 |
+| Day 30 | 1,410 |
+</Chart>
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Running Events (3)">
+<Columns>
+<Card title="Summer Festival" subtitle="Live · Ends in 4 days">
+<Progress value="72" max="100" label="Participation: 72%" tone="success" />
+<p>Active players: 298,400 | Completion rate: 41%</p>
+</Card>
+<Card title="Ranked Season 8" subtitle="Live · Ends in 28 days">
+<Progress value="45" max="100" label="Participation: 45%" tone="info" />
+<p>Active players: 187,200 | Avg rank: Gold II</p>
+</Card>
+<Card title="Double XP Weekend" subtitle="Live · Ends in 12 hours">
+<Progress value="89" max="100" label="Participation: 89%" tone="success" />
+<p>Active players: 356,100 | Sessions: 1.2M</p>
+</Card>
+</Columns>
+</Tab>
+<Tab title="Upcoming Events (2)">
+<Columns>
+<Card title="Halloween Horde" subtitle="Starts in 11 days">
+<p>New limited-time mode, exclusive cosmetics, 2-week duration</p>
+<Badge tone="info">Scheduled</Badge>
+</Card>
+<Card title="Anniversary Celebration" subtitle="Starts in 32 days">
+<p>Login rewards, community challenges, retrospective content</p>
+<Badge tone="info">Scheduled</Badge>
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Moderation Queue">
+<Stat label="Player Reports" value="247" change="Awaiting review" tone="warning" icon="flag" />
+<Stat label="Ban Appeals" value="89" change="Awaiting review" tone="warning" icon="gavel" />
+<Button variant="secondary" size="small">Review Reports</Button>
+<Button variant="secondary" size="small">Review Appeals</Button>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Card title="Exp A: Daily Login Rewards v2" subtitle="50/50 split · Day 7 of 14">
+<Stat label="Retention D1" value="+2.1%" tone="success" />
+<Stat label="Retention D7" value="+1.4%" tone="success" />
+<Stat label="ARPU" value="+$0.02" tone="success" />
+<Badge tone="success">Statistically significant</Badge>
+</Card>
+<Card title="Exp B: Matchmaking SBMM Tuning" subtitle="50/50 split · Day 5 of 14">
+<Stat label="Match Quality" value="+3.2%" tone="success" />
+<Stat label="Queue Time" value="+8s" tone="warning" />
+<Stat label="Churn Rate" value="-0.8%" tone="success" />
+<Badge tone="info">Trending positive</Badge>
+</Card>
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Draft Patch Notes" subtitle="Version 3.2.2 — Target: Next Tuesday">
+<Form name="patch-notes">
+<TextArea label="Patch Notes (Markdown)" name="notes" rows="12" placeholder="## Balance Changes
+- **Weapon**: Reduced spread on Assault Rifle by 5%
+- **Character**: Increased cooldown on Voidwalker ultimate by 2s
+
+## Bug Fixes
+- Fixed crash when opening inventory during emote
+- Resolved desync in ranked matches on EU-West
+
+## New Content
+- Added 'Neon Nights' cosmetic bundle
+- Halloween Horde mode begins Oct 25" hint="Use Markdown. Changes auto-save." />
+<Columns>
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Discard</Button>
+</Columns>
+</Form>
+</Card>
+
+<Card title="Ship Hotfix" subtitle="Emergency deployment to all regions">
+<Form name="hotfix-deploy">
+<Input label="Hotfix ID" name="hotfix-id" placeholder="HF-2024-0312" required="true" />
+<Select label="Target" name="hotfix-target" options="All regions | NA-East | NA-West | EU-West | EU-East | APAC-SG | APAC-TOKYO | SA-Brazil | ME-Dubai" required="true" />
+<TextArea label="Changes Summary" name="hotfix-changes" rows="4" placeholder="Brief description of fixes included" required="true" />
+<Checkboxes label="Confirmations" name="hotfix-confirm" options="QA verified in staging | Rollback plan documented | On-call notified | Player comms drafted" required="true" />
+<Columns>
+<Button variant="danger" ask="true">Deploy Hotfix</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>

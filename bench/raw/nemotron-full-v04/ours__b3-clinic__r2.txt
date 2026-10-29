@@ -1,0 +1,93 @@
+# Clinic Reception — Day View
+
+<Card subtitle="Tuesday, January 14, 2025">
+<Columns>
+<Date name="day" value="2025-01-14" />
+<Button variant="secondary" size="small" href="#">Previous day</Button>
+<Button variant="secondary" size="small" href="#">Next day</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Expected patients" value="18" change="+2 vs yesterday" tone="info" />
+<Stat label="No-show rate (Jan)" value="12%" change="−1.2% vs Dec" tone="success" />
+<Stat label="Checked in" value="7 / 18" tone="neutral" />
+</Columns>
+
+<Card title="Next patient called out">
+<Columns>
+<Avatar name="Maria Santos" subtitle="Room 2 • 10:15 AM • Follow-up" />
+<Button variant="primary" size="large">Call patient</Button>
+</Columns>
+</Card>
+
+<Card title="Room availability (right now)">
+<Columns>
+<Badge tone="success">Room 1 — Free</Badge>
+<Badge tone="danger">Room 2 — Occupied (Maria Santos)</Badge>
+<Badge tone="success">Room 3 — Free</Badge>
+<Badge tone="warning">Room 4 — Cleaning</Badge>
+</Columns>
+</Card>
+
+<Card title="Today's appointments">
+<Tabs>
+<Tab title="All (18)">
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 08:30 | James Chen | Annual physical | 1 | ✅ Checked in | — |
+| 09:00 | Aisha Patel | Consultation | 3 | ✅ Checked in | — |
+| 09:30 | Robert Kim | Follow-up | 2 | ✅ Checked in | — |
+| 10:00 | Elena Rossi | New patient | 1 | ✅ Checked in | — |
+| 10:15 | Maria Santos | Follow-up | 2 | 🟢 In room | — |
+| 10:45 | David Park | Consultation | 3 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 11:15 | Sofia Alvarez | Annual physical | 1 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 11:45 | Marcus Johnson | Follow-up | 2 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 12:15 | Priya Nair | Consultation | 3 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 13:30 | Liam O'Connor | New patient | 1 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 14:00 | Hannah Weiss | Follow-up | 2 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 14:30 | Carlos Mendez | Annual physical | 3 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 15:00 | Fatima Al-Sayed | Consultation | 1 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 15:30 | Thomas Berger | Follow-up | 2 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 16:00 | Ingrid Nilsson | New patient | 3 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 16:30 | Yusuf Demir | Consultation | 1 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 17:00 | Zoe Chen | Annual physical | 2 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 17:30 | Andre Kowalski | Follow-up | 3 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+</Tab>
+<Tab title="Waiting (11)">
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 10:45 | David Park | Consultation | 3 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 11:15 | Sofia Alvarez | Annual physical | 1 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 11:45 | Marcus Johnson | Follow-up | 2 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 12:15 | Priya Nair | Consultation | 3 | ⏳ Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 13:30 | Liam O'Connor | New patient | 1 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 14:00 | Hannah Weiss | Follow-up | 2 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 14:30 | Carlos Mendez | Annual physical | 3 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 15:00 | Fatima Al-Sayed | Consultation | 1 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 15:30 | Thomas Berger | Follow-up | 2 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 16:00 | Ingrid Nilsson | New patient | 3 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 16:30 | Yusuf Demir | Consultation | 1 | 📅 Scheduled | <Button size="small" variant="primary">Check in</Button> |
+</Tab>
+<Tab title="Completed (7)">
+| Time | Patient | Type | Room | Status |
+|---|---|---|---|---|
+| 08:30 | James Chen | Annual physical | 1 | ✅ Done |
+| 09:00 | Aisha Patel | Consultation | 3 | ✅ Done |
+| 09:30 | Robert Kim | Follow-up | 2 | ✅ Done |
+| 10:00 | Elena Rossi | New patient | 1 | ✅ Done |
+| 10:15 | Maria Santos | Follow-up | 2 | 🟢 In progress |
+| — | — | — | — | — |
+| — | — | — | — | — |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Quick check-in" subtitle="Scan ID or search by name">
+<Form name="quick-checkin">
+<Input label="Patient name or ID" placeholder="Type to search…" />
+<Select label="Appointment" options="10:45 — David Park (Consultation) | 11:15 — Sofia Alvarez (Annual physical) | 11:45 — Marcus Johnson (Follow-up) | 12:15 — Priya Nair (Consultation) | 13:30 — Liam O'Connor (New patient)" placeholder="Select appointment" />
+<Button>Check in patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

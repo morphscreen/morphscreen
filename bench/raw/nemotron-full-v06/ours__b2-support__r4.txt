@@ -1,0 +1,46 @@
+# Support Lead Morning View
+
+<Card title="Overview" subtitle="Updated just now">
+<Columns>
+<Stat label="Open tickets" value="47" change="+3 vs yesterday" tone="info" />
+<Stat label="Avg first response" value="12 min" change="-2 min vs target" tone="success" />
+<Stat label="High priority open" value="8" change="+2" tone="warning" />
+<Stat label="SLA breaches" value="1" change="0" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Filters">
+<Columns>
+<Switch label="High priority only" name="high-priority-filter" value="false" hint="Show only P1 and P2 tickets" />
+<Select label="Assignee" placeholder="All agents" options="All agents | Me | Unassigned | Sarah Chen | Marcus Johnson | Priya Patel" />
+<Select label="Status" placeholder="All statuses" options="All statuses | Open | In progress | Waiting on customer | On hold" />
+</Columns>
+</Card>
+
+<Card title="Recent tickets" subtitle="5 most recent">
+| ID | Subject | Priority | Status | Assignee | Created |
+|---|---|---|---|---|---|
+| #T-4821 | Payment failed on renewal | <Badge tone="danger">P1 Critical</Badge> | Open | Unassigned | 8:12 AM |
+| #T-4820 | API rate limit errors | <Badge tone="warning">P2 High</Badge> | In progress | Sarah Chen | 7:45 AM |
+| #T-4819 | Export CSV missing columns | <Badge tone="info">P3 Medium</Badge> | Open | Marcus Johnson | 7:30 AM |
+| #T-4818 | Mobile app crash on login | <Badge tone="danger">P1 Critical</Badge> | In progress | Priya Patel | 7:15 AM |
+| #T-4817 | Feature request: dark mode | <Badge tone="neutral">P4 Low</Badge> | Open | Unassigned | 6:50 AM |
+</Card>
+
+<Card title="Quick actions">
+<Button size="large" variant="primary" ask="true">Open new ticket</Button>
+<Button variant="secondary" href="/tickets?filter=high-priority">View all high priority</Button>
+<Button variant="tertiary" href="/tickets?filter=unassigned">Triage unassigned</Button>
+</Card>
+
+<Details title="Create new ticket" open="false">
+<Form name="new-ticket">
+<Input label="Subject" placeholder="Brief summary of the issue" required="true" />
+<Select label="Priority" options="P4 Low | P3 Medium | P2 High | P1 Critical" required="true" />
+<Select label="Category" options="Billing | Technical | Account | Feature request | Bug report | Other" required="true" />
+<TextArea label="Description" placeholder="Steps to reproduce, expected behavior, actual behavior..." rows="5" required="true" />
+<Input label="Customer email" type="email" placeholder="customer@company.com" hint="Optional: link to existing customer" />
+<Button>Create ticket</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Details>

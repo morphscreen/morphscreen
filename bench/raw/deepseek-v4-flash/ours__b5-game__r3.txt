@@ -1,0 +1,170 @@
+# Live-Ops Command Center
+
+<Badge tone="success">Live</Badge>
+<Badge tone="info">Build 5.4.2</Badge>
+<Badge tone="warning">AP-Southeast degraded</Badge>
+
+<Card title="Region focus" subtitle="Filters every global metric below to a single server region">
+<Form name="region-focus">
+<Select label="Focus on one region" options="All regions | NA-East | NA-West | EU-West | EU-Central | AP-Southeast | SA-East" placeholder="All regions" required="false" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="Global live pulse" subtitle="Refreshed every 10 seconds · All times UTC">
+<Columns>
+<Stat label="Players online right now" value="84,231" change="+12.4%" note="vs 1 hour ago" tone="success" icon="users" />
+<Stat label="Daily active players" value="2,104,388" change="+3.1%" note="vs yesterday" tone="info" icon="calendar" />
+<Stat label="Monthly active players" value="9,472,661" change="+5.8%" note="vs last month" tone="info" icon="chart-line" />
+</Columns>
+<Columns>
+<Stat label="Revenue today" value="$431,208" change="+8.2%" note="vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Revenue per user" value="$0.21" change="+4.9%" note="ARPDAU, 7-day avg" tone="success" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Session length" subtitle="Average session length over the past two weeks">
+<Chart type="line" x="Day" y="Avg session (min)">
+| Day | Avg session (min) |
+|---|---|
+| May 27 | 38.2 |
+| May 28 | 39.1 |
+| May 29 | 37.8 |
+| May 30 | 41.3 |
+| May 31 | 44.6 |
+| Jun 1 | 46.2 |
+| Jun 2 | 43.5 |
+| Jun 3 | 42.1 |
+| Jun 4 | 45.8 |
+| Jun 5 | 47.0 |
+| Jun 6 | 44.9 |
+| Jun 7 | 45.2 |
+| Jun 8 | 48.3 |
+| Jun 9 | 49.1 |
+</Chart>
+</Card>
+
+<Card title="Best-selling items" subtitle="Today's top items by units sold">
+| Item | Category | Units sold | Revenue |
+|---|---|---|---|
+| Ember Phoenix Mount | Cosmetic | 12,482 | $249,640 |
+| 2,000 Gems Pack | Currency | 18,201 | $91,005 |
+| Lunar Scythe | Cosmetic | 9,874 | $98,740 |
+| Starter Booster Bundle | Progression | 7,230 | $72,300 |
+| Battle Pass 12 | Progression | 6,512 | $130,240 |
+</Card>
+
+<Card title="Server region health" subtitle="Live status, latency, load, and active players by region">
+| Region | Health | Latency | Load | Online |
+|---|---|---|---|---|
+| NA-East | Healthy | 28 ms | 74% | 31,240 |
+| NA-West | Maintenance | — | 0% | 0 |
+| EU-West | Healthy | 41 ms | 68% | 22,118 |
+| EU-Central | Degraded | 57 ms | 83% | 14,907 |
+| AP-Southeast | Outage | 132 ms | 96% | 8,102 |
+| SA-East | Degraded | 118 ms | 86% | 8,221 |
+
+<Callout tone="danger" title="AP-Southeast">Automatic instance scale-up in progress. Login queue is at 4 minutes.</Callout>
+
+<Card title="Crash rate by app version" subtitle="Crash rate as a percentage of active sessions">
+<Chart type="bar" x="Version" y="Crash rate %">
+| Version | Crash rate % |
+|---|---|
+| 5.4.2 | 0.18 |
+| 5.4.1 | 0.22 |
+| 5.4.0 | 0.41 |
+| 5.3.9 | 0.29 |
+| 5.3.8 | 0.83 |
+</Chart>
+</Card>
+
+<Card title="Live events" subtitle="Running and upcoming live-ops events">
+<Tabs>
+<Tab title="Running">
+- **Summer Skirmish** — ends in 2d 4h · 68,203 players active
+- **Double XP Weekend** — ends Sunday 23:59 UTC
+- **Crownfall Rites** — ends in 5h 12m
+</Tab>
+<Tab title="Upcoming">
+- **Boss Rush: Void Tyrant** — starts Jun 21, 10:00 UTC
+- **Founder's Sale** — starts Jun 24, 00:00 UTC
+- **Guild Brawl Prelims** — starts Jun 28, 18:00 UTC
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Player reports awaiting review" subtitle="38 open reports · Oldest pending 4h">
+| Case | Type | Player | Age | Priority |
+|---|---|---|---|---|
+| #28412 | Cheating | Velox_93 | 4h | High |
+| #28413 | Verbal abuse | LinaAlt | 47m | Med |
+| #28418 | Exploit | G4merT | 12m | Low |
+</Card>
+<Card title="Ban appeals awaiting review" subtitle="12 open appeals · Oldest pending 3h">
+| Appeal | Player | Submitted | Priority |
+|---|---|---|---|
+| #9191 | NovaPulse | 2h | Med |
+| #9193 | Curfew | 35m | High |
+| #9196 | Wispheart | 8m | Low |
+</Card>
+</Columns>
+
+<Card title="In-game currency inflation" subtitle="Monthly gem supply inflation index, Dec = 100">
+<Chart type="area" x="Month" y="Inflation index">
+| Month | Inflation index |
+|---|---|
+| Dec | 100 |
+| Jan | 102 |
+| Feb | 105 |
+| Mar | 109 |
+| Apr | 114 |
+| May | 121 |
+| Jun | 129 |
+</Chart>
+</Card>
+
+## Running experiments
+
+<Columns>
+<Card title="Experiment 01: Dynamic Bundle Pricing" subtitle="20% price discount for disengaged players">
+<Badge tone="success">Significant</Badge>
+
+| Metric | Control | Variant |
+|---|---|---|
+| Sample | 120,004 | 119,796 |
+| ARPU | $0.18 | $0.23 |
+| Conversion | 4.1% | 5.2% |
+| Confidence | — | 99.7% |
+</Card>
+<Card title="Experiment 02: Boss Difficulty Rework" subtitle="+15% HP, +20% loot on raid bosses">
+<Badge tone="warning">Inconclusive</Badge>
+
+| Metric | Control | Variant |
+|---|---|---|
+| Sample | 88,210 | 88,104 |
+| Session length | 38.2m | 41.5m |
+| D1 retention | 44.8% | 45.1% |
+| Confidence | — | 92.1% |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Draft patch notes" subtitle="Prepare the next release notes">
+<Form name="patch-notes">
+<Input label="Title" name="patch_title" placeholder="6.5.0 — Season of the Void" />
+<TextArea label="Patch notes" name="patch_notes" rows="8" placeholder="## Highlights&#10;- New boss: The Void Tyrant&#10;- Balance changes&#10;- Bug fixes" hint="Supports Markdown · type /patch to insert known issues" />
+<Button>Save draft</Button>
+<Button variant="secondary">Send to review</Button>
+</Form>
+</Card>
+<Card title="Ship hotfix" subtitle="Deploy a hotfix to selected regions">
+<Callout tone="danger" title="Warning">Shipping a hotfix forces a client reload on affected game sessions.</Callout>
+<Form name="hotfix">
+<Input label="Build version" name="hotfix_build" placeholder="5.4.3-hotfix.1" />
+<TextArea label="Hotfix notes" name="hotfix_notes" rows="3" placeholder="Fix: crash when opening profile..." />
+<Switch label="Staged rollout" name="staged_rollout" value="false" hint="Enable to roll out to 10% of players first" />
+<Button variant="danger">Ship hotfix</Button>
+</Form>
+</Card>
+</Columns>

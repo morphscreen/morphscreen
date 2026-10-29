@@ -1,0 +1,57 @@
+# Month-End Finance View
+
+<Card title="Cash Position" subtitle="As of month end">
+<Columns>
+<Stat label="Cash on Hand" value="$847,230" change="+$12,400" tone="success" icon="wallet" />
+<Stat label="Monthly Burn" value="$94,500" change="+3.2%" tone="warning" icon="trend-down" />
+<Stat label="Runway" value="8.9 months" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category">
+<Chart type="donut" x="Category" y="Amount ($)">
+| Category | Amount |
+|---|---|
+| Salaries & Benefits | 45200 |
+| Cloud Infrastructure | 18200 |
+| Marketing & Ads | 12100 |
+| Office & Rent | 8500 |
+| Legal & Professional | 5400 |
+| Travel & Meals | 3200 |
+| Software Subscriptions | 1900 |
+</Chart>
+</Card>
+
+<Card title="Large Transactions (>$10,000)" subtitle="This month">
+| Date | Description | Amount | Category |
+|---|---|---|---|
+| Mar 3 | AWS Q1 Invoice | $18,200 | Cloud Infrastructure |
+| Mar 7 | LinkedIn Ads Campaign | $12,100 | Marketing & Ads |
+| Mar 12 | Office Rent - March | $8,500 | Office & Rent |
+| Mar 15 | Payroll Processing | $45,200 | Salaries & Benefits |
+| Mar 22 | Legal Retainer - Q1 | $5,400 | Legal & Professional |
+| Mar 28 | HubSpot Annual Renewal | $1,900 | Software Subscriptions |
+</Card>
+
+<Card title="Month Selector">
+<Form name="select-month">
+<Select label="View month" name="month" placeholder="Choose a month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025" />
+<Button>View Month</Button>
+</Form>
+</Card>
+
+<Card title="Download Statement">
+<Button variant="primary" icon="download">Download PDF Statement</Button>
+<Button variant="secondary" icon="download">Download CSV Export</Button>
+</Card>
+
+<Callout tone="info" title="Note">
+Numbers shown are for March 2025. Runway calculated as Cash on Hand ÷ Monthly Burn.
+</Callout>
+
+<FollowUps>
+- Show me the breakdown of salaries and benefits
+- Compare this month to last month
+- What's our projected runway if burn increases by 5%?
+- Show transactions between $5,000 and $10,000
+</FollowUps>

@@ -1,0 +1,273 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="Active emergency">Multiple zones reporting critical conditions. Prioritize Zone 4 — North Ridge flooding.</Callout>
+
+<Card title="Active incidents by zone">
+<Chart type="bar" title="Incident severity by zone" x="Zone" y="Severity score">
+| Zone | Critical | High | Moderate | Low |
+|---|---|---|---|---|
+| Zone 1 - Downtown | 1 | 2 | 3 | 1 |
+| Zone 2 - Eastside | 0 | 1 | 4 | 2 |
+| Zone 3 - South Hills | 0 | 3 | 2 | 1 |
+| Zone 4 - North Ridge | 4 | 2 | 1 | 0 |
+| Zone 5 - Westport | 1 | 1 | 2 | 3 |
+</Chart>
+
+<Columns>
+<Badge tone="danger">Zone 4: 4 critical incidents</Badge>
+<Badge tone="warning">Zone 3: 3 high-severity incidents</Badge>
+<Badge tone="info">Zone 2: lowest severity</Badge>
+</Columns>
+</Card>
+
+<Card title="Overall severity summary">
+<Columns>
+<Stat label="Critical incidents" value="6" tone="danger" icon="warning-circle" />
+<Stat label="High severity" value="9" tone="warning" icon="warning" />
+<Stat label="Moderate" value="12" tone="info" icon="info" />
+<Stat label="Low" value="7" tone="success" icon="check-circle" />
+</Columns>
+<Gauge label="Overall severity index" value="72" min="0" max="100" unit="%" tone="danger" />
+</Card>
+
+<Card title="Resources available">
+<Tabs>
+<Tab title="Vehicles">
+<Chart type="bar" title="Vehicles by type" x="Type" y="Count">
+| Vehicle | Available | Deployed |
+|---|---|---|
+| Ambulance | 8 | 14 |
+| Fire engine | 5 | 9 |
+| Rescue truck | 3 | 6 |
+| Water tanker | 2 | 3 |
+| Bus | 4 | 2 |
+</Chart>
+</Tab>
+<Tab title="Personnel">
+<Chart type="bar" title="Personnel by role" x="Role" y="Count">
+| Role | Available | Deployed |
+|---|---|---|
+| EMT | 12 | 22 |
+| Firefighter | 10 | 18 |
+| Police officer | 15 | 25 |
+| Search & rescue | 6 | 14 |
+| Medical doctor | 4 | 6 |
+</Chart>
+</Tab>
+<Tab title="Supplies">
+<Chart type="bar" title="Supplies in stock" x="Supply" y="Units">
+| Supply | Available | Needed |
+|---|---|---|
+| Water (L) | 12000 | 8000 |
+| Food kits | 450 | 300 |
+| Blankets | 600 | 400 |
+| Medical kits | 80 | 60 |
+| Generators | 12 | 8 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Shelters — capacity and occupancy">
+<Chart type="bar" title="Shelter occupancy" x="Shelter" y="People">
+| Shelter | Capacity | Occupied |
+|---|---|---|
+| North High School | 300 | 245 |
+| East Community Center | 200 | 180 |
+| South Church Hall | 150 | 95 |
+| West Arena | 400 | 320 |
+| Central Library | 100 | 78 |
+</Chart>
+<Columns>
+<Stat label="Total capacity" value="1,150" icon="users" />
+<Stat label="Currently housed" value="918" icon="home" change="+23 since morning" />
+<Stat label="Remaining spaces" value="232" tone="warning" icon="door-open" />
+</Columns>
+</Card>
+
+<Card title="Evacuation route status">
+<Chart type="bar" title="Route status" x="Route" y="Status score">
+| Route | Open | Congested | Closed |
+|---|---|---|---|
+| Route 1 - I-95 N | 1 | 0 | 0 |
+| Route 2 - Coastal Hwy | 0 | 1 | 0 |
+| Route 3 - Mountain Pass | 0 | 0 | 1 |
+| Route 4 - River Rd | 0 | 1 | 0 |
+| Route 5 - Old Mill Rd | 1 | 0 | 0 |
+</Chart>
+<Columns>
+<Badge tone="success">Route 1: Open</Badge>
+<Badge tone="warning">Route 2: Congested — delays 20 min</Badge>
+<Badge tone="danger">Route 3: Closed — landslide</Badge>
+<Badge tone="warning">Route 4: Congested — flooding</Badge>
+<Badge tone="success">Route 5: Open</Badge>
+</Columns>
+</Card>
+
+<Card title="Weather forecast — next 48 hours">
+<Chart type="line" title="Temperature and precipitation" x="Hour" y="Value">
+| Hour | Temp (°F) | Precip (mm) | Wind (mph) |
+|---|---|---|---|
+| 0h | 58 | 2 | 12 |
+| 6h | 54 | 5 | 18 |
+| 12h | 52 | 8 | 22 |
+| 18h | 50 | 12 | 25 |
+| 24h | 48 | 15 | 30 |
+| 30h | 46 | 18 | 35 |
+| 36h | 45 | 20 | 38 |
+| 42h | 44 | 22 | 40 |
+| 48h | 43 | 25 | 42 |
+</Chart>
+<Callout tone="warning" title="Storm front incoming">Heavy rain and winds up to 42 mph expected within 36 hours. Prepare for further flooding in Zones 1 and 4.</Callout>
+</Card>
+
+<Card title="Casualties and rescues">
+<Columns>
+<Stat label="People rescued" value="1,247" tone="success" icon="lifebuoy" change="+89 today" />
+<Stat label="Injured" value="156" tone="warning" icon="first-aid" />
+<Stat label="Fatalities" value="12" tone="danger" icon="skull" />
+<Stat label="Missing" value="8" tone="danger" icon="magnifying-glass" />
+</Columns>
+<Sparkline label="Rescues per hour" values="12 | 18 | 22 | 15 | 28 | 31 | 26 | 35 | 29 | 42" value="89" change="+23 vs yesterday" />
+</Card>
+
+<Card title="Volunteers on duty">
+| Volunteer | Assignment | Status |
+|---|---|---|
+| Maria Chen | Shelter — North High | <Badge tone="success">On site</Badge> |
+| James Okafor | Medical — East CC | <Badge tone="success">On site</Badge> |
+| Priya Patel | Logistics — Warehouse | <Badge tone="info">En route</Badge> |
+| Tom Becker | Communications | <Badge tone="success">On site</Badge> |
+| Ana Silva | Food distribution | <Badge tone="warning">Break</Badge> |
+| David Kim | Search & rescue | <Badge tone="success">Deployed</Badge> |
+| Sarah Johnson | Shelter — West Arena | <Badge tone="info">En route</Badge> |
+| Luis Garcia | Transport — Buses | <Badge tone="success">On site</Badge> |
+</Card>
+
+<Card title="Donations received">
+<Columns>
+<Stat label="Total monetary" value="$184,500" icon="currency-dollar" change="+$12,300 today" />
+<Stat label="Water bottles" value="3,200" icon="drop" />
+<Stat label="Food kits" value="850" icon="bowl-food" />
+<Stat label="Blankets" value="1,400" icon="bed" />
+<Stat label="Clothing items" value="2,100" icon="shirt" />
+</Columns>
+<Chart type="bar" title="Donations by category" x="Category" y="Units">
+| Category | Units |
+|---|---|
+| Water | 3200 |
+| Food | 850 |
+| Blankets | 1400 |
+| Clothing | 2100 |
+| Medical | 420 |
+| Hygiene | 980 |
+</Chart>
+</Card>
+
+<Card title="Aid requests awaiting action">
+| Request ID | Zone | Type | Priority | Status |
+|---|---|---|---|---|
+| AR-1042 | Zone 4 | Medical supplies | <Badge tone="danger">Critical</Badge> | Pending |
+| AR-1043 | Zone 1 | Food — 200 meals | <Badge tone="warning">High</Badge> | Pending |
+| AR-1044 | Zone 3 | Water — 500 gal | <Badge tone="warning">High</Badge> | Pending |
+| AR-1045 | Zone 4 | Evacuation bus | <Badge tone="danger">Critical</Badge> | Pending |
+| AR-1046 | Zone 2 | Blankets — 100 | <Badge tone="info">Normal</Badge> | Pending |
+| AR-1047 | Zone 5 | Generator | <Badge tone="info">Normal</Badge> | Pending |
+</Card>
+
+<Card title="Communication channels">
+| Channel | Status | Notes |
+|---|---|---|
+| Radio — VHF | <Badge tone="success">Up</Badge> | All zones reachable |
+| Radio — UHF | <Badge tone="warning">Degraded</Badge> | Zone 4 intermittent |
+| Satellite phone | <Badge tone="success">Up</Badge> | 2 units working |
+| Cellular network | <Badge tone="danger">Down</Badge> | Zone 1–4 affected |
+| Internet — fiber | <Badge tone="warning">Degraded</Badge> | Slowed in Zone 3 |
+| Internet — LTE backup | <Badge tone="success">Up</Badge> | Portable units deployed |
+| Email (internal) | <Badge tone="success">Up</Badge> | Normal |
+</Card>
+
+<Card title="Roads closed">
+| Road | Zone | Reason | Est. reopening |
+|---|---|---|---|
+| Main St Bridge | Zone 1 | Flooding | Unknown |
+| Hwy 9 — mile 12-15 | Zone 3 | Landslide | 24-48 hrs |
+| North Ridge Rd | Zone 4 | Flooding | 48+ hrs |
+| Coastal Hwy — mile 3 | Zone 5 | Storm surge | 24 hrs |
+| River Rd — mile 8 | Zone 2 | Flooding | 12 hrs |
+</Card>
+
+<Card title="Hospitals — available beds">
+<Chart type="bar" title="Free beds by hospital" x="Hospital" y="Beds">
+| Hospital | Total beds | Free beds |
+|---|---|---|
+| General Hospital | 320 | 45 |
+| St. Mary's | 250 | 28 |
+| Eastside Medical | 180 | 15 |
+| North Ridge Clinic | 80 | 0 |
+| Westport Health | 140 | 32 |
+</Chart>
+<Columns>
+<Stat label="Total free beds" value="120" tone="success" icon="bed" />
+<Stat label="Critical care free" value="12" tone="warning" icon="heart-pulse" />
+</Columns>
+</Card>
+
+<Card title="Open tasks">
+| Task | Assignee | Due | Status |
+|---|---|---|---|
+| Evacuate 30 residents — North Ridge | Team A — SAR | 14:00 | <Badge tone="warning">In progress</Badge> |
+| Distribute water — Zone 1 | Logistics — M. Chen | 13:30 | <Badge tone="success">Done</Badge> |
+| Repair radio relay — Zone 4 | Comms — T. Becker | 15:00 | <Badge tone="warning">In progress</Badge> |
+| Set up field hospital — West Arena | Medical — Dr. Silva | 16:00 | <Badge tone="info">Pending</Badge> |
+| Clear landslide — Hwy 9 | Public Works | 18:00 | <Badge tone="info">Pending</Badge> |
+| Restock shelter supplies — South | Logistics — D. Kim | 14:30 | <Badge tone="warning">In progress</Badge> |
+</Card>
+
+<Card title="Request more resources">
+<Form name="resource-request">
+<Select label="Resource type" options="Vehicles | Personnel | Medical supplies | Food | Water | Shelter equipment | Generators | Communication gear" name="resource-type" required="true" />
+<Stepper label="Quantity" name="quantity" min="1" max="100" step="1" unit="units" required="true" />
+<Select label="Priority" options="Critical | High | Normal | Low" name="priority" required="true" />
+<Select label="Zone" options="Zone 1 - Downtown | Zone 2 - Eastside | Zone 3 - South Hills | Zone 4 - North Ridge | Zone 5 - Westport | All zones" name="zone" required="true" />
+<TextArea label="Additional notes" name="notes" placeholder="Explain what is needed and where" rows="3" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast update">
+<Form name="broadcast">
+<TextArea label="Message" name="message" placeholder="Type the update to broadcast to all teams, shelters, and volunteers…" rows="4" required="true" />
+<Select label="Channel" options="All channels | Radio only | SMS/App | Email | Shelters only" name="channel" required="true" />
+<Checkboxes label="Audience" options="All teams | Zone 1 | Zone 2 | Zone 3 | Zone 4 | Zone 5 | Volunteers | Shelters | Media" name="audience" required="true" />
+<Button>Broadcast now</Button>
+</Form>
+</Card>
+
+<Card title="Focus on a zone">
+<Form name="zone-focus">
+<Select label="Select zone" options="Zone 1 - Downtown | Zone 2 - Eastside | Zone 3 - South Hills | Zone 4 - North Ridge | Zone 5 - Westport | All zones" name="zone" required="true" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="File situation report">
+<Form name="sitrep">
+<Input label="Reporter name" name="reporter" placeholder="Your name" required="true" />
+<Select label="Zone" options="Zone 1 - Downtown | Zone 2 - Eastside | Zone 3 - South Hills | Zone 4 - North Ridge | Zone 5 - Westport" name="zone" required="true" />
+<Select label="Situation type" options="Flooding | Fire | Medical | Rescue | Infrastructure | Supply shortage | Security | Other" name="type" required="true" />
+<Radio label="Severity" options="Low | Moderate | High | Critical" name="severity" required="true" />
+<TextArea label="Situation description" name="description" placeholder="Describe what is happening, location details, people affected…" rows="4" required="true" />
+<Input label="Location (address or coordinates)" name="location" placeholder="e.g. 123 Main St or 40.7128° N, 74.0060° W" />
+<File label="Attach photos" name="photos" accept="Image | Video" multiple="true" hint="Optional: add visual evidence" />
+<Button>Submit report</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full incident list for Zone 4
+- Which shelters still have space for more people?
+- What is the status of the missing persons search?
+- Update me on the storm forecast for tomorrow
+- How many volunteers are still needed?
+</FollowUps>

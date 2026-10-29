@@ -1,0 +1,143 @@
+# Speeding up a 2 GB CSV read in Python
+
+The single biggest win: **stop using `pandas.read_csv` on the whole file if you don't need every column**, and **read in chunks**. Below are the levers, ordered by how much they usually help.
+
+<Card title="The usual culprits" subtitle="Why a 2 GB CSV feels slow">
+| Cause | Typical fix |
+|---|---|
+| Python-level row loops (`for row in csv.reader`) | Vectorize with pandas / polars |
+| Default dtypes → object columns | Specify `dtype=` explicitly |
+| Reading all columns | `usecols=` |
+| Single-threaded C parser | `engine="pyarrow"` or polars |
+| Repeated `df.append` / list-of-dicts | Build once, or use chunks |
+| No compression | `compression="gzip"` if the file is gzipped |
+</Card>
+
+## 1. The fastest path: polars or pyarrow
+
+<Card title="Polars (often 5–20x faster than pandas)">
+<Code file="read_fast.py" highlight="1 | 6">
+import polars as pl
+
+df = pl.read_csv(
+    "big.csv",
+    columns=["id", "ts", "amount"],   # only what you need
+    schema_overrides={"id": pl.Int64, "amount": pl.Float64},
+    try_parse_dates=True,
+    low_memory=True,                  # streams instead of loading all
+)
+</Code>
+</Card>
+
+<Card title="pandas with the Arrow engine">
+<Code file="read_pandas.py" highlight="4 | 5">
+import pandas as pd
+
+df = pd.read_csv(
+    "big.csv",
+    engine="pyarrow",          # much faster parser
+    usecols=["id", "ts", "amount"],
+    dtype={"id": "int64", "amount": "float64"},
+    parse_dates=["ts"],
+)
+</Code>
+</Card>
+
+<Callout tone="info" title="Rule of thumb">
+`engine="pyarrow"` alone is often 2–5x. Polars is often another 2–4x on top. Both need `pip install pyarrow` / `pip install polars`.
+</Callout>
+
+## 2. If you must stay in pandas
+
+<Card title="Chunked processing">
+<Code file="chunked.py" highlight="3 | 8">
+import pandas as pd
+
+chunks = pd.read_csv(
+    "big.csv",
+    usecols=["id", "amount"],
+    dtype={"id": "int64", "amount": "float64"},
+    chunksize=500_000,
+)
+
+total = 0.0
+for chunk in chunks:
+    total += chunk["amount"].sum()
+</Code>
+</Card>
+
+<Card title="Or process in parallel">
+<Code file="parallel.py">
+from multiprocessing import Pool
+import pandas as pd
+
+def read_range(args):
+    path, skip, n = args
+    return pd.read_csv(path, skiprows=skip, nrows=n, dtype={"id": "int64"})
+
+# split the file into N byte ranges, then:
+with Pool(8) as p:
+    parts = p.map(read_range, ranges)
+df = pd.concat(parts, ignore_index=True)
+</Code>
+</Card>
+
+## 3. Check where the time actually goes
+
+<Card title="Profile first, guess second">
+<Steps>
+<Step title="Time the raw read" status="current">
+Run `python -X importtime -c "import pandas"` and a bare `read_csv` with no processing. If that's already 30s, it's I/O + parsing.
+</Step>
+<Step title="Time the processing">
+Wrap the loop body in `time.perf_counter()`. If the read is fast but the loop is slow, vectorize.
+</Step>
+<Step title="Check dtypes">
+`df.dtypes` — any `object` column that should be numeric is costing you 5–10x in memory and speed.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Quick wins checklist">
+<Checklist title="Try these in order" name="csv-speedups">
+- [ ] Add `usecols=` — drop every column you don't use
+- [ ] Add `dtype=` for numeric and category columns
+- [ ] Switch to `engine="pyarrow"` or `polars.read_csv`
+- [ ] Use `chunksize=` if the result doesn't fit in RAM
+- [ ] Replace `for row in ...` with vectorized ops
+- [ ] Store as Parquet once, read that instead next time
+</Checklist>
+</Card>
+
+<Callout tone="success" title="The real long-term fix">
+Convert the CSV to **Parquet** once (`df.to_parquet("big.parquet")`), then read it with `pd.read_parquet`. Columnar + compressed means 5–20x faster reads and a fraction of the disk. If this file is read more than a couple of times, do this.
+</Callout>
+
+<Card title="Rough expectations" subtitle="2 GB CSV, ~20M rows, 6 columns">
+<Chart type="bar" x="Method" y="Seconds">
+| Method | Seconds |
+|---|---|
+| csv.reader loop | 180 |
+| pandas default | 42 |
+| pandas + usecols + dtype | 22 |
+| pandas + pyarrow engine | 9 |
+| polars | 5 |
+| parquet (after conversion) | 3 |
+</Chart>
+</Card>
+
+## What I'd need to go further
+
+<Form name="csv-help">
+<Select label="What are you doing with the file?" options="Just loading it into pandas | Filtering and aggregating | Training a model | Writing to a database" />
+<Input label="Roughly how many rows and columns?" placeholder="e.g. 20M rows, 6 columns" />
+<TextArea label="Paste the slow part of your script" placeholder="the read_csv call and the loop that follows" rows="6" />
+<Button>Diagnose my script</Button>
+</Form>
+
+<FollowUps>
+- Show me how to convert this CSV to Parquet and read it back
+- My loop over rows is the slow part, not the read — help me vectorize it
+- How do I read only certain rows with skiprows and nrows?
+- Is DuckDB a good option for querying a 2 GB CSV?
+</FollowUps>

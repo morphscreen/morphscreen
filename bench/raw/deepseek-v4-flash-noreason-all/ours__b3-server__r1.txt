@@ -1,0 +1,88 @@
+# Service Health View
+
+<Callout tone="warning" title="Active incident">Payment API is degraded — paging SRE on-call rotation.</Callout>
+
+<Columns>
+<Stat label="Uptime (Q3)" value="99.97%" change="+0.02% vs Q2" tone="success" icon="trend-up" />
+<Stat label="Error rate (now)" value="0.42%" change="+0.31% vs 1h ago" tone="danger" icon="warning-circle" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 high" tone="danger" icon="fire" />
+<Stat label="P95 latency" value="312 ms" change="+48 ms vs 24h avg" tone="warning" icon="timer" />
+</Columns>
+
+<Card title="CPU & memory — last 24 hours">
+<Chart type="line" title="Utilization %" x="Time (UTC)" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 34 | 52 |
+| 04:00 | 41 | 55 |
+| 08:00 | 62 | 61 |
+| 12:00 | 58 | 63 |
+| 16:00 | 71 | 68 |
+| 20:00 | 49 | 60 |
+| 24:00 | 38 | 56 |
+</Chart>
+</Card>
+
+<Card title="Region filter">
+<Select label="Region" name="region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" />
+</Card>
+
+<Card title="Open incidents">
+| Incident | Severity | Status | Started |
+|---|---|---|---|
+| #4821 — Payment API 5xx spike | <Badge tone="danger">Critical</Badge> | Unacknowledged | 14:32 UTC |
+| #4820 — Search latency degradation | <Badge tone="warning">High</Badge> | Acknowledged | 12:05 UTC |
+| #4819 — Auth token refresh failures | <Badge tone="warning">High</Badge> | Acknowledged | 09:47 UTC |
+</Card>
+
+<Card title="Incident #4821 — Payment API 5xx spike">
+<KeyValue title="Details">
+| Field | Value |
+|---|---|
+| Severity | Critical |
+| Region | us-east-1 |
+| Impact | 12% of payment requests failing |
+| Started | 14:32 UTC |
+| Assigned | On-call: Dana K. |
+</KeyValue>
+<Button variant="primary">Acknowledge incident</Button>
+</Card>
+
+<Card title="Slowest endpoints — last 24h">
+<Chart type="bar" title="P95 latency (ms)" x="Endpoint" y="ms">
+| Endpoint | Latency |
+|---|---|
+| /v2/checkout | 412 |
+| /v1/payments/confirm | 387 |
+| /api/subscriptions/renew | 344 |
+| /v2/invoices/generate | 298 |
+| /graphql/batch | 265 |
+</Chart>
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.5" max="5" step="0.1" value="1.0" unit="%" name="error-threshold" />
+<Select label="Notify via" name="notify" options="PagerDuty | Slack + email | Email only" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<Card title="24h error rate">
+<Chart type="area" title="Error rate %" x="Time (UTC)" y="%">
+| Time | Error rate |
+|---|---|
+| 00:00 | 0.12 |
+| 04:00 | 0.09 |
+| 08:00 | 0.21 |
+| 12:00 | 0.38 |
+| 16:00 | 0.42 |
+| 20:00 | 0.29 |
+| 24:00 | 0.18 |
+</Chart>
+</Card>
+
+<Card title="On-call handoff">
+<Avatar name="Dana Kim" src="https://i.pravatar.cc/150?img=47" subtitle="Primary on-call — until 09:00 UTC" />
+<Button variant="secondary">Page backup</Button>
+</Card>

@@ -1,0 +1,114 @@
+# Admin Overview
+
+<Card subtitle="SaaS Admin Dashboard">
+<Select label="Reporting period" name="period" placeholder="Select period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Card>
+
+<Columns>
+<Card title="Monthly Recurring Revenue">
+<Stat label="MRR" value="$127,450" change="+12.3% vs last month" tone="success" icon="chart-line" />
+</Card>
+<Card title="Annual Recurring Revenue">
+<Stat label="ARR" value="$1,529,400" change="+14.1% vs last year" tone="success" icon="calendar" />
+</Card>
+<Card title="Churn This Month">
+<Stat label="Churn Rate" value="2.8%" change="-0.4pp vs last month" tone="success" icon="users" />
+</Card>
+<Card title="Current NPS">
+<Stat label="NPS" value="62" change="+5 vs last quarter" tone="success" icon="chart-line" />
+</Card>
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 12 |
+| Week 2 | 18 |
+| Week 3 | 15 |
+| Week 4 | 22 |
+| Week 5 | 19 |
+| Week 6 | 25 |
+| Week 7 | 28 |
+| Week 8 | 31 |
+| Week 9 | 27 |
+| Week 10 | 33 |
+| Week 11 | 35 |
+| Week 12 | 38 |
+| Week 13 | 42 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 342 |
+| Professional | 187 |
+| Enterprise | 43 |
+| Custom | 12 |
+</Chart>
+</Card>
+<Card title="Feature Adoption (Newest 3)">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Insights | 34 |
+| Workflow Builder | 28 |
+| Advanced Analytics | 41 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 245 | $12,500 | Active |
+| Globex Inc | Enterprise | 180 | $9,800 | Active |
+| Wayne Enterprises | Professional | 120 | $6,200 | Active |
+| Stark Industries | Enterprise | 95 | $5,400 | Active |
+| Umbrella Corp | Professional | 85 | $4,800 | At Risk |
+| Cyberdyne Systems | Enterprise | 78 | $4,200 | Active |
+| Initech | Professional | 65 | $3,500 | Active |
+| Oscorp | Custom | 55 | $3,100 | Active |
+| Massive Dynamic | Professional | 50 | $2,900 | Active |
+| Tyrell Corporation | Starter | 45 | $2,400 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | Risk Reason | Since |
+|---|---|---|---|---|
+| Umbrella Corp | Professional | 85 | Low feature adoption (12%), no login in 14 days | 2024-01-15 |
+| Hooli Inc | Starter | 25 | Failed payment ×2, support tickets unanswered | 2024-01-20 |
+| Pied Piper | Professional | 40 | NPS score dropped to 15, competitor evaluation | 2024-01-28 |
+| Dunder Mifflin | Starter | 18 | Seat utilization 23%, contract renewal in 30 days | 2024-02-01 |
+</Card>
+
+<Card title="Failed Payments">
+| Customer | Amount | Failed On | Attempts | Action |
+|---|---|---|---|---|
+| Hooli Inc | $299 | 2024-01-28 | 2 | <Button size="small" variant="primary">Retry</Button> |
+| Dunder Mifflin | $149 | 2024-01-30 | 1 | <Button size="small" variant="primary">Retry</Button> |
+| SPECTRE | $89 | 2024-02-01 | 3 | <Button size="small" variant="danger" disabled="true">Max retries</Button> |
+| Vandelay Industries | $199 | 2024-02-02 | 1 | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="Seat Utilization">
+<Progress label="Company-wide utilization" value="67" max="100" tone="info" />
+<Columns>
+<Stat label="Total Seats" value="2,847" icon="users" />
+<Stat label="Active Seats" value="1,908" change="67% utilization" tone="success" icon="check-circle" />
+<Stat label="Unused Seats" value="939" change="33% available" tone="warning" icon="minus-circle" />
+</Columns>
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email address" placeholder="admin@company.com" type="email" required="true" />
+<Select label="Role" options="Admin | Billing Admin | Read-only Admin" placeholder="Select role" required="true" />
+<TextArea label="Personal message (optional)" placeholder="Welcome to the team! Here's what you'll have access to..." rows="3" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

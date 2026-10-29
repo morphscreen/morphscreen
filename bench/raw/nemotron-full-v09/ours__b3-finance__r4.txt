@@ -1,0 +1,49 @@
+# Month-End Finance View
+
+<Card subtitle="April 2024">
+<Columns>
+<Select label="Month" name="month" value="2024-04" options="2024-04 | 2024-03 | 2024-02 | 2024-01 | 2023-12 | 2023-11" />
+<Button variant="secondary" icon="download">Download Statement</Button>
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Cash on Hand" value="$2,847,000" change="-$187,000 vs Mar" tone="info" icon="bank" />
+<Stat label="Monthly Burn" value="$342,000" change="+$28,000 vs Mar" tone="warning" icon="fire" />
+<Stat label="Months of Runway" value="8.3" change="-0.7 vs Mar" tone="danger" icon="calendar" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category">
+<Chart type="donut" title="April 2024 Expenses" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Payroll | 185000 |
+| Cloud & Infrastructure | 42000 |
+| Marketing | 38000 |
+| Professional Services | 28000 |
+| Office & Operations | 18000 |
+| Travel | 12000 |
+| Software & Tools | 9000 |
+| Other | 10000 |
+</Chart>
+</Card>
+
+<Card title="Transactions Above $10,000">
+| Date | Vendor | Category | Amount | Description |
+|---|---|---|---|---|
+| Apr 3 | AWS | Cloud & Infrastructure | $42,000 | Q1 committed spend true-up |
+| Apr 5 | Gusto Payroll | Payroll | $185,000 | April payroll + benefits |
+| Apr 8 | Stripe | Professional Services | $28,000 | Q2 implementation fees |
+| Apr 12 | Google Ads | Marketing | $22,000 | Brand campaign Q2 launch |
+| Apr 15 | WeWork | Office & Operations | $18,000 | HQ lease + amenities |
+| Apr 18 | Meta Ads | Marketing | $16,000 | Performance marketing Q2 |
+| Apr 22 | Salesforce | Software & Tools | $12,000 | Annual renewal (pro-rated) |
+| Apr 25 | Legal Counsel | Professional Services | $15,000 | Series A prep & IP filings |
+| Apr 28 | Delta Airlines | Travel | $11,000 | Team offsite flights |
+</Card>
+
+<Callout tone="info" title="Notes">
+Burn includes all operating expenses. Runway calculated as cash on hand ÷ monthly burn. Expenses categorized per chart of accounts. Transactions list shows all outflows >$10K posted this month.
+</Callout>

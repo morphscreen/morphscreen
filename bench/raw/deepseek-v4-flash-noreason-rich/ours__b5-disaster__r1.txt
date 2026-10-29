@@ -1,0 +1,227 @@
+# Emergency Response Coordination Center
+
+Live operational picture · Updated 2 minutes ago
+
+<Callout tone="danger" title="Active alert">Typhoon Surge: Zone B flooding rising. Evacuation Route BR-2 partially submerged. Priority response required.</Callout>
+
+<Card title="Incident Overview">
+<Columns>
+<div>
+<Stat label="Active incidents" value="7" icon="warning" tone="danger" />
+<Stat label="People rescued" value="342" icon="lifebuoy" tone="success" change="+28 today" />
+</div>
+<div>
+<Stat label="Casualties" value="12" icon="cross" tone="danger" note="5 critical" />
+<Stat label="Open tasks" value="23" icon="clipboard-text" tone="info" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Active Incidents by Zone">
+<Columns>
+<ZoneCard name="Zone A — North District" severity="Moderate" type="Flooding" status="Contained" />
+<ZoneCard name="Zone B — Riverside" severity="Critical" type="Storm surge / Flooding" status="Escalating" />
+<ZoneCard name="Zone C — Hillside" severity="Severe" type="Landslide risk" status="Monitoring" />
+</Columns>
+<Callout tone="warning" title="Focus zone">Tap <Button variant="tertiary" size="small" ask>Focus on Zone B</Button> to see zone-specific details.</Callout>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Columns>
+<div>
+<Badge tone="danger">CRITICAL</Badge> <strong>1 zone</strong> (Zone B)
+</div>
+<div>
+<Badge tone="warning">SEVERE</Badge> <strong>2 zones</strong> (Zone C, Zone D)
+</div>
+<div>
+<Badge tone="info">MODERATE</Badge> <strong>2 zones</strong> (Zone A, Zone E)
+</div>
+<div>
+<Badge tone="neutral">STABLE</Badge> <strong>2 zones</strong> (Zone F, Zone G)
+</div>
+</Columns>
+<Chart type="bar" title="Incidents by severity" x="Severity" y="Count">
+| Severity | Count |
+|---|---|
+| Critical | 2 |
+| Severe | 3 |
+| Moderate | 2 |
+| Minor | 0 |
+</Chart>
+</Card>
+
+<Card title="Resources Available">
+<Columns>
+<Stat label="Vehicles" value="18" icon="truck" note="4 ambulances, 6 SUVs, 8 trucks" />
+<Stat label="Personnel" value="96" icon="users" note="48 on duty, 48 on call" />
+<Stat label="Supplies" value="74%" icon="package" tone="warning" note="Water, food, blankets, meds" />
+</Columns>
+<Progress value="74" max="100" label="Supply stock level" tone="warning" />
+</Card>
+
+<Card title="Shelters & Evacuation Routes">
+<Columns>
+<Card title="Shelters" subtitle="Capacity / Occupancy">
+| Shelter | Capacity | Occupancy | Status |
+|---|---|---|---|
+| North High School | 200 | 145 | <Badge tone="warning">72% full</Badge> |
+| Riverside Gym | 150 | 148 | <Badge tone="danger">99% full</Badge> |
+| Hillside Community Ctr | 120 | 60 | <Badge tone="success">50%</Badge> |
+| Central Hall | 300 | 210 | <Badge tone="info">70%</Badge> |
+</Card>
+<Card title="Evacuation Routes" subtitle="Status">
+| Route | Status |
+|---|---|
+| BR-1 (North) | <Badge tone="success">Open</Badge> |
+| BR-2 (Riverside) | <Badge tone="danger">Closed — flooded</Badge> |
+| BR-3 (Hillside) | <Badge tone="warning">Caution — landslide debris</Badge> |
+| BR-4 (Central) | <Badge tone="success">Open</Badge> |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+<Chart type="line" title="Rainfall & Wind" x="Hour" y="mm / km/h">
+| Hour | Rainfall (mm) | Wind (km/h) |
+|---|---|---|
+| 0 | 5 | 40 |
+| 6 | 12 | 55 |
+| 12 | 20 | 70 |
+| 18 | 28 | 80 |
+| 24 | 15 | 65 |
+| 30 | 8 | 50 |
+| 36 | 3 | 35 |
+| 42 | 1 | 25 |
+| 48 | 0 | 20 |
+</Chart>
+<Callout tone="warning" title="48h outlook">Peak rainfall expected in ~12 hours (28 mm/h). Winds up to 80 km/h. Conditions improve after 36 hours.</Callout>
+</Card>
+
+<Card title="People Rescued & Casualties">
+<Columns>
+<Stat label="Rescued" value="342" icon="lifebuoy" change="+28 today" tone="success" />
+<Stat label="Injured" value="38" icon="first-aid" tone="warning" />
+<Stat label="Deceased" value="12" icon="cross" tone="danger" />
+<Stat label="Missing" value="4" icon="magnifying-glass" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Volunteers on Duty">
+| Volunteer | Assignment | Status |
+|---|---|---|
+| Maria Santos | Shelter North — intake lead | <Badge tone="success">Active</Badge> |
+| James Chen | Zone B — boat rescue | <Badge tone="success">Active</Badge> |
+| Aisha Patel | Supply distribution — Central | <Badge tone="success">Active</Badge> |
+| Tom O'Brien | Communications relay | <Badge tone="warning">On break</Badge> |
+| Lena Fischer | Medical triage — Riverside | <Badge tone="success">Active</Badge> |
+| David Kim | Evacuation Route BR-3 clearing | <Badge tone="success">Active</Badge> |
+</Card>
+
+<Card title="Donations Received">
+<Columns>
+<Stat label="Total donations" value="$48,200" icon="hand-heart" change="+$6,500 today" tone="success" />
+<Stat label="In-kind items" value="1,240" note="Water, food, clothing, blankets" />
+</Columns>
+<Chart type="donut" title="Donation breakdown" x="Type" y="USD">
+| Type | USD |
+|---|---|
+| Cash | 32000 |
+| Water | 6200 |
+| Food | 5400 |
+| Medical | 2800 |
+| Clothing | 1800 |
+</Chart>
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Item | Quantity | Priority |
+|---|---|---|---|---|
+| AR-104 | B | Drinking water | 500 L | <Badge tone="danger">Critical</Badge> |
+| AR-105 | B | Sandbags | 300 | <Badge tone="danger">Critical</Badge> |
+| AR-106 | C | Medical kits | 25 | <Badge tone="warning">High</Badge> |
+| AR-107 | A | Blankets | 100 | <Badge tone="info">Medium</Badge> |
+| AR-108 | D | Fuel (diesel) | 200 L | <Badge tone="warning">High</Badge> |
+</Card>
+
+<Card title="Communication Channels">
+<Columns>
+<ChannelCard name="VHF Radio" status="Up" tone="success" />
+<ChannelCard name="Satellite Phone" status="Up" tone="success" />
+<ChannelCard name="Cellular Network" status="Degraded" tone="warning" note="60% capacity" />
+<ChannelCard name="Internet / VoIP" status="Down" tone="danger" />
+<ChannelCard name="Emergency SMS" status="Up" tone="success" />
+<ChannelCard name="Public PA System" status="Up" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Road Closures">
+| Road | Segment | Reason | Est. Reopen |
+|---|---|---|---|
+| BR-2 | Riverside Bridge | Flooding | Unknown |
+| Route 12 | KM 4–7 | Landslide | 24 hrs |
+| Hill Rd | Full | Debris | 12 hrs |
+| Market St | KM 0–2 | Power lines down | 6 hrs |
+</Card>
+
+<Card title="Nearby Hospitals — Free Beds">
+| Hospital | Free Beds | ICU Free | Distance | Status |
+|---|---|---|---|---|
+| Central General | 12 | 3 | 3 km | <Badge tone="success">Open</Badge> |
+| North Medical Ctr | 8 | 2 | 5 km | <Badge tone="success">Open</Badge> |
+| Riverside Clinic | 0 | 0 | 2 km | <Badge tone="danger">Full</Badge> |
+| St. Mary's Hospital | 15 | 4 | 7 km | <Badge tone="success">Open</Badge> |
+</Card>
+
+<Card title="Open Tasks">
+| Task | Assignee | Due | Priority |
+|---|---|---|---|
+| Deploy sandbags to Zone B levee | Team 3 (J. Chen) | 2 hrs | <Badge tone="danger">Critical</Badge> |
+| Clear debris on Route 12 | Team 5 (D. Kim) | 4 hrs | <Badge tone="warning">High</Badge> |
+| Restock water at Riverside shelter | A. Patel | 3 hrs | <Badge tone="warning">High</Badge> |
+| Evacuate remaining 15 residents Zone B | Team 1 (M. Santos) | 1 hr | <Badge tone="danger">Critical</Badge> |
+| Repair cell tower 7 | Comms crew | 8 hrs | <Badge tone="info">Medium</Badge> |
+</Card>
+
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource type" options="Water | Food | Medical supplies | Fuel | Sandbags | Blankets | Vehicles | Personnel | Generators | Other" placeholder="Select type" required />
+<Input label="Quantity" type="number" placeholder="e.g. 500" min="1" required />
+<Select label="Zone" options="Zone A | Zone B | Zone C | Zone D | Zone E | Zone F | Zone G" placeholder="Select zone" required />
+<TextArea label="Notes" placeholder="Any details about the request" rows="2" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<TextArea label="Message" placeholder="Type the public update to broadcast…" rows="3" required hint="Sent to all shelters, volunteers, and public channels" />
+<Checkboxes label="Channels" options="Public PA | SMS | Radio | Social Media" name="channels" />
+<Button>Broadcast now</Button>
+</Form>
+</Card>
+
+<Card title="Focus on a Zone">
+<Form name="focus-zone">
+<Radio label="Select zone" options="Zone A — North | Zone B — Riverside | Zone C — Hillside | Zone D — East | Zone E — South | Zone F — West | Zone G — Center" name="zone" required />
+<Button>Focus on zone</Button>
+</Form>
+</Card>
+
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Input label="Report title" placeholder="e.g. Zone B morning update" required />
+<Select label="Zone" options="Zone A | Zone B | Zone C | Zone D | Zone E | Zone F | Zone G | Overall" placeholder="Select zone" required />
+<TextArea label="Situation summary" placeholder="Describe the current situation, actions taken, and needs…" rows="4" required />
+<Input label="Reported by" placeholder="Your name" required />
+<Date label="Date" required />
+<Button>Submit report</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full incident log for Zone B
+- What resources are most critically needed right now?
+- Summarize the 48-hour weather outlook
+- List all volunteers available for reassignment
+</FollowUps>

@@ -1,0 +1,37 @@
+# Delivery Tracking
+
+<Columns>
+<Card title="Current Location" subtitle="Real-time status">
+<Stat label="Status" value="In Transit" tone="info" />
+<Stat label="Location" value="Distribution Center, Chicago, IL" />
+<Progress value="65" max="100" label="Delivery progress" tone="info" />
+<Details title="View full route" open="false">
+| Checkpoint | Time | Status |
+|---|---|---|
+| Order placed | Dec 10, 10:00 AM | ✅ Done |
+| Picked up | Dec 11, 8:30 AM | ✅ Done |
+| Chicago hub | Dec 12, 2:15 PM | 🔄 Current |
+| Out for delivery | Dec 13, 7:00 AM | ⏳ Pending |
+| Delivered | Dec 13, by 8:00 PM | ⏳ Pending |
+</Details>
+</Card>
+
+<Card title="Estimated Delivery" subtitle="Expected arrival">
+<Stat label="Date" value="Tomorrow, Dec 13" change="By 8:00 PM" tone="success" />
+<Stat label="Time window" value="12:00 PM – 8:00 PM" />
+<Progress value="80" max="100" label="Time remaining" tone="success" />
+<Callout tone="info" title="Delivery instructions">Leave at front door if no one answers</Callout>
+</Card>
+</Columns>
+
+<Card title="Report a Problem" subtitle="Let us know if something isn't right">
+<Form name="delivery-issue">
+<Select label="Issue type" name="issueType" placeholder="Select an issue" options="Package not delivered | Damaged package | Wrong address | Missing items | Driver behavior | Other" required="true" />
+<TextArea label="Description" name="description" placeholder="Please describe what happened..." rows="4" hint="Include any tracking numbers, photos, or reference details" required="true" />
+<Checkboxes label="Attachments" name="attachments" options="Photo of damage | Photo of label | Screenshot of tracking" hint="Optional: add supporting files" />
+<Button variant="primary">Submit Report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="warning" title="Need immediate help?">Call our 24/7 support line: 1-800-555-0199</Callout>

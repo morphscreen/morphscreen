@@ -1,0 +1,86 @@
+# Service Health
+
+<Badge tone="success">All systems operational</Badge>
+
+<Card title="Scope" subtitle="Narrow the dashboard to one region">
+<Form name="region-filter">
+<Select label="Region" options="All regions | us-east-1 | eu-west-1 | ap-southeast-2" name="region" value="All regions" />
+<Button variant="secondary">Apply filter</Button>
+</Form>
+</Card>
+
+<Card title="At a glance">
+<Columns>
+<Stat label="Uptime this quarter" value="99.96%" tone="success" change="target 99.95%" icon="shield-check" />
+<Stat label="Error rate now" value="0.42%" tone="warning" change="+0.07 vs 24h ago" icon="warning-circle" />
+<Stat label="Open incidents" value="5" tone="danger" icon="siren" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory — past 24 hours" subtitle="Rolling average per 2-hour window">
+<Chart type="line" x="Time" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 62 |
+| 04:00 | 35 | 60 |
+| 06:00 | 41 | 63 |
+| 08:00 | 67 | 68 |
+| 10:00 | 74 | 70 |
+| 12:00 | 71 | 71 |
+| 14:00 | 78 | 73 |
+| 16:00 | 69 | 72 |
+| 18:00 | 58 | 70 |
+| 20:00 | 49 | 67 |
+| 22:00 | 44 | 64 |
+</Chart>
+</Card>
+
+<Card title="Open incidents" subtitle="5 active — acknowledge one to take ownership">
+**INC-2043 — Checkout API 5xx spike**  
+<Badge tone="danger">Critical</Badge> Payments · us-east-1 · opened 2h ago  
+<Button variant="secondary" size="small" ask="Acknowledged INC-2043">Acknowledge</Button>
+
+---
+
+**INC-2042 — Elevated order lookup latency**  
+<Badge tone="warning">High</Badge> Orders · eu-west-1 · opened 4h ago  
+<Button variant="secondary" size="small" ask="Acknowledged INC-2042">Acknowledge</Button>
+
+---
+
+**INC-2041 — Search index stale in ap-southeast-2**  
+<Badge tone="warning">High</Badge> Search · ap-southeast-2 · opened 6h ago  
+<Button variant="secondary" size="small" ask="Acknowledged INC-2041">Acknowledge</Button>
+
+---
+
+**INC-2040 — Auth token refresh timeouts**  
+<Badge tone="info">Medium</Badge> Identity · us-east-1 · opened 9h ago  
+<Button variant="secondary" size="small" ask="Acknowledged INC-2040">Acknowledge</Button>
+
+---
+
+**INC-2039 — Degraded GraphQL response times**  
+<Badge tone="neutral">Low</Badge> API Gateway · all regions · opened 12h ago  
+<Button variant="secondary" size="small" ask="Acknowledged INC-2039">Acknowledge</Button>
+</Card>
+
+<Card title="Five slowest endpoints" subtitle="p95 latency over the last hour">
+<Chart type="horizontal" x="Endpoint" y="Latency (ms)">
+| Endpoint | Latency |
+|---|---|
+| POST /api/checkout | 824 |
+| GET /v1/orders | 612 |
+| POST /auth/token | 438 |
+| GET /api/search | 391 |
+| POST /graphql | 287 |
+</Chart>
+</Card>
+
+<Card title="Alert threshold" subtitle="Page the on-call when error rate stays above this for 5 minutes">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold (%) — currently 1.0%" min="0.1" max="5" step="0.1" value="1" name="error-rate-threshold" />
+<Button>Save threshold</Button>
+</Form>
+</Card>

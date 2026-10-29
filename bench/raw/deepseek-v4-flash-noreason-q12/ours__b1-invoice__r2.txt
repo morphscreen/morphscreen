@@ -1,0 +1,54 @@
+<Card title="Invoice #INV-2024-018" subtitle="Acme Design Studio → Northwind Traders">
+<Columns>
+<Stat label="Amount due" value="$1,250.00" tone="info" icon="currency-circle-dollar" note="USD" />
+<Stat label="Due date" value="Mar 28, 2025" tone="warning" icon="calendar" note="6 days left" />
+<Stat label="Invoice status" value="Pending" tone="warning" icon="hourglass" note="Issued Mar 14, 2025" />
+</Columns>
+</Card>
+
+<Card title="Payment details">
+<Columns>
+<div>
+<Badge tone="info">Pay via bank transfer</Badge>
+<p>**Bank:** Chase</p>
+<p>**Account:** 4839 2201 7756</p>
+<p>**Routing:** 021000021</p>
+<p>**Reference:** INV-2024-018</p>
+</div>
+<div>
+<Badge tone="info">Pay via card</Badge>
+<p>Visa, Mastercard, or Amex accepted.</p>
+<p>Secure checkout powered by Stripe.</p>
+<p>No processing fee for ACH transfers.</p>
+</div>
+</Columns>
+</Card>
+
+<Card title="Pay now">
+<Form name="invoice-payment">
+<Radio label="Payment method" options="Bank transfer (ACH) | Credit / debit card" value="Bank transfer (ACH)" />
+<Input label="Payment amount" type="number" placeholder="1250.00" value="1250.00" min="1" step="0.01" hint="Enter the amount you wish to pay" />
+<Button variant="primary" size="large">Pay $1,250.00 now</Button>
+<Button variant="secondary">Pay partial amount</Button>
+</Form>
+</Card>
+
+<Callout tone="success" title="Payment confirmation">
+Once you complete payment, a receipt will be emailed to you within a few minutes. Your invoice will be marked as paid automatically.
+</Callout>
+
+<Details title="View line items" open="false">
+| Description | Qty | Unit price | Amount |
+|---|---|---|---|
+| Brand identity design | 1 | $800.00 | $800.00 |
+| Logo variations | 3 | $100.00 | $300.00 |
+| Style guide PDF | 1 | $150.00 | $150.00 |
+| **Subtotal** | | | **$1,250.00** |
+| **Total (USD)** | | | **$1,250.00** |
+</Details>
+
+<FollowUps>
+- What payment methods do you accept?
+- Can I get a receipt after paying?
+- Is there a late fee if I miss the due date?
+</FollowUps>

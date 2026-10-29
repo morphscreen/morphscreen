@@ -1,0 +1,51 @@
+root = Card([header, statusRow, refreshNote, searchSection, transitSection, delayCallout, kpis, carrierSection, trendSection, flagSection])
+
+header = CardHeader("Logistics Coordinator Board", "Live overview of shipments, carriers, and costs")
+statusRow = Card([statusHeading, onTimeProgress], "sunk")
+statusHeading = Heading("This month", "h3")
+onTimeProgress = Progress(94, "On-time percentage: 94%")
+
+refreshNote = TextContent("Last refreshed: 5 minutes ago", "small")
+
+searchSection = Card([searchHeading, searchForm])
+searchHeading = Heading("Search by route", "h3")
+searchForm = Form("route-search", searchButtons, [originField, destinationField])
+originField = FormControl("Origin", originInput)
+originInput = Input("origin", "e.g. Shanghai")
+destinationField = FormControl("Destination", destinationInput)
+destinationInput = Input("destination", "e.g. Los Angeles")
+searchButtons = Buttons([searchBtn])
+searchBtn = Button("Search routes", null, "primary")
+
+transitSection = Card([transitHeading, transitTable])
+transitHeading = Heading("Shipments in transit", "h3")
+transitTable = Table([shipmentIdCol, originCol, destinationCol, etaCol, statusCol])
+shipmentIdCol = Col("Shipment", ["SH-1042", "SH-1043", "SH-1044", "SH-1045", "SH-1046"])
+originCol = Col("Origin", ["Shanghai", "Rotterdam", "Mumbai", "Hamburg", "Singapore"])
+destinationCol = Col("Destination", ["Los Angeles", "New York", "London", "Chicago", "Sydney"])
+etaCol = Col("ETA", ["Mar 12", "Mar 13", "Mar 14", "Mar 15", "Mar 16"])
+statusCol = Col("Status", ["On time", "Delayed", "On time", "Delayed", "On time"])
+
+delayCallout = Callout("warning", "Delayed shipments", "SH-1043 and SH-1045 are behind schedule. Review carrier coordination and reroute options.")
+
+kpis = Card([kpiHeading, kpiTable], "sunk")
+kpiHeading = Heading("Key metrics", "h3")
+kpiTable = Table([metricCol, valueCol])
+metricCol = Col("Metric", ["On-time %", "Average cost / shipment"])
+valueCol = Col("Value", ["94%", "$1,240"])
+
+carrierSection = Card([carrierHeading, carrierChart])
+carrierHeading = Heading("Volume split by carrier", "h3")
+carrierChart = PieChart(["Carrier A", "Carrier B", "Carrier C", "Carrier D"], [38, 27, 21, 14], "donut")
+
+trendSection = Card([trendHeading, trendChart])
+trendHeading = Heading("Weekly volume — past two months", "h3")
+trendChart = BarChart(["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8"], [volumeSeries], "grouped", "Week", "Shipments")
+volumeSeries = Series("Shipments", [210, 245, 230, 260, 275, 240, 290, 265])
+
+flagSection = Card([flagHeading, flagList])
+flagHeading = Heading("Flag a shipment", "h3")
+flagList = ListBlock([flagItem1, flagItem2, flagItem3])
+flagItem1 = ListItem("SH-1042", "Shanghai → Los Angeles", null, "Flag")
+flagItem2 = ListItem("SH-1043", "Rotterdam → New York", null, "Flag")
+flagItem3 = ListItem("SH-1044", "Mumbai → London", null, "Flag")

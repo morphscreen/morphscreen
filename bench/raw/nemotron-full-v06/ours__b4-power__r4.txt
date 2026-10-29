@@ -1,0 +1,131 @@
+# Power Network Operations Console
+
+<Card subtitle="National Grid Operations Center · Last updated: 2024-01-15 14:32:18 UTC">
+<Columns>
+<Select label="Focus Region" name="region" placeholder="All regions" options="All regions | North East | North West | Midlands | South East | South West | Scotland | Wales" value="All regions" />
+<Badge tone="info">LIVE</Badge>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Current Load" value="42.3 GW" change="+1.2% vs 1hr ago" tone="info" />
+<Stat label="Network Capacity" value="87.4%" change="12.6% headroom" tone="warning" />
+<Stat label="Current Price" value="£84.50/MWh" change="+£3.20 vs yesterday" tone="neutral" />
+<Stat label="Emissions Today" value="142 kt CO₂" change="-8% vs same day last year" tone="success" />
+</Columns>
+
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Real-time Generation Mix" x="Source" y="Output (GW)">
+| Source | Output (GW) |
+|---|---|
+| Gas (CCGT) | 14.2 |
+| Wind (Onshore) | 8.7 |
+| Wind (Offshore) | 6.3 |
+| Nuclear | 5.8 |
+| Solar | 4.1 |
+| Biomass | 2.1 |
+| Hydro | 1.4 |
+| Interconnectors | -0.3 |
+| Other | 0.0 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="area" title="Projected Demand vs Available Capacity" x="Time" y="GW">
+| Time | Forecast Demand (GW) | Available Capacity (GW) |
+|---|---|---|
+| 14:00 | 42.3 | 48.4 |
+| 15:00 | 43.1 | 48.4 |
+| 16:00 | 44.8 | 48.4 |
+| 17:00 | 46.2 | 48.4 |
+| 18:00 | 47.9 | 48.4 |
+| 19:00 | 48.1 | 48.4 |
+| 20:00 | 47.3 | 48.4 |
+| 21:00 | 45.8 | 48.4 |
+| 22:00 | 43.2 | 48.4 |
+| 23:00 | 40.1 | 48.4 |
+| 00:00 | 37.5 | 48.4 |
+| 01:00 | 35.2 | 48.4 |
+| 02:00 | 33.8 | 48.4 |
+| 03:00 | 32.9 | 48.4 |
+| 04:00 | 32.5 | 48.4 |
+| 05:00 | 32.8 | 48.4 |
+| 06:00 | 34.1 | 48.4 |
+| 07:00 | 37.6 | 48.4 |
+| 08:00 | 41.2 | 48.4 |
+| 09:00 | 43.8 | 48.4 |
+| 10:00 | 44.5 | 48.4 |
+| 11:00 | 44.2 | 48.4 |
+| 12:00 | 43.7 | 48.4 |
+| 13:00 | 43.0 | 48.4 |
+</Chart>
+</Card>
+
+<Card title="Generation Plants — Live Output & Status">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilisation | Status |
+|---|---|---|---|---|---|---|
+| Hinkley Point B | South West | Nuclear | 1,220 | 1,250 | 97.6% | <Badge tone="success">Online</Badge> |
+| Sizewell B | East | Nuclear | 1,198 | 1,198 | 100% | <Badge tone="success">Online</Badge> |
+| Drax Units 1-4 | Yorkshire | Biomass | 2,580 | 2,600 | 99.2% | <Badge tone="success">Online</Badge> |
+| West Burton A | Midlands | Gas (CCGT) | 1,280 | 1,300 | 98.5% | <Badge tone="success">Online</Badge> |
+| Pembroke | Wales | Gas (CCGT) | 2,180 | 2,200 | 99.1% | <Badge tone="success">Online</Badge> |
+| Hornsea 2 | North Sea | Wind (Offshore) | 1,386 | 1,386 | 100% | <Badge tone="success">Online</Badge> |
+| Dogger Bank A | North Sea | Wind (Offshore) | 1,200 | 1,200 | 100% | <Badge tone="success">Online</Badge> |
+| Viking Link | East | Interconnector | -300 | 1,400 | -21.4% | <Badge tone="info">Importing</Badge> |
+| IFA2 | South East | Interconnector | -150 | 1,000 | -15% | <Badge tone="info">Importing</Badge> |
+| Ratcliffe | Midlands | Coal | 0 | 2,000 | 0% | <Badge tone="neutral">Standby</Badge> |
+| Fiddlers Ferry | North West | Coal | 0 | 1,989 | 0% | <Badge tone="danger">Decommissioned</Badge> |
+| Dinorwig | Wales | Hydro (Pumped) | 1,400 | 1,728 | 81% | <Badge tone="success">Generating</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Outage ID | Region | Affected Customers | Cause | Started | Est. Restore | Status |
+|---|---|---|---|---|---|---|
+| OUT-2024-0142 | North East | 12,400 | Storm damage — 132kV tower | 2024-01-15 06:14 | 2024-01-15 22:00 | <Badge tone="warning">Crews on site</Badge> |
+| OUT-2024-0145 | Scotland | 8,200 | Cable fault — 33kV underground | 2024-01-15 09:32 | 2024-01-15 18:00 | <Badge tone="warning">Investigating</Badge> |
+| OUT-2024-0147 | South West | 3,100 | Planned maintenance overrun | 2024-01-15 11:00 | 2024-01-15 16:30 | <Badge tone="info">Restoring</Badge> |
+| OUT-2024-0139 | Wales | 15,600 | Ice accretion — 66kV lines | 2024-01-14 23:45 | 2024-01-16 08:00 | <Badge tone="danger">Major incident</Badge> |
+</Card>
+
+<Card title="Planned Maintenance — January 2024">
+| Asset | Region | Type | Window Start | Window End | Impact | Status |
+|---|---|---|---|---|---|---|
+| Hinkley Point B Unit 2 | South West | Nuclear refuelling | 2024-01-20 00:00 | 2024-02-10 23:59 | -625 MW | <Badge tone="info">Scheduled</Badge> |
+| West Burton A GT12 | Midlands | Gas turbine inspection | 2024-01-22 06:00 | 2024-01-24 18:00 | -320 MW | <Badge tone="info">Scheduled</Badge> |
+| Hornsea 2 Export Cable | North Sea | Subsea cable survey | 2024-01-25 00:00 | 2024-01-27 23:59 | -400 MW | <Badge tone="info">Scheduled</Badge> |
+| Dinorwig Unit 3 | Wales | Generator rewind | 2024-01-28 00:00 | 2024-03-15 23:59 | -288 MW | <Badge tone="info">Scheduled</Badge> |
+| National Grid 400kV Circuits | South East | Overhead line replacement | 2024-01-29 07:00 | 2024-02-02 19:00 | Constraint | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="⚠ 14:31 — Frequency Deviation">System frequency dropped to 49.78 Hz. Primary response activated. Monitoring for secondary response requirement.</Callout>
+<Callout tone="warning" title="⚠ 14:28 — Voltage Constraint">South East 400kV circuit loading at 92%. Reactive power support requested from Dinorwig.</Callout>
+<Callout tone="info" title="ℹ 14:15 — Interconnector Ramp">IFA2 import increasing from 200 MW to 500 MW over next 30 minutes per market coupling.</Callout>
+<Callout tone="success" title="✓ 13:52 — Outage Restored">OUT-2024-0141 (Midlands, 4,200 customers) restored at 13:51. Cause: vegetation contact on 11kV feeder.</Callout>
+<Callout tone="neutral" title="ℹ 13:30 — Market Notice">Balancing Mechanism: High price period 17:00-19:30. Expected bid volumes elevated.</Callout>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Issue a curtailment instruction to a generator or interconnector">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Asset" name="asset" placeholder="Select asset" options="Hornsea 2 (Offshore Wind) | Dogger Bank A (Offshore Wind) | West Burton A (Gas CCGT) | Pembroke (Gas CCGT) | Viking Link (Interconnector) | IFA2 (Interconnector) | Drax Units 1-4 (Biomass)" required="true" />
+<Input label="Curtailment Volume (MW)" name="volume" type="number" placeholder="e.g., 200" min="1" max="2000" step="10" required="true" hint="Must not exceed asset current output" />
+</Columns>
+<Columns>
+<Select label="Reason" name="reason" placeholder="Select reason" options="System frequency management | Voltage constraint | Thermal constraint | Stability constraint | Market instruction | Emergency" required="true" />
+<Date label="Effective From" name="effective_from" value="2024-01-15T14:35" required="true" />
+</Columns>
+<TextArea label="Instruction Notes" name="notes" placeholder="Operational rationale, reference to NESO instruction, etc." rows="3" required="true" />
+<Columns>
+<Button variant="danger" ask="true">Issue Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show frequency response events for the last hour
+- Export today's generation mix to CSV
+- View balancing mechanism bids for 17:00-19:30
+- Check reserve margins for tomorrow peak
+</FollowUps>

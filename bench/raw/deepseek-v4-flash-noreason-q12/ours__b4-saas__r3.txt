@@ -1,0 +1,118 @@
+# Admin Overview
+
+<Card title="Reporting period" subtitle="Adjust the time window for all metrics below">
+<Select label="Period" options="Last 30 days | Last 90 days | This quarter | This year" name="period" value="Last 90 days" hint="Applies to all charts and tables on this page" />
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="MRR" value="$84,320" change="+6.2%" tone="success" icon="chart-line" note="vs last month" />
+<Stat label="ARR" value="$1,011,840" change="+8.1%" tone="success" icon="chart-line" note="vs last quarter" />
+<Stat label="Churn (this month)" value="2.4%" change="-0.3 pts" tone="success" icon="trend-down" note="target <3%" />
+<Stat label="NPS" value="52" change="+4" tone="success" icon="heart" note="last survey: 2 days ago" />
+</Columns>
+</Card>
+
+<Card title="New signups — past 90 days">
+<Chart type="bar" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 38 |
+| W3 | 51 |
+| W4 | 47 |
+| W5 | 63 |
+| W6 | 58 |
+| W7 | 72 |
+| W8 | 69 |
+| W9 | 81 |
+| W10 | 77 |
+| W11 | 86 |
+| W12 | 94 |
+| W13 | 102 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 258 |
+| Enterprise | 87 |
+</Chart>
+</Card>
+
+<Card title="Largest customers" subtitle="Top 10 by MRR">
+| Customer | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Acme Corp | Enterprise | 240 | $12,400 |
+| Globex | Enterprise | 185 | $9,750 |
+| Initech | Enterprise | 132 | $7,200 |
+| Umbrella Inc | Enterprise | 110 | $6,800 |
+| Stark Industries | Growth | 95 | $4,900 |
+| Wayne Enterprises | Growth | 88 | $4,300 |
+| Hooli | Growth | 74 | $3,850 |
+| Pied Piper | Growth | 61 | $3,200 |
+| Vandelay Industries | Starter | 42 | $1,900 |
+| Dunder Mifflin | Starter | 38 | $1,600 |
+</Card>
+
+<Card title="Accounts at risk" subtitle="Flagged by usage and support signals">
+<Details title="Show risk reasons" open="false">
+| Customer | Risk reason |
+|---|---|
+| Initech | No login in 21 days; support ticket about billing errors |
+| Umbrella Inc | Seat count reduced by 30% last month |
+| Hooli | Competitor mention on account; feature usage down 45% |
+| Vandelay Industries | Contract renewal in 45 days; no response to renewal outreach |
+</Details>
+</Card>
+
+<Card title="Failed payments" subtitle="Retry or contact customer">
+| Customer | Amount | Failed on | Attempts |
+|---|---|---|---|
+| Acme Corp | $12,400 | Jan 3, 2025 | 2 |
+| Globex | $9,750 | Jan 4, 2025 | 1 |
+| Dunder Mifflin | $1,600 | Jan 5, 2025 | 3 |
+| Stark Industries | $4,900 | Jan 6, 2025 | 1 |
+
+<Button label="Retry Acme Corp">Retry Acme Corp</Button>
+<Button label="Retry Globex" variant="secondary">Retry Globex</Button>
+<Button label="Retry Dunder Mifflin" variant="secondary">Retry Dunder Mifflin</Button>
+<Button label="Retry Stark Industries" variant="secondary">Retry Stark Industries</Button>
+</Card>
+
+<Card title="Feature adoption" subtitle="% of active accounts using each new feature">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Insights | 68 |
+| API v2 | 54 |
+| Mobile app | 41 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization" subtitle="All plans combined — paid seats vs used seats">
+<Progress value="78" max="100" label="78% of paid seats are active" tone="info" />
+<Columns>
+<Stat label="Paid seats" value="1,240" icon="users" />
+<Stat label="Active seats" value="967" icon="user-check" />
+<Stat label="Unused" value="273" icon="user-minus" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Invite another admin" subtitle="They’ll get full access to this dashboard">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="teammate@company.com" required="true" hint="Must be an existing user or a new email" />
+<Select label="Role" options="Admin (full access) | Billing admin | Viewer" name="role" value="Admin (full access)" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed churn breakdown by plan
+- Which accounts have the highest unused seat counts?
+- Compare NPS by customer segment
+- List the 10 customers with the most failed payment attempts
+</FollowUps>

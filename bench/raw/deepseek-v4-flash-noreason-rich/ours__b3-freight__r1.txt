@@ -1,0 +1,88 @@
+# Logistics Coordinator Board
+
+<Card title="Live Shipments" subtitle="Tracking in real time — refreshed just now">
+<Callout tone="info" title="Last refreshed">All numbers below were last refreshed <strong>just now</strong> at 14:32 UTC.</Callout>
+
+<Input label="Search by route" placeholder="e.g. Shenzhen → Hamburg, or 'SIN-FRA'" name="route-search" hint="Matches origin, destination or both" />
+
+<Chart type="bar" x="Shipment" y="ETA (days remaining)">
+| Shipment | ETA (days) |
+|---|---|
+| SHP-2841 | 3 |
+| SHP-2842 | 5 |
+| SHP-2843 | 2 |
+| SHP-2844 | 1 |
+| SHP-2845 | 6 |
+</Chart>
+
+| ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-2841 | Shenzhen | Hamburg | Nov 18 | <Badge tone="success">On time</Badge> |
+| SHP-2842 | Rotterdam | Chicago | Nov 20 | <Badge tone="success">On time</Badge> |
+| SHP-2843 | Singapore | Frankfurt | Nov 17 | <Badge tone="danger">Delayed 2 days</Badge> |
+| SHP-2844 | Ho Chi Minh | Los Angeles | Nov 16 | <Badge tone="danger">Delayed 1 day</Badge> |
+| SHP-2845 | Mumbai | London | Nov 21 | <Badge tone="success">On time</Badge> |
+</Card>
+
+<Card title="Delayed Shipments" subtitle="Needs attention">
+<Callout tone="danger" title="2 shipments delayed">
+SHP-2843 (Singapore → Frankfurt) and SHP-2844 (Ho Chi Minh → Los Angeles) are behind schedule. Weather at transshipment hubs caused the slippage.
+</Callout>
+
+| ID | Route | Delay | Flag |
+|---|---|---|---|
+| SHP-2843 | Singapore → Frankfurt | 2 days | <Button variant="secondary" size="small" ask>Flag shipment</Button> |
+| SHP-2844 | Ho Chi Minh → Los Angeles | 1 day | <Button variant="secondary" size="small" ask>Flag shipment</Button> |
+</Card>
+
+<Card title="Monthly Performance">
+<Columns>
+<Stat label="On-time rate" value="94.2%" change="+1.8% vs Oct" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$1,847" change="-3.2% vs Oct" tone="info" icon="trend-down" />
+</Columns>
+
+<Progress value="94.2" max="100" label="On-time percentage" tone="success" />
+</Card>
+
+<Card title="Volume by Carrier" subtitle="Share of total shipments this month">
+<Chart type="donut" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 342 |
+| MSC | 268 |
+| CMA CGM | 151 |
+| Hapag-Lloyd | 89 |
+| Others | 62 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume" subtitle="Past two months">
+<Chart type="line" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W41 | 210 |
+| W42 | 235 |
+| W43 | 198 |
+| W44 | 262 |
+| W45 | 241 |
+| W46 | 287 |
+| W47 | 305 |
+| W48 | 322 |
+</Chart>
+</Card>
+
+<Card title="Flag a Shipment">
+<Form name="flag-shipment">
+<Select label="Shipment ID" placeholder="Choose shipment" options="SHP-2841 | SHP-2842 | SHP-2843 | SHP-2844 | SHP-2845" required />
+<Select label="Reason" placeholder="Select reason" options="Customs hold | Weather delay | Capacity issue | Documentation error | Other" required />
+<TextArea label="Notes" placeholder="Add context for the team…" rows="3" />
+<Button>Submit flag</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the most expensive routes this month
+- Which carriers have the worst delay rate?
+- Drill into SHP-2843's journey history
+- Compare on-time rate by region
+</FollowUps>

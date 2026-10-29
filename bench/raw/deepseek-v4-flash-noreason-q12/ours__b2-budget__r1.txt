@@ -1,0 +1,46 @@
+# Personal Budget Check
+
+<Card title="March 2025 Budget" subtitle="Monthly overview">
+<Columns>
+<Stat label="Budget" value="$3,200" icon="wallet" />
+<Stat label="Spent" value="$2,847" change="89% of budget" tone="warning" icon="trend-up" />
+<Stat label="Remaining" value="$353" change="11% left" tone="info" icon="piggy-bank" />
+<Stat label="Largest expense" value="$620" note="Rent" tone="danger" icon="warning" />
+</Columns>
+
+<Progress value="2847" max="3200" label="Budget used" tone="warning" />
+
+<Callout tone="warning" title="Largest expense highlighted">Your single largest expense this month is **Rent at $620**, which is 21.8% of your total spending.</Callout>
+</Card>
+
+<Card title="Spending by category">
+<Chart type="donut" title="March spending" x="Category" y="Amount ($)">
+| Category | Amount |
+|---|---|
+| Housing | 620 |
+| Groceries | 485 |
+| Transportation | 312 |
+| Dining out | 268 |
+| Utilities | 240 |
+| Entertainment | 175 |
+| Healthcare | 140 |
+| Other | 607 |
+</Chart>
+</Card>
+
+<Card title="Month selector">
+<Form name="month-selector">
+<Select label="Select month" name="month" options="January 2025 | February 2025 | March 2025" placeholder="March 2025" />
+<Button variant="secondary">View month</Button>
+</Form>
+</Card>
+
+<Card title="Add an expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run" required />
+<Select label="Category" name="category" options="Housing | Groceries | Transportation | Dining out | Utilities | Entertainment | Healthcare | Other" placeholder="Choose a category" required />
+<Input label="Amount ($)" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+<Date label="Date" name="date" required />
+<Button>Add expense</Button>
+</Form>
+</Card>

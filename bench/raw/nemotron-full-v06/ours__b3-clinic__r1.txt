@@ -1,0 +1,90 @@
+# Clinic Reception — Day View
+
+<Card title="Date Navigation" subtitle="Select a day to view appointments">
+<Form name="day-nav">
+<Date label="Appointment Date" name="appt-date" value="2025-01-15" />
+<Button variant="secondary" label="Today" />
+<Button variant="tertiary" label="Previous Day" />
+<Button variant="tertiary" label="Next Day" />
+</Form>
+</Card>
+
+<Columns>
+<Card title="Today's Overview">
+<Stat label="Patients Expected" value="24" change="+3 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Jan)" value="8.2%" change="-1.1% vs Dec" tone="success" />
+</Card>
+<Card title="Next Patient Called">
+<Callout tone="info" title="Exam Room 2 — Ready">
+**Maria Santos** • 10:15 AM
+<br />Reason: Follow-up • Dr. Chen
+<br />Checked in: 10:08 AM
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Today's Appointments" subtitle="24 scheduled • 3 checked in • 21 waiting">
+| Time | Patient | Provider | Room | Status | Action |
+|---|---|---|---|---|---|
+| 08:00 | James Wilson | Dr. Patel | Room 1 | ✅ Completed | — |
+| 08:30 | Sarah Chen | Dr. Patel | Room 1 | ✅ Completed | — |
+| 09:00 | Robert Kim | Dr. Chen | Room 2 | ✅ Completed | — |
+| 09:30 | Lisa Nguyen | Dr. Chen | Room 2 | ✅ Completed | — |
+| 10:00 | David Park | Dr. Patel | Room 1 | 🟢 Checked in | [View] |
+| 10:15 | **Maria Santos** | Dr. Chen | Room 2 | 🟢 **Called** | [View] |
+| 10:30 | Jennifer Lopez | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 10:45 | Michael Brown | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 11:00 | Amanda Taylor | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 11:15 | Christopher Lee | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 11:30 | Ashley Davis | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 13:00 | Matthew Wilson | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 13:15 | Emily Garcia | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 13:30 | Daniel Martinez | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 13:45 | Jessica Anderson | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 14:00 | Joshua Thomas | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 14:15 | Brittany Jackson | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 14:30 | Ryan White | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 14:45 | Samantha Harris | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 15:00 | Kevin Martin | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 15:15 | Lauren Thompson | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 15:30 | Brandon Garcia | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+| 15:45 | Nicole Martinez | Dr. Patel | Room 1 | ⏳ Waiting | [Check In] |
+| 16:00 | Tyler Robinson | Dr. Chen | Room 2 | ⏳ Waiting | [Check In] |
+</Card>
+
+<Columns>
+<Card title="Room Availability (Right Now)">
+<Progress label="Room 1 — Dr. Patel" value="65" max="100" tone="info" />
+<small>Next free: ~10:45 AM (Jennifer Lopez)</small>
+
+<Progress label="Room 2 — Dr. Chen" value="40" max="100" tone="success" />
+<small>**Currently FREE** — Maria Santos just called</small>
+
+<Progress label="Room 3 — Dr. Kim" value="0" max="100" tone="success" />
+<small>**FREE** — No appointments until 1:00 PM</small>
+
+<Progress label="Room 4 — Procedures" value="0" max="100" tone="success" />
+<small>**FREE** — Available for walk-ins</small>
+</Card>
+
+<Card title="Check In Patient">
+<Form name="check-in">
+<Select label="Select Patient" name="patient" placeholder="Choose from waiting list" options="Jennifer Lopez (10:30) | Michael Brown (10:45) | Amanda Taylor (11:00) | Christopher Lee (11:15) | Ashley Davis (11:30) | Matthew Wilson (13:00) | Emily Garcia (13:15) | Daniel Martinez (13:30) | Jessica Anderson (13:45) | Joshua Thomas (14:00) | Brittany Jackson (14:15) | Ryan White (14:30) | Samantha Harris (14:45) | Kevin Martin (15:00) | Lauren Thompson (15:15) | Brandon Garcia (15:30) | Nicole Martinez (15:45) | Tyler Robinson (16:00)" />
+<Select label="Assign Room" name="room" placeholder="Auto-assign or choose" options="Auto-assign (next available) | Room 1 — Dr. Patel | Room 2 — Dr. Chen | Room 3 — Dr. Kim | Room 4 — Procedures" />
+<Checkboxes label="Confirm Details" name="confirm" options="Patient verified ID | Insurance confirmed | Consent forms signed" value="" hint="Check all that apply" />
+<Button label="Check In Patient" />
+<Button variant="secondary" label="Mark No-Show" />
+<Button variant="tertiary" label="Reschedule" />
+</Form>
+</Card>
+</Columns>
+
+<Card title="Quick Actions">
+<Columns>
+<Button label="Call Next Patient" />
+<Button variant="secondary" label="View Waitlist" />
+<Button variant="secondary" label="Room Status Board" />
+<Button variant="tertiary" label="Print Schedule" />
+<Button variant="tertiary" label="Message Provider" />
+</Columns>
+</Card>

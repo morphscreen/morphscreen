@@ -1,0 +1,45 @@
+<Card title="Today's Overview">
+<Stat label! "Orders placed today" value! "125" change="↑5%" note="vs yesterday" tone="info" />
+<Stat label! "Revenue today" value! "$12,850" change="↑10%" note="vs yesterday" tone="success" />
+<Stat label! "Avg order value" value! "$102.40" change="↑2%" note="vs yesterday" tone="info" />
+</Card>
+
+<Card title="Recent Orders">
+<Chart type="horizontal" x="Order ID" y="Total" title="Recent Orders">
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| 1001 | Alice | $120 | Completed |
+| 1002 | Bob | $85 | Pending |
+| 1003 | Carol | $200 | Completed |
+| 1004 | Dave | $45 | Cancelled |
+| 1005 | Eve | $78 | Completed |
+</Chart>
+</Card>
+
+<Card title="Filter & Search">
+<Checkboxes label! options="Pending | Completed | Cancelled" name="status_filter" value="Pending | Completed | Cancelled" hint required=false />
+<Input label! name="customer_search" type="search" placeholder="Customer name" hint required=false />
+</Card>
+
+<Card title="Refund Rate">
+<Stat label! "Refund rate" value! "3.2%" change="↑0.5%" note="vs last month" tone="warning" />
+</Card>
+
+<Card title="Order Volume (Past 4 Weeks)">
+<Chart type="bar" x="Week" y="Orders" title="Weekly Order Volume">
+| Week | Orders |
+|---|---|
+| Week 1 | 80 |
+| Week 2 | 110 |
+| Week 3 | 95 |
+| Week 4 | 130 |
+</Chart>
+</Card>
+
+<Card title="Mark Order Fulfilled">
+<Form name="order-fulfill">
+<Select label! options="1001 | 1002 | 1003 | 1004 | 1005" name="order_id" placeholder="Select order" hint required=false />
+<Switch label! name="fulfilled" value="true" hint required=false />
+<Button variant="primary" href="#" label="Mark fulfilled">Mark fulfilled</Button>
+</Form>
+</Card>

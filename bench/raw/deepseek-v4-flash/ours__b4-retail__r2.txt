@@ -1,0 +1,114 @@
+# Daily Store Console
+
+<Callout tone="info" title="Midday summary">Sales are 12% ahead of this time last week. Foot traffic peaks at 6–7 PM. Three items are out of stock and can be reordered below.</Callout>
+
+<Card title="11. View a different store">
+<Form name="store-switcher">
+<Select label="Store" options="Downtown (current) | Harborview Mall | Airport Terminal" name="store" placeholder="Choose a store" />
+</Form>
+</Card>
+
+<Columns>
+<Card title="1. Sales today vs target">
+<Progress value="8420" max="9500" label="$8,420 of $9,500 target — 88.6%" tone="success" />
+<Columns>
+<Stat label="6. Average basket" value="$46.20" change="+3.8% vs last week" icon="shopping-cart" />
+<Stat label="7. Returns this week" value="12" note="$318 total · 2 fewer than last week" icon="rotate-left" />
+</Columns>
+</Card>
+<Card title="12. This week vs last week" subtitle="Sun shows today's figures so far">
+<Chart type="line" x="Day" y="Revenue (USD)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 8420 | 7440 |
+| Tue | 7780 | 7100 |
+| Wed | 8100 | 6900 |
+| Thu | 7590 | 7220 |
+| Fri | 8940 | 7680 |
+| Sat | 9720 | 8410 |
+| Sun | 6104 | 6520 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="2. Foot traffic through the day">
+<Chart type="area" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 28 |
+| 10 AM | 45 |
+| 11 AM | 62 |
+| 12 PM | 58 |
+| 1 PM | 71 |
+| 2 PM | 64 |
+| 3 PM | 55 |
+| 4 PM | 60 |
+| 5 PM | 83 |
+| 6 PM | 92 |
+| 7 PM | 74 |
+</Chart>
+</Card>
+<Card title="3. Best sellers today">
+| Product | Units |
+|---|---|
+| Espresso beans, 12 oz | 42 |
+| Ceramic mug | 35 |
+| Canvas tote | 27 |
+| Hand cream | 19 |
+| Tea sampler | 14 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="5. On shift today">
+<Columns>
+<Avatar name="Alex Rivera" subtitle="Store manager · 8a–4p" />
+<Avatar name="Priya Shah" subtitle="Cashier · 8a–2p" />
+<Avatar name="Dan Osei" subtitle="Cashier · 2p–10p" />
+<Avatar name="Mia Chen" subtitle="Stock · 10a–6p" />
+<Avatar name="Sam Whitfield" subtitle="Cashier · 4p–10p" />
+</Columns>
+</Card>
+<Card title="9. Registers">
+| Register | Status | Cashier |
+|---|---|---|
+| 1 | <Badge tone="success">Open</Badge> | Priya Shah |
+| 2 | <Badge tone="success">Open</Badge> | Dan Osei |
+| 3 | <Badge tone="warning">Paused</Badge> | Sam Whitfield |
+| 4 | <Badge tone="danger">Closed</Badge> | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="4. Items out of stock">
+| Item | SKU | Last sold |
+|---|---|---|
+| Cedar & Sage candle | SKU-2214 | 2 days ago |
+| Wool beanie, black | SKU-3308 | Yesterday |
+| Leather gloves, M | SKU-4412 | 3 days ago |
+</Card>
+<Card title="8. Running promotions">
+| Promotion | Sales | Progress vs goal |
+|---|---|---|
+| 20% off fall jackets | $2,410 | <Progress value="2410" max="3000" label="80%" tone="success" /> |
+| Buy 2 coffees, get 1 free | $1,175 | <Progress value="1175" max="2000" label="59%" tone="info" /> |
+| Gift set bundle | $860 | <Progress value="860" max="1500" label="57%" tone="warning" /> |
+</Card>
+</Columns>
+
+<Card title="10. Reorder an item">
+<Form name="reorder-item">
+<Select label="Item" options="Espresso beans, 12 oz | Ceramic mug | Canvas tote | Wool beanie, black | Cedar & Sage candle | Leather gloves, M" name="item" placeholder="Choose an item" required="true" />
+<Input label="Quantity" type="number" name="quantity" value="12" min="1" />
+<Callout tone="info" title="Delivery cutoff">Orders placed before 4 PM arrive tomorrow by 9 AM.</Callout>
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- View yesterday's daily console
+- See the full inventory report
+- Edit today's sales target
+</FollowUps>

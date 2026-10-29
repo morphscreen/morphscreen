@@ -1,0 +1,74 @@
+# Valley Health Clinic — Front Desk
+
+Receptionist day view · Thursday, March 13, 2025
+
+<Card title="Day at a glance">
+<Columns>
+<Stat label="Patients expected today" value="32" note="3 checked in · 8 remaining" icon="users" />
+<Stat label="No-show rate this month" value="8.4%" note="14 of 167 appointments" change="−3.7 pts vs Feb" tone="success" icon="chart-line" />
+<Stat label="Rooms free right now" value="3 of 5" note="Rooms 1, 3, 5 free" icon="map-pin" />
+</Columns>
+</Card>
+
+<Card title="Move to another day" subtitle="Load the schedule for a different date">
+<Form name="day-navigation">
+<Input label="Jump to date" type="date" name="target-date" value="2025-03-13" />
+<Button>Load day</Button>
+<Button variant="secondary" ask="Show the previous day, March 12">Previous day</Button>
+<Button variant="secondary" ask="Show the next day, March 14">Next day</Button>
+</Form>
+</Card>
+
+<Card title="Next patient to call" subtitle="Checked in and waiting at 8:47 AM">
+<Columns>
+<Avatar name="Maya Rodriguez" subtitle="Room 2 · Post-op follow-up" />
+- **Appointment time:** 9:00 AM
+- **Room:** 2 — currently free
+- **Reason:** Post-op follow-up
+- **Wait time:** 13 minutes
+</Columns>
+<Button>Call Maya to Room 2</Button>
+</Card>
+
+<Card title="Today's appointments" subtitle="Thursday, March 13 · 32 appointments scheduled">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 9:00 AM | Maya Rodriguez | 2 | <Badge tone="warning">Waiting</Badge> |
+| 9:30 AM | James Chen | 4 | <Badge tone="warning">Waiting</Badge> |
+| 10:00 AM | Aisha Bello | 1 | <Badge tone="info">Checked in</Badge> |
+| 10:30 AM | Liam O'Connor | 5 | <Badge tone="warning">Called</Badge> |
+| 11:00 AM | Sofia Marino | 3 | <Badge tone="warning">Waiting</Badge> |
+| 11:30 AM | Elias Novak | 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:00 PM | Noah Williams | 5 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:30 PM | Priya Sharma | 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:30 PM | Daniel Okafor | 4 | <Badge tone="neutral">Scheduled</Badge> |
+| 3:00 PM | Emma Fischer | 3 | <Badge tone="neutral">Scheduled</Badge> |
+
+<Callout tone="info" title="Check a patient in">
+Use the arrival desk form below to check in a patient from the waiting room, or select **Check in** next to any waiting patient above.
+</Callout>
+</Card>
+
+<Card title="Check in a patient" subtitle="Arrival desk">
+<Form name="patient-check-in">
+<Select label="Patient" placeholder="Select an arriving patient" options="Maya Rodriguez (9:00 AM) | James Chen (9:30 AM) | Sofia Marino (11:00 AM) | Elias Novak (11:30 AM) | Noah Williams (1:00 PM)" />
+<Button>Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Room status" subtitle="Live now">
+| Room | Status | Next booked |
+|---|---|---|
+| Room 1 | <Badge tone="success">Free</Badge> | 10:00 AM |
+| Room 2 | <Badge tone="danger">In use</Badge> | Maya Rodriguez — now |
+| Room 3 | <Badge tone="success">Free</Badge> | 11:00 AM |
+| Room 4 | <Badge tone="danger">In use</Badge> | James Chen — 9:30 AM |
+| Room 5 | <Badge tone="success">Free</Badge> | 1:00 PM |
+</Card>
+
+<FollowUps>
+- Show today's family medicine queue
+- Mark a patient as no-show
+- Pull up a patient's chart before their appointment
+- Send the room status list to the clinical team
+</FollowUps>

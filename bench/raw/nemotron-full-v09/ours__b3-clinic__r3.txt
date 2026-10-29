@@ -1,0 +1,108 @@
+# Clinic Reception — Today
+
+<Card title="Overview" subtitle="Tuesday, 22 January 2025">
+<Columns>
+<Stat label="Patients expected" value="18" change="+2 vs yesterday" tone="info" icon="users" />
+<Stat label="Checked in" value="6" change="of 18" tone="success" icon="check-circle" />
+<Stat label="No-show rate (Jan)" value="8.2%" change="−1.1% vs Dec" tone="success" icon="chart-line" />
+<Stat label="Rooms free now" value="3 of 5" change="Rooms 2, 4, 5" tone="neutral" icon="door" />
+</Columns>
+</Card>
+
+<Card title="Next patient called out">
+<Callout tone="info" title="Now serving">
+**Maria Santos** — 10:15 AM · Room 3 · Follow-up
+</Callout>
+<Button variant="secondary" size="small">Recall</Button>
+<Button variant="tertiary" size="small">Mark no-show</Button>
+</Card>
+
+<Card title="Today's appointments">
+<Tabs>
+<Tab title="All (18)">
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 08:30 | James Wilson | New patient | 1 | ✓ Checked in | — |
+| 09:00 | Aisha Khan | Follow-up | 2 | ✓ Checked in | — |
+| 09:30 | Robert Chen | Annual physical | 3 | ✓ Checked in | — |
+| 10:00 | Fatima Al-Rashid | Consultation | 1 | ✓ Checked in | — |
+| 10:15 | **Maria Santos** | Follow-up | 3 | **In room** | — |
+| 10:30 | David Okonkwo | Blood work | 2 | Waiting | <Button size="small">Check in</Button> |
+| 11:00 | Priya Sharma | Vaccination | 4 | Scheduled | <Button size="small">Check in</Button> |
+| 11:30 | Luis Moreno | Follow-up | 5 | Scheduled | <Button size="small">Check in</Button> |
+| 12:00 | Emma Thompson | New patient | 1 | Scheduled | <Button size="small">Check in</Button> |
+| 13:30 | Kenji Tanaka | Consultation | 2 | Scheduled | <Button size="small">Check in</Button> |
+| 14:00 | Sofia Rossi | Annual physical | 4 | Scheduled | <Button size="small">Check in</Button> |
+| 14:30 | Ahmed Hassan | Follow-up | 5 | Scheduled | <Button size="small">Check in</Button> |
+| 15:00 | Chloe Dubois | Blood work | 1 | Scheduled | <Button size="small">Check in</Button> |
+| 15:30 | Marco Silva | Vaccination | 3 | Scheduled | <Button size="small">Check in</Button> |
+| 16:00 | Nina Petrov | New patient | 2 | Scheduled | <Button size="small">Check in</Button> |
+| 16:30 | Oscar Lund | Consultation | 4 | Scheduled | <Button size="small">Check in</Button> |
+| 17:00 | Yara Mahmoud | Follow-up | 5 | Scheduled | <Button size="small">Check in</Button> |
+| 17:30 | Thomas Berg | Annual physical | 1 | Scheduled | <Button size="small">Check in</Button> |
+</Tab>
+<Tab title="Waiting (3)">
+| Time | Patient | Type | Room | Status |
+|---|---|---|---|---|
+| 10:30 | David Okonkwo | Blood work | 2 | Waiting |
+| 11:00 | Priya Sharma | Vaccination | 4 | Waiting |
+| 11:30 | Luis Moreno | Follow-up | 5 | Waiting |
+</Tab>
+<Tab title="Checked in (6)">
+| Time | Patient | Type | Room |
+|---|---|---|---|
+| 08:30 | James Wilson | New patient | 1 |
+| 09:00 | Aisha Khan | Follow-up | 2 |
+| 09:30 | Robert Chen | Annual physical | 3 |
+| 10:00 | Fatima Al-Rashid | Consultation | 1 |
+| 10:15 | Maria Santos | Follow-up | 3 |
+| 10:30 | David Okonkwo | Blood work | 2 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Room status">
+<Columns>
+<Card title="Room 1" subtitle="Occupied">
+**Fatima Al-Rashid** — Consultation<br/>Ends ~10:30
+</Card>
+<Card title="Room 2" subtitle="Occupied">
+**David Okonkwo** — Blood work<br/>Ends ~10:45
+</Card>
+<Card title="Room 3" subtitle="Occupied">
+**Maria Santos** — Follow-up<br/>Ends ~10:45
+</Card>
+<Card title="Room 4" subtitle="Free">
+Available now
+</Card>
+<Card title="Room 5" subtitle="Free">
+Available now
+</Card>
+</Columns>
+</Card>
+
+<Card title="Check in a patient">
+<Form name="check-in">
+<Select label="Patient" placeholder="Select patient" options="David Okonkwo (10:30) | Priya Sharma (11:00) | Luis Moreno (11:30) | Emma Thompson (12:00) | Kenji Tanaka (13:30) | Sofia Rossi (14:00) | Ahmed Hassan (14:30) | Chloe Dubois (15:00) | Marco Silva (15:30) | Nina Petrov (16:00) | Oscar Lund (16:30) | Yara Mahmoud (17:00) | Thomas Berg (17:30)" required="true" />
+<Select label="Room" placeholder="Assign room" options="Room 1 | Room 2 | Room 3 | Room 4 | Room 5" required="true" />
+<Checkboxes label="Notes" options="Walk-in | Late arrival | Insurance verified | Needs interpreter" />
+<Button>Check in</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate">
+<Columns>
+<Button variant="secondary" icon="chevron-left">← Yesterday</Button>
+<Button variant="primary" icon="calendar">Today</Button>
+<Button variant="secondary" icon="chevron-right">Tomorrow →</Button>
+<Button variant="tertiary" icon="calendar-dots">Pick a date…</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show no-show details for January
+- Open patient chart for Maria Santos
+- Print today's schedule
+- View room utilisation report
+</FollowUps>

@@ -1,0 +1,93 @@
+# Clinic Reception — Day View
+
+<Card subtitle="Monday, January 15, 2024">
+<Columns>
+<Date label="Select day" name="day-view-date" value="2024-01-15" />
+<Button variant="secondary" icon="chevron-left" ask>Previous day</Button>
+<Button variant="secondary" icon="chevron-right" ask>Next day</Button>
+<Button variant="primary" icon="calendar" ask>Today</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Patients expected" value="24" change="+3 vs last Mon" tone="info" icon="users" />
+<Stat label="No-show rate (Jan)" value="8.2%" change="−1.1% vs Dec" tone="success" icon="chart-line" />
+<Stat label="Checked in" value="7 / 24" change="5 in waiting" tone="neutral" icon="check-circle" />
+</Columns>
+
+<Card title="Next patient called">
+<Columns>
+<Avatar name="Maria Santos" src="find" subtitle="Room 2 • 10:15 AM" />
+<Callout tone="info" title="Now serving">
+<strong>Maria Santos</strong> — Annual wellness exam<br />
+Dr. Chen • Room 2 • Checked in 10:08 AM
+</Callout>
+</Columns>
+<Button variant="primary" icon="speaker-high" ask>Call next patient</Button>
+<Button variant="secondary" icon="user-plus" ask>Walk-in</Button>
+</Card>
+
+<Card title="Room status" subtitle="Real-time availability">
+<Columns>
+<Card title="Room 1 — Dr. Chen" subtitle="OCCUPIED">
+<Badge tone="warning">In use</Badge>
+<p style="margin:8px 0 0">Maria Santos • 10:15–10:45</p>
+<Button size="small" variant="secondary" ask>Release room</Button>
+</Card>
+<Card title="Room 2 — Dr. Patel" subtitle="OCCUPIED">
+<Badge tone="warning">In use</Badge>
+<p style="margin:8px 0 0">James Wilson • 10:30–11:00</p>
+<Button size="small" variant="secondary" ask>Release room</Button>
+</Card>
+<Card title="Room 3 — Dr. Kim" subtitle="FREE">
+<Badge tone="success">Available</Badge>
+<p style="margin:8px 0 0">Next: 11:00 AM</p>
+<Button size="small" variant="primary" ask>Assign patient</Button>
+</Card>
+<Card title="Room 4 — Procedures" subtitle="FREE">
+<Badge tone="success">Available</Badge>
+<p style="margin:8px 0 0">Open all morning</p>
+<Button size="small" variant="primary" ask>Assign patient</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Today's appointments" subtitle="24 scheduled • 7 checked in • 5 waiting • 12 upcoming">
+<Table>
+| Time | Patient | Type | Provider | Room | Status | Action |
+|---|---|---|---|---|---|---|
+| 8:00 AM | Robert Chen | Follow-up | Dr. Chen | 1 | ✅ Done | — |
+| 8:30 AM | Lisa Park | Annual exam | Dr. Patel | 2 | ✅ Done | — |
+| 9:00 AM | David Kim | Consultation | Dr. Kim | 3 | ✅ Done | — |
+| 9:30 AM | Sarah Johnson | Follow-up | Dr. Chen | 1 | ✅ Done | — |
+| 10:00 AM | **Maria Santos** | Annual exam | Dr. Chen | 2 | 🟢 In room | <Button size="small" variant="secondary" ask>Complete</Button> |
+| 10:15 AM | James Wilson | Skin check | Dr. Patel | 2 | 🟡 Waiting | <Button size="small" variant="primary" ask>Check in</Button> |
+| 10:30 AM | Anita Desai | Vaccination | Dr. Kim | 3 | 🟡 Waiting | <Button size="small" variant="primary" ask>Check in</Button> |
+| 10:45 AM | Michael Torres | Physical | Dr. Chen | 1 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 11:00 AM | Priya Nair | Consultation | Dr. Patel | 2 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 11:15 AM | Carlos Mendez | Follow-up | Dr. Kim | 3 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 11:30 AM | Emma Wilson | Annual exam | Dr. Chen | 1 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 1:00 PM | — | LUNCH BLOCK | — | — | — | — |
+| 2:00 PM | Hannah Lee | Dermatology | Dr. Patel | 2 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 2:30 PM | Omar Hassan | Procedure | Dr. Kim | 4 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 3:00 PM | Zoe Chen | Follow-up | Dr. Chen | 1 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 3:30 PM | Ryan Park | Annual exam | Dr. Patel | 2 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+| 4:00 PM | Maya Patel | Consultation | Dr. Kim | 3 | 🔵 Upcoming | <Button size="small" variant="primary" ask>Check in</Button> |
+</Table>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="primary" icon="user-plus" size="large" ask>Add walk-in</Button>
+<Button variant="secondary" icon="phone" size="large" ask>Call no-shows</Button>
+<Button variant="secondary" icon="printer" size="large" ask>Print schedule</Button>
+<Button variant="tertiary" icon="gear" size="large" ask>Settings</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show patient details for Maria Santos
+- View no-show report for January
+- Open room 3 schedule for tomorrow
+- Send reminder to 2:00 PM appointments
+</FollowUps>

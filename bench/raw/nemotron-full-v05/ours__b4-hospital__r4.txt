@@ -1,0 +1,211 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="Select operational date">
+<Columns>
+<Date label="Operational Date" name="op-date" value="2025-01-15" />
+<Select label="View Mode" name="view-mode" options="Today | Yesterday | Last 7 Days | Last 30 Days | Custom Range" value="Today" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Progress value="87" max="100" label="87% occupied (261/300 beds)" tone="warning" />
+<Stat label="Available Beds" value="39" change="-3 vs yesterday" tone="info" />
+<Stat label="ICU Occupancy" value="94%" change="+2%" tone="danger" />
+<Stat label="Med/Surg Occupancy" value="82%" change="-1%" tone="success" />
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="Avg Wait Time" value="47 min" change="+8 min vs 1hr ago" tone="danger" />
+<Stat label="Patients in Waiting" value="23" change="+5" tone="warning" />
+<Stat label="LWBS (Left Without Being Seen)" value="2" change="+1" tone="danger" />
+<Progress value="78" max="100" label="ER Capacity: 78% (31/40 beds)" tone="warning" />
+</Card>
+
+<Card title="Critical Patients">
+<Callout tone="danger" title="4 Critical Patients Requiring Attention">
+<strong>Room 302</strong> — STEMI, door-to-balloon 42 min, cath lab activated<br />
+<strong>ICU Bed 4</strong> — Septic shock, lactate 5.2, on norepinephrine<br />
+<strong>Room 218</strong> — Trauma activation, GCS 7, CT pending<br />
+<strong>Room 105</strong> — Acute stroke, last known well 2.5 hrs, tPA candidate
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" x="Day" y="Admissions" title="Daily Admissions">
+| Day | Admissions |
+|---|---|
+| Jan 1 | 42 |
+| Jan 2 | 38 |
+| Jan 3 | 45 |
+| Jan 4 | 51 |
+| Jan 5 | 48 |
+| Jan 6 | 44 |
+| Jan 7 | 39 |
+| Jan 8 | 41 |
+| Jan 9 | 47 |
+| Jan 10 | 53 |
+| Jan 11 | 46 |
+| Jan 12 | 40 |
+| Jan 13 | 43 |
+| Jan 14 | 49 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="horizontal" x="Count" y="Department" title="Current Census by Department">
+| Department | Count |
+|---|---|
+| Medicine | 68 |
+| Surgery | 42 |
+| ICU | 28 |
+| Cardiology | 24 |
+| Orthopedics | 19 |
+| Neurology | 16 |
+| Oncology | 14 |
+| Pediatrics | 12 |
+| OB/GYN | 10 |
+| Psychiatry | 8 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Staff on Shift">
+<Tabs>
+<Tab title="Day Shift (7A-7P)">
+| Role | Scheduled | Present | Gap |
+|---|---|---|---|
+| RN | 48 | 46 | -2 |
+| CNA | 24 | 23 | -1 |
+| Resident | 12 | 12 | 0 |
+| Attending | 8 | 8 | 0 |
+| Respiratory | 6 | 6 | 0 |
+| Pharmacy | 4 | 4 | 0 |
+| Case Mgmt | 5 | 5 | 0 |
+</Tab>
+<Tab title="Night Shift (7P-7A)">
+| Role | Scheduled | Present | Gap |
+|---|---|---|---|
+| RN | 36 | 35 | -1 |
+| CNA | 18 | 17 | -1 |
+| Resident | 10 | 10 | 0 |
+| Attending | 4 | 4 | 0 |
+| Respiratory | 4 | 4 | 0 |
+| Pharmacy | 2 | 2 | 0 |
+| Case Mgmt | 2 | 2 | 0 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Patients Ready for Discharge">
+<Stat label="Total Ready" value="18" change="+3 since 06:00" tone="success" />
+<Table>
+| Patient | Unit | LOS | Barrier | Est. DC Time |
+|---|---|---|---|---|
+| M. Chen | 3W | 4d | Transport | 10:00 |
+| R. Patel | ICU | 6d | Home health | 11:30 |
+| J. Williams | 2E | 3d | Pharmacy | 09:45 |
+| K. Johnson | 4N | 5d | Family | 14:00 |
+| A. Garcia | 3W | 2d | — | 08:30 |
+| S. Kim | 2E | 4d | Equipment | 12:00 |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Today's Operating Room Bookings">
+<Tabs>
+<Tab title="OR 1">
+<Steps>
+<Step title="07:00-11:30" status="done">Laparoscopic Whipple — Dr. Santos</Step>
+<Step title="11:30-13:00" status="current">Turnover / Setup</Step>
+<Step title="13:00-16:30" status="todo">R Lobectomy — Dr. Park</Step>
+<Step title="16:30-18:00" status="todo">Turnover</Step>
+<Step title="18:00-20:30" status="todo">Exploratory Lap — Dr. Chen (add-on)</Step>
+</Steps>
+</Tab>
+<Tab title="OR 2">
+<Steps>
+<Step title="07:30-10:30" status="done">THA — Dr. Rodriguez</Step>
+<Step title="10:30-12:00" status="done">TKA — Dr. Rodriguez</Step>
+<Step title="12:00-13:30" status="current">Turnover</Step>
+<Step title="13:30-17:00" status="todo">Complex Spine Fusion — Dr. Kim</Step>
+</Steps>
+</Tab>
+<Tab title="OR 3">
+<Steps>
+<Step title="08:00-12:00" status="done">CABG x3 — Dr. Ahmed</Step>
+<Step title="12:00-13:30" status="current">Turnover</Step>
+<Step title="13:30-16:00" status="todo">AVR — Dr. Ahmed</Step>
+<Step title="16:00-18:00" status="todo">Pacemaker — Dr. Lee</Step>
+</Steps>
+</Tab>
+<Tab title="OR 4-8">
+| OR | Case | Surgeon | Time | Status |
+|---|---|---|---|---|
+| 4 | Lap Chole | Dr. Brown | 09:00-11:00 | Done |
+| 4 | Appendectomy | Dr. Brown | 11:30-13:00 | In Progress |
+| 5 | Cataract x4 | Dr. Wu | 08:00-12:00 | Done |
+| 5 | Cataract x3 | Dr. Wu | 13:00-16:00 | Scheduled |
+| 6 | TURP | Dr. Davis | 10:00-12:00 | In Progress |
+| 7 | Hernia Repair | Dr. Taylor | 13:00-15:00 | Scheduled |
+| 8 | Available | — | — | Open |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Supplies Running Low">
+<Table>
+| Item | Current | Par Level | Days Left | Status |
+|---|---|---|---|---|
+| Normal Saline 1L | 42 | 120 | 2 | Critical |
+| Heparin 5000u | 18 | 60 | 3 | Critical |
+| Fentanyl 100mcg | 35 | 100 | 4 | Low |
+| Propofol 20mL | 28 | 80 | 3 | Critical |
+| Central Line Kits | 12 | 40 | 2 | Critical |
+| Chest Tube Trays | 8 | 25 | 3 | Low |
+| Blood Culture Bottles | 45 | 150 | 4 | Low |
+| N95 Masks (M) | 320 | 1000 | 5 | Low |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Input label="Reporter Name" name="reporter" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="type" options="Patient Safety | Medication Error | Fall | Equipment Failure | Security | Near Miss | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Severe Harm | Level 5 - Death" placeholder="Select severity" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room / Area" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened, who was involved, immediate actions taken..." rows="4" required="true" />
+<Input label="Patient MRN (if applicable)" name="mrn" placeholder="Medical Record Number" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" name="pt-name" placeholder="Last, First" required="true" />
+<Input label="MRN" name="pt-mrn" placeholder="Medical Record Number" required="true" />
+<Input label="Current Unit/Room" name="current-location" placeholder="e.g., 3W Room 312" required="true" />
+<Select label="Requesting Transfer To" name="destination" options="ICU | Step-Down | Med/Surg | Telemetry | Another Facility | ED | OR | PACU" placeholder="Select destination" required="true" />
+<Select label="Urgency" name="urgency" options="Emergent (within 30 min) | Urgent (within 2 hrs) | Routine (next available) | Scheduled (specific time)" placeholder="Select urgency" required="true" />
+<TextArea label="Clinical Reason for Transfer" name="reason" placeholder="Clinical justification, current stability, lines/drips, isolation precautions..." rows="3" required="true" />
+<Input label="Requesting Provider" name="provider" placeholder="Dr. Name / Contact" required="true" />
+<Button>Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me bed management projections for the next 48 hours
+- Generate staffing gap report for night shift
+- View supply reorder recommendations
+- Check OR utilization metrics for this week
+- Review discharge planning bottlenecks
+</FollowUps>

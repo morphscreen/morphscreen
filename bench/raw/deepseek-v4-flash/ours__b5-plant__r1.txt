@@ -1,0 +1,212 @@
+# Factory Floor Supervisor Console
+
+Live · Updated 12:34  
+<Badge tone="danger">2 active andon alerts</Badge> <Badge tone="warning">1 line down</Badge> <Badge tone="success">OEE within 2% of target</Badge>
+
+<Columns>
+<Stat label="OEE" value="78.4%" change="Target 80%" tone="info" icon="chart-line" />
+<Stat label="Units produced" value="4,382 / 4,800" change="91.3% of target" tone="info" icon="package" />
+<Stat label="Energy used today" value="8.42 MWh" change="Budget 9.1 MWh" tone="neutral" icon="lightning" />
+<Stat label="Safety incidents YTD" value="2" change="21 days since last" tone="warning" icon="shield-warning" />
+</Columns>
+
+<Card title="1. Overall equipment effectiveness">
+OEE is **78.4%** — just below the 80% target.
+
+<Progress value="78.4" max="100" label="OEE" tone="info" />
+
+| Component | Value |
+|---|---|
+| Availability | 92.1% |
+| Performance | 88.6% |
+| Quality | 96.0% |
+</Card>
+
+<Card title="2. Units produced vs today's target">
+<Stat label="Units produced" value="4,382" note="Target: 4,800" change="91.3% complete" tone="info" icon="package" />
+
+<Progress value="4382" max="4800" label="Target progress" tone="info" />
+</Card>
+
+<Card title="3 & 15. Production lines and line focus">
+<Tabs>
+<Tab title="All lines">
+| Line | Product | Rate (units/hr) | Status |
+|---|---|---|---|
+| Line A | Bracket A-12 | 342 | <Badge tone="success">Running</Badge> |
+| Line B | Panel B-7 | 308 | <Badge tone="success">Running</Badge> |
+| Line C | Bracket A-12 | 289 | <Badge tone="warning">Reduced speed</Badge> |
+| Line D | Coupler D-4 | 0 | <Badge tone="danger">Down — jam at station 4</Badge> |
+
+Use the tabs below to focus the whole console on one line.
+</Tab>
+<Tab title="Line A">
+<Columns>
+<Stat label="Rate" value="342 u/h" change="98% of ideal" tone="success" />
+<Stat label="Status" value="Running" tone="success" />
+</Columns>
+
+- Current shift: Shift A
+- Line OEE: 82.0%
+- Next planned changeover: 14:30
+</Tab>
+<Tab title="Line B">
+<Columns>
+<Stat label="Rate" value="308 u/h" change="91% of ideal" tone="info" />
+<Stat label="Status" value="Running" tone="success" />
+</Columns>
+
+- Current shift: Shift A
+- Line OEE: 79.4%
+- Note: Sensor drift warning auto-corrected at 12:09
+</Tab>
+<Tab title="Line C">
+<Columns>
+<Stat label="Rate" value="289 u/h" change="84% of ideal" tone="warning" />
+<Stat label="Status" value="Reduced speed" tone="warning" />
+</Columns>
+
+- Current shift: Shift A
+- Andon: Station 4 jam — WO-4380 open
+- Line OEE: 71.8%
+</Tab>
+<Tab title="Line D">
+<Columns>
+<Stat label="Rate" value="0 u/h" change="Down" tone="danger" />
+<Stat label="Status" value="Down — jam at station 4" tone="danger" />
+</Columns>
+
+- Current shift: Shift A
+- Andon: Station 2 material low — waiting on forklift
+- Est. restart: 13:20 after clearing jam
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="4. Defect rate — past month">
+<Chart type="line" x="Week" y="Defect rate (%)">
+| Week | Defect rate (%) |
+|---|---|
+| W1 | 1.8 |
+| W2 | 2.4 |
+| W3 | 2.1 |
+| W4 | 1.6 |
+</Chart>
+<Badge tone="success">Trend improving</Badge>
+</Card>
+
+<Card title="5. Downtime split by cause">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Machine breakdown | 210 |
+| Changeover | 145 |
+| Material shortage | 90 |
+| Quality checks | 45 |
+| Waiting on forklift | 38 |
+</Chart>
+Total downtime this week: **528 minutes**.
+</Card>
+
+<Card title="6. Machines due for maintenance">
+| Machine | Last serviced | Due date | Status |
+|---|---|---|---|
+| Press 03 | 12 Mar | 14 May | <Badge tone="danger">Overdue</Badge> |
+| CNC 07 | 05 Apr | 05 Jun | <Badge tone="warning">Due soon</Badge> |
+| Robot arm 11 | 20 Apr | 20 Jun | <Badge tone="neutral">Scheduled</Badge> |
+| Conveyor 02 | 02 May | 02 Aug | <Badge tone="success">On track</Badge> |
+</Card>
+
+<Card title="7. Stock levels — steel, resin and packaging">
+<Progress value="68" max="100" label="Steel — 68 t / 100 t" tone="info" />
+<Progress value="42" max="100" label="Resin — 4.2 t / 10 t" tone="warning" />
+<Progress value="85" max="100" label="Packaging — 8,500 / 10,000 units" tone="success" />
+
+- Steel reorder point: 30 t
+- Resin reorder point: 2 t — <Badge tone="warning">order soon</Badge>
+- Packaging reorder point: 1,000 units
+</Card>
+
+<Card title="8. Supplier deliveries due this week">
+| Day | Material | Supplier | ETA | Status |
+|---|---|---|---|---|
+| Mon | Steel coil | Nippon Steel | 06:00 | <Badge tone="success">Arrived</Badge> |
+| Tue | Resin pellets | BASF | 10:30 | <Badge tone="info">In transit</Badge> |
+| Wed | Packaging cartons | PackCo | 14:00 | <Badge tone="warning">Pending</Badge> |
+| Thu | Steel coil | Thyssen | 08:00 | <Badge tone="neutral">Scheduled</Badge> |
+| Fri | Resin pellets | BASF | 11:00 | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="9. Shift output comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A (06–14) | 1540 |
+| Shift B (14–22) | 1498 |
+| Shift C (22–06) | 1344 |
+</Chart>
+Target per shift: **1,600 units**. Shift A is closest at 96% of target.
+</Card>
+
+<Card title="10. Safety incidents">
+<Columns>
+<Stat label="Incidents this year" value="2" note="Target: 0" tone="warning" icon="shield-warning" />
+<Stat label="Days since last incident" value="21" note="Last: 12 Apr — minor cut (Line C)" tone="success" icon="calendar" />
+</Columns>
+
+| Date | Incident | Location |
+|---|---|---|
+| 12 Apr | Minor cut, operator | Line C |
+| 19 Feb | Slip on floor | Resin storage |
+</Card>
+
+<Card title="11. Batches on quality hold">
+| Batch | Product | Line | Reason | Hold since |
+|---|---|---|---|---|
+| B-2210 | Bracket A-12 | C | Dimensional deviation | Today 09:40 |
+| B-2208 | Coupler D-4 | D | Material traceability | Today 08:15 |
+| B-2195 | Panel B-7 | B | Visual defect | Yesterday 16:20 |
+</Card>
+
+<Card title="12. Energy use today">
+<Stat label="Energy used" value="8.42 MWh" change="Budget: 9.1 MWh" tone="info" icon="lightning" />
+
+<Progress value="8420" max="9100" label="Daily energy budget" tone="info" />
+
+- Current draw: **612 kW**
+- Peak today: **703 kW** at 11:30
+</Card>
+
+<Card title="13. Open work orders">
+| WO # | Machine / Line | Task | Priority | Due |
+|---|---|---|---|---|
+| WO-4381 | CNC 07 | Replace spindle | <Badge tone="danger">Critical</Badge> | Today 15:00 |
+| WO-4380 | Line C / Station 4 | Clear jam and reset | <Badge tone="danger">Critical</Badge> | Now |
+| WO-4378 | Press 03 | Hydraulic oil change | <Badge tone="warning">High</Badge> | Tomorrow |
+| WO-4375 | Line A | Sensor calibration | <Badge tone="info">Normal</Badge> | Fri |
+| WO-4372 | Robot arm 11 | Grease bearings | <Badge tone="neutral">Low</Badge> | Next Mon |
+</Card>
+
+<Card title="14. Schedule maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" placeholder="Select machine" options="Press 03 | CNC 07 | Robot arm 11 | Conveyor 02 | Solder station 09" />
+<Date label="Date" name="maintenance-date" hint="First available slot: 20 May" />
+<TextArea label="Work notes" placeholder="e.g. replace belt, check alignment" rows="2" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="16. Live andon alerts">
+<Badge tone="danger">LIVE</Badge> Updated 12:34
+
+<Callout tone="danger" title="Line C · Station 4 — Jam detected">Open 2 min · WO-4380 · Clearing in progress</Callout>
+
+<Callout tone="warning" title="Line D · Station 2 — Material low">Open 11 min · Awaiting forklift</Callout>
+
+<Callout tone="info" title="Line B · Station 7 — Sensor drift warning">Open 25 min · Auto-corrected, no action needed</Callout>
+</Card>
+
+<Card title="17. Export shift report">
+<Button icon="download">Export shift report</Button>
+<Button variant="secondary">Email to team</Button>
+</Card>

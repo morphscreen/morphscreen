@@ -1,0 +1,107 @@
+root = Card([header, regionSelector, topMetrics, generationSplit, plantsTable, outagesTable, demandForecast, maintenanceList, liveAlerts, curtailmentAction], "card", "column", "l")
+
+header = CardHeader("Power Network Operations Console", "Real-time grid monitoring and control")
+
+regionSelector = Select("region", regionOptions, "Select region", null, null, "medium")
+regionOptions = [optNational, optNorth, optSouth, optEast, optWest, optCentral]
+optNational = SelectItem("national", "National (All Regions)")
+optNorth = SelectItem("north", "North Region")
+optSouth = SelectItem("south", "South Region")
+optEast = SelectItem("east", "East Region")
+optWest = SelectItem("west", "West Region")
+optCentral = SelectItem("central", "Central Region")
+
+topMetrics = Card([loadCard, capacityCard, priceCard, emissionsCard], "clear", "row", "m", "stretch", "start", true)
+
+loadCard = Card([loadLabel, loadValue, loadUnit], "card", "column", "s", "center")
+loadLabel = TextContent("Current Load", "small")
+loadValue = TextContent("42,850", "large-heavy")
+loadUnit = TextContent("MW", "small")
+
+capacityCard = Card([capLabel, capProgress, capDetail], "card", "column", "s", "center")
+capLabel = TextContent("Network Capacity", "small")
+capProgress = Progress(78, "78% utilized")
+capDetail = TextContent("55,000 MW total capacity", "small")
+
+priceCard = Card([priceLabel, priceValue, priceUnit], "card", "column", "s", "center")
+priceLabel = TextContent("Current Price", "small")
+priceValue = TextContent("$87.50", "large-heavy")
+priceUnit = TextContent("/ MWh", "small")
+
+emissionsCard = Card([emisLabel, emisValue, emisUnit], "card", "column", "s", "center")
+emisLabel = TextContent("Emissions Today", "small")
+emisValue = TextContent("18,420", "large-heavy")
+emisUnit = TextContent("tCO₂", "small")
+
+generationSplit = Card([genHeader, genChart], "card", "column", "m")
+genHeader = CardHeader("Generation Mix by Source", "Real-time output breakdown")
+genChart = PieChart(genLabels, genValues, "donut", "circular")
+genLabels = ["Natural Gas", "Coal", "Nuclear", "Wind", "Solar", "Hydro", "Other"]
+genValues = [14200, 9800, 8500, 5600, 3200, 1550, 0]
+
+plantsTable = Card([plantsHeader, plantsTableComp], "card", "column", "m")
+plantsHeader = CardHeader("Power Plants", "Output and operational status")
+plantsTableComp = Table([plantNameCol, plantRegionCol, plantSourceCol, plantOutputCol, plantStatusCol, plantAvailCol])
+plantNameCol = Col("Plant", ["Northridge CCGT", "Blackrock Coal", "Apex Nuclear", "Windridge Farm", "Solaris PV", "Hydropeak Dam", "Eastwind Offshore", "Gaspeak Peaker"])
+plantRegionCol = Col("Region", ["North", "Central", "South", "East", "South", "West", "East", "North"])
+plantSourceCol = Col("Source", ["Natural Gas", "Coal", "Nuclear", "Wind", "Solar", "Hydro", "Wind", "Natural Gas"])
+plantOutputCol = Col("Output (MW)", [4200, 3800, 2800, 1200, 850, 1550, 900, 400])
+plantStatusCol = Col("Status", ["Online", "Online", "Online", "Online", "Online", "Online", "Curtailed", "Standby"])
+plantAvailCol = Col("Availability", ["98%", "92%", "99%", "85%", "78%", "95%", "60%", "100%"])
+
+outagesTable = Card([outagesHeader, outagesTableComp], "card", "column", "m")
+outagesHeader = CardHeader("Active Outages", "Affected regions and estimated restoration")
+outagesTableComp = Table([outageIdCol, outageRegionCol, outageCauseCol, outageCustomersCol, outageSinceCol, outageEtrCol])
+outageIdCol = Col("Outage ID", ["OUT-2024-03421", "OUT-2024-03418", "OUT-2024-03415", "OUT-2024-03412"])
+outageRegionCol = Col("Region", ["North Metro", "East Industrial", "South Rural", "Central Suburban"])
+outageCauseCol = Col("Cause", ["Equipment Failure", "Storm Damage", "Vegetation", "Planned Maintenance"])
+outageCustomersCol = Col("Customers", [12400, 8700, 3200, 1500])
+outageSinceCol = Col("Since", ["06:14", "04:52", "02:18", "22:30 (yesterday)"])
+outageEtrCol = Col("Est. Restoration", ["10:30", "14:00", "12:00", "Completed"])
+
+demandForecast = Card([forecastHeader, forecastChart], "card", "column", "m")
+forecastHeader = CardHeader("24-Hour Demand Forecast", "Projected load vs. available capacity")
+forecastChart = AreaChart(forecastLabels, [forecastDemandSeries, forecastCapacitySeries], "natural", "Hour", "MW")
+forecastLabels = ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00", "22:00", "00:00"]
+forecastDemandSeries = Series("Forecast Demand", [38200, 36800, 35500, 37200, 41500, 44800, 46200, 47100, 46800, 48500, 45200, 41800, 39500])
+forecastCapacitySeries = Col("Capacity", [55000, 55000, 55000, 55000, 55000, 55000, 55000, 55000, 55000, 55000, 55000, 55000, 55000])
+
+maintenanceList = Card([maintHeader, maintItems], "card", "column", "m")
+maintHeader = CardHeader("Planned Maintenance This Month", "Scheduled outages and capacity reductions")
+maintItems = ListBlock([maint1, maint2, maint3, maint4, maint5], "number")
+maint1 = ListItem("Blackrock Coal Unit 3", "Major overhaul — 1,200 MW offline", null, "Oct 14–28")
+maint2 = ListItem("Northridge CCGT HRSG Inspection", "Combined cycle offline — 800 MW offline", null, "Oct 20–22")
+maint3 = ListItem("Hydropeak Dam Spillway Works", "Reduced hydro output — 400 MW reduction", null, "Oct 25–Nov 5")
+maint4 = ListItem("Eastwind Offshore Cable Repair", "Full farm offline — 900 MW offline", null, "Oct 28–Nov 10")
+maint5 = ListItem("Transmission Corridor 400kV", "Line 2 reconductoring — import constraint", null, "Oct 30–Nov 15")
+
+liveAlerts = Card([alertsHeader, alert1, alert2, alert3, alert4], "card", "column", "m")
+alertsHeader = CardHeader("Live Alerts", "Real-time system notifications")
+alert1 = Callout("warning", "Frequency Deviation", "System frequency at 59.92 Hz — primary response activated")
+alert2 = Callout("info", "Wind Forecast Update", "East region wind output revised down 15% for 14:00–18:00 window")
+alert3 = Callout("error", "Transmission Constraint", "Path 45 (North→Central) at 98% thermal limit — redispatch initiated")
+alert4 = Callout("success", "Restoration Complete", "OUT-2024-03409 (West Rural) — 2,100 customers restored at 07:42")
+
+curtailmentAction = Card([curtailHeader, curtailForm], "card", "column", "m")
+curtailHeader = CardHeader("Order Curtailment", "Reduce output from selected generators")
+curtailForm = Form("curtailment-order", curtailButtons, [curtailPlant, curtailAmount, curtailReason])
+curtailPlant = FormControl("Generator", curtailPlantSelect, "Select plant to curtail")
+curtailPlantSelect = Select("plant", curtailPlantOptions, "Choose generator", null, null, "medium")
+curtailPlantOptions = [curtailOpt1, curtailOpt2, curtailOpt3, curtailOpt4, curtailOpt5]
+curtailOpt1 = SelectItem("windridge", "Windridge Farm (Wind, 1,200 MW)")
+curtailOpt2 = SelectItem("eastwind", "Eastwind Offshore (Wind, 900 MW)")
+curtailOpt3 = SelectItem("solaris", "Solaris PV (Solar, 850 MW)")
+curtailOpt4 = SelectItem("gaspeak", "Gaspeak Peaker (Gas, 400 MW)")
+curtailOpt5 = SelectItem("northridge", "Northridge CCGT (Gas, 4,200 MW)")
+curtailAmount = FormControl("Curtailment (MW)", curtailAmountInput, "Amount to reduce — cannot exceed current output")
+curtailAmountInput = Input("curtail_mw", "Enter MW", "number")
+curtailReason = FormControl("Reason", curtailReasonSelect, "Operational justification")
+curtailReasonSelect = Select("reason", curtailReasonOptions, "Select reason", null, null, "medium")
+curtailReasonOptions = [reasonOpt1, reasonOpt2, reasonOpt3, reasonOpt4]
+reasonOpt1 = SelectItem("constraint", "Transmission Constraint")
+reasonOpt2 = SelectItem("frequency", "Frequency Response")
+reasonOpt3 = SelectItem("voltage", "Voltage Support")
+reasonOpt4 = SelectItem("economic", "Economic Dispatch")
+curtailButtons = Buttons([curtailSubmit, curtailCancel])
+curtailSubmit = Button("Issue Curtailment Order", null, "primary", "destructive")
+curtailCancel = Button("Cancel", null, "tertiary")

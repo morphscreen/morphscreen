@@ -1,0 +1,85 @@
+# Service health — on-call view
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.94%" change="+0.03% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error rate now" value="1.8%" change="+0.6% in last hour" tone="warning" icon="warning" />
+<Stat label="Open incidents" value="4" note="1 critical, 1 high, 2 low" tone="danger" icon="warning" />
+<Stat label="p99 latency" value="842 ms" change="+120 ms" tone="warning" icon="chart-line" />
+</Columns>
+
+<Card title="Region filter" subtitle="Narrow every panel below to a single region">
+<Radio label="Scope" options="All regions | us-east-1 | eu-west-1 | ap-southeast-1" name="region" value="All regions" />
+</Card>
+
+<Card title="CPU and memory, past 24 hours" subtitle="Percent of allocated capacity, 4-hour buckets">
+<Chart type="line" x="Time" y="Percent">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 41 | 58 |
+| 04:00 | 33 | 56 |
+| 08:00 | 62 | 71 |
+| 12:00 | 78 | 84 |
+| 16:00 | 71 | 80 |
+| 20:00 | 54 | 66 |
+| 24:00 | 47 | 61 |
+</Chart>
+</Card>
+
+<Callout tone="danger" title="Error rate above SLO">1.8% over the last 15 minutes; the 1.0% budget for this window is exhausted.</Callout>
+
+<Card title="Open incidents">
+<Steps>
+<Step title="INC-4821 — Checkout API 5xx spike" status="current" subtitle="Critical · us-east-1 · 22 min open">
+Error rate 6.2% on `/v2/checkout`. Suspected bad deploy at 14:05.
+<Button ask="Acknowledge INC-4821">Acknowledge</Button>
+<Button variant="secondary" ask="Show the timeline for INC-4821">Timeline</Button>
+</Step>
+<Step title="INC-4819 — Database replica lag" status="todo" subtitle="High · eu-west-1 · 1 h 10 min open">
+Replica lag 42 s and climbing. Reads are being served stale.
+<Button ask="Acknowledge INC-4819">Acknowledge</Button>
+<Button variant="secondary" ask="Show the timeline for INC-4819">Timeline</Button>
+</Step>
+<Step title="INC-4814 — Elevated queue depth" status="todo" subtitle="Low · ap-southeast-1 · 3 h open">
+Job queue depth 3x normal; workers are keeping up.
+<Button ask="Acknowledge INC-4814">Acknowledge</Button>
+</Step>
+<Step title="INC-4810 — Certificate expiry warning" status="todo" subtitle="Low · global · 6 h open">
+Edge cert expires in 11 days. No customer impact yet.
+<Button ask="Acknowledge INC-4810">Acknowledge</Button>
+</Step>
+</Steps>
+</Card>
+
+<Card title="Five slowest endpoints" subtitle="p95 latency, last 15 minutes">
+| Endpoint | p95 latency |
+|---|---|
+| POST /v2/checkout | 2,410 ms |
+| GET /v2/orders/search | 1,880 ms |
+| POST /v2/payments/authorize | 1,320 ms |
+| GET /v2/catalog/items | 960 ms |
+| GET /v2/users/{id}/history | 845 ms |
+</Card>
+
+<Card title="Alert threshold" subtitle="Applies to the selected region">
+<Form name="alert-threshold">
+<Select label="Metric" options="Error rate | p95 latency | CPU usage | Memory usage" name="metric" value="Error rate" />
+<Slider label="Fire when above" min="0" max="100" step="1" value="1" name="threshold" unit="%" />
+<Select label="Severity" options="Low | High | Critical" name="severity" value="High" />
+<Switch label="Page the on-call engineer" name="page" value=true hint="Off means it only posts to #alerts" />
+<Button>Save threshold</Button>
+<Button variant="tertiary">Reset to default</Button>
+</Form>
+</Card>
+
+<Details title="Runbook shortcuts">
+- **5xx spike after deploy** — roll back the last release, then confirm error rate for 10 minutes.
+- **Replica lag** — shift reads to the primary for the affected service.
+- **Queue depth** — scale workers by 2x and watch drain rate.
+</Details>
+
+<FollowUps>
+- What changed in the last deploy for INC-4821?
+- Show error rate for eu-west-1 only
+- Which endpoints got slower since yesterday?
+- Who is on call right now?
+</FollowUps>

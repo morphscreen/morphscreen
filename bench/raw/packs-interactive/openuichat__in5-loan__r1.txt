@@ -1,0 +1,15 @@
+root = Card([header, form, results])
+header = CardHeader("Mortgage Calculator", "Adjust the sliders to see your estimated monthly payment and total interest")
+form = Form("mortgage-calculator", formButtons, [fcLoanAmount, fcInterestRate, fcLoanTerm])
+formButtons = Buttons([btnCalculate], "row")
+btnCalculate = Button("Recalculate", { type: "continue_conversation", context: "Recalculate mortgage with current slider values" }, "primary")
+fcLoanAmount = FormControl("Loan Amount", loanAmountSlider, "Principal loan amount in USD")
+loanAmountSlider = Slider("loan-amount", "continuous", 50000, 1000000, 10000, [300000], "Loan Amount ($)")
+fcInterestRate = FormControl("Interest Rate", interestRateSlider, "Annual percentage rate (APR)")
+interestRateSlider = Slider("interest-rate", "continuous", 1, 15, 0.1, [6.5], "Interest Rate (%)")
+fcLoanTerm = FormControl("Loan Term", loanTermSlider, "Repayment period in years")
+loanTermSlider = Slider("loan-term", "discrete", 5, 30, 1, [30], "Loan Term (years)")
+results = EntityList([rowPayment, rowInterest, rowTotal], "default", { left: "Summary", right: "Amount", rightVariant: "number" })
+rowPayment = { left: "Monthly Payment", right: "$1,896.20", rightVariant: "number" }
+rowInterest = { left: "Total Interest Paid", right: "$382,632.00", rightVariant: "number" }
+rowTotal = { left: "Total of All Payments", right: "$682,632.00", rightVariant: "number" }

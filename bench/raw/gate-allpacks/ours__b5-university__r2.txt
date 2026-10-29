@@ -1,0 +1,245 @@
+# University Administrator Dashboard
+
+<Callout tone="info" title="Fall 2024 Term">Data as of October 15, 2024 · <Badge tone="success">Live</Badge></Callout>
+
+<Card title="Department Focus">
+<Combobox label="Select Department" placeholder="All Departments" options="All Departments | Computer Science | Biology | Business | Engineering | Psychology | Mathematics | Physics | Chemistry | English | History" name="dept-filter" />
+</Card>
+
+<Columns>
+<Card title="Total Enrollment (5-Year Trend)">
+<Chart type="line" x="Year" y="Students" title="Enrollment History">
+| Year | Undergraduate | Graduate | Total |
+|---|---|---|---|
+| 2020 | 18,240 | 4,120 | 22,360 |
+| 2021 | 18,580 | 4,350 | 22,930 |
+| 2022 | 19,100 | 4,580 | 23,680 |
+| 2023 | 19,650 | 4,720 | 24,370 |
+| 2024 | 20,180 | 4,890 | 25,070 |
+</Chart>
+<Stat label="YoY Change" value="+2.9%" change="+700 students" tone="success" />
+</Card>
+
+<Card title="Applications by Program (Fall 2024)">
+<Chart type="bar" x="Program" y="Applications" title="Applications Received">
+| Program | Applications |
+|---|---|
+| Computer Science | 3,842 |
+| Business | 2,918 |
+| Engineering | 2,674 |
+| Biology | 2,156 |
+| Psychology | 1,892 |
+| Mathematics | 987 |
+| Physics | 654 |
+| Chemistry | 589 |
+| English | 523 |
+| History | 412 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Acceptance Rate">
+<Gauge label="Overall Acceptance Rate" value="34.2" min="0" max="100" unit="%" tone="info" />
+<Stat label="Early Decision" value="48.7%" tone="neutral" />
+<Stat label="Regular Decision" value="31.5%" tone="neutral" />
+<Stat label="Transfer" value="42.3%" tone="neutral" />
+</Card>
+
+<Card title="Tuition Revenue (FY 2024)">
+<Stat label="Projected Annual" value="$184.7M" change="+$12.3M vs FY23" tone="success" />
+<Stat label="Collected YTD" value="$142.1M" change="77% of target" tone="info" />
+<Stat label="Outstanding" value="$42.6M" tone="warning" />
+<Progress value="142.1" max="184.7" label="Collection Progress" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Course Offering Capacity">
+<Chart type="horizontal" x="Fill Rate" y="Course" title="How Full Each Course Is">
+| Course | Fill Rate |
+|---|---|
+| CS 101: Intro to Programming | 98 |
+| BIO 200: Genetics | 94 |
+| BUS 301: Financial Accounting | 91 |
+| ENG 101: Composition | 89 |
+| PSY 100: General Psychology | 87 |
+| MATH 210: Calculus II | 84 |
+| PHYS 150: Mechanics | 81 |
+| CHEM 120: General Chemistry | 78 |
+| HIST 101: World History | 72 |
+| ENGL 220: American Literature | 68 |
+</Chart>
+<Stat label="Avg Fill Rate" value="84.2%" tone="info" />
+<Stat label="Over-enrolled" value="12 courses" tone="warning" />
+<Stat label="Under 50% capacity" value="8 courses" tone="danger" />
+</Card>
+
+<Card title="Teaching Load by Faculty">
+<Chart type="bar" x="Faculty" y="Credit Hours" title="Assigned Teaching Credits (Fall 2024)">
+| Faculty | Credit Hours |
+|---|---|
+| Dr. Chen (CS) | 12 |
+| Prof. Martinez (BIO) | 11 |
+| Dr. Thompson (ENG) | 10 |
+| Prof. Williams (BUS) | 10 |
+| Dr. Anderson (PSY) | 9 |
+| Prof. Garcia (MATH) | 9 |
+| Dr. Lee (PHYS) | 8 |
+| Prof. Brown (CHEM) | 8 |
+| Dr. Davis (HIST) | 7 |
+| Prof. Wilson (ENGL) | 7 |
+</Chart>
+<Stat label="Avg Load" value="9.1 credits" tone="neutral" />
+<Stat label="Overloaded (>12)" value="1 faculty" tone="warning" />
+<Stat label="Underloaded (<6)" value="3 faculty" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Students at Academic Risk">
+<Stat label="On Probation" value="1,247" change="+89 vs last term" tone="danger" />
+<Stat label="Warning Status" value="2,183" change="+156 vs last term" tone="warning" />
+<Stat label="First-Year at Risk" value="412" tone="danger" />
+<Progress value="1247" max="25070" label="Probation Rate: 5.0%" tone="danger" />
+<Progress value="3430" max="25070" label="Total At-Risk: 13.7%" tone="warning" />
+<Callout tone="danger" title="Intervention Needed">412 first-year students flagged by early-alert system. 68% have not met with advisors.</Callout>
+</Card>
+
+<Card title="Scholarship Budget Utilization">
+<Stat label="Total Budget" value="$28.4M" tone="neutral" />
+<Stat label="Awarded YTD" value="$24.1M" tone="info" />
+<Stat label="Remaining" value="$4.3M" tone="success" />
+<Progress value="24.1" max="28.4" label="Budget Used: 84.9%" tone="success" />
+<Stat label="Merit Awards" value="$14.2M" tone="neutral" />
+<Stat label="Need-Based" value="$9.9M" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Housing Occupancy">
+<Stat label="Overall Occupancy" value="94.2%" tone="success" />
+<Stat label="Undergraduate" value="96.8%" tone="success" />
+<Stat label="Graduate" value="87.4%" tone="warning" />
+<Stat label="Waitlist" value="387 students" tone="danger" />
+<Chart type="bar" x="Residence Hall" y="Occupancy %" title="By Building">
+| Residence Hall | Occupancy % |
+|---|---|
+| North Hall | 98 |
+| South Hall | 97 |
+| East Campus | 95 |
+| West Campus | 94 |
+| Graduate Village | 87 |
+| Family Housing | 82 |
+</Chart>
+</Card>
+
+<Card title="Campus Events This Month">
+<Calendar month="2024-10" title="October 2024 Events">
+| Date | Event |
+|---|---|
+| 2024-10-01 | Fall Career Fair |
+| 2024-10-05 | Homecoming Weekend |
+| 2024-10-08 | Board of Trustees Meeting |
+| 2024-10-12 | Research Symposium |
+| 2024-10-15 | Mid-term Grades Due |
+| 2024-10-18 | Parents Weekend |
+| 2024-10-22 | Diversity & Inclusion Summit |
+| 2024-10-25 | Graduate Open House |
+| 2024-10-28 | Registration Opens (Spring) |
+| 2024-10-31 | Halloween Campus Festival |
+</Calendar>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Alumni Giving (4-Year Trend)">
+<Chart type="line" x="Year" y="Donations (USD)" title="Annual Alumni Contributions">
+| Year | Donors | Total Given | Avg Gift |
+|---|---|---|---|
+| 2021 | 12,840 | $8.2M | $638 |
+| 2022 | 13,210 | $9.1M | $689 |
+| 2023 | 13,680 | $10.4M | $760 |
+| 2024 | 14,120 | $11.8M | $836 |
+</Chart>
+<Stat label="Participation Rate" value="18.4%" change="+1.2pp" tone="success" />
+<Stat label="Major Gifts (>$100K)" value="47" tone="info" />
+</Card>
+
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted" title="Fall 2024 Waitlist">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 287 |
+| Engineering | 194 |
+| Business | 156 |
+| Biology | 112 |
+| Psychology | 89 |
+| Nursing | 78 |
+| Mathematics | 45 |
+| Physics | 32 |
+| Chemistry | 28 |
+| Education | 21 |
+</Chart>
+<Stat label="Total Waitlisted" value="1,042" tone="warning" />
+<Stat label="Converted Last Year" value="34%" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Semester Comparison: Fall 2024 vs Fall 2023">
+<Compare title="Key Metrics">
+| Metric | Fall 2023 | Fall 2024 | Change |
+|---|---|---|---|
+| Total Enrollment | 24,370 | 25,070 | +2.9% |
+| First-Year Class | 5,890 | 6,120 | +3.9% |
+| Applications | 18,420 | 19,870 | +7.9% |
+| Acceptance Rate | 36.1% | 34.2% | -1.9pp |
+| Yield Rate | 28.4% | 29.1% | +0.7pp |
+| Avg SAT | 1340 | 1355 | +15 |
+| Retention (Y1-Y2) | 91.2% | 91.8% | +0.6pp |
+| 4-Year Grad Rate | 72.4% | 73.1% | +0.7pp |
+| Tuition Revenue | $172.4M | $184.7M | +7.1% |
+| Housing Occupancy | 92.8% | 94.2% | +1.4pp |
+</Compare>
+</Card>
+
+<Card title="Approve New Course">
+<Form name="course-approval">
+<Input label="Course Code" placeholder="e.g., CS 485" name="course-code" required="true" />
+<Input label="Course Title" placeholder="e.g., Machine Learning Systems" name="course-title" required="true" />
+<Select label="Department" options="Computer Science | Biology | Business | Engineering | Psychology | Mathematics | Physics | Chemistry | English | History" name="course-dept" required="true" />
+<Select label="Level" options="100 - Introductory | 200 - Intermediate | 300 - Advanced | 400 - Senior Seminar | 500 - Graduate" name="course-level" required="true" />
+<Stepper label="Credit Hours" name="credits" min="1" max="6" step="1" value="3" />
+<Select label="Instruction Mode" options="In-Person | Hybrid | Online Synchronous | Online Asynchronous" name="course-mode" required="true" />
+<TextArea label="Course Description" placeholder="Brief description for catalog..." name="course-desc" rows="3" required="true" />
+<TextArea label="Prerequisites" placeholder="e.g., CS 240, MATH 210" name="prereqs" rows="2" />
+<Select label="Proposed Instructor" options="Dr. Chen | Prof. Martinez | Dr. Thompson | Prof. Williams | Dr. Anderson | Prof. Garcia | Dr. Lee | Prof. Brown | Dr. Davis | Prof. Wilson | New Hire Needed" name="instructor" required="true" />
+<Date label="Effective Term" name="effective-term" required="true" />
+<Button variant="primary">Submit for Approval</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Recipient Group" options="All Students | First-Year Students | Students on Probation | Seniors (Graduating) | Computer Science Majors | Engineering Majors | Business Majors | Housing Residents | Commuter Students | International Students | Student Athletes | Scholarship Recipients | Waitlisted Applicants" name="recipient-group" required="true" />
+<Input label="Subject" placeholder="Important: Spring Registration Deadline" name="subject" required="true" />
+<TextArea label="Message" placeholder="Compose your message..." name="message-body" rows="6" required="true" hint="Supports basic formatting. Personalization tokens: {{first_name}}, {{major}}, {{advisor_name}}" />
+<Checkboxes label="Delivery Channels" options="Email | SMS | In-App Notification | Portal Announcement" name="channels" value="Email | In-App Notification" />
+<Radio label="Priority" options="Normal | High (Urgent) | Emergency" name="priority" value="Normal" />
+<Date label="Schedule Send" name="schedule-date" hint="Leave blank to send immediately" />
+<Button variant="primary">Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed enrollment by major
+- Export waitlist report to CSV
+- View faculty workload details
+- Check scholarship award status
+- Review housing waitlist management
+</FollowUps>

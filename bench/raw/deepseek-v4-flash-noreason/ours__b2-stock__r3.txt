@@ -1,0 +1,60 @@
+# Low-Inventory Warning
+
+<Callout tone="warning" title="Action needed">
+  <strong>6 items</strong> are at or below the reorder threshold. Reorder soon to avoid stockouts.
+</Callout>
+
+<Card title="Inventory Overview">
+<Columns>
+  <Stat label="Low-stock items" value="6" tone="warning" icon="warning" />
+  <Stat label="Total units remaining" value="142" tone="info" icon="boxes" />
+  <Stat label="Reorder threshold" value="20 units" tone="neutral" icon="sliders" />
+  <Stat label="Pending orders" value="3" tone="success" icon="truck" />
+</Columns>
+</Card>
+
+<Card title="Low-Stock Items" subtitle="Items at or below the 20‑unit reorder threshold">
+<Input label="Search items" name="search" placeholder="Search by SKU or name…" type="search" />
+
+| Item | SKU | Remaining Units | Threshold | Status | Action |
+|---|---|---|---|---|---|
+| Organic Green Tea (500g) | TEA-GRN-500 | **12** | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary" label="Reorder" ask="Reorder Organic Green Tea (500g) – 12 units left">Reorder</Button> |
+| Arabica Coffee Beans (1kg) | COF-ARB-1K | **18** | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary" label="Reorder" ask="Reorder Arabica Coffee Beans (1kg) – 18 units left">Reorder</Button> |
+| Paper Tea Filters (100ct) | FIL-PPR-100 | **5** | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary" label="Reorder" ask="Reorder Paper Tea Filters (100ct) – 5 units left">Reorder</Button> |
+| Honey (340g) | HON-ORG-340 | **15** | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary" label="Reorder" ask="Reorder Honey (340g) – 15 units left">Reorder</Button> |
+| Ceramic Mug (12oz) | MUG-CRM-12 | **9** | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary" label="Reorder" ask="Reorder Ceramic Mug (12oz) – 9 units left">Reorder</Button> |
+| Bamboo Stirrers (200ct) | STI-BMB-200 | **20** | 20 | <Badge tone="warning">At threshold</Badge> | <Button size="small" variant="primary" label="Reorder" ask="Reorder Bamboo Stirrers (200ct) – 20 units left">Reorder</Button> |
+
+<Callout tone="info" title="How reordering works">
+  Click <strong>Reorder</strong> on any line to create a purchase order for that item. A confirmation prompt will appear before the order is placed.
+</Callout>
+</Card>
+
+<Card title="Threshold Settings" subtitle="What triggers the low‑inventory warning">
+<Form name="threshold-settings">
+<Slider label="Reorder threshold (units)" min="5" max="50" step="5" value="20" name="threshold" />
+<Callout tone="neutral" title="Current setting">
+  Items are flagged when remaining units drop to <strong>20</strong> or below. Adjust the slider to change the global threshold.
+</Callout>
+<Button variant="secondary">Save threshold</Button>
+</Form>
+</Card>
+
+<Card title="Reorder Summary">
+<Chart type="bar" title="Units needed to reach threshold" x="Item" y="Units">
+| Item | Units needed |
+|---|---|
+| Organic Green Tea | 8 |
+| Arabica Coffee Beans | 2 |
+| Paper Tea Filters | 15 |
+| Honey | 5 |
+| Ceramic Mug | 11 |
+| Bamboo Stirrers | 0 |
+</Chart>
+</Card>
+
+<FollowUps>
+- How do I set a different threshold for a single item?
+- Show me suggested reorder quantities based on sales velocity.
+- Which items are most at risk of running out this week?
+</FollowUps>

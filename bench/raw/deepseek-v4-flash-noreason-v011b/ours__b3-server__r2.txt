@@ -1,0 +1,75 @@
+# Service Health Dashboard
+
+<Badge tone="warning">On-call engineer view</Badge>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02%" icon="chart-line" tone="success" />
+<Stat label="Error rate (now)" value="0.08%" change="-0.03%" icon="warning-circle" tone="warning" />
+<Stat label="Open incidents" value="3" icon="warning" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="CPU & Memory usage (past 24 hours)">
+<Chart type="line" x="Time" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 68 |
+| 04:00 | 38 | 65 |
+| 08:00 | 55 | 72 |
+| 12:00 | 63 | 78 |
+| 16:00 | 71 | 81 |
+| 20:00 | 58 | 74 |
+| Now | 52 | 70 |
+</Chart>
+</Card>
+
+<Card title="Open incidents">
+| Incident | Severity | Region | Status |
+|---|---|---|---|
+| API timeout spike | <Badge tone="danger">Critical</Badge> | us-east-1 | Unacknowledged |
+| Elevated 5xx errors | <Badge tone="warning">Major</Badge> | eu-west-2 | Unacknowledged |
+| Latency degradation | <Badge tone="info">Minor</Badge> | ap-southeast-1 | Acknowledged |
+
+<Button variant="primary" ask="Acknowledge incident API timeout spike">Acknowledge API timeout spike</Button>
+<Button variant="secondary" ask="Acknowledge incident Elevated 5xx errors">Acknowledge 5xx errors</Button>
+<Button variant="tertiary" ask="Acknowledge incident Latency degradation">Acknowledge latency degradation</Button>
+</Card>
+
+<Card title="Filter by region">
+<Select label="Region" options="All regions | us-east-1 | eu-west-2 | ap-southeast-1 | us-west-2" name="region" placeholder="Choose a region" />
+<Button variant="secondary" ask="Narrow to us-east-1">Apply region filter</Button>
+</Card>
+
+<Card title="Five slowest endpoints">
+| Endpoint | P99 latency | Region |
+|---|---|---|
+| /api/orders/batch | 3.2 s | us-east-1 |
+| /api/users/import | 2.8 s | eu-west-2 |
+| /api/reports/daily | 1.9 s | ap-southeast-1 |
+| /api/payments/refund | 1.5 s | us-east-1 |
+| /api/search/products | 1.2 s | eu-west-2 |
+</Card>
+
+<Card title="Alert threshold configuration">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="1" name="error-threshold" unit="%" />
+<Slider label="CPU threshold" min="50" max="95" step="5" value="80" name="cpu-threshold" unit="%" />
+<Slider label="Memory threshold" min="50" max="95" step="5" value="85" name="memory-threshold" unit="%" />
+<Slider label="P99 latency threshold" min="500" max="5000" step="100" value="2000" name="latency-threshold" unit="ms" />
+<Button variant="primary">Save thresholds</Button>
+</Form>
+</Card>
+
+<Card title="Quick actions">
+<Button variant="secondary" ask="Acknowledge all unacknowledged incidents">Acknowledge all incidents</Button>
+<Button variant="tertiary" ask="Show incident timeline">Incident timeline</Button>
+<Button variant="tertiary" ask="Run health check">Run health check</Button>
+</Card>
+
+<FollowUps>
+- What's the root cause of the API timeout spike?
+- Show me the error rate trend for the last hour
+- Compare CPU usage across regions
+- Create a new incident
+</FollowUps>

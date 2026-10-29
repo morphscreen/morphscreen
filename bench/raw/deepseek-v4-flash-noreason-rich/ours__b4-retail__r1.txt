@@ -1,0 +1,126 @@
+# Store Manager's Daily Console
+
+<Columns>
+<Stat label="Sales Today" value="$8,420" change="+12.4% vs target" tone="success" icon="trend-up" />
+<Stat label="Avg Basket Size" value="$46.80" change="+$2.10 vs last week" tone="success" icon="shopping-cart" />
+<Stat label="Returns This Week" value="14" change="−3 vs last week" tone="info" icon="arrow-counter-clockwise" />
+<Stat label="Foot Traffic" value="1,284" change="+8.2% vs last week" tone="info" icon="users" />
+</Columns>
+
+<Card title="Sales Today vs Target">
+<Progress value="8420" max="10000" label="$8,420 of $10,000 target" tone="success" />
+<Callout tone="info" title="Pace">On track to hit target by 7:15 PM if current pace holds.</Callout>
+</Card>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 42 |
+| 9 AM | 88 |
+| 10 AM | 124 |
+| 11 AM | 156 |
+| 12 PM | 189 |
+| 1 PM | 172 |
+| 2 PM | 148 |
+| 3 PM | 135 |
+| 4 PM | 142 |
+| 5 PM | 168 |
+| 6 PM | 120 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best Sellers Today">
+<Table>
+| Item | Units |
+|---|---|
+| Organic Almond Milk | 48 |
+| Sourdough Loaf | 36 |
+| Free-Range Eggs (doz) | 29 |
+| Cold Brew 12-pack | 24 |
+| Greek Yogurt 32oz | 21 |
+</Table>
+<Button>View full report</Button>
+</Card>
+
+<Card title="Out of Stock">
+<Badge tone="danger">3 items need attention</Badge>
+<Table>
+| Item | Last Ordered |
+|---|---|
+| Sparkling Water (case) | 3 days ago |
+| Cheddar Cheese 8oz | 5 days ago |
+| Paper Towels (2-pack) | 2 days ago |
+</Table>
+<Button variant="primary">Reorder now</Button>
+</Card>
+</Columns>
+
+<Card title="Registers">
+<Columns>
+<Stat label="Register 1" value="Open" tone="success" icon="check-circle" />
+<Stat label="Register 2" value="Open" tone="success" icon="check-circle" />
+<Stat label="Register 3" value="Closed" tone="warning" icon="x-circle" />
+<Stat label="Register 4" value="Open" tone="success" icon="check-circle" />
+</Columns>
+<Callout tone="warning" title="Register 3">Closed for maintenance — estimated back online by 3:00 PM.</Callout>
+</Card>
+
+<Card title="Promotions Performance">
+<Chart type="bar" title="Units sold per promo" x="Promo" y="Units">
+| Promotion | Units |
+|---|---|
+| Buy 1 Get 1 — Chips | 156 |
+| 20% Off Produce | 98 |
+| $5 Off $30 | 214 |
+| 2-for-1 Ice Cream | 87 |
+</Chart>
+<Callout tone="success" title="Best performer">$5 Off $30 is driving 31% of all transactions today.</Callout>
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="line" x="Day" y="Revenue ($)">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 6200 | 5800 |
+| Tue | 7400 | 6900 |
+| Wed | 7100 | 6800 |
+| Thu | 8420 | 7500 |
+| Fri | 0 | 8100 |
+| Sat | 0 | 9200 |
+| Sun | 0 | 6400 |
+</Chart>
+<Callout tone="info" title="Comparison">Week-to-date sales are up **9.1%** over the same period last week.</Callout>
+</Card>
+
+<Card title="Today's Shift">
+<Columns>
+<Avatar name="Maria Lopez" src subtitle="Manager — 8 AM to 4 PM" />
+<Avatar name="James Chen" src subtitle="Cashier — 8 AM to 2 PM" />
+<Avatar name="Priya Patel" src subtitle="Stock — 9 AM to 5 PM" />
+<Avatar name="Sam Okafor" src subtitle="Cashier — 2 PM to 10 PM" />
+<Avatar name="Emily Ross" src subtitle="Bakery — 6 AM to 2 PM" />
+</Columns>
+<Button>View full schedule</Button>
+</Card>
+
+<Card title="Reorder Item">
+<Form name="reorder">
+<Select label="Item" placeholder="Select item" options="Sparkling Water (case) | Cheddar Cheese 8oz | Paper Towels (2-pack) | Organic Almond Milk | Sourdough Loaf" required="true" />
+<Slider label="Quantity" min="1" max="50" step="1" value="10" name="qty" unit="units" />
+<Button>Submit reorder</Button>
+</Form>
+</Card>
+
+<Card title="Select Store">
+<Select label="Store" name="store" options="Downtown (Current) | Uptown | Riverside | Airport | Mall of America" />
+<Button variant="secondary">Switch store</Button>
+</Card>
+
+<FollowUps>
+- Show today's top-selling category
+- Which items are trending up this week?
+- Who's available for overtime tomorrow?
+- What's the return reason breakdown?
+</FollowUps>

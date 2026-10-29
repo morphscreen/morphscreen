@@ -1,0 +1,93 @@
+# Hub operations desk
+
+KATL — Atlanta Hartsfield–Jackson · Shift A · 14:30 UTC
+
+<Card title="Look at a different hub">
+<Form name="hub-selector">
+<Select label="Hub" options="KATL — Atlanta (current) | KORD — Chicago O'Hare | KDFW — Dallas/Fort Worth | KDEN — Denver | KSEA — Seattle-Tacoma" name="hub" placeholder="Choose a hub" />
+<Button>Load hub</Button>
+</Form>
+</Card>
+
+<Card title="Today at a glance" subtitle="All times local (UTC-4)">
+<Columns>
+<Stat label="On-time performance" value="87.4%" change="+2.1 pts" note="vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Cancellations today" value="3" note="1 weather · 1 mechanical · 1 crew" tone="danger" icon="x-circle" />
+<Stat label="Avg turnaround time" value="38 min" note="fleet average · target ≤ 45 min" tone="success" icon="clock" />
+</Columns>
+<Progress value="82" max="100" label="Average passenger load — 82% of seats filled (target 85%)" tone="info" />
+</Card>
+
+<Card title="Flights and status" subtitle="Live view · 10 tracked movements · sorted by departure time">
+<Callout tone="warning" title="Delayed flights called out">4 flights delayed: UA 1188 (crew late) · AA 7 (late inbound) · DL 2201 (weather) · KL 662 (maintenance).</Callout>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 402 | ATL → ORD | B12 | <Badge tone="success">On time</Badge> |
+| UA 1188 | ATL → SFO | C34 | <Badge tone="warning">Delayed — crew</Badge> |
+| AA 7 | ATL → LAX | D18 | <Badge tone="warning">Delayed — inbound</Badge> |
+| WN 731 | ATL → DAL | A9 | <Badge tone="success">On time</Badge> |
+| DL 2201 | ATL → JFK | B7 | <Badge tone="warning">Delayed — weather</Badge> |
+| DL 555 | ATL → MIA | B15 | <Badge tone="info">Boarding</Badge> |
+| AC 851 | ATL → YYZ | D2 | <Badge tone="info">Deplaning</Badge> |
+| BA 226 | ATL → LHR | E12 | <Badge tone="success">Departed</Badge> |
+| KL 662 | ATL → AMS | E3 | <Badge tone="warning">Delayed — maintenance</Badge> |
+| UA 447 | ATL → DEN | C11 | <Badge tone="danger">Canceled</Badge> |
+</Card>
+
+<Columns>
+<Card title="Crews available for reassignment" subtitle="Standby pool · updated 14:15 UTC">
+<Avatar name="Capt. M. Okafor" subtitle="A320 Captain · 3h 20m remaining" />
+<Avatar name="Capt. S. Lindqvist" subtitle="B757 Captain · 1h 15m remaining" />
+<Avatar name="FO J. Ramirez" subtitle="B737 First Officer · 6h 05m remaining" />
+<Avatar name="CS M. Chen" subtitle="Cabin Supervisor · 4h 50m remaining" />
+<Avatar name="FA T. Novak" subtitle="Flight Attendant · 5h 30m remaining" />
+<Avatar name="FA D. Carter" subtitle="Flight Attendant · 7h 00m remaining" />
+</Card>
+<Card title="Weather advisories" subtitle="KATL terminal airspace">
+<Callout tone="danger" title="Severe thunderstorm watch until 21:00 UTC">Line of storms 60 mi west of KATL moving east at 20 kt. Ground stop possible 18:00–20:00 UTC for arrivals from the west. Plan for gate holds.</Callout>
+
+| Ceiling | Visibility | Wind | Temp |
+|---|---|---|---|
+| 6,000 ft | 8 mi | 140° at 12 kt | 24°C |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recent gate changes" subtitle="Last 2 hours">
+| Time | Flight | Gate change | Reason |
+|---|---|---|---|
+| 13:42 | DL 2201 | B4 → B7 | Concourse congestion |
+| 13:18 | WN 731 | A12 → A9 | Ramp conflict |
+| 12:55 | BA 226 | E5 → E12 | Aircraft swap |
+| 12:31 | AC 851 | D9 → D2 | De-icing queue |
+</Card>
+<Card title="Connections at risk" subtitle="87 passengers total">
+<Tabs>
+<Tab title="At risk">
+| Pax | Arriving | Connecting to | Buffer | Status |
+|---|---|---|---|---|
+| 18 | DL 2201 | DL 402 → ORD | 25 min | <Badge tone="danger">At risk</Badge> |
+| 12 | KL 662 | AA 7 → LAX | 40 min | <Badge tone="warning">Watch</Badge> |
+| 9 | UA 1188 | WN 731 → DAL | 30 min | <Badge tone="warning">Watch</Badge> |
+| 5 | UA 447 | BA 226 → LHR | — | <Badge tone="danger">Missed</Badge> |
+</Tab>
+<Tab title="Rebook passenger">
+<Form name="rebook">
+<Select label="Affected flight" options="UA 447 — ATL → DEN | DL 2201 — ATL → JFK | KL 662 — ATL → AMS | UA 1188 — ATL → SFO" name="flight" placeholder="Choose flight" />
+<Input label="Passenger record (PNR)" name="pnr" placeholder="e.g. ABC123" hint="Seats are held for 10 minutes" />
+<Select label="Rebook option" options="Next same-airline departure | Alternate airline | Refund to original payment" name="option" placeholder="Choose option" />
+<Button>Rebook passenger</Button>
+</Form>
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+<Card title="Cancellations today" subtitle="3 flights canceled">
+| Flight | Route | Scheduled | Reason | Passenger status |
+|---|---|---|---|---|
+| UA 447 | ATL → DEN | 13:20 | Crew unavailable | 142 pax — all rebooked |
+| DL 882 | ATL → BOS | 09:45 | Mechanical | 118 pax — 96 rebooked, 22 refunded |
+| WN 1134 | ATL → LAS | 11:10 | Weather | 121 pax — rebooked on WN 2312 |
+</Card>

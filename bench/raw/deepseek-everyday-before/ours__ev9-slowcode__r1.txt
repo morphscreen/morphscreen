@@ -1,0 +1,266 @@
+# Speeding Up Python CSV Processing for Large Files
+
+Reading a 2 GB CSV in Python can be slow if you're using naive approaches. Here's a comprehensive guide to dramatically improve performance.
+
+<Callout tone="info" title="Quick wins first">
+The biggest speedups come from using the right tools and avoiding common pitfalls. Start with the first two sections, then optimize further if needed.
+</Callout>
+
+<Card title="1. Use the Right CSV Reader">
+<Columns>
+<div>
+**Pandas with C engine** — the fastest pure-Python option:
+
+```python
+import pandas as pd
+
+# Use C engine and specify dtypes to avoid inference
+df = pd.read_csv('large_file.csv', 
+                 engine='c',           # C parser (default)
+                 dtype={'col1': 'int32', 'col2': 'float32'},  # Reduce memory
+                 low_memory=False)     # Read in one chunk
+```
+
+**Polars** — often 5-10x faster than pandas:
+
+```python
+import polars as pl
+
+df = pl.read_csv('large_file.csv', 
+                 infer_schema_length=10000,  # Sample for schema
+                 low_memory=True)            # Optimize for large files
+```
+</div>
+<div>
+**CSV module** — for memory-efficient row-by-row processing:
+
+```python
+import csv
+
+with open('large_file.csv', 'r') as f:
+    reader = csv.reader(f)
+    header = next(reader)
+    for row in reader:
+        # Process each row
+        pass
+```
+
+<Stat label="Speed comparison" value="2-10x" note="Polars vs pandas vs csv module" tone="success" />
+</div>
+</Columns>
+</Card>
+
+<Card title="2. Process in Chunks">
+Reading a 2 GB file all at once can exhaust memory. Process it in manageable pieces:
+
+<Steps>
+<Step title="Use chunking with pandas" status="done">
+```python
+chunksize = 100_000
+for chunk in pd.read_csv('large_file.csv', chunksize=chunksize):
+    # Process each chunk
+    process_chunk(chunk)
+```
+</Step>
+<Step title="Use Dask for parallel processing" status="current">
+```python
+import dask.dataframe as dd
+
+df = dd.read_csv('large_file.csv')
+# Operations are lazy and parallel
+result = df.groupby('category').sum().compute()
+```
+</Step>
+<Step title="Stream with generators" status="todo">
+```python
+def stream_csv(filepath):
+    with open(filepath, 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            yield row
+
+for row in stream_csv('large_file.csv'):
+    process(row)
+```
+</Step>
+</Steps>
+</Card>
+
+<Card title="3. Optimize Memory Usage">
+<Columns>
+<div>
+**Specify data types** to reduce memory:
+
+| Data Type | Memory Saved |
+|---|---|
+| int32 vs int64 | 50% |
+| float32 vs float64 | 50% |
+| category for strings | Up to 90% |
+</div>
+<div>
+```python
+import pandas as pd
+
+# Convert object columns to category
+dtypes = {
+    'product': 'category',
+    'price': 'float32',
+    'quantity': 'int32'
+}
+
+df = pd.read_csv('large_file.csv', dtype=dtypes)
+```
+</div>
+</Columns>
+
+<Callout tone="warning" title="Memory tip">
+Use `gc.collect()` after processing large chunks to free memory, or process and discard data as you go.
+</Callout>
+</Card>
+
+<Card title="4. Parallel Processing">
+<Columns>
+<div>
+**Multiprocessing** — for CPU-bound tasks:
+
+```python
+from multiprocessing import Pool
+import pandas as pd
+
+def process_chunk(chunk):
+    # Your processing logic
+    return chunk['value'].sum()
+
+chunks = pd.read_csv('large_file.csv', chunksize=100_000)
+with Pool(4) as pool:
+    results = pool.map(process_chunk, chunks)
+total = sum(results)
+```
+</div>
+<div>
+**Modin** — pandas drop-in with Ray backend:
+
+```python
+import modin.pandas as pd
+import ray
+
+ray.init()
+df = pd.read_csv('large_file.csv')  # Automatically parallel
+```
+</div>
+</Columns>
+</Card>
+
+<Card title="5. Alternative File Formats">
+If you control the data source, consider switching formats:
+
+| Format | Speed vs CSV | Compression | Best For |
+|---|---|---|---|
+| Parquet | 3-5x faster | 2-5x smaller | Columnar analytics |
+| Feather | 2-3x faster | 1.5x smaller | Fast I/O |
+| HDF5 | 2x faster | 2x smaller | Complex data |
+
+```python
+# Convert CSV to Parquet once, then read fast
+import pandas as pd
+
+df = pd.read_csv('large_file.csv')
+df.to_parquet('large_file.parquet')
+
+# Subsequent reads are much faster
+df = pd.read_parquet('large_file.parquet')
+```
+
+<Callout tone="success" title="Recommendation">
+If your workflow involves repeated reads or complex queries, converting to Parquet is the single best performance upgrade.
+</Callout>
+</Card>
+
+<Card title="Performance Comparison">
+<Chart type="bar" title="Read time for 2 GB CSV" x="Method" y="Seconds">
+| Method | Seconds |
+|---|---|
+| csv module | 45 |
+| pandas C engine | 12 |
+| pandas with dtypes | 9 |
+| Polars | 4 |
+| Parquet (pandas) | 2 |
+</Chart>
+</Card>
+
+<Card title="Step-by-Step Action Plan">
+<Steps>
+<Step title="Profile first" status="current" subtitle="Identify the bottleneck">
+Use `cProfile` to see if reading, parsing, or processing is the slow part
+</Step>
+<Step title="Switch to Polars or optimized pandas" status="todo">
+Implement the fastest CSV reader for your use case
+</Step>
+<Step title="Add chunking" status="todo">
+Process in manageable pieces to avoid memory issues
+</Step>
+<Step title="Specify dtypes" status="todo">
+Reduce memory footprint and speed up parsing
+</Step>
+<Step title="Consider parallel processing" status="todo">
+Use multiprocessing for CPU-bound transformations
+</Step>
+<Step title="Convert to Parquet" status="todo">
+For repeated reads or complex queries, convert once and read fast forever
+</Step>
+</Steps>
+</Card>
+
+<Card title="Complete Example">
+Here's a production-ready script combining the best practices:
+
+<Code file="fast_csv.py" highlight="1 | 5-7 | 10-12">
+```python
+import pandas as pd
+from multiprocessing import Pool
+
+def process_chunk(chunk):
+    """Process a chunk of the DataFrame"""
+    # Example: filter and aggregate
+    filtered = chunk[chunk['value'] > 100]
+    return filtered.groupby('category')['value'].sum()
+
+def main():
+    # Define dtypes to save memory
+    dtypes = {
+        'category': 'category',
+        'value': 'float32',
+        'timestamp': 'int64'
+    }
+    
+    # Read in chunks
+    chunks = pd.read_csv(
+        'large_file.csv',
+        dtype=dtypes,
+        chunksize=500_000,
+        low_memory=False
+    )
+    
+    # Process in parallel
+    with Pool(4) as pool:
+        results = pool.map(process_chunk, chunks)
+    
+    # Combine results
+    final = pd.concat(results).groupby(level=0).sum()
+    print(final)
+    
+    # Save as Parquet for future fast reads
+    final.to_parquet('results.parquet')
+
+if __name__ == '__main__':
+    main()
+```
+</Code>
+</Card>
+
+<FollowUps>
+- How do I handle encoding issues or malformed rows in large CSVs?
+- What are the best practices for writing large DataFrames back to disk?
+- How can I visualize or explore a 2 GB CSV without loading it all into memory?
+- What's the best way to handle missing values in large CSV files?
+</FollowUps>

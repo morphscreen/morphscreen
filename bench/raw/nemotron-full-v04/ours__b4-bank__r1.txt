@@ -1,0 +1,123 @@
+# Personal Banking Dashboard
+
+<Columns>
+<Card title="Account Balances">
+<Stat label="Checking" value="$12,450.32" change="+$1,240.15 this month" tone="success" />
+<Stat label="Savings" value="$28,750.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$3,245.67" change="-$450.23 this month" tone="warning" />
+</Card>
+
+<Card title="Credit Score">
+<Stat label="Current Score" value="742" change="+12 points vs last month" tone="success" />
+<Progress value="742" max="850" label="Score range: 300–850" />
+<Badge tone="success">Good</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Vacation Savings Goal">
+<Progress value="3750" max="5000" label="$3,750 of $5,000 saved" />
+<Stat label="Monthly contribution" value="$500" />
+<Stat label="Estimated completion" value="3 months" />
+</Card>
+
+<Card title="Quick Actions">
+<Form name="transfer-money">
+<Select label="From account" name="fromAccount" options="Checking | Savings | Credit Card" placeholder="Select source" required="true" />
+<Select label="To account" name="toAccount" options="Checking | Savings | Credit Card" placeholder="Select destination" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" required="true" />
+<Button>Transfer</Button>
+</Form>
+<Switch label="Freeze credit line" name="freezeCredit" value="false" hint="Prevents new charges on your credit card" />
+</Card>
+</Columns>
+
+<Card title="Recent Transactions">
+<Tabs>
+<Tab title="All">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Dec 14 | Whole Foods Market | Groceries | -$127.43 |
+| Dec 13 | Shell Gas Station | Transportation | -$45.00 |
+| Dec 12 | Netflix | Subscriptions | -$15.99 |
+| Dec 11 | Salary Deposit | Income | +$3,200.00 |
+| Dec 10 | Amazon | Shopping | -$89.99 |
+| Dec 09 | Starbucks | Dining | -$12.50 |
+| Dec 08 | Electric Bill | Utilities | -$145.67 |
+| Dec 07 | Target | Shopping | -$67.32 |
+</Tab>
+<Tab title="Checking">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Dec 14 | Whole Foods Market | Groceries | -$127.43 |
+| Dec 13 | Shell Gas Station | Transportation | -$45.00 |
+| Dec 11 | Salary Deposit | Income | +$3,200.00 |
+</Tab>
+<Tab title="Credit Card">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Dec 12 | Netflix | Subscriptions | -$15.99 |
+| Dec 10 | Amazon | Shopping | -$89.99 |
+| Dec 09 | Starbucks | Dining | -$12.50 |
+| Dec 08 | Electric Bill | Utilities | -$145.67 |
+| Dec 07 | Target | Shopping | -$67.32 |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="December Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420.15 |
+| Dining | 285.50 |
+| Transportation | 180.00 |
+| Shopping | 312.45 |
+| Subscriptions | 45.99 |
+| Utilities | 145.67 |
+| Other | 120.33 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Due Date | Amount | Status |
+|---|---|---|---|
+| Internet | Dec 18 | $79.99 | <Badge tone="warning">Due in 4 days</Badge> |
+| Phone | Dec 20 | $85.00 | <Badge tone="warning">Due in 6 days</Badge> |
+| Car Insurance | Dec 25 | $165.00 | <Badge tone="info">Due in 11 days</Badge> |
+| Rent | Jan 01 | $1,800.00 | <Badge tone="info">Due in 18 days</Badge> |
+| Credit Card | Jan 05 | $150.00 (min) | <Badge tone="info">Due in 22 days</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Statement Period">
+<Form name="statement-period">
+<Select label="Period" name="period" options="Last 30 days | This month | Last month | Last 3 months | Custom range" value="This month" />
+<Date label="Custom start" name="startDate" hint="Used when 'Custom range' is selected" />
+<Date label="Custom end" name="endDate" hint="Used when 'Custom range' is selected" />
+<Button variant="secondary">Generate Statement</Button>
+</Form>
+</Card>
+
+<Card title="Alert Preferences">
+<Form name="alert-preferences">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online purchases | ATM withdrawals | All transactions" value="Large purchases (>$100) | International transactions" hint="Get notified for these transaction types" />
+<Checkboxes label="Balance alerts" name="balanceAlerts" options="Low balance (<$500) | Direct deposit received | Large deposit (>$1,000)" value="Low balance (<$500) | Direct deposit received" />
+<Checkboxes label="Security alerts" name="securityAlerts" options="New device login | Password changed | Profile updated | Credit score changed" value="New device login | Password changed" />
+<Checkboxes label="Bill alerts" name="billAlerts" options="Bill due in 3 days | Bill payment posted | Autopay failed" value="Bill due in 3 days | Bill payment posted" />
+<Button>Save Preferences</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-transaction">
+<Select label="Select transaction" name="disputeTx" options="Whole Foods Market - $127.43 (Dec 14) | Shell Gas Station - $45.00 (Dec 13) | Netflix - $15.99 (Dec 12) | Amazon - $89.99 (Dec 10) | Starbucks - $12.50 (Dec 09) | Electric Bill - $145.67 (Dec 08) | Target - $67.32 (Dec 07)" placeholder="Choose a transaction to dispute" required="true" />
+<Radio label="Dispute reason" name="disputeReason" options="Unauthorized charge | Wrong amount | Duplicate charge | Service not received | Product not as described | Billing error" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Describe what happened and why you're disputing this charge..." rows="4" required="true" hint="Include any communication with the merchant, order numbers, or supporting details" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

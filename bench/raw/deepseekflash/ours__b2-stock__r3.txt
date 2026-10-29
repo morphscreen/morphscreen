@@ -1,0 +1,62 @@
+Here is a single-screen low‑inventory warning view for a store, built with the available components slash something. It includes the current low items, reorder actions per item, the warning threshold, and a search field.
+
+<Card title="Low Inventory" subtitle="Items at or below the 20‑unit reorder threshold">
+<Columns>
+<Stat label="Items running low" value="6" change="-3 vs last week" />
+<Stat label="Units at risk" value="71" note="Total remaining units" />
+<Stat label="Reorder threshold" value="20" note="Global setting" />
+</Columns>
+
+<Input label="Search items" placeholder="Search by name, SKU, or category..." hint="Typing filters the list below" />
+
+<Callout tone="warning" title="Threshold trigger">
+This screen lists every item with **20 or fewer** units in stock. The threshold can be changed in inventory settings.
+</Callout>
+
+<Columns>
+<Card title="Face Masks (50-pack)" subtitle="SKU: MSK-50">
+<Badge tone="danger">Critical</Badge>
+<Stat label="Remaining units" value="3" />
+<Progress value="3" max="20" label="3 / 20 units" />
+<Button variant="primary">Reorder</Button>
+</Card>
+
+<Card title="Hand Sanitizer 250ml" subtitle="SKU: HND-250">
+<Badge tone="warning">Low</Badge>
+<Stat label="Remaining units" value="6" />
+<Progress value="6" max="20" label="6 / 20 units" />
+<Button variant="primary">Reorder</Button>
+</Card>
+
+<Card title="Vitamin C 1000mg" subtitle="SKU: VTC-1000">
+<Badge tone="warning">Low</Badge>
+<Stat label="Remaining units" value="8" />
+<Progress value="8" max="20" label="8 / 20 units" />
+<Button variant="primary">Reorder</Button>
+</Card>
+
+<Card title="Disposable Gloves (M)" subtitle="SKU: GLV-M-400">
+<Badge tone="neutral">Watch</Badge>
+<Stat label="Remaining units" value="14" />
+<Progress value="14" max="20" label="14 / 20 units" />
+<Button variant="primary">Reorder</Button>
+</Card>
+
+<Card title="Pain Relief Gel" subtitle="SKU: PRG-100">
+<Badge tone="warning">Low</Badge>
+<Stat label="Remaining units" value="17" />
+<Progress value="17" max="20" label="17 / 20 units" />
+<Button variant="primary">Reorder</Button>
+</Card>
+
+<Card title="First Aid Tape" subtitle="SKU: FAT-200">
+<Badge tone="danger">Critical</Badge>
+<Stat label="Remaining units" value="2" />
+<Progress value="2" max="20" label="2 / 20 units" />
+<Button variant="primary">Reorder</Button>
+</Card>
+</Columns>
+
+<Button variant="secondary">Adjust threshold</Button>
+<Button variant="primary">Reorder all low items</Button>
+</Card>

@@ -1,0 +1,109 @@
+/* The sheet's own layout, not part of MorphScreenUI. */
+.sheet {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-block: 48px 96px;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 36px;
+}
+.sheet-head {
+  display: grid;
+  gap: 8px;
+}
+.sheet-head p {
+  margin: 0;
+  max-width: 62ch;
+}
+.sheet-head h1,
+.sheet-row h2 {
+  margin: 0;
+}
+.sheet-row {
+  display: grid;
+  gap: 12px;
+}
+.sheet-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.sheet-items > .hos-field {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+.sheet-items > .hos-alert {
+  flex: 1 1 100%;
+}
+.sheet-items > .hos-card {
+  flex: 1 1 100%;
+  min-width: 0;
+  overflow-x: auto;
+}
+.sheet-meter {
+  display: grid;
+  gap: 8px;
+  width: min(380px, 100%);
+}
+.sheet-meter-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+.sheet-stage {
+  position: relative;
+  width: min(640px, 100%);
+  height: 230px;
+  overflow: hidden;
+  border-radius: var(--msui-r-panel);
+  background: var(--msui-base);
+  box-shadow: inset 0 0 0 1px var(--msui-hairline);
+}
+.sheet-bars {
+  position: absolute;
+  inset: auto 24px 20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 170px;
+}
+.sheet-bars span {
+  flex: 1;
+  border-radius: 7px 7px 3px 3px;
+}
+.sheet-nav {
+  position: absolute;
+  left: 50%;
+  top: 92px;
+  translate: -50% 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: min(360px, calc(100% - 32px));
+  height: 52px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+.sheet-pill {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc((100% - 8px) / 3);
+  height: 44px;
+  transition: transform var(--msui-dur-pill) var(--msui-pill-ease);
+}
+.sheet-navtab {
+  position: relative;
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--msui-text-2);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.sheet-navtab[aria-pressed="true"] {
+  color: var(--msui-text);
+  font-weight: 620;
+}

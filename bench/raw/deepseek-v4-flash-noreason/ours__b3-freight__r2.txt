@@ -1,0 +1,96 @@
+# Logistics Coordinator's Board
+
+<Callout tone="info" title="Data refreshed">
+Last refreshed: **Today at 09:42 AM**
+</Callout>
+
+<Card title="Shipments in Transit">
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SH-2041 | Shanghai | Los Angeles | Oct 18 | <Badge tone="success">On time</Badge> |
+| SH-2042 | Rotterdam | New York | Oct 17 | <Badge tone="warning">Delayed 4h</Badge> |
+| SH-2043 | Hamburg | Singapore | Oct 21 | <Badge tone="success">On time</Badge> |
+| SH-2044 | Long Beach | Dallas | Oct 16 | <Badge tone="success">On time</Badge> |
+| SH-2045 | Felixstowe | Chicago | Oct 19 | <Badge tone="warning">Delayed 1d</Badge> |
+| SH-2046 | Busan | Seattle | Oct 22 | <Badge tone="success">On time</Badge> |
+| SH-2047 | Savannah | Atlanta | Oct 15 | <Badge tone="danger">Delayed 2d</Badge> |
+| SH-2048 | Qingdao | Vancouver | Oct 20 | <Badge tone="success">On time</Badge> |
+
+<Callout tone="warning" title="Delayed shipments">
+3 shipments are delayed. **SH-2047** is the most critical (2 days late, arriving tomorrow).
+</Callout>
+
+<Button variant="primary" label="Flag a shipment">Flag a shipment</Button>
+</Card>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Input label="Origin" placeholder="e.g. Shanghai" />
+<Input label="Destination" placeholder="e.g. Los Angeles" />
+<Button>Search routes</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="On-time percentage — this month">
+<Stat label="On-time rate" value="87.2%" change="+2.1% vs last month" tone="success" icon="chart-line" />
+<Progress value="87.2" max="100" label="Target: 90%" tone="success" />
+</Card>
+
+<Card title="Average cost per shipment">
+<Stat label="Avg. cost / shipment" value="$1,284" change="−3.4% vs last month" tone="info" icon="currency-dollar" />
+</Card>
+</Columns>
+
+<Card title="Volume split by carrier">
+<Chart type="pie" title="Share of shipments by carrier">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 42 |
+| MSC | 28 |
+| CMA CGM | 15 |
+| Hapag-Lloyd | 10 |
+| Others | 5 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume — past two months">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| Aug 18 | 48 |
+| Aug 25 | 55 |
+| Sep 1 | 62 |
+| Sep 8 | 58 |
+| Sep 15 | 71 |
+| Sep 22 | 66 |
+| Sep 29 | 74 |
+| Oct 6 | 69 |
+</Chart>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment ID" placeholder="Select shipment" options="SH-2041 | SH-2042 | SH-2043 | SH-2044 | SH-2045 | SH-2046 | SH-2047 | SH-2048" />
+<Select label="Flag reason" placeholder="Choose reason" options="Customs hold | Weather delay | Address issue | Documentation missing | Other" />
+<TextArea label="Notes" placeholder="Add details for the team…" rows="3" />
+<Button>Submit flag</Button>
+</Form>
+</Card>
+
+<Card title="Summary">
+| Metric | Value |
+|---|---|
+| Total in transit | 8 shipments |
+| Delayed | 3 (37.5%) |
+| On-time this month | 87.2% |
+| Avg. cost / shipment | $1,284 |
+| Last refreshed | Today, 09:42 AM |
+
+<FollowUps>
+- Show me the most delayed shipment details
+- Which carrier has the worst on-time record?
+- Compare this week's volume to last year
+- Export the full transit list
+</FollowUps>
+</Card>

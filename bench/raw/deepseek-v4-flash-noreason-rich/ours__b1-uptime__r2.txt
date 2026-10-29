@@ -1,0 +1,85 @@
+<Card title="Platform Status" subtitle="Live overview for the platform team">
+<Columns>
+<Stat label="API uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+<Stat label="Recent incidents" value="2" note="Both resolved" tone="info" icon="warning-circle" />
+<Stat label="Avg. response time" value="142 ms" change="-8 ms" tone="success" icon="pulse" />
+</Columns>
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved — no ongoing impact">
+<Callout tone="success" title="Resolved: Elevated error rates on API">
+**Incident ID:** INC-2024-0517  
+**Started:** May 14, 2024, 14:32 UTC  
+**Resolved:** May 14, 2024, 15:18 UTC  
+**Duration:** 46 minutes  
+**Impact:** 0.4% of requests returned 5xx errors; no data loss.
+</Callout>
+
+<Details title="Full post-incident summary" open="false">
+- **Root cause:** A misconfigured load balancer health check caused two backend nodes to be taken out of rotation.
+- **Detection:** Automated alerting via Datadog after 5 minutes of elevated 502s.
+- **Mitigation:** Rolled back the health-check config; traffic recovered within 6 minutes of rollback.
+- **Follow-up:** Added a staging test for health-check configs; scheduled a blameless postmortem for May 16.
+</Details>
+</Card>
+
+<Card title="Uptime Trend — Last 30 Days">
+<Chart type="line" x="Day" y="Uptime %" title="Daily API uptime">
+| Day | Uptime |
+|---|---|
+| May 1 | 100 |
+| May 2 | 100 |
+| May 3 | 100 |
+| May 4 | 100 |
+| May 5 | 100 |
+| May 6 | 100 |
+| May 7 | 100 |
+| May 8 | 100 |
+| May 9 | 100 |
+| May 10 | 100 |
+| May 11 | 100 |
+| May 12 | 100 |
+| May 13 | 100 |
+| May 14 | 99.3 |
+| May 15 | 100 |
+| May 16 | 100 |
+| May 17 | 100 |
+| May 18 | 100 |
+| May 19 | 100 |
+| May 20 | 100 |
+| May 21 | 100 |
+| May 22 | 100 |
+| May 23 | 100 |
+| May 24 | 100 |
+| May 25 | 100 |
+| May 26 | 100 |
+| May 27 | 100 |
+| May 28 | 100 |
+| May 29 | 100 |
+| May 30 | 100 |
+</Chart>
+</Card>
+
+<Card title="Incident Timeline — May 14">
+<Steps>
+<Step title="14:32 UTC — Alert triggered" status="done">Datadog monitor fires: error rate > 1% for 5 min.</Step>
+<Step title="14:37 UTC — On-call paged" status="done">Primary on-call engineer acknowledges page.</Step>
+<Step title="14:45 UTC — Root cause identified" status="done">Health-check config mismatch in load balancer pool.</Step>
+<Step title="14:52 UTC — Rollback initiated" status="done">Reverted to previous health-check settings.</Step>
+<Step title="15:12 UTC — Traffic recovered" status="done">Error rate back to baseline; all nodes healthy.</Step>
+<Step title="15:18 UTC — Incident closed" status="done">Post-incident notes filed; monitoring continues.</Step>
+</Steps>
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="primary">View full incident log</Button>
+<Button variant="secondary">Run status check</Button>
+<Button variant="tertiary">Subscribe to alerts</Button>
+</Card>
+
+<FollowUps>
+- What was the exact error rate during the incident?
+- Are there any open incidents right now?
+- Show me the last 90 days of uptime instead.
+- Who was the on-call engineer on May 14?
+</FollowUps>

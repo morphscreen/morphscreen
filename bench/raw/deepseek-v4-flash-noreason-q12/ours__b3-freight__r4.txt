@@ -1,0 +1,107 @@
+# Logistics Operations Board
+
+<Callout tone="warning" title="Action needed">
+3 shipments are delayed and require review. Flag them to notify the carrier team.
+</Callout>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="On-time % (this month)" value="92.4%" change="+1.8 pts" tone="success" icon="check-circle" note="vs. last month" />
+<Stat label="Avg. cost / shipment" value="$184.20" change="-3.1%" tone="success" icon="trend-down" note="vs. last month" />
+<Stat label="Shipments in transit" value="47" change="+6" tone="info" icon="truck" note="vs. yesterday" />
+<Stat label="Delayed shipments" value="3" change="+2" tone="danger" icon="warning-circle" note="needs review" />
+</Columns>
+</Card>
+
+<Card title="Shipments in transit">
+<Callout tone="info" title="Search by route">
+Use the route filter below to find shipments by origin or destination.
+</Callout>
+<Form name="route-search">
+<Input label="Search by route" placeholder="e.g. Shanghai → Hamburg, or port/city" hint="Matches origin or destination" />
+<Button variant="secondary">Search</Button>
+</Form>
+
+| Tracking ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SH-HH-1042 | Shanghai, CN | Hamburg, DE | Oct 24, 14:00 | <Badge tone="success">On time</Badge> |
+| NY-LA-0877 | New York, US | Los Angeles, US | Oct 22, 09:30 | <Badge tone="warning">At risk</Badge> |
+| RT-SG-0911 | Rotterdam, NL | Singapore, SG | Oct 26, 08:00 | <Badge tone="success">On time</Badge> |
+| LA-TJ-0765 | Los Angeles, US | Tijuana, MX | Oct 21, 18:00 | <Badge tone="danger">Delayed</Badge> |
+| HH-SH-1003 | Hamburg, DE | Shanghai, CN | Oct 28, 12:00 | <Badge tone="success">On time</Badge> |
+| SG-RT-0945 | Singapore, SG | Rotterdam, NL | Oct 30, 16:30 | <Badge tone="success">On time</Badge> |
+| TJ-LA-0798 | Tijuana, MX | Los Angeles, US | Oct 23, 11:00 | <Badge tone="danger">Delayed</Badge> |
+| DE-FR-0654 | Duisburg, DE | Lyon, FR | Oct 22, 15:45 | <Badge tone="success">On time</Badge> |
+
+<Details title="Show all 47 shipments" open="false">
+Full list available in the operations export. The 8 most urgent above.
+</Details>
+</Card>
+
+<Card title="Delayed shipments">
+<Callout tone="danger" title="3 shipments delayed">
+Flag each shipment to notify the coordinator and carrier.
+</Callout>
+
+| Tracking ID | Route | Delay | Reason | Action |
+|---|---|---|---|---|
+| LA-TJ-0765 | Los Angeles → Tijuana | 6h | Border customs hold | <Button variant="secondary" size="small" label="Flag shipment">Flag</Button> |
+| TJ-LA-0798 | Tijuana → Los Angeles | 3h | Traffic incident | <Button variant="secondary" size="small" label="Flag shipment">Flag</Button> |
+| NY-LA-0877 | New York → Los Angeles | 2h | Rail congestion | <Button variant="secondary" size="small" label="Flag shipment">Flag</Button> |
+
+<Button variant="danger" label="Flag all delayed">Flag all delayed</Button>
+</Card>
+
+<Card title="Volume & carrier breakdown">
+<Columns>
+<div>
+<h3>Volume split by carrier</h3>
+<Chart type="donut" title="Share of shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 18 |
+| MSC | 12 |
+| CMA CGM | 9 |
+| Hapag-Lloyd | 5 |
+| Others | 3 |
+</Chart>
+</div>
+<div>
+<h3>Weekly volume — past 2 months</h3>
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 38 |
+| W2 | 42 |
+| W3 | 35 |
+| W4 | 44 |
+| W5 | 40 |
+| W6 | 47 |
+| W7 | 43 |
+| W8 | 47 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment" placeholder="Select tracking ID" options="SH-HH-1042 | NY-LA-0877 | RT-SG-0911 | LA-TJ-0765 | HH-SH-1003 | SG-RT-0945 | TJ-LA-0798 | DE-FR-0654 | Other" required="true" />
+<Radio label="Flag reason" options="Delay | Damage | Customs issue | Address problem | Other" required="true" />
+<TextArea label="Notes" placeholder="Add details for the carrier team" rows="3" />
+<Button>Submit flag</Button>
+</Form>
+</Card>
+
+<Card title="Data freshness">
+<Callout tone="neutral" title="Last refreshed">
+<Stat label="Last refresh" value="14:32 UTC" icon="clock" note="Oct 21, 2025 · Auto-refresh every 15 min" />
+</Callout>
+</Card>
+
+<FollowUps>
+- Show the full 47-shipment list
+- Explain the on-time % calculation
+- Compare carrier performance this month
+- Export the flagged shipments report
+</FollowUps>

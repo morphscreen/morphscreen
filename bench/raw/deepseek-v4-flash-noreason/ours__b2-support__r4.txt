@@ -1,0 +1,54 @@
+# Support Lead Morning View
+
+<Columns>
+<Stat label="Open tickets" value="24" change="+3 today" tone="warning" icon="ticket" />
+<Stat label="Avg. first response" value="1h 42m" change="-12m vs. last week" tone="success" icon="timer" />
+<Stat label="High priority" value="6" change="2 critical" tone="danger" icon="warning-circle" />
+</Columns>
+
+<Card title="Recent tickets" subtitle="Five most recent across all queues">
+<Tabs>
+<Tab title="All tickets">
+<Switch label="High-priority only" hint="Show only P1 and P2 tickets" />
+| Ticket | Subject | Priority | Status | Age |
+|---|---|---|---|---|
+| #4821 | Login fails after password reset | <Badge tone="danger">P1</Badge> | Open | 2h |
+| #4820 | Invoice PDF not generating | <Badge tone="warning">P2</Badge> | Open | 3h |
+| #4819 | "How do I export my data?" | <Badge tone="neutral">P3</Badge> | Awaiting reply | 5h |
+| #4818 | API rate limit too low for batch jobs | <Badge tone="warning">P2</Badge> | In progress | 6h |
+| #4817 | Billing address change not saving | <Badge tone="neutral">P3</Badge> | Open | 8h |
+</Tab>
+<Tab title="High priority only">
+| Ticket | Subject | Priority | Status | Age |
+|---|---|---|---|---|
+| #4821 | Login fails after password reset | <Badge tone="danger">P1</Badge> | Open | 2h |
+| #4820 | Invoice PDF not generating | <Badge tone="warning">P2</Badge> | Open | 3h |
+| #4818 | API rate limit too low for batch jobs | <Badge tone="warning">P2</Badge> | In progress | 6h |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Response time trend" subtitle="Average first response, last 7 days">
+<Chart type="line" x="Day" y="Hours">
+| Day | Response time |
+|---|---|
+| Mon | 2.1 |
+| Tue | 1.8 |
+| Wed | 2.3 |
+| Thu | 1.6 |
+| Fri | 1.4 |
+| Sat | 1.9 |
+| Sun | 1.7 |
+</Chart>
+</Card>
+
+<Card title="Quick actions">
+<Button variant="primary" label="New ticket" icon="plus">New ticket</Button>
+<Button variant="secondary" label="View all tickets" icon="list">View all tickets</Button>
+</Card>
+
+<Details title="What changed overnight?" open="false">
+<Callout tone="info" title="Night shift summary">
+Three new tickets came in overnight: two P3 questions about billing, and one P1 login issue (#4821) that's already been escalated to engineering.
+</Callout>
+</Details>

@@ -1,0 +1,137 @@
+# Rent or buy? The honest maths on £60k and £1,800/month
+
+Short answer: at £1,800 rent you are already paying a mortgage-sized amount, so buying is likely cheaper *monthly* — but only if you can raise the deposit and stay put for 5+ years. Here's the working.
+
+<Card title="Your position at a glance" subtitle="£60,000 salary, £1,800/month rent">
+<Columns>
+<Stat label="Take-home pay" value="£3,850/mo" note="After tax, NI and 5% pension" icon="wallet" />
+<Stat label="Rent as % of take-home" value="47%" tone="warning" note="Comfortable is under 35%" icon="house" />
+<Stat label="Rent paid over 5 years" value="£108,000" tone="danger" note="With no equity to show" icon="chart-line" />
+<Stat label="Max realistic mortgage" value="£270,000" note="4.5× salary, typical lender cap" icon="bank" />
+</Columns>
+</Card>
+
+<Callout tone="info" title="The one number that decides this">
+Your rent is £1,800. A £270,000 mortgage at 5% over 30 years costs about £1,450/month. So owning would be **cheaper each month** than renting — the barrier is the deposit and the fees, not the monthly payment.
+</Callout>
+
+<Card title="Monthly cost, side by side" subtitle="Same flat, two ways of paying for it">
+<Compare title="Rent vs buy on a £300,000 flat">
+| Item | Renting | Buying |
+|---|---|---|
+| Monthly payment | £1,800 | £1,450 |
+| Service charge / ground rent | Included | £120 |
+| Buildings insurance | Included | £25 |
+| Maintenance (boiler, roof, appliances) | Landlord pays | £100 |
+| Deposit tied up | £0 | £30,000 |
+| **Monthly total** | **£1,800** | **£1,695** |
+| Money back when you leave | No | Yes, minus the mortgage |
+| Free to move in 6 months | Yes | No, ~£8,000 of costs |
+</Compare>
+</Card>
+
+<Card title="What buying actually costs to get in" subtitle="On a £300,000 flat with a 10% deposit">
+| Cost | Amount |
+|---|---|
+| Deposit (10%) | £30,000 |
+| Stamp duty (first-time buyer relief) | £0 |
+| Solicitor / conveyancing | £1,500 |
+| Survey | £600 |
+| Mortgage arrangement fee | £999 |
+| Removal van and boxes | £400 |
+| **Cash needed on day one** | **£33,499** |
+</Card>
+
+<Callout tone="warning" title="Where £60k hurts you">
+A 10% deposit on £300k is £33,500 — roughly 11 months of your entire take-home pay saved to zero. Lenders will also stress-test you at ~8%, and at that rate £270,000 costs £2,050/month. You'd pass, but with little slack. Under 10% deposit and the rates get worse.
+</Callout>
+
+## Run your own numbers
+
+<WhatIf title="Change these to match your situation">
+<Slider label="Flat price" min="200000" max="450000" step="5000" value="300000" name="price" unit="£" />
+<Slider label="Deposit" min="5" max="30" step="1" value="10" name="deposit" unit="%" />
+<Slider label="Mortgage rate" min="3" max="7" step="0.1" value="5" name="rate" unit="%" />
+<Slider label="Years you'd stay" min="1" max="15" step="1" value="5" name="years" unit="yr" />
+<Result label="Cash needed up front" value="price * deposit / 100 + 3500" unit="£" />
+<Result label="Monthly mortgage" value="(price - price * deposit / 100) * (rate / 100 / 12) / (1 - (1 + rate / 100 / 12) ^ (0 - 30 * 12))" unit="£" decimals="0" />
+<Result label="Total paid vs renting over that time" value="((price - price * deposit / 100) * (rate / 100 / 12) / (1 - (1 + rate / 100 / 12) ^ (0 - 30 * 12)) + 245) * years * 12 - 1800 * years * 12" unit="£" decimals="0" />
+</WhatIf>
+
+<Card title="The break-even point" subtitle="How long you must stay for buying to win">
+<Chart type="line" x="Years owned" y="£ ahead of renting">
+| Years | Buying ahead by |
+|---|---|
+| 1 | -14500 |
+| 2 | -9500 |
+| 3 | -3000 |
+| 4 | 4500 |
+| 5 | 13000 |
+| 7 | 31000 |
+| 10 | 62000 |
+</Chart>
+Buying loses money for the first ~3.5 years because of the £8,000 of one-off costs. After that it pulls ahead fast, mostly because rent keeps rising and your mortgage doesn't.
+</Card>
+
+<Card title="When renting wins" subtitle="Be honest about these">
+<Checklist title="Rent if any of these are true" name="rent-case">
+- [ ] You might move city or country within 3 years
+- [ ] Your job or relationship is likely to change
+- [ ] You can't save £33,000 without emptying every account
+- [ ] You'd have under 3 months of expenses left after buying
+- [ ] The flat is a new-build with high service charges
+- [ ] You'd be buying a flat you don't actually like, just to get on the ladder
+</Checklist>
+</Card>
+
+<Card title="When buying wins" subtitle="The case for it in your numbers">
+<Checklist title="Buy if most of these are true" name="buy-case">
+- [x] Your rent is already at mortgage level
+- [x] You can see yourself there in 5 years
+- [x] You have £33,000+ and can still keep an emergency fund
+- [x] Your income is stable or rising
+- [x] You want a fixed payment that doesn't rise with the market
+</Checklist>
+</Card>
+
+## A plan you could actually follow
+
+<Steps>
+<Step title="Work out your real deposit" status="current" subtitle="This week">
+Add up savings, premium bonds, help from family, and anything you could sell. Compare it to £33,500. If you're under £25,000, you're not ready yet and that's fine.
+</Step>
+<Step title="Get an agreement in principle" status="todo" subtitle="2 weeks">
+Free from any broker or bank, valid ~90 days, and it tells you exactly what you can borrow rather than guessing at 4.5×. Do this before you view anything.
+</Step>
+<Step title="Fix your savings rate" status="todo" subtitle="6-18 months">
+To reach £33,500 from a standing start at £1,200/month saved takes 28 months. At £1,800/month, 19 months. Put it in a cash ISA and a high-interest saver.
+</Step>
+<Step title="Decide the stay-put test" status="todo" subtitle="Before you offer">
+If you can't honestly say you'll still be there in 5 years, keep renting and invest the difference instead.
+</Step>
+<Step title="Buy with a 10% deposit, 5-year fix" status="todo" subtitle="When ready">
+A 5-year fix matches the break-even point. It protects you through the expensive early years when selling would lose money.
+</Step>
+</Steps>
+
+<Card title="What I'd do in your shoes">
+With £1,800 rent and £60k, you're paying someone else's mortgage. But you haven't told me your savings, so the decision hinges on one thing: **can you get to £33,500 without wiping yourself out?**
+
+- If yes, and you'll stay 5 years: buy. You'd save ~£100/month immediately and build equity.
+- If no: rent for now, save hard, and revisit in 18 months. Renting is not losing — it's buying flexibility, and at your rent level the gap is small.
+</Card>
+
+<Form name="deposit-check">
+<Input label="How much do you have saved for a deposit?" type="number" placeholder="25000" hint="Include savings, ISAs and any family help" />
+<Input label="How many years could you see yourself staying?" type="number" placeholder="5" />
+<Radio label="What matters most to you?" options="Lowest monthly cost | Being able to move easily | Building something I own" />
+<Button>Check my numbers</Button>
+</Form>
+
+<FollowUps>
+- What deposit would I need to make this work on my salary?
+- How much would I save per month by buying instead of renting?
+- What happens if I buy and need to sell after 2 years?
+- Should I overpay the mortgage or invest the difference?
+- What are the hidden costs of owning a flat?
+</FollowUps>

@@ -1,0 +1,154 @@
+# Speed Up Reading a 2 GB CSV in Python
+
+Reading a 2 GB CSV is slow because Python reads it row-by-row, converting each value from text to a Python object. Here's how to make it dramatically faster.
+
+<Callout tone="info" title="The quick win">
+If you control how the CSV is generated, switch to **Parquet** or **Feather** format. These are 10–50× faster to read than CSV and compress better.
+</Callout>
+
+## 1. Use Polars (fastest pure-Python option)
+
+<Card title="Polars vs pandas read speed (2 GB CSV)">
+| Library | Read time | Memory |
+|---|---|---|
+| pandas (default) | ~30 s | ~8 GB |
+| pandas (C engine) | ~8 s | ~8 GB |
+| **Polars** | **~2 s** | **~4 GB** |
+| DuckDB | ~1.5 s | ~4 GB |
+</Card>
+
+Polars uses multi-threading and lazy evaluation. Install it with `pip install polars`, then:
+
+<Code file="polars_read.py">
+```python
+import polars as pl
+
+df = pl.read_csv("large.csv")
+# That's it — Polars auto-detects schema and parallelizes
+```
+</Code>
+
+<Callout tone="success" title="Why Polars wins">
+- Uses all CPU cores (pandas is single-threaded)
+- Reads column-wise instead of row-wise
+- Zero-copy memory mapping when possible
+</Callout>
+
+## 2. If you must use pandas
+
+<Card title="pandas optimizations (from slowest to fastest)">
+| Method | Read time (2 GB) |
+|---|---|
+| Default `pd.read_csv()` | ~30 s |
+| Specify `dtype` and `usecols` | ~18 s |
+| Use `engine="pyarrow"` | ~6 s |
+| Use `engine="c"` + `low_memory=False` | ~8 s |
+</Card>
+
+<Code file="pandas_fast.py">
+```python
+import pandas as pd
+
+# 1. Only read columns you need
+cols = ["date", "amount", "customer_id"]
+df = pd.read_csv("large.csv", usecols=cols)
+
+# 2. Specify dtypes to avoid inference
+df = pd.read_csv("large.csv", dtype={
+    "amount": "float32",           # smaller than float64
+    "customer_id": "int32",
+    "date": "string"
+})
+
+# 3. Use the fast C engine
+df = pd.read_csv("large.csv", engine="c", low_memory=False)
+```
+</Code>
+
+## 3. Process in chunks (memory-friendly)
+
+If you don't need all data at once, stream through it:
+
+<Code file="chunked.py">
+```python
+import pandas as pd
+
+chunk_size = 100_000
+total = 0
+
+for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+    # Process each chunk
+    total += chunk["amount"].sum()
+
+print(f"Total: {total}")
+```
+</Code>
+
+## 4. Use DuckDB for SQL-style queries
+
+DuckDB reads CSVs directly and runs queries without loading everything:
+
+<Code file="duckdb_query.py">
+```python
+import duckdb
+
+# Query directly on the CSV
+result = duckdb.sql("""
+    SELECT date, SUM(amount) 
+    FROM 'large.csv' 
+    WHERE customer_id IN (1, 2, 3)
+    GROUP BY date
+""").df()
+
+# Or register it as a table
+duckdb.sql("CREATE TABLE data AS SELECT * FROM 'large.csv'")
+```
+</Code>
+
+## 5. Convert once, read fast forever
+
+<Card title="The best long-term fix">
+Convert your CSV to Parquet once, then all future reads are 10–50× faster.
+</Card>
+
+<Code file="convert_to_parquet.py">
+```python
+import polars as pl
+
+# One-time conversion
+pl.read_csv("large.csv").write_parquet("large.parquet")
+
+# Then load in ~0.3 s
+df = pl.read_parquet("large.parquet")
+```
+</Code>
+
+## Quick decision guide
+
+<Compare title="Which approach should you use?">
+| Factor | Polars | pandas | DuckDB | Parquet |
+|---|---|---|---|---|
+| Read speed | ★★★★★ | ★★☆ | ★★★★ | ★★★★★ |
+| Memory usage | Low | High | Low | Low |
+| Learning curve | Medium | Easy | Easy | None after conversion |
+| One-time setup | None | None | None | Convert once |
+| Best for | Big data analysis | Familiar pandas code | SQL queries | Repeated reads |
+</Compare>
+
+<Callout tone="warning" title="Memory warning">
+Reading a 2 GB CSV can use 4–8 GB of RAM depending on the method. If you're close to your memory limit, use chunking or DuckDB.
+</Callout>
+
+## Try it yourself
+
+<Form name="csv-optimization">
+<Select label="What's your main goal?" placeholder="Choose one" options="Fastest reads | Lower memory | Keep pandas | One-time conversion" />
+<Button>Get a tailored recommendation</Button>
+</Form>
+
+<FollowUps>
+- How do I convert a CSV to Parquet with pandas?
+- What if my CSV has mixed types or missing values?
+- How much faster is Polars for data manipulation vs pandas?
+- Can I read a CSV directly from S3 or URL?
+</FollowUps>

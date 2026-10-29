@@ -1,0 +1,103 @@
+# Admin overview
+
+Track revenue, churn, and the health of your customer base. <Badge tone="info">Live</Badge>
+
+<Select label="Reporting period" name="period" options="Last 30 days | This quarter | Year to date | Last 90 days" value="Last 90 days" />
+
+<Card title="At a glance" subtitle="All metrics reflect the selected reporting period">
+<Columns>
+<Stat label="Monthly recurring revenue" value="$182,400" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="Annual recurring revenue" value="$2,188,800" change="+4.2%" tone="success" icon="trend-up" />
+<Stat label="Churn this month" value="3.2%" change="-0.4 pts" tone="success" icon="trend-down" />
+<Stat label="Current NPS" value="42" change="+3 pts" tone="info" icon="heart" />
+</Columns>
+</Card>
+
+<Callout tone="warning" title="Revenue at risk">
+Four accounts are flagged at risk, representing **$44,320** in monthly recurring revenue.
+</Callout>
+
+<Card title="New signups — last 90 days" subtitle="2,452 new accounts in the selected period">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Wk 1 | 128 |
+| Wk 2 | 142 |
+| Wk 3 | 135 |
+| Wk 4 | 161 |
+| Wk 5 | 178 |
+| Wk 6 | 169 |
+| Wk 7 | 186 |
+| Wk 8 | 204 |
+| Wk 9 | 198 |
+| Wk 10 | 221 |
+| Wk 11 | 240 |
+| Wk 12 | 232 |
+| Wk 13 | 258 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by plan" subtitle="764 active accounts">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Enterprise | 38 |
+| Growth | 214 |
+| Starter | 512 |
+</Chart>
+</Card>
+<Card title="Seat utilization" subtitle="Across all accounts">
+<Progress value="78" max="100" label="Company-wide — 9,008 of 11,548 seats" tone="info" />
+<Progress value="84" max="100" label="Enterprise" tone="success" />
+<Progress value="76" max="100" label="Growth" tone="neutral" />
+<Progress value="61" max="100" label="Starter" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Adoption of newest features" subtitle="Share of active accounts using each feature in the last 14 days">
+<Progress value="73" max="100" label="Usage Alerts — 73% adoption" tone="success" />
+<Progress value="62" max="100" label="AI Copilot — 62% adoption" tone="info" />
+<Progress value="41" max="100" label="SSO Groups — 41% adoption" tone="neutral" />
+</Card>
+
+<Card title="Ten largest customers" subtitle="Ranked by monthly spend — $135,720 combined MRR">
+| # | Company | Plan | Seats | Monthly spend |
+|---|---|---|---|---|
+| 1 | Acme Corp | Enterprise | 1,240 | $24,800 |
+| 2 | Globex | Enterprise | 984 | $19,680 |
+| 3 | Initech | Enterprise | 872 | $17,440 |
+| 4 | Umbrella Corp | Enterprise | 763 | $15,260 |
+| 5 | Stark Industries | Growth | 691 | $13,820 |
+| 6 | Wayne Enterprises | Growth | 583 | $11,660 |
+| 7 | Cyberdyne Systems | Growth | 502 | $10,040 |
+| 8 | Hooli | Growth | 447 | $8,940 |
+| 9 | Pied Piper | Growth | 389 | $7,780 |
+| 10 | Vandelay Industries | Starter | 315 | $6,300 |
+</Card>
+
+<Columns>
+<Card title="Accounts at risk" subtitle="Flagged in the last 7 days">
+| Company | MRR | Risk | Reason |
+|---|---|---|---|
+| Globex | $19,680 | <Badge tone="danger">High</Badge> | No admin login in 21 days; renewal in 30 days |
+| Initech | $17,440 | <Badge tone="warning">Medium</Badge> | Opened a cancellation ticket |
+| Northwind | $4,800 | <Badge tone="danger">High</Badge> | Usage down 42% month over month |
+| Contoso | $2,400 | <Badge tone="neutral">Low</Badge> | Billing contact changed; no admin assigned |
+</Card>
+<Card title="Failed payments" subtitle="3 invoices totaling $43,780">
+| Company | Amount | Attempted | Action |
+|---|---|---|---|
+| Acme Corp | $24,800 | May 24 | <Button size="small" variant="secondary">Retry</Button> |
+| Cyberdyne Systems | $10,040 | May 25 | <Button size="small" variant="secondary">Retry</Button> |
+| Hooli | $8,940 | May 26 | <Button size="small" variant="secondary">Retry</Button> |
+</Card>
+</Columns>
+
+<Card title="Invite an admin" subtitle="Add a teammate to the admin workspace">
+<Form name="invite-admin">
+<Input label="Email" type="email" placeholder="teammate@company.com" hint="They'll receive a secure invite link that expires in 72 hours" required />
+<Select label="Role" options="Admin — full access | Billing — manage plans and invoices | Analyst — view-only" placeholder="Choose a role" />
+<Button>Send invite</Button>
+</Form>
+</Card>

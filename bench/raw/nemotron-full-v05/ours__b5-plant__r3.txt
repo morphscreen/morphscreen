@@ -1,0 +1,286 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="info" title="Live Andon Alerts">
+<Badge tone="danger">CRITICAL</Badge> Line 3 - Machine M3-07: Temperature exceeded threshold (14:23)
+<Badge tone="warning">WARNING</Badge> Line 1 - Conveyor C1-02: Vibration anomaly detected (14:19)
+<Badge tone="info">INFO</Badge> Line 4 - Packaging P4-01: Low material warning (14:15)
+</Callout>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Progress value="82" max="100" label="OEE: 82%" tone="success" />
+<Stat label="Availability" value="91%" change="+2.1% vs yesterday" tone="success" />
+<Stat label="Performance" value="88%" change="-1.3% vs yesterday" tone="warning" />
+<Stat label="Quality" value="96%" change="+0.5% vs yesterday" tone="success" />
+</Card>
+
+<Card title="Today's Production Target">
+<Progress value="847" max="1200" label="Units Produced: 847 / 1,200 (70.6%)" tone="info" />
+<Stat label="Target Rate" value="150 units/hr" />
+<Stat label="Actual Rate" value="132 units/hr" change="-12% below target" tone="warning" />
+<Stat label="Projected EOD" value="1,120 units" change="6.7% short" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Production Lines Overview">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alarms |
+|---|---|---|---|---|---|
+| Line 1 - Stamping | <Badge tone="success">Running</Badge> | 142 / 150 | 1,200 | 89% | 1 Warning |
+| Line 2 - Injection | <Badge tone="success">Running</Badge> | 98 / 100 | 800 | 85% | 0 |
+| Line 3 - Assembly | <Badge tone="danger">Stopped</Badge> | 0 / 120 | 960 | 62% | 1 Critical |
+| Line 4 - Packaging | <Badge tone="success">Running</Badge> | 165 / 180 | 1,440 | 91% | 1 Info |
+| Line 5 - Finishing | <Badge tone="warning">Slow</Badge> | 72 / 85 | 680 | 78% | 0 |
+</Tab>
+<Tab title="Line 1 Focus">
+<Columns>
+<Card title="Line 1 - Stamping Detail">
+| Metric | Value |
+|---|---|
+| Current Rate | 142 units/hr |
+| Shift Target | 1,200 units |
+| Produced This Shift | 847 units |
+| Scrap Count | 12 units |
+| Active Machines | 4 / 5 |
+| Last Downtime | 14 min (tool change) |
+</Card>
+<Card title="Line 1 Machines">
+| Machine | Status | Rate | Last Maintenance | Next Due |
+|---|---|---|---|---|
+| M1-01 Press | <Badge tone="success">Running</Badge> | 45/hr | 2024-01-15 | 2024-02-15 |
+| M1-02 Press | <Badge tone="success">Running</Badge> | 38/hr | 2024-01-10 | 2024-02-10 |
+| M1-03 Feeder | <Badge tone="success">Running</Badge> | 32/hr | 2024-01-20 | 2024-02-20 |
+| M1-04 Press | <Badge tone="warning">Slow</Badge> | 27/hr | 2024-01-05 | <Badge tone="danger">Overdue</Badge> |
+| M1-05 Stacker | <Badge tone="neutral">Idle</Badge> | 0/hr | 2024-01-18 | 2024-02-18 |
+</Card>
+</Columns>
+</Tab>
+<Tab title="Line 2 Focus">
+<Card title="Line 2 - Injection Molding Detail">
+| Metric | Value |
+|---|---|
+| Current Rate | 98 units/hr |
+| Shift Target | 800 units |
+| Produced This Shift | 587 units |
+| Scrap Count | 8 units |
+| Active Machines | 3 / 3 |
+| Last Downtime | 8 min (material change) |
+</Card>
+</Tab>
+<Tab title="Line 3 Focus">
+<Card title="Line 3 - Assembly Detail">
+<Callout tone="danger" title="Line Stopped">Machine M3-07 temperature critical - maintenance dispatched</Callout>
+| Metric | Value |
+|---|---|
+| Current Rate | 0 units/hr |
+| Shift Target | 960 units |
+| Produced This Shift | 312 units |
+| Scrap Count | 24 units |
+| Active Machines | 2 / 4 |
+| Downtime Start | 13:45 (48 min ago) |
+</Card>
+</Tab>
+<Tab title="Line 4 Focus">
+<Card title="Line 4 - Packaging Detail">
+| Metric | Value |
+|---|---|
+| Current Rate | 165 units/hr |
+| Shift Target | 1,440 units |
+| Produced This Shift | 1,023 units |
+| Scrap Count | 5 units |
+| Active Machines | 4 / 4 |
+| Last Downtime | 5 min (label jam) |
+</Card>
+</Tab>
+<Tab title="Line 5 Focus">
+<Card title="Line 5 - Finishing Detail">
+| Metric | Value |
+|---|---|
+| Current Rate | 72 units/hr |
+| Shift Target | 680 units |
+| Produced This Shift | 418 units |
+| Scrap Count | 3 units |
+| Active Machines | 2 / 3 |
+| Last Downtime | 22 min (calibration) |
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %">
+| Date | Defect Rate % |
+|---|---|
+| Jan 1 | 2.1 |
+| Jan 4 | 1.8 |
+| Jan 7 | 2.3 |
+| Jan 10 | 1.9 |
+| Jan 13 | 2.5 |
+| Jan 16 | 2.0 |
+| Jan 19 | 1.7 |
+| Jan 22 | 2.2 |
+| Jan 25 | 1.8 |
+| Jan 28 | 2.1 |
+| Jan 31 | 1.9 |
+| Feb 3 | 2.0 |
+| Feb 6 | 1.6 |
+| Feb 9 | 2.3 |
+| Feb 12 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause - This Month">
+<Chart type="pie" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical Failure | 420 |
+| Material Shortage | 280 |
+| Changeover | 195 |
+| Quality Hold | 160 |
+| Operator Unavailable | 95 |
+| Planned Maintenance | 480 |
+| Power/Utility | 45 |
+| Other | 65 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Last Service | Due Date | Status | Priority |
+|---|---|---|---|---|---|
+| M1-04 Press | Line 1 | 2024-01-05 | 2024-02-05 | <Badge tone="danger">Overdue</Badge> | High |
+| M3-07 Welder | Line 3 | 2024-01-12 | 2024-02-12 | <Badge tone="warning">Due Soon</Badge> | Critical |
+| M2-02 Injector | Line 2 | 2024-01-18 | 2024-02-18 | <Badge tone="warning">Due Soon</Badge> | Medium |
+| M4-01 Sealer | Line 4 | 2024-01-22 | 2024-02-22 | <Badge tone="info">Scheduled</Badge> | Low |
+| M5-03 Grinder | Line 5 | 2024-01-25 | 2024-02-25 | <Badge tone="info">Scheduled</Badge> | Low |
+| M1-02 Press | Line 1 | 2024-01-10 | 2024-02-10 | <Badge tone="warning">Due Soon</Badge> | Medium |
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tons" change="Reorder at 15t" tone="success" />
+<Stat label="Resin Pellets" value="8.7 tons" change="Reorder at 3t" tone="warning" />
+<Stat label="Packaging Film" value="1,240 rolls" change="Reorder at 300" tone="success" />
+</Columns>
+<Progress value="42.3" max="60" label="Steel: 70.5%" tone="success" />
+<Progress value="8.7" max="12" label="Resin: 72.5%" tone="success" />
+<Progress value="1240" max="2000" label="Packaging: 62%" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | Status | PO # |
+|---|---|---|---|---|---|
+| AcerSteel Ltd | Hot-rolled coil | 25 tons | 2024-02-14 | <Badge tone="info">Confirmed</Badge> | PO-2024-0187 |
+| PolySource Inc | PP Resin Grade 4 | 5 tons | 2024-02-15 | <Badge tone="warning">Pending</Badge> | PO-2024-0192 |
+| PackWell Co | Stretch film 500mm | 800 rolls | 2024-02-16 | <Badge tone="info">Confirmed</Badge> | PO-2024-0189 |
+| AcerSteel Ltd | Cold-rolled sheet | 15 tons | 2024-02-17 | <Badge tone="info">Confirmed</Badge> | PO-2024-0190 |
+| ChemLogix | Additive Masterbatch | 500 kg | 2024-02-18 | <Badge tone="danger">Delayed</Badge> | PO-2024-0193 |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units Produced">
+| Shift | Units Produced | Target | Efficiency |
+|---|---|---|---|
+| Shift A (06-14) | 1,847 | 2,000 | 92.4% |
+| Shift B (14-22) | 1,203 | 2,000 | 60.2% |
+| Shift C (22-06) | 987 | 1,500 | 65.8% |
+| Week Avg A | 1,912 | 2,000 | 95.6% |
+| Week Avg B | 1,654 | 2,000 | 82.7% |
+| Week Avg C | 1,102 | 1,500 | 73.5% |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Safety Metrics">
+<Stat label="Incidents This Year" value="3" change="0 since last month" tone="success" />
+<Stat label="Days Since Last Incident" value="47" change="Target: 365" tone="success" />
+<Stat label="Near Misses This Month" value="2" change="-1 vs last month" tone="info" />
+<Stat label="Safety Training Compliance" value="98%" change="+2% vs last quarter" tone="success" />
+<Callout tone="success" title="Milestone">47 days incident-free — approaching 50-day milestone</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| B-2024-0214 | Line 3 | Bracket-A | 240 | Dimensional variance | 13:30 | <Badge tone="warning">Under Review</Badge> |
+| B-2024-0213 | Line 2 | Housing-B | 180 | Surface finish | 11:15 | <Badge tone="info">Testing</Badge> |
+| B-2024-0211 | Line 1 | Plate-C | 320 | Material cert missing | 2024-02-12 | <Badge tone="danger">Blocked</Badge> |
+| B-2024-0210 | Line 4 | Box-D | 150 | Label mismatch | 2024-02-12 | <Badge tone="success">Cleared</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use Today">
+<Stat label="Total Consumption" value="2,847 kWh" change="+5.2% vs avg" tone="warning" />
+<Stat label="Cost Today" value="$341.64" change="$18.20 above budget" tone="warning" />
+<Stat label="Peak Demand" value="485 kW" at="10:42 AM" tone="info" />
+<Chart type="area" x="Hour" y="kWh">
+| Hour | kWh |
+|---|---|
+| 06:00 | 120 |
+| 07:00 | 185 |
+| 08:00 | 245 |
+| 09:00 | 290 |
+| 10:00 | 320 |
+| 11:00 | 310 |
+| 12:00 | 280 |
+| 13:00 | 295 |
+| 14:00 | 305 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Machine | Description | Assigned | Due | Status |
+|---|---|---|---|---|---|---|---|
+| WO-2024-0412 | <Badge tone="danger">Critical</Badge> | Line 3 | M3-07 | Replace overheating heater bank | M. Torres | Today 16:00 | <Badge tone="warning">In Progress</Badge> |
+| WO-2024-0411 | <Badge tone="warning">High</Badge> | Line 1 | M1-04 | Overdue PM - hydraulic flush | J. Chen | 2024-02-14 | <Badge tone="info">Scheduled</Badge> |
+| WO-2024-0410 | <Badge tone="warning">High</Badge> | Line 2 | M2-02 | Nozzle replacement | R. Patel | 2024-02-15 | <Badge tone="info">Parts Ordered</Badge> |
+| WO-2024-0409 | <Badge tone="info">Medium</Badge> | Line 4 | M4-03 | Conveyor belt tracking | S. Kim | 2024-02-16 | <Badge tone="neutral">Open</Badge> |
+| WO-2024-0408 | <Badge tone="info">Medium</Badge> | Line 5 | M5-01 | Calibration check | M. Torres | 2024-02-18 | <Badge tone="neutral">Open</Badge> |
+| WO-2024-0407 | <Badge tone="neutral">Low</Badge> | Facility | HVAC-2 | Filter replacement | Facilities | 2024-02-20 | <Badge tone="neutral">Open</Badge> |
+</Card>
+</Columns>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="M1-01 Press | M1-02 Press | M1-03 Feeder | M1-04 Press | M1-05 Stacker | M2-01 Injector | M2-02 Injector | M2-03 Mold | M3-01 Robot | M3-02 Robot | M3-03 Welder | M3-04 Welder | M3-05 Press | M3-06 Press | M3-07 Welder | M4-01 Sealer | M4-02 Labeler | M4-03 Conveyor | M4-04 Palletizer | M5-01 Grinder | M5-02 Polisher | M5-03 Grinder" required="true" />
+<Date label="Maintenance Date" name="maint-date" required="true" />
+</Columns>
+<Select label="Maintenance Type" name="maint-type" placeholder="Select type" options="Preventive (PM) | Corrective (CM) | Predictive (PdM) | Calibration | Lubrication | Inspection" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Critical | High | Medium | Low" required="true" />
+<TextArea label="Description / Work Scope" name="description" placeholder="Describe work to be performed..." rows="3" required="true" />
+<Select label="Assigned Technician" name="technician" placeholder="Assign technician" options="M. Torres | J. Chen | R. Patel | S. Kim | T. Brooks | L. Nguyen" />
+<Button variant="primary">Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Export Shift Report">
+<Columns>
+<Card title="Report Options">
+<Checkboxes label="Include Sections" name="report-sections" value="OEE | Production | Defects | Downtime | Maintenance | Materials | Safety | Quality | Energy | Work Orders" options="OEE | Production Summary | Defect Analysis | Downtime Breakdown | Maintenance Schedule | Material Stock | Safety Incidents | Quality Holds | Energy Consumption | Open Work Orders" />
+<Radio label="Format" name="format" options="PDF | Excel (CSV) | Excel (XLSX)" value="PDF" />
+<Radio label="Shift Coverage" name="shift-coverage" options="Current Shift Only | All Shifts Today | Last 24 Hours | Last 7 Days" value="Current Shift Only" />
+</Card>
+<Card title="Actions">
+<Button variant="primary" size="large">Generate & Download Report</Button>
+<Button variant="secondary">Email to Distribution List</Button>
+<Button variant="tertiary">Save Template</Button>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me Line 3 recovery plan after the critical stoppage
+- Which machines have the highest downtime this month?
+- Generate preventive maintenance schedule for February
+- Compare energy efficiency across all production lines
+- List all overdue maintenance tasks with assigned owners
+</FollowUps>

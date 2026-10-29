@@ -1,0 +1,264 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="CRITICAL SITUATION">Multiple active incidents across 3 zones. Evacuation in progress. All channels active.</Callout>
+
+## Active Incidents by Zone
+
+<Columns>
+<Card title="Zone A - Downtown" subtitle="4 incidents">
+<Badge tone="danger">Critical</Badge>
+<Stat label="Building collapse" value="Level 5" tone="danger" />
+<Stat label="Gas leak" value="Level 3" tone="warning" />
+<Stat label="Fire" value="Level 4" tone="danger" />
+<Stat label="Flooding" value="Level 2" tone="info" />
+</Card>
+
+<Card title="Zone B - Industrial" subtitle="2 incidents">
+<Badge tone="warning">High</Badge>
+<Stat label="Chemical spill" value="Level 4" tone="danger" />
+<Stat label="Structural damage" value="Level 3" tone="warning" />
+</Card>
+
+<Card title="Zone C - Residential" subtitle="3 incidents">
+<Badge tone="info">Moderate</Badge>
+<Stat label="Power outage" value="Level 2" tone="warning" />
+<Stat label="Road flooding" value="Level 3" tone="warning" />
+<Stat label="Tree falls" value="Level 1" tone="info" />
+</Card>
+</Columns>
+
+<Button ask="Focus on Zone A">Focus on Zone A</Button>
+<Button ask="Focus on Zone B">Focus on Zone B</Button>
+<Button ask="Focus on Zone C">Focus on Zone C</Button>
+
+## Overall Severity Summary
+
+<Card title="Severity Dashboard">
+<Columns>
+<Stat label="Critical incidents" value="3" tone="danger" icon="warning-circle" />
+<Stat label="High severity" value="3" tone="warning" icon="warning" />
+<Stat label="Moderate severity" value="2" tone="info" icon="info" />
+<Stat label="Low severity" value="1" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="9" max="9" label="Overall severity: 9/9 - CRITICAL" tone="danger" />
+</Card>
+
+## Resources Available
+
+<Card title="Fleet & Personnel">
+<Columns>
+<Stat label="Vehicles" value="24" icon="truck" change="-3 deployed" tone="warning" />
+<Stat label="Personnel" value="142" icon="users" change="-28 on duty" tone="info" />
+<Stat label="Supplies" value="86%" icon="package" change="Medical: 72% | Food: 91% | Water: 94%" tone="info" />
+</Columns>
+</Card>
+
+## Shelters
+
+<Card title="Shelter Status">
+<Columns>
+<Card subtitle="Zone A Shelter 1">
+<Stat label="Capacity" value="200" />
+<Stat label="Occupancy" value="156" tone="info" />
+<Progress value="156" max="200" label="78% full" tone="warning" />
+</Card>
+<Card subtitle="Zone B Shelter 2">
+<Stat label="Capacity" value="150" />
+<Stat label="Occupancy" value="89" tone="info" />
+<Progress value="89" max="150" label="59% full" tone="info" />
+</Card>
+<Card subtitle="Zone C Shelter 3">
+<Stat label="Capacity" value="300" />
+<Stat label="Occupancy" value="210" tone="info" />
+<Progress value="210" max="300" label="70% full" tone="warning" />
+</Card>
+</Columns>
+</Card>
+
+## Evacuation Routes
+
+<Card title="Route Status">
+<Columns>
+<Stat label="Route 1 - North" value="Open" tone="success" icon="check-circle" />
+<Stat label="Route 2 - South" value="Congested" tone="warning" icon="warning-circle" />
+<Stat label="Route 3 - East" value="Blocked" tone="danger" icon="x-circle" />
+<Stat label="Route 4 - West" value="Open" tone="success" icon="check-circle" />
+</Columns>
+</Card>
+
+## Weather Forecast (Next 48 Hours)
+
+<Card title="Weather Outlook">
+<Chart type="line" x="Time" y="Temperature °C | Wind km/h | Rain mm">
+| Time | Temperature °C | Wind km/h | Rain mm |
+|---|---|---|---|
+| Now | 22 | 15 | 0 |
+| +6h | 20 | 18 | 2 |
+| +12h | 18 | 22 | 5 |
+| +18h | 16 | 25 | 8 |
+| +24h | 15 | 28 | 12 |
+| +36h | 17 | 20 | 6 |
+| +48h | 19 | 16 | 1 |
+</Chart>
+<Callout tone="warning" title="Storm warning">Heavy rain expected in 18-24 hours. Prepare for flooding.</Callout>
+</Card>
+
+## Casualties & Rescues
+
+<Card title="Situation Report">
+<Columns>
+<Stat label="People rescued" value="347" tone="success" icon="heart" change="+28 today" />
+<Stat label="Casualties" value="12" tone="danger" icon="warning-circle" change="+2 today" />
+</Columns>
+</Card>
+
+## Volunteers on Duty
+
+<Card title="Active Volunteers">
+<Columns>
+<Card subtitle="Zone A">
+<Avatar name="Maria Santos" subtitle="Search & Rescue" />
+<Avatar name="James Chen" subtitle="Medical Triage" />
+<Avatar name="Sarah Johnson" subtitle="Logistics" />
+</Card>
+<Card subtitle="Zone B">
+<Avatar name="Ahmed Hassan" subtitle="Hazmat Team" />
+<Avatar name="Lisa Park" subtitle="Evacuation" />
+</Card>
+<Card subtitle="Zone C">
+<Avatar name="David Kim" subtitle="Power Restoration" />
+<Avatar name="Emma Wilson" subtitle="Food Distribution" />
+</Card>
+</Columns>
+</Card>
+
+## Donations Received
+
+<Card title="Donations">
+<Columns>
+<Stat label="Monetary" value="$48,200" icon="currency-dollar" change="+$5,400 today" tone="success" />
+<Stat label="Supplies" value="1,240 units" icon="package" change="Food: 600 | Water: 400 | Medical: 240" tone="info" />
+</Columns>
+</Card>
+
+## Aid Requests Awaiting Action
+
+<Card title="Pending Requests">
+<Columns>
+<Card subtitle="Zone A">
+<Stat label="Medical supplies" value="3 requests" tone="danger" />
+<Stat label="Heavy equipment" value="2 requests" tone="warning" />
+</Card>
+<Card subtitle="Zone B">
+<Stat label="Hazmat suits" value="5 requests" tone="danger" />
+<Stat label="Decontamination" value="1 request" tone="warning" />
+</Card>
+<Card subtitle="Zone C">
+<Stat label="Generators" value="4 requests" tone="warning" />
+<Stat label="Water pumps" value="2 requests" tone="info" />
+</Card>
+</Columns>
+<Button ask="View all aid requests">View All Requests</Button>
+</Card>
+
+## Communication Channels
+
+<Card title="Channel Status">
+<Columns>
+<Stat label="Radio" value="Operational" tone="success" icon="radio" />
+<Stat label="Cell Network" value="Degraded" tone="warning" icon="cell-signal" />
+<Stat label="Satellite" value="Operational" tone="success" icon="satellite" />
+<Stat label="Internet" value="Down" tone="danger" icon="wifi-slash" />
+<Stat label="PA System" value="Operational" tone="success" icon="megaphone" />
+</Columns>
+</Card>
+
+## Roads Closed
+
+<Card title="Road Closures">
+<Columns>
+<Stat label="Main St - Downtown" value="Blocked" tone="danger" icon="x-circle" />
+<Stat label="Industrial Blvd" value="Blocked" tone="danger" icon="x-circle" />
+<Stat label="Oak Ave" value="Partial" tone="warning" icon="warning-circle" />
+<Stat label="River Rd" value="Open" tone="success" icon="check-circle" />
+</Columns>
+</Card>
+
+## Nearby Hospitals & Free Beds
+
+<Card title="Hospital Capacity">
+<Columns>
+<Card subtitle="City General Hospital">
+<Stat label="Total beds" value="350" />
+<Stat label="Free beds" value="42" tone="success" />
+<Progress value="308" max="350" label="88% occupied" tone="warning" />
+</Card>
+<Card subtitle="St. Mary's Medical">
+<Stat label="Total beds" value="200" />
+<Stat label="Free beds" value="18" tone="warning" />
+<Progress value="182" max="200" label="91% occupied" tone="danger" />
+</Card>
+<Card subtitle="County Trauma Center">
+<Stat label="Total beds" value="120" />
+<Stat label="Free beds" value="35" tone="success" />
+<Progress value="85" max="120" label="71% occupied" tone="info" />
+</Card>
+</Columns>
+</Card>
+
+## Open Tasks
+
+<Card title="Task Assignments">
+<Columns>
+<Card subtitle="Zone A">
+<Stat label="Evacuate building 12" value="Maria Santos" icon="user" />
+<Stat label="Gas line repair" value="James Chen" icon="user" />
+</Card>
+<Card subtitle="Zone B">
+<Stat label="Chemical containment" value="Ahmed Hassan" icon="user" />
+<Stat label="Decontamination" value="Lisa Park" icon="user" />
+</Card>
+<Card subtitle="Zone C">
+<Stat label="Power restoration" value="David Kim" icon="user" />
+<Stat label="Food distribution" value="Emma Wilson" icon="user" />
+</Card>
+</Columns>
+</Card>
+
+## Actions
+
+<Columns>
+<Card title="Request Resources">
+<Form name="resource-request">
+<Select label="Zone" options="Zone A - Downtown | Zone B - Industrial | Zone C - Residential" placeholder="Select zone" required="true" />
+<Select label="Resource type" options="Medical supplies | Food | Water | Heavy equipment | Personnel | Vehicles | Fuel" placeholder="Select type" required="true" />
+<Input label="Quantity" type="number" placeholder="e.g., 50" min="1" required="true" />
+<Button>Submit Request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<Select label="Target zone" options="All zones | Zone A | Zone B | Zone C" placeholder="Select zone" required="true" />
+<TextArea label="Message" placeholder="Type your broadcast message here..." rows="4" required="true" />
+<Button variant="primary">Send Broadcast</Button>
+</Form>
+</Card>
+
+<Card title="File Situation Report">
+<Form name="situation-report">
+<Select label="Zone" options="Zone A - Downtown | Zone B - Industrial | Zone C - Residential | All zones" placeholder="Select zone" required="true" />
+<Select label="Report type" options="Incident update | Resource status | Casualty report | Damage assessment | Weather impact" required="true" />
+<TextArea label="Details" placeholder="Describe the situation..." rows="4" required="true" />
+<Button variant="primary">File Report</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the situation report for Zone A
+- What resources are most needed right now?
+- Update me on the weather situation
+- Which shelters still have capacity?
+- List all volunteers available for deployment
+</FollowUps>

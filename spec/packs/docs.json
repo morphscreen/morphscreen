@@ -1,0 +1,43 @@
+{
+  "name": "docs",
+  "version": "0.2.0",
+  "about": "Technical writing: code with a file name, diffs, formulas, file trees and cited sources.",
+  "components": {
+    "Code": {
+      "about": "a fenced code block inside, shown with its file name and highlighted lines",
+      "attrs": {
+        "file": "string",
+        "highlight": "list"
+      },
+      "content": "code"
+    },
+    "Diff": {
+      "about": "a change, from the fenced diff block inside (lines starting with + and -)",
+      "attrs": { "file": "string" },
+      "content": "code"
+    },
+    "Math": {
+      "about": "a formula written in TeX",
+      "attrs": {
+        "tex": { "type": "string", "required": true },
+        "label": "string"
+      },
+      "content": "none"
+    },
+    "FileTree": {
+      "about": "files and folders, one list item per path, folders ending in /",
+      "attrs": { "title": "string" },
+      "content": "list"
+    },
+    "Citation": {
+      "about": "a source the answer relies on; what it says between the tags",
+      "attrs": {
+        "title": { "type": "string", "required": true },
+        "href": "url",
+        "source": "string",
+        "date": "string"
+      },
+      "content": "text"
+    }
+  }
+}

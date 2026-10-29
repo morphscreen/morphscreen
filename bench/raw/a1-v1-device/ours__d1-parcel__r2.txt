@@ -1,0 +1,46 @@
+<Card title="Damaged Delivery Report" subtitle="Order #ORD-2024-089421">
+### Items in this order
+
+| Item | Qty | Condition reported |
+|---|---|---|
+| Wireless Headphones WH-1000XM5 | 1 | Crushed packaging, ear cup cracked |
+| USB-C Charging Cable 2m | 2 | Cable frayed near connector |
+| Carrying Case | 1 | Zipper broken, tear on side |
+
+<Callout tone="info" title="Verify items">Please confirm all damaged items are listed above before submitting.</Callout>
+</Card>
+
+<Card title="Damage Photos" subtitle="Take clear photos of each damaged item and the packaging">
+<Camera label="Photo 1: Overall package condition" name="photo-overall" facing="back" hint="Show the shipping box and labels" required="true" />
+<Camera label="Photo 2: Damaged item(s) close-up" name="photo-damage" facing="back" hint="Focus on the specific damage" required="true" multiple="true" />
+<Camera label="Photo 3: Shipping label & barcode" name="photo-label" facing="back" hint="Ensure barcode is readable" required="true" />
+
+<Progress value="0" max="3" label="Photos captured" />
+</Card>
+
+<Card title="Parcel Barcode" subtitle="Scan the barcode on the shipping label">
+<Scan label="Scan parcel barcode" name="parcel-barcode" kind="barcode" hint="Point camera at the barcode on the shipping label" required="true" />
+
+<Callout tone="neutral" title="Can't scan?">You can also enter the tracking number manually: <Input label="Tracking number" name="tracking-manual" placeholder="1Z999AA10123456784" type="text" /></Callout>
+</Card>
+
+<Card title="What Happens Next" subtitle="After you submit this report">
+<Steps>
+<Step title="Report received" status="todo">Our support team receives your report with photos and barcode data within minutes.</Step>
+<Step title="Damage assessed" status="todo">We verify the damage against carrier liability and your purchase protection.</Step>
+<Step title="Resolution offered" status="todo">You'll receive a replacement shipment or full refund within 1–2 business days.</Step>
+<Step title="Carrier claim filed" status="todo">We handle the claim with the shipping carrier on your behalf — no action needed from you.</Step>
+<Step title="Confirmation email" status="todo">You'll get an email with the case number, resolution details, and tracking for any replacement.</Step>
+</Steps>
+
+<Callout tone="success" title="Your purchase is protected">All items are covered by our Delivery Guarantee — you won't pay for damaged goods.</Callout>
+</Card>
+
+<Card title="Submit Report">
+<Form name="damaged-delivery-report">
+<Input label="Your email" name="reporter-email" type="email" placeholder="you@example.com" hint="We'll send confirmation here" required="true" />
+<TextArea label="Additional notes (optional)" name="notes" placeholder="Any other details about the delivery or damage..." rows="3" />
+<Button size="large">Send Report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

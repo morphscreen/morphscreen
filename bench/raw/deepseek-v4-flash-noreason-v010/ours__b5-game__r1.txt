@@ -1,0 +1,309 @@
+# Live-Ops Command Center
+
+<Columns>
+<Stat label="Players Online" value="84,213" change="+12% vs 1h ago" tone="success" icon="users" />
+<Stat label="DAU" value="1.2M" change="+4.3% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="MAU" value="8.4M" change="+2.1% vs last month" tone="info" icon="calendar" />
+<Stat label="Revenue Today" value="$214,890" change="+8.7% vs yesterday" tone="success" icon="currency-circle-dollar" />
+</Columns>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Revenue per User (DAU)" value="$0.18" change="+3.2% vs yesterday" tone="info" />
+<Stat label="Avg Session Length (2wk)" value="27.4 min" change="-1.8 min vs prior 2wk" tone="warning" />
+<Stat label="Currency Inflation" value="3.2%" change="Target < 5%" tone="success" icon="trend-up" />
+</Columns>
+</Card>
+
+---
+
+## 1–2. Player Activity
+
+<Card title="Players Online Now" subtitle="Live feed">
+| Region | Players | Trend |
+|---|---|---|
+| NA-East | 24,120 | ↑ 8% |
+| NA-West | 18,445 | ↑ 5% |
+| EU-Central | 21,308 | ↓ 2% |
+| APAC-SE | 12,540 | ↑ 15% |
+| SA-East | 7,800 | ↑ 3% |
+
+<Progress value="84213" max="120000" label="Online vs peak capacity" tone="info" />
+</Card>
+
+<Card title="Daily & Monthly Active Players">
+<Chart type="line" title="DAU — last 30 days" x="Day" y="Players">
+| Day | DAU |
+|---|---|
+| 1 | 1.02M |
+| 5 | 1.08M |
+| 10 | 1.15M |
+| 15 | 1.21M |
+| 20 | 1.18M |
+| 25 | 1.24M |
+| 30 | 1.20M |
+</Chart>
+<Stat label="MAU" value="8.4M" note="Rolling 30-day" tone="info" />
+</Card>
+
+---
+
+## 3–4. Revenue
+
+<Card title="Revenue Today & Per User">
+<Columns>
+<Stat label="Revenue Today" value="$214,890" change="+8.7% vs yesterday" tone="success" icon="currency-circle-dollar" />
+<Stat label="ARPU (DAU)" value="$0.18" change="+3.2% vs yesterday" tone="info" />
+<Stat label="ARPPU (paying users)" value="$4.32" change="+1.1% vs yesterday" tone="info" />
+</Columns>
+<Chart type="area" title="Revenue — last 7 days" x="Day" y="USD">
+| Day | Revenue |
+|---|---|
+| Mon | 198K |
+| Tue | 205K |
+| Wed | 212K |
+| Thu | 198K |
+| Fri | 231K |
+| Sat | 246K |
+| Sun | 214K |
+</Chart>
+</Card>
+
+---
+
+## 5. Session Length Trend
+
+<Card title="Average Session Length — Past Two Weeks">
+<Chart type="line" title="Minutes per session" x="Day" y="Minutes">
+| Day | Avg Session |
+|---|---|
+| 14 days ago | 29.2 |
+| 12 days ago | 28.8 |
+| 10 days ago | 28.1 |
+| 8 days ago | 27.9 |
+| 6 days ago | 27.5 |
+| 4 days ago | 27.1 |
+| 2 days ago | 26.8 |
+| Today | 27.4 |
+</Chart>
+<Callout tone="warning" title="Slight decline">Session length is down 1.8 min over two weeks. Likely tied to the end of the seasonal event. Watch after next event launch.</Callout>
+</Card>
+
+---
+
+## 6. Best-Selling Items
+
+<Card title="Best Sellers — Last 24h">
+| Item | Units Sold | Revenue | Trend |
+|---|---|---|---|
+| Dragonfire Skin Pack | 4,210 | $42,100 | ↑ 22% |
+| 1,000 Gems Bundle | 3,850 | $38,500 | ↑ 5% |
+| Battle Pass Season 12 | 2,940 | $29,400 | ↑ 18% |
+| Legendary Loot Crate | 2,310 | $23,100 | ↓ 4% |
+| Starter Booster Pack | 1,875 | $18,750 | ↑ 9% |
+</Card>
+
+---
+
+## 7. Server Region Health
+
+<Card title="Server Health by Region">
+<Columns>
+<Stat label="NA-East" value="98.2%" note="Health score" tone="success" />
+<Stat label="NA-West" value="99.1%" note="Health score" tone="success" />
+<Stat label="EU-Central" value="94.7%" note="Health score" tone="warning" />
+<Stat label="APAC-SE" value="97.5%" note="Health score" tone="success" />
+<Stat label="SA-East" value="91.3%" note="Health score" tone="danger" />
+</Columns>
+
+<Tabs>
+<Tab title="NA-East">
+<Badge tone="success">Healthy</Badge>
+<Progress value="98.2" max="100" label="Health score" tone="success" />
+<Stat label="Ping (p95)" value="48 ms" tone="success" />
+<Stat label="Error rate" value="0.3%" tone="success" />
+</Tab>
+<Tab title="EU-Central">
+<Badge tone="warning">Degraded</Badge>
+<Progress value="94.7" max="100" label="Health score" tone="warning" />
+<Stat label="Ping (p95)" value="82 ms" tone="warning" />
+<Stat label="Error rate" value="1.1%" tone="warning" />
+<Callout tone="warning" title="Investigate">Packet loss spiking on EU-Central-3. Consider failover.</Callout>
+</Tab>
+<Tab title="SA-East">
+<Badge tone="danger">Critical</Badge>
+<Progress value="91.3" max="100" label="Health score" tone="danger" />
+<Stat label="Ping (p95)" value="154 ms" tone="danger" />
+<Stat label="Error rate" value="3.4%" tone="danger" />
+<Callout tone="danger" title="Action needed">SA-East is under-provisioned. Recommend scaling up or opening a new shard.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Focus on a Region">
+<Form name="region-focus">
+<Select label="Region" options="NA-East | NA-West | EU-Central | APAC-SE | SA-East | All Regions" placeholder="Choose a region" />
+<Button>Focus dashboard</Button>
+</Form>
+</Card>
+
+---
+
+## 8. Crash Rate by App Version
+
+<Card title="Crash Rate — Active Versions">
+| Version | Crash Rate | Players | Status |
+|---|---|---|---|
+| 2.4.1 (latest) | 0.42% | 68% | <Badge tone="success">Healthy</Badge> |
+| 2.4.0 | 0.58% | 21% | <Badge tone="warning">Watch</Badge> |
+| 2.3.9 | 1.24% | 8% | <Badge tone="danger">Deprecate</Badge> |
+| 2.3.8 | 2.87% | 3% | <Badge tone="danger">Deprecate</Badge> |
+
+<Progress value="0.42" max="3" label="Latest version crash rate (%)" tone="success" />
+</Card>
+
+---
+
+## 9. Live Events
+
+<Card title="Live Events">
+<Tabs>
+<Tab title="Running now">
+<Badge tone="success">Live</Badge>
+| Event | Ends In | Players Engaged |
+|---|---|---|
+| Summer Solstice Raid | 2d 14h | 310K |
+| Double XP Weekend | 1d 06h | 520K |
+| Treasure Hunt | 4d 22h | 180K |
+</Tab>
+<Tab title="Upcoming">
+<Badge tone="info">Scheduled</Badge>
+| Event | Starts In | Expected Reach |
+|---|---|---|
+| Halloween Horror | 6d 00h | 800K |
+| Community Challenge | 3d 12h | 450K |
+| New Map Teaser | 9d 08h | 1.1M |
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+## 10–11. Moderation Queue
+
+<Card title="Pending Reviews">
+<Columns>
+<Stat label="Player Reports" value="1,284" change="+42 in last hour" tone="warning" icon="flag" />
+<Stat label="Ban Appeals" value="356" change="+18 in last hour" tone="info" icon="shield-check" />
+</Columns>
+<Callout tone="warning" title="SLA at risk">Reports older than 24h: 312. Ban appeals older than 48h: 89. Consider adding moderators for the weekend shift.</Callout>
+<Button variant="secondary">Open moderation queue</Button>
+</Card>
+
+---
+
+## 12. Currency Inflation
+
+<Card title="In-Game Currency Inflation" subtitle="Gems in circulation">
+<Columns>
+<Stat label="Current Inflation" value="3.2%" note="Target < 5%" tone="success" />
+<Stat label="Gems in circulation" value="412M" tone="info" />
+<Stat label="Sink rate (daily)" value="8.1M" tone="info" />
+</Columns>
+<Chart type="line" title="Inflation — last 8 weeks" x="Week" y="Inflation %">
+| Week | Inflation |
+|---|---|
+| W1 | 1.8 |
+| W2 | 2.1 |
+| W3 | 2.4 |
+| W4 | 2.6 |
+| W5 | 2.9 |
+| W6 | 3.0 |
+| W7 | 3.1 |
+| W8 | 3.2 |
+</Chart>
+<Callout tone="success" title="Within target">Inflation is under control. The new gem sink (cosmetic rerolls) is working. Re-evaluate after next event.</Callout>
+</Card>
+
+---
+
+## 13. Running Experiments
+
+<Card title="A/B Experiments — Results">
+<Tabs>
+<Tab title="Experiment 1: Loot Box Pricing">
+<Badge tone="success">Winner: Variant B</Badge>
+| Variant | Conversion | Revenue/User | Confidence |
+|---|---|---|---|
+| A (current: $1.99) | 2.1% | $0.042 | — |
+| B (new: $1.49) | 3.4% | $0.051 | 99.2% |
+<Callout tone="success" title="Ship B">Variant B increases both conversion and revenue per user. Roll out to 100%.</Callout>
+<Button>Ship Variant B to all</Button>
+</Tab>
+<Tab title="Experiment 2: Tutorial Length">
+<Badge tone="warning">Inconclusive</Badge>
+| Variant | D1 Retention | D7 Retention | Confidence |
+|---|---|---|---|
+| A (current: 5 min) | 42% | 24% | — |
+| B (short: 3 min) | 44% | 23% | 68% |
+<Callout tone="warning" title="Keep running">D1 improved but D7 slightly worse. Not statistically significant. Extend experiment another week.</Callout>
+<Button>Extend experiment</Button>
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+## 14. Draft Patch Notes
+
+<Card title="Patch Notes Draft" subtitle="v2.5.0 — targeting next Tuesday">
+<Form name="patch-notes">
+<Input label="Version" value="2.5.0" />
+<Input label="Title" value="Season 13: Emberfall" />
+<TextArea label="Highlights" rows="4" value="- New map: Emberfall\n- Dragonfire Skin Pack (limited)\n- Balance changes to mage class\n- Bug fixes for EU-Central disconnects" />
+<TextArea label="Full changelog" rows="8" placeholder="Paste full patch notes here…" />
+<Button>Save draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="primary">Send for review</Button>
+</Form>
+</Card>
+
+---
+
+## 15. Region Focus
+
+<Card title="Region Focus Mode">
+<Form name="region-focus">
+<Select label="Focus on" options="All Regions | NA-East | NA-West | EU-Central | APAC-SE | SA-East" placeholder="Choose a region" />
+<Switch label="Show only region metrics" name="region-only" />
+<Switch label="Alert me on region anomalies" name="region-alerts" value="true" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+---
+
+## 16. Ship a Hotfix
+
+<Card title="Hotfix Deployment" subtitle="Emergency fixes only">
+<Form name="hotfix">
+<Input label="Hotfix version" placeholder="2.4.2" />
+<TextArea label="What's in this hotfix?" rows="4" placeholder="Describe the fix(es)…" hint="Required for compliance" />
+<Select label="Target platforms" options="All platforms | iOS only | Android only | PC only | Console only" />
+<Radio label="Rollout strategy" options="Full rollout | Gradual (10% → 100%) | Canary (5%)" />
+<Switch label="Rollback if error rate > 1%" name="auto-rollback" value="true" />
+<Callout tone="danger" title="Confirm">This ships to production immediately. Ensure QA signed off.</Callout>
+<Button variant="danger">Deploy hotfix</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+---
+
+<FollowUps>
+- Show me the detailed breakdown for EU-Central
+- What's driving the revenue spike today?
+- Draft a player-facing message about the hotfix
+- Compare session length by platform
+- Which items are underperforming this week?
+</FollowUps>

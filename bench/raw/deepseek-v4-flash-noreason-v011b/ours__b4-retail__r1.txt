@@ -1,0 +1,142 @@
+# Store Manager Console
+
+<Badge tone="info">Updated live</Badge> <Badge tone="success">Store #1024 — Downtown</Badge>
+
+<Card title="Daily Sales vs Target">
+<Columns>
+<Stat label="Today's Sales" value="$4,820" change="+12%" tone="success" icon="trend-up" />
+<Stat label="Target" value="$5,000" change="96.4%" tone="warning" icon="target" />
+<Stat label="Remaining" value="$180" tone="info" icon="clock" />
+</Columns>
+<Progress value="4820" max="5000" label="Sales progress" tone="success" />
+</Card>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 6 AM | 12 |
+| 8 AM | 45 |
+| 10 AM | 112 |
+| 12 PM | 198 |
+| 2 PM | 156 |
+| 4 PM | 134 |
+| 6 PM | 89 |
+| 8 PM | 34 |
+</Chart>
+<Stat label="Total Today" value="780" icon="users" />
+</Card>
+
+<Card title="Best Sellers">
+| Product | Units Sold |
+|---|---|
+| Organic Cold Brew (12 oz) | 47 |
+| Sourdough Loaf | 38 |
+| Avocado Toast | 35 |
+| Blueberry Muffin | 29 |
+| Kombucha (Ginger) | 22 |
+<Button ask="Show more best sellers">View all</Button>
+</Card>
+
+<Card title="Items Out of Stock">
+<Badge tone="danger">5 items</Badge>
+- **Almond Milk** — Last ordered 3 days ago
+- **Gluten-Free Bagels** — Supplier delay
+- **Chia Seeds** — Low stock alert
+- **Matcha Powder** — Reorder pending
+- **Coconut Yogurt** — Discontinued
+<Button ask="Reorder all out-of-stock items">Reorder all</Button>
+</Card>
+
+<Card title="Today's Shift">
+<Columns>
+<Avatar name="Maria Chen" src="https://i.pravatar.cc/40?u=maria" subtitle="9 AM – 5 PM" />
+<Avatar name="James Park" src="https://i.pravatar.cc/40?u=james" subtitle="9 AM – 2 PM" />
+<Avatar name="Aisha Patel" src="https://i.pravatar.cc/40?u=aisha" subtitle="12 PM – 8 PM" />
+<Avatar name="Tom Rivera" src="https://i.pravatar.cc/40?u=tom" subtitle="2 PM – 8 PM" />
+</Columns>
+</Card>
+
+<Card title="Average Basket Size">
+<Columns>
+<Stat label="Today" value="$12.40" change="+8%" tone="success" icon="shopping-bag" />
+<Stat label="This Week" value="$11.80" tone="info" icon="calendar" />
+</Columns>
+</Card>
+
+<Card title="Returns This Week">
+<Chart type="bar" x="Day" y="Returns">
+| Day | Returns |
+|---|---|
+| Mon | 3 |
+| Tue | 1 |
+| Wed | 4 |
+| Thu | 2 |
+| Fri | 0 |
+| Sat | 2 |
+| Sun | 1 |
+</Chart>
+<Stat label="Total" value="13" tone="warning" icon="arrow-counter-clockwise" />
+</Card>
+
+<Card title="Running Promotions">
+| Promotion | Sales Lift | Status |
+|---|---|---|
+| Buy 1 Get 1 Free — Iced Coffee | +22% | <Badge tone="success">Active</Badge> |
+| 20% Off All Pastries | +15% | <Badge tone="success">Active</Badge> |
+| $5 Lunch Combo | +8% | <Badge tone="warning">Ending today</Badge> |
+| Loyalty Double Points | +30% | <Badge tone="info">Starts tomorrow</Badge> |
+<Button ask="Show promotion details">Details</Button>
+</Card>
+
+<Card title="Register Status">
+| Register | Status |
+|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> |
+| Register 2 | <Badge tone="success">Open</Badge> |
+| Register 3 | <Badge tone="danger">Closed</Badge> |
+| Register 4 | <Badge tone="success">Open</Badge> |
+| Register 5 | <Badge tone="warning">Break — 15 min</Badge> |
+<Button ask="Open register 3">Open register 3</Button>
+<Button variant="secondary" ask="Close a register">Close a register</Button>
+</Card>
+
+<Card title="Reorder an Item">
+<Form name="reorder">
+<Select label="Item" options="Almond Milk | Gluten-Free Bagels | Chia Seeds | Matcha Powder | Coconut Yogurt" name="item" placeholder="Select item" required />
+<Input label="Quantity" type="number" name="quantity" placeholder="e.g. 24" min="1" step="1" required />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="View a Different Store">
+<Form name="switch-store">
+<Select label="Store" options="Store #1024 — Downtown | Store #1025 — Uptown | Store #1026 — Westside | Store #1027 — Eastside" name="store" placeholder="Choose a store" required />
+<Button>Switch to store</Button>
+</Form>
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Sales ($)">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 4200 | 3900 |
+| Tue | 4500 | 4100 |
+| Wed | 4820 | 4400 |
+| Thu | 4700 | 4300 |
+| Fri | 5100 | 4800 |
+| Sat | 5500 | 5200 |
+| Sun | 4900 | 4600 |
+</Chart>
+<Columns>
+<Stat label="This Week Total" value="$33,720" change="+8.2%" tone="success" icon="trend-up" />
+<Stat label="Last Week Total" value="$31,100" tone="neutral" icon="calendar" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the sales breakdown by category
+- Which employee has the highest sales today?
+- Alert me when stock for Almond Milk arrives
+- Compare today's foot traffic to last Tuesday
+</FollowUps>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tailwind and shadcn/ui host</title><link rel="icon" href="data:,">
+<!-- A settings page built with Tailwind and shadcn/ui's components (their
+     own class strings), with an assistant's answer in a card. -->
+<script>if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.classList.add("dark");</script>
+<link rel="stylesheet" href="../build/embed/tailwind.css">
+</head>
+<body>
+<header class="flex h-14 items-center justify-between border-b px-4">
+  <span class="font-semibold">Acme Store</span>
+  <nav class="flex items-center gap-2">
+    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all outline-none hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">Orders</button>
+    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all outline-none bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 h-9 px-4 py-2">New order</button>
+  </nav>
+</header>
+<main class="mx-auto grid max-w-5xl gap-6 p-4">
+  <div class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm">
+    <div class="grid auto-rows-min items-start gap-1.5 px-6">
+      <div class="leading-none font-semibold">Ask about your store</div>
+      <div class="text-muted-foreground text-sm">Answers come back as UI.</div>
+    </div>
+    <div class="px-6"><div id="slot" class="grid gap-6"></div></div>
+  </div>
+  <div class="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm">
+    <div class="grid auto-rows-min items-start gap-1.5 px-6">
+      <div class="leading-none font-semibold">Profile</div>
+      <div class="text-muted-foreground text-sm">How customers see the store.</div>
+    </div>
+    <form class="grid gap-4 px-6">
+      <label class="flex items-center gap-2 text-sm leading-none font-medium select-none" for="name">Store name</label>
+      <input id="name" class="placeholder:text-muted-foreground border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs outline-none md:text-sm" placeholder="Acme">
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 gap-1 border-transparent bg-primary text-primary-foreground">Live</span>
+        <span class="inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 gap-1 text-foreground">Verified</span>
+      </div>
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium bg-primary text-primary-foreground shadow-xs h-9 px-4 py-2 w-fit">Save</button>
+    </form>
+  </div>
+  <div class="relative w-full overflow-x-auto">
+    <table class="w-full caption-bottom text-sm">
+      <thead><tr class="border-b"><th class="text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap">Order</th><th class="text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap">Status</th><th class="text-foreground h-10 px-2 text-right align-middle font-medium whitespace-nowrap">Total</th></tr></thead>
+      <tbody>
+        <tr class="hover:bg-muted/50 border-b transition-colors"><td class="p-2 align-middle whitespace-nowrap">#1042</td><td class="p-2 align-middle whitespace-nowrap">Paid</td><td class="p-2 text-right align-middle whitespace-nowrap">$250.00</td></tr>
+        <tr class="hover:bg-muted/50 border-b transition-colors"><td class="p-2 align-middle whitespace-nowrap">#1043</td><td class="p-2 align-middle whitespace-nowrap">Pending</td><td class="p-2 text-right align-middle whitespace-nowrap">$80.00</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <ul class="list-disc pl-6 text-sm text-muted-foreground"><li>Ships in 2 days</li><li>Returns within 30 days</li></ul>
+  <p class="text-sm">Questions? <a class="underline underline-offset-4" href="#help">Read the help</a>.</p>
+  <img alt="" width="40" height="40" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'/%3E" class="rounded-full">
+  <h2 class="text-xl font-semibold tracking-tight">Policies</h2>
+</main>
+<script type="module">
+import { embed } from "./embed.js";
+await embed(document.getElementById("slot"));
+</script>
+</body>
+</html>

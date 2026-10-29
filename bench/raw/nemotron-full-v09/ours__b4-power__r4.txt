@@ -1,0 +1,134 @@
+# Power Network Operations Console
+
+<Select label="Focus Region" name="region" placeholder="All Regions" options="All Regions | North Grid | South Grid | East Grid | West Grid | Central Hub" value="All Regions" />
+
+<Columns>
+<Card title="Network Load" subtitle="Real-time MW">
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" icon="bolt" />
+<Progress value="42847" max="52000" label="Capacity Utilization: 82.4%" tone="warning" />
+</Card>
+
+<Card title="Current Price" subtitle="Wholesale Market">
+<Stat label="Price per MWh" value="$87.40" change="+$4.20 vs yesterday" tone="danger" icon="currency-usd" />
+</Card>
+
+<Card title="Emissions Today" subtitle="CO₂ Equivalent">
+<Stat label="Total Emissions" value="18,420 tCO₂e" change="-3.1% vs same day last year" tone="success" icon="leaf" />
+<Stat label="Intensity" value="429 gCO₂e/kWh" change="-12 g vs yesterday" tone="success" icon="chart-line" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Current Output">
+<Chart type="donut" title="Generation Mix (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 14200 |
+| Nuclear | 9800 |
+| Wind | 8600 |
+| Solar | 5400 |
+| Hydro | 3200 |
+| Coal | 1647 |
+| Battery Storage | 0 |
+| Imports | 0 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Hourly MW Projection">
+<Chart type="area" title="Demand Forecast" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38200 | 38150 |
+| 01:00 | 36800 | 36750 |
+| 02:00 | 35600 | 35580 |
+| 03:00 | 34900 | 34890 |
+| 04:00 | 34500 | 34520 |
+| 05:00 | 35200 | 35180 |
+| 06:00 | 37800 | 37750 |
+| 07:00 | 41200 | 41100 |
+| 08:00 | 44800 | 44650 |
+| 09:00 | 46500 | 46300 |
+| 10:00 | 47200 | 47000 |
+| 11:00 | 47800 | 47600 |
+| 12:00 | 48100 | 47900 |
+| 13:00 | 48300 | 48050 |
+| 14:00 | 48400 | 48100 |
+| 15:00 | 48200 | 47950 |
+| 16:00 | 47800 | 47500 |
+| 17:00 | 47200 | 46900 |
+| 18:00 | 46800 | 46400 |
+| 19:00 | 46200 | 45800 |
+| 20:00 | 45200 | 44800 |
+| 21:00 | 43500 | 43100 |
+| 22:00 | 41200 | 40800 |
+| 23:00 | 39500 | 39100 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Northridge CCGT | North Grid | Natural Gas | 1,240 | 1,400 | 88.6% | <Badge tone="success">Online</Badge> |
+| Harbor Nuclear | East Grid | Nuclear | 1,150 | 1,150 | 100% | <Badge tone="success">Online</Badge> |
+| Ridgecrest Wind Farm | West Grid | Wind | 890 | 1,200 | 74.2% | <Badge tone="success">Online</Badge> |
+| Solar Valley PV | South Grid | Solar | 1,120 | 1,500 | 74.7% | <Badge tone="success">Online</Badge> |
+| Lakeview Hydro | Central Hub | Hydro | 800 | 1,000 | 80.0% | <Badge tone="success">Online</Badge> |
+| Old Mill Coal | North Grid | Coal | 420 | 650 | 64.6% | <Badge tone="warning">Derated</Badge> |
+| Peaker Plant 3 | East Grid | Natural Gas | 180 | 200 | 90.0% | <Badge tone="success">Online</Badge> |
+| Battery Park Storage | Central Hub | Battery | 0 | 300 | 0% | <Badge tone="info">Standby</Badge> |
+| Greenfield Wind | West Grid | Wind | 650 | 800 | 81.3% | <Badge tone="success">Online</Badge> |
+| Desert Sun Solar | South Grid | Solar | 980 | 1,200 | 81.7% | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Affected Regions & Customers">
+| Outage ID | Region | Cause | Customers Affected | Est. Restoration | Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North Grid (Sector 7) | Transmission fault | 12,400 | 2024-01-15 14:30 | <Badge tone="warning">Crew En Route</Badge> |
+| OUT-2024-0851 | East Grid (Riverside) | Storm damage | 8,200 | 2024-01-15 18:00 | <Badge tone="warning">Assessing</Badge> |
+| OUT-2024-0853 | West Grid (Coastal) | Equipment failure | 3,100 | 2024-01-15 12:45 | <Badge tone="success">Restoring</Badge> |
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Asset | Region | Type | Start | End | Impact (MW) | Status |
+|---|---|---|---|---|---|---|
+| Transformer T-44 | North Grid | Preventive | 2024-01-18 06:00 | 2024-01-18 18:00 | 200 | <Badge tone="info">Scheduled</Badge> |
+| Line 500kV East-West | Central Hub | Inspection | 2024-01-22 08:00 | 2024-01-22 16:00 | 0 | <Badge tone="info">Scheduled</Badge> |
+| Peaker Plant 3 | East Grid | Major Overhaul | 2024-01-25 00:00 | 2024-01-29 23:59 | 200 | <Badge tone="warning">Approved</Badge> |
+| Solar Valley Inverter Bank | South Grid | Firmware Update | 2024-02-02 02:00 | 2024-02-02 04:00 | 150 | <Badge tone="info">Pending</Badge> |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time — Auto-refreshing">
+<Callout tone="danger" title="⚡ CRITICAL — 10:23 AM">Northridge CCGT Unit 2 tripped offline. Lost 320 MW. Spinning reserves activated. Frequency: 59.94 Hz.</Callout>
+<Callout tone="warning" title="⚠ WARNING — 10:18 AM">Wind forecast revised down 15% for West Grid 14:00-18:00. Ramp rate risk elevated.</Callout>
+<Callout tone="info" title="ℹ INFO — 10:12 AM">Lakeview Hydro increasing output +150 MW to compensate for Northridge loss.</Callout>
+<Callout tone="info" title="ℹ INFO — 10:05 AM">Price spike alert: Real-time LMP at North Hub exceeded $150/MWh.</Callout>
+<Callout tone="neutral" title="📋 ADVISORY — 09:45 AM">Scheduled maintenance on Line 500kV East-West confirmed for Jan 22.</Callout>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Reduce load or generation in constrained areas">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Curtailment Type" name="curtailment-type" placeholder="Select type" options="Load Shedding (Demand) | Generation Curtailment | Export Reduction" value="Load Shedding (Demand)" required="true" />
+<Select label="Region" name="curtailment-region" placeholder="Select region" options="North Grid | South Grid | East Grid | West Grid | Central Hub" required="true" />
+</Columns>
+<Columns>
+<Input label="Target Reduction (MW)" name="target-mw" type="number" placeholder="e.g., 500" min="1" max="5000" step="10" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Emergency (Immediate) | High (Within 15 min) | Normal (Within 1 hr) | Planned (Scheduled)" value="High (Within 15 min)" required="true" />
+</Columns>
+<TextArea label="Reason / Justification" name="reason" placeholder="Describe the constraint, contingency, or market condition requiring curtailment..." rows="3" required="true" />
+<Checkboxes label="Notification Channels" name="notify" options="Control Room | Affected Utilities | Market Operations | Regulatory | Public Affairs" value="Control Room | Affected Utilities | Market Operations" />
+<Button variant="danger" icon="alert-triangle">Issue Curtailment Order</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show frequency and voltage trends for the last hour
+- Display reserve margins by region
+- Open the market clearing price dashboard
+- View transmission line loading heatmap
+- Check battery state of charge across all sites
+</FollowUps>

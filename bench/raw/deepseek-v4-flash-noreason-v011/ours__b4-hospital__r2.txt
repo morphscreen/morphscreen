@@ -1,0 +1,177 @@
+# Hospital Operations Command View
+
+<Callout tone="danger" title="Critical Alert">
+⚠️ 3 patients in critical condition — ICU and Rapid Response teams notified.
+</Callout>
+
+<Columns>
+
+<Card title="Bed Occupancy">
+<Stat label="Total Beds" value="342" />
+<Stat label="Occupied" value="278" tone="warning" icon="bed" />
+<Stat label="Available" value="64" tone="success" icon="bed" />
+<Progress value="278" max="342" label="81% occupied" tone="warning" />
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="Average Wait" value="47 min" tone="danger" icon="clock" />
+<Stat label="Patients Waiting" value="23" />
+<Stat label="Longest Wait" value="2h 14m" tone="danger" />
+</Card>
+
+</Columns>
+
+<Card title="Admissions Over Past 2 Weeks">
+<Chart type="line" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Mon 1 | 42 |
+| Tue 2 | 38 |
+| Wed 3 | 51 |
+| Thu 4 | 47 |
+| Fri 5 | 55 |
+| Sat 6 | 33 |
+| Sun 7 | 29 |
+| Mon 8 | 45 |
+| Tue 9 | 39 |
+| Wed 10 | 48 |
+| Thu 11 | 52 |
+| Fri 12 | 58 |
+| Sat 13 | 36 |
+| Sun 14 | 31 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| ICU | 18 |
+| Cardiology | 34 |
+| Orthopedics | 27 |
+| Pediatrics | 22 |
+| Maternity | 15 |
+| Oncology | 20 |
+| Neurology | 16 |
+| General Medicine | 48 |
+| Surgery | 31 |
+| Psychiatry | 12 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+<Columns>
+<div>
+**Day Shift (07:00–19:00)**
+- <Avatar name="Dr. Sarah Chen" subtitle="Attending Physician" />
+- <Avatar name="Dr. Mark Rivera" subtitle="Resident" />
+- <Avatar name="Nurse Amanda Lee" subtitle="RN, Charge Nurse" />
+- <Avatar name="Nurse James Park" subtitle="RN" />
+- <Avatar name="Nurse Priya Sharma" subtitle="RN" />
+- <Avatar name="Tech David Kim" subtitle="Lab Tech" />
+- <Avatar name="Tech Lisa Brown" subtitle="Radiology Tech" />
+</div>
+<div>
+**Night Shift (19:00–07:00)**
+- <Avatar name="Dr. Emily White" subtitle="Attending Physician" />
+- <Avatar name="Dr. Omar Hassan" subtitle="Resident" />
+- <Avatar name="Nurse Carlos Mendez" subtitle="RN, Charge Nurse" />
+- <Avatar name="Nurse Aisha Patel" subtitle="RN" />
+- <Avatar name="Nurse Tom O'Brien" subtitle="RN" />
+- <Avatar name="Tech Susan Gray" subtitle="Lab Tech" />
+- <Avatar name="Tech Kevin Nguyen" subtitle="Radiology Tech" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Critical Patients">
+<Callout tone="danger" title="Immediate Attention Required">
+- **Room 214** — John Doe, MI, awaiting cath lab
+- **Room 312** — Mary Smith, Stroke, post-thrombolysis
+- **Room 407** — Robert Johnson, Septic shock, on pressors
+</Callout>
+<Button variant="danger" ask="Show full critical patient list">View All Critical Patients</Button>
+</Card>
+
+<Card title="Patients Ready for Discharge">
+| Room | Patient | Discharge To | Pending |
+|---|---|---|---|
+| 108 | Alice Williams | Home | Pharmacy |
+| 205 | George Chen | Rehab facility | Transport |
+| 319 | Patricia Davis | Home | Paperwork |
+| 422 | Frank Miller | Home | Family notified |
+<Button ask="Process discharges for selected patients">Process Discharges</Button>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| OR | Time | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| OR-1 | 07:30 | CABG | Dr. Patel | <Badge tone="success">In Progress</Badge> |
+| OR-2 | 08:00 | Hip Replacement | Dr. Nguyen | <Badge tone="success">In Progress</Badge> |
+| OR-3 | 09:00 | Lap Chole | Dr. Kim | <Badge tone="info">Pre-op</Badge> |
+| OR-4 | 10:30 | Craniotomy | Dr. Brown | <Badge tone="warning">Delayed</Badge> |
+| OR-5 | 11:00 | Appendectomy | Dr. Lee | <Badge tone="neutral">Scheduled</Badge> |
+| OR-6 | 13:00 | Spinal Fusion | Dr. Garcia | <Badge tone="neutral">Scheduled</Badge> |
+<Button ask="Show full OR schedule for today">Full OR Schedule</Button>
+</Card>
+
+<Card title="Supplies Running Low">
+<Callout tone="warning" title="Reorder Alert">
+| Supply | Current Stock | Reorder Level | Status |
+|---|---|---|---|
+| N95 Masks | 240 | 500 | <Badge tone="danger">Critical</Badge> |
+| IV Tubing Sets | 120 | 200 | <Badge tone="warning">Low</Badge> |
+| Normal Saline (1L) | 80 | 150 | <Badge tone="warning">Low</Badge> |
+| Surgical Gloves (Size 7) | 50 boxes | 100 boxes | <Badge tone="danger">Critical</Badge> |
+| Syringes (5ml) | 300 | 500 | <Badge tone="warning">Low</Badge> |
+</Callout>
+<Button ask="Place reorder for low supplies">Place Reorder</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" ask="File an incident report">File Incident Report</Button>
+<Button variant="secondary" ask="Show operations for a different date">Look at Another Day</Button>
+<Button variant="secondary" ask="Request a patient transfer">Request Patient Transfer</Button>
+</Columns>
+</Card>
+
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Date of Incident" type="date" required="true" />
+<Input label="Time of Incident" type="time" required="true" />
+<Select label="Incident Type" options="Medication Error | Fall | Equipment Failure | Communication Error | Patient Safety | Security | Other" placeholder="Select type" required="true" />
+<Input label="Location (e.g., Room 214)" placeholder="Room number or area" required="true" />
+<TextArea label="Description" placeholder="Describe what happened in detail…" rows="4" required="true" />
+<Select label="Severity" options="Near Miss | Minor | Moderate | Severe | Critical" placeholder="Select severity" required="true" />
+<Input label="Reporter Name" placeholder="Your full name" required="true" />
+<Button>Submit Incident Report</Button>
+</Form>
+</Card>
+
+<Card title="Look at Another Day">
+<Form name="view-date">
+<Input label="Select Date" type="date" required="true" />
+<Button>View Operations for This Date</Button>
+</Form>
+</Card>
+
+<Card title="Request a Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" placeholder="Full name" required="true" />
+<Input label="Current Room / Department" placeholder="e.g., Room 305, Cardiology" required="true" />
+<Select label="Transfer Destination" options="ICU | General Ward | Step-Down Unit | Rehab Facility | Another Hospital | Home with Support" placeholder="Select destination" required="true" />
+<Select label="Priority" options="Routine | Urgent | Emergency" placeholder="Select priority" required="true" />
+<TextArea label="Reason for Transfer" placeholder="Clinical justification…" rows="3" required="true" />
+<Input label="Requesting Physician" placeholder="Doctor's name" required="true" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full critical patient list
+- Which departments are over capacity?
+- What is the current staffing gap?
+- Generate a shift handover summary
+- Show today's discharge plan
+</FollowUps>

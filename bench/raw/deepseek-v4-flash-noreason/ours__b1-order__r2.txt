@@ -1,0 +1,45 @@
+<Card title="Package tracking" subtitle="Order #TRK-48291 · Shipped via SwiftPost">
+  <Columns>
+    <div>
+      <Stat label="Current status" value="In transit" icon="package" tone="info" />
+      <Stat label="Estimated delivery" value="Fri, Jun 14" icon="calendar" note="by 8:00 PM" />
+      <Stat label="Last scan" value="2h ago" icon="clock" note="Sorting facility, Austin TX" />
+    </div>
+    <div>
+      <Card title="Where it is now">
+        <Chart type="area" x="Route" y="Distance">
+| Stop | Progress |
+|---|---|
+| Shipped | 12 |
+| Houston | 34 |
+| Austin | 58 |
+| Dallas | 82 |
+| Destination | 100 |
+        </Chart>
+        <p>📦 Currently at the **Austin sorting facility**. Moving to the local delivery hub tonight.</p>
+      </Card>
+    </div>
+  </Columns>
+</Card>
+
+<Card title="Delivery timeline">
+  <Steps>
+    <Step title="Order placed" status="done" subtitle="Jun 10, 9:14 AM" />
+    <Step title="Picked up by carrier" status="done" subtitle="Jun 11, 3:02 PM" />
+    <Step title="Arrived at Austin facility" status="done" subtitle="Jun 12, 11:47 AM" />
+    <Step title="Out for delivery" status="current" subtitle="Expected Jun 14, 7:00 AM" />
+    <Step title="Delivered" status="todo" subtitle="Estimated Jun 14, 8:00 PM" />
+  </Steps>
+</Card>
+
+<Card title="Report a problem">
+  <Callout tone="info" title="Need help?">
+    If your package hasn't arrived by **Jun 15**, you can request a refund or a reshipment.
+  </Callout>
+  <Form name="delivery-issue">
+    <Select label="What's wrong?" name="issue-type" placeholder="Choose one" options="Delayed | Damaged | Lost | Wrong item | Other" required />
+    <TextArea label="Describe the issue" name="issue-details" placeholder="Tell us what happened…" rows="3" hint="Include any photos you have" />
+    <Checkboxes label="How should we help?" options="Reship the package | Refund the order | Just keep me updated" name="resolution" />
+    <Button>Submit report</Button>
+  </Form>
+</Card>

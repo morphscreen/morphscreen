@@ -1,0 +1,113 @@
+# SaaS Admin Overview
+
+<Card title="Reporting period">
+<Form name="reporting-period">
+<Select label="Period" options="Last 30 days | Last 90 days | Last 12 months | Year to date" name="period" value="Last 30 days" />
+<Button>Apply</Button>
+</Form>
+</Card>
+
+<Card title="Key metrics" subtitle="As of today">
+<Columns>
+<Stat label="MRR" value="$84,320" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="ARR" value="$1,011,840" change="+12.8%" tone="success" icon="trend-up" />
+<Stat label="Churn (this month)" value="2.1%" change="-0.3 pts" tone="warning" icon="user-minus" />
+<Stat label="NPS" value="47" change="+5" tone="success" icon="heart" />
+</Columns>
+</Card>
+
+<Card title="New signups — past 90 days">
+<Chart type="bar" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 55 |
+| W3 | 38 |
+| W4 | 61 |
+| W5 | 74 |
+| W6 | 68 |
+| W7 | 82 |
+| W8 | 91 |
+| W9 | 77 |
+| W10 | 95 |
+| W11 | 108 |
+| W12 | 121 |
+| W13 | 116 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 214 |
+| Growth | 342 |
+| Enterprise | 89 |
+</Chart>
+</Card>
+
+<Card title="Largest customers">
+| Customer | Seats | Spend / month |
+|---|---|---|
+| Acme Corp | 245 | $8,500 |
+| Globex Inc. | 198 | $7,200 |
+| Initech | 167 | $6,400 |
+| Umbrella Corp | 152 | $5,800 |
+| Stark Industries | 140 | $5,100 |
+| Wayne Enterprises | 128 | $4,700 |
+| Hooli | 115 | $4,200 |
+| Pied Piper | 98 | $3,600 |
+| Vandelay Industries | 87 | $3,100 |
+| Dunder Mifflin | 76 | $2,800 |
+</Card>
+
+<Card title="Accounts at risk">
+<Columns>
+<Callout tone="warning" title="Acme Corp — 3 admins inactive 30+ days">Renewal in 18 days. <Button variant="secondary" size="small">Contact</Button></Callout>
+<Callout tone="warning" title="Globex — Usage down 40% this month">Champion left the company. <Button variant="secondary" size="small">Assign CSM</Button></Callout>
+<Callout tone="danger" title="Initech — 2 failed payments">Payment method expired. <Button variant="secondary" size="small">Review</Button></Callout>
+<Callout tone="warning" title="Umbrella Corp — No logins in 14 days">Feature gap: needs SSO. <Button variant="secondary" size="small">Offer SSO</Button></Callout>
+</Columns>
+</Card>
+
+<Card title="Failed payments">
+| Customer | Amount | Date | Status |
+|---|---|---|---|
+| Initech | $6,400 | Mar 12 | <Badge tone="danger">Failed</Badge> <Button variant="secondary" size="small">Retry</Button> |
+| Hooli | $4,200 | Mar 14 | <Badge tone="danger">Failed</Badge> <Button variant="secondary" size="small">Retry</Button> |
+| Pied Piper | $3,600 | Mar 15 | <Badge tone="danger">Failed</Badge> <Button variant="secondary" size="small">Retry</Button> |
+</Card>
+
+<Card title="New feature adoption">
+<Chart type="bar" x="Feature" y="% of customers">
+| Feature | Adoption |
+|---|---|
+| AI Insights | 34 |
+| Workflow Builder | 52 |
+| API v2 | 61 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization">
+<Columns>
+<Progress value="72" max="100" label="Overall" tone="info" />
+<Progress value="85" max="100" label="Enterprise" tone="success" />
+<Progress value="68" max="100" label="Growth" tone="warning" />
+<Progress value="54" max="100" label="Starter" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Invite an admin">
+<Form name="invite-admin">
+<Input label="Email" type="email" placeholder="admin@company.com" required="true" hint="They'll get an invite link" />
+<Select label="Role" options="Admin | Billing | Read-only" name="role" value="Admin" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the churn breakdown by plan
+- Who are the top 3 at-risk accounts and what actions should I take?
+- Export the failed payments list
+- Compare seat utilization quarter over quarter
+</FollowUps>

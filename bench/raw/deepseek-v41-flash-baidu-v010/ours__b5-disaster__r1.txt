@@ -1,0 +1,202 @@
+# Emergency Operations Center — Single Screen
+
+<Callout tone="danger" title="Shift status: ACTIVE — 14:32 local">
+3 zones at severe or critical. Evacuation Route B-2 is closed. Two aid requests overdue.
+</Callout>
+
+<Card title="Overall severity summary" subtitle="Rolled up across all zones">
+<Columns>
+<Stat label="Active incidents" value="11" change="+2 last hour" tone="danger" icon="warning" />
+<Stat label="Zones affected" value="5 of 7" tone="warning" icon="map-pin" />
+<Stat label="People rescued" value="1,284" change="+96 since 12:00" tone="success" icon="users" />
+<Stat label="Casualties" value="37" note="21 injured · 16 confirmed" tone="danger" icon="heart" />
+</Columns>
+</Card>
+
+<Card title="Active incidents by zone" subtitle="Severity per zone, highest first">
+| Zone | Incident | Severity | Since | Lead |
+|---|---|---|---|---|
+| Z-1 Riverside | Flash flooding | <Badge tone="danger">Critical</Badge> | 06:10 | A. Okafor |
+| Z-3 Northgate | Structural collapse | <Badge tone="danger">Critical</Badge> | 09:45 | M. Reyes |
+| Z-2 Hillcrest | Wildfire edge | <Badge tone="warning">Severe</Badge> | 04:20 | T. Lindqvist |
+| Z-5 Harbor | Chemical spill | <Badge tone="warning">Severe</Badge> | 11:05 | J. Mbeki |
+| Z-4 Southfield | Power outage | <Badge tone="info">Moderate</Badge> | 13:30 | R. Chen |
+| Z-6 Eastmoor | Road washout | <Badge tone="info">Moderate</Badge> | 12:15 | P. Nkemelu |
+| Z-7 Westvale | Downed lines | <Badge tone="neutral">Low</Badge> | 14:00 | S. Aliyev |
+</Card>
+
+<Card title="Focus a zone" subtitle="Narrow every panel below to one area">
+<Radio label="Zone focus" options="All zones | Z-1 Riverside | Z-2 Hillcrest | Z-3 Northgate | Z-4 Southfield | Z-5 Harbor | Z-6 Eastmoor | Z-7 Westvale" name="zone-focus" value="All zones" />
+<Button variant="secondary" ask="Focus the dashboard on Z-1 Riverside">Focus Z-1 Riverside</Button>
+</Card>
+
+<Card title="Resources available">
+<Columns>
+<Stat label="Vehicles ready" value="42" note="18 boats · 14 trucks · 10 helos" tone="success" icon="truck" />
+<Stat label="Personnel on duty" value="316" note="142 field · 174 support" tone="info" icon="users" />
+<Stat label="Supply stock" value="68%" tone="warning" icon="package" />
+</Columns>
+<Progress value="68" max="100" label="Supplies vs. target reserve" tone="warning" />
+</Card>
+
+<Card title="Shelters" subtitle="Capacity and occupancy">
+| Shelter | Capacity | Occupied | Free | Status |
+|---|---|---|---|---|
+| Riverside High | 800 | 742 | 58 | <Badge tone="danger">Near full</Badge> |
+| Northgate Arena | 1,200 | 610 | 590 | <Badge tone="success">Open</Badge> |
+| Hillcrest Community | 400 | 388 | 12 | <Badge tone="warning">Tight</Badge> |
+| Harbor Depot | 600 | 205 | 395 | <Badge tone="success">Open</Badge> |
+| Southfield Gym | 350 | 350 | 0 | <Badge tone="danger">Full</Badge> |
+</Card>
+
+<Card title="Evacuation routes">
+| Route | Corridor | Status | Note |
+|---|---|---|---|
+| A-1 | Riverside → Northgate | <Badge tone="success">Open</Badge> | Two-way flow |
+| A-2 | Hillcrest → Harbor | <Badge tone="warning">Congested</Badge> | 40 min delay |
+| B-2 | Northgate → Southfield | <Badge tone="danger">Closed</Badge> | Bridge scour |
+| C-1 | Harbor → Eastmoor | <Badge tone="success">Open</Badge> | Clear |
+| C-3 | Westvale → Northgate | <Badge tone="info">One-way</Badge> | Outbound only |
+</Card>
+
+<Card title="Weather — next 48 hours">
+<Chart type="line" x="Hour" y="Rain mm / Wind kmh">
+| Hour | Rain mm | Wind kmh |
+|---|---|---|
+| +6 | 12 | 34 |
+| +12 | 22 | 48 |
+| +18 | 31 | 61 |
+| +24 | 38 | 72 |
+| +30 | 26 | 55 |
+| +36 | 14 | 40 |
+| +42 | 8 | 29 |
+| +48 | 4 | 22 |
+</Chart>
+<Callout tone="warning" title="Peak at +24h">72 km/h gusts with 38 mm rain — expect Route A-2 to degrade and Z-1 flooding to spread.</Callout>
+</Card>
+
+<Card title="Roads closed">
+| Road | Segment | Reason | ETA reopen |
+|---|---|---|---|
+| B-2 Bridge | Northgate–Southfield | Structural scour | Unknown |
+| Rte 9 | Riverside mile 4–7 | Flooding | +18h |
+| Hill Rd | Hillcrest summit | Fallen trees | +6h |
+| Dock 3 Access | Harbor | Chemical spill | +12h |
+</Card>
+
+<Card title="Nearby hospitals" subtitle="Free beds by facility">
+| Hospital | Free beds | ICU free | Distance | Status |
+|---|---|---|---|---|
+| St. Mary's | 34 | 4 | 6 km | <Badge tone="success">Accepting</Badge> |
+| Northgate General | 12 | 1 | 11 km | <Badge tone="warning">Limited</Badge> |
+| Harbor Medical | 0 | 0 | 9 km | <Badge tone="danger">Diverting</Badge> |
+| Eastmoor Clinic | 21 | 2 | 14 km | <Badge tone="success">Accepting</Badge> |
+</Card>
+
+<Card title="People rescued and casualties">
+<Columns>
+<Stat label="Rescued" value="1,284" change="+96 since 12:00" tone="success" icon="users" />
+<Stat label="Injured" value="21" tone="warning" icon="heart" />
+<Stat label="Confirmed casualties" value="16" tone="danger" icon="warning" />
+<Stat label="Missing" value="47" note="Z-1 and Z-3" tone="danger" icon="magnifying-glass" />
+</Columns>
+</Card>
+
+<Card title="Volunteers on duty">
+| Volunteer | Assignment | Zone | Since |
+|---|---|---|---|
+| Priya Raman | Shelter intake | Northgate Arena | 07:00 |
+| Daniel Boateng | Boat crew | Z-1 Riverside | 06:30 |
+| Lena Fischer | Supply distribution | Harbor Depot | 08:15 |
+| Omar Haddad | Traffic control | A-2 corridor | 09:00 |
+| Grace Whitmore | Medical triage | St. Mary's | 06:00 |
+| Kofi Mensah | Radio relay | Z-3 Northgate | 10:30 |
+</Card>
+
+<Card title="Donations received">
+| Donation | Amount | Source | Status |
+|---|---|---|---|
+| Cash | $184,000 | City appeal | <Badge tone="success">Cleared</Badge> |
+| Bottled water | 12,000 L | AquaCo | <Badge tone="success">In transit</Badge> |
+| Blankets | 3,400 | Regional NGO | <Badge tone="info">Staged</Badge> |
+| Generators | 26 | GridWorks | <Badge tone="warning">Customs hold</Badge> |
+| Medical kits | 480 | MedAid | <Badge tone="success">Delivered</Badge> |
+</Card>
+
+<Card title="Aid requests awaiting action">
+| Request | Zone | Qty | Age | Priority |
+|---|---|---|---|---|
+| Insulin cold packs | Z-3 | 200 | 3h 10m | <Badge tone="danger">Overdue</Badge> |
+| Potable water | Z-1 | 8,000 L | 2h 40m | <Badge tone="danger">Overdue</Badge> |
+| Fuel for pumps | Z-5 | 900 L | 1h 05m | <Badge tone="warning">Urgent</Badge> |
+| Cots | Z-2 | 150 | 45m | <Badge tone="info">Queued</Badge> |
+</Card>
+
+<Card title="Communication channels">
+| Channel | Status | Coverage | Note |
+|---|---|---|---|
+| Primary radio | <Badge tone="success">Up</Badge> | 100% | All zones |
+| Satellite phone | <Badge tone="success">Up</Badge> | 100% | Backup |
+| Cell network | <Badge tone="warning">Degraded</Badge> | 62% | Z-1, Z-3 outages |
+| Public alert SMS | <Badge tone="success">Up</Badge> | 88% | Delivered |
+| Mesh terminals | <Badge tone="danger">Down</Badge> | 0% | Z-5 only |
+</Card>
+
+<Card title="Open tasks">
+| Task | Assignee | Due | Status |
+|---|---|---|---|
+| Re-route A-2 traffic | Omar Haddad | 15:00 | <Badge tone="warning">In progress</Badge> |
+| Inspect B-2 bridge | Eng. Survey Team | 16:00 | <Badge tone="info">Scheduled</Badge> |
+| Open overflow shelter | Priya Raman | 15:30 | <Badge tone="warning">In progress</Badge> |
+| Clear Hill Rd | Public Works | 18:00 | <Badge tone="info">Scheduled</Badge> |
+| Verify missing count | A. Okafor | 17:00 | <Badge tone="neutral">Open</Badge> |
+</Card>
+
+<Card title="Request more resources" subtitle="Type and quantity">
+<Form name="resource-request">
+<Select label="Resource type" name="resource-type" placeholder="Choose a resource" options="Boats | Trucks | Helicopters | Field personnel | Medical kits | Potable water | Generators | Fuel | Cots | Blankets" required={true} />
+<Input label="Quantity" name="quantity" type="number" min={1} step={1} placeholder="e.g. 12" hint="Whole units" required={true} />
+<Select label="Destination zone" name="dest-zone" placeholder="Choose a zone" options="Z-1 Riverside | Z-2 Hillcrest | Z-3 Northgate | Z-4 Southfield | Z-5 Harbor | Z-6 Eastmoor | Z-7 Westvale" required={true} />
+<Radio label="Priority" name="priority" options="Routine | Urgent | Emergency" value="Urgent" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast an update" subtitle="Sends to all active channels">
+<Form name="broadcast">
+<TextArea label="Message" name="message" rows={4} placeholder="Type the public or responder update…" hint="Keep under 480 characters for SMS delivery" required={true} />
+<Checkboxes label="Send to" name="channels" options="Primary radio | Satellite phone | Cell network | Public alert SMS | Mesh terminals" value="Primary radio | Public alert SMS" />
+<Button>Send broadcast</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="File a situation report" subtitle="SITREP — attaches to the active shift">
+<Form name="sitrep">
+<Input label="Reporting officer" name="officer" placeholder="Name and role" required={true} />
+<Select label="Zone" name="sitrep-zone" placeholder="Choose a zone" options="Z-1 Riverside | Z-2 Hillcrest | Z-3 Northgate | Z-4 Southfield | Z-5 Harbor | Z-6 Eastmoor | Z-7 Westvale" required={true} />
+<Select label="Severity assessment" name="sitrep-severity" options="Low | Moderate | Severe | Critical" required={true} />
+<TextArea label="Situation summary" name="summary" rows={4} placeholder="What happened, what changed, what is needed…" required={true} />
+<TextArea label="Actions taken" name="actions" rows={3} placeholder="Steps completed this period" />
+<Input label="Next report due" name="next-report" type="datetime-local" />
+<Button>File SITREP</Button>
+</Form>
+</Card>
+
+<Details title="Shift handover checklist">
+<Steps>
+<Step title="Confirm zone severity" status="done" subtitle="All 7 zones reviewed at 14:00">Severity levels agreed with zone leads.</Step>
+<Step title="Verify route status" status="done" subtitle="A-1, C-1, C-3 open">B-2 remains closed pending bridge inspection.</Step>
+<Step title="Reconcile shelter occupancy" status="current" subtitle="Southfield Gym at 100%">Overflow shelter opening at 15:30.</Step>
+<Step title="Clear overdue aid requests" status="todo" subtitle="2 overdue, 1 urgent">Water and insulin packs first.</Step>
+<Step title="File end-of-shift SITREP" status="todo" subtitle="Due 18:00">Use the form above.</Step>
+</Steps>
+</Details>
+
+<FollowUps>
+- Show me everything happening in Z-1 Riverside right now
+- Which shelters will hit capacity in the next 6 hours?
+- Draft a public alert SMS about the B-2 bridge closure
+- List all overdue aid requests with their requesters
+- What resources are still unassigned across all zones?
+</FollowUps>

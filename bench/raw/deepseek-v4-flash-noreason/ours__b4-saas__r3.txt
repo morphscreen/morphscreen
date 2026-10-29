@@ -1,0 +1,125 @@
+# SaaS Admin Overview
+
+<Callout tone="info" title="Reporting period">
+Current view: **Last 90 days** — change below.
+</Callout>
+
+<Card title="Reporting period">
+<Form name="reporting-period">
+<Select label="Period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date" value="Last 90 days" />
+<Button variant="secondary">Apply</Button>
+</Form>
+</Card>
+
+<Card title="Key metrics" subtitle="As of today, 09:00 UTC">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$284,500" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="Annual Recurring Revenue" value="$3,414,000" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="Churn this month" value="2.1%" change="-0.3 pts" tone="success" icon="trend-down" />
+<Stat label="Net Promoter Score" value="52" change="+6 vs last quarter" tone="info" icon="star" />
+</Columns>
+</Card>
+
+<Card title="New signups — last 90 days">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 51 |
+| W3 | 47 |
+| W4 | 63 |
+| W5 | 58 |
+| W6 | 72 |
+| W7 | 69 |
+| W8 | 81 |
+| W9 | 77 |
+| W10 | 94 |
+| W11 | 88 |
+| W12 | 103 |
+| W13 | 112 |
+</Chart>
+<Callout tone="neutral" title="Total">1,057 new accounts in the period. 38% converted to a paid plan.</Callout>
+</Card>
+
+<Card title="Customers by plan">
+<Columns>
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 356 |
+| Enterprise | 148 |
+</Chart>
+<Stat label="Total customers" value="916" note="+112 this quarter" icon="users" />
+</Columns>
+</Card>
+
+<Card title="Seat utilization" subtitle="Across all plans">
+<Progress value="74" max="100" label="Overall utilization" tone="warning" />
+<Columns>
+<Stat label="Seats purchased" value="3,842" icon="users" />
+<Stat label="Seats used" value="2,843" icon="user-check" />
+<Stat label="Unused seats" value="999" note="$44,955/yr wasted" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Ten largest customers">
+| Company | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Acme Corp | Enterprise | 420 | $18,500 |
+| Globex Inc | Enterprise | 385 | $16,200 |
+| Initech | Enterprise | 310 | $14,750 |
+| Umbrella Corp | Enterprise | 278 | $12,900 |
+| Stark Industries | Enterprise | 245 | $11,300 |
+| Wayne Enterprises | Enterprise | 210 | $10,800 |
+| Pied Piper | Enterprise | 188 | $9,400 |
+| Hooli | Growth | 165 | $8,100 |
+| Cyberdyne Systems | Growth | 142 | $7,200 |
+| Vandelay Industries | Growth | 128 | $6,400 |
+</Card>
+
+<Card title="Accounts at risk" subtitle="Flagged by usage, payment, or support signals">
+<Columns>
+<Card title="At-risk accounts">
+| Company | Risk | Reason |
+|---|---|---|
+| Acme Corp | <Badge tone="danger">High</Badge> | No logins in 21 days; renewal in 12 days |
+| Initech | <Badge tone="danger">High</Badge> | Opened 4 support tickets; mentioned "canceling" |
+| Hooli | <Badge tone="warning">Medium</Badge> | Seat count dropped from 180 to 165 |
+| Pied Piper | <Badge tone="warning">Medium</Badge> | Feature usage down 40% since last month |
+| Umbrella Corp | <Badge tone="warning">Medium</Badge> | Missed one payment; on grace period |
+</Card>
+<Card title="Failed payments" subtitle="Requires action">
+| Company | Amount | Failed on | |
+|---|---|---|---|
+| Cyberdyne Systems | $7,200 | Mar 14 | <Button size="small">Retry</Button> |
+| Vandelay Industries | $6,400 | Mar 12 | <Button size="small">Retry</Button> |
+| Globex Inc | $16,200 | Mar 10 | <Button size="small">Retry</Button> |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Feature adoption" subtitle="Among all customers on paid plans">
+<Columns>
+<Chart type="bar" x="Feature" y="% adoption">
+| Feature | Adoption |
+|---|---|
+| AI Insights | 42 |
+| API v3 | 61 |
+| SSO | 19 |
+</Chart>
+<Callout tone="info" title="Notes">
+- **AI Insights** launched Jan 15 — 42% of customers have used it at least once.
+- **API v3** launched Dec 1 — 61% migration rate, up from 48% last month.
+- **SSO** launched Feb 1 — 19% adoption, below 30% target.
+</Callout>
+</Columns>
+</Card>
+
+<Card title="Invite an admin">
+<Form name="invite-admin">
+<Input label="Admin email" type="email" placeholder="teammate@yourcompany.com" hint="They'll get an email with a secure invite link" required />
+<Select label="Role" options="Admin — full access | Billing — invoices & payments only | Viewer — read-only" placeholder="Choose a role" />
+<Button>Send invite</Button>
+</Form>
+</Card>

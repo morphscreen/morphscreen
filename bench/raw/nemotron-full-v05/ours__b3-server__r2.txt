@@ -1,0 +1,111 @@
+# Service Health Dashboard
+
+<Card title="Service Overview" subtitle="Last updated: 2024-01-15 14:32 UTC">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Current error rate" value="0.23%" change="+0.05% vs 1h ago" tone="warning" />
+<Stat label="Open incidents" value="3" change="2 critical" tone="danger" />
+<Stat label="Active regions" value="4/5" change="us-east-1 degraded" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Region Filter">
+<Select label="Select region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="All regions" />
+</Card>
+
+<Card title="CPU & Memory Usage (24h)">
+<Chart type="line" x="Time" y="Usage %" title="Resource Utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 41 | 57 |
+| 08:00 | 58 | 68 |
+| 10:00 | 72 | 78 |
+| 12:00 | 78 | 82 |
+| 14:00 | 75 | 80 |
+| 16:00 | 69 | 76 |
+| 18:00 | 65 | 73 |
+| 20:00 | 58 | 69 |
+| 22:00 | 48 | 62 |
+</Chart>
+</Card>
+
+<Card title="Error Rate (24h)">
+<Chart type="area" x="Time" y="Error Rate %" title="Error Rate Trend">
+| Time | Error Rate % |
+|---|---|
+| 00:00 | 0.12 |
+| 02:00 | 0.10 |
+| 04:00 | 0.08 |
+| 06:00 | 0.11 |
+| 08:00 | 0.18 |
+| 10:00 | 0.25 |
+| 12:00 | 0.31 |
+| 14:00 | 0.28 |
+| 16:00 | 0.24 |
+| 18:00 | 0.20 |
+| 20:00 | 0.17 |
+| 22:00 | 0.14 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (3)">
+| ID | Severity | Title | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-2024-001 | <Badge tone="danger">Critical</Badge> | Database connection pool exhaustion | us-east-1 | 2024-01-15 12:45 | Investigating | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2024-002 | <Badge tone="warning">High</Badge> | Elevated latency on /api/v2/orders | eu-west-1 | 2024-01-15 13:20 | Monitoring | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2024-003 | <Badge tone="info">Medium</Badge> | Cache miss rate spike | ap-southeast-1 | 2024-01-15 14:05 | Identified | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="Critical (1)">
+| ID | Severity | Title | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-2024-001 | <Badge tone="danger">Critical</Badge> | Database connection pool exhaustion | us-east-1 | 2024-01-15 12:45 | Investigating | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="High (1)">
+| ID | Severity | Title | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-2024-002 | <Badge tone="warning">High</Badge> | Elevated latency on /api/v2/orders | eu-west-1 | 2024-01-15 13:20 | Monitoring | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="Medium (1)">
+| ID | Severity | Title | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-2024-003 | <Badge tone="info">Medium</Badge> | Cache miss rate spike | ap-southeast-1 | 2024-01-15 14:05 | Identified | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Slowest Endpoints (p99 latency)">
+| Rank | Endpoint | Method | p99 Latency | Region | Trend |
+|---|---|---|---|---|---|
+| 1 | /api/v2/orders | GET | 2,840 ms | us-east-1 | <Badge tone="danger">↑ 42%</Badge> |
+| 2 | /api/v1/reports/generate | POST | 1,920 ms | eu-west-1 | <Badge tone="warning">↑ 18%</Badge> |
+| 3 | /api/v3/users/search | GET | 1,450 ms | us-west-2 | <Badge tone="neutral">→ 2%</Badge> |
+| 4 | /api/v2/payments/process | POST | 1,180 ms | ap-southeast-1 | <Badge tone="warning">↑ 12%</Badge> |
+| 5 | /api/v1/analytics/export | GET | 980 ms | sa-east-1 | <Badge tone="success">↓ 8%</Badge> |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error-threshold" type="number" value="0.5" step="0.1" min="0.1" max="5" hint="Trigger alert when error rate exceeds this" />
+<Input label="CPU usage threshold (%)" name="cpu-threshold" type="number" value="80" step="1" min="50" max="95" hint="Trigger alert when CPU exceeds this" />
+<Input label="Memory usage threshold (%)" name="memory-threshold" type="number" value="85" step="1" min="60" max="95" hint="Trigger alert when memory exceeds this" />
+<Input label="Latency p99 threshold (ms)" name="latency-threshold" type="number" value="2000" step="100" min="500" max="10000" hint="Trigger alert when p99 latency exceeds this" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<Card title="Incident Acknowledgment">
+<Form name="acknowledge-incident">
+<Select label="Incident to acknowledge" name="incident-id" placeholder="Select an incident" options="INC-2024-001 - Database connection pool exhaustion (Critical) | INC-2024-002 - Elevated latency on /api/v2/orders (High) | INC-2024-003 - Cache miss rate spike (Medium)" required="true" />
+<TextArea label="Acknowledgment note" name="ack-note" placeholder="Add context, mitigation steps, or handoff notes..." rows="3" hint="Visible to on-call team" />
+<Button variant="primary">Acknowledge Incident</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

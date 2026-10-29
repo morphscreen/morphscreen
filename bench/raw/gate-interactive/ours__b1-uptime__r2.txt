@@ -1,0 +1,19 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Current uptime" value="99.95%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+<Progress value="99.95" max="100" label="Target: 99.9%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Callout tone="info" title="Database connection pool exhaustion — Resolved 2024-01-15 14:22 UTC">
+A connection leak in the auth service caused pool saturation, leading to elevated 503 errors for ~12 minutes. The leak was traced to a missing `finally` block in a new middleware. Patch deployed, connection pooling limits increased, and automated alert added for pool utilization >80%.
+</Callout>
+<Details title="Incident timeline">
+- **Detected:** 2024-01-15 14:10 UTC (automated alert)  
+- **Acknowledged:** 2024-01-15 14:11 UTC (on-call engineer)  
+- **Mitigated:** 2024-01-15 14:18 UTC (service restart)  
+- **Resolved:** 2024-01-15 14:22 UTC (patch deployed)  
+- **Postmortem:** [INC-2024-01-15](https://example.com/postmortems/INC-2024-01-15)
+</Details>
+</Card>

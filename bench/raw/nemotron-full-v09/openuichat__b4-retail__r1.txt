@@ -1,0 +1,124 @@
+root = Card([header, kpiRow, trafficSection, bestSellersSection, stockSection, staffSection, promoSection, registerSection, comparisonSection, reorderForm, storeSwitcher])
+header = CardHeader("Store Manager Console", "Store #247 · Downtown · Tuesday, 23 July 2026")
+kpiRow = SnippetCardBlock([kpiSales, kpiBasket, kpiReturns, kpiTraffic], "grid", true)
+kpiSales = SnippetCardItem("sales-today", kpiSalesLhs, kpiSalesRhs)
+kpiSalesLhs = IconText(kpiSalesIcon, "success", "m", "Sales Today", "vs. target $18,500", false, "horizontal")
+kpiSalesIcon = Icon("circle-dollar-sign", "finance")
+kpiSalesRhs = BoldText("number", "$14,230", "+12.4%", "metric")
+kpiBasket = SnippetCardItem("avg-basket", kpiBasketLhs, kpiBasketRhs)
+kpiBasketLhs = IconText(kpiBasketIcon, "neutral", "m", "Avg. Basket Size", "Items per transaction", false, "horizontal")
+kpiBasketIcon = Icon("shopping-bag", "shopping")
+kpiBasketRhs = BoldText("number", "3.7", "+0.2", "metric")
+kpiReturns = SnippetCardItem("returns-week", kpiReturnsLhs, kpiReturnsRhs)
+kpiReturnsLhs = IconText(kpiReturnsIcon, "warning", "m", "Returns This Week", "24 items · $1,840", false, "horizontal")
+kpiReturnsIcon = Icon("rotate-ccw", "arrows")
+kpiReturnsRhs = BoldText("number", "2.1%", "-0.3%", "metric")
+kpiTraffic = SnippetCardItem("foot-traffic", kpiTrafficLhs, kpiTrafficRhs)
+kpiTrafficLhs = IconText(kpiTrafficIcon, "info", "m", "Foot Traffic Today", "1,247 visitors so far", false, "horizontal")
+kpiTrafficIcon = Icon("users", "people")
+kpiTrafficRhs = BoldText("number", "1,247", "+8.7%", "metric")
+trafficSection = SectionBlock([trafficItem], false)
+trafficItem = SectionItem("traffic", "Foot Traffic Through the Day", [trafficChart])
+trafficChart = LineChart(trafficHours, [trafficSeries], "natural", "Hour", "Visitors")
+trafficHours = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"]
+trafficSeries = Series("Visitors", [42, 68, 95, 134, 167, 189, 156, 143, 128, 112, 98, 76, 45])
+bestSellersSection = SectionBlock([bestSellersItem], false)
+bestSellersItem = SectionItem("bestsellers", "Best Sellers (Units Today)", [bestSellersChart])
+bestSellersChart = HorizontalBarChart(bestSellerNames, [bestSellerSeries], "grouped", "Units Sold", "Product")
+bestSellerNames = ["Organic Oat Milk 1L", "Sourdough Loaf", "Free-Range Eggs 12pk", "Greek Yogurt 500g", "Artisan Coffee 250g", "Avocados 4pk", "Dark Chocolate 85%", "Almond Butter 300g"]
+bestSellerSeries = Series("Units", [47, 42, 38, 35, 31, 29, 26, 24])
+stockSection = SectionBlock([stockItem], false)
+stockItem = SectionItem("stock", "Items Out of Stock", [stockTable])
+stockTable = Table([stockColSku, stockColName, stockColCategory, stockColLastSold, stockColEta])
+stockColSku = Col("SKU", ["SKU-8472", "SKU-3910", "SKU-6281", "SKU-1156", "SKU-9743", "SKU-5028"], "string")
+stockColName = Col("Product", ["Gluten-Free Granola 400g", "Cold-Press Juice Cleanse 3-Day", "Plant-Based Protein Powder 1kg", "Organic Kimchi 350g", "Kombucha Variety Pack 6x330ml", "Raw Honey 500g"], "string")
+stockColCategory = Col("Category", ["Breakfast", "Beverages", "Supplements", "Fermented", "Beverages", "Pantry"], "string")
+stockColLastSold = Col("Last Sold", ["2026-07-21", "2026-07-20", "2026-07-19", "2026-07-22", "2026-07-21", "2026-07-18"], "string")
+stockColEta = Col("ETA Restock", ["2026-07-25", "2026-07-24", "2026-07-26", "2026-07-24", "2026-07-25", "2026-07-27"], "string")
+staffSection = SectionBlock([staffItem], false)
+staffItem = SectionItem("staff", "On Shift Today", [staffList])
+staffList = EntityList(staffRows, "default", staffHeader, staffFooter)
+staffHeader = { left: "Role", right: "Name", rightVariant: "text" }
+staffFooter = { left: "Total", right: "8 staff", rightVariant: "text" }
+staffRows = [
+  { left: "Store Manager", right: "Sarah Chen", rightVariant: "text" },
+  { left: "Assistant Manager", right: "Marcus Johnson", rightVariant: "text" },
+  { left: "Shift Lead (AM)", right: "Priya Patel", rightVariant: "text" },
+  { left: "Shift Lead (PM)", right: "James Rodriguez", rightVariant: "text" },
+  { left: "Cashier", right: "Aisha Williams", rightVariant: "text" },
+  { left: "Cashier", right: "Tyler Brown", rightVariant: "text" },
+  { left: "Stock Associate", right: "Maria Garcia", rightVariant: "text" },
+  { left: "Stock Associate", right: "Kevin Lee", rightVariant: "text" }
+]
+promoSection = SectionBlock([promoItem], false)
+promoItem = SectionItem("promos", "Active Promotions Performance", [promoTable])
+promoTable = Table([promoColName, promoColType, promoColRevenue, promoColUnits, promoColRoi, promoColStatus])
+promoColName = Col("Promotion", ["Summer Sip & Save", "Breakfast Bundle", "Weekend Warrior", "Loyalty Double Points", "Student Discount 15%"], "string")
+promoColType = Col("Type", ["BOGO 50% Off", "Bundle 20% Off", "Spend $50 Get $10", "Points Multiplier", "Percentage Off"], "string")
+promoColRevenue = Col("Revenue", [3240, 2890, 1560, 4100, 980], "number")
+promoColUnits = Col("Units", [128, 95, 42, 210, 34], "number")
+promoColRoi = Col("ROI", ["3.2x", "2.8x", "1.9x", "4.1x", "1.4x"], "string")
+promoColStatus = Col("Status", ["Exceeding", "On Track", "Below Target", "Exceeding", "Below Target"], "string")
+registerSection = SectionBlock([registerItem], false)
+registerItem = SectionItem("registers", "Register Status", [registerTable])
+registerTable = Table([regColNum, regColStatus, regColCashier, regColSales, regColTxns, regColIssues])
+regColNum = Col("Register", ["Register 1", "Register 2", "Register 3", "Register 4", "Register 5", "Self-Checkout 1", "Self-Checkout 2", "Self-Checkout 3", "Self-Checkout 4"], "string")
+regColStatus = Col("Status", ["Open", "Open", "Open", "Closed", "Open", "Open", "Open", "Maintenance", "Open"], "string")
+regColCashier = Col("Cashier", ["Aisha Williams", "Tyler Brown", "Priya Patel", "—", "James Rodriguez", "Self-Service", "Self-Service", "—", "Self-Service"], "string")
+regColSales = Col("Sales ($)", [3420, 2890, 2150, 0, 1980, 1560, 1340, 0, 890], "number")
+regColTxns = Col("Transactions", [42, 38, 31, 0, 28, 24, 19, 0, 14], "number")
+regColIssues = Col("Issues", ["None", "None", "Scanner lag", "Offline", "None", "None", "Bagging area", "Hardware", "None"], "string")
+comparisonSection = SectionBlock([compSalesItem, compTrafficItem, compBasketItem], false)
+compSalesItem = SectionItem("comp-sales", "Sales: This Week vs Last Week", [compSalesChart])
+compSalesChart = BarChart(compDays, [compThisWeekSales, compLastWeekSales], "grouped", "Day", "Sales ($)")
+compDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+compThisWeekSales = Series("This Week", [15200, 14230, 0, 0, 0, 0, 0])
+compLastWeekSales = Series("Last Week", [13800, 14500, 16200, 15900, 18400, 22100, 19800])
+compTrafficItem = SectionItem("comp-traffic", "Foot Traffic: This Week vs Last Week", [compTrafficChart])
+compTrafficChart = LineChart(compDays, [compThisWeekTraffic, compLastWeekTraffic], "natural", "Day", "Visitors")
+compThisWeekTraffic = Series("This Week", [1180, 1247, 0, 0, 0, 0, 0])
+compLastWeekTraffic = Series("Last Week", [1090, 1150, 1320, 1280, 1450, 1890, 1650])
+compBasketItem = SectionItem("comp-basket", "Avg. Basket Size: This Week vs Last Week", [compBasketChart])
+compBasketChart = BarChart(compDays, [compThisWeekBasket, compLastWeekBasket], "grouped", "Day", "Items/Txn")
+compThisWeekBasket = Series("This Week", [3.6, 3.7, 0, 0, 0, 0, 0])
+compLastWeekBasket = Series("Last Week", [3.4, 3.5, 3.6, 3.5, 3.8, 4.1, 3.9])
+reorderForm = Form("reorder-form", reorderButtons, [fcReorderItem, fcReorderQty, fcReorderPriority])
+reorderButtons = Buttons([btnReorderSubmit, btnReorderCancel], "row")
+btnReorderSubmit = Button("Place Reorder", { type: "continue_conversation", context: "Place reorder for selected item with specified quantity and priority" }, "primary")
+btnReorderCancel = Button("Cancel", { type: "continue_conversation", context: "Cancel reorder form" }, "secondary")
+fcReorderItem = FormControl("Item to Reorder", reorderItemSelect, "Select an out-of-stock or low-stock item")
+reorderItemSelect = Select("reorder-item", reorderItemOptions, "Choose item...", { required: true })
+reorderItemOptions = [
+  SelectItem("SKU-8472", "Gluten-Free Granola 400g (Out of Stock)"),
+  SelectItem("SKU-3910", "Cold-Press Juice Cleanse 3-Day (Out of Stock)"),
+  SelectItem("SKU-6281", "Plant-Based Protein Powder 1kg (Out of Stock)"),
+  SelectItem("SKU-1156", "Organic Kimchi 350g (Out of Stock)"),
+  SelectItem("SKU-9743", "Kombucha Variety Pack 6x330ml (Out of Stock)"),
+  SelectItem("SKU-5028", "Raw Honey 500g (Out of Stock)"),
+  SelectItem("SKU-2241", "Organic Oat Milk 1L (Low: 12 units)"),
+  SelectItem("SKU-7735", "Sourdough Loaf (Low: 8 units)"),
+  SelectItem("SKU-4489", "Free-Range Eggs 12pk (Low: 15 units)")
+]
+fcReorderQty = FormControl("Quantity", reorderQtyInput, "Enter number of units to order")
+reorderQtyInput = Input("reorder-qty", "e.g. 50", "number", { required: true, min: 1, max: 500 })
+fcReorderPriority = FormControl("Priority", reorderPrioritySelect, "Standard orders arrive in 2-3 business days")
+reorderPrioritySelect = Select("reorder-priority", reorderPriorityOptions, "Standard", { required: true })
+reorderPriorityOptions = [
+  SelectItem("standard", "Standard (2-3 days)"),
+  SelectItem("express", "Express (24 hours, +25% cost)"),
+  SelectItem("emergency", "Emergency (4 hours, +75% cost)")
+]
+storeSwitcher = Form("store-switcher", storeSwitchButtons, [fcStoreSelect])
+storeSwitchButtons = Buttons([btnStoreSwitch], "row")
+btnStoreSwitch = Button("Switch Store", { type: "continue_conversation", context: "Switch to selected store view" }, "primary")
+fcStoreSelect = FormControl("Select Store", storeSelect, "Choose a different store location")
+storeSelect = Select("store-id", storeOptions, "Current: Store #247 Downtown", { required: true })
+storeOptions = [
+  SelectItem("247", "Store #247 — Downtown (Current)"),
+  SelectItem("312", "Store #312 — Westside Mall"),
+  SelectItem("189", "Store #189 — North Plaza"),
+  SelectItem("456", "Store #456 — Airport Terminal B"),
+  SelectItem("723", "Store #723 — University District"),
+  SelectItem("501", "Store #501 — Industrial Park"),
+  SelectItem("888", "Store #888 — Flagship Riverside")
+]

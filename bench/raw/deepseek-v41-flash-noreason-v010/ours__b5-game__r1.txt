@@ -1,0 +1,161 @@
+# Live-Ops Room — Single Screen
+
+<Callout tone="warning" title="Live now: 3 alerts need eyes">
+EU-West crash rate up 0.6% on v4.2.1 · Gold inflation at 7.4%/wk · 41 player reports in queue
+</Callout>
+
+<Card title="Right now" subtitle="Snapshot, updated 30s ago">
+<Columns>
+<Stat label="Players online" value="184,203" change="+6.2% vs 1h ago" tone="success" icon="users" />
+<Stat label="Revenue today" value="$412,880" change="+11% vs 7-day avg" tone="success" icon="chart-line" />
+<Stat label="ARPPU (today)" value="$2.24" change="-0.3% vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="Open reports" value="41" change="+9 since shift start" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Audience" subtitle="Daily and monthly actives">
+<Columns>
+<Stat label="DAU" value="1.24M" change="+2.1% WoW" tone="success" />
+<Stat label="MAU" value="9.87M" change="+0.8% MoM" tone="success" />
+<Stat label="DAU / MAU (stickiness)" value="12.6%" note="Healthy for a live shooter" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Session length — past 14 days" subtitle="Average minutes per session, all platforms">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Avg session (min) |
+|---|---|
+| D1 | 41 |
+| D2 | 43 |
+| D3 | 44 |
+| D4 | 42 |
+| D5 | 46 |
+| D6 | 51 |
+| D7 | 53 |
+| D8 | 48 |
+| D9 | 45 |
+| D10 | 44 |
+| D11 | 47 |
+| D12 | 49 |
+| D13 | 52 |
+| D14 | 50 |
+</Chart>
+</Card>
+
+<Card title="Best-selling items today" subtitle="Units sold and gross revenue">
+| Item | Units | Revenue |
+|---|---|---|
+| Neon Reaper skin bundle | 8,412 | $168,240 |
+| Season 7 battle pass | 21,905 | $109,525 |
+| Voidrunner weapon charm | 14,330 | $42,990 |
+| 1,000 Shard pack | 3,180 | $31,800 |
+| Founder's emote pack | 2,044 | $20,440 |
+</Card>
+
+<Card title="Server regions & health">
+| Region | Status | Players online | Ping (ms) | Load |
+|---|---|---|---|---|
+| NA-East | <Badge tone="success">Healthy</Badge> | 61,204 | 28 | 62% |
+| NA-West | <Badge tone="success">Healthy</Badge> | 38,910 | 34 | 55% |
+| EU-West | <Badge tone="warning">Degraded</Badge> | 44,882 | 71 | 88% |
+| EU-North | <Badge tone="success">Healthy</Badge> | 19,340 | 39 | 47% |
+| APAC-South | <Badge tone="danger">Incident</Badge> | 12,660 | 142 | 96% |
+| SA-East | <Badge tone="info">Maintenance</Badge> | 7,207 | 58 | 20% |
+</Card>
+
+<Card title="Crash rate by app version" subtitle="Crashes per 1,000 sessions, last 24h">
+<Chart type="bar" x="Version" y="Crashes per 1k sessions">
+| Version | Crash rate |
+|---|---|
+| v4.2.1 | 4.8 |
+| v4.2.0 | 2.1 |
+| v4.1.9 | 1.4 |
+| v4.1.7 | 1.1 |
+| v4.0.4 | 0.9 |
+</Chart>
+<Callout tone="danger" title="v4.2.1 is the outlier">4.8 crashes/1k sessions, 2.3× the previous release. Crash signature points at the EU-West matchmaking service.</Callout>
+<Button variant="danger" ask="Ship a hotfix for the v4.2.1 crash spike" icon="warning">Ship hotfix for v4.2.1</Button>
+</Card>
+
+<Card title="Live events" subtitle="Running and upcoming">
+<Tabs>
+<Tab title="Running">
+<Steps>
+<Step title="Neon Siege" status="current" subtitle="Ends in 2d 6h">Peak concurrency 71k. Reward tier 3 unlocked by 38% of players.</Step>
+<Step title="Double XP Weekend" status="current" subtitle="Ends in 19h">Engagement +14% vs baseline.</Step>
+</Steps>
+</Tab>
+<Tab title="Upcoming">
+<Steps>
+<Step title="Voidrunner Cup" status="todo" subtitle="Starts in 4d">Ranked bracket, 128 teams. Prize pool live.</Step>
+<Step title="Season 8 prelude" status="todo" subtitle="Starts in 11d">Teaser questline + login rewards.</Step>
+</Steps>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Moderation queues">
+<Columns>
+<Stat label="Player reports awaiting review" value="41" change="+9 today" tone="danger" icon="warning" />
+<Stat label="Ban appeals awaiting review" value="17" change="+4 today" tone="warning" icon="users" />
+</Columns>
+<Progress value="41" max="60" label="Report queue vs daily target" tone="danger" />
+<Progress value="17" max="40" label="Appeal queue vs daily target" tone="warning" />
+<Button ask="Open the player report queue" icon="warning">Open report queue</Button>
+<Button variant="secondary" ask="Open the ban appeal queue">Open appeal queue</Button>
+</Card>
+
+<Card title="In-game currency inflation" subtitle="Gold supply growth vs sink, trailing 7 days">
+<Columns>
+<Stat label="Weekly gold inflation" value="7.4%" change="+1.9 pts vs last week" tone="danger" icon="chart-line" />
+<Stat label="Gold per active player" value="48,220" change="+5.1% WoW" tone="warning" />
+<Stat label="Sink / faucet ratio" value="0.81" note="Below 1.0 means supply is growing" tone="warning" />
+</Columns>
+<Callout tone="warning" title="Above the 5% guardrail">Consider a sink event or vendor restock before Season 8.</Callout>
+</Card>
+
+<Card title="Running experiments" subtitle="Two A/B tests live">
+| Experiment | Variant A | Variant B | Lift | Confidence |
+|---|---|---|---|---|
+| Store layout (hero carousel) | $2.11 ARPPU | $2.38 ARPPU | +12.8% | 96% |
+| Matchmaking wait vs skill | 41s wait | 58s wait | -4.2% churn | 88% |
+</Card>
+
+<Card title="Draft patch notes" subtitle="Compose and stage a release note">
+<Form name="patch-notes">
+<Input label="Version" name="version" placeholder="v4.2.2" hint="Use the build tag from CI" required="true" />
+<Input label="Title" name="title" placeholder="Hotfix: matchmaking stability" required="true" />
+<Select label="Channel" name="channel" options="Internal draft | Public blog | In-client news | All channels" />
+<TextArea label="Body" name="body" rows="6" placeholder="- Fixed a crash in EU-West matchmaking&#10;- Reduced gold faucet from daily quests by 8%" required="true" />
+<Checkboxes label="Include sections" name="sections" options="Balance changes | Bug fixes | Known issues | Upcoming events" value="Bug fixes | Known issues" />
+<Switch label="Notify players in-client on publish" name="notify" value="true" />
+<Button>Save draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Focus a region" subtitle="Filter the whole room to one region">
+<Select label="Region" name="region-focus" options="All regions | NA-East | NA-West | EU-West | EU-North | APAC-South | SA-East" placeholder="All regions" hint="Applies to every panel on this screen" />
+<Button ask="Focus the live-ops room on EU-West">Focus EU-West</Button>
+<Button variant="tertiary" ask="Clear the region focus and show all regions">Clear focus</Button>
+</Card>
+
+<Card title="Ship a hotfix" subtitle="Deploy a build to live">
+<Form name="hotfix">
+<Select label="Build" name="build" options="v4.2.2-rc1 | v4.2.1-hotfix3 | v4.2.0-stable" required="true" />
+<Select label="Target" name="target" options="All regions | EU-West only | APAC-South only" />
+<Radio label="Rollout" name="rollout" options="Canary 5% | Staged 25% → 100% | Full 100%" />
+<Slider label="Rollback window" name="rollback" min="0" max="24" step="1" value="6" unit="h" />
+<TextArea label="Release note" name="note" rows="3" placeholder="What changed and why" />
+<Switch label="Page on-call when rollout starts" name="page" value="true" />
+<Button variant="danger" icon="warning">Ship hotfix</Button>
+<Button variant="tertiary">Schedule for later</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Why is EU-West degraded, and what changed on v4.2.1?
+- Show me the gold faucet and sink breakdown by source
+- Which experiment should we ship, and what's the risk?
+- Draft the public patch notes for v4.2.2
+</FollowUps>

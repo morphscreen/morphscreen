@@ -1,0 +1,10 @@
+<Card title="API Uptime" subtitle="This month" icon="chart-line">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" icon="check-circle" />
+<Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved" icon="alert-triangle">
+<Callout tone="info" title="API latency spike — Resolved Oct 14, 2024 14:23 UTC">
+On Oct 14 at 13:45 UTC, elevated latency was detected on the `/v1/transactions` endpoint due to a database connection pool exhaustion. The root cause was a long-running migration that held connections longer than expected. The migration was killed at 14:12 UTC and latency returned to baseline by 14:23 UTC. A guardrail has been added to prevent migrations from saturating the pool.
+</Callout>
+</Card>

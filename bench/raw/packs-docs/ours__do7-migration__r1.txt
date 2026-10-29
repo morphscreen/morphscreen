@@ -1,0 +1,214 @@
+# Database Migration Plan: `2024_01_15_add_user_preferences`
+
+<Card title="Migration Overview" subtitle="Version 2.3.0 → 2.4.0">
+<Columns>
+<Stat label="Migration ID" value="047" />
+<Stat label="Estimated Duration" value="~45 sec" />
+<Stat label="Risk Level" value="Low" tone="success" />
+<Stat label="Tables Affected" value="2" />
+</Columns>
+
+<Callout tone="info" title="Pre-flight checks passed">
+All dependency migrations applied. No active locks detected on target tables. Backup snapshot scheduled at 02:00 UTC.
+</Callout>
+</Card>
+
+<Card title="1. Files Touched by This Migration">
+<FileTree title="Migration artifacts">
+- migrations/
+  - 047_add_user_preferences.up.sql
+  - 047_add_user_preferences.down.sql
+- models/
+  - user.go
+  - preferences.go
+- repositories/
+  - user_repository.go
+- handlers/
+  - user_handler.go
+- tests/
+  - migration_047_test.go
+  - user_preferences_integration_test.go
+- docs/
+  - schema_changelog.md
+</FileTree>
+
+<Callout tone="neutral" title="File purposes">
+**`.up.sql`** – Forward migration (schema + data) · **`.down.sql`** – Rollback script · **Models** – Updated structs & validation · **Repositories** – New query methods · **Handlers** – API endpoints for preferences · **Tests** – Migration round-trip & integration tests · **Docs** – Changelog entry
+</Callout>
+</Card>
+
+<Card title="2. Schema Change Diff">
+<Tabs>
+<Tab title="Up Migration (047_add_user_preferences.up.sql)">
+<Diff file="migrations/047_add_user_preferences.up.sql">
+-- Create preferences table
++CREATE TABLE user_preferences (
++    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
++    theme VARCHAR(20) NOT NULL DEFAULT 'system',
++    language VARCHAR(10) NOT NULL DEFAULT 'en',
++    timezone VARCHAR(50) NOT NULL DEFAULT 'UTC',
++    email_notifications BOOLEAN NOT NULL DEFAULT true,
++    push_notifications BOOLEAN NOT NULL DEFAULT true,
++    weekly_digest BOOLEAN NOT NULL DEFAULT false,
++    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
++    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
++    PRIMARY KEY (user_id)
++);
+
++CREATE INDEX idx_user_preferences_theme ON user_preferences(theme);
++CREATE INDEX idx_user_preferences_language ON user_preferences(language);
+
+-- Add trigger for updated_at
++CREATE OR REPLACE FUNCTION update_updated_at_column()
++RETURNS TRIGGER AS $$
++BEGIN
++    NEW.updated_at = NOW();
++    RETURN NEW;
++END;
++$$ language 'plpgsql';
+
++CREATE TRIGGER update_user_preferences_updated_at
++    BEFORE UPDATE ON user_preferences
++    FOR EACH ROW
++    EXECUTE FUNCTION update_updated_at_column();
+
+-- Backfill existing users with default preferences
++INSERT INTO user_preferences (user_id)
++SELECT id FROM users
++ON CONFLICT (user_id) DO NOTHING;
+
+-- Add foreign key to users table for quick preference access
++ALTER TABLE users ADD COLUMN IF NOT EXISTS preferences_json JSONB;
++UPDATE users u
++SET preferences_json = to_jsonb(p) - 'user_id'
++FROM user_preferences p WHERE p.user_id = u.id;
+</Diff>
+</Tab>
+<Tab title="Down Migration (047_add_user_preferences.down.sql)">
+<Diff file="migrations/047_add_user_preferences.down.sql">
+-- Remove trigger and function
+-DROP TRIGGER IF EXISTS update_user_preferences_updated_at ON user_preferences;
+-DROP FUNCTION IF EXISTS update_updated_at_column();
+
+-- Drop indexes
+-DROP INDEX IF EXISTS idx_user_preferences_theme;
+-DROP INDEX IF EXISTS idx_user_preferences_language;
+
+-- Remove column from users
+-ALTER TABLE users DROP COLUMN IF EXISTS preferences_json;
+
+-- Drop preferences table
+-DROP TABLE IF EXISTS user_preferences;
+</Diff>
+</Tab>
+<Tab title="Model Changes (user.go)">
+<Diff file="models/user.go">
+ type User struct {
+     ID           UUID      `json:"id" db:"id"`
+     Email        string    `json:"email" db:"email"`
+     Name         string    `json:"name" db:"name"`
+     CreatedAt    time.Time `json:"created_at" db:"created_at"`
+     UpdatedAt    time.Time `json:"updated_at" db:"updated_at"`
++    Preferences  *Preferences `json:"preferences,omitempty" db:"-"`
++    PreferencesJSON json.RawMessage `json:"-" db:"preferences_json"`
+ }
+ 
++type Preferences struct {
++    UserID             UUID   `json:"user_id" db:"user_id"`
++    Theme              string `json:"theme" db:"theme"`
++    Language           string `json:"language" db:"language"`
++    Timezone           string `json:"timezone" db:"timezone"`
++    EmailNotifications bool   `json:"email_notifications" db:"email_notifications"`
++    PushNotifications  bool   `json:"push_notifications" db:"push_notifications"`
++    WeeklyDigest       bool   `json:"weekly_digest" db:"weekly_digest"`
++    CreatedAt          time.Time `json:"created_at" db:"created_at"`
++    UpdatedAt          time.Time `json:"updated_at" db:"updated_at"`
++}
++
+ func (u *User) Validate() error {
+     if u.Email == "" {
+         return errors.New("email is required")
+     }
++    if u.Preferences != nil {
++        if err := u.Preferences.Validate(); err != nil {
++            return err
++        }
++    }
+     return nil
+ }
+</Diff>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="3. Rollback Steps">
+<Callout tone="warning" title="Rollback window: 24 hours after deployment">
+After 24 hours, the migration is considered stable. Rollback after this window requires manual data migration.
+</Callout>
+
+<Steps>
+<Step title="Verify migration status" status="todo">
+Check that migration 047 is the latest applied version:
+```bash
+migrate version
+# Should show: 047
+```
+</Step>
+<Step title="Pause application traffic" status="todo">
+Enable maintenance mode or drain connections:
+```bash
+# Kubernetes example
+kubectl scale deployment api --replicas=0
+# Or enable maintenance mode via feature flag
+```
+</Step>
+<Step title="Run down migration" status="todo">
+Execute the rollback script:
+```bash
+migrate down 1
+# Or manually:
+psql -d production -f migrations/047_add_user_preferences.down.sql
+```
+</Step>
+<Step title="Verify schema rollback" status="todo">
+Confirm tables and columns are removed:
+```sql
+-- Should return no rows
+SELECT * FROM information_schema.tables WHERE table_name = 'user_preferences';
+
+-- Should not exist
+SELECT column_name FROM information_schema.columns 
+WHERE table_name = 'users' AND column_name = 'preferences_json';
+```
+</Step>
+<Step title="Restore application code" status="todo">
+Deploy the previous application version (v2.3.0) that doesn't reference the new columns/models.
+</Step>
+<Step title="Resume traffic" status="todo">
+Scale application back up and verify health:
+```bash
+kubectl scale deployment api --replicas=3
+# Check health endpoints
+curl https://api.example.com/health
+```
+</Step>
+<Step title="Post-rollback validation" status="todo">
+- Run smoke tests against restored API
+- Verify user login/profile flows work
+- Confirm no errors in logs related to missing preferences
+- Monitor error rates for 15 minutes
+</Step>
+</Steps>
+
+<Callout tone="danger" title="Data loss warning">
+Rolling back **deletes all user preference data** (theme, language, notification settings). This data cannot be recovered from the down migration alone. If preferences were modified post-migration, export them first:
+```sql
+COPY (SELECT * FROM user_preferences) TO '/backup/user_preferences_$(date +%s).csv' CSV HEADER;
+```
+</Callout>
+</Card>
+
+<Card title="Deployment Checklist">
+<Checkboxes label="Pre-deployment" options="Code review approved | CI/CD pipeline green | Staging deployment verified | Load test passed | Rollback plan documented | On-call notified" />
+<Checkboxes label="Post-deployment" options="Migration applied successfully | Application health checks passing | No error spike in logs | Feature flags enabled | Monitoring alerts configured | Changelog updated" />
+</Card>

@@ -1,0 +1,108 @@
+# Grid Control Console — National Dispatch
+
+<Callout tone="warning" title="2 active alerts">Northern Intertie flow above 92% of rating. Reserve margin at 4.1%.</Callout>
+
+<Columns>
+<Stat label="Current load" value="41.8 GW" change="+2.3% vs 1h ago" tone="info" icon="lightning" />
+<Stat label="Capacity headroom" value="4.1%" change="-0.8 pts" tone="warning" icon="gauge" />
+<Stat label="Price (MWh)" value="$78.40" change="+$11.20" tone="danger" icon="currency-dollar" />
+<Stat label="Emissions today" value="18.4 kt CO₂e" change="-6% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+
+<Card title="Network capacity" subtitle="Load against firm capacity, all regions">
+<Progress value="41.8" max="43.6" label="Load 41.8 GW of 43.6 GW firm capacity (95.9%)" tone="warning" />
+<Progress value="38.2" max="43.6" label="Reserve held 38.2 GW (87.6%)" tone="neutral" />
+<Progress value="31.4" max="43.6" label="Renewable share of supply 31.4 GW (72%)" tone="success" />
+</Card>
+
+<Card title="Generation by source" subtitle="Live mix, GW">
+<Chart type="donut" title="Generation mix" x="Source" y="GW">
+| Source | GW |
+|---|---|
+| Gas | 12.6 |
+| Nuclear | 9.8 |
+| Hydro | 8.1 |
+| Wind | 6.4 |
+| Solar | 3.9 |
+| Coal | 1.0 |
+</Chart>
+</Card>
+
+<Card title="Plants" subtitle="Output and status, sorted by output">
+| Plant | Region | Output | Status |
+|---|---|---|---|
+| Caldera CCGT | North | 2,410 MW | <Badge tone="success">Online</Badge> |
+| Vantage Nuclear | East | 2,180 MW | <Badge tone="success">Online</Badge> |
+| Rillhead Hydro | West | 1,340 MW | <Badge tone="success">Online</Badge> |
+| Fenmoor Wind | North | 980 MW | <Badge tone="info">Derated</Badge> |
+| Solmarch Solar | South | 640 MW | <Badge tone="info">Curtailed</Badge> |
+| Ashgate Coal 2 | East | 410 MW | <Badge tone="warning">Starting</Badge> |
+| Pylon Peaker 4 | South | 0 MW | <Badge tone="danger">Offline</Badge> |
+</Card>
+
+<Card title="Outages" subtitle="Active, with affected region">
+| Asset | Region affected | Since | Impact |
+|---|---|---|---|
+| Pylon Peaker 4 | South | 04:12 | 320 MW unavailable |
+| Line 22B (230 kV) | West | 06:40 | 1,100 MW rerouted |
+| Ashgate Coal 1 | East | 11:05 | 380 MW unavailable |
+</Card>
+
+<Card title="Demand forecast — next 24 hours" subtitle="GW, hourly">
+<Chart type="line" title="Load forecast" x="Hour" y="GW">
+| Hour | Forecast |
+|---|---|
+| 12:00 | 41.8 |
+| 14:00 | 43.1 |
+| 16:00 | 44.6 |
+| 18:00 | 45.9 |
+| 20:00 | 44.2 |
+| 22:00 | 40.1 |
+| 00:00 | 36.8 |
+| 03:00 | 34.2 |
+| 06:00 | 35.9 |
+| 09:00 | 39.4 |
+| 12:00 | 42.7 |
+</Chart>
+<Callout tone="danger" title="Peak risk 18:00">Forecast peak 45.9 GW exceeds firm capacity by 2.3 GW. Pre-emptive curtailment advised.</Callout>
+</Card>
+
+<Card title="Maintenance planned this month">
+| Window | Asset | Region | Capacity offline |
+|---|---|---|---|
+| Mar 14–16 | Rillhead Hydro unit 2 | West | 420 MW |
+| Mar 19 | Line 41A relay test | North | 0 MW (flow limited) |
+| Mar 22–25 | Vantage Nuclear refuel | East | 2,180 MW |
+| Mar 28 | Fenmoor Wind gearbox | North | 240 MW |
+</Card>
+
+<Card title="Live alerts">
+<Steps>
+<Step title="Northern Intertie flow 94% of rating" status="current" subtitle="12:41 — reduce North export or arm curtailment">Flow above 92% threshold for 11 minutes.</Step>
+<Step title="Reserve margin 4.1%" status="current" subtitle="12:38 — below 5% floor">Fast-start units on standby.</Step>
+<Step title="Solmarch Solar curtailed 40%" status="done" subtitle="11:52 — resolved by inverter reset">Output restored to 640 MW.</Step>
+</Steps>
+</Card>
+
+<Card title="Focus a region" subtitle="Filters the console to one control area">
+<Select label="Region" name="region" options="All regions | North | South | East | West" value="All regions" />
+<Button variant="secondary">Apply region focus</Button>
+</Card>
+
+<Card title="Order curtailment" subtitle="Reduces load in the selected region">
+<Form name="curtailment-order">
+<Select label="Region" name="curtail-region" options="North | South | East | West" placeholder="Choose region" required="true" />
+<Slider label="Curtailment volume" min="0" max="3000" step="50" value="600" name="curtail-mw" unit="MW" />
+<Select label="Reason" name="curtail-reason" options="Reserve margin | Intertie flow limit | Frequency event | Maintenance" />
+<TextArea label="Dispatch note" name="curtail-note" rows="2" placeholder="Instructions to control room" />
+<Button variant="danger">Issue curtailment order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show North region only, all panels
+- What happens if I curtail 1,200 MW in North?
+- Break down emissions by source today
+- List all outages older than 6 hours
+</FollowUps>

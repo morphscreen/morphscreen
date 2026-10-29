@@ -1,0 +1,36 @@
+# Support Lead Morning View
+
+<Card title="Overview" subtitle="Current queue status">
+<Columns>
+<Stat label="Open tickets" value="47" change="+3 since yesterday" tone="warning" />
+<Stat label="Avg first response" value="12 min" change="-2 min vs target" tone="success" />
+<Stat label="High priority open" value="8" change="+2" tone="danger" />
+<Stat label="SLA at risk" value="3" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Filters">
+<Switch label="Show high-priority only" name="high-priority-filter" value="false" hint="Toggle to see only P1 and P2 tickets" />
+</Card>
+
+<Card title="Five most recent tickets">
+| # | Ticket | Priority | Status | Customer | Created | Assignee |
+|---|---|---|---|---|---|---|
+| 1 | **#4821** Payment failure on checkout | <Badge tone="danger">P1 Critical</Badge> | Open | Acme Corp | 08:12 AM | — |
+| 2 | **#4820** API rate limit errors | <Badge tone="warning">P2 High</Badge> | In progress | Globex Inc | 07:45 AM | Sarah Chen |
+| 3 | **#4819** SSO configuration help | <Badge tone="info">P3 Medium</Badge> | Open | Wayne Enterprises | 07:30 AM | — |
+| 4 | **#4818** Export feature request | <Badge tone="neutral">P4 Low</Badge> | Open | Stark Industries | 06:55 AM | Mike Torres |
+| 5 | **#4817** Mobile app crash on login | <Badge tone="danger">P1 Critical</Badge> | In progress | Umbrella Corp | 06:20 AM | Jamie Park |
+</Card>
+
+<Card title="Quick actions">
+<Button size="large" variant="primary">+ Open new ticket</Button>
+<Button variant="secondary" href="/tickets">View all tickets</Button>
+<Button variant="tertiary" href="/reports">SLA report</Button>
+</Card>
+
+<FollowUps>
+- Show me tickets assigned to me
+- What's our SLA breach rate this week?
+- Create a ticket for the API outage
+</FollowUps>

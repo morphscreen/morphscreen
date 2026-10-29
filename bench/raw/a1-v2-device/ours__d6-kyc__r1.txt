@@ -1,0 +1,37 @@
+<Form name="identity-check">
+<Card title="Identity Verification" subtitle="Step 1 of 5">
+<Steps>
+<Step title="ID Front" status="current" />
+<Step title="ID Back" status="todo" />
+<Step title="Selfie" status="todo" />
+<Step title="Address" status="todo" />
+<Step title="Submit" status="todo" />
+</Steps>
+</Card>
+
+<Card title="ID Card – Front">
+<Camera label="Photograph front of ID" name="id_front" facing="back" hint="Place ID on a flat surface, ensure all corners are visible" required="true" />
+</Card>
+
+<Card title="ID Card – Back">
+<Camera label="Photograph back of ID" name="id_back" facing="back" hint="Capture the back side with barcode or magnetic strip visible" required="true" />
+</Card>
+
+<Card title="Selfie">
+<Camera label="Take a selfie" name="selfie" facing="front" hint="Face the camera directly, ensure good lighting" required="true" />
+</Card>
+
+<Card title="Home Address">
+<Input label="Street Address" name="street" placeholder="123 Main St" required="true" />
+<Input label="City" name="city" placeholder="City" required="true" />
+<Input label="State / Province" name="state" placeholder="State" required="true" />
+<Input label="Postal Code" name="postal_code" placeholder="ZIP / Postal Code" required="true" />
+<Input label="Country" name="country" placeholder="Country" required="true" />
+<Switch label="Use current location as home address" name="use_current_location" value="false" hint="Enable to automatically fill address from your location" />
+<Location label="Current Location" name="current_location" precision="approximate" hint="Tap to fetch your current location" required="false" />
+</Card>
+
+<Card title="Submit Application">
+<Button variant="primary" size="large">Submit for Verification</Button>
+</Card>
+</Form>

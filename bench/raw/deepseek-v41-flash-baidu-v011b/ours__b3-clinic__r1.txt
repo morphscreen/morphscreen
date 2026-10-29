@@ -1,0 +1,71 @@
+# Front desk — Tuesday, 14 May
+
+<Columns>
+<Stat label="Patients expected today" value="18" change="+2 vs. Tue avg" tone="info" icon="users" />
+<Stat label="No-show rate, May" value="6.4%" change="-1.1 pts vs. Apr" tone="success" icon="chart-line" />
+<Stat label="Checked in" value="11 / 18" tone="neutral" icon="check-circle" />
+<Stat label="Next called" value="10:20" tone="warning" icon="megaphone" />
+</Columns>
+
+<Callout tone="warning" title="Next patient called out">**10:20 — Room 3** · Ngozi Adeyemi · Dr. Patel · *Called at 10:18, not yet in room*</Callout>
+
+<Card title="Today's appointments" subtitle="Tuesday, 14 May · 18 booked">
+| Time | Patient | Provider | Room | Status |
+|---|---|---|---|---|
+| 09:00 | Marcus Bell | Dr. Patel | Room 1 | <Badge tone="success">Seen</Badge> |
+| 09:20 | Hana Suzuki | Dr. Okafor | Room 2 | <Badge tone="success">Seen</Badge> |
+| 09:40 | Priya Raman | Dr. Patel | Room 1 | <Badge tone="success">In room</Badge> |
+| 10:00 | Tomás Ferreira | Dr. Lindqvist | Room 4 | <Badge tone="success">In room</Badge> |
+| 10:20 | Ngozi Adeyemi | Dr. Patel | Room 3 | <Badge tone="warning">Called</Badge> |
+| 10:40 | Grace Whitfield | Dr. Okafor | Room 2 | <Badge tone="info">Checked in</Badge> |
+| 11:00 | Daniel Osei | Dr. Lindqvist | Room 4 | <Badge tone="neutral">Not arrived</Badge> |
+| 11:20 | Lena Kovacs | Dr. Patel | Room 1 | <Badge tone="neutral">Not arrived</Badge> |
+| 11:40 | Ahmed Farouk | Dr. Okafor | Room 2 | <Badge tone="neutral">Not arrived</Badge> |
+| 12:00 | Sofia Marchetti | Dr. Lindqvist | Room 4 | <Badge tone="neutral">Not arrived</Badge> |
+
+<Button ask="Show the rest of today's appointments" variant="secondary">Show all 18</Button>
+</Card>
+
+<Card title="Room status right now" subtitle="Updated 10:22">
+| Room | Provider | Status | Free since |
+|---|---|---|---|
+| Room 1 | Dr. Patel | <Badge tone="danger">Occupied</Badge> | — |
+| Room 2 | Dr. Okafor | <Badge tone="danger">Occupied</Badge> | — |
+| Room 3 | Dr. Patel | <Badge tone="success">Free</Badge> | 10:05 |
+| Room 4 | Dr. Lindqvist | <Badge tone="danger">Occupied</Badge> | — |
+| Room 5 | Float / procedures | <Badge tone="success">Free</Badge> | 09:30 |
+| Room 6 | Float / procedures | <Badge tone="success">Free</Badge> | 08:45 |
+
+<Button ask="Assign Ngozi Adeyemi to Room 5" variant="secondary">Assign a free room</Button>
+</Card>
+
+<Card title="Check a patient in">
+<Form name="check-in">
+<Input label="Patient name" name="patient" placeholder="Start typing a name…" hint="Matches today's booked list" required="true" />
+<Select label="Appointment time" name="time" placeholder="Pick the slot" options="10:20 Ngozi Adeyemi | 10:40 Grace Whitfield | 11:00 Daniel Osei | 11:20 Lena Kovacs" required="true" />
+<Select label="Room" name="room" placeholder="Pick a free room" options="Room 3 (free) | Room 5 (free) | Room 6 (free)" hint="Only free rooms are listed" />
+<Checkboxes label="At check-in" name="flags" options="Insurance verified | Co-pay collected | Forms signed | Interpreter needed" />
+<Button>Check in</Button>
+<Button variant="tertiary">Mark as no-show</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Columns>
+<Button ask="Show the schedule for Monday, 13 May" variant="secondary" icon="arrow-left">Mon 13 May</Button>
+<Button ask="Show the schedule for Wednesday, 15 May" variant="secondary" icon="arrow-right">Wed 15 May</Button>
+</Columns>
+
+<Form name="jump-to-date">
+<Date label="Jump to date" name="date" value="2024-05-14" hint="Any day with a clinic schedule" />
+<Radio label="View" name="view" options="Day | Week | Provider" />
+<Button>Go to date</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Who is running late right now?
+- Show me tomorrow's first three appointments
+- How many no-shows have we had this month?
+- Which provider has the most free slots this afternoon?
+</FollowUps>

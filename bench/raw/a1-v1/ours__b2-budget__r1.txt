@@ -1,0 +1,62 @@
+<Card title="Budget Overview" subtitle="July 2024">
+<Columns>
+<Stat label="Spent" value="$2,847" change="of $3,500 budget" tone="info" />
+<Stat label="Remaining" value="$653" change="18.7% left" tone="success" />
+<Stat label="Largest expense" value="$420" change="Rent" tone="warning" />
+</Columns>
+
+<Progress value="2847" max="3500" label="Monthly budget usage: 81.3%" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 580 |
+| Transport | 320 |
+| Utilities | 280 |
+| Entertainment | 180 |
+| Shopping | 150 |
+| Other | 137 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense This Month">
+<Callout tone="warning" title="🏠 Rent payment — $1,200">
+**July 1, 2024** · Housing category
+This single expense represents 42% of your total spending this month.
+</Callout>
+
+<Details title="View all expenses">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Jul 1 | Housing | Rent payment | $1,200 |
+| Jul 3 | Food | Groceries | $180 |
+| Jul 5 | Transport | Gas refill | $65 |
+| Jul 7 | Food | Restaurant | $95 |
+| Jul 10 | Utilities | Electricity | $120 |
+| Jul 12 | Shopping | Clothes | $150 |
+| Jul 15 | Food | Groceries | $145 |
+| Jul 18 | Transport | Car service | $180 |
+| Jul 20 | Entertainment | Streaming subs | $45 |
+| Jul 22 | Utilities | Internet | $80 |
+| Jul 25 | Food | Coffee shops | $80 |
+| Jul 28 | Other | Pharmacy | $137 |
+</Details>
+</Card>
+
+<Card title="Select Month">
+<Select label="View month" placeholder="July 2024" options="July 2024 | June 2024 | May 2024 | April 2024 | March 2024 | February 2024 | January 2024" />
+</Card>
+
+<Card title="Add New Expense">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g., Groceries, Gas, Subscription" required="true" />
+<Input label="Amount" type="number" placeholder="0.00" hint="Enter amount in USD" required="true" />
+<Select label="Category" placeholder="Choose category" options="Housing | Food | Transport | Utilities | Entertainment | Shopping | Other" required="true" />
+<Date label="Date" required="true" />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

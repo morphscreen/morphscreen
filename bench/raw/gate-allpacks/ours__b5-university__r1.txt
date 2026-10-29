@@ -1,0 +1,307 @@
+# University Administrator Dashboard
+
+<Card title="University Overview" subtitle="Fall 2024 • Last updated 2 hours ago">
+<Columns>
+<Stat label="Total Enrollment" value="24,847" change="+3.2% vs Fall 2023" tone="success" />
+<Stat label="Applications (YTD)" value="42,156" change="+8.7% YoY" tone="info" />
+<Stat label="Acceptance Rate" value="18.4%" change="-1.2 pp" tone="neutral" />
+<Stat label="Tuition Revenue (FY24)" value="$384.2M" change="+5.1% vs FY23" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Department Focus">
+<Combobox label="Select Department" name="dept-focus" placeholder="All Departments" options="All Departments | Computer Science | Biology | Business | Engineering | Psychology | Economics | Physics | Mathematics | Chemistry | English | History | Political Science | Sociology | Art & Design" />
+</Card>
+
+<Tabs>
+<Tab title="Enrollment & Applications">
+<Card title="Total Enrollment — 5 Year Trend">
+<Chart type="line" x="Year" y="Students" title="Fall Census Enrollment">
+| Year | Undergraduate | Graduate | Total |
+|---|---|---|---|
+| 2020 | 18,200 | 4,100 | 22,300 |
+| 2021 | 18,850 | 4,350 | 23,200 |
+| 2022 | 19,600 | 4,600 | 24,200 |
+| 2023 | 20,100 | 4,850 | 24,950 |
+| 2024 | 20,450 | 4,397 | 24,847 |
+</Chart>
+</Card>
+
+<Card title="Applications by Program (Fall 2024)">
+<Chart type="bar" x="Program" y="Applications" title="First-Year Applications">
+| Program | Applications |
+|---|---|
+| Computer Science | 8,420 |
+| Business | 6,150 |
+| Engineering | 5,890 |
+| Biology | 4,720 |
+| Psychology | 3,980 |
+| Economics | 3,210 |
+| Political Science | 2,840 |
+| Art & Design | 2,150 |
+| Chemistry | 1,980 |
+| Physics | 1,670 |
+| Mathematics | 1,450 |
+| English | 1,320 |
+| History | 980 |
+| Sociology | 870 |
+</Chart>
+</Card>
+
+<Card title="Acceptance Rate by Program">
+<Chart type="horizontal" x="Rate %" y="Program" title="Fall 2024 Acceptance Rates">
+| Program | Rate |
+|---|---|
+| Computer Science | 8.2 |
+| Engineering | 12.5 |
+| Business | 15.8 |
+| Biology | 22.1 |
+| Economics | 24.7 |
+| Psychology | 28.3 |
+| Chemistry | 31.5 |
+| Physics | 34.2 |
+| Mathematics | 36.8 |
+| Political Science | 38.9 |
+| Art & Design | 41.2 |
+| English | 44.5 |
+| History | 48.7 |
+| Sociology | 52.3 |
+</Chart>
+</Card>
+</Tab>
+
+<Tab title="Courses & Faculty">
+<Card title="Course Fill Rates — Fall 2024">
+<Chart type="horizontal" x="Fill %" y="Course" title="Percentage of Seats Filled">
+| Course | Fill % |
+|---|---|
+| CS 101: Intro to Programming | 98 |
+| BUS 201: Financial Accounting | 95 |
+| ENG 101: Composition | 94 |
+| BIO 110: General Biology | 92 |
+| ECON 101: Microeconomics | 91 |
+| PSY 100: Intro Psychology | 90 |
+| MATH 150: Calculus I | 89 |
+| CHEM 120: General Chemistry | 87 |
+| PHYS 140: Mechanics | 85 |
+| HIST 100: World History | 82 |
+| SOC 101: Intro Sociology | 78 |
+| ART 110: Drawing Fundamentals | 75 |
+| POL 101: American Government | 73 |
+| ENG 220: Creative Writing | 68 |
+</Chart>
+</Card>
+
+<Card title="Teaching Load by Faculty Member">
+<Chart type="bar" x="Faculty" y="Course Units" title="Fall 2024 Teaching Assignments (Course Units)">
+| Faculty | Course Units |
+|---|---|
+| Dr. Sarah Chen (CS) | 3.0 |
+| Prof. James Wilson (BUS) | 3.0 |
+| Dr. Maria Rodriguez (BIO) | 2.5 |
+| Dr. Robert Kim (ECON) | 2.5 |
+| Prof. Lisa Thompson (PSY) | 2.0 |
+| Dr. David Park (MATH) | 2.0 |
+| Dr. Amanda Foster (CHEM) | 2.0 |
+| Prof. Michael Brown (PHYS) | 2.0 |
+| Dr. Jennifer Lee (HIST) | 1.5 |
+| Prof. Carlos Martinez (SOC) | 1.5 |
+| Dr. Emily Watson (ART) | 1.5 |
+| Prof. Daniel Garcia (POL) | 1.5 |
+| Dr. Rachel Green (ENG) | 1.0 |
+| Dr. Kevin White (CS) | 1.0 |
+</Chart>
+</Card>
+
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted" title="Fall 2024 Waitlist Count">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 342 |
+| Engineering | 218 |
+| Business | 187 |
+| Biology | 156 |
+| Psychology | 98 |
+| Economics | 87 |
+| Chemistry | 54 |
+| Physics | 43 |
+| Art & Design | 38 |
+| Political Science | 31 |
+| Mathematics | 27 |
+| English | 19 |
+| History | 12 |
+| Sociology | 8 |
+</Chart>
+</Card>
+</Tab>
+
+<Tab title="Student Success & Risk">
+<Card title="Students at Academic Risk">
+<Columns>
+<Stat label="On Probation" value="1,247" change="5.0% of enrollment" tone="warning" />
+<Stat label="Early Alert Flags" value="892" change="+12% vs Fall 2023" tone="danger" />
+<Stat label="Projected Attrition" value="6.8%" change="-0.4 pp" tone="info" />
+<Stat label="Intervention Active" value="1,034" change="83% of flagged" tone="success" />
+</Columns>
+<Details title="Risk Breakdown by Category" open="false">
+<Chart type="bar" x="Category" y="Students" title="Academic Risk Categories">
+| Category | Students |
+|---|---|
+| Low GPA (< 2.0) | 567 |
+| Excessive Absences | 423 |
+| Failed Midterms | 389 |
+| Incomplete Assignments | 298 |
+| Financial Holds | 187 |
+| Health/Personal | 156 |
+| Transfer Credit Issues | 89 |
+| Other | 67 |
+</Chart>
+</Details>
+</Card>
+
+<Card title="Scholarship Budget Utilization">
+<Columns>
+<Gauge label="Merit Scholarships" value="2.84" min="0" max="3.5" unit="M" tone="success" />
+<Gauge label="Need-Based Aid" value="4.12" min="0" max="5.0" unit="M" tone="info" />
+<Gauge label="Athletic Scholarships" value="1.75" min="0" max="2.0" unit="M" tone="warning" />
+<Gauge label="Departmental Awards" value="0.89" min="0" max="1.2" unit="M" tone="neutral" />
+</Columns>
+<Progress value="9.6" max="11.7" label="Total Scholarship Budget: $9.6M / $11.7M (82.1% used)" tone="success" />
+</Card>
+</Tab>
+
+<Tab title="Operations & Revenue">
+<Card title="Housing Occupancy — Fall 2024">
+<Columns>
+<Stat label="Total Beds" value="8,450" />
+<Stat label="Occupied" value="8,027" change="95.0% occupancy" tone="success" />
+<Stat label="Vacant" value="423" change="5.0%" tone="neutral" />
+<Stat label="Waitlist for Housing" value="312" tone="warning" />
+</Columns>
+<Chart type="bar" x="Residence Hall" y="Occupancy %" title="Occupancy by Building">
+| Residence Hall | Occupancy % |
+|---|---|
+| North Tower | 98 |
+| South Tower | 97 |
+| East Commons | 96 |
+| West Commons | 95 |
+| University Village | 94 |
+| Graduate Housing | 92 |
+| Family Housing | 89 |
+| International House | 87 |
+</Chart>
+</Card>
+
+<Card title="Tuition Revenue — FY2024">
+<Chart type="stacked" x="Quarter" y="Revenue ($M)" title="Tuition Revenue by Quarter">
+| Quarter | Undergraduate | Graduate | Summer/Online | Total |
+|---|---|---|---|---|
+| Q1 (Jul-Sep) | 82.4 | 18.7 | 4.2 | 105.3 |
+| Q2 (Oct-Dec) | 78.9 | 17.2 | 2.1 | 98.2 |
+| Q3 (Jan-Mar) | 81.1 | 18.4 | 5.8 | 105.3 |
+| Q4 (Apr-Jun) | 42.3 | 9.8 | 23.3 | 75.4 |
+</Chart>
+<KeyValue title="Revenue Summary">
+| Metric | Value |
+|---|---|
+| FY2024 Total | $384.2M |
+| FY2023 Total | $365.5M |
+| YoY Change | +5.1% |
+| Net Tuition per Student | $15,460 |
+| Discount Rate | 34.2% |
+</KeyValue>
+</Card>
+</Tab>
+
+<Tab title="Alumni & Events">
+<Card title="Alumni Giving — 4 Year Trend">
+<Chart type="line" x="Year" y="Donations ($M)" title="Annual Alumni Contributions">
+| Year | Donors | Total Given | Avg Gift | Participation |
+|---|---|---|---|---|
+| 2021 | 12,840 | $18.7M | $1,456 | 18.2% |
+| 2022 | 13,210 | $21.3M | $1,612 | 18.7% |
+| 2023 | 13,650 | $24.8M | $1,817 | 19.1% |
+| 2024 | 14,020 | $28.4M | $2,026 | 19.5% |
+</Chart>
+</Card>
+
+<Card title="Campus Events — December 2024">
+<Calendar month="2024-12" title="December Events">
+| Date | Event |
+|---|---|
+| 2024-12-02 | Board of Trustees Meeting |
+| 2024-12-04 | Career Fair — Engineering & CS |
+| 2024-12-06 | Holiday Concert — Music Dept |
+| 2024-12-09 | Finals Week Begins |
+| 2024-12-13 | Fall Commencement |
+| 2024-12-16 | Winter Break Begins |
+| 2024-12-18 | Alumni Holiday Reception (NYC) |
+| 2024-12-20 | Alumni Holiday Reception (SF) |
+| 2024-12-22 | Campus Closes for Holidays |
+</Calendar>
+</Card>
+</Tab>
+
+<Tab title="Comparisons & Actions">
+<Card title="Fall 2024 vs Fall 2023 — Key Metrics">
+<Compare title="Semester-over-Semester Comparison">
+| Metric | Fall 2023 | Fall 2024 | Change |
+|---|---|---|---|
+| Total Enrollment | 24,950 | 24,847 | -0.4% |
+| First-Year Class | 4,850 | 4,720 | -2.7% |
+| Transfer Students | 1,120 | 1,280 | +14.3% |
+| International Students | 2,340 | 2,510 | +7.3% |
+| Avg HS GPA | 3.78 | 3.81 | +0.03 |
+| Avg SAT | 1340 | 1355 | +15 |
+| Retention (Y1-Y2) | 91.2% | 92.1% | +0.9 pp |
+| 4-Year Grad Rate | 76.4% | 77.8% | +1.4 pp |
+| Tuition Revenue (term) | $182.1M | $191.4M | +5.1% |
+| Financial Aid Spend | $62.3M | $66.8M | +7.2% |
+| Housing Occupancy | 93.8% | 95.0% | +1.2 pp |
+| Faculty FTE | 1,240 | 1,265 | +2.0% |
+</Compare>
+</Card>
+
+<Card title="Approve New Course">
+<Form name="course-approval">
+<Input label="Course Code" placeholder="e.g., CS 485" required="true" />
+<Input label="Course Title" placeholder="e.g., Machine Learning Systems" required="true" />
+<Select label="Department" options="Computer Science | Biology | Business | Engineering | Psychology | Economics | Physics | Mathematics | Chemistry | English | History | Political Science | Sociology | Art & Design" required="true" />
+<Select label="Level" options="100 — Introductory | 200 — Intermediate | 300 — Advanced | 400 — Senior Seminar | 500 — Graduate | 600 — Doctoral" required="true" />
+<Input label="Credits" type="number" value="3" min="1" max="6" required="true" />
+<TextArea label="Course Description" placeholder="Brief description for catalog..." rows="3" required="true" />
+<TextArea label="Prerequisites" placeholder="e.g., CS 240, MATH 210" rows="2" />
+<Select label="Instruction Mode" options="In-Person | Hybrid | Online Synchronous | Online Asynchronous" required="true" />
+<Input label="Max Enrollment" type="number" value="30" min="5" max="200" required="true" />
+<Select label="Proposed Term" options="Spring 2025 | Summer 2025 | Fall 2025" required="true" />
+<Checkboxes label="Requires Approval From" options="Department Chair | Curriculum Committee | Dean's Office | Registrar | Faculty Senate" value="Department Chair | Curriculum Committee" required="true" />
+<Button>Submit for Approval</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Recipient Group" options="All Students | First-Year Students | Seniors | Academic Probation | Housing Residents | International Students | Student Athletes | Scholarship Recipients | Waitlisted Applicants | Custom List..." required="true" />
+<Combobox label="Department Filter (Optional)" name="msg-dept" placeholder="All Departments" options="All Departments | Computer Science | Biology | Business | Engineering | Psychology | Economics | Physics | Mathematics | Chemistry | English | History | Political Science | Sociology | Art & Design" />
+<Input label="Subject" placeholder="Important: Registration Deadline Approaching" required="true" />
+<TextArea label="Message" placeholder="Compose your message here... Use {{first_name}} for personalization." rows="6" required="true" />
+<Checkboxes label="Delivery Channels" options="Email | SMS | Push Notification | Student Portal Announcement" value="Email | Student Portal Announcement" required="true" />
+<Radio label="Send Timing" options="Send Immediately | Schedule for Later" value="Send Immediately" />
+<Date label="Schedule Date" name="schedule-date" hint="Required if scheduling" />
+<Time label="Schedule Time" name="schedule-time" hint="Required if scheduling" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Show me detailed enrollment projections for next 3 years
+- Generate a report on faculty hiring needs by department
+- Compare our acceptance rates with peer institutions
+- What's the ROI on our scholarship spending?
+- Show housing demand forecast for next fall
+</FollowUps>

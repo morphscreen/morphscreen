@@ -1,0 +1,113 @@
+# Personal Banking Home
+
+<Callout tone="info" title="Welcome back, Alex">Here's your money at a glance. Everything is up to date as of today.</Callout>
+
+<Columns>
+<Card title="Accounts">
+<KeyValue title="Balances">
+| Account | Balance |
+|---|---|
+| Checking ••4832 | $4,286.55 |
+| Savings ••1207 | $12,940.10 |
+| Credit ••7710 | $1,245.33 |
+</KeyValue>
+<Button variant="secondary" icon="arrows-left-right">Transfer money</Button>
+</Card>
+
+<Card title="Credit score">
+<Gauge label="FICO Score" value="742" min="300" max="850" unit="pts" tone="success" />
+<Badge tone="success">Good</Badge>
+<Sparkline label="Trend" values="735 | 738 | 741 | 739 | 742" value="+3" change="vs last month" />
+</Card>
+</Columns>
+
+<Card title="Recent transactions">
+<Chart type="bar" title="Last 7 days" x="Day" y="Amount ($)">
+| Day | Spending |
+|---|---|
+| Mon | 84.20 |
+| Tue | 132.50 |
+| Wed | 45.10 |
+| Thu | 210.00 |
+| Fri | 67.80 |
+| Sat | 98.40 |
+| Sun | 156.30 |
+</Chart>
+</Card>
+
+<Card title="Transactions list">
+| Date | Merchant | Amount |
+|---|---|---|
+| Today | Whole Foods Market | -$84.20 |
+| Today | Shell Gas | -$45.10 |
+| Yesterday | Netflix | -$15.99 |
+| Yesterday | Amazon | -$132.50 |
+| 2 days ago | City Cafe | -$12.40 |
+| 2 days ago | Uber | -$22.75 |
+| 3 days ago | Target | -$67.80 |
+
+<Details title="Dispute a transaction" open="false">
+<Form name="dispute">
+<Select label="Select transaction" placeholder="Choose one" options="Whole Foods -$84.20 | Shell Gas -$45.10 | Netflix -$15.99 | Amazon -$132.50" />
+<Select label="Reason" placeholder="Why?" options="Charge not recognized | Wrong amount | Duplicate charge | Item not received | Service not rendered" />
+<TextArea label="Details" placeholder="Describe what happened (optional)" rows="3" />
+<Button>Submit dispute</Button>
+</Form>
+</Details>
+</Card>
+
+<Card title="Spending by category — this month">
+<Chart type="donut" x="Category" y="Amount ($)">
+| Category | Amount |
+|---|---|
+| Groceries | 420.00 |
+| Dining | 310.50 |
+| Transport | 185.20 |
+| Utilities | 240.00 |
+| Entertainment | 95.30 |
+| Shopping | 230.40 |
+| Other | 120.10 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+| Bill | Due date | Amount | Status |
+|---|---|---|---|
+| Electric | Mar 28 | $96.40 | <Badge tone="warning">Due in 3 days</Badge> |
+| Internet | Apr 2 | $59.99 | <Badge tone="neutral">Due in 8 days</Badge> |
+| Water | Apr 5 | $32.75 | <Badge tone="neutral">Due in 11 days</Badge> |
+| Credit card | Apr 10 | $1,245.33 | <Badge tone="neutral">Due in 16 days</Badge> |
+</Card>
+
+<Card title="Vacation savings goal">
+<Stat label="Saved" value="$12,940.10" note="of $15,000 goal" tone="info" icon="piggy-bank" />
+<Progress value="12940" max="15000" label="86% funded" tone="info" />
+<Callout tone="info" title="On track">You're 86% there! Keep saving $500/month and you'll hit your goal by August.</Callout>
+<Button variant="secondary" icon="plus">Add to savings</Button>
+</Card>
+
+<Card title="Move money">
+<Form name="transfer">
+<Select label="From" options="Checking ••4832 | Savings ••1207 | Credit ••7710" />
+<Select label="To" options="Checking ••4832 | Savings ••1207 | Credit ••7710" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Credit line management">
+<Switch label="Freeze credit line" name="freeze" value="false" hint="No new purchases or cash advances allowed while frozen" />
+<Callout tone="warning" title="Frozen credit">When frozen, recurring payments and refunds still process, but new charges will be declined.</Callout>
+</Card>
+
+<Card title="Statement period">
+<Form name="statement">
+<Select label="Statement cycle" options="1st – 28th | 5th – 4th | 10th – 9th | 15th – 14th | 20th – 19th | 25th – 24th" placeholder="Choose your preferred cycle" />
+<Button>Save preference</Button>
+</Form>
+</Card>
+
+<Card title="Alert preferences">
+<Checkboxes label="Alert me when" options="Balance below $500 | Large purchase over $200 | New transaction on credit | Payment due in 7 days | Credit score changes | Suspicious activity detected | Foreign transaction" value="Large purchase over $200 | Payment due in 7 days | Suspicious activity detected" />
+<Button>Save alerts</Button>
+</Card>

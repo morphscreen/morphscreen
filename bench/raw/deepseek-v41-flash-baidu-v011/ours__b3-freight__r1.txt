@@ -1,0 +1,131 @@
+# Logistics control board
+
+<Callout tone="info" title="Live board">
+Data pulled from the TMS feed. Last refreshed 12 minutes ago — see the footer for the exact stamp.
+</Callout>
+
+<Card title="At a glance" subtitle="Month to date">
+<Columns>
+<Stat label="On-time this month" value="94.2%" change="+1.8 pts vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$184.60" change="-$6.20 vs last month" tone="info" icon="currency-dollar" />
+<Stat label="In transit now" value="37" note="6 delayed" tone="warning" icon="truck" />
+<Stat label="Flagged" value="4" note="Awaiting review" tone="danger" icon="flag" />
+</Columns>
+</Card>
+
+<Card title="Delayed shipments" subtitle="Needs attention first">
+<Callout tone="danger" title="6 shipments running late">
+Two are weather-related on the I-80 corridor; the rest are carrier-side capacity issues.
+</Callout>
+
+| Shipment | Origin | Destination | ETA | Delay | Status |
+|---|---|---|---|---|---|
+| SHP-48210 | Chicago, IL | Denver, CO | Feb 14, 09:20 | +18 h | <Badge tone="danger">Delayed</Badge> |
+| SHP-48224 | Memphis, TN | Kansas City, MO | Feb 14, 14:00 | +9 h | <Badge tone="danger">Delayed</Badge> |
+| SHP-48231 | Laredo, TX | Dallas, TX | Feb 15, 07:45 | +6 h | <Badge tone="warning">At risk</Badge> |
+| SHP-48247 | Reno, NV | Sacramento, CA | Feb 15, 11:30 | +4 h | <Badge tone="warning">At risk</Badge> |
+| SHP-48252 | Columbus, OH | Indianapolis, IN | Feb 15, 16:10 | +3 h | <Badge tone="warning">At risk</Badge> |
+| SHP-48260 | Atlanta, GA | Charlotte, NC | Feb 16, 08:00 | +2 h | <Badge tone="warning">At risk</Badge> |
+
+<Button ask="Show me the full delay detail for SHP-48210">Open SHP-48210</Button>
+<Button variant="secondary" ask="Notify the carriers on all six delayed shipments">Notify carriers</Button>
+</Card>
+
+<Card title="Shipments in transit" subtitle="Origin, destination, ETA, status">
+| Shipment | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-48210 | Chicago, IL | Denver, CO | Feb 14, 09:20 | <Badge tone="danger">Delayed</Badge> |
+| SHP-48224 | Memphis, TN | Kansas City, MO | Feb 14, 14:00 | <Badge tone="danger">Delayed</Badge> |
+| SHP-48231 | Laredo, TX | Dallas, TX | Feb 15, 07:45 | <Badge tone="warning">At risk</Badge> |
+| SHP-48247 | Reno, NV | Sacramento, CA | Feb 15, 11:30 | <Badge tone="warning">At risk</Badge> |
+| SHP-48252 | Columbus, OH | Indianapolis, IN | Feb 15, 16:10 | <Badge tone="warning">At risk</Badge> |
+| SHP-48260 | Atlanta, GA | Charlotte, NC | Feb 16, 08:00 | <Badge tone="warning">At risk</Badge> |
+| SHP-48266 | Portland, OR | Boise, ID | Feb 16, 10:15 | <Badge tone="success">On time</Badge> |
+| SHP-48271 | Phoenix, AZ | Tucson, AZ | Feb 16, 12:40 | <Badge tone="success">On time</Badge> |
+| SHP-48278 | Newark, NJ | Boston, MA | Feb 16, 15:05 | <Badge tone="success">On time</Badge> |
+| SHP-48283 | Seattle, WA | Spokane, WA | Feb 17, 08:30 | <Badge tone="success">On time</Badge> |
+
+<Button variant="secondary" ask="Show all 37 in-transit shipments">Show all 37</Button>
+</Card>
+
+<Card title="Find a route" subtitle="Search by origin or destination">
+<Form name="route-search">
+<Input label="Route search" name="route" type="search" placeholder="e.g. Chicago to Denver" hint="Matches either endpoint or a lane name" />
+<Select label="Status" name="status" placeholder="Any status" options="Any status | On time | At risk | Delayed | Delivered" />
+<Date label="Departing from" name="from" hint="Optional" />
+<Button>Search routes</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Volume by carrier" subtitle="Share of shipments, month to date">
+<Chart type="donut" title="Carrier share" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Northwind Freight | 412 |
+| Cardinal Logistics | 318 |
+| Blue Ridge Haulers | 244 |
+| Meridian Express | 176 |
+| Other (4 carriers) | 132 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume" subtitle="Past two months">
+<Chart type="bar" title="Shipments per week" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 268 |
+| W2 | 291 |
+| W3 | 305 |
+| W4 | 322 |
+| W5 | 298 |
+| W6 | 341 |
+| W7 | 356 |
+| W8 | 372 |
+</Chart>
+</Card>
+
+<Card title="Flag a shipment" subtitle="Raises it to the exceptions queue">
+<Form name="flag-shipment">
+<Input label="Shipment ID" name="shipment_id" placeholder="SHP-48210" required="true" />
+<Select label="Reason" name="reason" placeholder="Choose a reason" options="Delay risk | Damaged goods | Address issue | Customs hold | Carrier no-show | Other" required="true" />
+<TextArea label="Notes" name="notes" placeholder="What should the team know?" rows="3" />
+<Switch label="Notify the assigned carrier" name="notify" value="true" />
+<Button variant="primary">Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Where the delayed lanes are" subtitle="Six flagged shipments">
+<Map>
+<Place name="Chicago, IL" lat="41.8781" lng="-87.6298" />
+<Place name="Denver, CO" lat="39.7392" lng="-104.9903" />
+<Place name="Memphis, TN" lat="35.1495" lng="-90.0490" />
+<Place name="Kansas City, MO" lat="39.0997" lng="-94.5786" />
+<Place name="Laredo, TX" lat="27.5036" lng="-99.5076" />
+<Place name="Dallas, TX" lat="32.7767" lng="-96.7970" />
+<Place name="Reno, NV" lat="39.5296" lng="-119.8138" />
+<Place name="Sacramento, CA" lat="38.5816" lng="-121.4944" />
+<Place name="Columbus, OH" lat="39.9612" lng="-82.9988" />
+<Place name="Indianapolis, IN" lat="39.7684" lng="-86.1581" />
+<Place name="Atlanta, GA" lat="33.7490" lng="-84.3880" />
+<Place name="Charlotte, NC" lat="35.2271" lng="-80.8431" />
+</Map>
+</Card>
+
+<Card title="Board status">
+<Progress value="94.2" max="100" label="On-time this month" tone="success" />
+<Progress value="6" max="37" label="In-transit shipments currently delayed" tone="danger" />
+
+<Callout tone="neutral" title="Last refreshed">
+Feb 13, 2026 at 14:48 CT — 12 minutes ago. Next automatic pull at 15:03 CT.
+</Callout>
+
+<Button variant="secondary" ask="Refresh the board now">Refresh now</Button>
+</Card>
+
+<FollowUps>
+- Which carrier is driving the delays this month?
+- Show me the cost breakdown for the delayed shipments
+- What is the on-time trend over the past six months?
+- Draft an update email for the Denver lane customers
+</FollowUps>

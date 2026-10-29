@@ -1,0 +1,111 @@
+# Clinic Receptionist — Day View
+
+<Card title="📅 Today's Schedule" subtitle="Tuesday, January 21, 2025">
+<Chart type="bar" title="Appointments by Hour" x="Hour" y="Count">
+| Hour | Appointments |
+|---|---|
+| 8 AM | 2 |
+| 9 AM | 4 |
+| 10 AM | 3 |
+| 11 AM | 2 |
+| 12 PM | 1 |
+| 1 PM | 3 |
+| 2 PM | 2 |
+| 3 PM | 2 |
+| 4 PM | 1 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="📋 Appointments">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 08:00 | Maria Santos | 1 | ✅ Checked in |
+| 08:30 | James Chen | 2 | ⏳ Waiting |
+| 09:00 | Aisha Patel | 1 | 📅 Scheduled |
+| 09:15 | Robert Kim | 3 | 📅 Scheduled |
+| 09:30 | Lisa Thompson | 2 | 📅 Scheduled |
+| 09:45 | David Rodriguez | 4 | 📅 Scheduled |
+| 10:00 | Emma Wilson | 1 | 📅 Scheduled |
+| 10:20 | Michael Brown | 3 | 📅 Scheduled |
+| 10:40 | Sarah Davis | 2 | 📅 Scheduled |
+| 11:00 | Kevin Miller | 1 | 📅 Scheduled |
+| 11:30 | Jennifer Lee | 4 | 📅 Scheduled |
+| 13:00 | Christopher Garcia | 2 | 📅 Scheduled |
+| 13:20 | Amanda Martinez | 3 | 📅 Scheduled |
+| 13:40 | Daniel Anderson | 1 | 📅 Scheduled |
+| 14:00 | Michelle Taylor | 4 | 📅 Scheduled |
+| 14:30 | Steven Thomas | 2 | 📅 Scheduled |
+| 15:00 | Nicole Jackson | 3 | 📅 Scheduled |
+| 15:30 | Brian White | 1 | 📅 Scheduled |
+| 16:00 | Laura Harris | 4 | 📅 Scheduled |
+</Card>
+
+<Card title="🚪 Room Status">
+<Stat label="Room 1" value="Occupied" change="Maria Santos • 08:00–08:20" tone="warning" />
+<Stat label="Room 2" value="Occupied" change="James Chen • 08:30–08:50" tone="warning" />
+<Stat label="Room 3" value="Free" change="Next: 09:15" tone="success" />
+<Stat label="Room 4" value="Free" change="Next: 09:45" tone="success" />
+<Stat label="Room 5" value="Free" change="No bookings today" tone="info" />
+<Stat label="Procedure" value="Free" change="Available" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="📊 Today's Metrics">
+<Stat label="Patients Expected" value="19" change="+2 vs yesterday" tone="info" />
+<Stat label="Checked In" value="1" change="Maria Santos" tone="success" />
+<Stat label="Waiting" value="1" change="James Chen" tone="warning" />
+<Stat label="No-Shows Today" value="0" change="" tone="success" />
+</Card>
+
+<Card title="📈 This Month">
+<Stat label="No-Show Rate" value="8.2%" change="Target: <10%" tone="success" />
+<Stat label="Total Booked" value="342" change="" tone="neutral" />
+<Stat label="No-Shows" value="28" change="" tone="danger" />
+<Stat label="Avg. Wait Time" value="12 min" change="Target: <15 min" tone="success" />
+</Card>
+</Columns>
+
+<Card title="🔔 Next Patient Called">
+<Callout tone="info" title="Now Calling: James Chen">
+<strong>Appointment:</strong> 08:30 AM • <strong>Room:</strong> 2 • <strong>Provider:</strong> Dr. Williams<br/>
+<strong>Reason:</strong> Follow-up consultation<br/>
+<strong>Status:</strong> Arrived — waiting in lobby
+</Callout>
+
+<Button variant="primary" size="large">✅ Mark as Roomed</Button>
+<Button variant="secondary" size="large">⏭️ Skip / No-Show</Button>
+</Card>
+
+<Card title="✅ Patient Check-In">
+<Form name="checkin-form">
+<Select label="Select Patient" name="patient" placeholder="Choose a patient" options="James Chen (08:30, Room 2) | Aisha Patel (09:00, Room 1) | Robert Kim (09:15, Room 3) | Lisa Thompson (09:30, Room 2) | David Rodriguez (09:45, Room 4) | Emma Wilson (10:00, Room 1)" required="true" />
+<Select label="Room Assignment" name="room" placeholder="Auto-assign or choose" options="Auto-assign | Room 1 | Room 2 | Room 3 | Room 4 | Room 5 | Procedure Room" />
+<Checkboxes label="Confirm" name="confirm" options="Patient verified identity | Insurance confirmed | Consent forms signed" hint="Check all that apply" required="true" />
+<Button variant="primary" size="large">Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="📆 Navigate Days">
+<Columns>
+<Date label="Jump to Date" name="nav-date" value="2025-01-21" />
+<Button variant="secondary" href="#">◀ Previous Day</Button>
+<Button variant="primary" href="#">Today</Button>
+<Button variant="secondary" href="#">Next Day ▶</Button>
+</Columns>
+<Callout tone="neutral" title="Quick Jumps">
+<Button variant="tertiary" size="small" href="#">Tomorrow (Jan 22)</Button>
+<Button variant="tertiary" size="small" href="#">This Friday (Jan 24)</Button>
+<Button variant="tertiary" size="small" href="#">Next Monday (Jan 27)</Button>
+<Button variant="tertiary" size="small" href="#">Next Week View</Button>
+</Callout>
+</Card>
+
+<FollowUps>
+- Show patient details for James Chen
+- Print today's schedule
+- View provider availability for tomorrow
+- Run end-of-day reconciliation
+</FollowUps>

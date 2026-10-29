@@ -1,0 +1,80 @@
+# Service Health Dashboard
+
+<Card subtitle="Last updated: 2024-01-15 14:32 UTC">
+<Form name="region-filter">
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="All regions" />
+</Form>
+</Card>
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Availability" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Error rate (now)">
+<Stat label="Errors/min" value="2.3" change="0.8% of requests" tone="warning" />
+<Progress value="2.3" max="10" label="Alert threshold: 5/min" tone="warning" />
+</Card>
+
+<Card title="Active incidents">
+<Stat label="Open" value="3" change="1 critical, 2 warning" tone="danger" />
+</Card>
+</Columns>
+
+<Card title="CPU & Memory (24h)">
+<Chart type="line" x="Time" y="Usage %" title="Resource utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 45 | 60 |
+| 08:00 | 58 | 68 |
+| 10:00 | 72 | 75 |
+| 12:00 | 68 | 73 |
+| 14:00 | 65 | 71 |
+| 16:00 | 70 | 74 |
+| 18:00 | 75 | 78 |
+| 20:00 | 62 | 69 |
+| 22:00 | 48 | 61 |
+</Chart>
+</Card>
+
+<Card title="Open incidents">
+| ID | Service | Severity | Started | Duration | Action |
+|---|---|---|---|---|---|
+| INC-2847 | payments-api | <Badge tone="danger">Critical</Badge> | 14:12 | 20m | <Button variant="danger" size="small" ask="true">Acknowledge</Button> |
+| INC-2845 | auth-service | <Badge tone="warning">Warning</Badge> | 13:45 | 47m | <Button variant="secondary" size="small" ask="true">Acknowledge</Button> |
+| INC-2842 | notification-worker | <Badge tone="warning">Warning</Badge> | 12:30 | 2h 2m | <Button variant="secondary" size="small" ask="true">Acknowledge</Button> |
+</Card>
+
+<Card title="Slowest endpoints (p99 latency)">
+| Endpoint | Service | p99 Latency | Requests/min | Trend |
+|---|---|---|---|---|
+| POST /api/v1/payments/process | payments-api | 2,840 ms | 145 | <Badge tone="danger">↑ 34%</Badge> |
+| GET /api/v1/users/{id}/profile | user-service | 1,920 ms | 890 | <Badge tone="warning">↑ 12%</Badge> |
+| POST /api/v1/orders | orders-api | 1,650 ms | 320 | <Badge tone="neutral">→</Badge> |
+| GET /api/v1/search | search-service | 1,410 ms | 560 | <Badge tone="warning">↑ 8%</Badge> |
+| PUT /api/v1/inventory/sync | inventory-svc | 1,280 ms | 45 | <Badge tone="success">↓ 5%</Badge> |
+</Card>
+
+<Card title="Alert threshold configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate (errors/min)" name="error_threshold" type="number" value="5" min="1" max="100" step="1" hint="Triggers critical alert" />
+<Input label="CPU usage (%)" name="cpu_threshold" type="number" value="80" min="50" max="95" step="5" hint="Triggers warning alert" />
+<Input label="Memory usage (%)" name="memory_threshold" type="number" value="85" min="60" max="95" step="5" hint="Triggers warning alert" />
+<Input label="p99 latency (ms)" name="latency_threshold" type="number" value="2000" min="500" max="10000" step="100" hint="Triggers warning alert" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show incident timeline for INC-2847
+- Compare latency across regions
+- View deployment history for payments-api
+- Configure Slack/PagerDuty notifications
+</FollowUps>

@@ -1,0 +1,12 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.94%" change="+0.02% vs last month" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved 2024-01-15 14:22 UTC">
+**Partial degradation** — Elevated error rates on the `/v1/payments` endpoint due to a downstream database connection pool exhaustion.  
+Impact: ~3.2% of requests failed over a 47-minute window.  
+Root cause: A long-running migration held locks longer than expected, starving the pool.  
+Mitigation: Migration rolled back, pool limits increased, and a circuit-breaker added for future migrations.
+</Card>

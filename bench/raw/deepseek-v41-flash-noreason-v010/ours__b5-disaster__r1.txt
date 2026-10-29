@@ -1,0 +1,226 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="Live operations — 14:32 local">
+Zone B (Riverside) flooding is escalating. Two routes closed, one shelter near capacity. All 18 items below are live.
+</Callout>
+
+<Card title="Overall severity summary" subtitle="All zones, current">
+<Columns>
+<Stat label="Critical zones" value="2" change="+1 in last hour" tone="danger" icon="warning" />
+<Stat label="Active incidents" value="11" change="+3 today" tone="warning" icon="fire" />
+<Stat label="People affected" value="42,800" note="across 5 zones" tone="info" icon="users" />
+<Stat label="Rescued so far" value="1,347" change="+86 in 6h" tone="success" icon="lifebuoy" />
+<Stat label="Casualties" value="23" note="6 critical" tone="danger" icon="heartbeat" />
+</Columns>
+</Card>
+
+<Card title="Focus a zone" subtitle="Filters the incident list below">
+<Radio label="Zone" options="All zones | Zone A — Northridge | Zone B — Riverside | Zone C — Eastgate | Zone D — Harbor | Zone E — Southfield" name="zone-focus" value="All zones" />
+<Button variant="secondary" size="small" icon="funnel">Apply zone focus</Button>
+</Card>
+
+<Tabs>
+<Tab title="Incidents & severity">
+<Card title="Active incidents by zone" subtitle="Severity per incident">
+| Zone | Incident | Severity | Since |
+|---|---|---|---|
+| Zone A — Northridge | Wildfire perimeter breach | <Badge tone="danger">Critical</Badge> | 06:10 |
+| Zone A — Northridge | Power grid down | <Badge tone="warning">High</Badge> | 07:45 |
+| Zone B — Riverside | River flood, levee overtopping | <Badge tone="danger">Critical</Badge> | 05:20 |
+| Zone B — Riverside | Bridge structural damage | <Badge tone="warning">High</Badge> | 09:30 |
+| Zone B — Riverside | Localized landslides | <Badge tone="warning">High</Badge> | 10:15 |
+| Zone C — Eastgate | Gas main leak | <Badge tone="warning">High</Badge> | 08:05 |
+| Zone C — Eastgate | Road washout | <Badge tone="neutral">Moderate</Badge> | 11:40 |
+| Zone D — Harbor | Storm surge, dock damage | <Badge tone="warning">High</Badge> | 04:55 |
+| Zone D — Harbor | Marina fire | <Badge tone="neutral">Moderate</Badge> | 12:20 |
+| Zone E — Southfield | Shelter overcrowding | <Badge tone="neutral">Moderate</Badge> | 13:05 |
+| Zone E — Southfield | Debris on highway | <Badge tone="neutral">Low</Badge> | 13:50 |
+
+<Progress value="11" max="11" label="Incidents logged this cycle" tone="danger" />
+</Card>
+</Tab>
+
+<Tab title="Resources">
+<Card title="Available resources">
+<Columns>
+<Stat label="Vehicles" value="34" note="of 52 in fleet" tone="info" icon="truck" />
+<Stat label="Personnel" value="212" note="of 300 deployed" tone="info" icon="users" />
+<Stat label="Supplies" value="68%" note="stock level" tone="warning" icon="package" />
+</Columns>
+
+| Resource | Available | Deployed | Reserve |
+|---|---|---|---|
+| Rescue boats | 12 | 8 | 4 |
+| Ambulances | 9 | 7 | 2 |
+| Helicopters | 3 | 2 | 1 |
+| Water (cases) | 4,200 | — | — |
+| Blankets | 1,800 | — | — |
+| Medical kits | 240 | — | — |
+</Card>
+</Tab>
+
+<Tab title="Shelters & routes">
+<Card title="Shelters — capacity and occupancy">
+| Shelter | Zone | Occupancy | Capacity | Status |
+|---|---|---|---|---|
+| Northridge High Gym | A | 640 | 800 | <Badge tone="warning">80%</Badge> |
+| Riverside Community Hall | B | 495 | 500 | <Badge tone="danger">99%</Badge> |
+| Eastgate Sports Arena | C | 310 | 900 | <Badge tone="success">34%</Badge> |
+| Harbor Convention Center | D | 720 | 1,000 | <Badge tone="warning">72%</Badge> |
+| Southfield School | E | 260 | 600 | <Badge tone="success">43%</Badge> |
+
+<Progress value="2425" max="3800" label="Total shelter occupancy" tone="warning" />
+</Card>
+
+<Card title="Evacuation route status">
+| Route | From → To | Status |
+|---|---|---|
+| R1 — Ridge Road | Zone A → Eastgate | <Badge tone="success">Open</Badge> |
+| R2 — River Bridge | Zone B → Harbor | <Badge tone="danger">Closed</Badge> |
+| R3 — Route 9 | Zone B → Southfield | <Badge tone="warning">Congested</Badge> |
+| R4 — Coast Highway | Zone D → Eastgate | <Badge tone="success">Open</Badge> |
+| R5 — Southfield Bypass | Zone E → Harbor | <Badge tone="warning">Congested</Badge> |
+| R6 — Northridge Tunnel | Zone A → Harbor | <Badge tone="danger">Closed</Badge> |
+</Card>
+
+<Card title="Roads closed">
+| Road | Reason | Est. reopen |
+|---|---|---|
+| River Bridge (R2) | Structural damage | 24h |
+| Northridge Tunnel (R6) | Fire damage | 36h |
+| Elm Street, Zone C | Gas main leak | 6h |
+| Harbor Pier Road | Storm surge | 12h |
+</Card>
+</Tab>
+
+<Tab title="People & volunteers">
+<Card title="People rescued and casualties">
+<Columns>
+<Stat label="Rescued" value="1,347" change="+86 in 6h" tone="success" icon="lifebuoy" />
+<Stat label="Injured" value="214" note="treated" tone="warning" icon="first-aid" />
+<Stat label="Casualties" value="23" note="6 critical" tone="danger" icon="heartbeat" />
+<Stat label="Missing" value="17" note="under search" tone="warning" icon="magnifying-glass" />
+</Columns>
+</Card>
+
+<Card title="Volunteers on duty">
+| Volunteer | Role | Assignment |
+|---|---|---|
+| Maria Ortiz | Shelter lead | Riverside Community Hall |
+| James Chen | Logistics | Supply depot, Eastgate |
+| Aisha Bello | Medical | Field triage, Zone B |
+| Tom Weber | Driver | Boat transport, Harbor |
+| Priya Nair | Registration | Northridge High Gym |
+| Dev Patel | Radio comms | Comms tent, Zone C |
+| Lena Fischer | Search & rescue | Zone A perimeter |
+</Card>
+</Tab>
+
+<Tab title="Aid & hospitals">
+<Card title="Aid requests awaiting action">
+| Request | Zone | Priority | Status |
+|---|---|---|---|
+| 500 blankets | B | <Badge tone="danger">Urgent</Badge> | Awaiting |
+| 2 water tankers | A | <Badge tone="warning">High</Badge> | Awaiting |
+| Generator for shelter | D | <Badge tone="warning">High</Badge> | Awaiting |
+| 40 medical kits | B | <Badge tone="danger">Urgent</Badge> | Awaiting |
+| Portable toilets | E | <Badge tone="neutral">Normal</Badge> | Awaiting |
+</Card>
+
+<Card title="Nearby hospitals — free beds">
+| Hospital | Distance | Free beds | ICU free |
+|---|---|---|---|
+| Northridge General | 4 km | 38 | 4 |
+| Riverside Medical | 7 km | 12 | 1 |
+| Eastgate Regional | 11 km | 64 | 9 |
+| Harbor Community | 15 km | 21 | 2 |
+</Card>
+
+<Card title="Donations received">
+<Columns>
+<Stat label="Total raised" value="$248,500" change="+$31k today" tone="success" icon="currency-dollar" />
+<Stat label="Donors" value="1,904" tone="info" icon="users" />
+<Stat label="In-kind value" value="$62,000" tone="info" icon="package" />
+</Columns>
+</Card>
+</Tab>
+
+<Tab title="Comms & weather">
+<Card title="Communication channels">
+| Channel | Status | Notes |
+|---|---|---|
+| Emergency radio (VHF) | <Badge tone="success">Up</Badge> | Primary |
+| Satellite phone | <Badge tone="success">Up</Badge> | Backup |
+| Public alert SMS | <Badge tone="success">Up</Badge> | — |
+| Cell network — Zone B | <Badge tone="danger">Down</Badge> | Tower flooded |
+| Web dashboard | <Badge tone="success">Up</Badge> | — |
+| Drone relay | <Badge tone="warning">Degraded</Badge> | 2 of 3 active |
+</Card>
+
+<Card title="Weather — next 48 hours">
+<Chart type="line" x="Hour" y="Rain (mm) / Wind (km/h)">
+| Hour | Rain | Wind |
+|---|---|---|
+| +6h | 18 | 55 |
+| +12h | 24 | 62 |
+| +18h | 30 | 70 |
+| +24h | 22 | 58 |
+| +30h | 12 | 40 |
+| +36h | 6 | 28 |
+| +42h | 3 | 20 |
+| +48h | 1 | 14 |
+</Chart>
+<Callout tone="warning" title="Peak window">Heaviest rain and wind around +18h. Pre-position boats and generators before then.</Callout>
+</Card>
+</Tab>
+
+<Tab title="Tasks">
+<Card title="Open tasks">
+| Task | Assignee | Due | Priority |
+|---|---|---|---|
+| Reinforce levee, Zone B | Lena Fischer | 16:00 | <Badge tone="danger">Urgent</Badge> |
+| Open overflow shelter, Zone B | Maria Ortiz | 15:30 | <Badge tone="danger">Urgent</Badge> |
+| Deliver 500 blankets | James Chen | 18:00 | <Badge tone="warning">High</Badge> |
+| Restore cell tower, Zone B | Dev Patel | 20:00 | <Badge tone="warning">High</Badge> |
+| Clear debris, Route 9 | Tom Weber | 17:00 | <Badge tone="neutral">Normal</Badge> |
+| Setup triage tent, Zone A | Aisha Bello | 19:00 | <Badge tone="warning">High</Badge> |
+</Card>
+</Tab>
+
+<Tab title="Actions">
+<Card title="Request more resources">
+<Form name="resource-request">
+<Select label="Resource type" name="resource" placeholder="Choose a resource" options="Rescue boats | Ambulances | Helicopters | Water (cases) | Blankets | Medical kits | Generators | Personnel" required="true" />
+<Input label="Quantity" name="quantity" type="number" min="1" placeholder="e.g. 10" required="true" />
+<Select label="Destination zone" name="dest" placeholder="Choose a zone" options="Zone A — Northridge | Zone B — Riverside | Zone C — Eastgate | Zone D — Harbor | Zone E — Southfield" required="true" />
+<Input label="Priority note" name="note" placeholder="Why it's needed, by when" hint="Optional" />
+<Button icon="plus">Submit resource request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast an update">
+<Form name="broadcast">
+<TextArea label="Message" name="message" placeholder="Type the public update…" rows="4" required="true" hint="Goes to SMS, dashboard and radio" />
+<Checkboxes label="Channels" name="channels" options="Public alert SMS | Web dashboard | Emergency radio | Social media" value="Public alert SMS | Web dashboard" />
+<Button variant="primary" icon="megaphone">Send broadcast</Button>
+</Form>
+</Card>
+
+<Card title="File a situation report">
+<Form name="sitrep">
+<Select label="Zone" name="zone" placeholder="Choose a zone" options="Zone A — Northridge | Zone B — Riverside | Zone C — Eastgate | Zone D — Harbor | Zone E — Southfield" required="true" />
+<Select label="Severity" name="severity" options="Low | Moderate | High | Critical" required="true" />
+<TextArea label="Situation summary" name="summary" placeholder="What changed, what's needed…" rows="3" required="true" />
+<Input label="Reported by" name="reporter" placeholder="Your name / role" required="true" />
+<Button icon="file-plus">File sitrep</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Show me only Zone B incidents
+- What's the status of the Riverside shelter?
+- Draft a broadcast about the levee risk
+- Which hospitals can take ICU patients?
+</FollowUps>

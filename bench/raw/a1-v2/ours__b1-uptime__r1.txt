@@ -1,0 +1,12 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Callout tone="info" title="Partial API degradation — Resolved Oct 12, 2024 14:23 UTC">
+Between 12:05–14:23 UTC, elevated latency (p99 > 2s) affected `/v1/search` and `/v1/recommend` endpoints due to a connection pool exhaustion in the query layer. Traffic was rerouted to healthy replicas while the pool was resized. No data loss. Root cause: a config drift in the autoscaler max-connections limit. Fix deployed and verified; postmortem linked in #incidents.
+</Callout>
+</Card>

@@ -1,0 +1,204 @@
+# Streaming Operations Room
+
+Live monitoring dashboard for the streaming platform. <Badge tone="success">All systems operational</Badge>
+
+<Card title="Regional Focus" subtitle="Filter the entire dashboard to one region">
+<Form name="region-filter">
+<Select label="Region" options="All Regions | North America | Europe | Asia-Pacific | Latin America | Middle East & Africa" placeholder="All Regions" />
+<Button>Apply Focus</Button>
+</Form>
+</Card>
+
+<Card title="Now Watching">
+<Stat label="Viewers Right Now" value="1,284,392" change="+3.2% vs last hour" icon="users" tone="info" />
+<Stat label="Concurrent Streams" value="1,412,087" change="+2.8% vs last hour" icon="play" tone="info" />
+<Stat label="Avg. Session Length" value="42 min" change="+4.1% vs last week" icon="clock" />
+</Card>
+
+<Card title="Most-Watched Titles" subtitle="Past 24 hours">
+<Chart type="horizontal" title="Watch hours by title" x="Title" y="Hours watched">
+| Title | Hours |
+|---|---|
+| Midnight Horizon | 842,100 |
+| The Last Signal | 731,450 |
+| Echoes of Tomorrow | 689,320 |
+| City of Shadows | 612,780 |
+| Beyond the Veil | 548,930 |
+</Chart>
+</Card>
+
+<Card title="Watch Time — Past Month">
+<Chart type="area" title="Daily watch hours" x="Date" y="Hours (millions)">
+| Date | Hours |
+|---|---|
+| Week 1 | 38.2 |
+| Week 2 | 41.7 |
+| Week 3 | 45.3 |
+| Week 4 | 48.9 |
+</Chart>
+<Stat label="Total Watch Time" value="174.1M hrs" change="+12.4% MoM" icon="chart-line" />
+</Card>
+
+<Card title="Subscriber Growth" subtitle="New subscribers vs cancellations — past 30 days">
+<Chart type="line" title="Subscriber movement" x="Week" y="Count">
+| Week | New Subscribers | Cancellations |
+|---|---|---|
+| Week 1 | 48,200 | 21,800 |
+| Week 2 | 52,400 | 23,100 |
+| Week 3 | 57,900 | 22,400 |
+| Week 4 | 61,300 | 25,700 |
+</Chart>
+<Stat label="Net Growth" value="+126,800" change="+18.2% vs last month" tone="success" icon="trend-up" />
+<Stat label="Churn Rate" value="3.4%" change="−0.2 pts" tone="success" />
+</Card>
+
+<Card title="Performance by Genre">
+<Chart type="radar" title="Genre engagement" x="Genre" y="Engagement score">
+| Genre | Engagement |
+|---|---|
+| Drama | 86 |
+| Action | 78 |
+| Comedy | 72 |
+| Sci-Fi | 91 |
+| Documentary | 64 |
+| Horror | 58 |
+</Chart>
+<Callout tone="info" title="Trend">Sci-Fi engagement is up 22% this month, likely driven by the new series premiere.</Callout>
+</Card>
+
+<Card title="Buffering Rate">
+<Stat label="Global Buffering Rate" value="1.8%" change="−0.3 pts vs last week" tone="success" icon="activity" />
+<Chart type="line" title="Buffering rate by day" x="Day" y="Buffering %">
+| Day | Buffering |
+|---|---|
+| Mon | 2.1 |
+| Tue | 1.9 |
+| Wed | 2.0 |
+| Thu | 1.7 |
+| Fri | 1.6 |
+| Sat | 1.5 |
+| Sun | 1.8 |
+</Chart>
+<Callout tone="warning" title="Peak hour">Buffering rises to 3.2% between 8–10 PM in Europe during peak traffic.</Callout>
+</Card>
+
+<Card title="Delivery Health by Region">
+<Chart type="bar" title="Delivery health score (CDN uptime & latency)" x="Region" y="Health score">
+| Region | Health |
+|---|---|
+| North America | 96 |
+| Europe | 94 |
+| Asia-Pacific | 89 |
+| Latin America | 91 |
+| Middle East & Africa | 85 |
+</Chart>
+<Callout tone="warning" title="Asia-Pacific">Latency is 15% above target in Southeast Asia. CDN edge nodes added in Singapore next week.</Callout>
+</Card>
+
+<Card title="Releases Coming This Month">
+| Title | Type | Release Date | Genre |
+|---|---|---|---|
+| The Silent Tide | Film | Jun 5 | Thriller |
+| Neon Dynasty | Series (S2) | Jun 12 | Sci-Fi |
+| Wild Hearts | Series (S1) | Jun 19 | Romance |
+| Ironclad | Film | Jun 26 | Action |
+| Paper Trails | Documentary | Jun 28 | True Crime |
+</Card>
+
+<Card title="Licenses Expiring Soon">
+<Callout tone="danger" title="Action needed">3 licenses expire within 60 days</Callout>
+| Title | License End | Days Left | Status |
+|---|---|---|---|
+| Old Town Road | Jul 15 | 39 | <Badge tone="warning">Negotiating</Badge> |
+| The Great Divide | Jul 28 | 52 | <Badge tone="danger">Expiring</Badge> |
+| Laugh Out Loud | Aug 5 | 60 | <Badge tone="neutral">Renew in queue</Badge> |
+</Card>
+
+<Card title="Recommendation Engagement">
+<Stat label="Recommendation Click-Through Rate" value="8.4%" change="+0.6 pts vs last week" tone="success" icon="cursor-click" />
+<Chart type="bar" title="CTR by recommendation row" x="Row" y="CTR %">
+| Row | CTR |
+|---|---|
+| Top 10 | 12.1 |
+| Because you watched | 9.8 |
+| Trending now | 7.6 |
+| New releases | 6.9 |
+| Continue watching | 5.2 |
+</Chart>
+</Card>
+
+<Card title="Searches Without Playback">
+<Stat label="Search-to-Playback Rate" value="62.4%" change="−1.8 pts" tone="warning" icon="magnifying-glass" />
+<Stat label="Searches with No Result" value="18,342" change="+5.2% vs last week" tone="danger" />
+<Details title="Top failed searches" open=false>
+| Search Term | Count |
+|---|---|
+| "inception 2" | 1,204 |
+| "the office season 10" | 987 |
+| "spider-man vs batman" | 843 |
+| "dune part 3" | 712 |
+</Details>
+</Card>
+
+<Card title="Revenue Split by Plan">
+<Chart type="donut" title="Monthly revenue by plan" x="Plan" y="Revenue share %">
+| Plan | Share |
+|---|---|
+| Premium | 48 |
+| Standard | 35 |
+| Basic | 14 |
+| Student | 3 |
+</Chart>
+<Stat label="Average Revenue Per User" value="$11.84" change="+$0.42 MoM" icon="currency-circle-dollar" />
+</Card>
+
+<Card title="Viewing Split by Device">
+<Chart type="pie" title="Watch time by device" x="Device" y="Watch time %">
+| Device | Share |
+|---|---|
+| Smart TV | 42 |
+| Mobile | 27 |
+| Tablet | 12 |
+| Desktop | 11 |
+| Console | 8 |
+</Chart>
+</Card>
+
+<Card title="Feature Flags">
+<Tabs>
+<Tab title="All Flags">
+| Flag | State |
+|---|---|
+| New Home Screen Layout | <Badge tone="success">Enabled</Badge> |
+| 4K HDR for Premium | <Badge tone="success">Enabled</Badge> |
+| AI Recommendations v2 | <Badge tone="warning">Rolling out</Badge> |
+| Offline Downloads | <Badge tone="neutral">Disabled</Badge> |
+| Social Watch Parties | <Badge tone="neutral">Disabled</Badge> |
+| Kids Profile PIN | <Badge tone="success">Enabled</Badge> |
+</Tab>
+<Tab title="Rollout Progress">
+<Progress value="65" max="100" label="AI Recommendations v2 rollout" tone="info" />
+<Progress value="100" max="100" label="New Home Screen Layout" tone="success" />
+<Progress value="0" max="100" label="Social Watch Parties" tone="neutral" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Promote a Title on Home Screen">
+<Form name="promo-home">
+<Select label="Title" placeholder="Choose a title to promote" options="Midnight Horizon | The Last Signal | Echoes of Tomorrow | City of Shadows | Beyond the Veil" />
+<Select label="Placement" options="Hero Banner | Top 10 Row | Continue Watching | New Releases Row" placeholder="Choose placement" />
+<Radio label="Audience" options="All viewers | Subscribers only | Non-subscribers | By genre preference" />
+<Input label="Start date" type="date" />
+<Input label="End date" type="date" />
+<Checkboxes label="A/B test against" options="Current hero | No test" />
+<Button>Submit Promotion</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full rollout plan for AI Recommendations v2
+- Which titles are underperforming in engagement?
+- What's driving the churn increase in Week 4?
+- Compare delivery health between North America and Europe
+</FollowUps>

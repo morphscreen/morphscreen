@@ -1,0 +1,24 @@
+<Card title="Platform Status" subtitle="API uptime and incident summary for this month">
+
+<Columns>
+<Stat label="API Uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" />
+</Columns>
+
+<Callout tone="info" title="Most Recent Incident">
+<strong>Incident #INC-2024-089</strong> — Partial API degradation affecting the `/v2/search` endpoint.<br />
+<strong>Started:</strong> 2024-11-12 14:22 UTC<br />
+<strong>Resolved:</strong> 2024-11-12 15:07 UTC (45 minutes)<br />
+<strong>Root cause:</strong> Database connection pool exhaustion due to a misconfigured retry policy in the search worker. Mitigated by rolling back the worker config and increasing pool limits.
+</Callout>
+
+<Details title="View full incident timeline" open="false">
+<Steps>
+<Step title="Detected" status="done">2024-11-12 14:22 UTC — Automated alert fired for elevated 5xx rate on `/v2/search`</Step>
+<Step title="Investigating" status="done">2024-11-12 14:25 UTC — On-call engineer confirmed connection pool saturation</Step>
+<Step title="Mitigating" status="done">2024-11-12 14:40 UTC — Rolled back worker config v2.3.1 → v2.3.0</Step>
+<Step title="Resolved" status="done">2024-11-12 15:07 UTC — 5xx rate returned to baseline; monitoring stabilized</Step>
+<Step title="Postmortem scheduled" status="current">2024-11-15 10:00 UTC — Blameless postmortem and action items</Step>
+</Steps>
+</Details>
+
+</Card>

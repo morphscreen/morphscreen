@@ -1,0 +1,144 @@
+root = Card([header, kpis, sessionChart, topItems, regions, crashes, events, moderation, inflation, experiments, patchNotes, regionFocus, hotfix], "card", "column", "l")
+
+header = CardHeader("Live Ops Dashboard", "Real-time game health & operations")
+
+kpis = Card([kpiRow1, kpiRow2], "sunk", "row", "l", "stretch", "between")
+kpiRow1 = Card([onlinePlayers, dau, mau], "clear", "row", "m", "stretch", "around")
+kpiRow2 = Card([revenueToday, arpu], "clear", "row", "m", "stretch", "around")
+
+onlinePlayers = Card([onlineLabel, onlineValue], "clear", "column", "xs", "center")
+onlineLabel = TextContent("Players Online", "small")
+onlineValue = TextContent("247,832", "large-heavy")
+
+dau = Card([dauLabel, dauValue], "clear", "column", "xs", "center")
+dauLabel = TextContent("DAU", "small")
+dauValue = TextContent("1.2M", "large-heavy")
+
+mau = Card([mauLabel, mauValue], "clear", "column", "xs", "center")
+mauLabel = TextContent("MAU", "small")
+mauValue = TextContent("8.7M", "large-heavy")
+
+revenueToday = Card([revLabel, revValue], "clear", "column", "xs", "center")
+revLabel = TextContent("Revenue Today", "small")
+revValue = TextContent("$342,180", "large-heavy")
+
+arpu = Card([arpuLabel, arpuValue], "clear", "column", "xs", "center")
+arpuLabel = TextContent("ARPU (30d)", "small")
+arpuValue = TextContent("$4.87", "large-heavy")
+
+sessionChart = Card([sessionHeading, sessionLine], "card", "column", "m")
+sessionHeading = Heading("Session Length (Last 14 Days)", "h3")
+sessionLine = LineChart(sessionLabels, [sessionSeries], "natural", "Day", "Minutes")
+sessionLabels = ["D-13", "D-12", "D-11", "D-10", "D-9", "D-8", "D-7", "D-6", "D-5", "D-4", "D-3", "D-2", "D-1", "Today"]
+sessionSeries = Series("Avg Session", [22.4, 23.1, 21.8, 24.2, 25.0, 26.3, 27.1, 23.8, 22.9, 24.5, 25.2, 26.0, 27.4, 28.1])
+
+topItems = Card([itemsHeading, itemsTable], "card", "column", "m")
+itemsHeading = Heading("Best-Selling Items (Last 7 Days)", "h3")
+itemsTable = Table([itemNameCol, itemUnitsCol, itemRevenueCol])
+itemNameCol = Col("Item", ["Starter Bundle", "Battle Pass", "Legendary Skin", "XP Boost 30d", "Premium Currency (10k)", "Weapon Skin Pack", "Emote Bundle", "Season Pass"])
+itemUnitsCol = Col("Units Sold", [12450, 8920, 3410, 15670, 22100, 4890, 6720, 1890], "number")
+itemRevenueCol = Col("Revenue", ["$124,500", "$267,600", "$170,500", "$78,350", "$442,000", "$97,800", "$67,200", "$94,500"])
+
+regions = Card([regionsHeading, regionsTable], "card", "column", "m")
+regionsHeading = Heading("Server Regions & Health", "h3")
+regionsTable = Table([regionNameCol, regionPlayersCol, regionLatencyCol, regionStatusCol])
+regionNameCol = Col("Region", ["US-East", "US-West", "EU-West", "EU-Central", "AP-Southeast", "AP-Northeast", "SA-East", "ME-Central"])
+regionPlayersCol = Col("Players", [67200, 45800, 52100, 38900, 28400, 15600, 8900, 4200], "number")
+regionLatencyCol = Col("Avg Latency (ms)", [42, 38, 55, 48, 78, 92, 112, 145], "number")
+regionStatusCol = Col("Health", ["Healthy", "Healthy", "Healthy", "Degraded", "Healthy", "Healthy", "Warning", "Critical"])
+
+crashes = Card([crashHeading, crashChart], "card", "column", "m")
+crashHeading = Heading("Crash Rate by App Version", "h3")
+crashChart = HorizontalBarChart(crashLabels, [crashSeries], "grouped", "Crash Rate (%)", "Version")
+crashLabels = ["v3.2.1", "v3.2.0", "v3.1.5", "v3.1.4", "v3.1.3", "v3.0.9"]
+crashSeries = Series("Crash %", [0.12, 0.34, 0.87, 1.23, 2.11, 3.45])
+
+events = Card([eventsHeading, eventsList], "card", "column", "m")
+eventsHeading = Heading("Live Events", "h3")
+eventsList = ListBlock(eventItems, "image")
+eventItems = [
+  ListItem("Double XP Weekend", "Running • Ends in 2d 14h", ["https://picsum.photos/seed/doublexp/100/100"], "Manage"),
+  ListItem("Halloween Event", "Starts in 5d • 14 days duration", ["https://picsum.photos/seed/halloween/100/100"], "Preview"),
+  ListItem("Community Tournament", "Registration open • Finals in 12d", ["https://picsum.photos/seed/tournament/100/100"], "Configure"),
+  ListItem("Season 7 Launch", "Scheduled • 2025-01-15", ["https://picsum.photos/seed/season7/100/100"], "Edit"),
+  ListItem("Winter Festival", "Planning phase • Starts 2025-12-20", ["https://picsum.photos/seed/winter/100/100"], "Draft")
+]
+
+moderation = Card([modHeading, modRow], "card", "column", "m")
+modHeading = Heading("Moderation Queue", "h3")
+modRow = Card([reportsCard, appealsCard], "clear", "row", "l", "stretch", "around")
+reportsCard = Card([reportsLabel, reportsValue, reportsBtn], "sunk", "column", "m", "center")
+reportsLabel = TextContent("Player Reports Awaiting Review", "small")
+reportsValue = TextContent("347", "large-heavy")
+reportsBtn = Button("Review Reports", null, "primary")
+appealsCard = Card([appealsLabel, appealsValue, appealsBtn], "sunk", "column", "m", "center")
+appealsLabel = TextContent("Ban Appeals Awaiting Review", "small")
+appealsValue = TextContent("89", "large-heavy")
+appealsBtn = Button("Review Appeals", null, "secondary")
+
+inflation = Card([inflationHeading, inflationChart], "card", "column", "m")
+inflationHeading = Heading("In-Game Currency Inflation (30 Days)", "h3")
+inflationChart = LineChart(inflationLabels, [inflationSeries], "natural", "Date", "Gold per $1 USD")
+inflationLabels = ["D-29", "D-26", "D-23", "D-20", "D-17", "D-14", "D-11", "D-8", "D-5", "D-2", "Today"]
+inflationSeries = Series("Exchange Rate", [1250, 1280, 1310, 1295, 1320, 1345, 1380, 1410, 1395, 1425, 1450])
+
+experiments = Card([expHeading, expRow], "card", "column", "m")
+expHeading = Heading("Running Experiments", "h3")
+expRow = Card([expA, expB], "clear", "row", "l", "stretch", "around")
+expA = Card([expATitle, expAMetric, expADetail, expABtn], "sunk", "column", "m")
+expATitle = TextContent("Experiment A: New Onboarding Flow", "small-heavy")
+expAMetric = TextContent("+4.2% Day-1 Retention", "large-heavy")
+expADetail = TextContent("p-value: 0.023 • 95% CI [1.8%, 6.6%] • 124k users", "small")
+expABtn = Button("View Full Results", null, "secondary")
+expB = Card([expBTitle, expBMetric, expBDetail, expBBtn], "sunk", "column", "m")
+expBTitle = TextContent("Experiment B: Dynamic Difficulty", "small-heavy")
+expBMetric = TextContent("-2.1% Churn (Week 1)", "large-heavy")
+expBDetail = TextContent("p-value: 0.041 • 95% CI [-3.9%, -0.3%] • 89k users", "small")
+expBBtn = Button("View Full Results", null, "secondary")
+
+patchNotes = Card([patchHeading, patchForm], "card", "column", "m")
+patchHeading = Heading("Draft Patch Notes", "h3")
+patchForm = Form("patch-notes", patchButtons, [patchVersionField, patchNotesField, patchTypeField])
+patchVersionField = FormControl("Version", patchVersionInput)
+patchVersionInput = Input("version", "v3.3.0", "text")
+patchNotesField = FormControl("Notes (Markdown)", patchNotesArea, "Use ## for sections, - for bullets")
+patchNotesArea = TextArea("notes", "## Bug Fixes\n- Fixed crash on login for iOS 17+\n- Resolved desync in ranked matches\n\n## Balance\n- Reduced Sword damage by 5%\n- Increased Shield cooldown by 0.5s", 8)
+patchTypeField = FormControl("Release Type", patchTypeSelect)
+patchTypeSelect = Select("type", [patchHotfix, patchMinor, patchMajor], "Select type")
+patchHotfix = SelectItem("hotfix", "Hotfix (immediate)")
+patchMinor = SelectItem("minor", "Minor patch (scheduled)")
+patchMajor = SelectItem("major", "Major update (maintenance window)")
+patchButtons = Buttons([patchSaveBtn, patchPublishBtn], "row")
+patchSaveBtn = Button("Save Draft", null, "secondary")
+patchPublishBtn = Button("Publish", null, "primary")
+
+regionFocus = Card([focusHeading, focusSelect], "card", "column", "m")
+focusHeading = Heading("Focus Region", "h3")
+focusSelect = Select("region-focus", focusOptions, "Select a region to filter all metrics", null, null, "medium")
+focusOptions = [
+  SelectItem("all", "All Regions (Global)"),
+  SelectItem("us-east", "US-East (67,200 players)"),
+  SelectItem("us-west", "US-West (45,800 players)"),
+  SelectItem("eu-west", "EU-West (52,100 players)"),
+  SelectItem("eu-central", "EU-Central (38,900 players)"),
+  SelectItem("ap-southeast", "AP-Southeast (28,400 players)"),
+  SelectItem("ap-northeast", "AP-Northeast (15,600 players)"),
+  SelectItem("sa-east", "SA-East (8,900 players)"),
+  SelectItem("me-central", "ME-Central (4,200 players)")
+]
+
+hotfix = Card([hotfixHeading, hotfixForm], "card", "column", "m")
+hotfixHeading = Heading("Ship Hotfix", "h3")
+hotfixForm = Form("hotfix-deploy", hotfixButtons, [hotfixVersionField, hotfixDescriptionField, hotfixRiskField])
+hotfixVersionField = FormControl("Hotfix Version", hotfixVersionInput)
+hotfixVersionInput = Input("hotfix-version", "v3.2.2", "text")
+hotfixDescriptionField = FormControl("Description", hotfixDescriptionArea, "What does this hotfix address?")
+hotfixDescriptionArea = TextArea("hotfix-desc", "Emergency fix for login crash affecting iOS 17.2+ users (approx 12% of mobile base). Root cause: memory leak in new auth module.", 4)
+hotfixRiskField = FormControl("Risk Level", hotfixRiskSelect)
+hotfixRiskSelect = Select("risk", [hotfixLow, hotfixMedium, hotfixHigh], "Assess deployment risk")
+hotfixLow = SelectItem("low", "Low - Config change / minor bug fix")
+hotfixMedium = SelectItem("medium", "Medium - Code change, tested in staging")
+hotfixHigh = SelectItem("high", "High - Core system change, limited testing")
+hotfixButtons = Buttons([hotfixCancelBtn, hotfixDeployBtn], "row")
+hotfixCancelBtn = Button("Cancel", null, "tertiary")
+hotfixDeployBtn = Button("Deploy Hotfix", null, "primary", "destructive")

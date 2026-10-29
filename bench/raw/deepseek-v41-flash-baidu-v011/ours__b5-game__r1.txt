@@ -1,0 +1,180 @@
+# Live-Ops Control Room
+
+<Callout tone="info" title="Snapshot: 14:32 UTC">All regions nominal except **EU-West** (elevated latency). Two experiments running, one hotfix candidate staged.</Callout>
+
+<Columns>
+<Stat label="Players online now" value="184,206" change="+6.2% vs 1h ago" tone="success" icon="users" />
+<Stat label="Daily active players" value="1,412,880" change="+3.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Monthly active players" value="9,847,300" change="+1.4% vs last month" tone="success" icon="calendar" />
+<Stat label="Revenue today" value="$2,318,540" change="+8.7% vs 7-day avg" tone="success" icon="chart-line" />
+<Stat label="Revenue per user (ARPU)" value="$1.64" change="-0.9% vs yesterday" tone="warning" icon="chart-line" />
+</Columns>
+
+<Card title="Session length — past 14 days" subtitle="Average minutes per session, all platforms">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Avg session (min) |
+|---|---|
+| D-13 | 27.4 |
+| D-12 | 28.1 |
+| D-11 | 26.9 |
+| D-10 | 29.3 |
+| D-9 | 30.2 |
+| D-8 | 28.8 |
+| D-7 | 31.0 |
+| D-6 | 32.4 |
+| D-5 | 30.7 |
+| D-4 | 33.1 |
+| D-3 | 34.0 |
+| D-2 | 32.6 |
+| D-1 | 33.8 |
+| Today | 31.9 |
+</Chart>
+</Card>
+
+<Card title="Best-selling items today" subtitle="Units sold and gross revenue">
+| Item | Units | Revenue | Trend |
+|---|---|---|---|
+| Season 7 Battle Pass | 41,208 | $824,160 | <Badge tone="success">Hot</Badge> |
+| Voidwalker Skin Bundle | 18,442 | $553,260 | <Badge tone="success">Hot</Badge> |
+| 1,000 Gem Pack | 22,915 | $229,150 | <Badge tone="neutral">Steady</Badge> |
+| Starter Founder Pack | 9,804 | $196,080 | <Badge tone="info">Rising</Badge> |
+| Emote: Victory Spin | 31,776 | $95,328 | <Badge tone="neutral">Steady</Badge> |
+| Name Change Token | 14,220 | $42,660 | <Badge tone="warning">Cooling</Badge> |
+</Card>
+
+<Card title="Server regions & health" subtitle="Live status across all shards">
+| Region | Status | Players online | Avg ping | Load |
+|---|---|---|---|---|
+| NA-East | <Badge tone="success">Healthy</Badge> | 52,140 | 34 ms | 61% |
+| NA-West | <Badge tone="success">Healthy</Badge> | 38,902 | 41 ms | 58% |
+| EU-West | <Badge tone="warning">Degraded</Badge> | 44,318 | 96 ms | 88% |
+| EU-Central | <Badge tone="success">Healthy</Badge> | 21,077 | 47 ms | 52% |
+| APAC | <Badge tone="success">Healthy</Badge> | 19,884 | 62 ms | 64% |
+| SA-East | <Badge tone="danger">Incident</Badge> | 7,885 | 142 ms | 93% |
+</Card>
+
+<Card title="Crash rate by app version" subtitle="Crashes per 1,000 sessions">
+<Chart type="bar" x="Version" y="Crashes / 1k sessions">
+| Version | Crash rate |
+|---|---|
+| 7.4.0 (current) | 2.1 |
+| 7.3.9 | 1.8 |
+| 7.3.8 | 1.6 |
+| 7.3.7 | 4.9 |
+| 7.3.6 | 2.4 |
+| 7.2.1 (legacy) | 6.3 |
+</Chart>
+<Callout tone="warning" title="Regression in 7.3.7">Crash rate 3x baseline on Android 13. Fixed in 7.4.0; legacy users still affected.</Callout>
+</Card>
+
+<Card title="Live events" subtitle="Running now and scheduled">
+<Steps>
+<Step title="Season 7: Ashes of the Void" status="current" subtitle="Running · ends in 18 days">Peak concurrent 214k. Battle Pass conversion 11.4%.</Step>
+<Step title="Double XP Weekend" status="current" subtitle="Running · ends in 31 hours">Active in NA/EU. +42% session length in affected regions.</Step>
+<Step title="Voidwalker Skin Drop" status="current" subtitle="Running · ends in 6 hours">Limited storefront. 18,442 units sold.</Step>
+<Step title="Ranked Season Reset" status="todo" subtitle="Starts in 4 days">Rewards distributed on rollout.</Step>
+<Step title="Anniversary Festival" status="todo" subtitle="Starts in 12 days">Free login rewards + cosmetic event pass.</Step>
+</Steps>
+</Card>
+
+<Columns>
+<Card title="Player reports awaiting review" subtitle="Queue depth and age">
+<Stat label="Open reports" value="1,284" change="+112 since 08:00" tone="warning" icon="users" />
+<Stat label="Oldest in queue" value="9h 12m" tone="warning" />
+<Stat label="Resolved today" value="3,410" tone="success" />
+<Progress value="1284" max="2000" label="Queue capacity" tone="warning" />
+</Card>
+<Card title="Ban appeals awaiting review" subtitle="Second-tier review">
+<Stat label="Open appeals" value="327" change="-24 since 08:00" tone="info" icon="users" />
+<Stat label="Oldest in queue" value="2d 4h" tone="danger" />
+<Stat label="Overturned today" value="61" tone="success" />
+<Progress value="327" max="500" label="Queue capacity" tone="info" />
+</Card>
+</Columns>
+
+<Card title="In-game currency inflation" subtitle="Gold sinks vs sources, last 7 days">
+<Chart type="area" x="Day" y="Billions of gold">
+| Day | Gold minted | Gold sunk |
+|---|---|---|
+| D-6 | 412 | 388 |
+| D-5 | 428 | 401 |
+| D-4 | 441 | 419 |
+| D-3 | 455 | 430 |
+| D-2 | 470 | 448 |
+| D-1 | 486 | 459 |
+| Today | 498 | 471 |
+</Chart>
+<Callout tone="warning" title="Net inflation +5.4%/week">Minted gold outpaces sinks by 27B/day. Consider a sink event or auction house tax before the anniversary festival.</Callout>
+</Card>
+
+<Card title="Running experiments" subtitle="Two A/B tests live">
+<Tabs>
+<Tab title="EXP-221 · Storefront layout">
+| Metric | Control | Variant | Lift |
+|---|---|---|---|
+| Conversion rate | 3.8% | 4.4% | +15.8% |
+| ARPU | $1.61 | $1.68 | +4.3% |
+| Refund rate | 0.9% | 1.1% | -22.2% |
+<Badge tone="success">Variant winning</Badge> · Day 6 of 14 · 82% of traffic
+</Tab>
+<Tab title="EXP-229 · Matchmaking speed">
+| Metric | Control | Variant | Lift |
+|---|---|---|---|
+| Queue time | 42s | 28s | -33.3% |
+| Match quality | 7.4 | 7.1 | -4.1% |
+| Session length | 32.1 min | 31.4 min | -2.2% |
+<Badge tone="warning">Mixed signal</Badge> · Day 3 of 14 · 50% of traffic
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Region focus" subtitle="Narrow all live metrics to a single shard">
+<Form name="region-focus">
+<Select label="Focus region" name="region" placeholder="All regions" options="All regions | NA-East | NA-West | EU-West | EU-Central | APAC | SA-East" />
+<Switch label="Pin to dashboard header" name="pin" value="false" />
+<Button variant="primary">Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="Draft patch notes" subtitle="Compose and stage for release">
+<Form name="patch-notes">
+<Input label="Version" name="version" placeholder="7.4.1" hint="Semantic version of the upcoming build" />
+<Select label="Release channel" name="channel" placeholder="Choose a channel" options="Hotfix | Minor patch | Major release" />
+<TextArea label="Patch notes" name="notes" rows="8" placeholder="## Balance&#10;- Voidwalker: damage reduced 6%&#10;&#10;## Fixes&#10;- Fixed crash on Android 13 when opening the store" />
+<Checkboxes label="Include sections" name="sections" options="Balance changes | Bug fixes | Known issues | Store updates" />
+<Button variant="primary">Save draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Ship a hotfix" subtitle="Push a build to live servers">
+<Callout tone="danger" title="Production action">This deploys to all live regions immediately. Requires on-call sign-off.</Callout>
+<Form name="hotfix">
+<Select label="Target build" name="build" placeholder="Choose a build" options="7.4.1-rc2 | 7.4.1-rc1 | 7.4.0" />
+<Select label="Target regions" name="regions" placeholder="Choose scope" options="All regions | NA only | EU only | APAC only | SA-East only" />
+<Radio label="Rollout" name="rollout" options="Immediate (100%) | Staged (10% → 50% → 100%)" />
+<Input label="Change summary" name="summary" placeholder="Fix Android 13 store crash" />
+<Switch label="Notify players in-game" name="notify" value="true" />
+<Button variant="danger">Ship hotfix</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Map" subtitle="Live server regions">
+<Map>
+<Place name="NA-East" lat="39.0438" lng="-77.4874" />
+<Place name="NA-West" lat="37.7749" lng="-122.4194" />
+<Place name="EU-West" lat="53.3498" lng="-6.2603" />
+<Place name="EU-Central" lat="52.5200" lng="13.4050" />
+<Place name="APAC" lat="1.3521" lng="103.8198" />
+<Place name="SA-East" lat="-23.5505" lng="-46.6333" />
+</Map>
+</Card>
+
+<FollowUps>
+- Why is EU-West degraded right now?
+- Show me the SA-East incident timeline
+- What's driving the ARPU dip today?
+- Draft a sink event to counter gold inflation
+- Which experiment should I call first?
+</FollowUps>

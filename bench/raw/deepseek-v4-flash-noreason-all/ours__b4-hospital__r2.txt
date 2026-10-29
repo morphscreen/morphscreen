@@ -1,0 +1,207 @@
+# Hospital Operations Command View
+
+<Callout tone="warning" title="Live status update">
+Current snapshot as of 07:45. Two code blues in progress — see Critical Patients below.
+</Callout>
+
+<Card title="Bed Occupancy & ER Wait">
+<Columns>
+<div>
+<Gauge label="Bed occupancy" value={82} min={0} max={120} unit="%" tone="warning" />
+<Progress value={98} max={120} label="98 of 120 beds filled" tone="warning" />
+</div>
+<div>
+<Gauge label="ER wait" value={47} min={0} max={120} unit="min" tone="warning" />
+<p>Average wait from triage to provider</p>
+</div>
+</Columns>
+</Card>
+
+<Card title="Admissions — Past Two Weeks">
+<Chart type="line" title="Daily admissions" x="Date" y="Patients">
+| Date | Admissions |
+|---|---|
+| Day 1 | 142 |
+| Day 2 | 158 |
+| Day 3 | 151 |
+| Day 4 | 165 |
+| Day 5 | 173 |
+| Day 6 | 149 |
+| Day 7 | 162 |
+| Day 8 | 171 |
+| Day 9 | 155 |
+| Day 10 | 168 |
+| Day 11 | 181 |
+| Day 12 | 174 |
+| Day 13 | 159 |
+| Day 14 | 166 |
+</Chart>
+<Stat label="14-day total" value="2,174" note="+6% vs prior period" icon="trend-up" tone="info" />
+</Card>
+
+<Card title="Patients Per Department">
+<Chart type="bar" title="Current census by unit" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Cardiology | 34 |
+| ICU | 18 |
+| Pediatrics | 26 |
+| Neurology | 22 |
+| Oncology | 31 |
+| Orthopedics | 19 |
+| Maternity | 24 |
+| Psychiatry | 15 |
+| General Med | 41 |
+| Surgery | 28 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift — Day Shift (07:00–19:00)">
+<Columns>
+<div>
+**Nursing** — 68 on duty
+<Avatar name="Dr. Maria Chen" subtitle="Chief Resident — ER" />
+<Avatar name="Nurse James Okafor" subtitle="Charge Nurse — ICU" />
+<Avatar name="Dr. David Patel" subtitle="Attending — Cardiology" />
+<Avatar name="Nurse Sarah Kim" subtitle="Charge Nurse — Pediatrics" />
+<Avatar name="Dr. Ahmed Hassan" subtitle="Attending — General Med" />
+</div>
+<div>
+**Surgical** — 22 on duty
+<Avatar name="Dr. Elena Rodriguez" subtitle="Lead Surgeon — OR" />
+<Avatar name="Dr. Michael Brown" subtitle="Anesthesiologist" />
+<Avatar name="Nurse Priya Sharma" subtitle="OR Nurse" />
+<Avatar name="Dr. Tom Wilson" subtitle="Surgical Resident" />
+</div>
+</Columns>
+<Details title="See full staffing roster">
+| Role | Count |
+|---|---|
+| Physicians (Attending) | 24 |
+| Residents | 18 |
+| Nurses (RN) | 52 |
+| Nurse Practitioners | 8 |
+| Surgeons | 12 |
+| Anesthesiologists | 6 |
+| Support Staff | 22 |
+</Details>
+</Card>
+
+<Card title="Critical Patients — Action Required">
+<Callout tone="danger" title="Code Blue — Room 214">
+Patient M. Thompson (72M) — cardiac arrest. Team responding. Last update 07:32.
+</Callout>
+<Callout tone="danger" title="Code Blue — ICU Bay 3">
+Patient R. Alvarez (58F) — respiratory failure. Team responding. Last update 07:41.
+</Callout>
+<Callout tone="warning" title="Rapid Response — Room 118">
+Patient J. Lee (45M) — suspected sepsis. Rapid response team en route.
+</Callout>
+</Card>
+
+<Card title="Ready for Discharge — 8 Patients">
+| Room | Patient | Discharge to | Waiting on |
+|---|---|---|---|
+| 204 | K. Johnson (68F) | Home | Transport — 10 min |
+| 117 | P. Nguyen (34M) | Rehab facility | Paperwork — ready |
+| 302 | A. Smith (52F) | Home | Medication pickup |
+| 105 | T. Garcia (29M) | Home | Family arrival |
+| 410 | L. Brown (77F) | Skilled nursing | Bed confirmation |
+| 218 | D. Miller (61M) | Home | Discharge summary |
+| 333 | S. Davis (45F) | Home | Prescription |
+| 150 | C. Martinez (39M) | Home | Transport — 30 min |
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<Agenda title="OR Schedule — Today">
+| Time | What |
+|---|---|
+| 07:30 | Ortho — Hip replacement (OR1) |
+| 08:00 | Cardiac — Bypass (OR2) |
+| 08:30 | General — Cholecystectomy (OR3) |
+| 09:00 | Neuro — Craniotomy (OR4) |
+| 10:00 | Ortho — Knee scope (OR1) |
+| 10:30 | ENT — Tympanoplasty (OR3) |
+| 11:00 | General — Appendectomy (OR5) |
+| 12:30 | Cardiac — Valve repair (OR2) |
+| 13:00 | Urology — Nephrectomy (OR4) |
+| 14:00 | Ortho — Shoulder repair (OR1) |
+| 15:00 | General — Hernia repair (OR3) |
+| 16:00 | Neuro — Diskectomy (OR4) |
+</Agenda>
+<Stat label="OR utilization" value="83%" note="12 of 14 slots filled" icon="clock" tone="info" />
+</Card>
+
+<Card title="Supplies Running Low">
+<Callout tone="warning" title="Replenish — reorder today">
+| Supply | Stock | Reorder at |
+|---|---|---|
+| IV saline 1L | 24 cases | 30 cases |
+| Surgical gloves (M) | 18 boxes | 25 boxes |
+| Morphine 2mg vials | 12 units | 20 units |
+| Blood bags (O-) | 8 units | 15 units |
+| PPE — N95 masks | 40 boxes | 60 boxes |
+</Callout>
+<Callout tone="danger" title="Critical stock — immediate action">
+| Supply | Stock | Reorder at |
+|---|---|---|
+| Amiodarone 150mg | 4 vials | 10 vials |
+| Pediatric ventilators | 1 unit | 3 units |
+</Callout>
+<Button variant="primary" ask>Submit reorder for all low supplies</Button>
+</Card>
+
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Select label="Incident type" options="Patient fall | Medication error | Equipment failure | Staff injury | Safety concern | Privacy breach | Other" placeholder="Select type" required />
+<Select label="Severity" options="Low | Moderate | High | Critical" placeholder="Select severity" required />
+<Input label="Location" placeholder="e.g., Room 214, ICU Bay 2" required />
+<TextArea label="Description" placeholder="Describe what happened, who was involved, and any immediate actions taken" rows={4} required />
+<Input label="Reported by" placeholder="Your name" required />
+<Button variant="danger">Submit incident report</Button>
+</Form>
+</Card>
+
+<Card title="View Another Day">
+<Form name="date-lookup">
+<Date label="Select date" name="ops-date" required />
+<Button>Load operations for this date</Button>
+</Form>
+<Details title="Quick links to recent days">
+- <Button variant="secondary" ask>Yesterday</Button>
+- <Button variant="secondary" ask>Last Monday</Button>
+- <Button variant="secondary" ask>Same day last week</Button>
+</Details>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Select label="Patient" options="M. Thompson (Room 214) | R. Alvarez (ICU Bay 3) | J. Lee (Room 118) | K. Johnson (Room 204) | P. Nguyen (Room 117) | Other" placeholder="Select patient" required />
+<Select label="From department" options="ER | ICU | Cardiology | Pediatrics | Neurology | Oncology | Orthopedics | Maternity | Psychiatry | General Med | Surgery" placeholder="Current location" required />
+<Select label="To department" options="ER | ICU | Cardiology | Pediatrics | Neurology | Oncology | Orthopedics | Maternity | Psychiatry | General Med | Surgery" placeholder="Destination" required />
+<Input label="Reason for transfer" placeholder="e.g., Escalation of care, specialty consult" required />
+<TextArea label="Clinical notes" placeholder="Brief summary for receiving team" rows={3} />
+<Radio label="Urgency" options="Routine | Urgent | STAT" required />
+<Button>Submit transfer request</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<div>
+<Button variant="primary" ask>Page rapid response team</Button>
+<Button variant="secondary" ask>View full patient census</Button>
+</div>
+<div>
+<Button variant="secondary" ask>Contact pharmacy</Button>
+<Button variant="secondary" ask>Contact lab</Button>
+</div>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full patient census by department
+- What's the status of the code blues?
+- Who's on the night shift roster?
+- Are there any open beds in the ICU?
+</FollowUps>

@@ -1,0 +1,132 @@
+# Admin Overview
+
+Last updated: June 4, 2025 · <Badge tone="success">All systems operational</Badge>
+
+<Card title="Reporting period">
+<Form name="reporting-period">
+<Select label="Period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" name="period" value="Last 30 days" />
+<Button variant="secondary">Apply</Button>
+</Form>
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$184,320" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="Annual Recurring Revenue" value="$2,211,840" change="+18.7%" tone="success" icon="chart-line" />
+<Stat label="Churn This Month" value="1.8%" change="-0.3 pts" tone="success" icon="trend-down" />
+<Stat label="Net Promoter Score" value="52" change="+6" tone="info" icon="smiley" />
+</Columns>
+</Card>
+
+<Card title="New signups — past 90 days">
+<Chart type="bar" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Mar 10 | 42 |
+| Mar 17 | 51 |
+| Mar 24 | 38 |
+| Mar 31 | 57 |
+| Apr 7 | 63 |
+| Apr 14 | 49 |
+| Apr 21 | 72 |
+| Apr 28 | 68 |
+| May 5 | 81 |
+| May 12 | 74 |
+| May 19 | 92 |
+| May 26 | 88 |
+| Jun 2 | 95 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Columns>
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 238 |
+| Enterprise | 47 |
+</Chart>
+<Chart type="horizontal" title="Revenue by plan">
+| Plan | Revenue |
+|---|---|
+| Starter | 41200 |
+| Growth | 85720 |
+| Enterprise | 57400 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Ten largest customers">
+| Company | Plan | Seats | Spend (MRR) |
+|---|---|---:|---:|
+| Acme Corp | Enterprise | 248 | $12,400 |
+| Globex Inc | Enterprise | 196 | $9,800 |
+| Initech | Enterprise | 154 | $7,700 |
+| Umbrella Corp | Enterprise | 132 | $6,600 |
+| Stark Industries | Enterprise | 118 | $5,900 |
+| Wayne Enterprises | Enterprise | 96 | $4,800 |
+| Hooli | Growth | 82 | $3,280 |
+| Pied Piper | Growth | 74 | $2,960 |
+| Cyberdyne Systems | Growth | 61 | $2,440 |
+| Vandelay Industries | Growth | 55 | $2,200 |
+</Card>
+
+<Card title="Accounts at risk">
+| Company | Risk factor | Action |
+|---|---|---|
+| Initech | <Badge tone="danger">High</Badge> — No login in 21 days, ticket about contract cancellation | <Button size="small" variant="secondary">Open profile</Button> |
+| Umbrella Corp | <Badge tone="warning">Medium</Badge> — Usage down 60%, downgrade request filed | <Button size="small" variant="secondary">Open profile</Button> |
+| Hooli | <Badge tone="warning">Medium</Badge> — Renewal in 14 days, no response to check-in | <Button size="small" variant="secondary">Open profile</Button> |
+| Vandelay Industries | <Badge tone="danger">High</Badge> — Billing contact left, CFO flagged overage costs | <Button size="small" variant="secondary">Open profile</Button> |
+</Card>
+
+<Card title="Failed payments">
+| Company | Amount | Attempt date | Reason | Retry |
+|---|---:|---|---|---|
+| Globex Inc | $9,800 | Jun 1 | Card declined | <Button size="small">Retry charge</Button> |
+| Stark Industries | $5,900 | Jun 2 | Insufficient funds | <Button size="small">Retry charge</Button> |
+| Cyberdyne Systems | $2,440 | May 30 | Expired card | <Button size="small">Retry charge</Button> |
+| Pied Piper | $2,960 | Jun 3 | Bank rejected | <Button size="small">Retry charge</Button> |
+</Card>
+
+<Card title="Feature adoption — newest features">
+<Chart type="line" x="Week" y="Active users %">
+| Week | AI Insights | SSO Groups | API v2 |
+|---|---|---|---|
+| Apr 7 | 4 | 2 | 6 |
+| Apr 14 | 8 | 5 | 12 |
+| Apr 21 | 11 | 8 | 19 |
+| Apr 28 | 15 | 12 | 27 |
+| May 5 | 19 | 16 | 33 |
+| May 12 | 24 | 19 | 41 |
+| May 19 | 28 | 23 | 47 |
+| May 26 | 31 | 26 | 52 |
+| Jun 2 | 35 | 29 | 58 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization">
+<Columns>
+<Stat label="Total seats purchased" value="2,847" icon="users" />
+<Stat label="Seats in use" value="2,214" icon="user-check" />
+<Stat label="Utilization rate" value="77.8%" note="Target: 85%" tone="warning" icon="gauge" />
+</Columns>
+<Progress value="78" max="100" label="Current utilization" tone="warning" />
+<Callout tone="info" title="Optimization opportunity">12 accounts are below 60% utilization. Recovering 200 unused seats could save ~$6,800/month.</Callout>
+</Card>
+
+<Card title="Invite an admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="colleague@company.com" required="true" hint="They'll get a secure invite link" />
+<Select label="Role" options="Admin — full access | Billing admin — payments only | Viewer — read-only" name="role" placeholder="Choose a role" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed churn analysis for the last quarter
+- Drill into feature adoption by customer segment
+- Compare seat utilization across enterprise accounts
+- Export the failed payments list for finance
+</FollowUps>

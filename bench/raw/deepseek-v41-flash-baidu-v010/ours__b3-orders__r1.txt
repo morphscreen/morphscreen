@@ -1,0 +1,61 @@
+# Operations Desk — Today
+
+<Card title="Today at a glance" subtitle="Live as of this session">
+<Columns>
+<Stat label="Orders placed today" value="1,284" change="+8.2% vs yesterday" tone="success" icon="shopping-cart" />
+<Stat label="Revenue today" value="$146,920" change="+5.4% vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Average order value" value="$114.42" change="-2.1% vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="Refund rate this month" value="2.7%" change="+0.4 pts vs last month" tone="warning" icon="arrow-u-up-left" />
+</Columns>
+</Card>
+
+<Card title="Order volume — past four weeks" subtitle="Orders per week">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| W1 | 7420 |
+| W2 | 8110 |
+| W3 | 7890 |
+| W4 | 8640 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Search by customer, then narrow by status">
+<Form name="order-filters">
+<Input label="Search by customer name" name="customer" type="search" placeholder="e.g. Maya Ortiz" hint="Matches partial names" />
+<Select label="Status" name="status" placeholder="All statuses" options="All statuses | Paid | Packing | Shipped | Fulfilled | Refunded" />
+<Button variant="secondary">Apply filters</Button>
+</Form>
+</Card>
+
+<Card title="Order queue">
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #48210 | Maya Ortiz | $128.00 | <Badge tone="info">Paid</Badge> |
+| #48209 | Daniel Kim | $64.50 | <Badge tone="warning">Packing</Badge> |
+| #48208 | Priya Nair | $212.75 | <Badge tone="info">Shipped</Badge> |
+| #48207 | Leo Fischer | $39.99 | <Badge tone="success">Fulfilled</Badge> |
+| #48206 | Amara Boateng | $156.20 | <Badge tone="danger">Refunded</Badge> |
+| #48205 | Sofia Marchetti | $88.10 | <Badge tone="info">Paid</Badge> |
+</Card>
+
+<Card title="Mark an order fulfilled" subtitle="Pick the order, then confirm">
+<Form name="fulfill-order">
+<Input label="Order ID" name="order_id" placeholder="#48209" hint="Paste or type the ID from the queue above" required />
+<Select label="Fulfillment method" name="method" placeholder="Choose one" options="Standard ship | Express ship | Store pickup | Digital delivery" />
+<Switch label="Send tracking email to customer" name="notify" value=true />
+<Button>Mark as fulfilled</Button>
+<Button variant="tertiary">Save for later</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Refund rate is trending up">
+Refund rate this month sits at 2.7%, up 0.4 points. The largest contributor is order #48206 (Amara Boateng) — worth a look before the weekly review.
+</Callout>
+
+<FollowUps>
+- Show me only orders that are still unfulfilled
+- Which products drive the most refunds this month?
+- Break down revenue today by sales channel
+- Compare this week's order volume to the same week last month
+</FollowUps>

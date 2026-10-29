@@ -1,0 +1,42 @@
+# E-commerce operations desk
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Orders placed today" value="24" change="+9%" note="vs yesterday" icon="shopping-cart" />
+<Stat label="Revenue today" value="$12,480" change="+14%" note="vs yesterday" icon="chart-line" />
+<Stat label="Average order value" value="$520" change="+4.5%" note="vs yesterday" icon="receipt" />
+<Stat label="Refund rate this month" value="2.4%" note="MTD" tone="warning" icon="percent" />
+</Columns>
+</Card>
+
+<Card title="Order volume — last 4 weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 320 |
+| Week 2 | 358 |
+| Week 3 | 402 |
+| Week 4 | 436 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Today’s latest orders">
+<Form name="order-filters">
+<Columns>
+<Input label="Search by customer name" name="customerSearch" type="search" placeholder="Try “Ava” or “Chen”" />
+<Select label="Narrow by status" name="statusFilter" placeholder="All statuses" options="Pending | Paid | Fulfilled | Refunded" />
+<Button variant="secondary">Apply filters</Button>
+</Columns>
+</Form>
+
+| Order | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #1042 | Ava Thompson | $268.50 | <Badge tone="info">Paid</Badge> | <Button size="small" label="Mark fulfilled" ask="Mark #1042 as fulfilled?" /> |
+| #1041 | Marcus Lee | $142.00 | <Badge tone="warning">Pending</Badge> | <Button size="small" label="Mark fulfilled" ask="Mark #1041 as fulfilled?" /> |
+| #1040 | Sofia Ramirez | $610.25 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="tertiary" disabled="true" label="Fulfilled" /> |
+| #1039 | James Chen | $89.90 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="tertiary" disabled="true" label="Fulfilled" /> |
+| #1038 | Priya Patel | $1,024.00 | <Badge tone="info">Paid</Badge> | <Button size="small" label="Mark fulfilled" ask="Mark #1038 as fulfilled?" /> |
+| #1037 | Emma Wilson | $47.50 | <Badge tone="danger">Refunded</Badge> | — |
+| #1036 | Noor Ahmed | $328.75 | <Badge tone="warning">Pending</Badge> | <Button size="small" label="Mark fulfilled" ask="Mark #1036 as fulfilled?" /> |
+| #1035 | Lucas Meyer | $176.20 | <Badge tone="success">Fulfilled</Badge> | <Button size="small" variant="tertiary" disabled="true" label="Fulfilled" /> |
+</Card>

@@ -1,0 +1,95 @@
+# Fitness App Daily Summary
+
+Your daily progress at a glance. <Badge tone="success">On track</Badge>
+
+## Step Count Today
+
+<Card title="Steps vs. Daily Goal">
+<Columns>
+<Stat label="Steps taken" value="7,842" change="+1,234 vs. yesterday" icon="footprints" />
+<Stat label="Daily goal" value="10,000" icon="flag" />
+</Columns>
+<Progress value="78" max="100" label="78% of daily goal" tone="success" />
+<Callout tone="info" title="Pacing tip">You're on pace to hit your goal by 7:30 PM if you keep your current pace.</Callout>
+</Card>
+
+## Calories Burned
+
+<Card title="Energy Summary">
+<Columns>
+<Stat label="Calories burned" value="1,286 kcal" change="+210 vs. avg" icon="lightning" />
+<Stat label="Active calories" value="642 kcal" icon="heartbeat" />
+<Stat label="Resting calories" value="644 kcal" icon="moon" />
+</Columns>
+</Card>
+
+## Workout Performance — Past Week
+
+<Card title="Weekly Workout Trends">
+<Tabs>
+<Tab title="Overview">
+<Chart type="bar" title="Workouts per day" x="Day" y="Sessions">
+| Day | Sessions | Duration (min) |
+|---|---|---|
+| Mon | 1 | 45 |
+| Tue | 2 | 70 |
+| Wed | 1 | 30 |
+| Thu | 0 | 0 |
+| Fri | 2 | 85 |
+| Sat | 3 | 120 |
+| Sun | 1 | 50 |
+</Chart>
+</Tab>
+<Tab title="Intensity">
+<Chart type="line" title="Avg heart rate per workout" x="Day" y="BPM">
+| Day | Avg BPM |
+|---|---|
+| Mon | 142 |
+| Tue | 155 |
+| Wed | 128 |
+| Thu | 0 |
+| Fri | 161 |
+| Sat | 168 |
+| Sun | 138 |
+</Chart>
+</Tab>
+</Tabs>
+
+<Columns>
+<Stat label="Workouts this week" value="10" change="+2 vs. last week" icon="barbell" />
+<Stat label="Total active minutes" value="400 min" change="+65 vs. last week" icon="clock" />
+<Stat label="Streak" value="4 days" icon="flame" />
+</Columns>
+
+<Callout tone="success" title="Keep it up">You hit your weekly workout goal (10 sessions) — 2 more than last week!</Callout>
+</Card>
+
+## Log a New Workout
+
+<Card title="Quick Log" subtitle="Add today's session in seconds">
+<Form name="log-workout">
+<Select label="Workout type" placeholder="Choose type" options="Running | Cycling | Strength | Yoga | Swimming | HIIT | Walking" required="true" />
+<Slider label="Duration" min="5" max="180" step="5" value="30" name="duration" unit="min" />
+<Input label="Calories burned (optional)" type="number" placeholder="e.g., 300" min="0" step="10" hint="Leave blank to estimate automatically" />
+<Radio label="Intensity" options="Low | Moderate | High" name="intensity" value="Moderate" />
+<Checkboxes label="Add details" options="Outdoor | Treadmill | Group class | With trainer | Felt great | Felt tough" name="details" />
+<TextArea label="Notes (optional)" placeholder="How did it go?" rows="2" />
+<Switch label="Post to my feed" name="share" hint="Share this workout with friends" />
+<Button>Log Workout</Button>
+</Form>
+</Card>
+
+<Card title="Today's Quick Actions">
+<Columns>
+<Button variant="secondary" icon="map-pin">Start outdoor run</Button>
+<Button variant="secondary" icon="play">Play guided session</Button>
+<Button variant="tertiary" icon="calendar">View weekly plan</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show my weekly workout history in detail
+- Compare this week's calories to last week
+- Suggest a recovery workout for tomorrow
+- How close am I to my monthly goal?
+</FollowUps>

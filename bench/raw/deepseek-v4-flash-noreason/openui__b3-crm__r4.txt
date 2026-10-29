@@ -1,0 +1,48 @@
+root = Card([header, metrics, stageSection, recentActivity, contactsSection, followUps, noteForm, renewalCallout, callSection])
+
+header = CardHeader("Acme Corp", "Owner: Sarah Chen")
+
+metrics = Card([metricsHeading, kpiTable], "sunk")
+metricsHeading = Heading("Account Metrics", "h3")
+kpiTable = Table([kpiName, kpiValue])
+kpiName = Col("Metric", ["Total Deal Value", "Current Deal Stage", "Renewal Date"])
+kpiValue = Col("Value", ["$128,400", "Negotiation", "March 15, 2025"])
+
+stageSection = Card([stageHeading, stageText], "sunk")
+stageHeading = Heading("Current Deal Stage", "h3")
+stageText = TextContent("**Negotiation** — 3 open items in the proposal; closing expected by end of quarter.")
+
+recentActivity = Card([activityHeading, activityList], "sunk")
+activityHeading = Heading("Recent Activity", "h3")
+activityList = ListBlock([act1, act2, act3, act4])
+act1 = ListItem("Call logged", "Feb 12 — Discussed pricing with procurement")
+act2 = ListItem("Email sent", "Feb 11 — Sent revised proposal v3")
+act3 = ListItem("Meeting held", "Feb 10 — Demo with IT stakeholders")
+act4 = ListItem("Note added", "Feb 9 — Customer wants 24/7 support")
+
+contactsSection = Card([contactsHeading, contactsTable], "sunk")
+contactsHeading = Heading("Contacts", "h3")
+contactsTable = Table([contactName, contactRole])
+contactName = Col("Name", ["Jane Doe", "Mark Reyes", "Priya Patel"])
+contactRole = Col("Role", ["Procurement Lead", "IT Director", "Finance Manager"])
+
+followUps = Card([followUpsHeading, followUpsList], "sunk")
+followUpsHeading = Heading("Open Follow-ups", "h3")
+followUpsList = ListBlock([fu1, fu2, fu3])
+fu1 = ListItem("Send final pricing", "Due Feb 16")
+fu2 = ListItem("Schedule legal review", "Due Feb 20")
+fu3 = ListItem("Confirm renewal terms", "Due Mar 1")
+
+noteForm = Card([noteHeading, noteField, noteButtons], "sunk")
+noteHeading = Heading("Jot a Note", "h3")
+noteField = FormControl("Note", noteInput, "Add context for the team")
+noteInput = TextArea("note", "Type your note here...")
+noteButtons = Buttons([saveNoteBtn])
+saveNoteBtn = Button("Save Note")
+
+renewalCallout = Callout("warning", "Renewal Approaching", "Renewal date is March 15, 2025 — 30 days away. Start renewal conversations now.")
+
+callSection = Card([callHeading, callButtons], "sunk")
+callHeading = Heading("Log a Call", "h3")
+callButtons = Buttons([logCallBtn])
+logCallBtn = Button("Log Call")

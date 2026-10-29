@@ -1,0 +1,47 @@
+# Budget Overview
+
+<Card title="Month selector" subtitle="Current period">
+<Select label="Month" name="month" placeholder="Select month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Card>
+
+<Card title="Budget vs Actual" subtitle="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,340" change="$660 remaining" tone="success" />
+<Stat label="Utilization" value="78%" />
+</Columns>
+<Progress value="2340" max="3000" label="$2,340 / $3,000 spent" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 480 |
+| Transport | 320 |
+| Utilities | 180 |
+| Entertainment | 160 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="Single biggest transaction this month">
+<Callout tone="info" title="Rent payment — $1,200">
+**Category:** Housing  
+**Date:** January 1, 2025  
+**Description:** Monthly rent for apartment lease  
+**Payment method:** Bank transfer
+</Callout>
+</Card>
+
+<Card title="Add Expense" subtitle="Record a new transaction">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Enter amount in USD" required="true" />
+<Select label="Category" name="category" placeholder="Choose category" options="Housing | Food | Transport | Utilities | Entertainment | Health | Shopping | Other" required="true" />
+<Input label="Description" name="description" placeholder="What was this for?" hint="Optional note" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Select label="Payment Method" name="payment" placeholder="How did you pay?" options="Cash | Debit card | Credit card | Bank transfer | Digital wallet" />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

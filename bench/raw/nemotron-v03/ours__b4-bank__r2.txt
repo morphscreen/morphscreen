@@ -1,0 +1,107 @@
+<Card title="Account Overview" subtitle="Your balances at a glance">
+<Columns>
+<Stat label="Checking" value="$12,450.00" change="+$320.00 this month" tone="success" />
+<Stat label="Savings" value="$28,750.00" change="+$1,200.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$2,840.00" change="-$450.00 this month" tone="warning" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Recent Transactions" subtitle="Last 10 transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods Market | -$87.42 | Today |
+| Shell Gas Station | -$52.00 | Yesterday |
+| Netflix | -$15.99 | 2 days ago |
+| Amazon | -$134.21 | 3 days ago |
+| Payroll Deposit | +$3,200.00 | 4 days ago |
+| Starbucks | -$6.75 | 5 days ago |
+| Uber | -$24.50 | 6 days ago |
+| Target | -$98.33 | 7 days ago |
+| Spotify | -$11.99 | 8 days ago |
+| Rent Payment | -$1,800.00 | 10 days ago |
+</Card>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="Monthly Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Food & Dining | 650 |
+| Transportation | 320 |
+| Shopping | 480 |
+| Entertainment | 180 |
+| Utilities | 240 |
+| Other | 170 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Bills Due Soon">
+<Details title="Electric Bill - $145.00" open="false">Due: March 15 | Autopay: On</Details>
+<Details title="Internet - $79.99" open="false">Due: March 18 | Autopay: On</Details>
+<Details title="Car Insurance - $210.00" open="false">Due: March 22 | Autopay: Off</Details>
+<Details title="Phone Bill - $85.00" open="false">Due: March 25 | Autopay: On</Details>
+<Details title="Streaming Services - $34.97" open="false">Due: March 28 | Autopay: On</Details>
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Hawaii Trip - Target: $5,000">
+<Progress value="3200" max="5000" label="$3,200 of $5,000 saved (64%)" />
+<Stat label="Monthly contribution" value="$400.00" change="On track for November" tone="success" />
+<Button variant="secondary" size="small">Add to goal</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Credit Score" subtitle="Updated March 1, 2024">
+<Stat label="Current Score" value="742" change="+12 points since last month" tone="success" />
+<Badge tone="success">Very Good</Badge>
+<Callout tone="info" title="Score factors">Payment history: Excellent | Credit utilization: 28% | Age of credit: Good</Callout>
+<Switch label="Freeze credit line" name="credit-freeze" value="false" hint="Prevents new charges on your credit card" />
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Select label="From account" name="from-account" placeholder="Select account" options="Checking ($12,450.00) | Savings ($28,750.00) | Credit Card (-$2,840.00)" required="true" />
+<Select label="To account" name="to-account" placeholder="Select account" options="Checking ($12,450.00) | Savings ($28,750.00) | Credit Card (-$2,840.00)" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Minimum $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation fund, rent, etc." />
+<Button>Transfer</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Statement Period">
+<Form name="statement-period">
+<Select label="Select period" name="statement-period" placeholder="Choose a period" options="Current month (Mar 1 - Mar 31) | Last month (Feb 1 - Feb 28) | Last 3 months | Last 6 months | Custom range" required="true" />
+<Date label="Custom start date" name="custom-start" hint="Required if Custom range selected" />
+<Date label="Custom end date" name="custom-end" hint="Required if Custom range selected" />
+<Button>Generate Statement</Button>
+<Button variant="secondary">Download PDF</Button>
+</Form>
+</Card>
+
+<Card title="Alert Preferences">
+<Form name="alert-preferences">
+<Checkboxes label="Transaction alerts" name="txn-alerts" options="Large purchases (>$100) | International transactions | Online purchases | ATM withdrawals | Gas station purchases" value="Large purchases (>$100) | International transactions" hint="Get notified for selected transaction types" />
+<Checkboxes label="Balance alerts" name="balance-alerts" options="Low balance (<$500) | High balance (>$10,000) | Daily balance summary | Weekly spending summary" value="Low balance (<$500)" hint="Get notified about account balances" />
+<Checkboxes label="Security alerts" name="security-alerts" options="New device login | Password change | Contact info change | Credit score change | Suspicious activity detected" value="New device login | Password change | Contact info change | Suspicious activity detected" hint="Security-related notifications" />
+<Checkboxes label="Bill alerts" name="bill-alerts" options="Upcoming bills (3 days before) | Bill paid confirmation | Autopay failed | Subscription price increase" value="Upcoming bills (3 days before) | Bill paid confirmation" hint="Bill and subscription notifications" />
+<Button>Save Preferences</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select transaction to dispute" name="dispute-txn" placeholder="Choose a recent transaction" options="Whole Foods Market - $87.42 (Today) | Shell Gas Station - $52.00 (Yesterday) | Netflix - $15.99 (2 days ago) | Amazon - $134.21 (3 days ago) | Starbucks - $6.75 (5 days ago) | Uber - $24.50 (6 days ago) | Target - $98.33 (7 days ago) | Spotify - $11.99 (8 days ago)" required="true" />
+<Radio label="Dispute reason" name="dispute-reason" options="Unauthorized charge | Wrong amount charged | Duplicate charge | Goods/services not received | Goods/services not as described | Cancelled subscription still charged | Other" required="true" />
+<TextArea label="Additional details" name="dispute-details" placeholder="Provide any supporting information, dates, merchant communication, etc." rows="4" required="true" hint="Include any receipts, emails, or reference numbers" />
+<Checkboxes label="Supporting documents" name="dispute-docs" options="Receipt uploaded | Email confirmation | Screenshot | Chat transcript | Other" hint="Select all that apply" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

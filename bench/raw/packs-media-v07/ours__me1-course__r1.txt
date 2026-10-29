@@ -1,0 +1,63 @@
+<Card title="Lesson 4: State Management with React Context" subtitle="Module 3 • 12 min remaining">
+<Video src="find:react context tutorial" title="State Management with React Context" poster="find:react code on screen" caption="Learn how to use React Context for global state management" />
+</Card>
+
+<Card title="Lesson Notes">
+<Tabs>
+<Tab title="Key Concepts">
+- **React Context** provides a way to pass data through the component tree without manually passing props at every level
+- **Provider** component wraps the part of the tree that needs access to the context value
+- **useContext** hook consumes the nearest Provider's value
+- **Default value** is used only when no matching Provider exists above
+</Tab>
+<Tab title="Code Example">
+```jsx
+// ThemeContext.js
+const ThemeContext = createContext('light');
+
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+// AnyComponent.js
+function Header() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  return <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+    Switch to {theme === 'light' ? 'dark' : 'light'} mode
+  </button>;
+}
+```
+</Tab>
+<Tab title="Common Pitfalls">
+- ❌ Don't put everything in context — only truly global data (theme, auth, locale)
+- ❌ Avoid frequent updates in context value — causes unnecessary re-renders
+- ✅ Split contexts by update frequency (ThemeContext vs UserContext)
+- ✅ Memoize context value with `useMemo` when providing objects/functions
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Up Next">
+<Columns>
+<Avatar name="Lesson 5" src="find:react hooks" subtitle="15 min • Video" />
+<Card title="Lesson 5: Custom Hooks for Data Fetching" subtitle="Learn to extract reusable data-fetching logic into custom hooks">
+- Building `useFetch` and `useMutation` hooks
+- Handling loading, error, and success states
+- Caching and deduplication strategies
+- Testing custom hooks with React Testing Library
+</Card>
+</Columns>
+</Card>
+
+<Card title="Progress">
+<Columns>
+<Stat label="Module Progress" value="4 of 8 lessons" change="50% complete" tone="info" />
+<Switch label="Mark this lesson as complete" name="lesson-complete" value="false" hint="Your progress will be saved automatically" />
+</Columns>
+<Progress value="4" max="8" label="Overall course progress" tone="success" />
+</Card>

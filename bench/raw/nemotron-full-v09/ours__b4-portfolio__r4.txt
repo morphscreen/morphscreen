@@ -1,0 +1,128 @@
+# Portfolio Review — Q3 2025
+
+<Select label="Quarter" name="quarter" value="Q3 2025" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" />
+
+<Callout tone="info" title="Portfolio Health">
+On track overall — 78% of projects healthy, 2 at risk, 1 critical; budget burn at 62% of allocation with 58% of quarter elapsed.
+</Callout>
+
+<Columns>
+<Card title="Active Projects">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Apollo CRM Migration | Sarah Chen | 2025-09-15 | <Badge tone="success">Healthy</Badge> |
+| Orion Data Lake | Marcus Webb | 2025-10-01 | <Badge tone="warning">At Risk</Badge> |
+| Nexus Mobile App | Priya Patel | 2025-08-30 | <Badge tone="success">Healthy</Badge> |
+| Helios API Gateway | James Liu | 2025-09-20 | <Badge tone="danger">Critical</Badge> |
+| Atlas Reporting Suite | Fatima Al-Rashid | 2025-10-15 | <Badge tone="success">Healthy</Badge> |
+| Vega Integration Hub | Tom Okonkwo | 2025-09-10 | <Badge tone="warning">At Risk</Badge> |
+</Card>
+
+<Card title="Budget: Spent vs Allocation">
+<Chart type="bar" x="Project" y="USD (thousands)">
+| Project | Allocated | Spent |
+|---|---|---|
+| Apollo CRM Migration | 450 | 312 |
+| Orion Data Lake | 620 | 485 |
+| Nexus Mobile App | 380 | 210 |
+| Helios API Gateway | 290 | 275 |
+| Atlas Reporting Suite | 340 | 180 |
+| Vega Integration Hub | 210 | 165 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Team Utilization">
+<Chart type="bar" x="Team" y="Utilization %">
+| Team | Utilization |
+|---|---|
+| Platform | 92 |
+| Data Engineering | 87 |
+| Mobile | 78 |
+| API & Integration | 95 |
+| Analytics | 71 |
+| QA / Release | 83 |
+</Chart>
+</Card>
+
+<Card title="Delivery Pace (Last 6 Sprints)">
+<Chart type="line" x="Sprint" y="Story Points Delivered">
+| Sprint | Points Delivered | Points Planned |
+|---|---|---|
+| Sprint 18 | 312 | 340 |
+| Sprint 19 | 298 | 320 |
+| Sprint 20 | 335 | 330 |
+| Sprint 21 | 287 | 310 |
+| Sprint 22 | 321 | 325 |
+| Sprint 23 | 304 | 315 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Overdue Milestones">
+| Milestone | Project | Original Due | Days Overdue | Owner |
+|---|---|---|---|---|
+| Data model freeze | Orion Data Lake | 2025-07-15 | 12 | Marcus Webb |
+| Security audit sign-off | Helios API Gateway | 2025-07-20 | 7 | James Liu |
+| UAT environment ready | Vega Integration Hub | 2025-07-22 | 5 | Tom Okonkwo |
+</Card>
+
+<Card title="Risks by Severity">
+| Risk | Project | Severity | Mitigation Status |
+|---|---|---|---|
+| Vendor API deprecation | Helios API Gateway | <Badge tone="danger">Critical</Badge> | <Badge tone="warning">In Progress</Badge> |
+| Key engineer leaving | Orion Data Lake | <Badge tone="danger">Critical</Badge> | <Badge tone="info">Planned</Badge> |
+| Scope creep on mobile | Nexus Mobile App | <Badge tone="warning">High</Badge> | <Badge tone="success">Mitigated</Badge> |
+| Data migration complexity | Apollo CRM Migration | <Badge tone="warning">High</Badge> | <Badge tone="warning">In Progress</Badge> |
+| Resource contention (QA) | Atlas Reporting Suite | <Badge tone="info">Medium</Badge> | <Badge tone="info">Planned</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Deadlines — Next 2 Weeks">
+| Date | Project | Milestone |
+|---|---|---|
+| 2025-08-04 | Vega Integration Hub | Integration testing complete |
+| 2025-08-06 | Apollo CRM Migration | Data migration dry run |
+| 2025-08-08 | Helios API Gateway | Security audit sign-off |
+| 2025-08-11 | Nexus Mobile App | Beta release to stakeholders |
+| 2025-08-13 | Orion Data Lake | Data model freeze (rescheduled) |
+| 2025-08-15 | Atlas Reporting Suite | Dashboard v1 demo |
+</Card>
+
+<Card title="Blocked Work Items">
+| Item | Project | Blocked Since | Blocker | Owner |
+|---|---|---|---|---|
+| Payment webhook integration | Helios API Gateway | 2025-07-18 | Vendor sandbox down | James Liu |
+| Legacy data cleansing | Orion Data Lake | 2025-07-22 | Access to source DB pending | Marcus Webb |
+| iOS TestFlight build failing | Nexus Mobile App | 2025-07-25 | Certificates expired | Priya Patel |
+| Report scheduler perf | Atlas Reporting Suite | 2025-07-26 | Query optimization needed | Fatima Al-Rashid |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Request Additional People">
+<Form name="resource-request">
+<Select label="Project" name="project" placeholder="Select project" options="Apollo CRM Migration | Orion Data Lake | Nexus Mobile App | Helios API Gateway | Atlas Reporting Suite | Vega Integration Hub" required="true" />
+<Input label="Number of People" name="headcount" type="number" min="1" max="10" placeholder="1" required="true" />
+<Select label="Role" name="role" placeholder="Select role" options="Backend Engineer | Frontend Engineer | Data Engineer | QA Engineer | DevOps | Designer | Product Manager" required="true" />
+<TextArea label="Justification" name="justification" placeholder="Explain why additional capacity is needed..." rows="3" required="true" />
+<Button>Submit Request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Archive Finished Project">
+<Form name="archive-project">
+<Select label="Project to Archive" name="archiveProject" placeholder="Select a completed project" options="Legacy Billing Decommission | Phoenix Dashboard v2 | Mercury Auth Overhaul" required="true" />
+<Checkboxes label="Confirm" name="confirm" options="All deliverables accepted | Documentation complete | Lessons learned captured | Stakeholder sign-off obtained" required="true" />
+<Button variant="danger">Archive Project</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Button>Export Review (PDF)</Button>
+<Button variant="secondary">Export Data (CSV)</Button>

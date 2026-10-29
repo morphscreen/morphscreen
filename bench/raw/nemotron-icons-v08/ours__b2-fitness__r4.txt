@@ -1,0 +1,37 @@
+# Daily Summary
+
+<Card title="Steps" icon="footprints">
+<Progress value="8432" max="10000" label="8,432 / 10,000 steps" tone="success" />
+<Stat label="Goal progress" value="84%" change="+12% vs yesterday" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Calories Burned" icon="fire">
+<Stat label="Active calories" value="487 kcal" change="+42 kcal vs avg" tone="info" icon="fire" />
+<Stat label="Total calories" value="2,156 kcal" note="Includes BMR" tone="neutral" icon="heart" />
+</Card>
+
+<Card title="Workouts This Week" icon="calendar">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Workout |
+|---|---|
+| Mon | 45 |
+| Tue | 0 |
+| Wed | 30 |
+| Thu | 60 |
+| Fri | 45 |
+| Sat | 30 |
+| Sun | 0 |
+</Chart>
+<Stat label="Weekly total" value="210 min" change="Goal: 150 min" tone="success" icon="trophy" />
+</Card>
+
+<Card title="Log Workout" icon="plus-circle">
+<Form name="log-workout">
+<Select label="Workout type" placeholder="Select workout" options="Run | Walk | Cycle | Swim | Strength | Yoga | HIIT | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="30" min="1" max="300" step="1" required="true" />
+<Input label="Calories burned" type="number" placeholder="250" min="0" max="2000" step="10" hint="Optional — auto-estimated if left blank" />
+<Date label="Date" required="true" />
+<Button>Save workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

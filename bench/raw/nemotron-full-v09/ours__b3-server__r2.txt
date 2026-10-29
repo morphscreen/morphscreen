@@ -1,0 +1,65 @@
+# Service Health Dashboard
+
+<Select label="Region" name="region" placeholder="All regions" options="us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="us-east-1" />
+
+<Columns>
+<Card title="Uptime This Quarter">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Error Rate (Right Now)">
+<Stat label="Error Rate" value="0.23%" change="-0.05% vs 5m ago" tone="success" icon="alert-triangle" />
+<Progress value="0.23" max="1" label="Threshold: 1%" tone="success" />
+</Card>
+</Columns>
+
+<Card title="CPU & Memory Usage (Last 24 Hours)">
+<Chart type="line" x="Time" y="Usage %">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 03:00 | 38 | 55 |
+| 06:00 | 35 | 52 |
+| 09:00 | 45 | 60 |
+| 12:00 | 62 | 71 |
+| 15:00 | 68 | 74 |
+| 18:00 | 71 | 78 |
+| 21:00 | 55 | 65 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+| ID | Service | Severity | Since | Owner | Action |
+|---|---|---|---|---|---|
+| INC-2847 | payments-api | <Badge tone="danger">P1 - Critical</Badge> | 12m ago | @sarah.chen | <Button variant="danger" size="small">Acknowledge</Button> |
+| INC-2845 | auth-service | <Badge tone="warning">P2 - High</Badge> | 47m ago | @marcus.k | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2842 | notification-worker | <Badge tone="warning">P2 - High</Badge> | 2h 13m ago | @priya.d | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2839 | search-indexer | <Badge tone="info">P3 - Medium</Badge> | 5h 42m ago | @alex.r | <Button variant="tertiary" size="small">Acknowledge</Button> |
+| INC-2835 | analytics-ingest | <Badge tone="info">P3 - Medium</Badge> | 8h 19m ago | @jordan.l | <Button variant="tertiary" size="small">Acknowledge</Button> |
+</Card>
+
+<Card title="Five Slowest Endpoints (p99 Latency)">
+| Endpoint | Service | p99 Latency | Trend |
+|---|---|---|---|
+| POST /api/v1/payments/charge | payments-api | 2,840 ms | <Badge tone="danger">+12%</Badge> |
+| GET /api/v1/search/fulltext | search-service | 1,920 ms | <Badge tone="warning">+5%</Badge> |
+| POST /api/v1/auth/token/refresh | auth-service | 1,450 ms | <Badge tone="neutral">±0%</Badge> |
+| GET /api/v1/analytics/events | analytics-api | 1,280 ms | <Badge tone="success">-3%</Badge> |
+| POST /api/v1/notifications/batch | notification-api | 980 ms | <Badge tone="neutral">±0%</Badge> |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error Rate Threshold (%)" name="error-threshold" type="number" value="1" step="0.1" min="0.1" max="10" hint="Trigger alert when error rate exceeds this" />
+<Input label="Latency p99 Threshold (ms)" name="latency-threshold" type="number" value="2000" step="100" min="500" max="10000" hint="Trigger alert when p99 exceeds this" />
+</Columns>
+<Columns>
+<Input label="CPU Usage Threshold (%)" name="cpu-threshold" type="number" value="80" step="1" min="50" max="100" hint="Trigger alert when CPU exceeds this" />
+<Input label="Memory Usage Threshold (%)" name="memory-threshold" type="number" value="85" step="1" min="50" max="100" hint="Trigger alert when memory exceeds this" />
+</Columns>
+<Button>Save Thresholds</Button>
+<Button variant="secondary">Reset to Defaults</Button>
+</Form>
+</Card>

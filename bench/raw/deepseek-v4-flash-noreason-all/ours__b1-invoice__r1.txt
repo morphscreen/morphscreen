@@ -1,0 +1,47 @@
+<Card title="Invoice #INV-2024-089" subtitle="From: Studio North Design · To: Acme Corp">
+<Columns>
+<Stat label="Amount due" value="$2,480.00" icon="currency-circle-dollar" />
+<Stat label="Due date" value="Mar 15, 2025" icon="calendar" change="In 12 days" tone="warning" />
+<Stat label="Invoice date" value="Feb 13, 2025" icon="receipt" />
+<Stat label="Status" value="Pending" icon="hourglass" tone="warning" />
+</Columns>
+</Card>
+
+<Callout tone="info" title="Payment details">
+Bank transfer: 00-1234-5678 · Reference: INV-2024-089. Or pay instantly with card, Apple Pay, or Google Pay below.
+</Callout>
+
+<Card title="Pay now">
+<Form name="payment">
+<Radio label="Payment method" options="Credit / Debit card | Apple Pay | Google Pay | Bank transfer (manual)" name="method" />
+<Input label="Card number" placeholder="1234 5678 9012 3456" type="text" hint="For card payments only" />
+<Columns>
+<Input label="Expiry" placeholder="MM/YY" type="text" />
+<Input label="CVC" placeholder="123" type="text" />
+</Columns>
+<Input label="Email for receipt" type="email" placeholder="you@email.com" />
+<Button variant="primary">Pay $2,480.00 now</Button>
+<Button variant="secondary" ask="Show me the breakdown of this invoice">View breakdown</Button>
+</Form>
+</Card>
+
+<Details title="What's included in this invoice?">
+| Item | Qty | Price |
+|---|---|---|
+| Brand identity design (logo, palette, typography) | 1 | $1,800.00 |
+| Social media kit (5 templates) | 1 | $480.00 |
+| File delivery & licensing | 1 | $200.00 |
+| **Subtotal** | | **$2,480.00** |
+| Tax (0%) | | $0.00 |
+| **Total due** | | **$2,480.00** |
+</Details>
+
+<Card title="Payment timeline">
+<Steps>
+<Step title="Invoice sent" status="done" subtitle="Feb 13, 2025" />
+<Step title="Due date" status="current" subtitle="Mar 15, 2025" />
+<Step title="Payment confirmed" status="todo" subtitle="After you pay" />
+</Steps>
+</Card>
+
+<Button variant="tertiary" ask="I need help with something else">Need help?</Button>

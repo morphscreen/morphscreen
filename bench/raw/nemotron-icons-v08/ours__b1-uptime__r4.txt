@@ -1,0 +1,16 @@
+# Platform Status
+
+<Card title="API Uptime" subtitle="Current month" icon="chart-line">
+  <Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" icon="check-circle" />
+  <Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved" icon="alert-triangle">
+  <Callout tone="info" title="Database connection pool exhaustion">
+    <strong>Resolved:</strong> 2024-01-15 14:23 UTC<br />
+    <strong>Duration:</strong> 47 minutes<br />
+    <strong>Impact:</strong> Elevated API latency (p99 > 2s) and 0.3% request failures for write operations.<br />
+    <strong>Root cause:</strong> Connection leak in the new migration worker; pool saturated under peak load.<br />
+    <strong>Fix:</strong> Patched worker to release connections on error paths; added pool saturation alert.
+  </Callout>
+</Card>

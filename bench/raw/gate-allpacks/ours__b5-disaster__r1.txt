@@ -1,0 +1,302 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="ACTIVE EMERGENCY — Flood Response Operation Delta">
+Regional flooding event affecting Zones Alpha, Bravo, Charlie, Delta. State of emergency declared. All units mobilized.
+</Callout>
+
+<Card title="Zone Focus">
+<Select label="Focus Zone" name="zone-focus" placeholder="All Zones" options="All Zones | Zone Alpha (North) | Zone Bravo (East) | Zone Charlie (South) | Zone Delta (West)" value="All Zones" />
+</Card>
+
+<Columns>
+<Card title="Active Incidents by Zone">
+<Table>
+| Zone | Incident | Severity | Status | Since |
+|---|---|---|---|---|
+| Alpha | Levee breach at River Mile 12 | Critical | Active | 2h 14m |
+| Alpha | Residential flooding Maple St | High | Active | 3h 02m |
+| Bravo | Bridge collapse Hwy 9 | Critical | Active | 1h 45m |
+| Bravo | Water treatment offline | High | Contained | 4h 10m |
+| Charlie | Nursing home evacuation | High | Active | 2h 30m |
+| Charlie | Chemical plant runoff risk | Medium | Monitoring | 5h 00m |
+| Delta | Downtown power substation | High | Active | 3h 20m |
+| Delta | Sewer backup commercial district | Medium | Active | 4h 45m |
+</Table>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical" value="2" change="2 active" tone="danger" />
+<Stat label="High" value="5" change="5 active" tone="warning" />
+<Stat label="Medium" value="3" change="3 active" tone="info" />
+<Stat label="Low" value="0" change="" tone="success" />
+</Columns>
+<Progress value="7" max="10" label="Incidents Active" tone="danger" />
+<Progress value="2" max="10" label="Incidents Contained" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Resources Available">
+<KeyValue title="Vehicles">
+| Type | Available | Deployed | Total |
+|---|---|---|---|
+| Rescue Boats | 12 | 8 | 20 |
+| High-water Trucks | 6 | 4 | 10 |
+| Ambulances | 8 | 5 | 13 |
+| Helicopters | 2 | 2 | 4 |
+| Command Vehicles | 3 | 2 | 5 |
+</KeyValue>
+
+<KeyValue title="Personnel">
+| Role | On Duty | Deployed | Available |
+|---|---|---|---|
+| Swift Water Techs | 24 | 18 | 6 |
+| Paramedics | 16 | 12 | 4 |
+| Firefighters | 32 | 24 | 8 |
+| Police Officers | 20 | 15 | 5 |
+| Dispatchers | 8 | 8 | 0 |
+| Volunteers | 45 | 30 | 15 |
+</KeyValue>
+
+<KeyValue title="Supplies">
+| Item | Stock | Allocated | Remaining |
+|---|---|---|---|
+| Life Jackets | 500 | 320 | 180 |
+| Sandbags | 15,000 | 8,500 | 6,500 |
+| MREs | 3,200 | 1,800 | 1,400 |
+| Water (L) | 5,000 | 2,400 | 2,600 |
+| Blankets | 1,200 | 750 | 450 |
+| Medical Kits | 200 | 110 | 90 |
+| Generators | 18 | 12 | 6 |
+| Pumps | 24 | 16 | 8 |
+</KeyValue>
+</Card>
+
+<Card title="Shelters — Capacity & Occupancy">
+<Table>
+| Shelter | Zone | Capacity | Occupied | Available | Status |
+|---|---|---|---|---|---|
+| Central High School | Alpha | 400 | 312 | 88 | Open |
+| Community Center | Alpha | 250 | 198 | 52 | Open |
+| Eastside Arena | Bravo | 600 | 445 | 155 | Open |
+| Veterans Hall | Bravo | 180 | 165 | 15 | Near Full |
+| South County Fairgrounds | Charlie | 800 | 520 | 280 | Open |
+| West Valley Church | Delta | 150 | 98 | 52 | Open |
+| Downtown Convention | Delta | 1,000 | 720 | 280 | Open |
+| **TOTAL** | — | **2,380** | **1,658** | **722** | — |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Evacuation Routes Status">
+<Table>
+| Route | Zone | Status | Est. Clear Time | Notes |
+|---|---|---|---|---|
+| Hwy 101 North | Alpha | Open | — | Primary route |
+| County Rd 44 | Alpha | **Closed** | 4-6h | Bridge washout |
+| State Route 9 | Bravo | **Closed** | 2-3h | Bridge collapse |
+| Hwy 202 East | Bravo | Open | — | Heavy traffic |
+| Old Mill Road | Charlie | Restricted | 1h | High water, 4WD only |
+| River Road | Charlie | **Closed** | Unknown | Levee breach |
+| Interstate 5 South | Delta | Open | — | Contraflow active |
+| Frontage Rd | Delta | Restricted | 30m | Debris clearance |
+</Table>
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+<Table>
+| Time | Condition | Temp | Precip | Wind | Impact |
+|---|---|---|---|---|---|
+| Now | Heavy Rain | 14°C | 95% | SE 25 km/h | Active flooding |
+| +3h | Heavy Rain | 13°C | 90% | SE 30 km/h | Rising waters |
+| +6h | Moderate Rain | 12°C | 70% | S 20 km/h | Continued rise |
+| +12h | Light Rain | 11°C | 40% | SW 15 km/h | Cresting |
+| +18h | Cloudy | 10°C | 10% | W 10 km/h | Receding begins |
+| +24h | Partly Cloudy | 12°C | 5% | NW 10 km/h | Slow recession |
+| +36h | Sunny | 15°C | 0% | NW 5 km/h | Recovery phase |
+| +48h | Sunny | 17°C | 0% | Light | Recovery phase |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Casualties & Rescues">
+<Columns>
+<Stat label="Rescued" value="347" change="+23 since last hour" tone="success" />
+<Stat label="In Shelter" value="1,658" change="+156 since last hour" tone="info" />
+<Stat label="Injured" value="42" change="+5 since last hour" tone="warning" />
+<Stat label="Critical" value="8" change="+1 since last hour" tone="danger" />
+<Stat label="Fatalities" value="3" change="0 since last hour" tone="danger" />
+<Stat label="Missing" value="12" change="-2 since last hour" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Volunteers On Duty">
+<Table>
+| Name | Role | Assignment | Zone | Since |
+|---|---|---|---|---|
+| Sarah Chen | Logistics | Supply Distribution | Alpha | 06:00 |
+| Mike Torres | Medical | Triage Support | Bravo | 06:30 |
+| James Okonkwo | Transport | Boat Operations | Alpha | 05:45 |
+| Lisa Park | Comms | Shelter Check-ins | Charlie | 07:00 |
+| David Ruiz | Engineering | Sandbag Ops | Delta | 06:15 |
+| Aisha Hassan | Coordination | Volunteer Mgmt | All | 05:30 |
+| Robert Kim | Medical | First Aid Station | Bravo | 06:45 |
+| Elena Vasquez | Transport | Evacuation Assist | Charlie | 07:15 |
+| Tom Wilson | Logistics | Resource Tracking | Delta | 06:00 |
+| Priya Sharma | Comms | Radio Relay | All | 05:45 |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Donations Received">
+<KeyValue title="Monetary & In-Kind">
+| Category | Amount | Status |
+|---|---|---|
+| Cash Donations | $127,450 | Received |
+| Food & Water | 2,400 kg | Received |
+| Clothing/Bedding | 1,800 items | Received |
+| Medical Supplies | 350 kits | Received |
+| Equipment | 12 generators | Received |
+| Fuel | 5,000 L | Pending |
+| **Total Value** | **$342,800** | — |
+</KeyValue>
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+<Table>
+| Priority | Request | Zone | Requested By | Time |
+|---|---|---|---|---|
+| Critical | 20 additional boats | Alpha | Incident Cmd | 15m ago |
+| Critical | 500 more life jackets | All | Shelter Mgr | 22m ago |
+| High | 10 paramedics | Bravo | Medical Lead | 8m ago |
+| High | Sandbag resupply (5k) | Charlie | Ops Chief | 35m ago |
+| High | Generator for shelter | Delta | Shelter Mgr | 12m ago |
+| Medium | 200 blankets | Alpha | Volunteer Coord | 45m ago |
+| Medium | Water purification | Charlie | Public Health | 1h ago |
+| Low | Comfort kits | Delta | Red Cross | 2h ago |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Communication Channels">
+<Table>
+| Channel | Status | Last Check | Notes |
+|---|---|---|---|
+| Primary Radio (VHF) | **Operational** | 2m ago | Clear |
+| Secondary Radio (UHF) | **Operational** | 3m ago | Clear |
+| Satellite Phone | **Operational** | 5m ago | Backup |
+| Cellular Network | **Degraded** | 1m ago | Tower damage Zone Bravo |
+| Internet/Fiber | **Down** | 15m ago | Cut at River Mile 12 |
+| Mesh Network | **Operational** | 2m ago | Volunteer deployed |
+| Emergency Alert Sys | **Operational** | 10m ago | Tested 08:00 |
+| Amateur Radio | **Operational** | 4m ago | 3 operators active |
+</Table>
+</Card>
+
+<Card title="Roads Closed">
+<Table>
+| Road | Zone | Reason | Since | Detour |
+|---|---|---|---|---|
+| County Rd 44 | Alpha | Bridge washout | 3h 12m | Hwy 101 |
+| State Route 9 | Bravo | Bridge collapse | 1h 45m | Hwy 202 |
+| River Road | Charlie | Levee breach | 2h 14m | None — impassable |
+| Lakeshore Dr | Delta | Landslide | 4h 20m | Frontage Rd |
+| Old Mill Rd (partial) | Charlie | High water | 5h 00m | 4WD only |
+| Commerce St | Delta | Flooding | 3h 20m | Main Ave |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Nearby Hospitals — Free Beds">
+<Table>
+| Hospital | Zone | Distance | Total Beds | Free ICU | Free Med/Surg | Status |
+|---|---|---|---|---|---|---|
+| Regional Medical | Alpha | 8 km | 350 | 4 | 18 | Accepting |
+| St. Luke's | Bravo | 12 km | 280 | 2 | 12 | Accepting |
+| Mercy General | Charlie | 15 km | 420 | 6 | 25 | Accepting |
+| Valley Hospital | Delta | 10 km | 190 | 1 | 8 | **Divert** |
+| County Trauma | Alpha | 20 km | 150 | 3 | 10 | Accepting |
+| **TOTAL** | — | — | **1,390** | **16** | **73** | — |
+</Table>
+</Card>
+
+<Card title="Open Tasks">
+<Table>
+| Task | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|
+| Coordinate boat rescue Maple St | J. Okonkwo | Alpha | Critical | 09:30 | In Progress |
+| Establish comms relay Bravo | P. Sharma | Bravo | Critical | 09:15 | In Progress |
+| Evacuate Sunset Nursing Home | M. Torres | Charlie | High | 10:00 | Pending |
+| Restore power substation | T. Wilson | Delta | High | 11:00 | Pending |
+| Sandbag levee River Mile 12 | D. Ruiz | Alpha | High | 09:45 | In Progress |
+| Distribute MREs to shelters | S. Chen | All | Medium | 10:30 | In Progress |
+| Set up medical station Bravo | R. Kim | Bravo | Medium | 10:00 | Pending |
+| Clear Frontage Rd debris | E. Vasquez | Delta | Medium | 09:30 | In Progress |
+| Volunteer check-in all zones | A. Hassan | All | Low | 11:00 | Pending |
+| Document damage for FEMA | L. Park | All | Low | 12:00 | Pending |
+</Table>
+</Card>
+</Columns>
+
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Columns>
+<Select label="Resource Type" name="resource-type" placeholder="Select resource type" options="Rescue Boats | High-water Trucks | Ambulances | Helicopters | Swift Water Techs | Paramedics | Firefighters | Life Jackets | Sandbags | MREs | Water (L) | Blankets | Medical Kits | Generators | Pumps | Fuel (L)" required="true" />
+<Stepper label="Quantity" name="resource-qty" value="1" min="1" max="100" step="1" unit="units" required="true" />
+</Columns>
+<Select label="Priority" name="resource-priority" placeholder="Select priority" options="Critical — Immediate | High — Within 2 hours | Medium — Within 6 hours | Low — Next operational period" value="High — Within 2 hours" required="true" />
+<TextArea label="Justification / Notes" name="resource-notes" placeholder="Reason for request, delivery location, contact person..." rows="3" hint="Include delivery zone and point of contact" required="true" />
+<Button variant="primary">Submit Resource Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Emergency Update">
+<Form name="broadcast-update">
+<Select label="Channels" name="broadcast-channels" placeholder="Select channels (multiple)" options="Emergency Alert System | Radio (VHF/UHF) | SMS/Cellular | Social Media | Amateur Radio Net | Shelter PA Systems | All Channels" value="All Channels" required="true" />
+<Radio label="Urgency" name="broadcast-urgency" options="Emergency — Immediate threat to life | Urgent — Action required soon | Informational — Situational awareness" value="Urgent — Action required soon" required="true" />
+<TextArea label="Message" name="broadcast-message" placeholder="Enter broadcast message..." rows="5" hint="Be concise. Include zone, action required, and timeframe." required="true" />
+<Columns>
+<Button variant="primary">Broadcast Now</Button>
+<Button variant="secondary">Save as Draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Columns>
+</Form>
+</Card>
+
+<Card title="File Situation Report (SITREP)">
+<Form name="sitrep-form">
+<Columns>
+<Input label="Report Number" name="sitrep-number" placeholder="Auto-generated" value="SITREP-2024-0315-014" hint="Format: SITREP-YYYY-MM-DD-###" />
+<Date label="Report Date" name="sitrep-date" value="2024-03-15" required="true" />
+<Time label="Report Time" name="sitrep-time" value="08:45" required="true" />
+</Columns>
+<Select label="Classification" name="sitrep-class" placeholder="Select classification" options="UNCLASSIFIED | LAW ENFORCEMENT SENSITIVE | FOR OFFICIAL USE ONLY" value="UNCLASSIFIED" required="true" />
+<Select label="Operational Period" name="sitrep-period" placeholder="Select period" options="Period 1 (0600-1800) | Period 2 (1800-0600)" value="Period 1 (0600-1800)" required="true" />
+<TextArea label="Current Situation Summary" name="sitrep-summary" placeholder="Overall situation, major developments, changes since last report..." rows="4" required="true" />
+<TextArea label="Actions Taken" name="sitrep-actions" placeholder="Operations conducted, resources deployed, progress made..." rows="3" required="true" />
+<TextArea label="Planned Actions" name="sitrep-planned" placeholder="Next operational period objectives, resource needs..." rows="3" required="true" />
+<TextArea label="Resource Shortfalls" name="sitrep-shortfalls" placeholder="Critical resource gaps, unfilled requests..." rows="2" />
+<TextArea label="Weather Impact" name="sitrep-weather" placeholder="Current and forecast weather effects on operations..." rows="2" />
+<TextArea label="Safety Concerns" name="sitrep-safety" placeholder="Personnel safety issues, hazards identified..." rows="2" />
+<Columns>
+<Button variant="primary">Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Request mutual aid from neighboring jurisdictions
+- Activate state emergency operations center
+- Coordinate with National Guard for additional helicopters
+- Request FEMA Individual Assistance declaration
+- Schedule press briefing for 10:00 AM
+</FollowUps>

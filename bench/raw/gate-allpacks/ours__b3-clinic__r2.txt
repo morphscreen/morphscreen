@@ -1,0 +1,81 @@
+# Clinic Reception Dashboard
+
+<Card title="Today" subtitle="Monday, January 20, 2025">
+<Columns>
+<Date name="selected-date" value="2025-01-20" label="Select day" required="true" />
+<Button variant="primary" size="small">Today</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Patients Expected" value="24" change="+3 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Jan)" value="8.2%" change="-1.1% vs Dec" tone="success" />
+<Stat label="Checked In" value="7 / 24" tone="neutral" />
+</Columns>
+
+<Card title="Next Patient Called">
+<Columns>
+<Avatar name="Maria Santos" subtitle="Room 2 • 10:15 AM" />
+<Columns>
+<Callout tone="info" title="Now serving">
+<strong>Maria Santos</strong> — Annual wellness exam<br />
+Dr. Chen • Room 2
+</Callout>
+<Button variant="primary" size="large">Mark Arrived</Button>
+</Columns>
+</Columns>
+</Card>
+
+<Card title="Today's Appointments">
+<Agenda title="Appointments">
+| Time | Patient | Type | Provider | Room | Status | Action |
+|---|---|---|---|---|---|---|
+| 08:00 | James Wilson | Follow-up | Dr. Patel | 1 | ✓ Checked in | — |
+| 08:30 | Olivia Brown | New patient | Dr. Chen | 2 | ✓ Checked in | — |
+| 09:00 | Robert Kim | Physical | Dr. Patel | 1 | ✓ Checked in | — |
+| 09:30 | Sarah Davis | Consultation | Dr. Chen | 2 | ✓ Checked in | — |
+| 10:00 | Michael Lee | Follow-up | Dr. Patel | 1 | ✓ Checked in | — |
+| 10:15 | Maria Santos | Wellness exam | Dr. Chen | 2 | ⏳ Called | [Check in] |
+| 10:30 | David Park | Annual physical | Dr. Patel | 1 | ⏳ Waiting | [Check in] |
+| 11:00 | Lisa Thompson | Dermatology | Dr. Chen | 3 | ⏳ Waiting | [Check in] |
+| 11:30 | Kevin White | Cardiology | Dr. Patel | 1 | ⏳ Waiting | [Check in] |
+| 13:00 | Amanda Foster | Pediatrics | Dr. Chen | 2 | ⏳ Waiting | [Check in] |
+| 13:30 | Chris Evans | Orthopedics | Dr. Patel | 1 | ⏳ Waiting | [Check in] |
+| 14:00 | Nina Garcia | Neurology | Dr. Chen | 3 | ⏳ Waiting | [Check in] |
+| 14:30 | Tyler Brooks | Gastroenterology | Dr. Patel | 1 | ⏳ Waiting | [Check in] |
+| 15:00 | Maya Patel | Endocrinology | Dr. Chen | 2 | ⏳ Waiting | [Check in] |
+| 15:30 | Jordan Kim | Rheumatology | Dr. Patel | 1 | ⏳ Waiting | [Check in] |
+| 16:00 | Casey Morgan | Pulmonology | Dr. Chen | 3 | ⏳ Waiting | [Check in] |
+</Agenda>
+</Card>
+
+<Card title="Room Status (Right Now)">
+<Columns>
+<Card title="Room 1 — Dr. Patel" subtitle="Occupied until 10:30">
+<Progress value="65" max="100" label="Current: Michael Lee (Follow-up)" tone="warning" />
+<Badge tone="warning">In use</Badge>
+</Card>
+<Card title="Room 2 — Dr. Chen" subtitle="Occupied until 10:45">
+<Progress value="70" max="100" label="Current: Maria Santos (Wellness)" tone="warning" />
+<Badge tone="warning">In use</Badge>
+</Card>
+<Card title="Room 3 — Dr. Chen" subtitle="Free until 11:00">
+<Progress value="0" max="100" label="Available now" tone="success" />
+<Badge tone="success">Free</Badge>
+</Card>
+<Card title="Room 4 — Unassigned" subtitle="Free all day">
+<Progress value="0" max="100" label="Available now" tone="success" />
+<Badge tone="success">Free</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Quick Check-In">
+<Form name="quick-checkin">
+<Select label="Patient" placeholder="Search or select patient" options="David Park (10:30) | Lisa Thompson (11:00) | Kevin White (11:30) | Amanda Foster (13:00) | Chris Evans (13:30) | Nina Garcia (14:00) | Tyler Brooks (14:30) | Maya Patel (15:00) | Jordan Kim (15:30) | Casey Morgan (16:00)" required="true" />
+<Select label="Room" placeholder="Assign room" options="Room 1 (Dr. Patel) | Room 2 (Dr. Chen) | Room 3 (Dr. Chen) | Room 4 (Unassigned)" required="true" />
+<Checkboxes label="Confirm" options="Patient verified ID | Insurance confirmed | Consent forms signed" hint="Check all that apply" required="true" />
+<Button>Check In Patient</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

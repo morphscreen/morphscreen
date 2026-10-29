@@ -1,0 +1,164 @@
+# Hub Operations Dashboard
+
+<Columns>
+<Stat label="On-time performance" value="87%" change="+3% vs yesterday" tone="success" icon="trend-up" />
+<Stat label="Average passenger load" value="78%" change="+5% vs yesterday" tone="info" icon="users" />
+<Stat label="Average turnaround" value="42 min" change="−4 min vs yesterday" tone="success" icon="timer" />
+<Stat label="Cancellations today" value="6" change="2 weather-related" tone="warning" icon="x-circle" />
+</Columns>
+
+<Card title="On-Time Performance Today" subtitle="All departures and arrivals, current shift">
+<Chart type="bar" x="Hour" y="% on-time">
+| Hour | On-time % |
+|---|---|
+| 05:00 | 91 |
+| 06:00 | 88 |
+| 07:00 | 84 |
+| 08:00 | 86 |
+| 09:00 | 89 |
+| 10:00 | 82 |
+| 11:00 | 79 |
+| 12:00 | 85 |
+| 13:00 | 88 |
+| 14:00 | 90 |
+</Chart>
+<Callout tone="success" title="Trend">Performance has improved 3 points since yesterday, driven by faster turnarounds on regional jets.</Callout>
+</Card>
+
+<Card title="Flight Board" subtitle="Live status — 214 flights today">
+<Tabs>
+<Tab title="All flights">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1042 | ATL → JFK | B12 | <Badge tone="success">On time</Badge> |
+| AA 231 | ORD → LAX | C4 | <Badge tone="success">On time</Badge> |
+| UA 887 | SFO → DEN | A9 | <Badge tone="warning">Delayed 25 min</Badge> |
+| DL 1189 | MIA → BOS | B7 | <Badge tone="success">On time</Badge> |
+| AA 576 | DFW → SEA | C1 | <Badge tone="danger">Cancelled</Badge> |
+| UA 412 | EWR → PHX | A3 | <Badge tone="warning">Delayed 40 min</Badge> |
+| DL 731 | MSP → RDU | B2 | <Badge tone="success">Boarding</Badge> |
+| AA 908 | CLT → SLC | C8 | <Badge tone="success">On time</Badge> |
+| UA 355 | IAH → MCO | A6 | <Badge tone="warning">Delayed 15 min</Badge> |
+| DL 1567 | DTW → AUS | B15 | <Badge tone="success">On time</Badge> |
+</Tab>
+<Tab title="Delayed only">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| UA 887 | SFO → DEN | A9 | <Badge tone="warning">Delayed 25 min</Badge> |
+| UA 412 | EWR → PHX | A3 | <Badge tone="warning">Delayed 40 min</Badge> |
+| UA 355 | IAH → MCO | A6 | <Badge tone="warning">Delayed 15 min</Badge> |
+| DL 2044 | ATL → PBI | B19 | <Badge tone="warning">Delayed 55 min</Badge> |
+</Tab>
+<Tab title="Cancelled">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA 576 | DFW → SEA | C1 | <Badge tone="danger">Cancelled — weather</Badge> |
+| DL 1203 | ATL → TPA | B5 | <Badge tone="danger">Cancelled — crew</Badge> |
+| UA 621 | DEN → BNA | A11 | <Badge tone="danger">Cancelled — weather</Badge> |
+| AA 349 | PHL → SAN | C6 | <Badge tone="danger">Cancelled — weather</Badge> |
+| DL 932 | ATL → MCI | B1 | <Badge tone="danger">Cancelled — crew</Badge> |
+| UA 778 | ORD → PDX | A14 | <Badge tone="danger">Cancelled — weather</Badge> |
+</Tab>
+</Tabs>
+<Callout tone="warning" title="Delays summary">4 flights delayed 15–55 min. Primary cause: inbound aircraft from the Northeast arriving late.</Callout>
+</Card>
+
+<Card title="Crews Available for Reassignment" subtitle="Qualified, on standby, within 2 hours of the hub">
+<Columns>
+<Stat label="Pilots" value="7" tone="success" icon="user" />
+<Stat label="Flight attendants" value="12" tone="success" icon="users" />
+<Stat label="Ground crew" value="9" tone="success" icon="hard-hat" />
+</Columns>
+
+| Name | Role | Base | Ready by |
+|---|---|---|---|
+| <Avatar name="Maria Lopez" src /> | Captain — A320 | ATL | Now |
+| <Avatar name="James Okafor" src /> | First Officer — 737 | ATL | 14:30 |
+| <Avatar name="Sarah Kim" src /> | Captain — E175 | ATL | 15:00 |
+| <Avatar name="David Chen" src /> | Flight Attendant | ATL | Now |
+| <Avatar name="Aisha Rahman" src /> | Flight Attendant | ATL | Now |
+| <Avatar name="Tomás Rivera" src /> | Flight Attendant | ATL | 14:45 |
+| <Avatar name="Emily Novak" src /> | Ramp Lead | ATL | Now |
+| <Avatar name="Chris Martin" src /> | Ramp Agent | ATL | Now |
+
+<Button>Assign crew to flight</Button>
+</Card>
+
+<Card title="Recent Gate Changes" subtitle="Last 2 hours">
+| Time | Flight | From | To |
+|---|---|---|---|
+| 13:42 | DL 1042 | B12 | B14 |
+| 13:15 | AA 231 | C4 | C7 |
+| 12:58 | UA 887 | A9 | A12 |
+| 12:31 | DL 731 | B2 | B3 |
+| 12:05 | AA 908 | C8 | C5 |
+
+<Callout tone="info" title="Passenger notifications">All affected passengers have been notified via app and gate display updates.</Callout>
+</Card>
+
+<Card title="Weather Advisories — Atlanta Hub" subtitle="Updated 13:45">
+<Columns>
+<Stat label="Current conditions" value="72°F" note="Light rain, wind 12 mph" icon="cloud-rain" />
+<Stat label="Visibility" value="6 mi" note="Decreasing" tone="warning" icon="eye" />
+</Columns>
+
+| Advisory | Valid until | Severity |
+|---|---|---|
+| Thunderstorm watch (NW corridor) | 18:00 | <Badge tone="warning">Moderate</Badge> |
+| Wind shear alert (Runway 27L) | 15:30 | <Badge tone="danger">High</Badge> |
+| Fog advisory (morning, lifted) | — | <Badge tone="success">Cleared</Badge> |
+
+<Callout tone="warning" title="Impact">Expect holding patterns for arrivals from the NW between 16:00–18:00. Departures to DFW, IAH may see ground stops.</Callout>
+</Card>
+
+<Card title="Connections at Risk" subtitle="Passengers with < 45 min connection time">
+| Passenger | Connection | Flight | Risk |
+|---|---|---|---|
+| <Avatar name="Robert Hayes" src /> | DL 1042 → AA 231 | JFK → LAX | <Badge tone="danger">High — 20 min</Badge> |
+| <Avatar name="Priya Sharma" src /> | UA 887 → DL 1189 | DEN → BOS | <Badge tone="warning">Medium — 30 min</Badge> |
+| <Avatar name="Michael Torres" src /> | AA 908 → UA 412 | CLT → PHX | <Badge tone="warning">Medium — 35 min</Badge> |
+| <Avatar name="Hannah Weiss" src /> | DL 1567 → AA 576 | DTW → SEA | <Badge tone="danger">Cancelled flight</Badge> |
+
+<Button>View all at-risk passengers</Button>
+<Button variant="secondary">Rebook affected passengers</Button>
+</Card>
+
+<Card title="Rebook Affected Passengers" subtitle="Select a flight to see options">
+<Form name="rebooking">
+<Select label="Flight" placeholder="Choose flight" options="DL 1042 — ATL→JFK | UA 887 — SFO→DEN | AA 908 — CLT→SLC | DL 1567 — DTW→AUS | UA 355 — IAH→MCO" />
+<Radio label="Rebooking priority" options="Same-day, any airline | Same-day, our airline only | Next-day, any airline" />
+<Checkboxes label="Options to include" options="Upgrade to first class | Add meal voucher | Add hotel voucher | Add ground transport" value="Add meal voucher" />
+<Button>Find rebooking options</Button>
+</Card>
+
+<Card title="Hub Selector" subtitle="Switch operational view to another hub">
+<Radio label="Choose hub" options="ATL — Atlanta (current) | DFW — Dallas–Fort Worth | ORD — Chicago O'Hare | DEN — Denver | JFK — New York" value="ATL — Atlanta (current)" />
+<Button>Switch hub</Button>
+</Card>
+
+<Card title="Operational Summary" subtitle="Key metrics at a glance">
+<Columns>
+<Stat label="Flights today" value="214" note="198 active" icon="plane" />
+<Stat label="Delayed" value="4" note="15–55 min" tone="warning" icon="clock" />
+<Stat label="Cancelled" value="6" note="4 weather, 2 crew" tone="danger" icon="x-circle" />
+<Stat label="Passenger load" value="78%" note="Avg across flights" tone="info" icon="users" />
+<Stat label="Turnaround time" value="42 min" note="Avg, all gates" tone="success" icon="timer" />
+</Columns>
+
+<Callout tone="info" title="Crew coverage">Sufficient reserve crews for the next 4 hours. No additional call-ins needed unless delays extend past 18:00.</Callout>
+</Card>
+
+<Steps>
+<Step title="Monitor" status="done" subtitle="Review on-time performance and weather at shift start" />
+<Step title="Address delays" status="current" subtitle="Work with ramp and crew to recover delayed departures" />
+<Step title="Protect connections" status="todo" subtitle="Rebook at-risk passengers before they reach the gate" />
+<Step title="End-of-day report" status="todo" subtitle="Summarize cancellations, delays, and passenger handling" />
+</Steps>
+
+<FollowUps>
+- Show me the full list of today's 214 flights
+- Which flights need crew reassignment right now?
+- What rebooking options exist for UA 887 passengers?
+- Compare today's on-time performance with last week
+- Which gates have the longest turnaround times?
+</FollowUps>

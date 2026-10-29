@@ -1,0 +1,179 @@
+# Speeding up a 2 GB CSV read in Python
+
+Reading a 2 GB CSV is slow because Python's default tools load everything into memory and parse every row as a Python object. Here's how to fix that.
+
+<Card title="Quick wins (no code changes)">
+<Columns>
+<Stat label="File size" value="2 GB" icon="chart-line" />
+<Stat label="Default time" value="~120 s" note="pandas read_csv" tone="warning" />
+<Stat label="Optimized" value="~10 s" note="with these tips" tone="success" />
+</Columns>
+
+<Callout tone="info" title="First check">
+Before changing code, verify you're only reading the columns you need. If your CSV has 50 columns and you only need 3, that's 94% wasted I/O.
+</Callout>
+</Card>
+
+<Card title="1. Use the right tool">
+<Columns>
+<Card title="pandas (good)">
+- Use `read_csv` with `usecols`, `dtype`, `chunksize`
+- Best for data analysis
+- Still slower than low-level options
+</Card>
+<Card title="polars (faster)">
+- Apache Arrow-based, lazy evaluation
+- 3–10× faster than pandas
+- Same syntax feel
+- Install: `pip install polars`
+</Card>
+<Card title="duckdb (fastest)">
+- SQL engine on a file
+- Reads CSV directly, no Python loop
+- 10–50× faster than pandas
+- Install: `pip install duckdb`
+</Card>
+</Columns>
+
+<Button ask="Show me polars code for a 2 GB CSV">Show polars example</Button>
+<Button ask="Show me duckdb code for a 2 GB CSV">Show duckdb example</Button>
+</Card>
+
+<Card title="2. Optimize pandas read_csv">
+<Steps>
+<Step title="Only needed columns" status="done" subtitle="usecols parameter">
+```python
+# Bad: reads all columns
+df = pd.read_csv('large.csv')
+
+# Good: only 3 columns
+df = pd.read_csv('large.csv', usecols=['id', 'value', 'date'])
+```
+</Step>
+<Step title="Set data types" status="done" subtitle="dtype parameter">
+```python
+# Bad: pandas infers types (slow)
+df = pd.read_csv('large.csv')
+
+# Good: tell pandas the types
+dtypes = {'id': 'int32', 'value': 'float32', 'category': 'category'}
+df = pd.read_csv('large.csv', dtype=dtypes)
+```
+</Step>
+<Step title="Process in chunks" status="current" subtitle="chunksize parameter">
+```python
+# Process 100,000 rows at a time
+chunk_size = 100_000
+for chunk in pd.read_csv('large.csv', chunksize=chunk_size):
+    # Process each chunk
+    result = chunk.groupby('category').sum()
+    # Accumulate results
+```
+</Step>
+<Step title="Skip bad lines" status="todo" subtitle="on_bad_lines">
+```python
+# Skip corrupted rows instead of crashing
+df = pd.read_csv('large.csv', on_bad_lines='skip')
+```
+</Step>
+</Steps>
+</Card>
+
+<Card title="3. Parallel processing with Dask">
+<Callout tone="info" title="When to use">
+When you have a multi-core machine and the CSV is too large for one core's memory.
+</Callout>
+
+```python
+import dask.dataframe as dd
+
+# Dask splits the file automatically
+df = dd.read_csv('large.csv', blocksize="100MB")
+# Blocksize = how much each partition reads at once
+
+# Use pandas-like operations
+result = df.groupby('category').value.mean().compute()
+```
+
+<Stat label="Speedup" value="4–8×" note="on 8 cores" icon="chart-line" />
+</Card>
+
+<Card title="4. Low-level: csv module + generators">
+When you don't need pandas and just want to iterate rows fast.
+
+```python
+import csv
+
+with open('large.csv', 'r') as f:
+    reader = csv.reader(f)
+    headers = next(reader)  # skip header
+    for row in reader:
+        # row is a list of strings
+        # Process one row at a time
+        pass
+```
+
+<Callout tone="success" title="Memory use">
+This uses < 1 MB of RAM regardless of file size.
+</Callout>
+</Card>
+
+<Card title="5. Convert once, read fast forever">
+<Columns>
+<Card title="Parquet format">
+```python
+# Convert once (takes a few minutes)
+df = pd.read_csv('large.csv')
+df.to_parquet('large.parquet')
+
+# Read in seconds
+df = pd.read_parquet('large.parquet')
+```
+<Badge tone="success">10× faster reads</Badge>
+<Badge tone="info">5× smaller on disk</Badge>
+</Card>
+<Card title="Feather format">
+```python
+# Even faster for round-trips
+df = pd.read_csv('large.csv')
+df.to_feather('large.feather')
+
+# Read in < 1 second
+df = pd.read_feather('large.feather')
+```
+<Badge tone="success">20× faster reads</Badge>
+<Badge tone="info">Arrow-native</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Speed comparison">
+<Chart type="bar" x="Method" y="Seconds">
+| Method | Time (s) | Memory (MB) |
+|---|---|---|
+| pandas default | 120 | 8000 |
+| pandas + dtypes | 85 | 6000 |
+| pandas + chunks | 90 | 500 |
+| polars | 25 | 4000 |
+| duckdb | 8 | 200 |
+| csv module | 40 | 1 |
+| parquet read | 12 | 4000 |
+| feather read | 6 | 4000 |
+</Chart>
+</Card>
+
+<Card title="Your next step">
+<Form name="csv-help">
+<Select label="What are you doing with the CSV?" options="Just filtering rows | Grouping/aggregating | Joining with other data | Loading into a database | One-time analysis" placeholder="Pick one" />
+<Input label="How many columns?" type="number" placeholder="e.g. 20" hint="Only the ones you actually use" />
+<Input label="How much RAM does your machine have?" type="number" placeholder="e.g. 16" hint="In GB" />
+<Button>Get my recommendation</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me a complete polars script for a 2 GB CSV
+- How do I handle a CSV with inconsistent quoting?
+- Can I read a CSV from S3 or a URL this way?
+- What if I need to join two large CSVs?
+</FollowUps>

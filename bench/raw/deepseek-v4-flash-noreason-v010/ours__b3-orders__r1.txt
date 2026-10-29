@@ -1,0 +1,66 @@
+# E-commerce Operations Desk
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Orders today" value="48" change="+12% vs yesterday" icon="shopping-bag" tone="info" />
+<Stat label="Revenue today" value="$12,840" change="+8% vs yesterday" icon="currency-dollar" tone="success" />
+<Stat label="Avg. order value" value="$267.50" change="-3% vs yesterday" icon="chart-line" tone="warning" />
+<Stat label="Refund rate this month" value="2.4%" change="−0.6 pts vs last month" icon="arrow-counter-clockwise" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Order volume — past 4 weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 312 |
+| Week 2 | 348 |
+| Week 3 | 291 |
+| Week 4 | 376 |
+</Chart>
+<Callout tone="info" title="Trend">Order volume is up 20% from Week 1 to Week 4 — strongest week was the most recent.</Callout>
+</Card>
+
+<Card title="Recent orders" subtitle="Filter and search below">
+<Columns>
+<Select label="Filter by status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Delivered | Cancelled | Refunded" name="status-filter" />
+<Input label="Search by customer name" placeholder="Type a name…" name="customer-search" type="search" hint="Matches partial names" />
+</Columns>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Sarah Mitchell | $189.00 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10481 | James Okafor | $452.75 | <Badge tone="success">Fulfilled</Badge> | <Badge tone="neutral">Done</Badge> |
+| #10480 | Elena Rodriguez | $98.50 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10479 | David Chen | $312.00 | <Badge tone="info">Paid</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10478 | Priya Sharma | $76.20 | <Badge tone="success">Shipped</Badge> | <Badge tone="neutral">In transit</Badge> |
+| #10477 | Tom Becker | $534.90 | <Badge tone="danger">Cancelled</Badge> | <Badge tone="neutral">—</Badge> |
+| #10476 | Mia Johnson | $204.60 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10475 | Liam Nguyen | $148.35 | <Badge tone="success">Delivered</Badge> | <Badge tone="neutral">Complete</Badge> |
+
+<Details title="How marking fulfilled works">
+<Steps>
+<Step title="Select an order" status="done" subtitle="Find it via search or status filter" />
+<Step title="Tap 'Mark fulfilled'" status="done" subtitle="Updates the order status instantly" />
+<Step title="Confirmation shows" status="current" subtitle="Status badge changes to Fulfilled, and the action button disappears" />
+</Steps>
+</Details>
+
+<Button variant="primary" icon="check">Mark selected as fulfilled</Button>
+<Button variant="secondary" icon="download">Export orders CSV</Button>
+</Card>
+
+<Card title="Quick status breakdown">
+<Columns>
+<Stat label="Pending" value="4" tone="warning" icon="clock" />
+<Stat label="Fulfilled today" value="31" tone="success" icon="package" />
+<Stat label="Shipped today" value="9" tone="info" icon="truck" />
+<Stat label="Cancelled today" value="2" tone="danger" icon="x-circle" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show orders that are only pending
+- What's the revenue split by status today?
+- Which customers ordered more than once this week?
+</FollowUps>

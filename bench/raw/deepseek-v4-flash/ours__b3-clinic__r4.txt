@@ -1,0 +1,60 @@
+# Lakeside Clinic — front desk
+
+<Card title="Move to another day" subtitle="You're viewing Tuesday, March 4, 2025 · 10:20 AM">
+<Form name="change-day">
+<Date label="Jump to date" name="schedule-date" value="2025-03-04" required="true" />
+<Button>Load schedule</Button>
+</Form>
+<Button variant="secondary" ask="Show the previous day">← Previous day</Button>
+<Button variant="secondary" ask="Show the next day">Next day →</Button>
+</Card>
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Patients expected today" value="12" icon="users" />
+<Stat label="Checked in so far" value="4" note="8 remaining" tone="info" icon="clipboard-check" />
+<Stat label="No-show rate this month" value="8.3%" note="4 of 48 scheduled" tone="warning" icon="bell-slash" />
+</Columns>
+</Card>
+
+<Callout tone="success" title="Next patient: Amara Okafor">
+Called to Exam Room 2 at 10:30 — vaccination. Ask her to confirm her details at the desk.
+</Callout>
+
+<Card title="Today's appointments" subtitle="12 patients scheduled">
+| Time | Patient | Reason | Status | Room |
+|---|---|---|---|---|
+| 9:00 | James Lee | Annual physical | <Badge tone="success">Completed</Badge> | Exam 1 |
+| 9:30 | Maria Gomez | Follow-up | <Badge tone="info">In session</Badge> | Exam 1 |
+| 10:00 | David Kim | Lab results | <Badge tone="info">In triage</Badge> | Triage |
+| 10:15 | Sofia Almeida | Flu shot | <Badge tone="info">Checked in</Badge> | Waiting |
+| 10:30 | Amara Okafor | Vaccination | <Badge tone="warning">Called</Badge> | Exam 2 |
+| 10:45 | Liam Murphy | Allergy consult | <Badge tone="neutral">Waitlisted</Badge> | — |
+| 11:00 | Priya Patel | New patient | <Badge tone="neutral">Scheduled</Badge> | — |
+| 11:30 | Omar Hassan | Blood pressure check | <Badge tone="neutral">Scheduled</Badge> | — |
+| 13:00 | Elena Rossi | X-ray review | <Badge tone="neutral">Scheduled</Badge> | — |
+| 13:30 | Noah Williams | Sports injury | <Badge tone="neutral">Scheduled</Badge> | — |
+| 14:00 | Hana Sato | Medication review | <Badge tone="neutral">Scheduled</Badge> | — |
+| 14:30 | Lucas Meyer | Wound dressing | <Badge tone="neutral">Scheduled</Badge> | — |
+</Card>
+
+<Columns>
+<Card title="Rooms right now">
+| Room | Status |
+|---|---|
+| Exam 1 | <Badge tone="danger">Occupied</Badge> Maria Gomez |
+| Exam 2 | <Badge tone="warning">Called</Badge> Amara Okafor |
+| Exam 3 | <Badge tone="success">Free</Badge> |
+| Exam 4 | <Badge tone="success">Free</Badge> |
+| Procedure | <Badge tone="success">Free</Badge> |
+| Triage | <Badge tone="info">In use</Badge> David Kim |
+</Card>
+
+<Card title="Check in a patient">
+<Form name="check-in">
+<Select label="Patient" name="patient" placeholder="Choose a scheduled patient" options="Amara Okafor — 10:30 | Liam Murphy — 10:45 | Priya Patel — 11:00 | Omar Hassan — 11:30 | Elena Rossi — 13:00 | Noah Williams — 13:30 | Hana Sato — 14:00 | Lucas Meyer — 14:30" required="true" />
+<Select label="Assign room" name="room" placeholder="First available" options="Exam 3 | Exam 4 | Procedure Room | Triage" />
+<Button icon="check-square">Check in patient</Button>
+</Form>
+</Card>
+</Columns>

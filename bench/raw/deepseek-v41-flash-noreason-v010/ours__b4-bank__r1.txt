@@ -1,0 +1,99 @@
+# Your money, today
+
+<Badge tone="success">All accounts in good standing</Badge>
+
+<Columns>
+<Stat label="Checking" value="$4,182.65" icon="wallet" note="Available now" />
+<Stat label="Savings" value="$12,940.00" icon="piggy-bank" note="APY 4.15%" />
+<Stat label="Credit line" value="-$1,236.44" icon="credit-card" tone="warning" note="Limit $8,000" />
+</Columns>
+
+<Card title="Move money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Select label="From" options="Checking ••4021 | Savings ••8890 | Credit line ••1177" />
+<Select label="To" options="Savings ••8890 | Checking ••4021 | Credit line ••1177" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="1" hint="No fee between your own accounts" required="true" />
+<Date label="Send on" name="send_date" />
+<Switch label="Repeat monthly" name="repeat" value="false" hint="Cancel anytime" />
+<Button>Review transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent transactions">
+| Merchant | Category | Amount |
+|---|---|---|
+| Blue Bottle Coffee | Dining | -$6.40 |
+| Trader Joe's | Groceries | -$84.12 |
+| Metro Transit | Transport | -$2.75 |
+| Payroll — Acme Inc | Income | +$3,410.00 |
+| Netflix | Subscriptions | -$22.99 |
+| Shell Station | Gas | -$51.30 |
+| Amazon | Shopping | -$39.99 |
+</Card>
+
+<Button variant="secondary" ask="Show me older transactions">See all transactions</Button>
+
+<Card title="Spending this month" subtitle="$1,842 of $2,600 budget used">
+<Chart type="donut" title="By category">
+| Category | Amount |
+|---|---|
+| Housing | 980 |
+| Groceries | 412 |
+| Dining | 186 |
+| Transport | 124 |
+| Subscriptions | 78 |
+| Other | 62 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+<Steps>
+<Step title="Rent — $1,450" status="current" subtitle="Due in 3 days • Autopay on">From Checking ••4021</Step>
+<Step title="Electric — $96.20" status="todo" subtitle="Due in 8 days • Autopay off">Set up autopay to avoid a late fee</Step>
+<Step title="Visa minimum — $35" status="todo" subtitle="Due in 12 days • Autopay on">From Checking ••4021</Step>
+</Steps>
+</Card>
+
+<Card title="Vacation fund" subtitle="Lisbon, June">
+<Progress value="1840" max="3000" label="$1,840 of $3,000 saved" tone="info" />
+<Callout tone="success" title="On pace">At $220/month you'll hit the goal 5 weeks before departure.</Callout>
+<Button variant="secondary" ask="Add $100 to my vacation fund">Add to goal</Button>
+</Card>
+
+<Columns>
+<Stat label="Credit score" value="742" change="+8 pts" tone="success" icon="chart-line" note="FICO® Score 8 • Updated today" />
+<Stat label="Credit used" value="15%" tone="success" note="$1,236 of $8,000" />
+</Columns>
+
+<Card title="Credit line controls">
+<Switch label="Freeze credit line" name="freeze" value="false" hint="Blocks new purchases instantly. Existing balance still gets billed." />
+<Callout tone="warning" title="Freezing stops new charges">Recurring subscriptions on this card will be declined.</Callout>
+</Card>
+
+<Card title="Statements">
+<Select label="Statement period" options="Current cycle | Last month | Last 3 months | Last 12 months | Custom range" />
+<Button variant="secondary" ask="Download my statement as a PDF">Download PDF</Button>
+</Card>
+
+<Card title="Alerts">
+<Checkboxes label="Notify me when" options="A purchase is over $100 | My balance drops below $200 | A bill is due in 3 days | A large deposit lands | My credit score changes | International charge is made" value="A purchase is over $100 | A bill is due in 3 days" name="alerts" />
+<Radio label="How to reach me" options="Push notification | Text message | Email | All of the above" name="alert_channel" />
+<Button>Save alert settings</Button>
+</Card>
+
+<Card title="Dispute a transaction">
+<Form name="dispute">
+<Select label="Which transaction" options="Blue Bottle Coffee — $6.40 | Trader Joe's — $84.12 | Metro Transit — $2.75 | Netflix — $22.99 | Shell Station — $51.30 | Amazon — $39.99" />
+<Select label="Reason" options="I didn't make this purchase | I was charged twice | Wrong amount | Item never received | Subscription I cancelled" />
+<TextArea label="Tell us what happened" name="details" placeholder="Add dates, names, or anything that helps us review it" rows="4" required="true" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+<Callout tone="info" title="What happens next">You'll get a provisional credit within 1 business day while we investigate. Most disputes close in 10 days.</Callout>
+</Card>
+
+<FollowUps>
+- How much did I spend on dining last month?
+- What's my payoff date if I pay $300 a month?
+- Which subscriptions am I paying for?
+- Move $500 from checking to savings
+</FollowUps>

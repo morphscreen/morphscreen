@@ -1,0 +1,114 @@
+# Clinic Receptionist – Day View
+
+<Columns>
+<Card title="Date" subtitle="Select a day">
+<Form name="date-nav">
+<Date label="Day" name="day" value="2025-01-15" />
+<Button size="small" variant="secondary" label="Today">Today</Button>
+<Button size="small" variant="tertiary" label="Previous day">← Previous</Button>
+<Button size="small" variant="tertiary" label="Next day">Next →</Button>
+</Form>
+</Card>
+
+<Card title="Expected patients">
+<Stat label="Today" value="18" change="+2 vs yesterday" tone="info" />
+</Card>
+
+<Card title="No-show rate (Jan)">
+<Stat label="This month" value="8.2%" change="−1.1 pp vs Dec" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Today's appointments" subtitle="18 scheduled • 3 checked in • 15 waiting">
+<Tabs>
+<Tab title="All (18)">
+| Time | Patient | Status | Room | Actions |
+|---|---|---|---|---|
+| 08:00 | Maria Santos | ✅ Checked in | Room 1 | — |
+| 08:30 | James Chen | ✅ Checked in | Room 2 | — |
+| 09:00 | Aisha Patel | 🕐 Waiting | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 09:30 | Robert Kim | 🕐 Waiting | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 10:00 | Fatima Al-Rashid | 🕐 Waiting | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 10:30 | David Okafor | 🕐 Waiting | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 11:00 | Elena Rossi | 🕐 Waiting | Room 4 | <Button size="small" label="Check in">Check in</Button> |
+| 11:30 | Marcus Johnson | 🕐 Waiting | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 12:00 | Priya Sharma | 🕐 Waiting | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 13:30 | Carlos Mendoza | 🕐 Waiting | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 14:00 | Yuki Tanaka | 🕐 Waiting | Room 4 | <Button size="small" label="Check in">Check in</Button> |
+| 14:30 | Omar Hassan | 🕐 Waiting | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 15:00 | Sophie Dubois | 🕐 Waiting | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 15:30 | Liam O'Connor | 🕐 Waiting | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 16:00 | Zoe Miller | 🕐 Waiting | Room 4 | <Button size="small" label="Check in">Check in</Button> |
+| 16:30 | Ahmed Ali | 🕐 Waiting | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 17:00 | Nina Kowalski | 🕐 Waiting | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 17:30 | Thomas Berg | 🕐 Waiting | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+</Tab>
+<Tab title="Waiting (15)">
+| Time | Patient | Room | Actions |
+|---|---|---|---|
+| 09:00 | Aisha Patel | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 09:30 | Robert Kim | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 10:00 | Fatima Al-Rashid | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 10:30 | David Okafor | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 11:00 | Elena Rossi | Room 4 | <Button size="small" label="Check in">Check in</Button> |
+| 11:30 | Marcus Johnson | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 12:00 | Priya Sharma | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 13:30 | Carlos Mendoza | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 14:00 | Yuki Tanaka | Room 4 | <Button size="small" label="Check in">Check in</Button> |
+| 14:30 | Omar Hassan | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 15:00 | Sophie Dubois | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 15:30 | Liam O'Connor | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+| 16:00 | Zoe Miller | Room 4 | <Button size="small" label="Check in">Check in</Button> |
+| 16:30 | Ahmed Ali | Room 2 | <Button size="small" label="Check in">Check in</Button> |
+| 17:00 | Nina Kowalski | Room 3 | <Button size="small" label="Check in">Check in</Button> |
+| 17:30 | Thomas Berg | Room 1 | <Button size="small" label="Check in">Check in</Button> |
+</Tab>
+<Tab title="Checked in (3)">
+| Time | Patient | Room | Since |
+|---|---|---|---|
+| 08:00 | Maria Santos | Room 1 | 07:55 |
+| 08:30 | James Chen | Room 2 | 08:25 |
+| 09:00 | Aisha Patel | Room 1 | 08:58 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Room status" subtitle="Right now">
+<Table>
+| Room | Status | Current patient | Next patient | Free at |
+|---|---|---|---|---|
+| Room 1 | <Badge tone="danger">Occupied</Badge> | Maria Santos (08:00) | Aisha Patel (09:00) | ~09:00 |
+| Room 2 | <Badge tone="danger">Occupied</Badge> | James Chen (08:30) | Fatima Al-Rashid (10:00) | ~09:30 |
+| Room 3 | <Badge tone="success">Free</Badge> | — | Robert Kim (09:30) | Now |
+| Room 4 | <Badge tone="success">Free</Badge> | — | Elena Rossi (11:00) | Now |
+</Table>
+<Callout tone="info" title="Quick view">Rooms 3 & 4 are free right now. Next opening: Room 1 at ~09:00.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Next patient called out" subtitle="Waiting room display">
+<Callout tone="success" title="Now calling">
+**Aisha Patel** — Please proceed to **Room 1**
+</Callout>
+<Details title="Recent calls" open="false">
+| Time | Patient | Room |
+|---|---|---|
+| 08:00 | Maria Santos | Room 1 |
+| 08:30 | James Chen | Room 2 |
+| 08:58 | Aisha Patel | Room 1 |
+</Details>
+<Button variant="primary" label="Call next patient">Call next patient</Button>
+<Button variant="secondary" label="Recall">Recall Aisha Patel</Button>
+</Card>
+
+<Card title="Quick check-in" subtitle="Scan ID or search">
+<Form name="checkin">
+<Input label="Patient name / ID" placeholder="Type or scan..." hint="Auto-fills from today's list" />
+<Select label="Assign room" options="Room 1 | Room 2 | Room 3 | Room 4" placeholder="Auto-assign" />
+<Button label="Check in patient">Check in patient</Button>
+<Button variant="tertiary" label="Walk-in">Add walk-in</Button>
+</Form>
+</Card>
+</Columns>

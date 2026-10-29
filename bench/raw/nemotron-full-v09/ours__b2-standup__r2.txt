@@ -1,0 +1,94 @@
+# Async Standup — <span id="today-date"></span>
+
+<Script>
+document.getElementById('today-date').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+</Script>
+
+<Columns>
+<Stat label="Updates posted" value="7" change="of 10 team members" tone="info" icon="users" />
+<Stat label="Missing updates" value="3" change="Awaiting: Maya, Jordan, Priya" tone="warning" icon="clock" />
+<Stat label="Blocked" value="2" change="Needs help unblocking" tone="danger" icon="warning" />
+</Columns>
+
+---
+
+## Team updates
+
+<Card title="Alex Chen" subtitle="Senior Engineer • Posted 9:14 AM">
+**Yesterday:** Shipped the new webhook retry logic (PR #847). Fixed the race condition in the payment callback handler.
+**Today:** Writing integration tests for the retry logic. Pairing with Sam on the API versioning spec.
+**Blockers:** <Badge tone="danger">Waiting on DevOps for staging deploy credentials</Badge>
+</Card>
+
+<Card title="Sam Rivera" subtitle="Tech Lead • Posted 8:52 AM">
+**Yesterday:** Reviewed PR #847, #851, #853. Drafted RFC for API v2 migration strategy.
+**Today:** Finalizing RFC. Sync with product on breaking change timeline. Code review for Maya's auth refactor.
+**Blockers:** None
+</Card>
+
+<Card title="Taylor Kim" subtitle="Backend Engineer • Posted 9:03 AM">
+**Yesterday:** Completed database migration for user preferences table. Added indexes for query performance.
+**Today:** Building the preference API endpoints. Adding feature flag for gradual rollout.
+**Blockers:** <Badge tone="danger">Blocked by DB lock timeout on production migration — investigating with DBA</Badge>
+</Card>
+
+<Card title="Riley Park" subtitle="Frontend Engineer • Posted 8:45 AM">
+**Yesterday:** Implemented the new dashboard skeleton loaders. Fixed the mobile nav overlap bug.
+**Today:** Wiring up the real-time notification badge. Writing Storybook stories for the new Button variants.
+**Blockers:** None
+</Card>
+
+<Card title="Casey Brooks" subtitle="Full Stack Engineer • Posted 9:20 AM">
+**Yesterday:** Finished the export-to-CSV feature for reports. Added unit tests (94% coverage).
+**Today:** Starting on the scheduled reports feature. Design review with UX at 2 PM.
+**Blockers:** None
+</Card>
+
+<Card title="Morgan Lee" subtitle="DevOps Engineer • Posted 8:30 AM">
+**Yesterday:** Upgraded Kubernetes cluster to 1.28. Patched the container registry vulnerability.
+**Today:** Setting up the new staging namespace for the v2 API. Automating the DB backup verification.
+**Blockers:** None
+</Card>
+
+<Card title="Drew Patel" subtitle="QA Engineer • Posted 9:08 AM">
+**Yesterday:** Tested webhook retry logic across 5 failure scenarios. All passing.
+**Today:** Exploratory testing on the preference API. Updating the regression suite for v2 endpoints.
+**Blockers:** None
+</Card>
+
+---
+
+## Blocked teammates — needs attention
+
+<Callout tone="danger" title="Alex Chen — Waiting on DevOps for staging deploy credentials">
+Alex can't deploy the webhook retry logic to staging for integration testing. DevOps access request submitted 2 hours ago — no response yet.
+</Callout>
+
+<Callout tone="danger" title="Taylor Kim — DB lock timeout on production migration">
+Migration for user preferences table timed out. DBA investigating long-running transaction. Rollback plan ready if needed.
+</Callout>
+
+---
+
+## Post your update
+
+<Card title="Share your standup" subtitle="Your update will appear above immediately">
+<Form name="standup-form">
+<TextArea label="What did you complete yesterday?" name="yesterday" placeholder="Shipped the new webhook retry logic (PR #847)..." rows="3" required="true" hint="Keep it brief — 2-3 bullets max" />
+<TextArea label="What will you tackle today?" name="today" placeholder="Writing integration tests for the retry logic..." rows="3" required="true" hint="Focus on your top 1-2 priorities" />
+<Select label="Any blockers?" name="blockers" placeholder="Select one" options="No blockers | Blocked — need help | Waiting on someone | Other" required="true" />
+<Checkboxes label="Tag teammates (optional)" name="tags" options="Alex Chen | Sam Rivera | Taylor Kim | Riley Park | Casey Brooks | Morgan Lee | Drew Patel | Maya | Jordan | Priya" hint="Notify specific people about your update" />
+<Button variant="primary" size="large">Post update</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+---
+
+<Details title="Standup guidelines">
+- **Post by 10 AM** your local time so the team can read before their day starts
+- **Keep it scannable** — 2-3 bullets per section, no walls of text
+- **Call out blockers loudly** — use the blocker field so they appear in the "Needs attention" section
+- **Tag teammates** when your work intersects with theirs
+- **Missing updates** are nudged automatically at 10:30 AM
+</Details>

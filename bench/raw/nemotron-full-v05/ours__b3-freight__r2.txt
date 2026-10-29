@@ -1,0 +1,130 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">2025-01-15 14:32 UTC</Callout>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % (This Month)" value="94.2%" change="+1.3% vs last month" tone="success" />
+<Stat label="Avg Cost per Shipment" value="$1,847" change="-$42 vs last month" tone="info" />
+<Stat label="Active Shipments" value="127" change="+8 vs yesterday" tone="neutral" />
+<Stat label="Delayed" value="7" change="-2 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Search & Filter">
+<Columns>
+<Input label="Search by route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin, destination, or carrier" />
+<Select label="Carrier filter" placeholder="All carriers" options="All | FedEx | UPS | DHL | Maersk | C.H. Robinson | XPO Logistics" />
+<Select label="Status filter" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" />
+</Columns>
+</Card>
+
+<Card title="Shipments in Transit">
+<Tabs>
+<Tab title="All (127)">
+| # | Shipment ID | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|---|
+| 1 | SHP-2025-0041 | Los Angeles (LAX) | New York (JFK) | FedEx | 2025-01-16 14:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 2 | SHP-2025-0042 | Seattle (SEA) | Chicago (ORD) | UPS | 2025-01-16 18:30 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 3 | SHP-2025-0043 | Miami (MIA) | Dallas (DFW) | DHL | 2025-01-17 09:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 4 | SHP-2025-0044 | Atlanta (ATL) | San Francisco (SFO) | FedEx | 2025-01-17 12:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 5 | SHP-2025-0045 | Chicago (ORD) | Boston (BOS) | UPS | 2025-01-17 16:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 6 | SHP-2025-0046 | Houston (IAH) | Denver (DEN) | XPO Logistics | 2025-01-18 10:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 7 | SHP-2025-0047 | Phoenix (PHX) | Philadelphia (PHL) | C.H. Robinson | 2025-01-18 14:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 8 | SHP-2025-0048 | San Diego (SAN) | Washington (IAD) | DHL | 2025-01-18 18:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 9 | SHP-2025-0049 | Portland (PDX) | Minneapolis (MSP) | FedEx | 2025-01-19 08:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| 10 | SHP-2025-0050 | Las Vegas (LAS) | Detroit (DTW) | UPS | 2025-01-19 12:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (7)">
+| # | Shipment ID | Origin | Destination | Carrier | ETA | Delay | Reason | Actions |
+|---|---|---|---|---|---|---|---|---|
+| 1 | SHP-2025-0031 | New York (JFK) | London (LHR) | Maersk | 2025-01-14 06:00 | 2 days | Port congestion | <Button variant="danger" size="small">Flag</Button> |
+| 2 | SHP-2025-0032 | Shanghai (PVG) | Los Angeles (LAX) | C.H. Robinson | 2025-01-13 22:00 | 3 days | Weather delay | <Button variant="danger" size="small">Flag</Button> |
+| 3 | SHP-2025-0033 | Chicago (ORD) | Toronto (YYZ) | FedEx | 2025-01-14 14:00 | 1 day | Customs hold | <Button variant="danger" size="small">Flag</Button> |
+| 4 | SHP-2025-0034 | Miami (MIA) | São Paulo (GRU) | DHL | 2025-01-12 18:00 | 4 days | Documentation | <Button variant="danger" size="small">Flag</Button> |
+| 5 | SHP-2025-0035 | Dallas (DFW) | Mexico City (MEX) | UPS | 2025-01-14 10:00 | 1 day | Border delay | <Button variant="danger" size="small">Flag</Button> |
+| 6 | SHP-2025-0036 | Atlanta (ATL) | Frankfurt (FRA) | Maersk | 2025-01-13 08:00 | 2 days | Equipment issue | <Button variant="danger" size="small">Flag</Button> |
+| 7 | SHP-2025-0037 | Seattle (SEA) | Vancouver (YVR) | XPO Logistics | 2025-01-14 16:00 | 1 day | Driver shortage | <Button variant="danger" size="small">Flag</Button> |
+</Tab>
+<Tab title="Flagged (3)">
+| # | Shipment ID | Origin | Destination | Carrier | Flagged By | Reason | Date |
+|---|---|---|---|---|---|---|---|
+| 1 | SHP-2025-0028 | Boston (BOS) | Miami (MIA) | FedEx | J. Martinez | Temperature excursion | 2025-01-13 |
+| 2 | SHP-2025-0029 | Denver (DEN) | Phoenix (PHX) | UPS | K. Chen | High-value cargo | 2025-01-12 |
+| 3 | SHP-2025-0030 | Orlando (MCO) | Nashville (BNA) | DHL | R. Patel | Customer escalation | 2025-01-11 |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="On-Time Performance (This Month)">
+<Progress value="94.2" max="100" label="94.2% on-time" tone="success" />
+<Details title="Breakdown">
+| Status | Count | Percentage |
+|---|---|---|
+| On Time | 1,084 | 94.2% |
+| Delayed < 24h | 42 | 3.6% |
+| Delayed 1-3 days | 21 | 1.8% |
+| Delayed > 3 days | 4 | 0.4% |
+</Details>
+</Card>
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier (Last 30 Days)">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 412 |
+| UPS | 387 |
+| DHL | 298 |
+| Maersk | 156 |
+| C.H. Robinson | 134 |
+| XPO Logistics | 89 |
+| Other | 124 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Shipments per Week" x="Week" y="Volume">
+| Week | Volume |
+|---|---|
+| W1 (Nov 18-24) | 234 |
+| W2 (Nov 25-Dec 1) | 267 |
+| W3 (Dec 2-8) | 289 |
+| W4 (Dec 9-15) | 312 |
+| W5 (Dec 16-22) | 345 |
+| W6 (Dec 23-29) | 298 |
+| W7 (Dec 30-Jan 5) | 267 |
+| W8 (Jan 6-12) | 301 |
+</Chart>
+</Card>
+
+<Card title="Cost Analysis">
+<Columns>
+<Stat label="Avg Cost / Shipment" value="$1,847" tone="info" />
+<Stat label="Total Spend (Month)" value="$2.34M" change="+4.2% vs last month" tone="neutral" />
+<Stat label="Cost per Mile" value="$2.87" change="-$0.03 vs last month" tone="success" />
+<Stat label="Fuel Surcharge Avg" value="18.4%" change="+0.8% vs last month" tone="warning" />
+</Columns>
+<Chart type="line" title="Average Cost per Shipment Trend (8 Weeks)">
+| Week | Avg Cost |
+|---|---|
+| W1 | 1820 |
+| W2 | 1850 |
+| W3 | 1890 |
+| W4 | 1920 |
+| W5 | 1950 |
+| W6 | 1880 |
+| W7 | 1860 |
+| W8 | 1847 |
+</Chart>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary">Create New Shipment</Button>
+<Button variant="secondary">Bulk Import</Button>
+<Button variant="tertiary">Export Report</Button>
+<Button variant="danger">Escalate Delayed</Button>
+</Columns>
+</Card>

@@ -1,0 +1,157 @@
+<Card title="Live-Ops Command Center" subtitle="Game Studio · Live Operations Dashboard">
+<Badge tone="success">All systems nominal</Badge>
+<Badge tone="warning">Currency inflation elevated</Badge>
+<Badge tone="danger">EU West degraded · Middle East down</Badge>
+
+### Key Metrics
+
+<Columns>
+<Stat label="Players Online" value="48,203" change="+12% vs 1h ago" />
+<Stat label="DAU" value="1,284,550" change="+3.2% vs yesterday" />
+<Stat label="MAU" value="4,932,110" change="+1.1% vs last month" />
+<Stat label="Revenue Today" value="$284,920" change="+8.4% vs yesterday" />
+<Stat label="Revenue per User" value="$0.22" change="ARPU today" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Session Length" subtitle="Past two weeks · average minutes per session">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Avg Session |
+|---|---|
+| 14 days ago | 18.2 |
+| 13 days ago | 19.1 |
+| 12 days ago | 17.6 |
+| 11 days ago | 20.3 |
+| 10 days ago | 21.0 |
+| 9 days ago | 19.8 |
+| 8 days ago | 22.4 |
+| 7 days ago | 21.7 |
+| 6 days ago | 20.5 |
+| 5 days ago | 23.1 |
+| 4 days ago | 22.8 |
+| 3 days ago | 24.0 |
+| 2 days ago | 23.5 |
+| Yesterday | 25.2 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items" subtitle="Units sold today">
+| Item | Units |
+|---|---|
+| Dragon Skin Pack | 12,430 |
+| 500 Gems | 10,210 |
+| Battle Pass | 8,920 |
+| Hero Shard Bundle | 7,650 |
+| XP Booster | 6,310 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Server Regions" subtitle="Health and current load">
+<Callout tone="danger" title="Incident">Middle East is down. EU West is degraded.</Callout>
+
+| Region | Health | Load | Players |
+|---|---|---|---|
+| NA East | <Badge tone="success">Healthy</Badge> | 68% | 12,420 |
+| NA West | <Badge tone="success">Healthy</Badge> | 62% | 9,850 |
+| EU Central | <Badge tone="success">Healthy</Badge> | 71% | 11,230 |
+| EU West | <Badge tone="warning">Degraded</Badge> | 88% | 8,410 |
+| Asia Pacific | <Badge tone="success">Healthy</Badge> | 65% | 14,670 |
+| South America | <Badge tone="warning">Degraded</Badge> | 84% | 4,210 |
+| Middle East | <Badge tone="danger">Down</Badge> | 0% | 0 |
+</Card>
+
+<Card title="Crash Rate by App Version" subtitle="Last 24 hours · % of sessions">
+<Callout tone="warning" title="Beta build at risk">2.6.0-beta is crashing 2.4% of sessions.</Callout>
+<Chart type="bar" x="Version" y="Crash Rate (%)">
+| Version | Crash Rate |
+|---|---|
+| 2.4.0 | 0.4 |
+| 2.4.1 | 0.3 |
+| 2.5.0 | 1.2 |
+| 2.5.1 | 0.8 |
+| 2.6.0-beta | 2.4 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Live Events" subtitle="Running and upcoming">
+<Badge tone="success">Running</Badge> Summer Festival — ends in 2d 4h
+<Badge tone="info">Upcoming</Badge> Double XP Weekend — starts in 1d 6h
+<Badge tone="info">Upcoming</Badge> Raid Boss: Void Dragon — starts in 3d 0h
+</Card>
+
+<Card title="Player Reports" subtitle="Awaiting review">
+<Stat label="Queue" value="1,247" change="+38 in last hour" />
+
+| Priority | Count |
+|---|---|
+| High | 214 |
+| Medium | 589 |
+| Low | 444 |
+</Card>
+
+<Card title="Ban Appeals" subtitle="Awaiting review">
+<Stat label="Queue" value="312" change="+12 in last hour" />
+
+| Type | Count |
+|---|---|
+| Cheating | 128 |
+| Toxic chat | 96 |
+| Exploit | 54 |
+| False positive | 34 |
+</Card>
+
+<Card title="In-Game Currency Inflation" subtitle="Gem supply index">
+<Stat label="Inflation" value="+4.2%" change="vs last month" />
+<Chart type="area" x="Week" y="Index">
+| Week | Gem Supply |
+|---|---|
+| W1 | 100 |
+| W2 | 102 |
+| W3 | 105 |
+| W4 | 109 |
+| W5 | 114 |
+</Chart>
+<Callout tone="warning" title="Action recommended">Gem faucets are outpacing sinks.</Callout>
+</Card>
+</Columns>
+
+<Card title="Experiments" subtitle="Two running experiments">
+<Columns>
+<Card title="A: Daily Reward Tuning" subtitle="Started 14 days ago">
+<Stat label="D1 Retention" value="+3.1%" change="vs control" />
+<Stat label="Revenue" value="+1.8%" change="vs control" />
+<Badge tone="success">Statistically significant</Badge>
+</Card>
+<Card title="B: Store Bundle Price" subtitle="Started 7 days ago">
+<Stat label="Conversion" value="+0.6%" change="vs control" />
+<Stat label="Revenue" value="-2.4%" change="vs control" />
+<Badge tone="warning">Not significant yet</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Draft Patch Notes" subtitle="For the next release">
+<Form name="patch-notes">
+<Input label="Version" placeholder="2.6.0" />
+<Input label="Title" placeholder="Summer Festival Update" />
+<TextArea label="Notes" rows="6" placeholder="- Fixed crash on Android&#10;- Added Summer Festival event&#10;- Reduced gem faucet rates" />
+<Button>Save draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Region Focus" subtitle="Filter the dashboard to one region">
+<Select label="Region" options="All Regions | NA East | NA West | EU Central | EU West | Asia Pacific | South America | Middle East" placeholder="Select a region" />
+<Button>Apply focus</Button>
+</Card>
+
+<Card title="Hotfix" subtitle="Ship a hotfix build">
+<Callout tone="danger" title="Hotfix ready">Build 2.6.1 fixes the Android crash affecting 2.4% of sessions.</Callout>
+<Button variant="danger">Ship hotfix</Button>
+</Card>
+</Columns>

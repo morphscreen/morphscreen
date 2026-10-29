@@ -1,0 +1,167 @@
+# Live-Ops Command Center
+
+<Callout tone="info" title="Live-ops overview">All systems nominal. Two experiments running, one hotfix queued for approval.</Callout>
+
+<Card title="Player Activity" subtitle="Live metrics for all regions">
+<Columns>
+<Stat label="Players online now" value="48,213" change="+6.2% vs 1h ago" icon="users" tone="success" />
+<Stat label="Daily active players" value="1,284,902" change="+3.1% vs yesterday" icon="calendar" />
+<Stat label="Monthly active players" value="8,947,331" change="+1.8% vs last month" icon="chart-line" />
+<Stat label="Revenue today" value="$214,580" change="+4.7% vs same time yesterday" icon="currency-dollar" tone="success" />
+<Stat label="Revenue per user" value="$0.167" change="+1.5% vs yesterday" icon="trend-up" />
+</Columns>
+</Card>
+
+<Card title="Session Length" subtitle="Average minutes per session, past 14 days">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Session Length |
+|---|---|
+| May 1 | 24.1 |
+| May 2 | 25.3 |
+| May 3 | 23.8 |
+| May 4 | 26.2 |
+| May 5 | 27.0 |
+| May 6 | 26.4 |
+| May 7 | 25.1 |
+| May 8 | 24.9 |
+| May 9 | 26.7 |
+| May 10 | 28.1 |
+| May 11 | 27.5 |
+| May 12 | 26.9 |
+| May 13 | 28.4 |
+| May 14 | 29.2 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items" subtitle="Last 24 hours">
+| Item | Units Sold | Revenue |
+|---|---|---|
+| Dragon War Chest | 12,450 | $49,800 |
+| Season Pass | 9,820 | $58,920 |
+| Epic Mount Bundle | 7,640 | $38,200 |
+| 500 Gems Pack | 6,215 | $18,645 |
+| Legendary Skin Vault | 4,890 | $24,450 |
+</Card>
+
+<Card title="Server Regions" subtitle="Health and player distribution">
+<Columns>
+<Stat label="NA East" value="98%" change="12,410 players" icon="server" tone="success" />
+<Stat label="NA West" value="97%" change="8,230 players" icon="server" tone="success" />
+<Stat label="EU Central" value="95%" change="14,870 players" icon="server" tone="success" />
+<Stat label="Asia Pacific" value="88%" change="9,450 players" icon="server" tone="warning" />
+<Stat label="South America" value="91%" change="3,253 players" icon="server" tone="success" />
+</Columns>
+<Callout tone="warning" title="APAC latency">Asia Pacific is at 88% health. Elevated latency reported in Sydney cluster. <Button variant="secondary" size="small">Focus on APAC</Button></Callout>
+</Card>
+
+<Card title="Crash Rate by App Version" subtitle="Last 24 hours">
+<Chart type="bar" x="Version" y="Crash Rate (%)">
+| Version | Crash Rate |
+|---|---|
+| 2.4.1 | 0.8 |
+| 2.4.0 | 1.2 |
+| 2.3.9 | 0.6 |
+| 2.3.8 | 3.4 |
+</Chart>
+<Callout tone="danger" title="Version 2.3.8 crash spike">Crash rate is 3.4% — above the 2% threshold. Recommend hotfix for this version. <Button variant="danger" size="small">Queue Hotfix</Button></Callout>
+</Card>
+
+<Card title="Live Events" subtitle="Current and upcoming">
+<Tabs>
+<Tab title="Running Now">
+| Event | Started | Ends | Players Participating |
+|---|---|---|---|
+| Summer Solstice Raid | May 12 | May 19 | 342,000 |
+| Double XP Weekend | May 14 | May 16 | 891,000 |
+</Tab>
+<Tab title="Upcoming">
+| Event | Starts | Ends | Status |
+|---|---|---|---|
+| Arena Championship | May 20 | May 27 | Scheduled |
+| Pirate Treasure Hunt | May 22 | May 29 | Scheduled |
+| Anniversary Celebration | June 1 | June 15 | Announced |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Reports & Appeals" subtitle="Awaiting review">
+<Columns>
+<Stat label="Player reports" value="1,284" change="+34 in last hour" icon="flag" tone="warning" />
+<Stat label="Ban appeals" value="412" change="+12 in last hour" icon="shield-warning" tone="warning" />
+</Columns>
+<Button variant="primary">Review Player Reports</Button>
+<Button variant="secondary">Review Ban Appeals</Button>
+</Card>
+
+<Card title="In-Game Currency Inflation" subtitle="Gold per player, 30-day trend">
+<Chart type="area" x="Week" y="Gold per player">
+| Week | Gold per Player |
+|---|---|
+| Week 1 | 2,450 |
+| Week 2 | 2,680 |
+| Week 3 | 2,940 |
+| Week 4 | 3,210 |
+</Chart>
+<Callout tone="warning" title="Inflation rising">Gold supply is up 31% month-over-month. Consider sink mechanics or event adjustments.</Callout>
+</Card>
+
+<Card title="Running Experiments" subtitle="A/B tests in progress">
+<Columns>
+<Card title="Experiment A: Loot Box Drop Rates" subtitle="Started May 1, 10,000 players per group">
+| Metric | Control | Variant |
+|---|---|---|
+| Drop rate | 5.0% | 7.5% |
+| Session length | 24.8 min | 26.2 min |
+| Revenue per user | $0.14 | $0.18 |
+| Retention (D7) | 41% | 44% |
+<Badge tone="success">Variant leading</Badge>
+</Card>
+<Card title="Experiment B: Tutorial Length" subtitle="Started May 8, 8,000 players per group">
+| Metric | Control | Variant |
+|---|---|---|
+| Completion rate | 68% | 74% |
+| Time to level 10 | 3.2 hrs | 2.8 hrs |
+| Day-1 retention | 55% | 58% |
+| Day-7 retention | 38% | 36% |
+<Badge tone="warning">Mixed results</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Patch Notes Draft" subtitle="For next release 2.4.2">
+<Form name="patch-notes">
+<Input label="Version" value="2.4.2" />
+<Input label="Title" value="Summer Solstice Update" />
+<TextArea label="Notes" rows="6" placeholder="• Added Summer Solstice Raid event
+• Fixed crash on Android devices
+• Reduced gold drop rate from farming
+• Buffed Dragon War Chest drop rates" />
+<Button>Save Draft</Button>
+<Button variant="secondary">Submit for Approval</Button>
+</Form>
+</Card>
+
+<Card title="Region Focus" subtitle="Drill down into one region">
+<Form name="region-focus">
+<Select label="Select region" placeholder="Choose a region" options="NA East | NA West | EU Central | Asia Pacific | South America" />
+<Button label="Focus Region">Apply Focus</Button>
+</Form>
+</Card>
+
+<Card title="Hotfix Deployment" subtitle="Ship a hotfix to production">
+<Form name="hotfix">
+<Input label="Hotfix version" value="2.4.1.1" />
+<TextArea label="Change notes" rows="3" placeholder="• Fixed crash on Android 14
+• Fixed APAC latency spike" />
+<Callout tone="warning" title="Rollout plan">Hotfix will roll out to 10% of players, then 25%, 50%, 100% over 2 hours with automatic rollback on crash rate spike.</Callout>
+<Button variant="danger" label="Ship Hotfix">Ship Hotfix</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed breakdown for APAC region
+- Compare Experiment A and B results side-by-side
+- Draft patch notes for the hotfix
+- What caused the crash spike on version 2.3.8?
+- Recommend actions to reduce gold inflation
+</FollowUps>

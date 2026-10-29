@@ -1,0 +1,86 @@
+<Card title="Async Standup" subtitle="Monday, January 15, 2024">
+  <Columns>
+    <Stat label="Team members" value="8" />
+    <Stat label="Updates posted" value="5" change="+2 since yesterday" tone="info" />
+    <Stat label="Missing updates" value="3" tone="warning" />
+    <Stat label="Blocked" value="2" tone="danger" />
+  </Columns>
+</Card>
+
+<Card title="Today's Updates">
+  <Columns>
+    <Card title="Sarah Chen" subtitle="Senior Engineer">
+      <Avatar name="Sarah Chen" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" subtitle="Posted 9:15 AM" />
+      <p><strong>Yesterday:</strong> Finished API auth refactor, deployed to staging</p>
+      <p><strong>Today:</strong> Writing integration tests for new auth flow, code review for PR #234</p>
+      <p><strong>Blockers:</strong> None</p>
+    </Card>
+
+    <Card title="Marcus Johnson" subtitle="Product Designer">
+      <Avatar name="Marcus Johnson" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus" subtitle="Posted 9:30 AM" />
+      <p><strong>Yesterday:</strong> Completed onboarding flow mockups, user testing prep</p>
+      <p><strong>Today:</strong> Iterating on dashboard redesign based on feedback, handoff to eng</p>
+      <p><strong>Blockers:</strong> Waiting on copy from marketing for empty states</p>
+    </Card>
+
+    <Card title="Priya Patel" subtitle="Backend Engineer">
+      <Avatar name="Priya Patel" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" subtitle="Posted 8:45 AM" />
+      <p><strong>Yesterday:</strong> Optimized database queries for analytics dashboard</p>
+      <p><strong>Today:</strong> Implementing caching layer for report generation</p>
+      <p><strong>Blockers:</strong> <span style="color: #dc2626; font-weight: 600;">Blocked — need DevOps to provision Redis cluster</span></p>
+    </Card>
+
+    <Card title="Alex Rivera" subtitle="Frontend Engineer">
+      <Avatar name="Alex Rivera" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" subtitle="Posted 10:00 AM" />
+      <p><strong>Yesterday:</strong> Built new chart components, fixed mobile layout bugs</p>
+      <p><strong>Today:</strong> Integrating charts with real data, accessibility audit</p>
+      <p><strong>Blockers:</strong> None</p>
+    </Card>
+  </Columns>
+
+  <Columns>
+    <Card title="Jordan Kim" subtitle="DevOps Engineer">
+      <Avatar name="Jordan Kim" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan" subtitle="Posted 9:00 AM" />
+      <p><strong>Yesterday:</strong> Set up monitoring alerts, reviewed infra costs</p>
+      <p><strong>Today:</strong> Provisioning Redis for analytics, CI/CD pipeline improvements</p>
+      <p><strong>Blockers:</strong> <span style="color: #dc2626; font-weight: 600;">Blocked — waiting on AWS quota increase request</span></p>
+    </Card>
+
+    <Card title="Taylor Brooks" subtitle="QA Engineer">
+      <Avatar name="Taylor Brooks" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Taylor" subtitle="Not posted" />
+      <p style="color: #6b7280; font-style: italic;">No update posted yet</p>
+    </Card>
+
+    <Card title="Casey Morgan" subtitle="Engineering Manager">
+      <Avatar name="Casey Morgan" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Casey" subtitle="Not posted" />
+      <p style="color: #6b7280; font-style: italic;">No update posted yet</p>
+    </Card>
+
+    <Card title="Riley Zhang" subtitle="Data Analyst">
+      <Avatar name="Riley Zhang" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Riley" subtitle="Not posted" />
+      <p style="color: #6b7280; font-style: italic;">No update posted yet</p>
+    </Card>
+  </Columns>
+</Card>
+
+<Callout tone="danger" title="🚫 Blocked Team Members">
+  <strong>Priya Patel</strong> — Need DevOps to provision Redis cluster for caching layer<br />
+  <strong>Jordan Kim</strong> — Waiting on AWS quota increase request for Redis provisioning
+</Callout>
+
+<Card title="Post Your Update">
+  <Form name="standup-update">
+    <TextArea label="What did you complete yesterday?" name="yesterday" placeholder="Finished API auth refactor, deployed to staging..." rows="3" required="true" />
+    <TextArea label="What will you tackle today?" name="today" placeholder="Writing integration tests for new auth flow..." rows="3" required="true" />
+    <TextArea label="Any blockers? (Tag teammates if needed)" name="blockers" placeholder="Waiting on DevOps for Redis cluster... @jordan" rows="2" />
+    <Checkboxes label="Status" name="status" options="Ready to help others | Heads down, limited availability | Out of office" value="" hint="Optional: let the team know your availability" />
+    <Button>Post Update</Button>
+    <Button variant="tertiary">Save as Draft</Button>
+  </Form>
+</Card>
+
+<FollowUps>
+- View yesterday's standup
+- See team velocity trends
+- Manage standup reminders
+</FollowUps>

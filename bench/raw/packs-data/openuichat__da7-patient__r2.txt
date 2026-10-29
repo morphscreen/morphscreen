@@ -1,0 +1,50 @@
+root = Card([header, demographicsSection, visitsSection, medicationsSection])
+header = CardHeader("Patient Summary", "Johnathan Michael Reeves · MRN: 8472910")
+demographicsSection = SectionBlock([demoSection], false)
+demoSection = SectionItem("demographics", "Patient Demographics", [demoList])
+demoList = EntityList([
+  { left: "Full Name", right: "Johnathan Michael Reeves", rightVariant: "text" },
+  { left: "Date of Birth", right: "March 14, 1968 (Age 56)", rightVariant: "text" },
+  { left: "Blood Type", right: "A+", rightVariant: "text" },
+  { left: "Allergies", right: "Penicillin (anaphylaxis), Sulfa drugs (rash), Latex (contact urticaria)", rightVariant: "text" }
+], "default", { left: "Field", right: "Value", rightVariant: "text" })
+visitsSection = SectionBlock([visitsSectionItem], false)
+visitsSectionItem = SectionItem("visits", "Visits & Procedures (Chronological)", [visitsList])
+visitsList = ListBlock([
+  visit1, visit2, visit3, visit4, visit5, visit6, visit7, visit8
+], "number")
+visit1 = ListItem("Annual Wellness Exam", "May 12, 2024 · Dr. Sarah Chen, Internal Medicine", null, null, { type: "continue_conversation", context: "Show details for the May 12, 2024 wellness exam" })
+visit2 = ListItem("Cardiology Follow-up", "March 3, 2024 · Dr. Robert Kim, Cardiology", null, null, { type: "continue_conversation", context: "Show details for the March 3, 2024 cardiology follow-up" })
+visit3 = ListItem("Colonoscopy (Screening)", "January 15, 2024 · Dr. Maria Santos, Gastroenterology", null, null, { type: "continue_conversation", context: "Show details for the January 15, 2024 colonoscopy" })
+visit4 = ListItem("Emergency Department Visit", "November 8, 2023 · Dr. James Wilson, Emergency Medicine", null, null, { type: "continue_conversation", context: "Show details for the November 8, 2023 ED visit" })
+visit5 = ListItem("Left Heart Catheterization", "November 9, 2023 · Dr. Robert Kim, Cardiology", null, null, { type: "continue_conversation", context: "Show details for the November 9, 2023 left heart catheterization" })
+visit6 = ListItem("Diabetes Education Session", "September 22, 2023 · RN Patricia Lopez, Diabetes Education", null, null, { type: "continue_conversation", context: "Show details for the September 22, 2023 diabetes education session" })
+visit7 = ListItem("Ophthalmology Exam (Diabetic Retinopathy)", "July 18, 2023 · Dr. Amanda Foster, Ophthalmology", null, null, { type: "continue_conversation", context: "Show details for the July 18, 2023 ophthalmology exam" })
+visit8 = ListItem("Podiatry Visit (Diabetic Foot Check)", "June 5, 2023 · Dr. Kevin Park, Podiatry", null, null, { type: "continue_conversation", context: "Show details for the June 5, 2023 podiatry visit" })
+medicationsSection = SectionBlock([medsSectionItem], false)
+medsSectionItem = SectionItem("medications", "Current Medications", [medsTable])
+medsTable = Table([
+  colMed, colDose, colFreq, colRoute, colStart, colPrescriber, colIndication
+])
+colMed = Col("Medication", [
+  "Metformin ER", "Lisinopril", "Atorvastatin", "Metoprolol Succinate ER",
+  "Aspirin (Enteric-Coated)", "Insulin Glargine", "Insulin Lispro", "Omeprazole"
+], "string")
+colDose = Col("Dose", [
+  "1000 mg", "20 mg", "40 mg", "50 mg", "81 mg", "24 units", "Sliding scale", "20 mg"
+], "string")
+colFreq = Col("Frequency", [
+  "Once daily", "Once daily", "Once daily (HS)", "Once daily", "Once daily", "Once daily (HS)", "Before meals", "Once daily (AM)"
+], "string")
+colRoute = Col("Route", [
+  "PO", "PO", "PO", "PO", "PO", "SubQ", "SubQ", "PO"
+], "string")
+colStart = Col("Start Date", [
+  "03/2019", "06/2018", "01/2020", "11/2023", "11/2023", "09/2022", "09/2022", "11/2023"
+], "string")
+colPrescriber = Col("Prescriber", [
+  "Dr. Sarah Chen", "Dr. Sarah Chen", "Dr. Sarah Chen", "Dr. Robert Kim", "Dr. Robert Kim", "Dr. Sarah Chen", "Dr. Sarah Chen", "Dr. Robert Kim"
+], "string")
+colIndication = Col("Indication", [
+  "Type 2 Diabetes Mellitus", "Hypertension", "Hyperlipidemia", "Post-MI / HFrEF (EF 40%)", "Secondary ASCVD prevention", "Type 2 Diabetes Mellitus", "Type 2 Diabetes Mellitus", "GERD / GI prophylaxis"
+], "string")

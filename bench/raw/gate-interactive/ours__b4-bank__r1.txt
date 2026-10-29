@@ -1,0 +1,131 @@
+# Personal Banking Home
+
+<Columns>
+<Card title="Account Balances">
+<Stat label="Checking" value="$4,231.50" change="+$245.30 this month" tone="success" icon="wallet" />
+<Stat label="Savings" value="$18,750.00" change="+$500.00 this month" tone="info" icon="piggy-bank" />
+<Stat label="Credit Card" value="-$1,842.30" change="-$312.45 this month" tone="warning" icon="credit-card" />
+</Card>
+
+<Card title="Credit Score" subtitle="Updated 3 days ago">
+<Stat label="FICO Score" value="742" change="+12 since last month" tone="success" icon="badge" />
+<Progress value="742" max="850" label="Score range: 300–850" tone="success" />
+<Badge tone="info">Good</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Vacation Savings Goal">
+<Progress value="11250" max="15000" label="$11,250 of $15,000 saved (75%)" tone="info" />
+<Stat label="Monthly target" value="$500" change="On track" tone="success" />
+<Stat label="Projected completion" value="August 2025" tone="neutral" />
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Amount | Due Date | Status |
+|---|---|---|---|
+| Electric | $142.30 | Oct 15 | <Badge tone="warning">Pending</Badge> |
+| Internet | $79.99 | Oct 18 | <Badge tone="warning">Pending</Badge> |
+| Phone | $85.00 | Oct 22 | <Badge tone="warning">Pending</Badge> |
+| Car Insurance | $234.00 | Oct 28 | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="October Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 540 |
+| Transportation | 320 |
+| Shopping | 280 |
+| Entertainment | 180 |
+| Utilities | 150 |
+| Other | 210 |
+</Chart>
+</Card>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Oct 12 | Whole Foods Market | Food & Dining | -$87.42 |
+| Oct 11 | Shell Gas Station | Transportation | -$45.00 |
+| Oct 10 | Netflix | Entertainment | -$15.99 |
+| Oct 9 | Amazon | Shopping | -$124.50 |
+| Oct 8 | Payroll Deposit | Income | +$3,200.00 |
+| Oct 7 | Electric Bill | Utilities | -$142.30 |
+| Oct 6 | Target | Shopping | -$67.89 |
+| Oct 5 | Local Coffee Shop | Food & Dining | -$12.50 |
+</Card>
+
+<Tabs>
+<Tab title="Move Money">
+<Card title="Transfer Between Accounts" subtitle="Instant transfers between your accounts">
+<Form name="transfer-form">
+<Select label="From Account" name="fromAccount" placeholder="Select source account" options="Checking ($4,231.50) | Savings ($18,750.00) | Credit Card (available: $3,157.70)" required="true" />
+<Select label="To Account" name="toAccount" placeholder="Select destination account" options="Checking ($4,231.50) | Savings ($18,750.00) | Credit Card (pay down balance)" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="1" max="4231.50" hint="Max: $4,231.50 from Checking" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation fund, rent, etc." />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Freeze Credit">
+<Card title="Credit Line Controls">
+<Callout tone="warning" title="Freezing your credit line">This will prevent new charges on your credit card. Recurring payments and returns will still process. You can unfreeze at any time.</Callout>
+<Switch label="Freeze Credit Line" name="freezeCredit" value="false" hint="Toggle to freeze or unfreeze your credit card" />
+<Details title="What happens when frozen?">
+- New purchases will be declined
+- Recurring subscriptions continue
+- Returns and refunds still process
+- No impact on credit score
+- Unfreeze instantly when needed
+</Details>
+</Card>
+</Tab>
+
+<Tab title="Statement Period">
+<Card title="Choose Statement Period">
+<Form name="statement-period">
+<Radio label="Period" name="period" options="This Month (Oct 1–31) | Last Month (Sep 1–30) | Last 3 Months | Custom Range" value="This Month (Oct 1–31)" />
+<Details title="Custom date range" open="false">
+<Date label="Start Date" name="startDate" />
+<Date label="End Date" name="endDate" />
+</Details>
+<Button>Generate Statement</Button>
+<Button variant="secondary" href="#">Download PDF</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Alert Settings">
+<Card title="Manage Alert Triggers">
+<Checkboxes label="Transaction Alerts" name="txnAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions | Online/phone purchases" hint="Get notified via push, email, or SMS" />
+<Checkboxes label="Account Alerts" name="accountAlerts" options="Low balance (<$100) | Direct deposit received | Bill payment due | Payment posted | Credit limit near max" value="Low balance (<$100) | Direct deposit received | Bill payment due" />
+<Checkboxes label="Security Alerts" name="securityAlerts" options="New device login | Password changed | Contact info updated | Credit freeze/unfreeze | Dispute filed" value="New device login | Password changed | Credit freeze/unfreeze" />
+<Button>Save Alert Preferences</Button>
+</Card>
+</Tab>
+
+<Tab title="Dispute Transaction">
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select Transaction" name="disputeTxn" placeholder="Choose a recent transaction" options="Whole Foods Market — $87.42 (Oct 12) | Shell Gas Station — $45.00 (Oct 11) | Netflix — $15.99 (Oct 10) | Amazon — $124.50 (Oct 9) | Target — $67.89 (Oct 6) | Local Coffee Shop — $12.50 (Oct 5)" required="true" />
+<Radio label="Dispute Reason" name="reason" options="Unauthorized charge | Wrong amount charged | Duplicate charge | Goods/services not received | Goods/services not as described | Canceled subscription still charged" required="true" />
+<TextArea label="Additional Details" name="details" placeholder="Describe what happened, include any merchant communication, order numbers, etc." rows="4" hint="Optional but helps resolve faster" />
+<Callout tone="info" title="What happens next">We'll contact the merchant and investigate. Most disputes resolve in 10–45 business days. You may see a temporary credit while we investigate.</Callout>
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Set up automatic savings transfer to vacation fund
+- Review recurring subscriptions this month
+- Check credit report for changes
+- Increase credit limit on credit card
+</FollowUps>

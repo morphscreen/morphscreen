@@ -1,0 +1,50 @@
+# E-Commerce Operations Desk
+
+<Columns>
+<Stat label="Orders Today" value="47" icon="shopping-bag" />
+<Stat label="Revenue Today" value="$8,320" icon="currency-dollar" />
+<Stat label="Avg Order Value" value="$177.02" icon="chart-line" />
+<Stat label="Refund Rate (This Month)" value="3.2%" icon="arrow-counter-clockwise" tone="warning" />
+</Columns>
+
+<Card title="Order Volume — Last 4 Weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 285 |
+| Week 2 | 312 |
+| Week 3 | 298 |
+| Week 4 | 340 |
+</Chart>
+</Card>
+
+<Card title="Orders Today">
+<Form name="filter-orders">
+<Columns>
+<Select label="Filter by Status" options="All | Pending | Confirmed | Shipped | Fulfilled | Cancelled" name="status-filter" placeholder="All" />
+<Input label="Search by Customer" type="text" placeholder="Customer name..." name="customer-search" />
+</Columns>
+</Form>
+
+| ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10492 | Sarah Johnson | $245.00 | <Badge tone="info">Pending</Badge> | <Button size="small" variant="primary">Mark Fulfilled</Button> |
+| #10491 | Mike Chen | $89.50 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10490 | Emma Williams | $312.75 | <Badge tone="info">Pending</Badge> | <Button size="small" variant="primary">Mark Fulfilled</Button> |
+| #10489 | James Rodriguez | $158.20 | <Badge tone="warning">Shipped</Badge> | <Button size="small" variant="primary">Mark Fulfilled</Button> |
+| #10488 | Olivia Brown | $67.99 | <Badge tone="info">Pending</Badge> | <Button size="small" variant="primary">Mark Fulfilled</Button> |
+| #10487 | Liam Davis | $430.00 | <Badge tone="danger">Cancelled</Badge> | — |
+| #10486 | Sophia Martinez | $199.99 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10485 | Noah Wilson | $124.50 | <Badge tone="warning">Shipped</Badge> | <Button size="small" variant="primary">Mark Fulfilled</Button> |
+</Card>
+
+<Callout tone="info" title="Operations Tip">
+Orders with <Badge tone="info">Pending</Badge> or <Badge tone="warning">Shipped</Badge> status can be marked as fulfilled. Use the filter above to focus on specific statuses.
+</Callout>
+
+<FollowUps>
+- Show me the top-selling products today
+- Which orders are at risk of being late?
+- Compare today's revenue to last week
+- Open the detail view for order #10492
+</FollowUps>

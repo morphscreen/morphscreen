@@ -1,0 +1,153 @@
+# Trading Desk Morning Workspace
+
+<Card title="Portfolio Overview">
+<Columns>
+<Stat label="Portfolio Value" value="$12,847,500" change="+2.3%" icon="chart-line" tone="success" note="1D change" />
+<Stat label="P&L Today" value="+$289,100" change="+2.3%" icon="trend-up" tone="success" note="vs yesterday" />
+<Stat label="Value at Risk (95%)" value="$342,000" icon="shield" tone="warning" note="2.66% of portfolio" />
+<Stat label="Margin in Use" value="$3,847,000" icon="scale" tone="info" note="29.9% utilization" />
+</Columns>
+</Card>
+
+<Card title="Positions">
+<Columns>
+<Stat label="AAPL" value="25,000 sh" note="Entry: $178.40 / Current: $189.20" icon="trend-up" tone="success" />
+<Stat label="MSFT" value="12,000 sh" note="Entry: $405.10 / Current: $421.80" icon="trend-up" tone="success" />
+<Stat label="AMZN" value="8,500 sh" note="Entry: $178.90 / Current: $182.30" icon="trend-up" tone="success" />
+<Stat label="TSLA" value="15,000 sh" note="Entry: $245.60 / Current: $238.10" icon="trend-down" tone="danger" />
+<Stat label="GOOGL" value="10,000 sh" note="Entry: $175.20 / Current: $179.80" icon="trend-up" tone="success" />
+<Stat label="NVDA" value="5,000 sh" note="Entry: $880.50 / Current: $912.40" icon="trend-up" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Exposure by Sector">
+<Chart type="pie" x="Sector" y="Allocation %">
+| Sector | Allocation % |
+|---|---|
+| Technology | 42 |
+| Consumer Cyclical | 18 |
+| Financial | 15 |
+| Healthcare | 12 |
+| Energy | 8 |
+| Other | 5 |
+</Chart>
+</Card>
+
+<Card title="Today's Biggest Movers">
+<Columns>
+<Stat label="Top Gainers" value="NVDA +3.6%" icon="arrow-up" tone="success" note="$912.40" />
+<Stat label="Top Gainers" value="MSFT +2.1%" icon="arrow-up" tone="success" note="$421.80" />
+<Stat label="Top Losers" value="TSLA -3.1%" icon="arrow-down" tone="danger" note="$238.10" />
+<Stat label="Top Losers" value="AMZN -1.8%" icon="arrow-down" tone="danger" note="$182.30" />
+</Columns>
+</Card>
+
+<Card title="Watchlist">
+<Columns>
+<Stat label="AAPL" value="$189.20" icon="eye" tone="neutral" note="+6.0%" />
+<Stat label="MSFT" value="$421.80" icon="eye" tone="neutral" note="+4.1%" />
+<Stat label="AMZN" value="$182.30" icon="eye" tone="neutral" note="+1.9%" />
+<Stat label="TSLA" value="$238.10" icon="eye" tone="neutral" note="-3.1%" />
+<Stat label="GOOGL" value="$179.80" icon="eye" tone="neutral" note="+2.6%" />
+<Stat label="NVDA" value="$912.40" icon="eye" tone="neutral" note="+3.6%" />
+</Columns>
+</Card>
+
+<Card title="Working Orders">
+| Order | Ticker | Side | Quantity | Type | Status |
+|---|---|---|---|---|---|
+| #1234 | AAPL | Buy | 2,000 | Limit $185.00 | Working |
+| #1235 | TSLA | Sell | 3,000 | Market | Working |
+| #1236 | NVDA | Buy | 500 | Stop $895.00 | Working |
+<Button variant="secondary" icon="list">View all orders</Button>
+</Card>
+
+<Card title="Strategy Performance YTD">
+<Chart type="bar" x="Strategy" y="Return %">
+| Strategy | Return % |
+|---|---|
+| Momentum | +18.4 |
+| Value | +12.1 |
+| Growth | +15.7 |
+| Dividend | +8.9 |
+| Arbitrage | +22.3 |
+</Chart>
+</Card>
+
+<Card title="Drawdown (Past Year)">
+<Chart type="area" x="Month" y="Drawdown %">
+| Month | Drawdown % |
+|---|---|
+| Jan | -2.1 |
+| Feb | -4.3 |
+| Mar | -1.8 |
+| Apr | -3.2 |
+| May | -5.1 |
+| Jun | -2.7 |
+| Jul | -1.4 |
+| Aug | -3.8 |
+| Sep | -4.2 |
+| Oct | -2.9 |
+| Nov | -1.1 |
+| Dec | -0.8 |
+</Chart>
+</Card>
+
+<Card title="Risk Limits Near Breach">
+<Callout tone="warning" title="2 limits approaching">
+<Stat label="Concentration Limit" value="42%" note="Technology sector (limit: 45%)" icon="warning" tone="warning" />
+<Stat label="Leverage Ratio" value="2.8x" note="Max allowed: 3.0x" icon="warning" tone="warning" />
+</Callout>
+</Card>
+
+<Card title="Market Headlines">
+<Columns>
+<Stat label="Fed holds rates steady" value="Neutral" icon="newspaper" tone="neutral" note="2 min ago" />
+<Stat label="Tech sector surges on AI earnings" value="Bullish" icon="newspaper" tone="success" note="15 min ago" />
+<Stat label="Oil prices drop 3% on supply news" value="Bearish" icon="newspaper" tone="danger" note="30 min ago" />
+</Columns>
+</Card>
+
+<Card title="Economic Releases This Week">
+| Day | Release | Expected | Previous |
+|---|---|---|---|
+| Mon | CPI (MoM) | +0.3% | +0.2% |
+| Tue | PPI (YoY) | +2.1% | +1.9% |
+| Wed | Fed Minutes | - | - |
+| Thu | Jobless Claims | 220K | 215K |
+| Fri | Retail Sales | +0.4% | +0.3% |
+</Card>
+
+<Card title="Rebalance Portfolio">
+<Form name="rebalance">
+<Select label="Target allocation" options="Current weights | Equal weight | Risk parity | Custom" name="target" />
+<Slider label="Rebalance threshold" min="1" max="10" step="0.5" value="3" name="threshold" unit="%" />
+<Button>Preview rebalance</Button>
+<Button variant="secondary">Execute rebalance</Button>
+</Form>
+</Card>
+
+<Card title="Place Order">
+<Form name="place-order">
+<Input label="Ticker" placeholder="e.g. AAPL" name="ticker" required />
+<Radio label="Side" options="Buy | Sell" name="side" value="Buy" />
+<Input label="Quantity" type="number" placeholder="100" name="quantity" required />
+<Select label="Order type" options="Market | Limit | Stop | Stop Limit" name="order-type" />
+<Input label="Limit price" type="number" placeholder="Optional for market orders" name="limit-price" />
+<Button>Place order</Button>
+<Button variant="secondary">Preview order</Button>
+</Form>
+</Card>
+
+<Card title="Timeframe">
+<Radio label="View period" options="1D | 1W | 1M | 3M | 6M | 1Y | YTD | All" name="timeframe" value="1D" />
+<Button variant="secondary">Apply</Button>
+</Card>
+
+<FollowUps>
+- Show me the portfolio breakdown by sector
+- What's the current drawdown for the Momentum strategy?
+- Place a market order to buy 500 shares of NVDA
+- Which risk limits are closest to breach?
+- Rebalance to equal weight across all positions
+</FollowUps>

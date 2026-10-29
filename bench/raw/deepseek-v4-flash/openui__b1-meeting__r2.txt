@@ -1,0 +1,20 @@
+root = Card([header, meetingCard, attendeesCard, actions], "card", "column", "l")
+header = CardHeader("Up next", "A quick look at what's on your calendar")
+meetingCard = Card([meetingMeta, meetingTitle, meetingTime], "sunk")
+meetingMeta = Tag("Starts in 12 min", "clock", "sm", "success")
+meetingTitle = Heading("Quarterly Product Sync", "h3")
+meetingTime = TextContent("Today, 10:30 AM – 11:00 AM", "large")
+attendeesCard = Card([attendeesTitle, attendeeList], "sunk")
+attendeesTitle = Heading("Attendees (4)", "h4")
+attendeeList = ListBlock([att1, att2, att3, att4], "image")
+att1 = ListItem("Ava Chen", "Product Designer", [avaImg])
+att2 = ListItem("Marcus Rivera", "Engineering Lead", [marImg])
+att3 = ListItem("Sofia Patel", "Marketing Manager", [sofImg])
+att4 = ListItem("Jon Bell", "Data Analyst", [jonImg])
+avaImg = "https://i.pravatar.cc/100?img=5"
+marImg = "https://i.pravatar.cc/100?img=12"
+sofImg = "https://i.pravatar.cc/100?img=47"
+jonImg = "https://i.pravatar.cc/100?img=59"
+actions = Buttons([joinBtn, laterBtn])
+joinBtn = Button("Join call", null, "primary", null, "large")
+laterBtn = Button("Snooze 5 min", null, "secondary")

@@ -1,0 +1,109 @@
+<Card title="Lesson 4: Advanced React Patterns" subtitle="Module 3 • 18 min remaining">
+<Video src="https://example.com/lesson-4-advanced-patterns.mp4" poster="https://example.com/thumbnails/lesson-4.jpg" title="Advanced React Patterns" caption="Learn compound components, render props, and custom hooks" />
+</Card>
+
+<Card title="Lesson Notes">
+<Tabs>
+<Tab title="Key Concepts">
+## Compound Components
+Components that work together implicitly, sharing state without explicit props.
+
+```jsx
+<Select>
+  <Select.Trigger />
+  <Select.Options>
+    <Select.Option value="a" />
+    <Select.Option value="b" />
+  </Select.Options>
+</Select>
+```
+
+## Render Props
+A technique for sharing logic via a prop that's a function.
+
+```jsx
+<DataProvider render={data => (
+  <Component data={data} />
+)} />
+```
+
+## Custom Hooks
+Extract stateful logic into reusable functions.
+
+```jsx
+function useLocalStorage(key, initial) {
+  const [value, setValue] = useState(() => 
+    JSON.parse(localStorage.getItem(key)) ?? initial
+  );
+  // ...
+  return [value, setValue];
+}
+```
+</Tab>
+<Tab title="Code Examples">
+## Complete Example: Toggle Compound Component
+
+```jsx
+function Toggle({ children }) {
+  const [on, setOn] = useState(false);
+  return (
+    <ToggleContext.Provider value={{ on, toggle: () => setOn(o => !o) }}>
+      {children}
+    </ToggleContext.Provider>
+  );
+}
+
+Toggle.Button = function ToggleButton({ children }) {
+  const { on, toggle } = useContext(ToggleContext);
+  return <button onClick={toggle} aria-pressed={on}>{children}</button>;
+};
+
+Toggle.Status = function ToggleStatus({ children }) {
+  const { on } = useContext(ToggleContext);
+  return <span>{children(on ? 'ON' : 'OFF')}</span>;
+};
+```
+
+Usage:
+```jsx
+<Toggle>
+  <Toggle.Button>Enable</Toggle.Button>
+  <Toggle.Status>Status: </Toggle.Status>
+</Toggle>
+```
+</Tab>
+<Tab title="Resources">
+- [React Docs: Composition vs Inheritance](https://react.dev/learn/composition-vs-inheritance)
+- [Kent C. Dodds: Compound Components](https://kentcdodds.com/blog/compound-components-with-react-hooks)
+- [React Hooks Cheatsheet](/resources/hooks-cheatsheet.pdf)
+- [TypeScript Generics for Hooks](/resources/ts-generics.md)
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Up Next">
+<Columns>
+<Column>
+<Avatar name="Lesson 5" src="https://example.com/thumbnails/lesson-5.jpg" subtitle="Module 3 • 22 min" />
+</Column>
+<Column>
+### Lesson 5: Testing React Components
+**Testing Library, Vitest, and component testing strategies**
+
+<Progress value={0} max={100} label="Not started" tone="neutral" />
+</Column>
+</Columns>
+<Button variant="primary" size="large">Continue to Lesson 5</Button>
+<Button variant="secondary">View full curriculum</Button>
+</Card>
+
+<Card title="Progress">
+<Columns>
+<Column>
+<Switch label="Mark lesson as complete" name="lesson-4-complete" value={false} hint="Your progress will be saved automatically" />
+</Column>
+<Column>
+<Stat label="Module progress" value="4 of 8 lessons" change="50%" tone="info" />
+</Column>
+</Columns>
+</Card>

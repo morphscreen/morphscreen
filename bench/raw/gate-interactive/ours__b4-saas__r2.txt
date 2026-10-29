@@ -1,0 +1,112 @@
+# Admin Overview
+
+<Card subtitle="Select a range to refresh all metrics">
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Year to date" value="Last 30 days" />
+</Card>
+
+<Columns>
+<Card>
+<Stat label="Monthly Recurring Revenue" value="$127,400" change="+12.3% vs last month" tone="success" icon="currency-usd" />
+</Card>
+<Card>
+<Stat label="Annual Recurring Revenue" value="$1.53M" change="+14.1% vs last year" tone="success" icon="currency-usd" />
+</Card>
+<Card>
+<Stat label="Churn This Month" value="2.1%" change="-0.4 pp vs last month" tone="success" icon="chart-line-down" />
+</Card>
+<Card>
+<Stat label="Current NPS" value="62" change="+5 vs last quarter" tone="success" icon="users" />
+</Card>
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 12 |
+| W2 | 18 |
+| W3 | 15 |
+| W4 | 22 |
+| W5 | 28 |
+| W6 | 25 |
+| W7 | 31 |
+| W8 | 35 |
+| W9 | 33 |
+| W10 | 38 |
+| W11 | 42 |
+| W12 | 40 |
+| W13 | 45 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Free | 1,240 |
+| Starter | 890 |
+| Professional | 445 |
+| Enterprise | 67 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress label="Overall utilization" value="78" max="100" tone="info" />
+<Progress label="Starter plan" value="65" max="100" tone="neutral" />
+<Progress label="Professional plan" value="82" max="100" tone="success" />
+<Progress label="Enterprise plan" value="91" max="100" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Rank | Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|---|
+| 1 | Acme Corp | Enterprise | 240 | $12,000 | Active |
+| 2 | Globex Inc | Enterprise | 180 | $9,000 | Active |
+| 3 | Wayne Enterprises | Enterprise | 150 | $7,500 | Active |
+| 4 | Stark Industries | Professional | 85 | $4,250 | Active |
+| 5 | Umbrella Corp | Enterprise | 120 | $6,000 | At Risk |
+| 6 | Cyberdyne Systems | Professional | 70 | $3,500 | Active |
+| 7 | Tyrell Corp | Professional | 65 | $3,250 | Active |
+| 8 | Weyland-Yutani | Enterprise | 95 | $4,750 | Active |
+| 9 | Oscorp | Starter | 40 | $1,200 | Active |
+| 10 | Massive Dynamic | Professional | 55 | $2,750 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Customer | Plan | Seats | Risk Reason | Health Score | Last Login |
+|---|---|---|---|---|---|
+| Umbrella Corp | Enterprise | 120 | Low feature adoption (12%) | 28/100 | 14 days ago |
+| Hooli Inc | Professional | 45 | Failed payment ×2 | 35/100 | 8 days ago |
+| Pied Piper | Starter | 12 | No activity 30+ days | 15/100 | 34 days ago |
+| Dunder Mifflin | Professional | 38 | Support tickets ↑ 300% | 42/100 | 3 days ago |
+| Initech | Starter | 8 | Champion left company | 31/100 | 11 days ago |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed On | Attempts | Next Retry | Action |
+|---|---|---|---|---|---|
+| Hooli Inc | $2,250 | Oct 15 | 2 | Oct 18 | <Button size="small" variant="primary">Retry</Button> |
+| Dunder Mifflin | $1,900 | Oct 14 | 1 | Oct 17 | <Button size="small" variant="primary">Retry</Button> |
+| Initech | $240 | Oct 13 | 3 | Oct 19 | <Button size="small" variant="primary">Retry</Button> |
+| Pied Piper | $360 | Oct 12 | 2 | Oct 18 | <Button size="small" variant="primary">Retry</Button> |
+| Vandelay Industries | $550 | Oct 11 | 1 | Oct 17 | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="Newest Feature Adoption">
+| Feature | Launched | Users Adopted | Adoption Rate | Trend |
+|---|---|---|---|---|
+| AI Insights | Sep 15 | 1,240 | 38% | ↗ +8% |
+| Team Workspaces | Aug 28 | 890 | 27% | ↗ +12% |
+| Advanced Analytics | Aug 10 | 2,100 | 64% | ↗ +5% |
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="admin@company.com" required="true" hint="They'll receive an invite link valid for 7 days" />
+<Select label="Role" name="role" options="Admin | Owner | Viewer" value="Admin" required="true" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

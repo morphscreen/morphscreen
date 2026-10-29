@@ -1,0 +1,101 @@
+# Personal Banking Home
+
+<Card title="Good morning, Alex" subtitle="Here's your money at a glance">
+<Columns>
+<Stat label="Checking" value="$4,280.50" change="+$1,240 this month" icon="bank" />
+<Stat label="Savings" value="$12,845.75" change="+3.2% APY" icon="piggy-bank" />
+<Stat label="Credit" value="$1,920.10" change="$8,079.90 available" icon="credit-card" />
+<Stat label="Credit score" value="742" change="+12 pts" tone="success" icon="chart-line" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Recent transactions" subtitle="Last 7 days">
+| Date | Merchant | Amount |
+|---|---|---|
+| Today | Whole Foods Market | -$86.42 |
+| Yesterday | Shell Gas Station | -$52.30 |
+| Yesterday | Netflix | -$15.99 |
+| Mar 3 | Amazon | -$124.87 |
+| Mar 3 | Salary – Acme Corp | +$3,200.00 |
+| Mar 2 | Starbucks | -$6.75 |
+| Mar 2 | City Utilities | -$98.40 |
+
+<Callout tone="warning" title="Dispute a transaction">
+<Button variant="secondary" size="small">Dispute the Amazon charge</Button>
+</Callout>
+</Card>
+
+<Card title="Spending this month" subtitle="By category">
+<Chart type="donut" title="March spending" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 620 |
+| Dining | 340 |
+| Transport | 210 |
+| Utilities | 198 |
+| Entertainment | 145 |
+| Shopping | 280 |
+| Other | 120 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Bills due soon">
+| Bill | Due date | Amount | Status |
+|---|---|---|---|
+| Electricity | Mar 12 | $98.40 | <Badge tone="warning">Due in 5 days</Badge> |
+| Internet | Mar 15 | $64.99 | <Badge tone="neutral">Upcoming</Badge> |
+| Rent | Apr 1 | $1,850.00 | <Badge tone="neutral">Scheduled</Badge> |
+| Credit card | Mar 18 | $1,920.10 | <Badge tone="danger">Minimum $35</Badge> |
+</Card>
+
+<Card title="Vacation savings goal" subtitle="Hawaii trip — December">
+<Progress value="18450" max="25000" label="$18,450 of $25,000 saved" tone="info" />
+<p>You're 74% there. Add <strong>$500</strong> to reach your monthly target.</p>
+<Button variant="secondary" size="small">Add to goal</Button>
+</Card>
+</Columns>
+
+<Card title="Move money between accounts">
+<Form name="transfer">
+<Select label="From" options="Checking (•••• 4821) | Savings (•••• 9034) | Credit (•••• 7712)" placeholder="Select account" />
+<Select label="To" options="Checking (•••• 4821) | Savings (•••• 9034) | Credit (•••• 7712)" placeholder="Select account" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" hint="Maximum $10,000 per transfer" />
+<Radio label="When" options="Now | Scheduled" value="Now" />
+<Button>Transfer funds</Button>
+</Form>
+</Card>
+
+<Card title="Manage your accounts">
+<Tabs>
+<Tab title="Credit line">
+<Radio label="Freeze credit line" options="Unfrozen | Frozen" value="Unfrozen" hint="Freezing blocks new purchases and cash advances" />
+<Button variant="danger" size="small">Freeze credit line</Button>
+<Callout tone="info" title="What freezing does">Your recurring payments and refunds still go through. You can unfreeze anytime.</Callout>
+</Tab>
+<Tab title="Statement period">
+<Select label="Statement cycle" options="1st – end of month | 5th – 4th of next month | 10th – 9th of next month | 15th – 14th of next month" placeholder="Choose cycle" hint="Changes take effect next billing cycle" />
+<Button variant="secondary" size="small">Save statement period</Button>
+</Tab>
+<Tab title="Alerts">
+<Checkboxes label="Alert me when…" options="Balance below $500 | Large purchase over $500 | Payment due in 3 days | Card used online | Foreign transaction | Credit score changes | Transfer completed | Statement available" value="Balance below $500 | Large purchase over $500 | Payment due in 3 days" hint="Choose any combination" />
+<Select label="Alert channel" options="Push notification | Email | SMS text | All channels" placeholder="Choose channel" />
+<Button variant="secondary" size="small">Save alert settings</Button>
+</Tab>
+<Tab title="Dispute a transaction">
+<Select label="Transaction to dispute" options="Amazon – $124.87 (Mar 3) | Shell Gas Station – $52.30 (Mar 2) | Netflix – $15.99 (Yesterday) | Other" placeholder="Select transaction" />
+<Radio label="Reason" options="I didn't make this charge | Wrong amount | Charged twice | Item/service not received | Other" />
+<TextArea label="Details" placeholder="Tell us what happened…" rows="3" required="true" />
+<Button variant="primary" size="small">Submit dispute</Button>
+</Card>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show my upcoming scheduled transfers
+- What's my credit utilization ratio?
+- Help me set a monthly budget
+- Compare savings account interest rates
+</FollowUps>

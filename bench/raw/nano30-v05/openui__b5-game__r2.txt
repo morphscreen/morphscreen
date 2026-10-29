@@ -1,0 +1,1266 @@
+We need to produce a single screen (root = Card(...)) that includes all items 1-16. Must define components, ensure each defined variable is referenced. Must follow syntax: each statement on its own line, root first. Use positional arguments only.
+
+We need to think about components that fit each item.
+
+1. players online right now -> maybe a TextContent or CardHeader with a number? Could use TextContent or maybe a Badge? Use TextContent with size? Or maybe a CardHeader with title "Online Players" and a TextContent showing number. Let's define onlinePlayersText = TextContent("12,345", "large").
+
+But we need to show "players online right now". Could be a CardHeader with title and a TextContent. Let's create headerOnline = CardHeader("Players Online", "Now"). Then onlinePlayers = TextContent("12,345", "large").
+
+2. daily and monthly active players -> maybe a Table with two rows? Or a Card with two items. Could use a ListBlock? Better to use a Table with columns: "Metric", "Value". Define kpiDaily = Col("Daily Active", ["DAU"]). kpiMonthly = Col("Monthly Active", ["MAU"]). But need data arrays. Let's define dailyActiveValue = Col("Value", ["8,500"]). monthlyActiveValue = Col("Value", ["30,000"]). Then dailyActiveCol = Col("Daily Active", ["DAU", "8,500"]). Wait table columns: each Col has label and data array. So we need two columns: one for metric name, one for value. Actually Table(columns: (Col)[]). Each Col has label and data array. So we could have columns: "Metric", "Value". Then rows: "Daily Active" -> value 8500, "Monthly Active" -> value 30000. But that's only one row per metric? Actually each row is a value per column. Table is column-oriented: each column holds a data array; each row corresponds to index across columns. So we need same number of values per column. Simpler: use a ListBlock with items (ListItem) each containing metric and value. Or use a Card with two TextContent items.
+
+Let's use a ListBlock items: dailyActiveItem = ListItem("Daily Active", "8,500"). monthlyActiveItem = ListItem("Monthly Active", "30,000"). Then dailyList = ListBlock([dailyActiveItem, monthlyActiveItem], "number").
+
+3. revenue today -> maybe a TextContent showing "$128,400". Or a Badge. Let's use TextContent("Revenue Today: $128,400", "large").
+
+4. revenue per user -> maybe a TextContent "Avg Rev per User: $10.3". Or a Badge. Use TextContent.
+
+5. session length over past two weeks -> maybe a LineChart. Use LineChart with labels "Week1" to "Week2" (14 days). Series values. We need data: maybe series values for each day. Let's define sessionLengthSeries = Series("Session Length (hrs)", [2.5, 2.8, 3.0, 3.2, 3.1, 3.3, 3.5, 3.4, 3.6, 3.8, 4.0, 4.2, 4.1, 4.0]). Then lineChart = LineChart(["Day1","Day2","Day3","Day4","Day5","Day6","Day7","Day8","Day9","Day10","Day11","Day12","Day13","Day14"], sessionLengthSeries). But need series as Series object.
+
+6. best-selling items with units for each -> maybe a Table with columns: Item, Units. Use Table. Define itemNames = Col("Item", ["Sword", "Shield", "Potion"]). units = Col("Units", [150, 80, 200]). Then table = Table([itemNames, units], "sunk"?). Actually Table signature: Table(columns: (Col)[]). So we need two Col objects. Let's define bestSellItems = Table([itemNameCol, unitsCol]). But we need to define itemNameCol = Col("Item", ["Sword","Shield","Potion"]). unitsCol = Col("Units", [150,80,200]). Then bestSellTable = Table([itemNameCol, unitsCol]).
+
+7. each server region and its health -> maybe a ListBlock with items showing region name and health status (maybe a Badge). Could use ListBlock items: regionHealthItems = ListBlock([...]). Define regionHealthItem = ListItem("US West", "Healthy", "good"). But need to show health maybe as a Tag. Use ListItem with title and subtitle and maybe a Tag. Let's define regionHealthList = ListBlock([regionHealthItem1, regionHealthItem2, ...], "image"? Not needed. Let's just use ListBlock items with ListItem.
+
+We need multiple server regions, maybe 3: US West, EU Central, ASIA South. Health status could be "Healthy", "Degraded", "Critical". Represent health via Badge (color). Use Badge component.
+
+Define badgeUS = Badge("US West", "sm", "success")? But Badge signature: Badge(text: string, variant?: ...). It doesn't have health indicator. Maybe use Tag with color. Tag signature: Tag(text, icon?, size?, variant?). Use Tag("US West", null, "sm", "success") to indicate health. Or use TextCallout? Simpler: use ListItem with title and a Tag component as subtitle. But ListItem signature: title, subtitle?, image?, actionLabel?. So we can embed a Tag as part of subtitle? Not directly. Maybe use ListItem with title and subtitle being the health status text. Or use a CardHeader for each region. Let's just use ListItem with title region name, subtitle health status. Then list block.
+
+Define regionHealthItems = ListBlock([regionItemUS, regionItemEU, regionItemASIA], "number").
+
+regionItemUS = ListItem("US West", "Healthy"). regionItemEU = ListItem("EU Central", "Degraded"). regionItemASIA = ListItem("ASIA South", "Critical").
+
+But health status maybe color-coded. Could use Badge inside ListItem? Not allowed. ListItem subtitle is string. So just text.
+
+8. crash rate by app version -> maybe a Table with columns: Version, Crash Rate. Define versionCol = Col("Version", ["v1.0","v1.1","v1.2"]). crashRateCol = Col("Crash Rate", [0.5, 1.2, 0.8]). Then crashTable = Table([versionCol, crashRateCol]).
+
+9. live events running and upcoming -> maybe a ListBlock with items: runningEvent and upcomingEvent. Use ListItem.
+
+Define liveEventsList = ListBlock([eventRunningItem, eventUpcomingItem], "number").
+
+eventRunningItem = ListItem("Live Event: Summer Festival", "Ongoing"). eventUpcomingItem = ListItem("Upcoming Event: Halloween Bash", "Oct 31").
+
+10. player reports awaiting review -> maybe a ListBlock with items. Define reportList = ListBlock([reportItem1, reportItem2], "number").
+
+reportItem = ListItem("Report #1234: Cheating", "Pending").
+
+11. ban appeals awaiting review -> similar list.
+
+Define banAppealList = ListBlock([appealItem1, appealItem2], "number").
+
+appealItem = ListItem("Appeal #5678: Name Change", "Pending").
+
+12. in-game currency inflation -> maybe a TextCallout with variant info. Or a Badge. Use TextCallout.
+
+Define inflationCallout = TextCallout("Inflation", "Currency value down 12% this month", "info").
+
+13. results of the two running experiments -> maybe a Card with two items: experiment results. Could use ListBlock or Card. Let's use Card with two TextContent items.
+
+Define experimentResults = Card([expResult1, expResult2], "card").
+
+expResult1 = TextContent("Experiment A: 5% increase in retention", "default").
+
+expResult2 = TextContent("Experiment B: 3% increase in purchase conversion", "default").
+
+14. a way to draft patch notes -> maybe a Button that triggers a form or a TextArea. Could be a Button "Draft Patch Notes". Or a Form with a TextArea. Let's create a Button "Draft Patch Notes". But need a way to draft; maybe a Form with a TextArea for notes and a submit button. Let's create a Form "patch-notes-form" with a TextArea field and a Button.
+
+Define patchNotesForm = Form("patch-notes", formPatchButtons, [patchNotesField]).
+
+patchNotesField = FormControl("Patch Notes", patchNotesArea).
+
+patchNotesArea = TextArea("notes", "Describe changes", 4, [], ""). But need rules? maybe none.
+
+patchNotesButtons = Buttons([submitPatchBtn, cancelPatchBtn]).
+
+submitPatchBtn = Button("Submit", null, "primary").
+
+cancelPatchBtn = Button("Cancel", null, "secondary").
+
+But we need to ensure the Form is referenced in root children.
+
+15. a way to focus on one region -> maybe a Button "Focus Region". Or a ListBlock with region selection. Could use a Button that triggers something. Let's create a Button "Focus Region". But need a way, maybe a ListBlock with region names that can be clicked. Could be a ListBlock items: regionFocusItems.
+
+Define regionFocusList = ListBlock([regionFocusItemUS, regionFocusItemEU, regionFocusItemASIA], "number").
+
+regionFocusItemUS = ListItem("US West", "Click to focus").
+
+But maybe better to use a Button that opens a Drawer with region selection. However we need a way to focus on one region; maybe a Button "Focus Region" that opens a Drawer with region list. Let's create a DrawerBlock.
+
+drawerTrigger = Button("Focus Region", null, "secondary").
+
+drawerContent = DrawerBlock("Region Selector", "Select region to focus", null, [regionSelectionList]).
+
+regionSelectionList = ListBlock([regionSelectItemUS, regionSelectItemEU, regionSelectItemASIA], "number").
+
+regionSelectItemUS = ListItem("US West", "Select").
+
+regionSelectItemEU = ListItem("EU Central", "Select").
+
+regionSelectItemASIA = ListItem("ASIA South", "Select").
+
+But DrawerBlock requires content param as array of components. So we need to embed the ListBlock inside.
+
+16. a way to ship a hotfix -> maybe a Button "Ship Hotfix". Or a Form to submit hotfix. Let's create a Button "Ship Hotfix". But maybe need a Form with fields for version and description. Let's create a Form "hotfix-form" with a TextInput and a Button.
+
+Define hotfixForm = Form("hotfix", formHotfixButtons, [hotfixVersionField, hotfixDescField]).
+
+hotfixVersionField = FormControl("Version", hotfixVersionInput).
+
+hotfixVersionInput = Input("version", "1.2.3", "text").
+
+hotfixDescField = FormControl("Description", hotfixDescArea).
+
+hotfixDescArea = TextArea("description", "Brief description of hotfix", 2, [], "").
+
+hotfixButtons = Buttons([shipHotfixBtn, cancelHotfixBtn]).
+
+shipHotfixBtn = Button("Ship Hotfix", null, "primary").
+
+cancelHotfixBtn = Button("Cancel", null, "secondary").
+
+Now root children list must include all components in reading order.
+
+We need to ensure every defined variable is referenced in root children list (directly or via parent). Let's enumerate defined variables:
+
+- root (Card)
+- headerOnline (CardHeader)
+- onlinePlayers (TextContent)
+- dailyActiveList (ListBlock) maybe dailyActiveItem, monthlyActiveItem but we can just define dailyActiveList directly.
+- dailyActiveList (ListBlock)
+- revenueTodayText (TextContent)
+- revenuePerUserText (TextContent)
+- sessionLengthSeries (Series)
+- sessionLengthChart (LineChart)
+- bestSellItems (Table) (maybe bestSellTable)
+- serverRegionList (ListBlock) with region items
+- crashTable (Table)
+- liveEventsList (ListBlock)
+- playerReportsList (ListBlock)
+- banAppealsList (ListBlock)
+- inflationCallout (TextCallout)
+- experimentResultsCard (Card)
+- experimentResult1 (TextContent)
+- experimentResult2 (TextContent)
+- patchNotesButton (Button) maybe patchNotesSubmitBtn? Actually we need a button to draft patch notes, maybe a Button "Draft Patch Notes". Let's define draftPatchNotesBtn = Button("Draft Patch Notes", null, "primary").
+
+But we also need a form for patch notes; we can embed that after the button or as separate component. Let's include patchNotesForm.
+
+- patchNotesForm (Form)
+- patchNotesField (FormControl)
+- patchNotesArea (TextArea)
+- patchNotesButtons (Buttons)
+- patchNotesSubmitBtn (Button)
+- patchNotesCancelBtn (Button)
+
+- hotfixForm (Form)
+- hotfixVersionInput (Input)
+- hotfixDescArea (TextArea)
+- hotfixButtons (Buttons)
+- shipHotfixBtn (Button)
+- cancelHotfixBtn (Button)
+
+- regionFocusButton (Button) maybe "Focus Region". Let's define focusRegionButton = Button("Focus Region", null, "secondary").
+
+- regionDrawer (DrawerBlock)
+
+- regionSelectionList (ListBlock) with items.
+
+Now we need to ensure each variable is referenced in root children list. Let's decide root children order.
+
+Reading order likely: header, online players, daily active, revenue, session length chart, best sellers, server regions, crash rate, live events, player reports, ban appeals, inflation, experiment results, patch notes draft (button), region focus (button + drawer), hotfix (button + form).
+
+But we also need to include all defined components. Let's construct root children list.
+
+First, we need header components: maybe CardHeader "Live Ops Dashboard". Let's define headerTitle = CardHeader("Live Ops Dashboard", "Key Metrics").
+
+Then online players: maybe a Card with header and text. Or just a TextContent with title. Let's create a Card for online players: onlineCard = Card([headerOnline, onlinePlayers], "card", "row", "m", "align", "start").
+
+But headerOnline is CardHeader, onlinePlayers is TextContent. That's fine.
+
+Similarly, daily active: maybe a Card with header "Daily & Monthly Active". Let's define dailyHeader = CardHeader("Active Players", "DAU/MAU"). dailyCard = Card([dailyHeader, dailyActiveList], "card", "row", "m").
+
+Revenue today: maybe a Card with header "Revenue". revenueCard = Card([revenueHeader, revenueTodayText], "card", "row", "m").
+
+Revenue per user: maybe a Card with header "Revenue per User". revPerUserCard = Card([revPerUserHeader, revenuePerUserText], "card", "row", "m").
+
+Session length chart: maybe a Card with header "Session Length". sessionCard = Card([sessionHeader, sessionLengthChart], "card", "row", "m").
+
+Best-selling items: maybe a Card with header "Top Sellers". bestSellersCard = Card([bestSellersHeader, bestSellTable], "card", "row", "m").
+
+Server region health: maybe a Card with header "Server Health". regionCard = Card([regionHeader, serverRegionList], "card", "row", "m").
+
+Crash rate: maybe a Card with header "Crash Rate". crashCard = Card([crashHeader, crashTable], "card", "row", "m").
+
+Live events: maybe a Card with header "Live Events". eventsCard = Card([eventsHeader, liveEventsList], "card", "row", "m").
+
+Player reports: maybe a Card with header "Player Reports". reportsCard = Card([reportsHeader, playerReportsList], "card", "row", "m").
+
+Ban appeals: maybe a Card with header "Ban Appeals". appealsCard = Card([appealsHeader, banAppealsList], "card", "row", "m").
+
+Inflation callout: maybe a Callout component. Let's define inflationCalloutComponent = Callout("info", "In-Game Currency Inflation", "Currency value down 12% this month").
+
+Live events header maybe "Live Events". Use CardHeader.
+
+Player reports header: CardHeader.
+
+Ban appeals header: CardHeader.
+
+Inflation: maybe just a Callout placed directly; no card needed.
+
+Experiment results: maybe a Card with header "Experiment Results". expCard = Card([expHeader, experimentResult1, experimentResult2], "card", "row", "m").
+
+Patch notes draft: maybe a Card with header "Patch Notes". patchNotesCard = Card([patchNotesHeader, draftPatchNotesBtn, patchNotesForm], "card", "row", "m").
+
+Region focus: maybe a Card with header "Region Focus". regionFocusCard = Card([focusHeader, focusRegionButton, regionDrawer], "card", "row", "m").
+
+Hotfix: maybe a Card with header "Hotfix". hotfixCard = Card([hotfixHeader, hotfixForm, shipHotfixBtn], "card", "row", "m").
+
+Now ensure root children list includes all these cards in reading order.
+
+But we also need to ensure each defined variable is referenced in root children list. Let's list all defined variables and see if they are referenced:
+
+- root (Card) - defined as root = Card([...]) - will reference all children.
+
+- headerOnline (CardHeader) - referenced in onlineCard.
+
+- onlinePlayers (TextContent) - referenced in onlineCard.
+
+- dailyHeader (CardHeader) - referenced in dailyCard.
+
+- dailyActiveList (ListBlock) - referenced in dailyCard.
+
+- dailyActiveList items maybe defined as ListItem but we need to define them. Let's define dailyActiveItem and monthlyActiveItem as ListItem, then dailyActiveList = ListBlock([dailyActiveItem, monthlyActiveItem]).
+
+- revenueHeader (CardHeader) - referenced in revenueCard.
+
+- revenueTodayText (TextContent) - referenced in revenueCard.
+
+- revPerUserHeader (CardHeader) - referenced in revPerUserCard.
+
+- revenuePerUserText (TextContent) - referenced in revPerUserCard.
+
+- sessionHeader (CardHeader) - referenced in sessionCard.
+
+- sessionLengthChart (LineChart) - referenced in sessionCard.
+
+- sessionLengthSeries (Series) - referenced in sessionLengthChart.
+
+- bestSellersHeader (CardHeader) - referenced in bestSellersCard.
+
+- bestSellTable (Table) - referenced in bestSellersCard.
+
+- serverHeader (CardHeader) - referenced in regionCard.
+
+- serverRegionList (ListBlock) - referenced in regionCard.
+
+- region items maybe defined as ListItem; we need to define them.
+
+- crashHeader (CardHeader) - referenced in crashCard.
+
+- crashTable (Table) - referenced in crashCard.
+
+- eventsHeader (CardHeader) - referenced in eventsCard.
+
+- liveEventsList (ListBlock) - referenced in eventsCard.
+
+- reportsHeader (CardHeader) - referenced in reportsCard.
+
+- playerReportsList (ListBlock) - referenced in reportsCard.
+
+- appealsHeader (CardHeader) - referenced in appealsCard.
+
+- banAppealsList (ListBlock) - referenced in appealsCard.
+
+- inflationCallout (Callout) - maybe referenced directly in root? Could be placed as a component directly; but root children list must include it. Let's include inflationCallout as a direct child of root (maybe after reportsCard). So root children list will include inflationCallout.
+
+- experimentHeader (CardHeader) - referenced in expCard.
+
+- experimentResult1 (TextContent) - referenced in expCard.
+
+- experimentResult2 (TextContent) - referenced in expCard.
+
+- draftPatchNotesBtn (Button) - referenced in patchNotesCard.
+
+- patchNotesForm (Form) - referenced in patchNotesCard.
+
+- patchNotesField (FormControl) - referenced in patchNotesForm.
+
+- patchNotesArea (TextArea) - referenced in patchNotesForm.
+
+- patchNotesButtons (Buttons) - referenced in patchNotesForm.
+
+- patchNotesSubmitBtn (Button) - referenced in patchNotesForm.
+
+- patchNotesCancelBtn (Button) - referenced in patchNotesForm.
+
+- focusRegionButton (Button) - referenced in regionFocusCard.
+
+- regionDrawer (DrawerBlock) - referenced in regionFocusCard.
+
+- regionSelectionList (ListBlock) - referenced in regionDrawer.
+
+- regionSelectItemUS etc. (ListItem) - referenced in regionSelectionList.
+
+- hotfixHeader (CardHeader) - referenced in hotfixCard.
+
+- hotfixForm (Form) - referenced in hotfixCard.
+
+- hotfixVersionInput (Input) - referenced in hotfixForm.
+
+- hotfixDescArea (TextArea) - referenced in hotfixForm.
+
+- hotfixButtons (Buttons) - referenced in hotfixForm.
+
+- shipHotfixBtn (Button) - referenced in hotfixForm.
+
+- cancelHotfixBtn (Button) - referenced in hotfixForm.
+
+Now need to ensure each variable is defined before use (though hoisting allows use before definition). But we need to define each variable on its own line.
+
+We need to ensure each variable is referenced at least once (except root). So we need to include each variable in root children list or in other referenced places.
+
+Potential missing references: dailyActiveItem, monthlyActiveItem, region items, experiment items, etc.
+
+Let's define them.
+
+Define dailyActiveItem = ListItem("Daily Active", "8,500").
+
+Define monthlyActiveItem = ListItem("Monthly Active", "30,000").
+
+Then dailyActiveList = ListBlock([dailyActiveItem, monthlyActiveItem], "number").
+
+Define serverRegion items: regionItemUS = ListItem("US West", "Healthy"). regionItemEU = ListItem("EU Central", "Degraded"). regionItemASIA = ListItem("ASIA South", "Critical").
+
+Then serverRegionList = ListBlock([regionItemUS, regionItemEU, regionItemASIA], "number").
+
+Define experiment items: expResult1 = TextContent("Experiment A: 5% increase in retention", "default").
+
+expResult2 = TextContent("Experiment B: 3% increase in purchase conversion", "default").
+
+Define regionFocus items: regionFocusItemUS = ListItem("US West", "Select").
+
+regionFocusItemEU = ListItem("EU Central", "Select").
+
+regionFocusItemASIA = ListItem("ASIA South", "Select").
+
+regionSelectionList = ListBlock([regionFocusItemUS, regionFocusItemEU, regionFocusItemASIA], "number").
+
+Now ensure all defined variables are referenced in root children list.
+
+Let's outline root children list order:
+
+1. headerTitle (CardHeader) maybe part of root card? Actually root = Card([...]) includes children list. The root card can contain multiple components, maybe we can put headerTitle as first child, then other cards.
+
+But we need root = Card([...]) with children list. The children list should include all components we want displayed. Let's decide order:
+
+- headerTitle (CardHeader) maybe "Live Ops Dashboard". Actually CardHeader is a component; we can put it as a child of root card.
+
+- onlineCard
+
+- dailyCard
+
+- revenueCard
+
+- revPerUserCard
+
+- sessionCard
+
+- bestSellersCard
+
+- regionCard
+
+- crashCard
+
+- eventsCard
+
+- reportsCard
+
+- appealsCard
+
+- inflationCallout (maybe as a Callout component directly, not inside a card)
+
+- experimentCard
+
+- patchNotesCard
+
+- regionFocusCard
+
+- hotfixCard
+
+Potentially also include a separator or something but not needed.
+
+Now ensure each defined variable appears in root children list (directly or via parent). Let's map:
+
+- headerTitle referenced in root (as child). Define headerTitle = CardHeader("Live Ops Dashboard", "Key Metrics").
+
+- onlineCard references onlineCard (which references headerOnline and onlinePlayers). So headerOnline and onlinePlayers are referenced.
+
+- dailyCard references dailyHeader and dailyActiveList. So dailyHeader and dailyActiveList referenced.
+
+- revenueCard references revenueHeader and revenueTodayText. So revenueHeader and revenueTodayText referenced.
+
+- revPerUserCard references revPerUserHeader and revenuePerUserText. So those referenced.
+
+- sessionCard references sessionHeader and sessionLengthChart. sessionLengthChart references sessionLengthSeries. So series referenced.
+
+- bestSellersCard references bestSellersHeader and bestSellTable. So bestSellTable referenced.
+
+- regionCard references regionHeader and serverRegionList. So serverRegionList referenced, and region items referenced via list.
+
+- crashCard references crashHeader and crashTable. So crashTable referenced.
+
+- eventsCard references eventsHeader and liveEventsList. So liveEventsList referenced.
+
+- reportsCard references reportsHeader and playerReportsList. So playerReportsList referenced.
+
+- appealsCard references appealsHeader and banAppealsList. So banAppealsList referenced.
+
+- inflationCallout referenced directly; need to define it.
+
+- experimentCard references expHeader, expResult1, expResult2. So those referenced.
+
+- patchNotesCard references patchNotesHeader, draftPatchNotesBtn, patchNotesForm. patchNotesForm references patchNotesField, patchNotesArea, patchNotesButtons, patchNotesSubmitBtn, patchNotesCancelBtn. So all those referenced.
+
+- regionFocusCard references focusRegionButton, regionDrawer. regionDrawer references regionSelectionList, which references regionFocusItemUS etc. So all referenced.
+
+- hotfixCard references hotfixHeader, hotfixForm, shipHotfixBtn. hotfixForm references hotfixVersionInput, hotfixDescArea, hotfixButtons, shipHotfixBtn, cancelHotfixBtn. So all referenced.
+
+Now we need to ensure we have defined all variables. Let's list all definitions we need to write:
+
+- root = Card([...]) - the big list.
+
+- headerTitle = CardHeader("Live Ops Dashboard", "Key Metrics")
+
+- headerOnline = CardHeader("Players Online", "Now")
+
+- onlinePlayers = TextContent("12,345", "large") (maybe size "large").
+
+- onlineCard = Card([headerOnline, onlinePlayers], "card", "row", "m", "align", "start")
+
+- dailyHeader = CardHeader("Active Players", "DAU/MAU")
+
+- dailyActiveItem = ListItem("Daily Active", "8,500")
+
+- monthlyActiveItem = ListItem("Monthly Active", "30,000")
+
+- dailyActiveList = ListBlock([dailyActiveItem, monthlyActiveItem], "number")
+
+- dailyCard = Card([dailyHeader, dailyActiveList], "card", "row", "m")
+
+- revenueHeader = CardHeader("Revenue", "Today")
+
+- revenueTodayText = TextContent("Revenue Today: $128,400", "large")
+
+- revenueCard = Card([revenueHeader, revenueTodayText], "card", "row", "m")
+
+- revPerUserHeader = CardHeader("Revenue per User", "Avg Rev/User")
+
+- revenuePerUserText = TextContent("Avg Rev per User: $10.3", "large")
+
+- revPerUserCard = Card([revPerUserHeader, revenuePerUserText], "card", "row", "m")
+
+- sessionHeader = CardHeader("Session Length", "Past 14 Days")
+
+- sessionLengthSeries = Series("Session Length (hrs)", [2.5,2.8,3.0,3.2,3.1,3.3,3.5,3.4,3.6,3.8,4.0,4.2,4.1,4.0])
+
+- sessionLengthChart = LineChart(["Day1","Day2","Day3","Day4","Day5","Day6","Day7","Day8","Day9","Day10","Day11","Day12","Day13","Day14"], sessionLengthSeries, "natural", "Week", "Hours")
+
+- sessionCard = Card([sessionHeader, sessionLengthChart], "card", "row", "m")
+
+- bestSellersHeader = CardHeader("Top Sellers", "Units Sold")
+
+- itemNameCol = Col("Item", ["Sword","Shield","Potion"])
+
+- unitsCol = Col("Units", [150,80,200])
+
+- bestSellTable = Table([itemNameCol, unitsCol])
+
+- bestSellersCard = Card([bestSellersHeader, bestSellTable], "card", "row", "m")
+
+- serverHeader = CardHeader("Server Health", "Region Status")
+
+- regionItemUS = ListItem("US West", "Healthy")
+
+- regionItemEU = ListItem("EU Central", "Degraded")
+
+- regionItemASIA = ListItem("ASIA South", "Critical")
+
+- serverRegionList = ListBlock([regionItemUS, regionItemEU, regionItemASIA], "number")
+
+- regionCard = Card([serverHeader, serverRegionList], "card", "row", "m")
+
+- crashHeader = CardHeader("Crash Rate", "By App Version")
+
+- versionCol = Col("Version", ["v1.0","v1.1","v1.2"])
+
+- crashRateCol = Col("Crash Rate", [0.5,1.2,0.8])
+
+- crashTable = Table([versionCol, crashRateCol])
+
+- crashCard = Card([crashHeader, crashTable], "card", "row", "m")
+
+- eventsHeader = CardHeader("Live Events", "Running & Upcoming")
+
+- eventRunningItem = ListItem("Live Event: Summer Festival", "Ongoing")
+
+- eventUpcomingItem = ListItem("Upcoming Event: Halloween Bash", "Oct 31")
+
+- liveEventsList = ListBlock([eventRunningItem, eventUpcomingItem], "number")
+
+- eventsCard = Card([eventsHeader, liveEventsList], "card", "row", "m")
+
+- reportsHeader = CardHeader("Player Reports", "Awaiting Review")
+
+- reportItem1 = ListItem("Report #1234: Cheating", "Pending")
+
+- reportItem2 = ListItem("Report #5678: Toxicity", "Pending")
+
+- playerReportsList = ListBlock([reportItem1, reportItem2], "number")
+
+- reportsCard = Card([reportsHeader, playerReportsList], "card", "row", "m")
+
+- appealsHeader = CardHeader("Ban Appeals", "Awaiting Review")
+
+- appealItem1 = ListItem("Appeal #5678: Name Change", "Pending")
+
+- appealItem2 = ListItem("Appeal #9012: Harassment", "Pending")
+
+- banAppealsList = ListBlock([appealItem1, appealItem2], "number")
+
+- appealsCard = Card([appealsHeader, banAppealsList], "card", "row", "m")
+
+- inflationCallout = Callout("info", "In-Game Currency Inflation", "Currency value down 12% this month")
+
+- expHeader = CardHeader("Experiment Results", "Current Findings")
+
+- expResult1 = TextContent("Experiment A: 5% increase in retention", "default")
+
+- expResult2 = TextContent("Experiment B: 3% increase in purchase conversion", "default")
+
+- experimentCard = Card([expHeader, expResult1, expResult2], "card", "row", "m")
+
+- draftPatchNotesBtn = Button("Draft Patch Notes", null, "primary")
+
+- patchNotesHeader = CardHeader("Patch Notes", "Draft New Updates")
+
+- patchNotesForm = Form("patch-notes", formPatchButtons, [patchNotesField])
+
+- patchNotesField = FormControl("Patch Notes", patchNotesArea, "We only use this to reply", [], "")
+
+- patchNotesArea = TextArea("notes", "Describe changes", 4, [], "")
+
+- patchNotesButtons = Buttons([patchNotesSubmitBtn, patchNotesCancelBtn])
+
+- patchNotesSubmitBtn = Button("Submit", null, "primary")
+
+- patchNotesCancelBtn = Button("Cancel", null, "secondary")
+
+- patchNotesCard = Card([patchNotesHeader, draftPatchNotesBtn, patchNotesForm], "card", "row", "m")
+
+- focusRegionButton = Button("Focus Region", null, "secondary")
+
+- regionDrawer = DrawerBlock("Region Selector", "Select region to focus", null, [regionSelectionList])
+
+- regionSelectionList = ListBlock([regionFocusItemUS, regionFocusItemEU, regionFocusItemASIA], "number")
+
+- regionFocusItemUS = ListItem("US West", "Select")
+
+- regionFocusItemEU = ListItem("EU Central", "Select")
+
+- regionFocusItemASIA = ListItem("ASIA South", "Select")
+
+- regionFocusCard = Card([focusRegionButton, regionDrawer], "card", "row", "m")
+
+- hotfixHeader = CardHeader("Hotfix", "Deploy Quick Fix")
+
+- hotfixVersionInput = Input("version", "1.2.3", "text")
+
+- hotfixDescArea = TextArea("description", "Brief description of hotfix", 2, [], "")
+
+- hotfixVersionField = FormControl("Version", hotfixVersionInput, "Enter version number", [], "")
+
+- hotfixDescField = FormControl("Description", hotfixDescArea, "Describe the fix", [], "")
+
+- hotfixButtons = Buttons([shipHotfixBtn, cancelHotfixBtn])
+
+- shipHotfixBtn = Button("Ship Hotfix", null, "primary")
+
+- cancelHotfixBtn = Button("Cancel", null, "secondary")
+
+- hotfixForm = Form("hotfix", formHotfixButtons, [hotfixVersionField, hotfixDescField])
+
+- hotfixCard = Card([hotfixHeader, hotfixForm, shipHotfixBtn], "card", "row", "m")
+
+Now root children list: we need to include all these components in reading order. Let's decide order:
+
+1. headerTitle (CardHeader) maybe as top title.
+
+2. onlineCard
+
+3. dailyCard
+
+4. revenueCard
+
+5. revPerUserCard
+
+6. sessionCard
+
+7. bestSellersCard
+
+8. regionCard
+
+9. crashCard
+
+10. eventsCard
+
+11. reportsCard
+
+12. appealsCard
+
+13. inflationCallout (maybe placed after appeals)
+
+14. experimentCard
+
+15. patchNotesCard
+
+16. regionFocusCard
+
+17. hotfixCard
+
+Potential also include a separator or something but not needed.
+
+Now ensure root children list includes all defined components (the ones we referenced). Let's verify each defined variable appears:
+
+- headerTitle: yes.
+
+- onlineCard: yes.
+
+- dailyCard: yes.
+
+- revenueCard: yes.
+
+- revPerUserCard: yes.
+
+- sessionCard: yes.
+
+- bestSellersCard: yes.
+
+- regionCard: yes.
+
+- crashCard: yes.
+
+- eventsCard: yes.
+
+- reportsCard: yes.
+
+- appealsCard: yes.
+
+- inflationCallout: yes.
+
+- experimentCard: yes.
+
+- patchNotesCard: yes.
+
+- regionFocusCard: yes.
+
+- hotfixCard: yes.
+
+Now also need to ensure that all defined variables (including subcomponents) are referenced somewhere. Let's check:
+
+- headerOnline, onlinePlayers: referenced in onlineCard.
+
+- dailyHeader, dailyActiveItem, monthlyActiveItem, dailyActiveList: referenced in dailyCard.
+
+- revenueHeader, revenueTodayText: referenced in revenueCard.
+
+- revPerUserHeader, revenuePerUserText: referenced in revPerUserCard.
+
+- sessionHeader, sessionLengthSeries, sessionLengthChart: referenced in sessionCard.
+
+- bestSellersHeader, itemNameCol, unitsCol, bestSellTable: referenced in bestSellersCard.
+
+- serverHeader, regionItemUS, regionItemEU, regionItemASIA, serverRegionList: referenced in regionCard.
+
+- crashHeader, versionCol, crashRateCol, crashTable: referenced in crashCard.
+
+- eventsHeader, eventRunningItem, eventUpcomingItem, liveEventsList: referenced in eventsCard.
+
+- reportsHeader, reportItem1, reportItem2, playerReportsList: referenced in reportsCard.
+
+- appealsHeader, appealItem1, appealItem2, banAppealsList: referenced in appealsCard.
+
+- inflationCallout: defined, referenced directly in root (we will include it as child of root).
+
+- expHeader, expResult1, expResult2: referenced in experimentCard.
+
+- draftPatchNotesBtn, patchNotesHeader, patchNotesForm, patchNotesField, patchNotesArea, patchNotesButtons, patchNotesSubmitBtn, patchNotesCancelBtn: all referenced in patchNotesCard.
+
+- focusRegionButton, regionDrawer, regionSelectionList, regionFocusItemUS/EU/ASIA: referenced in regionFocusCard.
+
+- hotfixHeader, hotfixVersionInput, hotfixDescArea, hotfixVersionField, hotfixDescField, hotfixButtons, shipHotfixBtn, cancelHotfixBtn, hotfixForm: referenced in hotfixCard.
+
+Now ensure each variable is defined before use. Since we are writing in order, we need to define variables before they are referenced. However due to hoisting, we could define root first, then define all components, but we need to ensure that each variable is defined before root references it? Actually root references components; if we define root first with placeholders (like using variable names that will be defined later), that's okay because hoisting resolves after parsing. But to be safe, we can define root after all components, but the rule says root must be first line for optimal streaming. So we must put root = Card([...]) as first line. Then we can define all other variables after that. The parser will resolve references after reading entire input, so order doesn't matter for correctness, but for streaming, root appears first. So we can define root with placeholder children (like empty list) then define components, then fill root children list. But we need root children list to be complete. Since we can't reference variables that are defined after root if we put root first with empty list, we need to define root after all components? Wait: root = Card([...]) must be first line. But we can put root = Card([]) initially, then later we can't change it. So we need to define root after we have defined all components, but we need to put root line first. How to reconcile? The instruction: "root = Card(...) is the FIRST line (for optimal streaming)." So we must put root line first. But we can define root with children list that references variables that are defined later, because parser resolves after full input. So we can write root = Card([...]) with placeholder list like [] and then later define all components, then maybe edit root? Not possible. Actually we need to write root line first, but we can include the full children list referencing variables that will be defined later. The parser will parse entire input, then resolve references. So we can write root = Card([headerTitle, onlineCard, dailyCard, ...]) all at once after defining all components. But we need root line first, so we need to write root line with the full list, but we need to have defined all those variables before they are referenced. However due to hoisting, the order of definitions doesn't matter; the parser will see all definitions before evaluating root? Actually the parser reads line by line, building symbol table. If root references a variable that hasn't been defined yet, it will be undefined at parse time, causing error. But the language supports hoisting: a reference can be used BEFORE it is defined. So we can define root first with references to variables that will be defined later, and it's okay. So we can write root line first, referencing variables that we will define later. The parser will note the references, then later when it encounters definitions, it will resolve them. So we can safely put root first with full children list referencing all components, even if those components are defined later. That's allowed.
+
+Thus we can write root = Card([...]) as first line, with children list containing all component references. Then we define all components (headerTitle, onlineCard, etc.) in any order after that. That satisfies hoisting.
+
+Now we need to ensure that every variable (except root) is referenced at least once. Our root children list includes many components, so most variables are referenced. But some subcomponents like dailyActiveItem, monthlyActiveItem, regionItemUS etc. are referenced via dailyCard and regionCard respectively, so they are referenced.
+
+Now we need to ensure each statement is on its own line, using =. Also need to ensure arguments are positional, in correct order. For each component call, we need to follow signatures.
+
+Let's verify each component call's arguments order.
+
+- Card(children: (list)[], variant?, direction?, gap?, align?, justify?, wrap?) The signature: Card(children: (TextContent | ...)[], variant?: "card" | "sunk" | "clear", direction?: "row" | "column", gap?: "none" | "xs" | "s" | "m" | "l" | "xl" | "2xl", align?: "start" | "center" | "end" | "stretch" | "baseline", justify?: "start" | "center" | "end" | "between" | "around" | "evenly", wrap?: boolean)
+
+So for onlineCard: Card([headerOnline, onlinePlayers], "card", "row", "m", "align", "start") but we need to match order: after children, variant, direction, gap, align, justify, wrap. Actually signature: Card(children, variant?, direction?, gap?, align?, justify?, wrap?). The order after children is variant, then direction, then gap, then align, then justify, then wrap. So we need to specify variant first. Since we want default "card", we can omit variant (or specify "card"). Let's include variant "card". Then direction "row". Then gap "m". Then align "start". Then justify maybe "start" (default). Then wrap false (default). But we need to provide all arguments in order; optional arguments can be omitted from the end. So we can write: Card([headerOnline, onlinePlayers], "card", "row", "m", "start") — this includes variant, direction, gap, align, and then justify omitted (so default). That's okay.
+
+Check: after align, we have justify, then wrap. Since we omit justify and wrap, they default. That's fine.
+
+Similarly for dailyCard: Card([dailyHeader, dailyActiveList], "card", "row", "m") — variant "card", direction "row", gap "m", align "start" (default). Good.
+
+RevenueCard: Card([revenueHeader, revenueTodayText], "card", "row", "m") — same.
+
+RevPerUserCard: Card([revPerUserHeader, revenuePerUserText], "card", "row", "m") — same.
+
+SessionCard: Card([sessionHeader, sessionLengthChart], "card", "row", "m") — same.
+
+BestSellersCard: Card([bestSellersHeader, bestSellTable], "card", "row", "m") — same.
+
+RegionCard: Card([serverHeader, serverRegionList], "card", "row", "m") — same.
+
+CrashCard: Card([crashHeader, crashTable], "card", "row", "m") — same.
+
+EventsCard: Card([eventsHeader, liveEventsList], "card", "row", "m") — same.
+
+ReportsCard: Card([reportsHeader, playerReportsList], "card", "row", "m") — same.
+
+AppealsCard: Card([appealsHeader, banAppealsList], "card", "row", "m") — same.
+
+ExperimentCard: Card([expHeader, expResult1, expResult2], "card", "row", "m") — same.
+
+PatchNotesCard: Card([patchNotesHeader, draftPatchNotesBtn, patchNotesForm], "card", "row", "m") — same.
+
+RegionFocusCard: Card([focusRegionButton, regionDrawer], "card", "row", "m") — same.
+
+HotfixCard: Card([hotfixHeader, hotfixForm, shipHotfixBtn], "card", "row", "m") — same.
+
+Now need to define each component with correct arguments.
+
+Let's write each definition line.
+
+We need to be careful with list syntax: (TextContent | MarkDownRenderer | ...) means a list of components. In openui-lang, lists are written as [comp1, comp2, ...]. So Card([...]) is correct.
+
+Now define each variable:
+
+- root = Card([...]) — we need to include all children in reading order. Let's decide order:
+
+We'll start with headerTitle (CardHeader) maybe as first child. But CardHeader is not a Card; it's a component. The root Card children list can include any components, including CardHeader. So root children list will be a list of components.
+
+Let's create root children list:
+
+[headerTitle, onlineCard, dailyCard, revenueCard, revPerUserCard, sessionCard, bestSellersCard, regionCard, crashCard, eventsCard, reportsCard, appealsCard, inflationCallout, experimentCard, patchNotesCard, regionFocusCard, hotfixCard]
+
+Make sure order is logical.
+
+Now define each component.
+
+First headerTitle = CardHeader("Live Ops Dashboard", "Key Metrics")
+
+Note: CardHeader signature: CardHeader(title?: string, subtitle?: string). So we need title and subtitle. We'll give title "Live Ops Dashboard", subtitle "Key Metrics". So headerTitle = CardHeader("Live Ops Dashboard", "Key Metrics").
+
+onlineCard = Card([headerOnline, onlinePlayers], "card", "row", "m", "start")
+
+But need to ensure headerOnline and onlinePlayers defined.
+
+headerOnline = CardHeader("Players Online", "Now")
+
+onlinePlayers = TextContent("12,345", "large") — size "large".
+
+dailyHeader = CardHeader("Active Players", "DAU/MAU")
+
+dailyActiveItem = ListItem("Daily Active", "8,500")
+
+monthlyActiveItem = ListItem("Monthly Active", "30,000")
+
+dailyActiveList = ListBlock([dailyActiveItem, monthlyActiveItem], "number")
+
+dailyCard = Card([dailyHeader, dailyActiveList], "card", "row", "m")
+
+revenueHeader = CardHeader("Revenue", "Today")
+
+revenueTodayText = TextContent("Revenue Today: $128,400", "large")
+
+revenueCard = Card([revenueHeader, revenueTodayText], "card", "row", "m")
+
+revPerUserHeader = CardHeader("Revenue per User", "Avg Rev/User")
+
+revenuePerUserText = TextContent("Avg Rev per User: $10.3", "large")
+
+revPerUserCard = Card([revPerUserHeader, revenuePerUserText], "card", "row", "m")
+
+sessionHeader = CardHeader("Session Length", "Past 14 Days")
+
+sessionLengthSeries = Series("Session Length (hrs)", [2.5,2.8,3.0,3.2,3.1,3.3,3.5,3.4,3.6,3.8,4.0,4.2,4.1,4.0])
+
+sessionLengthChart = LineChart(["Day1","Day2","Day3","Day4","Day5","Day5","Day6","Day7","Day8","Day9","Day10","Day11","Day12","Day13","Day14"], sessionLengthSeries, "natural", "Week", "Hours") — Wait we need 14 days; I listed 14 but maybe duplicate Day5. Let's correct: labels should be Day1 to Day14. Let's produce list: ["Day1","Day2","Day3","Day4","Day5","Day6","Day7","Day8","Day9","Day10","Day11","Day12","Day13","Day14"].
+
+sessionLengthChart = LineChart(["Day1","Day2","Day3","Day4","Day5","Day6","Day7","Day8","Day9","Day10","Day11","Day12","Day13","Day14"], sessionLengthSeries, "natural", "Week", "Hours")
+
+sessionCard = Card([sessionHeader, sessionLengthChart], "card", "row", "m")
+
+bestSellersHeader = CardHeader("Top Sellers", "Units Sold")
+
+itemNameCol = Col("Item", ["Sword","Shield","Potion"])
+
+unitsCol = Col("Units", [150,80,200])
+
+bestSellTable = Table([itemNameCol, unitsCol])
+
+bestSellersCard = Card([bestSellersHeader, bestSellTable], "card", "row", "m")
+
+serverHeader = CardHeader("Server Health", "Region Status")
+
+regionItemUS = ListItem("US West", "Healthy")
+
+regionItemEU = ListItem("EU Central", "Degraded")
+
+regionItemASIA = ListItem("ASIA South", "Critical")
+
+serverRegionList = ListBlock([regionItemUS, regionItemEU, regionItemASIA], "number")
+
+regionCard = Card([serverHeader, serverRegionList], "card", "row", "m")
+
+crashHeader = CardHeader("Crash Rate", "By App Version")
+
+versionCol = Col("Version", ["v1.0","v1.1","v1.2"])
+
+crashRateCol = Col("Crash Rate", [0.5,1.2,0.8])
+
+crashTable = Table([versionCol, crashRateCol])
+
+crashCard = Card([crashHeader, crashTable], "card", "row", "m")
+
+eventsHeader = CardHeader("Live Events", "Running & Upcoming")
+
+eventRunningItem = ListItem("Live Event: Summer Festival", "Ongoing")
+
+eventUpcomingItem = ListItem("Upcoming Event: Halloween Bash", "Oct 31")
+
+liveEventsList = ListBlock([eventRunningItem, eventUpcomingItem], "number")
+
+eventsCard = Card([eventsHeader, liveEventsList], "card", "row", "m")
+
+reportsHeader = CardHeader("Player Reports", "Awaiting Review")
+
+reportItem1 = ListItem("Report #1234: Cheating", "Pending")
+
+reportItem2 = ListItem("Report #5678: Toxicity", "Pending")
+
+playerReportsList = ListBlock([reportItem1, reportItem2], "number")
+
+reportsCard = Card([reportsHeader, playerReportsList], "card", "row", "m")
+
+appealsHeader = CardHeader("Ban Appeals", "Awaiting Review")
+
+appealItem1 = ListItem("Appeal #5678: Name Change", "Pending")
+
+appealItem2 = ListItem("Appeal #9012: Harassment", "Pending")
+
+banAppealsList = ListBlock([appealItem1, appealItem2], "number")
+
+appealsCard = Card([appealsHeader, banAppealsList], "card", "row", "m")
+
+inflationCallout = Callout("info", "In-Game Currency Inflation", "Currency value down 12% this month")
+
+expHeader = CardHeader("Experiment Results", "Current Findings")
+
+expResult1 = TextContent("Experiment A: 5% increase in retention", "default")
+
+expResult2 = TextContent("Experiment B: 3% increase in purchase conversion", "default")
+
+experimentCard = Card([expHeader, expResult1, expResult2], "card", "row", "m")
+
+draftPatchNotesBtn = Button("Draft Patch Notes", null, "primary")
+
+patchNotesHeader = CardHeader("Patch Notes", "Draft New Updates")
+
+patchNotesForm = Form("patch-notes", formPatchButtons, [patchNotesField])
+
+patchNotesField = FormControl("Patch Notes", patchNotesArea, "We only use this to reply", [], "")
+
+patchNotesArea = TextArea("notes", "Describe changes", 4, [], "")
+
+patchNotesButtons = Buttons([patchNotesSubmitBtn, patchNotesCancelBtn])
+
+patchNotesSubmitBtn = Button("Submit", null, "primary")
+
+patchNotesCancelBtn = Button("Cancel", null, "secondary")
+
+patchNotesCard = Card([patchNotesHeader, draftPatchNotesBtn, patchNotesForm], "card", "row", "m")
+
+focusRegionButton = Button("Focus Region", null, "secondary")
+
+regionDrawer = DrawerBlock("Region Selector", "Select region to focus", null, [regionSelectionList])
+
+regionSelectionList = ListBlock([regionFocusItemUS, regionFocusItemEU, regionFocusItemASIA], "number")
+
+regionFocusItemUS = ListItem("US West", "Select")
+
+regionFocusItemEU = ListItem("EU Central", "Select")
+
+regionFocusItemASIA = ListItem("ASIA South", "Select")
+
+regionFocusCard = Card([focusRegionButton, regionDrawer], "card", "row", "m")
+
+hotfixHeader = CardHeader("Hotfix", "Deploy Quick Fix")
+
+hotfixVersionInput = Input("version", "1.2.3", "text")
+
+hotfixDescArea = TextArea("description", "Brief description of hotfix", 2, [], "")
+
+hotfixVersionField = FormControl("Version", hotfixVersionInput, "Enter version number", [], "")
+
+hotfixDescField = FormControl("Description", hotfixDescArea, "Describe the fix", [], "")
+
+hotfixButtons = Buttons([shipHotfixBtn, cancelHotfixBtn])
+
+shipHotfixBtn = Button("Ship Hotfix", null, "primary")
+
+cancelHotfixBtn = Button("Cancel", null, "secondary")
+
+hotfixForm = Form("hotfix", formHotfixButtons, [hotfixVersionField, hotfixDescField])
+
+hotfixCard = Card([hotfixHeader, hotfixForm, shipHotfixBtn], "card", "row", "m")
+
+Now root children list: we need to include all components in order.
+
+Let's write root = Card([
+
+headerTitle,
+
+onlineCard,
+
+dailyCard,
+
+revenueCard,
+
+revPerUserCard,
+
+sessionCard,
+
+bestSellersCard,
+
+regionCard,
+
+crashCard,
+
+eventsCard,
+
+reportsCard,
+
+appealsCard,
+
+inflationCallout,
+
+experimentCard,
+
+patchNotesCard,
+
+regionFocusCard,
+
+hotfixCard
+
+])
+
+Make sure we include all defined components.
+
+Now verify that each variable is referenced at least once:
+
+- headerTitle referenced in root.
+
+- onlineCard referenced in root.
+
+- dailyCard referenced.
+
+- revenueCard referenced.
+
+- revPerUserCard referenced.
+
+- sessionCard referenced.
+
+- bestSellersCard referenced.
+
+- regionCard referenced.
+
+- crashCard referenced.
+
+- eventsCard referenced.
+
+- reportsCard referenced.
+
+- appealsCard referenced.
+
+- inflationCallout referenced (directly in root).
+
+- experimentCard referenced.
+
+- patchNotesCard referenced.
+
+- regionFocusCard referenced.
+
+- hotfixCard referenced.
+
+Now check subcomponents:
+
+- headerOnline referenced in onlineCard.
+
+- onlinePlayers referenced.
+
+- dailyHeader referenced.
+
+- dailyActiveItem referenced via dailyActiveList.
+
+- monthlyActiveItem referenced.
+
+- dailyActiveList referenced.
+
+- revenueHeader referenced.
+
+- revenueTodayText referenced.
+
+- revPerUserHeader referenced.
+
+- revenuePerUserText referenced.
+
+- sessionHeader referenced.
+
+- sessionLengthSeries referenced.
+
+- sessionLengthChart referenced.
+
+- bestSellersHeader referenced.
+
+- itemNameCol referenced.
+
+- unitsCol referenced.
+
+- bestSellTable referenced.
+
+- serverHeader referenced.
+
+- regionItemUS etc referenced via serverRegionList.
+
+- serverRegionList referenced.
+
+- crashHeader referenced.
+
+- versionCol referenced.
+
+- crashRateCol referenced.
+
+- crashTable referenced.
+
+- eventsHeader referenced.
+
+- eventRunningItem referenced.
+
+- eventUpcomingItem referenced.
+
+- liveEventsList referenced.
+
+- reportsHeader referenced.
+
+- reportItem1 referenced.
+
+- reportItem2 referenced.
+
+- playerReportsList referenced.
+
+- appealsHeader referenced.
+
+- appealItem1 referenced.
+
+- appealItem2 referenced.
+
+- banAppealsList referenced.
+
+- inflationCallout referenced directly.
+
+- expHeader referenced.
+
+- expResult1 referenced.
+
+- expResult2 referenced.
+
+- draftPatchNotesBtn referenced.
+
+- patchNotesHeader referenced.
+
+- patchNotesForm referenced.
+
+- patchNotesField referenced.
+
+- patchNotesArea referenced.
+
+- patchNotesButtons referenced.
+
+- patchNotesSubmitBtn referenced.
+
+- patchNotesCancelBtn referenced.
+
+- focusRegionButton referenced.
+
+- regionDrawer referenced.
+
+- regionSelectionList referenced.
+
+- regionFocusItemUS etc referenced.
+
+- hotfixHeader referenced.
+
+- hotfixVersionInput referenced.
+
+- hotfixDescArea referenced.
+
+- hotfixVersionField referenced.
+
+- hotfixDescField referenced.
+
+- hotfixButtons referenced.
+
+- shipHotfixBtn referenced.
+
+- cancelHotfixBtn referenced.
+
+- hotfixForm referenced.
+
+All good.
+
+Now we must ensure each statement is on its own line, using =. Also ensure we use positional arguments only, no named arguments, and correct order.
+
+Let's write each line.
+
+Be careful with commas and spaces. For lists, we need to separate items with commas, and wrap each list in parentheses? In openui-lang, list syntax is [ ... ] (square brackets). So we need to write Card([headerOnline, onlinePlayers], ...) etc.
+
+Now let's write all lines.
+
+We'll start with root line.
+
+root = Card([
+
+headerTitle,
+
+onlineCard,
+
+dailyCard,
+
+revenueCard,
+
+revPerUserCard,
+
+sessionCard,
+
+bestSellersCard,
+
+regionCard,
+
+crashCard,
+
+eventsCard,
+
+reportsCard,
+
+appealsCard,
+
+inflationCallout,
+
+experimentCard,
+
+patchNotesCard,
+
+regionFocusCard,
+
+hotfixCard
+
+])
+
+But need to ensure each line is separate, no extra commas at end. Also need to ensure we include all components in order.
+
+Now define each component line.
+
+Let's write them in order of definition (maybe after root). However root line must be first. So we need to put root line first, then definitions. But root references components that are defined later, which is okay due to hoisting.
+
+Thus order:
+
+Line1: root = Card([...]) — we need to fill the list with placeholders? Actually we need to include actual component references. Since we will define those components later, we can still reference them in root list. That's okay.
+
+But we need to ensure that the list items are valid references (names). So we need to include names like headerTitle, onlineCard, etc. Those names will be defined later, but that's fine.
+
+Thus root line will be:
+
+root = Card([headerTitle, onlineCard, dailyCard, revenueCard, revPerUserCard, sessionCard, bestSellersCard, regionCard, crashCard, eventsCard, reportsCard, appealsCard, inflationCallout, experimentCard, patchNotesCard, regionFocusCard, hotfixCard])
+
+Now after that we define each component.
+
+But we must ensure each component definition line is exactly one line, with = and expression.
+
+Now let's write each component definition.
+
+We'll need to be careful with parentheses and brackets.
+
+Let's start:
+
+headerTitle = CardHeader("Live Ops Dashboard", "Key Metrics")
+
+onlineCard = Card([headerOnline, onlinePlayers], "card", "row", "m", "start")
+
+headerOnline = CardHeader("Players Online", "Now")
+
+onlinePlayers = TextContent("12,345", "large")
+
+dailyHeader = CardHeader("Active Players", "DAU/MAU")
+
+dailyActiveItem = ListItem("Daily Active", "8,500")
+
+monthlyActiveItem = ListItem("Monthly Active", "30,000")
+
+dailyActiveList = ListBlock([dailyActiveItem, monthlyActiveItem], "number")
+
+dailyCard = Card([dailyHeader, dailyActiveList], "card", "row", "m")
+
+revenueHeader = CardHeader("Revenue", "Today")
+
+revenueTodayText = TextContent("Revenue Today: $128,400", "large")
+
+revenueCard = Card([revenueHeader, revenueTodayText], "card", "row", "m")
+
+revPerUserHeader = CardHeader("Revenue per User", "Avg Rev/User")
+
+revenuePerUserText = TextContent("Avg Rev per User: $10.3", "large")
+
+revPerUserCard = Card([revPerUserHeader, revenuePerUserText], "card", "row", "m")
+
+sessionHeader = CardHeader("Session Length", "Past 14 Days")
+
+sessionLengthSeries = Series("Session Length (hrs)", [2.5,2.8,3.0,3.2,3.1,3.3,3.5,3.4,3.6,3.8,4.0,4.2,4.1,4.0])
+
+sessionLengthChart = LineChart(["Day1","Day2","Day3","Day4","Day5","Day6","Day7","Day8","Day9","Day10","Day11","Day12","Day13","Day14"], sessionLengthSeries, "natural", "Week", "Hours")
+
+sessionCard = Card([sessionHeader, sessionLengthChart], "card", "row", "m")
+
+bestSellersHeader = CardHeader("Top Sellers", "Units Sold")
+
+itemNameCol = Col("Item", ["Sword","Shield","Potion"])
+
+unitsCol = Col("Units", [150,80,200])
+
+bestSellTable = Table([itemNameCol, unitsCol])
+
+bestSellersCard = Card([bestSellersHeader, bestSellTable], "card", "row", "m")
+
+serverHeader = CardHeader("Server Health", "Region Status")
+
+regionItemUS = ListItem("US West", "Healthy")
+
+regionItemEU = ListItem("EU Central", "Degraded")
+
+regionItemASIA = ListItem("ASIA South", "Critical")
+
+serverRegionList = ListBlock([regionItemUS, regionItemEU, being

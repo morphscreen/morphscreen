@@ -1,0 +1,115 @@
+<Card title="Dashboard">
+<Select label="Timeframe" options="1d | 1w | 1m | 3m | YTD" placeholder="Select period" name="timeframe" hint="Choose chart period" required="true" />
+<Columns>
+<Stat label="Portfolio Value" value="$5.2M" change="+" note="overall" tone="success" />
+<Stat label="P&L Today" value="+$120k" change="+" note="today" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Positions">
+<Chart type="table" x="Ticker" y="Size,Entry,Current">
+| Ticker | Size | Entry | Current |
+|---|---|---|---|
+| AAPL | 150 | 170.00 | 175.20 |
+| TSLA | 80 | 250.00 | 260.50 |
+| NVDA | 50 | 300.00 | 310.00 |
+</Chart>
+</Card>
+
+<Card title="Sector Exposure">
+<Chart type="pie" x="Sector" y="Exposure">
+| Sector | Exposure |
+|---|---|
+| Tech | 45% |
+| Energy | 20% |
+| Healthcare | 15% |
+| Finance | 10% |
+| Other | 10% |
+</Chart>
+<Stat label="Total Exposure" value="100%" change="0" note="full" tone="neutral" />
+</Card>
+
+<Card title="Risk Metrics">
+<Stat label="Value at Risk" value="$25,000" change="5%" note="1‑day VaR" tone="warning" />
+</Card>
+
+<Card title="Top Moves">
+<Stat label="Biggest Gainer" value="+8%" change="+" note="AAPL" tone="success" />
+<Stat label="Biggest Loser" value="-6%" change="-" note="TSLA" tone="danger" />
+</Card>
+
+<Card title="Watchlist">
+<Chart type="table" x="Instrument" y="Price">
+| Instrument | Price |
+|---|---|
+| EURUSD | 1.0850 |
+| BTCUSD | 34200 |
+| SPY | 425 |
+</Chart>
+</Card>
+
+<Card title="Orders">
+<TextArea label="Working Orders" placeholder="No active orders" rows="3" hint="Pending orders will appear here" />
+<Form name="order-form">
+<Input label="Ticker" placeholder="e.g., AAPL" name="ticker" type="text" required="true" />
+<Select label="Side" options="Buy | Sell" name="side" required="true" />
+<Input label="Quantity" placeholder="Number of shares" name="qty" type="number" required="true" />
+<Button variant="primary" href="#" label="Place Order" />
+<Button variant="secondary" href="#" label="Cancel" />
+</Form>
+<Stat label="Margin in Use" value="30%" change="0" note="used" tone="info" />
+</Card>
+
+<Card title="Market Headlines">
+<FollowUps>
+<li>Fed signals rate hike <Badge tone="warning">Negative</Badge></li>
+<li>Tech earnings beat expectations <Badge tone="success">Positive</Badge></li>
+<li>Oil prices slip on demand worries <Badge tone="warning">Negative</Badge></li>
+</FollowUps>
+</Card>
+
+<Card title="Economic Releases">
+<FollowUps>
+<li>US CPI (Mon) <Badge tone="info">High</Badge></li>
+<li>Eurozone GDP (Wed) <Badge tone="neutral">Medium</Badge></li>
+<li>Non‑farm Payrolls (Fri) <Badge tone="info">High</Badge></li>
+</FollowUps>
+</Card>
+
+<Card title="Strategy Returns">
+<Chart type="bar" x="Strategy" y="Return%">
+| Strategy | Return% |
+|---|---|
+| Trend Following | 12% |
+| Mean Reversion | 5% |
+| Arbitrage | 3% |
+| Momentum | 8% |
+</Chart>
+</Card>
+
+<Card title="Drawdown">
+<Chart type="area" x="Month" y="Drawdown%">
+| Month | Drawdown% |
+|---|---|
+| Jan | 2% |
+| Feb | 5% |
+| Mar | 8% |
+| Apr | 4% |
+| May | 6% |
+| Jun | 9% |
+| Jul | 7% |
+| Aug | 5% |
+| Sep | 3% |
+| Oct | 2% |
+| Nov | 1% |
+| Dec | 0% |
+</Chart>
+</Card>
+
+<Card title="Risk Limits">
+<Badge tone="danger">Margin Limit 35% (Current 30%)</Badge>
+</Card>
+
+<Card title="Rebalance">
+<Button variant="primary" href="#" label="Rebalance Portfolio" />
+</Card>

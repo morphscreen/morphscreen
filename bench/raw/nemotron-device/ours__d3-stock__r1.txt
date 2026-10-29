@@ -1,0 +1,66 @@
+<Card title="Warehouse Stock Check" subtitle="Scan a product to view inventory across all locations">
+
+### Scan Product
+<Scan label="Scan barcode" name="product-barcode" kind="barcode" hint="Point camera at product barcode" required="true" />
+
+---
+
+### Product Details
+<Card title="Product Information" subtitle="Scanned item details">
+| Field | Value |
+|---|---|
+| **SKU** | WH-847291 |
+| **Name** | Industrial LED Panel Light 60W |
+| **Category** | Lighting / Commercial |
+| **Unit** | Each |
+| **Reorder Point** | 25 units |
+</Card>
+
+---
+
+### Stock by Warehouse
+<Callout tone="warning" title="Low Stock Alert">
+**Warehouse B (East Coast)** is below reorder point with only **18 units** remaining. Immediate restock recommended.
+</Callout>
+
+| Warehouse | Location | Current Stock | Status | Last Updated |
+|---|---|---|---|---|
+| Warehouse A | West Coast | 142 | <Badge tone="success">In Stock</Badge> | 2024-01-15 08:30 |
+| Warehouse B | East Coast | 18 | <Badge tone="danger">Low Stock</Badge> | 2024-01-15 08:30 |
+| Warehouse C | Midwest | 67 | <Badge tone="success">In Stock</Badge> | 2024-01-15 08:30 |
+| Warehouse D | South | 94 | <Badge tone="success">In Stock</Badge> | 2024-01-15 08:30 |
+| **Total** | — | **321** | — | — |
+
+<Chart type="bar" title="Stock Levels by Warehouse" x="Warehouse" y="Units">
+| Warehouse | Stock |
+|---|---|
+| Warehouse A | 142 |
+| Warehouse B | 18 |
+| Warehouse C | 67 |
+| Warehouse D | 94 |
+</Chart>
+
+---
+
+### Request Restock
+<Card title="Create Restock Request" subtitle="Submit a transfer or purchase order for low-stock items">
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-847291" hint="Auto-filled from scan" required="true" />
+<Input label="Product Name" name="product-name" value="Industrial LED Panel Light 60W" required="true" />
+<Select label="Request Type" name="request-type" options="Warehouse Transfer | Purchase Order | Emergency Reorder" placeholder="Select request type" required="true" />
+<Select label="Source Warehouse" name="source-warehouse" options="Warehouse A (West Coast) | Warehouse C (Midwest) | Warehouse D (South) | External Supplier" placeholder="Select source" required="true" hint="Where stock will come from" />
+<Select label="Destination Warehouse" name="dest-warehouse" options="Warehouse B (East Coast)" value="Warehouse B (East Coast)" required="true" hint="Auto-selected for low-stock location" />
+<Input label="Quantity Requested" name="quantity" type="number" value="50" hint="Recommended: 50 units to reach safety stock" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Add any special instructions, urgency notes, or supplier preferences..." rows="3" />
+<Button variant="primary" size="large">Submit Restock Request</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+</Card>
+
+<FollowUps>
+- View restock request history for this SKU
+- Set up automatic low-stock alerts for this product
+- Generate inventory report for all warehouses
+</FollowUps>

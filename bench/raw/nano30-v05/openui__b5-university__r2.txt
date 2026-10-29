@@ -1,0 +1,94 @@
+root = Card([cardHeader,
+             totalEnrollmentCard,
+             applicationsTable,
+             acceptanceRateBadge,
+             tuitionRevenueCard,
+             courseOccupancyTable,
+             facultyLoadTable,
+             academicRiskCallout,
+             scholarshipProgress,
+             housingTable,
+             eventsList,
+             alumniGivingChart,
+             departmentSelect,
+             compareChart,
+             waitlistTable,
+             approveBtn,
+             messageForm])
+
+cardHeader = CardHeader("University Administrator Overview", "Key Metrics and Insights")
+
+totalEnrollmentText = TextContent("12,500", "large")
+enrollmentLabels = ["Y1","Y2","Y3","Y4","Y5"]
+enrollmentSeries = Series("Enrollment", [10000,10500,11000,11500,12000])
+enrollmentTrend = LineChart(enrollmentLabels, enrollmentSeries, "natural", "Year", "Students")
+totalEnrollmentCard = Card([totalEnrollmentText, enrollmentTrend])
+
+programNames = ["Arts","Science","Business","Engineering"]
+applications = [200,350,150,400]
+colProgram = Col("Program", programNames, "string")
+colApps = Col("Applications", applications, "number")
+applicationsTable = Table([colProgram, colApps])
+
+acceptanceRateBadge = Badge("92%", "success")
+
+tuitionRevenueText = TextContent("$2.5M", "large")
+tuitionRevenueCard = Card([tuitionRevenueText])
+
+courseCourses = ["CS101","Math101","History101","Physics101"]
+courseOccupancy = [95,88,70,65]
+colCourse = Col("Course", courseCourses, "string")
+colOccupancy = Col("Occupancy", courseOccupancy, "number")
+courseOccupancyTable = Table([colCourse, colOccupancy])
+
+facultyNames = ["Dr. Smith","Prof. Jones","Dr. Lee"]
+facultyLoads = [12,15,10]
+colFaculty = Col("Faculty", facultyNames, "string")
+colLoad = Col("Load Hours", facultyLoads, "number")
+facultyLoadTable = Table([colFaculty, colLoad])
+
+academicRiskCallout = TextCallout("warning", "Academic Risk", "15% of students are at risk")
+
+scholarshipProgress = Progress(75, "Scholarship Budget Used")
+
+housingBuildings = ["North Hall","South Hall","East Wing","West Wing"]
+housingOccupancy = [98,92,85,78]
+colBuilding = Col("Building", housingBuildings, "string")
+colHousingOccupancy = Col("Occupancy", housingOccupancy, "number")
+housingTable = Table([colBuilding, colHousingOccupancy])
+
+eventsItems = [ListItem("January Seminar", "AI Guest Lecture", null, null),
+               ListItem("February Workshop", "Hands-on Coding", null, null),
+               ListItem("March Conference", "Annual Tech Conference", null, null),
+               ListItem("April Exhibition", "Student Art Showcase", null, null)]
+eventsList = ListBlock(eventsItems, "number")
+
+alumniGivingLabels = ["Y1","Y2","Y3","Y4"]
+alumniGivingSeries = Series("Giving", [50000,60000,70000,80000])
+alumniGivingChart = LineChart(alumniGivingLabels, alumniGivingSeries, "natural", "Year", "USD")
+
+deptItemMath = SelectItem("math", "Math")
+deptItemScience = SelectItem("science", "Science")
+deptItemArts = SelectItem("arts", "Arts")
+deptItemEngineering = SelectItem("engineering", "Engineering")
+departmentOptions = [deptItemMath, deptItemScience, deptItemArts, deptItemEngineering]
+departmentSelect = Select("dept_select", departmentOptions, "Select department", null, "string", "medium")
+
+compareLabels = ["This Sem", "Last Sem"]
+compareSeries = Series("Enrollment", [12000,11500])
+compareChart = BarChart(compareLabels, compareSeries, "grouped", "Semester", "Students")
+
+waitlistPrograms = ["Arts","Science","Business","Engineering"]
+waitlistCounts = [30,50,20,40]
+colWaitProg = Col("Program", waitlistPrograms, "string")
+colWaitCount = Col("Waitlisted", waitlistCounts, "number")
+waitlistTable = Table([colWaitProg, colWaitCount])
+
+approveBtn = Button("Approve New Course", null, "primary")
+
+messageInput = TextArea("msg_text", "Write your message here", 4, null, "string")
+messageField = FormControl("Message to Group", messageInput, "Write your message to the student group")
+sendBtn = Button("Send Message", null, "primary")
+cancelBtn = Button("Cancel", null, "tertiary")
+formButtons = Buttons([sendBtn, cancelBtn])
+messageForm = Form("msg_form", formButtons, [messageField])

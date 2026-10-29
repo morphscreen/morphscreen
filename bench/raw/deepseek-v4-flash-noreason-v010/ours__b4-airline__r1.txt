@@ -1,0 +1,149 @@
+# Hub Operations — Today
+
+<Badge tone="info">Hub: KATL — Atlanta</Badge> <Badge tone="success">Live</Badge>
+
+<Card title="Performance at a glance">
+<Columns>
+<Stat label="On-time performance" value="87%" change="+2% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Avg passenger load" value="78%" change="+5% vs yesterday" tone="info" icon="users" />
+<Stat label="Avg turnaround time" value="42 min" change="-3 min vs yesterday" tone="success" icon="clock" />
+<Stat label="Cancellations today" value="3" change="2 weather, 1 mechanical" tone="warning" icon="x-circle" />
+</Columns>
+</Card>
+
+<Card title="Flight board — current departures & arrivals">
+<Chart type="bar" title="On-time performance by hour" x="Hour" y="% on-time">
+| Hour | % On-time |
+|---|---|
+| 06:00 | 92 |
+| 08:00 | 88 |
+| 10:00 | 85 |
+| 12:00 | 84 |
+| 14:00 | 86 |
+| 16:00 | 90 |
+</Chart>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1042 | ATL → JFK | B12 | <Badge tone="success">On time</Badge> |
+| DL 2871 | ATL → LAX | C4 | <Badge tone="warning">Delayed 25 min</Badge> |
+| DL 551 | ATL → MIA | A7 | <Badge tone="success">Boarding</Badge> |
+| DL 903 | ATL → ORD | B19 | <Badge tone="danger">Cancelled</Badge> |
+| DL 118 | ATL → LHR | E2 | <Badge tone="success">On time</Badge> |
+| DL 772 | ATL → DFW | C11 | <Badge tone="warning">Delayed 40 min</Badge> |
+| DL 330 | ATL → SFO | A3 | <Badge tone="success">On time</Badge> |
+| DL 660 | ATL → DEN | B8 | <Badge tone="warning">Delayed 15 min</Badge> |
+| DL 412 | ATL → SEA | D5 | <Badge tone="success">On time</Badge> |
+| DL 224 | ATL → BOS | C2 | <Badge tone="success">On time</Badge> |
+</Card>
+
+<Card title="Delayed flights — action needed">
+<Callout tone="warning" title="3 delays right now">
+Weather at ORD is causing ripple delays on westbound departures.
+</Callout>
+
+| Flight | Route | Delay | Reason |
+|---|---|---|---|
+| DL 2871 | ATL → LAX | 25 min | ATC hold |
+| DL 772 | ATL → DFW | 40 min | Late inbound aircraft |
+| DL 660 | ATL → DEN | 15 min | Crew rest requirements |
+
+<Button variant="primary" ask="Show me the detailed delay report for DL 2871, DL 772, and DL 660">Review delay details</Button>
+</Card>
+
+<Card title="Recent gate changes">
+| Time | Flight | Old Gate | New Gate |
+|---|---|---|---|
+| 14:32 | DL 330 | A2 | A3 |
+| 14:15 | DL 1042 | B14 | B12 |
+| 13:58 | DL 412 | D7 | D5 |
+| 13:40 | DL 224 | C1 | C2 |
+
+<Callout tone="info" title="Tip">Gate changes are announced at the podium and via the app automatically.</Callout>
+</Card>
+
+<Card title="Crews available for reassignment">
+<Columns>
+<Stat label="Available crews" value="7" tone="success" icon="users" />
+<Stat label="Pilots" value="3" tone="info" icon="user" />
+<Stat label="Flight attendants" value="4" tone="info" icon="user" />
+</Columns>
+
+<Avatar name="Capt. M. Alvarez" src subtitle="Pilot — typed B737/A320, 4h duty left" />
+<Avatar name="FO J. Okafor" src subtitle="First Officer — typed B737, 5h duty left" />
+<Avatar name="FO S. Lindqvist" src subtitle="First Officer — typed A320, 6h duty left" />
+<Avatar name="FA R. Chen" src subtitle="Flight attendant — lead, 5h duty left" />
+<Avatar name="FA T. Brooks" src subtitle="Flight attendant — 6h duty left" />
+<Avatar name="FA L. Novak" src subtitle="Flight attendant — 4h duty left" />
+<Avatar name="FA D. Mensah" src subtitle="Flight attendant — 5h duty left" />
+
+<Button variant="secondary" ask="Assign an available crew to a flight">Assign crew</Button>
+</Card>
+
+<Card title="Weather advisories — KATL">
+<Callout tone="warning" title="Thunderstorm watch until 20:00">
+Scattered thunderstorms within 30 nm of the field. Expect occasional ground stops and holding delays of 15–30 minutes.
+</Callout>
+
+<Callout tone="info" title="Winds">
+Surface winds 240° at 12 kt, gusting to 20 kt. Runway 26L/26R in use.
+</Callout>
+
+<Callout tone="info" title="Visibility">
+10 statute miles. No restriction expected.
+</Callout>
+</Card>
+
+<Card title="Connections at risk of being missed">
+| Passenger | Flight | Connecting to | Connection time | Risk |
+|---|---|---|---|---|
+| PNR ABC123 | DL 772 (delayed 40 min) | DL 118 → LHR | 35 min | <Badge tone="danger">High</Badge> |
+| PNR DEF456 | DL 660 (delayed 15 min) | DL 224 → BOS | 25 min | <Badge tone="warning">Medium</Badge> |
+| PNR GHI789 | DL 2871 (delayed 25 min) | DL 330 → SFO | 30 min | <Badge tone="warning">Medium</Badge> |
+
+<Button variant="primary" ask="Show rebooking options for the passengers on PNR ABC123, DEF456, and GHI789">Rebook these passengers</Button>
+</Card>
+
+<Card title="Rebook affected passengers">
+<Form name="rebooking">
+<Input label="Passenger record locator (PNR)" placeholder="e.g. ABC123" hint="Separate multiple PNRs with commas" />
+<Select label="Preferred rebooking" options="Next available flight | Same-day later flight | Tomorrow morning | Any option" />
+<Checkboxes label="Also notify via" options="SMS | Email | Phone call" value="SMS | Email" />
+<Button>Find rebooking options</Button>
+</Form>
+
+<Callout tone="success" title="Quick win">DL 118 to LHR has 12 open seats — can absorb the high-risk PNR ABC123 connection.</Callout>
+</Card>
+
+<Card title="Look at a different hub">
+<Form name="hub-switch">
+<Select label="Select hub" options="KATL — Atlanta | KDTW — Detroit | KMSP — Minneapolis | KSLC — Salt Lake City | KSEA — Seattle" placeholder="Choose a hub" />
+<Button variant="secondary">Switch hub view</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations today">
+| Flight | Route | Time | Reason | Passengers rebooked |
+|---|---|---|---|---|
+| DL 903 | ATL → ORD | 09:15 | Weather (ORD) | 118 / 142 |
+| DL 514 | ATL → CLE | 13:30 | Mechanical | 76 / 89 |
+| DL 208 | ATL → PIT | 16:45 | Weather (PIT) | 54 / 63 |
+
+<Callout tone="warning" title="Remaining to rebook">46 passengers still need rebooking across the 3 cancellations.</Callout>
+
+<Button variant="primary" ask="Show the list of 46 passengers still needing rebooking">View unrebooked passengers</Button>
+</Card>
+
+<Details title="Standard operating notes" open={false}>
+- Turnaround target is 40 minutes for narrowbody, 55 for widebody.
+- Gate agents must confirm boarding close 10 minutes before departure.
+- Crew reassignment requires a minimum of 3 hours remaining duty time.
+- Weather holds are issued by the tower; monitor ATIS 126.9.
+</Details>
+
+<FollowUps>
+- Which delayed flight needs crew reassignment first?
+- Show me the full passenger list for PNR ABC123.
+- What’s the weather outlook for the next 6 hours at KATL?
+- Compare turnaround times across all gates today.
+</FollowUps>

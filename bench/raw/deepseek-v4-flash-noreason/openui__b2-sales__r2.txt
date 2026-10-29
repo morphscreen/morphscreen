@@ -1,0 +1,43 @@
+root = Card([header, statusRow, revenueKpi, trendSection, trendChart, productsSection, productsTable, conversionSection, conversionChart, downloadSection, downloadActions])
+
+header = CardHeader("Monthly Sales Check", "Founder's overview for this month")
+
+statusRow = Card([monthBadge, trendBadge], "clear", "row", "s")
+monthBadge = Tag("June 2025", null, "md", "info")
+trendBadge = Tag("+12% vs last month", null, "md", "success")
+
+revenueKpi = Card([revenueLabel, revenueValue, revenueSub], "sunk", "column", "xs")
+revenueLabel = TextContent("Revenue this month", "small")
+revenueValue = TextContent("$184,200", "large-heavy")
+revenueSub = TextContent("Up 12% from $164,500 in May", "small")
+
+trendSection = Card([trendHeading, trendNote], "clear", "column", "xs")
+trendHeading = Heading("Revenue trend — last 6 months", "h3")
+trendNote = TextContent("Monthly revenue from January through June 2025", "small")
+
+trendChart = AreaChart(["Jan", "Feb", "Mar", "Apr", "May", "Jun"], [revenueSeries], "natural", "Month", "Revenue (USD)")
+revenueSeries = Series("Revenue", [98000, 112000, 121500, 139800, 164500, 184200])
+
+productsSection = Card([productsHeading, productsNote], "clear", "column", "xs")
+productsHeading = Heading("Best-selling products", "h3")
+productsNote = TextContent("Top three products by units sold this month", "small")
+
+productsTable = Table([productCol, unitsCol])
+productCol = Col("Product", ["Desk Pro Stand", "Ergo Chair", "Laptop Riser"])
+unitsCol = Col("Units sold", [1240, 986, 873])
+
+conversionSection = Card([conversionHeading, conversionKpi], "clear", "column", "xs")
+conversionHeading = Heading("Conversion rate", "h3")
+conversionKpi = Card([conversionValue, conversionNote], "sunk", "column", "xs")
+conversionValue = TextContent("3.8%", "large-heavy")
+conversionNote = TextContent("Visitors to paid conversions this month", "small")
+
+conversionChart = SingleStackedBarChart(["Converted", "Not converted"], [3.8, 96.2])
+
+downloadSection = Card([downloadHeading, downloadNote], "clear", "column", "xs")
+downloadHeading = Heading("Download the numbers", "h3")
+downloadNote = TextContent("Get the full monthly report as a file to share with your team", "small")
+
+downloadActions = Buttons([downloadCsv, downloadPdf])
+downloadCsv = Button("Download CSV", null, "primary")
+downloadPdf = Button("Download PDF", null, "secondary")

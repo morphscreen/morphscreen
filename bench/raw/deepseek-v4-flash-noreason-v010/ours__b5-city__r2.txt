@@ -1,0 +1,171 @@
+# City Operations Center
+
+<Card title="Current Weather & Traffic Snapshot">
+<Columns>
+<div>
+<Stat label="Temperature" value="18°C" note="Feels like 16°C" icon="thermometer" />
+<Stat label="Wind" value="12 km/h" note="SW" icon="wind" />
+<Stat label="Humidity" value="64%" icon="drop" />
+</div>
+<div>
+<Stat label="Congestion" value="72%" note="Moderate · 5% above norm" tone="warning" icon="car" />
+<Stat label="Transit Punctuality" value="91%" note="+2% vs yesterday" tone="success" icon="bus" />
+<Stat label="Parking Available" value="1,240" note="Downtown · 38% of spots" icon="parking" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Air Quality by District" subtitle="PM2.5 index · live">
+<Chart type="bar" title="AQI by district" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Central | 42 |
+| Riverside | 58 |
+| Hillside | 35 |
+| Industrial | 87 |
+| Harbor | 63 |
+| Northgate | 51 |
+</Chart>
+<Callout tone="warning" title="Industrial district">AQI is 87 — sensitive groups should limit outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy Use — Past Week" subtitle="MWh per day">
+<Chart type="area" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 4120 |
+| Tue | 3980 |
+| Wed | 4050 |
+| Thu | 4210 |
+| Fri | 4480 |
+| Sat | 3890 |
+| Sun | 3760 |
+</Chart>
+<Stat label="Weekly total" value="28,490 MWh" note="−3.2% vs last week" tone="success" icon="lightning" />
+</Card>
+
+<Card title="Water Use Today">
+<Columns>
+<div>
+<Stat label="Current usage" value="38,200 m³" note="Peak at 07:45" icon="droplet" />
+<Stat label="Daily forecast" value="41,500 m³" note="Within budget" tone="success" />
+</div>
+<div>
+<Progress value="82" max="100" label="Daily allocation used" tone="info" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Open Incidents" subtitle="Active right now">
+| Incident | Location | Severity | Status |
+|---|---|---|---|
+| Water main break | Riverside Ave & 5th | <Badge tone="danger">Critical</Badge> | Crew en route |
+| Traffic signal outage | Central Square | <Badge tone="warning">High</Badge> | Technician assigned |
+| Fallen tree | Hillside Park Rd | <Badge tone="warning">High</Badge> | Parks crew |
+| Flooded underpass | Harbor Tunnel | <Badge tone="danger">Critical</Badge> | Pumping |
+| Streetlight outage | Northgate Blvd | <Badge tone="neutral">Low</Badge> | Scheduled |
+| Graffiti report | Industrial District | <Badge tone="neutral">Low</Badge> | Queued |
+</Card>
+
+<Card title="Emergency Vehicle Deployment" subtitle="Live positions">
+<Gallery>
+![Map showing emergency vehicle locations](https://example.com/emergency-map.png)
+</Gallery>
+<Columns>
+<Stat label="Ambulances" value="6" note="4 available" tone="success" icon="ambulance" />
+<Stat label="Fire engines" value="4" note="2 available" tone="success" icon="fire-truck" />
+<Stat label="Police units" value="8" note="3 on call" tone="info" icon="police-car" />
+</Columns>
+</Card>
+
+<Card title="Public Events — This Weekend">
+| Event | Location | Day | Time |
+|---|---|---|---|
+| Farmers Market | Central Square | Sat | 08:00–14:00 |
+| Riverside Festival | Riverside Park | Sat–Sun | 10:00–22:00 |
+| Marathon | City-wide | Sun | 06:00–12:00 |
+| Art in the Park | Hillside Park | Sun | 11:00–17:00 |
+</Card>
+
+<Card title="Citizen Reports — Live Feed" subtitle="Most recent first">
+<Columns>
+<div>
+<Badge tone="danger">New</Badge> **Pothole on Main St** — 2 min ago · Central
+<Badge tone="warning">New</Badge> **Noisy construction** — 7 min ago · Northgate
+<Badge tone="info">New</Badge> **Broken bench** — 12 min ago · Hillside
+<Badge tone="info">New</Badge> **Stray dog** — 18 min ago · Riverside
+</div>
+<div>
+<Badge tone="success">Resolved</Badge> **Graffiti cleanup** — 25 min ago · Industrial
+<Badge tone="success">Resolved</Badge> **Traffic light fixed** — 40 min ago · Central
+</div>
+</Columns>
+</Card>
+
+<Card title="Service Request Backlog">
+<Columns>
+<Stat label="Open requests" value="342" note="−18 today" tone="warning" icon="clipboard" />
+<Stat label="Avg. resolution" value="3.2 days" note="Target: 3 days" tone="info" />
+<Stat label="Overdue" value="27" tone="danger" icon="clock" />
+</Columns>
+<Progress value="78" max="100" label="Within SLA" tone="info" />
+</Card>
+
+<Card title="Focus on a District">
+<Select label="Select district" placeholder="Choose a district" options="Central | Riverside | Hillside | Industrial | Harbor | Northgate" />
+<Button>Apply focus</Button>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch">
+<Select label="Incident type" placeholder="Select type" options="Water | Power | Traffic | Parks | Sanitation | Building" />
+<Input label="Location" placeholder="Street address or intersection" />
+<Select label="Priority" placeholder="Select priority" options="Low | Medium | High | Critical" />
+<TextArea label="Notes" placeholder="Crew instructions or context" rows="2" />
+<Button variant="primary">Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="alert">
+<Select label="Alert type" placeholder="Select type" options="Weather | Traffic | Safety | Utility | Event" />
+<Select label="Target area" placeholder="Select area" options="All districts | Central | Riverside | Hillside | Industrial | Harbor | Northgate" />
+<TextArea label="Message" placeholder="Write the alert message citizens will see" rows="3" required="true" />
+<Switch label="Send as push notification" name="push" value="true" />
+<Switch label="Send as SMS" name="sms" value="false" />
+<Button>Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks — This Month">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| Main St resurfacing | Central | Mar 12–18 | Lane closure |
+| Bridge inspection | Harbor | Mar 15–16 | Night closure |
+| Sewer repair | Riverside | Mar 20–24 | Partial closure |
+| Signal upgrade | Northgate | Mar 25–28 | Intermittent |
+| Pothole patrol | Industrial | Mar 10–30 | Rolling |
+</Card>
+
+<Card title="Infrastructure Maintenance Due">
+<Columns>
+<div>
+<Badge tone="danger">Overdue</Badge> **Water pump #4** — Riverside · due 3 days ago
+<Badge tone="warning">Due soon</Badge> **Transformer substation** — Central · due in 5 days
+<Badge tone="warning">Due soon</Badge> **Bridge expansion joints** — Harbor · due in 9 days
+</div>
+<div>
+<Badge tone="info">Scheduled</Badge> **Street lighting** — Northgate · due in 14 days
+<Badge tone="info">Scheduled</Badge> **Park irrigation** — Hillside · due in 18 days
+<Badge tone="info">Scheduled</Badge> **Bus stops** — Industrial · due in 21 days
+</div>
+</Columns>
+<Button variant="secondary">View maintenance schedule</Button>
+</Card>
+
+<FollowUps>
+- Show me the incident details for the water main break
+- Which crews are available for dispatch right now?
+- Compare air quality trends across all districts this month
+- What is the current status of the marathon route preparations?
+</FollowUps>

@@ -1,0 +1,154 @@
+# Morning Trading Workspace
+
+<Card title="Workspace controls" subtitle="All values below respond to this timeframe">
+<Columns>
+<Select label="Timeframe" options="1D | 1W | 1M | 3M | YTD | 1Y" placeholder="Select timeframe" required="true" />
+<Button variant="primary" ask="Rebalance portfolio to target allocations?">Rebalance portfolio</Button>
+</Columns>
+</Card>
+
+<Card title="Portfolio snapshot" subtitle="Pre-market · 08:30 ET">
+<Columns>
+<Stat label="Portfolio value" value="$12.4M" change="+1.2% on selected timeframe" tone="success" icon="chart-line" />
+<Stat label="P&L today" value="+$184,200" change="+1.51%" tone="success" icon="trend-up" />
+<Stat label="Value at risk (95%, 1d)" value="$412,000" note="2.9% of portfolio" tone="warning" icon="shield-warning" />
+<Stat label="Margin in use" value="71%" note="$4.1M drawn of $5.8M credit" tone="warning" icon="percent" />
+</Columns>
+<Progress value="71" max="100" label="Broker margin utilization" tone="warning" />
+</Card>
+
+<Card title="Positions" subtitle="Current open positions with entry and mark">
+| Ticker | Size | Entry | Current | Mkt value | P&L |
+|---|---|---|---|---|---|
+| AAPL | 12,000 | $172.40 | $189.12 | $2,269,440 | +$200,640 |
+| MSFT | 3,500 | $310.20 | $324.85 | $1,136,975 | +$51,275 |
+| TSLA | 2,000 | $240.10 | $257.80 | $515,600 | +$35,400 |
+| JPM | 4,500 | $154.30 | $161.75 | $727,875 | +$33,525 |
+| UNH | 1,200 | $490.00 | $508.20 | $609,840 | +$21,840 |
+| XOM | 8,000 | $98.20 | $105.40 | $843,200 | +$57,600 |
+| AMZN | 2,500 | $145.10 | $152.30 | $380,750 | +$18,000 |
+</Card>
+
+<Card title="Exposure by sector">
+<Chart type="pie" title="Sector exposure">
+| Sector | Exposure |
+|---|---|
+| Technology | 32 |
+| Healthcare | 18 |
+| Financials | 15 |
+| Energy | 12 |
+| Consumer | 10 |
+| Industrials | 8 |
+| Cash | 5 |
+</Chart>
+</Card>
+
+<Card title="Today's biggest movers">
+<Columns>
+<Card title="Gainers">
+| Ticker | Price | Change |
+|---|---|---|
+| NVDA | $684.20 | +4.8% |
+| AMD | $178.45 | +3.9% |
+| COIN | $198.30 | +3.2% |
+</Card>
+<Card title="Losers">
+| Ticker | Price | Change |
+|---|---|---|
+| NFLX | $486.10 | −2.7% |
+| BA | $247.85 | −2.1% |
+| PFE | $26.40 | −1.8% |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Working orders">
+| Ticker | Side | Qty | Type | Status |
+|---|---|---|---|---|
+| NVDA | Buy | 500 | Limit $680.00 | Working |
+| XOM | Buy | 2,000 | Market | Partially filled |
+| JPM | Sell | 1,000 | Limit $165.00 | Working |
+| SPY | Sell | 800 | Stop $510.00 | Working |
+</Card>
+
+<Card title="Watchlist" subtitle="Instruments being watched with last price">
+| Instrument | Price | Change |
+|---|---|---|
+| SPY | $524.10 | +0.4% |
+| QQQ | $446.20 | +0.6% |
+| IWM | $204.85 | +0.2% |
+| TLT | $94.30 | −0.3% |
+| DXY | $104.20 | +0.1% |
+| CL (WTI) | $82.15 | +1.2% |
+| EUR/USD | $1.0850 | −0.2% |
+</Card>
+
+<Card title="Market headlines" subtitle="Sentiment scored from headline tone">
+| Headline | Source | Sentiment |
+|---|---|---|
+| Fed signals patience on rate cuts as inflation cools | Bloomberg | <Badge tone="neutral">Neutral</Badge> |
+| Big tech results beat expectations on AI demand | Reuters | <Badge tone="success">Positive</Badge> |
+| Oil rises on supply disruption fears | CNBC | <Badge tone="success">Positive</Badge> |
+| Retail sales miss as consumer spending weakens | WSJ | <Badge tone="danger">Negative</Badge> |
+| Treasury yields dip ahead of jobs data | FT | <Badge tone="neutral">Neutral</Badge> |
+</Card>
+
+<Card title="Economic releases this week">
+| Date | Time (ET) | Release | Forecast | Prior | Impact |
+|---|---|---|---|---|---|
+| Mon | 10:00 | ISM Manufacturing PMI | 51.2 | 50.3 | <Badge tone="warning">Medium</Badge> |
+| Tue | 08:30 | JOLTS Job Openings | 8.2M | 8.1M | <Badge tone="warning">Medium</Badge> |
+| Wed | 10:00 | Factory Orders | +0.8% | −0.7% | Low |
+| Thu | 08:30 | Initial Jobless Claims | 220K | 218K | <Badge tone="warning">Medium</Badge> |
+| Fri | 08:30 | Nonfarm Payrolls | 180K | 175K | <Badge tone="danger">High</Badge> |
+| Fri | 08:30 | Unemployment Rate | 3.8% | 3.9% | <Badge tone="danger">High</Badge> |
+</Card>
+
+<Card title="Strategy returns this year">
+| Strategy | Return YTD | Allocation |
+|---|---|---|
+| Systematic Momentum | +18.4% | 30% |
+| Long/Short Equity | +12.1% | 25% |
+| Global Macro | +8.7% | 15% |
+| Market Neutral | +5.2% | 15% |
+| Event Driven | +9.8% | 10% |
+| Treasury Carry | +2.4% | 5% |
+</Card>
+
+<Card title="Drawdown over the past year">
+<Chart type="line" title="Portfolio drawdown vs. base" x="Month" y="Drawdown %">
+| Month | Drawdown |
+|---|---|
+| Jul | -1.2 |
+| Aug | -2.8 |
+| Sep | -3.5 |
+| Oct | -2.1 |
+| Nov | -0.8 |
+| Dec | -1.6 |
+| Jan | -2.4 |
+| Feb | -3.1 |
+| Mar | -1.9 |
+| Apr | -0.6 |
+| May | -1.1 |
+| Jun | -0.4 |
+</Chart>
+</Card>
+
+<Card title="Risk limits close to breach" subtitle="Current utilization vs. hard limit">
+<Progress value="89" max="100" label="Sector concentration — Technology (31% vs 35% limit)" tone="warning" />
+<Progress value="94" max="100" label="Leverage ratio (1.92x vs 2.0x limit)" tone="danger" />
+<Progress value="82" max="100" label="Single-name position — TSLA (4.9% vs 6% limit)" tone="warning" />
+<Callout tone="danger" title="Action needed">
+Leverage ratio is at 94% of its limit. Consider reducing gross exposure or adding cash as part of a rebalance.
+</Callout>
+</Card>
+
+<Card title="Place an order" subtitle="Equities and ETFs">
+<Form name="order-entry">
+<Input label="Ticker" name="ticker" placeholder="AAPL" required="true" />
+<Select label="Side" options="Buy | Sell" placeholder="Choose side" name="side" required="true" />
+<Input label="Quantity" name="quantity" type="number" placeholder="100" min="1" step="1" required="true" />
+<Button variant="primary">Submit order</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

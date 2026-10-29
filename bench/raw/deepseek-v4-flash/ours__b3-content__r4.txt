@@ -1,0 +1,94 @@
+# The Content Studio
+
+Everything for planning, publishing, and responding — in one screen.
+
+<Button variant="primary" icon="plus">Start a new draft</Button>
+
+<Columns>
+<Stat label="Drafts" value="7" note="2 due today" icon="file-text" />
+<Stat label="Published this week" value="5" note="56.1k total reads" icon="megaphone" />
+<Stat label="Most-read this month" value="48.2k" note="Why Local News Matters" icon="trend-up" />
+<Stat label="Comments awaiting reply" value="12" note="3 over 24h" icon="chat-dots" />
+</Columns>
+
+<Card title="Narrow by category" subtitle="Applies to drafts, published pieces, and readership across the studio">
+<Select label="Category" name="categoryFilter" placeholder="All categories" options="All categories | News | Opinion | Features | Culture | Tech" hint="Choose a section to focus the studio on it." />
+</Card>
+
+<Columns>
+<Card title="Readership" subtitle="Unique readers over the past 30 days">
+<Chart type="line" x="Date" y="Readers" title="Readers per day">
+| Date | Readers | Returning |
+|---|---|---|
+| May 1 | 4210 | 1340 |
+| May 5 | 5080 | 1620 |
+| May 10 | 4830 | 1550 |
+| May 15 | 6920 | 2240 |
+| May 20 | 7340 | 2480 |
+| May 25 | 8610 | 2790 |
+| May 30 | 9240 | 3040 |
+</Chart>
+</Card>
+
+<Card title="Most-read article this month">
+**Why Local News Matters** <Badge tone="success">Trending</Badge>
+
+By Jordan Reed · News · Published Mon 12 May
+
+<Stat label="Reads" value="48,231" note="+23% vs last month" tone="success" icon="trend-up" />
+
+<Progress value="48231" max="60000" label="48,231 of 60,000 monthly goal" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Drafts" subtitle="7 pieces in progress">
+- **The Future of Remote Work** <Badge tone="warning">In review</Badge> — Features · updated 2h ago
+- **Best Coffee Shops in Lisbon** <Badge tone="info">Editing</Badge> — Culture · updated 5h ago
+- **Interview: Maria Alvarez** <Badge tone="info">Fact-checking</Badge> — News · updated 1d ago
+- **City Budget Explained** <Badge tone="success">Scheduled</Badge> — News · publishes Thu 18 May
+- **The Rise of Audio News** <Badge tone="info">Editing</Badge> — Tech · updated 4h ago
+- **AI and Journalism Ethics** <Badge tone="neutral">Draft</Badge> — Opinion · updated 3d ago
+- **Weekend Guide: Porto** <Badge tone="danger">Needs images</Badge> — Culture · updated 2d ago
+
+<Button variant="tertiary" size="small" icon="plus">New draft</Button>
+</Card>
+
+<Card title="Comments awaiting reply" subtitle="12 comments across published pieces">
+<Callout tone="warning" title="Reply backlog">3 comments have been waiting longer than 24 hours.</Callout>
+
+- **Why Local News Matters**: “Loved the piece — but what about local ads?” — 2h ago
+- **The Commute Report**: “Great graphs. Any source for the data?” — 5h ago
+- **How Podcasts Win Audiences**: “This deserves a follow-up on Spotify.” — 1d ago
+- **A Tour of the New Museum**: “The photo of the atrium is stunning.” — 1d ago
+- **Sunday Read: The Park**: “More park maps, please.” — 2d ago
+
+<Button variant="primary" size="small">Reply in desk</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Published this week" subtitle="5 pieces live since Monday">
+- Mon 12 · **Why Local News Matters** <Badge tone="success">Top read</Badge> — News · 12,421 reads
+- Tue 13 · **A Tour of the New Museum** — Culture · 8,132 reads
+- Wed 14 · **How Podcasts Win Audiences** — Tech · 10,748 reads
+- Thu 15 · **The Commute Report** <Badge tone="success">Best this week</Badge> — News · 15,203 reads
+- Fri 16 · **Sunday Read: The Park** — Features · 9,604 reads
+</Card>
+
+<Card title="Schedule a piece" subtitle="Set a title and publish date">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="e.g. Why Local Ads Are Coming Back" required="true" />
+<Date label="Publish date" name="publishDate" required="true" />
+<Select label="Category" name="category" placeholder="Choose a section" options="News | Opinion | Features | Culture | Tech" />
+<Button>Scheduled</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- How do my drafts look this week?
+- Show me the most-read article in Opinion
+- Which comments need a reply first?
+- Draft a headline for the next story
+</FollowUps>

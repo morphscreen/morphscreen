@@ -1,0 +1,68 @@
+<Card title="Platform Status" subtitle="Live overview for the platform team">
+<Columns>
+<Stat label="API uptime this month" value="99.95%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+<Stat label="Most recent incident" value="Resolved" note="Auth latency spike – resolved 2h ago" tone="success" icon="check-circle" />
+</Columns>
+</Card>
+
+<Card title="Most recent incident">
+<Callout tone="success" title="Resolved — Auth service latency">
+A 12-minute spike in authentication latency occurred between 14:02 and 14:14 UTC. Root cause was a misconfigured connection pool on the auth service. No data loss or user-facing errors beyond slower login times. Monitoring has been updated to alert on this pattern.
+</Callout>
+<Columns>
+<Stat label="Detected" value="14:02 UTC" icon="clock" />
+<Stat label="Resolved" value="14:14 UTC" icon="check" />
+<Stat label="Duration" value="12 min" icon="timer" />
+</Columns>
+</Card>
+
+<Card title="This month's uptime breakdown">
+<Chart type="line" title="API availability by week" x="Week" y="% uptime">
+| Week | Uptime |
+|---|---|
+| Week 1 | 99.98 |
+| Week 2 | 99.97 |
+| Week 3 | 99.99 |
+| Week 4 | 99.86 |
+| Week 5 | 99.95 |
+</Chart>
+</Card>
+
+<Card title="Incident history (last 30 days)">
+| Date | Incident | Duration | Status |
+|---|---|---|---|
+| Feb 24 | Auth latency spike | 12 min | <Badge tone="success">Resolved</Badge> |
+| Feb 18 | Deployment rollback | 8 min | <Badge tone="success">Resolved</Badge> |
+| Feb 9 | Database connection limit | 25 min | <Badge tone="success">Resolved</Badge> |
+| Feb 2 | Scheduled maintenance | 30 min | <Badge tone="info">Planned</Badge> |
+</Card>
+
+<Details title="View full incident report for Feb 24">
+<Card title="Auth latency spike — postmortem summary">
+**Timeline**
+- 14:02 — Alert triggered on p95 latency > 500ms
+- 14:05 — On-call engineer paged
+- 14:08 — Root cause identified: connection pool exhaustion
+- 14:11 — Configuration fix applied
+- 14:14 — Latency back to baseline
+
+**Impact**
+- ~2% of auth requests experienced > 1s latency
+- No failed requests or data loss
+- No security impact
+
+**Action items**
+- Add alert for connection pool saturation
+- Review pool sizing for peak traffic
+- Run load test with 2× normal traffic
+</Card>
+</Details>
+
+<Button variant="primary" label="Subscribe to status updates">Subscribe to status updates</Button>
+<Button variant="secondary" label="View runbook">View runbook</Button>
+
+<FollowUps>
+- What's the current error rate for the API?
+- Show me the last 7 days of uptime in detail
+- When is the next scheduled maintenance window?
+</FollowUps>

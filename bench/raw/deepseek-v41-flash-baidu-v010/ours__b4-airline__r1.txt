@@ -1,0 +1,134 @@
+# Hub Operations Desk — ATL
+
+<Columns>
+<Stat label="On-time performance" value="82.4%" change="+1.8 pts vs. yesterday" tone="success" icon="chart-line" />
+<Stat label="Average passenger load" value="87.6%" note="2,140 flights boarded" tone="info" icon="users" />
+<Stat label="Average turnaround" value="41 min" change="+3 min vs. 7-day avg" tone="warning" icon="clock" />
+<Stat label="Cancellations today" value="14" note="of 1,284 scheduled" tone="danger" icon="x-circle" />
+</Columns>
+
+<Callout tone="danger" title="Thunderstorm cell over the field, 15:40–18:10 local">
+Arrival rate cut to 28/hr. Expect 40–60 min ground stops on north-flow departures. Ground stop coordination line is open at ext. 4412.
+</Callout>
+
+<Card title="Flights" subtitle="Live board — ATL departures and arrivals">
+<Tabs>
+<Tab title="Departures">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1428 | ATL → LGA | D12 | On time |
+| DL 2190 | ATL → ORD | B7 | **Delayed 55m** |
+| AA 3361 | ATL → DFW | T4 | Boarding |
+| DL 0874 | ATL → SEA | A19 | **Delayed 1h 20m** |
+| UA 1102 | ATL → EWR | C3 | On time |
+| DL 3311 | ATL → MCO | D28 | **Cancelled** |
+| SW 2204 | ATL → BNA | C11 | On time |
+| DL 4460 | ATL → BOS | A6 | **Delayed 40m** |
+
+</Tab>
+<Tab title="Arrivals">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 1188 | LAX → ATL | B14 | On time |
+| DL 2007 | DEN → ATL | A22 | **Delayed 35m** |
+| AA 4419 | MIA → ATL | T2 | Landed 15:02 |
+| DL 3390 | SFO → ATL | D9 | **Delayed 1h 05m** |
+| UA 2288 | IAH → ATL | C7 | On time |
+| DL 5521 | JFK → ATL | B3 | **Cancelled** |
+| SW 1187 | DAL → ATL | C15 | On time |
+
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Delayed flights" subtitle="7 flights need attention">
+| Flight | Route | Gate | Delay | Cause |
+|---|---|---|---|---|
+| DL 0874 | ATL → SEA | A19 | 1h 20m | Late inbound aircraft |
+| DL 3390 | SFO → ATL | D9 | 1h 05m | Weather, SFO ground stop |
+| DL 2190 | ATL → ORD | B7 | 55m | Crew rest |
+| DL 4460 | ATL → BOS | A6 | 40m | Weather, ATL cell |
+| DL 2007 | DEN → ATL | A22 | 35m | Flow control |
+| AA 3361 | ATL → DFW | T4 | 25m | Late inbound aircraft |
+| UA 1102 | ATL → EWR | C3 | 20m | Flow control |
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 60 minutes">
+<Steps>
+<Step title="DL 1428 moved D12 → D14" status="done" subtitle="15:18 · Jet bridge conflict">Passengers notified by app and SMS. Signage updated.</Step>
+<Step title="AA 3361 moved T4 → T6" status="done" subtitle="15:04 · Inbound aircraft swap">Wheelchair assist request carried over to T6.</Step>
+<Step title="DL 4460 moved A6 → A8" status="current" subtitle="14:52 · Gate hold, weather">Ramp team standing by at A8. Boarding on hold.</Step>
+<Step title="UA 1102 moved C3 → C5" status="todo" subtitle="Pending · 16:05 effective">Awaiting confirmation from UA ops.</Step>
+</Steps>
+</Card>
+
+<Card title="Crews available for reassignment" subtitle="Legal rest met, within duty window">
+| Crew | Base | Position | Available until | Notes |
+|---|---|---|---|---|
+| C-114 | ATL | Captain + FO | 21:30 | 2h 10m duty left |
+| C-207 | ATL | 4 cabin crew | 22:15 | A320 / A321 qualified |
+| C-318 | ATL | Captain + FO | 19:45 | 737 qualified, tight window |
+| C-402 | ATL | 3 cabin crew | 23:00 | Fresh, no prior legs today |
+| C-511 | ATL | FO only | 20:20 | Needs captain pairing |
+</Card>
+
+<Card title="Weather advisories — ATL hub">
+<Callout tone="warning" title="Convective SIGMET, 15:40–18:10 local">
+Embedded thunderstorms, tops to FL380, hail to 1.5 in. North-flow arrivals affected.
+</Callout>
+
+| Advisory | Severity | Window | Impact |
+|---|---|---|---|
+| Thunderstorm cell over field | High | 15:40–18:10 | Arrival rate 28/hr |
+| Ground stop, north flow | High | 16:00–17:30 | Departure holds 40–60 min |
+| Crosswind 22 kt gusting 34 | Moderate | All day | Runway 26L/8R preferred |
+| Low visibility, 2 mi | Low | 06:10–08:00 | Cleared, no impact now |
+</Card>
+
+<Card title="Connections at risk" subtitle="MCT 45 min · 312 passengers">
+| Inbound | Outbound | Passengers | Connection | Risk |
+|---|---|---|---|---|
+| DL 3390 (SFO) | DL 2190 (ORD) | 41 | 38 min | **Critical** |
+| DL 2007 (DEN) | DL 4460 (BOS) | 27 | 42 min | **Critical** |
+| DL 1188 (LAX) | UA 1102 (EWR) | 19 | 44 min | High |
+| AA 4419 (MIA) | DL 1428 (LGA) | 22 | 51 min | Moderate |
+| SW 1187 (DAL) | DL 0874 (SEA) | 14 | 47 min | Moderate |
+
+<Progress value="312" max="312" label="Passengers flagged" tone="warning" />
+</Card>
+
+<Card title="Rebook affected passengers" subtitle="Applies to delayed and cancelled flights">
+<Form name="rebook">
+<Input label="Flight number" placeholder="DL 3311" hint="Cancelled or delayed flight" required={true} />
+<Select label="Rebooking action" placeholder="Choose an action" options="Move to next available flight | Move to partner airline | Hold for tomorrow, same flight | Refund and release" required={true} />
+<Input label="Number of passengers" type="number" min={1} max={400} placeholder="1" />
+<Checkboxes label="Include in rebooking" options="Hotel voucher | Meal voucher | Ground transport | Priority rebooking" />
+<TextArea label="Notes for the crew desk" placeholder="Unaccompanied minors, wheelchair assist, tight connections…" rows={3} />
+<Button>Rebook passengers</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Hub selector">
+<Select label="Viewing hub" name="hub" value="ATL" options="ATL — Atlanta | ORD — Chicago O'Hare | DFW — Dallas/Fort Worth | DEN — Denver | JFK — New York JFK | LAX — Los Angeles" hint="Switches the whole board to that hub" />
+<Button variant="secondary" ask="Show me the ORD hub operations desk">Switch hub</Button>
+</Card>
+
+<Card title="Cancellations today">
+| Flight | Route | Gate | Reason | Passengers rebooked |
+|---|---|---|---|---|
+| DL 3311 | ATL → MCO | D28 | Crew out of hours | 168 of 168 |
+| DL 5521 | JFK → ATL | B3 | Weather, JFK | 142 of 155 |
+| AA 2214 | ATL → CLT | T9 | Mechanical, engine | 88 of 121 |
+| UA 3308 | ATL → IAD | C8 | Weather, ATL cell | 64 of 97 |
+| SW 1190 | ATL → MDW | C14 | Aircraft out of service | 0 of 143 |
+
+<Progress value="462" max="684" label="Passengers rebooked" tone="info" />
+</Card>
+
+<FollowUps>
+- Which flights can C-207 crew cover right now?
+- Show me the critical connections for DL 3390 in detail
+- What is the on-time trend for ATL over the last 7 days?
+- Draft the passenger notification for DL 3311
+</FollowUps>

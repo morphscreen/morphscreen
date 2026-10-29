@@ -1,0 +1,104 @@
+# Daily store console
+
+<Select label="View a different store" name="store" options="Downtown #204 | Uptown #118 | Riverside #342" value="Downtown #204" />
+
+Downtown Store #204 · Wednesday, June 11 · Updated 4:30 PM
+
+<Callout tone="warning" title="Needs attention">Oat Milk Barista is critically out of stock. Register 3 is closed until 5 PM.</Callout>
+
+<Card title="Live overview">
+<Columns>
+<Stat label="Sales today" value="$8,420" change="84% of $10,000 target" tone="info" icon="chart-line" />
+<Stat label="Avg basket size" value="$46.20" change="+3.1% vs last week" tone="success" icon="shopping-cart" />
+<Stat label="Returns this week" value="$1,180" change="23 returns" tone="warning" icon="arrow-counter-clockwise" />
+<Stat label="This week vs last week" value="+8.4%" change="Mon–Wed, same days last week" tone="success" icon="calendar" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Sales today vs target">
+<Progress value="8420" max="10000" label="$8,420 of $10,000 · 84%" tone="info" />
+Projected close: $11,300 (+13% vs target).
+</Card>
+<Card title="Foot traffic through the day">
+<Chart type="area" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 30 |
+| 10 AM | 58 |
+| 11 AM | 74 |
+| 12 PM | 96 |
+| 1 PM | 88 |
+| 2 PM | 71 |
+| 3 PM | 85 |
+| 4 PM | 102 |
+| 5 PM | 119 |
+| 6 PM | 93 |
+| 7 PM | 66 |
+| 8 PM | 41 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Best sellers today">
+| Product | Units |
+|---|---|
+| Organic Bananas | 142 |
+| Whole Milk (gal) | 98 |
+| Sourdough Bread | 87 |
+| Free-range Eggs | 76 |
+| Cold Brew Coffee | 64 |
+</Card>
+<Card title="Items out of stock" subtitle="Reorder below">
+| Item | Status |
+|---|---|
+| Oat Milk Barista | <Badge tone="danger">Critical</Badge> |
+| Greek Yogurt 32oz | <Badge tone="warning">Low</Badge> |
+| Paper Towels 12pk | <Badge tone="warning">Low</Badge> |
+
+<Form name="reorder">
+<Select label="Reorder item" name="item" options="Oat Milk Barista | Greek Yogurt 32oz | Paper Towels 12pk" placeholder="Choose an item" required="true" />
+<Input label="Quantity" name="qty" type="number" value="12" min="1" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Running promotions">
+| Promotion | Units | vs last week | Status |
+|---|---|---|---|
+| BOGO Avocados | 312 | +18% | <Badge tone="success">On track</Badge> |
+| 20% off Laundry Detergent | 89 | −4% | <Badge tone="danger">Below target</Badge> |
+| Buy 2 Get 1 Chips | 214 | +9% | <Badge tone="success">On track</Badge> |
+</Card>
+<Card title="Registers">
+| Register | Status | Staffed by |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Mia Chen |
+| Register 2 | <Badge tone="success">Open</Badge> | Liam Ortiz |
+| Register 3 | <Badge tone="neutral">Closed</Badge> | — |
+| Self-checkout A | <Badge tone="success">Open</Badge> | — |
+| Self-checkout B | <Badge tone="success">Open</Badge> | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Who is on shift today">
+<Avatar name="Sofia Reyes" subtitle="Shift lead · 9 AM – 6 PM" />
+<Avatar name="Mia Chen" subtitle="Cashier · 9 AM – 5 PM" />
+<Avatar name="Liam Ortiz" subtitle="Cashier · 9 AM – 5 PM" />
+<Avatar name="Ava Smith" subtitle="Floor associate · 10 AM – 6 PM" />
+<Avatar name="Noah Patel" subtitle="Stocker · 7 AM – 3 PM" />
+</Card>
+<Card title="This week vs last week" subtitle="Gross sales by day">
+<Chart type="bar" x="Day" y="Sales (USD)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 9800 | 9100 |
+| Tue | 10400 | 9500 |
+| Wed | 8420 | 7800 |
+</Chart>
+</Card>
+</Columns>

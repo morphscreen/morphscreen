@@ -1,0 +1,117 @@
+# Logistics Coordinator's Board
+
+<Callout tone="info" title="Last refreshed">Dashboard data refreshed **12 minutes ago** at 10:48 AM.</Callout>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-time % (this month)" value="92.4%" change="+1.8% vs last month" tone="success" icon="trend-up" />
+<Stat label="Avg cost / shipment" value="$184.20" change="-3.5% vs last month" tone="success" icon="currency-dollar" />
+<Stat label="Shipments in transit" value="47" change="+6 today" tone="info" icon="truck" />
+<Stat label="Delayed shipments" value="5" change="2 critical" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in Transit" subtitle="Live tracking — tap a row to flag">
+<Tabs>
+<Tab title="All (47)">
+| Shipment | Origin → Destination | ETA | Status |
+|---|---|---|---|
+| SH-1042 | Chicago → Dallas | Today, 4:30 PM | <Badge tone="success">On time</Badge> |
+| SH-1043 | Seattle → Portland | Today, 6:00 PM | <Badge tone="success">On time</Badge> |
+| SH-1044 | New York → Boston | Tomorrow, 9:00 AM | <Badge tone="success">On time</Badge> |
+| SH-1045 | Los Angeles → Phoenix | Tomorrow, 11:30 AM | <Badge tone="warning">Delayed 2h</Badge> |
+| SH-1046 | Miami → Atlanta | Tomorrow, 2:00 PM | <Badge tone="success">On time</Badge> |
+| SH-1047 | Denver → Salt Lake City | Tomorrow, 5:00 PM | <Badge tone="danger">Delayed 6h</Badge> |
+| SH-1048 | Houston → Austin | Tomorrow, 7:30 PM | <Badge tone="success">On time</Badge> |
+</Tab>
+<Tab title="Delayed (5)">
+| Shipment | Origin → Destination | ETA | Status |
+|---|---|---|---|
+| SH-1045 | Los Angeles → Phoenix | Tomorrow, 11:30 AM | <Badge tone="warning">Delayed 2h</Badge> |
+| SH-1047 | Denver → Salt Lake City | Tomorrow, 5:00 PM | <Badge tone="danger">Delayed 6h</Badge> |
+| SH-1049 | San Francisco → San Diego | Tomorrow, 8:00 PM | <Badge tone="warning">Delayed 1h</Badge> |
+| SH-1050 | Dallas → Oklahoma City | Wed, 10:00 AM | <Badge tone="danger">Delayed 5h</Badge> |
+| SH-1051 | Chicago → St. Louis | Wed, 1:00 PM | <Badge tone="warning">Delayed 3h</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Search by Route">
+<Form name="route-search">
+<Input label="Origin" placeholder="City or ZIP" hint="e.g. Chicago, 60601" />
+<Input label="Destination" placeholder="City or ZIP" hint="e.g. Dallas, 75201" />
+<Select label="Status" options="Any | On time | Delayed | Critical" placeholder="Any" />
+<Button>Search routes</Button>
+</Form>
+</Card>
+
+<Card title="Volume Split by Carrier" subtitle="This month, by shipment count">
+<Chart type="donut" title="Carrier share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 142 |
+| UPS | 118 |
+| DHL | 64 |
+| USPS | 41 |
+| Regional | 25 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 2 Months">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 88 |
+| W2 | 102 |
+| W3 | 95 |
+| W4 | 110 |
+| W5 | 98 |
+| W6 | 121 |
+| W7 | 116 |
+| W8 | 134 |
+| W9 | 127 |
+</Chart>
+</Card>
+
+<Card title="Flag a Shipment" subtitle="Mark for review — coordinator notified">
+<Form name="flag-shipment">
+<Input label="Shipment ID" placeholder="e.g. SH-1047" hint="Found in the transit list above" />
+<Radio label="Priority" options="Low — monitor | Medium — investigate | High — immediate action" />
+<TextArea label="Reason" placeholder="e.g. Weather delay, custom hold, missing docs…" rows="3" />
+<Button>Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Delayed Shipments — Detail View">
+<Columns>
+<Card title="Critical (2)">
+- **SH-1047** Denver → Salt Lake City  
+  ETA: Tomorrow 5:00 PM (6h late)  
+  <Badge tone="danger">Mechanical issue</Badge>
+- **SH-1050** Dallas → Oklahoma City  
+  ETA: Wed 10:00 AM (5h late)  
+  <Badge tone="danger">Weather closure</Badge>
+</Card>
+<Card title="Moderate (3)">
+- **SH-1045** LA → Phoenix (2h) — <Badge tone="warning">Traffic</Badge>
+- **SH-1049** SF → San Diego (1h) — <Badge tone="warning">Loading delay</Badge>
+- **SH-1051** Chicago → St. Louis (3h) — <Badge tone="warning">Customs hold</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Last Refreshed">
+| Detail | Value |
+|---|---|
+| Data timestamp | Today, 10:48 AM |
+| Next auto-refresh | In 18 minutes |
+| Source | TMS + carrier APIs |
+| Manual refresh | <Button variant="secondary" size="small">Refresh now</Button> |
+</Card>
+
+<FollowUps>
+- Show me the route with the most delays this month
+- Which carrier has the best on-time performance?
+- Flag all shipments arriving today for priority review
+- What caused the 3.5% cost drop per shipment?
+</FollowUps>

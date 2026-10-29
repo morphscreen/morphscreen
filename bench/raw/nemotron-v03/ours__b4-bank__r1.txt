@@ -1,0 +1,111 @@
+<Card title="Account Overview" subtitle="Welcome back, Alex">
+<Columns>
+<Stat label="Checking" value="$12,450.00" change="+$1,200 this month" tone="success" />
+<Stat label="Savings" value="$28,750.00" change="+$500 this month" tone="info" />
+<Stat label="Credit Card" value="-$2,340.00" change="$12,660 available" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions" subtitle="Last 10 transactions">
+<Table>
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Dec 15 | Whole Foods | Groceries | -$127.43 |
+| Dec 14 | Shell Gas Station | Transportation | -$45.00 |
+| Dec 13 | Netflix | Subscriptions | -$15.99 |
+| Dec 12 | Amazon | Shopping | -$89.99 |
+| Dec 11 | Salary Deposit | Income | +$3,500.00 |
+| Dec 10 | Starbucks | Food & Drink | -$6.75 |
+| Dec 9 | Electric Bill | Utilities | -$142.30 |
+| Dec 8 | Uber | Transportation | -$22.50 |
+| Dec 7 | Target | Shopping | -$67.82 |
+| Dec 6 | Spotify | Subscriptions | -$9.99 |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Spending by Category" subtitle="This month">
+<Chart type="donut" title="December Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 450 |
+| Transportation | 280 |
+| Shopping | 320 |
+| Subscriptions | 45 |
+| Utilities | 180 |
+| Other | 150 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon" subtitle="Next 14 days">
+<Details title="Internet - $79.99" open="false">Due Dec 20 • Auto-pay enabled</Details>
+<Details title="Car Insurance - $185.00" open="false">Due Dec 22 • Manual payment</Details>
+<Details title="Phone Bill - $85.00" open="false">Due Dec 25 • Auto-pay enabled</Details>
+<Details title="Credit Card - $120.00 (min)" open="false">Due Dec 28 • Manual payment</Details>
+<Details title="Streaming Services - $34.97" open="false">Due Jan 1 • Auto-pay enabled</Details>
+</Card>
+</Columns>
+
+<Card title="Vacation Savings Goal" subtitle="Japan Trip - Target: $5,000 by June 2025">
+<Progress value="2850" max="5000" label="$2,850 of $5,000 saved (57%)" />
+<Columns>
+<Stat label="Monthly Target" value="$417" tone="info" />
+<Stat label="On Track" value="Yes" change="Need $417/month" tone="success" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Credit Score" subtitle="Updated Dec 1, 2024">
+<Stat label="Score" value="742" change="Excellent" tone="success" />
+<Progress value="742" max="850" label="300 - 850 range" />
+<Badge tone="success">Excellent</Badge>
+</Card>
+
+<Card title="Credit Line Controls" subtitle="Visa ending in 4281">
+<Switch label="Freeze credit line" name="freeze-credit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Callout tone="info" title="Credit line frozen">New transactions will be declined. Recurring bills and returns still process.</Callout>
+</Card>
+</Columns>
+
+<Card title="Move Money" subtitle="Transfer between your accounts">
+<Form name="transfer-form">
+<Select label="From account" name="from-account" placeholder="Select account" options="Checking (*4281) | Savings (*9173) | Credit Card (*4281)" required="true" />
+<Select label="To account" name="to-account" placeholder="Select account" options="Checking (*4281) | Savings (*9173) | Credit Card (*4281)" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Minimum $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" type="text" placeholder="Vacation savings" />
+<Button>Transfer</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Statement Period" subtitle="View statements for different periods">
+<Select label="Select period" name="statement-period" placeholder="Choose period" options="December 2024 | November 2024 | October 2024 | September 2024 | Custom range" />
+<Button variant="secondary">View Statement</Button>
+<Button variant="tertiary">Download PDF</Button>
+</Card>
+
+<Card title="Alert Preferences" subtitle="Manage what triggers notifications">
+<Checkboxes label="Transaction alerts" name="tx-alerts" options="Large purchases (>$100) | International transactions | Online purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions" />
+<Checkboxes label="Account alerts" name="acct-alerts" options="Low balance (<$500) | Large deposit (>$1,000) | Payment due soon | Payment posted | Profile changes" value="Low balance (<$500) | Payment due soon" />
+<Checkboxes label="Security alerts" name="sec-alerts" options="New device login | Password change | Contact info change | Credit score change | Credit inquiry" value="New device login | Password change | Contact info change" />
+</Card>
+</Columns>
+
+<Card title="Dispute a Transaction" subtitle="Report an unauthorized or incorrect charge">
+<Form name="dispute-form">
+<Select label="Transaction to dispute" name="dispute-tx" placeholder="Select a transaction" options="Whole Foods - $127.43 (Dec 15) | Shell Gas Station - $45.00 (Dec 14) | Netflix - $15.99 (Dec 13) | Amazon - $89.99 (Dec 12) | Starbucks - $6.75 (Dec 10) | Electric Bill - $142.30 (Dec 9) | Uber - $22.50 (Dec 8) | Target - $67.82 (Dec 7) | Spotify - $9.99 (Dec 6)" required="true" />
+<Radio label="Dispute reason" name="dispute-reason" options="Unauthorized charge | Incorrect amount | Duplicate charge | Goods not received | Service not as described | Canceled subscription" required="true" />
+<TextArea label="Additional details" name="dispute-details" placeholder="Describe what happened..." rows="3" hint="Include any communication with merchant, order numbers, etc." required="true" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my net worth trend
+- Set up a new savings goal
+- Review my subscription spending
+- Increase my credit limit
+</FollowUps>

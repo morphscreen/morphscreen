@@ -1,0 +1,128 @@
+# Power Network Operator Console
+
+Live grid status. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Network Overview">
+<Columns>
+<Stat label="Current Load" value="4,832 MW" change="+2.1% vs 1h ago" icon="lightning" tone="info" />
+<Stat label="Capacity Used" value="78.4%" change="+1.8 pts vs 1h ago" icon="gauge" tone="warning" />
+<Stat label="Price" value="$64.20" note="per MWh" change="+$3.10 vs 1h ago" icon="currency-circle-dollar" />
+<Stat label="Emissions Today" value="12,480 t" note="CO₂e" change="-3.2% vs yesterday" icon="leaf" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Capacity Headroom">
+<Progress value="78.4" max="100" label="Load vs. rated capacity" tone="warning" />
+<Callout tone="warning" title="Approaching peak">Load is forecast to hit 88% of capacity at 18:30 today. Consider pre-emptive curtailment or demand response.</Callout>
+</Card>
+
+<Card title="Generation Mix">
+<Chart type="donut" title="Current generation by source">
+| Source | MW |
+|---|---|
+| Natural Gas | 1,850 |
+| Wind | 1,240 |
+| Solar | 980 |
+| Nuclear | 640 |
+| Hydro | 420 |
+| Biomass | 180 |
+</Chart>
+</Card>
+
+<Card title="Plant Status">
+| Plant | Type | Output | Status |
+|---|---|---|---|
+| Riverbend Gas | Natural Gas | 620 MW | <Badge tone="success">Online</Badge> |
+| Hilltop Wind | Wind | 340 MW | <Badge tone="success">Online</Badge> |
+| Solar Valley | Solar | 280 MW | <Badge tone="success">Online</Badge> |
+| Northshore Nuclear | Nuclear | 640 MW | <Badge tone="success">Online</Badge> |
+| Dam Falls Hydro | Hydro | 420 MW | <Badge tone="warning">Reduced</Badge> |
+| Greenfield Biomass | Biomass | 180 MW | <Badge tone="success">Online</Badge> |
+| Cedar Ridge Gas | Natural Gas | 210 MW | <Badge tone="danger">Offline</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected Customers | Started | Status |
+|---|---|---|---|
+| Northgate District | 2,340 | 14:22 | <Badge tone="danger">Crew dispatched</Badge> |
+| East Harbor | 1,105 | 15:47 | <Badge tone="warning">Assessment underway</Badge> |
+| Westfield Industrial | 85 | 16:03 | <Badge tone="info">Restoration in progress</Badge> |
+</Card>
+
+<Card title="24-Hour Demand Forecast">
+<Chart type="line" title="Forecast load (MW)" x="Hour" y="MW">
+| Hour | Forecast |
+|---|---|
+| 00:00 | 3,850 |
+| 03:00 | 3,520 |
+| 06:00 | 3,940 |
+| 09:00 | 4,610 |
+| 12:00 | 4,980 |
+| 15:00 | 5,120 |
+| 18:00 | 5,360 |
+| 21:00 | 4,740 |
+| 00:00 | 3,900 |
+</Chart>
+<Callout tone="info" title="Peak window">Expected peak 5,360 MW at 18:00. Current capacity headroom: 1,168 MW.</Callout>
+</Card>
+
+<Card title="Maintenance This Month">
+| Date | Plant | Work | Duration |
+|---|---|---|---|
+| Mar 12 | Cedar Ridge Gas | Turbine inspection | 08:00–16:00 |
+| Mar 15 | Solar Valley | Inverter replacement | 09:00–14:00 |
+| Mar 20 | Dam Falls Hydro | Penstock cleaning | 10:00–18:00 |
+| Mar 24 | Hilltop Wind | Gearbox oil change | 07:00–15:00 |
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="16:04 — Overload risk in Northgate">Load at 92% of feeder capacity. Curtailment recommended.</Callout>
+<Callout tone="warning" title="15:52 — Voltage dip in East Harbor">Voltage dropped 4% below nominal. Investigating.</Callout>
+<Callout tone="info" title="15:30 — Weather advisory">High winds expected 20:00–23:00. Wind generation may ramp up.</Callout>
+</Card>
+
+<Card title="Regional Focus">
+<Form name="region-focus">
+<Select label="Select region" name="region" options="All regions | Northgate | East Harbor | Westfield | Southport | Central" />
+<Button>Apply focus</Button>
+<Button variant="secondary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Curtailment Order">
+<Form name="curtailment">
+<Select label="Plant" name="plant" options="Riverbend Gas | Hilltop Wind | Solar Valley | Greenfield Biomass" />
+<Stepper label="Reduction" name="reduction" min="0" max="500" step="10" unit="MW" />
+<Time label="Start time" name="start" />
+<Time label="End time" name="end" />
+<TextArea label="Reason" name="reason" placeholder="e.g., Grid congestion, overload risk" />
+<Button variant="danger">Issue curtailment order</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today">
+<Columns>
+<Stat label="Total CO₂e" value="12,480 t" change="-3.2% vs yesterday" icon="leaf" tone="success" />
+<Stat label="Intensity" value="0.42 t/MWh" change="-0.02 vs yesterday" icon="chart-line" />
+</Columns>
+<Chart type="area" title="Hourly emissions (t CO₂e)" x="Hour" y="t CO₂e">
+| Hour | Emissions |
+|---|---|
+| 00:00 | 420 |
+| 04:00 | 380 |
+| 08:00 | 510 |
+| 12:00 | 580 |
+| 16:00 | 540 |
+| 20:00 | 460 |
+| 23:00 | 410 |
+</Chart>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="danger" icon="lightning">Order curtailment</Button>
+<Button variant="secondary" icon="map-pin">Focus region</Button>
+<Button variant="secondary" icon="bell">Acknowledge alerts</Button>
+<Button variant="secondary" icon="download">Export report</Button>
+</Columns>
+</Card>

@@ -1,0 +1,8 @@
+<Card title="Platform Status" subtitle="API health overview for this month">
+<Stat label="API Uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Callout tone="info" title="Most Recent Incident">
+**Incident #INC-2024-089** — Partial API latency spike (p99 > 2s) affecting `/v1/search` endpoint.  
+**Resolved:** August 14, 2024 at 14:22 UTC (duration: 47 minutes)  
+**Root cause:** Database connection pool exhaustion due to a misconfigured retry storm in a downstream service. Mitigated by rolling back the retry config and scaling the connection pool.
+</Callout>
+</Card>

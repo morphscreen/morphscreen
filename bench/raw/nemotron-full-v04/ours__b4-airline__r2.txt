@@ -1,0 +1,148 @@
+# Hub Operations Desk — ORD (Chicago O'Hare)
+
+<Select label="Select Hub" name="hub-select" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles" value="ORD — Chicago O'Hare" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="82%" change="+3% vs yesterday" tone="success" />
+<Stat label="On-Time Arrivals" value="79%" change="-1% vs yesterday" tone="info" />
+<Progress value="82" max="100" label="Departure Target: 85%" />
+<Progress value="79" max="100" label="Arrival Target: 85%" />
+</Card>
+
+<Card title="Key Metrics">
+<Stat label="Avg Passenger Load" value="87%" change="+2% vs avg" tone="info" />
+<Stat label="Avg Turnaround Time" value="42 min" change="-3 min vs target" tone="success" />
+<Stat label="Cancellations Today" value="7" change="2 weather, 5 mechanical" tone="danger" />
+<Stat label="Connections at Risk" value="23" change="14 rebooked, 9 pending" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="All Flights — Today">
+<Tabs>
+<Tab title="Departures (142)">
+| Flight | Route | Gate | STD | Status | Pax |
+|---|---|---|---|---|---|
+| UA 124 | ORD → LAX | B12 | 06:00 | **Departed** | 158/168 |
+| UA 208 | ORD → SFO | B14 | 06:15 | **Departed** | 172/180 |
+| UA 345 | ORD → JFK | C18 | 06:30 | **Boarding** | 145/150 |
+| UA 567 | ORD → MIA | C22 | 06:45 | **Delayed** 07:10 | 138/160 |
+| UA 789 | ORD → SEA | B10 | 07:00 | **On Time** | 162/175 |
+| UA 432 | ORD → LAS | C24 | 07:15 | **Delayed** 07:45 | 128/150 |
+| UA 654 | ORD → BOS | B16 | 07:30 | **On Time** | 134/144 |
+| UA 876 | ORD → DEN | C20 | 07:45 | **Gate Change** → C26 | 156/168 |
+| UA 901 | ORD → PHX | B18 | 08:00 | **On Time** | 142/156 |
+| UA 234 | ORD → ORD | C28 | 08:15 | **Cancelled** | — |
+</Tab>
+<Tab title="Arrivals (138)">
+| Flight | Route | Gate | STA | Status | Pax |
+|---|---|---|---|---|---|
+| UA 123 | LAX → ORD | B12 | 05:45 | **Arrived** | 162/168 |
+| UA 207 | SFO → ORD | B14 | 06:10 | **Arrived** | 175/180 |
+| UA 344 | JFK → ORD | C18 | 06:25 | **Final Approach** | 148/150 |
+| UA 566 | MIA → ORD | C22 | 06:40 | **Delayed** 07:05 | 142/160 |
+| UA 788 | SEA → ORD | B10 | 06:55 | **On Time** | 168/175 |
+| UA 431 | LAS → ORD | C24 | 07:10 | **Diverted** → IND | 132/150 |
+| UA 653 | BOS → ORD | B16 | 07:25 | **On Time** | 138/144 |
+| UA 875 | DEN → ORD | C20 | 07:40 | **Gate Change** → C26 | 158/168 |
+| UA 900 | PHX → ORD | B18 | 07:55 | **On Time** | 148/156 |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Delayed Flights — Action Required">
+<Callout tone="warning" title="5 Departures Delayed">Weather holding at SFO/LAX, ground stop at MIA</Callout>
+| Flight | Route | Gate | Delay | Reason | New ETD | Action |
+|---|---|---|---|---|---|---|
+| UA 567 | ORD → MIA | C22 | 25 min | Weather MIA | 07:10 | Monitor |
+| UA 432 | ORD → LAS | C24 | 30 min | ATC Flow | 07:45 | Rebook 12 pax |
+| UA 102 | ORD → ATL | B20 | 45 min | Crew timing | 08:15 | **Swap crew** |
+| UA 309 | ORD → MCO | C30 | 60 min | Mechanical | 08:30 | **Aircraft swap** |
+| UA 511 | ORD → IAH | B22 | 20 min | Late inbound | 07:35 | Hold connections |
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | Route | From → To | Reason |
+|---|---|---|---|---|
+| 06:42 | UA 876 | ORD → DEN | C20 → C26 | Congestion C-pier |
+| 06:38 | UA 875 | DEN → ORD | C20 → C26 | Congestion C-pier |
+| 06:15 | UA 208 | ORD → SFO | B14 → B16 | Gate equipment |
+| 05:55 | UA 123 | LAX → ORD | B12 → B10 | Early arrival |
+| 05:40 | UA 566 | MIA → ORD | C22 → C24 | Delayed departure |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Position | Current Base | Duty Time Left | Qualifications | Status |
+|---|---|---|---|---|---|
+| CRW-4421 | Captain | ORD | 6:45 | 737, 757, 767 | **Standby** |
+| CRW-4422 | FO | ORD | 6:45 | 737, 757 | **Standby** |
+| CRW-3891 | FA Lead | ORD | 8:12 | All narrow-body | **Reserve** |
+| CRW-3892 | FA | ORD | 8:12 | All narrow-body | **Reserve** |
+| CRW-3893 | FA | ORD | 8:12 | All narrow-body | **Reserve** |
+| CRW-5102 | Captain | ORD | 4:30 | 777, 787 | **Resting** |
+| CRW-5103 | FO | ORD | 4:30 | 777, 787 | **Resting** |
+</Card>
+
+<Card title="Weather Advisories — ORD">
+<Callout tone="warning" title="Low Visibility Advisory">Ceiling 800ft, visibility 2SM. Expect arrival delays 30-45 min through 10:00Z.</Callout>
+<Callout tone="info" title="Wind">280° at 18kt gusting 28kt. Crosswind component 12kt on 28L/28R.</Callout>
+<Callout tone="neutral" title="Forecast">Improving after 12:00Z. VFR expected by 14:00Z. No precipitation expected.</Callout>
+<Details title="Full METAR/TAF">
+`METAR KORD 151153Z 28018G28KT 2SM BR OVC008 02/M01 A3012 RMK AO2 SLP201`
+`TAF KORD 151130Z 1512/1612 28015G25KT 2SM BR OVC008 FM151400 28012KT P6SM SCT020 BKN040 FM160000 27010KT P6SM SKC`
+</Details>
+</Card>
+</Columns>
+
+<Card title="Connections at Risk of Missed Connection">
+| Pax Count | Inbound Flight | Arrival | Connecting Flight | Departure | Gate | Min Connect | Status |
+|---|---|---|---|---|---|---|---|
+| 8 | UA 566 (MIA) | 07:05 | UA 432 → LAS | 07:45 | C24 | 40 | **Rebooked** |
+| 5 | UA 566 (MIA) | 07:05 | UA 102 → ATL | 08:15 | B20 | 70 | **Hold** |
+| 4 | UA 431 (LAS) | Diverted | UA 789 → SEA | 07:00 | B10 | — | **Rebook next** |
+| 6 | UA 344 (JFK) | 06:25 | UA 654 → BOS | 07:30 | B16 | 65 | **On track** |
+| 3 | UA 875 (DEN) | 07:40 | UA 901 → PHX | 08:00 | B18 | 20 | **At risk** |
+| 4 | UA 566 (MIA) | 07:05 | UA 511 → IAH | 07:35 | B22 | 30 | **Hold** |
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-form">
+<Columns>
+<Input label="Passenger Name / PNR" name="pnr" placeholder="Enter PNR or last name" hint="Supports partial match" />
+<Select label="Original Flight" name="orig-flight" options="UA 567 — ORD→MIA | UA 432 — ORD→LAS | UA 102 — ORD→ATL | UA 309 — ORD→MCO | UA 511 — ORD→IAH | UA 431 — LAS→ORD (diverted)" placeholder="Select affected flight" />
+</Columns>
+<Columns>
+<Select label="New Flight" name="new-flight" options="UA 567A — ORD→MIA 09:15 | UA 432A — ORD→LAS 09:30 | UA 102A — ORD→ATL 10:00 | UA 309A — ORD→MCO 10:15 | UA 511A — ORD→IAH 09:45 | Next available" placeholder="Select replacement" />
+<Select label="Cabin" name="cabin" options="Same cabin | Upgrade if available | Any available" placeholder="Cabin preference" />
+</Columns>
+<Columns>
+<Checkboxes label="Options" name="options" options="Auto-assign seat | Meal preference | Special assistance | Baggage transfer" value="" />
+</Columns>
+<Button>Rebook Passenger(s)</Button>
+<Button variant="secondary">Bulk Rebook (Select Multiple)</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations Today">
+| Flight | Route | Time | Reason | Pax Affected | Rebooked | Status |
+|---|---|---|---|---|---|---|
+| UA 234 | ORD → ORD | 08:15 | Mechanical | 0 | 0 | **Ferry flight** |
+| UA 431 | LAS → ORD | 07:10 | Diverted to IND | 132 | 89 | **Rebooking** |
+| UA 612 | ORD → YYZ | 09:00 | Weather YYZ | 148 | 112 | **Pending** |
+| UA 777 | ORD → LHR | 10:30 | Crew illness | 212 | 0 | **Sourcing crew** |
+| UA 888 | ORD → NRT | 11:00 | Mechanical | 264 | 0 | **Aircraft swap** |
+| UA 999 | ORD → GRU | 21:00 | Pre-emptive | 198 | 0 | **Monitoring** |
+| UA 111 | ORD → HNL | 22:30 | Pre-emptive | 245 | 0 | **Monitoring** |
+</Card>
+
+<FollowUps>
+- Show me the crew pairing for UA 777 to LHR
+- What's the gate utilization on C-pier right now?
+- Generate the 15:00Z departure sequence for B-pier
+- Escalate UA 309 mechanical to maintenance control
+- View the passenger manifest for UA 431 diverted to IND
+</FollowUps>

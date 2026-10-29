@@ -1,0 +1,156 @@
+# Store Manager Daily Console
+
+<Select label="Store" name="store-selector" placeholder="Select store" options="Downtown Flagship | Mall Location | Airport Express | Suburban Plaza" value="Downtown Flagship" />
+
+---
+
+<Columns>
+<Card title="Sales Today vs Target">
+<Stat label="Sales Today" value="$24,850" change="+$3,250 vs target" tone="success" />
+<Progress value="24850" max="30000" label="Target: $30,000" tone="success" />
+<Stat label="Avg Basket Size" value="$47.20" change="+$2.10 vs last week" tone="info" />
+</Card>
+
+<Card title="Foot Traffic Today">
+<Chart type="area" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 28 |
+| 10 AM | 45 |
+| 11 AM | 67 |
+| 12 PM | 89 |
+| 1 PM | 112 |
+| 2 PM | 98 |
+| 3 PM | 85 |
+| 4 PM | 72 |
+| 5 PM | 95 |
+| 6 PM | 108 |
+| 7 PM | 87 |
+| 8 PM | 54 |
+</Chart>
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Best Sellers (Units Today)">
+<Chart type="bar" x="Product" y="Units">
+| Product | Units |
+|---|---|
+| Wireless Earbuds Pro | 42 |
+| Phone Case Clear | 38 |
+| USB-C Cable 2m | 31 |
+| Screen Protector | 29 |
+| Portable Charger 10K | 24 |
+| Bluetooth Speaker Mini | 18 |
+</Chart>
+</Card>
+
+<Card title="Items Out of Stock">
+| SKU | Product | Category | Days OOS | Reorder |
+|---|---|---|---|---|
+| SKU-8472 | Wireless Charger Pad | Accessories | 3 | <Button size="small" variant="secondary">Reorder</Button> |
+| SKU-9103 | Noise-Cancel Headphones | Audio | 1 | <Button size="small" variant="secondary">Reorder</Button> |
+| SKU-5521 | Tablet Stand Adjustable | Accessories | 5 | <Button size="small" variant="secondary">Reorder</Button> |
+| SKU-7784 | Smart Watch Band 42mm | Wearables | 2 | <Button size="small" variant="secondary">Reorder</Button> |
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="On Shift Today">
+<Avatar name="Maria Santos" subtitle="Shift Lead · 8AM–4PM" />
+<Avatar name="James Chen" subtitle="Sales Associate · 8AM–4PM" />
+<Avatar name="Priya Patel" subtitle="Sales Associate · 12PM–8PM" />
+<Avatar name="David Kim" subtitle="Cashier · 12PM–8PM" />
+<Avatar name="Sarah Johnson" subtitle="Stock Specialist · 8AM–12PM" />
+<Avatar name="Alex Rivera" subtitle="Manager on Duty · 10AM–6PM" />
+</Card>
+
+<Card title="Registers Status">
+| Register | Status | Cashier | Sales Today | Transactions |
+|---|---|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | James Chen | $8,240 | 124 |
+| Register 2 | <Badge tone="success">Open</Badge> | Priya Patel | $7,150 | 108 |
+| Register 3 | <Badge tone="warning">Break</Badge> | — | $0 | 0 |
+| Register 4 | <Badge tone="neutral">Closed</Badge> | — | $0 | 0 |
+| Self-Checkout A | <Badge tone="success">Open</Badge> | Auto | $5,890 | 89 |
+| Self-Checkout B | <Badge tone="success">Open</Badge> | Auto | $3,570 | 54 |
+</Card>
+</Columns>
+
+---
+
+<Columns>
+<Card title="Returns This Week">
+<Stat label="Returns (Units)" value="47" change="-12 vs last week" tone="success" />
+<Stat label="Return Rate" value="3.2%" change="-0.4% vs last week" tone="success" />
+<Stat label="Refund Amount" value="$2,180" change="-$420 vs last week" tone="success" />
+<Chart type="bar" x="Day" y="Returns">
+| Day | Returns |
+|---|---|
+| Mon | 8 |
+| Tue | 6 |
+| Wed | 9 |
+| Thu | 7 |
+| Fri | 12 |
+| Sat | 5 |
+| Sun | 0 |
+</Chart>
+</Card>
+
+<Card title="Active Promotions Performance">
+| Promotion | Type | Revenue | Units Sold | ROI | Status |
+|---|---|---|---|---|---|
+| Summer Audio Sale | 20% off Audio | $4,200 | 56 | 3.2x | <Badge tone="success">Active</Badge> |
+| Bundle & Save | Buy 2 Accessories 15% off | $2,850 | 84 | 2.8x | <Badge tone="success">Active</Badge> |
+| Student Discount | 10% with ID | $1,100 | 22 | 1.9x | <Badge tone="info">Active</Badge> |
+| Loyalty Double Points | 2x points | $3,400 | 41 | 4.1x | <Badge tone="success">Active</Badge> |
+| Weekend Flash | 25% select items | $0 | 0 | — | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+</Columns>
+
+---
+
+<Card title="This Week vs Last Week Comparison">
+<Columns>
+<Card title="This Week (Mon–Sun)">
+<Stat label="Revenue" value="$142,300" change="+8.4%" tone="success" />
+<Stat label="Transactions" value="2,847" change="+156" tone="success" />
+<Stat label="Avg Basket" value="$50.00" change="+$1.80" tone="info" />
+<Stat label="Foot Traffic" value="4,210" change="+312" tone="success" />
+<Stat label="Conversion" value="67.6%" change="+1.2%" tone="success" />
+<Stat label="Returns" value="47" change="-12" tone="success" />
+</Card>
+<Card title="Last Week (Mon–Sun)">
+<Stat label="Revenue" value="$131,200" tone="neutral" />
+<Stat label="Transactions" value="2,691" tone="neutral" />
+<Stat label="Avg Basket" value="$48.20" tone="neutral" />
+<Stat label="Foot Traffic" value="3,898" tone="neutral" />
+<Stat label="Conversion" value="66.4%" tone="neutral" />
+<Stat label="Returns" value="59" tone="neutral" />
+</Card>
+</Columns>
+</Card>
+
+---
+
+<Card title="Quick Actions">
+<Columns>
+<Form name="reorder-form">
+<Select label="Item to Reorder" name="reorder-item" placeholder="Select out-of-stock item" options="Wireless Charger Pad (SKU-8472) | Noise-Cancel Headphones (SKU-9103) | Tablet Stand Adjustable (SKU-5521) | Smart Watch Band 42mm (SKU-7784)" required="true" />
+<Input label="Quantity" name="reorder-qty" type="number" placeholder="50" value="50" min="1" max="500" step="1" required="true" />
+<Select label="Priority" name="reorder-priority" options="Standard (3-5 days) | Express (1-2 days) | Emergency (same day)" value="Standard (3-5 days)" />
+<Button>Submit Reorder</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+
+<Form name="store-switcher">
+<Select label="Switch Store View" name="store-switch" placeholder="Choose a store" options="Downtown Flagship | Mall Location | Airport Express | Suburban Plaza" value="Downtown Flagship" required="true" />
+<Button>Switch Store</Button>
+</Form>
+</Columns>
+</Card>

@@ -1,0 +1,403 @@
+{
+  "name": "core",
+  "version": "0.6.0",
+  "about": "Always included: layout, text blocks, numbers, charts, forms and buttons.",
+  "components": {
+    "Card": {
+      "about": "a section, optionally with a header",
+      "attrs": {
+        "title": "string",
+        "subtitle": "string"
+      },
+      "content": "any"
+    },
+    "Columns": {
+      "about": "puts its children side by side, stacking on narrow screens",
+      "attrs": {},
+      "content": "any"
+    },
+    "Tabs": {
+      "about": "one panel per Tab",
+      "attrs": {},
+      "content": "only:Tab"
+    },
+    "Tab": {
+      "about": "a panel inside Tabs",
+      "attrs": {
+        "title": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "content": "any",
+      "parent": "Tabs"
+    },
+    "Details": {
+      "about": "a collapsible section, closed until opened (open starts it open)",
+      "attrs": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "open": "boolean"
+      },
+      "content": "any"
+    },
+    "Steps": {
+      "about": "an ordered sequence or timeline",
+      "attrs": {},
+      "content": "only:Step"
+    },
+    "Step": {
+      "about": "one step inside Steps",
+      "attrs": {
+        "title": {
+          "type": "string",
+          "required": true
+        },
+        "status": {
+          "type": [
+            "done",
+            "current",
+            "todo"
+          ],
+          "default": "todo"
+        },
+        "subtitle": "string"
+      },
+      "content": "any",
+      "parent": "Steps"
+    },
+    "Callout": {
+      "about": "a highlighted note or alert",
+      "attrs": {
+        "tone": {
+          "type": [
+            "neutral",
+            "info",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "default": "info"
+        },
+        "title": "string"
+      },
+      "content": "any"
+    },
+    "Stat": {
+      "about": "one key number, its unit inside value (\"3.7 km\", \"$1,204\")",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "value": {
+          "type": "string",
+          "required": true
+        },
+        "change": "string",
+        "note": "string",
+        "tone": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "danger"
+        ],
+        "icon": "icon"
+      },
+      "content": "none"
+    },
+    "Badge": {
+      "about": "a short status label",
+      "attrs": {
+        "tone": {
+          "type": [
+            "neutral",
+            "info",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "default": "neutral"
+        }
+      },
+      "content": "text"
+    },
+    "Progress": {
+      "about": "a progress bar",
+      "attrs": {
+        "value": {
+          "type": "number",
+          "required": true
+        },
+        "max": {
+          "type": "number",
+          "default": 100
+        },
+        "label": "string",
+        "tone": [
+          "neutral",
+          "info",
+          "success",
+          "warning",
+          "danger"
+        ]
+      },
+      "content": "none"
+    },
+    "Avatar": {
+      "about": "a person's picture or initials, with their name",
+      "attrs": {
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "src": "url",
+        "subtitle": "string"
+      },
+      "content": "none"
+    },
+    "Gallery": {
+      "about": "a grid of images",
+      "attrs": {},
+      "content": "images"
+    },
+    "Chart": {
+      "about": "charts the Markdown table inside: first column labels, every column after it numbers (one series each)",
+      "attrs": {
+        "type": {
+          "type": [
+            "bar",
+            "line",
+            "area",
+            "pie",
+            "donut",
+            "radar",
+            "scatter",
+            "stacked",
+            "horizontal"
+          ],
+          "default": "bar"
+        },
+        "title": "string",
+        "x": "string",
+        "y": "string"
+      },
+      "content": "table",
+      "columns": "numeric"
+    },
+    "FollowUps": {
+      "about": "suggested next questions the user can tap",
+      "attrs": {},
+      "content": "list"
+    },
+    "Form": {
+      "about": "groups fields; its Button submits them",
+      "attrs": {
+        "name": "string"
+      },
+      "content": "any"
+    },
+    "Input": {
+      "about": "a one-line text field",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "type": {
+          "type": [
+            "text",
+            "email",
+            "number",
+            "password",
+            "url",
+            "tel",
+            "search",
+            "date",
+            "time",
+            "datetime-local"
+          ],
+          "default": "text"
+        },
+        "placeholder": "string",
+        "value": "string",
+        "step": "number",
+        "min": "number",
+        "max": "number",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "TextArea": {
+      "about": "a multi-line text field",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "placeholder": "string",
+        "value": "string",
+        "rows": "number",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Select": {
+      "about": "a dropdown",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "options": {
+          "type": "list",
+          "required": true
+        },
+        "name": "string",
+        "placeholder": "string",
+        "value": "string",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Date": {
+      "about": "a date picker",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "value": "string",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Slider": {
+      "about": "pick a number in a range, shown with its unit ($, %, km)",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "min": {
+          "type": "number",
+          "required": true
+        },
+        "max": {
+          "type": "number",
+          "required": true
+        },
+        "step": "number",
+        "value": "number",
+        "name": "string",
+        "unit": "string"
+      },
+      "content": "none"
+    },
+    "Checkboxes": {
+      "about": "pick any number of options",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "options": {
+          "type": "list",
+          "required": true
+        },
+        "name": "string",
+        "value": "list",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Radio": {
+      "about": "pick one option",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "options": {
+          "type": "list",
+          "required": true
+        },
+        "name": "string",
+        "value": "string",
+        "hint": "string",
+        "required": "boolean"
+      },
+      "content": "none"
+    },
+    "Switch": {
+      "about": "an on/off toggle",
+      "attrs": {
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "name": "string",
+        "value": "boolean",
+        "hint": "string"
+      },
+      "content": "none"
+    },
+    "Button": {
+      "about": "in a Form it submits; elsewhere href opens a link and ask sends a message (the label by default); the label goes between the tags or in label",
+      "attrs": {
+        "variant": {
+          "type": [
+            "primary",
+            "secondary",
+            "tertiary",
+            "danger"
+          ],
+          "default": "primary"
+        },
+        "href": "url",
+        "ask": "string",
+        "disabled": "boolean",
+        "size": {
+          "type": [
+            "medium",
+            "small",
+            "large"
+          ],
+          "default": "medium"
+        },
+        "label": "string",
+        "icon": "icon"
+      },
+      "content": "text"
+    }
+  },
+  "aliases": {
+    "Table": {
+      "as": "Card",
+      "about": "a section holding a Markdown table"
+    },
+    "Column": {
+      "as": "group",
+      "about": "one cell of Columns"
+    },
+    "Buttons": {
+      "as": "group",
+      "about": "a row of buttons"
+    },
+    "Text": {
+      "as": "group",
+      "about": "what models call a run of text"
+    }
+  }
+}

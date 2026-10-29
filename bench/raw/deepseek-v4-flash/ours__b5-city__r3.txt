@@ -1,0 +1,220 @@
+# City Operations Center
+
+Live operational picture for all 7 districts · Updated 14:31 local time
+
+## Live snapshot
+
+<Card title="Overview" subtitle="Citywide key numbers right now">
+<Columns>
+<Stat label="Congestion" value="68%" note="Moderate · down 4 pts since 14:00" icon="car" tone="warning" />
+<Stat label="Transit punctuality" value="92%" note="Metro & bus combined" icon="bus" tone="success" />
+<Stat label="Energy this week" value="14.2 GWh" note="vs 13.7 GWh last week" icon="lightning" tone="info" />
+<Stat label="Water today" value="38.2M L" note="Target 42M L · 91% of day" icon="droplet" tone="info" />
+<Stat label="Open incidents" value="12" note="2 critical · 5 high" icon="warning-circle" tone="danger" />
+<Stat label="Service backlog" value="147" note="Open requests citywide" icon="clipboard-text" tone="neutral" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Current weather" subtitle="Downtown sensor · 14:30">
+<Stat label="Temperature" value="18°C" note="Partly cloudy" icon="sun" tone="info" />
+<Stat label="Wind" value="14 km/h" note="Direction NE" icon="wind" />
+<Stat label="Humidity" value="61%" icon="drop" />
+<Badge tone="success">AQI 52 · Moderate</Badge>
+</Card>
+<Card title="Focus district" subtitle="Filter the whole dashboard">
+<Form name="focus-district">
+<Select label="District" options="All districts | Center | North | South | East | West | Riverside | Harbor" placeholder="All districts" hint="Charts, incidents and lists below update to this district." required="true" />
+<Button variant="secondary" size="small" icon="funnel">Apply focus</Button>
+</Form>
+</Card>
+</Columns>
+
+## Traffic and transit
+
+<Columns>
+<Card title="Congestion right now" subtitle="Live traffic load on major corridors">
+<Chart type="horizontal" title="Corridor load" x="Corridor" y="Load %">
+| Corridor | Load |
+|---|---|
+| Central Ring | 82 |
+| Riverside Ave | 74 |
+| Harbor Tunnel | 65 |
+| North Bridge | 58 |
+| East–West Expwy | 51 |
+</Chart>
+<Callout tone="info" title="Traffic notice">Harbor Tunnel is about 15 min slower than usual due to an earlier stalled truck.</Callout>
+</Card>
+<Card title="Transit punctuality" subtitle="Past 24 hours · on-time arrivals">
+<Chart type="donut" title="On time vs late" x="Segment" y="%">
+| Segment | Share |
+|---|---|
+| On time | 92 |
+| Late | 8 |
+</Chart>
+- Metro: <Progress value="96" max="100" label="96% on time" tone="success" />
+- Bus: <Progress value="88" max="100" label="88% on time" tone="warning" />
+- Tram: <Progress value="91" max="100" label="91% on time" tone="info" />
+</Card>
+</Columns>
+
+## Environment and infrastructure
+
+<Columns>
+<Card title="Air quality by district" subtitle="Current AQI · EPA scale">
+| District | AQI | Status |
+|---|---|---|
+| Center | 48 | <Badge tone="success">Good</Badge> |
+| North | 42 | <Badge tone="success">Good</Badge> |
+| South | 61 | <Badge tone="warning">Moderate</Badge> |
+| East | 55 | <Badge tone="warning">Moderate</Badge> |
+| West | 39 | <Badge tone="success">Good</Badge> |
+| Riverside | 72 | <Badge tone="warning">Moderate</Badge> |
+| Harbor | 85 | <Badge tone="danger">Unhealthy (sensitive)</Badge> |
+</Card>
+<Card title="Energy use · last 7 days" subtitle="Citywide electricity consumption">
+<Chart type="line" title="Daily MWh" x="Day" y="MWh">
+| Day | MWh |
+|---|---|
+| Mon | 1980 |
+| Tue | 2050 |
+| Wed | 2020 |
+| Thu | 2100 |
+| Fri | 2240 |
+| Sat | 1890 |
+| Sun | 1760 |
+</Chart>
+<Callout tone="neutral">Peak demand was Friday at 18:00 with 2,240 MWh. Sunday is the lowest day.</Callout>
+</Card>
+<Card title="Water use today" subtitle="Consumption vs daily target">
+<Stat label="Used so far" value="38.2M L" note="Target 42M L" icon="droplet" tone="info" />
+<Progress value="91" max="100" label="91% of daily target" tone="info" />
+| District | Use |
+|---|---|
+| Center | 8.4M L |
+| North | 6.1M L |
+| South | 7.2M L |
+| East | 5.5M L |
+| West | 4.8M L |
+| Riverside | 3.2M L |
+| Harbor | 3.0M L |
+</Card>
+</Columns>
+
+## Incidents and response
+
+<Columns>
+<Card title="Open incidents" subtitle="Active with location and severity">
+| ID | Type | Location | Severity | Status |
+|---|---|---|---|---|
+| INC-1042 | Water main break | Center · 5th & Main | <Badge tone="danger">Critical</Badge> | Crew en route |
+| INC-1037 | Flooded underpass | Riverside · Dock Rd | <Badge tone="danger">Critical</Badge> | On scene |
+| INC-1041 | Traffic signal outage | East · Park Ave | <Badge tone="warning">High</Badge> | Assigned |
+| INC-1040 | Fire alarm | Harbor · Dock 7 | <Badge tone="warning">High</Badge> | Responding |
+| INC-1039 | Fallen tree | North · Elm Rd | <Badge tone="info">Medium</Badge> | Assigned |
+| INC-1038 | Streetlight outage | West · Oak St | <Badge tone="info">Medium</Badge> | Queued |
+| INC-1036 | Garbage spill | South · Market Sq | <Badge tone="neutral">Low</Badge> | Queued |
+</Card>
+<Card title="Emergency vehicles deployed" subtitle="Active units now">
+<Columns>
+<Stat label="Ambulances" value="34" icon="truck" tone="danger" />
+<Stat label="Fire engines" value="12" icon="flame" tone="danger" />
+<Stat label="Police units" value="18" icon="shield-check" tone="info" />
+</Columns>
+| Unit | Type | Location | Status |
+|---|---|---|---|
+| AMB-12 | Ambulance | Center · 5th & Main | Responding |
+| F-04 | Fire engine | Harbor · Dock 7 | On scene |
+| P-22 | Police unit | Riverside · Dock Rd | Responding |
+| AMB-07 | Ambulance | North · Elm Rd | Available |
+| F-09 | Fire engine | East · Park Ave | Available |
+| P-05 | Police unit | South · Market Sq | Patrolling |
+</Card>
+</Columns>
+
+## Parking and events
+
+<Columns>
+<Card title="Downtown parking availability" subtitle="Live spaces free">
+- Central Garage — 214 of 500 free: <Progress value="43" max="100" label="43% free" tone="success" />
+- Market Street — 89 of 320 free: <Progress value="28" max="100" label="28% free" tone="warning" />
+- Civic Center — 156 of 400 free: <Progress value="39" max="100" label="39% free" tone="success" />
+- Waterfront — 42 of 180 free: <Progress value="23" max="100" label="23% free" tone="danger" />
+<Callout tone="warning" title="Waterfront garage">Almost full — expect queues after 19:00.</Callout>
+</Card>
+<Card title="Public events this weekend" subtitle="Approved events with locations">
+| Day | Event | Location |
+|---|---|---|
+| Sat 10:00–22:00 | Riverside Festival | Riverside Park |
+| Sat 19:00–23:00 | Harbor Open Air Concert | Harbor Amphitheater |
+| Sun 07:00–12:00 | East Side Marathon | Starts East · Main St |
+| Sun 08:00–14:00 | Farmers Market | Civic Plaza |
+</Card>
+</Columns>
+
+## Citizen reports and service requests
+
+<Columns>
+<Card title="Citizen reports" subtitle="Live feed · newest first">
+<Badge tone="danger">Live</Badge>
+| Time | District | Report | Source |
+|---|---|---|---|
+| 14:32 | Center | Pothole on 5th Ave | App |
+| 14:29 | Riverside | Noise complaint on Dock Rd | Call |
+| 14:25 | Harbor | Illegal dumping near Dock 7 | App |
+| 14:22 | North | Broken sidewalk on Elm Rd | Web |
+| 14:18 | East | Traffic light stuck red | App |
+| 14:15 | West | Abandoned vehicle on Oak St | Call |
+</Card>
+<Card title="Service request backlog" subtitle="Open by category">
+<Stat label="Total" value="147" note="All open requests" icon="clipboard-text" tone="neutral" />
+- Potholes: <Progress value="26" max="100" label="38 requests" tone="warning" />
+- Streetlights: <Progress value="18" max="100" label="27 requests" tone="warning" />
+- Water issues: <Progress value="21" max="100" label="31 requests" tone="warning" />
+- Waste & recycling: <Progress value="15" max="100" label="22 requests" tone="info" />
+- Parks & trees: <Progress value="12" max="100" label="18 requests" tone="info" />
+- Other: <Progress value="8" max="100" label="11 requests" tone="neutral" />
+</Card>
+</Columns>
+
+## Planned works and maintenance
+
+<Columns>
+<Card title="Roadworks planned this month" subtitle="June 2025 · planned closures">
+| Street | District | Dates | Impact |
+|---|---|---|---|
+| Main Street resurfacing | Center | 5–12 Jun | Single lane |
+| Harbor Ave drainage | Harbor | 8–20 Jun | Lane closure |
+| North Bridge repainting | North | 15–26 Jun | Night work |
+| Riverside path renewal | Riverside | 20–30 Jun | Path closed |
+</Card>
+<Card title="Infrastructure jobs due for maintenance" subtitle="By due date">
+| Asset | District | Last service | Due | Priority |
+|---|---|---|---|---|
+| Lift station LS-11 | South | Jan 2025 | Overdue 9 days | <Badge tone="danger">Critical</Badge> |
+| Transformer TS-04 | Center | Mar 2025 | 14 Jun | <Badge tone="warning">High</Badge> |
+| Signal box SB-09 | East | Feb 2025 | 21 Jun | <Badge tone="info">Medium</Badge> |
+| Water valve V-22 | West | Nov 2024 | 30 Jun | <Badge tone="neutral">Low</Badge> |
+</Card>
+</Columns>
+
+## Actions
+
+<Columns>
+<Card title="Dispatch a crew" subtitle="Assign a team to an open incident">
+<Form name="dispatch">
+<Select label="Incident" options="INC-1042 Water main break – Center | INC-1041 Traffic signal outage – East | INC-1040 Fire alarm – Harbor | INC-1039 Fallen tree – North | INC-1037 Flooded underpass – Riverside" placeholder="Select incident" required="true" />
+<Select label="Crew type" options="Water works | Traffic signals | Fire & rescue | Forestry | Street maintenance" placeholder="Choose crew type" required="true" />
+<Input label="Crew size" type="number" value="3" min="1" max="20" hint="Number of people to dispatch." />
+<Button icon="paper-plane-tilt" variant="primary">Dispatch crew</Button>
+</Form>
+</Card>
+<Card title="Send public alert" subtitle="Push · SMS · social media">
+<Form name="public-alert">
+<Input label="Alert title" placeholder="e.g. Flooded underpass – avoid Riverside" required="true" />
+<TextArea label="Message" rows="3" placeholder="Write the message residents will receive…" hint="Sent as push, SMS and posted to official channels." required="true" />
+<Select label="Audience" options="All districts | Center | North | South | East | West | Riverside | Harbor" placeholder="Select district" required="true" />
+<Button variant="danger" icon="broadcast">Send alert</Button>
+</Form>
+</Card>
+</Columns>

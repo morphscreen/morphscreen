@@ -1,0 +1,106 @@
+# The Ledger — Editorial Studio
+
+Welcome back, Sam. Here's your workspace at a glance.
+
+<Button variant="primary" icon="plus">Start new draft</Button>
+
+<Columns>
+<Stat label="Open drafts" value="12" icon="file-text" change="+2 this week" tone="neutral" />
+<Stat label="Published this week" value="8" icon="megaphone" change="+1 vs. last week" tone="success" />
+<Stat label="Comments awaiting reply" value="23" icon="chat-circle-text" change="9 older than 48h" tone="warning" />
+<Stat label="Top piece this month" value="42,109 reads" icon="trend-up" change="+18% vs. last month" tone="info" />
+</Columns>
+
+<Card title="Narrow by category" subtitle="Applies to drafts, published pieces, and the readership chart below">
+<Select label="Category filter" options="All categories | News | Opinion | Culture | Technology | Politics" placeholder="All categories" name="category-filter" />
+</Card>
+
+<Columns>
+<Card title="Drafts" subtitle="Statuses: Draft, In review, Scheduled, Ready">
+| Title | Category | Status | Updated |
+|---|---|---|---|
+| The Quiet Web | Technology | <Badge tone="neutral">Draft</Badge> | 2h ago |
+| On Civic Trust | Politics | <Badge tone="info">In review</Badge> | 5h ago |
+| A Field Guide to Fungi | Culture | <Badge tone="warning">Scheduled</Badge> | Yesterday |
+| The Price of Convenience | Opinion | <Badge tone="success">Ready</Badge> | Yesterday |
+| Letters from the Coast | News | <Badge tone="neutral">Draft</Badge> | 2d ago |
+</Card>
+
+<Card title="Published this week" subtitle="8 live pieces">
+| Piece | Day | Reads |
+|---|---|---|
+| How Cities Are Rewilding Their Rivers | Mon | 12,431 |
+| Machine Learning, Explained | Tue | 10,982 |
+| Why We Still Need Libraries | Wed | 9,754 |
+| The Case for Nap Time | Thu | 8,113 |
+| Notes on a Small Town | Fri | 6,302 |
+| A Vineyard in Vermont | Sat | 4,879 |
+| The Week in Charts | Sun | 5,210 |
+| Field Notes from Sable Island | Sun | 3,876 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Most-read article this month" subtitle="Across all categories">
+<Badge tone="success">#1 this month</Badge>
+
+### How Cities Are Rewilding Their Rivers
+
+Maya Chen · Culture · 42,109 reads
+
+<Progress value="42109" max="50000" label="42,109 reads — pacing 18% ahead of last month's top story" tone="success" />
+</Card>
+
+<Card title="Readership, last 30 days" subtitle="Unique readers per day, all channels">
+<Chart type="line" x="Date" y="Readers">
+| Date | Readers |
+|---|---|
+| Sep 2 | 12400 |
+| Sep 4 | 11800 |
+| Sep 6 | 13600 |
+| Sep 8 | 15200 |
+| Sep 10 | 14400 |
+| Sep 12 | 16800 |
+| Sep 14 | 18900 |
+| Sep 16 | 17500 |
+| Sep 18 | 20300 |
+| Sep 20 | 22100 |
+| Sep 22 | 21400 |
+| Sep 24 | 24800 |
+| Sep 26 | 26700 |
+| Sep 28 | 28900 |
+| Sep 30 | 31400 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Schedule a piece" subtitle="Queue a title for publication">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="e.g. The Future of Urban Transit" required="true" />
+<Date label="Publish date" name="publish-date" hint="Scheduled for 6:00 AM local time" />
+<Select label="Category" options="News | Opinion | Culture | Technology | Politics" placeholder="Choose category" name="category" />
+<Button variant="primary">Add to schedule</Button>
+</Form>
+</Card>
+
+<Card title="Comments awaiting reply" subtitle="23 comments need a response">
+<Avatar name="Priya N." subtitle="on “How Cities Are Rewilding Their Rivers” · 12m ago" />
+“Loved this piece — do you have data on the floodplain projects in Rotterdam?”
+<Button variant="secondary" size="small">Reply</Button>
+
+<Avatar name="Tomás R." subtitle="on “The Price of Convenience” · 1h ago” />
+“Strong argument, but I'd push back on the gig-economy numbers.”
+<Button variant="secondary" size="small">Reply</Button>
+
+<Avatar name="Aisha K." subtitle="on “Letters from the Coast” · 3h ago” />
+“Beautifully written. Are you planning a follow-up on the fishing communities?”
+<Button variant="secondary" size="small">Reply</Button>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me drafts ready for review
+- What's driving the readership spike this month?
+- Help me draft a reply to Priya's comment
+</FollowUps>

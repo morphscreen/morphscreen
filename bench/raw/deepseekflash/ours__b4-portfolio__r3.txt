@@ -1,0 +1,122 @@
+<Card title="PMO Project Portfolio Review" subtitle="Q2 2025 · Review date 12 Jun 2025">
+<Columns>
+<Stat label="Active projects" value="5" note="2 finishing this quarter" />
+<Stat label="Portfolio health" value="At risk" note="2 on track, 2 at risk, 1 critical" />
+<Stat label="Budget used" value="69%" note="$3.52M of $5.1M allocated" />
+<Stat label="Team utilization" value="84%" note="Target 70–85%" />
+</Columns>
+
+<Callout tone="warning" title="One-line health summary">Portfolio is at risk: delivery pace is stable but two projects are behind, one critical risk needs executive attention, and utilization is above target.</Callout>
+
+<Columns>
+<Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" value="Q2 2025" />
+<Button href="/export/pm-review-q2-2025.pdf">Export review</Button>
+</Columns>
+</Card>
+
+<Card title="Active Projects" subtitle="Owner, deadline and health">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Atlas Migration | Maria Chen | 30 Jun 2025 | <Badge tone="success">On track</Badge> |
+| Billing Revamp | James Okafor | 15 Jul 2025 | <Badge tone="warning">At risk</Badge> |
+| Mobile App v2 | Priya Sharma | 20 Jun 2025 | <Badge tone="danger">Critical</Badge> |
+| Data Platform | Luis Torres | 01 Aug 2025 | <Badge tone="success">On track</Badge> |
+| CRM Rollout | Anna Schmidt | 05 Jul 2025 | <Badge tone="warning">At risk</Badge> |
+</Card>
+
+<Card title="Overdue Milestones" subtitle="As of 12 Jun 2025">
+| Milestone | Project | Due date | Days overdue |
+|---|---|---|---|
+| API v2 contract freeze | Billing Revamp | 02 Jun 2025 | 10 |
+| Mobile checkout beta | Mobile App v2 | 05 Jun 2025 | 7 |
+| CRM data import complete | CRM Rollout | 09 Jun 2025 | 3 |
+</Card>
+
+<Card title="Budget Spent vs Allocation" subtitle="Per project, Q2 2025">
+<Chart type="horizontal" title="Budget spent vs allocation" x="Project" y="USD">
+| Project | Allocated | Spent |
+|---|---|---|
+| Atlas Migration | 1200000 | 780000 |
+| Billing Revamp | 900000 | 720000 |
+| Mobile App v2 | 800000 | 690000 |
+| Data Platform | 1500000 | 820000 |
+| CRM Rollout | 700000 | 510000 |
+</Chart>
+
+| Project | Allocated | Spent | % Used |
+|---|---|---|---|
+| Atlas Migration | $1,200,000 | $780,000 | 65% |
+| Billing Revamp | $900,000 | $720,000 | 80% |
+| Mobile App v2 | $800,000 | $690,000 | 86% |
+| Data Platform | $1,500,000 | $820,000 | 55% |
+| CRM Rollout | $700,000 | $510,000 | 73% |
+</Card>
+
+<Card title="Team Utilization" subtitle="Last 2 weeks average">
+<Columns>
+<Progress value="88" max="100" label="Design — Ana" />
+<Progress value="92" max="100" label="Frontend — Leo" />
+<Progress value="76" max="100" label="Backend — Sam" />
+<Progress value="81" max="100" label="QA — Nina" />
+</Columns>
+<Callout tone="info" title="Note">Frontend is over-allocated; consider redistributing QA slack to review support.</Callout>
+</Card>
+
+<Card title="Risks" subtitle="Open risks by severity">
+| Risk | Project | Severity | Mitigation |
+|---|---|---|---|
+| Payment gateway certification delay | Billing Revamp | <Badge tone="danger">Critical</Badge> | Escalate to vendor; parallel sandbox testing |
+| Mobile app store review rejection | Mobile App v2 | <Badge tone="warning">High</Badge> | Pre-submit compliance checklist |
+| Data migration data quality issues | Data Platform | <Badge tone="warning">High</Badge> | Add validation rules; extend UAT by 3 days |
+| CRM user adoption low | CRM Rollout | <Badge tone="neutral">Medium</Badge> | Schedule training; create champions program |
+| Key person dependency on backend | Atlas Migration | <Badge tone="neutral">Medium</Badge> | Cross-train frontend engineer on API |
+</Card>
+
+<Card title="Deadlines in Next Two Weeks" subtitle="13 Jun – 26 Jun 2025">
+| Project | Milestone | Due date | Days left |
+|---|---|---|---|
+| Mobile App v2 | Store submission | 20 Jun 2025 | 8 |
+| Atlas Migration | Cutover rehearsal | 22 Jun 2025 | 10 |
+| CRM Rollout | Pilot go-live | 25 Jun 2025 | 13 |
+| Billing Revamp | Invoice generation test | 26 Jun 2025 | 14 |
+</Card>
+
+<Card title="Delivery Pace" subtitle="Completed vs committed story points, last 6 sprints">
+<Chart type="line" title="Delivery pace" x="Sprint" y="Story points">
+| Sprint | Completed | Committed |
+|---|---|---|
+| Sprint 1 | 42 | 45 |
+| Sprint 2 | 48 | 50 |
+| Sprint 3 | 45 | 44 |
+| Sprint 4 | 51 | 52 |
+| Sprint 5 | 38 | 46 |
+| Sprint 6 | 47 | 49 |
+</Chart>
+</Card>
+
+<Card title="Blocked Work Items" subtitle="Items blocked for 3+ days">
+| Work item | Project | Blocker | Days blocked |
+|---|---|---|---|
+| Checkout API integration | Mobile App v2 | Awaiting payment provider credentials | 5 |
+| Invoice PDF generation | Billing Revamp | PDF library license not approved | 4 |
+| CRM duplicate merge | CRM Rollout | Data quality rule conflict | 3 |
+</Card>
+
+<Columns>
+<Card title="Request More People" subtitle="Add capacity to a project">
+<Form name="request-people">
+<Select label="Project" options="Atlas Migration | Billing Revamp | Mobile App v2 | Data Platform | CRM Rollout" placeholder="Select project" />
+<Input label="Role needed" placeholder="e.g. Frontend engineer" />
+<Input label="Number of people" type="number" placeholder="1" />
+<TextArea label="Reason" rows="3" placeholder="Why this role is needed and for how long" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Archive Finished Project" subtitle="Move a completed project out of the active portfolio">
+<Form name="archive-project">
+<Select label="Finished project" options="Legacy Portal (completed 31 May) | Onboarding Flow (completed 15 May) | Partner API (completed 28 Apr)" placeholder="Select project" />
+<Button variant="secondary">Archive selected project</Button>
+</Form>
+</Card>
+</Columns>

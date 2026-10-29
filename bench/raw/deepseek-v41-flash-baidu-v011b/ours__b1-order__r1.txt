@@ -1,0 +1,52 @@
+# Track your delivery
+
+<Card title="Order #A-4821" subtitle="Standard shipping · 2 items">
+<Columns>
+<Stat label="Current location" value="Regional hub, Memphis TN" icon="map-pin" />
+<Stat label="Estimated delivery" value="Thu, Jun 12" note="On schedule" tone="success" icon="calendar" />
+</Columns>
+<Progress value="3" max="5" label="In transit — 3 of 5 stages" tone="info" />
+</Card>
+
+<Card title="Where it is right now">
+<Steps>
+<Step title="Order placed" subtitle="Jun 7, 9:14 AM" status="done">Label created at seller warehouse.</Step>
+<Step title="Picked up" subtitle="Jun 8, 4:02 PM" status="done">Scanned at origin facility, Austin TX.</Step>
+<Step title="In transit" subtitle="Jun 10, 11:37 PM — Memphis TN" status="current">Arrived at regional hub. Next scan expected within 24 hours.</Step>
+<Step title="Out for delivery" subtitle="Expected Jun 12, morning" status="todo">Assigned to your local carrier.</Step>
+<Step title="Delivered" subtitle="Expected Jun 12, by 8:00 PM" status="todo">Signature not required.</Step>
+</Steps>
+<Button ask="Show me the full scan history for order A-4821">View full scan history</Button>
+</Card>
+
+<Card title="Estimated delivery">
+| Date | Window | Status |
+|---|---|---|
+| Thu, Jun 12 | 12:00 PM – 8:00 PM | Current estimate |
+| Fri, Jun 13 | 9:00 AM – 8:00 PM | If a delay occurs |
+
+<Callout tone="info" title="Weather watch">Storms along the Memphis–Nashville route could add up to one day. You'll get a text if the date changes.</Callout>
+
+<FollowUps>
+- What happens if I'm not home on Jun 12?
+- Can I change the delivery address?
+- Can I pick it up at a nearby location instead?
+</FollowUps>
+</Card>
+
+<Card title="Report a problem" subtitle="Tell us what's wrong and we'll open a case">
+<Form name="delivery-problem">
+<Select label="What went wrong?" options="Package hasn't moved in over 48 hours | Estimated date has passed | Package shows delivered but I don't have it | Package arrived damaged | Wrong item or missing item | Other" required="true" />
+<Date label="When did you notice this?" hint="Optional — helps us find the right scan" />
+<TextArea label="Describe the problem" rows="4" placeholder="e.g. Tracking has said 'In transit' since Jun 10 and hasn't updated." required="true" />
+<Input label="Contact email" type="email" placeholder="you@example.com" hint="We'll send case updates here" required="true" />
+<Input label="Phone" type="tel" placeholder="(555) 123-4567" hint="Optional — for delivery-day calls" />
+<Switch label="Text me when the case status changes" value="true" />
+<Button>Submit report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="warning" title="Before you report a missing package">Check your porch, side door, and with neighbors first — about 1 in 4 "delivered but missing" cases turn up within a day.</Callout>
+
+<Button variant="secondary" ask="Connect me to a live support agent about order A-4821">Talk to a person instead</Button>

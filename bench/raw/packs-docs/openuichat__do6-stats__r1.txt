@@ -1,0 +1,33 @@
+root = Card([header, formulaSection, codeSection, sampleSection, followUps])
+header = CardHeader("Standard Deviation", "Formula, implementation, and when to use the sample version")
+formulaSection = SectionBlock([secFormula], false)
+secFormula = SectionItem("formula", "1. Formula", [formulaText, formulaBreakdown])
+formulaText = MarkDownRenderer("**Population Standard Deviation (σ):**\n\n$$\n\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^{N} (x_i - \\mu)^2}\n$$\n\n**Sample Standard Deviation (s):**\n\n$$\ns = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2}\n$$", "card")
+formulaBreakdown = EntityList([
+  { left: "σ (sigma)", right: "Population standard deviation", rightVariant: "text" },
+  { left: "s", right: "Sample standard deviation", rightVariant: "text" },
+  { left: "N", right: "Population size", rightVariant: "number" },
+  { left: "n", right: "Sample size", rightVariant: "number" },
+  { left: "μ (mu)", right: "Population mean", rightVariant: "text" },
+  { left: "x̄ (x-bar)", right: "Sample mean", rightVariant: "text" },
+  { left: "xᵢ", right: "Individual data point", rightVariant: "text" },
+  { left: "n−1", right: "Bessel's correction (unbiased estimator)", rightVariant: "text" }
+], "default", { left: "Symbol", right: "Meaning", rightVariant: "text" })
+codeSection = SectionBlock([secCode], false)
+secCode = SectionItem("code", "2. Python Implementation", [codeIntro, codeBlock, codeExplanation])
+codeIntro = TextContent("Two approaches: using the standard library (`statistics`) for production code, and a manual implementation for learning.")
+codeBlock = CodeBlock("python", "import statistics\nimport math\n\ndef std_dev_manual(data, sample=True):\n    \"\"\"Compute standard deviation manually.\"\"\"\n    n = len(data)\n    if n < 2:\n        raise ValueError(\"Need at least 2 data points\")\n    mean = sum(data) / n\n    # Sum of squared deviations\n    ssq = sum((x - mean) ** 2 for x in data)\n    # Bessel's correction for sample\n    divisor = n - 1 if sample else n\n    variance = ssq / divisor\n    return math.sqrt(variance)\n\n# Example usage\nvalues = [12, 15, 14, 10, 18, 20, 13, 17]\n\n# Population std dev (denominator = N)\npop_sd = std_dev_manual(values, sample=False)\nprint(f\"Population σ: {pop_sd:.3f}\")\n\n# Sample std dev (denominator = n-1)\nsample_sd = std_dev_manual(values, sample=True)\nprint(f\"Sample s: {sample_sd:.3f}\")\n\n# Using standard library (recommended for production)\nprint(f\"statistics.pstdev: {statistics.pstdev(values):.3f}\")\nprint(f\"statistics.stdev:  {statistics.stdev(values):.3f}\")")
+codeExplanation = TextContent("Key points: `statistics.pstdev()` uses denominator **N** (population), `statistics.stdev()` uses **n−1** (sample). The manual function mirrors this with the `sample` flag. Always prefer the standard library in production — it handles edge cases and is optimized.")
+sampleSection = SectionBlock([secSample], false)
+secSample = SectionItem("sample", "3. When to Use the Sample Version (n−1)", [sampleGuidance, sampleTable])
+sampleGuidance = MarkDownRenderer("Use the **sample standard deviation (n−1 denominator)** when:\n\n- Your data is a **subset** of a larger population\n- You want to **estimate** the population standard deviation from a sample\n- You're doing **inferential statistics** (hypothesis tests, confidence intervals)\n- The data comes from a **survey, experiment, or random sample**\n\nUse the **population standard deviation (N denominator)** when:\n\n- You have data for the **entire population** (census, complete records)\n- You're describing the **spread of this specific dataset only**\n- You're doing **descriptive statistics** with no generalization intended\n\n**Rule of thumb:** If you didn't measure every member of the group you care about, use the sample version. The n−1 correction (Bessel's correction) removes the downward bias that occurs when estimating population variance from a sample.")
+sampleTable = Table([
+  Col("Scenario", ["Heights of all 500 employees", "Heights of 50 randomly chosen employees", "Test scores of an entire class", "Test scores from 3 schools in a district", "Every transaction in a ledger", "1,000 transactions sampled from millions"]),
+  Col("Version", ["Population (N)", "Sample (n−1)", "Population (N)", "Sample (n−1)", "Population (N)", "Sample (n−1)"]),
+  Col("Reason", ["Complete census data", "Random sample → infer to all employees", "Entire class measured", "Sample of schools → infer to district", "Full record, no generalization", "Subset → estimate population spread"])
+])
+followUps = FollowUpBlock([
+  FollowUpItem("Show me the standard error formula"),
+  FollowUpItem("Explain variance vs standard deviation"),
+  FollowUpItem("When to use population vs sample in A/B testing")
+])

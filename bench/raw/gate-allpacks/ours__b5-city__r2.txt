@@ -1,0 +1,242 @@
+# City Operations Center
+
+<Columns>
+<Card title="District Focus">
+<Select label="Select District" name="district" placeholder="All Districts" options="Downtown | Northside | Eastport | Westview | Southgate | Riverside | University | Industrial" />
+</Card>
+
+<Card title="Current Weather" subtitle="Updated 2 min ago">
+<Columns>
+<Stat label="Temperature" value="72°F" change="+2°F vs 1hr ago" tone="neutral" />
+<Stat label="Humidity" value="58%" change="Stable" tone="neutral" />
+<Stat label="Wind" value="8 mph NW" change="Calming" tone="info" />
+<Stat label="Air Quality Index" value="42" change="Good" tone="success" />
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="1. Congestion Right Now" subtitle="Citywide Traffic Index">
+<Gauge label="Congestion Level" value="67" min="0" max="100" unit="%" tone="warning" />
+<Progress value="67" max="100" label="Peak: 89% at 8:15 AM" tone="warning" />
+<Stat label="Avg Commute" value="34 min" change="+6 min vs normal" tone="warning" />
+<Stat label="Active Incidents" value="12" change="3 cleared in last hour" tone="info" />
+</Card>
+
+<Card title="2. Transit Punctuality" subtitle="All Lines - Last 24 Hours">
+<Gauge label="On-Time Performance" value="87" min="0" max="100" unit="%" tone="success" />
+<Progress value="87" max="100" label="Target: 90%" tone="success" />
+<Columns>
+<Stat label="Bus" value="85%" change="-2% vs yesterday" tone="neutral" />
+<Stat label="Light Rail" value="92%" change="+1% vs yesterday" tone="success" />
+<Stat label="Subway" value="89%" change="Stable" tone="info" />
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="3. Air Quality by District" subtitle="AQI (0-50 Good, 51-100 Moderate)">
+<Heatmap title="Air Quality Index by District">
+| District | AQI | PM2.5 | O3 | NO2 |
+|---|---|---|---|---|
+| Downtown | 68 | 18 | 45 | 32 |
+| Northside | 42 | 11 | 28 | 18 |
+| Eastport | 55 | 14 | 38 | 24 |
+| Westview | 38 | 9 | 25 | 15 |
+| Southgate | 71 | 20 | 48 | 35 |
+| Riverside | 31 | 7 | 22 | 12 |
+| University | 45 | 12 | 30 | 20 |
+| Industrial | 89 | 28 | 52 | 45 |
+</Heatmap>
+</Card>
+
+<Card title="4. Energy Use - Past 7 Days" subtitle="Megawatt Hours">
+<Chart type="area" x="Day" y="MWh">
+| Day | Residential | Commercial | Industrial | Total |
+|---|---|---|---|---|
+| Mon | 1240 | 2180 | 3450 | 6870 |
+| Tue | 1190 | 2210 | 3520 | 6920 |
+| Wed | 1280 | 2150 | 3380 | 6810 |
+| Thu | 1310 | 2290 | 3610 | 7210 |
+| Fri | 1350 | 2340 | 3580 | 7270 |
+| Sat | 1180 | 1890 | 2950 | 6020 |
+| Sun | 1120 | 1720 | 2810 | 5650 |
+</Chart>
+<Stat label="Weekly Total" value="46,750 MWh" change="-3.2% vs last week" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="5. Water Use Today" subtitle="Million Gallons - Updated 5 min ago">
+<Gauge label="Daily Usage" value="142" min="0" max="200" unit="MG" tone="info" />
+<Progress value="142" max="200" label="Capacity: 200 MG/day" tone="info" />
+<Columns>
+<Stat label="Residential" value="68 MG" change="Normal" tone="neutral" />
+<Stat label="Commercial" value="42 MG" change="-5% vs avg" tone="success" />
+<Stat label="Industrial" value="28 MG" change="Normal" tone="neutral" />
+<Stat label="Loss/Leaks" value="4 MG" change="2 leaks detected" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="6. Open Incidents" subtitle="12 Active - Click for details">
+<Table>
+| ID | Type | Location | District | Severity | Since | Status |
+|---|---|---|---|---|---|---|
+| INC-0442 | Water Main Break | 5th & Main | Downtown | High | 06:23 | Crew En Route |
+| INC-0441 | Power Outage | Oak St Substation | Eastport | High | 05:51 | Assessing |
+| INC-0440 | Traffic Signal Fail | University & 12th | University | Medium | 07:12 | Dispatched |
+| INC-0439 | Sewer Backup | Riverside Dr | Riverside | Medium | 06:45 | Contained |
+| INC-0438 | Gas Leak | Industrial Blvd | Industrial | Critical | 07:30 | Evacuating |
+| INC-0437 | Road Collapse | North Bridge | Northside | High | 04:18 | Repaired |
+| INC-0436 | Tree on Lines | Westview Park | Westview | Low | 07:05 | Clearing |
+| INC-0435 | Hydrant Leak | Southgate Mall | Southgate | Low | 07:42 | Monitoring |
+</Table>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="7. Emergency Vehicles Deployed" subtitle="Real-time GPS Tracking">
+<Map title="Vehicle Locations" route="false">
+| Vehicle | Type | Lat | Lng | Status | Incident |
+|---|---|---|---|---|---|
+| ENG-12 | Fire Engine | 40.7580 | -73.9855 | En Route | INC-0442 |
+| ENG-07 | Fire Engine | 40.7505 | -73.9934 | On Scene | INC-0438 |
+| LAD-03 | Ladder Truck | 40.7612 | -73.9789 | Staged | INC-0441 |
+| AMB-14 | Ambulance | 40.7541 | -73.9912 | Transporting | INC-0438 |
+| AMB-22 | Ambulance | 40.7689 | -73.9645 | Available | — |
+| POL-45 | Police Cruiser | 40.7523 | -73.9887 | Traffic Control | INC-0442 |
+| POL-31 | Police Cruiser | 40.7598 | -73.9721 | Perimeter | INC-0438 |
+| HAZ-02 | HazMat Unit | 40.7456 | -74.0021 | On Scene | INC-0438 |
+</Map>
+</Card>
+
+<Card title="8. Parking Availability Downtown" subtitle="5 Zones - 2,840 Total Spaces">
+<Progress value="1847" max="2840" label="65% Occupied • 993 Available" tone="info" />
+<Columns>
+<Stat label="Zone A (Core)" value="78% Full" change="234 free" tone="warning" />
+<Stat label="Zone B (Financial)" value="62% Full" change="312 free" tone="info" />
+<Stat label="Zone C (Arts)" value="54% Full" change="287 free" tone="success" />
+<Stat label="Zone D (Waterfront)" value="41% Full" change="160 free" tone="success" />
+</Columns>
+<Progress value="78" max="100" label="Zone A" tone="warning" />
+<Progress value="62" max="100" label="Zone B" tone="info" />
+<Progress value="54" max="100" label="Zone C" tone="success" />
+<Progress value="41" max="100" label="Zone D" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="9. Public Events This Weekend" subtitle="Permitted Events Requiring City Services">
+<Agenda title="Weekend Events">
+| Time | Event | Location | District | Expected | Services |
+|---|---|---|---|---|---|
+| Sat 09:00 | Farmers Market | Central Plaza | Downtown | 3,500 | Sanitation, Police |
+| Sat 10:00 | Marathon Start | Riverfront Park | Riverside | 12,000 | Police, EMS, Traffic |
+| Sat 14:00 | Jazz Festival | Westview Amphitheater | Westview | 8,000 | Police, Sanitation |
+| Sat 18:00 | Food Truck Rally | Southgate Square | Southgate | 5,000 | Police, Health |
+| Sun 08:00 | Cycling Race | North Loop | Northside | 2,500 | Police, EMS, Traffic |
+| Sun 11:00 | Art Walk | University Ave | University | 6,000 | Police, Sanitation |
+| Sun 16:00 | Cultural Parade | Main St | Downtown | 15,000 | Police, Traffic, EMS |
+</Agenda>
+</Card>
+
+<Card title="10. Citizen Reports (Live)" subtitle="Incoming 311 Reports - Auto-refresh 30s">
+<Timeline title="Recent Reports">
+- 07:52: Pothole on Elm St at 4th - Northside - **Medium**
+- 07:49: Graffiti on library wall - Downtown - **Low**
+- 07:47: Streetlight out at Oak & Pine - Eastport - **Low**
+- 07:45: Illegal dumping alley behind 200 Block - Industrial - **Medium**
+- 07:42: Noise complaint construction site - University - **Low**
+- 07:40: Missing stop sign Riverside & 3rd - Riverside - **High**
+- 07:38: Water pressure drop Southgate - Southgate - **Medium**
+- 07:35: Tree limb blocking sidewalk Westview - Westview - **Low**
+</Timeline>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="11. Service Request Backlog" subtitle="Open 311 Requests by Category">
+<Chart type="horizontal" x="Count" y="Category">
+| Category | Open | Overdue | Avg Days |
+|---|---|---|---|
+| Potholes | 142 | 23 | 8 |
+| Streetlights | 89 | 12 | 5 |
+| Sanitation | 67 | 8 | 3 |
+| Signage | 54 | 15 | 12 |
+| Trees | 43 | 5 | 6 |
+| Drainage | 38 | 11 | 14 |
+| Graffiti | 31 | 4 | 2 |
+| Sidewalks | 28 | 9 | 18 |
+</Chart>
+<Stat label="Total Backlog" value="492" change="+18 vs yesterday" tone="warning" />
+<Stat label="Overdue" value="87" change="17.7% of total" tone="danger" />
+</Card>
+
+<Card title="12. Roadworks Planned This Month" subtitle="Permitted Construction & Maintenance">
+<Calendar month="2025-01" title="January Roadworks">
+| Date | Description | Location | Impact | Duration |
+|---|---|---|---|---|
+| 2025-01-15 | Resurfacing | Main St (1st-10th) | Lane Closure | 5 days |
+| 2025-01-18 | Bridge Inspection | North Bridge | Full Closure | 1 day |
+| 2025-01-20 | Utility Trenching | Oak Ave (5th-15th) | Detour | 7 days |
+| 2025-01-22 | Signal Upgrade | 12 Intersections | Minor Delays | 3 days |
+| 2025-01-25 | Bike Lane Install | University Blvd | Lane Shift | 10 days |
+| 2025-01-28 | Sewer Relining | Industrial Park | Road Closed | 4 days |
+</Calendar>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="13. Infrastructure Jobs Due for Maintenance" subtitle="Assets Past Due or Due Within 30 Days">
+<Table>
+| Asset ID | Type | Location | District | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|---|
+| BRG-044 | Bridge Deck | North Bridge | Northside | 2025-01-10 | 5 | Critical |
+| PMP-012 | Pump Station | Riverside Lift | Riverside | 2025-01-15 | 0 | High |
+| SUB-088 | Substation | Oak St | Eastport | 2025-01-20 | -5 | High |
+| TNK-003 | Water Tower | Westview Reservoir | Westview | 2025-01-25 | -10 | Medium |
+| SWR-210 | Sewer Interceptor | Downtown Core | Downtown | 2025-01-30 | -15 | Medium |
+| LGT-445 | Streetlight Circuit | University Ave | University | 2025-02-05 | -21 | Low |
+| VLV-067 | Pressure Valve | Southgate Main | Southgate | 2025-02-10 | -26 | Low |
+</Table>
+</Card>
+
+<Card title="Actions" subtitle="Dispatch & Alert Controls">
+<Form name="dispatch-crew">
+<Select label="Crew Type" name="crewType" placeholder="Select crew" options="Road Repair | Water/Sewer | Electrical | Tree Removal | Traffic Control | General Maintenance" required="true" />
+<Select label="District" name="crewDistrict" placeholder="Select district" options="Downtown | Northside | Eastport | Westview | Southgate | Riverside | University | Industrial" required="true" />
+<Input label="Address / Location" name="crewLocation" placeholder="e.g., 5th & Main" required="true" />
+<TextArea label="Details / Instructions" name="crewDetails" placeholder="Describe the work needed..." rows="3" required="true" />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Send Public Alert" subtitle="Emergency Notification System">
+<Form name="public-alert">
+<Radio label="Alert Level" name="alertLevel" options="Info - General Information | Advisory - Caution Advised | Warning - Action Required | Emergency - Immediate Threat" value="Advisory - Caution Advised" required="true" />
+<Select label="Target Areas" name="alertAreas" placeholder="Select districts (multiple)" options="All Districts | Downtown | Northside | Eastport | Westview | Southgate | Riverside | University | Industrial" required="true" />
+<Input label="Headline" name="alertHeadline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" name="alertMessage" placeholder="Full alert message for public..." rows="4" required="true" />
+<Checkboxes label="Channels" name="alertChannels" options="Mobile Push | SMS | Email | Social Media | Website Banner | Radio/TV" value="Mobile Push | SMS | Social Media | Website Banner" required="true" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Quick Stats Summary">
+<Columns>
+<Stat label="Active Incidents" value="12" change="3 Critical/High" tone="danger" />
+<Stat label="Emergency Vehicles Out" value="8" change="4 Available" tone="info" />
+<Stat label="311 Reports (1hr)" value="24" change="Avg 18/hr" tone="neutral" />
+<Stat label="Service Backlog" value="492" change="87 Overdue" tone="warning" />
+<Stat label="Roadworks This Month" value="6" change="2 Starting This Week" tone="info" />
+<Stat label="Maintenance Due" value="7" change="1 Critical" tone="danger" />
+</Columns>
+</Card>
+</Columns>
+
+<Callout tone="info" title="System Status">All sensors operational • Last data sync: 07:53 AM • Next scheduled refresh: 08:00 AM</Callout>

@@ -1,0 +1,186 @@
+# Hospital Operations Command View
+
+<Card title="Hospital Overview" subtitle="Live command view — updated 2 minutes ago">
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="↑ 3% vs yesterday" tone="warning" icon="bed" />
+<Stat label="Current ER Wait" value="42 min" change="↓ 12 min from peak" tone="success" icon="clock-countdown" />
+<Stat label="Critical Patients" value="7" change="2 in ICU, 5 in ER" tone="danger" icon="heartbeat" />
+<Stat label="Ready for Discharge" value="12" change="6 awaiting transport" tone="info" icon="door-open" />
+</Columns>
+</Card>
+
+<Card title="Bed Occupancy by Unit">
+<Columns>
+<Chart type="horizontal" x="Unit" y="Occupancy %">
+| Unit | Occupancy |
+|---|---|
+| ICU | 92 |
+| CCU | 85 |
+| Cardiology | 88 |
+| General Medicine | 74 |
+| Surgical | 71 |
+| Pediatrics | 65 |
+| Maternity | 58 |
+| Psychiatry | 45 |
+</Chart>
+</Columns>
+<Callout tone="warning" title="ICU at capacity">ICU is at 92% occupancy. 2 patients awaiting transfer to step-down units.</Callout>
+</Card>
+
+<Card title="Admissions — Past Two Weeks">
+<Chart type="line" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Day 1 | 48 |
+| Day 2 | 52 |
+| Day 3 | 61 |
+| Day 4 | 55 |
+| Day 5 | 49 |
+| Day 6 | 63 |
+| Day 7 | 58 |
+| Day 8 | 71 |
+| Day 9 | 66 |
+| Day 10 | 59 |
+| Day 11 | 74 |
+| Day 12 | 68 |
+| Day 13 | 62 |
+| Day 14 | 70 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="pie" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 38 |
+| ICU / CCU | 24 |
+| Cardiology | 31 |
+| General Medicine | 42 |
+| Surgical | 27 |
+| Pediatrics | 18 |
+| Maternity | 15 |
+| Psychiatry | 11 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current roster — 06:00 to 14:00">
+| Staff | Role | Department |
+|---|---|---|
+| Dr. Sarah Chen | Attending Physician | Emergency |
+| Dr. Marcus Webb | Surgeon | Operating Room |
+| Dr. Priya Sharma | Intensivist | ICU |
+| Dr. James O'Connor | Resident | Cardiology |
+| RN Linda Park | Charge Nurse | Emergency |
+| RN David Kim | Nurse | ICU |
+| RN Amara Osei | Nurse | Maternity |
+| RN Tomás Rivera | Nurse | General Medicine |
+| PA Emily Nguyen | Physician Assistant | Surgical |
+| Tech Michael Brown | Radiology Tech | Imaging |
+| Pharm. Grace Liu | Pharmacist | Pharmacy |
+| RT John Miller | Respiratory Therapist | Pulmonary |
+</Card>
+
+<Card title="Critical Patients — Immediate Attention" subtitle="Requiring escalation">
+<Callout tone="danger" title="Critical — 7 patients">
+| Patient | Age | Condition | Location | Status |
+|---|---|---|---|
+| M. Thompson | 67 | Septic shock | ICU-3 | Stabilizing |
+| R. Garcia | 54 | STEMI | CCU-1 | Post-cath |
+| A. Patel | 71 | Respiratory failure | ICU-5 | On ventilator |
+| L. Johnson | 45 | Trauma — MVA | ER Bay 2 | Awaiting OR |
+| K. Yamamoto | 38 | Stroke — tPA given | ICU-2 | Monitoring |
+| S. Ahmed | 62 | Cardiac arrest | ER Bay 4 | Resuscitation |
+| D. Foster | 29 | DKA | ICU-6 | Insulin drip |
+</Callout>
+</Card>
+
+<Card title="Ready for Discharge">
+| Patient | Department | Discharge To | Waiting On |
+|---|---|---|---|
+| J. Wilson | General Medicine | Home | Transport (30 min) |
+| E. Martinez | Surgical | Home | Paperwork |
+| H. Kim | Pediatrics | Home | Parent arrival |
+| W. Brown | Cardiology | Home | Meds pickup |
+| C. Davis | Maternity | Home | Discharge consult |
+| R. Patel | General Medicine | Skilled Nursing | Bed confirmation |
+| +6 more patients | — | — | Various |
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| Time | Room | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR-1 | Total knee replacement | Dr. Webb | In progress |
+| 08:00 | OR-2 | Laparoscopic cholecystectomy | Dr. Osei | In progress |
+| 09:00 | OR-3 | Emergency appendectomy | Dr. Chen | Scheduled |
+| 10:30 | OR-1 | Cataract extraction | Dr. Novak | Scheduled |
+| 11:00 | OR-2 | Hernia repair | Dr. Webb | Scheduled |
+| 13:00 | OR-3 | Trauma — MVA | Dr. Osei | On hold — awaiting patient |
+| 14:00 | OR-1 | Hysteroscopy | Dr. Patel | Scheduled |
+| 15:30 | OR-2 | Carpal tunnel release | Dr. Novak | Scheduled |
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Below reorder threshold">
+<Columns>
+<Badge tone="danger">Critical</Badge>
+<Badge tone="warning">Low</Badge>
+<Badge tone="info">Reorder soon</Badge>
+</Columns>
+| Supply | Stock Level | Reorder At | Est. Days Left |
+|---|---|---|---|
+| N95 Masks | 120 boxes | 300 | 1.5 days |
+| Normal Saline 1L | 85 bags | 200 | 2 days |
+| IV Catheters 18G | 40 units | 100 | 1 day |
+| Insulin (Regular) | 25 vials | 60 | 3 days |
+| Morphine 10mg/mL | 30 vials | 50 | 2 days |
+| Surgical Gloves (M) | 200 boxes | 400 | 4 days |
+| Oxygen Tubing | 60 units | 120 | 3 days |
+| Blood Culture Bottles | 15 sets | 40 | 2 days |
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Button variant="primary" label="File Incident Report">File Incident Report</Button>
+<Button variant="secondary" label="Request Patient Transfer">Request Patient Transfer</Button>
+<Button variant="tertiary" label="View Another Day">View Another Day</Button>
+</Columns>
+</Card>
+
+<Details title="File Incident Report" open="false">
+<Form name="incident-report">
+<Select label="Incident type" options="Medication error | Patient fall | Equipment failure | Safety concern | Staff injury | Near miss | Other" placeholder="Select type" required="true" />
+<Input label="Location" placeholder="e.g., ICU-3, ER Bay 2" required="true" />
+<Select label="Severity" options="Low | Moderate | High | Critical" placeholder="Select severity" required="true" />
+<Input label="Patient MRN (if applicable)" placeholder="MRN-000000" />
+<TextArea label="Description" placeholder="Describe what happened, actions taken, and current status" rows="4" required="true" />
+<TextArea label="Immediate actions taken" placeholder="e.g., Notified charge nurse, patient assessed, monitoring increased" rows="2" />
+<Button>Submit Incident Report</Button>
+</Form>
+</Details>
+
+<Details title="Request Patient Transfer" open="false">
+<Form name="transfer-request">
+<Input label="Patient MRN" placeholder="MRN-000000" required="true" />
+<Select label="Current location" options="ER | ICU | CCU | General Medicine | Surgical | Cardiology | Pediatrics | Maternity | Psychiatry" placeholder="Select current unit" required="true" />
+<Select label="Request destination" options="ICU | CCU | General Medicine | Surgical | Cardiology | Pediatrics | Maternity | Psychiatry | Step-down unit" placeholder="Select destination" required="true" />
+<Select label="Priority" options="Routine | Urgent | Emergency" placeholder="Select priority" required="true" />
+<TextArea label="Clinical reason" placeholder="e.g., Needs ICU monitoring for arrhythmia" rows="3" required="true" />
+<Input label="Accepting physician" placeholder="Dr. name" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Details>
+
+<Details title="View Another Day" open="false">
+<Form name="view-day">
+<Date label="Select date" name="view-date" required="true" />
+<Callout tone="info" title="Historical view">You can view operational data for any past date. Live data will be paused while viewing historical records.</Callout>
+<Button>View Day</Button>
+</Form>
+</Details>
+
+<FollowUps>
+- Show current ER patient list with acuity levels
+- Generate the daily operations summary report
+- View ICU bed availability in real time
+- See staffing gaps for the next shift
+- List all pending transfer requests
+</FollowUps>

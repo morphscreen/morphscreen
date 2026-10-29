@@ -1,0 +1,66 @@
+<Card title="Logistics Coordinator Board" subtitle="All regions · All carriers · Live view">
+<Badge tone="info">Last refreshed: Today, 14:32 UTC · Auto-refresh every 5 min</Badge>
+
+<Columns>
+<Stat label="On-time % · this month" value="94.2%" change="+1.3 pts" note="Target ≥ 92%" />
+<Stat label="Avg cost / shipment" value="$412" change="−2.1% vs last month" />
+<Stat label="Shipments in transit" value="38" note="3 delayed · 2 at risk" />
+</Columns>
+
+<Card title="Shipments in Transit" subtitle="Search by route or review the full list">
+<Input label="Search by route" placeholder="e.g. LAX → CHI, NYC → MIA, or SFO" hint="Matches origin, destination, or full route" />
+
+| Shipment | Origin → Destination | ETA | Status |
+|---|---|---|---|
+| SHP-1042 | LAX → CHI | Oct 24, 14:30 | <Badge tone="success">On time</Badge> |
+| SHP-1043 | SEA → DAL | Oct 24, 18:45 | <Badge tone="success">On time</Badge> |
+| SHP-1044 | NYC → MIA | Oct 25, 09:15 | <Badge tone="danger">Delayed</Badge> |
+| SHP-1045 | ATL → DEN | Oct 25, 11:00 | <Badge tone="success">On time</Badge> |
+| SHP-1046 | SFO → AUS | Oct 25, 16:20 | <Badge tone="warning">At risk</Badge> |
+| SHP-1047 | BOS → PHX | Oct 26, 08:10 | <Badge tone="success">On time</Badge> |
+| SHP-1048 | ORD → SLC | Oct 26, 13:40 | <Badge tone="danger">Delayed</Badge> |
+
+<Callout tone="danger" title="Delayed shipments — 3">
+- **SHP-1044** · NYC → MIA · ETA Oct 25, 09:15 · delayed 3h 20m · weather
+- **SHP-1048** · ORD → SLC · ETA Oct 26, 13:40 · delayed 1h 05m · mechanical
+- **SHP-1046** · SFO → AUS · ETA Oct 25, 16:20 · at risk · port congestion
+</Callout>
+
+<Form name="flag-shipment">
+<Select label="Flag a shipment" options="SHP-1042 | SHP-1043 | SHP-1044 | SHP-1045 | SHP-1046 | SHP-1047 | SHP-1048" placeholder="Select shipment ID" hint="Flagged shipments are added to your review queue" />
+<Button variant="danger">Flag Shipment</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Volume Split by Carrier" subtitle="Share of shipments, this month">
+<Chart type="donut" title="Carrier volume" x="Carrier" y="Share">
+| Carrier | Share |
+|---|---|
+| Carrier A | 42 |
+| Carrier B | 31 |
+| Carrier C | 18 |
+| Carrier D | 9 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume · Past 2 Months" subtitle="Shipments per week">
+<Chart type="bar" title="Shipments per week" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 112 |
+| W2 | 128 |
+| W3 | 121 |
+| W4 | 145 |
+| W5 | 138 |
+| W6 | 152 |
+| W7 | 149 |
+| W8 | 163 |
+</Chart>
+</Card>
+</Columns>
+
+<Callout tone="info" title="Data freshness">
+Numbers above were last refreshed at **14:32 UTC**. On-time %, cost, and carrier split update hourly; shipment ETAs update every 5 minutes.
+</Callout>
+</Card>

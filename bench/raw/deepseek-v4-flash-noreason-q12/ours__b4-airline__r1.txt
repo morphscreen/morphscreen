@@ -1,0 +1,90 @@
+# Hub Operations Desk
+
+<Card title="Hub Overview">
+<Columns>
+<Stat label="On-Time Performance" value="87%" change="+3% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Average Passenger Load" value="82%" change="+5% vs yesterday" tone="info" icon="users" />
+<Stat label="Turnaround Time" value="54 min" change="−6 min vs target" tone="success" icon="clock" />
+<Stat label="Cancellations Today" value="4" change="2 weather, 2 mechanical" tone="warning" icon="x-circle" />
+</Columns>
+</Card>
+
+<Card title="Flights">
+<Chart type="bar" x="Hour" y="Flights">
+| Hour | On-Time | Delayed | Cancelled |
+|---|---|---|---|
+| 06 | 14 | 2 | 0 |
+| 08 | 18 | 4 | 1 |
+| 10 | 21 | 3 | 0 |
+| 12 | 19 | 6 | 1 |
+| 14 | 22 | 5 | 1 |
+| 16 | 17 | 7 | 1 |
+| 18 | 15 | 4 | 0 |
+</Chart>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA 2104 | JFK → ORD | B12 | <Badge tone="success">On Time</Badge> |
+| UA 882 | SFO → ORD | C7 | <Badge tone="success">On Time</Badge> |
+| DL 441 | ATL → ORD | A3 | <Badge tone="warning">Delayed 45 min</Badge> |
+| SW 1732 | LAX → ORD | B9 | <Badge tone="danger">Cancelled</Badge> |
+| AA 1188 | MIA → ORD | C2 | <Badge tone="warning">Delayed 25 min</Badge> |
+| UA 511 | DEN → ORD | B4 | <Badge tone="success">On Time</Badge> |
+| DL 902 | SEA → ORD | A8 | <Badge tone="warning">Delayed 60 min</Badge> |
+| SW 664 | DFW → ORD | C5 | <Badge tone="success">On Time</Badge> |
+
+<Callout tone="warning" title="Delayed flights">5 flights delayed 25–60 min; 2 due to weather, 2 to late inbound aircraft, 1 to mechanical.</Callout>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From | To | Reason |
+|---|---|---|---|---|
+| 14:32 | UA 511 | B4 | B11 | Aircraft swap |
+| 14:18 | DL 441 | A3 | A6 | Congestion |
+| 13:55 | AA 1188 | C2 | C9 | Crew availability |
+| 13:40 | SW 664 | C5 | C1 | Weather routing |
+</Card>
+
+<Card title="Crew Availability">
+<Columns>
+<Avatar name="Capt. M. Rivera" subtitle="B737 — Available" />
+<Avatar name="FO D. Chen" subtitle="B737 — Available" />
+<Avatar name="FA S. Okafor" subtitle="A320 — Available" />
+<Avatar name="Capt. J. Novak" subtitle="A320 — Available" />
+<Avatar name="FA L. Torres" subtitle="B787 — Available" />
+</Columns>
+<Callout tone="info" title="2 additional standby crews">Reserve pool: 2 pilots, 4 flight attendants on 2-hour standby.</Callout>
+</Card>
+
+<Card title="Weather Advisories — ORD">
+<Callout tone="warning" title="Thunderstorm watch until 20:00 CT">Storms approaching from the west; expect wind gusts to 45 mph. Ground stops possible between 16:00–18:00.</Callout>
+<Callout tone="info" title="Ceiling 4,000 ft, visibility 6 mi">Conditions acceptable for operations; monitoring for low ceilings after 21:00.</Callout>
+</Card>
+
+<Card title="Connections at Risk">
+| Passenger | Flight | Connection | Buffer | Status |
+|---|---|---|---|---|
+| M. Johansson | DL 902 (delayed 60 min) | DL 447 to BOS | 25 min | <Badge tone="danger">Missed</Badge> |
+| R. Patel | DL 441 (delayed 45 min) | DL 310 to MIA | 35 min | <Badge tone="danger">Missed</Badge> |
+| A. Garcia | AA 1188 (delayed 25 min) | AA 775 to PHX | 40 min | <Badge tone="warning">At Risk</Badge> |
+| T. Nguyen | UA 511 (on time) | UA 290 to IAD | 50 min | <Badge tone="success">OK</Badge> |
+| K. Brooks | SW 1732 (cancelled) | SW 401 to MCI | — | <Badge tone="danger">Missed</Badge> |
+
+<Callout tone="warning" title="Rebooking needed">3 passengers missed connections; 1 at risk. Rebook to next available flights.</Callout>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebooking">
+<Select label="Passenger" placeholder="Select passenger" options="M. Johansson — DL 447 to BOS | R. Patel — DL 310 to MIA | A. Garcia — AA 775 to PHX | K. Brooks — SW 401 to MCI" required="true" />
+<Select label="New flight" placeholder="Select replacement" options="DL 449 to BOS (18:45) | DL 312 to MIA (19:10) | AA 779 to PHX (18:30) | SW 405 to MCI (17:55) | UA 294 to IAD (19:20)" required="true" />
+<Select label="Seat class" placeholder="Select class" options="Economy | Premium | Business | First" />
+<Checkboxes label="Options" options="Notify by SMS | Notify by email | Meal voucher | Hotel voucher | Ground transport" />
+<Button>Rebook Passenger</Button>
+<Button variant="secondary">View Rebooking Queue</Button>
+</Form>
+</Card>
+
+<Card title="Select Hub">
+<Select label="Hub" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | JFK — New York JFK | LAX — Los Angeles" placeholder="Choose hub" />
+<Button>Load Hub</Button>
+</Card>

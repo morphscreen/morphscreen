@@ -1,0 +1,109 @@
+# Logistics Coordinator Board
+
+<Card title="Shipments in Transit" subtitle="Search and filter active shipments">
+<Form name="route-search">
+<Input label="Search by route" name="route" placeholder="e.g., LAX → JFK, SEA → ORD" type="search" hint="Type origin → destination or carrier name" />
+</Form>
+
+<Tabs>
+<Tab title="All (24)">
+<Table>
+| Shipment | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|
+| FRT-8842 | Los Angeles (LAX) | New York (JFK) | FedEx Freight | 2025-01-22 14:30 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FRT-8843 | Seattle (SEA) | Portland (PDX) | UPS Freight | 2025-01-21 09:15 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FRT-8844 | Chicago (ORD) | Atlanta (ATL) | XPO Logistics | 2025-01-22 18:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FRT-8845 | Dallas (DFW) | Miami (MIA) | Old Dominion | 2025-01-21 16:45 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| FRT-8846 | Denver (DEN) | Phoenix (PHX) | YRC Worldwide | 2025-01-23 11:20 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FRT-8847 | Boston (BOS) | Washington (IAD) | Estes Express | 2025-01-22 08:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+| FRT-8848 | San Francisco (SFO) | San Diego (SAN) | FedEx Freight | 2025-01-21 13:30 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| FRT-8849 | Houston (IAH) | New Orleans (MSY) | UPS Freight | 2025-01-24 10:00 | In Transit | <Button variant="tertiary" size="small">Flag</Button> |
+</Table>
+</Tab>
+<Tab title="Delayed (3)">
+<Table>
+| Shipment | Origin | Destination | Carrier | ETA | Delay | Reason |
+|---|---|---|---|---|---|---|
+| FRT-8845 | Dallas (DFW) | Miami (MIA) | Old Dominion | 2025-01-21 16:45 | +6h 22m | Weather hold at DFW |
+| FRT-8848 | San Francisco (SFO) | San Diego (SAN) | FedEx Freight | 2025-01-21 13:30 | +3h 15m | Traffic congestion |
+| FRT-8850 | Minneapolis (MSP) | Detroit (DTW) | XPO Logistics | 2025-01-21 11:00 | +4h 45m | Mechanical issue |
+</Table>
+</Tab>
+<Tab title="Flagged (2)">
+<Table>
+| Shipment | Origin | Destination | Flagged By | Time | Note |
+|---|---|---|---|---|---|
+| FRT-8845 | Dallas (DFW) | Miami (MIA) | M. Chen | 2025-01-21 08:14 | Customer escalation |
+| FRT-8850 | Minneapolis (MSP) | Detroit (DTW) | J. Rivera | 2025-01-21 07:52 | High-value cargo |
+</Table>
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="On-Time Performance">
+<Stat label="On-Time % (Jan)" value="87.5%" change="+2.1% vs Dec" tone="success" />
+<Stat label="Total Shipments" value="184" change="+12 vs last month" tone="neutral" />
+<Stat label="Delayed" value="23" change="-5 vs last month" tone="warning" />
+</Card>
+
+<Card title="Average Cost per Shipment">
+<Stat label="Avg Cost" value="$1,247" change="-$34 vs last month" tone="success" />
+<Stat label="Total Spend" value="$229,448" change="+$18,200 vs last month" tone="neutral" />
+<Stat label="Cost/mi" value="$2.84" change="$0.02 vs last month" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier (Jan)" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| FedEx Freight | 52 |
+| UPS Freight | 41 |
+| XPO Logistics | 33 |
+| Old Dominion | 28 |
+| YRC Worldwide | 19 |
+| Estes Express | 11 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| 2024-W47 | 42 |
+| 2024-W48 | 38 |
+| 2024-W49 | 45 |
+| 2024-W50 | 41 |
+| 2024-W51 | 48 |
+| 2024-W52 | 35 |
+| 2025-W01 | 52 |
+| 2025-W02 | 49 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Carrier Performance Details">
+<Table>
+| Carrier | Shipments | On-Time % | Avg Cost | Avg Transit (days) | Claims |
+|---|---|---|---|---|---|
+| FedEx Freight | 52 | 92.3% | $1,180 | 3.2 | 1 |
+| UPS Freight | 41 | 87.8% | $1,290 | 3.5 | 2 |
+| XPO Logistics | 33 | 84.8% | $1,350 | 4.1 | 3 |
+| Old Dominion | 28 | 82.1% | $1,150 | 3.8 | 2 |
+| YRC Worldwide | 19 | 78.9% | $1,420 | 4.5 | 1 |
+| Estes Express | 11 | 90.9% | $1,080 | 2.9 | 0 |
+</Table>
+</Card>
+
+<Callout tone="info" title="Last Data Refresh">
+Updated: 2025-01-21 10:47 AM PST · Next auto-refresh in 13 minutes · Source: TMS + Carrier APIs
+</Callout>
+
+<FollowUps>
+- Show me shipments delayed by weather this week
+- Compare carrier costs for LAX → JFK lane
+- Export delayed shipments to CSV
+- Set up alerts for FRT-8845 and FRT-8850
+</FollowUps>

@@ -1,0 +1,164 @@
+# Hospital Operations Command View
+
+<Card title="Hospital Command Center" subtitle="Live operational overview — updated 2 minutes ago">
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="+3% vs yesterday" tone="warning" icon="bed" />
+<Stat label="Current ER Wait" value="42 min" change="−8 min vs average" tone="success" icon="clock" />
+<Stat label="Admissions (14d)" value="1,847" change="+12% vs prior 14d" tone="info" icon="trend-up" />
+<Stat label="Critical Patients" value="9" change="2 in ICU, 3 in ER" tone="danger" icon="alert" />
+</Columns>
+</Card>
+
+<Card title="Bed Occupancy by Unit">
+<Progress value="92" max="100" label="ICU — 46/50 beds" tone="danger" />
+<Progress value="85" max="100" label="Medical/Surgical — 102/120 beds" tone="warning" />
+<Progress value="74" max="100" label="Pediatrics — 37/50 beds" tone="info" />
+<Progress value="61" max="100" label="Maternity — 28/46 beds" tone="success" />
+<Progress value="78" max="100" label="Overall — 213/274 beds" tone="warning" />
+</Card>
+
+<Card title="Admissions — Past Two Weeks">
+<Chart type="bar" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon | 118 |
+| Tue | 132 |
+| Wed | 141 |
+| Thu | 127 |
+| Fri | 156 |
+| Sat | 143 |
+| Sun | 129 |
+| Mon | 138 |
+| Tue | 145 |
+| Wed | 152 |
+| Thu | 149 |
+| Fri | 161 |
+| Sat | 147 |
+| Sun | 134 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="donut" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 58 |
+| Medical/Surgical | 102 |
+| ICU | 46 |
+| Pediatrics | 37 |
+| Maternity | 28 |
+| Cardiology | 24 |
+| Neurology | 16 |
+| Orthopedics | 19 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current roster — 07:00 to 19:00">
+<Columns>
+<Avatar name="Dr. Sarah Chen" src="find" subtitle="Emergency — Attending" />
+<Avatar name="Dr. Marcus Reed" src="find" subtitle="ICU — Intensivist" />
+<Avatar name="Nurse Amanda Ortiz" src="find" subtitle="Medical/Surgical — RN Charge" />
+<Avatar name="Nurse James Park" src="find" subtitle="Pediatrics — RN" />
+<Avatar name="Dr. Elena Vasquez" src="find" subtitle="Cardiology — Fellow" />
+<Avatar name="Nurse David Kim" src="find" subtitle="Maternity — RN" />
+<Avatar name="Dr. Omar Hassan" src="find" subtitle="Neurology — Attending" />
+<Avatar name="Nurse Priya Patel" src="find" subtitle="OR — Scrub Nurse" />
+<Avatar name="Dr. Thomas Wright" src="find" subtitle="Orthopedics — Resident" />
+<Avatar name="Nurse Lisa Nguyen" src="find" subtitle="ER — Triage RN" />
+</Columns>
+</Card>
+
+<Card title="Critical Patients — Immediate Attention">
+<Callout tone="danger" title="9 critical patients requiring monitoring">
+| Bed | Patient | Condition | Department | Action |
+|---|---|---|---|
+| ICU-04 | M. Thompson | Septic shock | ICU | Vasopressors titrating |
+| ICU-07 | R. Garcia | Post-cardiac arrest | ICU | Neuro checks q1h |
+| ICU-12 | J. O'Brien | ARDS on vent | ICU | PEEP 12, FiO2 60% |
+| ER-09 | S. Patel | STEMI | Emergency | Awaiting cath lab |
+| ER-12 | L. Kim | Stroke, tPA given | Emergency | Neuro consult pending |
+| ER-15 | A. Brown | Severe trauma | Emergency | OR prep — trauma team |
+| Peds-03 | C. Nguyen | Respiratory failure | Pediatrics | BiPAP, escalating |
+| Cardio-07 | D. Williams | Unstable arrhythmia | Cardiology | Amiodarone drip |
+| Neuro-02 | H. Davis | Intracranial bleed | Neurology | OR scheduled 14:00 |
+</Card>
+
+<Card title="Patients Ready for Discharge">
+<Callout tone="success" title="7 patients cleared — discharge today">
+| Bed | Patient | Department | Discharge Time | Transport |
+|---|---|---|---|
+| Med-12 | F. Johnson | Medical/Surgical | 11:00 | Family pickup |
+| Med-18 | K. Smith | Medical/Surgical | 11:30 | Ambulatory |
+| Peds-05 | T. Lee | Pediatrics | 12:00 | Family pickup |
+| Mat-03 | N. Davis | Maternity | 13:00 | Family pickup |
+| Ortho-06 | R. Martinez | Orthopedics | 14:00 | Wheelchair |
+| Cardio-02 | G. Taylor | Cardiology | 15:00 | Ambulatory |
+| Neuro-04 | E. Clark | Neurology | 16:00 | Family pickup |
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|
+| 07:30 | OR-1 | Total knee replacement | Dr. Wright | In progress |
+| 08:00 | OR-2 | Laparoscopic cholecystectomy | Dr. Chen | In progress |
+| 09:00 | OR-3 | C-section | Dr. Vasquez | In progress |
+| 10:00 | OR-4 | Carpal tunnel release | Dr. Hassan | On schedule |
+| 11:30 | OR-1 | Appendectomy | Dr. Reed | On schedule |
+| 13:00 | OR-2 | Hernia repair | Dr. Wright | On schedule |
+| 14:00 | OR-3 | Craniotomy — bleed | Dr. Hassan | Urgent add-on |
+| 15:30 | OR-4 | Fracture fixation | Dr. Reed | On schedule |
+| 17:00 | OR-1 | Gallbladder removal | Dr. Chen | On schedule |
+</Card>
+
+<Card title="Supplies Running Low">
+<Callout tone="warning" title="Restock recommended within 24 hours">
+| Supply | Current Stock | Reorder Level | Department | Est. Depletion |
+|---|---|---|---|
+| Norepinephrine vials | 12 | 20 | ICU | 6 hours |
+| Normal saline 1L | 48 | 100 | All units | 12 hours |
+| Surgical gloves (size 7.5) | 3 boxes | 10 | OR | 8 hours |
+| IV catheters 18G | 25 | 50 | ER | 10 hours |
+| Insulin glargine pens | 8 | 15 | Medical/Surgical | 1 day |
+| Ventilator circuits | 4 | 8 | ICU | 12 hours |
+| Blood culture bottles | 14 | 30 | Lab/ER | 1 day |
+| ECG electrodes | 60 | 120 | Cardiology | 1 day |
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Incident type" placeholder="Select type" options="Medication error | Patient fall | Equipment failure | Security issue | Communication breakdown | Other" required="true" />
+<Input label="Location" placeholder="e.g., ICU-04, ER Triage" required="true" />
+<TextArea label="Description" placeholder="Briefly describe what happened" rows="3" required="true" />
+<Select label="Severity" placeholder="Select severity" options="Low | Moderate | High | Critical" required="true" />
+<Button>Submit Incident</Button>
+</Form>
+</Card>
+<Card title="Look at Another Day">
+<Form name="date-lookup">
+<Date label="Select date" name="view-date" required="true" />
+<Select label="Shift" placeholder="Select shift" options="Day (07:00–19:00) | Night (19:00–07:00) | Full 24h" />
+<Button>Load Day View</Button>
+</Form>
+</Card>
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient ID" placeholder="e.g., P-2024-0187" required="true" />
+<Select label="From department" placeholder="Select unit" options="Emergency | ICU | Medical/Surgical | Pediatrics | Maternity | Cardiology | Neurology | Orthopedics" required="true" />
+<Select label="To department" placeholder="Select unit" options="Emergency | ICU | Medical/Surgical | Pediatrics | Maternity | Cardiology | Neurology | Orthopedics | Step-down | Rehab" required="true" />
+<Input label="Reason" placeholder="e.g., Needs ICU monitoring, Step-down ready" required="true" />
+<Input label="Requesting physician" placeholder="Dr. name" required="true" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show critical patient detailed vitals
+- View staffing for the night shift
+- Generate a supply restock order
+- See bed availability forecast for tomorrow
+- List pending transfer requests
+</FollowUps>

@@ -1,0 +1,156 @@
+# Store Manager's Daily Console
+
+Good morning! Here's today's overview for **Downtown Store #204**.
+
+<Callout tone="info" title="Store selector">
+<Form name="store-selector">
+<Select label="Viewing store" options="Downtown #204 | Uptown #108 | Mall #315 | Airport #022" placeholder="Downtown #204" name="store" />
+<Button variant="secondary">Switch store</Button>
+</Form>
+</Callout>
+
+## Sales Today vs. Target
+
+<Card title="Sales progress">
+<Columns>
+<Stat label="Sales today" value="$8,412" change="+12% vs. yesterday" tone="success" icon="trend-up" />
+<Stat label="Daily target" value="$12,000" note="70% of day elapsed" icon="bullseye" />
+<Stat label="Average basket" value="$38.40" change="+$2.10 vs. last week" tone="success" icon="shopping-cart" />
+</Columns>
+<Progress value="70" max="100" label="70% of target reached" tone="info" />
+</Card>
+
+<Card title="This week vs. last week" subtitle="Mon–Sun comparison">
+<Columns>
+<Stat label="This week" value="$54,210" change="+8.4%" tone="success" icon="chart-line" />
+<Stat label="Last week" value="$50,010" note="Baseline" icon="chart-line" />
+</Columns>
+<Chart type="bar" x="Day" y="Sales (USD)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 7100 | 6800 |
+| Tue | 6900 | 6400 |
+| Wed | 7400 | 7100 |
+| Thu | 8200 | 7500 |
+| Fri | 9100 | 8400 |
+| Sat | 9800 | 8900 |
+| Sun | 5710 | 4910 |
+</Chart>
+</Card>
+
+## Foot Traffic Through the Day
+
+<Card title="Hourly foot traffic" subtitle="Sensors at entrance, updated every 15 min">
+<Chart type="line" x="Hour" y="Shoppers">
+| Hour | Traffic |
+|---|---|
+| 8 AM | 42 |
+| 9 AM | 78 |
+| 10 AM | 134 |
+| 11 AM | 189 |
+| 12 PM | 245 |
+| 1 PM | 210 |
+| 2 PM | 176 |
+| 3 PM | 198 |
+| 4 PM | 231 |
+| 5 PM | 278 |
+| 6 PM | 312 |
+| 7 PM | 265 |
+| 8 PM | 148 |
+</Chart>
+<Stat label="Total today" value="2,506" change="+5.2% vs. last Tuesday" tone="info" icon="users" />
+</Card>
+
+## Best Sellers
+
+<Card title="Top products by units sold" subtitle="Today so far">
+| Product | Units | Category |
+|---|---|---|
+| Signature Cold Brew 12oz | 148 | Beverages |
+| Organic Kale Chips | 96 | Snacks |
+| Artisan Sourdough Loaf | 84 | Bakery |
+| Grass-Fed Butter 8oz | 67 | Dairy |
+| Fair Trade Espresso Beans | 52 | Coffee |
+</Card>
+
+## Out of Stock Items
+
+<Card title="Items needing attention" subtitle="Zero inventory at store level">
+| SKU | Product | Last sold | Reorder |
+|---|---|---|---|
+| 8823 | Almond Milk 1L | 2 days ago | <Button size="small" variant="primary">Reorder</Button> |
+| 4417 | Greek Yogurt 500g | Yesterday | <Button size="small" variant="primary">Reorder</Button> |
+| 7741 | Sparkling Water 6-pack | 3 days ago | <Button size="small" variant="primary">Reorder</Button> |
+| 1189 | Cheddar Cheese 200g | 1 day ago | <Button size="small" variant="primary">Reorder</Button> |
+</Card>
+
+<Details title="Reorder an item" open="false">
+<Form name="reorder-form">
+<Select label="Product" options="Almond Milk 1L | Greek Yogurt 500g | Sparkling Water 6-pack | Cheddar Cheese 200g | Other item" name="product" placeholder="Choose item" required="true" />
+<Input label="Quantity to order" type="number" name="quantity" min="1" placeholder="24" required="true" />
+<Input label="Preferred delivery date" type="date" name="delivery" />
+<Button>Submit reorder</Button>
+</Form>
+</Details>
+
+## Registers & Staff
+
+<Columns>
+<Card title="Register status" subtitle="Live">
+| Register | Status | Cashier |
+|---|---|---|
+| 1 | <Badge tone="success">Open</Badge> | Maya |
+| 2 | <Badge tone="success">Open</Badge> | James |
+| 3 | <Badge tone="warning">Open — slow</Badge> | Priya |
+| 4 | <Badge tone="danger">Closed</Badge> | — |
+| 5 | <Badge tone="success">Open</Badge> | Elena |
+| 6 | <Badge tone="danger">Closed</Badge> | — |
+</Card>
+
+<Card title="On shift today" subtitle="Tuesday, 9 AM – 6 PM">
+<Avatar name="Maya Chen" subtitle="Supervisor · 9 AM – 5 PM" />
+<Avatar name="James Okafor" subtitle="Cashier · 9 AM – 5 PM" />
+<Avatar name="Priya Sharma" subtitle="Cashier · 10 AM – 6 PM" />
+<Avatar name="Elena Rodriguez" subtitle="Stock clerk · 9 AM – 4 PM" />
+<Avatar name="Tom Becker" subtitle="Baker · 6 AM – 2 PM" />
+</Card>
+</Columns>
+
+## Returns This Week
+
+<Card title="Returns summary" subtitle="Mon–Sun">
+<Columns>
+<Stat label="Returns this week" value="14" change="−3 vs. last week" tone="success" icon="arrow-counter-clockwise" />
+<Stat label="Value of returns" value="$287.40" note="2.1% of sales" icon="currency-dollar" />
+</Columns>
+<Chart type="bar" x="Day" y="Returns">
+| Day | Returns |
+|---|---|
+| Mon | 2 |
+| Tue | 3 |
+| Wed | 1 |
+| Thu | 4 |
+| Fri | 2 |
+| Sat | 2 |
+| Sun | 0 |
+</Chart>
+<Callout tone="info" title="Top return reason">Damaged packaging (5 items) — check delivery batch #4412</Callout>
+</Card>
+
+## Promotions Performance
+
+<Card title="Running promotions" subtitle="All active campaigns">
+| Promotion | Period | Sales uplift | Goal progress | Status |
+|---|---|---|---|---|
+| Summer Drinks 2-for-$5 | Jun 1–30 | +22% | <Progress value="78" max="100" label="78%" tone="success" /> | <Badge tone="success">On track</Badge> |
+| Loyalty Double Points | Jun 10–20 | +15% | <Progress value="64" max="100" label="64%" tone="info" /> | <Badge tone="info">Healthy</Badge> |
+| New Snacks Tasting | Jun 15–25 | +8% | <Progress value="41" max="100" label="41%" tone="warning" /> | <Badge tone="warning">Below target</Badge> |
+| Weekend Bakery Bundle | Jun 17–19 | +31% | <Progress value="95" max="100" label="95%" tone="success" /> | <Badge tone="success">Near goal</Badge> |
+</Card>
+
+<FollowUps>
+- Show me the full sales breakdown by department
+- What's the forecast for tomorrow?
+- Which promotions should I extend next month?
+- Generate a reorder list for all out-of-stock items
+</FollowUps>

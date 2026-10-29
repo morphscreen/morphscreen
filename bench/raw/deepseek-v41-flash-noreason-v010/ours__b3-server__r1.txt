@@ -1,0 +1,103 @@
+# Service Health — On-Call View
+
+<Callout tone="danger" title="Active incident: SEV-1">Checkout API elevated 5xx in us-east-1. Acked 14m ago.</Callout>
+
+<Card title="Live status">
+<Columns>
+<Stat label="Uptime this quarter" value="99.94%" change="-0.03 pts vs last q" tone="warning" icon="chart-line" />
+<Stat label="Error rate (now)" value="2.4%" change="+1.9 pts in last hour" tone="danger" icon="warning" />
+<Stat label="Open incidents" value="4" note="1 SEV-1 · 1 SEV-2 · 2 SEV-3" tone="danger" icon="flame" />
+<Stat label="Requests / min" value="41,880" change="+6% vs 1h ago" tone="info" icon="activity" />
+</Columns>
+</Card>
+
+<Card title="Filters" subtitle="Narrow the view to one region">
+<Select label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" name="region" hint="Applies to incidents, metrics, and endpoint latency" />
+<Radio label="Time window" options="Last 1 hour | Last 6 hours | Last 24 hours | Last 7 days" name="window" value="Last 24 hours" />
+</Card>
+
+<Tabs>
+<Tab title="CPU &amp; Memory — 24h">
+<Card title="Resource usage" subtitle="Past 24 hours, 5-minute resolution">
+<Chart type="line" x="Time" y="Percent">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 38 | 61 |
+| 04:00 | 31 | 60 |
+| 08:00 | 55 | 66 |
+| 12:00 | 71 | 74 |
+| 16:00 | 84 | 88 |
+| 20:00 | 69 | 81 |
+| 24:00 | 47 | 70 |
+</Chart>
+<Progress value="84" max="100" label="CPU — peak (16:00)" tone="warning" />
+<Progress value="88" max="100" label="Memory — peak (16:00)" tone="danger" />
+</Card>
+</Tab>
+<Tab title="Error rate">
+<Card title="Errors right now">
+<Stat label="Error rate (now)" value="2.4%" change="+1.9 pts in last hour" tone="danger" icon="warning" />
+<Chart type="bar" x="Hour" y="Percent">
+| Hour | 5xx |
+|---|---|
+| -6h | 0.3 |
+| -5h | 0.4 |
+| -4h | 0.5 |
+| -3h | 0.6 |
+| -2h | 0.5 |
+| -1h | 1.2 |
+| now | 2.4 |
+</Chart>
+</Card>
+</Tab>
+<Tab title="Slowest endpoints">
+<Card title="Five slowest endpoints" subtitle="p95 latency, region: all">
+| Endpoint | p95 (ms) | Errors |
+|---|---|---|
+| POST /v2/checkout | 3,120 | 4.1% |
+| GET /v2/orders/search | 2,480 | 1.2% |
+| POST /v2/payments/capture | 1,940 | 2.8% |
+| GET /v2/inventory/availability | 1,410 | 0.9% |
+| POST /v2/users/session | 980 | 0.4% |
+<Button variant="secondary" size="small" icon="chart-line" ask="Show a 7-day latency trend for these five endpoints">View trend</Button>
+</Card>
+</Tab>
+</Tabs>
+
+<Card title="Open incidents">
+| ID | Severity | Service | Region | Status |
+|---|---|---|---|---|
+| INC-4821 | SEV-1 | checkout-api | us-east-1 | Acknowledged |
+| INC-4819 | SEV-2 | orders-search | eu-west-1 | Open |
+| INC-4815 | SEV-3 | inventory-sync | ap-southeast-1 | Open |
+| INC-4812 | SEV-3 | session-cache | us-west-2 | Open |
+
+<Button variant="danger" icon="check" ask="Acknowledge INC-4819 (SEV-2, orders-search, eu-west-1) and assign it to me">Acknowledge INC-4819</Button>
+<Button variant="secondary" icon="check" ask="Acknowledge all SEV-3 incidents and assign them to me">Acknowledge all SEV-3</Button>
+<Button variant="tertiary" icon="arrow-right" ask="Show full timeline and page history for INC-4821">Open INC-4821</Button>
+</Card>
+
+<Card title="Set an alert threshold">
+<Form name="alert-threshold">
+<Select label="Metric" options="Error rate (%) | CPU usage (%) | Memory usage (%) | p95 latency (ms) | Uptime (%)" name="metric" value="Error rate (%)" />
+<Input label="Threshold" type="number" name="threshold" value="2" step="0.1" min="0" hint="Alert fires when the metric stays above this for the duration below" />
+<Slider label="Sustained for" min="1" max="60" step="1" value="10" name="duration" unit="min" />
+<Select label="Notifies" options="On-call pager (SEV-2) | Slack #oncall | Email only" name="notify" value="On-call pager (SEV-2)" />
+<Switch label="Auto-resolve when metric drops below threshold for 10 min" name="auto_resolve" value="true" />
+<Button>Save threshold</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Who's on call">
+<Avatar name="Priya Raman" subtitle="Primary · checkout-api" />
+<Avatar name="Marcus Feld" subtitle="Secondary · platform" />
+<Button variant="secondary" size="small" ask="Escalate INC-4821 to the platform secondary">Escalate</Button>
+</Card>
+
+<FollowUps>
+- What changed in us-east-1 in the last hour?
+- Which deploys went out before the error spike?
+- Show me the 7-day uptime trend for this quarter
+- Post a status update to #incidents
+</FollowUps>

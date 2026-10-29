@@ -1,0 +1,187 @@
+# Hospital Operations Command View
+
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="+3% vs yesterday" tone="warning" icon="bed" />
+<Stat label="ER Wait Time" value="42 min" change="−8 min vs morning" tone="success" icon="clock" />
+<Stat label="Admissions (14d)" value="214" change="+12 vs prior week" tone="info" icon="arrow-up-right" />
+<Stat label="Critical Patients" value="6" change="2 in ICU" tone="danger" icon="heart-pulse" />
+</Columns>
+
+<Card title="Bed Occupancy" subtitle="Across all units — 78% of 420 beds">
+<Progress value="328" max="420" label="Occupied beds" tone="warning" />
+<Columns>
+<Stat label="ICU" value="24/28" tone="danger" icon="monitor" />
+<Stat label="Surgical" value="88/110" tone="warning" icon="scissors" />
+<Stat label="Medical" value="102/130" tone="info" icon="stethoscope" />
+<Stat label="Pediatric" value="41/60" tone="success" icon="baby" />
+<Stat label="Maternity" value="38/52" tone="success" icon="flower" />
+<Stat label="Psychiatric" value="35/40" tone="warning" icon="brain" />
+</Columns>
+</Card>
+
+<Card title="Current ER Wait">
+<Columns>
+<Stat label="Average wait" value="42 min" tone="success" icon="clock" />
+<Stat label="Longest wait" value="1h 15m" tone="warning" icon="alert" />
+<Stat label="Patients in waiting room" value="17" tone="info" icon="users" />
+</Columns>
+<Callout tone="info" title="ER status">Triage level 2 patients are being seen within 15 minutes. Level 4–5 patients may wait up to 90 minutes.</Callout>
+</Card>
+
+<Card title="Admissions — Last Two Weeks">
+<Chart type="area" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon W1 | 14 |
+| Tue W1 | 16 |
+| Wed W1 | 12 |
+| Thu W1 | 18 |
+| Fri W1 | 21 |
+| Sat W1 | 9 |
+| Sun W1 | 7 |
+| Mon W2 | 15 |
+| Tue W2 | 19 |
+| Wed W2 | 17 |
+| Thu W2 | 22 |
+| Fri W2 | 24 |
+| Sat W2 | 11 |
+| Sun W2 | 9 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department" subtitle="Current census">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Medical | 102 |
+| Surgical | 88 |
+| ICU | 24 |
+| Pediatric | 41 |
+| Maternity | 38 |
+| Psychiatric | 35 |
+| ER (boarding) | 12 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current roster — 143 staff total">
+<Columns>
+<Stat label="Nurses" value="68" icon="user-nurse" />
+<Stat label="Physicians" value="31" icon="user-doctor" />
+<Stat label="Support" value="44" icon="user-gear" />
+</Columns>
+<Details title="View full staff list">
+| Name | Role | Department |
+|---|---|---|
+| Dr. Sarah Chen | Attending Physician | Emergency |
+| Dr. Marcus Reid | Surgeon | Surgical |
+| Dr. Priya Sharma | Intensivist | ICU |
+| Nurse James Okafor | Charge Nurse | Medical |
+| Nurse Elena Petrova | ER Nurse | Emergency |
+| Nurse Tom Becker | ICU Nurse | ICU |
+| Dr. Lisa Nguyen | Pediatrician | Pediatric |
+| Nurse Maria Lopez | Midwife | Maternity |
+| Dr. David Kim | Psychiatrist | Psychiatric |
+| Tech Alex Johnson | Radiology Tech | Imaging |
+| Tech Sam Wilson | Lab Tech | Lab |
+| Aide Grace Mensah | Patient Care Aide | Medical |
+</Details>
+</Card>
+
+<Card title="Critical Patients" subtitle="Requiring immediate attention">
+<Callout tone="danger" title="6 critical patients">
+| Room | Patient | Condition | Assigned MD |
+|---|---|---|---|
+| ICU-3 | M. Thompson | Cardiac arrest, stable post-resus | Dr. Sharma |
+| ICU-7 | R. Alvarez | Septic shock | Dr. Sharma |
+| ICU-12 | J. O'Brien | Respiratory failure | Dr. Chen |
+| ER-5 | K. Nakamura | Stroke — thrombolysis in progress | Dr. Chen |
+| OR-2 | L. Washington | Post-op hemorrhage | Dr. Reid |
+| PICU-1 | S. Patel (age 4) | Meningitis | Dr. Nguyen |
+</Callout>
+<Button variant="danger">Page rapid response team</Button>
+</Card>
+
+<Card title="Ready for Discharge" subtitle="7 patients cleared — beds free up today">
+| Room | Patient | Department | Waiting on |
+|---|---|---|---|
+| Med-204 | A. Rossi | Medical | Transport (11:30) |
+| Med-218 | B. Garcia | Medical | Medication pickup |
+| Surg-112 | C. Miller | Surgical | Discharge summary |
+| Peds-308 | D. Kim (age 7) | Pediatric | Parent arrival |
+| Mat-415 | E. Johnson | Maternity | Newborn check done |
+| Psych-320 | F. Brown | Psychiatric | Family consult |
+| Med-231 | G. Patel | Medical | Lab results pending |
+
+<Button>Print discharge list</Button>
+</Card>
+
+<Card title="Today's OR Bookings" subtitle="8 procedures scheduled">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR-1 | Total knee replacement | Dr. Reid | <Badge tone="success">Completed</Badge> |
+| 08:00 | OR-2 | Emergency laparotomy | Dr. Osei | <Badge tone="warning">In progress</Badge> |
+| 09:30 | OR-3 | Cataract extraction | Dr. Lee | <Badge tone="success">Completed</Badge> |
+| 11:00 | OR-1 | Appendectomy | Dr. Reid | <Badge tone="info">Scheduled</Badge> |
+| 13:00 | OR-2 | Hip replacement | Dr. Novak | <Badge tone="info">Scheduled</Badge> |
+| 14:30 | OR-3 | Gallbladder removal | Dr. Osei | <Badge tone="info">Scheduled</Badge> |
+| 16:00 | OR-1 | Hernia repair | Dr. Lee | <Badge tone="info">Scheduled</Badge> |
+| 18:00 | OR-2 | C-section | Dr. Mensah | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Reorder threshold reached">
+<Columns>
+<Stat label="Items low" value="9" tone="danger" icon="package" />
+<Stat label="Orders due today" value="4" tone="warning" icon="truck" />
+</Columns>
+| Supply | Stock level | Reorder at | Est. depletion |
+|---|---|---|---|
+| Saline 0.9% 1L | 40 units | 100 | <Badge tone="danger">4 hours</Badge> |
+| Surgical gloves (M) | 120 pairs | 200 | 6 hours |
+| Insulin pens | 15 units | 25 | 8 hours |
+| IV catheters 22G | 60 units | 80 | 5 hours |
+| Oxygen masks | 25 units | 40 | 3 hours |
+| Morphine 10mg/mL | 30 vials | 50 | 12 hours |
+| Blood culture bottles | 18 units | 30 | 7 hours |
+| Foley catheters 16Fr | 22 units | 35 | 9 hours |
+| ECG electrodes | 150 units | 200 | 6 hours |
+
+<Button variant="warning">Create supply order</Button>
+</Card>
+
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Incident type" placeholder="Select type" options="Medication error | Patient fall | Equipment failure | Needle stick | Behavioral event | Other" />
+<Select label="Severity" placeholder="Select severity" options="Near miss | Minor | Moderate | Severe | Critical" />
+<Input label="Location" placeholder="e.g. Room 204, OR-3" />
+<Select label="Department" placeholder="Select department" options="Emergency | Medical | Surgical | ICU | Pediatric | Maternity | Psychiatric | Imaging | Lab" />
+<TextArea label="Description" placeholder="Describe what happened, people involved, and outcome" rows="4" />
+<Checkboxes label="Actions taken" options="Patient assessed | Provider notified | Supervisor notified | Equipment quarantined | Safety check done" />
+<Button variant="danger">Submit incident report</Button>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Select label="Patient" placeholder="Search patient" options="M. Thompson (ICU-3) | R. Alvarez (ICU-7) | J. O'Brien (ICU-12) | K. Nakamura (ER-5) | L. Washington (OR-2) | S. Patel (PICU-1)" />
+<Select label="From department" placeholder="Select" options="Emergency | Medical | Surgical | ICU | Pediatric | Maternity | Psychiatric" />
+<Select label="To department" placeholder="Select" options="Emergency | Medical | Surgical | ICU | Pediatric | Maternity | Psychiatric | Step-down" />
+<Select label="Priority" placeholder="Select" options="Routine | Urgent | Emergency" />
+<TextArea label="Reason" placeholder="Clinical justification for transfer" rows="3" />
+<Input label="Accepting physician" placeholder="Name" />
+<Button>Submit transfer request</Button>
+</Card>
+
+<Card title="Look at Another Day">
+<Form name="day-selector">
+<Date label="Select date" hint="View occupancy, admissions, and OR schedule for that day" />
+<Button variant="secondary">Load day's view</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the ICU bed details
+- Which staff are available for overtime tonight?
+- List all patients waiting for imaging
+- What's the status of the supply order?
+- Show yesterday's incident reports
+- Who is the nursing supervisor on call?
+</FollowUps>

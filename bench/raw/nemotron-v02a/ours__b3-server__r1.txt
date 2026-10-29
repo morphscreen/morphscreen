@@ -1,0 +1,99 @@
+<Card title="Service Health Dashboard" subtitle="Production • Last updated: 2024-01-15 14:32 UTC">
+<Columns>
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" />
+</Columns>
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Current error rate" value="0.23%" change="+0.05% vs 1h ago" tone="warning" />
+<Stat label="Alert threshold" value="0.5% error rate" change="Configured" tone="info" />
+</Columns>
+
+<Callout tone="info" title="Alert threshold configuration">
+<Form name="alert-threshold">
+<Columns>
+<Input label="Error rate threshold (%)" name="errorThreshold" type="number" placeholder="0.5" value="0.5" hint="Trigger alert when error rate exceeds this value" />
+<Input label="Latency threshold (ms)" name="latencyThreshold" type="number" placeholder="500" value="500" hint="Trigger alert when p99 latency exceeds this value" />
+<Button variant="primary">Save thresholds</Button>
+</Columns>
+</Form>
+</Callout>
+
+### CPU & Memory Usage (Last 24 Hours)
+
+<Columns>
+<Chart type="line" title="CPU Utilization" x="Time" y="%">
+| Time | CPU % |
+|---|---|
+| 00:00 | 32 |
+| 03:00 | 28 |
+| 06:00 | 25 |
+| 09:00 | 45 |
+| 12:00 | 62 |
+| 15:00 | 58 |
+| 18:00 | 55 |
+| 21:00 | 48 |
+</Chart>
+
+<Chart type="line" title="Memory Utilization" x="Time" y="%">
+| Time | Memory % |
+|---|---|
+| 00:00 | 45 |
+| 03:00 | 42 |
+| 06:00 | 40 |
+| 09:00 | 52 |
+| 12:00 | 68 |
+| 15:00 | 71 |
+| 18:00 | 69 |
+| 21:00 | 60 |
+</Chart>
+</Columns>
+
+### Open Incidents
+
+<Columns>
+<Card title="INC-2024-01-15-0042" subtitle="Elevated latency in payment service">
+<Badge tone="danger">SEV-1</Badge>
+<p><strong>Started:</strong> 2024-01-15 13:45 UTC</p>
+<p><strong>Impact:</strong> 12% of payment requests > 2s</p>
+<p><strong>Owner:</strong> @sarah.chen</p>
+<Button variant="danger">Acknowledge</Button>
+<Button variant="secondary">View runbook</Button>
+</Card>
+
+<Card title="INC-2024-01-15-0038" subtitle="Database connection pool exhaustion">
+<Badge tone="warning">SEV-2</Badge>
+<p><strong>Started:</strong> 2024-01-15 12:10 UTC</p>
+<p><strong>Impact:</strong> 5% request failures in us-east-1</p>
+<p><strong>Owner:</strong> @marcus.johnson</p>
+<Button variant="danger">Acknowledge</Button>
+<Button variant="secondary">View runbook</Button>
+</Card>
+
+<Card title="INC-2024-01-14-0029" subtitle="Cache miss spike causing downstream pressure">
+<Badge tone="info">SEV-3</Badge>
+<p><strong>Started:</strong> 2024-01-14 22:30 UTC</p>
+<p><strong>Impact:</strong> Elevated p99 latency across API</p>
+<p><strong>Owner:</strong> @priya.sharma</p>
+<Button variant="danger">Acknowledge</Button>
+<Button variant="secondary">View runbook</Button>
+</Card>
+</Columns>
+
+### Five Slowest Endpoints (p99 Latency)
+
+| Endpoint | p50 (ms) | p95 (ms) | p99 (ms) | Error Rate | Trend |
+|---|---|---|---|---|---|
+| POST /api/v1/payments/charge | 245 | 890 | **2,840** | 1.2% | ↗️ +15% |
+| GET /api/v1/orders/history | 180 | 620 | **1,950** | 0.4% | ↗️ +8% |
+| POST /api/v1/inventory/reserve | 310 | 780 | **1,720** | 0.8% | → stable |
+| GET /api/v1/users/recommendations | 95 | 410 | **1,480** | 0.1% | ↘️ -5% |
+| PUT /api/v1/subscriptions/update | 150 | 520 | **1,310** | 0.3% | ↗️ +12% |
+
+<FollowUps>
+- Show me the runbook for INC-2024-01-15-0042
+- Page the on-call for payments team
+- Create a postmortem template for SEV-1
+- Show deployment history for payment service
+</FollowUps>
+</Card>

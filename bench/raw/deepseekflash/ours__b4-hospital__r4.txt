@@ -1,0 +1,138 @@
+# St. Mary's Hospital — Operations Command
+
+<Card title="Command Center" subtitle="Shift: Day · Monday, Jan 15, 2025 · Live data refreshes every 60s">
+<Columns>
+<Date label="View another day" value="2025-01-15" hint="Loads the command view for the selected date" />
+
+<Details title="File an incident">
+<Form name="incident">
+<Select label="Incident type" options="Medication error | Fall | Equipment failure | Security | Staff injury | Other" placeholder="Select type" required="true" />
+<Select label="Severity" options="Low | Medium | High | Critical" placeholder="Select severity" required="true" />
+<Input label="Location" placeholder="e.g. Ward 3B, Room 214" />
+<TextArea label="Description" placeholder="Brief description of what happened" rows="3" />
+<Button variant="danger">Submit Incident</Button>
+</Form>
+</Details>
+
+<Details title="Request a patient transfer">
+<Form name="transfer">
+<Input label="Patient ID" placeholder="e.g. P-10234" required="true" />
+<Select label="Receiving unit" options="ICU | Cardiology | Neurology | Orthopedics | General Surgery | Maternity" placeholder="Select unit" required="true" />
+<Select label="Priority" options="Routine | Urgent | Emergency" placeholder="Select priority" required="true" />
+<TextArea label="Reason" placeholder="Clinical reason for transfer" rows="2" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Details>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Bed Occupancy" value="87%" change="+2%" note="412 / 474 beds" />
+<Stat label="Current ER Wait" value="42 min" note="Target < 30 min" />
+<Stat label="Admissions (24h)" value="43" note="Up 6 vs. yesterday" />
+<Stat label="Critical Patients" value="6" note="ICU 3 · ER 2 · OR 1" />
+</Columns>
+
+<Callout tone="danger" title="Critical Patients — Immediate Attention">
+- **Thomas Reed (P-10012)** — Sepsis · ICU-2
+- **Aisha Khan (P-10045)** — STEMI · Cath Lab
+- **George Miller (P-10089)** — Respiratory failure · ICU-1
+- **Linda Wu (P-10123)** — Stroke · Neuro ICU
+- **Omar Hassan (P-10156)** — Trauma · ER Bay 4
+- **Grace Kim (P-10178)** — Post-op arrest · ICU-3
+</Callout>
+
+<Card title="Admissions — Past Two Weeks" subtitle="Daily hospital admissions, Jan 1 – Jan 14">
+<Chart type="area" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Jan 1 | 31 |
+| Jan 2 | 35 |
+| Jan 3 | 29 |
+| Jan 4 | 42 |
+| Jan 5 | 38 |
+| Jan 6 | 44 |
+| Jan 7 | 36 |
+| Jan 8 | 33 |
+| Jan 9 | 40 |
+| Jan 10 | 47 |
+| Jan 11 | 39 |
+| Jan 12 | 45 |
+| Jan 13 | 41 |
+| Jan 14 | 43 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy by Unit" subtitle="Current census per department">
+<Progress value="92" max="100" label="ICU — 24/26 beds" />
+<Progress value="88" max="100" label="Cardiology — 58/66 beds" />
+<Progress value="84" max="100" label="General Surgery — 52/62 beds" />
+<Progress value="78" max="100" label="Orthopedics — 47/60 beds" />
+<Progress value="71" max="100" label="Pediatrics — 41/58 beds" />
+<Progress value="65" max="100" label="Maternity — 36/55 beds" />
+<Progress value="63" max="100" label="Neurology — 34/54 beds" />
+<Progress value="55" max="100" label="Oncology — 29/53 beds" />
+</Card>
+
+<Card title="Patients per Department" subtitle="Current patient census">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Cardiology | 58 |
+| General Surgery | 52 |
+| Orthopedics | 47 |
+| Pediatrics | 41 |
+| Maternity | 36 |
+| Neurology | 34 |
+| Oncology | 29 |
+| ICU | 24 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Today's Operating Room Bookings" subtitle="Jan 15, 2025">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR-1 | CABG | Dr. Okafor | In progress |
+| 09:00 | OR-2 | Hip replacement | Dr. Kim | Scheduled |
+| 10:30 | OR-3 | Craniotomy | Dr. Patel | Scheduled |
+| 13:00 | OR-1 | Appendectomy | Dr. Chen | Scheduled |
+| 15:30 | OR-2 | C-section | Dr. Gomez | Scheduled |
+</Card>
+
+<Card title="Staff on Shift" subtitle="8 staff currently on duty">
+<Avatar name="Dr. Sarah Chen" subtitle="Chief Resident · Emergency" />
+<Avatar name="Dr. James Okafor" subtitle="Attending · Cardiology" />
+<Avatar name="Dr. Priya Patel" subtitle="Attending · Neurology" />
+<Avatar name="Nurse Michael Torres" subtitle="Charge Nurse · ICU" />
+<Avatar name="Nurse Emily Nguyen" subtitle="RN · Pediatrics" />
+<Avatar name="Dr. David Kim" subtitle="Attending · Orthopedics" />
+<Avatar name="Nurse Aisha Bello" subtitle="RN · General Surgery" />
+<Avatar name="Dr. Laura Gomez" subtitle="Anesthesiologist · OR" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Ready for Discharge" subtitle="Patients cleared or pending">
+- **Maria Lopez (P-10234)** — Transport arranged <Badge tone="success">Ready</Badge>
+- **John Carter (P-10251)** — Waiting on meds <Badge tone="warning">Pending</Badge>
+- **Helen Park (P-10267)** — Waiting for family <Badge tone="warning">Pending</Badge>
+- **Robert Hayes (P-10272)** — Paperwork in progress <Badge tone="warning">Pending</Badge>
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Inventory below threshold">
+- **Saline IV bags 500mL** — 12 remaining <Badge tone="danger">Reorder</Badge>
+- **N95 masks** — 2 boxes <Badge tone="danger">Reorder</Badge>
+- **Insulin pens** — 8 units <Badge tone="warning">Low</Badge>
+- **Surgical gloves M** — 30 boxes <Badge tone="warning">Low</Badge>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the bed occupancy trend for the last 7 days
+- What is the current staffing gap per department?
+- List all patients who have been in the ER for more than 4 hours
+- Which ORs have the longest turnaround time today?
+</FollowUps>

@@ -1,0 +1,19 @@
+<Card title="Platform Status" subtitle="API uptime and incident summary for this month">
+<Columns>
+<Stat label="API Uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Stat label="Incidents this month" value="1" change="0 critical" tone="info" />
+</Columns>
+
+<Callout tone="info" title="Most Recent Incident">
+**Partial API degradation** — May 14, 2025, 09:12–09:48 UTC  
+Elevated 5xx errors on `/v1/exports` endpoint due to a downstream queue backlog. Mitigated by scaling workers and adding circuit-breaker fallback. Fully resolved at 09:48 UTC. No data loss reported.
+</Callout>
+
+<Details title="Incident timeline">
+- **09:12** — Alert triggered: error rate > 5% on exports endpoint  
+- **09:15** — On-call engaged; identified queue consumer lag  
+- **09:22** — Scaled consumer pool from 8 → 24 workers  
+- **09:35** — Error rate dropped below 1%  
+- **09:48** — All metrics green; incident closed
+</Details>
+</Card>

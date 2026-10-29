@@ -1,0 +1,178 @@
+# University Administration Dashboard
+
+<Select label="Focus Department" name="dept-filter" placeholder="All Departments" options="All Departments | Computer Science | Biology | Business | Engineering | Arts & Humanities | Psychology | Physics | Mathematics" />
+
+<Columns>
+<Card title="Total Enrollment (5-Year Trend)">
+<Chart type="line" x="Year" y="Students">
+| Year | Enrollment |
+|---|---|
+| 2020 | 18,420 |
+| 2021 | 19,150 |
+| 2022 | 20,300 |
+| 2023 | 21,080 |
+| 2024 | 21,850 |
+</Chart>
+</Card>
+
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Computer Science | 4,200 |
+| Business | 3,800 |
+| Engineering | 3,500 |
+| Biology | 2,900 |
+| Psychology | 2,400 |
+| Arts & Humanities | 1,800 |
+| Physics | 1,200 |
+| Mathematics | 950 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="Acceptance Rate" value="32.4%" change="-1.2% vs last year" tone="info" />
+<Stat label="Tuition Revenue (FY24)" value="$184.2M" change="+8.3% YoY" tone="success" />
+<Stat label="Students at Academic Risk" value="1,240" change="+180 vs last semester" tone="warning" />
+<Stat label="Housing Occupancy" value="94.2%" change="+2.1%" tone="success" />
+</Card>
+
+<Card title="Scholarship Budget Utilization">
+<Progress value="14200000" max="18500000" label="$14.2M of $18.5M used (76.8%)" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Course Offering Capacity">
+<Chart type="horizontal" x="Fill Rate %" y="Course">
+| Course | Fill Rate % |
+|---|---|
+| CS 101: Intro to Programming | 98 |
+| BUS 201: Financial Accounting | 95 |
+| ENG 301: Thermodynamics | 92 |
+| BIO 101: General Biology | 89 |
+| PSY 101: Intro to Psychology | 87 |
+| MATH 201: Calculus II | 84 |
+| ART 101: Art History | 78 |
+| PHYS 101: Mechanics | 72 |
+</Chart>
+</Card>
+
+<Card title="Teaching Load by Faculty">
+| Faculty | Department | Courses | Students | Load % |
+|---|---|---|---|---|
+| Dr. Sarah Chen | Computer Science | 4 | 320 | 110% |
+| Prof. James Miller | Business | 3 | 280 | 95% |
+| Dr. Maria Rodriguez | Engineering | 4 | 310 | 105% |
+| Prof. David Kim | Biology | 3 | 245 | 88% |
+| Dr. Lisa Thompson | Psychology | 4 | 350 | 115% |
+| Prof. Robert Jones | Arts & Humanities | 2 | 180 | 72% |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 420 |
+| Engineering | 380 |
+| Business | 310 |
+| Biology | 240 |
+| Psychology | 180 |
+| Physics | 95 |
+| Mathematics | 70 |
+| Arts & Humanities | 45 |
+</Chart>
+</Card>
+
+<Card title="Alumni Giving (4-Year Trend)">
+<Chart type="line" x="Year" y="Donations (USD)">
+| Year | Donations |
+|---|---|
+| 2021 | 8,200,000 |
+| 2022 | 9,100,000 |
+| 2023 | 10,400,000 |
+| 2024 | 11,850,000 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Campus Events This Month">
+| Date | Event | Location | Expected Attendance | Status |
+|---|---|---|---|---|
+| Oct 3 | Career Fair | Student Center | 1,200 | Confirmed |
+| Oct 7 | Homecoming Game | Stadium | 8,500 | Confirmed |
+| Oct 12 | Research Symposium | Science Hall | 450 | Confirmed |
+| Oct 18 | Alumni Reunion | Grand Ballroom | 600 | Planning |
+| Oct 24 | Diversity Summit | Conference Center | 300 | Confirmed |
+| Oct 31 | Halloween Festival | Quad | 2,000 | Planning |
+</Card>
+
+<Columns>
+<Card title="Semester Comparison">
+| Metric | Fall 2023 | Fall 2024 | Change |
+|---|---|---|---|
+| Enrollment | 20,850 | 21,850 | +4.8% |
+| Applications | 18,400 | 20,750 | +12.8% |
+| Acceptance Rate | 33.6% | 32.4% | -1.2pp |
+| Avg Class Size | 28.4 | 29.1 | +2.5% |
+| Tuition Revenue | $169.8M | $184.2M | +8.5% |
+| Housing Occupancy | 92.1% | 94.2% | +2.1pp |
+</Card>
+
+<Card title="Students at Academic Risk - Detail">
+<Badge tone="warning">1,240 students flagged</Badge>
+| Risk Level | Count | Primary Factor |
+|---|---|---|
+| Critical (GPA < 2.0) | 320 | Failed 2+ courses |
+| High (GPA 2.0-2.3) | 480 | Low attendance |
+| Moderate (GPA 2.3-2.7) | 440 | Missing assignments |
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Approve New Course">
+<Card title="New Course Approval Form">
+<Form name="course-approval">
+<Input label="Course Code" placeholder="e.g., CS 485" required="true" />
+<Input label="Course Title" placeholder="e.g., Machine Learning Systems" required="true" />
+<Select label="Department" options="Computer Science | Biology | Business | Engineering | Arts & Humanities | Psychology | Physics | Mathematics" required="true" />
+<Input label="Credits" type="number" placeholder="3" value="3" required="true" />
+<Select label="Level" options="Undergraduate | Graduate" required="true" />
+<TextArea label="Course Description" placeholder="Brief description for catalog..." rows="3" required="true" />
+<Input label="Proposed Instructor" placeholder="Faculty name" required="true" />
+<Select label="Semester" options="Spring 2025 | Fall 2025 | Spring 2026" required="true" />
+<Input label="Max Enrollment" type="number" placeholder="30" value="30" />
+<Checkboxes label="Prerequisites" options="CS 201: Data Structures | CS 301: Algorithms | MATH 201: Linear Algebra" />
+<Button>Submit for Approval</Button>
+<Button variant="secondary">Save Draft</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Message Student Group">
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Target Group" options="All Students | Freshmen | Sophomores | Juniors | Seniors | Graduate Students | Computer Science Majors | Business Majors | Engineering Majors | At-Risk Students | Scholarship Recipients | Housing Residents | Waitlisted Applicants" required="true" />
+<Input label="Subject" placeholder="Important: Registration Deadline Approaching" required="true" />
+<TextArea label="Message" placeholder="Dear students,..." rows="6" required="true" />
+<Checkboxes label="Delivery Channels" options="Email | SMS | Portal Notification | Mobile App Push" value="Email | Portal Notification" />
+<Radio label="Priority" options="Normal | High | Urgent" value="Normal" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save as Template</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Show me enrollment projections for next year
+- Generate a report on faculty workload equity
+- Compare scholarship utilization across departments
+- List courses with waitlists over 50 students
+- Show housing waitlist by building
+</FollowUps>

@@ -1,0 +1,62 @@
+# Ops desk — today
+
+<Columns>
+<Stat label="Orders today" value="1,284" change="+8.2% vs yesterday" tone="success" icon="receipt" />
+<Stat label="Revenue today" value="$96,410" change="+5.4% vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Average order value" value="$75.09" change="-2.1% vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="Refund rate this month" value="3.4%" change="+0.6 pts vs last month" tone="warning" icon="arrow-u-down-left" />
+</Columns>
+
+<Card title="Order volume" subtitle="Past four weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| W1 | 7420 |
+| W2 | 8110 |
+| W3 | 7860 |
+| W4 | 8940 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Live queue — newest first">
+<Form name="order-filters">
+<Input label="Search by customer" name="customer" type="search" placeholder="e.g. Maya Ellis" hint="Matches partial names" />
+<Select label="Status" name="status" placeholder="All statuses" options="All statuses | Awaiting fulfillment | Fulfilled | Refunded | Cancelled" />
+<Button variant="secondary">Apply filters</Button>
+</Form>
+</Card>
+
+<Card title="Queue">
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #48213 | Maya Ellis | $128.40 | Awaiting fulfillment |
+| #48212 | Tomás Rivera | $64.00 | Awaiting fulfillment |
+| #48211 | Priya Nair | $212.75 | Fulfilled |
+| #48210 | Jonas Weber | $39.99 | Refunded |
+| #48209 | Aisha Bello | $94.50 | Awaiting fulfillment |
+| #48208 | Liam O'Connor | $156.20 | Fulfilled |
+| #48207 | Sofia Marchetti | $48.10 | Cancelled |
+| #48206 | Daniel Kim | $301.00 | Awaiting fulfillment |
+</Card>
+
+<Card title="Mark an order fulfilled" subtitle="Use the order ID from the queue above">
+<Form name="fulfill-order">
+<Input label="Order ID" name="order_id" placeholder="#48213" hint="Include the leading #" required="true" />
+<Input label="Tracking number" name="tracking" placeholder="1Z999AA10123456784" />
+<Select label="Carrier" name="carrier" placeholder="Choose a carrier" options="UPS | FedEx | USPS | DHL" />
+<TextArea label="Internal note" name="note" rows="2" placeholder="Anything the warehouse should know" />
+<Switch label="Notify customer by email" name="notify" value=true />
+<Button>Mark fulfilled</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Refund watch">
+Refund rate is up 0.6 points this month. Two SKUs account for most of it — check the returns report before the weekend sale.
+</Callout>
+
+<FollowUps>
+- Which SKUs are driving the refund rate up?
+- Show me only orders still awaiting fulfillment
+- What was our revenue each day this week?
+- Draft a restock plan for the top sellers
+</FollowUps>

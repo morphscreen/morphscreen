@@ -1,0 +1,102 @@
+<Card title="Hub Operations Desk" subtitle="Chicago O'Hare (ORD) — Tuesday, 14:32 CDT">
+<Select label="Switch hub" options="Chicago ORD | Atlanta ATL | Dallas-Fort Worth DFW | Denver DEN" name="hub" value="Chicago ORD" />
+</Card>
+
+<Columns>
+<Stat label="On-time performance" value="87.4%" note="+2.1 pts vs yesterday" />
+<Stat label="Avg passenger load" value="82%" note="Up from 76% last week" />
+<Stat label="Cancellations today" value="3" note="2 weather-related" />
+<Stat label="Avg turnaround time" value="41 min" note="Target: 45 min" />
+</Columns>
+
+<Columns>
+<Card title="Today's Flights" subtitle="Departures and arrivals — 142 scheduled">
+<Callout tone="warning" title="Delayed flights">
+<Badge tone="warning">UA 882</Badge> ORD → LAX, delayed 45 min (crew rest) &nbsp;
+<Badge tone="warning">SW 2245</Badge> ORD → DFW, delayed 25 min (late inbound) &nbsp;
+<Badge tone="warning">AA 1142</Badge> JFK → ORD, delayed 30 min (air traffic)
+</Callout>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA 1142 | JFK → ORD | B14 | Delayed 30m |
+| UA 882 | ORD → LAX | C4 | Delayed 45m |
+| DL 331 | ATL → ORD | A9 | Boarding |
+| SW 2245 | ORD → DFW | B11 | Delayed 25m |
+| AA 556 | MIA → ORD | C11 | Arrived 14:05 |
+| UA 771 | ORD → SFO | A3 | On time |
+| DL 908 | ORD → BOS | B5 | Cancelled |
+| SW 110 | DEN → ORD | C8 | On time |
+| AA 2201 | ORD → MIA | A4 | On time |
+| UA 445 | EWR → ORD | C2 | Taxiing |
+
+</Card>
+
+<Card title="Weather Advisories" subtitle="Current conditions at ORD">
+<Callout tone="warning" title="Thunderstorm watch until 18:00">Scattered thunderstorms within 30 nm of the field. Expect holding delays of 15–30 min on arrivals from the west. Ramp operations restricted above 25 mph gusts.</Callout>
+<Badge tone="info">Ceiling 4,000 ft</Badge>
+<Badge tone="info">Visibility 6 mi</Badge>
+<Badge tone="info">Wind 14G22 NW</Badge>
+
+<Progress value="35" max="100" label="Storm probability next 3 hrs" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="On-Time Performance Today" subtitle="Hourly departure accuracy">
+<Chart type="line" x="Hour" y="% on time">
+| Hour | On time |
+|---|---|
+| 06:00 | 92 |
+| 08:00 | 88 |
+| 10:00 | 90 |
+| 12:00 | 84 |
+| 14:00 | 79 |
+</Chart>
+</Card>
+
+<Card title="Recent Gate Changes" subtitle="Last 60 minutes">
+- <strong>AA 1142</strong>: B12 → B14 (14:05)
+- <strong>DL 331</strong>: A7 → A9 (13:48)
+- <strong>SW 2245</strong>: B9 → B11 (13:40)
+- <strong>UA 771</strong>: A2 → A3 (13:22)
+</Card>
+
+<Card title="Cancellations Today" subtitle="With reassignment status">
+<Badge tone="danger">DL 908</Badge> ORD → BOS — pax rebooked on AA 118
+<Badge tone="danger">AA 3102</Badge> ORD → MSP — weather, pax rebooked
+<Badge tone="danger">SW 2870</Badge> ORD → STL — maintenance, 14 pax pending
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment" subtitle="Qualified and on standby">
+<Avatar name="Capt. R. Okafor" subtitle="B737 — 4h duty left" />
+<Avatar name="F/O M. Lindqvist" subtitle="A320 — 6h duty left" />
+<Avatar name="Purser J. Alvarez" subtitle="B737 — 5h duty left" />
+<Avatar name="F/A D. Kim" subtitle="A320 — 7h duty left" />
+</Card>
+
+<Card title="Connections at Risk" subtitle="Passengers with tight or missed connections">
+<Badge tone="danger">Critical</Badge> <strong>UA 882 → UA 115 to SFO</strong>: 12 pax, 40 min layover
+<Badge tone="warning">At risk</Badge> <strong>SW 2245 → SW 330 to AUS</strong>: 18 pax, 55 min layover
+<Badge tone="warning">At risk</Badge> <strong>AA 1142 → AA 77 to LHR</strong>: 9 pax, 1h 10m layover
+</Card>
+
+<Card title="Rebook Affected Passengers" subtitle="Find a passenger or flight and offer alternatives">
+<Form name="rebooking">
+<Input label="Passenger name or confirmation" placeholder="e.g., J. Smith or ABC123" />
+<Select label="Rebook onto" options="UA 115 to SFO (20:15) | SW 330 to AUS (21:05) | AA 77 to LHR (22:30) | Next available" name="rebook-flight" placeholder="Choose a flight" />
+<Radio label="Compensation" options="Meal voucher | Hotel + meal | No compensation" name="compensation" />
+<Button>Search passenger</Button>
+<Button variant="secondary">Offer alternatives</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show the full flight schedule for the next 6 hours
+- Which crews are about to time out and need relief?
+- List passengers already rebooked from cancelled flights
+- Compare today's on-time performance with last Tuesday
+</FollowUps>

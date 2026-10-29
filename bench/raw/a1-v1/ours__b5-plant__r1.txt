@@ -1,0 +1,169 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Real-time production overview — Shift A • 06:00–14:00">
+<Columns>
+<Stat label="OEE" value="84.2%" change="+1.3% vs yesterday" tone="success" />
+<Stat label="Units Produced" value="12,847 / 15,000" change="85.6% of target" tone="info" />
+<Stat label="Defect Rate (30d)" value="1.8%" change="-0.2% vs last month" tone="success" />
+<Stat label="Energy Today" value="1,240 kWh" change="−4.2% vs avg" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Production Lines Overview">
+<Select label="Focus Line" name="focus-line" placeholder="All lines" options="All lines | Line 1 – Extrusion | Line 2 – Molding | Line 3 – Assembly | Line 4 – Packaging" />
+<Table>
+| Line | Status | Rate (units/hr) | Target | Output Today | OEE | Andon |
+|---|---|---|---|---|---|---|
+| Line 1 – Extrusion | <Badge tone="success">Running</Badge> | 1,240 | 1,300 | 9,850 | 87.1% | — |
+| Line 2 – Molding | <Badge tone="warning">Slow</Badge> | 890 | 1,050 | 6,720 | 78.4% | <Badge tone="warning">Temp high</Badge> |
+| Line 3 – Assembly | <Badge tone="success">Running</Badge> | 1,100 | 1,100 | 8,250 | 91.2% | — |
+| Line 4 – Packaging | <Badge tone="danger">Stopped</Badge> | 0 | 950 | 4,100 | 62.3% | <Badge tone="danger">Jammer</Badge> |
+</Table>
+</Card>
+
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %" title="Daily Defect Rate">
+| Date | Defect % |
+|---|---|
+| 2025-01-01 | 2.1 |
+| 2025-01-02 | 1.9 |
+| 2025-01-03 | 2.3 |
+| 2025-01-04 | 1.8 |
+| 2025-01-05 | 1.7 |
+| 2025-01-06 | 1.6 |
+| 2025-01-07 | 1.8 |
+| 2025-01-08 | 1.9 |
+| 2025-01-09 | 1.7 |
+| 2025-01-10 | 1.8 |
+| 2025-01-11 | 1.6 |
+| 2025-01-12 | 1.5 |
+| 2025-01-13 | 1.7 |
+| 2025-01-14 | 1.8 |
+| 2025-01-15 | 1.9 |
+| 2025-01-16 | 1.7 |
+| 2025-01-17 | 1.6 |
+| 2025-01-18 | 1.8 |
+| 2025-01-19 | 1.9 |
+| 2025-01-20 | 1.7 |
+| 2025-01-21 | 1.6 |
+| 2025-01-22 | 1.8 |
+| 2025-01-23 | 1.7 |
+| 2025-01-24 | 1.6 |
+| 2025-01-25 | 1.8 |
+| 2025-01-26 | 1.9 |
+| 2025-01-27 | 1.7 |
+| 2025-01-28 | 1.8 |
+| 2025-01-29 | 1.6 |
+| 2025-01-30 | 1.8 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause — This Week">
+<Chart type="donut" x="Cause" y="Minutes" title="Total: 412 min">
+| Cause | Minutes |
+|---|---|
+| Changeover | 145 |
+| Material shortage | 98 |
+| Equipment fault | 82 |
+| Quality hold | 47 |
+| Planned maintenance | 40 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<Table>
+| Machine | Line | Due Date | Type | Priority |
+|---|---|---|---|---|
+| EXT-01 | Line 1 | 2025-02-03 | Lubrication | High |
+| MLD-04 | Line 2 | 2025-02-05 | Die inspection | Medium |
+| ASM-02 | Line 3 | 2025-02-07 | Calibration | Low |
+| PKG-01 | Line 4 | 2025-02-02 | Belt replacement | Critical |
+| EXT-03 | Line 1 | 2025-02-06 | Filter change | Medium |
+</Table>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="18.2 t" change="Reorder at 10 t" tone="success" />
+<Stat label="Resin Pellets" value="4.7 t" change="Reorder at 3 t" tone="warning" />
+<Stat label="Packaging Film" value="1,240 rolls" change="Reorder at 500" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries — This Week">
+<Table>
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel coil (Grade 50) | 25 t | 2025-02-03 | Confirmed |
+| PolySource | PP Resin | 10 t | 2025-02-04 | In transit |
+| PackWell | Stretch film | 2,000 rolls | 2025-02-05 | Scheduled |
+| Apex Metals | Steel coil (Grade 60) | 15 t | 2025-02-06 | Pending |
+| ChemCo | Additive masterbatch | 500 kg | 2025-02-07 | Confirmed |
+</Table>
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units" title="Last 7 Days">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift A (06-14) | 12800 | 13100 | 12950 | 13200 | 12847 | 11200 | 9800 |
+| Shift B (14-22) | 11900 | 12200 | 12050 | 12300 | 11950 | 10500 | 9100 |
+| Shift C (22-06) | 9800 | 10100 | 9950 | 10200 | 9850 | 8900 | 7600 |
+</Chart>
+</Card>
+
+<Card title="Safety & Quality">
+<Columns>
+<Stat label="Incidents YTD" value="3" change="0 lost-time" tone="success" />
+<Stat label="Days Since Last Incident" value="147" change="Record: 212 days" tone="info" />
+<Stat label="Batches on Quality Hold" value="4" change="2 pending review" tone="warning" />
+</Columns>
+<Table>
+| Batch | Line | Product | Qty | Hold Reason | Since |
+|---|---|---|---|---|---|
+| B-20250128-04 | Line 2 | Widget-A | 1,200 | Dimensional variance | 2025-01-28 |
+| B-20250129-01 | Line 4 | Gadget-C | 850 | Surface defect | 2025-01-29 |
+| B-20250130-03 | Line 1 | Part-X | 2,100 | Material cert missing | 2025-01-30 |
+| B-20250130-07 | Line 3 | Assembly-Y | 600 | Torque out of spec | 2025-01-30 |
+</Table>
+</Card>
+
+<Card title="Open Work Orders">
+<Table>
+| WO # | Line | Asset | Description | Priority | Assigned | Due |
+|---|---|---|---|---|---|---|
+| WO-4421 | Line 4 | PKG-01 | Clear jammer, replace feed belt | <Badge tone="danger">Critical</Badge> | M. Torres | Today |
+| WO-4418 | Line 2 | MLD-04 | Investigate temperature drift | <Badge tone="warning">High</Badge> | J. Chen | Today |
+| WO-4425 | Line 1 | EXT-01 | Scheduled lubrication | <Badge tone="info">Medium</Badge> | R. Patel | 2025-02-03 |
+| WO-4412 | Line 3 | ASM-02 | Calibrate torque driver | <Badge tone="info">Medium</Badge> | S. Kim | 2025-02-05 |
+| WO-4430 | Facility | HVAC-02 | Filter replacement | <Badge tone="neutral">Low</Badge> | Facilities | 2025-02-07 |
+</Table>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="LINE 4 — PACKAGING STOPPED">
+Jammer at PKG-01 infeed. Operator dispatched. ETA 8 min.
+</Callout>
+<Callout tone="warning" title="LINE 2 — MOLDING SLOW">
+Mold temperature 12°C above setpoint. Quality checking first articles.
+</Callout>
+<Callout tone="info" title="LINE 1 — CHANGEOVER COMPLETE">
+Line 1 resumed at 10:42. Running at 98% rate.
+</Callout>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="EXT-01 | EXT-02 | EXT-03 | MLD-01 | MLD-02 | MLD-03 | MLD-04 | ASM-01 | ASM-02 | PKG-01 | PKG-02" placeholder="Select machine" required="true" />
+<Date label="Date" name="maint-date" required="true" />
+<Select label="Type" name="maint-type" options="Lubrication | Inspection | Calibration | Part replacement | Filter change | Cleaning | Other" placeholder="Maintenance type" required="true" />
+<Select label="Priority" name="maint-priority" options="Low | Medium | High | Critical" value="Medium" required="true" />
+<TextArea label="Notes" name="maint-notes" placeholder="Details, parts needed, special instructions…" rows="3" />
+<Button>Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Actions">
+<Button>Export Shift Report (PDF)</Button>
+<Button variant="secondary">Export Shift Report (CSV)</Button>
+<Button variant="tertiary">Refresh Data</Button>
+</Card>

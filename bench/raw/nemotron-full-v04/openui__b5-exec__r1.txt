@@ -1,0 +1,114 @@
+root = Card([header, kpiRow, trendsRow, budgetSection, headcountSection, risksSection, initiativesSection, boardSection], "card", "column", "l")
+
+header = Card([titleRow, controlsRow], "clear", "row", "m", "center", "between")
+titleRow = CardHeader("Quarterly Command View", "CEO Dashboard — Q3 2024")
+controlsRow = Card([quarterSelect, regionSelect, exportBtn], "clear", "row", "m", "center", "end")
+
+quarterSelect = Select("quarter", quarterOptions, "Select quarter", [], "medium")
+quarterOptions = [q1Opt, q2Opt, q3Opt, q4Opt]
+q1Opt = SelectItem("q1-2024", "Q1 2024")
+q2Opt = SelectItem("q2-2024", "Q2 2024")
+q3Opt = SelectItem("q3-2024", "Q3 2024")
+q4Opt = SelectItem("q4-2024", "Q4 2024")
+
+regionSelect = Select("region", regionOptions, "All regions", [], "medium")
+regionOptions = [allOpt, amerOpt, emeaOpt, apacOpt]
+allOpt = SelectItem("all", "All Regions")
+amerOpt = SelectItem("amer", "Americas")
+emeaOpt = SelectItem("emea", "EMEA")
+apacOpt = SelectItem("apac", "APAC")
+
+exportBtn = Button("Export Pack", ["export"], "secondary")
+
+kpiRow = Card([revCard, costCard, profitCard, runwayCard, pipeCard, winCard, custCard, churnCard, npsCard], "clear", "row", "m", "stretch", "start", true)
+
+revCard = Card([revLabel, revValue], "sunk", "column", "xs", "start")
+revLabel = TextContent("Revenue (QTD)", "small")
+revValue = TextContent("$12.4M", "large-heavy")
+
+costCard = Card([costLabel, costValue], "sunk", "column", "xs", "start")
+costLabel = TextContent("Costs (QTD)", "small")
+costValue = TextContent("$8.1M", "large-heavy")
+
+profitCard = Card([profitLabel, profitValue], "sunk", "column", "xs", "start")
+profitLabel = TextContent("Profit (QTD)", "small")
+profitValue = TextContent("$4.3M", "large-heavy")
+
+runwayCard = Card([runwayLabel, runwayValue], "sunk", "column", "xs", "start")
+runwayLabel = TextContent("Runway", "small")
+runwayValue = TextContent("18 months", "large-heavy")
+
+pipeCard = Card([pipeLabel, pipeValue], "sunk", "column", "xs", "start")
+pipeLabel = TextContent("Pipeline Value", "small")
+pipeValue = TextContent("$28.7M", "large-heavy")
+
+winCard = Card([winLabel, winValue], "sunk", "column", "xs", "start")
+winLabel = TextContent("Win Rate", "small")
+winValue = TextContent("24%", "large-heavy")
+
+custCard = Card([custLabel, custValue], "sunk", "column", "xs", "start")
+custLabel = TextContent("Customers", "small")
+custValue = TextContent("1,247", "large-heavy")
+
+churnCard = Card([churnLabel, churnValue], "sunk", "column", "xs", "start")
+churnLabel = TextContent("Churn Rate", "small")
+churnValue = TextContent("3.2%", "large-heavy")
+
+npsCard = Card([npsLabel, npsValue], "sunk", "column", "xs", "start")
+npsLabel = TextContent("NPS", "small")
+npsValue = TextContent("62", "large-heavy")
+
+trendsRow = Card([revTrendCard, costTrendCard], "clear", "row", "l", "stretch", "start", true)
+
+revTrendCard = Card([revTrendHeader, revTrendChart], "card", "column", "m")
+revTrendHeader = CardHeader("Revenue Trend", "Last 4 quarters")
+revTrendChart = LineChart(quarters, [revSeries], "natural", "Quarter", "USD (M)")
+quarters = ["Q4'23", "Q1'24", "Q2'24", "Q3'24"]
+revSeries = Series("Revenue", [9.8, 10.5, 11.7, 12.4])
+
+costTrendCard = Card([costTrendHeader, costTrendChart], "card", "column", "m")
+costTrendHeader = CardHeader("Costs Trend", "Last 4 quarters")
+costTrendChart = LineChart(quarters, [costSeries], "natural", "Quarter", "USD (M)")
+costSeries = Series("Costs", [6.2, 6.8, 7.4, 8.1])
+
+budgetSection = Card([budgetHeader, budgetTable], "card", "column", "m")
+budgetHeader = CardHeader("Budget vs Plan by Department", "Q3 2024 actuals vs approved plan")
+budgetTable = Table([deptCol, budgetPlanCol, budgetActualCol, budgetVarCol])
+deptCol = Col("Department", ["Engineering", "Sales & Marketing", "Product", "G&A", "Operations", "R&D"])
+budgetPlanCol = Col("Plan ($M)", [4.2, 3.8, 1.5, 2.1, 1.2, 0.9])
+budgetActualCol = Col("Actual ($M)", [4.5, 3.5, 1.6, 2.0, 1.3, 0.8])
+budgetVarCol = Col("Variance", ["+7%", "-8%", "+7%", "-5%", "+8%", "-11%"])
+
+headcountSection = Card([hcHeader, hcChart], "card", "column", "m")
+hcHeader = CardHeader("Headcount by Department", "Current FTE count")
+hcChart = HorizontalBarChart(depts, [hcSeries], "grouped", "Department", "Headcount")
+depts = ["Engineering", "Sales & Marketing", "Product", "G&A", "Operations", "R&D"]
+hcSeries = Series("FTE", [142, 87, 34, 28, 19, 15])
+
+risksSection = Card([risksHeader, risksTable], "card", "column", "m")
+risksHeader = CardHeader("Top Risks", "Ranked by impact × likelihood")
+risksTable = Table([riskRankCol, riskDescCol, riskOwnerCol, riskImpactCol, riskStatusCol])
+riskRankCol = Col("#", [1, 2, 3, 4, 5])
+riskDescCol = Col("Risk", ["Key talent attrition", "Enterprise deal slippage", "Cloud cost overrun", "Competitive pricing pressure", "Regulatory compliance delay"])
+riskOwnerCol = Col("Owner", ["CPO", "CRO", "CTO", "CMO", "GC"])
+riskImpactCol = Col("Impact", ["High", "High", "Medium", "Medium", "Low"])
+riskStatusCol = Col("Status", ["Mitigating", "Monitoring", "Action plan", "Tracking", "Resolved"])
+
+initiativesSection = Card([initHeader, initTable], "card", "column", "m")
+initHeader = CardHeader("Strategic Initiatives", "Q3 2024 priorities")
+initTable = Table([initNameCol, initOwnerCol, initStatusCol, initProgressCol, initTargetCol])
+initNameCol = Col("Initiative", ["AI Product Launch", "Enterprise Motion", "PLG Expansion", "Cost Optimization", "EMEA Expansion"])
+initOwnerCol = Col("Owner", ["CPO", "CRO", "CMO", "CFO", "VP EMEA"])
+initStatusCol = Col("Status", ["On Track", "At Risk", "On Track", "Ahead", "Planning"])
+initProgressCol = Col("Progress", [65, 35, 50, 80, 10])
+initTargetCol = Col("Target Date", ["Oct 2024", "Dec 2024", "Nov 2024", "Sep 2024", "Q1 2025"])
+
+boardSection = Card([boardHeader, boardItems], "card", "column", "m")
+boardHeader = CardHeader("Next Board Meeting Items", "Scheduled for October 15, 2024")
+boardItems = ListBlock([item1, item2, item3, item4, item5, item6], "number")
+item1 = ListItem("Q3 Financial Results & Q4 Forecast", "Review actuals vs plan, update full-year guidance", null, "View deck")
+item2 = ListItem("AI Product Launch Readiness", "Go/no-go decision for October launch", null, "Review checklist")
+item3 = ListItem("Enterprise Sales Motion Update", "Pipeline health, win rate improvement plan", null, "View metrics")
+item4 = ListItem("Talent Retention Strategy", "Compensation review, equity refresh proposal", null, "View proposal")
+item5 = ListItem("EMEA Expansion Business Case", "Investment request for London office", null, "View business case")
+item6 = ListItem("Annual Planning Kickoff", "Timeline, process, key strategic questions", null, "View timeline")

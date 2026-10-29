@@ -1,0 +1,81 @@
+# Hub Operations — Denver (DEN)
+
+<Select label="View a different hub" name="hub" options="Denver (DEN) | Dallas/Fort Worth (DFW) | Atlanta (ATL) | Chicago O'Hare (ORD)" value="Denver (DEN)" />
+
+<Columns>
+<Stat label="On-time performance" value="78%" change="+3 pts vs yesterday" tone="success" icon="clock" />
+<Stat label="Avg passenger load" value="86%" change="61,204 passengers" tone="info" icon="users" />
+<Stat label="Cancellations today" value="6" change="2 at hub, 4 systemwide" tone="danger" icon="x-circle" />
+<Stat label="Avg turnaround time" value="54 min" change="vs 62 min target" tone="success" icon="timer" />
+</Columns>
+
+<Callout tone="warning" title="Weather advisory">
+Thunderstorms expected over DEN from 14:00–19:00 local. Gusty crosswinds up to 25 kt; ground stops possible. De-icing crews on standby.
+</Callout>
+
+<Callout tone="danger" title="Delayed flights">
+6 flights delayed 30+ min this morning. Highest impact: **UA 1882 to SFO (45 min late)** with 38 connections affected. See table below.
+</Callout>
+
+<Card title="Flight board — today">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| UA 1245 | DEN–ORD | B45 | <Badge tone="success">On time</Badge> |
+| UA 1882 | DEN–SFO | C12 | <Badge tone="danger">Delayed 45 min</Badge> |
+| WN 441 | DEN–DAL | A7 | <Badge tone="info">Boarding</Badge> |
+| AA 902 | DEN–DFW | B12 | <Badge tone="danger">Delayed 30 min</Badge> |
+| DL 771 | DEN–ATL | A22 | <Badge tone="neutral">Cancelled</Badge> |
+| UA 662 | DEN–EWR | C3 | <Badge tone="success">On time</Badge> |
+| AS 334 | DEN–SEA | B9 | <Badge tone="neutral">Cancelled</Badge> |
+</Card>
+
+<Columns>
+<Card title="Recent gate changes">
+| Time | Flight | Route | Old | New |
+|---|---|---|---|---|
+| 09:12 | UA 1882 | DEN–SFO | B18 | C12 |
+| 08:57 | WN 441 | DEN–DAL | B4 | A7 |
+| 08:41 | AA 902 | DEN–DFW | C9 | B12 |
+| 08:23 | UA 1245 | DEN–ORD | B10 | B45 |
+</Card>
+
+<Card title="Crews available for reassignment">
+| Crew ID | Position | Base | Hours left |
+|---|---|---|---|
+| CR-2210 | Captain | DEN | 6.5 |
+| CR-2211 | First Officer | DEN | 5.0 |
+| FA-3380 | FA Lead | DEN | 7.0 |
+| FA-3382 | Flight Attendant | DEN | 8.0 |
+| FA-3391 | Flight Attendant | DFW | 4.0 |
+</Card>
+</Columns>
+
+<Card title="Connections at risk of being missed">
+| Passenger | Current flight | Connecting to | Connection time | Status |
+|---|---|---|---|---|
+| M. Chen | UA 1245 | UA 770 → EWR | 25 min | <Badge tone="danger">Tight</Badge> |
+| R. Patel | WN 441 | WN 221 → LAS | 18 min | <Badge tone="danger">Tight</Badge> |
+| S. Alvarez | UA 1882 | UA 330 → SEA | 0 min | <Badge tone="danger">Missed</Badge> |
+| K. Osei | UA 1882 | UA 412 → IAD | 0 min | <Badge tone="danger">Missed</Badge> |
+
+<Form name="rebook">
+<Select label="Passenger" name="passenger" placeholder="Select passenger" options="M. Chen | R. Patel | S. Alvarez | K. Osei" required="true" />
+<Select label="Rebook onto" name="new-flight" placeholder="Select new flight" options="UA 1245 DEN–ORD 11:00 | WN 447 DEN–LAS 12:30 | UA 662 DEN–EWR 13:05 | UA 330 DEN–SEA 14:20" required="true" />
+<Button variant="primary">Rebook passenger</Button>
+<Button variant="secondary">Request agent assist</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations today">
+| Flight | Route | Scheduled | Cancelled at |
+|---|---|---|---|
+| DL 771 | DEN–ATL | 10:30 | 08:15 |
+| AS 334 | DEN–SEA | 11:45 | 09:02 |
+</Card>
+
+<FollowUps>
+- Show connection opportunities for S. Alvarez
+- List all passengers on UA 1882
+- View weather for the next 6 hours
+- Open turnaround time trend for this week
+</FollowUps>

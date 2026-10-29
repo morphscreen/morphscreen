@@ -1,0 +1,169 @@
+# Live-Ops Control Room
+
+<Callout tone="warning" title="Two items need eyes now">EU-Central latency is degraded and crash rate on v4.2.1 is above the 1.5% gate. Both are covered below.</Callout>
+
+<Card title="Right now" subtitle="Live player counts and revenue, refreshed every 30s">
+<Columns>
+<Stat label="Players online" value="184,203" change="+6.2% vs 1h ago" tone="success" icon="users" />
+<Stat label="Daily active players" value="1,412,880" change="+3.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Monthly active players" value="9,840,112" change="+1.4% vs last month" tone="info" icon="calendar" />
+</Columns>
+<Columns>
+<Stat label="Revenue today" value="$412,660" change="+8.9% vs same time yesterday" tone="success" icon="chart-line" />
+<Stat label="ARPPU today" value="$0.29" note="per daily active player" tone="neutral" />
+<Stat label="Paying share" value="4.8%" change="+0.2 pts" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Session length — past 14 days" subtitle="Average minutes per session, all platforms">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Avg session (min) |
+|---|---|
+| Mar 01 | 24.1 |
+| Mar 02 | 25.4 |
+| Mar 03 | 26.0 |
+| Mar 04 | 24.8 |
+| Mar 05 | 23.9 |
+| Mar 06 | 27.2 |
+| Mar 07 | 29.5 |
+| Mar 08 | 30.1 |
+| Mar 09 | 26.4 |
+| Mar 10 | 25.2 |
+| Mar 11 | 24.9 |
+| Mar 12 | 26.8 |
+| Mar 13 | 28.3 |
+| Mar 14 | 27.6 |
+</Chart>
+</Card>
+
+<Card title="Best sellers today" subtitle="Units sold and gross revenue">
+<Chart type="bar" x="Item" y="Units">
+| Item | Units |
+|---|---|
+| Season Pass S7 | 18,420 |
+| Mythic Skin — Ashveil | 11,905 |
+| 2,000 Gem Pack | 9,340 |
+| Battle Pet — Cinderling | 6,712 |
+| Founder's Bundle | 2,108 |
+</Chart>
+</Card>
+
+<Card title="Server regions" subtitle="Health, latency and load by region">
+| Region | Status | Latency | Load | Players |
+|---|---|---|---|---|
+| NA-East | <Badge tone="success">Healthy</Badge> | 32 ms | 61% | 52,410 |
+| NA-West | <Badge tone="success">Healthy</Badge> | 38 ms | 48% | 31,880 |
+| EU-Central | <Badge tone="warning">Degraded</Badge> | 118 ms | 92% | 44,120 |
+| EU-West | <Badge tone="success">Healthy</Badge> | 41 ms | 55% | 22,340 |
+| APAC | <Badge tone="info">Elevated</Badge> | 74 ms | 78% | 26,905 |
+| SA-East | <Badge tone="success">Healthy</Badge> | 52 ms | 40% | 6,548 |
+
+<Button variant="secondary" ask="Focus the live-ops view on EU-Central" icon="map-pin">Focus on EU-Central</Button>
+</Card>
+
+<Card title="Crash rate by app version" subtitle="Crashes per 100 sessions, last 24h">
+<Chart type="bar" x="Version" y="Crash rate (%)">
+| Version | Crash rate (%) |
+|---|---|
+| v4.2.1 | 2.4 |
+| v4.2.0 | 0.9 |
+| v4.1.8 | 0.6 |
+| v4.0.3 | 0.5 |
+| v3.9.7 | 0.4 |
+</Chart>
+<Callout tone="danger" title="v4.2.1 is over the 1.5% gate">2.4% crash rate on 31% of the install base. A hotfix is drafted below.</Callout>
+</Card>
+
+<Card title="Live events" subtitle="Running now and scheduled next">
+<Tabs>
+<Tab title="Running">
+| Event | Ends in | Participation |
+|---|---|---|
+| Ashveil Raid Week | 2d 4h | 38% of DAU |
+| Double XP Weekend | 9h | 61% of DAU |
+| Spring Crate Rotation | 6d | 24% of DAU |
+</Tab>
+<Tab title="Upcoming">
+| Event | Starts in | Status |
+|---|---|---|
+| Season 8 Pre-Order | 3d | <Badge tone="info">Scheduled</Badge> |
+| Cinderling Pet Fest | 8d | <Badge tone="neutral">Draft</Badge> |
+| Anniversary Tournament | 21d | <Badge tone="neutral">Draft</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Moderation queues" subtitle="Waiting on a human">
+<Columns>
+<Stat label="Player reports awaiting review" value="347" change="+62 in last 4h" tone="warning" icon="users" />
+<Stat label="Ban appeals awaiting review" value="89" change="+11 in last 4h" tone="info" />
+<Stat label="Oldest item in queue" value="19 h" note="target is 12 h" tone="danger" />
+</Columns>
+<Button variant="primary" ask="Open the player report queue">Open report queue</Button>
+<Button variant="secondary" ask="Open the ban appeal queue">Open appeal queue</Button>
+</Card>
+
+<Card title="In-game currency inflation" subtitle="Gold sink vs source, past 6 weeks">
+<Stat label="Inflation rate (30d)" value="+7.8%" change="above the 5% target" tone="warning" icon="chart-line" />
+<Chart type="line" x="Week" y="Gold (millions)">
+| Week | Minted | Sunk | Net supply |
+|---|---|---|---|
+| W1 | 410 | 388 | 22 |
+| W2 | 425 | 391 | 34 |
+| W3 | 448 | 402 | 46 |
+| W4 | 462 | 415 | 47 |
+| W5 | 480 | 428 | 52 |
+| W6 | 495 | 441 | 54 |
+</Chart>
+<Callout tone="info" title="Suggested lever">Raise the auction-house listing fee from 3% to 4% and add a gold-priced cosmetic rotation.</Callout>
+</Card>
+
+<Card title="Running experiments" subtitle="Two A/B tests, day 5 of 14">
+<Tabs>
+<Tab title="Store layout">
+| Variant | Conv. rate | ARPPU | Lift |
+|---|---|---|---|
+| Control | 4.6% | $0.27 | — |
+| Featured row | 5.3% | $0.31 | +14.8% |
+</Tab>
+<Tab title="Matchmaking">
+| Variant | Match quality | Session length | Lift |
+|---|---|---|---|
+| Control | 71% | 25.9 min | — |
+| Fast-fill | 68% | 27.4 min | +5.8% |
+</Tab>
+</Tabs>
+<Callout tone="success" title="Store layout is winning">+14.8% ARPPU at 96% significance. Matchmaking is not yet significant.</Callout>
+<Button variant="primary" ask="Ship the Featured row store layout to 100% of players">Ship store layout</Button>
+<Button variant="tertiary" ask="Keep the matchmaking experiment running">Keep matchmaking running</Button>
+</Card>
+
+<Card title="Ship a hotfix" subtitle="Drafted for the v4.2.1 crash spike">
+<Steps>
+<Step title="Fix merged" status="done" subtitle="Crash on inventory sync">Patch #4821 merged to release branch.</Step>
+<Step title="Build v4.2.2" status="done" subtitle="CI green">All 1,204 tests passing.</Step>
+<Step title="QA sign-off" status="current" subtitle="In progress">Waiting on the EU-Central soak test.</Step>
+<Step title="Staged rollout" status="todo" subtitle="10% → 50% → 100%">Auto-halt if crash rate exceeds 1.5%.</Step>
+</Steps>
+<Callout tone="warning" title="Rollout gate">Do not push past 10% while EU-Central latency is above 100 ms.</Callout>
+<Button variant="danger" ask="Ship hotfix v4.2.2 to 10% of players now" icon="rocket">Ship hotfix v4.2.2</Button>
+</Card>
+
+<Card title="Draft patch notes" subtitle="Write it here, then publish to the launcher and in-game news">
+<Form name="patch-notes">
+<Input label="Version" name="version" value="v4.2.2" required="true" />
+<Input label="Headline" name="headline" placeholder="Stability and balance update" required="true" />
+<TextArea label="Notes" name="notes" rows="8" placeholder="Fixes&#10;- Fixed a crash when opening the inventory during a raid&#10;- ...&#10;&#10;Balance&#10;- ..." required="true" />
+<Select label="Audience" name="audience" options="All players | PC only | Console only | Test realm" />
+<Switch label="Publish immediately" name="publish" value="false" hint="Off = save as draft" />
+<Button>Publish patch notes</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Why is EU-Central degraded, and what's the fix?
+- Show me the full moderation queue backlog by age
+- Which experiment should we ship next?
+- Draft the patch notes for the v4.2.2 hotfix
+</FollowUps>

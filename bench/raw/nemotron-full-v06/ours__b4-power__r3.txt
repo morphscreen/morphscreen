@@ -1,0 +1,135 @@
+# Power Network Operations Console
+
+<Card title="Region Focus" subtitle="Select a region to filter all views">
+<Select label="Region" name="region" placeholder="All regions" options="National Grid | North East | North West | South East | South West | Midlands | Scotland | Wales" />
+</Card>
+
+<Columns>
+<Card title="Current Load">
+<Stat label="Network Load" value="42.3 GW" change="+1.2 GW vs 1hr ago" tone="info" />
+<Progress value="72" max="100" label="Capacity Utilization: 72%" tone="info" />
+</Card>
+
+<Card title="Current Price">
+<Stat label="Price per MWh" value="£87.50" change="+£4.20 vs yesterday" tone="warning" />
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ Emissions" value="18,420 t" change="-2.1% vs same day last year" tone="success" />
+<Stat label="Carbon Intensity" value="195 gCO₂/kWh" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Live Generation Mix">
+| Source | Output (GW) |
+|---|---|
+| Gas | 14.2 |
+| Wind | 11.8 |
+| Nuclear | 5.4 |
+| Solar | 3.7 |
+| Biomass | 2.1 |
+| Hydro | 1.6 |
+| Imports | 2.8 |
+| Other | 0.7 |
+</Chart>
+</Card>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Status |
+|---|---|---|---|---|---|
+| Drax | Yorkshire | Biomass | 2,580 | 2,600 | <Badge tone="success">Online</Badge> |
+| Hinkley Point C | Somerset | Nuclear | 3,200 | 3,260 | <Badge tone="success">Online</Badge> |
+| Hornsea One | North Sea | Wind | 1,120 | 1,218 | <Badge tone="success">Online</Badge> |
+| West Burton | Nottinghamshire | Gas | 1,280 | 1,332 | <Badge tone="success">Online</Badge> |
+| Dogger Bank A | North Sea | Wind | 890 | 1,200 | <Badge tone="warning">Derated</Badge> |
+| Sizewell B | Suffolk | Nuclear | 1,188 | 1,198 | <Badge tone="success">Online</Badge> |
+| Peterhead | Aberdeenshire | Gas | 0 | 1,180 | <Badge tone="danger">Offline</Badge> |
+| Walney Extension | Irish Sea | Wind | 620 | 659 | <Badge tone="success">Online</Badge> |
+| Fiddlers Ferry | Cheshire | Gas | 0 | 1,510 | <Badge tone="neutral">Standby</Badge> |
+| Beatrice | Moray Firth | Wind | 540 | 588 | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Outage ID | Region | Affected Customers | Cause | Est. Restore | Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | South West | 12,400 | Storm damage — fallen trees | 2024-01-15 18:30 | <Badge tone="warning">Crews dispatched</Badge> |
+| OUT-2024-0852 | North East | 3,200 | Substation equipment fault | 2024-01-15 22:00 | <Badge tone="warning">Investigating</Badge> |
+| OUT-2024-0855 | Wales | 8,700 | Cable fault — 132kV circuit | 2024-01-16 04:00 | <Badge tone="danger">Major incident</Badge> |
+| OUT-2024-0858 | Midlands | 1,100 | Planned maintenance overrun | 2024-01-15 16:45 | <Badge tone="info">Restoring</Badge> |
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="area" title="Projected Demand (GW)" x="Time" y="Demand (GW)">
+| Time | Demand (GW) | Baseline (GW) |
+|---|---|---|
+| 00:00 | 31.2 | 30.8 |
+| 02:00 | 28.7 | 28.5 |
+| 04:00 | 27.1 | 27.0 |
+| 06:00 | 29.4 | 29.0 |
+| 08:00 | 38.6 | 37.8 |
+| 10:00 | 41.2 | 40.5 |
+| 12:00 | 42.8 | 42.0 |
+| 14:00 | 42.3 | 41.8 |
+| 16:00 | 43.1 | 42.5 |
+| 18:00 | 45.7 | 44.8 |
+| 20:00 | 44.2 | 43.5 |
+| 22:00 | 39.8 | 39.0 |
+| 00:00 | 34.5 | 34.0 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Planned Maintenance — This Month">
+| Asset | Region | Type | Start | End | Impact |
+|---|---|---|---|---|---|
+| Hinkley Point C — Unit 1 | Somerset | Refuelling outage | 2024-01-20 | 2024-02-10 | -1,630 MW |
+| West Burton — GT3 | Nottinghamshire | Turbine inspection | 2024-01-22 | 2024-01-26 | -333 MW |
+| Dogger Bank A — Array 4 | North Sea | Cable termination | 2024-01-28 | 2024-02-03 | -300 MW |
+| Peterhead — Unit 2 | Aberdeenshire | Major overhaul | 2024-01-10 | 2024-02-20 | -590 MW |
+| National Grid — HVDC Link | North East | Converter maintenance | 2024-02-05 | 2024-02-12 | -1,000 MW import |
+</Card>
+
+<Card title="Live Alerts">
+<Details title="⚠ ALERT: Frequency deviation — 49.92 Hz" open="true">
+Grid frequency below statutory limit. Automatic load shedding armed. Response: Primary response activated from Dinorwig & Ffestiniog.
+</Details>
+<Details title="⚠ ALERT: Dogger Bank A derated to 73% capacity" open="true">
+Cable cooling system fault. Output limited to 890 MW. Engineering team en route. ETA resolution: 4–6 hours.
+</Details>
+<Details title="INFO: High wind forecast — South East 18:00–22:00" open="false">
+Wind speeds 25–30 m/s expected. Potential for constraint payments. Curtailment readiness advised.
+</Details>
+<Details title="INFO: Interconnector flow change — IFA2 ramping to 1,000 MW import" open="false">
+French nuclear availability improved. Scheduled ramp over next 90 minutes.
+</Details>
+<Details title="✓ RESOLVED: Voltage excursion — North West 132kV network" open="false">
+Tap changer operation completed. Voltage restored to statutory limits. 14:22 UTC.
+</Details>
+</Card>
+</Columns>
+
+<Card title="Order Curtailment" subtitle="Reduce generation output to balance the network">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant" name="plant" placeholder="Select plant" options="Dogger Bank A | Hornsea One | Walney Extension | Beatrice | West Burton | Peterhead | Fiddlers Ferry | Drax" required="true" />
+<Input label="Target Output (MW)" name="target_output" type="number" placeholder="e.g. 500" min="0" step="10" required="true" hint="Must be below current output" />
+</Columns>
+<Columns>
+<Select label="Reason" name="reason" placeholder="Select reason" options="Network constraint — thermal limit | Network constraint — voltage | Frequency response requirement | Interconnector constraint | System balancing | Emergency" required="true" />
+<Select label="Duration" name="duration" placeholder="Select duration" options="Until further notice | 1 hour | 2 hours | 4 hours | 6 hours | 12 hours | 24 hours" required="true" />
+</Columns>
+<TextArea label="Operational Notes" name="notes" placeholder="Additional instructions for plant operator..." rows="3" />
+<Columns>
+<Button variant="danger" size="large">Issue Curtailment Order</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show constraint management dashboard
+- View balancing mechanism bids and offers
+- Open interconnector flows detail
+- Check reserve adequacy for next 48 hours
+</FollowUps>

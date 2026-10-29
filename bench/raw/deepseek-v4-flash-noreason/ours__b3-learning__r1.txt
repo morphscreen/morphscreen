@@ -1,0 +1,107 @@
+# Training Platform Analytics
+
+<Card title="Cohort Filter" subtitle="Narrow analytics to a specific learner group">
+<Form name="cohort-filter">
+<Select label="Cohort" placeholder="All cohorts" options="All cohorts | Engineering Q1 | Design Q2 | Sales Q3 | Marketing Q4" />
+<Button>Apply filter</Button>
+<Button variant="secondary">Message cohort</Button>
+</Form>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Active Learners (This Week)" value="1,847" change="+12.4% vs last week" tone="success" icon="users" />
+<Stat label="Course Completion Rate" value="68.2%" change="+3.1 pts" tone="info" icon="check-circle" />
+<Stat label="Average Quiz Score" value="82.5%" change="+1.8 pts" tone="neutral" icon="chart-line" />
+<Stat label="At-Risk Learners" value="143" change="−9.2% vs last week" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="bar" x="Course" y="Enrolled learners">
+| Course | Enrolled |
+|---|---|
+| Python Fundamentals | 542 |
+| Data Visualization | 489 |
+| Cloud Architecture | 431 |
+| Agile Project Mgmt | 388 |
+| UX Research Basics | 356 |
+| SQL for Analysts | 302 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+<Callout tone="warning" title="Action recommended">These learners have below 40% completion or 3+ weeks of inactivity. Consider sending a check-in.</Callout>
+| Learner | Course | Completion | Last Active | Risk Level |
+|---|---|---|---|---|
+| Maria Chen | Python Fundamentals | 22% | 14 days ago | <Badge tone="danger">High</Badge> |
+| James Okafor | Data Visualization | 31% | 9 days ago | <Badge tone="danger">High</Badge> |
+| Priya Patel | Cloud Architecture | 38% | 6 days ago | <Badge tone="warning">Medium</Badge> |
+| Tomás Rivera | Agile Project Mgmt | 35% | 12 days ago | <Badge tone="danger">High</Badge> |
+| Aisha Bello | UX Research Basics | 44% | 5 days ago | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Engagement Across Past Eight Weeks">
+<Tabs>
+<Tab title="Active Learners">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active |
+|---|---|
+| W1 | 1,320 |
+| W2 | 1,458 |
+| W3 | 1,391 |
+| W4 | 1,612 |
+| W5 | 1,540 |
+| W6 | 1,689 |
+| W7 | 1,745 |
+| W8 | 1,847 |
+</Chart>
+</Tab>
+<Tab title="Quiz Attempts">
+<Chart type="line" x="Week" y="Quiz attempts">
+| Week | Attempts |
+|---|---|
+| W1 | 2,410 |
+| W2 | 2,688 |
+| W3 | 2,572 |
+| W4 | 2,913 |
+| W5 | 2,845 |
+| W6 | 3,102 |
+| W7 | 3,264 |
+| W8 | 3,418 |
+</Chart>
+</Tab>
+<Tab title="Avg. Session Time">
+<Chart type="line" x="Week" y="Minutes">
+| Week | Minutes |
+|---|---|
+| W1 | 24 |
+| W2 | 26 |
+| W3 | 25 |
+| W4 | 28 |
+| W5 | 27 |
+| W6 | 29 |
+| W7 | 31 |
+| W8 | 33 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Message Cohort">
+<Form name="cohort-message">
+<Select label="Recipients" options="All learners in this cohort | At-risk learners only | Active this week" />
+<Input label="Subject" placeholder="Quick check-in on your progress" />
+<TextArea label="Message" placeholder="Hi team, we noticed you might need some support…" rows="5" />
+<Switch label="Send as email + in-app notification" value="true" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed breakdown of at-risk learners by course
+- Compare completion rates across all cohorts
+- Schedule a recurring engagement report
+- Create a custom message template for at-risk learners
+</FollowUps>

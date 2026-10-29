@@ -1,0 +1,67 @@
+<Card title="Service Health Dashboard" subtitle="On-call view · Last updated: 2024-01-15 14:32 UTC">
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" hint="Filter all metrics by region" />
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" note="Target: 99.95%" />
+<Stat label="Error rate (5m)" value="0.12%" change="-0.03% vs 1h ago" note="Threshold: 0.5%" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 warning" note="2 acknowledged" />
+</Columns>
+
+<Callout tone="info" title="Quarterly SLA">Current uptime 99.97% exceeds the 99.95% target. Error budget remaining: 87%.</Callout>
+
+### CPU & Memory Usage (Last 24 Hours)
+<Chart type="area" x="Time" y="Utilization %" title="Resource Utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 40 | 56 |
+| 08:00 | 55 | 62 |
+| 10:00 | 68 | 71 |
+| 12:00 | 72 | 74 |
+| 14:00 | 65 | 69 |
+| 16:00 | 58 | 64 |
+| 18:00 | 52 | 60 |
+| 20:00 | 48 | 58 |
+| 22:00 | 44 | 56 |
+</Chart>
+
+### Open Incidents
+| ID | Severity | Service | Summary | Started | Status | Action |
+|---|---|---|---|---|---|---|
+| INC-2847 | <Badge tone="danger">Critical</Badge> | payment-api | p99 latency > 5s | 14:12 UTC | <Badge tone="warning">Active</Badge> | <Button variant="danger" ask="acknowledge INC-2847">Acknowledge</Button> |
+| INC-2845 | <Badge tone="warning">Warning</Badge> | auth-service | Error rate 2.1% | 13:45 UTC | <Badge tone="info">Acknowledged</Badge> | <Button variant="secondary" disabled>Investigating</Button> |
+| INC-2842 | <Badge tone="warning">Warning</Badge> | notification-worker | Queue backlog 12k | 11:20 UTC | <Badge tone="info">Acknowledged</Badge> | <Button variant="secondary" disabled>Mitigating</Button> |
+
+### Five Slowest Endpoints (p99 Latency)
+| Endpoint | Service | p50 | p95 | p99 | Trend |
+|---|---|---|---|---|---|
+| POST /api/v1/payments/charge | payment-api | 1.2s | 3.8s | **5.4s** | <Badge tone="danger">↑ 42%</Badge> |
+| GET /api/v1/users/{id}/orders | order-service | 420ms | 1.1s | **2.3s** | <Badge tone="warning">↑ 18%</Badge> |
+| POST /api/v1/auth/token | auth-service | 180ms | 650ms | **1.8s** | <Badge tone="warning">↑ 12%</Badge> |
+| GET /api/v1/products/search | catalog-service | 310ms | 890ms | **1.6s** | <Badge tone="neutral">→</Badge> |
+| POST /api/v1/notifications/send | notification-api | 250ms | 720ms | **1.4s** | <Badge tone="success">↓ 8%</Badge> |
+
+<Details title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error_threshold" type="number" value="0.5" placeholder="0.5" hint="Alert when 5m error rate exceeds this" />
+<Input label="p99 latency threshold (ms)" name="latency_threshold" type="number" value="2000" placeholder="2000" hint="Alert when any endpoint p99 exceeds this" />
+<Input label="CPU threshold (%)" name="cpu_threshold" type="number" value="80" placeholder="80" hint="Alert when CPU exceeds this for 5m" />
+<Input label="Memory threshold (%)" name="memory_threshold" type="number" value="85" placeholder="85" hint="Alert when memory exceeds this for 5m" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Details>
+
+<Callout tone="success" title="All systems nominal">No active alerts firing. Last alert: INC-2847 at 14:12 UTC (p99 latency breach).</Callout>
+</Card>
+
+<FollowUps>
+- Show incident timeline for INC-2847
+- View deployment history for payment-api
+- Compare current metrics to same time last week
+- Escalate INC-2847 to tier-2 on-call
+</FollowUps>

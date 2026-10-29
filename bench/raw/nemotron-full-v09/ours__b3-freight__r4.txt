@@ -1,0 +1,81 @@
+# Logistics Coordinator Board
+
+<Card title="Search & Filters" subtitle="Filter shipments by route, carrier, or status">
+<Columns>
+<Input label="Search by route" placeholder="e.g., LAX → JFK, SEA → ORD" hint="Type origin → destination" />
+<Select label="Carrier" placeholder="All carriers" options="All | FedEx | UPS | DHL | USPS | Regional" />
+<Select label="Status" placeholder="All statuses" options="All | In Transit | Delivered | Delayed | Exception" />
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % This Month" value="94.2%" change="+1.3% vs last month" tone="success" icon="check-circle" />
+<Stat label="Avg Cost per Shipment" value="$187.50" change="-$12.30 vs last month" tone="info" icon="currency-dollar" />
+<Stat label="Active Shipments" value="1,247" change="+23 vs yesterday" tone="neutral" icon="truck" />
+<Stat label="Delayed Shipments" value="18" change="-5 vs last week" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Callout tone="warning" title="Delayed Shipments Requiring Attention">
+18 shipments currently delayed. Top issues: weather delays (6), customs holds (5), carrier capacity (4), documentation (3).
+</Callout>
+
+<Card title="Shipments in Transit">
+<Columns>
+<Input label="Quick route search" placeholder="Filter table by route..." hint="Type to filter the list below" />
+</Columns>
+
+| # | Route | Carrier | Origin | Destination | ETA | Status | Actions |
+|---|-------|---------|--------|-------------|-----|--------|---------|
+| SH-8842 | LAX → JFK | FedEx | Los Angeles, CA | New York, NY | 2025-01-18 14:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8843 | SEA → ORD | UPS | Seattle, WA | Chicago, IL | 2025-01-18 16:45 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8844 | MIA → DFW | DHL | Miami, FL | Dallas, TX | 2025-01-18 11:20 | <Badge tone="warning">Delayed</Badge> | <Button variant="danger" size="small">Flag</Button> |
+| SH-8845 | ATL → LAX | FedEx | Atlanta, GA | Los Angeles, CA | 2025-01-19 08:15 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8846 | ORD → SFO | UPS | Chicago, IL | San Francisco, CA | 2025-01-18 19:30 | <Badge tone="danger">Exception</Badge> | <Button variant="danger" size="small">Flag</Button> |
+| SH-8847 | DEN → BOS | Regional | Denver, CO | Boston, MA | 2025-01-19 12:00 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | PHX → ATL | USPS | Phoenix, AZ | Atlanta, GA | 2025-01-18 15:45 | <Badge tone="warning">Delayed</Badge> | <Button variant="danger" size="small">Flag</Button> |
+| SH-8849 | LAS → SEA | FedEx | Las Vegas, NV | Seattle, WA | 2025-01-19 10:30 | <Badge tone="success">On Time</Badge> | <Button variant="tertiary" size="small">Flag</Button> |
+</Card>
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier (This Month)" x="Carrier" y="Volume">
+| Carrier | Volume |
+|---|---|
+| FedEx | 487 |
+| UPS | 392 |
+| DHL | 215 |
+| USPS | 153 |
+| Regional | 89 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 (Nov 25) | 287 |
+| W2 (Dec 2) | 312 |
+| W3 (Dec 9) | 298 |
+| W4 (Dec 16) | 341 |
+| W5 (Dec 23) | 256 |
+| W6 (Dec 30) | 289 |
+| W7 (Jan 6) | 324 |
+| W8 (Jan 13) | 347 |
+</Chart>
+</Card>
+
+<Card title="Data Freshness">
+<Columns>
+<Stat label="Last Refreshed" value="2025-01-17 14:22 UTC" tone="neutral" icon="clock" />
+<Stat label="Next Auto-Refresh" value="In 8 minutes" tone="info" icon="rotate-cw" />
+<Button variant="secondary" size="small">Refresh Now</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me all delayed shipments with root cause details
+- Compare carrier performance on the LAX → JFK lane
+- Generate exception report for customs holds
+- Set up alerts for shipments >24hr overdue
+</FollowUps>

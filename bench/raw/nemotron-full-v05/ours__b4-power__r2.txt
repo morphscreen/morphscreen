@@ -1,0 +1,163 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="Network Overview" subtitle="Real-time system status">
+<Columns>
+<Stat label="Current Load" value="42,840 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Stat label="System Capacity" value="58,200 MW" tone="neutral" />
+<Stat label="Current Price" value="$87.40 / MWh" change="-$3.20 vs yesterday" tone="success" />
+<Stat label="Emissions Today" value="18,420 tCO₂" change="-4.1% vs avg" tone="success" />
+</Columns>
+
+<Progress label="Capacity Utilization" value="42840" max="58200" tone="info" />
+
+<Select label="Focus Region" name="region" placeholder="Select a region" options="All Regions | Northwest Grid | Southwest Grid | Central Valley | Northeast Corridor | Southeast Hub | Offshore Wind Zone" value="All Regions" />
+</Card>
+
+<Card title="Generation Mix" subtitle="Live output by source">
+<Chart type="donut" title="Generation Split (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 14,200 |
+| Nuclear | 11,800 |
+| Wind | 8,450 |
+| Solar | 5,200 |
+| Hydro | 3,190 |
+| Battery Storage | 0 |
+| Coal | 0 |
+| Other | 0 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Plant Status" subtitle="All generating units">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Status |
+|---|---|---|---|---|---|
+| Diablo Canyon 1 & 2 | Central Valley | Nuclear | 2,240 | 2,240 | <Badge tone="success">Online</Badge> |
+| Palo Verde 1-3 | Southwest Grid | Nuclear | 3,930 | 3,930 | <Badge tone="success">Online</Badge> |
+| Columbia Generating | Northwest Grid | Nuclear | 1,150 | 1,150 | <Badge tone="success">Online</Badge> |
+| Hoover Dam | Southwest Grid | Hydro | 1,850 | 2,080 | <Badge tone="success">Online</Badge> |
+| Grand Coulee | Northwest Grid | Hydro | 1,340 | 6,809 | <Badge tone="success">Online</Badge> |
+| Alta Wind Energy | Central Valley | Wind | 1,550 | 1,550 | <Badge tone="success">Online</Badge> |
+| Roscoe Wind Farm | Central Valley | Wind | 780 | 781 | <Badge tone="success">Online</Badge> |
+| Solar Star | Central Valley | Solar | 579 | 579 | <Badge tone="success">Online</Badge> |
+| Topaz Solar Farm | Central Valley | Solar | 550 | 550 | <Badge tone="success">Online</Badge> |
+| Ivanpah Solar | Southwest Grid | Solar | 392 | 392 | <Badge tone="warning">Derated</Badge> |
+| Moss Landing Battery | Central Valley | Battery | 0 | 400 | <Badge tone="neutral">Standby</Badge> |
+| Gateway Energy Storage | Southwest Grid | Battery | 0 | 250 | <Badge tone="neutral">Standby</Badge> |
+| Huntington Beach | Southwest Grid | Gas | 890 | 890 | <Badge tone="success">Online</Badge> |
+| El Segundo Energy | Southwest Grid | Gas | 560 | 560 | <Badge tone="success">Online</Badge> |
+| Grays Harbor | Northwest Grid | Gas | 650 | 650 | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Card title="Active Outages" subtitle="Current service interruptions">
+| Outage ID | Region | Affected Customers | Est. Restoration | Cause |
+|---|---|---|---|---|
+| OUT-2024-0847 | Northwest Grid | 12,400 | 2024-01-15 14:30 | Transmission line fault |
+| OUT-2024-0851 | Central Valley | 8,200 | 2024-01-15 16:00 | Substation equipment failure |
+| OUT-2024-0853 | Northeast Corridor | 3,100 | 2024-01-15 12:45 | Weather damage |
+| OUT-2024-0856 | Southeast Hub | 1,850 | 2024-01-15 18:00 | Planned maintenance overrun |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="24-Hour Demand Forecast" subtitle="Hourly MW projection">
+<Chart type="line" title="Demand Forecast (MW)" x="Hour" y="MW">
+| Hour | Forecast (MW) | Actual (MW) |
+|---|---|---|
+| 00:00 | 38,200 | 38,150 |
+| 01:00 | 36,800 | 36,720 |
+| 02:00 | 35,900 | 35,880 |
+| 03:00 | 35,400 | 35,350 |
+| 04:00 | 35,600 | 35,580 |
+| 05:00 | 37,200 | 37,150 |
+| 06:00 | 40,100 | 40,050 |
+| 07:00 | 43,800 | 43,720 |
+| 08:00 | 46,500 | 46,400 |
+| 09:00 | 47,200 | 47,100 |
+| 10:00 | 46,800 | 46,700 |
+| 11:00 | 45,900 | 45,850 |
+| 12:00 | 45,200 | 45,150 |
+| 13:00 | 44,800 | 44,750 |
+| 14:00 | 44,500 | 44,400 |
+| 15:00 | 45,100 | 45,050 |
+| 16:00 | 47,800 | 47,700 |
+| 17:00 | 50,200 | 50,100 |
+| 18:00 | 51,800 | 51,650 |
+| 19:00 | 50,900 | 50,750 |
+| 20:00 | 49,200 | 49,050 |
+| 21:00 | 46,800 | 46,650 |
+| 22:00 | 43,500 | 43,350 |
+| 23:00 | 40,200 | 40,100 |
+</Chart>
+</Card>
+
+<Card title="Planned Maintenance (This Month)" subtitle="Scheduled outages and derates">
+| Asset | Region | Type | Start | End | Impact (MW) |
+|---|---|---|---|---|---|
+| Diablo Canyon Unit 2 | Central Valley | Refueling | 2024-01-20 | 2024-02-10 | -1,120 |
+| Transmission Line 500kV NW-SE | Northwest Grid | Insulator replacement | 2024-01-22 | 2024-01-24 | -800 (import limit) |
+| Grand Coulee Unit 6 | Northwest Grid | Turbine overhaul | 2024-01-28 | 2024-02-15 | -615 |
+| Moss Landing Battery | Central Valley | BMS upgrade | 2024-02-01 | 2024-02-05 | -400 (storage) |
+| El Segundo Unit 3 | Southwest Grid | Combustion inspection | 2024-02-05 | 2024-02-12 | -280 |
+| Alta Wind Phase 3 | Central Valley | Gearbox replacement | 2024-02-10 | 2024-02-14 | -150 |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Columns>
+<Callout tone="warning" title="⚠ Voltage Deviation — Northwest Grid">
+14:23 — 500kV Bus at Grand Coulee reading 518kV (nominal 500kV). Investigating capacitor bank response.
+</Callout>
+<Callout tone="info" title="ℹ Frequency Response Activated">
+14:18 — Primary frequency response deployed across 3 gas plants following 0.08 Hz dip at 14:17.
+</Callout>
+<Callout tone="danger" title="🔴 Line Overload Risk — Path 26">
+14:12 — Path 26 corridor at 92% thermal limit. Curtailment may be required if imports exceed 3,200 MW.
+</Callout>
+<Callout tone="success" title="✓ Solar Forecast Updated">
+14:05 — Central Valley solar forecast revised +320 MW for 15:00-17:00 window due to clearing skies.
+</Callout>
+<Callout tone="neutral" title="📋 Market Notice — CAISO">
+13:55 — Flex Alert issued for 16:00-21:00. Voluntary conservation requested.
+</Callout>
+<Callout tone="warning" title="⚠ Battery SOC Low — Moss Landing">
+13:40 — State of charge at 12%. Charging scheduled for 02:00-06:00 off-peak window.
+</Callout>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Order Curtailment" subtitle="Issue generation reduction instructions">
+<Form name="curtailment-order">
+<Select label="Plant / Resource" name="plant" placeholder="Select plant" options="Alta Wind Energy (Wind, 1,550 MW) | Roscoe Wind Farm (Wind, 781 MW) | Ivanpah Solar (Solar, 392 MW) | Topaz Solar Farm (Solar, 550 MW) | Solar Star (Solar, 579 MW) | Huntington Beach (Gas, 890 MW) | El Segundo Energy (Gas, 560 MW) | Grays Harbor (Gas, 650 MW) | Gateway Energy Storage (Battery, 250 MW)" required="true" />
+<Input label="Curtailment Amount (MW)" name="amount" type="number" placeholder="e.g., 200" min="1" step="1" required="true" hint="Must not exceed current output" />
+<Select label="Reason" name="reason" placeholder="Select reason" options="Transmission constraint | Oversupply / negative pricing | Frequency regulation | Voltage support | Market instruction | Emergency / reliability" required="true" />
+<Date label="Effective From" name="effective_from" required="true" />
+<Date label="Effective Until" name="effective_until" required="true" />
+<TextArea label="Operator Notes" name="notes" placeholder="Additional context for plant operators..." rows="3" />
+<Button variant="danger">Issue Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="System Quick Actions" subtitle="Common operator tasks">
+<Columns>
+<Button variant="primary" size="large">Declare Emergency</Button>
+<Button variant="secondary" size="large">Request Reserve Activation</Button>
+<Button variant="secondary" size="large">Adjust Interchange Schedule</Button>
+<Button variant="tertiary" size="large">Run Contingency Analysis</Button>
+<Button variant="tertiary" size="large">Publish Market Notice</Button>
+<Button variant="tertiary" size="large">Export Shift Log</Button>
+</Columns>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the Northwest Grid in detail
+- What's the curtailment history for Ivanpah Solar?
+- List all plants currently on standby
+- Show transmission path loading for all corridors
+- What's the 7-day load forecast?
+</FollowUps>

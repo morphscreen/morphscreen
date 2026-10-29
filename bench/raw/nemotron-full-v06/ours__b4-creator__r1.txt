@@ -1,0 +1,113 @@
+# Creator Studio Dashboard
+
+<Select label="Filter by platform" name="platform-filter" options="All platforms | Instagram | TikTok | YouTube | Twitter | LinkedIn" placeholder="All platforms" />
+
+<Columns>
+<Card title="Followers" subtitle="Total across platforms">
+<Stat label="Total followers" value="247,892" change="+12.3% vs last month" tone="success" />
+<Stat label="New this month" value="27,156" change="+8.2% vs prior month" tone="info" />
+</Card>
+
+<Card title="Engagement">
+<Stat label="Engagement rate" value="4.7%" change="+0.3 pp vs last month" tone="success" />
+<Stat label="Avg per post" value="1,842" change="+156 vs last month" tone="neutral" />
+</Card>
+
+<Card title="Earnings">
+<Stat label="This month" value="$18,450" change="+22% vs last month" tone="success" />
+<Stat label="Pending payout" value="$3,200" change="Clears in 5 days" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Audience split by platform">
+<Chart type="donut" title="Followers by platform" x="Platform" y="Followers">
+| Platform | Followers |
+|---|---|
+| Instagram | 98,400 |
+| TikTok | 76,200 |
+| YouTube | 42,800 |
+| Twitter | 18,500 |
+| LinkedIn | 11,992 |
+</Chart>
+</Card>
+
+<Card title="Best hour to post (historical)">
+<Chart type="bar" title="Avg engagement by hour" x="Hour" y="Engagement rate">
+| Hour | Engagement rate |
+|---|---|
+| 6 AM | 2.1 |
+| 7 AM | 2.8 |
+| 8 AM | 3.4 |
+| 9 AM | 4.2 |
+| 10 AM | 4.8 |
+| 11 AM | 5.1 |
+| 12 PM | 4.9 |
+| 1 PM | 4.3 |
+| 2 PM | 3.9 |
+| 3 PM | 3.5 |
+| 4 PM | 3.2 |
+| 5 PM | 3.8 |
+| 6 PM | 4.6 |
+| 7 PM | 5.3 |
+| 8 PM | 5.0 |
+| 9 PM | 4.4 |
+| 10 PM | 3.7 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Best posts this month">
+| Post | Platform | Date | Reach | Likes | Comments | Shares | Engagement |
+|---|---|---|---|---|---|---|---|
+| "Behind the scenes of my workflow" | Instagram | Mar 3 | 142,000 | 12,400 | 892 | 1,200 | 10.2% |
+| "5 tools I use daily" | TikTok | Mar 7 | 287,000 | 31,200 | 2,100 | 4,500 | 13.1% |
+| "Q&A: Building an audience" | YouTube | Mar 12 | 98,500 | 8,700 | 1,450 | 620 | 10.9% |
+| "My morning routine" | Instagram | Mar 15 | 112,000 | 9,800 | 560 | 890 | 10.0% |
+| "Revenue breakdown" | Twitter | Mar 19 | 45,200 | 3,200 | 280 | 410 | 8.6% |
+</Card>
+
+<Columns>
+<Card title="Posts scheduled this week">
+| Date | Time | Platform | Caption preview | Status |
+|---|---|---|---|---|
+| Mon Mar 24 | 7:00 PM | Instagram | "New video dropping tomorrow..." | ✅ Scheduled |
+| Tue Mar 25 | 11:00 AM | TikTok | "POV: When the algorithm finally..." | ✅ Scheduled |
+| Wed Mar 26 | 9:00 AM | YouTube | "How I edit my videos in 2024" | ✅ Scheduled |
+| Thu Mar 27 | 6:00 PM | Twitter | "Thread: 10 lessons from 100K..." | ⏳ Draft |
+| Fri Mar 28 | 12:00 PM | LinkedIn | "The business side of creating..." | ⏳ Draft |
+</Card>
+
+<Card title="Comments waiting for reply">
+| Platform | Post | Comment | Time ago | Action |
+|---|---|---|---|---|
+| Instagram | "Behind the scenes..." | "What camera do you use?" | 2h | <Button size="small">Reply</Button> |
+| TikTok | "5 tools I use daily" | "Notion template link pls" | 4h | <Button size="small">Reply</Button> |
+| YouTube | "Q&A: Building..." | "How long to hit 1K subs?" | 6h | <Button size="small">Reply</Button> |
+| Instagram | "Morning routine" | "Love this! More pls 😍" | 8h | <Button size="small">Like</Button> |
+| Twitter | "Revenue breakdown" | "What's your RPM?" | 12h | <Button size="small">Reply</Button> |
+</Card>
+</Columns>
+
+<Card title="Pending collaboration requests">
+| Brand | Platform | Type | Offer | Status | Action |
+|---|---|---|---|---|---|
+| Notion | Instagram + TikTok | Sponsored post | $3,500 | Negotiating | <Button size="small">View</Button> |
+| Adobe | YouTube | Dedicated video | $5,000 | Pending review | <Button size="small">View</Button> |
+| Logitech | Twitter | Thread + giveaway | $1,200 | New | <Button size="small">View</Button> |
+| Skillshare | LinkedIn | Article + post | $2,000 | Counter offered | <Button size="small">View</Button> |
+</Card>
+
+<Card title="Schedule a new post">
+<Form name="schedule-post">
+<Select label="Platform" name="platform" options="Instagram | TikTok | YouTube | Twitter | LinkedIn" placeholder="Select platform" required="true" />
+<TextArea label="Caption" name="caption" placeholder="Write your caption... #hashtags @mentions" rows="4" hint="Max 2,200 characters for Instagram" required="true" />
+<Columns>
+<Date label="Date" name="post-date" required="true" />
+<Input label="Time" name="post-time" type="time" required="true" />
+</Columns>
+<Checkboxes label="Cross-post to" name="crosspost" options="Instagram | TikTok | YouTube | Twitter | LinkedIn" hint="Adapt caption per platform automatically" />
+<Button>Schedule post</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>

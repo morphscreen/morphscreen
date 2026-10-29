@@ -1,0 +1,71 @@
+<Card title="Clinic Day View" subtitle="Monday, January 15, 2024">
+<Columns>
+<Stat label="Patients Expected" value="18" change="+2 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Jan)" value="8.2%" change="-1.1% vs Dec" tone="success" />
+<Stat label="Checked In" value="5 / 18" change="3 waiting" tone="neutral" />
+</Columns>
+
+<Callout tone="info" title="Next Patient Called">
+<strong>Maria Santos</strong> — 10:15 AM — Room 2 — <Badge tone="success">Checked In</Badge>
+</Callout>
+
+### Today's Appointments
+
+| Time | Patient | Reason | Room | Status | Action |
+|---|---|---|---|---|---|
+| 8:00 AM | James Wilson | Annual Physical | 1 | <Badge tone="success">Done</Badge> | — |
+| 8:30 AM | Linda Chen | Follow-up | 2 | <Badge tone="success">Done</Badge> | — |
+| 9:00 AM | Robert Kim | Blood Work | 1 | <Badge tone="success">Done</Badge> | — |
+| 9:30 AM | Sarah Johnson | Consultation | 3 | <Badge tone="warning">In Room</Badge> | — |
+| 10:00 AM | David Brown | Vaccination | 1 | <Badge tone="info">Waiting</Badge> | <Button variant="primary" ask="checkin-1000">Check In</Button> |
+| 10:15 AM | Maria Santos | Acute Visit | 2 | <Badge tone="success">Checked In</Badge> | — |
+| 10:30 AM | Jennifer Lee | Physical Therapy | 4 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1030">Check In</Button> |
+| 11:00 AM | Michael Davis | Dermatology | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1100">Check In</Button> |
+| 11:30 AM | Emily White | Cardiology | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1130">Check In</Button> |
+| 1:00 PM | Christopher Garcia | Orthopedics | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1300">Check In</Button> |
+| 1:30 PM | Amanda Martinez | Neurology | 4 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1330">Check In</Button> |
+| 2:00 PM | Daniel Anderson | Gastroenterology | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1400">Check In</Button> |
+| 2:30 PM | Lisa Thomas | Endocrinology | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1430">Check In</Button> |
+| 3:00 PM | Kevin Jackson | Pulmonology | 2 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1500">Check In</Button> |
+| 3:30 PM | Michelle White | Rheumatology | 4 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1530">Check In</Button> |
+| 4:00 PM | Steven Harris | Ophthalmology | 1 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1600">Check In</Button> |
+| 4:30 PM | Laura Martin | ENT | 3 | <Badge tone="neutral">Scheduled</Badge> | <Button variant="primary" ask="checkin-1630">Check In</Button> |
+
+### Room Availability (Right Now)
+
+<Columns>
+<Card title="Room 1" subtitle="General Exam">
+<Badge tone="danger">Occupied</Badge>
+<p><small>David Brown — 10:00 AM</small></p>
+</Card>
+<Card title="Room 2" subtitle="Acute Care">
+<Badge tone="success">Free</Badge>
+<p><small>Next: Maria Santos — 10:15 AM</small></p>
+</Card>
+<Card title="Room 3" subtitle="Specialty">
+<Badge tone="warning">In Use</Badge>
+<p><small>Sarah Johnson — 9:30 AM</small></p>
+</Card>
+<Card title="Room 4" subtitle="Therapy">
+<Badge tone="success">Free</Badge>
+<p><small>Next: Jennifer Lee — 10:30 AM</small></p>
+</Card>
+</Columns>
+
+### Navigate
+
+<Form name="day-nav">
+<Date label="Jump to date" name="targetDate" value="2024-01-15" hint="Select any day" />
+<Button>Go</Button>
+<Button variant="secondary" ask="prev-day">← Yesterday</Button>
+<Button variant="secondary" ask="next-day">Tomorrow →</Button>
+<Button variant="tertiary" ask="today">Today</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Check in David Brown for 10:00 AM
+- Move Maria Santos to Room 1
+- View no-show report for January
+- Print today's schedule
+</FollowUps>

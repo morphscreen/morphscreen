@@ -1,0 +1,73 @@
+<Card title="Power Network Console">
+<Columns>
+<Stat label="Current Load" value="12,500 MW" change="+" note="increase" tone="info" />
+<Progress value=78 max=100 label="Capacity Utilization" tone=warning />
+</Columns>
+
+<Card title="Generation Split">
+<Chart type="pie" title="Generation by Source" x="Source" y="MWh">
+| Source | MWh |
+|---|---|
+| Coal | 3,200 |
+| Gas | 5,800 |
+| Nuclear | 2,500 |
+| Renewables | 4,500 |
+</Chart>
+</Card>
+
+<Card title="Plant Status">
+<Columns>
+<Stat label="Plant A" value="800 MW" change="+" note="online" tone="success"><Badge tone="success">Online</Badge></Stat>
+<Stat label="Plant B" value="1,200 MW" change="+" note="online" tone="success"><Badge tone="success">Online</Badge></Stat>
+<Stat label="Plant C" value="500 MW" change="-" note="under maintenance" tone="warning"><Badge tone="warning">Maintenance</Badge></Stat>
+<Stat label="Plant D" value="950 MW" change="+" note="online" tone="success"><Badge tone="success">Online</Badge></Stat>
+</Columns>
+</Card>
+
+<Card title="Outages">
+<Columns>
+<Stat label="North Valley" value="1,200 customers" change="+" note="affected" tone="danger"><Badge tone="danger">Active</Badge></Stat>
+<Stat label="East Harbor" value="750 customers" change="+" note="affected" tone="danger"><Badge tone="danger">Active</Badge></Stat>
+</Columns>
+</Card>
+
+<Card title="Demand Forecast (24h)">
+<Chart type="area" title="Demand Forecast" x="Hour" y="MW">
+| Hour | Forecast MW |
+|---|---|
+| 0 | 11500 |
+| 6 | 12200 |
+| 12 | 13000 |
+| 18 | 12800 |
+| 24 | 12000 |
+</Chart>
+</Card>
+
+<Stat label="Current Price" value="$85 / MWh" change="+" note="per MWh" tone="info" />
+
+<Card title="Maintenance Planned">
+<Details title="Monthly Maintenance" open=true>
+<Columns>
+<Stat label="Plant C" value="500 MW" change="-" note="maintenance" tone="warning"><Badge tone="warning">Maintenance</Badge></Stat>
+<Stat label="Plant F" value="300 MW" change="-" note="planned" tone="warning"><Badge tone="warning">Planned</Badge></Stat>
+<Stat label="Substation G" value="150 MW" change="-" note="planned" tone="warning"><Badge tone="warning">Planned</Badge></Stat>
+</Columns>
+</Details>
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="warning" title="Live Alerts">
+<TextArea placeholder="Alerts will appear here" />
+</Callout>
+</Card>
+
+<Card title="Region Selector">
+<Select label="Focus Region" name="region" placeholder="Select region" options="North Valley | East Harbor | West Plains | Central Desert" />
+</Card>
+
+<Card title="Curtailment Order">
+<Select label="Curtailment Priority" name="curtailment" placeholder="Select priority" options="High | Medium | Low" />
+</Card>
+
+<Stat label="Emissions Today" value="12,000 tCO2" change="+" note="today" tone="danger" />
+</Card>

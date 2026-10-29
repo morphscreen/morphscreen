@@ -1,0 +1,108 @@
+# Async Standup — 2025-01-15
+
+<Stat label="Updates missing" value="3" change="of 8 teammates" tone="warning" />
+
+---
+
+## ⛔ Blocked
+
+<Callout tone="danger" title="Maya Chen — Blocked on API credentials">
+Waiting on infra to provision staging keys for the payments service. Ticket **INFRA-442** opened 2 days ago, no movement. Pinged #infra-support.
+</Callout>
+
+<Callout tone="warning" title="Jordan Park — Stuck on design review">
+PR #1847 waiting on design sign-off for new onboarding flow. Tagged @design-leads yesterday. Fallback: ship without polish if no response by EOD.
+</Callout>
+
+---
+
+## 📝 Today's Updates
+
+<Card title="Alex Rivera" subtitle="Backend • ✅ Done • 🔄 In progress • ⏳ Planned">
+**Done**
+- Shipped rate-limiting middleware (PR #1832)
+- Fixed webhook retry logic for Stripe events
+
+**In progress**
+- Refactoring auth token refresh — 60% complete
+
+**Planned**
+- Write integration tests for new webhook endpoints
+- Pair with Maya on payments migration tomorrow
+</Card>
+
+<Card title="Sam Okonkwo" subtitle="Full Stack • ✅ Done • 🔄 In progress • ⏳ Planned">
+**Done**
+- Deployed feature flag for dark mode beta
+- Code review: PR #1841, #1845
+
+**In progress**
+- Building admin analytics dashboard — wiring up Mixpanel events
+
+**Planned**
+- Investigate memory leak in worker queue (reported in #1839)
+</Card>
+
+<Card title="Priya Sharma" subtitle="Frontend • ✅ Done • 🔄 In progress • ⏳ Planned">
+**Done**
+- Landed responsive header redesign (PR #1828)
+- Fixed Safari flexbox bug on checkout page
+
+**In progress**
+- Implementing keyboard navigation for new modal system
+
+**Planned**
+- Accessibility audit for onboarding flow
+- Sync with design on component library v2
+</Card>
+
+<Card title="Diego Morales" subtitle="Mobile • ✅ Done • 🔄 In progress • ⏳ Planned">
+**Done**
+- Submitted iOS build 1.4.2 to TestFlight
+- Fixed crash on background app refresh
+
+**In progress**
+- Android deep linking for referral shares
+
+**Planned**
+- Push notification payload refactor
+- Beta tester feedback triage
+</Card>
+
+<Card title="Lin Zhang" subtitle="DevOps • ✅ Done • 🔄 In progress • ⏳ Planned">
+**Done**
+- Rolled out Graviton3 instances for staging — 18% cost savings
+- Updated Terraform modules for new VPC layout
+
+**In progress**
+- Setting up Datadog APM for Go services
+
+**Planned**
+- Disaster recovery drill next Tuesday
+- Review IAM policies for least-privilege
+</Card>
+
+<Card title="You" subtitle="Product • ⏳ Planned">
+*No update posted yet — use the form below.*
+</Card>
+
+---
+
+## ✍️ Post Your Update
+
+<Card title="Share today's status" subtitle="Visible to the whole team immediately">
+<Form name="standup-update">
+<TextArea label="What did you finish yesterday?" name="done" placeholder="• Shipped X\n• Fixed Y\n• Reviewed Z" rows="3" hint="One line per item" />
+<TextArea label="What are you tackling today?" name="in_progress" placeholder="• Continuing X\n• Starting Y\n• Pairing on Z" rows="3" hint="One line per item" />
+<TextArea label="Anything blocking you?" name="blocked" placeholder="• Waiting on...\n• Need help with...\n• Ticket #..." rows="2" hint="Leave blank if nothing" />
+<Select label="Your role" name="role" options="Backend | Frontend | Full Stack | Mobile | DevOps | Product | Design | Other" placeholder="Select your team" required="true" />
+<Button>Post update</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Who's on call this week?
+- Show updates from yesterday
+- Export standup summary to Notion
+</FollowUps>

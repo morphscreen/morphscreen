@@ -1,0 +1,117 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="Network Overview" subtitle="Real-time system status">
+<Stat label="Current Load" value="42,840 MW" change="+2.3% vs 1hr ago" tone="info" icon="bolt" />
+<Stat label="System Capacity" value="58,200 MW" tone="neutral" icon="gauge" />
+<Stat label="Capacity Utilization" value="73.6%" change="Normal range" tone="success" icon="chart-line" />
+<Progress value="73.6" max="100" label="Capacity Utilization" tone="success" />
+</Card>
+
+<Card title="Current Price" subtitle="Real-time wholesale market">
+<Stat label="Price per MWh" value="$67.40" change="-$2.10 vs yesterday" tone="success" icon="currency-usd" />
+<Stat label="Emissions Today" value="18,420 tCO₂" change="-4.2% vs avg" tone="info" icon="leaf" />
+</Card>
+</Columns>
+
+<Card title="Region Focus">
+<Select label="Select Region" placeholder="All Regions" options="All Regions | North Grid | South Grid | East Grid | West Grid | Central Hub" name="region-filter" />
+</Card>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Current output mix">
+<Chart type="donut" title="Generation Mix (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 15,240 |
+| Nuclear | 11,800 |
+| Wind | 8,920 |
+| Solar | 4,160 |
+| Hydro | 2,720 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Hourly projected load">
+<Chart type="line" title="Demand Forecast (MW)" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38200 | 38200 |
+| 02:00 | 36800 | 36800 |
+| 04:00 | 35400 | 35400 |
+| 06:00 | 36100 | 36100 |
+| 08:00 | 39800 | 39800 |
+| 10:00 | 42100 | 42100 |
+| 12:00 | 44600 | 44600 |
+| 14:00 | 45800 | 45800 |
+| 16:00 | 46200 | 46200 |
+| 18:00 | 45900 | 45900 |
+| 20:00 | 44300 | 44300 |
+| 22:00 | 41200 | 41200 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Northridge CCGT | North Grid | Natural Gas | 1,240 | 1,400 | 88.6% | <Badge tone="success">Online</Badge> |
+| Harbor Nuclear | East Grid | Nuclear | 1,180 | 1,200 | 98.3% | <Badge tone="success">Online</Badge> |
+| Windridge Farm | West Grid | Wind | 892 | 1,200 | 74.3% | <Badge tone="success">Online</Badge> |
+| Solar Valley | South Grid | Solar | 416 | 650 | 64.0% | <Badge tone="success">Online</Badge> |
+| Cedar Hydro | Central Hub | Hydro | 272 | 300 | 90.7% | <Badge tone="success">Online</Badge> |
+| Pine Peak CCGT | North Grid | Natural Gas | 1,180 | 1,350 | 87.4% | <Badge tone="success">Online</Badge> |
+| Offshore Wind Array | West Grid | Wind | 1,240 | 1,500 | 82.7% | <Badge tone="success">Online</Badge> |
+| Desert Solar Park | South Grid | Solar | 890 | 1,100 | 80.9% | <Badge tone="success">Online</Badge> |
+| Riverbend Nuclear | East Grid | Nuclear | 1,060 | 1,100 | 96.4% | <Badge tone="success">Online</Badge> |
+| Mountain Hydro | Central Hub | Hydro | 480 | 500 | 96.0% | <Badge tone="warning">Reduced</Badge> |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Current service interruptions">
+| Outage ID | Region | Affected Customers | Est. Restoration | Cause |
+|---|---|---|---|---|
+| OUT-2024-0847 | North Grid - Sector 4 | 12,400 | 2024-01-15 14:30 | Transmission fault |
+| OUT-2024-0851 | South Grid - Metro East | 8,200 | 2024-01-15 16:00 | Substation equipment |
+| OUT-2024-0853 | West Grid - Coastal | 3,100 | 2024-01-15 12:45 | Vegetation contact |
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Asset | Region | Type | Start | End | Impact |
+|---|---|---|---|---|---|
+| Transformer T-44 | North Grid | Preventive | 2024-01-20 06:00 | 2024-01-20 18:00 | 200 MW reduction |
+| Line 500kV North-South | Central Hub | Inspection | 2024-01-25 08:00 | 2024-01-26 16:00 | Path derate 30% |
+| Solar Valley Inverter | South Grid | Firmware | 2024-01-28 22:00 | 2024-01-29 04:00 | 150 MW offline |
+| Cedar Hydro Turbine 2 | Central Hub | Overhaul | 2024-02-03 06:00 | 2024-02-07 18:00 | 100 MW offline |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Callout tone="warning" title="⚠ Frequency Deviation — 09:42:15">System frequency at 59.97 Hz. Primary response activated. Monitoring.</Callout>
+<Callout tone="info" title="📊 Wind Forecast Update — 09:40:00">West Grid wind output revised +180 MW for 10:00-14:00 window.</Callout>
+<Callout tone="success" title="✅ Restoration Complete — 09:35:22">OUT-2024-0845 (East Grid Sector 2) — 6,800 customers restored.</Callout>
+<Callout tone="danger" title="🔴 Line Overload Risk — 09:30:10">500kV Line North-South at 94% thermal limit. Curtailment may be required.</Callout>
+<Callout tone="neutral" title="ℹ Market Price Spike — 09:28:45">Real-time price exceeded $85/MWh for 5-min interval. Demand response triggered.</Callout>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Issue generation reduction directive">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant" placeholder="Select plant" options="Northridge CCGT | Harbor Nuclear | Windridge Farm | Solar Valley | Cedar Hydro | Pine Peak CCGT | Offshore Wind Array | Desert Solar Park | Riverbend Nuclear | Mountain Hydro" name="curtail-plant" required="true" />
+<Input label="Reduction (MW)" type="number" placeholder="e.g., 150" name="curtail-mw" min="1" step="1" required="true" />
+</Columns>
+<Columns>
+<Select label="Reason" placeholder="Select reason" options="Transmission constraint | Frequency regulation | Market instruction | Emergency | Maintenance support" name="curtail-reason" required="true" />
+<Select label="Duration" placeholder="Select duration" options="30 minutes | 1 hour | 2 hours | 4 hours | Until further notice" name="curtail-duration" required="true" />
+</Columns>
+<TextArea label="Operator Notes" placeholder="Additional context for plant operators..." name="curtail-notes" rows="3" />
+<Button variant="danger" icon="alert-triangle">Issue Curtailment Order</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed SCADA for Northridge CCGT
+- Escalate OUT-2024-0847 to field crews
+- Run contingency analysis for 500kV North-South line
+- Generate daily operations report
+</FollowUps>

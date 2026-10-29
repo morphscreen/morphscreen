@@ -1,0 +1,106 @@
+# Admin Overview
+
+<Select label="Reporting period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$247,850" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$2,974,200" change="+11.8% vs last year" tone="success" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+5 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups" title="Weekly Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 51 |
+| Week 4 | 47 |
+| Week 5 | 55 |
+| Week 6 | 62 |
+| Week 7 | 58 |
+| Week 8 | 67 |
+| Week 9 | 71 |
+| Week 10 | 69 |
+| Week 11 | 74 |
+| Week 12 | 78 |
+| Week 13 | 82 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Free | 1,240 |
+| Starter | 890 |
+| Professional | 567 |
+| Enterprise | 123 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress value="78" max="100" label="Overall utilization: 78% (1,842/2,350 seats)" />
+<Progress value="92" max="100" label="Enterprise: 92% (644/700)" />
+<Progress value="85" max="100" label="Professional: 85% (912/1,070)" />
+<Progress value="45" max="100" label="Starter: 45% (286/640)" />
+<Progress value="12" max="100" label="Free: 12% (0/0, tracked separately)" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 245 | $24,500 | Active |
+| Globex Inc | Enterprise | 180 | $18,000 | Active |
+| Wayne Enterprises | Enterprise | 150 | $15,000 | Active |
+| Stark Industries | Enterprise | 120 | $12,000 | Active |
+| Umbrella Corp | Professional | 95 | $9,500 | Active |
+| Cyberdyne Systems | Professional | 88 | $8,800 | Active |
+| Massive Dynamic | Professional | 82 | $8,200 | Active |
+| Initech | Professional | 75 | $7,500 | Active |
+| Soylent Corp | Professional | 70 | $7,000 | Active |
+| Tyrell Corporation | Professional | 65 | $6,500 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | Risk Reason | Health Score | Owner |
+|---|---|---|---|---|---|
+| Hooli | Professional | 45 | No login in 21 days, feature adoption < 20% | 23/100 | Sarah Chen |
+| Pied Piper | Starter | 12 | Failed payment ×2, support tickets unanswered | 31/100 | Mike Ross |
+| Dunder Mifflin | Professional | 38 | Champion left company, usage down 60% | 35/100 | Sarah Chen |
+| Bluth Company | Starter | 8 | NPS detractor (score 2), no feature adoption | 28/100 | Mike Ross |
+| Sterling Cooper | Enterprise | 110 | Contract renewal in 30 days, no expansion talks | 42/100 | Alex Park |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed Date | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Hooli | $4,500 | 2024-01-15 | 3 | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| Bluth Company | $800 | 2024-01-14 | 2 | Card expired | <Button size="small" variant="primary">Retry</Button> |
+| Vandelay Industries | $2,200 | 2024-01-13 | 1 | Bank declined | <Button size="small" variant="primary">Retry</Button> |
+| Duff Beer | $1,500 | 2024-01-12 | 2 | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| Los Pollos Hermanos | $3,800 | 2024-01-11 | 1 | Card expired | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="New Feature Adoption">
+<Chart type="bar" x="Feature" y="Adoption %" title="Adoption of 3 Newest Features">
+| Feature | Adoption % |
+|---|---|
+| AI Insights (launched 2024-01-10) | 34% |
+| Team Workspaces (launched 2024-01-03) | 52% |
+| Advanced Analytics (launched 2023-12-28) | 41% |
+</Chart>
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email" name="email" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" name="role" options="Owner | Admin | Billing Admin | Support Admin" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Manage integrations | Delete account" value="Manage users | View analytics" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

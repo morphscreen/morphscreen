@@ -1,0 +1,138 @@
+# Hospital Operations Command
+
+<Card title="Live status" subtitle="Updated 14:32 · Main campus">
+<Columns>
+<Stat label="Bed occupancy" value="87%" change="+4 pts vs yesterday" tone="warning" icon="bed" />
+<Stat label="ER wait (median)" value="48 min" change="+11 min in last hour" tone="danger" icon="clock" />
+<Stat label="Critical patients" value="6" note="2 in ICU, 4 in ER" tone="danger" icon="heartbeat" />
+<Stat label="Ready for discharge" value="14" note="9 awaiting transport" tone="success" icon="door-open" />
+</Columns>
+</Card>
+
+<Card title="Admissions, last 14 days">
+<Chart type="bar" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon 1 | 62 |
+| Tue 2 | 71 |
+| Wed 3 | 58 |
+| Thu 4 | 80 |
+| Fri 5 | 94 |
+| Sat 6 | 88 |
+| Sun 7 | 66 |
+| Mon 8 | 74 |
+| Tue 9 | 69 |
+| Wed 10 | 83 |
+| Thu 11 | 91 |
+| Fri 12 | 102 |
+| Sat 13 | 96 |
+| Sun 14 | 72 |
+</Chart>
+</Card>
+
+<Card title="Patients per department">
+<Chart type="horizontal" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 74 |
+| Cardiology | 52 |
+| Orthopedics | 41 |
+| Oncology | 38 |
+| Pediatrics | 33 |
+| Neurology | 29 |
+| Maternity | 26 |
+</Chart>
+</Card>
+
+<Card title="Critical patients" subtitle="Called out for immediate review">
+<Callout tone="danger" title="6 patients need attention">
+Bed 4-12 (ICU) desaturating · Bed 2-08 (ER) chest pain, troponin rising · Bed 5-03 (ICU) post-op hypotension · Bed 3-19 (ER) suspected stroke · Bed 6-07 (Oncology) febrile neutropenia · Bed 1-02 (Pediatrics) status asthmaticus
+</Callout>
+<Button variant="danger" ask="Show the full critical patient list with vitals and assigned clinicians">Open critical list</Button>
+</Card>
+
+<Card title="Ready for discharge" subtitle="14 patients cleared clinically">
+| Patient | Department | Blocking |
+|---|---|---|
+| R. Alvarez | Orthopedics | Transport |
+| M. Okafor | Cardiology | Pharmacy |
+| J. Lindqvist | Neurology | Transport |
+| P. Nakamura | Oncology | Home care |
+| S. Haddad | Pediatrics | Paperwork |
+</Card>
+
+<Card title="Staff on shift" subtitle="Role and assignment, current shift">
+| Name | Role | Assignment |
+|---|---|---|
+| Dr. A. Reyes | Attending, Emergency | ER Bay 1–6 |
+| Dr. L. Chen | Attending, ICU | ICU 4 |
+| Dr. S. Patel | Surgeon, Orthopedics | OR 2 |
+| Dr. N. Farouk | Anesthesiologist | OR 1–3 |
+| RN M. Boyd | Charge Nurse, ER | Triage |
+| RN T. Iversen | Nurse, ICU | ICU 4–5 |
+| RN K. Adeyemi | Nurse, Pediatrics | Ward 1 |
+| RT J. Novak | Respiratory Therapist | Floors 2–4 |
+| Pharm. D. Weiss | Clinical Pharmacist | Discharge meds |
+| C. Mensah | Transport Lead | Discharge queue |
+</Card>
+
+<Card title="Today's operating room bookings">
+| OR | Time | Procedure | Lead |
+|---|---|---|---|
+| OR 1 | 07:30 | CABG | Dr. Chen |
+| OR 2 | 08:15 | Total knee replacement | Dr. Patel |
+| OR 3 | 09:00 | Appendectomy | Dr. Farouk |
+| OR 2 | 11:30 | Hip arthroscopy | Dr. Patel |
+| OR 1 | 13:00 | Cholecystectomy | Dr. Reyes |
+| OR 3 | 15:45 | Hernia repair | Dr. Farouk |
+</Card>
+
+<Card title="Supplies running low">
+| Item | On hand | Par level | Status |
+|---|---|---|---|
+| IV saline 1L | 42 | 150 | <Badge tone="danger">Critical</Badge> |
+| N95 masks | 310 | 800 | <Badge tone="warning">Low</Badge> |
+| Insulin pens | 18 | 60 | <Badge tone="danger">Critical</Badge> |
+| Surgical gloves (7.5) | 640 | 1200 | <Badge tone="warning">Low</Badge> |
+| Blood bags, O-neg | 9 | 25 | <Badge tone="danger">Critical</Badge> |
+</Card>
+
+<Card title="Actions">
+<Tabs>
+<Tab title="File an incident">
+<Form name="incident-report">
+<Select label="Incident type" options="Patient safety | Medication error | Fall | Equipment failure | Staff injury | Other" />
+<Select label="Location" options="Emergency | ICU | OR | Ward 1 | Ward 2 | Maternity | Pharmacy" />
+<Radio label="Severity" options="Near miss | Minor | Moderate | Major | Sentinel" />
+<TextArea label="What happened" placeholder="Time, people involved, what you observed" rows="4" required="true" />
+<Input label="Reported by" placeholder="Your name and role" required="true" />
+<Switch label="Notify risk management immediately" name="notify-risk" value="true" />
+<Button variant="primary">Submit incident</Button>
+</Form>
+</Tab>
+<Tab title="Request a transfer">
+<Form name="transfer-request">
+<Input label="Patient ID" placeholder="e.g. MRN-48219" required="true" />
+<Select label="From" options="Emergency | ICU | OR | Ward 1 | Ward 2 | Maternity" />
+<Select label="To" options="ICU | Ward 1 | Ward 2 | Step-down | Another facility" />
+<Radio label="Urgency" options="Routine | Within 4 hours | Immediate" />
+<Input label="Clinical reason" placeholder="One line for the receiving team" />
+<Button variant="primary">Request transfer</Button>
+</Form>
+</Tab>
+<Tab title="View another day">
+<Form name="day-picker">
+<Date label="Pick a date" name="ops-date" hint="Shows occupancy, admissions, OR bookings and staffing for that day" />
+<Select label="View" options="Full command view | Admissions only | OR schedule only | Staffing only" />
+<Button variant="primary">Load day</Button>
+</Form>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show ICU bed availability and the next 24 hours
+- Which departments are over capacity right now?
+- Draft a restock order for the critical supplies
+- Who is on shift for the night rotation?
+</FollowUps>

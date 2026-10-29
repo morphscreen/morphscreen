@@ -1,0 +1,109 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Live updates">Shipment data refreshes every 15 minutes. Last refreshed: Today, 14:32 UTC.</Callout>
+
+<Card title="Key metrics" subtitle="This month to date">
+<Columns>
+<Stat label="On-time %" value="94.2%" change="+2.1 pts" tone="success" icon="check-circle" />
+<Stat label="Shipments in transit" value="1,284" change="+38 vs yesterday" tone="info" icon="truck" />
+<Stat label="Avg cost / shipment" value="$412" change="-3.4% vs last month" tone="success" icon="currency-dollar" />
+<Stat label="Delayed shipments" value="37" change="+12 vs yesterday" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in transit" subtitle="Click a row to view details">
+<Input label="Search by route" name="route-search" type="search" placeholder="e.g. Shanghai → Rotterdam, or port code" hint="Matches origin, destination, or both" />
+
+| Shipment ID | Origin | Destination | ETA | Status | Carrier |
+|---|---|---|---|---|---|
+| SH-2041 | Shanghai | Rotterdam | 2025-08-14 | **Delayed** ⚠️ | Maersk |
+| SH-2042 | Shenzhen | Hamburg | 2025-08-16 | On time | MSC |
+| SH-2043 | Ningbo | Los Angeles | 2025-08-18 | **Delayed** ⚠️ | CMA CGM |
+| SH-2044 | Busan | Seattle | 2025-08-15 | On time | HMM |
+| SH-2045 | Singapore | Felixstowe | 2025-08-21 | On time | Maersk |
+| SH-2046 | Hong Kong | Long Beach | 2025-08-19 | On time | Evergreen |
+| SH-2047 | Qingdao | Antwerp | 2025-08-13 | **Delayed** ⚠️ | MSC |
+| SH-2048 | Rotterdam | New York | 2025-08-17 | On time | Maersk |
+
+<Badge tone="danger">Delayed</Badge> <span>— ETA revised, see flag details</span>
+</Card>
+
+<Card title="Delayed shipments — action required" subtitle="37 total, showing top 5">
+<Tabs>
+<Tab title="Top delays">
+| Shipment ID | Route | Original ETA | New ETA | Delay | Flag |
+|---|---|---|---|---|---|
+| SH-2047 | Qingdao → Antwerp | 2025-08-10 | 2025-08-13 | 3 days | <Button variant="danger" size="small" ask="Flag SH-2047 as critical">Flag critical</Button> |
+| SH-2041 | Shanghai → Rotterdam | 2025-08-12 | 2025-08-14 | 2 days | <Button variant="danger" size="small" ask="Flag SH-2041 as critical">Flag critical</Button> |
+| SH-2043 | Ningbo → Los Angeles | 2025-08-16 | 2025-08-18 | 2 days | <Button variant="danger" size="small" ask="Flag SH-2043 as critical">Flag critical</Button> |
+| SH-2049 | Kaohsiung → Savannah | 2025-08-15 | 2025-08-16 | 1 day | <Button variant="secondary" size="small" ask="Flag SH-2049 as watch">Flag watch</Button> |
+| SH-2050 | Piraeus → New York | 2025-08-14 | 2025-08-15 | 1 day | <Button variant="secondary" size="small" ask="Flag SH-2050 as watch">Flag watch</Button> |
+</Tab>
+<Tab title="Delay reasons">
+<Columns>
+<Card title="Port congestion">
+| Cause | Count |
+|---|---|
+| Port congestion | 18 |
+| Weather | 9 |
+| Customs hold | 6 |
+| Equipment shortage | 4 |
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Volume split by carrier" subtitle="This month, share of total shipments">
+<Chart type="pie" title="Carrier share">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 384 |
+| MSC | 312 |
+| CMA CGM | 246 |
+| Evergreen | 198 |
+| HMM | 144 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume — past 8 weeks">
+<Chart type="bar" title="Shipments per week" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 218 |
+| W2 | 245 |
+| W3 | 232 |
+| W4 | 261 |
+| W5 | 254 |
+| W6 | 278 |
+| W7 | 291 |
+| W8 | 305 |
+</Chart>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment ID" name="shipment-id" placeholder="Select shipment" options="SH-2041 | SH-2042 | SH-2043 | SH-2044 | SH-2045 | SH-2046 | SH-2047 | SH-2048" required="true" />
+<Select label="Flag type" name="flag-type" placeholder="Select flag" options="Critical — needs immediate attention | Watch — monitor closely | Info — note for later" required="true" />
+<TextArea label="Reason / notes" name="flag-reason" placeholder="e.g. Customs hold at origin, vessel rerouted…" rows="3" required="true" />
+<Button>Submit flag</Button>
+</Form>
+</Card>
+
+<Card title="Last refreshed">
+<KeyValue title="Data freshness">
+| Item | Value |
+|---|---|
+| Last refresh | Today, 14:32 UTC |
+| Next refresh | Today, 14:47 UTC |
+| Data source | Carrier APIs + port feeds |
+</KeyValue>
+<Button variant="secondary">Refresh now</Button>
+</Card>
+
+<FollowUps>
+- Show me the full list of delayed shipments
+- Compare on-time rates across carriers
+- Which routes have the most delays?
+- Export this board as a CSV
+</FollowUps>

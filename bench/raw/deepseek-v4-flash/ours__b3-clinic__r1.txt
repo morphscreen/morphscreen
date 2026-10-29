@@ -1,0 +1,60 @@
+# Front desk — Day view
+
+<Badge tone="info">Tuesday, March 18, 2026 · As of 10:40 AM</Badge>
+
+<Columns>
+<Stat label="Patients expected today" value="12" note="7 remaining after 10:40 AM" icon="users" />
+<Stat label="No-show rate this month" value="5.9%" note="2 of 34 scheduled" tone="warning" icon="calendar" />
+<Stat label="Rooms free right now" value="2 of 5" note="Rooms 3 & 4" tone="success" icon="map-pin" />
+</Columns>
+
+<Card title="Today's appointments">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 09:00 | Elliot Chen | Room 1 | In visit |
+| 09:30 | Priya Sharma | Room 3 | In visit |
+| 09:45 | Maya Patel | Room 4 | Completed |
+| 10:15 | Amara Onyeka | Room 2 | In visit |
+| 10:30 | Liam O'Connor | Room 5 | In visit |
+| 10:45 | Sofia Rossi | Room 3 | **Next** |
+| 11:00 | Harper Lee | Room 4 | Scheduled |
+| 11:15 | Noor Ahmed | Room 1 | Scheduled |
+| 11:30 | Ethan Brooks | Room 5 | Scheduled |
+| 13:30 | Emma Wilson | Room 2 | Scheduled |
+| 14:00 | Oliver Smith | Room 3 | Scheduled |
+| 14:30 | Ava Brown | Room 4 | Scheduled |
+</Card>
+
+<Columns>
+<Card title="Room status — now">
+| Room | Status | Next appointment |
+|---|---|---|
+| Room 1 | In use — Elliot Chen | 11:15 — Noor Ahmed |
+| Room 2 | In use — Amara Onyeka | 13:30 — Emma Wilson |
+| Room 3 | Free | 10:45 — Sofia Rossi |
+| Room 4 | Free | 11:00 — Harper Lee |
+| Room 5 | In use — Liam O'Connor | 11:30 — Ethan Brooks |
+</Card>
+
+<Card title="Next patient to call out">
+<Callout tone="success" title="Sofia Rossi">
+Call Sofia Rossi to **Room 3** at **10:45 AM**. The room is free right now.
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Check in patient">
+<Form name="checkin">
+<Select label="Patient" name="checkin-patient" placeholder="Select patient..." options="Sofia Rossi — 10:45 | Harper Lee — 11:00 | Noor Ahmed — 11:15 | Ethan Brooks — 11:30 | Emma Wilson — 13:30 | Oliver Smith — 14:00 | Ava Brown — 14:30" required="true" />
+<Button>Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Form name="navigate">
+<Date label="Date to view" name="nav-date" value="2026-03-18" />
+<Button variant="secondary">Show day</Button>
+</Form>
+</Card>
+</Columns>

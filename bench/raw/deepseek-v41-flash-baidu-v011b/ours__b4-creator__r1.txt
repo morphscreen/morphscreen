@@ -1,0 +1,131 @@
+# Creator Studio — Cross-Platform Dashboard
+
+One screen, everything you need: reach, revenue, replies, and what to post next.
+
+<Callout tone="info" title="Filter once, apply everywhere">
+Pick a platform below and every card on this screen narrows to it. Leave it on "All platforms" to see the full picture.
+</Callout>
+
+<Card title="Platform filter" subtitle="Narrows every number on this page">
+<Radio label="Show data for" options="All platforms | Instagram | TikTok | YouTube | X (Twitter)" name="platform-filter" value="All platforms" />
+</Card>
+
+<Columns>
+<Stat label="Total followers" value="412,800" change="+6.2% MoM" tone="success" icon="users" />
+<Stat label="Engagement rate" value="5.8%" change="+0.7 pts MoM" tone="success" icon="chart-line" />
+<Stat label="Earnings this month" value="$9,340" change="+$1,210 MoM" tone="success" icon="chart-line" />
+<Stat label="Replies waiting" value="37" change="12 urgent" tone="warning" icon="users" />
+</Columns>
+
+<Card title="Follower growth — last 30 days" subtitle="All platforms combined">
+<Chart type="line" x="Day" y="Followers">
+| Day | Followers |
+|---|---|
+| Day 1 | 388400 |
+| Day 5 | 391200 |
+| Day 10 | 395900 |
+| Day 15 | 399700 |
+| Day 20 | 403100 |
+| Day 25 | 408600 |
+| Day 30 | 412800 |
+</Chart>
+</Card>
+
+<Card title="Audience split by platform">
+<Chart type="donut" title="Followers by platform">
+| Platform | Followers |
+|---|---|
+| Instagram | 184000 |
+| TikTok | 121500 |
+| YouTube | 74200 |
+| X (Twitter) | 33100 |
+</Chart>
+</Card>
+
+<Card title="Best posts this month" subtitle="Ranked by reach">
+| Post | Platform | Reach | Engagement |
+|---|---|---|---|
+| "3 edits that took 10 min" | TikTok | 284,000 | 9.1% |
+| Studio tour, one take | Instagram | 176,500 | 7.4% |
+| Gear I actually use | YouTube | 98,200 | 6.0% |
+| Hot take on trends | X (Twitter) | 41,300 | 4.2% |
+
+<Button ask="Show me the full breakdown of the top post this month" variant="secondary">Break down the top post</Button>
+</Card>
+
+<Card title="Best hour to post" subtitle="From your last 90 days of history">
+<Chart type="bar" x="Hour" y="Avg. reach">
+| Hour | Avg. reach |
+|---|---|
+| 7 AM | 12000 |
+| 11 AM | 18400 |
+| 3 PM | 22100 |
+| 7 PM | 34800 |
+| 9 PM | 29600 |
+| 11 PM | 14200 |
+</Chart>
+
+<Callout tone="success" title="Post at 7 PM">
+Your 7 PM posts average 34,800 reach — 57% above your daily average. Second-best window is 9 PM.
+</Callout>
+</Card>
+
+<Card title="Scheduled this week">
+<Steps>
+<Step title="Mon 7:00 PM — TikTok" status="done" subtitle="Behind-the-scenes edit timelapse">Posted, 41k views so far</Step>
+<Step title="Wed 7:00 PM — Instagram" status="current" subtitle="Carousel: 5 lighting mistakes">Queued and ready</Step>
+<Step title="Fri 9:00 PM — YouTube" status="todo" subtitle="Short: my 3-camera setup">Needs thumbnail</Step>
+<Step title="Sat 11:00 AM — X (Twitter)" status="todo" subtitle="Thread: what I learned this month">Draft only</Step>
+</Steps>
+</Card>
+
+<Card title="Comments waiting for a reply" subtitle="37 total · 12 flagged urgent">
+| Commenter | Platform | Comment | Waiting |
+|---|---|---|---|
+| @lena.makes | Instagram | "What lens is this?" | 2 h |
+| @cutwithkai | TikTok | "Tutorial please!" | 5 h |
+| @devonbuilds | YouTube | "Does this work on mobile?" | 1 d |
+| @sparknotes_ | X (Twitter) | "Collab?" | 1 d |
+
+<Button ask="Draft replies to my urgent comments">Draft replies</Button>
+</Card>
+
+<Card title="Earnings this month" subtitle="$9,340 across all sources">
+| Source | Amount |
+|---|---|
+| Brand deals | $5,200 |
+| Ad revenue | $2,480 |
+| Affiliate | $1,140 |
+| Memberships | $520 |
+
+<Progress value="9340" max="12000" label="Toward $12,000 monthly goal" tone="success" />
+</Card>
+
+<Card title="Pending collaboration requests">
+| Brand | Offer | Platform | Deadline |
+|---|---|---|---|
+| Nordvik Audio | $2,400 | YouTube | 6 days |
+| Fern & Fold | $1,100 + product | Instagram | 12 days |
+| Loopwear | $3,000 | TikTok | 3 days |
+
+<Button ask="Compare these three collaboration offers side by side">Compare offers</Button>
+</Card>
+
+<Card title="Schedule a post" subtitle="Caption, platform, and time">
+<Form name="schedule-post">
+<TextArea label="Caption" name="caption" placeholder="Write your caption…" rows="4" hint="Hashtags and mentions work here too" required="true" />
+<Select label="Platform" name="platform" placeholder="Choose a platform" options="Instagram | TikTok | YouTube | X (Twitter)" required="true" />
+<Date label="Post date" name="post-date" required="true" />
+<Input label="Post time" type="time" name="post-time" value="19:00" hint="Your best window is 7:00 PM" required="true" />
+<Switch label="Also cross-post to my other platforms" name="crosspost" value="false" />
+<Button>Schedule post</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Narrow everything to TikTok only
+- What should I post this week to beat last week's reach?
+- Which collaboration should I accept first?
+- Show me my reply rate by platform
+</FollowUps>

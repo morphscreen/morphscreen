@@ -1,0 +1,108 @@
+<Card title="Async Standup" subtitle="Monday, January 15, 2024">
+  <Columns>
+    <Stat label="Updates posted" value="7" change="of 10 team members" tone="info" />
+    <Stat label="Missing updates" value="3" tone="warning" />
+    <Stat label="Blocked" value="2" tone="danger" />
+  </Columns>
+</Card>
+
+<Card title="Team Updates">
+  <Tabs>
+    <Tab title="All updates (7)">
+      <Details title="Sarah Chen — Frontend Lead" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Shipped the new dashboard filters, fixed the date picker bug on mobile
+        **Today:** Code review for PR #234, start work on dark mode toggle
+        **Blockers:** None
+      </Details>
+      
+      <Details title="Marcus Johnson — Backend Engineer" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Optimized the search API (40% faster), deployed v2.1.3
+        **Today:** Write integration tests for webhook endpoints, pair with Priya on auth refactor
+        **Blockers:** Waiting on DevOps for staging environment access
+      </Details>
+      
+      <Details title="Priya Patel — Full Stack" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Finished auth token refresh logic, helped Marcus with API tests
+        **Today:** Build the password reset flow, review Sarah's dark mode PR
+        **Blockers:** None
+      </Details>
+      
+      <Details title="Alex Rivera — Designer" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Delivered new onboarding mockups, updated design system tokens
+        **Today:** User testing session at 2pm, iterate on checkout flow based on feedback
+        **Blockers:** Need copy from marketing for new empty states
+      </Details>
+      
+      <Details title="Jamie Park — QA Engineer" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Automated regression suite for payments, found 3 edge cases
+        **Today:** Test dark mode toggle, verify mobile breakpoint fixes
+        **Blockers:** None
+      </Details>
+      
+      <Details title="Taylor Kim — Product Manager" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Prioritized Q1 backlog, wrote specs for team invite feature
+        **Today:** Stakeholder sync at 10am, review analytics dashboard with Sarah
+        **Blockers:** Waiting on legal for updated terms of service
+      </Details>
+      
+      <Details title="Jordan Lee — DevOps" open="true">
+        <Badge tone="success">Done</Badge>
+        **Yesterday:** Set up new staging cluster, configured secrets rotation
+        **Today:** Migrate logging to Datadog, help Marcus with environment access
+        **Blockers:** Datadog API key renewal pending finance approval
+      </Details>
+    </Tab>
+    
+    <Tab title="🚫 Blocked (2)">
+      <Callout tone="danger" title="Marcus Johnson — Backend Engineer">
+        **Blocker:** Waiting on DevOps for staging environment access
+        **Impact:** Cannot test webhook endpoints integration
+        **Owner:** Jordan Lee (DevOps) — working on it today
+      </Callout>
+      
+      <Callout tone="danger" title="Alex Rivera — Designer">
+        **Blocker:** Need copy from marketing for new empty states
+        **Impact:** Onboarding mockups stuck in review
+        **Owner:** Taylor Kim (PM) — following up with marketing
+      </Callout>
+      
+      <Callout tone="warning" title="Jordan Lee — DevOps">
+        **Blocker:** Datadog API key renewal pending finance approval
+        **Impact:** Logging migration on hold
+        **Owner:** Taylor Kim (PM) — escalated to finance
+      </Callout>
+    </Tab>
+    
+    <Tab title="⏳ Missing (3)">
+      <Badge tone="warning">Casey Brooks — Mobile Engineer</Badge>
+      <Badge tone="warning">Riley Chen — Data Analyst</Badge>
+      <Badge tone="warning">Morgan Torres — Support Lead</Badge>
+      <Callout tone="info" title="Reminder sent">Automatic reminders sent at 9:00 AM. Follow up in #standup-reminders if needed.</Callout>
+    </Tab>
+  </Tabs>
+</Card>
+
+<Card title="Post Your Update">
+  <Form name="standup-update">
+    <TextArea label="What did you complete yesterday?" name="yesterday" placeholder="Shipped the new dashboard filters, fixed the date picker bug on mobile" rows="3" required="true" />
+    <TextArea label="What will you tackle today?" name="today" placeholder="Code review for PR #234, start work on dark mode toggle" rows="3" required="true" />
+    <TextArea label="Any blockers? (Tag the person who can help)" name="blockers" placeholder="Waiting on DevOps for staging environment access — @jordan" rows="2" hint="Leave blank if none" />
+    <Columns>
+      <Button>Post update</Button>
+      <Button variant="secondary">Save as draft</Button>
+    </Columns>
+  </Form>
+</Card>
+
+<Callout tone="info" title="Standup tips">
+- Post by 10 AM your local time so teammates can plan their day
+- Tag blockers with @mentions so the right person gets notified
+- Keep it scannable: bullet points > paragraphs
+- Missing updates? Nudge in #standup-reminders
+</Callout>

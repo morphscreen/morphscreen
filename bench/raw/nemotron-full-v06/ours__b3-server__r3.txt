@@ -1,0 +1,100 @@
+# Service Health Dashboard
+
+<Card title="Global Filters" subtitle="Narrow the view to a specific region">
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | ap-northeast-1" />
+</Card>
+
+<Columns>
+<Card title="Uptime This Quarter">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Quarterly SLA target: 99.95%" tone="success" />
+<Callout tone="info" title="SLA Status">Within SLA — 1.2h downtime remaining this quarter</Callout>
+</Card>
+
+<Card title="Error Rate (Right Now)">
+<Stat label="Error Rate" value="0.23%" change="-0.05% from 5min ago" tone="success" />
+<Progress value="0.23" max="1" label="Threshold: 1%" tone="success" />
+<Callout tone="neutral" title="Current window">Last 5 minutes · 12 errors / 5,234 requests</Callout>
+</Card>
+</Columns>
+
+<Card title="CPU & Memory Usage (Past 24 Hours)">
+<Tabs>
+<Tab title="CPU %">
+<Chart type="area" x="Time" y="CPU %">
+| Time | CPU % |
+|---|---|
+| 00:00 | 32 |
+| 02:00 | 28 |
+| 04:00 | 25 |
+| 06:00 | 35 |
+| 08:00 | 58 |
+| 10:00 | 72 |
+| 12:00 | 68 |
+| 14:00 | 75 |
+| 16:00 | 71 |
+| 18:00 | 65 |
+| 20:00 | 54 |
+| 22:00 | 42 |
+</Chart>
+</Tab>
+<Tab title="Memory %">
+<Chart type="area" x="Time" y="Memory %">
+| Time | Memory % |
+|---|---|
+| 00:00 | 45 |
+| 02:00 | 43 |
+| 04:00 | 41 |
+| 06:00 | 48 |
+| 08:00 | 62 |
+| 10:00 | 71 |
+| 12:00 | 69 |
+| 14:00 | 74 |
+| 16:00 | 70 |
+| 18:00 | 66 |
+| 20:00 | 58 |
+| 22:00 | 51 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open Incidents">
+| # | Title | Severity | Region | Started | Actions |
+|---|---|---|---|---|---|
+| INC-2341 | Payment API latency spike | <Badge tone="danger">Critical</Badge> | us-east-1 | 14 min ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2340 | Redis replica lag | <Badge tone="warning">High</Badge> | eu-west-1 | 42 min ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2339 | CDN cache miss rate elevated | <Badge tone="warning">High</Badge> | ap-southeast-1 | 1h 12m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2338 | Background job queue backlog | <Badge tone="info">Medium</Badge> | us-west-2 | 2h 5m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-2337 | Intermittent 502s on auth service | <Badge tone="info">Medium</Badge> | us-east-1 | 3h 30m ago | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Card>
+
+<Card title="Five Slowest Endpoints (p95 Latency)">
+| Endpoint | Method | p95 Latency | Region | Requests/min |
+|---|---|---|---|---|
+| /api/v2/payments/process | POST | 2,840 ms | us-east-1 | 1,240 |
+| /api/v1/orders/bulk | POST | 1,920 ms | eu-west-1 | 340 |
+| /api/v3/search/products | GET | 1,650 ms | ap-southeast-1 | 890 |
+| /api/v1/users/recommendations | GET | 1,410 ms | us-west-2 | 2,100 |
+| /api/v2/reports/generate | POST | 1,180 ms | us-east-1 | 180 |
+</Card>
+
+<Card title="Alert Threshold Configuration" subtitle="Adjust thresholds for automated alerting">
+<Form name="alert-thresholds">
+<Columns>
+<Slider label="Error Rate Alert Threshold (%)" min="0.1" max="5" step="0.1" value="1" name="error-rate-threshold" />
+<Slider label="CPU Usage Alert Threshold (%)" min="50" max="95" step="1" value="80" name="cpu-threshold" />
+<Slider label="Memory Usage Alert Threshold (%)" min="50" max="95" step="1" value="85" name="memory-threshold" />
+<Slider label="Latency p95 Alert Threshold (ms)" min="500" max="10000" step="100" value="2000" name="latency-threshold" />
+</Columns>
+<Button>Save Thresholds</Button>
+<Button variant="tertiary">Reset to Defaults</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show incident timeline for INC-2341
+- Compare current metrics to same time last week
+- List recent deployments in us-east-1
+- Create runbook link for payment API latency
+</FollowUps>

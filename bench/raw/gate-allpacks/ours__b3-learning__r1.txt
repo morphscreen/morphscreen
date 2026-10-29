@@ -1,0 +1,69 @@
+# Training Platform Analytics
+
+<Card title="Filters">
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Cohort A - Q1 2024 | Cohort B - Q2 2024 | Cohort C - Q3 2024 | Cohort D - Q4 2024" value="All cohorts" />
+</Card>
+
+<Columns>
+<Stat label="Active learners this week" value="1,247" change="+8% vs last week" tone="success" />
+<Stat label="Course completion rate" value="73%" change="+4% vs last month" tone="info" />
+<Stat label="Average quiz score" value="82%" change="+2 pts vs last month" tone="success" />
+</Columns>
+
+<Card title="Engagement across past 8 weeks">
+<Chart type="area" x="Week" y="Active learners">
+| Week | Active learners | Sessions | Avg session (min) |
+|---|---|---|---|
+| Week 1 | 892 | 2,140 | 24 |
+| Week 2 | 945 | 2,380 | 26 |
+| Week 3 | 1,012 | 2,610 | 28 |
+| Week 4 | 1,089 | 2,890 | 29 |
+| Week 5 | 1,156 | 3,120 | 31 |
+| Week 6 | 1,198 | 3,280 | 32 |
+| Week 7 | 1,224 | 3,410 | 33 |
+| Week 8 | 1,247 | 3,520 | 34 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="bar" x="Course" y="Enrollments">
+| Course | Enrollments | Completion rate |
+|---|---|---|
+| Python Fundamentals | 482 | 78% |
+| Data Analysis with Pandas | 356 | 71% |
+| Web Development Basics | 312 | 65% |
+| Machine Learning Intro | 289 | 82% |
+| SQL for Analytics | 267 | 74% |
+| React Essentials | 234 | 69% |
+| Cloud Architecture | 198 | 58% |
+| DevOps Fundamentals | 167 | 62% |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out">
+<Table>
+| Learner | Cohort | Last active | Courses enrolled | Completion % | Risk level |
+|---|---|---|---|---|---|
+| Sarah Chen | Cohort B | 14 days ago | 3 | 12% | <Badge tone="danger">High</Badge> |
+| Marcus Johnson | Cohort A | 11 days ago | 2 | 8% | <Badge tone="danger">High</Badge> |
+| Priya Patel | Cohort C | 9 days ago | 4 | 18% | <Badge tone="warning">Medium</Badge> |
+| James Wilson | Cohort B | 8 days ago | 1 | 0% | <Badge tone="danger">High</Badge> |
+| Aisha Rahman | Cohort D | 7 days ago | 3 | 22% | <Badge tone="warning">Medium</Badge> |
+| David Kim | Cohort A | 6 days ago | 2 | 15% | <Badge tone="warning">Medium</Badge> |
+| Lisa Nguyen | Cohort C | 5 days ago | 4 | 25% | <Badge tone="info">Low</Badge> |
+| Robert Taylor | Cohort D | 4 days ago | 1 | 5% | <Badge tone="danger">High</Badge> |
+</Table>
+</Card>
+
+<Card title="Message a cohort">
+<Form name="message-cohort">
+<Select label="Recipient cohort" name="recipient" placeholder="Select cohort" options="Cohort A - Q1 2024 | Cohort B - Q2 2024 | Cohort C - Q3 2024 | Cohort D - Q4 2024" required="true" />
+<Input label="Subject" name="subject" placeholder="e.g., Mid-course check-in & resources" required="true" />
+<TextArea label="Message" name="message" placeholder="Write your message here... Use {{first_name}} for personalization." rows="6" required="true" hint="Markdown supported. Available variables: {{first_name}}, {{course_name}}, {{progress_pct}}" />
+<Columns>
+<Button variant="primary">Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Columns>
+</Form>
+</Card>

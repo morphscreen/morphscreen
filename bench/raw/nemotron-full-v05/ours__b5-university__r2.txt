@@ -1,0 +1,197 @@
+# University Administrator Dashboard
+
+<Select label="Focus Department" name="dept-filter" placeholder="All Departments" options="All Departments | Computer Science | Business | Engineering | Arts & Humanities | Sciences | Education | Health Sciences" />
+
+<Columns>
+<Card title="Total Enrollment (5-Year Trend)">
+<Chart type="line" x="Year" y="Students" title="Enrollment Trend">
+| Year | Students |
+|---|---|
+| 2020 | 18,240 |
+| 2021 | 19,100 |
+| 2022 | 20,450 |
+| 2023 | 21,800 |
+| 2024 | 22,950 |
+</Chart>
+</Card>
+
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications" title="Fall 2024 Applications">
+| Program | Applications |
+|---|---|
+| Computer Science | 4,200 |
+| Business | 3,800 |
+| Engineering | 3,500 |
+| Arts & Humanities | 2,100 |
+| Sciences | 2,800 |
+| Education | 1,200 |
+| Health Sciences | 1,900 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="Acceptance Rate" value="34.2%" change="-1.8% YoY" tone="neutral" />
+<Stat label="Tuition Revenue (FY24)" value="$142.8M" change="+5.2% YoY" tone="success" />
+<Stat label="Students at Academic Risk" value="1,247" change="+89 vs last term" tone="warning" />
+<Stat label="Scholarship Budget Used" value="$18.4M / $22.0M" change="83.6% utilized" tone="info" />
+<Stat label="Housing Occupancy" value="94.2%" change="+2.1% vs last year" tone="success" />
+</Card>
+
+<Card title="Alumni Giving (4-Year Trend)">
+<Chart type="bar" x="Year" y="Donations (USD)" title="Annual Alumni Giving">
+| Year | Donations (USD) |
+|---|---|
+| 2021 | 8,200,000 |
+| 2022 | 9,500,000 |
+| 2023 | 10,800,000 |
+| 2024 | 12,100,000 |
+</Chart>
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Course Capacity">
+<Card title="Course Offering Utilization">
+| Course | Capacity | Enrolled | Utilization | Status |
+|---|---|---|---|---|
+| CS 101 - Intro to Programming | 120 | 118 | 98.3% | <Badge tone="danger">Near Full</Badge> |
+| BUS 201 - Financial Accounting | 90 | 87 | 96.7% | <Badge tone="warning">High</Badge> |
+| ENG 301 - Thermodynamics | 75 | 62 | 82.7% | <Badge tone="success">Open</Badge> |
+| ART 150 - Digital Design | 40 | 38 | 95.0% | <Badge tone="warning">High</Badge> |
+| SCI 220 - Organic Chemistry | 100 | 94 | 94.0% | <Badge tone="warning">High</Badge> |
+| EDU 100 - Child Development | 60 | 45 | 75.0% | <Badge tone="success">Open</Badge> |
+| HSC 310 - Clinical Practice | 30 | 28 | 93.3% | <Badge tone="warning">High</Badge> |
+| CS 450 - Machine Learning | 50 | 49 | 98.0% | <Badge tone="danger">Near Full</Badge> |
+</Card>
+</Tab>
+
+<Tab title="Teaching Load">
+<Card title="Teaching Load by Faculty Member">
+| Faculty | Department | Courses | Credits | Students | Load Index |
+|---|---|---|---|---|---|
+| Dr. Sarah Chen | Computer Science | 4 | 12 | 380 | 1.15 |
+| Prof. James Miller | Business | 3 | 9 | 245 | 0.92 |
+| Dr. Maria Rodriguez | Engineering | 4 | 11 | 290 | 1.08 |
+| Prof. David Kim | Arts & Humanities | 5 | 15 | 310 | 1.20 |
+| Dr. Lisa Thompson | Sciences | 3 | 9 | 210 | 0.85 |
+| Prof. Robert Davis | Education | 4 | 12 | 180 | 0.95 |
+| Dr. Amanda Foster | Health Sciences | 3 | 10 | 155 | 1.02 |
+</Card>
+</Tab>
+
+<Tab title="Academic Risk">
+<Card title="Students at Academic Risk">
+<Stat label="Total At-Risk" value="1,247" change="5.4% of enrollment" tone="warning" />
+<Stat label="Probation" value="623" tone="warning" />
+<Stat label="Warning" value="489" tone="info" />
+<Stat label="Critical" value="135" tone="danger" />
+
+| Student ID | Program | GPA | Credits Earned | Risk Level | Advisor |
+|---|---|---|---|---|---|
+| STU-2024-0451 | Computer Science | 1.62 | 28 | Critical | Dr. Chen |
+| STU-2023-1189 | Business | 1.78 | 45 | Probation | Prof. Miller |
+| STU-2024-0892 | Engineering | 1.55 | 22 | Critical | Dr. Rodriguez |
+| STU-2022-0334 | Arts & Humanities | 1.89 | 68 | Warning | Prof. Kim |
+</Card>
+</Tab>
+
+<Tab title="Semester Comparison">
+<Card title="This Semester vs. Last Semester">
+<Chart type="bar" x="Metric" y="Value" title="Semester-over-Semester Comparison">
+| Metric | Fall 2024 | Spring 2024 |
+|---|---|---|
+| Enrollment | 22,950 | 21,800 |
+| Credit Hours | 298,400 | 284,200 |
+| Avg Class Size | 28.4 | 27.1 |
+| Retention Rate | 91.2% | 89.7% |
+| DFW Rate | 12.3% | 14.1% |
+</Chart>
+
+<Columns>
+<Stat label="Enrollment Change" value="+5.3%" tone="success" />
+<Stat label="Revenue Change" value="+4.8%" tone="success" />
+<Stat label="Retention Improvement" value="+1.5pp" tone="success" />
+<Stat label="DFW Rate Change" value="-1.8pp" tone="success" />
+</Columns>
+</Card>
+</Tab>
+
+<Tab title="Waitlisted Students">
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted" title="Current Waitlist Counts">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 312 |
+| Business | 198 |
+| Engineering | 156 |
+| Arts & Humanities | 67 |
+| Sciences | 134 |
+| Education | 23 |
+| Health Sciences | 89 |
+</Chart>
+
+| Program | Waitlisted | Capacity | Action Needed |
+|---|---|---|---|
+| CS 101 - Intro to Programming | 45 | 120 | <Badge tone="danger">Add Section</Badge> |
+| BUS 201 - Financial Accounting | 28 | 90 | <Badge tone="warning">Monitor</Badge> |
+| CS 450 - Machine Learning | 22 | 50 | <Badge tone="danger">Add Section</Badge> |
+| SCI 220 - Organic Chemistry | 18 | 100 | <Badge tone="info">Track</Badge> |
+</Card>
+</Tab>
+
+<Tab title="Campus Events">
+<Card title="Campus Events This Month">
+| Date | Event | Type | Location | Expected Attendance | Status |
+|---|---|---|---|---|---|
+| Nov 3 | Career Fair | Recruiting | Student Center | 1,200 | <Badge tone="success">Confirmed</Badge> |
+| Nov 7 | Research Symposium | Academic | Science Hall | 350 | <Badge tone="success">Confirmed</Badge> |
+| Nov 12 | Alumni Homecoming | Engagement | Stadium | 3,500 | <Badge tone="success">Confirmed</Badge> |
+| Nov 15 | Mental Health Workshop | Wellness | Library | 150 | <Badge tone="info">Open Reg</Badge> |
+| Nov 19 | International Festival | Cultural | Quad | 800 | <Badge tone="success">Confirmed</Badge> |
+| Nov 22 | Faculty Senate Meeting | Governance | Admin Bldg | 45 | <Badge tone="neutral">Scheduled</Badge> |
+| Nov 28 | Thanksgiving Break | Holiday | Campus-wide | N/A | <Badge tone="neutral">Closed</Badge> |
+</Card>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Approve New Course">
+<Form name="course-approval">
+<Input label="Course Code" placeholder="e.g., CS 485" />
+<Input label="Course Title" placeholder="e.g., Quantum Computing Fundamentals" />
+<Select label="Department" placeholder="Select department" options="Computer Science | Business | Engineering | Arts & Humanities | Sciences | Education | Health Sciences" />
+<Input label="Credits" type="number" placeholder="3" min="1" max="6" step="1" />
+<TextArea label="Description" placeholder="Course description..." rows="3" />
+<Select label="Prerequisites" placeholder="Select prerequisites" options="None | CS 101, CS 201 | BUS 101 | ENG 201 | SCI 101, SCI 102" />
+<Radio label="Delivery Mode" options="In-Person | Hybrid | Online" value="In-Person" />
+<Input label="Proposed Instructor" placeholder="Faculty name" />
+<Input label="Max Capacity" type="number" placeholder="30" min="10" max="200" step="5" />
+<Checkboxes label="Approval Required From" options="Dept Chair | Curriculum Committee | Dean | Registrar" value="Dept Chair | Curriculum Committee" />
+<Button>Submit for Approval</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Target Group" placeholder="Select recipient group" options="All Students | At-Risk Students | Computer Science Majors | First-Year Students | International Students | Scholarship Recipients | Waitlisted Students | Graduating Seniors" />
+<Select label="Channel" placeholder="Select delivery channel" options="Email | SMS | Push Notification | LMS Announcement | All Channels" />
+<Input label="Subject" placeholder="Message subject line" />
+<TextArea label="Message Content" placeholder="Write your message here..." rows="5" />
+<Checkboxes label="Options" options="Schedule for later | Request read receipt | Include unsubscribe link | Mark as urgent" value="Include unsubscribe link" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show detailed enrollment forecast for next 3 years
+- Generate academic risk intervention report
+- Compare department budgets against benchmarks
+- Export waitlist data for registrar review
+- Schedule follow-up on course approval workflow
+</FollowUps>

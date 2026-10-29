@@ -1,0 +1,55 @@
+<Card title="Warehouse Stock Check" subtitle="Scan a product to view inventory across locations">
+
+### 1. Scan Product Barcode
+<Scan label="Scan barcode" name="product-barcode" kind="barcode" hint="Point camera at product barcode" required="true" />
+
+---
+
+### 2. Product Stock by Warehouse
+<Details title="Product Details" open="true">
+<Columns>
+<Card title="SKU: WH-84729" subtitle="Industrial LED Panel Light 40W">
+<Stat label="Total Stock" value="42" />
+<Stat label="Reorder Point" value="20" />
+<Stat label="Last Counted" value="2024-01-15" />
+</Card>
+<Card title="Warehouse Breakdown">
+| Warehouse | Stock | Status | Min Level |
+|---|---|---|---|
+| North (Seattle) | 18 | ⚠️ Low | 10 |
+| South (Dallas) | 5 | 🔴 Critical | 10 |
+| East (Atlanta) | 12 | ⚠️ Low | 10 |
+| West (Phoenix) | 7 | 🔴 Critical | 10 |
+| Central (Chicago) | 0 | 🔴 Out of Stock | 10 |
+</Card>
+</Columns>
+</Details>
+
+---
+
+### 3. Low Stock Alerts
+<Callout tone="danger" title="Critical Stock Levels Detected">
+<Badge tone="danger">South (Dallas): 5 units</Badge>
+<Badge tone="danger">West (Phoenix): 7 units</Badge>
+<Badge tone="danger">Central (Chicago): 0 units</Badge>
+<Badge tone="warning">North (Seattle): 18 units</Badge>
+<Badge tone="warning">East (Atlanta): 12 units</Badge>
+All warehouses below minimum threshold of 10 units. Immediate restock recommended.
+</Callout>
+
+<Progress value="42" max="100" label="Aggregate fill rate: 42%" />
+
+---
+
+### 4. Request Restock
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-84729" hint="Auto-filled from scan" required="true" />
+<Select label="Priority" name="priority" options="Standard (3-5 days) | Expedited (1-2 days) | Emergency (24 hours)" value="Expedited (1-2 days)" required="true" />
+<Checkboxes label="Warehouses to Restock" name="warehouses" options="North (Seattle) | South (Dallas) | East (Atlanta) | West (Phoenix) | Central (Chicago)" value="South (Dallas) | West (Phoenix) | Central (Chicago)" hint="Pre-selected: warehouses at or below critical level" required="true" />
+<Input label="Quantity per Warehouse" name="quantity" type="number" value="25" hint="Suggested: 25 units each to reach 35 (well above 10 min)" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Reason for restock, special instructions, etc." rows="3" />
+<Button>Submit Restock Request</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+
+</Card>

@@ -1,0 +1,78 @@
+# Service Health Overview
+
+Live view for the on-call engineer. <Badge tone="success">All systems operational</Badge>
+
+<Card title="Key metrics right now">
+<Columns>
+<Stat label="Uptime this quarter" value="99.98%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error rate" value="0.12%" change="within normal range" tone="info" icon="warning-circle" />
+<Stat label="Open incidents" value="2" note="1 critical, 1 minor" tone="warning" icon="fire" />
+</Columns>
+</Card>
+
+<Card title="CPU & memory usage — past 24 hours">
+<Chart type="line" x="Time (UTC)" y="Usage (%)">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 58 |
+| 04:00 | 45 | 63 |
+| 06:00 | 52 | 66 |
+| 08:00 | 68 | 72 |
+| 10:00 | 74 | 78 |
+| 12:00 | 71 | 75 |
+| 14:00 | 65 | 73 |
+| 16:00 | 58 | 70 |
+| 18:00 | 62 | 74 |
+| 20:00 | 55 | 68 |
+| 22:00 | 48 | 64 |
+</Chart>
+<Callout tone="info" title="Note">CPU spiked to 74% at 10:00 UTC during the deploy window; memory stayed under 80% all day.</Callout>
+</Card>
+
+<Card title="Filter by region">
+<Radio label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" name="region" value="All regions" />
+</Card>
+
+<Card title="Open incidents">
+| Incident | Severity | Region | Started | Status |
+|---|---|---|---|---|
+| Payment API latency spike | <Badge tone="danger">Critical</Badge> | us-east-1 | 09:42 UTC | Unacknowledged |
+| Search index stale in cache | <Badge tone="warning">Minor</Badge> | eu-west-1 | 14:10 UTC | Acknowledged |
+
+<Details title="Acknowledge incident" open="false">
+<Form name="ack-incident">
+<Select label="Incident" options="Payment API latency spike | Search index stale in cache" name="incident" placeholder="Select incident" />
+<TextArea label="Acknowledgment note (optional)" name="note" placeholder="e.g. Taking over from Alice, investigating now" rows="2" />
+<Button>Acknowledge incident</Button>
+</Form>
+</Details>
+</Card>
+
+<Card title="Slowest endpoints — last 5 minutes">
+<Chart type="bar" x="Endpoint" y="Latency (ms, p95)">
+| Endpoint | Latency |
+|---|---|
+| POST /api/v1/payments | 1840 |
+| GET /api/v1/orders/search | 1210 |
+| POST /api/v1/checkout | 980 |
+| GET /api/v1/users/{id}/profile | 640 |
+| PUT /api/v1/inventory | 510 |
+</Chart>
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold (%)" min="0.1" max="5" step="0.1" value="1" name="error-threshold" />
+<Slider label="Latency threshold — p95 (ms)" min="200" max="3000" step="50" value="1000" name="latency-threshold" />
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+<Callout tone="warning" title="Current thresholds">Error rate > 1% or p95 latency > 1000 ms will page the on-call engineer.</Callout>
+</Card>
+
+<FollowUps>
+- Show me the incident timeline for the payment API
+- Which region has the worst latency right now?
+- What changed in the last deploy?
+</FollowUps>

@@ -1,0 +1,130 @@
+<Card title="PMO Portfolio Review" subtitle="Q2 2025 · Reviewed May 28, 2025">
+<Columns>
+<Form name="quarter-select">
+<Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" value="Q2 2025" />
+<Button>View quarter</Button>
+</Form>
+<Button variant="secondary" ask="export_review">Export review</Button>
+</Columns>
+</Card>
+
+<Callout tone="info" title="Portfolio health summary">Portfolio is on track overall, but Data Warehouse needs executive attention; backend utilization is over capacity.</Callout>
+
+<Columns>
+<Stat label="Active projects" value="5" />
+<Stat label="Overdue milestones" value="3" change="+2 vs last week" />
+<Stat label="Blocked work items" value="3" />
+<Stat label="Avg team utilization" value="89%" change="Backend over capacity" />
+</Columns>
+
+<Columns>
+<Card title="Active projects" subtitle="Owner, deadline and health">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Atlas Migration | Sarah Chen | Jun 11 | <Badge tone="success">Green</Badge> |
+| Portal Redesign | Marcus Webb | Jun 28 | <Badge tone="warning">Amber</Badge> |
+| API Platform | Priya Patel | Jul 10 | <Badge tone="success">Green</Badge> |
+| Data Warehouse | Tom Novak | Jun 05 | <Badge tone="danger">Red</Badge> |
+| Mobile App v2 | Lena Fischer | Jun 20 | <Badge tone="warning">Amber</Badge> |
+</Card>
+<Card title="Overdue milestones">
+- **Data Warehouse** — ETL pipeline complete · due May 20 · <Badge tone="danger">8 days overdue</Badge>
+- **Portal Redesign** — Design sign-off · due May 25 · <Badge tone="warning">3 days overdue</Badge>
+- **Mobile App v2** — Beta build · due May 27 · <Badge tone="warning">1 day overdue</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Budget spent vs allocation" subtitle="Per project, USD">
+**Atlas Migration** — $180,000 / $200,000
+<Progress value="90" max="100" label="90% spent" />
+
+**Portal Redesign** — $95,000 / $150,000
+<Progress value="63" max="100" label="63% spent" />
+
+**API Platform** — $210,000 / $250,000
+<Progress value="84" max="100" label="84% spent" />
+
+**Data Warehouse** — $140,000 / $160,000
+<Progress value="88" max="100" label="88% spent" />
+
+**Mobile App v2** — $75,000 / $120,000
+<Progress value="63" max="100" label="63% spent" />
+</Card>
+<Card title="Team utilization" subtitle="Last 4 weeks">
+**Design** — 92%
+<Progress value="92" max="100" label="Design" />
+
+**Frontend** — 85%
+<Progress value="85" max="100" label="Frontend" />
+
+**Backend** — 110% <Badge tone="danger">Over</Badge>
+<Progress value="100" max="100" label="Backend" />
+
+**QA** — 70%
+<Progress value="70" max="100" label="QA" />
+
+**DevOps** — 88%
+<Progress value="88" max="100" label="DevOps" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Risks" subtitle="By severity">
+| Risk | Project | Severity |
+|---|---|---|
+| Data source delays | Data Warehouse | <Badge tone="danger">Critical</Badge> |
+| Scope creep | Portal Redesign | <Badge tone="danger">High</Badge> |
+| Device fragmentation | Mobile App v2 | <Badge tone="warning">Medium</Badge> |
+| Security review backlog | API Platform | <Badge tone="warning">Medium</Badge> |
+| Vendor API changes | Atlas Migration | <Badge tone="success">Low</Badge> |
+</Card>
+<Card title="Deadlines in the next 14 days">
+- **Jun 05** — Data Warehouse · owner Tom Novak
+- **Jun 11** — Atlas Migration · owner Sarah Chen
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Delivery pace" subtitle="Story points per sprint, last 6 sprints">
+<Chart type="line" x="Sprint" y="Story points">
+| Sprint | Points |
+|---|---|
+| Sprint 1 | 42 |
+| Sprint 2 | 45 |
+| Sprint 3 | 38 |
+| Sprint 4 | 50 |
+| Sprint 5 | 47 |
+| Sprint 6 | 52 |
+</Chart>
+</Card>
+<Card title="Blocked work items">
+- **OAuth token refresh** — blocked by security review · 3 days
+- **Payment webhook retry** — blocked by DevOps · 1 day
+- **Dashboard export CSV** — blocked by design · 2 days
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Request more people" subtitle="Staffing request">
+<Form name="staffing-request">
+<Select label="Project" options="Atlas Migration | Portal Redesign | API Platform | Data Warehouse | Mobile App v2" placeholder="Choose project" />
+<Select label="Role" options="Frontend | Backend | QA | DevOps | Design" placeholder="Choose role" />
+<Slider label="Number of people" min="1" max="5" step="1" value="1" name="headcount" />
+<TextArea label="Justification" placeholder="Why this role is needed" rows="3" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+<Card title="Archive a finished project" subtitle="Move a completed project out of the active portfolio">
+<Form name="archive-project">
+<Select label="Finished project" options="Legacy CMS Decommission | Partner Portal v1 | Billing Migration" placeholder="Choose project" />
+<Button variant="secondary">Archive project</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Drill into Data Warehouse risk details
+- Compare this quarter to Q1 2025
+- View the staffing request queue
+</FollowUps>

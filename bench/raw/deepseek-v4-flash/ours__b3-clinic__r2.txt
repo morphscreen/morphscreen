@@ -1,0 +1,67 @@
+# Clinic reception desk — day view
+
+Tuesday, 24 June 2025 <Badge tone="info">Week 26</Badge>
+
+<Card title="Move to another day" subtitle="Browse a different date or jump back to today">
+<Columns>
+<Form name="jump-to-day">
+<Date label="Pick a date" name="view-date" />
+<Button icon="calendar">Go to day</Button>
+</Form>
+<Button href="#" variant="secondary" icon="arrow-left">Previous day</Button>
+<Button href="#" variant="secondary">Today</Button>
+<Button href="#" variant="secondary" icon="arrow-right">Next day</Button>
+</Columns>
+</Card>
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Patients expected" value="24" note="16 checked in so far" icon="users" tone="info" />
+<Stat label="No-show rate this month" value="10.5%" change="▼ 2.2 pts vs last month" icon="chart-line" tone="success" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Rooms right now" subtitle="3 rooms free: Room 3, Room 5, Room 7">
+<Callout tone="success" title="Free right now">Rooms 3, 5 and 7 are available for the next patient.</Callout>
+
+| Room | Status |
+|---|---|
+| Room 1 | In use |
+| Room 2 | In use |
+| Room 3 | Free |
+| Room 4 | In use |
+| Room 5 | Free |
+| Room 6 | In use |
+| Room 7 | Free |
+</Card>
+
+<Card title="Next patient called out">
+<Callout tone="success" title="Amelia Foster">
+Called to **Room 5** · appointment at **10:00** · already waiting at the desk.
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Today's appointments">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 09:00 | James Okafor | Room 1 | Done |
+| 09:30 | Priya Sharma | Room 2 | Done |
+| **10:00** | **Amelia Foster** | **Room 5** | **Called** |
+| 10:15 | Daniel Reyes | Room 4 | Waiting |
+| 10:30 | Sofia Marchetti | Room 3 | Waiting |
+| 11:00 | Ethan Brooks | Room 6 | Waiting |
+| 11:30 | Grace Liu | Room 5 | Waiting |
+| 12:00 | Omar Farouk | Room 1 | Waiting |
+| 13:00 | Nina Kowalski | Room 3 | Waiting |
+| 13:30 | Leo Tanaka | Room 2 | Waiting |
+| 14:00 | Maya Singh | Room 4 | Waiting |
+</Card>
+
+<Card title="Check in a patient" subtitle="Search today's list and mark the patient as arrived">
+<Form name="check-in">
+<Select label="Patient" placeholder="Choose today's patient" options="Amelia Foster | Daniel Reyes | Sofia Marchetti | Ethan Brooks | Grace Liu | Omar Farouk | Nina Kowalski | Leo Tanaka | Maya Singh | James Okafor | Priya Sharma" required="true" />
+<Button variant="primary">Check in patient</Button>
+</Form>
+</Card>

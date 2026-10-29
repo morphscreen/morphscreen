@@ -1,0 +1,27 @@
+root = Card([header, parcelDetails, deliveryWindow, signatureSection, confirmButtons])
+header = CardHeader("Delivery Confirmation", "Parcel #TRK-784921 — Ready for Final Confirmation")
+parcelDetails = EntityList(parcelRows, "default", parcelHeader)
+parcelHeader = { left: "Field", right: "Details", rightVariant: "text" }
+parcelRows = [
+  { left: "Tracking Number", right: "TRK-784921", rightVariant: "text" },
+  { left: "Sender", right: "Amazon Logistics — Seattle, WA", rightVariant: "text" },
+  { left: "Recipient", right: "Sarah Mitchell, 420 Elm St, Apt 3B, Portland, OR 97204", rightVariant: "text" },
+  { left: "Weight", right: "2.4 kg (5.3 lbs)", rightVariant: "text" },
+  { left: "Dimensions", right: "30 × 22 × 15 cm", rightVariant: "text" },
+  { left: "Service Level", right: "Next-Day Air with Signature Required", rightVariant: "text" }
+]
+deliveryWindow = ContextCardBlock([windowCard], "grid", true)
+windowCard = ContextCardItem("delivery-window", "Delivery Time Window", "Wednesday, June 18, 2025 · 2:00 PM – 4:00 PM (2-hour window)\n\nDriver: James R. (ID: DRV-3391)\nVehicle: VAN-7721 — Electric Delivery Van", "gray")
+signatureSection = EntityList(sigRows, "default", sigHeader)
+sigHeader = { left: "Signature Field", right: "Captured Data", rightVariant: "text" }
+sigRows = [
+  { left: "Recipient Name", right: "Sarah Mitchell", rightVariant: "text" },
+  { left: "Signature", right: "✍️ Captured electronically at delivery", rightVariant: "text" },
+  { left: "Timestamp", right: "2025-06-18 14:23:17 PDT", rightVariant: "text" },
+  { left: "GPS Location", right: "45.5152° N, 122.6784° W (420 Elm St, Portland)", rightVariant: "text" },
+  { left: "Photo Proof", right: "Package at front door — IMG_20250618_142317.jpg", rightVariant: "text" },
+  { left: "Driver Verification", right: "James R. (DRV-3391) — Biometric ID confirmed", rightVariant: "text" }
+]
+confirmButtons = Buttons([confirmBtn, reattemptBtn], "row")
+confirmBtn = Button("Confirm Delivery Complete", { type: "continue_conversation", context: "Mark parcel TRK-784921 as delivered and close the shipment" }, "primary")
+reattemptBtn = Button("Report Issue / Reattempt", { type: "continue_conversation", context: "Report a delivery issue for parcel TRK-784921 and schedule a reattempt" }, "secondary")

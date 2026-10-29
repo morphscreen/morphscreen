@@ -1,0 +1,145 @@
+# Hub Operations Desk — ORD Chicago O'Hare
+
+<Select label="Select Hub" name="hub-select" options="ORD Chicago O'Hare | ATL Atlanta | DFW Dallas/Fort Worth | DEN Denver | LAX Los Angeles | JFK New York | SFO San Francisco | SEA Seattle | LAS Las Vegas | MIA Miami" value="ORD Chicago O'Hare" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="82%" change="+3% vs yesterday" tone="success" />
+<Stat label="On-Time Arrivals" value="79%" change="+1% vs yesterday" tone="info" />
+<Progress value="82" max="100" label="Departure Target: 85%" />
+<Progress value="79" max="100" label="Arrival Target: 85%" />
+</Card>
+
+<Card title="Average Passenger Load Today">
+<Stat label="System Load Factor" value="87%" change="+2% vs avg" tone="info" />
+<Stat label="Total Passengers" value="142,300" change="1,245 flights" tone="neutral" />
+<Progress value="87" max="100" label="Load Factor" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Avg Turnaround" value="42 min" change="-3 min vs target" tone="success" />
+<Stat label="Best Performance" value="28 min" change="UA 2301" tone="neutral" />
+<Stat label="Longest Turnaround" value="67 min" change="UA 1845 (mech)" tone="warning" />
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Total Cancellations" value="12" change="4 weather | 3 crew | 5 mx" tone="danger" />
+<Stat label="Passengers Affected" value="1,840" change="Rebooked: 1,210" tone="warning" />
+<Stat label="Cancellation Rate" value="0.96%" change="Target < 1.5%" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Active Flights — ORD">
+| Flight | Route | Gate | STD | ATD/ETD | Status | Pax | Load |
+|---|---|---|---|---|---|---|---|
+| UA 2301 | ORD → LAX | B12 | 06:00 | 06:02 | **Departed** | 168/179 | 94% |
+| UA 1045 | ORD → DEN | B18 | 06:15 | 06:18 | **Departed** | 142/160 | 89% |
+| UA 548 | ORD → SFO | B24 | 06:30 | 06:35 | **Departed** | 156/179 | 87% |
+| UA 1845 | ORD → JFK | C10 | 07:00 | 08:07 | **Delayed** ⚠️ | 134/160 | 84% |
+| UA 321 | ORD → ATL | B8 | 07:15 | 07:15 | **Boarding** | 148/160 | 93% |
+| UA 907 | ORD → SEA | B14 | 07:30 | 07:45 | **Delayed** ⚠️ | 152/179 | 85% |
+| UA 442 | ORD → LAS | C16 | 07:45 | 07:45 | **Boarding** | 165/179 | 92% |
+| UA 612 | ORD → MIA | B20 | 08:00 | 08:10 | **Delayed** ⚠️ | 138/160 | 86% |
+| UA 778 | ORD → PHX | C22 | 08:15 | — | **Gate Hold** | 159/179 | 89% |
+| UA 205 | ORD → BOS | B6 | 08:30 | — | **On Time** | 124/150 | 83% |
+| UA 1403 | ORD → IAH | C8 | 08:45 | — | **On Time** | 145/160 | 91% |
+| UA 891 | ORD → MCO | B16 | 09:00 | — | **On Time** | 167/179 | 93% |
+</Card>
+
+<Columns>
+<Card title="Delayed Flights — Requiring Action">
+| Flight | Route | Gate | Delay | Reason | Impact |
+|---|---|---|---|---|---|
+| UA 1845 | ORD → JFK | C10 | **+67 min** | Mechanical — hydraulic leak | 12 misconnects |
+| UA 907 | ORD → SEA | B14 | **+15 min** | Late inbound (UA 906) | 8 misconnects |
+| UA 612 | ORD → MIA | B20 | **+10 min** | Crew timing — swap in progress | 5 misconnects |
+| UA 778 | ORD → PHX | C22 | **+22 min** | Gate conflict — holding at C22 | 3 misconnects |
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From → To | Reason |
+|---|---|---|---|
+| 06:42 | UA 321 | B12 → B8 | Gate conflict with UA 2301 |
+| 06:55 | UA 442 | C14 → C16 | Aircraft size upgrade (737→757) |
+| 07:10 | UA 907 | B18 → B14 | Late arrival reassignment |
+| 07:28 | UA 778 | C20 → C22 | De-icing pad proximity |
+| 07:40 | UA 1403 | C12 → C8 | Adjacent gate freed earlier |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Position | Current Duty | Available At | Qualifications | Max Duty Remaining |
+|---|---|---|---|---|---|
+| CRW-4421 | Captain | Off-duty (reserve) | **Now** | 737/757/767 | 10:00 |
+| CRW-4422 | First Officer | Off-duty (reserve) | **Now** | 737/757/767 | 10:00 |
+| CRW-3108 | Captain | UA 1845 (delayed) | 08:30* | 737/757/767/777 | 8:45 |
+| CRW-3109 | First Officer | UA 1845 (delayed) | 08:30* | 737/757/767 | 8:45 |
+| CRW-5501 | FA Lead | Off-duty (reserve) | **Now** | All narrow-body | 12:00 |
+| CRW-5502 | FA | Off-duty (reserve) | **Now** | All narrow-body | 12:00 |
+| CRW-5503 | FA | Off-duty (reserve) | **Now** | All narrow-body | 12:00 |
+| CRW-5504 | FA | UA 907 (delayed) | 08:00* | All narrow-body | 9:30 |
+*Projected availability if delayed flight departs on revised schedule
+</Card>
+
+<Card title="Weather Advisories — ORD">
+<Callout tone="warning" title="Winter Weather Advisory — Active until 14:00 CST">
+<strong>Conditions:</strong> Light snow, visibility 2.5 SM, ceiling 1,200 ft<br />
+<strong>Winds:</strong> 320° at 18 kts, gusting 28 kts<br />
+<strong>Impact:</strong> De-icing required — 18 min avg hold | Runway 28L/10R reduced ops<br />
+<strong>Forecast:</strong> Improving after 12:00 — VFR expected by 14:00
+</Callout>
+
+<Callout tone="info" title="Ground Stop — Lifted 06:45">
+Departure ground stop lifted. Arrival rate increased to 72/hr from 48/hr.
+</Callout>
+
+<Callout tone="neutral" title="TAF ORD 121720Z">
+1218/1318 32018G28KT 2 1/2SN BKN012 FM1200 31015KT 4SN BKN020 FM1214 30012KT 6SCT040 BKN060
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Connections at Risk of Being Missed">
+| Passenger | Inbound | Outbound | Connection Time | Status | Action |
+|---|---|---|---|---|---|
+| J. Martinez (2A) | UA 1845 → JFK | UA 2401 JFK→LHR | **32 min** | **At Risk** | **Rebook to UA 2405 (10:15)** |
+| K. Chen (14C) | UA 1845 → JFK | UA 2401 JFK→LHR | **32 min** | **At Risk** | **Rebook to UA 2405 (10:15)** |
+| R. Patel (8F) | UA 907 → SEA | UA 672 SEA→NRT | **41 min** | **At Risk** | Hold UA 672 / Rebook UA 674 |
+| S. Williams (22B) | UA 907 → SEA | UA 672 SEA→NRT | **41 min** | **At Risk** | Hold UA 672 / Rebook UA 674 |
+| M. Garcia (11D) | UA 612 → MIA | UA 1102 MIA→GRU | **38 min** | **At Risk** | Rebook to UA 1106 (14:20) |
+| D. Kim (19A) | UA 612 → MIA | UA 1102 MIA→GRU | **38 min** | **At Risk** | Rebook to UA 1106 (14:20) |
+| A. Johnson (5C) | UA 778 → PHX | UA 845 PHX→HNL | **45 min** | Marginal | Monitor — likely makeable |
+| P. Brown (16F) | UA 778 → PHX | UA 845 PHX→HNL | **45 min** | Marginal | Monitor — likely makeable |
+| L. Davis (3B) | UA 1845 → JFK | UA 2409 JFK→CDG | **55 min** | **Protected** | On UA 1845 — monitor delay |
+| T. Wilson (21E) | UA 1845 → JFK | UA 2409 JFK→CDG | **55 min** | **Protected** | On UA 1845 — monitor delay |
+| H. Lee (9D) | UA 907 → SEA | UA 674 SEA→ICN | **2 hr 15 min** | Safe | No action needed |
+| J. Taylor (12A) | UA 612 → MIA | UA 1106 MIA→EZE | **2 hr 40 min** | Safe | No action needed |
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Columns>
+<Select label="Select Passenger(s)" name="passenger-select" options="J. Martinez (UA 2401) | K. Chen (UA 2401) | R. Patel (UA 672) | S. Williams (UA 672) | M. Garcia (UA 1102) | D. Kim (UA 1102) | A. Johnson (UA 845) | P. Brown (UA 845) | All at-risk passengers" placeholder="Choose passenger(s) to rebook" required="true" />
+<Select label="New Flight" name="new-flight" options="UA 2405 JFK→LHR 10:15 | UA 2409 JFK→CDG 11:30 | UA 674 SEA→ICN 13:20 | UA 1106 MIA→GRU 14:20 | UA 1106 MIA→EZE 14:20 | UA 847 PHX→HNL 15:45 | Next available (auto-assign)" placeholder="Select replacement flight" required="true" />
+</Columns>
+<Columns>
+<Input label="PNR / Record Locator" name="pnr" placeholder="Auto-filled from selection" />
+<Select label="Cabin" name="cabin" options="Economy | Premium Economy | Business | First | Same as original" value="Same as original" />
+</Columns>
+<Checkboxes label="Options" name="rebook-options" options="Send notification to passenger | Print new boarding pass | Baggage transfer confirmed | Meal voucher issued | Hotel voucher (if overnight)" value="Send notification to passenger | Baggage transfer confirmed" />
+<Button variant="primary" size="large">Rebook Selected Passengers</Button>
+<Button variant="secondary">Review Queue (24 pending)</Button>
+</Form>
+</Card>
+
+<Details title="Operational Notes & Shift Handoff" open="false">
+**06:00 Shift Brief:** Winter weather advisory active. De-icing adding 18 min avg. Ground stop lifted 06:45. Arrival rate 72/hr.<br />
+**07:30 Update:** UA 1845 hydraulic leak — MX estimates 60-90 min repair. Crew swap initiated (CRW-4421/4422). 12 pax misconnects on JFK bank.<br />
+**08:00 Action Items:** 
+- [ ] Confirm UA 1845 repair timeline with MX
+- [ ] Coordinate with JFK ops on UA 2405/2409 capacity
+- [ ] Monitor SEA bank — UA 672 may hold 10 min for UA 907 pax
+- [ ] Reserve crew CRW-4421/4422 assigned to UA 1845 recovery
+- [ ] Gate C10 held for UA 1845 — no conflicting assignments until 09:30
+</Details>

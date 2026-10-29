@@ -1,0 +1,75 @@
+# Training Platform Analytics
+
+<Card title="Cohort Filter" subtitle="Narrow analytics to a specific group">
+<Form name="cohort-filter">
+<Select label="Select cohort" options="All Cohorts | Spring 2025 | Fall 2024 | Summer 2024 | Spring 2024 | Winter 2024" name="cohort" placeholder="All Cohorts" />
+<Button variant="secondary">Apply Filter</Button>
+</Form>
+</Card>
+
+<Card title="Key Metrics This Week">
+<Columns>
+<Stat label="Active Learners" value="847" icon="users" />
+<Stat label="Course Completion Rate" value="68%" icon="check-circle" />
+<Stat label="Avg Quiz Score" value="82%" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Engagement Over Past 8 Weeks">
+<Chart type="line" x="Week" y="Active Learners">
+| Week | Active Learners |
+|---|---|
+| Week 1 | 720 |
+| Week 2 | 745 |
+| Week 3 | 768 |
+| Week 4 | 802 |
+| Week 5 | 815 |
+| Week 6 | 830 |
+| Week 7 | 842 |
+| Week 8 | 847 |
+</Chart>
+</Card>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="bar" x="Course" y="Enrolled Learners">
+| Course | Enrolled Learners |
+|---|---|
+| Python Fundamentals | 412 |
+| Data Science Essentials | 385 |
+| Web Development Bootcamp | 348 |
+| Machine Learning A-Z | 291 |
+| Cloud Architecture | 237 |
+| Cybersecurity Basics | 184 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+<Badge tone="danger">6 learners flagged</Badge>
+
+| Learner | Course | Last Active | Quiz Avg | Risk Level |
+|---|---|---|---|---|
+| Alex Chen | Python Fundamentals | 5 days ago | 54% | <Badge tone="danger">High</Badge> |
+| Maria Santos | Data Science Essentials | 7 days ago | 48% | <Badge tone="danger">High</Badge> |
+| James Wilson | Web Development | 4 days ago | 61% | <Badge tone="warning">Medium</Badge> |
+| Priya Patel | Machine Learning | 6 days ago | 59% | <Badge tone="warning">Medium</Badge> |
+| Omar Hassan | Cloud Architecture | 8 days ago | 52% | <Badge tone="danger">High</Badge> |
+| Lily Zhang | Cybersecurity Basics | 3 days ago | 65% | <Badge tone="warning">Medium</Badge> |
+
+<Button variant="secondary" icon="envelope">Message All At-Risk Learners</Button>
+</Card>
+
+<Card title="Message Cohort" subtitle="Send a message to the selected cohort">
+<Form name="message-cohort">
+<Input label="Subject" name="subject" placeholder="Weekly check-in" required />
+<TextArea label="Message" name="message" placeholder="Hi everyone, here's your weekly progress update..." rows="4" required />
+<Button variant="primary" icon="paper-plane-right">Send to Cohort</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the trend for course completion rates
+- Which courses have the most at-risk learners?
+- Compare engagement between Spring 2025 and Fall 2024 cohorts
+- Send a personalized message to Alex Chen
+- Show me quiz score distribution across all courses
+</FollowUps>

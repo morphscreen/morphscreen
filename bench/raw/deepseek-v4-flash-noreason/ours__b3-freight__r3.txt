@@ -1,0 +1,81 @@
+# Logistics Coordinator Board
+
+<Callout tone="neutral" title="Last refreshed">Data refreshed 8 minutes ago — 14:32 UTC</Callout>
+
+<Card title="Key metrics" subtitle="This month to date">
+<Columns>
+<Stat label="On-time percentage" value="94.2%" change="+1.8% vs last month" tone="success" icon="check-circle" />
+<Stat label="Average cost per shipment" value="$412.60" change="-3.4% vs last month" tone="info" icon="currency-dollar" />
+<Stat label="Shipments in transit" value="37" change="+5 today" tone="neutral" icon="truck" />
+<Stat label="Delayed shipments" value="3" change="2 more than yesterday" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in transit" subtitle="Click the flag icon to flag a shipment for review">
+<SearchByRoute />
+
+| Shipment ID | Origin | Destination | ETA | Status | Flag |
+|---|---|---|---|---|---|
+| SH-1042 | Los Angeles, CA | Chicago, IL | Today, 18:30 | <Badge tone="success">On time</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1043 | Seattle, WA | Denver, CO | Today, 21:15 | <Badge tone="success">On time</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1044 | Miami, FL | New York, NY | Tomorrow, 09:45 | <Badge tone="warning">Delayed 4h</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1045 | Dallas, TX | Phoenix, AZ | Tomorrow, 14:20 | <Badge tone="success">On time</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1046 | Atlanta, GA | Boston, MA | Tomorrow, 17:00 | <Badge tone="success">On time</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1047 | Portland, OR | Salt Lake City, UT | Wed, 08:30 | <Badge tone="danger">Delayed 9h</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1048 | Houston, TX | Nashville, TN | Wed, 12:10 | <Badge tone="success">On time</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1049 | San Francisco, CA | Austin, TX | Wed, 16:45 | <Badge tone="success">On time</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+| SH-1050 | Philadelphia, PA | Columbus, OH | Wed, 19:55 | <Badge tone="warning">Delayed 2h</Badge> | <Button variant="secondary" size="small" label="Flag">🚩</Button> |
+
+<Callout tone="warning" title="Delayed shipments">3 shipments are delayed. The most impacted route is Portland → Salt Lake City (SH-1047), delayed by 9 hours due to weather.</Callout>
+</Card>
+
+<Card title="Volume split by carrier" subtitle="Share of shipments this month">
+<Chart type="donut" title="Carrier share">
+| Carrier | Shipments |
+|---|---|
+| SwiftLine Freight | 42 |
+| NorthBridge Logistics | 28 |
+| Atlas Express | 18 |
+| Coastal Carriers | 12 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume — past two months">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 (Mar 3) | 118 |
+| W2 (Mar 10) | 132 |
+| W3 (Mar 17) | 125 |
+| W4 (Mar 24) | 141 |
+| W5 (Mar 31) | 137 |
+| W6 (Apr 7) | 149 |
+| W7 (Apr 14) | 156 |
+| W8 (Apr 21) | 163 |
+</Chart>
+</Card>
+
+<Card title="Flagged shipments" subtitle="Shipments needing attention">
+<Details title="Show flagged shipments" open=false>
+| Shipment ID | Route | Reason | Flagged by |
+|---|---|---|---|
+| SH-1047 | Portland → Salt Lake City | Weather delay, 9h | M. Chen |
+| SH-1044 | Miami → New York | Customs hold | J. Alvarez |
+</Details>
+</Card>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Input label="Origin" placeholder="e.g. Los Angeles" hint="City or ZIP code" />
+<Input label="Destination" placeholder="e.g. Chicago" hint="City or ZIP code" />
+<Button label="Search routes">Search</Button>
+<Button variant="secondary" label="Clear">Clear</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed history for SH-1047
+- Which carrier has the best on-time performance?
+- What caused the cost increase this month?
+- Export the full shipment list as CSV
+</FollowUps>

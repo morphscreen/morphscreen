@@ -1,0 +1,190 @@
+# Live-Ops Command Center
+
+<Columns>
+<Stat label="Players Online" value="48,213" change="+5.2% vs 1h ago" icon="users" tone="success" />
+<Stat label="DAU" value="1.2M" change="+3.1% vs yesterday" icon="chart-line" />
+<Stat label="MAU" value="8.7M" change="+1.4% vs last month" icon="calendar" />
+<Stat label="Revenue Today" value="$184,230" change="+12.8% vs yesterday" icon="trend-up" tone="success" />
+<Stat label="ARPU" value="$0.153" change="+4.2% vs yesterday" icon="currency-circle-dollar" />
+</Columns>
+
+<Card title="Revenue Today" subtitle="Live tracking">
+<Chart type="area" x="Hour" y="USD">
+| Hour | Revenue |
+|---|---|
+| 00:00 | 4200 |
+| 02:00 | 3100 |
+| 04:00 | 2400 |
+| 06:00 | 3800 |
+| 08:00 | 7200 |
+| 10:00 | 9800 |
+| 12:00 | 12400 |
+| 14:00 | 15800 |
+| 16:00 | 18400 |
+| 18:00 | 22600 |
+| 20:00 | 31200 |
+| 22:00 | 28400 |
+| Now | 24330 |
+</Chart>
+</Card>
+
+<Card title="Session Length — Last 14 Days" subtitle="Average minutes per session">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session |
+|---|---|
+| D-13 | 14.2 |
+| D-12 | 15.1 |
+| D-11 | 13.8 |
+| D-10 | 16.4 |
+| D-9 | 15.9 |
+| D-8 | 14.7 |
+| D-7 | 17.2 |
+| D-6 | 18.3 |
+| D-5 | 16.8 |
+| D-4 | 19.1 |
+| D-3 | 18.6 |
+| D-2 | 20.4 |
+| D-1 | 21.2 |
+| Today | 19.8 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items" subtitle="Last 24 hours">
+| Item | Units Sold | Revenue |
+|---|---|---|
+| Dragonflame Bundle | 12,480 | $37,440 |
+| Elite Battle Pass | 8,210 | $32,840 |
+| 500 Gems Pack | 15,320 | $22,980 |
+| Phoenix Skin | 6,540 | $19,620 |
+| Starter Pack | 18,900 | $18,900 |
+| Golden Loot Crate | 9,870 | $14,805 |
+</Card>
+<Button variant="secondary">View full catalog</Button>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Stat label="NA East" value="98.2%" note="14,203 players" icon="server" tone="success" />
+<Stat label="NA West" value="97.4%" note="8,871 players" icon="server" tone="success" />
+<Stat label="EU Central" value="99.1%" note="12,540 players" icon="server" tone="success" />
+<Stat label="Asia Pacific" value="94.8%" note="9,102 players" icon="server" tone="warning" />
+<Stat label="South America" value="91.3%" note="3,497 players" icon="server" tone="warning" />
+<Stat label="Oceania" value="88.6%" note="1,204 players" icon="server" tone="danger" />
+</Columns>
+<Button ask="Focus on Asia Pacific region">Focus: Asia Pacific</Button>
+<Button ask="Focus on South America region">Focus: South America</Button>
+<Button ask="Focus on Oceania region">Focus: Oceania</Button>
+</Card>
+
+<Card title="Crash Rate by App Version" subtitle="Last 24 hours">
+<Chart type="horizontal" x="Version" y="Crash rate %">
+| Version | Crash Rate |
+|---|---|
+| v2.4.1 | 0.42 |
+| v2.4.0 | 0.68 |
+| v2.3.9 | 1.24 |
+| v2.3.8 | 0.31 |
+| v2.3.7 | 0.57 |
+</Chart>
+<Callout tone="warning" title="v2.4.0 elevated">Crash rate 0.68% is above our 0.5% threshold — investigate before next release.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Columns>
+<Card title="Running Now" subtitle="2 active">
+<Badge tone="success">Summer Festival</Badge>
+<p>Ends in <b>2d 14h</b></p>
+<Badge tone="success">Double XP Weekend</Badge>
+<p>Ends in <b>1d 06h</b></p>
+</Card>
+<Card title="Upcoming" subtitle="3 scheduled">
+<Badge tone="info">Halloween Siege</Badge>
+<p>Starts in <b>5d 08h</b></p>
+<Badge tone="info">Community Challenge</Badge>
+<p>Starts in <b>8d 12h</b></p>
+<Badge tone="info">Winter Gala</Badge>
+<p>Starts in <b>30d 00h</b></p>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Moderation Queue">
+<Columns>
+<Card title="Player Reports" subtitle="Awaiting review">
+<Stat label="Total" value="342" tone="danger" icon="flag" />
+<Stat label="Most common" value="Cheating" note="128 reports" />
+<Stat label="Avg age" value="3.2h" />
+<Button variant="primary" ask="Open player reports queue">Review reports</Button>
+</Card>
+<Card title="Ban Appeals" subtitle="Awaiting review">
+<Stat label="Total" value="87" tone="warning" icon="gavel" />
+<Stat label="Most common" value="False positive" note="31 appeals" />
+<Stat label="Avg age" value="5.8h" />
+<Button variant="primary" ask="Open ban appeals queue">Review appeals</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="In-Game Currency Inflation" subtitle="Total gems in circulation">
+<Chart type="area" x="Week" y="Gems (millions)">
+| Week | Gems |
+|---|---|
+| W-12 | 412 |
+| W-10 | 438 |
+| W-8 | 451 |
+| W-6 | 489 |
+| W-4 | 512 |
+| W-2 | 547 |
+| This week | 583 |
+</Chart>
+<Callout tone="warning" title="Inflation rising 6.6% this month">Gems in circulation growing faster than sink events. Consider a sink event or adjust drop rates.</Callout>
+<Button ask="Plan a currency sink event">Plan a sink event</Button>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Card title="Experiment A: Battle Pass Price" subtitle="A/B test — 10% of players">
+<Badge tone="info">Live</Badge>
+<Stat label="Variant A" value="$9.99" note="Conversion 4.2%" />
+<Stat label="Variant B" value="$7.99" note="Conversion 5.8%" />
+<Stat label="Lift" value="+38.1%" tone="success" />
+<Progress value="72" max="100" label="Confidence" tone="success" />
+<p>Variant B winning — consider rollout in 3 days.</p>
+</Card>
+<Card title="Experiment B: Daily Reward Tiers" subtitle="A/B test — 15% of players">
+<Badge tone="info">Live</Badge>
+<Stat label="Variant A" value="Current" note="D1 retention 38.2%" />
+<Stat label="Variant B" value="New" note="D1 retention 41.7%" />
+<Stat label="Lift" value="+9.2%" tone="success" />
+<Progress value="54" max="100" label="Confidence" tone="warning" />
+<p>Not yet significant — keep running 4 more days.</p>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Draft Patch Notes" subtitle="v2.4.2 — In progress">
+<Form name="patch-notes">
+<Input label="Version" value="2.4.2" />
+<Input label="Title" placeholder="Titan's Fall Update" />
+<TextArea label="Patch notes" rows="8" placeholder="## Balance Changes&#10;- Reduced Dragonflame damage 12%&#10;- Increased healer mana regen 8%&#10;&#10;## Bug Fixes&#10;- Fixed crash on iOS 17.4&#10;- Fixed shop refresh bug&#10;&#10;## New Content&#10;- Halloween Siege event preview" />
+<Button>Save draft</Button>
+<Button variant="secondary" ask="Preview patch notes">Preview</Button>
+<Button variant="danger" ask="Submit patch notes for review">Submit for review</Button>
+</Form>
+</Card>
+
+<Card title="Hotfix Deployment" subtitle="Emergency fixes">
+<Form name="hotfix">
+<Select label="Server region" placeholder="Choose region" options="All regions | NA East | NA West | EU Central | Asia Pacific | South America | Oceania" />
+<Radio label="Hotfix type" options="Crash fix | Server stability | Anti-cheat update | Currency exploit" />
+<TextArea label="Hotfix notes" rows="4" placeholder="Describe what this hotfix addresses…" />
+<Button variant="danger" ask="Deploy hotfix now">Ship hotfix</Button>
+<Button variant="secondary">Schedule for off-peak</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the Asia Pacific server details
+- What's in the moderation queue?
+- Draft a hotfix for the v2.4.0 crash issue
+- Compare revenue across regions
+</FollowUps>

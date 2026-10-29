@@ -1,0 +1,52 @@
+# E-commerce Operations Desk
+
+<Columns>
+<Stat label="Orders today" value="128" icon="shopping-cart" change="+12% vs yesterday" tone="success" />
+<Stat label="Revenue today" value="$18,420" icon="currency-dollar" change="+8% vs yesterday" tone="success" />
+<Stat label="Avg order value" value="$143.91" icon="chart-line" change="+2% vs last week" tone="info" />
+<Stat label="Refund rate (month)" value="3.2%" icon="arrow-counter-clockwise" change="-0.4 pts vs last month" tone="success" />
+</Columns>
+
+<Card title="Order volume — last 4 weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 742 |
+| Week 2 | 815 |
+| Week 3 | 903 |
+| Week 4 | 986 |
+</Chart>
+</Card>
+
+<Card title="Recent orders">
+<Radio label="Filter by status" options="All | Pending | Paid | Fulfilled | Shipped | Delivered | Refunded" name="status-filter" value="All" />
+<Input label="Search customer" type="search" name="customer-search" placeholder="Type a customer name…" hint="Matches partial names" />
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Ava Thompson | $214.50 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark fulfilled</Button> |
+| #10481 | Liam Chen | $89.99 | <Badge tone="info">Paid</Badge> | <Button variant="primary" size="small">Mark fulfilled</Button> |
+| #10480 | Sofia Rossi | $156.20 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10479 | Noah Patel | $47.75 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10478 | Emma Wilson | $312.00 | <Badge tone="success">Shipped</Badge> | — |
+| #10477 | Lucas García | $128.40 | <Badge tone="success">Delivered</Badge> | — |
+| #10476 | Mia Johnson | $74.10 | <Badge tone="success">Delivered</Badge> | — |
+| #10475 | Ethan Brown | $205.30 | <Badge tone="danger">Refunded</Badge> | — |
+| #10474 | Isabella Moore | $92.85 | <Badge tone="success">Delivered</Badge> | — |
+| #10473 | Oliver Davis | $168.60 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark fulfilled</Button> |
+</Card>
+
+<Card title="Fulfill an order">
+<Callout tone="info" title="Bulk fulfill">Select any pending or paid order above to mark it fulfilled in one tap.</Callout>
+<Form name="fulfill-order">
+<Input label="Order ID" name="order-id" placeholder="e.g. #10482" hint="Orders starting with #" required="true" />
+<Button variant="primary" icon="check">Mark as fulfilled</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me orders that are pending payment
+- What’s driving today’s refund rate?
+- Compare this week’s revenue to last week
+- Which customers have ordered more than once this month?
+</FollowUps>

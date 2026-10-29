@@ -1,0 +1,224 @@
+# City Operations Center
+
+<Select label="Focus District" name="district" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastside | Westside | Riverside | University | Industrial | Harbor" value="All Districts" />
+
+<Columns>
+<Card title="Congestion Right Now">
+<Stat label="Congestion Index" value="72/100" change="+5 vs last hour" tone="warning" />
+<Progress value="72" max="100" label="Current Level" tone="warning" />
+</Card>
+
+<Card title="Transit Punctuality">
+<Stat label="On-Time Performance" value="87%" change="-2% vs yesterday" tone="info" />
+<Progress value="87" max="100" label="Punctuality" tone="info" />
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI" title="Air Quality Index (Lower is Better)">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Northside | 42 |
+| Eastside | 55 |
+| Westside | 38 |
+| Riverside | 31 |
+| University | 47 |
+| Industrial | 89 |
+| Harbor | 52 |
+</Chart>
+</Card>
+
+<Card title="Energy Use — Past Week">
+<Chart type="line" x="Day" y="MWh" title="Daily Energy Consumption">
+| Day | Consumption |
+|---|---|
+| Mon | 1420 |
+| Tue | 1380 |
+| Wed | 1450 |
+| Thu | 1410 |
+| Fri | 1390 |
+| Sat | 1280 |
+| Sun | 1220 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today">
+<Stat label="Current Consumption" value="42.3M gal" change="+3.2% vs avg" tone="neutral" />
+<Stat label="Reservoir Level" value="78%" change="-1% vs yesterday" tone="success" />
+<Progress value="42.3" max="55" label="Daily Capacity Used" tone="info" />
+</Card>
+
+<Card title="Current Weather">
+<Stat label="Temperature" value="68°F" tone="neutral" />
+<Stat label="Humidity" value="62%" tone="neutral" />
+<Stat label="Wind" value="8 mph NW" tone="neutral" />
+<Stat label="Condition" value="Partly Cloudy" tone="info" />
+<Badge tone="info">Updated 2 min ago</Badge>
+</Card>
+
+<Card title="Parking Availability Downtown">
+<Stat label="Available Spaces" value="1,247 / 3,800" change="33% free" tone="success" />
+<Progress value="33" max="100" label="Occupancy" tone="success" />
+<Badge tone="success">Good Availability</Badge>
+</Card>
+
+<Card title="Service Request Backlog">
+<Stat label="Open Requests" value="1,284" change="+23 today" tone="warning" />
+<Stat label="Avg Response Time" value="4.2 hrs" change="+0.3 hrs" tone="warning" />
+<Chart type="donut" title="By Category">
+| Category | Count |
+|---|---|
+| Potholes | 342 |
+| Streetlights | 287 |
+| Signage | 198 |
+| Drainage | 156 |
+| Other | 301 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (12)">
+| ID | Location | Type | Severity | Status | Since |
+|---|---|---|---|---|---|
+| INC-0442 | 5th & Main | Water Main Break | <Badge tone="danger">Critical</Badge> | Active | 08:15 |
+| INC-0441 | I-90 Mile 12 | Multi-Vehicle Crash | <Badge tone="danger">Critical</Badge> | Active | 08:32 |
+| INC-0440 | Riverside Park | Gas Leak | <Badge tone="warning">High</Badge> | Contained | 07:45 |
+| INC-0439 | Downtown Station | Power Outage | <Badge tone="warning">High</Badge> | Active | 07:20 |
+| INC-0438 | University Ave | Signal Malfunction | <Badge tone="info">Medium</Badge> | Dispatched | 06:55 |
+| INC-0437 | Harbor Bridge | Debris on Road | <Badge tone="info">Medium</Badge> | Active | 06:30 |
+| INC-0436 | Northside Library | Elevator Entrapment | <Badge tone="info">Medium</Badge> | Resolved | 05:45 |
+| INC-0435 | Eastside Mall | Fire Alarm | <Badge tone="neutral">Low</Badge> | False Alarm | 05:10 |
+| INC-0434 | Westside Depot | Fuel Spill | <Badge tone="warning">High</Badge> | Cleanup | 04:55 |
+| INC-0433 | Industrial Zone | Chemical Odor | <Badge tone="warning">High</Badge> | Investigating | 04:20 |
+| INC-0432 | 3rd & Pine | Sewer Backup | <Badge tone="info">Medium</Badge> | Dispatched | 03:50 |
+| INC-0431 | Harbor Tunnel | Lighting Failure | <Badge tone="neutral">Low</Badge> | Scheduled | 02:15 |
+</Tab>
+<Tab title="Critical (2)">
+| ID | Location | Type | Severity | Status | Since |
+|---|---|---|---|---|---|
+| INC-0442 | 5th & Main | Water Main Break | <Badge tone="danger">Critical</Badge> | Active | 08:15 |
+| INC-0441 | I-90 Mile 12 | Multi-Vehicle Crash | <Badge tone="danger">Critical</Badge> | Active | 08:32 |
+</Tab>
+<Tab title="High (4)">
+| ID | Location | Type | Severity | Status | Since |
+|---|---|---|---|---|---|
+| INC-0440 | Riverside Park | Gas Leak | <Badge tone="warning">High</Badge> | Contained | 07:45 |
+| INC-0439 | Downtown Station | Power Outage | <Badge tone="warning">High</Badge> | Active | 07:20 |
+| INC-0434 | Westside Depot | Fuel Spill | <Badge tone="warning">High</Badge> | Cleanup | 04:55 |
+| INC-0433 | Industrial Zone | Chemical Odor | <Badge tone="warning">High</Badge> | Investigating | 04:20 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Emergency Vehicles Deployed">
+| Unit | Type | Status | Location | Incident |
+|---|---|---|---|---|
+| ENG-12 | Fire Engine | En Route | 5th & Main | INC-0442 |
+| LAD-03 | Ladder Truck | On Scene | 5th & Main | INC-0442 |
+| AMB-07 | Ambulance | On Scene | I-90 Mile 12 | INC-0441 |
+| AMB-11 | Ambulance | En Route | I-90 Mile 12 | INC-0441 |
+| HAZ-02 | HazMat | On Scene | Riverside Park | INC-0440 |
+| POL-23 | Police | On Scene | I-90 Mile 12 | INC-0441 |
+| POL-45 | Police | En Route | Downtown Station | INC-0439 |
+| UTI-08 | Utility | On Scene | Downtown Station | INC-0439 |
+| UTI-14 | Utility | En Route | Westside Depot | INC-0434 |
+| ENG-19 | Fire Engine | Staging | Industrial Zone | INC-0433 |
+</Card>
+
+<Columns>
+<Card title="Public Events This Weekend">
+| Event | Date | Time | Location | Expected Attendance | Impact |
+|---|---|---|---|---|---|
+| Riverside Music Festival | Sat 14 | 12:00-22:00 | Riverside Park | 15,000 | High |
+| Downtown Art Walk | Sat 14 | 17:00-23:00 | Downtown Core | 8,000 | Medium |
+| University Homecoming | Sat 14 | 10:00-16:00 | University District | 12,000 | High |
+| Harbor Marathon | Sun 15 | 07:00-12:00 | Harbor Loop | 5,000 | Medium |
+| Westside Farmers Market | Sun 15 | 09:00-14:00 | Westside Plaza | 3,000 | Low |
+| Industrial Job Fair | Sun 15 | 10:00-16:00 | Convention Center | 4,500 | Medium |
+</Card>
+
+<Card title="Citizen Reports (Live)">
+<Callout tone="info" title="Live Feed">New reports appear at top. Auto-refresh: 30s</Callout>
+| Time | Category | Location | Description | Status |
+|---|---|---|---|---|
+| 08:47 | Pothole | 12th & Oak | Large pothole in right lane | New |
+| 08:43 | Streetlight | 400 Block Elm | Flickering light pole #442 | New |
+| 08:39 | Graffiti | Riverside Bridge | Tagging on north wall | Triaged |
+| 08:35 | Noise | University & 5th | Construction after hours | Assigned |
+| 08:31 | Trash | Harbor Walk | Overflowing bins near pier | Dispatched |
+| 08:28 | Signal | 3rd & Pine | Left turn arrow not cycling | New |
+| 08:22 | Water | 1800 Block Main | Low pressure reported | Investigating |
+| 08:19 | Parking | Downtown Garage | Elevator out of service | Acknowledged |
+</Card>
+</Columns>
+
+<Card title="Roadworks Planned This Month">
+<Chart type="timeline" title="Scheduled Roadworks">
+| Project | District | Start | End | Status | Impact |
+|---|---|---|---|---|---|
+| I-90 Resurfacing (Mi 8-15) | Eastside | Oct 2 | Oct 18 | In Progress | High |
+| 5th Ave Bridge Repair | Downtown | Oct 5 | Oct 22 | Scheduled | High |
+| Main St Water Main Replacement | Northside | Oct 9 | Oct 25 | Scheduled | Medium |
+| University Transit Lane | University | Oct 12 | Nov 2 | Scheduled | Medium |
+| Harbor Tunnel Lighting | Harbor | Oct 15 | Oct 29 | Scheduled | Low |
+| Industrial Park Access Rd | Industrial | Oct 18 | Nov 5 | Planned | Low |
+| Westside Bike Lane Phase 2 | Westside | Oct 22 | Nov 12 | Planned | Medium |
+| Riverside Pedestrian Plaza | Riverside | Oct 25 | Nov 15 | Planned | Medium |
+</Chart>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+| Asset ID | Asset Type | Location | Last Service | Due Date | Priority | Status |
+|---|---|---|---|---|---|---|
+| BRG-044 | Bridge | Harbor Bridge | Mar 15, 2024 | Oct 15, 2024 | <Badge tone="danger">Overdue</Badge> | Scheduled |
+| PMP-012 | Pump Station | Riverside | Apr 22, 2024 | Oct 22, 2024 | <Badge tone="warning">Due Soon</Badge> | Planned |
+| SUB-088 | Substation | Downtown | May 10, 2024 | Nov 10, 2024 | <Badge tone="info">On Track</Badge> | — |
+| TNK-003 | Water Tower | Northside | Jun 1, 2024 | Dec 1, 2024 | <Badge tone="info">On Track</Badge> | — |
+| SGN-210 | Traffic System | Citywide | Jul 15, 2024 | Jan 15, 2025 | <Badge tone="info">On Track</Badge> | — |
+| SWR-055 | Sewer Main | Industrial | Aug 3, 2024 | Feb 3, 2025 | <Badge tone="info">On Track</Badge> | — |
+| LGT-340 | Streetlights | Westside | Sep 12, 2024 | Mar 12, 2025 | <Badge tone="info">On Track</Badge> | — |
+| BRG-019 | Bridge | University Ave | Sep 28, 2024 | Mar 28, 2025 | <Badge tone="info">On Track</Badge> | — |
+</Card>
+
+<Columns>
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Incident" name="incident" placeholder="Select incident" options="INC-0442: Water Main Break - 5th & Main (Critical) | INC-0441: Multi-Vehicle Crash - I-90 Mile 12 (Critical) | INC-0440: Gas Leak - Riverside Park (High) | INC-0439: Power Outage - Downtown Station (High) | INC-0438: Signal Malfunction - University Ave (Medium) | INC-0437: Debris on Road - Harbor Bridge (Medium) | INC-0434: Fuel Spill - Westside Depot (High) | INC-0433: Chemical Odor - Industrial Zone (High) | INC-0432: Sewer Backup - 3rd & Pine (Medium) | INC-0431: Lighting Failure - Harbor Tunnel (Low)" required="true" />
+<Select label="Crew Type" name="crewType" placeholder="Select crew type" options="Fire Engine | Ladder Truck | Ambulance | HazMat | Police | Utility | Public Works | Tow Truck | Sweeper | Inspector" required="true" />
+<Select label="Unit" name="unit" placeholder="Select available unit" options="ENG-12 (Available) | ENG-19 (Staging) | LAD-03 (On Scene) | AMB-07 (On Scene) | AMB-11 (En Route) | HAZ-02 (On Scene) | POL-23 (On Scene) | POL-45 (En Route) | UTI-08 (On Scene) | UTI-14 (En Route) | PW-05 (Available) | PW-12 (Available) | TOW-03 (Available) | SWP-07 (Available) | INS-04 (Available)" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Special instructions, hazards, access info..." rows="3" />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="Alert Type" name="alertType" placeholder="Select alert type" options="Emergency Alert | Traffic Advisory | Air Quality Alert | Weather Warning | Service Disruption | Event Notice | Test Message" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Extreme | Severe | Moderate | Minor | Informational" required="true" />
+<Select label="Target Area" name="targetArea" placeholder="Select target area" options="Citywide | Downtown | Northside | Eastside | Westside | Riverside | University | Industrial | Harbor | Custom Polygon" required="true" />
+<Input label="Headline" name="headline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" name="message" placeholder="Full alert message with instructions..." rows="4" required="true" />
+<Input label="Expires" name="expires" type="datetime-local" placeholder="Alert expiration" required="true" />
+<Switch label="Send via SMS" name="sms" value="true" />
+<Switch label="Send via App Push" name="push" value="true" />
+<Switch label="Post to Social Media" name="social" value="true" />
+<Switch label="Broadcast on Emergency Radio" name="radio" value="false" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Preview</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show incident details for INC-0442
+- View crew availability for Northside district
+- Generate daily operations report
+- Check reservoir levels in detail
+- Review citizen report trends this week
+</FollowUps>

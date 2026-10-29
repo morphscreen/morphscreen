@@ -1,0 +1,145 @@
+# Admin Overview
+
+<Card title="Reporting Period">
+<Form name="reporting-period">
+<Select label="Period" options="Last 7 days | Last 30 days | Last 90 days | This quarter | This year" name="period" value="Last 30 days" />
+<Button>Apply</Button>
+</Form>
+</Card>
+
+<Card title="Revenue & Growth">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$84,320" change="+3.2%" note="vs last month" tone="success" icon="trend-up" />
+<Stat label="Annual Recurring Revenue" value="$1,011,840" change="+12.1%" note="vs last year" tone="success" icon="chart-line" />
+<Stat label="Churn This Month" value="2.4%" change="-0.3%" note="improving" tone="warning" icon="trend-down" />
+<Stat label="Current NPS" value="62" change="+4" note="good" tone="info" icon="smiley" />
+</Columns>
+</Card>
+
+<Card title="New Signups (Last 90 Days)">
+<Chart type="bar" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 55 |
+| Week 4 | 61 |
+| Week 5 | 47 |
+| Week 6 | 53 |
+| Week 7 | 59 |
+| Week 8 | 48 |
+| Week 9 | 64 |
+| Week 10 | 72 |
+| Week 11 | 58 |
+| Week 12 | 67 |
+| Week 13 | 71 |
+</Chart>
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 184 |
+| Pro | 127 |
+| Enterprise | 43 |
+</Chart>
+</Card>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Seats | Monthly Spend |
+|---|---|---|
+| Acme Corp | 42 | $4,200 |
+| GlobalTech Inc | 38 | $3,800 |
+| MedSolutions | 31 | $3,100 |
+| FinServ Group | 28 | $2,800 |
+| DataFlow Ltd | 25 | $2,500 |
+| CloudNine | 22 | $2,200 |
+| BuildRight | 19 | $1,900 |
+| GreenEnergy Co | 17 | $1,700 |
+| RetailMax | 15 | $1,500 |
+| EduLearn | 14 | $1,400 |
+</Card>
+
+<Card title="Seat Utilization">
+<Columns>
+<Stat label="Total Seats" value="2,450" icon="users" />
+<Stat label="Used Seats" value="1,862" icon="user-check" />
+<Stat label="Utilization" value="76%" change="+2%" note="this month" tone="info" icon="gauge" />
+</Columns>
+<Progress value="76" max="100" label="Seat utilization" tone="info" />
+</Card>
+
+<Card title="Accounts at Risk">
+<Columns>
+<Card title="Acme Corp">
+<Badge tone="danger">High Risk</Badge>
+<Stat label="Reason" value="No login in 21 days" icon="clock" />
+<Stat label="Seats" value="42" />
+<Stat label="Spend" value="$4,200/mo" />
+<Button variant="secondary" ask="Show Acme Corp details and next steps">View Details</Button>
+</Card>
+<Card title="GlobalTech Inc">
+<Badge tone="warning">Medium Risk</Badge>
+<Stat label="Reason" value="Support ticket escalated — unresolved 5 days" icon="warning-circle" />
+<Stat label="Seats" value="38" />
+<Stat label="Spend" value="$3,800/mo" />
+<Button variant="secondary" ask="Show GlobalTech Inc details and next steps">View Details</Button>
+</Card>
+<Card title="MedSolutions">
+<Badge tone="warning">Medium Risk</Badge>
+<Stat label="Reason" value="Usage dropped 40% this month" icon="trend-down" />
+<Stat label="Seats" value="31" />
+<Stat label="Spend" value="$3,100/mo" />
+<Button variant="secondary" ask="Show MedSolutions details and next steps">View Details</Button>
+</Card>
+</Columns>
+<Button ask="Show all accounts at risk">View All At-Risk Accounts</Button>
+</Card>
+
+<Card title="Failed Payments">
+| Customer | Amount | Date | Status |
+|---|---|---|---|
+| DataFlow Ltd | $2,500 | 2025-04-02 | Declined |
+| BuildRight | $1,900 | 2025-04-05 | Card expired |
+| RetailMax | $1,500 | 2025-04-07 | Insufficient funds |
+<Button ask="Retry payment for DataFlow Ltd">Retry DataFlow Ltd</Button>
+<Button ask="Retry payment for BuildRight">Retry BuildRight</Button>
+<Button ask="Retry payment for RetailMax">Retry RetailMax</Button>
+</Card>
+
+<Card title="Feature Adoption (Newest Features)">
+<Columns>
+<Card title="AI Reports">
+<Stat label="Users" value="342" icon="users" />
+<Progress value="18" max="100" label="Adoption" tone="info" />
+<Badge tone="info">18%</Badge>
+</Card>
+<Card title="Dashboard Export">
+<Stat label="Users" value="521" icon="users" />
+<Progress value="28" max="100" label="Adoption" tone="info" />
+<Badge tone="info">28%</Badge>
+</Card>
+<Card title="Team Inbox">
+<Stat label="Users" value="198" icon="users" />
+<Progress value="11" max="100" label="Adoption" tone="warning" />
+<Badge tone="warning">11%</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Invite Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" name="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" options="Admin (full access) | Billing admin | Support admin" name="role" />
+<Button>Send Invitation</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the revenue breakdown by plan
+- Which accounts are at highest risk right now?
+- Retry all failed payments
+- Compare feature adoption week over week
+- Export this dashboard as PDF
+</FollowUps>

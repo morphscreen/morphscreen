@@ -1,0 +1,257 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="ACTIVE EMERGENCY — Regional Flood Event">Level 3 Activation • Incident Command: Director M. Reyes • Last Updated: 2024-03-15 14:32 UTC</Callout>
+
+<Columns>
+<Card title="Zone Focus">
+<Select label="Focus Zone" name="zone-focus" placeholder="All Zones" options="All Zones | Zone A — Downtown | Zone B — Riverside | Zone C — Hillside | Zone D — Industrial | Zone E — Coastal" />
+</Card>
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical" value="3" change="Active incidents" tone="danger" />
+<Stat label="High" value="7" change="Active incidents" tone="warning" />
+<Stat label="Moderate" value="12" change="Active incidents" tone="info" />
+<Stat label="Low" value="5" change="Active incidents" tone="success" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Active Incidents by Zone">
+<Chart type="bar" x="Zone" y="Incidents" title="Incidents by Severity and Zone">
+| Zone | Critical | High | Moderate | Low |
+|---|---|---|---|---|
+| Zone A — Downtown | 1 | 2 | 3 | 1 |
+| Zone B — Riverside | 1 | 2 | 2 | 1 |
+| Zone C — Hillside | 0 | 1 | 3 | 1 |
+| Zone D — Industrial | 1 | 1 | 2 | 1 |
+| Zone E — Coastal | 0 | 1 | 2 | 1 |
+</Chart>
+</Card>
+
+<Card title="Resources Available">
+<Columns>
+<Stat label="Vehicles" value="47" change="22 deployed · 25 staged" tone="info" />
+<Stat label="Personnel" value="312" change="189 on duty · 123 reserve" tone="info" />
+<Stat label="Supplies (pallets)" value="1,840" change="Water · Food · Medical · Shelter" tone="neutral" />
+</Columns>
+<Details title="Resource Breakdown">
+| Resource Type | Available | Deployed | Staged | Status |
+|---|---|---|---|---|
+| Ambulances | 12 | 8 | 4 | <Badge tone="warning">Limited</Badge> |
+| Fire Engines | 18 | 10 | 8 | <Badge tone="info">Adequate</Badge> |
+| Rescue Boats | 14 | 12 | 2 | <Badge tone="danger">Critical</Badge> |
+| Helicopters | 3 | 2 | 1 | <Badge tone="warning">Limited</Badge> |
+| High-Water Vehicles | 9 | 7 | 2 | <Badge tone="warning">Limited</Badge> |
+| Personnel — EMS | 84 | 56 | 28 | <Badge tone="info">Adequate</Badge> |
+| Personnel — Fire | 112 | 78 | 34 | <Badge tone="info">Adequate</Badge> |
+| Personnel — SAR | 56 | 42 | 14 | <Badge tone="warning">Limited</Badge> |
+| Personnel — Support | 60 | 13 | 47 | <Badge tone="success">Good</Badge> |
+| Water (pallets) | 620 | 310 | 310 | <Badge tone="info">Adequate</Badge> |
+| Food MREs (pallets) | 580 | 240 | 340 | <Badge tone="info">Adequate</Badge> |
+| Medical Kits (pallets) | 340 | 180 | 160 | <Badge tone="warning">Limited</Badge> |
+| Shelter Kits (pallets) | 300 | 120 | 180 | <Badge tone="info">Adequate</Badge> |
+</Details>
+</Card>
+
+<Card title="Shelters — Capacity & Occupancy">
+| Shelter | Zone | Capacity | Occupied | Available | Status |
+|---|---|---|---|---|---|
+| Central High School | A | 800 | 623 | 177 | <Badge tone="warning">78% Full</Badge> |
+| Riverside Community Center | B | 450 | 412 | 38 | <Badge tone="danger">92% Full</Badge> |
+| Hillside Church | C | 300 | 187 | 113 | <Badge tone="info">62% Full</Badge> |
+| Industrial Warehouse | D | 1,200 | 543 | 657 | <Badge tone="success">45% Full</Badge> |
+| Coastal Elementary | E | 350 | 298 | 52 | <Badge tone="danger">85% Full</Badge> |
+| Fairgrounds Expo Hall | A | 1,500 | 892 | 608 | <Badge tone="info">59% Full</Badge> |
+| **TOTAL** | | **4,600** | **2,955** | **1,645** | **64% Occupied** |
+</Card>
+
+<Card title="Evacuation Routes Status">
+| Route | Zone | Status | Capacity/hr | Current Flow | Notes |
+|---|---|---|---|---|---|
+| I-95 Northbound | A, E | <Badge tone="success">OPEN</Badge> | 4,200 | 3,800 | Contraflow active |
+| Highway 101 East | B, C | <Badge tone="warning">PARTIAL</Badge> | 2,800 | 1,200 | Lane flooding MP 14-18 |
+| State Route 33 | D | <Badge tone="success">OPEN</Badge> | 1,500 | 900 | Clear |
+| County Road 12 | C | <Badge tone="danger">CLOSED</Badge> | 0 | 0 | Bridge washout |
+| Coastal Highway 1 | E | <Badge tone="warning">PARTIAL</Badge> | 1,800 | 600 | Debris MP 22-25 |
+| Downtown Expressway | A | <Badge tone="danger">CLOSED</Badge> | 0 | 0 | Structural assessment |
+| **Total Capacity** | | | **10,300** | **6,500** | **63% Utilized** |
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+<Chart type="line" x="Time" y="Value" title="Precipitation & Wind Forecast">
+| Time | Precip (mm/hr) | Wind (km/h) | Temp (°C) | Condition |
+|---|---|---|---|---|
+| Now | 12 | 45 | 14 | Heavy Rain |
+| +3 hrs | 18 | 55 | 13 | Heavy Rain |
+| +6 hrs | 22 | 65 | 12 | Severe Storm |
+| +9 hrs | 15 | 50 | 11 | Moderate Rain |
+| +12 hrs | 8 | 35 | 10 | Light Rain |
+| +15 hrs | 3 | 25 | 10 | Drizzle |
+| +18 hrs | 1 | 20 | 11 | Cloudy |
+| +24 hrs | 0 | 15 | 13 | Partly Cloudy |
+| +30 hrs | 0 | 12 | 15 | Sunny |
+| +36 hrs | 0 | 10 | 17 | Sunny |
+| +42 hrs | 0 | 8 | 18 | Clear |
+| +48 hrs | 0 | 8 | 19 | Clear |
+</Chart>
+<Callout tone="warning" title="Flash Flood Watch">In effect until 06:00 UTC tomorrow. 50-100mm additional rainfall expected in next 12 hours.</Callout>
+</Card>
+
+<Columns>
+<Card title="People Rescued & Casualties">
+<Columns>
+<Stat label="Rescued" value="1,847" change="+234 since 06:00" tone="success" />
+<Stat label="In Shelters" value="2,955" change="+412 since 06:00" tone="info" />
+<Stat label="Injuries — Minor" value="89" change="+12 since 06:00" tone="warning" />
+<Stat label="Injuries — Serious" value="23" change="+3 since 06:00" tone="danger" />
+<Stat label="Fatalities" value="4" change="+1 since 06:00" tone="danger" />
+<Stat label="Missing/Unaccounted" value="17" change="-5 since 06:00" tone="warning" />
+</Columns>
+</Card>
+<Card title="Volunteers On Duty">
+| Volunteer | Assignment | Zone | Shift Start | Status |
+|---|---|---|---|---|
+| Sarah Chen | Shelter Ops — Central HS | A | 06:00 | <Badge tone="success">Active</Badge> |
+| Marcus Johnson | Supply Distribution | B | 06:00 | <Badge tone="success">Active</Badge> |
+| Priya Patel | Medical Triage | A | 06:00 | <Badge tone="success">Active</Badge> |
+| James Wilson | Evacuation Assistance | E | 06:00 | <Badge tone="success">Active</Badge> |
+| Aisha Rahman | Communications Relay | C | 06:00 | <Badge tone="success">Active</Badge> |
+| David Park | Sandbag Operations | D | 08:00 | <Badge tone="success">Active</Badge> |
+| Elena Rodriguez | Family Reunification | A | 08:00 | <Badge tone="success">Active</Badge> |
+| Kevin O'Brien | Route Monitoring | B | 08:00 | <Badge tone="success">Active</Badge> |
+| **Total On Duty** | **42 volunteers** | | | **All Active** |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Donations Received">
+<Columns>
+<Stat label="Monetary" value="$2.4M" change="+$340K today" tone="success" />
+<Stat label="In-Kind (pallets)" value="1,200" change="+180 today" tone="info" />
+<Stat label="Volunteer Hours" value="3,850" change="+420 today" tone="neutral" />
+</Columns>
+<Details title="Donation Breakdown">
+| Category | Quantity | Value Est. | Status |
+|---|---|---|---|
+| Bottled Water | 420 pallets | $380K | Received |
+| Non-Perishable Food | 310 pallets | $520K | Received |
+| Medical Supplies | 180 pallets | $890K | Received |
+| Blankets/Cots | 150 pallets | $210K | Received |
+| Hygiene Kits | 140 pallets | $175K | In Transit |
+| Generator Units | 25 units | $225K | Staged |
+</Details>
+</Card>
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Requested | Time Submitted | Status |
+|---|---|---|---|---|---|---|
+| REQ-0342 | B | Rescue Boats (4) | <Badge tone="danger">CRITICAL</Badge> | 14:15 | 5 min ago | <Badge tone="warning">Pending</Badge> |
+| REQ-0341 | E | Medical Evacuation (12) | <Badge tone="danger">CRITICAL</Badge> | 14:08 | 12 min ago | <Badge tone="warning">Pending</Badge> |
+| REQ-0340 | C | Sandbags (500) | <Badge tone="warning">HIGH</Badge> | 13:55 | 25 min ago | <Badge tone="info">Sourcing</Badge> |
+| REQ-0339 | A | Generators (3) | <Badge tone="warning">HIGH</Badge> | 13:42 | 38 min ago | <Badge tone="info">En Route</Badge> |
+| REQ-0338 | D | Pumps — Industrial (2) | <Badge tone="info">MODERATE</Badge> | 13:20 | 1 hr ago | <Badge tone="info">Sourcing</Badge> |
+| REQ-0337 | B | Shelter Expansion | <Badge tone="warning">HIGH</Badge> | 12:50 | 1.5 hr ago | <Badge tone="success">Approved</Badge> |
+| **Total Pending** | | **14 requests** | | | | **3 Critical · 5 High · 6 Moderate** |
+</Card>
+</Columns>
+
+<Card title="Communication Channels Status">
+| Channel | Status | Last Test | Coverage | Notes |
+|---|---|---|---|---|
+| VHF Radio Net (Ch 16) | <Badge tone="success">UP</Badge> | 14:30 | Region-wide | Primary ops |
+| UHF Tactical (Ch 3-7) | <Badge tone="success">UP</Badge> | 14:28 | All zones | Sector nets |
+| 800 MHz Trunked | <Badge tone="warning">DEGRADED</Badge> | 14:15 | Zones A, B, D | Tower damage Zone C/E |
+| Cellular (All Carriers) | <Badge tone="warning">PARTIAL</Badge> | 14:20 | Zones A, D | Overload + tower outages |
+| Satellite Phones (12) | <Badge tone="success">UP</Badge> | 14:25 | All zones | Command staff only |
+| Mesh Network (GoTenna) | <Badge tone="success">UP</Badge> | 14:22 | Zones B, C, E | Volunteer teams |
+| Amateur Radio (ARES) | <Badge tone="success">UP</Badge> | 14:10 | Region-wide | Backup net active |
+| Public Alert (IPAWS) | <Badge tone="success">UP</Badge> | 13:00 | Region-wide | Last used 13:45 |
+| **Overall** | <Badge tone="warning">DEGRADED</Badge> | | | **Redundancy: 3/8 primary paths** |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Zone | Reason | Since | Est. Reopen | Detour |
+|---|---|---|---|---|---|
+| County Road 12 | C | Bridge washout | 08:30 | Unknown | SR-33 → CR-15 |
+| Downtown Expressway | A | Structural assessment | 11:15 | 24-48 hrs | I-95 / Surface streets |
+| Riverside Drive | B | Flooding (2.4m) | 06:45 | Water-dependent | Highway 101 |
+| Coastal Highway 1 (MP 22-25) | E | Debris / Landslide | 09:20 | 12-18 hrs | Inland Route 9 |
+| Industrial Blvd (MP 4-7) | D | Chemical spill risk | 12:05 | Assessment pending | SR-33 |
+| Hillside Access Road | C | Mudslide | 10:30 | 6-10 hrs | Helicopter only |
+| **Total Closed** | | **6 major routes** | | | **All detours active** |
+</Card>
+
+<Card title="Nearby Hospitals — Free Beds">
+| Hospital | Zone | Trauma Level | Total Beds | Free ICU | Free Med/Surg | Free ED | Status |
+|---|---|---|---|---|---|---|---|
+| Metro General | A | Level I | 650 | 4 | 28 | 12 | <Badge tone="warning">High Census</Badge> |
+| Riverside Medical | B | Level II | 420 | 2 | 15 | 8 | <Badge tone="warning">High Census</Badge> |
+| Hillside Community | C | Level III | 180 | 1 | 12 | 6 | <Badge tone="info">Moderate</Badge> |
+| Industrial District | D | Level II | 310 | 3 | 22 | 10 | <Badge tone="info">Moderate</Badge> |
+| Coastal Regional | E | Level III | 240 | 0 | 8 | 4 | <Badge tone="danger">Critical</Badge> |
+| St. Luke's (Backup) | A | Level II | 380 | 6 | 35 | 18 | <Badge tone="success">Available</Badge> |
+| **TOTAL** | | | **2,180** | **16** | **120** | **58** | **194 beds available** |
+</Card>
+
+<Card title="Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|---|
+| TASK-0892 | Establish landing zone at Fairgrounds | Capt. Morales | A | <Badge tone="danger">CRITICAL</Badge> | 15:00 | <Badge tone="warning">In Progress</Badge> |
+| TASK-0891 | Deploy 4 rescue boats to Zone E | Lt. Chen | E | <Badge tone="danger">CRITICAL</Badge> | 15:00 | <Badge tone="warning">In Progress</Badge> |
+| TASK-0890 | Set up mass casualty triage at Riverside | Dr. Patel | B | <Badge tone="danger">CRITICAL</Badge> | 14:45 | <Badge tone="warning">In Progress</Badge> |
+| TASK-0889 | Restore comms tower Zone C | Comm Team 3 | C | <Badge tone="warning">HIGH</Badge> | 16:00 | <Badge tone="info">Assigned</Badge> |
+| TASK-0888 | Evacuate Hillside Nursing Home (42 pts) | SAR Team 7 | C | <Badge tone="warning">HIGH</Badge> | 15:30 | <Badge tone="warning">In Progress</Badge> |
+| TASK-0887 | Sandbag Industrial Blvd substation | Eng. Team 2 | D | <Badge tone="warning">HIGH</Badge> | 16:00 | <Badge tone="info">Assigned</Badge> |
+| TASK-0886 | Coordinate Red Cross shelter staffing | M. Rodriguez | A | <Badge tone="info">MODERATE</Badge> | 18:00 | <Badge tone="info">Assigned</Badge> |
+| TASK-0885 | Route clearance CR-12 bridge site | Eng. Team 1 | C | <Badge tone="info">MODERATE</Badge> | 20:00 | <Badge tone="todo">Queued</Badge> |
+| **Total Open** | | **24 tasks** | | **3 Critical · 8 High · 13 Moderate** | | **9 In Progress · 15 Assigned/Queued** |
+</Card>
+
+<Columns>
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Select label="Resource Type" name="resource-type" placeholder="Select type" options="Rescue Boats | Ambulances | Fire Engines | High-Water Vehicles | Helicopters | Personnel — EMS | Personnel — Fire | Personnel — SAR | Personnel — Support | Water (pallets) | Food MREs (pallets) | Medical Kits (pallets) | Shelter Kits (pallets) | Generators | Pumps — Industrial | Sandbags | Other" required="true" />
+<Input label="Quantity" name="quantity" type="number" placeholder="Enter quantity" required="true" min="1" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="CRITICAL — Life safety immediate | HIGH — Life safety within hours | MODERATE — Operational need | LOW — Planning/preparation" required="true" />
+<Select label="Delivery Zone" name="delivery-zone" placeholder="Select zone" options="Zone A — Downtown | Zone B — Riverside | Zone C — Hillside | Zone D — Industrial | Zone E — Coastal | Staging Area Alpha | Staging Area Bravo" required="true" />
+<TextArea label="Justification / Notes" name="justification" placeholder="Operational justification, special handling, point of contact..." rows="3" required="true" />
+<Button>Submit Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+<Card title="Broadcast Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="broadcast-channels" placeholder="Select channels" options="All Channels | VHF Radio Net | UHF Tactical | 800 MHz Trunked | Cellular Alert | Satellite Phone Net | Mesh Network | Amateur Radio | Public Alert (IPAWS) | Internal Command Net" required="true" />
+<Select label="Classification" name="classification" placeholder="Select classification" options="EMERGENCY — Immediate action required | URGENT — Action required within 1 hour | ROUTINE — Informational / situational awareness" required="true" />
+<TextArea label="Message" name="message" placeholder="Enter broadcast message... Be concise. Include: WHAT, WHERE, WHEN, ACTION REQUIRED." rows="5" required="true" />
+<Button variant="danger">Broadcast Now</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="File Situation Report (SITREP)">
+<Form name="situation-report">
+<Columns>
+<Select label="Report Type" name="sitrep-type" placeholder="Select type" options="Initial | Update (Periodic) | Final | Flash — Significant Change" required="true" />
+<Select label="Zone Focus" name="sitrep-zone" placeholder="Select zone" options="All Zones | Zone A — Downtown | Zone B — Riverside | Zone C — Hillside | Zone D — Industrial | Zone E — Coastal" required="true" />
+</Columns>
+<Input label="Reporting Unit / Officer" name="reporting-unit" placeholder="e.g., Operations Section Chief / Capt. Morales" required="true" />
+<Select label="Operational Period" name="op-period" placeholder="Select period" options="Period 1 (06:00-18:00) | Period 2 (18:00-06:00) | Custom" required="true" />
+<TextArea label="Situation Summary" name="situation-summary" placeholder="Current situation, significant events, changes since last report..." rows="4" required="true" />
+<TextArea label="Actions Taken" name="actions-taken" placeholder="Resources deployed, tasks completed, objectives met..." rows="3" required="true" />
+<TextArea label="Resource Status" name="resource-status" placeholder="Resources committed, available, needed..." rows="3" />
+<TextArea label="Planned Actions / Next Objectives" name="planned-actions" placeholder="Next operational period objectives, resource requests..." rows="3" required="true" />
+<TextArea label="Issues / Concerns / Safety" name="issues-concerns" placeholder="Safety hazards, resource gaps, coordination issues..." rows="3" />
+<Button>Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Request 4 additional rescue boats for Zone E (Critical)
+- Broadcast flash flood warning to all channels (Emergency)
+- File Period 2 SITREP for Zone B — Riverside
+- Check status of REQ-0342 (Rescue Boats for Zone B)
+- Coordinate hospital surge capacity with Metro General
+</FollowUps>

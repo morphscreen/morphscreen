@@ -1,0 +1,98 @@
+# Async Standup — August 15, 2025
+
+<Columns>
+<Stat label="Team members" value="8" />
+<Stat label="Updates posted" value="5" change="+2 since yesterday" tone="success" />
+<Stat label="Missing updates" value="3" tone="warning" icon="user-clock" />
+<Stat label="Blocked" value="2" tone="danger" icon="shield-warning" />
+</Columns>
+
+---
+
+<Card title="Today's updates" subtitle="Posted so far">
+<Tabs>
+<Tab title="All (5)">
+<Columns>
+<Card>
+<Avatar name="Maya Chen" src="find: professional headshot young asian woman software engineer" subtitle="Frontend" />
+**Status:** Shipped the new checkout flow to staging. Running through QA checklist now.
+
+**Next:** Merge to main after approval. Pair with Sam on the analytics events.
+</Card>
+
+<Card>
+<Avatar name="Sam Rivera" src="find: professional headshot latino man software engineer" subtitle="Backend" />
+**Status:** Finished the inventory sync refactor. All tests passing.
+
+**Next:** Deploy to staging. Help Maya with analytics events.
+</Card>
+
+<Card>
+<Avatar name="Priya Patel" src="find: professional headshot indian woman software engineer" subtitle="Full Stack" />
+<Badge tone="danger">Blocked</Badge> **Status:** Waiting on design tokens from Design System team for the new component library. PR #2341 on hold.
+
+**Next:** Unblocked → finish Button and Input components.
+</Card>
+
+<Card>
+<Avatar name="Alex Kim" src="find: professional headshot asian man software engineer" subtitle="DevOps" />
+**Status:** Rolled out the new CI pipeline for feature branches. Build times down ~40%.
+
+**Next:** Monitor for flakiness. Document migration guide for the team.
+</Card>
+
+<Card>
+<Avatar name="Jordan Lee" src="find: professional headshot nonbinary person software engineer" subtitle="Mobile" />
+<Badge tone="danger">Blocked</Badge> **Status:** App Store review rejected — missing privacy manifest. Need legal to review updated data types.
+
+**Next:** Resubmit once legal signs off (ticket #MOB-882).
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Blocked (2)">
+<Card>
+<Avatar name="Priya Patel" src="find: professional headshot indian woman software engineer" subtitle="Full Stack" />
+<Badge tone="danger">Blocked</Badge> **Waiting on:** Design System team — design tokens for new component library
+**Ticket:** #FE-2341 | **Since:** Yesterday 3:45 PM
+**Help needed:** Ping @design-system in #frontend if you can expedite
+</Card>
+
+<Card>
+<Avatar name="Jordan Lee" src="find: professional headshot nonbinary person software engineer" subtitle="Mobile" />
+<Badge tone="danger">Blocked</Badge> **Waiting on:** Legal team — privacy manifest review for App Store
+**Ticket:** #MOB-882 | **Since:** This morning 9:12 AM
+**Help needed:** Legal review needed on updated data type declarations
+</Card>
+</Tab>
+
+<Tab title="Missing (3)">
+<Details title="Ravi Desai — Backend" open="false">
+No update posted yet. Usually posts by 10 AM PT.
+</Details>
+<Details title="Taylor Brooks — QA" open="false">
+No update posted yet. On PTO until Wednesday.
+</Details>
+<Details title="Chris Morgan — Product" open="false">
+No update posted yet. In meetings until noon.
+</Details>
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+<Card title="Post your update">
+<Form name="standup-update">
+<TextArea label="What did you complete yesterday?" name="completed" placeholder="Shipped the user profile API..." rows="3" hint="Keep it brief — 2-3 bullets max" required="true" />
+<TextArea label="What will you tackle today?" name="planned" placeholder="Review PR #2341, pair with Maya on analytics..." rows="3" hint="Focus on today's priorities" required="true" />
+<Switch label="I'm blocked" name="blocked" value="false" hint="Toggle if you need help unblocking" />
+<TextArea label="Blocker details" name="blocker_details" placeholder="What's blocking you? Who can help?" rows="2" hint="Only visible if 'I'm blocked' is on" />
+<Button>Post update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Reminder">
+Updates are shared async — post when your day starts. Tag @teammate in blockers to notify them directly.
+</Callout>

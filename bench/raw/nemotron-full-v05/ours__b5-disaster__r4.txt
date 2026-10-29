@@ -1,0 +1,251 @@
+# Emergency Response Coordination Center
+
+<Card title="Zone Focus" subtitle="Select a zone to filter all views">
+<Select label="Focus Zone" name="zone-focus" placeholder="All Zones" options="All Zones | Zone Alpha (North) | Zone Bravo (East) | Zone Charlie (South) | Zone Delta (West) | Zone Echo (Central)" />
+</Card>
+
+<Columns>
+<Card title="Active Incidents by Zone">
+<Chart type="bar" title="Incidents by Zone & Severity" x="Zone" y="Count">
+| Zone | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| Zone Alpha | 3 | 5 | 8 | 4 |
+| Zone Bravo | 2 | 4 | 6 | 3 |
+| Zone Charlie | 4 | 6 | 7 | 5 |
+| Zone Delta | 1 | 3 | 5 | 2 |
+| Zone Echo | 2 | 2 | 4 | 3 |
+</Chart>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical" value="12" tone="danger" />
+<Stat label="High" value="20" tone="warning" />
+<Stat label="Medium" value="30" tone="info" />
+<Stat label="Low" value="17" tone="success" />
+</Columns>
+<Progress value="12" max="79" label="Critical Incidents" tone="danger" />
+<Progress value="32" max="79" label="High + Critical" tone="warning" />
+<Progress value="62" max="79" label="All Active" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Resources Available">
+<Columns>
+<Stat label="Vehicles" value="47" change="+3 staged" tone="info" />
+<Stat label="Personnel" value="234" change="+12 on shift" tone="success" />
+<Stat label="Supplies (tons)" value="18.5" change="-2.3 deployed" tone="warning" />
+</Columns>
+<Details title="Resource Breakdown" open="false">
+| Type | Available | Deployed | Staged |
+|---|---|---|---|
+| Ambulances | 18 | 12 | 4 |
+| Fire Engines | 14 | 9 | 3 |
+| Rescue Boats | 6 | 4 | 2 |
+| Helicopters | 3 | 2 | 1 |
+| Heavy Machinery | 6 | 4 | 2 |
+| Medical Staff | 89 | 62 | 15 |
+| SAR Teams | 34 | 28 | 6 |
+| Logistics | 111 | 78 | 22 |
+</Details>
+</Card>
+
+<Card title="People Rescued & Casualties">
+<Columns>
+<Stat label="Rescued" value="1,247" change="+47 today" tone="success" />
+<Stat label="Injured" value="312" change="+18 today" tone="warning" />
+<Stat label="Fatalities" value="23" change="+2 today" tone="danger" />
+<Stat label="Missing" value="41" change="-5 found" tone="info" />
+</Columns>
+<Progress value="1247" max="1623" label="Rescued vs Total Affected" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shelters — Capacity & Occupancy">
+<Chart type="horizontal" title="Shelter Occupancy %" x="Occupancy %" y="Shelter">
+| Shelter | Capacity | Occupied | % |
+|---|---|---|---|
+| North Community Center | 500 | 412 | 82 |
+| East High School | 350 | 298 | 85 |
+| South Stadium | 800 | 567 | 71 |
+| West Church | 200 | 184 | 92 |
+| Central Convention Hall | 1000 | 723 | 72 |
+| Delta Middle School | 300 | 245 | 82 |
+| Echo Fairgrounds | 600 | 411 | 69 |
+</Chart>
+</Card>
+
+<Card title="Evacuation Routes Status">
+| Route | Status | Capacity | Current Flow | Notes |
+|---|---|---|---|---|
+| Highway 101 North | <Badge tone="success">Open</Badge> | 2,000/hr | 1,450/hr | Clear |
+| Highway 101 South | <Badge tone="warning">Partial</Badge> | 2,000/hr | 890/hr | Debris lane 2 |
+| State Route 46 East | <Badge tone="success">Open</Badge> | 1,500/hr | 1,120/hr | Clear |
+| State Route 46 West | <Badge tone="danger">Closed</Badge> | 0 | 0 | Bridge damage |
+| County Road 12 | <Badge tone="warning">Partial</Badge> | 800/hr | 450/hr | Flooding shoulder |
+| Coastal Highway 1 | <Badge tone="danger">Closed</Badge> | 0 | 0 | Landslide |
+| Mountain Pass Rd | <Badge tone="info">Staged</Badge> | 600/hr | 0 | Holding for order |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Weather Forecast — Next 48 Hours">
+| Time | Condition | Temp | Wind | Precip | Alert |
+|---|---|---|---|---|---|
+| Now | Heavy Rain | 14°C | SW 35 km/h | 95% | <Badge tone="danger">Flash Flood Watch</Badge> |
+| +3 hrs | Heavy Rain | 13°C | SW 40 km/h | 90% | <Badge tone="danger">Flash Flood Watch</Badge> |
+| +6 hrs | Rain | 12°C | SW 30 km/h | 70% | <Badge tone="warning">Flood Advisory</Badge> |
+| +12 hrs | Showers | 11°C | W 25 km/h | 40% | <Badge tone="info">Monitoring</Badge> |
+| +18 hrs | Cloudy | 10°C | NW 20 km/h | 15% | — |
+| +24 hrs | Partly Cloudy | 12°C | NW 15 km/h | 10% | — |
+| +36 hrs | Sunny | 15°C | N 10 km/h | 5% | — |
+| +48 hrs | Sunny | 17°C | NE 10 km/h | 0% | — |
+</Card>
+
+<Card title="Volunteers On Duty">
+| Name | Role | Assignment | Shift End | Status |
+|---|---|---|---|---|
+| Maria Santos | Medical | North Community Center | 06:00 | <Badge tone="success">Active</Badge> |
+| James Chen | Logistics | Supply Depot Alpha | 06:00 | <Badge tone="success">Active</Badge> |
+| Aisha Patel | SAR Support | Zone Bravo | 06:00 | <Badge tone="success">Active</Badge> |
+| Robert Kim | Comms | Central Command | 06:00 | <Badge tone="success">Active</Badge> |
+| Lisa Thompson | Shelter Ops | East High School | 06:00 | <Badge tone="success">Active</Badge> |
+| David Okonkwo | Transport | Vehicle Pool | 06:00 | <Badge tone="success">Active</Badge> |
+| Sarah Johnson | Triage | South Stadium | 06:00 | <Badge tone="success">Active</Badge> |
+| Miguel Rodriguez | Crowd Control | West Church | 06:00 | <Badge tone="success">Active</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Donations Received">
+<Columns>
+<Stat label="Monetary" value="$247,500" change="+$18,200 today" tone="success" />
+<Stat label="Supplies (tons)" value="42.3" change="+5.1 today" tone="info" />
+<Stat label="Volunteer Hours" value="1,840" change="+220 today" tone="neutral" />
+</Columns>
+<Details title="Recent Donations" open="false">
+| Donor | Type | Amount | Received |
+|---|---|---|---|
+| Red Cross Regional | Monetary | $50,000 | 2 hrs ago |
+| Local Business Coalition | Supplies | 12 tons food/water | 4 hrs ago |
+| Anonymous | Monetary | $25,000 | 6 hrs ago |
+| University Medical | Supplies | 3.5 tons medical | 8 hrs ago |
+| Community Fundraiser | Monetary | $18,200 | 12 hrs ago |
+</Details>
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+| ID | Zone | Request | Priority | Time Waiting | Assigned |
+|---|---|---|---|---|---|
+| REQ-047 | Alpha | 500 blankets, 200 cots | <Badge tone="danger">Critical</Badge> | 45 min | — |
+| REQ-052 | Bravo | Medical team + trauma kits | <Badge tone="danger">Critical</Badge> | 32 min | — |
+| REQ-039 | Charlie | Water purification (3 units) | <Badge tone="warning">High</Badge> | 2 hr 15 min | Logistics Team 3 |
+| REQ-055 | Delta | Evacuation transport (15) | <Badge tone="warning">High</Badge> | 1 hr 8 min | — |
+| REQ-041 | Echo | Generator fuel (500 gal) | <Badge tone="info">Medium</Badge> | 3 hr 22 min | Supply Team 1 |
+| REQ-048 | Alpha | Baby formula & diapers | <Badge tone="info">Medium</Badge> | 2 hr 50 min | — |
+| REQ-053 | Bravo | Tarps & rope (200 each) | <Badge tone="info">Medium</Badge> | 1 hr 45 min | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Communication Channels">
+| Channel | Status | Last Check | Backup | Notes |
+|---|---|---|---|---|
+| VHF Radio Net | <Badge tone="success">Up</Badge> | 2 min ago | HF Radio | Primary ops |
+| UHF Radio Net | <Badge tone="success">Up</Badge> | 2 min ago | VHF | Tactical |
+| Satellite Phones | <Badge tone="success">Up</Badge> | 5 min ago | — | 12 units active |
+| Cellular (Priority) | <Badge tone="warning">Degraded</Badge> | 8 min ago | SATCOM | Tower damage Zone Delta |
+| Mesh Network | <Badge tone="success">Up</Badge> | 1 min ago | — | 47 nodes |
+| Internet (Fiber) | <Badge tone="danger">Down</Badge> | 45 min ago | Starlink | Cut at river crossing |
+| Starlink Terminals | <Badge tone="success">Up</Badge> | 3 min ago | — | 8 terminals |
+| Amateur Radio | <Badge tone="success">Up</Badge> | 10 min ago | — | 14 operators |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Segment | Reason | Est. Reopen | Detour |
+|---|---|---|---|---|
+| State Route 46 West | MP 12–18 | Bridge collapse | 72+ hrs | Hwy 101 South |
+| Coastal Highway 1 | MP 44–52 | Landslide | 48–72 hrs | Inland Route 9 |
+| County Road 12 | MP 3–7 | Flash flooding | 12–24 hrs | Hwy 101 North |
+| Mountain Pass Rd | MP 8–15 | Avalanche risk | 24–36 hrs | Hold position |
+| River Crossing Rd | MP 1–2 | Bridge washed out | 5+ days | Helicopter only |
+| Old Mill Bridge | Single span | Structural failure | Indefinite | County Rd 12 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Nearby Hospitals — Free Beds">
+| Hospital | Distance | Trauma Beds | ICU Beds | General Beds | Status |
+|---|---|---|---|---|---|
+| Regional Medical Center | 8 km | 4 / 12 | 6 / 18 | 28 / 85 | <Badge tone="warning">High census</Badge> |
+| North County Hospital | 15 km | 2 / 8 | 3 / 12 | 15 / 45 | <Badge tone="info">Accepting</Badge> |
+| St. Luke's East | 22 km | 1 / 6 | 2 / 10 | 8 / 30 | <Badge tone="warning">Near capacity</Badge> |
+| Valley General | 30 km | 3 / 10 | 4 / 14 | 22 / 60 | <Badge tone="success">Available</Badge> |
+| Coastal Clinic | 12 km | 0 / 2 | 0 / 4 | 5 / 15 | <Badge tone="info">Stabilize only</Badge> |
+| Military Field Hospital | 5 km | 6 / 15 | 8 / 20 | 40 / 100 | <Badge tone="success">Deployed</Badge> |
+</Card>
+
+<Card title="Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|---|
+| T-201 | Establish comms relay Zone Delta | Robert Kim | Delta | <Badge tone="danger">Critical</Badge> | 1 hr | <Badge tone="info">In Progress</Badge> |
+| T-202 | Clear Route 46 West debris | Heavy Team 2 | Bravo | <Badge tone="danger">Critical</Badge> | 4 hr | <Badge tone="todo">Queued</Badge> |
+| T-203 | Distribute water purification | Logistics Team 3 | Charlie | <Badge tone="warning">High</Badge> | 2 hr | <Badge tone="info">En Route</Badge> |
+| T-204 | Evacuate South Stadium overflow | SAR Team 7 | Charlie | <Badge tone="warning">High</Badge> | 3 hr | <Badge tone="info">In Progress</Badge> |
+| T-205 | Repair cellular tower Delta | Telecom Liaison | Delta | <Badge tone="info">Medium</Badge> | 8 hr | <Badge tone="todo">Pending</Badge> |
+| T-206 | Set up triage at West Church | Medical Team 4 | Delta | <Badge tone="info">Medium</Badge> | 2 hr | <Badge tone="info">In Progress</Badge> |
+| T-207 | Inventory shelter supplies all | Supply Depot Alpha | All | <Badge tone="info">Medium</Badge> | 6 hr | <Badge tone="todo">Pending</Badge> |
+| T-208 | Coordinate helo medevac | Air Ops | Alpha | <Badge tone="danger">Critical</Badge> | 30 min | <Badge tone="info">In Progress</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Select label="Resource Type" name="res-type" placeholder="Select type" options="Ambulances | Fire Engines | Rescue Boats | Helicopters | Heavy Machinery | Medical Staff | SAR Teams | Logistics Personnel | Medical Supplies | Food/Water (tons) | Blankets/Cots | Generators | Fuel (gallons) | Communications Eq | Shelter Materials" required="true" />
+<Input label="Quantity" name="res-qty" type="number" placeholder="Enter quantity" min="1" required="true" />
+<Select label="Priority" name="res-priority" placeholder="Select priority" options="Critical — Immediate | High — Within 2 hrs | Medium — Within 6 hrs | Low — Next shift" required="true" />
+<Select label="Delivery Zone" name="res-zone" placeholder="Select zone" options="Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta | Zone Echo | Central Depot" required="true" />
+<TextArea label="Notes / Special Requirements" name="res-notes" placeholder="Any special handling, staging location, contact info..." rows="3" />
+<Button>Submit Resource Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="broadcast-channel" placeholder="Select channels" options="All Channels | VHF Radio Net | UHF Radio Net | Satellite Phones | Cellular (Priority) | Mesh Network | Starlink Terminals | Amateur Radio | Public Alert System" required="true" />
+<Select label="Message Type" name="broadcast-type" placeholder="Select type" options="Evacuation Order | Shelter in Place | Route Update | Weather Warning | Resource Available | All Clear | Situation Update" required="true" />
+<TextArea label="Message" name="broadcast-msg" placeholder="Enter broadcast message..." rows="4" required="true" hint="Keep concise. Will be logged and timestamped." />
+<Switch label="Require acknowledgment" name="broadcast-ack" value="true" />
+<Button variant="danger">Broadcast Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Select label="Report Type" name="sitrep-type" placeholder="Select type" options="Periodic Update (6-hr) | Significant Event | Resource Status Change | Casualty Update | Weather Impact | Infrastructure Damage | Request for Assistance" required="true" />
+<Select label="Zone" name="sitrep-zone" placeholder="Select zone" options="All Zones | Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta | Zone Echo" required="true" />
+<Input label="Reporting Unit / Call Sign" name="sitrep-unit" placeholder="e.g., Alpha-Command, SAR-Team-3" required="true" />
+<Select label="Classification" name="sitrep-class" placeholder="Select classification" options="UNCLASSIFIED | FOR OFFICIAL USE ONLY | LAW ENFORCEMENT SENSITIVE" required="true" />
+<TextArea label="Situation Summary" name="sitrep-summary" placeholder="Current situation, changes since last report..." rows="4" required="true" />
+<TextArea label="Actions Taken" name="sitrep-actions" placeholder="Actions completed, in progress, planned..." rows="3" />
+<TextArea label="Resource Needs" name="sitrep-needs" placeholder="Critical resource shortfalls, requests..." rows="3" />
+<TextArea label="Coordination Issues" name="sitrep-issues" placeholder="Inter-agency, comms, logistics problems..." rows="2" />
+<Button>Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed incident timeline for Zone Alpha
+- Generate resource deployment plan for next 12 hours
+- List all critical aid requests with ETA for fulfillment
+- Display communication redundancy plan
+- Export full situation report as PDF
+</FollowUps>

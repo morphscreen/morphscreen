@@ -1,0 +1,107 @@
+# Northgate Power Network — Operator Console
+
+Northgate Regional Grid · Updated 14:42 UTC · <Badge tone="danger">3 active outages</Badge>
+
+<Card title="Focus region" subtitle="All panels below filter to the selected control area">
+<Form name="region-focus">
+<Select label="Region" options="All regions | North | South | East | West" placeholder="All regions" hint="Load, plants, outages, forecasts and alerts update automatically" />
+<Button variant="secondary">Apply filter</Button>
+</Form>
+</Card>
+
+<Columns>
+<Stat label="Current load" value="18,420 MW" change="Up 320 MW in 15 min" note="Today's peak 19,450 MW at 18:30" tone="info" icon="lightning" />
+<Stat label="Capacity headroom" value="2,780 MW" note="13.1% of firm capacity available" tone="warning" icon="gauge" />
+<Stat label="Spot price" value="$142 / MWh" change="Up 8% vs day-ahead" note="Peak $185 forecast 18:00–20:00" icon="currency-dollar" />
+<Stat label="Emissions today" value="38.4 kt CO₂e" change="Down 6% vs yesterday" note="Intensity 152 kg CO₂e / MWh" tone="success" icon="cloud" />
+</Columns>
+
+<Columns>
+<Card title="Network capacity" subtitle="Live load against firm capacity plus contingency reserve">
+<Progress value="87" max="100" label="18,420 MW of 21,200 MW — 87% utilised" tone="warning" />
+</Card>
+
+<Card title="Generation split by source" subtitle="Live share of metered output">
+<Chart type="donut" title="Generation mix">
+| Source | Share |
+|---|---|
+| Natural gas | 42 |
+| Wind | 18 |
+| Nuclear | 14 |
+| Solar | 12 |
+| Hydro | 10 |
+| Battery | 4 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Demand forecast — next 24 hours" subtitle="Operational base case, all regions">
+<Chart type="line" title="Demand forecast" x="Hour" y="MW">
+| Hour | Demand |
+|---|---|
+| 00:00 | 20100 |
+| 02:00 | 18900 |
+| 04:00 | 18200 |
+| 06:00 | 19800 |
+| 08:00 | 22400 |
+| 10:00 | 21800 |
+| 12:00 | 20700 |
+| 14:00 | 20200 |
+| 16:00 | 21600 |
+| 18:00 | 23900 |
+| 20:00 | 21500 |
+| 22:00 | 19900 |
+</Chart>
+</Card>
+
+<Card title="Generating plants" subtitle="Output and live status per plant — derated units contribute 230 MW below nameplate">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Westbrook CCGT | Natural gas | 1,240 | Online |
+| Northbank Nuclear | Nuclear | 1,180 | Online |
+| Halden Wind Farm | Wind | 890 | Online |
+| Clearwater Hydro | Hydro | 720 | Restricted |
+| Eastfield Solar | Solar | 610 | Derated |
+| Peakshave Battery | Storage | 310 | Charging |
+| Riverside Gas Peaker | Natural gas | 0 | Standby |
+| Oldtown Coal | Coal | 0 | Offline — maintenance |
+</Card>
+
+<Columns>
+<Card title="Active outages" subtitle="Affected region and network impact">
+| Region | Asset | Impact | Since |
+|---|---|---|---|
+| South-West | Eastfield Solar — feeder 4 | 140 MW derated | 14:20 |
+| North-East | Northbank T2 transformer | Voltage reduced 3% | 13:05 |
+| Central | Clearwater Hydro — penstock | 90 MW restricted | 11:47 |
+</Card>
+
+<Card title="Planned maintenance — May" subtitle="Approved work this month">
+| Date | Asset | Region | Window |
+|---|---|---|---|
+| 12 May | Riverside Gas Peaker | South | 08:00–16:00 |
+| 18 May | Westbrook CCGT turbine | West | 06:00–18:00 |
+| 22 May | Northbank switchgear | North | 22:00–02:00 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Live alerts" subtitle="Newest first">
+- <Badge tone="danger">Critical</Badge> **14:35** — Halden Wind Farm gusts 38 m/s: curtail 40% advised
+- <Badge tone="warning">Warning</Badge> **14:12** — Frequency deviation 49.8 Hz — auto restored
+- <Badge tone="info">Info</Badge> **13:46** — South region demand 210 MW above forecast
+- <Badge tone="warning">Warning</Badge> **13:20** — Price spike forecast 18:00–20:00 (> $180 / MWh)
+- <Badge tone="success">Resolved</Badge> **12:05** — Northbank T1 transformer returned to service
+</Card>
+
+<Card title="Order curtailment" subtitle="Dispatch a reduction to a specific plant">
+<Callout tone="warning" title="Real-time dispatch">Curtailment orders are sent directly to plant operators and take effect within 5 minutes.</Callout>
+<Form name="curtailment-order">
+<Select label="Plant" options="Halden Wind Farm | Eastfield Solar | Clearwater Hydro | Westbrook CCGT" placeholder="Choose plant" />
+<Input label="Curtailment amount" type="number" min="1" max="1200" placeholder="e.g. 250" hint="MW to reduce from current output" />
+<Select label="Reason" options="Grid congestion | Oversupply | Network maintenance | Emergency frequency control" placeholder="Choose reason" />
+<TextArea label="Dispatch instructions" rows="3" placeholder="Time window, ramp rate, contact person…" />
+<Button variant="primary">Submit order</Button>
+</Form>
+</Card>
+</Columns>

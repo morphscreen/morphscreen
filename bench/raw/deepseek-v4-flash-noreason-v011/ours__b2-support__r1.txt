@@ -1,0 +1,53 @@
+# Support Lead Dashboard
+
+Good morning! Here's your team's current support snapshot.
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Open Tickets" value="23" icon="ticket" tone="warning" />
+<Stat label="Avg First Response" value="4.2 min" icon="clock" tone="success" change="-12% vs last week" />
+<Stat label="High Priority" value="7" icon="warning-circle" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Recent Tickets">
+<Details title="Filter: All Priorities" open=true>
+<Radio label="Show only" options="All Priorities | High Priority Only" name="priority-filter" value="All Priorities" />
+</Details>
+
+| Ticket | Subject | Priority | Status | Age |
+|---|---|---|---|---|
+| #1042 | Login failure after password reset | <Badge tone="danger">High</Badge> | Open | 12 min |
+| #1041 | Invoice #8823 missing line items | <Badge tone="danger">High</Badge> | Open | 28 min |
+| #1040 | "How do I export my data?" | <Badge tone="info">Medium</Badge> | Open | 45 min |
+| #1039 | API rate limit exceeded unexpectedly | <Badge tone="danger">High</Badge> | Open | 1h 12m |
+| #1038 | Feature request: dark mode | <Badge tone="neutral">Low</Badge> | Open | 2h 05m |
+
+<Button variant="primary" ask="Show me the high-priority tickets only">View High Priority Only</Button>
+<Button variant="secondary" ask="Open a new support ticket">+ New Ticket</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="primary" ask="Open a new support ticket" icon="plus-circle">New Ticket</Button>
+<Button variant="secondary" ask="Show me all open tickets" icon="list">View All Open Tickets</Button>
+<Button variant="secondary" ask="Show me the team's current workload" icon="users">Team Workload</Button>
+</Card>
+
+<Card title="Open a New Ticket">
+<Form name="new-ticket">
+<Input label="Subject" name="subject" placeholder="Brief description of the issue" required />
+<Select label="Priority" name="priority" options="Low | Medium | High" placeholder="Select priority" required />
+<Select label="Category" name="category" options="Billing | Technical | Account | Feature Request | Other" placeholder="Select category" required />
+<TextArea label="Description" name="description" placeholder="Describe the issue in detail..." rows="4" required />
+<Input label="Customer Email" type="email" name="customer-email" placeholder="customer@example.com" required />
+<Button variant="primary">Submit Ticket</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the high-priority tickets only
+- What's the average resolution time this week?
+- Which team member has the most open tickets?
+- Show me the SLA breach risk for open tickets
+</FollowUps>

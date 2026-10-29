@@ -1,0 +1,88 @@
+# Service health — on-call view
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.94%" change="+0.02 pt" note="SLO 99.90%" tone="success" icon="activity" />
+<Stat label="Error rate now" value="1.8%" change="+0.6 pt" note="last 15 min" tone="warning" icon="warning" />
+<Stat label="Open incidents" value="3" note="1 sev-1, 2 sev-3" tone="danger" icon="bell" />
+<Stat label="P95 latency" value="412 ms" change="+38 ms" tone="warning" icon="timer" />
+</Columns>
+
+<Card title="Narrow the view" subtitle="Filters apply to every panel below">
+<Select label="Region" name="region" value="All regions" options="All regions | us-east-1 | us-west-2 | eu-central-1 | ap-southeast-1" hint="Pick one region to scope charts, incidents and endpoints" />
+<Select label="Environment" name="env" value="Production" options="Production | Staging | Canary" />
+<Radio label="Time window" name="window" options="Last 24 hours | Last 7 days | Last 30 days" value="Last 24 hours" />
+</Card>
+
+<Card title="CPU and memory, past 24 hours" subtitle="Percent of allocated capacity, 2-hour buckets">
+<Chart type="line" x="Time" y="Percent">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 34 | 61 |
+| 02:00 | 31 | 60 |
+| 04:00 | 29 | 59 |
+| 06:00 | 42 | 63 |
+| 08:00 | 58 | 68 |
+| 10:00 | 71 | 74 |
+| 12:00 | 76 | 79 |
+| 14:00 | 82 | 84 |
+| 16:00 | 79 | 83 |
+| 18:00 | 66 | 77 |
+| 20:00 | 54 | 71 |
+| 22:00 | 41 | 66 |
+</Chart>
+<Callout tone="warning" title="Memory trending up">Memory passed 80% at 14:00 and has not fallen below 70% since. Watch for OOM restarts on the api tier.</Callout>
+<Button ask="Break down CPU and memory by region for the last 24 hours" variant="secondary" icon="chart-line">Break down by region</Button>
+</Card>
+
+<Card title="Open incidents" subtitle="Sorted by severity, newest first">
+| ID | Severity | Service | Region | State | Age |
+|---|---|---|---|---|---|
+| INC-4471 | Sev-1 | checkout-api | us-east-1 | Investigating | 26 min |
+| INC-4469 | Sev-3 | search-indexer | eu-central-1 | Identified | 1 h 12 m |
+| INC-4464 | Sev-3 | media-thumbs | ap-southeast-1 | Monitoring | 4 h 05 m |
+</Card>
+
+<Callout tone="danger" title="INC-4471 is the one to work">Checkout error rate is the driver of the 1.8% above. Acknowledge it before touching anything else.</Callout>
+
+<Card title="Acknowledge an incident" subtitle="Marks you as responder and stops the escalation timer">
+<Form name="ack-incident">
+<Select label="Incident" name="incident" placeholder="Choose an incident" options="INC-4471 — Sev-1 checkout-api | INC-4469 — Sev-3 search-indexer | INC-4464 — Sev-3 media-thumbs" required="true" />
+<Input label="Your name" name="responder" placeholder="e.g. Priya Raman" required="true" hint="Shown in the incident timeline" />
+<TextArea label="Note (optional)" name="note" rows="3" placeholder="What you're checking first" />
+<Button>Publish to timeline</Button>
+<Button variant="tertiary">Snooze 30 min</Button>
+</Form>
+</Card>
+
+<Card title="Five slowest endpoints" subtitle="P95 latency, last 24 hours">
+| Rank | Endpoint | P95 | Error rate |
+|---|---|---|---|
+| 1 | POST /v2/checkout/confirm | 2,410 ms | 4.1% |
+| 2 | GET /v2/catalog/search | 1,880 ms | 1.2% |
+| 3 | POST /v2/payments/authorize | 1,240 ms | 3.4% |
+| 4 | GET /v2/orders/{id}/history | 940 ms | 0.6% |
+| 5 | GET /v2/users/{id}/recommendations | 720 ms | 0.9% |
+</Card>
+
+<Card title="Set an alert threshold" subtitle="Applies to the region selected above">
+<Form name="alert-threshold">
+<Select label="Metric" name="metric" value="Error rate" options="Error rate | CPU usage | Memory usage | P95 latency | Uptime" required="true" />
+<Slider label="Trigger when above" name="threshold" min="0" max="100" step="1" value="2" unit="%" />
+<Select label="Window" name="window" value="5 minutes" options="1 minute | 5 minutes | 15 minutes | 1 hour" />
+<Select label="Notify" name="notify" value="PagerDuty — on-call" options="PagerDuty — on-call | Slack #alerts | Email digest" />
+<Switch label="Page immediately" name="page" value="true" hint="Off means the alert only posts to the channel" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<Card title="Quarter to date">
+<Progress value="99.94" max="100" label="Uptime vs 99.90% SLO" tone="success" />
+<Progress value="18" max="43" label="Error budget consumed (18 of 43 min)" tone="warning" />
+</Card>
+
+<FollowUps>
+- Show the last 7 days of uptime instead of the quarter
+- Who is on call right now for us-east-1?
+- Draft a status page update for INC-4471
+- Compare error rate across all regions
+</FollowUps>

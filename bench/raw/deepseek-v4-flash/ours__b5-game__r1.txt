@@ -1,0 +1,159 @@
+# Live Ops Command Center
+
+<Badge tone="success">All systems nominal</Badge> · Updated 12s ago
+
+<Card title="Key Metrics" subtitle="Real-time overview">
+<Columns>
+<Stat label="Players Online" value="128,403" change="+6.2%" tone="success" icon="users" />
+<Stat label="Daily Active Players" value="842,110" change="+3.1%" tone="success" icon="user-circle" />
+<Stat label="Monthly Active Players" value="3,214,887" change="+1.8%" tone="info" icon="calendar" />
+<Stat label="Revenue Today" value="$94,210" change="+8.4%" tone="success" icon="currency-dollar" />
+<Stat label="Revenue per User" value="$0.112" change="+0.9%" tone="neutral" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Session Length — Past 14 Days" subtitle="Average minutes per player session">
+<Chart type="line" x="Day" y="Avg session (min)">
+| Day | Session |
+|---|---|
+| D-13 | 21.4 |
+| D-12 | 22.8 |
+| D-11 | 20.9 |
+| D-10 | 23.1 |
+| D-9 | 22.4 |
+| D-8 | 24.0 |
+| D-7 | 23.6 |
+| D-6 | 25.1 |
+| D-5 | 24.7 |
+| D-4 | 23.2 |
+| D-3 | 22.6 |
+| D-2 | 23.8 |
+| D-1 | 24.4 |
+| D-0 | 25.0 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best-Selling Items" subtitle="Last 24 hours, by units sold">
+| Item | Units |
+|---|---|
+| Dragon Crown | 12,430 |
+| Phoenix Wings | 9,812 |
+| Storm Blade | 8,204 |
+| Enchantment Bundle | 7,551 |
+| Lunar Pet Crate | 6,903 |
+</Card>
+<Card title="Server Regions & Health" subtitle="Capacity and live player count">
+<Progress value="98" max="100" label="US-East — 98% · 34,281 players" tone="success" />
+<Progress value="96" max="100" label="EU-West — 96% · 28,740 players" tone="success" />
+<Progress value="91" max="100" label="APAC — 91% · 22,198 players" tone="info" />
+<Progress value="88" max="100" label="South America — 88% · 9,842 players" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crash Rate by App Version" subtitle="Last 7 days, % of sessions">
+<Chart type="bar" x="Version" y="Crash rate %">
+| Version | Crash rate |
+|---|---|
+| 2.4.1 | 0.12 |
+| 2.4.0 | 0.31 |
+| 2.3.9 | 0.08 |
+| 2.3.8 | 0.19 |
+| 2.3.7 | 0.42 |
+</Chart>
+<Callout tone="warning" title="2.4.0 spike">Crash rate on 2.4.0 is 3× baseline — hotfix targets this version.</Callout>
+</Card>
+<Card title="In-Game Currency Inflation" subtitle="30-day supply vs. sink index">
+<Chart type="area" x="Week" y="Index">
+| Week | Supply | Sinks |
+|---|---|---|
+| W-4 | 100 | 96 |
+| W-3 | 104 | 98 |
+| W-2 | 109 | 99 |
+| W-1 | 115 | 101 |
+| W-0 | 122 | 104 |
+</Chart>
+<Callout tone="warning" title="Supply outpacing sinks">Gold supply grew 22% in 30 days vs. 8% sink growth.</Callout>
+</Card>
+</Columns>
+
+<Card title="Live Events" subtitle="Season 12 content calendar">
+<Columns>
+<Card title="Running Now">
+| Event | Ends in |
+|---|---|
+| Spring Raid | 2d 14h |
+| Double Gold Weekend | 3d 02h |
+| Community Trophy Hunt | 1d 08h |
+</Card>
+<Card title="Upcoming">
+| Event | Starts in |
+|---|---|
+| Boss Rush Night | 2d 12h |
+| Mega Spawn Event | 4d 00h |
+| Arena Season 12 | 6d 18h |
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Player Reports Awaiting Review">
+<Stat label="Open reports" value="312" tone="warning" icon="flag" />
+| Category | Count |
+|---|---|
+| Cheating | 148 |
+| Toxic chat | 96 |
+| Exploit abuse | 42 |
+| Other | 26 |
+<Button size="small" variant="secondary">Review queue</Button>
+</Card>
+<Card title="Ban Appeals Awaiting Review">
+<Stat label="Open appeals" value="47" tone="warning" icon="gavel" />
+| Grounds | Count |
+|---|---|
+| False positive | 19 |
+| Hacked account | 15 |
+| Circumstantial | 13 |
+<Button size="small" variant="secondary">Review queue</Button>
+</Card>
+</Columns>
+
+<Card title="Running Experiments" subtitle="Both randomized tests are live in production">
+<Tabs>
+<Tab title="Matchmaking v2">
+<Columns>
+<Stat label="Match quality" value="+12%" tone="success" icon="trend-up" />
+<Stat label="Wait time" value="-8%" tone="success" icon="timer" />
+<Stat label="D7 retention" value="+1.4 pts" tone="success" icon="users" />
+</Columns>
+<Callout tone="success" title="Statistically significant">p = 0.03 — recommend rollout to 50% of players.</Callout>
+</Tab>
+<Tab title="Economy Tuning">
+<Columns>
+<Stat label="Purchase conversion" value="+5.2%" tone="success" icon="trend-up" />
+<Stat label="ARPDAU" value="-2.1%" tone="danger" icon="chart-line-down" />
+<Stat label="Player satisfaction" value="+0.8 pts" tone="info" icon="smiley" />
+</Columns>
+<Callout tone="warning" title="Not yet significant">p = 0.11 — monitor one more week before deciding.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Live Ops Controls">
+<Columns>
+<Card title="Draft Patch Notes">
+<Form name="patch-notes">
+<Input label="Version" placeholder="2.5.0" />
+<TextArea label="Release notes" rows="6" placeholder="## Highlights&#10;- New Limited Raid: Shadow Keep&#10;- Balance: reduce Dragon Crown cooldown&#10;- Fix: crash on 2.4.0 in inventory" />
+<Button size="small">Save Draft</Button>
+<Button size="small" variant="secondary">Preview</Button>
+</Form>
+</Card>
+<Card title="Deployment & Focus">
+<Select label="Focus region" placeholder="All Regions" options="All Regions | US-East | EU-West | APAC | South America" />
+<Switch label="Only show focused region" name="focus-only" />
+<Button variant="danger" ask="Ship hotfix 2.4.2 to all regions now?">Ship Hotfix 2.4.2</Button>
+</Card>
+</Columns>
+</Card>

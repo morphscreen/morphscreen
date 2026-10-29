@@ -1,0 +1,180 @@
+Here is a single-screen design for the Metroville City Operations Center. Every numbered requirement is represented as a visible panel, stat, chart, table, or action form on the same dashboard.
+
+<Card title="Metroville City Operations Center" subtitle="Thursday, June 12, 2025 · 14:32 local time · Live">
+<Columns>
+<Stat label="Current weather" value="22°C" note="Partly cloudy · Feels like 22°C" />
+<Stat label="Wind & humidity" value="12 km/h · 58%" note="Rain chance 10% · 1015 hPa" />
+<Stat label="Sun & UV" value="UV 5 · Moderate" note="Sunset 20:47" />
+<Select label="Focus district" options="All districts | Downtown | Riverside | Northgate | Eastside | Westwood | Southport" name="district-focus" placeholder="All districts" hint="Filters every panel on this screen" />
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Congestion index" value="7.4 / 10" note="High · 214 km of roads affected" />
+<Stat label="Transit punctuality" value="86%" note="On-time rate · 3 lines delayed" />
+<Stat label="Water use today" value="38.2M L" note="−4% vs yesterday · Normal" />
+<Stat label="Parking downtown" value="1,240" note="Free spots · 62% occupied" />
+<Stat label="Service request backlog" value="312" note="Open requests · 28 overdue" />
+</Columns>
+
+<Columns>
+<Card title="Live map — incidents, traffic & emergency vehicles" subtitle="Centered on: All districts · Selecting a district re-centers this map">
+<Badge tone="danger">LIVE</Badge>
+
+**Traffic hotspots right now**
+
+| Location | Congestion | Flow |
+|---|---|---|
+| 5th & Main | 9.1 / 10 | Standstill |
+| River Rd bridge | 8.4 / 10 | Slow |
+| Northgate Blvd | 7.8 / 10 | Heavy |
+| Eastside Blvd | 6.2 / 10 | Moderate |
+
+**Map markers**
+
+| Marker | ID | Location | District | Status |
+|---|---|---|---|---|
+| 🔴 | INC-1042 | 5th & Main | Downtown | Active |
+| 🟠 | INC-1041 | River Rd & 12th | Riverside | Active |
+| 🟡 | INC-1039 | Northgate Mall | Northgate | Active |
+| 🚒 | F-07 | 5th & Main | Downtown | On scene |
+| 🚑 | A-03 | River Rd & 12th | Riverside | En route |
+| 🚓 | P-12 | Eastside Blvd | Eastside | Patrolling |
+
+**Legend:** 🔴 Critical · 🟠 High · 🟡 Medium · 🚒 Fire · 🚑 Ambulance · 🚓 Police
+</Card>
+<Card title="Energy use — past week" subtitle="Grid load in MWh">
+<Chart type="area" x="Day" y="MWh" title="Energy use — past week">
+| Day | Energy (MWh) |
+|---|---|
+| Mon | 842 |
+| Tue | 855 |
+| Wed | 831 |
+| Thu | 878 |
+| Fri | 903 |
+| Sat | 764 |
+| Sun | 721 |
+</Chart>
+<Stat label="Peak load" value="903 MWh" note="Friday · 18:00–19:00" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open incidents" subtitle="Location and severity">
+| ID | Location | District | Type | Severity | Status |
+|---|---|---|---|---|---|
+| INC-1042 | 5th & Main | Downtown | Traffic collision | <Badge tone="danger">Critical</Badge> | Active |
+| INC-1041 | River Rd & 12th | Riverside | Water main break | <Badge tone="warning">High</Badge> | Crew en route |
+| INC-1040 | 8th Ave | Downtown | Fallen tree | <Badge tone="neutral">Medium</Badge> | Active |
+| INC-1039 | Northgate Mall | Northgate | Fire alarm | <Badge tone="warning">High</Badge> | Under investigation |
+| INC-1038 | Westwood Park | Westwood | Vandalism | <Badge tone="info">Low</Badge> | Report filed |
+</Card>
+<Card title="Emergency vehicle deployment" subtitle="Current positions">
+| Unit | Type | District | Location | Status |
+|---|---|---|---|---|
+| F-07 | Fire engine | Downtown | 5th & Main | On scene |
+| F-03 | Fire engine | Northgate | Northgate Mall | On scene |
+| A-03 | Ambulance | Riverside | River Rd & 12th | En route |
+| A-05 | Ambulance | Southport | Southport Station | Available |
+| P-12 | Police unit | Eastside | Eastside Blvd | Patrolling |
+| P-04 | Police unit | Downtown | 8th Ave | Responding |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Air quality by district" subtitle="AQI — current readings">
+| District | AQI | Level |
+|---|---|---|
+| Downtown | 62 | <Badge tone="warning">Moderate</Badge> |
+| Riverside | 48 | <Badge tone="success">Good</Badge> |
+| Northgate | 55 | <Badge tone="warning">Moderate</Badge> |
+| Eastside | 71 | <Badge tone="warning">Moderate</Badge> |
+| Westwood | 39 | <Badge tone="success">Good</Badge> |
+| Southport | 84 | <Badge tone="warning">Moderate</Badge> |
+</Card>
+<Card title="Parking availability — downtown" subtitle="Current free spots by garage">
+| Garage | Free spots | Occupancy |
+|---|---|---|
+| City Hall Garage | 320 | 58% |
+| Grand Central | 145 | 76% |
+| Market Square | 410 | 49% |
+| Harbor Park | 365 | 44% |
+<Callout tone="success" title="Total">1,240 free spots · 62% occupied</Callout>
+</Card>
+<Card title="Service request backlog" subtitle="By category">
+| Category | Open | Overdue |
+|---|---|---|
+| Potholes | 89 | 12 |
+| Streetlights | 64 | 5 |
+| Sanitation | 51 | 3 |
+| Parks | 38 | 2 |
+| Other | 70 | 6 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public events this weekend" subtitle="June 14–15">
+- **Riverside Jazz Festival** — Sat 14:00–22:00, Riverside Amphitheater
+- **Farmers Market** — Sat 08:00–14:00, Market Square
+- **Mariners vs. Stars** — Sun 18:00, City Stadium
+- **Art in the Park** — Sun 10:00–17:00, Westwood Park
+- **Street Food Night** — Sat 17:00–23:00, Downtown 5th Ave
+</Card>
+<Card title="Roadworks planned this month" subtitle="June 2025">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| 5th Ave — Main to Oak | Downtown | Jun 15–19 | Lane closure |
+| Northgate Blvd | Northgate | Jun 18–22 | Full closure 22:00–05:00 |
+| River Rd | Riverside | Jun 20–24 | Single lane |
+| Westwood Park Rd | Westwood | Jun 24–28 | Shoulder work |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen reports — live feed" subtitle="Incoming as they are submitted">
+<Badge tone="danger">LIVE</Badge>
+
+- **14:31** — Pothole on 3rd Ave & Oak — Downtown
+- **14:29** — Streetlight out on Northgate Blvd — Northgate
+- **14:26** — Illegal dumping near River Rd — Riverside
+- **14:22** — Traffic signal malfunction at 5th & Main — Downtown
+- **14:18** — Noise complaint on Eastside Blvd — Eastside
+- **14:15** — Graffiti on Market Square — Downtown
+</Card>
+<Card title="Infrastructure jobs due for maintenance" subtitle="Scheduled this month">
+| Asset | District | Due date | Priority |
+|---|---|---|---|
+| Water pump WP-12 | Riverside | Jun 14 | <Badge tone="danger">Critical</Badge> |
+| Bridge joint B-07 | Downtown | Jun 18 | <Badge tone="warning">High</Badge> |
+| Traffic signal TS-33 | Eastside | Jun 20 | <Badge tone="warning">High</Badge> |
+| Sewer line SL-04 | Southport | Jun 25 | <Badge tone="neutral">Medium</Badge> |
+| Streetlight grid SG-2 | Northgate | Jun 28 | <Badge tone="neutral">Medium</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a crew" subtitle="Assign resources to an incident">
+<Form name="dispatch-crew">
+<Select label="Incident" options="INC-1042 — 5th & Main, Downtown (Critical) | INC-1041 — River Rd & 12th, Riverside (High) | INC-1040 — 8th Ave, Downtown (Medium) | INC-1039 — Northgate Mall, Northgate (High)" name="incident" placeholder="Select incident" />
+<Select label="Crew type" options="Fire | Police | Ambulance | Utilities | Roadworks | Sanitation" name="crew-type" placeholder="Select crew type" />
+<Select label="District" options="Downtown | Riverside | Northgate | Eastside | Westwood | Southport" name="district" placeholder="Select district" />
+<Input label="Notes" placeholder="e.g. Bring backup generator" name="dispatch-notes" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+<Card title="Send public alert" subtitle="Broadcast to residents">
+<Form name="public-alert">
+<Select label="Alert type" options="Traffic | Weather | Safety | Utility | Event | General" name="alert-type" placeholder="Select type" />
+<Select label="Target district" options="All districts | Downtown | Riverside | Northgate | Eastside | Westwood | Southport" name="alert-district" placeholder="Select district" />
+<TextArea label="Alert message" placeholder="e.g. Water main break on River Rd — avoid the area until 18:00. Use alternative routes." rows="4" name="alert-message" />
+<Button>Send alert</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the incident detail view for INC-1042
+- Compare energy use week over week
+- Which district has the worst air quality trend?
+- Walk me through the public alert approval flow
+</FollowUps>

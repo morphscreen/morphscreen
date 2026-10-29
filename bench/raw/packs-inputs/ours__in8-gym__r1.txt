@@ -1,0 +1,59 @@
+# Gym Plan Builder
+
+Create your weekly workout schedule with exercises, sets, and reps.
+
+<Card title="Workout Days" subtitle="Select which days you'll train">
+<Checkboxes label="Training days" name="workoutDays" options="Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday" value="Monday | Wednesday | Friday" hint="Choose at least 2 days per week" required=true />
+</Card>
+
+<Card title="Start Time" subtitle="When does your workout begin?">
+<Time label="Session start" name="startTime" value="07:00" hint="Pick a consistent time for habit building" required=true />
+</Card>
+
+<Card title="Exercises" subtitle="Add each exercise with sets and reps">
+<Form name="exercises">
+<Input label="Exercise 1" name="ex1" placeholder="e.g., Bench Press" value="Bench Press" required=true />
+<Columns>
+<Stepper label="Sets" name="ex1Sets" value=3 min=1 max=10 step=1 unit="sets" required=true />
+<Stepper label="Reps" name="ex1Reps" value=10 min=1 max=30 step=1 unit="reps" required=true />
+</Columns>
+
+<Input label="Exercise 2" name="ex2" placeholder="e.g., Squats" value="Squats" required=true />
+<Columns>
+<Stepper label="Sets" name="ex2Sets" value=4 min=1 max=10 step=1 unit="sets" required=true />
+<Stepper label="Reps" name="ex2Reps" value=8 min=1 max=30 step=1 unit="reps" required=true />
+</Columns>
+
+<Input label="Exercise 3" name="ex3" placeholder="e.g., Pull-ups" value="Pull-ups" />
+<Columns>
+<Stepper label="Sets" name="ex3Sets" value=3 min=1 max=10 step=1 unit="sets" />
+<Stepper label="Reps" name="ex3Reps" value=8 min=1 max=30 step=1 unit="reps" />
+</Columns>
+
+<Input label="Exercise 4" name="ex4" placeholder="e.g., Overhead Press" value="Overhead Press" />
+<Columns>
+<Stepper label="Sets" name="ex4Sets" value=3 min=1 max=10 step=1 unit="sets" />
+<Stepper label="Reps" name="ex4Reps" value=10 min=1 max=30 step=1 unit="reps" />
+</Columns>
+
+<Input label="Exercise 5" name="ex5" placeholder="e.g., Deadlifts" value="Deadlifts" />
+<Columns>
+<Stepper label="Sets" name="ex5Sets" value=3 min=1 max=10 step=1 unit="sets" />
+<Stepper label="Reps" name="ex5Reps" value=6 min=1 max=30 step=1 unit="reps" />
+</Columns>
+</Form>
+</Card>
+
+<Card title="Plan Summary">
+<Callout tone="info" title="Your weekly schedule">
+**3 workout days** (Mon, Wed, Fri) at **07:00**  
+**5 exercises** · ~16 sets per session · ~45 min estimated
+</Callout>
+</Card>
+
+<Form name="savePlan">
+<Input label="Plan name" name="planName" placeholder="e.g., Upper/Lower Strength" value="Push/Pull/Legs Strength" required=true />
+<Input label="Your name" name="userName" placeholder="Alex" value="Alex" required=true />
+<Button variant="primary" size="large">Save Plan</Button>
+<Button variant="secondary" size="large">Save as Template</Button>
+</Form>

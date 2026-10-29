@@ -1,0 +1,106 @@
+# Power Network Operator Console
+
+<Callout tone="warning" title="Live alert">Voltage fluctuation detected in North region – transformer T-204 at risk. Crew dispatched.</Callout>
+
+## Network Overview
+
+<Columns>
+<Stat label="Current Load" value="18.4 GW" change="+2.1% vs hour ago" tone="info" icon="lightning" />
+<Stat label="Capacity Used" value="76%" change="24% headroom" tone="success" icon="gauge" />
+<Stat label="Price / MWh" value="$54.20" change="+$3.10 today" tone="warning" icon="currency-dollar" />
+<Stat label="Emissions Today" value="12,480 tCO₂" change="−8% vs yesterday" tone="info" icon="cloud" />
+</Columns>
+
+<Card title="Demand Forecast – Next 24 Hours" subtitle="Actual vs predicted">
+<Chart type="line" x="Hour" y="GW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 17.8 | 17.5 |
+| 04:00 | 16.2 | 16.0 |
+| 08:00 | 18.9 | 19.2 |
+| 12:00 | 20.1 | 20.4 |
+| 16:00 | 21.3 | 21.0 |
+| 20:00 | 19.8 | 19.5 |
+| 24:00 | 18.0 | 18.4 |
+</Chart>
+</Card>
+
+<Card title="Region Focus" subtitle="Select a region to filter plants and outages">
+<Select label="Active Region" options="All Regions | North | South | East | West | Central" name="region" value="All Regions" />
+</Card>
+
+## Generation Mix
+
+<Card title="Generation by Source" subtitle="Live share of total output">
+<Chart type="donut" title="Current generation mix" x="Source" y="GW">
+| Source | Output |
+|---|---|
+| Gas | 6.2 |
+| Wind | 4.8 |
+| Solar | 3.1 |
+| Nuclear | 2.4 |
+| Hydro | 1.9 |
+</Chart>
+</Card>
+
+## Plant Status
+
+<Card title="Plants – All Regions" subtitle="Click a row to inspect">
+| Plant | Region | Source | Output (MW) | Status |
+|---|---|---|---|---|
+| Riverton CCGT | North | Gas | 1,240 | <Badge tone="success">Online</Badge> |
+| Beacon Wind Farm | East | Wind | 890 | <Badge tone="success">Online</Badge> |
+| Solara PV | South | Solar | 610 | <Badge tone="warning">Derated</Badge> |
+| Meridian Nuclear | West | Nuclear | 1,100 | <Badge tone="success">Online</Badge> |
+| Highfall Hydro | Central | Hydro | 540 | <Badge tone="danger">Offline</Badge> |
+| Ashford Peaker | North | Gas | 320 | <Badge tone="info">Standby</Badge> |
+</Card>
+
+## Outages
+
+<Card title="Active Outages" subtitle="Affected regions and estimated restoration">
+| Region | Outage Type | Customers Affected | Started | ETA |
+|---|---|---|---|---|
+| West | Transformer failure | 14,200 | 09:15 | 14:30 |
+| Central | Storm damage – lines down | 8,700 | 11:40 | 18:00 |
+| South | Planned maintenance | 2,100 | 08:00 | 16:00 |
+</Card>
+
+## Maintenance Planned This Month
+
+<Card title="Scheduled Maintenance" subtitle="Upcoming work on plants and lines">
+| Date | Asset | Region | Type | Impact |
+|---|---|---|---|---|
+| Jun 12 | Meridian Nuclear – Reactor 2 | West | Refueling | −500 MW |
+| Jun 18 | Beacon Wind – Turbines 4–7 | East | Blade inspection | −210 MW |
+| Jun 24 | Highfall Hydro – Penstock | Central | Valve replacement | −540 MW |
+| Jun 28 | Riverton CCGT – HRSG | North | Boiler cleaning | −300 MW |
+</Card>
+
+## Live Alerts
+
+<Card title="Alert Feed" subtitle="Newest first – auto-refresh 30s">
+<Badge tone="danger">Critical</Badge> **Transformer T-204 overload** – North region, risk of trip. 12:03  
+<Badge tone="warning">Warning</Badge> **High wind gust forecast** – East coast, solar output may dip. 11:52  
+<Badge tone="info">Info</Badge> **Demand spike expected** – Heatwave advisory, peak +2 GW by 16:00. 11:40  
+<Badge tone="danger">Critical</Badge> **Highfall Hydro offline** – Turbine bearing failure. 09:20  
+</Card>
+
+## Control Actions
+
+<Card title="Curtailment & Dispatch" subtitle="Order controlled reduction or re-dispatch">
+<Form name="curtailment">
+<Select label="Plant" options="Beacon Wind Farm | Solara PV | Ashford Peaker | Riverton CCGT" name="plant" placeholder="Select plant" />
+<Slider label="Curtailment amount" min="0" max="500" step="10" value="150" name="amount" unit="MW" />
+<Radio label="Action type" options="Immediate curtail | Scheduled curtail | Re-dispatch to gas" name="action" />
+<Button>Submit Order</Button>
+<Button variant="secondary">Acknowledge Alerts</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the last 10 curtailment orders
+- Which region has the highest outage risk right now?
+- Compare today's emissions with the monthly target
+- What's the forecasted peak demand and time?
+</FollowUps>

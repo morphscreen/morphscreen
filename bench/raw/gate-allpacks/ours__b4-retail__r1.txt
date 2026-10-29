@@ -1,0 +1,138 @@
+# Store Manager Daily Console
+
+<Select label="Select Store" name="store-select" options="Downtown Main | Uptown Mall | Westside Plaza | Eastgate Center" value="Downtown Main" placeholder="Choose store" />
+
+<Columns>
+<Card title="Sales Today vs Target">
+<Gauge label="Sales" value="47250" min="0" max="75000" unit="$" tone="info" />
+<Stat label="Target" value="$75,000" />
+<Stat label="Remaining" value="$27,750" tone="warning" />
+<Progress value="47250" max="75000" label="63% of daily target" tone="info" />
+</Card>
+
+<Card title="Average Basket Size">
+<Stat label="Today" value="$42.30" change="+$2.10 vs yesterday" tone="success" />
+<Stat label="This Week Avg" value="$39.80" />
+<Stat label="Last Week Avg" value="$38.50" change="+3.4%" tone="success" />
+</Card>
+
+<Card title="Returns This Week">
+<Stat label="Total Returns" value="47" change="-8 vs last week" tone="success" />
+<Stat label="Return Rate" value="2.3%" change="-0.4pp" tone="success" />
+<Stat label="Refund Amount" value="$1,890" />
+</Card>
+</Columns>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8:00 | 12 |
+| 9:00 | 34 |
+| 10:00 | 58 |
+| 11:00 | 89 |
+| 12:00 | 124 |
+| 13:00 | 156 |
+| 14:00 | 142 |
+| 15:00 | 138 |
+| 16:00 | 167 |
+| 17:00 | 198 |
+| 18:00 | 176 |
+| 19:00 | 134 |
+| 20:00 | 89 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best Sellers Today">
+<Chart type="bar" x="Product" y="Units">
+| Product | Units |
+|---|---|
+| Wireless Earbuds | 23 |
+| Phone Cases | 18 |
+| Portable Chargers | 15 |
+| Screen Protectors | 12 |
+| Bluetooth Speakers | 9 |
+| USB-C Cables | 8 |
+| Smart Watch Bands | 7 |
+| Car Mounts | 6 |
+</Chart>
+</Card>
+
+<Card title="Items Out of Stock">
+<Table>
+| SKU | Product | Category | Days OOS | Reorder Status |
+|---|---|---|---|---|
+| SKU-8472 | iPhone 15 Case Clear | Accessories | 3 | Ordered (ETA 2 days) |
+| SKU-9103 | 65W GaN Charger | Power | 1 | Not ordered |
+| SKU-7721 | AirTag 4-Pack | Accessories | 5 | Ordered (ETA 1 day) |
+| SKU-5589 | MagSafe Wallet | Accessories | 2 | Not ordered |
+</Table>
+</Card>
+</Columns>
+
+<Card title="Running Promotions Performance">
+<Table>
+| Promotion | Type | Start | End | Revenue | Units | Conversion | Status |
+|---|---|---|---|---|---|---|---|
+| Summer Audio Sale | 20% off headphones | Jul 1 | Jul 31 | $12,400 | 89 | 4.2% | <Badge tone="success">Active</Badge> |
+| Bundle & Save | Buy 2 accessories, get 15% off | Jul 15 | Aug 15 | $8,200 | 156 | 6.8% | <Badge tone="success">Active</Badge> |
+| Student Discount | 10% off with .edu | Ongoing | — | $3,100 | 42 | 3.1% | <Badge tone="success">Active</Badge> |
+| Trade-In Bonus | Extra $50 on trade-ins | Jul 10 | Jul 20 | $1,800 | 12 | 1.9% | <Badge tone="warning">Ending Soon</Badge> |
+| Early Bird | 15% off before 10am | Ongoing | — | $2,300 | 34 | 5.4% | <Badge tone="success">Active</Badge> |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Registers Status">
+<Table>
+| Register | Status | Cashier | Sales Today | Transactions | Last Activity |
+|---|---|---|---|---|---|
+| REG-01 | <Badge tone="success">Open</Badge> | Sarah Chen | $12,450 | 87 | 2 min ago |
+| REG-02 | <Badge tone="success">Open</Badge> | Marcus Johnson | $9,800 | 72 | 1 min ago |
+| REG-03 | <Badge tone="success">Open</Badge> | Priya Patel | $11,200 | 79 | 3 min ago |
+| REG-04 | <Badge tone="warning">Break</Badge> | — | $6,500 | 48 | 18 min ago |
+| REG-05 | <Badge tone="danger">Closed</Badge> | — | $0 | 0 | — |
+| REG-06 | <Badge tone="success">Open</Badge> | Alex Rivera | $7,300 | 54 | 5 min ago |
+</Table>
+</Card>
+
+<Card title="On Shift Today">
+<Columns>
+<Avatar name="Sarah Chen" subtitle="Shift Lead • 8am–4pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" />
+<Avatar name="Marcus Johnson" subtitle="Cashier • 8am–4pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus" />
+<Avatar name="Priya Patel" subtitle="Cashier • 9am–5pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" />
+<Avatar name="Alex Rivera" subtitle="Cashier • 12pm–8pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" />
+<Avatar name="Jordan Kim" subtitle="Floor Lead • 10am–6pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan" />
+<Avatar name="Taylor Brooks" subtitle="Stock • 7am–3pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Taylor" />
+<Avatar name="Casey Morgan" subtitle="Stock • 2pm–10pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Casey" />
+<Avatar name="Riley Davis" subtitle="Support • 11am–7pm" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Riley" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Revenue">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 52400 | 48900 |
+| Tue | 54100 | 51200 |
+| Wed | 56800 | 53400 |
+| Thu | 58200 | 55100 |
+| Fri | 61500 | 59800 |
+| Sat | 67300 | 64200 |
+| Sun | 45600 | 42800 |
+</Chart>
+<Stat label="Week to Date" value="$395,900" change="+$18,700 (+5.0%) vs last week" tone="success" />
+</Card>
+
+<Card title="Quick Actions">
+<Form name="reorder-form">
+<Columns>
+<Select label="Item to Reorder" name="reorder-item" placeholder="Select out-of-stock item" options="iPhone 15 Case Clear (SKU-8472) | 65W GaN Charger (SKU-9103) | AirTag 4-Pack (SKU-7721) | MagSafe Wallet (SKU-5589)" required="true" />
+<Stepper label="Quantity" name="reorder-qty" value="50" min="1" max="500" step="10" unit="units" required="true" />
+</Columns>
+<Button variant="primary">Submit Reorder</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

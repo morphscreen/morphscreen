@@ -1,0 +1,56 @@
+# Personal Budget Check
+
+<Card title="Budget Overview" subtitle="Current month">
+<Columns>
+<Stat label="Total spent" value="$2,847" note="of $3,500 budget" tone="success" icon="wallet" />
+<Stat label="Remaining" value="$653" note="18.7% left" tone="info" icon="piggy-bank" />
+<Stat label="Daily average" value="$94.90" note="vs $116.67 target" tone="neutral" icon="calendar" />
+</Columns>
+<Progress value="2847" max="3500" label="Spent vs budget" tone="info" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 540 |
+| Transport | 310 |
+| Utilities | 185 |
+| Entertainment | 220 |
+| Shopping | 392 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="warning" title="Highlighted expense">
+<Columns>
+<Stat label="Merchant" value="Sunset Apartments" note="Rent payment" icon="building" />
+<Stat label="Amount" value="$1,200" note="42.2% of total spent" tone="danger" icon="warning" />
+</Columns>
+</Callout>
+</Card>
+
+<Card title="Select a Different Month">
+<Form name="month-selector">
+<Date label="Choose month" name="month" hint="Pick any month to view its budget" />
+<Button>View month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g., Groceries at Trader Joe's" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" />
+<Select label="Category" placeholder="Select a category" options="Housing | Food | Transport | Utilities | Entertainment | Shopping | Other" />
+<Date label="Date" name="expense-date" />
+<Button>Add expense</Button>
+<Button variant="secondary">Reset form</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my spending trend over the last 6 months
+- Compare this month to last month
+- Suggest a new budget for next month
+</FollowUps>

@@ -1,0 +1,230 @@
+# City Operations Center
+
+<Select label="Focus District" name="district" placeholder="All districts" options="All districts | Downtown | Northside | Eastport | Westfield | Riverside | University | Industrial" value="All districts" />
+
+<Columns>
+<Card title="Congestion Right Now">
+<Stat label="Current Index" value="72/100" change="+5 vs 1hr ago" tone="warning" />
+<Progress value="72" max="100" label="Congestion Level" tone="warning" />
+<Chart type="line" title="Last 6 Hours" x="Time" y="Index">
+| Time | Index |
+|---|---|
+| 06:00 | 35 |
+| 07:00 | 58 |
+| 08:00 | 78 |
+| 09:00 | 72 |
+| 10:00 | 65 |
+| 11:00 | 72 |
+</Chart>
+</Card>
+
+<Card title="Transit Punctuality">
+<Stat label="On-Time Rate" value="87%" change="-2% vs yesterday" tone="info" />
+<Chart type="bar" title="By Line" x="Line" y="% On Time">
+| Line | % On Time |
+|---|---|
+| Red Line | 92 |
+| Blue Line | 85 |
+| Green Line | 89 |
+| Yellow Line | 81 |
+| Bus Network | 86 |
+</Chart>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" title="AQI (Lower is Better)" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Northside | 42 |
+| Eastport | 55 |
+| Westfield | 38 |
+| Riverside | 31 |
+| University | 47 |
+| Industrial | 89 |
+</Chart>
+<Badge tone="warning">Industrial exceeds threshold</Badge>
+</Card>
+
+<Card title="Energy Use — Past Week">
+<Chart type="area" title="MWh" x="Day" y="MWh">
+| Day | MWh |
+|---|---|
+| Mon | 1240 |
+| Tue | 1180 |
+| Wed | 1210 |
+| Thu | 1195 |
+| Fri | 1260 |
+| Sat | 1100 |
+| Sun | 1050 |
+</Chart>
+<Stat label="Week Total" value="8,235 MWh" change="+3% vs prior week" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today">
+<Stat label="Consumption" value="42.3M gal" change="+1.2M vs avg" tone="info" />
+<Progress value="42.3" max="55" label="Daily Capacity Used" tone="info" />
+<Chart type="line" title="Hourly Usage (M gal)" x="Hour" y="M gal">
+| Hour | M gal |
+|---|---|
+| 00:00 | 1.1 |
+| 03:00 | 0.8 |
+| 06:00 | 1.5 |
+| 09:00 | 2.8 |
+| 12:00 | 3.2 |
+| 15:00 | 3.5 |
+| 18:00 | 3.8 |
+| 21:00 | 2.9 |
+</Chart>
+</Card>
+
+<Card title="Current Weather">
+<Stat label="Temperature" value="68°F" tone="neutral" />
+<Stat label="Conditions" value="Partly Cloudy" tone="neutral" />
+<Stat label="Wind" value="8 mph NW" tone="neutral" />
+<Stat label="Humidity" value="54%" tone="neutral" />
+<Stat label="Precipitation" value="0%" tone="success" />
+<Badge tone="success">No alerts active</Badge>
+</Card>
+
+<Card title="Parking Availability — Downtown">
+<Stat label="Available Spaces" value="1,247 / 3,800" change="33% free" tone="success" />
+<Progress value="1247" max="3800" label="Occupancy" tone="success" />
+<Chart type="bar" title="By Zone" x="Zone" y="% Free">
+| Zone | % Free |
+|---|---|
+| Financial | 28 |
+| Retail | 41 |
+| Civic | 35 |
+| Waterfront | 22 |
+| Arts | 48 |
+</Chart>
+</Card>
+
+<Card title="Service Request Backlog">
+<Stat label="Open Requests" value="1,284" change="+47 today" tone="warning" />
+<Chart type="donut" title="By Category" x="Category" y="Count">
+| Category | Count |
+|---|---|
+| Potholes | 312 |
+| Streetlights | 198 |
+| Trash | 156 |
+| Signage | 134 |
+| Drainage | 128 |
+| Other | 356 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents">
+<Chart type="table" title="Active Incidents" x="ID" y="Details">
+| ID | Type | Location | Severity | Since |
+|---|---|---|---|---|
+| INC-4421 | Water Main Break | 5th & Main (Downtown) | Critical | 08:12 |
+| INC-4420 | Traffic Signal Out | Oak & 12th (Northside) | High | 09:03 |
+| INC-4419 | Gas Leak | Industrial Park Rd | Critical | 09:45 |
+| INC-4418 | Downed Tree | Riverside Dr & 3rd | Medium | 10:11 |
+| INC-4417 | Power Outage | University Blk 400 | High | 10:28 |
+| INC-4416 | Sewer Backup | Eastport Ave | Medium | 10:52 |
+</Chart>
+</Card>
+
+<Card title="Emergency Vehicles Deployed">
+<Chart type="table" title="Active Units" x="Unit" y="Details">
+| Unit | Type | Location | Status | Incident |
+|---|---|---|---|---|
+| ENG-12 | Fire Engine | Downtown – 5th & Main | On Scene | INC-4421 |
+| MED-7 | Ambulance | Northside – Oak & 12th | En Route | INC-4420 |
+| HAZ-3 | Hazmat | Industrial Park Rd | On Scene | INC-4419 |
+| ENG-8 | Fire Engine | Riverside Dr & 3rd | Staged | INC-4418 |
+| TRK-4 | Ladder Truck | University Blk 400 | En Route | INC-4417 |
+| VAC-2 | Vactor Truck | Eastport Ave | On Scene | INC-4416 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public Events — This Weekend">
+<Chart type="table" title="Scheduled Events" x="Event" y="Details">
+| Event | Date | Time | Location | Expected Attendance |
+|---|---|---|---|---|
+| Riverside Jazz Festival | Sat Jun 15 | 12:00–22:00 | Riverside Park | 8,500 |
+| Downtown Art Walk | Sat Jun 15 | 17:00–23:00 | Arts District | 12,000 |
+| University Graduation | Sun Jun 16 | 09:00–13:00 | University Stadium | 15,000 |
+| Eastport Food Fair | Sun Jun 16 | 11:00–19:00 | Eastport Plaza | 6,200 |
+| Pride Parade | Sun Jun 16 | 10:00–13:00 | Downtown Core | 25,000 |
+</Chart>
+</Card>
+
+<Card title="Citizen Reports (Live)">
+<Details title="Latest Reports" open="true">
+<Chart type="table" title="Incoming Reports" x="Time" y="Details">
+| Time | Category | Location | Status |
+|---|---|---|---|
+| 11:03 | Pothole | 3rd & Elm (Westfield) | New |
+| 11:01 | Graffiti | Library Wall (Downtown) | Triaged |
+| 10:58 | Streetlight Out | Maple Ave (Northside) | Assigned |
+| 10:55 | Missed Trash | Oak St (Eastport) | New |
+| 10:52 | Noise Complaint | University Row | Dispatched |
+| 10:49 | Illegal Dumping | Industrial Lot 7 | New |
+</Chart>
+</Details>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks Planned — This Month">
+<Chart type="table" title="Scheduled Roadworks" x="Project" y="Details">
+| Project | Location | Start | End | Impact |
+|---|---|---|---|---|
+| Main St Resurfacing | Main St (3rd–12th) | Jun 17 | Jun 28 | Lane closures |
+| Bridge Deck Repair | Riverside Bridge | Jun 20 | Jul 5 | One lane each way |
+| Utility Upgrade | Oak Ave (Northside) | Jun 24 | Jul 12 | Full closure nights |
+| Bike Lane Install | University Blvd | Jun 26 | Jul 10 | Parking removal |
+| Sewer Lining | Eastport Industrial | Jun 28 | Jul 15 | Intermittent closures |
+</Chart>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+<Chart type="table" title="Due This Month" x="Asset" y="Details">
+| Asset | Type | Location | Due Date | Priority |
+|---|---|---|---|---|
+| Pump Station #4 | Water | Riverside | Jun 15 | High |
+| Substation 12 | Power | Industrial | Jun 18 | Critical |
+| Bridge 07 | Transport | Downtown | Jun 22 | High |
+| Reservoir Valve | Water | Westfield | Jun 25 | Medium |
+| Traffic Cabinet | Signals | Citywide (12 units) | Jun 30 | Medium |
+| Generator | Backup Power | City Hall | Jul 3 | Low |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Crew Type" name="crewType" placeholder="Select crew" options="Road Repair | Water/Sewer | Electrical | Traffic Signals | Tree Removal | General Maintenance" required="true" />
+<Select label="Incident / Location" name="incident" placeholder="Select or enter location" options="INC-4421: 5th & Main | INC-4420: Oak & 12th | INC-4419: Industrial Park Rd | INC-4418: Riverside Dr & 3rd | INC-4417: University Blk 400 | INC-4416: Eastport Ave | Custom Location" required="true" />
+<Input label="Custom Location" name="customLocation" placeholder="Enter address or landmark" hint="Required if 'Custom Location' selected" />
+<Input label="Crew ID" name="crewId" placeholder="e.g., CRW-204" required="true" />
+<TextArea label="Notes / Instructions" name="notes" placeholder="Special instructions, hazards, equipment needed..." rows="3" />
+<Button>Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="Alert Type" name="alertType" placeholder="Choose alert type" options="Traffic Advisory | Air Quality Alert | Water Advisory | Emergency Evacuation | Weather Warning | Service Disruption | General Notice" required="true" />
+<Select label="Target Area" name="targetArea" placeholder="Select area" options="Citywide | Downtown | Northside | Eastport | Westfield | Riverside | University | Industrial | Custom Polygon" required="true" />
+<Input label="Headline" name="headline" placeholder="Brief headline (max 90 chars)" required="true" />
+<TextArea label="Message" name="message" placeholder="Full alert text for public distribution..." rows="4" required="true" />
+<Checkboxes label="Channels" name="channels" options="Mobile Push | SMS | Email | Social Media | Website Banner | Radio/TV (EAS)" value="Mobile Push | SMS | Website Banner" />
+<Switch label="Send Immediately" name="immediate" value="true" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>

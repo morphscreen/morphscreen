@@ -1,0 +1,68 @@
+# Logistics Coordinator Board
+
+<Badge tone="success">Live</Badge> Last refreshed: Today at 10:32 AM
+
+<Columns>
+<Stat label="On-time shipments this month" value="94.2%" change="+1.8 pts" tone="success" />
+<Stat label="Shipments in transit" value="38" note="3 delayed" tone="neutral" />
+<Stat label="Average cost per shipment" value="$812" change="-2.4%" tone="info" />
+<Stat label="Delayed shipments" value="3" note="Requires attention" tone="danger" />
+</Columns>
+
+<Card title="Search and actions">
+<Columns>
+<Form name="route-search">
+<Input label="Search by route" type="search" name="route" placeholder="Origin or destination" />
+<Button>Search</Button>
+</Form>
+
+<Form name="flag-shipment">
+<Input label="Shipment ID" name="shipment-id" placeholder="e.g. SHP-1044" />
+<Select label="Reason" name="reason" placeholder="Select a reason" options="Weather delay | Customs hold | Missing docs | Address issue | Other" />
+<Button variant="danger">Flag shipment</Button>
+</Form>
+</Columns>
+</Card>
+
+<Card title="Shipments in transit" subtitle="8 of 38 active shipments shown">
+<Callout tone="danger" title="Delayed shipments called out">
+SHP-1044, SHP-1059, and SHP-1072 have passed their original ETA and need follow-up.
+</Callout>
+
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-1044 | Dallas, TX | Denver, CO | Apr 14, 14:30 | <Badge tone="danger">Delayed</Badge> |
+| SHP-1048 | Chicago, IL | St. Louis, MO | Apr 15, 09:00 | <Badge tone="success">On time</Badge> |
+| SHP-1051 | Atlanta, GA | Nashville, TN | Apr 15, 16:45 | <Badge tone="success">On time</Badge> |
+| SHP-1056 | Portland, OR | Sacramento, CA | Apr 16, 08:20 | <Badge tone="success">On time</Badge> |
+| SHP-1059 | Phoenix, AZ | Salt Lake City, UT | Apr 14, 18:10 | <Badge tone="danger">Delayed</Badge> |
+| SHP-1063 | Newark, NJ | Philadelphia, PA | Apr 15, 11:30 | <Badge tone="success">On time</Badge> |
+| SHP-1068 | Kansas City, MO | Des Moines, IA | Apr 16, 15:00 | <Badge tone="success">On time</Badge> |
+| SHP-1072 | Seattle, WA | Boise, ID | Apr 14, 22:00 | <Badge tone="danger">Delayed</Badge> |
+</Card>
+
+<Card title="Weekly volume — past two months">
+<Chart type="bar" x="Week of" y="Shipments">
+| Week of | Shipments |
+|---|---|
+| Feb 10 | 212 |
+| Feb 17 | 246 |
+| Feb 24 | 231 |
+| Mar 2 | 268 |
+| Mar 9 | 254 |
+| Mar 16 | 289 |
+| Mar 23 | 274 |
+| Mar 30 | 302 |
+</Chart>
+</Card>
+
+<Card title="Volume split by carrier">
+<Chart type="donut" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Swift Haul | 15 |
+| TransGlobal | 10 |
+| Nightline | 8 |
+| Metro Freight | 5 |
+</Chart>
+</Card>

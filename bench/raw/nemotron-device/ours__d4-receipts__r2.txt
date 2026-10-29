@@ -1,0 +1,33 @@
+<Card title="Expense Claim" subtitle="Submit your receipts and invoices for reimbursement">
+<Callout tone="info" title="Add expenses">Photograph paper receipts or upload PDF invoices for each expense item.</Callout>
+
+### Add New Expense
+<Form name="add-expense">
+<Camera label="Photograph Receipt" name="receipt-photo" facing="back" hint="Take a clear photo of the paper receipt" required="false" />
+<File label="Upload PDF Invoice" name="invoice-pdf" accept="application/pdf" hint="Select a PDF invoice file" required="false" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Enter expense amount in USD" required="true" />
+<Select label="Category" name="category" options="Travel | Meals | Office Supplies | Software | Training | Other" placeholder="Select expense category" required="true" />
+<TextArea label="Description" name="description" placeholder="Brief description (e.g., 'Taxi to airport', 'Client lunch')" rows="2" />
+<Button variant="primary">Add Expense</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+
+### Current Expenses
+| # | Category | Amount | Receipt | Description |
+|---|---|---|---|---|
+| 1 | Travel | $45.00 | 📷 Photo | Taxi to airport |
+| 2 | Meals | $28.50 | 📄 PDF | Client lunch |
+| 3 | Office Supplies | $12.99 | 📷 Photo | Notebooks and pens |
+
+<Stat label="Claim Total" value="$86.49" tone="success" />
+
+### Submit Claim
+<Form name="submit-claim">
+<Input label="Your Name" name="claimant" placeholder="John Doe" required="true" />
+<Input label="Employee ID" name="employee-id" placeholder="EMP-1234" required="true" />
+<Select label="Department" name="department" options="Engineering | Sales | Marketing | HR | Finance | Operations" placeholder="Select your department" required="true" />
+<TextArea label="Notes for Approver" name="notes" placeholder="Any additional context or special instructions" rows="3" />
+<Button variant="primary" size="large">Submit Claim</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>

@@ -1,0 +1,319 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="info">Live · Updated 12s ago</Badge>
+<Badge tone="success">All lines running</Badge>
+
+---
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="OEE" value="87.3%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="92.1%" change="+0.8%" tone="info" icon="clock" />
+<Stat label="Performance" value="94.5%" change="+1.2%" tone="info" icon="gauge" />
+<Stat label="Quality" value="99.8%" change="-0.1%" tone="warning" icon="check-circle" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Today's Production Target">
+<Progress value="8472" max="10000" label="Units produced: 8,472 / 10,000 (84.7%)" tone="info" />
+<Columns>
+<Stat label="Target rate" value="1,250 units/hr" />
+<Stat label="Actual rate" value="1,189 units/hr" change="-61/hr" tone="warning" />
+<Stat label="Projected EOD" value="9,850 units" change="-150 vs target" tone="warning" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Production Lines Overview">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alarms |
+|---|---|---|---|---|---|
+| Line A | <Badge tone="success">Running</Badge> | 1,240 | 1,250 | 89.2% | 0 |
+| Line B | <Badge tone="success">Running</Badge> | 1,180 | 1,200 | 85.7% | 1 |
+| Line C | <Badge tone="warning">Reduced</Badge> | 890 | 1,100 | 78.3% | 2 |
+| Line D | <Badge tone="success">Running</Badge> | 1,310 | 1,300 | 91.5% | 0 |
+| Line E | <Badge tone="danger">Down</Badge> | 0 | 1,150 | 0% | 3 |
+</Tab>
+<Tab title="Line A Detail">
+<Columns>
+<Stat label="Current rate" value="1,240/hr" />
+<Stat label="Shift total" value="9,850" />
+<Stat label="Defects this shift" value="12 (0.12%)" tone="success" />
+<Stat label="Downtime today" value="18 min" tone="success" />
+</Columns>
+<Callout tone="info" title="Line A Notes">Next scheduled maintenance: Tomorrow 06:00. Raw material stock: Steel OK, Resin 2.3 days.</Callout>
+</Tab>
+<Tab title="Line B Detail">
+<Columns>
+<Stat label="Current rate" value="1,180/hr" />
+<Stat label="Shift total" value="9,420" />
+<Stat label="Defects this shift" value="28 (0.30%)" tone="warning" />
+<Stat label="Downtime today" value="42 min" tone="warning" />
+</Columns>
+<Callout tone="warning" title="Line B Alert">Feeder jam cleared 14 min ago. Watch for recurring misfeeds on Station 3.</Callout>
+</Tab>
+<Tab title="Line C Detail">
+<Columns>
+<Stat label="Current rate" value="890/hr" />
+<Stat label="Shift total" value="6,230" />
+<Stat label="Defects this shift" value="45 (0.72%)" tone="danger" />
+<Stat label="Downtime today" value="2h 15m" tone="danger" />
+</Columns>
+<Callout tone="danger" title="Line C Issue">Conveyor motor overheating. Running at 80% speed. Maintenance dispatched.</Callout>
+</Tab>
+<Tab title="Line D Detail">
+<Columns>
+<Stat label="Current rate" value="1,310/hr" />
+<Stat label="Shift total" value="10,480" />
+<Stat label="Defects this shift" value="8 (0.08%)" tone="success" />
+<Stat label="Downtime today" value="5 min" tone="success" />
+</Columns>
+</Tab>
+<Tab title="Line E Detail">
+<Columns>
+<Stat label="Current rate" value="0/hr" />
+<Stat label="Shift total" value="0" />
+<Stat label="Defects this shift" value="N/A" />
+<Stat label="Downtime today" value="8h 42m" tone="danger" />
+</Columns>
+<Callout tone="danger" title="Line E Down">Main drive shaft failure. Parts en route, ETA 4 hours. Estimated restart: 16:30.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %">
+| Date | Defect Rate % |
+|---|---|
+| 2025-01-15 | 0.42 |
+| 2025-01-16 | 0.38 |
+| 2025-01-17 | 0.45 |
+| 2025-01-18 | 0.41 |
+| 2025-01-19 | 0.39 |
+| 2025-01-20 | 0.44 |
+| 2025-01-21 | 0.37 |
+| 2025-01-22 | 0.35 |
+| 2025-01-23 | 0.33 |
+| 2025-01-24 | 0.31 |
+| 2025-01-25 | 0.29 |
+| 2025-01-26 | 0.28 |
+| 2025-01-27 | 0.30 |
+| 2025-01-28 | 0.32 |
+| 2025-01-29 | 0.34 |
+| 2025-01-30 | 0.36 |
+| 2025-01-31 | 0.33 |
+| 2025-02-01 | 0.31 |
+| 2025-02-02 | 0.29 |
+| 2025-02-03 | 0.27 |
+| 2025-02-04 | 0.26 |
+| 2025-02-05 | 0.25 |
+| 2025-02-06 | 0.24 |
+| 2025-02-07 | 0.23 |
+| 2025-02-08 | 0.22 |
+| 2025-02-09 | 0.21 |
+| 2025-02-10 | 0.20 |
+| 2025-02-11 | 0.19 |
+| 2025-02-12 | 0.18 |
+| 2025-02-13 | 0.17 |
+</Chart>
+<Callout tone="success" title="Trend">Defect rate down 59% over 30 days. Current 0.17% vs target 0.25%.</Callout>
+</Card>
+
+---
+
+<Card title="Downtime by Cause — Today">
+<Chart type="pie" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Planned maintenance | 120 |
+| Material shortage | 85 |
+| Equipment failure | 67 |
+| Changeover | 45 |
+| Quality hold | 32 |
+| Operator break coverage | 18 |
+| Other | 15 |
+</Chart>
+<Columns>
+<Stat label="Total downtime" value="382 min" />
+<Stat label="Unplanned" value="202 min (53%)" tone="warning" />
+<Stat label="MTBF" value="14.2 hrs" change="+2.1 hrs" tone="success" />
+<Stat label="MTTR" value="38 min" change="-5 min" tone="success" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due | Type | Status | Action |
+|---|---|---|---|---|---|
+| CNC-04 | Line A | Tomorrow 06:00 | Preventive (500h) | <Badge tone="info">Scheduled</Badge> | [View] |
+| Press-12 | Line B | In 3 days | Preventive (1000h) | <Badge tone="info">Scheduled</Badge> | [View] |
+| Injection-07 | Line C | Today 14:00 | Corrective | <Badge tone="danger">Overdue</Badge> | [Prioritize] |
+| Conveyor-03 | Line C | In 2 days | Predictive (vibration) | <Badge tone="warning">Pending</Badge> | [View] |
+| Packager-09 | Line D | In 5 days | Preventive (250h) | <Badge tone="info">Scheduled</Badge> | [View] |
+| Robot-02 | Line E | ASAP | Emergency | <Badge tone="danger">Critical</Badge> | [Dispatch] |
+</Card>
+
+---
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel coil" value="42.3 t" change="3.2 days" tone="success" icon="cube" />
+<Stat label="Resin pellets" value="18.7 t" change="2.3 days" tone="warning" icon="droplet" />
+<Stat label="Packaging film" value="8,400 kg" change="4.1 days" tone="info" icon="package" />
+<Stat label="Corrugate" value="12,200 kg" change="5.8 days" tone="success" icon="box" />
+</Columns>
+<Callout tone="warning" title="Reorder Alert">Resin pellets below 3-day threshold. PO #7742 placed, delivery expected Thursday.</Callout>
+</Card>
+
+---
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | PO # | Status |
+|---|---|---|---|---|---|
+| Apex Metals | Steel coil (Grade 50) | 25 t | Tomorrow | PO-7741 | <Badge tone="success">Confirmed</Badge> |
+| PolymerWorks | Resin pellets (PP-H) | 15 t | Thursday | PO-7742 | <Badge tone="info">In transit</Badge> |
+| PackRight | Stretch film 500mm | 5,000 kg | Wednesday | PO-7743 | <Badge tone="success">Confirmed</Badge> |
+| BoxCorp | Corrugate 48×36 | 10,000 kg | Friday | PO-7744 | <Badge tone="info">Pending ack</Badge> |
+| LubriTech | Hydraulic oil ISO 46 | 1,200 L | Friday | PO-7745 | <Badge tone="info">Confirmed</Badge> |
+</Card>
+
+---
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units | Target | Defects |
+|---|---|---|---|
+| Mon Day | 9,850 | 10,000 | 12 |
+| Mon Swing | 9,420 | 10,000 | 28 |
+| Mon Night | 8,100 | 9,000 | 19 |
+| Tue Day | 10,200 | 10,000 | 8 |
+| Tue Swing | 9,880 | 10,000 | 15 |
+| Tue Night | 8,650 | 9,000 | 22 |
+| Wed Day | 10,480 | 10,000 | 8 |
+</Chart>
+<Columns>
+<Stat label="Best shift" value="Wed Day (104.8%)" tone="success" />
+<Stat label="Worst shift" value="Mon Night (90.0%)" tone="warning" />
+<Stat label="Week avg OEE" value="86.9%" change="+1.4%" tone="success" />
+</Columns>
+</Card>
+
+---
+
+<Card title="Safety Tracker">
+<Columns>
+<Stat label="Incidents this year" value="3" change="-2 vs last year" tone="success" icon="shield-check" />
+<Stat label="Days since last incident" value="147" change="+147 days" tone="success" icon="calendar" />
+<Stat label="Near misses this month" value="2" change="-1" tone="info" icon="flag" />
+<Stat label="LTIFR (12-mo)" value="0.42" change="-0.18" tone="success" icon="chart-line" />
+</Columns>
+<Callout tone="success" title="Milestone">147 days without a recordable incident. Previous best: 189 days (2023).</Callout>
+</Card>
+
+---
+
+<Card title="Batches on Quality Hold">
+| Batch | Line | Product | Qty | Hold Reason | Since | Disposition |
+|---|---|---|---|---|---|---|
+| B-20250213-04 | Line B | Widget-XL | 1,200 | Dimensional OOS | 2h 14m | <Badge tone="warning">Under review</Badge> |
+| B-20250213-07 | Line C | Gadget-Pro | 850 | Surface defect | 4h 02m | <Badge tone="danger">Rework</Badge> |
+| B-20250212-15 | Line A | Widget-Std | 2,500 | Material cert missing | 18h 30m | <Badge tone="info">Awaiting docs</Badge> |
+| B-20250211-09 | Line D | Gizmo-Mini | 3,100 | Weight variance | 36h 10m | <Badge tone="warning">Scrap 12%</Badge> |
+</Card>
+
+---
+
+<Card title="Energy Use — Today">
+<Columns>
+<Stat label="Electricity" value="1,847 kWh" change="+3.2% vs avg" tone="neutral" icon="bolt" />
+<Stat label="Natural gas" value="2,340 m³" change="-1.8% vs avg" tone="success" icon="flame" />
+<Stat label="Compressed air" value="48,200 m³" change="+5.1% vs avg" tone="warning" icon="wind" />
+<Stat label="Water" value="12.4 m³" change="on avg" tone="info" icon="droplet" />
+</Columns>
+<Chart type="area" x="Hour" y="kWh">
+| Hour | Electricity | Gas (kWh equiv) |
+|---|---|---|
+| 06:00 | 42 | 180 |
+| 07:00 | 78 | 210 |
+| 08:00 | 156 | 245 |
+| 09:00 | 189 | 260 |
+| 10:00 | 198 | 255 |
+| 11:00 | 201 | 250 |
+| 12:00 | 195 | 240 |
+| 13:00 | 187 | 235 |
+| 14:00 | 182 | 230 |
+| 15:00 | 178 | 225 |
+| 16:00 | 165 | 210 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Asset | Description | Assigned | Due | Status |
+|---|---|---|---|---|---|---|---|
+| WO-20250213-001 | <Badge tone="danger">Critical</Badge> | Line E | Main drive | Replace failed drive shaft | M. Torres | Today 16:30 | <Badge tone="danger">In progress</Badge> |
+| WO-20250213-002 | <Badge tone="warning">High</Badge> | Line C | Conveyor motor | Overheating - inspect/replace | J. Chen | Today 14:00 | <Badge tone="warning">Dispatched</Badge> |
+| WO-20250213-003 | <Badge tone="info">Medium</Badge> | Line B | Station 3 feeder | Recurring misfeed adjustment | R. Patel | Tomorrow 06:00 | <Badge tone="info">Scheduled</Badge> |
+| WO-20250213-004 | <Badge tone="info">Medium</Badge> | Line A | CNC-04 | 500h preventive maintenance | M. Torres | Tomorrow 06:00 | <Badge tone="info">Scheduled</Badge> |
+| WO-20250213-005 | <Badge tone="neutral">Low</Badge> | Line D | Packager-09 | Blade replacement (wear) | J. Chen | In 5 days | <Badge tone="neutral">Planned</Badge> |
+| WO-20250213-006 | <Badge tone="neutral">Low</Badge> | Facility | HVAC-02 | Filter change | Facilities | Friday | <Badge tone="neutral">Planned</Badge> |
+</Card>
+
+---
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="CNC-04 (Line A) | Press-12 (Line B) | Injection-07 (Line C) | Conveyor-03 (Line C) | Packager-09 (Line D) | Robot-02 (Line E) | Other" required="true" />
+<Select label="Maintenance type" name="type" placeholder="Select type" options="Preventive | Predictive | Corrective | Emergency" required="true" />
+</Columns>
+<Columns>
+<Date label="Scheduled date" name="date" required="true" />
+<Input label="Start time" name="start_time" type="time" placeholder="06:00" required="true" />
+<Input label="Estimated duration (hrs)" name="duration" type="number" placeholder="4" min="0.5" max="48" step="0.5" required="true" />
+</Columns>
+<TextArea label="Description / Notes" name="notes" placeholder="Work details, parts needed, safety permits..." rows="3" />
+<Columns>
+<Button variant="primary">Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+---
+
+<Card title="Line Focus Selector">
+<Select label="Focus on line" name="line-focus" placeholder="Select a line to filter all views" options="All Lines | Line A | Line B | Line C | Line D | Line E" />
+<Callout tone="info" title="Line Focus">Selecting a line filters: OEE breakdown, defect trends, downtime causes, work orders, and andon alerts for that line only.</Callout>
+</Card>
+
+---
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="🔴 CRITICAL — Line E">Main drive shaft failure. Line stopped. Parts ETA 4h. Maintenance en route.</Callout>
+<Callout tone="warning" title="🟡 WARNING — Line C">Conveyor motor temp 92°C (limit 95°C). Running at 80% speed. Tech dispatched.</Callout>
+<Callout tone="warning" title="🟡 WARNING — Line B">Station 3 feeder: 3 misfeeds in 10 min. Operator investigating.</Callout>
+<Callout tone="info" title="🔵 INFO — Line A">Preventive maintenance scheduled tomorrow 06:00 (CNC-04). 500h interval.</Callout>
+<Callout tone="info" title="🔵 INFO — Warehouse">Resin delivery delayed 2h. New ETA 14:30. Line C has 2.3 days stock.</Callout>
+</Columns>
+</Card>
+
+---
+
+<Card title="Actions">
+<Columns>
+<Button variant="primary" icon="download">Export Shift Report (PDF)</Button>
+<Button variant="secondary" icon="file-spreadsheet">Export Shift Report (CSV)</Button>
+<Button variant="tertiary" icon="printer">Print Dashboard</Button>
+<Button variant="tertiary" icon="bell">Acknowledge All Alerts</Button>
+</Columns>
+</Card>

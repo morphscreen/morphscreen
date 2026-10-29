@@ -1,0 +1,108 @@
+# Async Standup — <span id="today-date"></span>
+
+<Card title="Team Updates" subtitle="Today's check-ins">
+  <Stat label="Missing updates" value="3 of 8" tone="warning" />
+  
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px; border-left: 4px solid var(--color-danger);">
+      <Avatar name="Sarah Chen" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" subtitle="Frontend Lead" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>Sarah Chen</strong>
+          <Badge tone="danger">BLOCKED</Badge>
+          <span style="color: var(--color-muted); font-size: 13px;">9:15 AM</span>
+        </div>
+        <p style="margin: 0 0 8px 0;">Finished the checkout flow refactor. PR #2341 ready for review.</p>
+        <p style="margin: 0; color: var(--color-danger); font-size: 14px;"><strong>Blocker:</strong> Waiting on API contract from backend — /orders endpoint still returns 500 on POST. Pinged Miguel twice yesterday.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px;">
+      <Avatar name="Miguel Santos" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Miguel" subtitle="Backend Engineer" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>Miguel Santos</strong>
+          <span style="color: var(--color-muted); font-size: 13px;">8:42 AM</span>
+        </div>
+        <p style="margin: 0 0 8px 0;">Deployed the new inventory service to staging. All integration tests passing.</p>
+        <p style="margin: 0; color: var(--color-success); font-size: 14px;">✅ Unblocked Sarah — pushed fix for /orders endpoint. PR #2342 merged.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px;">
+      <Avatar name="Priya Patel" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" subtitle="Product Designer" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>Priya Patel</strong>
+          <span style="color: var(--color-muted); font-size: 13px;">10:03 AM</span>
+        </div>
+        <p style="margin: 0 0 8px 0;">Finalized onboarding flow mockups. Shared Figma link in #design-reviews.</p>
+        <p style="margin: 0;">Preparing usability test script for Thursday's session with 5 users.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px;">
+      <Avatar name="James Okonkwo" src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" subtitle="DevOps Engineer" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>James Okonkwo</strong>
+          <span style="color: var(--color-muted); font-size: 13px;">7:55 AM</span>
+        </div>
+        <p style="margin: 0 0 8px 0;">Ran the monthly security scan — 2 medium findings in dependencies. Creating tickets.</p>
+        <p style="margin: 0;">Rolling out the new CI cache config today. Expect 15% faster builds.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px; opacity: 0.6;">
+      <Avatar name="Aisha Hassan" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aisha" subtitle="QA Engineer" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>Aisha Hassan</strong>
+          <Badge tone="neutral">No update yet</Badge>
+        </div>
+        <p style="margin: 0; color: var(--color-muted);">Hasn't posted today's standup.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px; opacity: 0.6;">
+      <Avatar name="Tomás Rivera" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Tomas" subtitle="Mobile Engineer" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>Tomás Rivera</strong>
+          <Badge tone="neutral">No update yet</Badge>
+        </div>
+        <p style="margin: 0; color: var(--color-muted);">Hasn't posted today's standup.</p>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: var(--color-surface); border-radius: 8px; opacity: 0.6;">
+      <Avatar name="Lin Wei" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lin" subtitle="Data Engineer" />
+      <div style="flex: 1;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <strong>Lin Wei</strong>
+          <Badge tone="neutral">No update yet</Badge>
+        </div>
+        <p style="margin: 0; color: var(--color-muted);">Hasn't posted today's standup.</p>
+      </div>
+    </div>
+  </div>
+</Card>
+
+<Card title="Post Your Update" subtitle="Share what you did, what's next, and any blockers">
+  <Form name="standup-update">
+    <TextArea label="What did you complete yesterday?" name="completed" placeholder="Finished the checkout flow refactor. PR #2341 ready for review." rows="3" hint="Keep it concise — 1-3 bullet points work well" required="true" />
+    <TextArea label="What will you tackle today?" name="planned" placeholder="Review Sarah's PR. Start on the payment integration." rows="3" hint="Focus on your top 1-2 priorities" required="true" />
+    <TextArea label="Any blockers? (Optional)" name="blockers" placeholder="Waiting on API contract from backend — /orders endpoint returns 500 on POST." rows="2" hint="Tag teammates with @mention if you need them to unblock you" />
+    <Checkboxes label="Visibility" name="visibility" options="Team (everyone) | Direct manager only" value="Team (everyone)" hint="Who sees this update?" />
+    <Button>Post Update</Button>
+    <Button variant="tertiary">Save as Draft</Button>
+  </Form>
+</Card>
+
+<Callout tone="info" title="Reminder">
+  Standups close at 11:00 AM local time. Missing updates will be flagged in the daily summary sent to managers.
+</Callout>
+
+<script>
+  document.getElementById('today-date').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+</script>

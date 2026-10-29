@@ -1,0 +1,171 @@
+# Hub Operations Desk — ORD
+
+<Select label="Hub" name="hub" value="ORD" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles | JFK — New York JFK | SFO — San Francisco | SEA — Seattle | MIA — Miami | LAS — Las Vegas" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Gauge label="On-Time %" value="78" min="0" max="100" unit="%" tone="warning" />
+<Stat label="Flights On Time" value="312" change="of 400 total" tone="info" />
+<Stat label="Delayed" value="68" change="17% of departures" tone="warning" />
+<Stat label="Cancelled" value="20" change="5% of schedule" tone="danger" />
+</Card>
+
+<Card title="Average Passenger Load">
+<Gauge label="Load Factor" value="84" min="0" max="100" unit="%" tone="info" />
+<Stat label="Total Pax Today" value="42,180" change="vs 38,900 yesterday" tone="neutral" />
+<Stat label="Avg Pax/Flight" value="105" change="on 400 flights" tone="neutral" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Gauge label="Turnaround" value="47" min="30" max="75" unit="min" tone="success" />
+<Stat label="Target" value="45 min" change="2 min over target" tone="warning" />
+<Stat label="Best Today" value="32 min" change="UA 2415 → DEN" tone="success" />
+<Stat label="Worst Today" value="78 min" change="UA 1182 → LAX" tone="danger" />
+</Card>
+</Columns>
+
+<Card title="Flights — Today (ORD)">
+| Flight | Route | Gate | STD | ATD/ETD | Status | Pax | Load |
+|---|---|---|---|---|---|---|---|
+| UA 2415 | ORD → DEN | B12 | 06:00 | 06:02 | **Departed** | 142 | 92% |
+| UA 1182 | ORD → LAX | C24 | 06:15 | 07:33 | **Delayed** 78 min | 168 | 98% |
+| UA 305 | ORD → SFO | B8 | 06:30 | 06:31 | **Departed** | 154 | 89% |
+| UA 1721 | ORD → ATL | C10 | 06:45 | 06:47 | **Departed** | 138 | 91% |
+| UA 449 | ORD → SEA | B15 | 07:00 | 07:05 | **Delayed** 5 min | 151 | 94% |
+| UA 2088 | ORD → MIA | C18 | 07:15 | — | **Boarding** | 145 | 87% |
+| UA 556 | ORD → LAS | B20 | 07:30 | — | **On Time** | 162 | 96% |
+| UA 891 | ORD → JFK | C5 | 07:45 | — | **Gate Change** | 134 | 83% |
+| UA 1302 | ORD → DFW | B22 | 08:00 | — | **On Time** | 128 | 81% |
+| UA 774 | ORD → PHX | C12 | 08:15 | — | **Delayed** 22 min | 156 | 93% |
+| UA 2201 | ORD → BOS | B4 | 08:30 | — | **Cancelled** | — | — |
+| UA 918 | ORD → SAN | C8 | 08:45 | — | **On Time** | 149 | 90% |
+| UA 1650 | ORD → MCO | B18 | 09:00 | — | **Delayed** 35 min | 165 | 97% |
+| UA 337 | ORD → IAH | C15 | 09:15 | — | **On Time** | 131 | 85% |
+| UA 2504 | ORD → LGA | B6 | 09:30 | — | **Gate Change** | 122 | 79% |
+</Card>
+
+<Columns>
+<Card title="Delayed Flights — Called Out">
+<Callout tone="danger" title="UA 1182 ORD→LAX — 78 min delay">
+Aircraft rotation delay (inbound UA 1181 from LAX arrived 71 min late). Maintenance check required on #2 engine. New ETD 07:33. 12 connecting passengers at risk.
+</Callout>
+<Callout tone="warning" title="UA 1650 ORD→MCO — 35 min delay">
+Crew availability — FA crew timed out, reserve crew en route. ETD 09:35. 8 connecting passengers at risk.
+</Callout>
+<Callout tone="warning" title="UA 774 ORD→PHX — 22 min delay">
+Weather holding at PHX (thunderstorms). Ground stop until 08:45Z. 5 connecting passengers at risk.
+</Callout>
+<Callout tone="info" title="UA 449 ORD→SEA — 5 min delay">
+Late inbound aircraft (UA 448 from SEA). Minimal impact. No connections at risk.
+</Callout>
+<Callout tone="info" title="UA 2504 ORD→LGA — Gate change only">
+Moved from B6 → B9 (congestion). No delay. Boarding on time.
+</Callout>
+</Card>
+
+<Card title="Recent Gate Changes">
+<Timeline title="Gate Changes (Last 2 Hours)">
+- 07:12: UA 891 ORD→JFK — C5 → **C3** (equipment swap: 737-800 → 737-900)
+- 07:05: UA 2504 ORD→LGA — B6 → **B9** (congestion at B6, UA 337 holding)
+- 06:58: UA 1182 ORD→LAX — C24 → **C26** (maintenance tow to hangar, returned to C26)
+- 06:42: UA 2201 ORD→BOS — B4 → **Cancelled** (mechanical, no replacement aircraft)
+- 06:30: UA 1721 ORD→ATL — C10 → **C11** (gate conflict with DL 1422)
+</Timeline>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Role | Current Base | Duty Time Left | Qualifications | Status |
+|---|---|---|---|---|---|
+| CRW-4421 | Captain | ORD | 6:45 | 737, 757, 767 | **Available** |
+| CRW-4422 | FO | ORD | 6:45 | 737, 757, 767 | **Available** |
+| CRW-3189 | FA Lead | ORD | 8:12 | 737, 757, 777 | **Available** |
+| CRW-3190 | FA | ORD | 8:12 | 737, 757 | **Available** |
+| CRW-3191 | FA | ORD | 8:12 | 737, 757 | **Available** |
+| CRW-3192 | FA | ORD | 8:12 | 737, 757, 777 | **Available** |
+| CRW-5012 | Captain | ORD | 4:30 | 777, 787 | Reserve (long-haul) |
+| CRW-5013 | FO | ORD | 4:30 | 777, 787 | Reserve (long-haul) |
+| CRW-2876 | FA Lead | ORD | 5:20 | 777, 787 | Reserve (long-haul) |
+| CRW-2877 | FA | ORD | 5:20 | 777, 787 | Reserve (long-haul) |
+</Card>
+
+<Card title="Weather Advisories — ORD">
+<Callout tone="warning" title="Convective SIGMET 12C Valid Until 14:00Z">
+Line of thunderstorms moving ENE at 25 kts. Expected to impact ORD 09:30–11:00Z. Wind shear possible. Gusts to 45 kts. Ground stop likely 09:45–10:30Z.
+</Callout>
+<Callout tone="info" title="METAR ORD 06:53Z">
+32012G22KT 10SM FEW025 SCT040 BKN060 18/12 A3012 RMK AO2 SLP200 T01780117. Winds 320° at 12 kts gusting 22. VFR.
+</Callout>
+<Callout tone="info" title="TAF ORD 06:00Z">
+32015G25KT P6SM SCT030 BKN050. FM0900 28020G35KT 3SM TSRA BKN020. FM1200 29015KT P6SM SCT040. Thunderstorms 09–11Z.
+</Callout>
+<Stat label="Current Temp" value="18°C" change="Dewpoint 12°C" tone="neutral" />
+<Stat label="Wind" value="320°/12G22 kt" change="Crosswind Rwy 28L/R: 8 kt" tone="neutral" />
+<Stat label="Visibility" value="10 SM" change="No obscuration" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Connections at Risk of Being Missed">
+| Pax | Inbound | Arrival | Connecting | Departure | Gate | Time to Connect | Status |
+|---|---|---|---|---|---|---|---|
+| 4 pax | UA 543 (DEN) | 07:42 | UA 1182 (LAX) | 07:33 | C26 | **-9 min** | **MISSED** |
+| 3 pax | UA 1205 (SFO) | 07:55 | UA 1182 (LAX) | 07:33 | C26 | **-22 min** | **MISSED** |
+| 5 pax | UA 2210 (SEA) | 08:10 | UA 774 (PHX) | 08:37 | C12 | 27 min | **At Risk** |
+| 2 pax | UA 888 (LAX) | 08:25 | UA 1650 (MCO) | 09:35 | B18 | 70 min | OK |
+| 3 pax | UA 412 (PHX) | 08:40 | UA 2088 (MIA) | 07:15 | C18 | **-85 min** | **MISSED** |
+| 1 pax | UA 1901 (IAH) | 08:50 | UA 556 (LAS) | 07:30 | B20 | **-80 min** | **MISSED** |
+| 4 pax | UA 3301 (ATL) | 09:05 | UA 1302 (DFW) | 08:00 | B22 | **-65 min** | **MISSED** |
+| 2 pax | UA 772 (BOS) | 09:20 | UA 918 (SAN) | 08:45 | C8 | **-35 min** | **MISSED** |
+</Card>
+
+<Card title="Cancellations Today">
+| Flight | Route | Reason | Time | Pax Affected | Rebooked | Status |
+|---|---|---|---|---|---|---|
+| UA 2201 | ORD → BOS | Mechanical — no spare aircraft | 06:30 | 134 | 89 | **Rebooking** |
+| UA 1450 | ORD → EWR | Crew timeout — no reserve | 07:00 | 156 | 112 | **Rebooking** |
+| UA 3088 | ORD → ORD (turn) | Weather — ground stop DEN | 07:30 | 142 | 67 | **Rebooking** |
+| UA 992 | ORD → YYZ | ATC — flow control YYZ | 08:00 | 128 | 45 | **Rebooking** |
+| UA 2105 | ORD → YUL | Mechanical — lavatory inop | 08:30 | 119 | 31 | **Rebooking** |
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Columns>
+<Select label="Select Flight" name="flight" placeholder="Choose cancelled/delayed flight" options="UA 2201 ORD→BOS (134 pax) | UA 1450 ORD→EWR (156 pax) | UA 3088 ORD→DEN (142 pax) | UA 992 ORD→YYZ (128 pax) | UA 2105 ORD→YUL (119 pax) | UA 1182 ORD→LAX delayed (12 conn) | UA 1650 ORD→MCO delayed (8 conn) | UA 774 ORD→PHX delayed (5 conn)" required="true" />
+<Select label="Rebook Option" name="option" placeholder="Choose rebooking method" options="Next available UA flight | Next available partner (AA/DL) | Ground transport (ORD→MDW/YYZ/YUL) | Overnight hotel + next morning | Passenger choice (self-service)" required="true" />
+</Columns>
+<Checkboxes label="Passenger Selection" name="paxSelect" options="All affected passengers | Only misconnected passengers | Only premium cabin (F/J) | Only elite status (1K/GS/PP) | Manual selection below" value="All affected passengers" />
+<TextArea label="Manual Passenger List (PNR or Name)" name="manualPax" placeholder="Enter PNRs or names, one per line" rows="4" hint="Leave blank if using selection above" />
+<Columns>
+<Input label="Notification Method" name="notify" placeholder="Email/SMS/Push" value="Email + SMS + App Push" hint="All selected by default" />
+<Date label="Travel Date" name="travelDate" value="2025-01-15" hint="Date for rebooked travel" required="true" />
+</Columns>
+<Button variant="primary">Process Rebooking</Button>
+<Button variant="secondary">Preview Changes</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Quick Actions">
+<Button variant="primary" size="large">📢 Broadcast Gate Change PA</Button>
+<Button variant="secondary" size="large">📋 Print Delay Summary</Button>
+<Button variant="secondary" size="large">🔄 Refresh All Data</Button>
+<Button variant="tertiary" size="large">⚙️ Settings</Button>
+</Card>
+
+<Card title="Hub Status Summary">
+<KeyValue title="">
+| Metric | Value |
+|---|---|
+| Active Gates | 82 / 96 |
+| Ground Stops | 1 (PHX) |
+| Diversions Inbound | 3 |
+| Fuel Availability | Normal |
+| Deicing Ops | Not Active |
+| Runway Config | 28L/28R Arrivals, 22L/22R Departures |
+| Curfew Status | No restrictions |
+</KeyValue>
+</Card>
+</Columns>

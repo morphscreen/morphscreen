@@ -1,0 +1,135 @@
+# Admin Overview Dashboard
+
+<Card title="Reporting Period">
+<Form name="reporting-period">
+<Select label="Time Range" options="Last 7 days | Last 30 days | Last 90 days | This quarter | This year | Custom" name="period" value="Last 30 days" />
+<Date label="Start Date" name="start" value="2025-02-01" />
+<Date label="End Date" name="end" value="2025-03-02" />
+<Button variant="primary" size="small">Apply</Button>
+</Form>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$284,500" change="+3.2%" tone="success" icon="chart-line" />
+<Stat label="Annual Recurring Revenue" value="$3,414,000" change="+12.8%" tone="success" icon="chart-line" />
+<Stat label="Churn (This Month)" value="2.1%" change="-0.4%" tone="success" icon="trend-down" />
+<Stat label="Current NPS" value="62" change="+5" tone="info" icon="star" />
+</Columns>
+</Card>
+
+<Card title="New Signups (Last 90 Days)">
+<Chart type="bar" x="Week" y="Signups" title="Weekly new signups">
+| Week | Signups |
+|---|---|
+| Dec 9 | 142 |
+| Dec 16 | 168 |
+| Dec 23 | 121 |
+| Dec 30 | 98 |
+| Jan 6 | 187 |
+| Jan 13 | 203 |
+| Jan 20 | 215 |
+| Jan 27 | 198 |
+| Feb 3 | 234 |
+| Feb 10 | 256 |
+| Feb 17 | 241 |
+| Feb 24 | 278 |
+| Mar 2 | 263 |
+</Chart>
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Professional | 287 |
+| Enterprise | 89 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Columns>
+<Stat label="Total Seats" value="3,420" icon="users" />
+<Stat label="Seats Used" value="2,871" icon="users" />
+<Stat label="Utilization Rate" value="84%" tone="info" icon="gauge" />
+</Columns>
+<Progress value="84" max="100" label="84% utilized" tone="info" />
+</Card>
+
+<Card title="Ten Largest Customers">
+| Company | Seats | Monthly Spend | Plan |
+|---|---|---|---|
+| Acme Corp | 245 | $24,500 | Enterprise |
+| Globex Inc | 198 | $19,800 | Enterprise |
+| Initech | 167 | $16,700 | Enterprise |
+| Umbrella Co | 143 | $14,300 | Professional |
+| Hooli | 128 | $12,800 | Enterprise |
+| Pied Piper | 112 | $11,200 | Professional |
+| Stark Industries | 98 | $9,800 | Professional |
+| Wayne Enterprises | 87 | $8,700 | Professional |
+| Cyberdyne | 76 | $7,600 | Professional |
+| Soylent Corp | 65 | $6,500 | Starter |
+<Button variant="secondary" size="small">View all customers</Button>
+</Card>
+
+<Card title="Accounts at Risk">
+<Columns>
+<Card title="Acme Corp" subtitle="Enterprise · 245 seats">
+<Badge tone="danger">At Risk</Badge>
+**Reason:** No login in 21 days. Primary contact unresponsive to 3 emails.
+<Button ask="Retry contacting Acme Corp" variant="secondary" size="small">Contact now</Button>
+</Card>
+<Card title="Initech" subtitle="Enterprise · 167 seats">
+<Badge tone="warning">At Risk</Badge>
+**Reason:** Support ticket #4821 unresolved for 14 days. Escalated to engineering.
+<Button ask="Check Initech ticket status" variant="secondary" size="small">View ticket</Button>
+</Card>
+<Card title="Hooli" subtitle="Enterprise · 128 seats">
+<Badge tone="warning">At Risk</Badge>
+**Reason:** Contract renewal in 30 days. No response to renewal proposal sent 2 weeks ago.
+<Button ask="Send Hooli renewal reminder" variant="secondary" size="small">Send reminder</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Failed Payments">
+| Company | Amount | Failed On | Attempts | Action |
+|---|---|---|---|---|
+| Cyberdyne Systems | $7,600 | Mar 1, 2025 | 3 | <Button ask="Retry payment for Cyberdyne" variant="primary" size="small">Retry</Button> |
+| Soylent Corp | $6,500 | Feb 28, 2025 | 2 | <Button ask="Retry payment for Soylent Corp" variant="primary" size="small">Retry</Button> |
+| Umbrella Co | $14,300 | Feb 27, 2025 | 1 | <Button ask="Retry payment for Umbrella Co" variant="primary" size="small">Retry</Button> |
+</Card>
+
+<Card title="New Feature Adoption">
+<Columns>
+<Card title="AI Assistant" subtitle="Released Jan 15">
+<Stat label="Adoption" value="34%" note="of eligible users" tone="info" icon="robot" />
+<Progress value="34" max="100" label="34% adoption" tone="info" />
+</Card>
+<Card title="Dark Mode" subtitle="Released Feb 1">
+<Stat label="Adoption" value="67%" note="of eligible users" tone="success" icon="moon" />
+<Progress value="67" max="100" label="67% adoption" tone="success" />
+</Card>
+<Card title="API v3" subtitle="Released Feb 14">
+<Stat label="Adoption" value="22%" note="of eligible users" tone="warning" icon="code" />
+<Progress value="22" max="100" label="22% adoption" tone="warning" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Invite an Admin">
+<Form name="invite-admin">
+<Input label="Email Address" type="email" name="email" placeholder="admin@company.com" hint="They'll receive an invite link" required="true" />
+<Select label="Role" options="Super Admin | Billing Admin | Support Admin | Read-only" name="role" value="Super Admin" />
+<Button variant="primary">Send Invitation</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the revenue breakdown by plan
+- Which customers have the highest churn risk?
+- Compare this month's performance to last quarter
+- Export the failed payments list
+- Show me detailed seat utilization per customer
+</FollowUps>

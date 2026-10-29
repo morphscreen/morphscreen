@@ -1,0 +1,115 @@
+# Admin Overview
+
+<Columns>
+<Select label="Reporting period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Columns>
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$247,850" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$2,974,200" change="+14.1% vs last year" tone="success" />
+<Stat label="Churn this month" value="2.1%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+5 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 12 |
+| Week 2 | 18 |
+| Week 3 | 15 |
+| Week 4 | 22 |
+| Week 5 | 28 |
+| Week 6 | 31 |
+| Week 7 | 26 |
+| Week 8 | 35 |
+| Week 9 | 42 |
+| Week 10 | 38 |
+| Week 11 | 45 |
+| Week 12 | 51 |
+| Week 13 | 48 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 342 |
+| Professional | 187 |
+| Enterprise | 43 |
+| Custom | 12 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Progress label="Starter (avg 3.2/5 seats)" value="64" max="100" tone="info" />
+<Progress label="Professional (avg 12/20 seats)" value="60" max="100" tone="info" />
+<Progress label="Enterprise (avg 85/150 seats)" value="57" max="100" tone="neutral" />
+<Progress label="Custom (avg 210/300 seats)" value="70" max="100" tone="success" />
+<Progress label="Company-wide (avg 28/50 seats)" value="56" max="100" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 142 | $14,200 | <Badge tone="success">Active</Badge> |
+| Globex Inc | Enterprise | 98 | $9,800 | <Badge tone="success">Active</Badge> |
+| Wayne Enterprises | Custom | 280 | $8,400 | <Badge tone="success">Active</Badge> |
+| Stark Industries | Enterprise | 75 | $7,500 | <Badge tone="success">Active</Badge> |
+| Umbrella Corp | Professional | 45 | $4,500 | <Badge tone="warning">At risk</Badge> |
+| Cyberdyne Systems | Enterprise | 62 | $6,200 | <Badge tone="success">Active</Badge> |
+| Tyrell Corporation | Professional | 38 | $3,800 | <Badge tone="success">Active</Badge> |
+| Weyland-Yutani | Custom | 195 | $5,850 | <Badge tone="success">Active</Badge> |
+| Massive Dynamic | Professional | 32 | $3,200 | <Badge tone="info">Trial</Badge> |
+| Initech | Starter | 18 | $1,800 | <Badge tone="success">Active</Badge> |
+</Card>
+
+<Card title="Accounts at Risk">
+| Customer | Plan | Seats | Risk Reason | Since | Action |
+|---|---|---|---|---|---|
+| Umbrella Corp | Professional | 45 | No login in 21 days, usage down 68% | 2024-01-15 | <Button variant="secondary" size="small">Contact</Button> |
+| Hooli Inc | Starter | 8 | Failed payment 2x, no response to emails | 2024-01-22 | <Button variant="secondary" size="small">Contact</Button> |
+| Pied Piper | Professional | 22 | NPS score dropped to 12, support tickets up 300% | 2024-01-10 | <Button variant="secondary" size="small">Contact</Button> |
+| Dunder Mifflin | Starter | 12 | Contract renewal in 14 days, no engagement | 2024-01-28 | <Button variant="secondary" size="small">Contact</Button> |
+| Bluth Company | Enterprise | 67 | Key champion left, new admin not onboarded | 2024-01-05 | <Button variant="secondary" size="small">Contact</Button> |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed On | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Hooli Inc | $180 | 2024-01-25 | 2 | Card declined | <Button variant="primary" size="small">Retry</Button> |
+| Massive Dynamic | $3,200 | 2024-01-24 | 1 | Insufficient funds | <Button variant="primary" size="small">Retry</Button> |
+| Initech | $1,800 | 2024-01-23 | 3 | Card expired | <Button variant="primary" size="small">Retry</Button> |
+| Spry Fox | $450 | 2024-01-22 | 1 | Bank declined | <Button variant="primary" size="small">Retry</Button> |
+| Aperture Science | $2,100 | 2024-01-21 | 2 | Fraud hold | <Button variant="primary" size="small">Retry</Button> |
+</Card>
+
+<Card title="Newest Feature Adoption">
+<Chart type="horizontal" x="Adoption %" y="Feature">
+| Feature | Adoption % |
+|---|---|
+| AI-Powered Insights (launched 2024-01-15) | 34 |
+| Team Workspaces (launched 2024-01-08) | 52 |
+| Advanced Webhooks (launched 2024-01-02) | 28 |
+</Chart>
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="admin@company.com" required="true" hint="They'll receive an invitation to set up their account" />
+<Select label="Role" name="role" options="Owner | Admin | Billing Admin | Support Admin" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Access audit logs" value="Manage users | View analytics" hint="Select all that apply" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me churn breakdown by plan
+- Export top 10 customers to CSV
+- Set up automated at-risk alerts
+- View NPS trend over 12 months
+</FollowUps>

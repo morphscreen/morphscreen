@@ -1,0 +1,149 @@
+# Store Manager Console
+
+<Columns>
+<Stat label="Sales today" value="$18,420" change="+6.2% vs plan" tone="success" icon="chart-line" />
+<Stat label="Target today" value="$21,000" change="72% to goal" tone="warning" icon="target" />
+<Stat label="Foot traffic" value="1,284" change="+4.1% vs last Tue" tone="info" icon="users" />
+<Stat label="Avg basket" value="$42.60" change="+$1.30 vs last week" tone="success" icon="shopping-cart" />
+</Columns>
+
+<Card title="Sales today vs target" subtitle="Live, updates every 15 minutes">
+<Progress value="18420" max="21000" label="72% of $21,000 target" tone="warning" />
+<Chart type="line" x="Hour" y="USD">
+| Hour | Sales | Target |
+|---|---|---|
+| 9am | 980 | 1400 |
+| 10am | 2140 | 2800 |
+| 11am | 3260 | 3500 |
+| 12pm | 4890 | 4200 |
+| 1pm | 6420 | 5600 |
+| 2pm | 7810 | 7000 |
+| 3pm | 9240 | 8400 |
+| 4pm | 11300 | 9800 |
+| 5pm | 13480 | 11200 |
+| 6pm | 15620 | 14000 |
+| 7pm | 17240 | 16800 |
+| 8pm | 18420 | 21000 |
+</Chart>
+</Card>
+
+<Card title="Foot traffic through the day" subtitle="Door count by hour">
+<Chart type="bar" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 9am | 42 |
+| 10am | 88 |
+| 11am | 121 |
+| 12pm | 168 |
+| 1pm | 154 |
+| 2pm | 112 |
+| 3pm | 98 |
+| 4pm | 134 |
+| 5pm | 176 |
+| 6pm | 158 |
+| 7pm | 89 |
+| 8pm | 44 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best sellers today" subtitle="Units sold">
+| Item | Units |
+|---|---|
+| Cold Brew 12oz | 148 |
+| Sourdough Loaf | 96 |
+| Rotisserie Chicken | 74 |
+| Organic Eggs (dozen) | 68 |
+| Sparkling Water 6pk | 52 |
+</Card>
+
+<Card title="Out of stock" subtitle="Needs action">
+| Item | Status |
+|---|---|
+| Whole Milk 1gal | <Badge tone="danger">Out</Badge> |
+| Avocados (bag) | <Badge tone="danger">Out</Badge> |
+| Greek Yogurt 32oz | <Badge tone="warning">Low — 4 left</Badge> |
+| Paper Towels 6pk | <Badge tone="warning">Low — 6 left</Badge> |
+</Card>
+</Columns>
+
+<Card title="Reorder an item">
+<Form name="reorder">
+<Select label="Item" placeholder="Choose an item" options="Whole Milk 1gal | Avocados (bag) | Greek Yogurt 32oz | Paper Towels 6pk" />
+<Input label="Quantity" type="number" value="24" step="6" min="6" max="240" hint="Cases, not units" />
+<Select label="Deliver by" placeholder="Choose a window" options="Today, 4–6pm | Tomorrow, 7–9am | Tomorrow, 4–6pm" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="Running promotions" subtitle="Performance this week">
+<Chart type="bar" x="Promotion" y="Redemptions">
+| Promotion | Redemptions | Target |
+|---|---|---|
+| 2-for-1 Coffee | 412 | 500 |
+| 10% Off Bakery | 268 | 250 |
+| Member Friday | 190 | 300 |
+| Bundle & Save | 96 | 150 |
+</Chart>
+<Callout tone="info" title="Member Friday is behind">190 of 300 redemptions. Consider a push notification at 3pm.</Callout>
+</Card>
+
+<Card title="Registers" subtitle="4 of 6 open">
+| Register | Status | Cashier |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Ana Ruiz |
+| Register 2 | <Badge tone="success">Open</Badge> | Dev Patel |
+| Register 3 | <Badge tone="success">Open</Badge> | Mia Chen |
+| Register 4 | <Badge tone="success">Open</Badge> | Tom Blake |
+| Register 5 | <Badge tone="neutral">Closed</Badge> | — |
+| Register 6 | <Badge tone="warning">Drawer count</Badge> | — |
+</Card>
+
+<Card title="On shift today" subtitle="Tuesday, 9am–9pm">
+| Name | Role | Shift |
+|---|---|---|
+| Ana Ruiz | Cashier | 9am–5pm |
+| Dev Patel | Cashier | 9am–5pm |
+| Mia Chen | Cashier | 12pm–8pm |
+| Tom Blake | Cashier | 1pm–9pm |
+| Priya Nair | Floor lead | 10am–6pm |
+| Sam Okafor | Stock | 7am–3pm |
+| Lena Voss | Bakery | 6am–2pm |
+</Card>
+
+<Card title="Returns this week" subtitle="Mon–Tue to date">
+<Columns>
+<Stat label="Returns" value="38" change="+5 vs last week" tone="warning" icon="arrow-u-up-left" />
+<Stat label="Value" value="$1,240" change="2.9% of sales" tone="neutral" icon="receipt" />
+</Columns>
+<Chart type="line" x="Day" y="Returns">
+| Day | Returns | Last week |
+|---|---|---|
+| Mon | 21 | 18 |
+| Tue | 17 | 15 |
+</Chart>
+</Card>
+
+<Card title="This week vs last week">
+<Chart type="bar" x="Day" y="Sales">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 16240 | 15480 |
+| Tue | 18420 | 17360 |
+</Chart>
+<Stat label="Week to date" value="$34,660" change="+4.6% vs last week" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Switch store" subtitle="Viewing: Riverside — Store #214">
+<Form name="switch-store">
+<Select label="Store" value="Riverside — Store #214" options="Riverside — Store #214 | Downtown — Store #108 | Northgate — Store #342 | Airport — Store #077" />
+<Button variant="secondary">View store</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full week's foot traffic
+- Which items ran out most often this month?
+- Draft a reorder for everything that is out of stock
+- Compare Riverside with Downtown this week
+</FollowUps>

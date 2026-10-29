@@ -1,0 +1,109 @@
+# Personal Banking Home
+
+Welcome back, Alex. Here's your money at a glance.
+
+<Columns>
+<Card title="Checking">
+<Stat label="Available" value="$4,820.15" icon="bank" />
+<Stat label="Pending" value="$120.00" change="2 transactions" tone="info" icon="clock" />
+</Card>
+<Card title="Savings">
+<Stat label="Balance" value="$12,340.00" icon="piggy-bank" />
+<Stat label="APY" value="4.10%" change="+0.25% this quarter" tone="success" icon="trend-up" />
+</Card>
+<Card title="Credit">
+<Stat label="Current Balance" value="$1,275.40" icon="credit-card" />
+<Stat label="Available" value="$8,724.60" change="of $10,000 limit" tone="info" icon="cardholder" />
+</Card>
+</Columns>
+
+<Card title="Credit Score">
+<Stat label="FICO® Score" value="742" change="+12 vs last month" tone="success" icon="chart-line" />
+<Badge tone="success">Good</Badge>
+<Progress value="742" max="850" label="Score range" tone="success" />
+</Card>
+
+<Card title="Move Money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Select label="From" placeholder="Choose account" options="Checking (••4820) | Savings (••3315) | Credit (••2210)" />
+<Select label="To" placeholder="Choose account" options="Checking (••4820) | Savings (••3315) | Credit (••2210)" />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Amount |
+|---|---|---|
+| Today | Whole Foods Market | −$84.23 |
+| Yesterday | Chevron | −$45.10 |
+| Jul 12 | Netflix | −$15.49 |
+| Jul 11 | Starbucks | −$6.75 |
+| Jul 10 | Amazon | −$129.99 |
+| Jul 9 | Direct Deposit — Acme Corp | +$2,850.00 |
+| Jul 8 | Target | −$63.42 |
+</Card>
+
+<Card title="Spending by Category" subtitle="This month">
+<Chart type="donut" title="Spending split">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 310 |
+| Transport | 185 |
+| Shopping | 275 |
+| Utilities | 150 |
+| Entertainment | 95 |
+| Other | 130 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Due | Amount | Status |
+|---|---|---|---|
+| Electric — PGE | Jul 18 | $112.40 | <Badge>Due in 5 days</Badge> |
+| Internet — Comcast | Jul 20 | $79.99 | <Badge>Due in 7 days</Badge> |
+| Rent | Aug 1 | $1,850.00 | <Badge tone="neutral">Upcoming</Badge> |
+| Phone — Verizon | Jul 22 | $68.30 | <Badge>Due in 9 days</Badge> |
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Trip to Japan — March 2026">
+<Stat label="Saved" value="$12,340" note="of $15,000 goal" icon="airplane" />
+<Progress value="12340" max="15000" label="82% funded" tone="info" />
+<Stat label="Remaining" value="$2,660" note="On track to reach goal by Dec 2025" icon="calendar" />
+</Card>
+
+<Card title="Credit Account Controls">
+<Details title="Freeze Credit Line">
+<Callout tone="warning" title="Effect of freezing">
+Freezing your credit line blocks new purchases and cash advances. Recurring payments and pending transactions may still process. You can unfreeze anytime.
+</Callout>
+<Button variant="danger" label="Freeze Credit Line">Freeze Credit Line</Button>
+</Details>
+<Details title="Statement Period">
+<Select label="Choose statement cycle" placeholder="Select period" options="1st–30th (current) | 5th–4th | 10th–9th | 15th–14th" />
+<Button variant="secondary">Apply</Button>
+</Details>
+<Details title="Alert Preferences">
+<Checkboxes label="Alert me when…" options="Balance drops below $500 | Large purchase over $500 | Payment due in 3 days | New transaction on credit | Monthly statement ready | Suspicious activity detected" value="Payment due in 3 days | New transaction on credit | Suspicious activity detected" />
+<Button variant="secondary">Save Preferences</Button>
+</Details>
+<Details title="Dispute a Transaction">
+<Callout tone="info" title="Dispute eligibility">
+You can dispute transactions made within the last 60 days. We'll investigate and may issue a temporary credit.
+</Callout>
+<Form name="dispute">
+<Select label="Transaction" placeholder="Select transaction" options="Whole Foods Market — $84.23 | Chevron — $45.10 | Target — $63.42 | Amazon — $129.99" />
+<Select label="Reason" placeholder="Select reason" options="Unauthorized charge | Incorrect amount | Goods not received | Service not as described | Duplicate charge | Other" />
+<TextArea label="Details" placeholder="Explain what happened…" rows="3" />
+<Button>Submit Dispute</Button>
+</Form>
+</Details>
+</Card>
+
+<FollowUps>
+- Show my spending trend over the last 3 months
+- What's my credit utilization ratio?
+- Suggest a plan to pay off my credit balance faster
+- Compare my savings APY with other banks
+</FollowUps>

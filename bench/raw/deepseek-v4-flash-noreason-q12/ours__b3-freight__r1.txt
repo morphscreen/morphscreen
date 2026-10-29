@@ -1,0 +1,84 @@
+# Logistics Command Center
+
+<Callout tone="info" title="Live data">Data refreshed 12 minutes ago</Callout>
+
+<Card title="Shipments in Transit">
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-1042 | Shanghai | Los Angeles | Oct 18, 14:30 | <Badge tone="success">On time</Badge> |
+| SHP-1043 | Rotterdam | New York | Oct 19, 09:00 | <Badge tone="success">On time</Badge> |
+| SHP-1044 | Singapore | Sydney | Oct 17, 22:15 | <Badge tone="danger">Delayed 6h</Badge> |
+| SHP-1045 | Hamburg | Chicago | Oct 20, 11:45 | <Badge tone="success">On time</Badge> |
+| SHP-1046 | Busan | Seattle | Oct 16, 18:20 | <Badge tone="danger">Delayed 2d</Badge> |
+| SHP-1047 | Dubai | Mumbai | Oct 18, 07:30 | <Badge tone="success">On time</Badge> |
+| SHP-1048 | Santos | Houston | Oct 21, 16:00 | <Badge tone="warning">At risk</Badge> |
+
+<Callout tone="warning" title="Attention required">2 shipments delayed, 1 at risk. Flagged shipments need review.</Callout>
+</Card>
+
+<Card title="Search by Route">
+<Form name="route-search">
+<Input label="Origin" placeholder="City or port, e.g. Shanghai" />
+<Input label="Destination" placeholder="City or port, e.g. Los Angeles" />
+<Button>Search routes</Button>
+<Button variant="secondary">Clear</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="On-Time Performance">
+<Stat label="On-time % this month" value="94.2%" change="+1.8% vs last month" tone="success" icon="check-circle" />
+<Progress value="942" max="1000" label="94.2% on-time" tone="success" />
+</Card>
+
+<Card title="Average Cost per Shipment">
+<Stat label="Avg cost / shipment" value="$1,248" change="−3.4% vs last month" tone="success" icon="trend-down" />
+</Card>
+</Columns>
+
+<Card title="Volume by Carrier">
+<Chart type="pie" title="Share of shipments this month">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 412 |
+| MSC | 298 |
+| CMA CGM | 187 |
+| Hapag-Lloyd | 143 |
+| Others | 86 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Last 8 Weeks">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| Aug 25 | 210 |
+| Sep 1 | 245 |
+| Sep 8 | 228 |
+| Sep 15 | 262 |
+| Sep 22 | 240 |
+| Sep 29 | 275 |
+| Oct 6 | 258 |
+| Oct 13 | 291 |
+</Chart>
+</Card>
+
+<Card title="Flag a Shipment">
+<Form name="flag-shipment">
+<Select label="Shipment" placeholder="Select shipment ID" options="SHP-1042 | SHP-1043 | SHP-1044 | SHP-1045 | SHP-1046 | SHP-1047 | SHP-1048" />
+<Select label="Flag reason" placeholder="Choose reason" options="Customs hold | Weather delay | Capacity issue | Documentation error | Other" />
+<TextArea label="Notes" placeholder="Add details for the team…" rows="3" />
+<Button>Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Last Refreshed">
+<Stat label="Data snapshot" value="14:32 UTC" note="Oct 16, 2025 — auto-refresh every 15 min" tone="neutral" icon="clock" />
+</Card>
+
+<FollowUps>
+- Show me details for delayed shipments
+- Compare carrier performance this quarter
+- View cost breakdown by route
+- Export the transit board as CSV
+</FollowUps>

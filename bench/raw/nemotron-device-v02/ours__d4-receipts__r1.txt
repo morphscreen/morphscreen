@@ -1,0 +1,27 @@
+<Card title="Expense Claim" subtitle="Add receipts and submit for reimbursement">
+<Form name="expense-claim">
+
+### Add receipts
+
+<Columns>
+<Camera label="Photograph receipt" name="receipt-photo" facing="back" hint="Take a photo of a paper receipt" />
+<File label="Upload PDF invoice" name="invoice-pdf" accept="PDF" hint="Attach a digital invoice" />
+</Columns>
+
+<Callout tone="info" title="Tip">You can add multiple receipts before submitting. Each will appear below with its own category.</Callout>
+
+### Expenses
+
+| # | Receipt | Category | Amount |
+|---|---|---|---|
+| 1 | 📷 IMG_20240115_1432.jpg | <Select name="cat-1" options="Meals | Travel | Lodging | Office Supplies | Software | Other" placeholder="Select category" value="Meals" /> | $42.50 |
+| 2 | 📄 Q4_Software_Invoice.pdf | <Select name="cat-2" options="Meals | Travel | Lodging | Office Supplies | Software | Other" placeholder="Select category" value="Software" /> | $299.00 |
+| 3 | 📷 IMG_20240116_0915.jpg | <Select name="cat-3" options="Meals | Travel | Lodging | Office Supplies | Software | Other" placeholder="Select category" value="Travel" /> | $18.75 |
+
+<Stat label="Claim total" value="$360.25" tone="success" />
+
+<Button variant="primary">Submit claim</Button>
+<Button variant="tertiary">Save as draft</Button>
+
+</Form>
+</Card>

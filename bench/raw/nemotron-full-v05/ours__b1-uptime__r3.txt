@@ -1,0 +1,19 @@
+# Platform Status
+
+## API Uptime This Month
+
+<Card title="API Uptime">
+<Stat label="Uptime" value="99.94%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.94" max="100" label="Target: 99.9%" tone="success" />
+</Card>
+
+## Most Recent Incident
+
+<Card title="Incident #INC-2024-089" subtitle="Resolved">
+<Callout tone="info" title="Database connection pool exhaustion">
+**Impact:** Elevated API latency (p99 > 2s) and 0.8% error rate for 23 minutes  
+**Root cause:** Connection leak in new analytics worker deployment  
+**Resolution:** Rolled back worker v2.3.1 → v2.3.0, patched leak, redeployed v2.3.2  
+**Resolved:** 2024-11-28 14:42 UTC (2 days ago)
+</Callout>
+</Card>

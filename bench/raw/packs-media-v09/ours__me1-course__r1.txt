@@ -1,0 +1,67 @@
+<Card title="Lesson 4: Working with State in React" subtitle="Module 2 • 12:34 min">
+  <Video 
+    src="https://example.com/lesson-4-state.mp4" 
+    poster="https://example.com/lesson-4-poster.jpg"
+    title="Working with State in React"
+    caption="Learn how to manage component state with useState and useReducer"
+  />
+</Card>
+
+<Card title="Lesson Notes">
+  ## Key Concepts
+
+  **useState Hook**
+  - Returns current state value and a setter function
+  - Triggers re-render when state changes
+  - Can hold any type: primitives, objects, arrays
+
+  ```jsx
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useState({ name: '', email: '' });
+  ```
+
+  **useReducer Hook**
+  - Better for complex state logic
+  - Takes reducer function and initial state
+  - Returns state and dispatch function
+
+  ```jsx
+  const [state, dispatch] = useReducer(reducer, initialState);
+  ```
+
+  **Best Practices**
+  - Keep state minimal and derived values computed
+  - Use functional updates when new state depends on previous
+  - Group related state into objects when they change together
+
+  <Details title="Common Pitfalls" open="false">
+    - Mutating state directly instead of creating new objects
+    - Forgetting that setState is asynchronous
+    - Storing derived data that could be computed during render
+  </Details>
+</Card>
+
+<Card title="Up Next">
+  <Columns>
+    <div>
+      **Lesson 5: Side Effects with useEffect**
+      <br />
+      <small>15:22 min • Data fetching, subscriptions, cleanup</small>
+    </div>
+    <div style="text-align: right;">
+      <Button variant="primary" size="medium">Start Lesson 5 →</Button>
+    </div>
+  </Columns>
+</Card>
+
+<Card title="Progress">
+  <Columns>
+    <div>
+      <Switch label="Mark as complete" name="lesson-4-complete" value="false" hint="Your progress will be saved automatically" />
+    </div>
+    <div style="text-align: right; align-self: center;">
+      <Badge tone="info">2 of 8 lessons complete</Badge>
+    </div>
+  </Columns>
+  <Progress value="25" max="100" label="Module progress" tone="info" />
+</Card>

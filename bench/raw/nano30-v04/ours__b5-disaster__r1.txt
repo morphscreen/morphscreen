@@ -1,0 +1,132 @@
+<Card title="Active Incidents by Zone">
+<Chart type="bar" title="Incidents by Zone" x="Zone" y="Severity">
+| Zone | Severity |
+|---|---|
+| Zone A | High |
+| Zone B | Medium |
+| Zone C | Low |
+</Chart>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Stat label="High" value="3" change="0" note="" tone="danger" />
+<Stat label="Medium" value="5" change="0" note="" tone="warning" />
+<Stat label="Low" value="2" change="0" note="" tone="success" />
+</Card>
+
+<Card title="Resources Available">
+<Stat label="Vehicles" value="12" change="0" note="" tone="info" />
+<Stat label="Personnel" value="45" change="0" note="" tone="info" />
+<Stat label="Supplies" value="350" change="0" note="" tone="info" />
+</Card>
+
+<Card title="Shelters">
+<TextArea label="Shelters" placeholder="Shelter A - Capacity: 200, Occupancy: 120" rows="5" hint="" required="false" />
+</Card>
+
+<Card title="Evacuation Routes">
+<TextArea label="Routes" placeholder="Route 1 - Open | Route 2 - Closed | Route 3 - Delayed" rows="3" hint="" required="false" />
+</Card>
+
+<Card title="Weather Forecast">
+<Columns>
+<Chart type="line" title="Temperature (°C)" x="Hour" y="Temp (°C)">
+| Hour | Temp (°C) |
+|---|---|
+| 0 | 15 |
+| 6 | 13 |
+| 12 | 16 |
+| 18 | 14 |
+| 24 | 12 |
+| 30 | 10 |
+| 36 | 8 |
+| 42 | 6 |
+| 48 | 5 |
+</Chart>
+<Chart type="line" title="Precipitation (mm)" x="Hour" y="Precip (mm)">
+| Hour | Precip (mm) |
+|---|---|
+| 0 | 0 |
+| 6 | 0 |
+| 12 | 2 |
+| 18 | 5 |
+| 24 | 8 |
+| 30 | 10 |
+| 36 | 12 |
+| 42 | 10 |
+| 48 | 5 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Casualties and Rescues">
+<Stat label="Rescued" value="87" change="0" note="" tone="success" />
+<Stat label="Casualties" value="4" change="0" note="" tone="danger" />
+</Card>
+
+<Card title="Volunteers on Duty">
+<Steps>
+<Step title="Alice - Logistics" status="todo" />
+<Step title="Bob - Search & Rescue" status="todo" />
+<Step title="Carol - Medical" status="todo" />
+</Steps>
+</Card>
+
+<Card title="Donations Received">
+<Stat label="Donations" value="$12,500" change="0" note="" tone="success" />
+</Card>
+
+<Card title="Aid Requests">
+<TextArea label="Requests" placeholder="Food - 50 units | Medicine - 30 units" rows="4" hint="" required="false" />
+</Card>
+
+<Card title="Communication Channels">
+<Columns>
+<Badge tone="success">Radio</Badge>
+<Badge tone="success">Cellular</Badge>
+<Badge tone="warning">Satellite</Badge>
+</Columns>
+</Card>
+
+<Card title="Roads Closed">
+<Badge tone="danger">Highway 5</Badge>
+<Badge tone="danger">Bridge A</Badge>
+</Card>
+
+<Card title="Nearby Hospitals">
+<Chart type="bar" title="Free Beds" x="Hospital" y="Free Beds">
+| Hospital | Free Beds |
+|---|---|
+| Hospital A | 15 |
+| Hospital B | 8 |
+| Hospital C | 20 |
+</Chart>
+</Card>
+
+<Card title="Open Tasks">
+<Steps>
+<Step title="Deploy rescue team to Zone 2" status="todo" />
+<Step title="Set up temporary clinic" status="todo" />
+<Step title="Coordinate supply distribution" status="todo" />
+</Steps>
+</Card>
+
+<Form name="request-resources">
+<Input label="Resource Type" name="type" placeholder="Fuel | Water | Food" />
+<Input label="Quantity" name="quantity" type="number" placeholder="10" />
+<Button variant="primary" href="#" disabled="false" size="medium">Request</Button>
+</Form>
+
+<Form name="broadcast">
+<TextArea label="Message" name="message" placeholder="Update for all teams" rows="4" hint="" required="false" />
+<Button variant="primary" href="#" disabled="false" size="medium">Broadcast</Button>
+</Form>
+
+<Card title="Zone Focus">
+<Button variant="secondary" href="#" disabled="false" size="medium">Focus on Zone 1</Button>
+</Card>
+
+<Form name="situation-report">
+<TextArea label="Situation Report" name="report" placeholder="Brief description of current status" rows="6" hint="" required="false" />
+<Button variant="primary" href="#" disabled="false" size="medium">Submit</Button>
+</Form>

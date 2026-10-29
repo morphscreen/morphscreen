@@ -1,0 +1,13 @@
+root = Card([header, credentialsBlock, qrSection, rulesSection])
+header = CardHeader("Guest Wi-Fi", "Scan or enter manually — welcome to our home")
+credentialsBlock = ContextCardBlock([credName, credPassword], "grid", true)
+credName = ContextCardItem("wifi-name", "Network Name (SSID)", "SmithFamily_Guest", "gray")
+credPassword = ContextCardItem("wifi-password", "Password", "welcome2024!", "gray")
+qrSection = ImageBlock(qrUrl, "QR code to join SmithFamily_Guest Wi-Fi automatically")
+qrUrl = "https://api.qrserver.com/v1/create-qr-code/?data=WIFI%3AT%3AWPA%3BS%3ASmithFamily_Guest%3BP%3Awelcome2024%21%3B%3B&size=300x300"
+rulesSection = ListBlock([rule1, rule2, rule3, rule4, rule5], "number")
+rule1 = ListItem("Respect quiet hours", "10 PM – 7 AM, please keep volume low", null, null, null)
+rule2 = ListItem("No illegal downloads", "Streaming is fine; torrents and piracy are not", null, null, null)
+rule3 = ListItem("Device limit", "Max 2 devices per guest at a time", null, null, null)
+rule4 = ListItem("No network abuse", "No servers, VPN hosting, or excessive bandwidth use", null, null, null)
+rule5 = ListItem("Password stays here", "Please don't share the password outside the household", null, null, null)

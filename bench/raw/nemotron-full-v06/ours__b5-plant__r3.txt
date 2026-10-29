@@ -1,0 +1,255 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="info">Live</Badge> <Badge tone="success">Shift A Active</Badge> <Badge tone="warning">2 Andon Alerts</Badge>
+
+---
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="Availability" value="92.4%" change="+1.2% vs yesterday" tone="success" />
+<Stat label="Performance" value="87.1%" change="-0.8% vs yesterday" tone="warning" />
+<Stat label="Quality" value="96.3%" change="+0.4% vs yesterday" tone="success" />
+<Stat label="OEE" value="77.6%" change="+0.8% vs yesterday" tone="info" />
+</Columns>
+<Progress value="77.6" max="100" label="Target: 85%" tone="info" />
+</Card>
+
+<Card title="Today's Production Target">
+<Columns>
+<Stat label="Units Produced" value="8,472" change="of 12,000 target" tone="info" />
+<Stat label="Target Completion" value="70.6%" change="On track for 98%" tone="success" />
+<Stat label="Current Rate" value="1,059/hr" change="Target: 1,000/hr" tone="success" />
+</Columns>
+<Progress value="8472" max="12000" label="8,472 / 12,000 units (70.6%)" tone="success" />
+</Card>
+
+<Card title="Production Lines">
+<Tabs>
+<Tab title="All Lines">
+| Line | Status | Current Rate | Target Rate | Efficiency | Active Alarms |
+|---|---|---|---|---|---|
+| Line 1 - Stamping | <Badge tone="success">Running</Badge> | 420/hr | 400/hr | 105% | 0 |
+| Line 2 - Injection | <Badge tone="success">Running</Badge> | 380/hr | 400/hr | 95% | 1 |
+| Line 3 - Assembly | <Badge tone="warning">Slow</Badge> | 210/hr | 250/hr | 84% | 2 |
+| Line 4 - Packaging | <Badge tone="success">Running</Badge> | 450/hr | 420/hr | 107% | 0 |
+| Line 5 - Finishing | <Badge tone="danger">Down</Badge> | 0/hr | 300/hr | 0% | 3 |
+</Tab>
+<Tab title="Line 1 - Stamping">
+<Columns>
+<Stat label="Current Rate" value="420/hr" tone="success" />
+<Stat label="Shift Output" value="3,360" tone="info" />
+<Stat label="Defect Rate" value="1.2%" tone="success" />
+<Stat label="Uptime" value="94.2%" tone="success" />
+</Columns>
+<Callout tone="info" title="Line 1 Details">Operator: J. Martinez | Current batch: ST-2024-0845 | Next maintenance: 2024-02-15</Callout>
+</Tab>
+<Tab title="Line 2 - Injection">
+<Columns>
+<Stat label="Current Rate" value="380/hr" tone="warning" />
+<Stat label="Shift Output" value="3,040" tone="info" />
+<Stat label="Defect Rate" value="2.8%" tone="warning" />
+<Stat label="Uptime" value="89.5%" tone="warning" />
+</Columns>
+<Callout tone="warning" title="Line 2 Alert">Temperature variance on Mold 3B - quality monitoring active</Callout>
+</Tab>
+<Tab title="Line 3 - Assembly">
+<Columns>
+<Stat label="Current Rate" value="210/hr" tone="danger" />
+<Stat label="Shift Output" value="1,680" tone="warning" />
+<Stat label="Defect Rate" value="4.1%" tone="danger" />
+<Stat label="Uptime" value="78.3%" tone="danger" />
+</Columns>
+<Callout tone="danger" title="Line 3 Issues">Feeder jam on Station 2 | Torque wrench calibration overdue</Callout>
+</Tab>
+<Tab title="Line 4 - Packaging">
+<Columns>
+<Stat label="Current Rate" value="450/hr" tone="success" />
+<Stat label="Shift Output" value="3,600" tone="success" />
+<Stat label="Defect Rate" value="0.8%" tone="success" />
+<Stat label="Uptime" value="96.1%" tone="success" />
+</Columns>
+</Tab>
+<Tab title="Line 5 - Finishing">
+<Columns>
+<Stat label="Current Rate" value="0/hr" tone="danger" />
+<Stat label="Shift Output" value="0" tone="danger" />
+<Stat label="Defect Rate" value="N/A" tone="neutral" />
+<Stat label="Uptime" value="0%" tone="danger" />
+</Columns>
+<Callout tone="danger" title="Line 5 Down">Hydraulic pump failure - maintenance dispatched, ETA 45 min</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %">
+| Date | Line 1 | Line 2 | Line 3 | Line 4 | Line 5 |
+|---|---|---|---|---|---|
+| 2024-01-15 | 1.1 | 2.3 | 3.8 | 0.9 | 1.5 |
+| 2024-01-16 | 1.0 | 2.5 | 4.0 | 0.8 | 1.4 |
+| 2024-01-17 | 1.2 | 2.7 | 4.2 | 0.9 | 1.6 |
+| 2024-01-18 | 1.1 | 2.6 | 4.1 | 0.7 | 1.5 |
+| 2024-01-19 | 1.3 | 2.8 | 4.3 | 0.8 | 1.7 |
+| 2024-01-20 | 1.2 | 2.9 | 4.0 | 0.9 | 1.6 |
+| 2024-01-21 | 1.0 | 2.4 | 3.9 | 0.8 | 1.4 |
+| 2024-01-22 | 1.1 | 2.5 | 3.8 | 0.7 | 1.5 |
+| 2024-01-23 | 1.2 | 2.7 | 4.1 | 0.8 | 1.6 |
+| 2024-01-24 | 1.1 | 2.6 | 4.2 | 0.9 | 1.5 |
+| 2024-01-25 | 1.0 | 2.8 | 4.0 | 0.8 | 1.4 |
+| 2024-01-26 | 1.2 | 2.7 | 3.9 | 0.7 | 1.6 |
+| 2024-01-27 | 1.1 | 2.5 | 3.8 | 0.8 | 1.5 |
+| 2024-01-28 | 1.3 | 2.9 | 4.1 | 0.9 | 1.7 |
+| 2024-01-29 | 1.2 | 2.6 | 4.0 | 0.8 | 1.6 |
+| 2024-01-30 | 1.1 | 2.7 | 3.9 | 0.7 | 1.5 |
+| 2024-01-31 | 1.0 | 2.4 | 3.8 | 0.8 | 1.4 |
+| 2024-02-01 | 1.2 | 2.8 | 4.1 | 0.9 | 1.6 |
+| 2024-02-02 | 1.1 | 2.5 | 4.0 | 0.8 | 1.5 |
+| 2024-02-03 | 1.3 | 2.7 | 4.2 | 0.7 | 1.6 |
+| 2024-02-04 | 1.2 | 2.6 | 4.1 | 0.8 | 1.5 |
+| 2024-02-05 | 1.1 | 2.8 | 4.0 | 0.9 | 1.6 |
+| 2024-02-06 | 1.0 | 2.5 | 3.9 | 0.8 | 1.4 |
+| 2024-02-07 | 1.2 | 2.7 | 3.8 | 0.7 | 1.5 |
+| 2024-02-08 | 1.1 | 2.6 | 4.1 | 0.8 | 1.6 |
+| 2024-02-09 | 1.3 | 2.9 | 4.2 | 0.9 | 1.7 |
+| 2024-02-10 | 1.2 | 2.7 | 4.0 | 0.8 | 1.5 |
+| 2024-02-11 | 1.1 | 2.5 | 3.9 | 0.7 | 1.4 |
+| 2024-02-12 | 1.2 | 2.8 | 4.1 | 0.8 | 1.6 |
+| 2024-02-13 | 1.2 | 2.8 | 4.1 | 0.8 | 1.6 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause (This Month)">
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Mechanical Failure | 42.5 |
+| Material Shortage | 28.0 |
+| Changeover | 18.5 |
+| Quality Hold | 15.0 |
+| Planned Maintenance | 12.0 |
+| Operator Unavailable | 8.5 |
+| Power/Utility | 5.5 |
+| Software/Control | 3.0 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Priority | Status |
+|---|---|---|---|---|---|
+| Press-01 | Line 1 | 2024-02-15 | Preventive | High | Scheduled |
+| Mold-3B | Line 2 | 2024-02-16 | Corrective | Critical | Pending |
+| Feeder-02 | Line 3 | 2024-02-17 | Preventive | High | Overdue |
+| Hydraulic-05 | Line 5 | 2024-02-14 | Emergency | Critical | In Progress |
+| Conveyor-12 | Line 4 | 2024-02-20 | Preventive | Medium | Scheduled |
+| Torque-03 | Line 3 | 2024-02-18 | Calibration | High | Pending |
+| Robot-07 | Line 2 | 2024-02-22 | Preventive | Medium | Scheduled |
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tons" change="Reorder at 15t" tone="success" />
+<Stat label="Resin Pellets" value="18.7 tons" change="Reorder at 10t" tone="warning" />
+<Stat label="Packaging Film" value="8,450 kg" change="Reorder at 3,000kg" tone="success" />
+</Columns>
+<Progress value="42.3" max="60" label="Steel: 42.3 / 60 tons (70.5%)" tone="success" />
+<Progress value="18.7" max="30" label="Resin: 18.7 / 30 tons (62.3%)" tone="warning" />
+<Progress value="8450" max="15000" label="Packaging: 8,450 / 15,000 kg (56.3%)" tone="info" />
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Qty | Due Date | Status | PO # |
+|---|---|---|---|---|---|
+| AcerSteel Ltd | Hot-rolled coil | 25 tons | 2024-02-15 | Confirmed | PO-2024-0412 |
+| PolyResin Inc | PP Granules | 15 tons | 2024-02-16 | In Transit | PO-2024-0418 |
+| PackTech Co | Stretch Film | 5,000 kg | 2024-02-17 | Confirmed | PO-2024-0421 |
+| AcerSteel Ltd | Cold-rolled sheet | 10 tons | 2024-02-19 | Pending | PO-2024-0425 |
+| LubriMax | Hydraulic Oil | 500 L | 2024-02-20 | Confirmed | PO-2024-0428 |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift A (06-14) | 9200 | 9450 | 9100 | 9380 | 9520 | 8900 | 0 |
+| Shift B (14-22) | 8800 | 8950 | 8700 | 9020 | 9100 | 8500 | 0 |
+| Shift C (22-06) | 7200 | 7400 | 7100 | 7350 | 7500 | 6800 | 0 |
+</Chart>
+</Card>
+
+<Card title="Safety Metrics">
+<Columns>
+<Stat label="Incidents This Year" value="3" change="Target: 0" tone="danger" />
+<Stat label="Days Since Last Incident" value="47" change="Record: 182 days" tone="success" />
+<Stat label="Near Misses (YTD)" value="12" change="-3 vs last year" tone="info" />
+<Stat label="Safety Training Compliance" value="98%" change="Target: 100%" tone="success" />
+</Columns>
+<Callout tone="success" title="Current Streak">47 days without a recordable incident. Last incident: 2023-12-28 (minor laceration, Line 3)</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Status |
+|---|---|---|---|---|---|---|
+| BT-2024-0845 | Line 1 | Bracket-A | 500 | Dimensional variance | 2024-02-13 14:22 | Under Review |
+| BT-2024-0847 | Line 2 | Housing-B | 320 | Surface finish | 2024-02-13 16:45 | Awaiting Lab |
+| BT-2024-0849 | Line 3 | Assembly-C | 180 | Torque spec failure | 2024-02-14 08:10 | Rework Queued |
+| BT-2024-0851 | Line 4 | Package-D | 1,000 | Seal integrity | 2024-02-14 10:30 | Testing |
+</Card>
+
+<Card title="Energy Use Today">
+<Columns>
+<Stat label="Electricity" value="1,847 kWh" change="vs 1,920 kWh target" tone="success" />
+<Stat label="Natural Gas" value="1,240 m³" change="vs 1,300 m³ target" tone="success" />
+<Stat label="Compressed Air" value="892 kWh" change="vs 950 kWh target" tone="info" />
+<Stat label="Cost Today" value="$1,247" change="vs $1,320 budget" tone="success" />
+</Columns>
+<Progress value="1847" max="1920" label="Electricity: 1,847 / 1,920 kWh (96.2%)" tone="success" />
+</Card>
+
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Asset | Description | Assigned | Created | Status |
+|---|---|---|---|---|---|---|---|
+| WO-2024-1156 | <Badge tone="danger">Critical</Badge> | Line 5 | Hydraulic-05 | Pump replacement | M. Torres | 2024-02-14 06:15 | In Progress |
+| WO-2024-1152 | <Badge tone="warning">High</Badge> | Line 2 | Mold-3B | Temperature control repair | J. Chen | 2024-02-13 22:30 | Assigned |
+| WO-2024-1148 | <Badge tone="warning">High</Badge> | Line 3 | Feeder-02 | Jam clearance & PM | R. Patel | 2024-02-13 14:20 | Waiting Parts |
+| WO-2024-1142 | <Badge tone="info">Medium</Badge> | Line 1 | Press-01 | Preventive maintenance | M. Torres | 2024-02-12 08:00 | Scheduled |
+| WO-2024-1138 | <Badge tone="info">Medium</Badge> | Line 4 | Conveyor-12 | Belt tracking adjustment | K. Wilson | 2024-02-12 10:30 | Scheduled |
+| WO-2024-1130 | <Badge tone="neutral">Low</Badge> | Line 3 | Torque-03 | Calibration | J. Chen | 2024-02-10 16:00 | Pending |
+| WO-2024-1125 | <Badge tone="neutral">Low</Badge> | Line 2 | Robot-07 | Gripper replacement | R. Patel | 2024-02-09 09:15 | Scheduled |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" options="Press-01 (Line 1) | Mold-3B (Line 2) | Feeder-02 (Line 3) | Conveyor-12 (Line 4) | Hydraulic-05 (Line 5) | Torque-03 (Line 3) | Robot-07 (Line 2)" placeholder="Select machine" required="true" />
+<Select label="Maintenance Type" options="Preventive | Corrective | Calibration | Emergency | Inspection" placeholder="Select type" required="true" />
+<Date label="Scheduled Date" required="true" />
+<Input label="Start Time" type="time" placeholder="06:00" required="true" />
+<Input label="Estimated Duration (hrs)" type="number" placeholder="4" min="0.5" max="48" step="0.5" required="true" />
+<TextArea label="Description / Notes" placeholder="Details of work required..." rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Focus on Production Line">
+<Select label="Select Line to Focus" options="Line 1 - Stamping | Line 2 - Injection | Line 3 - Assembly | Line 4 - Packaging | Line 5 - Finishing" placeholder="Choose a line for detailed view" />
+<Callout tone="info" title="Line Focus Mode">Select a line above to filter all metrics, charts, and alerts to that specific production line. This will update OEE, defect trends, downtime, work orders, and andon alerts in real-time.</Callout>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="🔴 CRITICAL - Line 5">Hydraulic pump failure on Finishing Line. Machine stopped. Maintenance dispatched. ETA: 45 min. Impact: 300 units/hr lost.</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line 2">Mold 3B temperature variance ±8°C. Quality inspection required every 50 parts. Rate reduced to 380/hr.</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line 3">Feeder jam on Station 2. Operator clearing. Estimated 15 min recovery. Torque wrench Station 3 overdue calibration.</Callout>
+<Callout tone="info" title="🔵 INFO - Line 1">Preventive maintenance due on Press-01 tomorrow. Schedule confirmed for 06:00-10:00.</Callout>
+<Callout tone="info" title="🔵 INFO - Line 4">Packaging film roll change in 20 min. Operator notified.</Callout>
+</Card>
+
+<Card title="Export Shift Report">
+<Columns>
+<Stat label="Shift A Report" value="Ready" change="06:00-14:00" tone="success" />
+<Stat label="Shift B Report" value="In Progress" change="14:00-22:00" tone="info" />
+<Stat label="Shift C Report" value="Pending" change="22:00-06:00" tone="neutral" />
+</Columns>
+<Button variant="primary" size="large">Export Current Shift Report (PDF)</Button>
+<Button variant="secondary" size="large">Export Full Day Report (Excel)</Button>
+<Button variant="tertiary" size="large">Email Report to Management</Button>
+</Card>

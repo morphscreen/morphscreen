@@ -1,0 +1,158 @@
+# Store Manager's Daily Console
+
+<Columns>
+<div>
+
+<Stat label="Sales Today" value="$8,420" change="+12% vs target" tone="success" icon="chart-line" />
+<Stat label="Average Basket Size" value="$46.80" change="+$2.10 vs last week" tone="success" icon="shopping-bag" />
+<Stat label="Returns This Week" value="14" change="$1,240 total" tone="warning" icon="arrow-counter-clockwise" />
+
+</div>
+<div>
+
+<Stat label="Foot Traffic Today" value="1,284" change="+8% vs last week" tone="info" icon="users" />
+<Stat label="Items Out of Stock" value="23" change="12 need reorder" tone="danger" icon="warning-circle" />
+<Stat label="Registers Open" value="4 / 6" change="2 closed" tone="neutral" icon="calculator" />
+
+</div>
+</Columns>
+
+<Card title="Sales Today vs Target">
+<Chart type="bar" x="Hour" y="USD">
+| Hour | Actual | Target |
+|---|---|---|
+| 9 AM | 420 | 380 |
+| 10 AM | 780 | 720 |
+| 11 AM | 1,050 | 980 |
+| 12 PM | 1,380 | 1,240 |
+| 1 PM | 1,120 | 1,100 |
+| 2 PM | 940 | 860 |
+| 3 PM | 1,180 | 1,020 |
+| 4 PM | 1,550 | 1,300 |
+</Chart>
+<Progress value="8420" max="9200" label="Daily target: $9,200 — 92% reached" tone="success" />
+</Card>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 96 |
+| 10 AM | 152 |
+| 11 AM | 208 |
+| 12 PM | 264 |
+| 1 PM | 210 |
+| 2 PM | 174 |
+| 3 PM | 232 |
+| 4 PM | 148 |
+</Chart>
+<Callout tone="info" title="Peak hour">Busiest period was 12–1 PM with 264 visitors. Consider scheduling more staff for tomorrow's lunch rush.</Callout>
+</Card>
+
+<Columns>
+<Card title="Best Sellers Today">
+| Product | Units |
+|---|---|
+| Organic Almond Milk 1L | 38 |
+| Sourdough Loaf | 31 |
+| Free-Range Eggs (12pk) | 27 |
+| Cold Brew Coffee 330ml | 24 |
+| Greek Yogurt 500g | 19 |
+</Card>
+
+<Card title="Items Out of Stock">
+| Item | Status |
+|---|---|
+| Sparkling Water 1L | <Badge tone="danger">Out</Badge> |
+| Olive Oil 750ml | <Badge tone="danger">Out</Badge> |
+| Cheddar 400g | <Badge tone="danger">Out</Badge> |
+| Paper Towels (4pk) | <Badge tone="warning">Low (2)</Badge> |
+| Dish Soap 500ml | <Badge tone="warning">Low (3)</Badge> |
+</Card>
+</Columns>
+
+<Card title="Who's On Shift Today">
+<Columns>
+<div>
+
+<Avatar name="Sarah Kim" subtitle="Shift Lead · 8 AM – 4 PM" />
+<Avatar name="Miguel Torres" subtitle="Cashier · 8 AM – 2 PM" />
+<Avatar name="Aisha Patel" subtitle="Stock · 9 AM – 5 PM" />
+
+</div>
+<div>
+
+<Avatar name="James Chen" subtitle="Cashier · 12 PM – 8 PM" />
+<Avatar name="Emma Wilson" subtitle="Bakery · 6 AM – 2 PM" />
+<Avatar name="David Okafor" subtitle="Cashier · 2 PM – 10 PM" />
+
+</div>
+</Columns>
+</Card>
+
+<Card title="Week vs Last Week">
+<Chart type="bar" x="Day" y="USD">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 7,100 | 6,800 |
+| Tue | 7,850 | 7,200 |
+| Wed | 8,420 | 7,950 |
+| Thu | 8,100 | 7,600 |
+| Fri | 9,200 | 8,400 |
+| Sat | 11,300 | 10,100 |
+| Sun | 9,800 | 8,900 |
+</Chart>
+<Stat label="This Week Total" value="$61,770" change="+8.4% vs last week" tone="success" icon="trend-up" />
+</Card>
+
+<Card title="Running Promotions">
+<Tabs>
+<Tab title="Buy 1 Get 1 — Chips">
+<Stat label="Units Sold Today" value="86" change="Target: 120" tone="success" icon="tag" />
+<Progress value="86" max="120" label="72% of promo target" tone="info" />
+</Tab>
+<Tab title="15% Off — Coffee Beans">
+<Stat label="Units Sold Today" value="42" change="Target: 50" tone="success" icon="tag" />
+<Progress value="42" max="50" label="84% of promo target" tone="success" />
+</Tab>
+<Tab title="2 for $5 — Produce">
+<Stat label="Units Sold Today" value="210" change="Target: 180" tone="success" icon="tag" />
+<Progress value="210" max="180" label="117% of promo target — exceeded!" tone="success" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Registers Status">
+| Register | Status | Staff |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Miguel Torres |
+| Register 2 | <Badge tone="success">Open</Badge> | James Chen |
+| Register 3 | <Badge tone="success">Open</Badge> | Sarah Kim |
+| Register 4 | <Badge tone="success">Open</Badge> | David Okafor |
+| Register 5 | <Badge tone="danger">Closed</Badge> | — |
+| Register 6 | <Badge tone="danger">Closed</Badge> | — |
+</Card>
+
+<Card title="Reorder Items">
+<Form name="reorder">
+<Select label="Select item to reorder" placeholder="Choose an item" options="Sparkling Water 1L — 24 units | Olive Oil 750ml — 12 units | Cheddar 400g — 18 units | Paper Towels (4pk) — 30 units | Dish Soap 500ml — 20 units" />
+<Input label="Quantity" type="number" placeholder="e.g. 24" />
+<Button variant="primary">Place Reorder</Button>
+</Form>
+</Card>
+
+<Card title="Store Selector">
+<Select label="View a different store" placeholder="Choose a store" options="Store #101 — Downtown | Store #102 — Riverside | Store #103 — Oakwood | Store #104 — Westfield | Store #105 — Lakeside" />
+<Button variant="secondary">Switch Store</Button>
+</Card>
+
+<Callout tone="success" title="Day summary">
+Strong performance today — sales are tracking 12% above target, and the produce promotion is exceeding expectations. Watch the 2 PM traffic dip and consider opening Register 5 if the afternoon rush builds.
+</Callout>
+
+<FollowUps>
+- Show yesterday's sales breakdown
+- Compare promotion performance this month
+- View inventory levels for best sellers
+- See staff schedule for tomorrow
+</FollowUps>

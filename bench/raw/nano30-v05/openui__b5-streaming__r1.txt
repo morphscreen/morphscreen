@@ -1,0 +1,141 @@
+We need to build a single screen for a streaming service operations room, covering 16 items. Must be a single Card root. Must include all items. Must ensure every defined variable is referenced somewhere in root children list (or via parent). Also need to ensure component arguments are positional.
+
+We need to map each item to appropriate component:
+
+1. viewers watching right now – likely a number indicator, maybe a Badge or a TextContent? Could use Badge or a Progress? Probably a Badge showing count. Or a TextContent with size "large". Could use a Badge with variant "info" showing viewers count. But we need to show the number. Maybe use a TextContent with size "large". Let's create variable viewers = TextContent("12,345", "large").
+
+2. most-watched titles with hours for each – could be a Table. Table columns: Title, Hours. So define Col(label: "Title", data: [...]) and Col(label: "Hours", data: [...]) and then Table(columns: [col1, col2]). Need to define data arrays. Let's create titles = ["Stranger Things", "The Crown", "Money Heist"]; hours = [150, 120, 100]; then colTitle = Col("Title", titles); colHours = Col("Hours", hours); then tableMostWatched = Table([colTitle, colHours]).
+
+3. watch time over past month – line chart. Use LineChart. Labels: weeks (W1..W4). Series: watchTimeSeries. So define labels = ["W1","W2","W3","W4"]; series = Series("Watch Time", [1000,1200,1300,1500]); lineChart = LineChart(labels, series, "natural", "Week", "Hours").
+
+4. new subscribers against cancellations – maybe a Card with two badges or a small chart. Could use a Table with two columns: New Subscribers, Cancellations. Or use a BarChart (horizontal) showing counts. Let's use a Table. Define colNew = Col("New", [500, 300, 200]); colCanc = Col("Cancellations", [100, 80, 50]); tableSubs = Table([colNew, colCanc]).
+
+But maybe better a Card with two Badges: newSubs = Badge("New: 500", "info"); cancels = Badge("Cancels: 100", "danger"). Then put them in a Card.
+
+5. performance by genre – maybe a BarChart (grouped) showing hours per genre. Define genres = ["Drama","Comedy","Action","Sci-Fi"]; hours = [300, 150, 200, 100]; series = Series("Hours", hours); barChart = BarChart(labels, series, "grouped", "Genre", "Hours").
+
+6. buffering rate – maybe a Progress component showing percentage. Use Progress(value: 2.5, label: "2.5%"). So define bufferingRate = Progress(2.5, "2.5%").
+
+7. delivery health by region – maybe a Table with regions and health status (good/bad). Could be a Table with columns Region, Health. Define regions = ["US","EU","APAC"]; health = ["Good","Good","Warning"]; colRegion = Col("Region", regions); colHealth = Col("Health", health); deliveryHealth = Table([colRegion, colHealth]).
+
+Alternatively could use a Card with a list, but table seems appropriate.
+
+8. releases coming this month – maybe a ListBlock with items. Define listItems = ["Title A", "Title B", "Title C"]; list = ListBlock(items, "image")? But ListBlock expects ListItem. Could use ListBlock with items as strings? ListItem requires title, subtitle, image, actionLabel. Maybe simpler: use a Card with a ListBlock. But we need to show titles. Could use a ListBlock with items as strings? Not allowed; ListItem requires fields. Maybe we can use a ListBlock with each item being a TextContent? Not ideal. Another approach: use a Card with a TextContent list? Not defined. Maybe use a SectionBlock with items. But easier: use a Card with a TextContent containing bullet list. But need component that can display list of titles. Could use a ListBlock with items as strings and set variant "image"? That expects ListItem; we could cheat by using ListItem with title = title, subtitle = "", image = placeholder, actionLabel = "".
+
+Simplify: Use a Card with a TextCallout listing titles? Not ideal.
+
+Maybe use a Card with a ListBlock where each ListItem has title as the title and empty subtitle and no image. Let's create listItems = ["Stranger Things", "The Crown", "Money Heist"]; each as ListItem with title = title, subtitle = "", image = [], actionLabel = "".
+
+Define listItem1 = ListItem("Stranger Things", "", [], ""); etc. Then listBlock = ListBlock([listItem1, listItem2, listItem3], "image").
+
+9. licenses expiring soon – maybe a Badge or a Callout. Use a Badge with variant "warning" showing count. Define licenseExpiring = Badge("5 licenses expiring", "warning").
+
+10. how often recommendations get clicked – maybe a BarChart or a Table. Could be a BarChart showing click counts per recommendation type. Simpler: use a Badge with text "1,200 clicks". But need frequency. Maybe use a Progress? Not appropriate. Could use a Table with columns Recommendation, Clicks. Let's do a Table: colRec = Col("Rec", ["Action","Drama","Comedy"]); colClicks = Col("Clicks", [300, 1200, 800]); tableRec = Table([colRec, colClicks]).
+
+11. searches that ended without playback – maybe a Badge showing count. Define searchNoPlay = Badge("0 searches", "neutral").
+
+12. revenue split by plan – maybe a PieChart or a Table. Use a PieChart: labels = ["Basic","Standard","Premium"]; values = [5000, 8000, 12000]; pie = PieChart(labels, values, "pie", "circular").
+
+13. viewing split by device – maybe a BarChart (horizontal) showing device types. Define devices = ["Phone","Tablet","TV","Desktop"]; views = [3000, 800, 5000, 6000]; barChart = HorizontalBarChart(labels, series, "grouped", "Device", "Views").
+
+But HorizontalBarChart expects labels and series; variant "grouped" or "stacked". We'll use "grouped". So colDevice = Col("Device", devices); colViews = Col("Views", views); horizBar = HorizontalBarChart(colDevice, colViews, "grouped", "Device", "Views").
+
+14. a way to focus on one region – maybe a Dropdown or a Select component. Use a Select to choose region. Define regionSelectOptions = ["All","US","EU","APAC"]; regionSelect = Select("region_select", regionSelectOptions, "All"); So regionSelect = Select("region_select", ["All","US","EU","APAC"], "All").
+
+But need to ensure it's referenced in root children.
+
+15. feature flags with state for each – maybe a set of Badges showing enabled/disabled. Define flags = ["Beta","4K","Offline"]; each flag state maybe shown as a Badge: "Beta: on", "4K: off", "Offline: on". Could use Badge with variant "info" for on, "danger" for off. Let's create flagBadges = [Badge("Beta: enabled", "info"), Badge("4K: disabled", "danger"), Badge("Offline: enabled", "info")]; then maybe put them in a Card with title "Feature Flags". Or a SectionBlock.
+
+Simplify: Use a Card with a TextContent describing flags and include Badges.
+
+16. a way to promote a title on the home screen – maybe a Button that triggers promotion. Use a Button with label "Promote Title". No action needed, just label.
+
+Now we need root = Card([...]) with children list containing all components in reading order.
+
+We need to ensure every defined variable is referenced in root children list (directly or via parent). So we must list all components in root children array, and each component must reference defined variables. Also any defined variable must be used somewhere (maybe as argument). So we need to create definitions for all variables, then include them in root children.
+
+Let's enumerate definitions:
+
+- viewers (TextContent)
+- titles (list) and hours (list) for most-watched
+- colTitle, colHours (Col)
+- tableMostWatched (Table)
+- labelsWatch (list) and seriesWatch (Series) for line chart
+- lineChart (LineChart)
+- colNew, colCanc (Col) for subscribers/cancellations
+- tableSubs (Table)
+- genres (list) and hoursGenre (list) for performance
+- seriesGenre (Series) for bar chart
+- barChart (BarChart)
+- bufferingRate (Progress)
+- regions (list) and health (list) for delivery health
+- colRegion, colHealth (Col)
+- deliveryHealth (Table)
+- licenseExpiring (Badge)
+- recNames (list) and recClicks (list) for recommendation clicks
+- colRec, colClicks (Col)
+- tableRec (Table)
+- pieLabels (list) and pieValues (list) for revenue split
+- pieChart (PieChart)
+- devices (list) and views (list) for viewing split
+- colDevice, colViews (Col)
+- horizBar (HorizontalBarChart)
+- regionSelectOptions (list) and regionSelect (Select)
+- flagBadges (list of Badges) for feature flags
+- promoteBtn (Button)
+
+Also need to define Series, Col, etc. Also need to ensure each component's arguments are in correct order.
+
+Let's construct each component with positional arguments.
+
+First, root = Card([...]) – we need to decide direction, gap, variant. Probably default "card" variant, direction "column", gap "m". But we can just use default.
+
+Now list children in order as per items 1-16.
+
+1. Viewers – maybe a CardHeader? Not needed. Use a TextContent with size "large". But maybe better a Badge? Let's use a TextContent for clarity.
+
+Define viewers = TextContent("12,345", "large").
+
+2. Most-watched titles table – we need to create table component. So after viewers, we put tableMostWatched.
+
+Define titles = ["Stranger Things", "The Crown", "Money Heist"]; hours = [150, 120, 100]; colTitle = Col("Title", titles); colHours = Col("Hours", hours); tableMostWatched = Table([colTitle, colHours]);
+
+3. Watch time line chart – define labelsWatch = ["W1","W2","W3","W4"]; seriesWatch = Series("Watch Time", [1000,1200,1300,1500]); lineChart = LineChart(labelsWatch, seriesWatch, "natural", "Week", "Hours").
+
+4. New subscribers vs cancellations – maybe a Card with two badges. Let's define newSubsBadge = Badge("New: 500", "info"); cancelsBadge = Badge("Cancels: 100", "danger"); then maybe a Card with those two badges inside. But we need a component that can hold multiple items. Could use a Card with children [newSubsBadge, cancelsBadge]. So define cardSubs = Card([newSubsBadge, cancelsBadge]).
+
+But we need to ensure the Badges are defined before use. So define newSubsBadge and cancelsBadge before cardSubs.
+
+5. Performance by genre – bar chart. Define genres = ["Drama","Comedy","Action","Sci-Fi"]; hoursGenre = [300,150,200,100]; seriesGenre = Series("Hours", hoursGenre); barChart = BarChart(labelsGenre, seriesGenre, "grouped", "Genre", "Hours").
+
+6. Buffering rate – Progress. Define bufferingRate = Progress(2.5, "2.5%").
+
+7. Delivery health by region – table. Define regions = ["US","EU","APAC"]; health = ["Good","Good","Warning"]; colRegion = Col("Region", regions); colHealth = Col("Health", health); deliveryHealth = Table([colRegion, colHealth]).
+
+8. Releases coming this month – list of titles. Let's create list items via ListItem. Define listItems = ["Stranger Things", "The Crown", "Money Heist"]; each as ListItem with title = title, subtitle = "", image = [], actionLabel = "". So:
+
+listItem1 = ListItem("Stranger Things", "", [], "");
+listItem2 = ListItem("The Crown", "", [], "");
+listItem3 = ListItem("Money Heist", "", [], "");
+listBlockReleases = ListBlock([listItem1, listItem2, listItem3], "image").
+
+But ListBlock expects items list; we need to reference each ListItem variable. So define them.
+
+9. Licenses expiring soon – Badge. Define licenseExpiring = Badge("5 licenses expiring", "warning").
+
+10. Recommendation click frequency – table. Define recNames = ["Action","Drama","Comedy"]; recClicks = [300,1200,800]; colRec = Col("Rec", recNames); colClicks = Col("Clicks", recClicks); tableRec = Table([colRec, colClicks]).
+
+11. Searches without playback – Badge. Define searchNoPlay = Badge("0 searches", "neutral").
+
+12. Revenue split by plan – PieChart. Define pieLabels = ["Basic","Standard","Premium"]; pieValues = [5000,8000,12000]; pieChart = PieChart(pieLabels, pieValues, "pie", "circular").
+
+13. Viewing split by device – horizontal bar chart. Define devices = ["Phone","Tablet","TV","Desktop"]; views = [3000,800,5000,6000]; colDevice = Col("Device", devices); colViews = Col("Views", views); horizBar = HorizontalBarChart(colDevice, colViews, "grouped", "Device", "Views").
+
+14. Focus on one region – Select component. Define regionSelectOptions = ["All","US","EU","APAC"]; regionSelect = Select("region_select", regionSelectOptions, "All").
+
+15. Feature flags – maybe a Card with Badges. Define flagBadges = [Badge("Beta: enabled", "info"), Badge("4K: disabled", "danger"), Badge("Offline: enabled", "info")]; then cardFlags = Card([flagBadges...])? But Card expects children list<unk><unk><unk><unk><unk><unk><unk><unk><unk>   **[ense the Zeert onto =>[ [...]ense [ Stratiz[ nearby   … [  **      ITZ
+
+\u [
+ purezi [     “ ...  -   [    IZpark   [
+ ...   [
+ [...] vis [...] surf ,, [  [ situ [  suit ult the as divis to in [ ye

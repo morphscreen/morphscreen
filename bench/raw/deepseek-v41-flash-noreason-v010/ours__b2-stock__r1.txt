@@ -1,0 +1,69 @@
+# Low Stock Alerts
+
+<Callout tone="warning" title="12 items below threshold">
+Reorder soon to avoid stockouts. Threshold is set per item; the default is **10 units**.
+</Callout>
+
+<Columns>
+<Stat label="Items low" value="12" change="+3 since yesterday" tone="warning" icon="warning" />
+<Stat label="Out of stock" value="2" tone="danger" icon="package" />
+<Stat label="Default threshold" value="10 units" note="Per-item overrides apply" icon="sliders" />
+</Columns>
+
+<Card title="Find an item" subtitle="Search by name, SKU, or supplier">
+<Form name="search-items">
+<Input label="Search inventory" name="query" type="search" placeholder="e.g. Espresso beans, SKU-4471" hint="Filters the list below as you type" />
+<Select label="Filter by status" name="status" options="All low items | Out of stock | Below half threshold" placeholder="All low items" />
+<Button icon="magnifying-glass">Search</Button>
+</Form>
+</Card>
+
+<Card title="Items running low" subtitle="Sorted by urgency — lowest stock first">
+| Item | SKU | Remaining | Threshold | Supplier |
+|---|---|---|---|---|
+| Espresso beans 1kg | SKU-4471 | 2 | 10 | Nord Roasters |
+| Oat milk 1L | SKU-2210 | 3 | 12 | Field & Co |
+| Paper cups 12oz | SKU-8890 | 0 | 50 | PackRight |
+| Vanilla syrup | SKU-3325 | 4 | 8 | SweetLine |
+| Cold brew concentrate | SKU-5512 | 5 | 15 | Nord Roasters |
+| Matcha powder 250g | SKU-7740 | 6 | 10 | Kyoto Leaf |
+
+<Progress value="2" max="10" label="Espresso beans 1kg — 2 of 10 units before alert" tone="danger" />
+<Progress value="3" max="12" label="Oat milk 1L — 3 of 12 units before alert" tone="danger" />
+<Progress value="0" max="50" label="Paper cups 12oz — out of stock" tone="danger" />
+<Progress value="4" max="8" label="Vanilla syrup — 4 of 8 units before alert" tone="warning" />
+<Progress value="5" max="15" label="Cold brew concentrate — 5 of 15 units before alert" tone="warning" />
+<Progress value="6" max="10" label="Matcha powder 250g — 6 of 10 units before alert" tone="warning" />
+</Card>
+
+<Card title="Reorder an item" subtitle="Pick an item and send it to the supplier">
+<Form name="reorder">
+<Select label="Item" name="item" options="Espresso beans 1kg (SKU-4471) | Oat milk 1L (SKU-2210) | Paper cups 12oz (SKU-8890) | Vanilla syrup (SKU-3325) | Cold brew concentrate (SKU-5512) | Matcha powder 250g (SKU-7740)" placeholder="Choose an item" required="true" />
+<Input label="Quantity to order" name="quantity" type="number" placeholder="e.g. 24" min="1" step="1" hint="Suggested: 2× the threshold" required="true" />
+<Date label="Deliver by" name="deliver_by" hint="Leave blank for the supplier's earliest slot" />
+<Switch label="Notify me when it ships" name="notify" value="true" />
+<Button icon="truck">Send reorder</Button>
+</Form>
+</Card>
+
+<Card title="Warning threshold" subtitle="When an item's remaining units drop to or below this number, it appears here">
+<Form name="threshold-settings">
+<Slider label="Default low-stock threshold" name="threshold" min="1" max="100" step="1" value="10" unit="units" />
+<Select label="Apply to" name="apply_to" options="All items without an override | Every item (overwrite all) | Only the items selected above" placeholder="All items without an override" />
+<Checkboxes label="Also alert when" name="extra_alerts" options="Out of stock | Half of threshold reached | Supplier lead time exceeds 7 days" value="Out of stock" />
+<Button variant="primary">Save threshold</Button>
+<Button variant="tertiary">Reset to default</Button>
+</Form>
+</Card>
+
+<Details title="How thresholds are calculated">
+Each item has its own threshold. The default is **10 units**, but high-turnover items like paper cups use a higher value (50) because they sell faster than they can be restocked.
+
+An alert fires when `remaining ≤ threshold`. The item stays listed until a reorder is received and stock is updated.
+</Details>
+
+<FollowUps>
+- Show me only the out-of-stock items
+- What's the typical lead time for Nord Roasters?
+- Set the default threshold to 20 units
+</FollowUps>

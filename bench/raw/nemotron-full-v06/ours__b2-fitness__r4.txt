@@ -1,0 +1,48 @@
+# Daily Summary
+
+<Card title="Steps Today" subtitle="Daily goal: 10,000 steps">
+<Progress value="7420" max="10000" label="7,420 / 10,000 steps" tone="info" />
+<Columns>
+<Stat label="Distance" value="5.2 km" />
+<Stat label="Active minutes" value="42 min" />
+</Columns>
+</Card>
+
+<Card title="Calories Burned">
+<Columns>
+<Stat label="Active calories" value="487 kcal" change="+12% vs yesterday" tone="success" />
+<Stat label="Total calories" value="2,156 kcal" change="Includes BMR" tone="neutral" />
+</Columns>
+<Progress value="487" max="600" label="487 / 600 kcal active goal" tone="success" />
+</Card>
+
+<Card title="Workouts This Week">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Minutes |
+|---|---|
+| Mon | 45 |
+| Tue | 0 |
+| Wed | 30 |
+| Thu | 50 |
+| Fri | 40 |
+| Sat | 60 |
+| Sun | 35 |
+</Chart>
+<Columns>
+<Stat label="Total sessions" value="5" />
+<Stat label="Total time" value="260 min" />
+<Stat label="Avg per session" value="52 min" />
+</Columns>
+</Card>
+
+<Card title="Log a Workout">
+<Form name="log-workout">
+<Select label="Workout type" placeholder="Select workout type" options="Running | Cycling | Strength Training | Yoga | Swimming | Walking | HIIT | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="30" min="1" max="300" step="5" required="true" />
+<Input label="Calories burned" type="number" placeholder="250" min="0" max="2000" step="10" />
+<Date label="Date" />
+<Checkboxes label="How did it feel?" options="Great | Good | Okay | Tough | Exhausted" hint="Optional" />
+<Button>Save workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

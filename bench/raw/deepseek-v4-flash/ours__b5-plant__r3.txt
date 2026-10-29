@@ -1,0 +1,148 @@
+# Factory floor console
+
+Plant 1 · 06 May 2025 · 14:32 · <Badge tone="success">Day shift running</Badge>
+
+<Button variant="primary" icon="download" ask="Export shift report">Export shift report</Button>
+
+<Card title="Live overview">
+<Columns>
+<Stat label="Overall equipment effectiveness" value="78.4%" change="+1.2% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Units produced today" value="812 / 1,000" note="On track for 16:00 target" tone="info" icon="target" />
+<Stat label="Energy use today" value="18.4 MWh" note="1.2 MW current load" change="−12% vs yesterday" icon="bolt" />
+<Stat label="Safety incidents this year" value="2" note="63 days since last incident" tone="warning" icon="shield-check" />
+</Columns>
+</Card>
+
+<Card title="Focus on one line" subtitle="Filter the console to a single production line">
+<Form name="line-focus">
+<Select label="Production line" options="All lines | Line 1 — Bottling | Line 2 — Filling | Line 3 — Capping | Line 4 — Packing" name="focus-line" placeholder="All lines" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Overall equipment effectiveness" subtitle="Rolling 24 hours">
+<Progress value="78.4" max="100" label="OEE 78.4%" tone="success" />
+<Columns>
+<Stat label="Availability" value="92%" />
+<Stat label="Performance" value="87%" />
+<Stat label="Quality" value="98%" />
+</Columns>
+</Card>
+
+<Card title="Today's target" subtitle="1,000 units by 16:00">
+<Progress value="812" max="1000" label="812 / 1,000 units" tone="info" />
+<Stat label="Units produced" value="812" note="188 units remaining" change="+54 vs same time yesterday" icon="target" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Production lines" subtitle="Current rate and status">
+| Line | Rate (units/h) | Status |
+|---|---|---|
+| Line 1 — Bottling | 92 | <Badge tone="success">Running</Badge> |
+| Line 2 — Filling | 87 | <Badge tone="success">Running</Badge> |
+| Line 3 — Capping | 0 | <Badge tone="danger">Stopped — maintenance</Badge> |
+| Line 4 — Packing | 76 | <Badge tone="warning">Running slow</Badge> |
+</Card>
+
+<Card title="Open work orders" subtitle="Priority and due date">
+| WO # | Line | Task | Priority | Due |
+|---|---|---|---|---|
+| WO-1042 | Line 3 | Rebuild capping head | <Badge tone="danger">Critical</Badge> | 06 May |
+| WO-1043 | Line 2 | Calibrate filler sensors | <Badge tone="warning">High</Badge> | 07 May |
+| WO-1044 | Line 1 | Replace labelling roll | <Badge tone="info">Medium</Badge> | 08 May |
+| WO-1045 | Line 4 | Conveyor lubrication | <Badge tone="neutral">Low</Badge> | 09 May |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Defect rate — past month" subtitle="Target: ≤ 1.5%">
+<Chart type="line" x="Week" y="Defect rate %">
+| Week | Defect rate % |
+|---|---|
+| Week 1 | 2.1 |
+| Week 2 | 1.8 |
+| Week 3 | 1.9 |
+| Week 4 | 1.4 |
+</Chart>
+</Card>
+
+<Card title="Downtime split by cause" subtitle="16.8 hours lost this month">
+<Chart type="donut" title="Downtime by cause">
+| Cause | Hours |
+|---|---|
+| Changeover | 6.2 |
+| Mechanical failure | 4.5 |
+| Material shortage | 3.1 |
+| Quality stop | 1.8 |
+| Other | 1.2 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines due for maintenance">
+| Machine | Due date | Status |
+|---|---|---|
+| Conveyor-03 | 06 May | <Badge tone="danger">Overdue</Badge> |
+| Filler-02 | 07 May | <Badge tone="warning">Due tomorrow</Badge> |
+| Capper-01 | 09 May | <Badge tone="info">Scheduled</Badge> |
+| Compressor-1 | 12 May | <Badge tone="neutral">Planned</Badge> |
+</Card>
+
+<Card title="Schedule maintenance" subtitle="Book a machine and date">
+<Form name="maintenance-schedule">
+<Select label="Machine" options="Filler-02 | Capper-01 | Conveyor-03 | Compressor-1 | Filler-01" name="machine" placeholder="Select machine" />
+<Date label="Date" name="maintenance-date" />
+<Select label="Priority" options="Low | Normal | High" name="priority" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw material stock" subtitle="Packaging is below reorder point">
+<Progress value="82" max="100" label="Steel — 41 / 50 tonnes" tone="success" />
+<Progress value="64" max="100" label="Resin — 128 / 200 bags" tone="info" />
+<Progress value="28" max="100" label="Packaging — 1,120 / 4,000 boxes" tone="danger" />
+</Card>
+
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| Steelworks Ltd | Steel coil | 06 May | <Badge tone="success">Arrived</Badge> |
+| Polymerix | Resin pellets | 07 May | <Badge tone="info">In transit</Badge> |
+| Boxes Inc | Folding boxes | 08 May | <Badge tone="warning">Pending</Badge> |
+| TapeCo | Packaging tape | 09 May | <Badge tone="neutral">Confirmed</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Output by shift" subtitle="Units completed per shift">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Output |
+|---|---|
+| Morning | 320 |
+| Afternoon | 290 |
+| Night | 202 |
+</Chart>
+</Card>
+
+<Card title="Batches on quality hold">
+| Batch | Line | Quantity | Reason | Time |
+|---|---|---|---|---|
+| B-2081 | Line 2 | 120 | Fill weight low | 14:10 |
+| B-2079 | Line 4 | 95 | Packaging damaged | 11:32 |
+| B-2074 | Line 1 | 40 | Label misprint | Yesterday |
+</Card>
+</Columns>
+
+<Card title="Live andon alerts" subtitle="Alerts from the floor in real time">
+| Time | Line | Station | Alert | Status |
+|---|---|---|---|---|
+| 14:31 | Line 3 | Capper | Sealing pressure low | <Badge tone="danger">Active</Badge> |
+| 14:22 | Line 4 | Packer | Box feed jam | <Badge tone="danger">Active</Badge> |
+| 14:05 | Line 2 | Filler | Fill weight drift | <Badge tone="warning">Acknowledged</Badge> |
+| 13:48 | Line 1 | Labeler | Roll low | <Badge tone="info">Resolved</Badge> |
+</Card>

@@ -1,0 +1,69 @@
+# Personal Budget Check
+
+<Card title="Budget Overview" subtitle="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,147" change="$853 remaining" tone="success" />
+<Stat label="Largest Expense" value="$485" change="Rent" tone="info" />
+</Columns>
+
+<Progress value="2147" max="3000" label="Monthly budget used: 71.6%" tone="success" />
+</Card>
+
+<Card title="Select Month">
+<Select label="View month" name="month" value="2025-01" options="2025-01 | 2024-12 | 2024-11 | 2024-10 | 2024-09" />
+</Card>
+
+<Columns>
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 485 |
+| Food & Dining | 412 |
+| Transportation | 298 |
+| Shopping | 267 |
+| Utilities | 189 |
+| Entertainment | 156 |
+| Health | 124 |
+| Other | 216 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="info" title="Rent Payment">
+<strong>$485.00</strong> — Paid Jan 1, 2025
+<br /><br />
+This is your single largest expense this month, representing 22.6% of total spending.
+</Callout>
+
+<Details title="Expense details">
+**Category:** Housing
+**Date:** January 1, 2025
+**Payment method:** Bank transfer
+**Recurring:** Yes (monthly)
+**Notes:** January rent for apartment 3B
+</Details>
+</Card>
+</Columns>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+</Columns>
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food & Dining | Transportation | Shopping | Utilities | Entertainment | Health | Other" required="true" />
+<Input label="Description" name="description" placeholder="What was this for?" hint="e.g., Groceries at Whole Foods" />
+<Input label="Payment Method" name="payment" placeholder="Card, Cash, Transfer..." />
+<Checkboxes label="Options" name="options" options="Recurring expense | Tax deductible | Reimbursable" />
+<Button>Add Expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me spending trends over the last 6 months
+- Set up budget alerts for categories
+- Export this month's expenses to CSV
+</FollowUps>

@@ -1,0 +1,101 @@
+# Logistics Coordinator's Board
+
+Last refreshed: **Today, 09:42 AM** <Badge tone="success">Live</Badge>
+
+<Callout tone="warning" title="3 shipments delayed">
+Two shipments are over 24h late — see the delayed callouts below. Recommended: contact carriers before end of day.
+</Callout>
+
+<Card title="Shipments in transit" subtitle="Origin → Destination · ETA · Status">
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SH-2041 | Ningbo | Rotterdam | Mar 18 | On time |
+| SH-2042 | Shenzhen | Los Angeles | Mar 19 | On time |
+| SH-2043 | Hamburg | Chicago | Mar 17 | **Delayed** <Badge tone="danger">+2 days</Badge> |
+| SH-2044 | Singapore | Sydney | Mar 21 | On time |
+| SH-2045 | Mumbai | Dubai | Mar 16 | **Delayed** <Badge tone="danger">+1 day</Badge> |
+| SH-2046 | Rotterdam | New York | Mar 22 | On time |
+
+<Button variant="secondary" ask>Show all shipments</Button>
+</Card>
+
+<Card title="Delayed shipments" subtitle="Flagged for immediate attention">
+<Columns>
+<Card title="SH-2043 · Hamburg → Chicago">
+<Badge tone="danger">Delayed 2 days</Badge>
+<Stat label="New ETA" value="Mar 19" note="Originally Mar 17" tone="danger" icon="clock" />
+<Stat label="Delay reason" value="Customs" note="Holding at port" />
+<Button variant="primary" ask>Flag SH-2043</Button>
+<Button variant="secondary" ask>Contact carrier</Button>
+</Card>
+<Card title="SH-2045 · Mumbai → Dubai">
+<Badge tone="danger">Delayed 1 day</Badge>
+<Stat label="New ETA" value="Mar 17" note="Originally Mar 16" tone="danger" icon="clock" />
+<Stat label="Delay reason" value="Weather" note="Port closure" />
+<Button variant="primary" ask>Flag SH-2045</Button>
+<Button variant="secondary" ask>Contact carrier</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Performance overview">
+<Columns>
+<Stat label="On-time percentage" value="94.2%" change="+1.8% vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$1,284" change="−3.2% vs last month" tone="success" icon="currency-dollar" />
+</Columns>
+</Card>
+
+<Card title="Volume split by carrier">
+<Chart type="donut" title="Share of shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 42 |
+| MSC | 31 |
+| CMA CGM | 18 |
+| Hapag-Lloyd | 9 |
+</Chart>
+</Card>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Select label="Origin" placeholder="Select origin" options="Ningbo | Shenzhen | Hamburg | Singapore | Mumbai | Rotterdam" />
+<Select label="Destination" placeholder="Select destination" options="Rotterdam | Los Angeles | Chicago | Sydney | Dubai | New York" />
+<Button>Search routes</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Weekly volume — past 2 months">
+<Chart type="bar" title="Shipments per week" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 (Jan) | 28 |
+| W2 (Jan) | 35 |
+| W3 (Jan) | 31 |
+| W4 (Jan) | 39 |
+| W5 (Feb) | 44 |
+| W6 (Feb) | 41 |
+| W7 (Feb) | 47 |
+| W8 (Feb) | 52 |
+</Chart>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment ID" placeholder="Select shipment" options="SH-2041 | SH-2042 | SH-2043 | SH-2044 | SH-2045 | SH-2046" />
+<Select label="Flag reason" placeholder="Select reason" options="Delayed | Damaged | Missing docs | Address issue | Other" />
+<TextArea label="Notes" placeholder="Add details for the team…" rows="3" />
+<Button>Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Data freshness">
+<Stat label="Last refreshed" value="09:42 AM" note="Today · Auto-refresh every 15 min" icon="refresh" />
+</Card>
+
+<FollowUps>
+- Show me the full history of SH-2043
+- Which carriers have the most delays this month?
+- Compare cost per shipment by carrier
+- Set up an alert when a shipment is delayed
+</FollowUps>

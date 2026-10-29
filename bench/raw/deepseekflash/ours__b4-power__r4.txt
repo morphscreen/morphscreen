@@ -1,0 +1,141 @@
+<Card subtitle="Shift B · 14 March 2026 · Great Britain control room">
+# ⚡ National Grid Operator Console
+<Badge tone="success">● Live</Badge>
+<Badge tone="neutral">System: Stable</Badge>
+
+<Select label="10 · Focus region" name="region" options="All regions | North | South | East | West | Scotland" placeholder="All regions" hint="Filters every chart, table, outage and alert below" />
+</Card>
+
+<Columns>
+<Stat label="1 · Current network load" value="46.8 GW" change="▲ 2.1% vs forecast" />
+<Stat label="Headroom to rated capacity" value="10.3 GW" change="82% utilised" />
+<Stat label="7 · Price per MWh" value="£64.20" change="▲ £2.10 vs 1h ago" />
+<Stat label="12 · CO₂ emissions today" value="156.4 kt" change="▼ 8 kt vs yesterday" note="Grid intensity: 139 g/kWh" />
+</Columns>
+
+<Card title="2 · How close the network is to capacity">
+<Progress value="82" max="100" label="Capacity utilisation of rated network limits" />
+<Callout tone="warning" title="Margin to alarm">4.6 GW before the 90% safety-alarm level expected during the 18:00 evening peak.</Callout>
+</Card>
+
+<Columns>
+<Card title="3 · Generation split by source">
+<Chart type="donut" title="Live generation mix" x="Source" y="GW">
+| Source | GW |
+|---|---|
+| Gas | 14.2 |
+| Nuclear | 10.6 |
+| Wind | 9.8 |
+| Solar | 4.7 |
+| Hydro | 3.5 |
+| Biomass | 2.4 |
+| Imports / Storage | 1.6 |
+</Chart>
+</Card>
+
+<Card title="6 · Demand forecast — next 24 hours">
+<Chart type="area" title="Forecast demand" x="Hour" y="GW">
+| Hour | Demand |
+|---|---|
+| 00:00 | 38.2 |
+| 01:00 | 37.0 |
+| 02:00 | 36.4 |
+| 03:00 | 36.1 |
+| 04:00 | 36.8 |
+| 05:00 | 38.9 |
+| 06:00 | 43.2 |
+| 07:00 | 48.4 |
+| 08:00 | 50.6 |
+| 09:00 | 49.3 |
+| 10:00 | 47.8 |
+| 11:00 | 47.2 |
+| 12:00 | 48.9 |
+| 13:00 | 49.5 |
+| 14:00 | 48.8 |
+| 15:00 | 47.6 |
+| 16:00 | 48.2 |
+| 17:00 | 51.9 |
+| 18:00 | 54.4 |
+| 19:00 | 53.8 |
+| 20:00 | 51.2 |
+| 21:00 | 48.5 |
+| 22:00 | 45.0 |
+| 23:00 | 41.3 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="4 · Plant output and status">
+| Plant | Region | Fuel | Output | Status |
+|---|---|---|---|---|
+| Hinkley Point C | South West | Nuclear | 3,200 MW | <Badge tone="success">Online</Badge> |
+| Sizewell B | East | Nuclear | 1,190 MW | <Badge tone="success">Online</Badge> |
+| Drax Unit 2 | Yorkshire | Biomass | 640 MW | <Badge tone="info">Ramping</Badge> |
+| Pembroke | Wales | Gas CCGT | 1,850 MW | <Badge tone="success">Online</Badge> |
+| Rathlin Wind | Scotland | Wind | 420 MW | <Badge tone="success">Online</Badge> |
+| Viking Wind | Scotland | Wind | 380 MW | <Badge tone="warning">Curtailed</Badge> |
+| Ferrybridge Battery | Midlands | Storage | −120 MW | <Badge tone="info">Charging</Badge> |
+| Longannet Peaker | Scotland | Gas OCGT | 0 MW | <Badge tone="neutral">Standby</Badge> |
+</Card>
+
+<Card title="5 · Outages with affected regions">
+**Severn Crossing line fault** — South West & South Wales border  
+<Badge tone="danger">12,400 customers</Badge> — ETA restoration 18:30
+
+**Storm damage, Dounreay substation** — North Scotland  
+<Badge tone="danger">3,200 customers</Badge> — ETA restoration tomorrow 06:00
+
+**Walpole substation voltage dip** — East Anglia  
+<Badge tone="success">Restored 14:32</Badge> — 1,100 customers affected
+
+**Otterburn line planned works** — North East  
+<Badge tone="info">0 customers affected</Badge> — maintenance, until Friday 18:00
+</Card>
+</Columns>
+
+<Columns>
+<Card title="8 · Maintenance planned this month">
+| Asset | Date | Duration | Work |
+|---|---|---|---|
+| Hinkley Point C | 18 Mar | 12 h | Turbine inspection |
+| Viking Wind | 21–22 Mar | 48 h | Gearbox replacement |
+| Clapham grid transformer | 24 Mar | 6 h | Oil sample and test |
+| Drax Unit 4 | 27–29 Mar | 72 h | Cooling tower repair |
+</Card>
+
+<Card title="9 · Live alerts as they arrive">
+<Callout tone="danger" title="14:32 · Walpole substation">Voltage dip detected — protection switching operated correctly, supply restored to 1,100 customers.</Callout>
+<Callout tone="warning" title="14:18 · Viking Wind">Curtailment ordered to 380 MW due to East Scotland transmission constraint.</Callout>
+<Callout tone="info" title="13:55 · Forecast update">Evening peak revised up to 54.4 GW at 18:00 — watch capacity margins.</Callout>
+<Callout tone="success" title="13:41 · Severn Crossing">Mobile transformer arrived; crew preparing replacement.</Callout>
+</Card>
+
+<Card title="11 · Order curtailment">
+<Form name="curtailment-order">
+<Select label="Plant / asset" name="plant" options="Viking Wind (Wind) | Rathlin Wind (Wind) | Pembroke (Gas) | Longannet Peaker (Gas)" placeholder="Select plant" />
+<Input label="Curtailment amount (MW)" name="amount" type="number" placeholder="e.g. 250" required="true" />
+<Radio label="Reason" name="reason" options="Regional constraint | Over-frequency | Grid works" />
+<Switch label="Require control-room approval" name="approval" value="true" hint="Send as pending order" />
+<Button>Send order</Button>
+<Button variant="secondary">Save draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card subtitle="Whole console reacts to the region selector at the top">
+<Callout tone="info" title="10 · Region focus">Currently viewing **All regions**. Choose a region to filter generation, plant tables, outages, alerts, forecast and curtailment options to that area.</Callout>
+
+### Operators — quick reference
+- **Current load:** 46.8 GW · 82% of rated network capacity
+- **Evening peak forecast:** 54.4 GW at 18:00
+- **Price:** £64.20 / MWh · **Emissions today:** 156.4 kt CO₂e
+- **Open outages:** 2 affecting customers · **Maintenance jobs this month:** 4
+</Card>
+
+<FollowUps>
+- Show the 18:00 peak risk for the South East region
+- Explain why Viking Wind is curtailed
+- Compare today's emissions with the same day last year
+- Which plants are on standby for the evening peak?
+</FollowUps>

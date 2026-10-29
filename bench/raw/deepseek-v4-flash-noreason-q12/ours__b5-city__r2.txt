@@ -1,0 +1,233 @@
+# City Operations Center
+
+<Callout tone="info" title="Live operations dashboard">
+All data updates every 60 seconds. Last refresh: just now.
+</Callout>
+
+<Columns>
+<div>
+
+<Card title="Current weather" subtitle="Downtown station">
+<Stat label="Temperature" value="18°C" change="+2° vs yesterday" icon="thermometer" />
+<Stat label="Wind" value="12 km/h" change="SW" icon="wind" />
+<Stat label="Humidity" value="64%" icon="drop" />
+<Stat label="Precipitation" value="0 mm" change="Dry" icon="cloud-sun" />
+</Card>
+
+<Card title="Congestion right now">
+<Chart type="bar" x="Arterial" y="Congestion index (0-100)">
+| Road | Congestion |
+|---|---|
+| I-5 North | 82 |
+| Harbor Blvd | 74 |
+| 4th Ave | 65 |
+| Market St | 51 |
+| Riverside Dr | 38 |
+</Chart>
+<Badge tone="warning">Heavy on I-5 North</Badge>
+</Card>
+
+<Card title="Transit punctuality">
+<Stat label="On-time rate" value="91%" change="+3% vs last week" tone="success" icon="clock" />
+<Stat label="Buses delayed" value="7" change="of 214 active" tone="info" icon="bus" />
+<Stat label="Trains delayed" value="2" change="of 48 active" tone="info" icon="train" />
+<Stat label="Avg delay" value="4 min" tone="info" icon="hourglass" />
+</Card>
+
+</div>
+<div>
+
+<Card title="Air quality by district">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Northgate | 42 |
+| Eastside | 58 |
+| Downtown | 61 |
+| Westport | 35 |
+| South Hills | 74 |
+| Riverside | 48 |
+</Chart>
+<Badge tone="success">All districts within safe range</Badge>
+</Card>
+
+<Card title="Energy use — past week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 1420 |
+| Tue | 1385 |
+| Wed | 1450 |
+| Thu | 1410 |
+| Fri | 1520 |
+| Sat | 1185 |
+| Sun | 1090 |
+</Chart>
+<Stat label="Peak" value="1,520 MWh" change="Fri 6PM" icon="chart-line" />
+<Stat label="Avg daily" value="1,351 MWh" change="-3% vs prior week" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Water use today">
+<Progress value="72" max="100" label="Daily allocation used" tone="info" />
+<Stat label="Current flow" value="3.8 ML" change="of 5.2 ML daily cap" icon="drop" />
+<Stat label="Peak hour" value="4.1 ML/h" change="8-9 AM" icon="chart-line" />
+</Card>
+
+</div>
+</Columns>
+
+<Card title="Incidents & emergencies">
+<Columns>
+<div>
+
+<Card title="Open incidents" subtitle="By severity">
+| Severity | Location | Type | Status |
+|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | I-5 & 4th Ave | Multi-vehicle collision | Crew en route |
+| <Badge tone="danger">Critical</Badge> | Westport Pier | Structure fire | On scene |
+| <Badge tone="warning">High</Badge> | Market St & 2nd | Water main break | Crew en route |
+| <Badge tone="warning">High</Badge> | Northgate Mall | Electrical outage | Investigating |
+| <Badge tone="info">Medium</Badge> | Eastside Park | Fallen tree | Scheduled |
+| <Badge tone="info">Medium</Badge> | Riverside Dr | Signal malfunction | Technician dispatched |
+</Card>
+
+</div>
+<div>
+
+<Card title="Emergency vehicles deployed">
+<Stat label="Active units" value="23" icon="truck" />
+<Stat label="Ambulances" value="8" icon="ambulance" />
+<Stat label="Fire engines" value="6" icon="fire-truck" />
+<Stat label="Police cars" value="9" icon="police-car" />
+
+| Unit | Type | Location |
+|---|---|---|
+| A-12 | Ambulance | I-5 & 4th Ave |
+| F-04 | Fire engine | Westport Pier |
+| P-07 | Police | Downtown |
+| A-03 | Ambulance | Northgate |
+| F-02 | Fire engine | Eastside |
+</Card>
+
+</div>
+</Columns>
+</Card>
+
+<Card title="Parking availability — downtown">
+<Chart type="bar" x="Garage" y="Spots available">
+| Garage | Available |
+|---|---|
+| Central Plaza | 142 |
+| City Hall | 87 |
+| Market Street | 54 |
+| Harbor View | 210 |
+| Grand Station | 118 |
+</Chart>
+<Badge tone="success">2 of 5 garages above 50%</Badge>
+</Card>
+
+<Card title="Public events — this weekend">
+| Event | Location | Day | Time |
+|---|---|---|---|
+| Farmers Market | Central Plaza | Sat | 8 AM – 2 PM |
+| Riverfront Concert | Riverside Park | Sat | 6 – 10 PM |
+| Marathon | Downtown loop | Sun | 7 AM – 12 PM |
+| Art Fair | Eastside Gallery | Sat–Sun | 10 AM – 6 PM |
+| Food Truck Fest | Westport Pier | Sun | 11 AM – 8 PM |
+</Card>
+
+<Card title="Citizen reports — live feed">
+<Tabs>
+<Tab title="Latest reports">
+| Time | District | Report | Status |
+|---|---|---|---|
+| 2 min ago | Downtown | Pothole on 3rd Ave | <Badge tone="info">Received</Badge> |
+| 5 min ago | Northgate | Streetlight out | <Badge tone="info">Received</Badge> |
+| 8 min ago | Eastside | Graffiti on school wall | <Badge tone="info">Received</Badge> |
+| 12 min ago | Westport | Flooded sidewalk | <Badge tone="warning">Assigned</Badge> |
+| 15 min ago | South Hills | Abandoned vehicle | <Badge tone="info">Received</Badge> |
+</Tab>
+<Tab title="Service request backlog">
+<Stat label="Open requests" value="1,284" icon="inbox" />
+<Stat label="Avg age" value="4.2 days" icon="clock" />
+<Stat label="SLA compliance" value="87%" tone="success" icon="check-circle" />
+
+| Category | Open | Oldest |
+|---|---|---|
+| Potholes | 342 | 12 days |
+| Streetlights | 218 | 9 days |
+| Graffiti | 187 | 7 days |
+| Drainage | 124 | 6 days |
+| Parks | 96 | 5 days |
+| Other | 317 | 11 days |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="District focus & dispatch">
+<Columns>
+<div>
+
+<Card title="Focus on a district">
+<Select label="District" options="All districts | Northgate | Eastside | Downtown | Westport | South Hills | Riverside" name="district" placeholder="Choose district" />
+<Stat label="Active incidents" value="3" icon="warning" />
+<Stat label="Service requests" value="214" icon="inbox" />
+<Stat label="Air quality" value="AQI 58" tone="info" icon="wind" />
+<Stat label="Crews available" value="4" icon="helmet" />
+</Card>
+
+<Card title="Dispatch a crew">
+<Form name="dispatch">
+<Select label="Crew type" options="Roadworks | Utilities | Parks | Sanitation | Emergency" name="crew-type" placeholder="Select type" />
+<Input label="Location" placeholder="e.g. 4th Ave & Market St" />
+<Select label="Priority" options="Routine | Urgent | Emergency" name="priority" />
+<TextArea label="Instructions" placeholder="Describe the job, access notes, hazards…" rows="3" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+</div>
+<div>
+
+<Card title="Send public alert">
+<Form name="alert">
+<Select label="Audience" options="All residents | Downtown | Northgate | Eastside | Westport | South Hills | Riverside" name="audience" />
+<Select label="Severity" options="Info | Advisory | Warning | Emergency" name="severity" />
+<Input label="Subject" placeholder="e.g. Water outage on Market St" />
+<TextArea label="Message" placeholder="Write the alert message residents will receive…" rows="4" />
+<Switch label="Send as SMS too" name="sms" value="true" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks — this month">
+| Road | Section | Dates | Impact |
+|---|---|---|---|
+| I-5 North | Mile 4–7 | Apr 8–12 | Lane closure |
+| Market St | 2nd–5th Ave | Apr 10–14 | Full closure |
+| Harbor Blvd | Bridge | Apr 15–22 | Night work |
+| Riverside Dr | 1 km stretch | Apr 18–25 | Partial closure |
+| Northgate Pkwy | Roundabout | Apr 20–30 | Lane shifts |
+</Card>
+
+<Card title="Infrastructure jobs due for maintenance">
+| Asset | Location | Due | Priority |
+|---|---|---|---|
+| Bridge #12 | Harbor Blvd | Apr 15 | <Badge tone="danger">Overdue</Badge> |
+| Water main | Market St | Apr 18 | <Badge tone="warning">This week</Badge> |
+| Substation | Northgate | Apr 22 | <Badge tone="info">Scheduled</Badge> |
+| Sewer pump | Eastside | Apr 25 | <Badge tone="info">Scheduled</Badge> |
+| Traffic signals | Downtown | May 2 | <Badge tone="neutral">Planned</Badge> |
+</Card>
+
+</div>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show incident details for the I-5 collision
+- Compare air quality trends across districts this month
+- List crews available for dispatch right now
+- What caused the energy spike on Friday?
+- Show the service request backlog by district
+</FollowUps>

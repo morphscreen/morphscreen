@@ -1,0 +1,50 @@
+<Card title="Low Inventory Alerts" subtitle="Items at or below their reorder threshold">
+<Input label="Search items" name="search" type="search" placeholder="Search by name or SKU" hint="Filter the list below" />
+<Radio label="Threshold" options="Show all | Only below threshold" value="Only below threshold" />
+</Card>
+
+<Card title="Reorder threshold" subtitle="Items are flagged when remaining units drop to or below this level">
+<Slider label="Global threshold" min="1" max="50" step="1" value="10" name="threshold" unit=" units" />
+<Callout tone="info" title="How it works">Any item with remaining units equal to or less than the threshold appears below. You can set a custom threshold per item in its details.</Callout>
+</Card>
+
+<Card title="Running low — 6 items">
+| Item | SKU | Remaining | Threshold | Status | Action |
+|---|---|---|---|---|---|
+| Organic Green Tea 500g | TEA-500G | 4 | 10 | <Badge tone="danger">Critical</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Arabica Coffee Beans 1kg | COF-1KG | 8 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Paper Filters #4 (100ct) | FIL-100 | 10 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Honey 250g | HON-250G | 3 | 10 | <Badge tone="danger">Critical</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Ceramic Mug 350ml | MUG-350 | 9 | 10 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Oat Milk 1L | OAT-1L | 12 | 15 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+</Card>
+
+<Card title="Inventory overview">
+<Columns>
+<Stat label="Items flagged" value="6" note="of 48 tracked" tone="warning" icon="warning" />
+<Stat label="Critical (≤ 5 units)" value="2" tone="danger" icon="alert" />
+<Stat label="Avg. lead time" value="4 days" note="to restock" icon="truck" />
+</Columns>
+</Card>
+
+<Card title="Reorder items">
+<Form name="bulk-reorder">
+<Select label="Select item" placeholder="Choose an item" options="Organic Green Tea 500g | Arabica Coffee Beans 1kg | Paper Filters #4 (100ct) | Honey 250g | Ceramic Mug 350ml | Oat Milk 1L" />
+<Input label="Quantity to reorder" type="number" name="qty" placeholder="e.g. 20" min="1" step="1" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="Recently restocked">
+| Item | SKU | Restocked units | Date |
+|---|---|---|---|
+| Assam Black Tea 250g | TEA-250G | 25 | 2 days ago |
+| Espresso Cups (6pk) | CUP-6PK | 18 | 5 days ago |
+| Cinnamon 100g | CIN-100G | 12 | 1 week ago |
+</Card>
+
+<FollowUps>
+- Which items are below half the threshold?
+- Show reorder history for the last 30 days
+- Estimate restock cost for all flagged items
+</FollowUps>

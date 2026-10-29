@@ -1,0 +1,181 @@
+# Power Network Operator Console
+
+<Card title="Network Overview" subtitle="National Grid Control Center · Last updated: 14:32 UTC">
+<Columns>
+<Stat label="Current Load" value="42.3 GW" change="+1.2% vs 1hr ago" tone="info" icon="bolt" />
+<Stat label="Capacity Utilization" value="78.4%" change="Peak: 54.0 GW" tone="warning" icon="gauge" />
+<Stat label="Current Price" value="£67.40/MWh" change="-£3.20 vs yesterday" tone="success" icon="currency-gbp" />
+<Stat label="Emissions Today" value="142 kt CO₂" change="-8% vs same day last year" tone="info" icon="leaf" />
+</Columns>
+</Card>
+
+<Card title="Generation Split by Source" subtitle="Real-time output across all connected plants">
+<Chart type="donut" title="Current Generation Mix (GW)">
+| Source | Output (GW) |
+|---|---|
+| Gas (CCGT) | 14.2 |
+| Wind (Onshore) | 8.7 |
+| Wind (Offshore) | 6.4 |
+| Nuclear | 5.8 |
+| Solar | 4.1 |
+| Biomass | 2.3 |
+| Hydro | 1.6 |
+| Interconnectors | 2.8 |
+| Other | 0.4 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Demand Forecast — Next 24 Hours" subtitle="National demand projection (GW)">
+<Chart type="line" x="Time" y="Demand (GW)">
+| Time | Demand (GW) | Forecast Band |
+|---|---|---|
+| 14:00 | 42.3 | 42.3 |
+| 15:00 | 43.1 | 43.1 |
+| 16:00 | 44.8 | 44.8 |
+| 17:00 | 46.2 | 46.2 |
+| 18:00 | 47.9 | 47.9 |
+| 19:00 | 48.5 | 48.5 |
+| 20:00 | 47.8 | 47.8 |
+| 21:00 | 45.6 | 45.6 |
+| 22:00 | 42.1 | 42.1 |
+| 23:00 | 38.4 | 38.4 |
+| 00:00 | 34.7 | 34.7 |
+| 01:00 | 32.1 | 32.1 |
+| 02:00 | 30.8 | 30.8 |
+| 03:00 | 29.9 | 29.9 |
+| 04:00 | 29.4 | 29.4 |
+| 05:00 | 29.8 | 29.8 |
+| 06:00 | 31.2 | 31.2 |
+| 07:00 | 34.5 | 34.5 |
+| 08:00 | 39.8 | 39.8 |
+| 09:00 | 42.7 | 42.7 |
+| 10:00 | 43.9 | 43.9 |
+| 11:00 | 44.2 | 44.2 |
+| 12:00 | 43.8 | 43.8 |
+| 13:00 | 43.1 | 43.1 |
+</Chart>
+</Card>
+
+<Card title="Region Focus" subtitle="Filter all views to a specific region">
+<Select label="Select Region" name="region-focus" placeholder="All Regions (National)" options="All Regions (National) | Scotland North | Scotland Central | Scotland South | North East England | North West England | Yorkshire | East Midlands | West Midlands | East of England | London | South East England | South West England | Wales | Northern Ireland" />
+<Callout tone="info" title="Active Filter">Showing: All Regions (National) — 42.3 GW load, 54.0 GW capacity</Callout>
+</Card>
+</Columns>
+
+<Card title="Plant Status — All Connected Generators" subtitle="Real-time output and operational status">
+<Tabs>
+<Tab title="Thermal (Gas/Coal/Oil)">
+| Plant | Region | Type | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Peterhead | Scotland North | CCGT | 1,180 | 890 | <Badge tone="success">Online</Badge> | 95% |
+| Pembroke | Wales | CCGT | 2,180 | 1,640 | <Badge tone="success">Online</Badge> | 98% |
+| Staythorpe | East Midlands | CCGT | 1,730 | 1,210 | <Badge tone="success">Online</Badge> | 92% |
+| West Burton B | East Midlands | CCGT | 1,300 | 0 | <Badge tone="warning">Standby</Badge> | 100% |
+| Ratcliffe | East Midlands | Coal | 2,000 | 0 | <Badge tone="neutral">Offline</Badge> | 0% |
+| Drax Units 1-3 | Yorkshire | Biomass | 1,920 | 1,440 | <Badge tone="success">Online</Badge> | 94% |
+</Tab>
+<Tab title="Nuclear">
+| Plant | Region | Type | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Sizewell B | East of England | PWR | 1,198 | 1,180 | <Badge tone="success">Online</Badge> | 99% |
+| Hinkley Point B | South West England | AGR | 0 | 0 | <Badge tone="neutral">Decommissioning</Badge> | 0% |
+| Hartlepool | North East England | AGR | 1,180 | 1,120 | <Badge tone="success">Online</Badge> | 95% |
+| Heysham 1 | North West England | AGR | 1,150 | 1,080 | <Badge tone="success">Online</Badge> | 94% |
+| Heysham 2 | North West England | AGR | 1,250 | 1,200 | <Badge tone="success">Online</Badge> | 96% |
+| Torness | Scotland South | AGR | 1,250 | 1,220 | <Badge tone="success">Online</Badge> | 98% |
+</Tab>
+<Tab title="Renewables (Wind/Solar/Hydro)">
+| Plant | Region | Type | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Hornsea 1 | North East England | Offshore Wind | 1,218 | 980 | <Badge tone="success">Online</Badge> | 92% |
+| Hornsea 2 | North East England | Offshore Wind | 1,386 | 1,120 | <Badge tone="success">Online</Badge> | 94% |
+| Dogger Bank A | North East England | Offshore Wind | 1,200 | 890 | <Badge tone="success">Online</Badge> | 89% |
+| Moray East | Scotland North | Offshore Wind | 950 | 720 | <Badge tone="success">Online</Badge> | 91% |
+| Whitelee | Scotland Central | Onshore Wind | 539 | 380 | <Badge tone="success">Online</Badge> | 88% |
+| Clyde | Scotland South | Onshore Wind | 522 | 360 | <Badge tone="success">Online</Badge> | 87% |
+| Dinorwig | Wales | Pumped Hydro | 1,728 | 1,200 | <Badge tone="success">Generating</Badge> | 99% |
+| Ffestiniog | Wales | Pumped Hydro | 360 | 280 | <Badge tone="success">Generating</Badge> | 98% |
+</Tab>
+<Tab title="Interconnectors">
+| Plant | Region | Type | Capacity (MW) | Output (MW) | Status | Flow Direction |
+|---|---|---|---|---|---|---|
+| IFA2 | South East England | HVDC (France) | 1,000 | 850 | <Badge tone="success">Online</Badge> | Import |
+| ElecLink | South East England | HVDC (France) | 1,000 | 620 | <Badge tone="success">Online</Badge> | Import |
+| BritNed | East of England | HVDC (Netherlands) | 1,000 | 450 | <Badge tone="success">Online</Badge> | Import |
+| Nemo Link | South East England | HVDC (Belgium) | 1,012 | 780 | <Badge tone="success">Online</Badge> | Import |
+| North Sea Link | North East England | HVDC (Norway) | 1,400 | 1,100 | <Badge tone="success">Online</Badge> | Import |
+| Viking Link | East Midlands | HVDC (Denmark) | 1,400 | 0 | <Badge tone="warning">Maintenance</Badge> | — |
+| Greenlink | Wales | HVDC (Ireland) | 500 | 320 | <Badge tone="success">Online</Badge> | Import |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="5 ongoing incidents affecting supply">
+| # | Region | Type | Affected Customers | Est. Restoration | Cause |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North West England | Distribution | 12,400 | 16:30 today | Cable fault — 132kV circuit |
+| OUT-2024-0849 | Scotland Central | Transmission | 0 (generation only) | 18:00 today | Whitelee Wind Farm — turbine trip |
+| OUT-2024-0851 | London | Distribution | 3,200 | 15:45 today | Substation equipment failure |
+| OUT-2024-0852 | South West England | Distribution | 8,700 | 17:15 today | Storm damage — overhead lines |
+| OUT-2024-0853 | Yorkshire | Transmission | 0 (interconnector) | Unknown | Viking Link — planned maintenance overrun |
+</Card>
+
+<Card title="Planned Maintenance — This Month" subtitle="Scheduled outages impacting capacity">
+| Asset | Region | Type | Start | End | Capacity Impact | Status |
+|---|---|---|---|---|---|---|
+| Viking Link | East Midlands | Interconnector | 2024-11-01 | 2024-11-10 | 1,400 MW import | <Badge tone="warning">In Progress</Badge> |
+| Sizewell B | East of England | Nuclear | 2024-11-15 | 2024-11-28 | 1,198 MW | <Badge tone="info">Scheduled</Badge> |
+| Hornsea 1 | North East England | Offshore Wind | 2024-11-18 | 2024-11-20 | 400 MW (partial) | <Badge tone="info">Scheduled</Badge> |
+| Peterhead | Scotland North | CCGT | 2024-11-22 | 2024-11-24 | 590 MW (unit 2) | <Badge tone="info">Scheduled</Badge> |
+| Dinorwig | Wales | Pumped Hydro | 2024-11-25 | 2024-11-27 | 864 MW (unit 3) | <Badge tone="info">Scheduled</Badge> |
+| West Burton B | East Midlands | CCGT | 2024-11-29 | 2024-12-05 | 650 MW (unit 1) | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time operational notifications — newest first">
+<Columns>
+<Callout tone="warning" title="⚠ 14:28 — Frequency Deviation">
+System frequency at 49.92 Hz (target 50.00 Hz). Automatic generation response activated. Monitoring.
+</Callout>
+<Callout tone="info" title="ℹ 14:25 — Interconnector Flow Change">
+Nemo Link flow increased from 650 MW to 780 MW import. Belgian market price differential.
+</Callout>
+<Callout tone="danger" title="🔴 14:19 — Transmission Constraint">
+B6 boundary (Scotland-England) at 92% thermal limit. Constraint management active. Curtailment may be required.
+</Callout>
+<Callout tone="success" title="✓ 14:12 — Generator Synchronised">
+Dogger Bank A Unit 14 synchronised to grid. Ramping to 150 MW over next 30 minutes.
+</Callout>
+<Callout tone="info" title="ℹ 14:05 — Weather Update">
+Met Office: Wind speeds increasing across North Sea 16:00-20:00. Offshore output expected to rise 1.2 GW.
+</Callout>
+<Callout tone="warning" title="⚠ 13:58 — Voltage Support Required">
+South East England: Reactive power deficit. Statcoms at Sellindge and Kingsnorton engaged.
+</Callout>
+</Columns>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Issue dispatch instructions to reduce generation output">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant / Asset" name="curtail-plant" placeholder="Select plant" required="true" options="Select plant | Hornsea 1 (Offshore Wind) | Hornsea 2 (Offshore Wind) | Dogger Bank A (Offshore Wind) | Moray East (Offshore Wind) | Whitelee (Onshore Wind) | Clyde (Onshore Wind) | Peterhead (CCGT) | Staythorpe (CCGT) | Pembroke (CCGT) | Drax Biomass | Dinorwig (Hydro) | Ffestiniog (Hydro) | Viking Link (Interconnector) | Nemo Link (Interconnector) | BritNed (Interconnector) | IFA2 (Interconnector) | ElecLink (Interconnector) | North Sea Link (Interconnector) | Greenlink (Interconnector)" />
+<Input label="Curtailment Amount (MW)" name="curtail-mw" type="number" placeholder="e.g., 200" min="1" max="2000" step="1" required="true" hint="Must not exceed current output" />
+<Select label="Reason" name="curtail-reason" placeholder="Select reason" required="true" options="Transmission constraint | System frequency management | Voltage control | Minimum generation requirement | Interconnector limit | Oversupply / negative pricing | Testing / commissioning | Other" />
+<Date label="Effective From" name="curtail-start" required="true" />
+<Input label="Duration (minutes)" name="curtail-duration" type="number" placeholder="60" min="5" max="1440" step="5" value="60" required="true" />
+<TextArea label="Operator Notes" name="curtail-notes" placeholder="Additional context for the generator..." rows="3" hint="Visible to generator control room" />
+</Columns>
+<Button variant="danger" icon="alert-triangle">Issue Curtailment Order</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show constraint boundaries (B6, B7a, B8) with real-time flows
+- Display balancing mechanism acceptances for last hour
+- View reserve requirements and current holding
+- Check interconnector auction results for next day
+- Review winter outlook capacity margins
+</FollowUps>

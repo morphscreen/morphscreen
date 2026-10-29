@@ -1,0 +1,137 @@
+# Admin Overview
+
+<Card subtitle="SaaS Platform Dashboard">
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Card>
+
+<Columns>
+<Card title="Monthly Recurring Revenue">
+<Stat label="MRR" value="$127,450" change="+12.3% vs last month" tone="success" icon="chart-line" />
+</Card>
+<Card title="Annual Recurring Revenue">
+<Stat label="ARR" value="$1,529,400" change="+14.8% vs last year" tone="success" icon="calendar" />
+</Card>
+<Card title="Churn This Month">
+<Stat label="Revenue Churn" value="2.1%" change="-0.4pp vs last month" tone="success" icon="users" />
+<Stat label="Customer Churn" value="3.8%" change="+0.2pp vs last month" tone="warning" icon="users" />
+</Card>
+<Card title="Current NPS">
+<Stat label="Net Promoter Score" value="62" change="+4 vs last quarter" tone="success" icon="chart-line" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups" title="Weekly Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 38 |
+| W3 | 51 |
+| W4 | 47 |
+| W5 | 55 |
+| W6 | 62 |
+| W7 | 58 |
+| W8 | 67 |
+| W9 | 71 |
+| W10 | 69 |
+| W11 | 74 |
+| W12 | 78 |
+| W13 | 82 |
+</Chart>
+</Card>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Free | 1,240 |
+| Starter | 890 |
+| Professional | 445 |
+| Enterprise | 127 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Revenue">
+| Customer | Plan | Seats | Monthly Spend | ARR | Status |
+|---|---|---|---|---|---|
+| Acme Corporation | Enterprise | 240 | $12,000 | $144,000 | Active |
+| Globex Inc | Enterprise | 180 | $9,000 | $108,000 | Active |
+| Wayne Enterprises | Professional | 95 | $4,750 | $57,000 | Active |
+| Stark Industries | Enterprise | 150 | $7,500 | $90,000 | Active |
+| Umbrella Corp | Professional | 80 | $4,000 | $48,000 | At Risk |
+| Cyberdyne Systems | Starter | 45 | $1,125 | $13,500 | Active |
+| Oscorp | Professional | 70 | $3,500 | $42,000 | Active |
+| Tyrell Corporation | Enterprise | 110 | $5,500 | $66,000 | Active |
+| Massive Dynamic | Starter | 35 | $875 | $10,500 | Active |
+| Initech | Professional | 60 | $3,000 | $36,000 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | MRR | Risk Reason | Last Login | Health Score |
+|---|---|---|---|---|---|---|
+| Umbrella Corp | Professional | 80 | $4,000 | Low feature adoption (12% core features) | 14 days ago | 28/100 |
+| Apex Dynamics | Starter | 25 | $625 | Failed payment ×2, no response to emails | 21 days ago | 35/100 |
+| Nexus Solutions | Professional | 55 | $2,750 | Key champion left, no new admin assigned | 9 days ago | 42/100 |
+| Horizon Tech | Enterprise | 120 | $6,000 | Contract renewal in 30 days, no engagement | 18 days ago | 48/100 |
+| Vertex Labs | Starter | 15 | $375 | Support tickets unresolved > 7 days | 3 days ago | 51/100 |
+</Card>
+
+<Card title="Failed Payments (Last 7 Days)">
+| Customer | Amount | Attempts | Last Attempt | Status | Action |
+|---|---|---|---|---|---|
+| Apex Dynamics | $625 | 3 | 2 hours ago | Card declined | <Button size="small" variant="primary">Retry</Button> |
+| Meridian Systems | $1,200 | 2 | 5 hours ago | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| Blue Ridge Analytics | $375 | 1 | 1 day ago | Card expired | <Button size="small" variant="primary">Retry</Button> |
+| Summit Software | $2,500 | 2 | 3 days ago | Bank decline | <Button size="small" variant="primary">Retry</Button> |
+| Coastal Data | $875 | 1 | 4 days ago | Card expired | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="Newest Feature Adoption">
+<Columns>
+<Card title="AI Writing Assistant (launched 3 weeks ago)">
+<Progress value="34" max="100" label="34% of eligible users" tone="info" />
+<Stat label="Active users" value="1,247" change="+23% week over week" tone="success" />
+</Card>
+<Card title="Advanced Analytics Dashboard (launched 2 weeks ago)">
+<Progress value="28" max="100" label="28% of eligible users" tone="warning" />
+<Stat label="Active users" value="892" change="+41% week over week" tone="success" />
+</Card>
+<Card title="Team Workspaces (launched 1 week ago)">
+<Progress value="15" max="100" label="15% of eligible users" tone="neutral" />
+<Stat label="Active users" value="418" change="+67% week over week" tone="success" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Seat Utilization">
+<Columns>
+<Card title="Company-wide">
+<Progress value="73" max="100" label="73% of 4,280 total seats used" tone="success" />
+</Card>
+<Card title="By Plan">
+| Plan | Seats Allocated | Seats Used | Utilization |
+|---|---|---|---|
+| Enterprise | 1,850 | 1,420 | 77% |
+| Professional | 1,420 | 980 | 69% |
+| Starter | 890 | 560 | 63% |
+| Free | 120 | 45 | 38% |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="colleague@company.com" required="true" hint="They'll receive an invitation to join as an admin" />
+<Select label="Admin role" name="role" options="Full Admin | Billing Admin | Support Admin | Read-only Admin" placeholder="Select role" required="true" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me churn breakdown by plan
+- Export top customers to CSV
+- View detailed NPS feedback
+- Set up automated retry for failed payments
+</FollowUps>

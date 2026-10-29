@@ -1,0 +1,132 @@
+# PMO Project Portfolio Review
+
+<Card title="Review controls" subtitle="Switch quarter or export this review">
+<Columns>
+<Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" placeholder="Choose a quarter" value="Q2 2025" name="quarter" />
+<Button icon="download" variant="primary" size="large">Export review</Button>
+</Columns>
+</Card>
+
+<Callout tone="success" title="Portfolio health">Portfolio is on track — 6 of 8 active projects are green, budget used is 62% of allocation, and delivery pace is 96% of plan.</Callout>
+
+<Columns>
+<Stat label="Active projects" value="8" icon="kanban" />
+<Stat label="On-time delivery" value="78%" tone="success" icon="check-circle" />
+<Stat label="Budget used" value="62%" tone="info" icon="chart-line" />
+<Stat label="Team utilization" value="84%" tone="warning" icon="users" />
+</Columns>
+
+<Card title="Active projects" subtitle="Owner, deadline and health for each project">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Apollo Platform | Maria Chen | 2025-06-20 | <Badge tone="success">On track</Badge> |
+| Data Lake | Tom Alvarez | 2025-06-24 | <Badge tone="success">On track</Badge> |
+| Atlas Migration | James Okoye | 2025-06-28 | <Badge tone="warning">At risk</Badge> |
+| Beacon CRM | Priya Sharma | 2025-07-03 | <Badge tone="success">On track</Badge> |
+| Cobalt Cloud | Lena Fischer | 2025-07-11 | <Badge tone="danger">Critical</Badge> |
+| EMEA Rollout | Aisha Bello | 2025-07-18 | <Badge tone="warning">At risk</Badge> |
+</Card>
+
+<Card title="Overdue milestones">
+| Milestone | Project | Due date | Overdue by | Owner |
+|---|---|---|---|---|
+| PCI compliance review | Cobalt Cloud | 2025-06-02 | <Badge tone="danger">14 days</Badge> | Lena Fischer |
+| UAT sign-off | Atlas Migration | 2025-06-10 | <Badge tone="danger">6 days</Badge> | James Okoye |
+</Card>
+
+<Card title="Deadlines in the next two weeks" subtitle="Due by 2025-06-30">
+| Milestone | Project | Due date | Owner |
+|---|---|---|---|
+| Apollo beta sign-off | Apollo Platform | 2025-06-18 | Maria Chen |
+| Data Lake ingestion v2 | Data Lake | 2025-06-24 | Tom Alvarez |
+| Atlas cutover dry run | Atlas Migration | 2025-06-28 | James Okoye |
+| Cobalt security audit | Cobalt Cloud | 2025-06-30 | Lena Fischer |
+</Card>
+
+<Card title="Budget spent vs allocation per project">
+**Apollo Platform** — $412,000 of $500,000
+<Progress value="82" max="100" label="82% spent" tone="success" />
+
+**Atlas Migration** — $378,000 of $450,000
+<Progress value="84" max="100" label="84% spent" tone="success" />
+
+**Beacon CRM** — $210,000 of $300,000
+<Progress value="70" max="100" label="70% spent" tone="info" />
+
+**Cobalt Cloud** — $390,000 of $420,000
+<Progress value="93" max="100" label="93% spent" tone="warning" />
+
+**Data Lake** — $160,000 of $250,000
+<Progress value="64" max="100" label="64% spent" tone="info" />
+
+**EMEA Rollout** — $120,000 of $350,000
+<Progress value="34" max="100" label="34% spent" tone="success" />
+</Card>
+
+<Card title="Team utilization">
+**Platform engineering** — 92%
+<Progress value="92" max="100" label="92%" tone="warning" />
+
+**Data engineering** — 88%
+<Progress value="88" max="100" label="88%" tone="info" />
+
+**Product design** — 76%
+<Progress value="76" max="100" label="76%" tone="success" />
+
+**QA and release** — 95%
+<Progress value="95" max="100" label="95%" tone="danger" />
+
+**PMO analysts** — 71%
+<Progress value="71" max="100" label="71%" tone="info" />
+</Card>
+
+<Card title="Delivery pace — past six sprints" subtitle="Story points planned vs completed">
+<Chart type="bar" x="Sprint" y="Story points" title="Planned vs completed">
+| Sprint | Planned | Completed |
+|---|---|---|
+| S1 | 115 | 110 |
+| S2 | 122 | 118 |
+| S3 | 118 | 112 |
+| S4 | 125 | 108 |
+| S5 | 123 | 119 |
+| S6 | 126 | 122 |
+</Chart>
+</Card>
+
+<Card title="Risks and severity">
+| Risk | Project | Severity | Owner | Mitigation |
+|---|---|---|---|---|
+| Cloud cost overrun | Cobalt Cloud | <Badge tone="danger">High</Badge> | Lena Fischer | Freeze non-critical spend |
+| Key developer departure | Atlas Migration | <Badge tone="warning">Medium</Badge> | James Okoye | Backfill request in progress |
+| Vendor API instability | Beacon CRM | <Badge tone="warning">Medium</Badge> | Priya Sharma | Weekly vendor sync |
+| Regulatory delay | EMEA Rollout | <Badge tone="info">Low</Badge> | Aisha Bello | Accelerated legal review |
+</Card>
+
+<Card title="Blocked work items">
+| Work item | Project | Blocker | Blocked for | Owner |
+|---|---|---|---|---|
+| Portal SSO | Apollo Platform | IdP certificate renewal | <Badge tone="danger">5 days</Badge> | Maria Chen |
+| ETL pipeline job | Data Lake | Source system outage | <Badge tone="danger">3 days</Badge> | Tom Alvarez |
+| Migration dry run | Atlas Migration | Staging environment down | <Badge tone="danger">2 days</Badge> | James Okoye |
+</Card>
+
+<Card title="Request more people" subtitle="Raise a staffing request for an active project">
+<Form name="staffing-request">
+<Select label="Project" options="Apollo Platform | Atlas Migration | Beacon CRM | Cobalt Cloud | Data Lake | EMEA Rollout" placeholder="Select project" name="project" />
+<Input label="Role needed" placeholder="e.g. Senior Software Engineer" name="role" />
+<Input label="Number of people" type="number" min="1" max="10" placeholder="1" name="count" />
+<TextArea label="Justification" placeholder="Why this role is needed and the expected impact" name="justification" />
+<Button variant="primary">Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Archive a finished project" subtitle="Move a completed project out of the active portfolio">
+**Recently finished**
+- Meridian Portal — completed 2025-05-12
+- Horizon Analytics — completed 2025-06-05
+
+<Form name="archive-project">
+<Select label="Finished project" options="Meridian Portal | Horizon Analytics | Vertex CRM Lite" placeholder="Select a project to archive" name="project" />
+<Button variant="danger">Archive project</Button>
+</Form>
+</Card>

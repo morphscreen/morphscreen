@@ -1,0 +1,212 @@
+# Speeding Up Your 2 GB CSV Processing in Python
+
+<Callout tone="info" title="Quick win first">
+Before diving into complex solutions, check if you can use **Pandas with chunking** — it's often the simplest fix and can give 5-10x speedups with just a few lines of code.
+</Callout>
+
+## 1. Start with the Right Tool
+
+<Columns>
+<Card title="Option comparison">
+<Compare title="CSV reading approaches">
+| Approach | Speed | Memory | Best for |
+|---|---|---|---|
+| Pure Python | Slow | Low | Small files, simple parsing |
+| csv module | Moderate | Low | Medium files, basic needs |
+| Pandas read_csv | Fast | High | Data analysis, structured data |
+| Polars | Very fast | High | Large files, need speed |
+| Dask | Fast | Low (disk-based) | Files > RAM |
+</Compare>
+</Card>
+
+<Card title="Quick benchmarks">
+<KeyValue title="Time to read 2 GB CSV (typical)">
+| Method | Time |
+|---|---|
+| Pure Python | 3-5 min |
+| csv module | 1-2 min |
+| Pandas (read_csv) | 20-30 sec |
+| Polars | 10-15 sec |
+| Pandas + chunking | 25-35 sec |
+</KeyValue>
+</Card>
+</Columns>
+
+## 2. The Fastest Simple Solution: Pandas with Chunking
+
+<Card title="Chunked reading example">
+If you're currently doing something like this:
+
+<Code file="slow.py">
+```python
+import csv
+with open('large.csv') as f:
+    reader = csv.reader(f)
+    data = [row for row in reader]
+```
+</Code>
+
+Switch to this:
+
+<Code file="fast.py" highlight="3-6">
+```python
+import pandas as pd
+
+chunksize = 100_000  # adjust based on your RAM
+for chunk in pd.read_csv('large.csv', chunksize=chunksize):
+    # Process each chunk here
+    # e.g., filter, aggregate, or write to another file
+    processed = chunk[chunk['value'] > 100]
+    processed.to_csv('output.csv', mode='a', header=False)
+```
+</Code>
+
+<Callout tone="success" title="Why this works">
+- Pandas uses C-optimized parsing (much faster than Python loops)
+- Chunking keeps memory usage under control
+- You can process the file in parallel batches
+</Callout>
+</Card>
+
+## 3. Optimize Your Current Approach
+
+<Card title="If you must use pure Python">
+<Steps>
+<Step title="Use csv module instead of manual parsing" status="done">
+The csv module is C-optimized and handles edge cases automatically.
+</Step>
+<Step title="Avoid building large lists" status="done">
+Process rows one at a time instead of collecting them all.
+</Step>
+<Step title="Use generators" status="done">
+Yield rows instead of returning a list to avoid memory spikes.
+</Step>
+<Step title="Consider binary formats" status="done">
+If you control the data source, save as Parquet or Feather instead.
+</Step>
+</Steps>
+</Card>
+
+## 4. Memory and Performance Tuning
+
+<Card title="Pandas read_csv parameters that matter">
+<KeyValue title="Key parameters">
+| Parameter | Effect |
+|---|---|
+| `dtype` | Specify column types to avoid guessing (up to 2x faster) |
+| `usecols` | Only read columns you need |
+| `low_memory=False` | Read whole file at once (if RAM allows) |
+| `engine='c'` | Default; use 'pyarrow' for even better performance |
+| `parse_dates` | Pre-parse date columns |
+</KeyValue>
+
+<Code file="optimized.py">
+```python
+import pandas as pd
+
+# Specify dtypes to avoid type inference overhead
+dtypes = {
+    'id': 'int32',
+    'name': 'object',
+    'value': 'float32',
+    'date': 'object'  # parse separately if needed
+}
+
+df = pd.read_csv(
+    'large.csv',
+    dtype=dtypes,
+    usecols=['id', 'name', 'value'],  # only needed columns
+    parse_dates=['date'],
+    engine='pyarrow'  # if you have pyarrow installed
+)
+```
+</Code>
+</Card>
+
+## 5. Parallel Processing
+
+<Card title="Process chunks in parallel">
+If you have a multi-core machine, process chunks concurrently:
+
+<Code file="parallel.py">
+```python
+from multiprocessing import Pool
+import pandas as pd
+
+def process_chunk(chunk):
+    # Your processing logic here
+    return chunk[chunk['value'] > 100]
+
+if __name__ == '__main__':
+    chunks = pd.read_csv('large.csv', chunksize=100_000)
+    
+    with Pool(4) as pool:  # Use number of CPU cores
+        results = pool.map(process_chunk, chunks)
+    
+    # Combine results
+    final = pd.concat(results)
+```
+</Callout>
+
+<Callout tone="warning" title="Memory warning">
+Parallel processing uses more memory. If your system has less than 16 GB RAM, stick with sequential chunking.
+</Callout>
+</Card>
+
+## 6. Check Your Progress
+
+<Checklist title="Implementation checklist" name="csv-optimization">
+- [ ] Identified the bottleneck (parsing, processing, or memory)
+- [ ] Tried Pandas with chunking
+- [ ] Specified dtypes for all columns
+- [ ] Only reading needed columns
+- [ ] Considered Polars or Dask for extreme cases
+- [ ] Tested with a small sample first
+- [ ] Monitored memory usage during processing
+</Checklist>
+
+## 7. Next Steps
+
+<Card title="Choose your path">
+<Columns>
+<Card title="Quick fix">
+- Implement chunked Pandas reading
+- Add dtype specifications
+- Test with 100 MB sample first
+
+<Button variant="primary">Show me the full optimized script</Button>
+</Card>
+
+<Card title="Ultimate performance">
+- Switch to Polars (Rust-based, ~2-3x faster than Pandas)
+- Or use Dask for out-of-core processing
+- Consider converting to Parquet format permanently
+
+<Button variant="secondary">Compare Polars vs Pandas</Button>
+</Card>
+
+<Card title="Debug my current code">
+- Share your current script
+- I'll identify the specific bottleneck
+- Get targeted optimizations
+
+<Button variant="tertiary">Share my code for review</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Final tip">
+<Callout tone="info" title="Measure first">
+Use `%timeit` in Jupyter or `time` in a script to profile your current approach before optimizing. You might find the bottleneck is in processing, not reading — and that changes everything.
+</Callout>
+</Card>
+
+<FollowUps>
+- Show me a complete optimized script for my use case
+- How do I convert my CSV to Parquet for future use?
+- What are the memory implications of different chunk sizes?
+- Can I use polars instead of pandas?
+- How do I handle messy data (missing values, mixed types)?
+</FollowUps>
+</Code>
+</Card>

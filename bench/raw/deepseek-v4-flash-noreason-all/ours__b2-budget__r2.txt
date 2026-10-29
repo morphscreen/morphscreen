@@ -1,0 +1,52 @@
+<Card title="Personal Budget Check" subtitle="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent" value="$2,148.75" tone="warning" icon="shopping-cart" />
+<Stat label="Remaining" value="$851.25" tone="success" icon="piggy-bank" />
+</Columns>
+<Progress value="2148.75" max="3000" label="72% of budget used" tone="warning" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category split">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Groceries | 412.5 |
+| Transport | 186.25 |
+| Dining Out | 245 |
+| Utilities | 180 |
+| Entertainment | 175 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="danger" title="Biggest single purchase">
+Rent — $950.00 (44% of total spending)
+</Callout>
+<KeyValue title="Details">
+| Field | Value |
+|---|---|
+| Category | Housing |
+| Date | Jan 3, 2025 |
+| Paid via | Bank transfer |
+| Vendor | Lakeside Apartments |
+</KeyValue>
+</Card>
+
+<Card title="Month Selector">
+<Form name="month-picker">
+<Select label="View month" options="January 2025 | February 2025 | March 2025 | December 2024 | November 2024" placeholder="January 2025" />
+<Button>View month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g., Grocery run at Trader Joe's" required="true" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" hint="In USD" />
+<Select label="Category" options="Housing | Groceries | Transport | Dining Out | Utilities | Entertainment | Other" placeholder="Choose a category" required="true" />
+<Date label="Date" required="true" />
+<Button>Add expense</Button>
+</Form>
+</Card>

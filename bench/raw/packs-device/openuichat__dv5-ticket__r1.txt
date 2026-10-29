@@ -1,0 +1,18 @@
+root = Card([header, ticketCard, codeSection, calendarBtn])
+header = CardHeader("The Midnight Echoes World Tour", "General Admission · Floor Section")
+ticketCard = CompositeCardBlock([ticketItem], "grid", false)
+ticketItem = CompositeCardItem("main-ticket", ticketHeader, [ticketDetails, seatInfo], { price: ticketPrice })
+ticketHeader = IconText(ticketIcon, "info", "l", "The Midnight Echoes", "World Tour 2026", true, "horizontal")
+ticketIcon = Icon("music", "multimedia")
+ticketDetails = EntityList([detailDate, detailVenue, detailGate], "default", { left: "Detail", right: "Value" })
+detailDate = { left: "Date", right: "Saturday, October 17, 2026 · 8:00 PM", rightVariant: "text" }
+detailVenue = { left: "Venue", right: "Madison Square Garden, New York, NY", rightVariant: "text" }
+detailGate = { left: "Gate", right: "Gate 4 — Enter via 7th Ave", rightVariant: "text" }
+seatInfo = EntityList([seatRow, seatSection], "small")
+seatRow = { left: "Section", right: "Floor GA", rightVariant: "text" }
+seatSection = { left: "Entry", right: "Standing Room Only", rightVariant: "text" }
+ticketPrice = BoldText("number", "$149.00", "Paid in full", "metric")
+codeSection = ContextCardBlock([codeItem], "grid", false)
+codeItem = ContextCardItem("ticket-code", "Ticket Code for Entry", "ME26-NYC-7F4K9-X2", "gray")
+calendarBtn = Buttons([addCalBtn], "row")
+addCalBtn = Button("Add to Calendar", Action([@OpenUrl("https://calendar.google.com/calendar/render?action=TEMPLATE&text=The+Midnight+Echoes+World+Tour&dates=20261017T200000Z/20261017T230000Z&details=Madison+Square+Garden%2C+New+York%2C+NY%0AGate+4+%E2%80%94+Enter+via+7th+Ave%0ATicket+Code%3A+ME26-NYC-7F4K9-X2&location=Madison+Square+Garden%2C+4+Pennsylvania+Plaza%2C+New+York%2C+NY+10001")]), "primary", "normal", "large")

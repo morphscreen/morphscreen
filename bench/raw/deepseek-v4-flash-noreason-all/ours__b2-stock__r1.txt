@@ -1,0 +1,66 @@
+# Low-Inventory Warning
+
+<Callout tone="warning" title="Reorder needed">12 items are at or below the reorder threshold of **10 units**. Restock soon to avoid stockouts.</Callout>
+
+<Card title="Inventory Alerts">
+<Columns>
+<Stat label="Items at risk" value="12" tone="warning" icon="warning" />
+<Stat label="Units needed" value="148" tone="danger" icon="package" />
+<Stat label="Lowest stock" value="2" tone="danger" icon="trend-down" />
+</Columns>
+</Card>
+
+<Card title="Find an item">
+<Form name="search-inventory">
+<Input label="Search by name or SKU" name="search" type="search" placeholder="e.g. Coffee beans, SKU-2041" hint="Filters the list below as you type" />
+</Form>
+</Card>
+
+<Card title="Items running low" subtitle="Threshold: 10 units or fewer remaining">
+<Checklist title="Reorder checklist" name="reorder-list">
+- [ ] **Arabica Beans** — 6 left · SKU-1001 `<Button variant="secondary" size="small" ask="Reorder Arabica Beans">Reorder</Button>`
+- [x] **Paper Filters (100 ct)** — 3 left · SKU-1002 `<Button variant="secondary" size="small" ask="Reorder Paper Filters">Reorder</Button>`
+- [ ] **Whole Milk (1 gal)** — 8 left · SKU-1003 `<Button variant="secondary" size="small" ask="Reorder Whole Milk">Reorder</Button>`
+- [ ] **Chocolate Syrup** — 2 left · SKU-1004 `<Button variant="secondary" size="small" ask="Reorder Chocolate Syrup">Reorder</Button>`
+- [ ] **Disposable Cups (12 oz)** — 9 left · SKU-1005 `<Button variant="secondary" size="small" ask="Reorder Disposable Cups">Reorder</Button>`
+- [ ] **Cinnamon Powder** — 5 left · SKU-1006 `<Button variant="secondary" size="small" ask="Reorder Cinnamon Powder">Reorder</Button>`
+- [ ] **Vanilla Extract** — 4 left · SKU-1007 `<Button variant="secondary" size="small" ask="Reorder Vanilla Extract">Reorder</Button>`
+- [ ] **Caramel Drizzle** — 7 left · SKU-1008 `<Button variant="secondary" size="small" ask="Reorder Caramel Drizzle">Reorder</Button>`
+- [ ] **Oat Milk (1 qt)** — 10 left · SKU-1009 `<Button variant="secondary" size="small" ask="Reorder Oat Milk">Reorder</Button>`
+- [ ] **Espresso Cups** — 3 left · SKU-1010 `<Button variant="secondary" size="small" ask="Reorder Espresso Cups">Reorder</Button>`
+- [ ] **Sugar Packets** — 6 left · SKU-1011 `<Button variant="secondary" size="small" ask="Reorder Sugar Packets">Reorder</Button>`
+- [ ] **Lid (Hot, 12 oz)** — 8 left · SKU-1012 `<Button variant="secondary" size="small" ask="Reorder Lids">Reorder</Button>`
+</Checklist>
+</Card>
+
+<Card title="Stock levels">
+<Chart type="bar" title="Units remaining per item" x="Item" y="Units">
+| Item | Units left |
+|---|---|
+| Arabica Beans | 6 |
+| Paper Filters | 3 |
+| Whole Milk | 8 |
+| Chocolate Syrup | 2 |
+| Disposable Cups | 9 |
+| Cinnamon Powder | 5 |
+| Vanilla Extract | 4 |
+| Caramel Drizzle | 7 |
+| Oat Milk | 10 |
+| Espresso Cups | 3 |
+| Sugar Packets | 6 |
+| Hot Lids | 8 |
+</Chart>
+</Card>
+
+<Card title="Adjust warning threshold">
+<Form name="threshold-form">
+<Slider label="Reorder threshold" name="threshold" min="1" max="50" step="1" value="10" unit="units" hint="Items at or below this number will appear in the warning view" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which item needs restocking most urgently?
+- Show me items between 10 and 20 units
+- What's my total reorder cost?
+</FollowUps>

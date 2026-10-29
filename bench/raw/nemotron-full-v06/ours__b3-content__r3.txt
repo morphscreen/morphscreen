@@ -1,0 +1,130 @@
+# Content Studio
+
+<Select label="Category" name="category-filter" placeholder="All categories" options="All | News | Features | Opinion | Reviews | Interviews | Tech | Culture" />
+
+<Columns>
+<Stat label="Total drafts" value="12" change="+3 this week" tone="info" />
+<Stat label="Published this week" value="8" change="+2 vs last week" tone="success" />
+<Stat label="Monthly readers" value="247K" change="+12% MoM" tone="success" />
+<Stat label="Pending comments" value="23" change="5 urgent" tone="warning" />
+</Columns>
+
+<Card title="Drafts" subtitle="12 drafts in progress">
+| Title | Status | Author | Last edited | Category | Words |
+|---|---|---|---|---|---|
+| The Future of AI in Journalism | <Badge tone="info">In review</Badge> | Sarah Chen | 2 hours ago | Tech | 2,840 |
+| Climate Policy After COP29 | <Badge tone="warning">Needs edits</Badge> | Marcus Johnson | 1 day ago | News | 3,210 |
+| Inside the Indie Game Renaissance | <Badge tone="neutral">Drafting</Badge> | Priya Patel | 3 hours ago | Culture | 1,950 |
+| Why Remote Work Is Here to Stay | <Badge tone="success">Ready to publish</Badge> | Alex Rivera | 30 min ago | Features | 2,100 |
+| The Psychology of Pricing | <Badge tone="neutral">Drafting</Badge> | Jamie Park | 5 hours ago | Tech | 1,680 |
+| Urban Farming Takes Root | <Badge tone="info">In review</Badge> | Sam Torres | 1 day ago | Features | 2,450 |
+</Card>
+
+<Card title="Published This Week" subtitle="8 pieces live since Monday">
+| Title | Published | Category | Views | Read time | Author |
+|---|---|---|---|---|---|
+| The Rise of Micro-Communities | Dec 9 | Culture | 42,300 | 6 min | Priya Patel |
+| Quantum Computing Breakthrough | Dec 8 | Tech | 38,700 | 8 min | Sarah Chen |
+| Local Elections: What Changed | Dec 7 | News | 31,200 | 5 min | Marcus Johnson |
+| Building a Sustainable Wardrobe | Dec 6 | Features | 28,900 | 7 min | Jamie Park |
+| The Creator Economy Report 2024 | Dec 5 | Tech | 55,400 | 12 min | Alex Rivera |
+| Mental Health in High Schools | Dec 4 | News | 24,600 | 9 min | Sam Torres |
+| Coffee Culture Around the World | Dec 3 | Culture | 19,800 | 4 min | Priya Patel |
+| Small Business Survival Guide | Dec 2 | Features | 22,100 | 10 min | Jamie Park |
+</Card>
+
+<Card title="Most-Read Article This Month">
+<Columns>
+<Avatar name="Alex Rivera" src="https://api.dicebear.com/7.x/avataaars/svg?seed=alex" subtitle="Senior Tech Correspondent" />
+<Columns>
+**The Creator Economy Report 2024**  
+Published Dec 5 · Tech · 12 min read
+
+<Progress value="55400" max="100000" label="55,400 views this month" tone="success" />
+
+| Metric | Value |
+|---|---|
+| Unique readers | 48,200 |
+| Avg. read time | 9:24 |
+| Completion rate | 78% |
+| Shares | 3,240 |
+| Newsletter signups | 1,180 |
+</Columns>
+</Columns>
+</Card>
+
+<Card title="Readership — Past 30 Days">
+<Chart type="area" x="Date" y="Readers" title="Daily unique readers">
+| Date | Readers |
+|---|---|
+| Nov 10 | 6200 |
+| Nov 11 | 7100 |
+| Nov 12 | 6800 |
+| Nov 13 | 7500 |
+| Nov 14 | 8200 |
+| Nov 15 | 9100 |
+| Nov 16 | 10500 |
+| Nov 17 | 11200 |
+| Nov 18 | 8900 |
+| Nov 19 | 8400 |
+| Nov 20 | 9300 |
+| Nov 21 | 10100 |
+| Nov 22 | 11800 |
+| Nov 23 | 12500 |
+| Nov 24 | 10800 |
+| Nov 25 | 9900 |
+| Nov 26 | 10600 |
+| Nov 27 | 11400 |
+| Nov 28 | 12200 |
+| Nov 29 | 13100 |
+| Nov 30 | 11900 |
+| Dec 1 | 10500 |
+| Dec 2 | 11200 |
+| Dec 3 | 12800 |
+| Dec 4 | 13500 |
+| Dec 5 | 15200 |
+| Dec 6 | 14800 |
+| Dec 7 | 13900 |
+| Dec 8 | 14400 |
+| Dec 9 | 13800 |
+</Chart>
+</Card>
+
+<Card title="Comments Awaiting Reply" subtitle="23 comments · 5 marked urgent">
+| Article | Commenter | Comment | Time | Priority |
+|---|---|---|---|---|
+| The Creator Economy Report 2024 | Jordan M. | "The Patreon numbers seem off — did you account for the Q3 fee change?" | 45 min ago | <Badge tone="danger">Urgent</Badge> |
+| Quantum Computing Breakthrough | Dr. Lisa Chen | "Great piece! Minor correction: the coherence time is 100μs, not 10μs." | 2 hours ago | <Badge tone="danger">Urgent</Badge> |
+| Local Elections: What Changed | Maria S. | "What about the impact of ranked-choice voting in District 4?" | 3 hours ago | <Badge tone="warning">High</Badge> |
+| The Rise of Micro-Communities | Alex K. | "Discord vs Slack for community building — any data on retention?" | 5 hours ago | <Badge tone="info">Normal</Badge> |
+| Building a Sustainable Wardrobe | Emma L. | "Love this! Could you do a follow-up on affordable sustainable brands?" | 6 hours ago | <Badge tone="info">Normal</Badge> |
+| Mental Health in High Schools | James R. | "As a counselor, I'd add peer support programs to your recommendations." | 8 hours ago | <Badge tone="info">Normal</Badge> |
+| Coffee Culture Around the World | Sofia P. | "Missing specialty coffee scene in Melbourne — huge oversight!" | 12 hours ago | <Badge tone="neutral">Low</Badge> |
+</Card>
+
+<Columns>
+<Card title="Schedule a Piece">
+<Form name="schedule-piece">
+<Input label="Article title" name="title" placeholder="Enter article title" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="News | Features | Opinion | Reviews | Interviews | Tech | Culture" required="true" />
+<Select label="Author" name="author" placeholder="Assign author" options="Sarah Chen | Marcus Johnson | Priya Patel | Alex Rivera | Jamie Park | Sam Torres" required="true" />
+<Date label="Publish date" name="publish-date" required="true" />
+<Select label="Time" name="publish-time" placeholder="Select time" options="00:00 | 06:00 | 09:00 | 12:00 | 15:00 | 18:00 | 21:00" />
+<Switch label="Send newsletter blast" name="newsletter" value="true" />
+<Button>Schedule for publishing</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Start a New Draft">
+<Callout tone="info" title="Quick start">Pick a template or start blank</Callout>
+<Form name="new-draft">
+<Input label="Working title" name="draft-title" placeholder="What are you writing about?" required="true" />
+<Select label="Category" name="draft-category" placeholder="Choose category" options="News | Features | Opinion | Reviews | Interviews | Tech | Culture" required="true" />
+<Radio label="Template" name="template" options="Blank article | News report | Feature story | Interview | Review | Opinion piece | Listicle" value="Blank article" />
+<TextArea label="Initial notes / outline" name="notes" placeholder="Jot down key points, sources, angle..." rows="4" />
+<Button size="large">Create draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>

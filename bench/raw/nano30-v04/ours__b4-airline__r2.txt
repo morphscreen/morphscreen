@@ -1,0 +1,61 @@
+<Card title="Operations Dashboard">
+  <Columns>
+    <Stat label="On‑time %" value="96%" change="+" tone="success" />
+    <Stat label="Avg Load" value="84%" change="+" tone="info" />
+    <Stat label="Turnaround" value="25 min" change="+" tone="neutral" />
+  </Columns>
+
+  <Card title="Flights">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| AA100 | JFK → LAX | 12A | On‑time |
+| DL200 | ATL → ORD | 8B | Delayed |
+| UA300 | SFO → ATL | 5C | On‑time |
+| AA400 | ORD → MIA | 3D | Delayed |
+| DL500 | MIA → JFK | 7E | Cancelled |
+  </Card>
+
+  <Callout tone="warning" title="Delayed Flights">DL200 and AA400 are delayed; gate changes pending.</Callout>
+
+  <Card title="Recent Gate Changes">
+    <Details title="Gate Changes" open=true>
+| Flight | Old Gate | New Gate |
+|---|---|---|
+| AA100 | 12A | 14B |
+| DL200 | 8B | 10C |
+| UA300 | 5C | 6D |
+    </Details>
+  </Card>
+
+  <Card title="Crews Available">
+    <Columns>
+      <Avatar name="John Doe" subtitle="Pilot" src="https://example.com/john.jpg" />
+      <Avatar name="Jane Smith" subtitle="Co‑pilot" src="https://example.com/jane.jpg" />
+      <Avatar name="Mike Lee" subtitle="Dispatcher" src="https://example.com/mike.jpg" />
+    </Columns>
+  </Card>
+
+  <Card title="Weather Advisories">
+    <Details title="Weather" open=false>
+| Advisory | Impact |
+|---|---|
+| Fog | Low visibility on runway 12 |
+| Thunderstorm | Possible arrival delays |
+    </Details>
+  </Card>
+
+  <Card title="Connections at Risk">
+    <Steps>
+      <Step title="AA100" status="todo">Potential miss of connecting flight DL200</Step>
+      <Step title="DL200" status="todo">Missed connection to AA400</Step>
+    </Steps>
+  </Card>
+
+  <Form name="rebook-affected">
+    <Button variant="primary" href="#">Re‑book Passengers</Button>
+  </Form>
+
+  <Select label="Hub" name="hub-select" options="JFK | LAX | ATL | ORD | MIA" placeholder="Select hub" required=true />
+
+  <Stat label="Cancellations" value="3" change="+" tone="danger" />
+</Card>

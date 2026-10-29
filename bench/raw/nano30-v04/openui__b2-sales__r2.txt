@@ -1,0 +1,18 @@
+root = Card([
+  header,
+  revenueText,
+  conversionTag,
+  trend,
+  bestProducts,
+  downloadBtn
+])
+header = CardHeader("Monthly Sales Overview", "Key metrics for the current month")
+revenueText = TextContent("Revenue this month: $125,000", "large")
+conversionTag = Tag("4.5%", null, "md", "success")
+monthsLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+revSeries = Series("Revenue", [20000, 22000, 25000, 27000, 30000, 32000])
+trend = LineChart(monthsLabels, [revSeries], "natural", "Month", "USD")
+productCol = Col("Product", ["Product A", "Product B", "Product C"], "string")
+unitsCol = Col("Units Sold", [1500, 1200, 1300], "number")
+bestProducts = Table([productCol, unitsCol])
+downloadBtn = Button("Download", null, "secondary", "normal", "medium")

@@ -1,0 +1,191 @@
+# Admin Overview
+
+<Badge tone="success">Live data</Badge> — All metrics auto-refresh every 5 minutes.
+
+<Card title="Reporting period">
+<Form name="reporting-period">
+<Select label="Period" name="period" options="Last 30 days | Last 90 days | Last 12 months | This quarter | This year" placeholder="Last 30 days" />
+<Select label="Compare to" name="compare" options="Previous period | Same period last year | No comparison" placeholder="Previous period" />
+<Button>Apply</Button>
+</Form>
+</Card>
+
+<Card title="Revenue & churn">
+<Columns>
+<Stat label="Monthly recurring revenue" value="$248,400" change="+6.2%" tone="success" icon="chart-line" />
+<Stat label="Annual recurring revenue" value="$2,981,000" change="+24.1%" tone="success" icon="trend-up" />
+<Stat label="Churn this month" value="2.4%" change="-0.3 pts" tone="warning" icon="user-minus" />
+</Columns>
+<Chart type="area" title="MRR trend" x="Month" y="USD">
+| Month | MRR |
+|---|---|
+| Jan | 194000 |
+| Feb | 205000 |
+| Mar | 213000 |
+| Apr | 221000 |
+| May | 234000 |
+| Jun | 248400 |
+</Chart>
+</Card>
+
+<Card title="New signups — past 90 days">
+<Chart type="bar" title="Daily signups" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 51 |
+| W3 | 47 |
+| W4 | 63 |
+| W5 | 58 |
+| W6 | 71 |
+| W7 | 66 |
+| W8 | 82 |
+| W9 | 79 |
+| W10 | 94 |
+| W11 | 88 |
+| W12 | 103 |
+| W13 | 112 |
+</Chart>
+<Stat label="Total new signups (90 days)" value="956" change="+18.4%" tone="success" icon="user-plus" />
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 289 |
+| Enterprise | 97 |
+</Chart>
+<Columns>
+<Stat label="Starter" value="412" icon="users" />
+<Stat label="Growth" value="289" icon="users" />
+<Stat label="Enterprise" value="97" icon="building" />
+</Columns>
+</Card>
+
+<Card title="Top 10 customers by spend">
+<Chart type="horizontal" title="Monthly spend" x="Customer" y="USD">
+| Customer | Spend |
+|---|---|
+| Acme Corp | 24800 |
+| Globex | 21900 |
+| Initech | 18400 |
+| Umbrella | 16200 |
+| Stark Industries | 14800 |
+| Wayne Enterprises | 13200 |
+| Hooli | 11900 |
+| Pied Piper | 10400 |
+| Massive Dynamic | 9100 |
+| Cyberdyne | 8700 |
+</Chart>
+<table>
+  <thead>
+    <tr><th>Customer</th><th>Seats</th><th>Monthly spend</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Acme Corp</td><td>120</td><td>$24,800</td></tr>
+    <tr><td>Globex</td><td>98</td><td>$21,900</td></tr>
+    <tr><td>Initech</td><td>85</td><td>$18,400</td></tr>
+    <tr><td>Umbrella</td><td>76</td><td>$16,200</td></tr>
+    <tr><td>Stark Industries</td><td>64</td><td>$14,800</td></tr>
+    <tr><td>Wayne Enterprises</td><td>58</td><td>$13,200</td></tr>
+    <tr><td>Hooli</td><td>52</td><td>$11,900</td></tr>
+    <tr><td>Pied Piper</td><td>47</td><td>$10,400</td></tr>
+    <tr><td>Massive Dynamic</td><td>41</td><td>$9,100</td></tr>
+    <tr><td>Cyberdyne</td><td>38</td><td>$8,700</td></tr>
+  </tbody>
+</table>
+</Card>
+
+<Card title="Accounts at risk">
+<Callout tone="warning" title="6 accounts need attention">Combined $38,200 MRR at risk</Callout>
+<table>
+  <thead>
+    <tr><th>Account</th><th>MRR</th><th>Risk reason</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Umbrella Corp</td><td>$16,200</td><td>No login in 21 days; support ticket escalated</td><td><Button variant="primary" size="small" ask="Reach out to Umbrella Corp about their account">Contact</Button></td></tr>
+    <tr><td>Stark Industries</td><td>$14,800</td><td>Usage down 62% vs last month</td><td><Button variant="primary" size="small" ask="Schedule a check-in with Stark Industries">Contact</Button></td></tr>
+    <tr><td>Hooli</td><td>$11,900</td><td>Churn signal: 3 seats removed this week</td><td><Button variant="primary" size="small" ask="Reach out to Hooli about their seat reduction">Contact</Button></td></tr>
+    <tr><td>Massive Dynamic</td><td>$9,100</td><td>Billing dispute open for 12 days</td><td><Button variant="primary" size="small" ask="Follow up on Massive Dynamic's billing dispute">Contact</Button></td></tr>
+    <tr><td>Cyberdyne</td><td>$8,700</td><td>Contract expires in 14 days; no renewal intent</td><td><Button variant="primary" size="small" ask="Start renewal conversation with Cyberdyne">Contact</Button></td></tr>
+    <tr><td>Initech</td><td>$18,400</td><td>Feature adoption dropped 45% after last release</td><td><Button variant="primary" size="small" ask="Discuss feature adoption with Initech">Contact</Button></td></tr>
+  </tbody>
+</table>
+</Card>
+
+<Card title="Failed payments">
+<Callout tone="danger" title="12 failed payments this month">$21,400 in pending revenue</Callout>
+<table>
+  <thead>
+    <tr><th>Customer</th><th>Amount</th><th>Failed on</th><th>Status</th><th>Retry</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Acme Corp</td><td>$24,800</td><td>Jun 14</td><td><Badge tone="danger">Card declined</Badge></td><td><Button variant="primary" size="small" ask="Retry the failed payment for Acme Corp">Retry</Button></td></tr>
+    <tr><td>Globex</td><td>$21,900</td><td>Jun 14</td><td><Badge tone="danger">Insufficient funds</Badge></td><td><Button variant="primary" size="small" ask="Retry the failed payment for Globex">Retry</Button></td></tr>
+    <tr><td>Pied Piper</td><td>$10,400</td><td>Jun 13</td><td><Badge tone="warning">Expired card</Badge></td><td><Button variant="primary" size="small" ask="Update card and retry for Pied Piper">Update card</Button></td></tr>
+    <tr><td>Wayne Enterprises</td><td>$13,200</td><td>Jun 12</td><td><Badge tone="danger">Card declined</Badge></td><td><Button variant="primary" size="small" ask="Retry the failed payment for Wayne Enterprises">Retry</Button></td></tr>
+    <tr><td>Umbrella Corp</td><td>$16,200</td><td>Jun 11</td><td><Badge tone="warning">Failed 3 times</Badge></td><td><Button variant="primary" size="small" ask="Investigate Umbrella Corp's payment failure">Investigate</Button></td></tr>
+  </tbody>
+</table>
+<Button variant="secondary">View all 12 failed payments</Button>
+</Card>
+
+<Card title="Feature adoption — newest releases">
+<Columns>
+<Stat label="AI Insights" value="38%" change="+9 pts" tone="info" icon="sparkle" />
+<Stat label="Team Spaces" value="52%" change="+14 pts" tone="success" icon="squares-four" />
+<Stat label="API v2" value="27%" change="+5 pts" tone="info" icon="code" />
+</Columns>
+<Progress value="38" max="100" label="AI Insights — of active accounts" tone="info" />
+<Progress value="52" max="100" label="Team Spaces — of active accounts" tone="success" />
+<Progress value="27" max="100" label="API v2 — of active accounts" tone="info" />
+</Card>
+
+<Card title="Net Promoter Score">
+<Gauge label="Current NPS" value="42" min="-100" max="100" unit="pts" tone="success" />
+<Callout tone="success" title="Above benchmark">Industry average is 28. You're up 6 points this quarter.</Callout>
+<Chart type="bar" title="NPS distribution" x="Response" y="%">
+| Response | % |
+|---|---|
+| Detractors (0-6) | 18 |
+| Passives (7-8) | 22 |
+| Promoters (9-10) | 60 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization">
+<Columns>
+<Stat label="Total seats purchased" value="2,847" icon="armchair" />
+<Stat label="Seats in use" value="2,213" icon="users" />
+<Stat label="Utilization rate" value="77.7%" change="+3.2 pts" tone="success" icon="chart-line" />
+</Columns>
+<Progress value="78" max="100" label="Overall utilization" tone="success" />
+<table>
+  <thead>
+    <tr><th>Plan</th><th>Purchased</th><th>In use</th><th>Utilization</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Starter</td><td>1,120</td><td>842</td><td>75%</td></tr>
+    <tr><td>Growth</td><td>987</td><td>801</td><td>81%</td></tr>
+    <tr><td>Enterprise</td><td>740</td><td>570</td><td>77%</td></tr>
+  </tbody>
+</table>
+<Button variant="secondary" ask="Show me which accounts are underusing their seats">View underutilized accounts</Button>
+</Card>
+
+<Card title="Invite an admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" name="email" placeholder="teammate@company.com" hint="They'll get an invite link that expires in 7 days" required="true" />
+<Select label="Role" name="role" options="Admin (full access) | Billing admin | Support admin | Read-only" placeholder="Admin (full access)" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the revenue breakdown by plan
+- Which accounts have the lowest seat utilization?
+- What's driving this month's churn?
+- Compare this quarter to last quarter
+</FollowUps>

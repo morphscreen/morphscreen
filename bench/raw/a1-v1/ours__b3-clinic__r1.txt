@@ -1,0 +1,117 @@
+<Card title="Clinic Day View" subtitle="Monday, January 15, 2024">
+<Columns>
+<Stat label="Expected Patients" value="24" change="+3 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Jan)" value="8.2%" change="-1.3% vs Dec" tone="success" />
+<Stat label="Checked In" value="7 / 24" change="5 pending" tone="neutral" />
+</Columns>
+
+<Button variant="secondary" size="small" href="#">← Previous Day</Button>
+<Button variant="primary" size="small" href="#">Next Day →</Button>
+<Button variant="tertiary" size="small" href="#">Today</Button>
+</Card>
+
+<Card title="Next Patient Called">
+<Columns>
+<Avatar name="Maria Santos" subtitle="Room 2 • 10:30 AM" />
+<Callout tone="info" title="Currently with Dr. Chen">
+Maria Santos — Annual Physical — Room 2
+</Callout>
+</Columns>
+<Button variant="primary">Call Next Patient</Button>
+<Button variant="secondary">Mark No-Show</Button>
+</Card>
+
+<Card title="Today's Appointments">
+<Tabs>
+<Tab title="All (24)">
+<Table>
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 8:00 AM | James Wilson | Follow-up | 1 | ✅ Checked In | — |
+| 8:30 AM | Linda Park | New Patient | 1 | ✅ Checked In | — |
+| 9:00 AM | Robert Kim | Consultation | 2 | ✅ Checked In | — |
+| 9:30 AM | Sarah Chen | Follow-up | 3 | ✅ Checked In | — |
+| 10:00 AM | David Lopez | Physical | 1 | 🕐 Waiting | <Button size="small" variant="primary">Check In</Button> |
+| 10:30 AM | Maria Santos | Annual Physical | 2 | 🩺 In Progress | — |
+| 11:00 AM | Jennifer Wu | Follow-up | 3 | 🕐 Waiting | <Button size="small" variant="primary">Check In</Button> |
+| 11:30 AM | Michael Brown | New Patient | 1 | 🕐 Waiting | <Button size="small" variant="primary">Check In</Button> |
+| 1:00 PM | Patricia Davis | Consultation | 2 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+| 1:30 PM | Christopher Lee | Follow-up | 3 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+| 2:00 PM | Amanda Taylor | Physical | 1 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+| 2:30 PM | Daniel Martinez | New Patient | 2 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+| 3:00 PM | Michelle Anderson | Follow-up | 3 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+| 3:30 PM | Kevin Thompson | Consultation | 1 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+| 4:00 PM | Rachel White | Annual Physical | 2 | ⏳ Scheduled | <Button size="small" variant="primary">Check In</Button> |
+</Table>
+</Tab>
+<Tab title="Waiting (5)">
+<Table>
+| Time | Patient | Type | Room | Status |
+|---|---|---|---|---|
+| 10:00 AM | David Lopez | Physical | 1 | 🕐 Waiting |
+| 11:00 AM | Jennifer Wu | Follow-up | 3 | 🕐 Waiting |
+| 11:30 AM | Michael Brown | New Patient | 1 | 🕐 Waiting |
+</Table>
+</Tab>
+<Tab title="Completed (7)">
+<Table>
+| Time | Patient | Type | Room | Status |
+|---|---|---|---|---|
+| 8:00 AM | James Wilson | Follow-up | 1 | ✅ Checked In |
+| 8:30 AM | Linda Park | New Patient | 1 | ✅ Checked In |
+| 9:00 AM | Robert Kim | Consultation | 2 | ✅ Checked In |
+| 9:30 AM | Sarah Chen | Follow-up | 3 | ✅ Checked In |
+</Table>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Room Availability (Right Now)">
+<Columns>
+<Card title="Room 1" subtitle="Dr. Chen">
+<Badge tone="success">Free</Badge>
+<Callout tone="neutral" title="Available since 9:45 AM">
+Next: David Lopez at 10:00 AM
+</Callout>
+</Card>
+<Card title="Room 2" subtitle="Dr. Patel">
+<Badge tone="warning">Occupied</Badge>
+<Callout tone="info" title="Maria Santos — Annual Physical">
+Started 10:25 AM • Est. 15 min remaining
+</Callout>
+</Card>
+<Card title="Room 3" subtitle="Dr. Kim">
+<Badge tone="success">Free</Badge>
+<Callout tone="neutral" title="Available since 9:50 AM">
+Next: Jennifer Wu at 11:00 AM
+</Callout>
+</Card>
+<Card title="Room 4" subtitle="Procedure Room">
+<Badge tone="success">Free</Badge>
+<Callout tone="neutral" title="No appointments scheduled">
+Available all day
+</Callout>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Quick Check-In" subtitle="Walk-in or early arrival">
+<Form name="quick-checkin">
+<Input label="Patient Name" placeholder="Search or type name" />
+<Select label="Appointment Type" options="Follow-up | New Patient | Consultation | Physical | Annual Physical | Walk-in" placeholder="Select type" />
+<Select label="Assign Room" options="Room 1 (Dr. Chen) | Room 2 (Dr. Patel) | Room 3 (Dr. Kim) | Room 4 (Procedure)" placeholder="Auto-assign" />
+<Button>Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="No-Show Trend (January)">
+<Chart type="line" x="Week" y="Rate %">
+| Week | No-Show Rate |
+|---|---|
+| Week 1 | 9.5 |
+| Week 2 | 8.8 |
+| Week 3 | 8.2 |
+| Week 4 | 7.9 |
+</Chart>
+</Card>

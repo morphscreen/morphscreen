@@ -1,0 +1,120 @@
+<Card title="Active Incidents by Zone">
+| Zone | Severity |
+|---|---|
+| North | Critical |
+| South | High |
+| East | Moderate |
+| West | Low |
+</Card>
+
+<Stat label="Overall Severity" value="Critical" change="0" note="No change" tone="danger" />
+
+<Columns>
+<Stat label="Vehicles" value="12" change="0" note="Stable" tone="info" />
+<Stat label="Personnel" value="45" change="0" note="Stable" tone="info" />
+<Stat label="Supplies" value="300" change="0" note="Stable" tone="info" />
+</Columns>
+
+<Card title="Shelters">
+| Shelter | Capacity | Occupancy |
+|---|---|---|
+| Shelter A | 200 | 120 |
+| Shelter B | 150 | 80 |
+| Shelter C | 100 | 30 |
+</Card>
+
+<Card title="Evacuation Routes">
+| Route | Status |
+|---|---|
+| Route 1 | Open |
+| Route 2 | Closed |
+| Route 3 | Partial |
+</Card>
+
+<Card title="Weather Forecast (48h)">
+<Chart type="line" x="Hour" y="Temp" title="Temperature">
+| Hour | Temp (°C) |
+|---|---|
+| 0 | 18 |
+| 6 | 16 |
+| 12 | 19 |
+| 18 | 21 |
+| 24 | 20 |
+| 30 | 18 |
+| 36 | 16 |
+| 42 | 15 |
+| 48 | 14 |
+</Chart>
+</Card>
+
+<Stat label="People Rescued" value="342" change="12" note="Increased" tone="success" />
+<Stat label="Casualties" value="7" change="0" note="Unchanged" tone="danger" />
+
+<Card title="Volunteers on Duty">
+| Name | Assignment |
+|---|---|
+| Alice | Search & Rescue |
+| Bob | Logistics |
+| Carol | Medical |
+| Dave | Communication |
+</Card>
+
+<Stat label="Donations Received" value="$25,000" change="5000" note="Increase" tone="success" />
+
+<FollowUps>
+- Food supplies for Zone North
+- Medical kits for Shelter B
+- Water purification units for Route 2
+</FollowUps>
+
+<Card title="Communication Channels">
+| Channel | Status |
+|---|---|
+| Radio | <Badge tone="success">Up</Badge> |
+| Satellite | <Badge tone="warning">Degraded</Badge> |
+| Email | <Badge tone="danger">Down</Badge> |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Status |
+|---|---|
+| Highway 5 | Closed |
+| Main St | Open |
+| Bridge Rd | Closed |
+</Card>
+
+<Card title="Nearby Hospitals">
+| Hospital | Free Beds |
+|---|---|
+| City Hospital | 12 |
+| Riverside Clinic | 8 |
+| Westside Medical | 5 |
+</Card>
+
+<Card title="Open Tasks">
+| Task | Assignee |
+|---|---|
+| Repair generator | Alice |
+| Distribute blankets | Bob |
+| Set up triage | Carol |
+</Card>
+
+<Form name="resource-request">
+<Select label="Resource Type" options="Vehicles | Personnel | Supplies" />
+<Input label="Quantity" type="number" placeholder="Enter quantity" />
+<Button variant="primary">Request</Button>
+</Form>
+
+<Form name="broadcast">
+<TextArea label="Message" placeholder="Enter update" rows="3" />
+<Button variant="secondary">Broadcast</Button>
+</Form>
+
+<Card title="Focus Zone">
+<Select label="Select Zone" options="North | South | East | West" />
+</Card>
+
+<Form name="situation-report">
+<TextArea label="Report" placeholder="Describe current situation" rows="5" />
+<Button variant="primary">Submit</Button>
+</Form>

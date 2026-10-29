@@ -1,0 +1,201 @@
+# Hospital Operations Command View
+
+<Card title="Hospital Command Center" subtitle="Real-time operations overview">
+<Badge tone="warning">Updated: Live</Badge>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Stat label="Occupied" value="342" note="out of 420 beds" icon="bed" />
+<Progress value="342" max="420" label="81% occupancy" tone="warning" />
+<Stat label="ICU Beds" value="22" note="of 28" icon="heartbeat" />
+<Stat label="Med/Surg" value="180" note="of 220" icon="hospital" />
+<Stat label="Pediatrics" value="40" note="of 48" icon="baby" />
+<Stat label="Maternity" value="35" note="of 40" icon="gender-female" />
+<Stat label="Psychiatric" value="65" note="of 84" icon="brain" />
+<Button ask="Show me bed availability by floor">View by Floor</Button>
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="Average Wait" value="47 min" icon="clock" />
+<Stat label="Patients Waiting" value="23" icon="users" />
+<Stat label="Longest Wait" value="2h 15m" icon="warning-circle" />
+<Progress value="23" max="40" label="ER capacity: 58%" tone="info" />
+<Button ask="What is the ER triage breakdown?">Triage Details</Button>
+</Card>
+
+<Card title="Admissions (Past 2 Weeks)">
+<Chart type="line" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Day -13 | 48 |
+| Day -12 | 52 |
+| Day -11 | 45 |
+| Day -10 | 61 |
+| Day -9 | 57 |
+| Day -8 | 63 |
+| Day -7 | 72 |
+| Day -6 | 68 |
+| Day -5 | 74 |
+| Day -4 | 81 |
+| Day -3 | 76 |
+| Day -2 | 83 |
+| Day -1 | 79 |
+| Today | 85 |
+</Chart>
+<Stat label="Total" value="944" note="14-day total" />
+<Stat label="Daily Avg" value="67.4" note="vs 62 target" tone="warning" />
+<Button ask="Show me admissions by department">By Department</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patients Per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 68 |
+| Cardiology | 42 |
+| Orthopedics | 38 |
+| Neurology | 31 |
+| Oncology | 27 |
+| General Surgery | 35 |
+| Pediatrics | 40 |
+| OB/GYN | 35 |
+| Psychiatry | 65 |
+| ICU | 22 |
+</Chart>
+<Button ask="Show me detailed patient list for a department">Patient List</Button>
+</Card>
+
+<Card title="Staff on Shift">
+<Stat label="Total Staff" value="187" icon="users" />
+<Columns>
+<Stat label="Physicians" value="38" note="on duty" />
+<Stat label="Nurses" value="89" note="on duty" />
+<Stat label="Techs" value="34" note="on duty" />
+<Stat label="Admin" value="26" note="on duty" />
+</Columns>
+<Details title="View staff by role">
+<Avatar name="Dr. Sarah Chen" subtitle="Attending - ER" />
+<Avatar name="Dr. James Wilson" subtitle="Attending - ICU" />
+<Avatar name="Dr. Maria Rodriguez" subtitle="Attending - Cardiology" />
+<Avatar name="Dr. David Kim" subtitle="Resident - Surgery" />
+<Avatar name="Dr. Lisa Thompson" subtitle="Resident - Neurology" />
+<Avatar name="RN Angela Davis" subtitle="Charge Nurse - ER" />
+<Avatar name="RN Robert Lee" subtitle="ICU Nurse" />
+<Avatar name="RN Patricia Brown" subtitle="Med/Surg Nurse" />
+<Avatar name="RN Michael Garcia" subtitle="Pediatrics Nurse" />
+<Avatar name="Tech John Smith" subtitle="Lab Technician" />
+<Avatar name="Tech Emily White" subtitle="Radiology Tech" />
+<Avatar name="Admin Karen Johnson" subtitle="Unit Secretary" />
+</Details>
+<Button ask="Show me the full staff roster">Full Roster</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Critical Patients">
+<Callout tone="danger" title="3 Critical Alerts">
+Patients requiring immediate attention
+</Callout>
+<Stat label="Code Blue" value="1" note="Room 214 - Resuscitation in progress" tone="danger" icon="alert" />
+<Stat label="Code Stroke" value="1" note="ER Bay 7 - CT ordered" tone="warning" icon="brain" />
+<Stat label="Code Sepsis" value="1" note="ICU Room 12 - Antibiotics started" tone="warning" icon="flask" />
+<Button ask="Show me details on critical patients">View Critical Details</Button>
+</Card>
+
+<Card title="Ready for Discharge">
+<Stat label="Patients Ready" value="14" icon="door-open" />
+<Stat label="Awaiting Transport" value="5" icon="car" />
+<Stat label="Awaiting Pharmacy" value="6" icon="pills" />
+<Stat label="Awaiting Paperwork" value="3" icon="file-text" />
+<Progress value="14" max="14" label="Discharge capacity: 100%" tone="success" />
+<Button ask="Show me the discharge list">Discharge List</Button>
+</Card>
+
+<Card title="Today's OR Bookings">
+<Stat label="Scheduled" value="12" icon="calendar-check" />
+<Stat label="In Progress" value="3" icon="play-circle" />
+<Stat label="Completed" value="5" icon="check-circle" />
+<Stat label="Cancelled" value="1" icon="x-circle" tone="warning" />
+<Details title="View OR schedule">
+| OR # | Time | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| OR-1 | 07:00 | CABG | Dr. Patel | Completed |
+| OR-2 | 08:00 | Hip Replacement | Dr. O'Brien | Completed |
+| OR-3 | 09:00 | Lap Chole | Dr. Kim | Completed |
+| OR-4 | 10:00 | Craniotomy | Dr. Singh | Completed |
+| OR-5 | 11:00 | Spinal Fusion | Dr. Chen | Completed |
+| OR-1 | 13:00 | Appendectomy | Dr. Williams | In Progress |
+| OR-2 | 14:00 | Knee Scope | Dr. Martinez | In Progress |
+| OR-3 | 15:00 | Hysterectomy | Dr. Johnson | In Progress |
+| OR-4 | 16:00 | TURP | Dr. Brown | Scheduled |
+| OR-5 | 17:00 | ORIF Ankle | Dr. Davis | Scheduled |
+| OR-1 | 18:00 | Emergency Case | TBD | Scheduled |
+| OR-2 | 19:00 | Emergency Case | TBD | Scheduled |
+</Details>
+<Button ask="Show me today's OR schedule in detail">Full OR Schedule</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplies Running Low">
+<Callout tone="warning" title="5 Items Below Reorder Point">
+Action needed to restock
+</Callout>
+<Stat label="IV Fluids" value="24 units" note="Reorder at 30" tone="danger" icon="drop" />
+<Stat label="PPE Kits" value="18 units" note="Reorder at 25" tone="danger" icon="shield-check" />
+<Stat label="Blood Bags" value="8 units" note="Reorder at 12" tone="warning" icon="heart" />
+<Stat label="Surgical Gloves" value="40 boxes" note="Reorder at 50" tone="warning" icon="hand" />
+<Stat label="Syringes" value="200 units" note="Reorder at 300" tone="warning" icon="needle" />
+<Button ask="Show me the full supply inventory">Full Inventory</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Button variant="primary" ask="File an incident report">File Incident Report</Button>
+<Button variant="primary" ask="Show me operations for another day">Look at Another Day</Button>
+<Button variant="primary" ask="Request a patient transfer">Request Patient Transfer</Button>
+</Card>
+</Columns>
+
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Incident Type" placeholder="e.g., Medication error, Fall, Equipment failure" required="true" />
+<Select label="Severity" options="Low | Medium | High | Critical" name="severity" required="true" />
+<Input label="Location" placeholder="e.g., ER Bay 3, Room 214" required="true" />
+<TextArea label="Description" placeholder="Describe what happened..." required="true" />
+<Input label="Date & Time" type="datetime-local" required="true" />
+<Input label="Reported By" placeholder="Your name" required="true" />
+<Button>Submit Report</Button>
+</Form>
+</Card>
+
+<Card title="Look at Another Day">
+<Form name="view-date">
+<Date label="Select Date" name="view-date" required="true" />
+<Button>View Operations for This Date</Button>
+</Form>
+</Card>
+
+<Card title="Request a Patient Transfer">
+<Form name="patient-transfer">
+<Input label="Patient ID" placeholder="e.g., P-12345" required="true" />
+<Input label="Patient Name" placeholder="Full name" required="true" />
+<Select label="Current Department" options="ER | ICU | Med/Surg | Pediatrics | Maternity | Psychiatry | Cardiology | Orthopedics | Neurology | Oncology | Surgery" name="current-dept" required="true" />
+<Select label="Transfer To" options="ER | ICU | Med/Surg | Pediatrics | Maternity | Psychiatry | Cardiology | Orthopedics | Neurology | Oncology | Surgery | Step-Down Unit | Rehabilitation | Long-Term Care" name="transfer-to" required="true" />
+<TextArea label="Reason for Transfer" placeholder="Clinical justification..." required="true" />
+<Select label="Urgency" options="Routine | Urgent (within 4 hours) | Emergency (within 1 hour)" name="urgency" required="true" />
+<Input label="Requesting Physician" placeholder="Dr. name" required="true" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full patient census
+- What are today's lab results?
+- Show me the hospital floor map
+- List current code statuses
+- Show me the staffing schedule for tomorrow
+- What are the current infection control alerts?
+</FollowUps>

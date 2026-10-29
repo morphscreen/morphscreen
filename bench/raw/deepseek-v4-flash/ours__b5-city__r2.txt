@@ -1,0 +1,125 @@
+# City operations center
+
+<Badge tone="success">Live</Badge>
+
+<Callout tone="success" title="All systems reporting">All critical infrastructure is operational. One water main break in the North district is being handled.</Callout>
+
+<Card title="District focus" subtitle="Filter every panel below to a single district">
+<Select label="Focus district" name="district-focus" placeholder="All districts" options="All districts | Central | North | South | East | West" hint="Incidents, crews, events, roadworks and maintenance will update for the selected district." />
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Congestion now" value="74%" change="+6 pts vs 30 min ago" tone="warning" icon="car" />
+<Stat label="Transit on-time" value="92%" change="+1.2 pts this week" tone="success" icon="bus" />
+<Stat label="Water used today" value="18.4M L" note="64% of daily budget" tone="info" icon="droplet" />
+<Stat label="Service backlog" value="312" change="-8% this week" tone="neutral" icon="clipboard" />
+<Stat label="Downtown spots free" value="1,204" note="28% of 4,300 total" tone="success" icon="map-pin" />
+</Columns>
+</Card>
+
+<Card title="Current weather" subtitle="City Hall station">
+<Columns>
+<Stat label="Temperature" value="21°C" icon="sun" />
+<Stat label="Humidity" value="58%" note="Comfortable" tone="info" />
+<Stat label="Wind" value="12 km/h" note="From SW" />
+<Stat label="Pressure" value="1015 hPa" note="Steady" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Congestion right now" subtitle="Index by district, 0 = free flow">
+<Chart type="bar" x="District" y="Congestion index">
+| District | Congestion |
+|---|---|
+| Central | 82 |
+| North | 64 |
+| South | 58 |
+| East | 71 |
+| West | 49 |
+</Chart>
+</Card>
+<Card title="Air quality by district" subtitle="AQI, lower is better">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Central | 68 |
+| North | 52 |
+| South | 45 |
+| East | 55 |
+| West | 40 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy use over the past week" subtitle="City-wide electricity, MWh per day">
+<Chart type="line" x="Day" y="MWh">
+| Day | Usage |
+|---|---|
+| Mon | 1240 |
+| Tue | 1310 |
+| Wed | 1280 |
+| Thu | 1420 |
+| Fri | 1380 |
+| Sat | 1120 |
+| Sun | 1080 |
+</Chart>
+</Card>
+<Card title="Water use today" subtitle="City-wide consumption">
+<Stat label="Consumption" value="18.4M L" note="Peak at 08:00" tone="info" icon="droplet" />
+<Progress value="64" max="100" label="Daily budget used" tone="info" />
+<Progress value="72" max="100" label="Treatment capacity" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Transit punctuality" subtitle="Share of services running on time">
+<Stat label="System average" value="92%" change="+1.2 pts this week" tone="success" icon="bus" />
+| Line | On-time |
+|---|---|
+| Metro 1 | 95% |
+| Metro 2 | 89% |
+| Bus 12 | 91% |
+| Tram 4 | 93% |
+</Card>
+
+<Columns>
+<Card title="Open incidents" subtitle="Location and severity">
+| ID | Location | Type | Severity |
+|---|---|---|---|
+| INC-2041 | Market St & 5th Ave, Central | Traffic signal failure | <Badge tone="danger">Critical</Badge> |
+| INC-2042 | North Water Tower, North | Water main break | <Badge tone="danger">Critical</Badge> |
+| INC-2043 | Eastgate Bridge, East | Structural inspection | <Badge tone="warning">High</Badge> |
+| INC-2044 | South Pool, South | Chemical imbalance | <Badge tone="info">Moderate</Badge> |
+| INC-2045 | West Park Path, West | Fallen tree | <Badge tone="neutral">Low</Badge> |
+</Card>
+<Card title="Emergency vehicles deployed" subtitle="Live GPS positions">
+| Unit | Vehicle | Location | Status |
+|---|---|---|---|
+| A-3 | Ambulance | Central Square, Central | <Badge tone="success">On scene</Badge> |
+| E-7 | Fire engine | Harbour Blvd, West | <Badge tone="warning">En route</Badge> |
+| P-2 | Police unit | Eastgate, East | <Badge tone="info">Patrolling</Badge> |
+| A-1 | Ambulance | North General Hospital, North | <Badge tone="neutral">Standby</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Parking availability downtown" subtitle="Current occupancy">
+<Stat label="Spots free" value="1,204" note="28% of total" tone="success" icon="car" />
+<Progress value="78" max="100" label="Grand Plaza Garage" tone="warning" />
+<Progress value="45" max="100" label="City Hall Lot" tone="neutral" />
+<Progress value="15" max="100" label="East River Deck" tone="success" />
+<Progress value="33" max="100" label="Street parking" tone="success" />
+</Card>
+<Card title="Public events this weekend">
+| Event | Venue | District | Time |
+|---|---|---|---|
+| Riverside Food Fair | Riverside Park | South | Sat 10:00–18:00 |
+| City Marathon | Central Square start | Central | Sun 07:00 |
+| Open-air Cinema | Eastgate Field | East | Sat 20:30 |
+| Farmers Market | North Market Plaza | North | Sun 09:00–14:00 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen reports" subtitle="Live feed from 311">

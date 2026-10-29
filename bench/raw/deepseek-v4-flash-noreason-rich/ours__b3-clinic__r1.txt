@@ -1,0 +1,104 @@
+# Clinic Receptionist Dashboard
+
+<Card title="Today's Overview" subtitle="Wednesday, June 18, 2025">
+<Columns>
+<Stat label="Patients expected today" value="24" icon="users" tone="info" />
+<Stat label="No-show rate this month" value="8.3%" change="-2.1% vs May" icon="chart-line" tone="success" />
+<Stat label="Rooms free right now" value="3 of 6" icon="map-pin" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Today's Appointments">
+<Chart type="bar" title="Appointments by hour" x="Hour" y="Patients">
+| Hour | Patients |
+|---|---|
+| 8 AM | 3 |
+| 9 AM | 4 |
+| 10 AM | 5 |
+| 11 AM | 2 |
+| 12 PM | 1 |
+| 1 PM | 3 |
+| 2 PM | 4 |
+| 3 PM | 2 |
+</Chart>
+
+<Columns>
+<Card title="Morning">
+<Details title="8:00 AM – 12:00 PM" open="true">
+- 8:00 — **Amelia Carter** (Dr. Nguyen)
+- 8:30 — **Liam Patel** (Dr. Nguyen)
+- 9:00 — **Sophia Rossi** (Dr. Kim)
+- 9:30 — **Noah Williams** (Dr. Kim)
+- 10:00 — **Olivia Brown** (Dr. Nguyen)
+- 10:30 — **Ethan Davis** (Dr. Kim)
+- 11:00 — **Mia Garcia** (Dr. Nguyen)
+- 11:30 — **Lucas Martin** (Dr. Kim)
+</Details>
+</Card>
+<Card title="Afternoon">
+<Details title="12:00 PM – 4:00 PM">
+- 12:00 — **Isabella Lopez** (Dr. Kim)
+- 1:00 — **James Wilson** (Dr. Nguyen)
+- 1:30 — **Charlotte Anderson** (Dr. Kim)
+- 2:00 — **Benjamin Taylor** (Dr. Nguyen)
+- 2:30 — **Ava Thomas** (Dr. Kim)
+- 3:00 — **Daniel Moore** (Dr. Nguyen)
+- 3:30 — **Harper Jackson** (Dr. Kim)
+</Details>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Next Patient to Call">
+<Columns>
+<Avatar name="Amelia Carter" subtitle="8:00 AM · Dr. Nguyen · Room 2" />
+<Callout tone="success" title="Ready for check-in">Amelia arrived 10 minutes early. Call her to Room 2.</Callout>
+</Columns>
+<Button variant="primary" icon="megaphone">Call Amelia Carter</Button>
+</Card>
+
+<Card title="Room Status">
+<Columns>
+<Card title="Free rooms">
+<Badge tone="success">Room 1</Badge>
+<Badge tone="success">Room 3</Badge>
+<Badge tone="success">Room 5</Badge>
+</Card>
+<Card title="In use">
+<Badge tone="warning">Room 2 — Amelia (8:00)</Badge>
+<Badge tone="warning">Room 4 — Liam (8:30)</Badge>
+<Badge tone="danger">Room 6 — Cleaning</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Check In Patient">
+<Form name="checkin">
+<Select label="Select patient" placeholder="Choose patient" options="Amelia Carter | Liam Patel | Sophia Rossi | Noah Williams | Olivia Brown | Ethan Davis | Mia Garcia | Lucas Martin | Isabella Lopez | James Wilson | Charlotte Anderson | Benjamin Taylor | Ava Thomas | Daniel Moore | Harper Jackson" />
+<Input label="Arrival time" type="time" value="07:50" hint="Defaults to now" />
+<Radio label="Appointment status" options="On time | Early | Late" value="Early" />
+<Switch label="Send SMS reminder to patient" name="sms-reminder" />
+<Button variant="primary" label="Check in patient">Check In Patient</Button>
+</Form>
+</Card>
+
+<Card title="Navigate Days">
+<Columns>
+<Button variant="secondary" icon="calendar" label="Yesterday">← Yesterday</Button>
+<Button variant="primary" icon="calendar" label="Today">Today</Button>
+<Button variant="secondary" icon="calendar" label="Tomorrow">Tomorrow →</Button>
+</Columns>
+<Details title="Jump to a specific date">
+<Form name="jump-date">
+<Date label="Select date" name="jump-to-date" />
+<Button variant="secondary" label="Go to date">Go to Date</Button>
+</Form>
+</Details>
+</Card>
+
+<FollowUps>
+- Show patient details for Amelia Carter
+- Mark a patient as no-show
+- View tomorrow's appointment list
+- Add a new appointment
+</FollowUps>

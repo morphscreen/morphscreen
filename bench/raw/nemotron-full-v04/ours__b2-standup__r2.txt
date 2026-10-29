@@ -1,0 +1,84 @@
+# Async Standup — August 15, 2025
+
+<Stat label="Missing updates" value="3 of 8" tone="warning" />
+
+---
+
+<Card title="Today's updates" subtitle="Posted so far: 5 teammates">
+<Columns>
+<Card title="Sarah Chen" subtitle="Frontend Lead">
+**Yesterday:** Shipped the new dashboard filters, fixed the date-picker bug on Safari
+**Today:** Pairing with Marco on the mobile nav refactor, writing tests for the filter components
+<Badge tone="success">On track</Badge>
+</Card>
+
+<Card title="Marco Ruiz" subtitle="Frontend Engineer">
+**Yesterday:** Finished the mobile nav prototype, reviewed Sarah's filter PR
+**Today:** Implementing the collapsible sidebar, need design sign-off on breakpoint behavior
+<Badge tone="info">Needs review</Badge>
+</Card>
+
+<Card title="Priya Patel" subtitle="Backend Engineer">
+**Yesterday:** Optimized the search index (p95 down 180ms → 42ms), deployed to staging
+**Today:** Adding webhook retries with exponential backlog, updating API docs
+<Badge tone="success">On track</Badge>
+</Card>
+
+<Card title="James Okonkwo" subtitle="DevOps">
+**Yesterday:** Rotated staging DB credentials, set up log aggregation for the new worker fleet
+**Today:** **BLOCKED** — waiting on AWS limit increase for NAT gateways (case #784421), ETA 24h
+<Badge tone="danger">Blocked</Badge>
+</Card>
+
+<Card title="Aisha Hassan" subtitle="Product Designer">
+**Yesterday:** Delivered high-fidelity mocks for the onboarding flow, handed off to Marco
+**Today:** Running usability tests (3 sessions booked), iterating on empty states
+<Badge tone="success">On track</Badge>
+</Card>
+</Columns>
+</Card>
+
+---
+
+<Callout tone="danger" title="🚫 Blocked teammates (2)">
+<Columns>
+<Card title="James Okonkwo" subtitle="DevOps">
+**Blocker:** AWS NAT gateway limit increase (case #784421)
+**Impact:** Can't provision new worker fleet for image processing pipeline
+**ETA:** 24 hours per AWS support
+**Help needed:** If anyone has AWS enterprise support contacts, ping me
+</Card>
+
+<Card title="Lena Kowalski" subtitle="Backend Engineer (not yet posted)">
+**Blocker:** **Missing update** — last seen active 4h ago
+**Impact:** Unknown — may be blocked on DB migration review
+**Action:** @Lena please post your update or react with 👍 if unblocked
+</Card>
+</Columns>
+</Callout>
+
+---
+
+<Card title="Post your update" subtitle="Your teammates will see this instantly">
+<Form name="standup-update">
+<TextArea label="What did you do yesterday?" name="yesterday" placeholder="Shipped the auth refactor, fixed the token refresh bug..." rows="3" required="true" />
+<TextArea label="What will you do today?" name="today" placeholder="Writing tests for the new auth flow, pairing with Priya on the migration..." rows="3" required="true" />
+<Radio label="Status" name="status" options="On track | Needs review | Blocked" value="On track" required="true" />
+<Details title="I'm blocked — add details (optional)" open="false">
+<TextArea label="Blocker description" name="blocker" placeholder="What's blocking you? What help do you need? Tag teammates with @..." rows="3" />
+</Details>
+<Button>Post update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+---
+
+<Card title="Haven't posted yet (3)">
+<Columns>
+<Avatar name="Lena Kowalski" subtitle="Backend Engineer" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lena" />
+<Avatar name="Tommy Nguyen" subtitle="QA Engineer" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Tommy" />
+<Avatar name="Ravi Mehta" subtitle="Engineering Manager" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ravi" />
+</Columns>
+<Callout tone="info" title="Reminder sent">Automatic nudge sent to missing teammates at 10:00 AM local time. Next nudge at 2:00 PM.</Callout>
+</Card>

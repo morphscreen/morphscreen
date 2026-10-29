@@ -1,0 +1,101 @@
+# Power Network Operator Console
+
+<Callout tone="warning" title="Live alert">Voltage fluctuation detected in **North East region** — grid stability at risk. Automated response initiated.</Callout>
+
+<Columns>
+<Stat label="Current Load" value="8.42 GW" change="+3.2%" tone="warning" icon="chart-line" note="of 10.0 GW capacity" />
+<Stat label="Capacity Used" value="84.2%" change="+2.1%" tone="warning" icon="gauge" note="Safe limit: 90%" />
+<Stat label="Price / MWh" value="£64.50" change="-£2.10" tone="info" icon="currency-gbp" note="Live market rate" />
+<Stat label="Emissions Today" value="412 t CO₂e" change="-8.4%" tone="success" icon="leaf" note="Target: 550 t" />
+</Columns>
+
+<Card title="Network Capacity">
+<Progress value="84.2" max="100" label="Load vs capacity" tone="warning" />
+<Progress value="92.0" max="100" label="Safe operating limit" tone="danger" />
+</Card>
+
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Current generation mix" x="Source" y="Share (%)">
+| Source | Share |
+|---|---|
+| Gas | 38 |
+| Wind | 27 |
+| Nuclear | 18 |
+| Solar | 9 |
+| Hydro | 5 |
+| Biomass | 3 |
+</Chart>
+</Card>
+
+<Card title="Plant Status">
+| Plant | Type | Output (MW) | Status |
+|---|---|---|---|
+| Drax Unit 1 | Biomass | 620 | <Badge tone="success">Online</Badge> |
+| Hinkley Point C | Nuclear | 1,340 | <Badge tone="success">Online</Badge> |
+| Dogger Bank A | Wind | 780 | <Badge tone="info">Ramping</Badge> |
+| Grain CCGT | Gas | 910 | <Badge tone="success">Online</Badge> |
+| Dinorwig | Hydro | 340 | <Badge tone="warning">Standby</Badge> |
+| West Burton B | Gas | 450 | <Badge tone="danger">Outage</Badge> |
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected Customers | Cause | Est. Restoration |
+|---|---|---|---|
+| North East | 12,400 | Storm damage — overhead line | 22:30 |
+| South Wales | 3,150 | Transformer fault | 04:00 |
+| East Midlands | 890 | Planned maintenance | 18:00 |
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="line" x="Hour" y="Demand (GW)">
+| Hour | Demand |
+|---|---|
+| 00:00 | 6.8 |
+| 04:00 | 6.2 |
+| 08:00 | 8.9 |
+| 12:00 | 7.8 |
+| 16:00 | 8.5 |
+| 20:00 | 9.3 |
+| 24:00 | 7.1 |
+</Chart>
+</Card>
+
+<Card title="Maintenance Planned — This Month">
+| Date | Asset | Region | Duration |
+|---|---|---|---|
+| 12–14 May | Transformer T-42 | North West | 48 h |
+| 18 May | Substation SS-07 | Scotland | 12 h |
+| 22–25 May | Overhead line 132kV | South East | 72 h |
+</Card>
+
+<Card title="Live Alerts">
+<Steps>
+<Step title="22:41 — Voltage fluctuation" status="current" subtitle="North East region">Grid stability at risk, auto-response active.</Step>
+<Step title="22:35 — Wind ramp forecast" status="done" subtitle="Dogger Bank">Output expected +15% in next 2 hours.</Step>
+<Step title="22:12 — Price dip" status="done" subtitle="Market">MWh price fell below £65.</Step>
+</Steps>
+</Card>
+
+<Card title="Regional Focus & Curtailment">
+<Tabs>
+<Tab title="Region Focus">
+<Select label="Select region" options="All regions | North East | North West | South East | South West | Scotland | Wales" placeholder="Choose a region" />
+<Button variant="secondary">Apply focus</Button>
+</Tab>
+<Tab title="Curtailment Order">
+<Form name="curtailment">
+<Select label="Plant" options="Dogger Bank A | Drax Unit 1 | Grain CCGT" placeholder="Select plant" />
+<Slider label="Curtail amount" min="0" max="500" step="10" value="100" name="curtail" unit="MW" />
+<Select label="Duration" options="30 min | 1 hour | 2 hours | 4 hours" placeholder="Select duration" />
+<Button variant="danger">Issue curtailment</Button>
+</Form>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show outage details for North East
+- Compare emissions vs last week
+- View generation forecast for wind
+- List all curtailment orders today
+</FollowUps>

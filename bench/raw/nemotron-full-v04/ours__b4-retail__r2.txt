@@ -1,0 +1,173 @@
+# Store Manager Daily Console
+
+<Card title="Store Selector" subtitle="Switch between locations">
+<Select label="Select Store" name="store-select" options="Downtown Flagship | Mall Location | Airport Express | Suburban Plaza" value="Downtown Flagship" />
+</Card>
+
+<Columns>
+<Card title="Sales Today vs Target">
+<Progress value="84750" max="120000" label="Sales: $84,750 / $120,000 target (70.6%)" />
+<Stat label="Remaining to Target" value="$35,250" change="-$12,400 vs yesterday" tone="warning" />
+</Card>
+
+<Card title="Average Basket Size">
+<Stat label="Avg Basket" value="$47.82" change="+$2.15 vs last week" tone="success" />
+<Stat label="Transactions" value="1,772" change="+84 vs last week" tone="info" />
+</Card>
+
+<Card title="Returns This Week">
+<Stat label="Total Returns" value="47" change="-12 vs last week" tone="success" />
+<Stat label="Return Rate" value="2.65%" change="-0.4% vs last week" tone="success" />
+<Stat label="Refund Amount" value="$2,341" change="-$587 vs last week" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="area" x="Hour" y="Visitors" title="Hourly Foot Traffic">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 34 |
+| 10 AM | 67 |
+| 11 AM | 98 |
+| 12 PM | 145 |
+| 1 PM | 178 |
+| 2 PM | 156 |
+| 3 PM | 134 |
+| 4 PM | 167 |
+| 5 PM | 189 |
+| 6 PM | 156 |
+| 7 PM | 98 |
+| 8 PM | 67 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best Sellers (Units Sold Today)">
+| Rank | Product | Units | Revenue |
+|---|---|---|---|
+| 1 | Wireless Earbuds Pro | 47 | $4,653 |
+| 2 | Phone Case - Clear | 89 | $1,780 |
+| 3 | Portable Charger 20K | 34 | $2,036 |
+| 4 | Screen Protector 2-pack | 112 | $1,344 |
+| 5 | Bluetooth Speaker Mini | 28 | $1,537 |
+| 6 | USB-C Cable 6ft | 76 | $912 |
+| 7 | Car Mount Wireless | 23 | $1,147 |
+| 8 | PopSocket Grip | 134 | $1,072 |
+</Card>
+
+<Card title="Items Out of Stock">
+<Callout tone="danger" title="8 Items Currently Out of Stock">
+| SKU | Product | Category | Days OOS | Reorder Qty |
+|---|---|---|---|---|
+| APL-001 | AirPods Pro 2 | Audio | 3 | 25 |
+| SAM-045 | Galaxy Watch 6 | Wearables | 1 | 15 |
+| ANK-112 | PowerCore 26800 | Accessories | 5 | 30 |
+| BEL-008 | BoostCharge Pro | Accessories | 2 | 20 |
+| SON-023 | WH-1000XM5 | Audio | 4 | 12 |
+| GOO-007 | Pixel Buds Pro | Audio | 1 | 18 |
+| JBL-056 | Flip 6 Speaker | Audio | 3 | 22 |
+| FIT-009 | Charge 6 Band | Wearables | 2 | 25 |
+</Callout>
+<Button variant="primary" size="small">Reorder All Critical Items</Button>
+</Card>
+</Columns>
+
+<Card title="Running Promotions Performance">
+<Tabs>
+<Tab title="Active Promotions">
+| Promotion | Type | Start | End | Redemptions | Revenue | Conversion |
+|---|---|---|---|---|---|---|
+| Back to School Bundle | Bundle | Aug 1 | Aug 31 | 234 | $18,720 | 12.4% |
+| Student Discount 15% | Percentage | Aug 15 | Sep 15 | 89 | $6,230 | 8.7% |
+| Trade-in Bonus $50 | Trade-in | Jul 1 | Sep 30 | 67 | $12,400 | 15.2% |
+| Buy 2 Get 1 Free Cases | BOGO | Aug 20 | Aug 27 | 156 | $4,680 | 22.1% |
+| Free Shipping $75+ | Shipping | Ongoing | - | 445 | $38,900 | 18.9% |
+</Tab>
+<Tab title="Expired (Last 30 Days)">
+| Promotion | Type | Period | Redemptions | Revenue | ROI |
+|---|---|---|---|---|---|
+| Summer Sale 20% | Percentage | Jul 1-14 | 1,234 | $89,400 | 3.2x |
+| Prime Day Match | Price Match | Jul 16-17 | 567 | $45,200 | 2.8x |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Registers Status">
+| Register | Status | Cashier | Shift | Sales Today | Transactions |
+|---|---|---|---|---|---|
+| REG-01 | <Badge tone="success">Open</Badge> | Sarah Chen | 8AM-4PM | $18,450 | 387 |
+| REG-02 | <Badge tone="success">Open</Badge> | Marcus Johnson | 8AM-4PM | $16,200 | 342 |
+| REG-03 | <Badge tone="success">Open</Badge> | Priya Patel | 12PM-8PM | $12,890 | 276 |
+| REG-04 | <Badge tone="success">Open</Badge> | James Wilson | 12PM-8PM | $11,560 | 245 |
+| REG-05 | <Badge tone="warning">Break</Badge> | - | - | $8,920 | 189 |
+| REG-06 | <Badge tone="danger">Closed</Badge> | - | - | $0 | 0 |
+| REG-07 | <Badge tone="danger">Closed</Badge> | - | - | $0 | 0 |
+| SCO-01 | <Badge tone="success">Open</Badge> | Self-Checkout | 8AM-10PM | $9,340 | 214 |
+| SCO-02 | <Badge tone="success">Open</Badge> | Self-Checkout | 8AM-10PM | $7,390 | 169 |
+</Card>
+
+<Card title="Staff On Shift Today">
+<Columns>
+<Avatar name="Sarah Chen" subtitle="Shift Lead • 8AM-4PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=sarah" />
+<Avatar name="Marcus Johnson" subtitle="Cashier • 8AM-4PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=marcus" />
+<Avatar name="Priya Patel" subtitle="Cashier • 12PM-8PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=priya" />
+<Avatar name="James Wilson" subtitle="Cashier • 12PM-8PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=james" />
+<Avatar name="Alex Rivera" subtitle="Floor Lead • 10AM-6PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=alex" />
+<Avatar name="Taylor Kim" subtitle="Stock • 6AM-2PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=taylor" />
+<Avatar name="Jordan Lee" subtitle="Stock • 2PM-10PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=jordan" />
+<Avatar name="Casey Brooks" subtitle="Support • 11AM-7PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=casey" />
+</Columns>
+<Stat label="Total Scheduled" value="8" change="1 on break" tone="info" />
+<Stat label="Hours Covered" value="96" change="Fully staffed" tone="success" />
+</Card>
+</Columns>
+
+<Card title="This Week vs Last Week Comparison">
+<Chart type="bar" x="Day" y="Revenue" title="Daily Revenue Comparison">
+| Day | This Week | Last Week |
+|---|---|---|
+| Monday | 98,450 | 92,100 |
+| Tuesday | 105,200 | 98,750 |
+| Wednesday | 112,800 | 104,300 |
+| Thursday | 118,600 | 111,200 |
+| Friday | 134,500 | 128,900 |
+| Saturday | 156,700 | 149,800 |
+| Sunday | 89,300 | 85,400 |
+</Chart>
+</Card>
+
+<Card title="Week-over-Week Key Metrics">
+<Columns>
+<Stat label="Revenue" value="$815,550" change="+6.2% vs last week" tone="success" />
+<Stat label="Transactions" value="12,847" change="+4.8% vs last week" tone="success" />
+<Stat label="Avg Basket" value="$63.48" change="+1.3% vs last week" tone="success" />
+<Stat label="Foot Traffic" value="18,934" change="+3.1% vs last week" tone="info" />
+<Stat label="Conversion Rate" value="67.8%" change="+1.1% vs last week" tone="success" />
+<Stat label="Items/Transaction" value="2.34" change="+0.05 vs last week" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Quick Reorder">
+<Form name="quick-reorder">
+<Columns>
+<Select label="Select Item to Reorder" name="reorder-item" placeholder="Search or select product..." options="AirPods Pro 2 (APL-001) - 0 in stock | Galaxy Watch 6 (SAM-045) - 0 in stock | PowerCore 26800 (ANK-112) - 0 in stock | BoostCharge Pro (BEL-008) - 0 in stock | WH-1000XM5 (SON-023) - 0 in stock | Pixel Buds Pro (GOO-007) - 0 in stock | Flip 6 Speaker (JBL-056) - 0 in stock | Charge 6 Band (FIT-009) - 0 in stock" />
+<Input label="Quantity" name="reorder-qty" type="number" value="25" min="1" step="1" />
+</Columns>
+<Columns>
+<Select label="Priority" name="reorder-priority" options="Standard (3-5 days) | Express (1-2 days) | Emergency (Same day)" value="Standard (3-5 days)" />
+<Input label="Notes" name="reorder-notes" placeholder="Special instructions for supplier..." />
+</Columns>
+<Button>Submit Reorder Request</Button>
+<Button variant="secondary">Save as Template</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- View detailed sales by category
+- Check inventory levels for top 50 SKUs
+- Review staff performance metrics
+- Export daily summary to PDF
+- Set up low stock alerts
+</FollowUps>

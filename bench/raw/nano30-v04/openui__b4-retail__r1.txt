@@ -1,0 +1,56 @@
+root = Card([header, salesCard, footTrafficCard, bestSellersCard, outOfStockList, shiftCard, keyMetricsCard, returnsCard, promotionCard, registerCard, reorderButton, storeSelect, weekComparisonCard])
+
+header = CardHeader("Store Dashboard", null)
+
+salesHeader = CardHeader("Sales Today", null)
+salesText = TextContent("Sales: $1200 vs Target: $1500", "default")
+salesProgress = Progress(value: 80, label: "Sales vs Target")
+salesCard = Card([salesHeader, salesText, salesProgress], "card", "column", "s")
+
+footTrafficHeader = CardHeader("Foot Traffic", null)
+footTrafficLabels = ["8am","10am","12pm","2pm","4pm","6pm"]
+footTrafficSeries = Series("Foot Traffic", [120,150,200,180,140,90])
+footTrafficChart = LineChart(labels: footTrafficLabels, series: [footTrafficSeries], variant: "linear", xLabel: "Time", yLabel: "Visitors")
+footTrafficCard = Card([footTrafficHeader, footTrafficChart], "card", "column", "s")
+
+bestSellersHeader = CardHeader("Best Sellers", null)
+bestSellersLabelCol = Col("Product", ["Product A","Product B","Product C"], "string")
+bestSellersValueCol = Col("Units", [150,80,200], "number")
+bestSellersTable = Table(columns: [bestSellersLabelCol, bestSellersValueCol])
+bestSellersCard = Card([bestSellersHeader, bestSellersTable], "card", "column", "s")
+
+outOfStockList = ListBlock([ListItem("Product X", "Out of Stock", null, null), ListItem("Product Y", "Out of Stock", null, null)], "number")
+
+shiftHeader = CardHeader("Today's Shift", null)
+shiftList = ListBlock([ListItem("Alice", null, null, null), ListItem("Bob", null, null, null)], "number")
+shiftCard = Card([shiftHeader, shiftList], "card", "column", "s")
+
+avgBasketText = TextContent("Average basket size: $45", "large")
+keyMetricsCard = Card([avgBasketText], "card", "column", "s")
+
+returnsHeader = CardHeader("Returns This Week", null)
+returnsLabelCol = Col("Date", ["2025-09-01","2025-09-02","2025-09-03"], "string")
+returnsReasonCol = Col("Reason", ["Refund","Exchange","Damaged"], "string")
+returnsAmountCol = Col("Amount", [120,80,50], "number")
+returnsTable = Table(columns: [returnsLabelCol, returnsReasonCol, returnsAmountCol])
+returnsCard = Card([returnsHeader, returnsTable], "card", "column", "s")
+
+promotionHeader = CardHeader("Promotions", null)
+promoSeries1 = Series("Revenue", [2000,1500,1000])
+promotionChart = BarChart(labels: ["Promo A","Promo B","Promo C"], series: [promoSeries1], variant: "grouped", xLabel: "Promotion", yLabel: "Revenue")
+promotionCard = Card([promotionHeader, promotionChart], "card", "column", "s")
+
+registerHeader = CardHeader("Register Status", null)
+registerList = ListBlock([ListItem("Register 1", "Open", null, null), ListItem("Register 2", "Closed", null, null)], "number")
+registerCard = Card([registerHeader, registerList], "card", "column", "s")
+
+reorderButton = Button("Reorder Item", null, "primary", "medium")
+
+storeSelect = Select("store", [SelectItem("storeA", "Store A"), SelectItem("storeB", "Store B")], "Select store", "medium")
+
+weekComparisonHeader = CardHeader("Week Comparison", null)
+weekLabels = ["Week 1","Week 2","Week 3","Week 4"]
+weekSeriesThis = Series("This Week", [1200,1300,1150,1250])
+weekSeriesLast = Series("Last Week", [1100,1150,1050,1100])
+weekChart = BarChart(labels: weekLabels, series: [weekSeriesThis, weekSeriesLast], variant: "grouped", xLabel: "Week", yLabel: "Sales")
+weekComparisonCard = Card([weekComparisonHeader, weekChart], "card", "column", "s")

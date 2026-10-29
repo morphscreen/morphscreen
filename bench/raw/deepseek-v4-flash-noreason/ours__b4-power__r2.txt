@@ -1,0 +1,145 @@
+# Power Network Operator Console
+
+Live grid overview. <Badge tone="warning">2 active alerts</Badge>
+
+<Card title="Grid status at a glance">
+<Columns>
+<Stat label="Current load" value="18.4 GW" change="+3.2% vs forecast" tone="info" icon="lightning" />
+<Stat label="Capacity used" value="82%" change="6.1 GW headroom" tone="success" icon="gauge" />
+<Stat label="Price / MWh" value="$74.20" change="−$2.10 in last hour" tone="neutral" icon="currency-circle-dollar" />
+<Stat label="Emissions today" value="12,480 t CO₂" change="−8% vs yesterday" tone="success" icon="cloud" />
+</Columns>
+</Card>
+
+<Card title="Network load vs capacity">
+<Progress value="82" max="100" label="18.4 GW / 22.5 GW capacity" tone="info" />
+<Callout tone="warning" title="Approaching limit">Load is forecast to peak at 21.1 GW (94% of capacity) at 18:30 today. Consider curtailment.</Callout>
+</Card>
+
+<Card title="Generation mix">
+<Chart type="donut" title="Share by source">
+| Source | Share (%) |
+|---|---|
+| Wind | 34 |
+| Solar | 22 |
+| Gas | 18 |
+| Nuclear | 16 |
+| Hydro | 8 |
+| Biomass | 2 |
+</Chart>
+</Card>
+
+<Card title="Power plants">
+<Tabs>
+<Tab title="All plants">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Northwind Farm | Wind | 1,240 | <Badge tone="success">Online</Badge> |
+| Solara Fields | Solar | 890 | <Badge tone="success">Online</Badge> |
+| Riverside Gas | Gas | 720 | <Badge tone="warning">Derated</Badge> |
+| Helios Nuclear | Nuclear | 1,100 | <Badge tone="success">Online</Badge> |
+| Cascade Hydro | Hydro | 340 | <Badge tone="success">Online</Badge> |
+| Greenleaf Biomass | Biomass | 85 | <Badge tone="danger">Offline</Badge> |
+</Tab>
+<Tab title="By region">
+| Region | Plant | Output (MW) | Status |
+|---|---|---|---|
+| North | Northwind Farm | 1,240 | <Badge tone="success">Online</Badge> |
+| South | Solara Fields | 890 | <Badge tone="success">Online</Badge> |
+| East | Riverside Gas | 720 | <Badge tone="warning">Derated</Badge> |
+| West | Cascade Hydro | 340 | <Badge tone="success">Online</Badge> |
+| Central | Helios Nuclear | 1,100 | <Badge tone="success">Online</Badge> |
+| Central | Greenleaf Biomass | 85 | <Badge tone="danger">Offline</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Active outages">
+| Region | Affected customers | Cause | Started | Est. restoration |
+|---|---|---|---|---|
+| East – Riverside | 12,400 | Transformer fault | 14:05 | 17:30 |
+| South – Coastal | 3,200 | Storm damage | 15:40 | 22:00 |
+| North – Highlands | 950 | Planned maintenance | 09:00 | 16:00 |
+</Card>
+
+<Card title="Demand forecast — next 24h">
+<Chart type="line" x="Hour" y="GW">
+| Hour | Demand (GW) |
+|---|---|
+| 00:00 | 14.2 |
+| 02:00 | 13.1 |
+| 04:00 | 12.8 |
+| 06:00 | 14.9 |
+| 08:00 | 17.6 |
+| 10:00 | 18.1 |
+| 12:00 | 17.9 |
+| 14:00 | 18.4 |
+| 16:00 | 19.8 |
+| 18:00 | 21.1 |
+| 20:00 | 20.4 |
+| 22:00 | 17.2 |
+</Chart>
+<Callout tone="info" title="Peak prediction">Peak of 21.1 GW at 18:00–19:00. Solar output drops after 17:00; gas will need to ramp up.</Callout>
+</Card>
+
+<Card title="Maintenance this month">
+| Date | Plant | Work | Duration | Status |
+|---|---|---|---|---|
+| Mar 5–7 | Helios Nuclear | Fuel rod inspection | 3 days | <Badge tone="success">Done</Badge> |
+| Mar 10 | Northwind Farm | Turbine #12 bearing | 1 day | <Badge tone="success">Done</Badge> |
+| Mar 14–16 | Cascade Hydro | Dam gate maintenance | 3 days | <Badge tone="info">Scheduled</Badge> |
+| Mar 22 | Riverside Gas | Gas turbine service | 1 day | <Badge tone="neutral">Planned</Badge> |
+| Mar 28–30 | Solara Fields | Inverter upgrade | 3 days | <Badge tone="neutral">Planned</Badge> |
+</Card>
+
+<Card title="Live alerts">
+<Steps>
+<Step title="Greenleaf Biomass offline" status="current" subtitle="14:52 — Unexpected shutdown, cause under investigation" />
+<Step title="Riverside Gas derated" status="current" subtitle="14:30 — Output limited to 60% due to cooling issue" />
+<Step title="Demand forecast revised upward" status="done" subtitle="13:15 — Peak now 21.1 GW (was 20.4 GW)" />
+<Step title="Storm warning South Coastal" status="done" subtitle="11:40 — Wind gusts up to 90 km/h expected 16:00–20:00" />
+</Steps>
+</Card>
+
+<Card title="Focus on a region">
+<Select label="Region" options="All regions | North | South | East | West | Central" placeholder="Choose a region" />
+<Columns>
+<Stat label="Load" value="4.8 GW" tone="info" icon="lightning" />
+<Stat label="Capacity" value="5.9 GW" tone="neutral" icon="gauge" />
+<Stat label="Outages" value="2" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Curtailment order">
+<Callout tone="danger" title="Emergency curtailment">Use only when load exceeds 95% of capacity or on operator order.</Callout>
+<Form name="curtailment">
+<Select label="Plant" options="Northwind Farm | Solara Fields | Riverside Gas | Cascade Hydro | Helios Nuclear | Greenleaf Biomass" placeholder="Select plant" />
+<Slider label="Curtailment amount" min="0" max="100" step="5" value="20" name="curtailment-amount" />
+<Radio label="Priority" options="Standard (economic) | High (grid stability)" />
+<Button variant="danger">Send curtailment order</Button>
+</Form>
+</Card>
+
+<Card title="Emissions today">
+<Columns>
+<Stat label="Total CO₂" value="12,480 t" change="−8% vs yesterday" tone="success" icon="cloud" />
+<Stat label="Intensity" value="678 t/GWh" change="−12% vs last week" tone="info" icon="trend-down" />
+</Columns>
+<Chart type="area" title="CO₂ emissions by hour">
+| Hour | t CO₂ |
+|---|---|
+| 00:00 | 480 |
+| 04:00 | 450 |
+| 08:00 | 620 |
+| 12:00 | 560 |
+| 16:00 | 540 |
+| 20:00 | 610 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me the full maintenance schedule for next quarter
+- Which plants are candidates for curtailment right now?
+- What caused the Greenleaf Biomass outage?
+- Compare today's emissions to the same day last year
+</FollowUps>

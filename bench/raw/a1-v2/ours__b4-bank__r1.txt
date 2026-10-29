@@ -1,0 +1,108 @@
+# Personal Banking Home
+
+<Card title="Account Balances" subtitle="As of today">
+<Columns>
+<Stat label="Checking" value="$12,450.32" change="+$1,200 this month" tone="success" />
+<Stat label="Savings" value="$28,750.00" change="+$500 this month" tone="info" />
+<Stat label="Credit Card" value="-$3,240.18" change="$1,759.82 available" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+| Merchant | Date | Amount |
+|---|---|---|
+| Whole Foods Market | Today | -$127.43 |
+| Shell Gas Station | Yesterday | -$45.00 |
+| Netflix | 2 days ago | -$15.99 |
+| Amazon | 3 days ago | -$89.97 |
+| Salary Deposit | 4 days ago | +$3,500.00 |
+| Starbucks | 5 days ago | -$6.75 |
+| Uber | 5 days ago | -$24.30 |
+| Rent Payment | 6 days ago | -$1,800.00 |
+</Card>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="Monthly Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Food & Dining | 650 |
+| Transportation | 320 |
+| Shopping | 410 |
+| Entertainment | 180 |
+| Utilities | 240 |
+| Other | 150 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Due Date | Amount | Status |
+|---|---|---|---|
+| Electric Bill | Oct 15 | $145.30 | Pending |
+| Internet | Oct 18 | $79.99 | Pending |
+| Phone Bill | Oct 22 | $85.00 | Pending |
+| Car Insurance | Oct 25 | $168.00 | Scheduled |
+| Credit Card Payment | Oct 28 | $150.00 (min) | Pending |
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="18750" max="25000" label="$18,750 of $25,000 saved (75%)" />
+<Stat label="Monthly target" value="$625/month" change="On track for June 2025" tone="success" />
+</Card>
+
+<Card title="Credit Score">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 from last month" tone="success" />
+<Stat label="Rating" value="Very Good" change="Excellent: 800+" tone="info" />
+</Columns>
+<Callout tone="info" title="Key factors">On-time payments (35%) • Credit utilization 18% (excellent) • Credit history 8 years • 3 hard inquiries in 2 years</Callout>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Select label="From account" name="fromAccount" options="Checking ($12,450.32) | Savings ($28,750.00)" placeholder="Select source account" required="true" />
+<Select label="To account" name="toAccount" options="Checking ($12,450.32) | Savings ($28,750.00) | Credit Card (-$3,240.18)" placeholder="Select destination account" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Minimum $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="Vacation fund, rent, etc." />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Columns>
+<Stat label="Credit Limit" value="$5,000.00" />
+<Stat label="Available" value="$1,759.82" />
+<Stat label="Utilization" value="64.8%" tone="warning" />
+</Columns>
+<Switch label="Freeze credit line" name="freezeCredit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Callout tone="warning" title="When frozen">New purchases, cash advances, and balance transfers will be declined. Automatic payments and returns still go through.</Callout>
+</Card>
+
+<Card title="Statement Period">
+<Form name="statement-period">
+<Select label="Select period" name="period" options="Current month (Oct 1–31) | Last month (Sep 1–30) | Last 3 months | Last 6 months | Year to date | Custom range" placeholder="Choose a period" required="true" />
+<Button variant="secondary">View Statement</Button>
+<Button variant="tertiary">Download PDF</Button>
+</Form>
+</Card>
+
+<Card title="Alert Preferences">
+<Form name="alert-prefs">
+<Checkboxes label="Transaction alerts" name="txnAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions | Online/phone purchases" hint="Get push/email for each" />
+<Checkboxes label="Balance & payment alerts" name="balanceAlerts" options="Low balance (<$500) | Direct deposit received | Bill payment due | Payment posted | Credit limit near max" value="Low balance (<$500) | Direct deposit received | Bill payment due" />
+<Checkboxes label="Security alerts" name="securityAlerts" options="New device login | Password changed | Contact info updated | Credit freeze/thaw | Dispute filed" value="New device login | Password changed | Contact info updated" />
+<Button>Save Preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select transaction" name="disputeTxn" options="Whole Foods Market - $127.43 (Today) | Shell Gas Station - $45.00 (Yesterday) | Netflix - $15.99 (2 days ago) | Amazon - $89.97 (3 days ago) | Starbucks - $6.75 (5 days ago) | Uber - $24.30 (5 days ago)" placeholder="Choose a transaction to dispute" required="true" />
+<Radio label="Dispute reason" name="disputeReason" options="Unauthorized charge | Wrong amount charged | Duplicate charge | Goods/services not received | Goods/services not as described | Canceled subscription still charged" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Describe what happened, include any merchant communication, order numbers, etc." rows="4" hint="Optional but helpful" />
+<Button variant="primary">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+<Callout tone="info" title="What happens next">We'll investigate within 10 business days. You may see a provisional credit within 1-2 days. You're not responsible for disputed amounts during investigation.</Callout>
+</Form>
+</Card>

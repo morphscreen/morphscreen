@@ -1,0 +1,267 @@
+# Factory Floor Supervisor Console
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="84.7%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Progress value="84.7" max="100" label="Target: 85%" tone="success" />
+<Details title="Breakdown" open="false">
+| Component | Score | Target |
+|---|---|---|
+| Availability | 92.3% | 90% |
+| Performance | 94.1% | 95% |
+| Quality | 97.2% | 98% |
+</Details>
+</Card>
+
+<Card title="Units Produced Today">
+<Stat label="Actual" value="12,847" change="+1,247 vs target" tone="success" icon="box" />
+<Stat label="Target" value="11,600" tone="neutral" />
+<Progress value="110.7" max="100" label="110.7% of daily target" tone="success" />
+</Card>
+
+<Card title="Safety Tracker">
+<Stat label="Incidents YTD" value="3" change="-2 vs last year" tone="success" icon="shield-check" />
+<Stat label="Days Since Last Incident" value="147" change="Record: 203 days" tone="info" icon="calendar" />
+<Badge tone="success">Zero lost-time injuries</Badge>
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Consumption" value="2,847 kWh" change="-3.2% vs avg" tone="success" icon="bolt" />
+<Stat label="Cost" value="$341.64" tone="neutral" />
+<Progress value="78" max="100" label="78% of daily budget" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Production Lines Overview">
+| Line | Status | Rate (units/hr) | Target | Efficiency | OEE |
+|---|---|---|---|---|---|
+| Line A - Stamping | <Badge tone="success">Running</Badge> | 485 | 500 | 97% | 89.2% |
+| Line B - Injection | <Badge tone="success">Running</Badge> | 312 | 320 | 97.5% | 87.8% |
+| Line C - Assembly | <Badge tone="warning">Slow</Badge> | 198 | 220 | 90% | 78.4% |
+| Line D - Packaging | <Badge tone="success">Running</Badge> | 420 | 400 | 105% | 91.1% |
+| Line E - Finishing | <Badge tone="danger">Down</Badge> | 0 | 180 | 0% | 0% |
+<Select label="Focus on line" name="line-focus" placeholder="Select a line to drill down" options="All lines | Line A - Stamping | Line B - Injection | Line C - Assembly | Line D - Packaging | Line E - Finishing" />
+</Card>
+
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %" title="Daily Defect Rate Trend">
+| Date | Defect Rate % |
+|---|---|
+| 2024-12-01 | 2.1 |
+| 2024-12-02 | 1.8 |
+| 2024-12-03 | 2.4 |
+| 2024-12-04 | 1.9 |
+| 2024-12-05 | 2.2 |
+| 2024-12-06 | 1.7 |
+| 2024-12-07 | 1.5 |
+| 2024-12-08 | 1.6 |
+| 2024-12-09 | 2.0 |
+| 2024-12-10 | 1.8 |
+| 2024-12-11 | 1.9 |
+| 2024-12-12 | 2.1 |
+| 2024-12-13 | 1.6 |
+| 2024-12-14 | 1.4 |
+| 2024-12-15 | 1.5 |
+| 2024-12-16 | 1.8 |
+| 2024-12-17 | 1.7 |
+| 2024-12-18 | 1.9 |
+| 2024-12-19 | 2.0 |
+| 2024-12-20 | 1.6 |
+| 2024-12-21 | 1.5 |
+| 2024-12-22 | 1.4 |
+| 2024-12-23 | 1.7 |
+| 2024-12-24 | 1.8 |
+| 2024-12-25 | 1.3 |
+| 2024-12-26 | 1.6 |
+| 2024-12-27 | 1.5 |
+| 2024-12-28 | 1.4 |
+| 2024-12-29 | 1.6 |
+| 2024-12-30 | 1.5 |
+</Chart>
+<Stat label="Current Rate" value="1.5%" change="-0.3% vs last week" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Downtime by Cause - This Month">
+<Chart type="donut" x="Cause" y="Hours" title="Total: 47.3 hours">
+| Cause | Hours |
+|---|---|
+| Mechanical failure | 18.5 |
+| Changeover | 12.2 |
+| Material shortage | 8.7 |
+| Quality hold | 4.1 |
+| Planned maintenance | 3.8 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due Date | Type | Hours Since Last |
+|---|---|---|---|---|
+| Press-03 | Line A | 2025-01-18 | Preventive | 492 |
+| Mold-07 | Line B | 2025-01-20 | Preventive | 510 |
+| Robot-02 | Line C | 2025-01-15 | Calibration | 1,205 |
+| Wrapper-01 | Line D | 2025-01-22 | Preventive | 485 |
+| Oven-04 | Line E | 2025-01-17 | Inspection | 2,100 |
+<Badge tone="warning">5 machines due within 7 days</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock">
+| Material | Current | Min Level | Max Level | Status | Days Supply |
+|---|---|---|---|---|---|
+| Steel coil (tons) | 47.2 | 15 | 80 | <Badge tone="success">OK</Badge> | 12 |
+| Resin pellets (tons) | 8.5 | 5 | 25 | <Badge tone="warning">Low</Badge> | 6 |
+| Packaging film (rolls) | 1,240 | 500 | 3,000 | <Badge tone="success">OK</Badge> | 18 |
+| Corrugate boxes | 18,500 | 5,000 | 25,000 | <Badge tone="success">OK</Badge> | 22 |
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel coil | 25 tons | 2025-01-16 | <Badge tone="info">Scheduled</Badge> |
+| PolymerWorks | Resin pellets | 12 tons | 2025-01-17 | <Badge tone="info">Scheduled</Badge> |
+| PackRight | Packaging film | 500 rolls | 2025-01-15 | <Badge tone="success">En route</Badge> |
+| BoxCo | Corrugate boxes | 8,000 | 2025-01-18 | <Badge tone="info">Scheduled</Badge> |
+| LubriTech | Lubricants | 200 L | 2025-01-19 | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units" title="Last 7 Days Average">
+| Shift | Units |
+|---|---|
+| Shift 1 (06-14) | 4,820 |
+| Shift 2 (14-22) | 4,590 |
+| Shift 3 (22-06) | 3,437 |
+</Chart>
+<Details title="Shift Details" open="false">
+| Metric | Shift 1 | Shift 2 | Shift 3 |
+|---|---|---|---|
+| Avg OEE | 87.2% | 85.4% | 78.9% |
+| Defect rate | 1.3% | 1.6% | 2.1% |
+| Downtime (hrs) | 1.2 | 1.8 | 3.4 |
+</Details>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch | Line | Product | Qty | Hold Reason | Since |
+|---|---|---|---|---|---|
+| B-20250114-003 | Line C | Widget-XL | 1,200 | Dimensional variance | 2025-01-14 08:30 |
+| B-20250113-007 | Line B | Gasket-Pro | 850 | Surface finish | 2025-01-13 14:22 |
+| B-20250112-011 | Line A | Bracket-Std | 2,400 | Material cert missing | 2025-01-12 10:15 |
+<Badge tone="warning">3 batches held, 4,450 units</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Work Orders">
+| WO # | Priority | Line | Description | Assigned | Due |
+|---|---|---|---|---|---|
+| WO-2025-0147 | <Badge tone="danger">Critical</Badge> | Line E | Replace heater bank Oven-04 | Maint Team 2 | 2025-01-15 |
+| WO-2025-0142 | <Badge tone="warning">High</Badge> | Line C | Calibrate Robot-02 | Maint Team 1 | 2025-01-15 |
+| WO-2025-0138 | <Badge tone="warning">High</Badge> | Line A | PM Press-03 (500hr) | Maint Team 1 | 2025-01-18 |
+| WO-2025-0135 | <Badge tone="info">Medium</Badge> | Line B | PM Mold-07 (500hr) | Maint Team 2 | 2025-01-20 |
+| WO-2025-0129 | <Badge tone="info">Medium</Badge> | Line D | Replace wrapper belts | Maint Team 1 | 2025-01-22 |
+| WO-2025-0121 | <Badge tone="neutral">Low</Badge> | Facility | HVAC filter change | Facilities | 2025-01-25 |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Select machine" options="Press-03 (Line A) | Mold-07 (Line B) | Robot-02 (Line C) | Wrapper-01 (Line D) | Oven-04 (Line E) | Press-01 (Line A) | Mold-03 (Line B) | Robot-05 (Line C) | Wrapper-02 (Line D) | Oven-02 (Line E)" required="true" />
+<Select label="Maintenance Type" name="maint-type" placeholder="Select type" options="Preventive | Corrective | Calibration | Inspection | Lubrication | Parts replacement" required="true" />
+<Date label="Scheduled Date" name="maint-date" required="true" />
+<Select label="Assigned Team" name="team" placeholder="Select team" options="Maintenance Team 1 | Maintenance Team 2 | Contractor - ABC Maint | Contractor - XYZ Service" required="true" />
+<TextArea label="Notes / Scope" name="notes" placeholder="Describe work to be performed..." rows="3" />
+<Button variant="primary">Schedule Maintenance</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="ANDON - Line E: Oven-04">
+<Badge tone="danger">CRITICAL</Badge> Heater bank failure - Line stopped | 2025-01-14 13:42 | WO-2025-0147 created
+</Callout>
+<Callout tone="warning" title="ANDON - Line C: Robot-02">
+<Badge tone="warning">WARNING</Badge> Position drift detected - Reduced speed | 2025-01-14 13:38 | Calibration overdue
+</Callout>
+<Callout tone="info" title="ANDON - Line B: Mold-07">
+<Badge tone="info">INFO</Badge> Preventive maintenance due in 2 days | 2025-01-14 12:15 | Scheduled for 2025-01-20
+</Callout>
+<Callout tone="warning" title="ANDON - Warehouse">
+<Badge tone="warning">WARNING</Badge> Resin pellets below minimum (8.5t) | 2025-01-14 11:30 | Delivery scheduled 2025-01-17
+</Callout>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Quick Actions">
+<Button variant="primary" size="large" icon="file-text">Export Shift Report</Button>
+<Button variant="secondary" size="large" icon="printer">Print Dashboard</Button>
+<Button variant="tertiary" size="large" icon="bell">Acknowledge All Alerts</Button>
+<Button variant="secondary" size="large" icon="refresh-cw">Refresh Data</Button>
+</Card>
+
+<Card title="Line Focus Detail" subtitle="Select a line above to see detailed metrics">
+<Details title="Line A - Stamping Detail" open="true">
+| Metric | Current | Target | Trend |
+|---|---|---|---|
+| Output (units/hr) | 485 | 500 | ↗ +12 |
+| OEE | 89.2% | 85% | ↗ +1.4% |
+| Availability | 94.1% | 90% | → |
+| Performance | 97.0% | 95% | ↗ +2% |
+| Quality | 97.5% | 98% | ↘ -0.3% |
+| Active alarms | 0 | - | → |
+| Next PM due | Press-03: 2025-01-18 | - | - |
+</Details>
+<Details title="Line B - Injection Detail" open="false">
+| Metric | Current | Target | Trend |
+|---|---|---|---|
+| Output (units/hr) | 312 | 320 | ↗ +8 |
+| OEE | 87.8% | 85% | ↗ +0.8% |
+| Availability | 91.5% | 90% | → |
+| Performance | 98.2% | 95% | ↗ +1.2% |
+| Quality | 97.8% | 98% | ↘ -0.1% |
+| Active alarms | 1 | - | → |
+| Next PM due | Mold-07: 2025-01-20 | - | - |
+</Details>
+<Details title="Line C - Assembly Detail" open="false">
+| Metric | Current | Target | Trend |
+|---|---|---|---|
+| Output (units/hr) | 198 | 220 | ↘ -15 |
+| OEE | 78.4% | 85% | ↘ -3.2% |
+| Availability | 88.2% | 90% | ↘ -2% |
+| Performance | 92.1% | 95% | ↘ -4% |
+| Quality | 96.5% | 98% | ↘ -0.8% |
+| Active alarms | 2 | - | → |
+| Next PM due | Robot-02: 2025-01-15 | - | - |
+</Details>
+<Details title="Line D - Packaging Detail" open="false">
+| Metric | Current | Target | Trend |
+|---|---|---|---|
+| Output (units/hr) | 420 | 400 | ↗ +25 |
+| OEE | 91.1% | 85% | ↗ +2.1% |
+| Availability | 95.3% | 90% | ↗ +1% |
+| Performance | 98.5% | 95% | ↗ +1.5% |
+| Quality | 97.0% | 98% | → |
+| Active alarms | 0 | - | → |
+| Next PM due | Wrapper-01: 2025-01-22 | - | - |
+</Details>
+<Details title="Line E - Finishing Detail" open="false">
+| Metric | Current | Target | Trend |
+|---|---|---|---|
+| Output (units/hr) | 0 | 180 | → |
+| OEE | 0% | 85% | → |
+| Availability | 0% | 90% | → |
+| Performance | 0% | 95% | → |
+| Quality | N/A | 98% | → |
+| Active alarms | 1 | - | → |
+| Next PM due | Oven-04: 2025-01-17 | - | - |
+</Details>
+</Card>
+</Columns>

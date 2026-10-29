@@ -1,0 +1,81 @@
+<Card title="Current Load & Capacity">
+<Columns>
+<Column>
+<Stat label="Current Load" value="5,200 MW" change="+" tone="info" />
+</Column>
+<Column>
+<Progress value="78" max="100" label="Capacity Utilization" />
+</Column>
+</Columns>
+</Card>
+
+<Card title="Generation Mix">
+<Chart type="pie" title="Generation by Source" x="Source" y="MWh">
+| Source | MWh |
+|---|---|
+| Coal | 2,400 |
+| Gas | 3,600 |
+| Nuclear | 1,200 |
+| Renewables | 2,800 |
+</Chart>
+</Card>
+
+<Card title="Plants">
+<Steps>
+<Step title="Plant A (150MW) - OK" status="done" />
+<Step title="Plant B (100MW) - Maintenance" status="current" />
+<Step title="Plant C (80MW) - offline" status="todo" />
+<Step title="Plant D (200MW) - OK" status="done" />
+<Step title="Plant E (120MW) - OK" status="done" />
+</Steps>
+</Card>
+
+<Card title="Outages">
+<Details title="Current Outages" open="true">
+<TextArea label="Outage Details" placeholder="Region X - 50MW lost due to fault" rows="3" />
+</Details>
+</Card>
+
+<Card title="Demand Forecast">
+<Chart type="line" title="24h Demand Forecast" x="Hour" y="MW">
+| Hour | Forecast |
+|---|---|
+| 0 | 4,800 |
+| 4 | 5,100 |
+| 8 | 5,500 |
+| 12 | 5,900 |
+| 16 | 6,200 |
+| 20 | 5,800 |
+| 24 | 5,300 |
+</Chart>
+</Card>
+
+<Card title="Price">
+<Stat label="Current Price" value="$45/MWh" change="±0.5%" tone="info" />
+</Card>
+
+<Card title="Maintenance">
+<Details title="Planned Maintenance" open="false">
+<TextArea label="Maintenance Schedule" placeholder="Plant B - 2025-03-10" rows="2" />
+</Details>
+</Card>
+
+<Card title="Live Alerts">
+<FollowUps>
+- High load in Region North
+- Transformer overload in Substation 3
+- Weather alert: Storm expected in South
+</FollowUps>
+</Card>
+
+<Card title="Region Focus">
+<Select label="Select Region" name="region" placeholder="Choose region" options="North | South | East | West" />
+</Card>
+
+<Card title="Curtailment Order">
+<Select label="Curtailment Priority" name="curtail" placeholder="Select priority" options="Cost-effective | Reliability-first | Random" />
+</Card>
+
+<Card title="Emissions">
+<Stat label="CO2 Emissions" value="12,000 t" change="+" tone="warning" />
+</Card>

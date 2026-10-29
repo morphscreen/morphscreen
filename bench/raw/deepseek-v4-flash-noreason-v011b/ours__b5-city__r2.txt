@@ -1,0 +1,280 @@
+# City Operations Center
+
+<Card title="City Pulse" subtitle="Live overview · Updated every 60 seconds">
+<Badge tone="info">Live</Badge> <Badge tone="warning">3 active alerts</Badge>
+</Card>
+
+<Card title="Current Weather">
+<Columns>
+<Stat label="Temperature" value="22°C" icon="thermometer" />
+<Stat label="Wind" value="12 km/h" icon="wind" />
+<Stat label="Humidity" value="58%" icon="droplet" />
+<Stat label="Condition" value="Partly Cloudy" icon="cloud" />
+</Columns>
+</Card>
+
+<Card title="Congestion Right Now">
+<Stat label="Downtown" value="74%" change="+5%" note="Heavy" tone="warning" icon="car" />
+<Stat label="Ring Road" value="42%" change="-3%" note="Moderate" tone="neutral" icon="car" />
+<Stat label="North Corridor" value="28%" change="0%" note="Light" tone="success" icon="car" />
+<Chart type="bar" x="Route" y="Congestion %">
+| Route | Congestion |
+|---|---|
+| Downtown | 74 |
+| Ring Road | 42 |
+| North Corridor | 28 |
+| East Bridge | 61 |
+| South Bypass | 35 |
+</Chart>
+</Card>
+
+<Card title="Transit Punctuality">
+<Stat label="Buses" value="87%" note="On time" tone="success" icon="bus" />
+<Stat label="Trains" value="92%" note="On time" tone="success" icon="train" />
+<Stat label="Trams" value="79%" note="Delayed avg 4 min" tone="warning" icon="train" />
+<Progress value="87" max="100" label="Overall punctuality" tone="success" />
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Riverside | 42 |
+| Industrial | 89 |
+| North Park | 31 |
+| Eastside | 55 |
+</Chart>
+<Badge tone="warning">Industrial: Unhealthy for sensitive groups</Badge>
+</Card>
+
+<Card title="Energy Use – Past Week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Usage |
+|---|---|
+| Mon | 3420 |
+| Tue | 3580 |
+| Wed | 3650 |
+| Thu | 3710 |
+| Fri | 3890 |
+| Sat | 3120 |
+| Sun | 2980 |
+</Chart>
+<Stat label="Weekly total" value="24,350 MWh" change="+2.1%" tone="neutral" icon="lightning" />
+</Card>
+
+<Card title="Water Use Today">
+<Stat label="Consumption" value="18.4M L" change="-1.2%" tone="success" icon="drop" />
+<Stat label="Peak hour" value="9:00 AM" icon="clock" />
+<Stat label="Status" value="Normal" tone="success" />
+</Card>
+
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="Active (4)">
+<Details title="Water main break · Riverside" open=true>
+<Badge tone="danger">Critical</Badge>
+<p>Location: 3rd &amp; Elm</p>
+<p>Severity: High – road closed, 2 blocks affected</p>
+<Stat label="Crew ETA" value="12 min" icon="clock" />
+<Button variant="secondary" ask="Show incident details for Riverside water main">View details</Button>
+</Details>
+<Details title="Traffic signal outage · Downtown">
+<Badge tone="warning">Moderate</Badge>
+<p>Location: Main &amp; 5th</p>
+<p>Severity: Medium – 4-way stop in effect</p>
+<Button variant="secondary" ask="Show incident details for Downtown signal outage">View details</Button>
+</Details>
+<Details title="Gas leak reported · Industrial">
+<Badge tone="danger">Critical</Badge>
+<p>Location: 12th Ave &amp; Pine</p>
+<p>Severity: High – evacuation in progress</p>
+<Button variant="secondary" ask="Show incident details for Industrial gas leak">View details</Button>
+</Details>
+<Details title="Flooding · Eastside">
+<Badge tone="warning">Moderate</Badge>
+<p>Location: River Rd near the bridge</p>
+<p>Severity: Medium – one lane closed</p>
+<Button variant="secondary" ask="Show incident details for Eastside flooding">View details</Button>
+</Details>
+</Tab>
+<Tab title="Resolved today (2)">
+<Details title="Power outage · North Park">
+<Badge tone="success">Resolved</Badge>
+<p>Restored at 14:23</p>
+</Details>
+<Details title="Tree down · South Bypass">
+<Badge tone="success">Resolved</Badge>
+<p>Cleared at 11:45</p>
+</Details>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Emergency Vehicle Deployment">
+<Columns>
+<Stat label="Ambulances" value="8" note="4 en route" icon="ambulance" />
+<Stat label="Fire trucks" value="5" note="2 on scene" icon="fire-truck" />
+<Stat label="Police units" value="12" note="6 patrolling" icon="police-car" />
+</Columns>
+<Chart type="bar" x="Zone" y="Units">
+| Zone | Ambulance | Fire | Police |
+|---|---|---|---|
+| Downtown | 2 | 1 | 4 |
+| Riverside | 1 | 0 | 2 |
+| Industrial | 3 | 2 | 3 |
+| North Park | 1 | 1 | 2 |
+| Eastside | 1 | 1 | 1 |
+</Chart>
+<Button variant="secondary" ask="Show live map of emergency vehicles">View live map</Button>
+</Card>
+
+<Card title="Parking Availability – Downtown">
+<Stat label="Garages" value="42%" note="1,240/2,950 spots" tone="warning" icon="parking" />
+<Stat label="Street meters" value="68%" note="340/500 spots" tone="success" icon="parking" />
+<Stat label="EV charging" value="14/20" note="6 available" tone="success" icon="lightning" />
+<Button variant="secondary" ask="Show parking map downtown">View parking map</Button>
+</Card>
+
+<Card title="Public Events This Weekend">
+<Details title="Saturday">
+<p><strong>Riverside Music Festival</strong> – 12 PM – 10 PM, Riverside Park</p>
+<p><strong>Farmers Market</strong> – 8 AM – 2 PM, Downtown Plaza</p>
+<p><strong>Yoga in the Park</strong> – 9 AM – 10 AM, North Park</p>
+</Details>
+<Details title="Sunday">
+<p><strong>City Marathon</strong> – 7 AM – 1 PM, route through Downtown &amp; Eastside</p>
+<p><strong>Art Exhibition</strong> – 10 AM – 6 PM, City Gallery</p>
+<p><strong>Food Truck Rally</strong> – 11 AM – 8 PM, South Bypass Lot</p>
+</Details>
+<Button variant="secondary" ask="Show full weekend event calendar">Full calendar</Button>
+</Card>
+
+<Card title="Citizen Reports – Live Feed">
+<Columns>
+<Stat label="Last 24h" value="47" icon="chat" />
+<Stat label="Pending review" value="12" tone="warning" icon="clock" />
+</Columns>
+<Details title="2 min ago · Pothole on 5th Ave" open=true>
+<p>Reported by: Sarah K. · <Badge tone="info">Roads</Badge></p>
+<p>"Deep pothole near the crosswalk, dangerous for cyclists."</p>
+</Details>
+<Details title="8 min ago · Broken streetlight">
+<p>Reported by: James T. · <Badge tone="info">Lighting</Badge></p>
+<p>"Streetlight at Oak &amp; 3rd has been out for 3 days."</p>
+</Details>
+<Details title="15 min ago · Noise complaint">
+<p>Reported by: Maria L. · <Badge tone="info">Noise</Badge></p>
+<p>"Loud construction after 10 PM on Elm Street."</p>
+</Details>
+<Details title="22 min ago · Graffiti reported">
+<p>Reported by: Alex R. · <Badge tone="info">Vandalism</Badge></p>
+<p>"Graffiti on the underpass wall near the station."</p>
+</Details>
+<Button variant="secondary" ask="Show all citizen reports">View all reports</Button>
+</Card>
+
+<Card title="Service Request Backlog">
+<Stat label="Open requests" value="342" tone="warning" icon="clipboard" />
+<Stat label="Overdue" value="28" tone="danger" icon="warning" />
+<Stat label="Avg resolution time" value="4.2 days" icon="clock" />
+<Chart type="bar" x="Category" y="Requests">
+| Category | Open | Overdue |
+|---|---|---|
+| Roads | 98 | 12 |
+| Lighting | 64 | 5 |
+| Water | 42 | 3 |
+| Parks | 38 | 2 |
+| Waste | 56 | 4 |
+| Other | 44 | 2 |
+</Chart>
+<Button variant="secondary" ask="Show full service request backlog">View backlog</Button>
+</Card>
+
+<Card title="Focus on One District">
+<Form name="district-focus">
+<Select label="Select district" options="All Districts | Downtown | Riverside | Industrial | North Park | Eastside | South Bypass" name="district" placeholder="Choose a district" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Incident type" options="Water main break | Gas leak | Fire | Traffic accident | Power outage | Tree down | Other" name="incident-type" placeholder="Select type" required />
+<Select label="District" options="Downtown | Riverside | Industrial | North Park | Eastside | South Bypass" name="district" placeholder="Select district" required />
+<Input label="Location / address" name="location" placeholder="e.g. 123 Main St" required />
+<Select label="Priority" options="Low | Medium | High | Critical" name="priority" required />
+<TextArea label="Notes for crew" name="notes" placeholder="Additional instructions…" rows="2" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a Public Alert">
+<Form name="public-alert">
+<Select label="Alert type" options="Weather warning | Road closure | Emergency evacuation | Boil water advisory | Other" name="alert-type" required />
+<Select label="Affected districts" options="All districts | Downtown | Riverside | Industrial | North Park | Eastside | South Bypass" name="districts" placeholder="Select one or more" required />
+<Input label="Headline" name="headline" placeholder="e.g. Flash flood warning" required />
+<TextArea label="Message" name="message" placeholder="Write the alert message citizens will see…" rows="3" required />
+<Select label="Severity" options="Info | Advisory | Warning | Emergency" name="severity" required />
+<Button variant="primary">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks Planned This Month">
+<Chart type="bar" x="Week" y="Sites">
+| Week | Active sites | New starts |
+|---|---|---|
+| Week 1 | 12 | 5 |
+| Week 2 | 15 | 4 |
+| Week 3 | 18 | 6 |
+| Week 4 | 14 | 3 |
+</Chart>
+<Details title="Week 1 – Active sites">
+<p>• Downtown: Main St resurfacing (5th – 8th) – lane closures</p>
+<p>• Riverside: Elm St sewer upgrade – full closure</p>
+</Details>
+<Details title="Week 2 – Active sites">
+<p>• North Park: Oak Ave repaving – flaggers in place</p>
+<p>• Eastside: River Rd bridge inspection – one lane</p>
+</Details>
+<Details title="Week 3 – Active sites">
+<p>• Industrial: 12th Ave utility work – detour in effect</p>
+<p>• South Bypass: expansion joint repair – night work only</p>
+</Details>
+<Details title="Week 4 – Active sites">
+<p>• Downtown: Plaza renovation – pedestrian detour</p>
+<p>• Riverside: Park Dr drainage work – partial closure</p>
+</Details>
+<Button variant="secondary" ask="Show full roadworks calendar">Full roadworks calendar</Button>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+<Columns>
+<Stat label="Overdue" value="18" tone="danger" icon="warning" />
+<Stat label="Due this month" value="34" tone="warning" icon="calendar" />
+<Stat label="Scheduled" value="22" tone="success" icon="check-circle" />
+</Columns>
+<Chart type="bar" x="Category" y="Jobs">
+| Category | Overdue | Due this month |
+|---|---|---|
+| Bridges | 3 | 5 |
+| Water mains | 5 | 8 |
+| Sewers | 4 | 7 |
+| Roads | 4 | 9 |
+| Streetlights | 2 | 5 |
+</Chart>
+<Details title="Top priority – Overdue">
+<p><strong>Water main inspection</strong> – Riverside – overdue by 14 days</p>
+<p><strong>Bridge joint repair</strong> – Eastside – overdue by 9 days</p>
+<p><strong>Sewer line cleaning</strong> – Industrial – overdue by 6 days</p>
+</Details>
+<Button variant="secondary" ask="Show full maintenance schedule">View maintenance schedule</Button>
+</Card>
+
+<FollowUps>
+- [Show me the live map of all city operations](#)
+- [What's the latest on the Industrial gas leak?](#)
+- [Generate a daily summary report](#)
+- [Which districts need attention right now?](#)
+</FollowUps>

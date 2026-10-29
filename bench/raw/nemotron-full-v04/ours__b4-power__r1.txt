@@ -1,0 +1,118 @@
+# Power Network Operations Console
+
+<Select label="Focus Region" name="region" placeholder="All Regions" options="All Regions | North Grid | South Grid | East Grid | West Grid | Central Hub" value="All Regions" />
+
+<Columns>
+<Card title="Network Load" subtitle="Real-time">
+<Stat label="Current Load" value="42,850 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Progress value="78" max="100" label="Capacity Utilization: 78%" />
+</Card>
+
+<Card title="Current Price">
+<Stat label="Price per MWh" value="$67.40" change="-$2.10 vs yesterday" tone="success" />
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ Emissions" value="18,420 t" change="-3.2% vs avg" tone="success" />
+<Stat label="Carbon Intensity" value="429 g/kWh" change="-12 g/kWh" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Generation Mix (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 14,200 |
+| Nuclear | 11,800 |
+| Wind | 8,900 |
+| Solar | 5,600 |
+| Hydro | 2,350 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast (Next 24h)">
+<Chart type="line" title="Projected Demand" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38,200 | 38,450 |
+| 03:00 | 35,100 | 35,300 |
+| 06:00 | 36,800 | 37,100 |
+| 09:00 | 41,200 | 40,900 |
+| 12:00 | 44,500 | 44,200 |
+| 15:00 | 46,800 | 46,500 |
+| 18:00 | 48,200 | 47,900 |
+| 21:00 | 43,600 | 43,800 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants - Live Output & Status">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Status | Last Update |
+|---|---|---|---|---|---|---|
+| Northridge CCGT | North Grid | Natural Gas | 1,850 | 2,200 | <Badge tone="success">Online</Badge> | 10:42 |
+| Lakeside Nuclear | Central Hub | Nuclear | 2,200 | 2,200 | <Badge tone="success">Online</Badge> | 10:42 |
+| Windmere Farm | West Grid | Wind | 1,200 | 1,500 | <Badge tone="success">Online</Badge> | 10:41 |
+| Solar Valley | South Grid | Solar | 890 | 1,200 | <Badge tone="info">Derated</Badge> | 10:40 |
+| Riverbend Hydro | East Grid | Hydro | 420 | 600 | <Badge tone="success">Online</Badge> | 10:42 |
+| Coastal Gas | South Grid | Natural Gas | 950 | 1,100 | <Badge tone="warning">Ramping</Badge> | 10:39 |
+| Old Mill Peaker | North Grid | Natural Gas | 0 | 300 | <Badge tone="neutral">Standby</Badge> | 10:35 |
+| Greenfield Solar | Central Hub | Solar | 340 | 500 | <Badge tone="info">Derated</Badge> | 10:41 |
+</Card>
+
+<Columns>
+<Card title="Active Outages">
+| Region | Substation | Customers Affected | Est. Restore | Cause |
+|---|---|---|---|---|
+| East Grid | Riverside 115kV | 12,400 | 14:30 | Storm damage |
+| West Grid | Pinecrest 69kV | 3,200 | 12:00 | Equipment fault |
+| South Grid | Harbor 230kV | 8,700 | 16:45 | Scheduled repair |
+</Card>
+
+<Card title="Planned Maintenance (This Month)">
+| Plant | Region | Dates | Type | Impact |
+|---|---|---|---|---|
+| Lakeside Nuclear Unit 2 | Central Hub | Oct 14-20 | Refueling | -1,100 MW |
+| Riverbend Hydro | East Grid | Oct 22-24 | Turbine inspection | -200 MW |
+| Coastal Gas | South Grid | Oct 28-30 | HRSG maintenance | -400 MW |
+| Northridge CCGT | North Grid | Nov 3-5 | Combustor inspection | -600 MW |
+</Card>
+</Columns>
+
+<Card title="Live Alerts">
+<Callout tone="warning" title="⚠ Frequency Deviation" >
+Grid frequency at 59.97 Hz — outside nominal band. Primary response activated.
+</Callout>
+<Callout tone="info" title="📊 Wind Forecast Update" >
+West Grid wind output revised +400 MW for 14:00-18:00 window.
+</Callout>
+<Callout tone="danger" title="🔴 Transmission Constraint" >
+Path 45 (North→Central) at 98% thermal limit. Curtailment may be required.
+</Callout>
+<Callout tone="success" title="✅ Unit Returned" >
+Greenfield Solar Unit 3 restored to full capacity (500 MW).
+</Callout>
+</Card>
+
+<Card title="Order Curtailment">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant" name="plant" placeholder="Select plant" options="Solar Valley (South Grid) | Greenfield Solar (Central Hub) | Windmere Farm (West Grid) | Coastal Gas (South Grid) | Old Mill Peaker (North Grid)" required="true" />
+<Input label="Curtailment Amount (MW)" name="amount" type="number" placeholder="e.g., 200" step="10" required="true" />
+</Columns>
+<Columns>
+<Select label="Reason" name="reason" placeholder="Select reason" options="Transmission constraint | Frequency regulation | Economic dispatch | Emergency" required="true" />
+<Date label="Effective From" name="effective_from" required="true" />
+</Columns>
+<TextArea label="Operator Notes" name="notes" placeholder="Reason for curtailment, expected duration, coordination notes..." rows="3" />
+<Button variant="danger">Submit Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show real-time frequency chart
+- Open transmission line loading dashboard
+- View renewable curtailment history
+- Check reserve margins by region
+</FollowUps>

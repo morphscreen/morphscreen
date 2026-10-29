@@ -1,0 +1,94 @@
+<Card title="Logistics Coordinator Board">
+  <Badge tone="info">Last refreshed: 15 min ago</Badge>
+</Card>
+
+<Card title="Shipments in Transit">
+  <Columns>
+    <Card title="NYC → Chicago">
+      <Stat label="ETA" value="2h 15m" tone="info" />
+      <Stat label="Status" value="On Time" tone="success" icon="truck" />
+      <Button ask="Flag shipment NYC→Chicago" variant="secondary" size="small">Flag</Button>
+    </Card>
+    <Card title="LA → Dallas">
+      <Stat label="ETA" value="5h 40m" tone="warning" />
+      <Stat label="Status" value="Delayed" tone="danger" icon="warning-circle" />
+      <Button ask="Flag shipment LA→Dallas" variant="secondary" size="small">Flag</Button>
+    </Card>
+    <Card title="Miami → Atlanta">
+      <Stat label="ETA" value="1h 50m" tone="info" />
+      <Stat label="Status" value="On Time" tone="success" icon="truck" />
+      <Button ask="Flag shipment Miami→Atlanta" variant="secondary" size="small">Flag</Button>
+    </Card>
+    <Card title="Seattle → Denver">
+      <Stat label="ETA" value="3h 20m" tone="warning" />
+      <Stat label="Status" value="Delayed" tone="danger" icon="warning-circle" />
+      <Button ask="Flag shipment Seattle→Denver" variant="secondary" size="small">Flag</Button>
+    </Card>
+  </Columns>
+</Card>
+
+<Card title="Delayed Shipments">
+  <Callout tone="danger" title="2 Delayed">
+    <ul>
+      <li>LA → Dallas (ETA 5h 40m) – Weather delay</li>
+      <li>Seattle → Denver (ETA 3h 20m) – Mechanical issue</li>
+    </ul>
+  </Callout>
+  <Button ask="View all delayed shipments">View Details</Button>
+</Card>
+
+<Card title="Key Metrics">
+  <Columns>
+    <Stat label="On-Time % (This Month)" value="94%" tone="success" icon="check-circle" />
+    <Stat label="Avg Cost per Shipment" value="$342" tone="info" icon="currency-dollar" />
+  </Columns>
+</Card>
+
+<Card title="Volume Split by Carrier">
+  <Chart type="pie" title="Carrier Share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 45 |
+| UPS | 30 |
+| DHL | 15 |
+| USPS | 10 |
+</Chart>
+</Card>
+
+<Card title="Search by Route">
+  <Form name="route-search">
+    <Input label="Origin" placeholder="e.g., NYC" name="origin" />
+    <Input label="Destination" placeholder="e.g., Chicago" name="destination" />
+    <Button>Search</Button>
+  </Form>
+</Card>
+
+<Card title="Weekly Volume (Past 2 Months)">
+  <Chart type="line" x="Week" y="Shipments">
+| Week | Volume |
+|---|---|
+| W1 | 42 |
+| W2 | 38 |
+| W3 | 51 |
+| W4 | 47 |
+| W5 | 44 |
+| W6 | 53 |
+| W7 | 49 |
+| W8 | 56 |
+</Chart>
+</Card>
+
+<Card title="Flag a Shipment">
+  <Form name="flag-shipment">
+    <Select label="Shipment" options="NYC → Chicago | LA → Dallas | Miami → Atlanta | Seattle → Denver" name="shipment" />
+    <TextArea label="Reason" placeholder="e.g., Weather delay" name="reason" rows="2" />
+    <Button variant="danger">Flag Shipment</Button>
+  </Form>
+</Card>
+
+<FollowUps>
+- Show me the route map for delayed shipments
+- What caused the Seattle→Denver delay?
+- Compare carrier on-time percentages
+- Export this board as a report
+</FollowUps>

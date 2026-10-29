@@ -1,0 +1,86 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Last refreshed">2024-01-15 14:32 UTC</Callout>
+
+<Card title="Shipments in Transit">
+<Input label="Search by route" placeholder="Enter origin → destination (e.g., LAX → JFK)" />
+<Tabs>
+<Tab title="All (24)">
+| Shipment | Origin | Destination | ETA | Status | Carrier | Cost | Flag |
+|---|---|---|---|---|---|---|---|
+| SHP-8842 | Shanghai (SHA) | Los Angeles (LAX) | 2024-01-18 06:00 | <Badge tone="success">On Time</Badge> | Maersk | $2,840 | <Checkboxes options="Flag" name="flag-8842" value="" /> |
+| SHP-8843 | Rotterdam (RTM) | New York (JFK) | 2024-01-17 14:30 | <Badge tone="success">On Time</Badge> | MSC | $3,120 | <Checkboxes options="Flag" name="flag-8843" value="" /> |
+| SHP-8844 | Singapore (SIN) | Long Beach (LGB) | 2024-01-19 22:00 | <Badge tone="danger">Delayed</Badge> | CMA CGM | $2,950 | <Checkboxes options="Flag" name="flag-8844" value="Flag" /> |
+| SHP-8845 | Hamburg (HAM) | Savannah (SAV) | 2024-01-16 08:45 | <Badge tone="success">On Time</Badge> | Hapag-Lloyd | $3,400 | <Checkboxes options="Flag" name="flag-8845" value="" /> |
+| SHP-8846 | Busan (PUS) | Seattle (SEA) | 2024-01-20 11:20 | <Badge tone="warning">At Risk</Badge> | ONE | $2,680 | <Checkboxes options="Flag" name="flag-8846" value="" /> |
+| SHP-8847 | Ningbo (NGB) | Oakland (OAK) | 2024-01-18 16:00 | <Badge tone="success">On Time</Badge> | COSCO | $2,790 | <Checkboxes options="Flag" name="flag-8847" value="" /> |
+| SHP-8848 | Antwerp (ANR) | Houston (HOU) | 2024-01-17 03:15 | <Badge tone="danger">Delayed</Badge> | Maersk | $3,560 | <Checkboxes options="Flag" name="flag-8848" value="Flag" /> |
+| SHP-8849 | Shenzhen (SZX) | Tacoma (TIW) | 2024-01-21 09:30 | <Badge tone="success">On Time</Badge> | Evergreen | $2,510 | <Checkboxes options="Flag" name="flag-8849" value="" /> |
+</Tab>
+<Tab title="Delayed (2)">
+| Shipment | Origin | Destination | ETA | Status | Carrier | Cost | Delay Reason | Flag |
+|---|---|---|---|---|---|---|---|---|
+| SHP-8844 | Singapore (SIN) | Long Beach (LGB) | 2024-01-19 22:00 | <Badge tone="danger">Delayed</Badge> | CMA CGM | $2,950 | Port congestion | <Checkboxes options="Flag" name="flag-8844-d" value="Flag" /> |
+| SHP-8848 | Antwerp (ANR) | Houston (HOU) | 2024-01-17 03:15 | <Badge tone="danger">Delayed</Badge> | Maersk | $3,560 | Vessel mechanical issue | <Checkboxes options="Flag" name="flag-8848-d" value="Flag" /> |
+</Tab>
+<Tab title="Flagged (2)">
+| Shipment | Origin | Destination | ETA | Status | Carrier | Cost | Flagged By | Flag |
+|---|---|---|---|---|---|---|---|---|
+| SHP-8844 | Singapore (SIN) | Long Beach (LGB) | 2024-01-19 22:00 | <Badge tone="danger">Delayed</Badge> | CMA CGM | $2,950 | J. Chen | <Checkboxes options="Flag" name="flag-8844-f" value="Flag" /> |
+| SHP-8848 | Antwerp (ANR) | Houston (HOU) | 2024-01-17 03:15 | <Badge tone="danger">Delayed</Badge> | Maersk | $3,560 | M. Rodriguez | <Checkboxes options="Flag" name="flag-8848-f" value="Flag" /> |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="On-Time Performance (This Month)">
+<Stat label="On-Time %" value="91.7%" change="+2.3% vs last month" tone="success" icon="chart-line" />
+<Stat label="Total Shipments" value="24" change="2 delayed" tone="neutral" icon="package" />
+<Stat label="Avg Cost/Shipment" value="$2,981" change="-$47 vs last month" tone="info" icon="currency-usd" />
+</Card>
+
+<Card title="Delayed Shipments Alert">
+<Callout tone="danger" title="2 shipments delayed">
+<strong>SHP-8844</strong> (SIN → LGB): Port congestion at Long Beach, +3 days<br />
+<strong>SHP-8848</strong> (ANR → HOU): Vessel mechanical issue, +2 days<br />
+Both flagged for escalation.
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Volume Split by Carrier">
+<Chart type="donut" title="Shipments by Carrier" x="Carrier" y="Volume">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 5 |
+| MSC | 4 |
+| CMA CGM | 3 |
+| Hapag-Lloyd | 3 |
+| ONE | 3 |
+| COSCO | 3 |
+| Evergreen | 3 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 8 Weeks)">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 (Nov 18) | 18 |
+| W2 (Nov 25) | 22 |
+| W3 (Dec 2) | 25 |
+| W4 (Dec 9) | 21 |
+| W5 (Dec 16) | 24 |
+| W6 (Dec 23) | 19 |
+| W7 (Dec 30) | 16 |
+| W8 (Jan 6) | 24 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Quick Actions">
+<Button variant="primary" icon="flag">Flag Selected Shipments</Button>
+<Button variant="secondary" icon="download">Export Current View</Button>
+<Button variant="tertiary" icon="bell">Set Delay Alerts</Button>
+</Card>

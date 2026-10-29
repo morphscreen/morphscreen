@@ -1,0 +1,80 @@
+# Logistics Coordinator Dashboard
+
+<Card title="Shipments in Transit" subtitle="Live tracking view">
+<Badge tone="info">Last refreshed: 2 min ago</Badge>
+
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SHP-3841 | Shenzhen, CN | Los Angeles, US | 2025-04-12 14:30 | On time |
+| SHP-3842 | Hamburg, DE | Chicago, US | 2025-04-10 09:15 | On time |
+| SHP-3843 | Mumbai, IN | Rotterdam, NL | 2025-04-14 18:00 | On time |
+| SHP-3844 | Shanghai, CN | Long Beach, US | 2025-04-09 11:45 | Delayed |
+| SHP-3845 | Santos, BR | Houston, US | 2025-04-13 07:00 | On time |
+| SHP-3846 | Busan, KR | Seattle, US | 2025-04-11 16:30 | Delayed |
+
+<Callout tone="warning" title="Delayed shipments">
+**SHP-3844** — Shanghai → Long Beach — ETA 2025-04-09 11:45 — Customs hold<br/>
+**SHP-3846** — Busan → Seattle — ETA 2025-04-11 16:30 — Weather delay
+</Callout>
+
+<Button ask="Flag shipment SHP-3844">Flag SHP-3844</Button>
+<Button ask="Flag shipment SHP-3846">Flag SHP-3846</Button>
+</Card>
+
+<Card title="Key Metrics This Month">
+<Columns>
+<Stat label="On-time percentage" value="86.7%" change="+2.1% vs last month" tone="success" icon="chart-line" />
+<Stat label="Average cost per shipment" value="$1,247" change="-$38 vs last month" tone="success" icon="trend-down" />
+<Stat label="Total shipments" value="1,082" icon="package" />
+</Columns>
+</Card>
+
+<Card title="Volume Split by Carrier">
+<Chart type="pie" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 423 |
+| MSC | 318 |
+| CMA CGM | 201 |
+| COSCO | 140 |
+</Chart>
+</Card>
+
+<Card title="Search by Route">
+<Form name="route-search">
+<Input label="Origin" placeholder="City or port" />
+<Input label="Destination" placeholder="City or port" />
+<Button>Search routes</Button>
+</Form>
+</Card>
+
+<Card title="Weekly Volume — Past 2 Months">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| Feb 24 | 112 |
+| Mar 3 | 128 |
+| Mar 10 | 135 |
+| Mar 17 | 119 |
+| Mar 24 | 141 |
+| Mar 31 | 107 |
+| Apr 7 | 124 |
+| Apr 14 | 98 |
+</Chart>
+</Card>
+
+<Card title="Flag a Shipment">
+<Form name="flag-shipment">
+<Input label="Shipment ID" placeholder="e.g. SHP-3844" required="true" />
+<Select label="Reason" options="Customs hold | Weather delay | Address issue | Damaged goods | Other" name="reason" placeholder="Select a reason" required="true" />
+<TextArea label="Notes" placeholder="Add details about the issue" rows="3" />
+<Button>Flag shipment</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the most delayed carrier this month
+- Which route has the highest on-time rate?
+- Export the transit board as CSV
+- Compare costs between Maersk and MSC
+</FollowUps>

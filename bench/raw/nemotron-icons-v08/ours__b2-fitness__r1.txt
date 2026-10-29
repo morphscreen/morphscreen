@@ -1,0 +1,50 @@
+# Daily Fitness Summary
+
+<Card title="Today's Activity" icon="chart-line">
+<Columns>
+<Card title="Steps" subtitle="Daily goal: 10,000">
+<Progress value="7842" max="10000" label="7,842 / 10,000 steps" tone="success" />
+<Stat label="Progress" value="78%" change="+1,234 vs yesterday" tone="info" icon="shoe-prints" />
+</Card>
+
+<Card title="Calories Burned" subtitle="Active + resting">
+<Stat label="Total" value="2,347 kcal" change="+312 active" tone="success" icon="fire" />
+<Stat label="Active" value="587 kcal" change="From 3 workouts" tone="info" icon="dumbbell" />
+<Stat label="Resting" value="1,760 kcal" change="Baseline" tone="neutral" icon="moon" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Workouts This Week" icon="calendar">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Minutes | Calories |
+|---|---|---|
+| Mon | 45 | 420 |
+| Tue | 0 | 0 |
+| Wed | 30 | 280 |
+| Thu | 60 | 550 |
+| Fri | 45 | 410 |
+| Sat | 0 | 0 |
+| Sun | 35 | 320 |
+</Chart>
+<Stat label="Weekly total" value="215 min" change="3,180 kcal burned" tone="success" icon="timer" />
+</Card>
+
+<Card title="Log a New Workout" icon="plus-circle">
+<Form name="log-workout">
+<Select label="Workout type" placeholder="Select workout type" options="Running | Cycling | Swimming | Strength Training | Yoga | HIIT | Walking | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="45" min="1" max="300" step="5" required="true" />
+<Input label="Calories burned (est.)" type="number" placeholder="350" min="0" max="2000" step="10" />
+<Date label="Date" />
+<TextArea label="Notes" placeholder="How did it feel? Any details to remember..." rows="3" />
+<Button>Save workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my monthly trends
+- Set a new step goal
+- View workout history
+- Sync with Apple Health / Google Fit
+</FollowUps>

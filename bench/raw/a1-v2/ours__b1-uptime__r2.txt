@@ -1,0 +1,17 @@
+<Card title="Platform Status" subtitle="API uptime and incidents for the current month">
+<Stat label="API Uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved">
+<Callout tone="info" title="Partial API degradation — 2025-01-12">
+Between 08:14 and 09:03 UTC, a subset of `/v1/search` requests returned 503 errors due to a connection pool exhaustion in the search worker fleet. The root cause was a misconfigured max-connections limit after the 1.14 deploy. Rolling back the config change and restarting affected workers restored full availability at 09:03 UTC. No data loss occurred.
+</Callout>
+<Details title="Incident timeline" open="false">
+- **08:14 UTC** – Alert fired: elevated 503 rate on `/v1/search`
+- **08:18 UTC** – On-call confirmed connection pool saturation
+- **08:25 UTC** – Identified config regression from 1.14 deploy
+- **08:32 UTC** – Rolled back worker config via feature flag
+- **08:45 UTC** – Gradual recovery observed
+- **09:03 UTC** – All metrics green; incident closed
+</Details>
+</Card>

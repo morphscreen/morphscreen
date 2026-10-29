@@ -1,0 +1,122 @@
+# SaaS Admin Overview
+
+<Card title="Reporting period" subtitle="Choose the time window for all metrics below">
+<Select label="Period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date" value="Last 90 days" />
+</Card>
+
+<Card title="Key metrics" subtitle="As of today">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$84,320" change="+4.2% vs last month" tone="success" icon="trend-up" />
+<Stat label="Annual Recurring Revenue" value="$1,011,840" change="+3.8% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Churn this month" value="1.8%" change="−0.3 pts vs last month" tone="info" icon="user-minus" />
+<Stat label="Current NPS" value="48" change="+5 vs last quarter" tone="success" icon="star" />
+</Columns>
+</Card>
+
+<Card title="New signups — past 90 days">
+<Chart type="line" x="Week" y="New signups">
+| Week | Signups |
+|---|---|
+| W1 | 142 |
+| W2 | 168 |
+| W3 | 155 |
+| W4 | 189 |
+| W5 | 201 |
+| W6 | 224 |
+| W7 | 198 |
+| W8 | 243 |
+| W9 | 267 |
+| W10 | 281 |
+| W11 | 254 |
+| W12 | 296 |
+| W13 | 312 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 268 |
+| Enterprise | 74 |
+</Chart>
+</Card>
+
+<Card title="Ten largest customers">
+| Customer | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Acme Corp | Enterprise | 250 | $12,500 |
+| Globex Inc. | Enterprise | 180 | $9,000 |
+| Initech | Enterprise | 150 | $7,500 |
+| Umbrella Corp | Enterprise | 120 | $6,000 |
+| Stark Industries | Enterprise | 95 | $4,750 |
+| Wayne Enterprises | Enterprise | 80 | $4,000 |
+| Pied Piper | Growth | 64 | $2,240 |
+| Hooli | Growth | 58 | $2,030 |
+| Vandelay Industries | Growth | 47 | $1,645 |
+| Dunder Mifflin | Growth | 39 | $1,365 |
+</Card>
+
+<Card title="Accounts at risk" subtitle="Flagged in the last 7 days">
+<Tabs>
+<Tab title="All at risk">
+| Customer | Plan | Seats | Reason |
+|---|---|---|---|
+| Initech | Enterprise | 150 | No login in 21 days; support ticket unresolved for 12 days |
+| Pied Piper | Growth | 64 | Usage down 45% month-over-month |
+| Dunder Mifflin | Growth | 39 | Billing contact changed; renewal not confirmed |
+| Vandelay Industries | Growth | 47 | Competitor quote shared in email |
+| Hooli | Growth | 58 | Seat count reduced from 70 to 58 |
+</Tab>
+<Tab title="High risk only">
+| Customer | Plan | Seats | Reason |
+|---|---|---|---|
+| Initech | Enterprise | 150 | No login in 21 days; support ticket unresolved for 12 days |
+| Vandelay Industries | Growth | 47 | Competitor quote shared in email |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Failed payments" subtitle="Needs action">
+| Customer | Amount | Failed on | Attempts | Action |
+|---|---|---|---|---|
+| Hooli | $2,030 | Aug 14 | 3 | <Button size="small" variant="secondary">Retry payment</Button> |
+| Stark Industries | $4,750 | Aug 12 | 2 | <Button size="small" variant="secondary">Retry payment</Button> |
+| Dunder Mifflin | $1,365 | Aug 10 | 1 | <Button size="small" variant="secondary">Retry payment</Button> |
+| Umbrella Corp | $6,000 | Aug 8 | 4 | <Button size="small" variant="secondary">Retry payment</Button> |
+</Card>
+
+<Card title="Feature adoption" subtitle="Active usage among all customers">
+<Chart type="bar" x="Feature" y="% of customers">
+| Feature | Adoption |
+|---|---|
+| AI Insights | 62 |
+| API v2 | 45 |
+| Team Dashboards | 38 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization" subtitle="Across all plans">
+<Columns>
+<Stat label="Seats purchased" value="9,847" icon="users" />
+<Stat label="Seats in use" value="7,231" icon="user-check" />
+<Stat label="Utilization" value="73.4%" tone="warning" icon="gauge" />
+</Columns>
+<Progress value="73" max="100" label="Overall seat utilization" tone="warning" />
+</Card>
+
+<Card title="Invite an admin" subtitle="Give a teammate access to this dashboard">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="colleague@company.com" required="true" />
+<Select label="Role" options="Admin — full access | Billing — payments only | Viewer — read only" placeholder="Choose a role" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the revenue breakdown by plan
+- Which accounts are closest to churning?
+- What's driving the NPS improvement?
+- Compare seat utilization across plans
+</FollowUps>

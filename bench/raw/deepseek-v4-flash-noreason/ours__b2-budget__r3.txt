@@ -1,0 +1,69 @@
+# Personal Budget Check
+
+<Card title="Budget Overview">
+<Columns>
+<Stat label="Monthly Budget" value="$3,200" note="Fixed for all months" icon="wallet" />
+<Stat label="Spent This Month" value="$2,845.50" change="89%" tone="warning" icon="chart-line" />
+<Stat label="Remaining" value="$354.50" change="11% left" tone="success" icon="piggy-bank" />
+</Columns>
+
+<Progress value="2845" max="3200" label="Budget used: $2,845.50 of $3,200" tone="warning" />
+</Card>
+
+<Card title="Spending by Category" subtitle="Where your money went this month">
+<Chart type="donut" title="Category Breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 1,400 |
+| Food & Dining | 620 |
+| Transportation | 310 |
+| Entertainment | 225 |
+| Utilities | 180 |
+| Shopping | 110.50 |
+</Chart>
+
+| Category | Budgeted | Spent | Status |
+|---|---|---|---|
+| Housing | $1,400 | $1,400.00 | <Badge tone="success">On track</Badge> |
+| Food & Dining | $600 | $620.00 | <Badge tone="warning">Over by $20</Badge> |
+| Transportation | $350 | $310.00 | <Badge tone="success">On track</Badge> |
+| Entertainment | $250 | $225.00 | <Badge tone="success">On track</Badge> |
+| Utilities | $200 | $180.00 | <Badge tone="success">On track</Badge> |
+| Shopping | $400 | $110.50 | <Badge tone="success">On track</Badge> |
+</Card>
+
+<Card title="Largest Expense" subtitle="Highlighted for your attention">
+<Callout tone="warning" title="Top expense — Rent">
+**$1,400.00** on Housing (Apartment rent, paid on Mar 1). This represents **49%** of your total monthly spending.
+</Callout>
+</Card>
+
+<Card title="Select a Month">
+<Tabs>
+<Tab title="March 2025">
+<Callout tone="info" title="Current month">Showing March 2025 — $2,845.50 spent.</Callout>
+</Tab>
+<Tab title="February 2025">
+<Callout tone="neutral" title="Previous month">February 2025 — $3,020.00 spent, 94% of budget.</Callout>
+</Tab>
+<Tab title="January 2025">
+<Callout tone="neutral" title="Earlier month">January 2025 — $2,610.75 spent, 82% of budget.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" min="0" step="0.01" required="true" />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Food & Dining | Transportation | Entertainment | Utilities | Shopping | Other" required="true" />
+<Date label="Date" name="date" required="true" />
+<Button>Add Expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What is the month-over-month trend for my top spending categories?
+- Which categories are closest to exceeding their budget?
+- Suggest a realistic budget for next month based on my spending patterns.
+</FollowUps>

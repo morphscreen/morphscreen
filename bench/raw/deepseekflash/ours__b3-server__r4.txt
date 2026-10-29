@@ -1,0 +1,50 @@
+<Card title="Service Health" subtitle="On-call engineer view">
+<Select label="Region" options="All regions | us-east-1 | us-west-2 | eu-central-1 | ap-southeast-1" value="All regions" hint="Narrows all metrics below to the selected region" />
+
+<Columns>
+<Stat label="Uptime (this quarter)" value="99.95%" note="SLA target: 99.9%" />
+<Stat label="Error rate (now)" value="0.42%" note="5-min window · threshold 1.0%" />
+<Stat label="Open incidents" value="3" note="1 SEV1 · 1 SEV2 · 1 SEV3" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="CPU & memory usage — last 24h">
+<Chart type="area" title="CPU & memory usage — last 24h" x="Time (UTC)" y="%">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 04:00 | 38 | 58 |
+| 08:00 | 55 | 63 |
+| 12:00 | 72 | 68 |
+| 16:00 | 65 | 66 |
+| 20:00 | 48 | 62 |
+| Now | 44 | 60 |
+</Chart>
+</Card>
+
+<Card title="Open incidents" subtitle="3 active">
+- **auth-prod-4821** — <Badge tone="danger">SEV1</Badge> — us-east-1 — <Button variant="secondary">Acknowledge</Button>
+- **checkout-slow-1130** — <Badge tone="warning">SEV2</Badge> — eu-central-1 — <Button variant="secondary">Acknowledge</Button>
+- **reporting-timeout-204** — <Badge tone="info">SEV3</Badge> — ap-southeast-1 — <Button variant="secondary">Acknowledge</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Slowest endpoints" subtitle="Past 24h · p95 latency">
+| Endpoint | Latency |
+|---|---|
+| POST /v1/orders | 1.84s |
+| GET /v1/catalog/search | 1.32s |
+| POST /v1/payments | 1.05s |
+| GET /v1/users/{id}/profile | 0.89s |
+| PUT /v1/cart/{id} | 0.76s |
+</Card>
+
+<Card title="Alert threshold" subtitle="Error rate">
+<Form name="alert-threshold">
+<Slider label="Error rate alert threshold" min="0" max="5" step="0.1" value="1" name="error_threshold" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+</Columns>

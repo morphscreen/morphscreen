@@ -1,0 +1,85 @@
+# Startup Finance — Month-End View
+
+<Callout tone="info" title="Viewing">You're viewing **March 2025**. Use the month picker below to switch periods.</Callout>
+
+<Card title="Month & Export">
+<Columns>
+<Form name="month-picker">
+<Select label="Statement month" options="January 2025 | February 2025 | March 2025" name="month" value="March 2025" />
+</Form>
+<Button variant="primary" label="Download statement">Download statement</Button>
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Cash on hand" value="$482,300" change="+2.4% vs last month" tone="success" icon="bank" />
+<Stat label="Monthly burn" value="$84,600" change="−5.1% vs last month" tone="info" icon="trend-down" />
+<Stat label="Months of runway" value="5.7" change="+0.4 months" tone="success" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category" subtitle="March 2025 — total $84,600">
+<Chart type="donut" title="Spending split">
+| Category | Amount |
+|---|---|
+| Salaries & benefits | 38200 |
+| Cloud & hosting | 16400 |
+| Marketing & ads | 12400 |
+| Office & rent | 7100 |
+| Legal & accounting | 5300 |
+| Software & tools | 3200 |
+| Other | 2000 |
+</Chart>
+</Card>
+
+<Card title="Transactions Above $10,000" subtitle="March 2025 — 7 transactions">
+<Progress value="7" max="7" label="All large transactions shown" tone="success" />
+
+| Date | Description | Category | Amount |
+|---|---|---|---|
+| Mar 03 | Payroll — March cycle | Salaries & benefits | $38,200 |
+| Mar 07 | AWS invoice #2841 | Cloud & hosting | $11,450 |
+| Mar 12 | Google Ads — March | Marketing & ads | $12,400 |
+| Mar 15 | Office lease — Q2 prepay | Office & rent | $21,300 |
+| Mar 18 | Azure invoice #773 | Cloud & hosting | $4,950 |
+| Mar 22 | Legal retainers — Q1 | Legal & accounting | $5,300 |
+| Mar 27 | Salesforce renewal | Software & tools | $3,200 |
+
+<Callout tone="warning" title="Note">The office lease prepayment of $21,300 is a one-off quarterly charge — it inflates March's burn by ~$14,200 vs. a typical month.</Callout>
+</Card>
+
+<Card title="Runway Detail">
+<Columns>
+<div>
+**Months of runway** = Cash on hand ÷ Monthly burn = $482,300 ÷ $84,600 ≈ **5.7 months**
+
+<Chart type="area" title="Cash projection (no revenue change)" x="Month" y="Cash ($K)">
+| Month | Cash |
+|---|---|
+| Mar | 482 |
+| Apr | 398 |
+| May | 313 |
+| Jun | 229 |
+| Jul | 144 |
+| Aug | 60 |
+</Chart>
+</div>
+<div>
+**Sensitivity**
+
+| Scenario | Burn | Runway |
+|---|---|---|
+| Current | $84.6K | 5.7 mo |
+| Cut 15% | $71.9K | 6.7 mo |
+| Cut 30% | $59.2K | 8.1 mo |
+</div>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full transaction list for March 2025
+- Compare burn across the last three months
+- What happens if we reduce cloud spend by 20%?
+- Export this statement as a CSV
+</FollowUps>

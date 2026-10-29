@@ -1,0 +1,179 @@
+# University Administration Dashboard
+
+<Card title="Department Filter" subtitle="Select a department to focus all metrics below">
+<Select label="Department" placeholder="All Departments" options="All Departments | Computer Science | Biology | Business | Engineering | Arts & Humanities | Psychology | Physics | Mathematics" name="dept-filter" />
+</Card>
+
+<Columns>
+<Card title="Total Enrollment (5-Year Trend)">
+<Chart type="line" x="Year" y="Students" title="Enrollment Trend">
+| Year | Students |
+|---|---|
+| 2020 | 18,450 |
+| 2021 | 19,200 |
+| 2022 | 20,100 |
+| 2023 | 21,350 |
+| 2024 | 22,800 |
+</Chart>
+</Card>
+
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications" title="Fall 2024 Applications">
+| Program | Applications |
+|---|---|
+| Computer Science | 4,200 |
+| Business | 3,800 |
+| Engineering | 3,500 |
+| Biology | 2,900 |
+| Psychology | 2,400 |
+| Arts & Humanities | 1,800 |
+| Physics | 1,200 |
+| Mathematics | 950 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="Acceptance Rate" value="34.2%" change="-1.8% vs last year" tone="info" icon="chart-line" />
+<Stat label="Tuition Revenue (FY24)" value="$184.7M" change="+5.2% YoY" tone="success" icon="currency-dollar" />
+<Stat label="Students at Academic Risk" value="1,240" change="+87 vs last semester" tone="warning" icon="users" />
+</Card>
+
+<Card title="Scholarship Budget Utilization">
+<Progress value="14200000" max="18500000" label="$14.2M of $18.5M used (76.8%)" tone="info" />
+<Stat label="Remaining" value="$4.3M" change="Available for spring awards" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Course Offering Capacity">
+<Chart type="horizontal" x="Fill Rate %" y="Course" title="How Full Each Course Is">
+| Course | Fill Rate % |
+|---|---|
+| CS 101: Intro to Programming | 98 |
+| BUS 200: Financial Accounting | 95 |
+| ENG 301: Thermodynamics | 92 |
+| BIO 150: Cell Biology | 89 |
+| PSY 101: General Psychology | 87 |
+| ART 220: Digital Design | 82 |
+| PHY 200: Quantum Mechanics | 78 |
+| MATH 300: Real Analysis | 72 |
+| HIST 110: World Civilizations | 68 |
+| CHEM 101: General Chemistry | 65 |
+</Chart>
+</Card>
+
+<Card title="Teaching Load by Faculty">
+<Chart type="bar" x="Faculty" y="Credit Hours" title="Fall 2024 Teaching Load">
+| Faculty | Credit Hours |
+|---|---|
+| Dr. Chen (CS) | 12 |
+| Prof. Rodriguez (BUS) | 12 |
+| Dr. Patel (ENG) | 11 |
+| Dr. Kim (BIO) | 10 |
+| Prof. Thompson (PSY) | 10 |
+| Dr. Ahmed (PHY) | 9 |
+| Prof. Williams (ART) | 9 |
+| Dr. Singh (MATH) | 8 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Housing Occupancy">
+<Progress value="3240" max="3600" label="3,240 of 3,600 beds occupied (90%)" tone="success" />
+<Stat label="Available Beds" value="360" change="Mostly graduate housing" tone="neutral" icon="home" />
+</Card>
+
+<Card title="Campus Events This Month">
+| Date | Event | Location | Expected Attendance |
+|---|---|---|---|
+| Oct 3 | Career Fair | Student Center | 1,200 |
+| Oct 7 | Homecoming Parade | Main Quad | 3,500 |
+| Oct 12 | Research Symposium | Science Hall | 450 |
+| Oct 18 | Cultural Festival | Arts Plaza | 2,000 |
+| Oct 24 | Graduate School Info Session | Library Auditorium | 300 |
+| Oct 29 | Wellness Week Kickoff | Rec Center | 800 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Alumni Giving (4-Year Trend)">
+<Chart type="bar" x="Year" y="Donations (USD)" title="Annual Alumni Contributions">
+| Year | Donations (USD) |
+|---|---|
+| 2021 | 8,200,000 |
+| 2022 | 9,450,000 |
+| 2023 | 10,800,000 |
+| 2024 | 12,100,000 |
+</Chart>
+</Card>
+
+<Card title="This Semester vs. Last Semester">
+<Chart type="bar" x="Metric" y="Count" title="Semester-over-Semester Comparison">
+| Metric | Fall 2023 | Fall 2024 |
+|---|---|---|
+| Enrollment | 21,350 | 22,800 |
+| New Students | 4,800 | 5,200 |
+| Course Sections | 1,850 | 1,980 |
+| Faculty FTE | 1,120 | 1,180 |
+| Avg Class Size | 23.4 | 24.1 |
+| Retention Rate | 87.2% | 88.5% |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted" title="Fall 2024 Waitlists">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 420 |
+| Business | 310 |
+| Engineering | 280 |
+| Biology | 190 |
+| Psychology | 150 |
+| Arts & Humanities | 85 |
+| Physics | 45 |
+| Mathematics | 30 |
+</Chart>
+</Card>
+
+<Card title="Students at Academic Risk — Detail">
+| Student ID | Program | GPA | Credits Behind | Risk Level | Advisor |
+|---|---|---|---|---|---|
+| S-2024-0451 | Computer Science | 1.8 | 12 | High | Dr. Chen |
+| S-2023-1189 | Engineering | 1.9 | 9 | High | Dr. Patel |
+| S-2024-0772 | Business | 2.0 | 6 | Medium | Prof. Rodriguez |
+| S-2023-2045 | Biology | 1.7 | 15 | High | Dr. Kim |
+| S-2024-0331 | Psychology | 2.1 | 3 | Medium | Prof. Thompson |
+</Card>
+</Columns>
+
+<Card title="Approve New Course">
+<Form name="new-course-approval">
+<Input label="Course Code" placeholder="e.g., CS 485" name="course-code" required="true" />
+<Input label="Course Title" placeholder="e.g., Machine Learning Systems" name="course-title" required="true" />
+<Select label="Department" placeholder="Select department" options="Computer Science | Biology | Business | Engineering | Arts & Humanities | Psychology | Physics | Mathematics" name="course-dept" required="true" />
+<Input label="Credit Hours" type="number" placeholder="3" name="credits" min="1" max="6" step="1" required="true" />
+<TextArea label="Course Description" placeholder="Brief description for catalog..." name="description" rows="3" required="true" />
+<Select label="Proposed Instructor" placeholder="Select faculty" options="Dr. Chen (CS) | Prof. Rodriguez (BUS) | Dr. Patel (ENG) | Dr. Kim (BIO) | Prof. Thompson (PSY) | Dr. Ahmed (PHY) | Prof. Williams (ART) | Dr. Singh (MATH)" name="instructor" required="true" />
+<Select label="Term" placeholder="Select term" options="Spring 2025 | Summer 2025 | Fall 2025" name="term" required="true" />
+<Checkboxes label="Prerequisites" options="CS 201: Data Structures | CS 301: Algorithms | MATH 250: Linear Algebra | STAT 300: Probability" name="prereqs" />
+<Button>Submit for Approval</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Recipient Group" placeholder="Choose audience" options="All Undergraduates | Graduate Students | Computer Science Majors | Engineering Majors | Business Majors | Students on Academic Probation | Housing Residents | First-Year Students | International Students | Student Athletes" name="recipient-group" required="true" />
+<Input label="Subject" placeholder="Important: Registration Deadline Approaching" name="subject" required="true" />
+<TextArea label="Message" placeholder="Compose your message here..." name="message-body" rows="6" required="true" hint="Supports basic formatting. Messages are sent via email and in-app notification." />
+<Checkboxes label="Delivery Channels" options="Email | In-App Notification | SMS (urgent only)" value="Email | In-App Notification" name="channels" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>

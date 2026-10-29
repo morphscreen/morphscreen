@@ -1,0 +1,92 @@
+<Card title="Async Standup" subtitle="Monday, January 15, 2024">
+<Columns>
+<Stat label="Updates received" value="7" change="of 10 teammates" tone="info" />
+<Stat label="Missing updates" value="3" change="Sarah, Marcus, Priya" tone="warning" />
+<Stat label="Blocked" value="2" change="needs help" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Today's Updates">
+<Tabs>
+<Tab title="All (10)">
+<Columns>
+<Card title="Alex Chen" subtitle="Engineering • Updated 9:15 AM">
+**Yesterday:** Finished API rate limiting, deployed to staging
+**Today:** Writing integration tests for payment flow
+**Blockers:** None
+</Card>
+
+<Card title="Jordan Park" subtitle="Design • Updated 8:45 AM">
+**Yesterday:** Completed onboarding flow mockups
+**Today:** Handoff to engineering, start dashboard redesign
+**Blockers:** Waiting on copy from marketing for empty states
+</Card>
+
+<Card title="Taylor Kim" subtitle="Engineering • Updated 9:30 AM">
+**Yesterday:** Fixed webhook retry logic, merged PR #847
+**Today:** Investigating memory leak in worker queue
+**Blockers:** Need access to prod logs — requested from DevOps
+</Card>
+
+<Card title="Morgan Lee" subtitle="Product • Updated 8:20 AM">
+**Yesterday:** Finalized Q1 roadmap, shared with leadership
+**Today:** Sprint planning prep, user research synthesis
+**Blockers:** None
+</Card>
+
+<Card title="Casey Brooks" subtitle="Engineering • Updated 9:00 AM">
+**Yesterday:** Refactored auth middleware, added tests
+**Today:** Implementing SSO with Okta
+**Blockers:** None
+</Card>
+
+<Card title="Riley Torres" subtitle="Support • Updated 8:55 AM">
+**Yesterday:** Closed 18 tickets, updated 5 help articles
+**Today:** Triage new inbound, escalate billing bug
+**Blockers:** None
+</Card>
+
+<Card title="Sam Wright" subtitle="Engineering • Updated 9:10 AM">
+**Yesterday:** Database migration dry-run successful
+**Today:** Running migration in production window
+**Blockers:** None
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🚨 Blocked (2)">
+<Callout tone="danger" title="Jordan Park — Design">
+Waiting on copy from marketing for empty states. **Slack @marketing-team** or reply here.
+</Callout>
+
+<Callout tone="danger" title="Taylor Kim — Engineering">
+Need access to prod logs to debug memory leak. **Requested from DevOps** — pending approval.
+</Callout>
+</Tab>
+
+<Tab title="⏳ Missing (3)">
+<Badge tone="warning">Sarah Mitchell — Engineering</Badge>
+<Badge tone="warning">Marcus Johnson — Product</Badge>
+<Badge tone="warning">Priya Shah — Design</Badge>
+<Callout tone="info" title="Reminder sent">Automatic nudge sent at 10:00 AM. They have until 11:00 AM to post.
+</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Post Your Update">
+<Form name="standup-update">
+<Input label="What did you complete yesterday?" name="yesterday" placeholder="Shipped the new checkout flow..." hint="Keep it brief — 1-2 bullets max" required="true" />
+<Input label="What will you tackle today?" name="today" placeholder="Start on user profile redesign..." required="true" />
+<Select label="Any blockers?" name="blockers" placeholder="Select..." options="None | Waiting on teammate | Need access/approval | External dependency | Other" required="true" />
+<TextArea label="Blocker details (if any)" name="blocker_details" placeholder="Who or what do you need? Tag teammates with @..." rows="3" hint="Visible to whole team — helps others unblock you" />
+<Button size="large">Post Update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Who's covering for Sarah while she's out?
+- Can someone from DevOps approve Taylor's log access?
+- When's the production migration window today?
+</FollowUps>

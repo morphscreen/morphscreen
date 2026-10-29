@@ -1,0 +1,57 @@
+root = Card([header, balancesCard, recentTx, spendingChart, billsCard, vacationProgress, creditScoreText, transferForm, freezeBtn, statementSelect, alertSettingsCard, disputeBtn])
+
+header = CardHeader("Personal Banking", null)
+
+balancesCard = Card([checkingBalance, savingsBalance, creditBalance], "card", "column", "xs")
+
+checkingBalance = TextContent("Checking: $1,200", "default")
+savingsBalance = TextContent("Savings: $5,000", "default")
+creditBalance = TextContent("Credit: -$300", "default")
+
+recentTx = ListBlock([listItem1, listItem2, listItem3], "number")
+listItem1 = ListItem("Starbucks", "$15.50")
+listItem2 = ListItem("Grocery Store", "$78.20")
+listItem3 = ListItem("Gas Station", "$45.00")
+
+spendingChart = PieChart(categories, values, "pie", "circular")
+categories = ["Food","Transport","Entertainment","Bills","Other"]
+values = [500,300,200,150,100]
+
+billsCard = Card([billsHeader, billsList], "card", "column", "xs")
+billsHeader = CardHeader("Bills Due Soon", null)
+billsList = ListBlock([billItem1, billItem2, billItem3], "number")
+billItem1 = ListItem("Rent", "$1,200")
+billItem2 = ListItem("Internet", "$60")
+billItem3 = ListItem("Phone", "$80")
+
+vacationProgress = Progress(60, "Vacation Savings")
+
+creditScoreText = TextContent("Credit Score: 720", "default")
+
+transferForm = Form("transfer-form", formButtons, [sourceCtrl, amountCtrl])
+sourceCtrl = FormControl("From account", sourceSelect)
+sourceSelect = Select("from_account", [acctS, acctV, acctC], "Choose account", null, "account", "medium")
+acctS = SelectItem("Checking", "Checking")
+acctV = SelectItem("Savings", "Savings")
+acctC = SelectItem("Credit", "Credit")
+amountCtrl = FormControl("Amount", amountInput)
+amountInput = Input("amount", "Enter amount", "number", null, "0")
+formButtons = Buttons([transferBtn, cancelBtn], "row")
+transferBtn = Button("Transfer", null, "primary")
+cancelBtn = Button("Cancel", null, "secondary")
+
+freezeBtn = Button("Freeze credit line", null, "destructive")
+
+statementSelect = Select("statement_period", [period30, period90, custom], "Last 30 days", null, "period", "small")
+period30 = SelectItem("Last 30 days", "Last 30 days")
+period90 = SelectItem("Last 90 days", "Last 90 days")
+custom = SelectItem("Custom", "Custom")
+
+alertSettingsCard = Card([alertHeader, alertList], "card", "column", "xs")
+alertHeader = CardHeader("Manage Alerts", null)
+alertList = ListBlock([alertItem1, alertItem2, alertItem3], "number")
+alertItem1 = ListItem("Transaction alerts")
+alertItem2 = ListItem("Low balance alerts")
+alertItem3 = ListItem("Large transaction alerts")
+
+disputeBtn = Button("Dispute transaction", null, "secondary")

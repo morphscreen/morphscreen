@@ -1,0 +1,121 @@
+# Personal Banking Home
+
+<Columns>
+<Card title="Checking">
+<Stat label="Available" value="$4,328.10" tone="success" icon="bank" />
+<Stat label="Account ending" value="·4821" icon="credit-card" />
+</Card>
+<Card title="Savings">
+<Stat label="Available" value="$12,750.55" tone="success" icon="piggy-bank" />
+<Stat label="Account ending" value="·9034" icon="credit-card" />
+</Card>
+<Card title="Credit">
+<Stat label="Balance" value="$1,245.90" tone="warning" icon="credit-card" />
+<Stat label="Available credit" value="$8,754.10" icon="chart-line" />
+</Card>
+</Columns>
+
+<Card title="Move money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Select label="From" options="Checking ·4821 | Savings ·9034 | Credit ·7712" placeholder="Select account" />
+<Select label="To" options="Checking ·4821 | Savings ·9034 | Credit ·7712" placeholder="Select account" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent transactions">
+<Chart type="bar" x="Date" y="Amount ($)">
+| Date | Amount |
+|---|---|
+| Mar 14 | 52.40 |
+| Mar 13 | 18.75 |
+| Mar 12 | 120.00 |
+| Mar 11 | 44.99 |
+| Mar 10 | 210.30 |
+| Mar 9 | 9.99 |
+| Mar 8 | 76.15 |
+</Chart>
+
+| Date | Merchant | Amount |
+|---|---|---|
+| Mar 14 | Whole Foods | −$52.40 |
+| Mar 13 | Spotify | −$18.75 |
+| Mar 12 | Shell Gas | −$120.00 |
+| Mar 11 | Netflix | −$44.99 |
+| Mar 10 | Delta Airlines | −$210.30 |
+| Mar 9 | iCloud | −$9.99 |
+| Mar 8 | Trader Joe's | −$76.15 |
+
+<Button variant="secondary" size="small">View all</Button>
+</Card>
+
+<Card title="Spending this month" subtitle="By category">
+<Chart type="donut" title="Category split">
+| Category | Amount ($) |
+|---|---|
+| Groceries | 620 |
+| Dining | 340 |
+| Transport | 280 |
+| Utilities | 210 |
+| Entertainment | 150 |
+| Other | 180 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+| Bill | Due date | Amount |
+|---|---|---|
+| Electric & Gas | Mar 18 | $84.20 |
+| Internet | Mar 20 | $65.00 |
+| Phone | Mar 22 | $45.50 |
+| Rent | Apr 1 | $1,850.00 |
+
+<Badge tone="warning">2 due this week</Badge>
+</Card>
+
+<Card title="Vacation savings goal" subtitle="Hawaii trip · $5,000 target">
+<Progress value="2550" max="5000" label="$2,550 of $5,000 saved" tone="info" />
+<Columns>
+<Stat label="Monthly auto-save" value="$300" icon="calendar" />
+<Stat label="Projected completion" value="Aug 2026" icon="flag" />
+</Columns>
+</Card>
+
+<Card title="Credit score">
+<Stat label="FICO Score" value="742" tone="success" icon="chart-line" />
+<Stat label="Change" value="+12 this month" change="up" tone="success" note="Good" />
+<Badge tone="success">Excellent range</Badge>
+</Card>
+
+<Card title="Credit card controls">
+<Switch label="Freeze credit line" name="freeze" hint="Blocks new purchases and cash advances" />
+<Callout tone="warning" title="Frozen">While frozen, recurring payments you set up will still be processed.</Callout>
+</Card>
+
+<Card title="Statement period">
+<Select label="Choose statement cycle" options="1st – end of month | 5th – 4th of next month | 10th – 9th of next month | 15th – 14th of next month" placeholder="Select a cycle" />
+<Button variant="secondary">Apply change</Button>
+</Card>
+
+<Card title="Alert preferences" subtitle="Choose what triggers a notification">
+<Checkboxes label="Alert me when" options="Balance drops below $100 | Large purchase over $500 | Payment due in 3 days | New transaction over $50 | Credit score changes | Suspicious activity detected" name="alerts" value="Balance drops below $100 | Payment due in 3 days | Suspicious activity detected" />
+<Select label="Delivery method" options="Push notification | Email | SMS text" placeholder="Select method" />
+<Button>Save preferences</Button>
+</Card>
+
+<Card title="Dispute a transaction">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods · Mar 14 · $52.40 | Spotify · Mar 13 · $18.75 | Shell Gas · Mar 12 · $120.00 | Delta Airlines · Mar 10 · $210.30" placeholder="Select transaction" />
+<Radio label="Reason" options="I didn't make this purchase | Wrong amount charged | Product/service not received | Duplicate charge | Other" />
+<TextArea label="Details" placeholder="Explain what happened…" rows="4" hint="Optional but helps us investigate faster" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my spending trend over the last 3 months
+- What's my credit utilization ratio?
+- Can I increase my savings goal?
+- Show me upcoming scheduled transfers
+</FollowUps>

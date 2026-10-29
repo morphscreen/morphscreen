@@ -1,0 +1,246 @@
+# Emergency Response Coordination Center
+
+<Badge tone="danger">Active Emergency</Badge> <Badge tone="warning">Level 3 Response</Badge>
+
+<Columns>
+<Card title="Active Incidents by Zone" subtitle="Severity per zone">
+<Chart type="bar" x="Zone" y="Incidents">
+| Zone | Critical | High | Moderate | Low |
+|---|---|---|---|---|
+| North | 2 | 3 | 1 | 0 |
+| South | 1 | 2 | 4 | 2 |
+| East | 0 | 1 | 2 | 3 |
+| West | 3 | 2 | 0 | 1 |
+| Central | 1 | 4 | 3 | 2 |
+</Chart>
+<Button ask="Show me only the North zone">Focus on North Zone</Button>
+<Button ask="Show me only the South zone">Focus on South Zone</Button>
+<Button ask="Show me only the East zone">Focus on East Zone</Button>
+<Button ask="Show me only the West zone">Focus on West Zone</Button>
+<Button ask="Show me only the Central zone">Focus on Central Zone</Button>
+</Card>
+
+<Card title="Overall Severity Summary">
+<Stat label="Critical Incidents" value="7" icon="warning-circle" tone="danger" />
+<Stat label="High Severity" value="12" icon="arrow-up" tone="warning" />
+<Stat label="Moderate Severity" value="10" icon="minus" tone="info" />
+<Stat label="Low Severity" value="8" icon="arrow-down" tone="success" />
+<Stat label="Total Active Incidents" value="37" icon="map-pin" />
+<Progress value="37" max="50" label="Incident Load" tone="danger" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Available Resources">
+<Stat label="Vehicles" value="24" icon="truck" />
+<Stat label="Personnel" value="156" icon="users" />
+<Stat label="Supplies (units)" value="3,840" icon="package" />
+<Progress value="156" max="200" label="Personnel Deployed" tone="info" />
+<Progress value="24" max="30" label="Vehicles Active" tone="success" />
+</Card>
+
+<Card title="Shelters" subtitle="Capacity & Occupancy">
+<Chart type="bar" x="Shelter" y="People">
+| Shelter | Occupied | Available |
+|---|---|---|
+| North High | 120 | 80 |
+| South Arena | 200 | 50 |
+| East Center | 85 | 115 |
+| West Hall | 150 | 100 |
+| Central Dome | 300 | 200 |
+</Chart>
+<Stat label="Total Capacity" value="1,400" icon="building" />
+<Stat label="Total Occupied" value="855" icon="users" />
+<Stat label="Available Beds" value="545" icon="bed" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Evacuation Routes">
+<Chart type="horizontal" x="Route" y="Status">
+| Route | Open | Congested | Closed |
+|---|---|---|---|
+| North Hwy 101 | 1 | 0 | 0 |
+| South Bridge Rd | 0 | 1 | 0 |
+| East River Pass | 0 | 0 | 1 |
+| West Mountain Way | 1 | 0 | 0 |
+| Central Express | 0 | 1 | 0 |
+</Chart>
+<Badge tone="success">2 Open</Badge>
+<Badge tone="warning">2 Congested</Badge>
+<Badge tone="danger">1 Closed</Badge>
+</Card>
+
+<Card title="Weather Forecast" subtitle="Next 48 hours">
+<Chart type="line" x="Hour" y="Temperature (°C)">
+| Hour | Temp | Wind (km/h) | Rain (%) |
+|---|---|---|---|
+| Now | 22 | 15 | 20 |
+| +6h | 20 | 18 | 40 |
+| +12h | 18 | 22 | 60 |
+| +18h | 16 | 25 | 80 |
+| +24h | 15 | 28 | 90 |
+| +30h | 14 | 30 | 95 |
+| +36h | 13 | 32 | 85 |
+| +42h | 14 | 28 | 70 |
+| +48h | 16 | 25 | 50 |
+</Chart>
+<Callout tone="warning" title="Heavy rain expected">90% chance of precipitation in 24 hours. Prepare for flooding.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Casualty Report">
+<Stat label="People Rescued" value="342" icon="heart" tone="success" />
+<Stat label="Casualties" value="18" icon="warning" tone="danger" />
+<Stat label="Missing" value="7" icon="question" tone="warning" />
+<Progress value="342" max="400" label="Rescue Progress" tone="success" />
+</Card>
+
+<Card title="Volunteers on Duty">
+<Stat label="Total Volunteers" value="89" icon="users" />
+<Chart type="bar" x="Assignment" y="Volunteers">
+| Assignment | Count |
+|---|---|
+| Search & Rescue | 32 |
+| Medical | 18 |
+| Shelter Ops | 22 |
+| Logistics | 12 |
+| Communications | 5 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Donations Received">
+<Stat label="Monetary" value="$124,500" icon="currency-dollar" />
+<Stat label="Food (kg)" value="3,200" icon="fork-knife" />
+<Stat label="Water (liters)" value="8,500" icon="drop" />
+<Stat label="Clothing (items)" value="1,800" icon="shirt" />
+<Stat label="Medical Kits" value="420" icon="first-aid" />
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+<Chart type="bar" x="Type" y="Requests">
+| Type | Count |
+|---|---|
+| Medical | 12 |
+| Food | 8 |
+| Water | 6 |
+| Shelter | 5 |
+| Transport | 9 |
+| Equipment | 7 |
+</Chart>
+<Stat label="Total Pending" value="47" icon="clock" tone="warning" />
+<Button ask="Show me the details of pending aid requests">View All Requests</Button>
+</Card>
+</Columns>
+
+<Card title="Communications Status">
+<Columns>
+<Stat label="Radio Network" value="Up" icon="radio" tone="success" />
+<Stat label="Satellite Phone" value="Up" icon="satellite" tone="success" />
+<Stat label="Cell Towers" value="Partial" icon="cell-tower" tone="warning" />
+<Stat label="Internet" value="Down" icon="wifi-slash" tone="danger" />
+<Stat label="Emergency Alerts" value="Up" icon="megaphone" tone="success" />
+<Stat label="Amateur Radio" value="Up" icon="broadcast" tone="success" />
+</Columns>
+<Callout tone="warning" title="Cell towers at 60% capacity">Use satellite or radio for critical communications.</Callout>
+</Card>
+
+<Card title="Road Closures">
+<Chart type="bar" x="Road" y="Closures">
+| Road | Closed | Open |
+|---|---|---|
+| North Hwy 101 | 0 | 1 |
+| South Bridge Rd | 1 | 0 |
+| East River Pass | 1 | 0 |
+| West Mountain Way | 0 | 1 |
+| Central Express | 1 | 0 |
+| Elm Street | 1 | 0 |
+| Oak Avenue | 0 | 1 |
+| Pine Lane | 1 | 0 |
+</Chart>
+<Stat label="Total Closed" value="5" icon="x-circle" tone="danger" />
+<Stat label="Total Open" value="3" icon="check-circle" tone="success" />
+</Card>
+
+<Card title="Nearby Hospitals" subtitle="Available beds">
+<Chart type="bar" x="Hospital" y="Free Beds">
+| Hospital | Free | Total |
+|---|---|---|
+| North General | 12 | 45 |
+| South Memorial | 8 | 30 |
+| East Community | 15 | 50 |
+| West Regional | 5 | 35 |
+| Central University | 20 | 60 |
+</Chart>
+<Stat label="Total Free Beds" value="60" icon="bed" tone="success" />
+<Stat label="Total Capacity" value="220" icon="hospital" />
+</Card>
+
+<Card title="Open Tasks">
+<Chart type="bar" x="Task" y="Assignees">
+| Task | Assigned | Unassigned |
+|---|---|---|
+| Search Zone North | 8 | 2 |
+| Medical Triage | 6 | 0 |
+| Shelter Setup East | 4 | 3 |
+| Supply Distribution | 5 | 1 |
+| Route Clearance | 3 | 2 |
+| Communications Check | 2 | 0 |
+| Damage Assessment | 4 | 4 |
+</Chart>
+<Stat label="Total Tasks" value="7" icon="list-checks" />
+<Stat label="Fully Staffed" value="3" icon="check-circle" tone="success" />
+<Stat label="Needs Personnel" value="4" icon="users" tone="warning" />
+</Card>
+
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource Type" options="Vehicles | Personnel | Medical Supplies | Food & Water | Equipment | Fuel | Communications Gear" name="resource-type" placeholder="Select type" required="true" />
+<Slider label="Quantity" min="1" max="100" step="1" value="10" name="quantity" unit="units" />
+<Select label="Priority" options="Critical | High | Medium | Low" name="priority" placeholder="Select priority" required="true" />
+<TextArea label="Additional Notes" name="notes" placeholder="Any special requirements or delivery instructions" rows="3" />
+<Button variant="primary">Submit Request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<Input label="Subject" name="subject" placeholder="Update title" required="true" />
+<TextArea label="Message" name="message" placeholder="Enter your broadcast message here..." rows="4" required="true" />
+<Select label="Target Audience" options="All Zones | North Zone | South Zone | East Zone | West Zone | Central Zone | All Personnel | All Volunteers | Public" name="audience" placeholder="Select audience" required="true" />
+<Checkboxes label="Channels" options="Radio | SMS | Email | Social Media | Sirens" name="channels" required="true" />
+<Button variant="primary" icon="megaphone">Send Broadcast</Button>
+</Form>
+</Card>
+
+<Card title="Focus on One Zone">
+<Form name="focus-zone">
+<Radio label="Select Zone" options="North Zone | South Zone | East Zone | West Zone | Central Zone | All Zones" name="zone" required="true" />
+<Button variant="primary" icon="target">Apply Focus</Button>
+</Form>
+</Card>
+
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Input label="Report Title" name="title" placeholder="e.g., North Zone Flooding Update" required="true" />
+<Select label="Zone" options="North Zone | South Zone | East Zone | West Zone | Central Zone | General" name="zone" placeholder="Select zone" required="true" />
+<Select label="Report Type" options="Situation Update | Damage Assessment | Resource Status | Incident Report | Weather Impact | Casualty Update | Operations Summary" name="type" placeholder="Select type" required="true" />
+<TextArea label="Situation Description" name="description" placeholder="Describe the current situation, actions taken, and needs" rows="5" required="true" />
+<Input label="Reported By" name="reported-by" placeholder="Your name / ID" required="true" />
+<Input label="Time of Report" type="datetime-local" name="time" required="true" />
+<Button variant="primary" icon="file-text">Submit Report</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full incident report for the West Zone
+- List all volunteers currently available for assignment
+- What is the status of shelter supplies?
+- Update me on road clearing progress
+- Show communication channel backup plans
+- Display hospital contact information
+- Generate a summary for the next briefing
+</FollowUps>

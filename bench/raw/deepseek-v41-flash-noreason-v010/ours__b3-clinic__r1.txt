@@ -1,0 +1,67 @@
+# Front Desk — Tuesday, 14 May
+
+<Badge tone="info">Reception screen</Badge> <Badge tone="success">3 rooms free</Badge>
+
+<Columns>
+<Stat label="Patients expected today" value="24" change="6 already checked in" tone="info" icon="users" />
+<Stat label="No-show rate this month" value="7.4%" change="-1.2 pts vs April" tone="success" icon="chart-line" />
+<Stat label="Waiting now" value="5" note="Average wait 9 min" tone="warning" icon="clock" />
+</Columns>
+
+<Card title="Next patient called out" subtitle="Shown on the waiting-room screen">
+<Avatar name="Ana Ruiz" subtitle="09:40 · Dr. Okafor · Room 3" />
+<Progress value=1 max=1 label="Called at 09:42" tone="success" />
+<Button ask="Mark Ana Ruiz as seated in Room 3">Mark as seated</Button>
+<Button variant="secondary" ask="Call the next patient">Call next patient</Button>
+</Card>
+
+<Card title="Today's appointments" subtitle="Times, patients, and status">
+| Time | Patient | Provider | Room | Status |
+|---|---|---|---|---|
+| 09:00 | Marcus Bell | Dr. Okafor | 3 | Done |
+| 09:20 | Priya Nair | Dr. Lindqvist | 1 | Done |
+| 09:40 | **Ana Ruiz** | Dr. Okafor | 3 | Called |
+| 10:00 | Tomás Ferreira | Dr. Okafor | 3 | Checked in |
+| 10:20 | Grace Adeyemi | Dr. Lindqvist | 1 | Checked in |
+| 10:40 | Daniel Kim | Dr. Bauer | 5 | Expected |
+| 11:00 | Sofia Marchetti | Dr. Okafor | 3 | Expected |
+| 11:20 | Owen Whitfield | Dr. Bauer | 5 | Expected |
+</Card>
+
+<Card title="Room status right now">
+| Room | Provider | State |
+|---|---|---|
+| Room 1 | Dr. Lindqvist | Free |
+| Room 3 | Dr. Okafor | In use |
+| Room 5 | Dr. Bauer | Free |
+| Room 7 | Dr. Haddad | Free |
+| Room 2 | Minor procedures | In use until 10:30 |
+</Card>
+
+<Card title="Check a patient in">
+<Form name="check-in">
+<Input label="Patient name or ID" name="patient" search placeholder="Start typing a name…" hint="Matches today's booked list" required="true" />
+<Select label="Appointment" name="appointment" options="09:40 — Ana Ruiz (Dr. Okafor) | 10:00 — Tomás Ferreira (Dr. Okafor) | 10:20 — Grace Adeyemi (Dr. Lindqvist) | 10:40 — Daniel Kim (Dr. Bauer)" placeholder="Choose appointment" />
+<Select label="Room" name="room" options="Room 1 | Room 3 | Room 5 | Room 7" placeholder="Assign a free room" />
+<Switch label="Patient has arrived and is in the waiting room" name="arrived" value=true />
+<TextArea label="Note for the provider" name="note" placeholder="e.g. Running late, needs a wheelchair" rows=2 />
+<Button>Check in</Button>
+<Button variant="tertiary" ask="Find a booking that is not on today's list">Not on the list?</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Button variant="secondary" ask="Show yesterday's appointments">← Yesterday</Button>
+<Button variant="secondary" ask="Show tomorrow's appointments">Tomorrow →</Button>
+<Button variant="tertiary" ask="Show a whole week of appointments">Whole week</Button>
+<Date label="Jump to date" name="day" hint="Opens that day's list" />
+</Card>
+
+<Callout tone="info" title="Running behind by 12 minutes">Dr. Okafor's 10:00 is the only affected slot so far.</Callout>
+
+<FollowUps>
+- Who has not arrived yet today?
+- Which patients cancelled this week?
+- Show me Room 2's schedule
+- Print the end-of-day summary
+</FollowUps>

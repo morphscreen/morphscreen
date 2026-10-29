@@ -1,0 +1,164 @@
+# Power Network Operator Console
+
+Live operational overview for the national grid. All values update in real time.
+
+<Callout tone="warning" title="⚠ Grid stress alert">Load is at 94% of capacity. Curtailment may be required within the hour if demand rises further.</Callout>
+
+<Columns>
+<Stat label="Current load" value="38.6 GW" change="+2.1% vs 1h ago" tone="warning" icon="lightning" />
+<Stat label="Capacity headroom" value="2.4 GW" change="6% remaining" tone="danger" icon="gauge" />
+<Stat label="Price / MWh" value="€86.40" change="+€4.10 vs 1h ago" tone="info" icon="currency-eur" />
+<Stat label="Emissions today" value="12,480 tCO₂" change="-8% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+
+<Card title="Network capacity pressure" subtitle="Current load vs maximum safe operating limit">
+<Progress value="94" max="100" label="94% of capacity" tone="danger" />
+<Callout tone="info" title="Headroom breakdown">2.4 GW available: 1.1 GW from spinning reserve, 0.8 GW from interruptible contracts, 0.5 GW from import capacity.</Callout>
+</Card>
+
+<Card title="Generation mix by source" subtitle="Live output share">
+<Chart type="donut" title="Generation share" x="Source" y="GW">
+| Source | GW |
+|---|---|
+| Gas | 14.2 |
+| Wind | 11.8 |
+| Nuclear | 6.9 |
+| Solar | 3.4 |
+| Hydro | 1.6 |
+| Biomass | 0.7 |
+</Chart>
+</Card>
+
+<Card title="Plant status" subtitle="All connected plants, live output and state">
+| Plant | Source | Output | Status |
+|---|---|---|---|
+| Northsea Wind Farm | Wind | 4.2 GW | <Badge tone="success">Online</Badge> |
+| Trent Gas CCGT | Gas | 3.8 GW | <Badge tone="success">Online</Badge> |
+| Hinkley Nuclear | Nuclear | 3.2 GW | <Badge tone="success">Online</Badge> |
+| Solent Solar Park | Solar | 1.9 GW | <Badge tone="success">Online</Badge> |
+| Grampian Hydro | Hydro | 1.1 GW | <Badge tone="success">Online</Badge> |
+| Severn Biomass | Biomass | 0.7 GW | <Badge tone="success">Online</Badge> |
+| Wight Gas Peaker | Gas | 0.4 GW | <Badge tone="warning">Standby</Badge> |
+| Dungeness Nuclear | Nuclear | 0.0 GW | <Badge tone="danger">Offline – maint.</Badge> |
+| East Anglia Wind | Wind | 1.2 GW | <Badge tone="warning">Derated 60%</Badge> |
+| Thames Gas CCGT | Gas | 2.1 GW | <Badge tone="success">Online</Badge> |
+| Cornwall Solar | Solar | 0.8 GW | <Badge tone="success">Online</Badge> |
+| Devon Hydro | Hydro | 0.5 GW | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Card title="Active outages" subtitle="Affected regions and estimated restoration">
+<Columns>
+<Card title="North Scotland">
+- **Region:** Highlands & Islands
+- **Cause:** Storm damage to transmission line
+- **Affected:** 12,400 customers
+- **Est. restore:** 14:30
+<Badge tone="danger">Critical</Badge>
+</Card>
+<Card title="East Midlands">
+- **Region:** Lincolnshire coast
+- **Cause:** Submarine cable fault
+- **Affected:** 3,800 customers
+- **Est. restore:** 18:00
+<Badge tone="warning">High</Badge>
+</Card>
+<Card title="South Wales">
+- **Region:** Swansea valley
+- **Cause:** Transformer failure
+- **Affected:** 1,200 customers
+- **Est. restore:** 22:00
+<Badge tone="info">Moderate</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Demand forecast – next 24 hours" subtitle="Projected load vs available capacity">
+<Chart type="line" title="Forecasted demand (GW)" x="Hour" y="GW">
+| Hour | Forecast | Capacity |
+|---|---|---|
+| 00 | 34.1 | 41.0 |
+| 02 | 31.8 | 41.0 |
+| 04 | 30.2 | 41.0 |
+| 06 | 32.5 | 41.0 |
+| 08 | 37.8 | 41.0 |
+| 10 | 39.2 | 41.0 |
+| 12 | 38.5 | 41.0 |
+| 14 | 37.9 | 41.0 |
+| 16 | 36.8 | 41.0 |
+| 18 | 39.5 | 41.0 |
+| 20 | 40.1 | 41.0 |
+| 22 | 38.2 | 41.0 |
+| 24 | 35.4 | 41.0 |
+</Chart>
+<Callout tone="warning" title="Peak risk">Forecast peaks at 20:00 at 40.1 GW – only 0.9 GW of headroom. Consider pre-emptive curtailment.</Callout>
+</Card>
+
+<Card title="Maintenance planned this month" subtitle="Scheduled works, no impact expected unless noted">
+| Plant | Work | Date | Duration | Impact |
+|---|---|---|---|---|
+| Dungeness Nuclear | Refuelling | 12–19 Mar | 7 days | <Badge tone="danger">Offline</Badge> |
+| East Anglia Wind | Gearbox replacement | 15–17 Mar | 3 days | Derated 40% |
+| Grampian Hydro | Penstock inspection | 20–22 Mar | 2 days | Derated 50% |
+| Severn Biomass | Boiler cleaning | 24–25 Mar | 1 day | Derated 30% |
+| Trent Gas CCGT | Turbine service | 28–30 Mar | 3 days | Offline |
+</Card>
+
+<Card title="Live alert feed" subtitle="Newest first">
+<Steps>
+<Step title="14:02 – Grid stress warning" status="current">Load exceeded 93% of capacity. Curtailment advised for East Anglia region.</Step>
+<Step title="13:47 – Outage update" status="done">North Scotland fault: restoration time revised to 14:30, crews on site.</Step>
+<Step title="13:35 – Price spike" status="done">Day-ahead price crossed €85/MWh for 18:00–21:00 slot.</Step>
+<Step title="13:22 – Forecast revision" status="done">Evening peak revised upward by 0.6 GW due to cold weather.</Step>
+</Steps>
+</Card>
+
+<Card title="Region focus" subtitle="Select a region to view its specific status">
+<Select label="Region" name="region" options="North Scotland | East Midlands | South Wales | East Anglia | Midlands | South East | North West" placeholder="Choose a region" />
+<Callout tone="info" title="East Anglia (selected example)">
+- **Load:** 5.4 GW / 6.0 GW capacity (90%)
+- **Generation:** 3.1 GW local, 2.3 GW imported
+- **Outages:** None active
+- **Alerts:** High wind warning for coastal lines
+</Callout>
+</Card>
+
+<Card title="Curtailment order" subtitle="Request reduction in generation or load">
+<Form name="curtailment">
+<Select label="Plant or region" name="target" options="East Anglia Wind (derate 60%) | Wight Gas Peaker (shutdown) | South Wales region (load shed) | North Scotland region (load shed)" placeholder="Select target" />
+<Slider label="Reduction amount" min="0" max="2000" step="100" value="500" name="reduction" unit="MW" />
+<Select label="Duration" name="duration" options="30 minutes | 1 hour | 2 hours | 4 hours | Until further notice" placeholder="Select duration" />
+<TextArea label="Reason / notes" name="reason" placeholder="e.g. Grid stress – evening peak" />
+<Button variant="danger">Issue curtailment order</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Emissions today" subtitle="CO₂ output from all generation">
+<Columns>
+<Stat label="Total emissions" value="12,480 t" change="-8% vs yesterday" tone="success" icon="leaf" />
+<Stat label="Per MWh" value="323 kg" change="-12% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Renewable share" value="43%" change="+5% vs yesterday" tone="info" icon="wind" />
+</Columns>
+<Chart type="bar" title="Emissions by hour (tCO₂)" x="Hour" y="tCO₂">
+| Hour | tCO₂ |
+|---|---|
+| 00 | 420 |
+| 04 | 380 |
+| 08 | 520 |
+| 12 | 610 |
+| 16 | 580 |
+| 20 | 640 |
+| 24 | 450 |
+</Chart>
+</Card>
+
+<Button variant="primary" ask="Show me the full outage report">View full outage report</Button>
+<Button variant="secondary" ask="What curtailment options are available?">Curtailment options</Button>
+<Button variant="tertiary" ask="Explain the price forecast for tomorrow">Price forecast</Button>
+
+<FollowUps>
+- What is the current status of the North Scotland outage?
+- Which plants are most at risk of curtailment?
+- Show me the emissions breakdown by plant.
+- What is the forecast for tomorrow morning?
+</FollowUps>

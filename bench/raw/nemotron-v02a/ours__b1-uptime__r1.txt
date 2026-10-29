@@ -1,0 +1,22 @@
+<Card title="Platform Status" subtitle="Real-time system health">
+<Columns>
+<Stat label="API Uptime (This Month)" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Stat label="Incidents This Month" value="2" change="1 resolved, 1 ongoing" tone="info" />
+</Columns>
+
+<Callout tone="success" title="Most Recent Incident — Resolved">
+**API Latency Degradation** — Intermittent 500ms+ p99 latency on `/v1/search` endpoint between **2024-01-18 14:22 UTC** and **2024-01-18 15:07 UTC**. Root cause: connection pool exhaustion in the search worker fleet after a config rollout. Mitigated by rolling back the config and increasing pool limits. Full postmortem published [here](https://status.example.com/incidents/inc-2024-01-18-search-latency).
+</Callout>
+
+<Details title="Incident Timeline">
+- **14:22 UTC** — Alert fired: p99 latency > 500ms
+- **14:25 UTC** — On-call engaged, identified search worker pool saturation
+- **14:38 UTC** — Config rollback initiated
+- **15:07 UTC** — Latency returned to baseline (< 80ms p99)
+- **15:15 UTC** — Incident resolved, monitoring confirmed stable
+</Details>
+
+<Callout tone="info" title="Current Status">
+All systems operational. No active incidents. Next scheduled maintenance: **2024-01-25 02:00–04:00 UTC** (database upgrades, zero-downtime expected).
+</Callout>
+</Card>

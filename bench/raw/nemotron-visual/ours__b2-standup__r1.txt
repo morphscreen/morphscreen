@@ -1,0 +1,161 @@
+<Card title="Async Standup" subtitle="Tuesday, January 21, 2025">
+<Columns>
+<Stat label="Updates posted" value="7" change="of 10 teammates" />
+<Stat label="Missing updates" value="3" note="Sarah, Marcus, Priya" tone="warning" />
+<Stat label="Blocked" value="2" note="Needs help" tone="danger" />
+</Columns>
+
+<Callout tone="warning" title="3 updates still missing">
+Sarah Chen, Marcus Johnson, and Priya Patel haven't posted today. <Button variant="tertiary" ask="Remind missing teammates">Nudge them</Button>
+</Callout>
+
+<Card title="Post your update">
+<Form name="standup-update">
+<Select label="Status" name="status" placeholder="How's it going?" options="🟢 On track | 🟡 At risk | 🔴 Blocked | 📝 No update yet" required="true" />
+<TextArea label="What did you do yesterday?" name="yesterday" placeholder="Shipped the auth refactor, reviewed 3 PRs..." rows="2" required="true" />
+<TextArea label="What will you do today?" name="today" placeholder="Finish the migration script, pair with Design on checkout flow..." rows="2" required="true" />
+<TextArea label="Blockers (optional)" name="blockers" placeholder="Waiting on API keys from Infra, need design sign-off..." rows="2" />
+<Button>Post update</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Team updates">
+<Tabs>
+<Tab title="All (7)">
+<Columns>
+<Card title="Alex Rivera" subtitle="Senior Engineer • 🟢 On track">
+<strong>Yesterday:</strong> Shipped the auth refactor, reviewed 3 PRs, fixed the login race condition
+<br /><br />
+<strong>Today:</strong> Finish the migration script, pair with Design on checkout flow
+<br /><br />
+<Badge tone="success">No blockers</Badge>
+</Card>
+
+<Card title="Jordan Kim" subtitle="Product Designer • 🟢 On track">
+<strong>Yesterday:</strong> Finalized checkout mockups, ran usability session with 3 users
+<br /><br />
+<strong>Today:</strong> Handoff to Alex, start onboarding flow sketches
+<br /><br />
+<Badge tone="success">No blockers</Badge>
+</Card>
+
+<Card title="Taylor Brooks" subtitle="Backend Engineer • 🟡 At risk">
+<strong>Yesterday:</strong> Wrote migration for user_preferences table, 80% coverage
+<br /><br />
+<strong>Today:</strong> Finish migration tests, deploy to staging
+<br /><br />
+<Callout tone="warning" title="At risk">Migration taking longer than estimated — may need an extra day</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Casey Liu" subtitle="DevOps • 🔴 Blocked">
+<strong>Yesterday:</strong> Set up staging namespace, configured secrets
+<br /><br />
+<strong>Today:</strong> Unblocked — waiting on AWS quota increase
+<br /><br />
+<Callout tone="danger" title="Blocked">AWS quota increase request submitted (case #7842). ETA 4–6 hrs. Can't deploy staging until resolved.</Callout>
+</Card>
+
+<Card title="Riley Park" subtitle="Frontend Engineer • 🟢 On track">
+<strong>Yesterday:</strong> Built new Button variant, added Storybook docs
+<br /><br />
+<strong>Today:</strong> Refactor Form components, add validation hooks
+<br /><br />
+<Badge tone="success">No blockers</Badge>
+</Card>
+
+<Card title="Morgan Ellis" subtitle="Engineering Lead • 🟢 On track">
+<strong>Yesterday:</strong> 1:1s with Alex & Casey, reviewed Q1 roadmap
+<br /><br />
+<strong>Today:</strong> Sync with Product on priorities, unblock Casey
+<br /><br />
+<Badge tone="success">No blockers</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Jamie Wong" subtitle="QA Engineer • 📝 No update yet">
+<strong>Yesterday:</strong> —
+<br /><br />
+<strong>Today:</strong> —
+<br /><br />
+<Badge tone="neutral">Update pending</Badge>
+</Card>
+
+<Card title="Sam Okafor" subtitle="Security Engineer • 🟢 On track">
+<strong>Yesterday:</strong> Completed dependency audit, opened 2 PRs for CVE patches
+<br /><br />
+<strong>Today:</strong> Review Alex's auth changes, rotate staging secrets
+<br /><br />
+<Badge tone="success">No blockers</Badge>
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="🔴 Blocked (2)">
+<Card title="Casey Liu — DevOps" subtitle="Blocked since 9:15 AM">
+<Callout tone="danger" title="AWS quota increase needed">
+Cannot deploy to staging environment. Request submitted (case #7842). Estimated resolution: 4–6 hours.
+<br /><br />
+<strong>Help needed:</strong> If anyone has AWS support contacts, please ping Casey in #devops.
+</Callout>
+<Button variant="secondary" ask="Comment on Casey's blocker">Offer help</Button>
+</Card>
+
+<Card title="Taylor Brooks — Backend" subtitle="At risk since 10:30 AM">
+<Callout tone="warning" title="Migration timeline slipping">
+User preferences migration taking longer than estimated. Test coverage at 80%, edge cases uncovered.
+<br /><br />
+<strong>Risk:</strong> May need an extra day. Will confirm by EOD.
+</Callout>
+<Button variant="secondary" ask="Comment on Taylor's risk">Offer help</Button>
+</Card>
+</Tab>
+
+<Tab title="📋 Missing (3)">
+<Columns>
+<Card title="Sarah Chen" subtitle="Mobile Engineer">
+<Badge tone="warning">No update posted</Badge>
+<br /><br />
+<small>Last active: Yesterday 4:30 PM</small>
+<br /><br />
+<Button variant="tertiary" ask="Nudge Sarah Chen">Remind</Button>
+</Card>
+
+<Card title="Marcus Johnson" subtitle="Data Engineer">
+<Badge tone="warning">No update posted</Badge>
+<br /><br />
+<small>Last active: Today 8:15 AM</small>
+<br /><br />
+<Button variant="tertiary" ask="Nudge Marcus Johnson">Remind</Button>
+</Card>
+
+<Card title="Priya Patel" subtitle="Platform Engineer">
+<Badge tone="warning">No update posted</Badge>
+<br /><br />
+<small>Last active: Yesterday 5:00 PM</small>
+<br /><br />
+<Button variant="tertiary" ask="Nudge Priya Patel">Remind</Button>
+</Card>
+</Columns>
+</Tab>
+</Tabs>
+</Card>
+
+<Details title="Standup settings & history">
+<strong>Reminder schedule:</strong> 9:00 AM local time • <strong>Cutoff:</strong> 11:00 AM • <strong>Timezone:</strong> Team follows Pacific Time
+<br /><br />
+<strong>Recent standups:</strong>
+<br />
+- Mon Jan 20: 9/10 posted • 1 blocked
+<br />
+- Fri Jan 17: 10/10 posted • 0 blocked
+<br />
+- Thu Jan 16: 8/10 posted • 2 blocked
+<br /><br />
+<Button variant="tertiary" ask="View full history">View full history</Button>
+<Button variant="tertiary" ask="Edit settings">Edit settings</Button>
+</Details>
+</Card>

@@ -1,0 +1,79 @@
+# Async Standup · June 17, 2025
+
+<Stat label="Missing updates" value="3 of 8" change="3 teammates haven't posted" tone="warning" icon="users" />
+
+<Card title="Post your update">
+<Form name="standup-update">
+<TextArea label="What did you do yesterday? What's today? Any blockers?" name="update" placeholder="Shipped the auth refactor. Today: review PR #242 and start onboarding flow. Blocked: waiting on design tokens from Maya." rows="3" required="true" />
+<Checkboxes label="Status" name="status" options="On track | Blocked | Needs help" value="On track" hint="Mark as blocked if you need unblocking" />
+<Button>Post update</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="Team updates">
+<Tabs>
+<Tab title="All (8)">
+<Columns>
+<Card title="Alex Chen" subtitle="Engineering · On track">
+**Yesterday:** Finished API rate limiting, wrote tests for webhook retries  
+**Today:** Code review for PR #242, start onboarding flow implementation  
+**Blockers:** None
+</Card>
+
+<Card title="Maya Patel" subtitle="Design · On track">
+**Yesterday:** Delivered design tokens v2.1, updated component library  
+**Today:** Design review for onboarding flow, accessibility audit  
+**Blockers:** None
+</Card>
+
+<Card title="Jordan Kim" subtitle="Engineering · Blocked" tone="danger">
+<Callout tone="danger" title="Blocked">Waiting on staging database migration (infra team). ETA: tomorrow morning.</Callout>
+**Yesterday:** Investigated migration failures, documented rollback plan  
+**Today:** Unblocked → run migration, verify seed data  
+**Blockers:** Staging DB migration pending infra approval
+</Card>
+
+<Card title="Sam Rivera" subtitle="Product · On track">
+**Yesterday:** Finalized Q3 roadmap, sync with sales on enterprise asks  
+**Today:** Write spec for billing v2, prep for stakeholder review  
+**Blockers:** None
+</Card>
+</Columns>
+</Tab>
+
+<Tab title="Blocked (1)">
+<Card title="Jordan Kim" subtitle="Engineering · Blocked since 9:15 AM">
+<Callout tone="danger" title="Blocked: Staging database migration">
+Waiting on infra team to approve and run the staging migration. Ticket: INFRA-847. ETA from infra: tomorrow morning. Can't proceed with seed data verification until this runs.
+</Callout>
+**Yesterday:** Investigated migration failures, documented rollback plan  
+**Today:** Run migration once approved, verify seed data, continue onboarding flow work  
+**Action needed:** Infra team to approve INFRA-847
+</Card>
+</Tab>
+
+<Tab title="Missing (3)">
+<Card title="Taylor Brooks" subtitle="Engineering · No update yet">
+<Badge tone="warning">Missing update</Badge>
+Last active: 2 hours ago
+</Card>
+
+<Card title="Riley Chen" subtitle="DevOps · No update yet">
+<Badge tone="warning">Missing update</Badge>
+Last active: 4 hours ago
+</Card>
+
+<Card title="Casey Morgan" subtitle="QA · No update yet">
+<Badge tone="warning">Missing update</Badge>
+Last active: Yesterday
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Quick actions">
+<Button variant="secondary" icon="bell">Notify missing teammates</Button>
+<Button variant="secondary" icon="calendar">Schedule sync for blockers</Button>
+<Button variant="tertiary" icon="download">Export standup log</Button>
+</Card>

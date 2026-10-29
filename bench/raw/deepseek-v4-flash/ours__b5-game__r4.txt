@@ -1,0 +1,157 @@
+# Live Ops Room
+
+Operations dashboard, auto-refresh every 30 seconds. <Badge tone="success">Auto-refresh on</Badge>
+
+<Card title="Region focus" subtitle="Scopes every metric below to the selected region">
+<Select label="Focus on region" placeholder="All regions" options="All regions | NA-East | NA-West | EU-Central | EU-North | AP-Southeast | SA-East" name="region-focus" />
+</Card>
+
+<Card title="Key metrics" subtitle="Live right now">
+<Columns>
+<Stat label="Players online" value="48,291" change="+6.2%" tone="success" icon="users" />
+<Stat label="Daily active players" value="1,240,881" change="+3.1%" tone="success" icon="calendar" />
+<Stat label="Monthly active players" value="6,810,204" change="+1.8%" tone="info" icon="users-three" />
+<Stat label="Revenue today" value="$184,520" change="+8.4%" tone="success" icon="currency-circle-dollar" />
+<Stat label="Revenue per user (ARPU)" value="$0.149" change="+5.2%" tone="success" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Session length" subtitle="Average minutes per player, past two weeks">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Minutes |
+|---|---|
+| Nov 30 | 41 |
+| Dec 1 | 43 |
+| Dec 2 | 42 |
+| Dec 3 | 45 |
+| Dec 4 | 47 |
+| Dec 5 | 46 |
+| Dec 6 | 48 |
+| Dec 7 | 50 |
+| Dec 8 | 49 |
+| Dec 9 | 52 |
+| Dec 10 | 51 |
+| Dec 11 | 53 |
+| Dec 12 | 54 |
+| Dec 13 | 56 |
+</Chart>
+</Card>
+
+<Card title="Economy">
+<Columns>
+<Card title="Best-selling items" subtitle="Units sold today">
+| Item | Units | Revenue |
+|---|---|---|
+| Dragon Crystal Pack | 12,483 | $62,415 |
+| Battle Pass – Season 12 | 9,210 | $92,100 |
+| Ashen Knight Skin | 6,854 | $20,562 |
+| 500 Gems Bundle | 5,397 | $21,588 |
+| 7-Day XP Booster | 4,102 | $8,204 |
+</Card>
+<Card title="Currency inflation" subtitle="Gold in circulation, all regions">
+<Stat label="Inflation index" value="118.4" change="+2.1% this month" tone="warning" icon="trend-up" />
+<Progress value="118" max="150" label="Index vs. 150 ceiling" tone="warning" />
+<Badge tone="warning">Above safe zone — sinks are on track, watch next patch</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Infrastructure">
+<Columns>
+<Card title="Server region health" subtitle="Load and players by region">
+| Region | Health | Load | Players |
+|---|---|---|---|
+| NA-East | <Badge tone="success">Healthy</Badge> | 62% | 18,204 |
+| NA-West | <Badge tone="success">Healthy</Badge> | 58% | 12,931 |
+| EU-Central | <Badge tone="warning">Degraded</Badge> | 84% | 21,540 |
+| EU-North | <Badge tone="success">Healthy</Badge> | 51% | 8,776 |
+| AP-Southeast | <Badge tone="success">Healthy</Badge> | 47% | 15,208 |
+| SA-East | <Badge tone="danger">Down</Badge> | — | 0 |
+</Card>
+<Card title="Crash rate by app version" subtitle="Last 24 hours, % of sessions">
+<Chart type="bar" x="Version" y="Crash rate %">
+| Version | Rate |
+|---|---|
+| 3.2.0 | 0.8 |
+| 3.2.1 | 0.6 |
+| 3.3.0 | 1.9 |
+| 3.3.1 | 2.4 |
+| 3.4.0-beta | 4.1 |
+</Chart>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Live events" subtitle="Running and upcoming">
+| Event | Type | Status | Timing |
+|---|---|---|---|
+| Frostfall Festival | Seasonal | <Badge tone="success">Running</Badge> | Ends in 2d 4h |
+| Double XP Weekend | Boost | <Badge tone="success">Running</Badge> | Ends in 12h |
+| Lunar Gala | Seasonal | <Badge tone="info">Upcoming</Badge> | Starts in 3d |
+| Guild Siege v2 | PvP | <Badge tone="info">Upcoming</Badge> | Starts in 7d |
+</Card>
+
+<Card title="Moderation queue" subtitle="Awaiting review">
+<Columns>
+<Card title="Player reports">
+<Stat label="Open reports" value="1,284" change="+12% in 24h" tone="warning" icon="flag" />
+| Oldest | Age |
+|---|---|
+| RPT-88412 | 3h |
+| RPT-88419 | 2h |
+| RPT-88423 | 1h |
+</Card>
+<Card title="Ban appeals">
+<Stat label="Open appeals" value="342" change="-4% in 24h" tone="info" icon="shield-check" />
+| Oldest | Age |
+|---|---|
+| APL-77103 | 5h |
+| APL-77111 | 4h |
+| APL-77118 | 2h |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Experiments" subtitle="Running A/B tests">
+<Columns>
+<Card title="EXP-041 — Starting offer price" subtitle="Variant B vs. A">
+<Stat label="Conversion rate" value="+7.8%" tone="success" />
+<Stat label="Confidence" value="99.2%" tone="success" />
+<Progress value="99" max="100" label="Statistical confidence" tone="success" />
+<Badge tone="success">Winner: ship Variant B</Badge>
+</Card>
+<Card title="EXP-042 — Tutorial length" subtitle="5 min vs. 8 min tutorial">
+<Stat label="Day-1 retention" value="-1.4%" tone="warning" />
+<Stat label="Confidence" value="83.0%" tone="warning" />
+<Progress value="83" max="100" label="Statistical confidence" tone="warning" />
+<Badge tone="warning">No winner yet — keep running</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Patch notes" subtitle="Draft, autosaved 2 min ago">
+<Form name="patch-notes">
+<Input label="Target version" value="3.4.1" placeholder="3.4.1" />
+<TextArea label="Draft" rows="8" value="## 3.4.1 Hotfix
+- Fixed a crash on the world map when opening the friend list
+- Rebalanced Frostfall Festival drop rates
+- Reduced EU-Central server lag during peak hours" />
+<Button>Save draft</Button>
+<Button variant="secondary">Send to review</Button>
+</Form>
+</Card>
+
+<Card title="Ship hotfix" subtitle="Deploy to production">
+<Callout tone="danger" title="Requires approval">Only ship hotfixes that are tested on staging and signed off by the live-ops lead.</Callout>
+<Form name="hotfix">
+<Select label="Target region" placeholder="All regions" options="All regions | NA-East | NA-West | EU-Central | EU-North | AP-Southeast | SA-East" name="hotfix-region" />
+<Input label="Version tag" placeholder="3.4.1-hotfix.1" />
+<Button variant="danger">Ship hotfix</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Compare today's revenue to the same day last month
+- Show crash rate trend per version over 14 days
+- Let me draft a message for the Frostfall Festival extension
+</FollowUps>

@@ -1,0 +1,144 @@
+# Portfolio Review Dashboard
+
+<Badge tone="info">Q3 2024</Badge> <Badge tone="success">On track</Badge> — 78% of projects within budget, 2 overdue milestones, 3 active risks
+
+<Columns>
+<Card title="Active Projects">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Platform Migration | Sarah Chen | 2024-09-15 | <Badge tone="success">Green</Badge> |
+| Mobile App v3 | James Park | 2024-10-01 | <Badge tone="warning">Yellow</Badge> |
+| Data Pipeline | Maria Lopez | 2024-08-30 | <Badge tone="danger">Red</Badge> |
+| Security Audit | Tom Wells | 2024-09-22 | <Badge tone="success">Green</Badge> |
+| CRM Upgrade | Anita Rao | 2024-11-01 | <Badge tone="warning">Yellow</Badge> |
+
+<Button ask="Show me the full project list with details">View all projects</Button>
+</Card>
+
+<Card title="Budget Spent vs Allocation">
+<Chart type="bar" x="Project" y="USD (thousands)">
+| Project | Spent | Allocated |
+|---|---|---|
+| Platform Migration | 320 | 400 |
+| Mobile App v3 | 180 | 200 |
+| Data Pipeline | 145 | 150 |
+| Security Audit | 55 | 80 |
+| CRM Upgrade | 90 | 120 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Overdue Milestones">
+| Milestone | Project | Owner | Due |
+|---|---|---|---|
+| API Integration Complete | Data Pipeline | Maria Lopez | 2024-07-20 |
+| User Testing Phase 1 | Mobile App v3 | James Park | 2024-08-05 |
+
+<Button ask="Show me all milestones for these projects">View milestone details</Button>
+</Card>
+
+<Card title="Team Utilization">
+<Chart type="bar" x="Team Member" y="Utilization %">
+| Team | Utilization |
+|---|---|
+| Engineering | 92 |
+| Design | 78 |
+| QA | 85 |
+| DevOps | 65 |
+| Product | 88 |
+</Chart>
+<Progress value="82" max="100" label="Overall utilization" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Risks by Severity">
+| Risk | Project | Severity | Status |
+|---|---|---|---|
+| API dependency delay | Platform Migration | <Badge tone="danger">Critical</Badge> | Monitoring |
+| Resource shortage | Data Pipeline | <Badge tone="warning">High</Badge> | Mitigating |
+| Scope creep | Mobile App v3 | <Badge tone="warning">Medium</Badge> | Tracking |
+
+<Button ask="Show me the full risk register">View all risks</Button>
+</Card>
+
+<Card title="Upcoming Deadlines (Next 2 Weeks)">
+| Project | Deadline | Owner |
+|---|---|---|
+| Data Pipeline | 2024-08-30 | Maria Lopez |
+| Platform Migration — Phase 1 | 2024-09-02 | Sarah Chen |
+| Security Audit — Pen Test | 2024-09-05 | Tom Wells |
+
+<Button ask="Show me the calendar view of deadlines">Calendar view</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Delivery Pace — Last 6 Sprints">
+<Chart type="line" x="Sprint" y="Story Points">
+| Sprint | Committed | Delivered |
+|---|---|---|
+| Sprint 1 | 120 | 115 |
+| Sprint 2 | 130 | 128 |
+| Sprint 3 | 125 | 110 |
+| Sprint 4 | 140 | 135 |
+| Sprint 5 | 135 | 130 |
+| Sprint 6 | 145 | 142 |
+</Chart>
+</Card>
+
+<Card title="Blocked Work Items">
+| Item | Project | Blocked By | Days Blocked |
+|---|---|---|---|
+| Auth module | Platform Migration | Security review | 4 |
+| Push notifications | Mobile App v3 | API key access | 2 |
+| Data export | Data Pipeline | DB schema change | 6 |
+
+<Button ask="Show me how to unblock these items">Unblock items</Button>
+</Card>
+</Columns>
+
+<Card title="Portfolio Health Summary">
+<Callout tone="info" title="Overall Status">
+<Stat label="Active Projects" value="5" icon="folder" />
+<Stat label="On Track" value="2" icon="check-circle" tone="success" />
+<Stat label="At Risk" value="2" icon="warning-circle" tone="warning" />
+<Stat label="Critical" value="1" icon="x-circle" tone="danger" />
+<Stat label="Budget Used" value="$790k / $950k" icon="currency-dollar" />
+<Stat label="Team Utilization" value="82%" icon="users" />
+</Callout>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Form name="change-quarter">
+<Select label="Select Quarter" options="Q1 2024 | Q2 2024 | Q3 2024 | Q4 2024" name="quarter" />
+<Button>View Quarter</Button>
+</Form>
+
+<Form name="request-people">
+<Select label="Project" options="Platform Migration | Mobile App v3 | Data Pipeline | Security Audit | CRM Upgrade" name="project" />
+<Input label="Number of people needed" type="number" name="people-count" placeholder="e.g., 2" />
+<TextArea label="Reason" name="reason" placeholder="Why do you need more people?" />
+<Button>Submit Request</Button>
+</Form>
+
+<Form name="export-review">
+<Select label="Format" options="PDF | CSV | Excel" name="format" />
+<Button>Export Review</Button>
+</Form>
+
+<Form name="archive-project">
+<Select label="Project to archive" options="Platform Migration | Mobile App v3 | Data Pipeline | Security Audit | CRM Upgrade" name="archive-project" />
+<Button variant="danger">Archive Project</Button>
+</Form>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the risk mitigation plan for critical risks
+- Who is overallocated and by how much?
+- What's the trend in delivery velocity?
+- Compare this quarter to last quarter
+</FollowUps>

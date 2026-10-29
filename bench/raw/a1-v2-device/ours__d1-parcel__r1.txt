@@ -1,0 +1,39 @@
+# Damaged Delivery Report
+
+<Card title="Order Details" subtitle="ORD-847291 | Delivered 2024-01-15">
+| Item | Qty | Condition |
+|---|---|---|
+| Ceramic Coffee Mug Set (4pc) | 1 | **Damaged** |
+| Stainless Steel Water Bottle | 2 | OK |
+| Bamboo Cutting Board | 1 | OK |
+</Card>
+
+<Card title="Damage Photos" subtitle="Take clear photos of all damage">
+<Form name="damage-report">
+<Camera label="Damage photos" name="damage-photos" facing="back" multiple="true" hint="Capture all angles, include packaging and shipping label if visible" required="true" />
+<Camera label="Shipping label" name="shipping-label" facing="back" multiple="false" hint="Photo of the parcel's shipping label" required="true" />
+</Form>
+</Card>
+
+<Card title="Parcel Barcode" subtitle="Scan the barcode on the shipping label">
+<Form name="damage-report">
+<Scan label="Parcel barcode" name="parcel-barcode" kind="barcode" hint="Scan the 1D/2D barcode on the shipping label" required="true" />
+</Form>
+</Card>
+
+<Card title="What Happens Next" subtitle="After you submit this report">
+<Steps>
+<Step title="Report received" status="todo">Our claims team reviews your photos and barcode within 4 business hours</Step>
+<Step title="Assessment" status="todo">We verify damage and determine replacement or refund eligibility</Step>
+<Step title="Resolution" status="todo">Approved claims: replacement ships next business day, refunds process in 3–5 days</Step>
+<Step title="Confirmation" status="todo">You'll receive email and push notification with the outcome and tracking (if replacement)</Step>
+</Steps>
+</Card>
+
+<Card title="Submit Report">
+<Form name="damage-report">
+<TextArea label="Additional details" name="notes" placeholder="Describe the damage, how the parcel arrived, anything else we should know…" rows="4" hint="Optional but helpful" />
+<Button variant="primary" size="large">Send Damage Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>

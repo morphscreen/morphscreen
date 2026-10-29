@@ -1,0 +1,173 @@
+# Hospital Operations Command View
+
+<Callout tone="warning" title="Critical Alert">3 patients in critical condition — see Critical Patients section below for immediate action.</Callout>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Stat label="Total Beds" value="412" note="of 450 staffed" icon="bed" />
+<Progress value="92" max="100" label="Occupancy" tone="warning" />
+<Stat label="Available" value="38" note="12 ICU / 26 Med-Surg" tone="success" />
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="Average Wait" value="2h 15m" note="Target: < 1h" tone="warning" icon="clock" />
+<Stat label="In Queue" value="14" note="3 critical / 11 stable" />
+<Stat label="Longest Wait" value="3h 40m" tone="danger" />
+</Card>
+</Columns>
+
+<Card title="Admissions — Past Two Weeks">
+<Chart type="bar" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon | 42 |
+| Tue | 38 |
+| Wed | 51 |
+| Thu | 47 |
+| Fri | 55 |
+| Sat | 33 |
+| Sun | 29 |
+| Mon | 44 |
+| Tue | 39 |
+| Wed | 58 |
+| Thu | 52 |
+| Fri | 61 |
+| Sat | 35 |
+| Sun | 31 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Columns>
+<div>
+<Chart type="donut" title="Current census by dept">
+| Department | Patients |
+|---|---|
+| Med-Surg | 148 |
+| ICU | 42 |
+| Pediatrics | 31 |
+| Maternity | 24 |
+| Cardiology | 38 |
+| Neurology | 27 |
+| Oncology | 22 |
+| Behavioral Health | 18 |
+</Chart>
+</div>
+<div>
+<Stat label="Total Inpatients" value="350" note="vs. 412 bed capacity" />
+<Stat label="ICU Load" value="42/54" note="78% occupied" tone="info" />
+<Stat label="Pediatrics" value="31/36" note="Weekday average: 28" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Staff on Shift — Current">
+| Name | Role | Department | Since |
+|---|---|---|---|
+| Dr. Amara Okafor | Attending Physician | ER | 06:00 |
+| Dr. James Chen | Surgeon | OR | 07:30 |
+| Dr. Priya Patel | Intensivist | ICU | 06:00 |
+| Dr. Marcus Webb | Resident | Cardiology | 06:00 |
+| Sarah Mitchell, RN | Charge Nurse | ER | 07:00 |
+| David Kim, RN | ICU Nurse | ICU | 07:00 |
+| Linda Rodriguez, RN | Med-Surg Nurse | 4 West | 07:00 |
+| Tom Becker, RN | Pediatrics Nurse | Pediatrics | 07:00 |
+| Grace Nguyen, RN | OR Nurse | Operating Room | 06:30 |
+| Robert Hall, RT | Respiratory Therapist | ICU | 07:00 |
+| Emily Foster, PharmD | Pharmacist | Pharmacy | 08:00 |
+| Michael Torres | Patient Transport | Support | 07:00 |
+
+<Callout tone="info" title="Shift coverage">12 staff on duty. Next shift change at 19:00. ICU has 1 float nurse available.</Callout>
+</Card>
+
+<Card title="Critical Patients">
+<Columns>
+<Card title="Immediate Attention" subtitle="Require escalation">
+<Badge tone="danger">STAT</Badge> **Room 214 — J. Miller (M, 67)** — Post-op cardiac arrest, unstable rhythm. Attending: Dr. Chen.
+<Badge tone="danger">STAT</Badge> **Room 108 — E. Brooks (F, 45)** — Sepsis, BP dropping. Attending: Dr. Patel.
+<Badge tone="danger">STAT</Badge> **Room 302 — A. Singh (M, 52)** — Stroke, awaiting neuro intervention. Attending: Dr. Webb.
+</Card>
+<Card title="ICU Watchlist">
+- **Room 101 — R. Thompson (F, 78)** — Ventilated, improving.
+- **Room 103 — K. Davis (M, 61)** — Post-op, on pressors.
+- **Room 105 — S. Lee (F, 34)** — Trauma, stable overnight.
+</Card>
+</Columns>
+</Card>
+
+<Card title="Ready for Discharge">
+| Patient | Room | Department | Awaiting | Since |
+|---|---|---|---|---|
+| Helen Carter | 412 | Med-Surg | Transport | 09:15 |
+| George Adams | 318 | Cardiology | Medication pickup | 10:20 |
+| Maria Lopez | 227 | Pediatrics | Parent arrival | 11:05 |
+| Frank Wilson | 405 | Med-Surg | Insurance verification | 11:30 |
+| Nancy Reed | 220 | Maternity | Discharge paperwork | 12:00 |
+
+<Callout tone="success" title="5 patients ready">Clearing these frees 5 beds — occupancy would drop to 87%.</Callout>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30–09:00 | OR-1 | Laparoscopic cholecystectomy | Dr. Chen | Completed |
+| 08:00–10:30 | OR-2 | Total knee replacement | Dr. Okafor | In progress |
+| 09:30–11:00 | OR-3 | Appendectomy | Dr. Webb | In progress |
+| 10:00–12:00 | OR-4 | Cardiac catheterization | Dr. Patel | Scheduled |
+| 11:30–13:30 | OR-1 | Hernia repair | Dr. Chen | Scheduled |
+| 13:00–15:00 | OR-2 | Cesarean section | Dr. Rodriguez | Scheduled |
+| 14:00–16:30 | OR-3 | Craniotomy | Dr. Patel | Scheduled |
+| 15:30–17:30 | OR-4 | Hysterectomy | Dr. Okafor | Scheduled |
+
+<Callout tone="warning" title="OR-3 delayed">Craniotomy pushed 45 min — neuro team still in ICU with stroke patient.</Callout>
+</Card>
+
+<Card title="Supplies Running Low">
+| Supply | Current Stock | Reorder Level | Est. Depletion | Action |
+|---|---|---|---|---|
+| N95 Masks | 120 boxes | 200 | 6 hours | <Button size="small" variant="secondary">Reorder</Button> |
+| IV Tubing (10cc) | 45 units | 80 | 4 hours | <Button size="small" variant="secondary">Reorder</Button> |
+| Normal Saline 1L | 60 bags | 100 | 5 hours | <Button size="small" variant="secondary">Reorder</Button> |
+| Syringes (5mL) | 200 units | 300 | 8 hours | <Button size="small" variant="secondary">Reorder</Button> |
+| Blood Glucose Strips | 35 boxes | 50 | 3 hours | <Button size="small" variant="danger">Reorder</Button> |
+
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Incident type" placeholder="Select type" options="Medication error | Fall | Equipment failure | Safety concern | Behavioral event | Other" />
+<Input label="Location" placeholder="e.g., ICU, Room 214" />
+<TextArea label="Description" placeholder="Briefly describe what happened" rows="3" />
+<Button>Submit Incident</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient name" placeholder="Full name" />
+<Input label="Current location" placeholder="e.g., 4 West, Room 412" />
+<Select label="Transfer to" placeholder="Select destination" options="ICU | Med-Surg | Step-down | Pediatrics | Cardiology | Other facility" />
+<Select label="Priority" options="Routine | Urgent | STAT" />
+<TextArea label="Reason" placeholder="Clinical justification for transfer" rows="2" />
+<Button>Submit Transfer Request</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<Card title="View Another Day">
+<Form name="date-lookup">
+<Date label="Select date" name="ops-date" />
+<Button variant="secondary">Load Operations View</Button>
+<Button variant="tertiary">Compare with Today</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full patient roster for ICU
+- Which departments are over capacity right now?
+- What's the staff-to-patient ratio this shift?
+- List all incidents filed in the last 24 hours
+</FollowUps>

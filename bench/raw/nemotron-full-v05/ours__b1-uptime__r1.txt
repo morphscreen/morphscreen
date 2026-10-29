@@ -1,0 +1,15 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.94%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.94" max="100" label="Target: 99.9%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Callout tone="info" title="Incident #INC-2024-03-18 — Elevated API latency">
+<strong>Resolved:</strong> March 18, 2024 at 14:32 UTC<br />
+<strong>Duration:</strong> 47 minutes<br />
+<strong>Impact:</strong> p99 latency increased to 2.1s (normal: ~300ms) for ~12% of requests<br />
+<strong>Root cause:</strong> Database connection pool exhaustion due to a slow query in the new analytics endpoint. Fixed by rolling back the deploy and adding query timeout guards.
+</Callout>
+</Card>

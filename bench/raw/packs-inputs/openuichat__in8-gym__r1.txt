@@ -1,0 +1,58 @@
+root = Card([header, form])
+header = CardHeader("Gym Plan Setup", "Configure your weekly workout schedule, exercises, and timing")
+form = Form("gym-plan", formButtons, [fcDays, fcStartTime, fcExercises])
+formButtons = Buttons([btnSave, btnReset], "row")
+btnSave = Button("Save Plan", { type: "continue_conversation", context: "Save my gym plan with the configured days, start time, and exercises" }, "primary")
+btnReset = Button("Reset Form", { type: "continue_conversation", context: "Reset the gym plan form to defaults" }, "secondary")
+fcDays = FormControl("Workout Days", daysChips, "Select which days you'll train each week")
+daysChips = Chips("workout-days", "multiple", [chipMon, chipTue, chipWed, chipThu, chipFri, chipSat, chipSun], { required: true }, ["mon", "wed", "fri"])
+chipMon = ChipItem("mon", "Mon", chipMonIcon)
+chipMonIcon = Icon("calendar-day", "time")
+chipTue = ChipItem("tue", "Tue", chipTueIcon)
+chipTueIcon = Icon("calendar-day", "time")
+chipWed = ChipItem("wed", "Wed", chipWedIcon)
+chipWedIcon = Icon("calendar-day", "time")
+chipThu = ChipItem("thu", "Thu", chipThuIcon)
+chipThuIcon = Icon("calendar-day", "time")
+chipFri = ChipItem("fri", "Fri", chipFriIcon)
+chipFriIcon = Icon("calendar-day", "time")
+chipSat = ChipItem("sat", "Sat", chipSatIcon)
+chipSatIcon = Icon("calendar-day", "time")
+chipSun = ChipItem("sun", "Sun", chipSunIcon)
+chipSunIcon = Icon("calendar-day", "time")
+fcStartTime = FormControl("Start Time", timeSelect, "What time do you usually begin your workout?")
+timeSelect = Select("start-time", [time1, time2, time3, time4, time5, time6, time7, time8], "Select start time", { required: true }, "06:00")
+time1 = SelectItem("05:00", "5:00 AM")
+time2 = SelectItem("06:00", "6:00 AM")
+time3 = SelectItem("07:00", "7:00 AM")
+time4 = SelectItem("08:00", "8:00 AM")
+time5 = SelectItem("17:00", "5:00 PM")
+time6 = SelectItem("18:00", "6:00 PM")
+time7 = SelectItem("19:00", "7:00 PM")
+time8 = SelectItem("20:00", "8:00 PM")
+fcExercises = FormControl("Exercises (Sets × Reps)", exercisesTable, "Add each exercise with its sets and reps. Edit inline — click Save Plan when done.")
+exercisesTable = EditableTable("exercises", exerciseColumns, exerciseData)
+exerciseColumns = [
+  { type: "text", key: "exercise", header: "Exercise", width: 200 },
+  { type: "number", key: "sets", header: "Sets", width: 80 },
+  { type: "number", key: "reps", header: "Reps", width: 80 },
+  { type: "number", key: "restSec", header: "Rest (sec)", width: 100 },
+  { type: "select", key: "muscleGroup", header: "Muscle Group", width: 140, options: muscleOptions }
+]
+muscleOptions = [
+  { value: "chest", label: "Chest" },
+  { value: "back", label: "Back" },
+  { value: "legs", label: "Legs" },
+  { value: "shoulders", label: "Shoulders" },
+  { value: "arms", label: "Arms" },
+  { value: "core", label: "Core" },
+  { value: "full", label: "Full Body" }
+]
+exerciseData = [
+  { id: "ex1", values: ["Bench Press", 4, 8, 90, "chest"] },
+  { id: "ex2", values: ["Squats", 4, 10, 120, "legs"] },
+  { id: "ex3", values: ["Pull-Ups", 3, 10, 90, "back"] },
+  { id: "ex4", values: ["Overhead Press", 3, 10, 90, "shoulders"] },
+  { id: "ex5", values: ["Deadlifts", 3, 6, 180, "full"] },
+  { id: "ex6", values: ["Plank", 3, 60, 60, "core"] }
+]

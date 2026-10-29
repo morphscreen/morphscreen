@@ -1,0 +1,79 @@
+<Card title="Today’s Appointments" subtitle="Thursday, 12 June">
+<Columns>
+<Stat label="Expected patients" value="24" icon="users" />
+<Stat label="No-show rate (this month)" value="9%" change="-2% vs May" tone="success" icon="chart-line" />
+</Columns>
+
+<Chart type="bar" title="Appointments by hour" x="Hour" y="Patients">
+| Hour | Patients |
+|---|---|
+| 8 | 3 |
+| 9 | 4 |
+| 10 | 5 |
+| 11 | 4 |
+| 12 | 2 |
+| 13 | 1 |
+| 14 | 3 |
+| 15 | 2 |
+</Chart>
+
+<Tabs>
+<Tab title="Next up">
+<Card title="Next patient to call">
+<Avatar name="Maya Chen" src="" subtitle="10:30 – Dr. Okafor, Room 3" />
+<Button>Call to room</Button>
+</Card>
+</Tab>
+<Tab title="Full list">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 08:00 | Liam Patel | 1 | Done |
+| 08:30 | Sofia Reyes | 2 | Done |
+| 09:00 | Noah Kim | 3 | Checked in |
+| 09:30 | Ava Singh | 1 | In session |
+| 10:00 | Ethan Brooks | 2 | Waiting |
+| 10:30 | Maya Chen | 3 | Waiting |
+| 11:00 | Olivia Novak | 1 | Waiting |
+| 11:30 | Lucas Meyer | 2 | Waiting |
+| 12:00 | Emma Rossi | 3 | Waiting |
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Room availability">
+<Columns>
+<Stat label="Free now" value="1" icon="map-pin" tone="success" />
+<Stat label="In use" value="2" tone="neutral" />
+</Columns>
+
+| Room | Status |
+|---|---|
+| Room 1 | In use until 10:45 |
+| Room 2 | In use until 11:15 |
+| Room 3 | Free |
+</Card>
+
+<Card title="Check in patient">
+<Form name="checkin">
+<Select label="Patient" placeholder="Search by name" options="Maya Chen | Ethan Brooks | Olivia Novak | Lucas Meyer | Emma Rossi" />
+<Input label="Time" type="time" value="10:15" />
+<Button>Check in</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Form name="day-nav">
+<Date label="Pick a day" />
+<Button>View that day</Button>
+<Button variant="secondary">Today</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Reminder">Dr. Okafor’s 11:30 slot is still open — consider booking a follow-up.</Callout>
+
+<FollowUps>
+- Show tomorrow’s schedule
+- List today’s no-shows
+- Add a new appointment
+</FollowUps>

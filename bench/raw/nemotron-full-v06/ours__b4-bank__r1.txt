@@ -1,0 +1,122 @@
+# Personal Banking
+
+<Columns>
+<Stat label="Checking" value="$12,450.00" change="+$1,200 this month" tone="success" />
+<Stat label="Savings" value="$28,900.00" change="+$500 this month" tone="info" />
+<Stat label="Credit Card" value="-$2,340.00" change="$15,660 available" tone="warning" />
+</Columns>
+
+<Columns>
+<Card title="Credit Score" subtitle="Updated yesterday">
+<Stat label="Score" value="742" change="Good" tone="success" />
+<Progress value="742" max="850" label="Excellent range starts at 800" tone="success" />
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Target: $5,000 by July">
+<Stat label="Saved" value="$3,200" change="64% complete" tone="info" />
+<Progress value="3200" max="5000" label="$1,800 to go" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Mar 15 | Whole Foods Market | Groceries | -$127.45 |
+| Mar 14 | Shell Gas Station | Transportation | -$65.00 |
+| Mar 13 | Netflix | Subscriptions | -$15.99 |
+| Mar 12 | Amazon | Shopping | -$89.99 |
+| Mar 11 | Salary Deposit | Income | +$3,500.00 |
+| Mar 10 | Starbucks | Dining | -$12.50 |
+| Mar 9 | Electric Bill | Utilities | -$145.30 |
+| Mar 8 | Target | Shopping | -$67.82 |
+</Card>
+
+<Columns>
+<Card title="Spending This Month">
+<Chart type="donut" title="By Category" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Transportation | 280 |
+| Dining | 195 |
+| Shopping | 310 |
+| Subscriptions | 45 |
+| Utilities | 145 |
+| Other | 120 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Due Date | Amount | Status |
+|---|---|---|---|
+| Credit Card Payment | Mar 20 | $2,340.00 | <Badge tone="warning">Due soon</Badge> |
+| Car Insurance | Mar 25 | $185.00 | <Badge tone="info">Scheduled</Badge> |
+| Internet | Mar 28 | $79.99 | <Badge tone="neutral">Pending</Badge> |
+| Phone Bill | Apr 2 | $95.00 | <Badge tone="neutral">Pending</Badge> |
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Move Money">
+<Card title="Transfer Between Accounts" subtitle="Instant transfers between your accounts">
+<Form name="transfer-form">
+<Select label="From Account" name="fromAccount" placeholder="Select source account" options="Checking ($12,450.00) | Savings ($28,900.00)" required="true" />
+<Select label="To Account" name="toAccount" placeholder="Select destination account" options="Checking ($12,450.00) | Savings ($28,900.00)" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="1" max="12450" required="true" hint="Max $12,450.00 from Checking" />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Credit Controls">
+<Card title="Credit Line Freeze" subtitle="Freeze your credit line to prevent new charges">
+<Callout tone="warning" title="Freezing your credit line">
+This will block all new transactions on your credit card. Recurring payments and returns will still process. You can unfreeze anytime.
+</Callout>
+<Switch label="Freeze credit line" name="creditFreeze" value="false" hint="Toggle to freeze or unfreeze your credit line" />
+</Card>
+</Tab>
+
+<Tab title="Statements">
+<Card title="Statement Period" subtitle="Choose the period for your next statement">
+<Form name="statement-period">
+<Radio label="Statement Frequency" name="frequency" value="monthly" options="Monthly (1st-30th) | Semi-monthly (1st-15th, 16th-end) | Custom dates" required="true" />
+<Date label="Custom Start Date" name="customStart" hint="Used if Custom dates selected" />
+<Date label="Custom End Date" name="customEnd" hint="Used if Custom dates selected" />
+<Button>Save Preference</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Alerts">
+<Card title="Alert Triggers" subtitle="Manage what triggers notifications">
+<Form name="alert-triggers">
+<Checkboxes label="Transaction Alerts" name="txAlerts" options="Large purchases (> $100) | International transactions | Online purchases | Gas station purchases | ATM withdrawals" value="Large purchases (> $100) | International transactions" hint="Get push/email for each transaction type" />
+<Checkboxes label="Balance Alerts" name="balanceAlerts" options="Low checking balance (< $500) | Low savings balance (< $1,000) | Credit utilization > 30% | Credit utilization > 50%" value="Low checking balance (< $500) | Credit utilization > 30%" />
+<Checkboxes label="Security Alerts" name="securityAlerts" options="New device login | Password change | Profile update | New payee added | Credit freeze toggle" value="New device login | Password change | New payee added" />
+<Button>Save Alert Preferences</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Disputes">
+<Card title="Dispute a Transaction" subtitle="Report an unauthorized or incorrect charge">
+<Form name="dispute-form">
+<Select label="Transaction to Dispute" name="disputeTx" placeholder="Select a transaction" options="Whole Foods Market - $127.45 (Mar 15) | Shell Gas Station - $65.00 (Mar 14) | Netflix - $15.99 (Mar 13) | Amazon - $89.99 (Mar 12) | Starbucks - $12.50 (Mar 10) | Electric Bill - $145.30 (Mar 9) | Target - $67.82 (Mar 8)" required="true" />
+<Radio label="Dispute Reason" name="reason" options="Unauthorized charge | Incorrect amount | Goods not received | Services not rendered | Duplicate charge | Other" required="true" />
+<TextArea label="Additional Details" name="details" placeholder="Describe what happened, include any merchant communication..." rows="4" hint="Provide as much detail as possible" required="true" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Show me my full transaction history
+- Set up automatic savings transfers
+- Increase my credit limit
+- Order a new debit card
+- View my tax documents
+</FollowUps>

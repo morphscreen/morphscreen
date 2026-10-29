@@ -1,0 +1,108 @@
+# Admin Overview
+
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Custom range" value="Last 30 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$284,500" change="+12.3% vs last month" tone="success" icon="currency-dollar" />
+<Stat label="Annual Recurring Revenue" value="$3,414,000" change="+11.8% vs last year" tone="success" icon="calendar" />
+<Stat label="Churn this month" value="2.1%" change="-0.4pp vs last month" tone="success" icon="chart-line-down" />
+<Stat label="Current NPS" value="62" change="+5 vs last quarter" tone="success" icon="users" />
+</Columns>
+
+<Card title="New signups (past 90 days)">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 42 |
+| W2 | 38 |
+| W3 | 51 |
+| W4 | 47 |
+| W5 | 55 |
+| W6 | 62 |
+| W7 | 58 |
+| W8 | 67 |
+| W9 | 71 |
+| W10 | 69 |
+| W11 | 74 |
+| W12 | 78 |
+| W13 | 82 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Enterprise | 230 |
+| Custom | 45 |
+</Chart>
+</Card>
+
+<Card title="Seat utilization">
+<Progress value="78" max="100" label="Company-wide seat utilization: 78% of 12,450 seats active" tone="info" />
+<Progress value="92" max="100" label="Enterprise plans: 92% utilized" tone="success" />
+<Progress value="71" max="100" label="Professional plans: 71% utilized" tone="neutral" />
+<Progress value="54" max="100" label="Starter plans: 54% utilized" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Top 10 customers by spend">
+| Customer | Plan | Seats | Monthly spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 850 | $42,500 | Active |
+| Globex Inc | Enterprise | 620 | $31,000 | Active |
+| Wayne Enterprises | Enterprise | 480 | $24,000 | Active |
+| Stark Industries | Enterprise | 410 | $20,500 | Active |
+| Umbrella Corp | Professional | 350 | $17,500 | Active |
+| Cyberdyne Systems | Enterprise | 320 | $16,000 | At risk |
+| Oscorp | Professional | 290 | $14,500 | Active |
+| Massive Dynamic | Custom | 250 | $18,750 | Active |
+| Tyrell Corporation | Professional | 220 | $11,000 | Active |
+| Initech | Professional | 180 | $9,000 | Active |
+</Card>
+
+<Card title="Accounts at risk">
+| Customer | Plan | Seats | Risk reason | Since | Action |
+|---|---|---|---|---|---|
+| Cyberdyne Systems | Enterprise | 320 | No login in 21 days, declining usage | 2024-01-15 | <Button size="small" variant="secondary">Contact</Button> |
+| Hooli Inc | Professional | 140 | Failed payment ×2, support tickets unanswered | 2024-01-20 | <Button size="small" variant="secondary">Contact</Button> |
+| Pied Piper | Starter | 45 | NPS score 2, feature requests ignored | 2024-01-10 | <Button size="small" variant="secondary">Contact</Button> |
+| Dunder Mifflin | Professional | 95 | Seat utilization dropped 40% in 30 days | 2024-01-18 | <Button size="small" variant="secondary">Contact</Button> |
+| Bluth Company | Starter | 30 | Admin left company, no new owner assigned | 2024-01-22 | <Button size="small" variant="secondary">Contact</Button> |
+</Card>
+
+<Card title="Failed payments (retry available)">
+| Customer | Amount | Failed on | Attempts | Last error | Action |
+|---|---|---|---|---|---|
+| Hooli Inc | $7,000 | 2024-01-25 | 2 | Card declined | <Button size="small">Retry</Button> |
+| Pied Piper | $225 | 2024-01-24 | 1 | Insufficient funds | <Button size="small">Retry</Button> |
+| Bluth Company | $150 | 2024-01-23 | 3 | Card expired | <Button size="small">Retry</Button> |
+| Sterling Cooper | $4,500 | 2024-01-22 | 1 | Bank declined | <Button size="small">Retry</Button> |
+| Vought International | $12,000 | 2024-01-21 | 2 | Fraud hold | <Button size="small">Retry</Button> |
+</Card>
+
+<Card title="Adoption of newest features">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34 |
+| Real-time Collaboration | 52 |
+| Advanced Analytics Dashboard | 28 |
+</Chart>
+<Progress value="34" max="100" label="AI Workflow Builder — 34% of eligible users" tone="neutral" />
+<Progress value="52" max="100" label="Real-time Collaboration — 52% of eligible users" tone="info" />
+<Progress value="28" max="100" label="Advanced Analytics Dashboard — 28% of eligible users" tone="warning" />
+</Card>
+
+<Card title="Invite another admin">
+<Form name="invite-admin">
+<Input label="Email address" placeholder="admin@company.com" type="email" required="true" />
+<Select label="Role" name="role" options="Owner | Admin | Billing admin | Read-only" value="Admin" required="true" />
+<Checkboxes label="Permissions" name="perms" options="Manage users | Manage billing | View analytics | Configure integrations | Access audit logs" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

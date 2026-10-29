@@ -1,0 +1,207 @@
+# City Operations Center
+
+Live overview of the city, updated every 60 seconds. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Weather & District Focus">
+<Columns>
+<div>
+<KeyValue title="Current conditions">
+| Condition | Value |
+|---|---|
+| Temperature | 18°C |
+| Wind | 12 km/h NW |
+| Humidity | 62% |
+| UV Index | 4 Moderate |
+</KeyValue>
+</div>
+<div>
+<Select label="Focus on district" name="district-focus" placeholder="All districts" options="All districts | Downtown | Riverside | Northgate | Southfield | Eastbank" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Live Traffic & Transit">
+<Columns>
+<div>
+<Stat label="Congestion index" value="72%" tone="warning" icon="traffic-sign" note="Downtown & Riverside heavy" />
+<Progress value="72" max="100" label="Congestion vs capacity" tone="warning" />
+</div>
+<div>
+<Stat label="Transit on time" value="91%" tone="success" icon="bus" note="+3% vs yesterday" />
+<Progress value="91" max="100" label="Buses & trams punctual" tone="success" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" title="AQI today" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Riverside | 54 |
+| Northgate | 42 |
+| Southfield | 61 |
+| Eastbank | 48 |
+</Chart>
+<Callout tone="warning" title="Sensitive groups">Downtown AQI at 68 — advise masks for sensitive groups.</Callout>
+</Card>
+
+<Card title="Energy Use — Past 7 Days">
+<Chart type="area" title="Megawatt-hours per day" x="Day" y="MWh">
+| Day | MWh |
+|---|---|
+| Mon | 412 |
+| Tue | 398 |
+| Wed | 421 |
+| Thu | 405 |
+| Fri | 438 |
+| Sat | 362 |
+| Sun | 351 |
+</Chart>
+</Card>
+
+<Card title="Water Use Today">
+<Columns>
+<Stat label="Water used" value="24.6 ML" tone="info" icon="droplet" note="Target: 26 ML" />
+<Stat label="Peak hour" value="7–8 AM" note="Residential demand" />
+</Columns>
+</Card>
+
+<Card title="Open Incidents">
+| Incident | District | Severity | Time |
+|---|---|---|---|
+| Water main break | Eastbank | <Badge tone="danger">Critical</Badge> | 14:22 |
+| Traffic signal outage | Downtown | <Badge tone="warning">High</Badge> | 13:05 |
+| Fallen tree on road | Northgate | <Badge tone="warning">High</Badge> | 12:48 |
+| Streetlight outage | Riverside | <Badge tone="neutral">Low</Badge> | 11:30 |
+| Graffiti report | Southfield | <Badge tone="neutral">Low</Badge> | 10:15 |
+
+<Map title="Incident locations" route="false">
+| Location | Lat | Lng | Severity |
+|---|---|---|---|
+| Water main break | 41.883 | -87.632 | Critical |
+| Traffic signal outage | 41.875 | -87.628 | High |
+| Fallen tree | 41.910 | -87.612 | High |
+| Streetlight outage | 41.888 | -87.651 | Low |
+| Graffiti | 41.865 | -87.620 | Low |
+</Map>
+</Card>
+
+<Card title="Emergency Vehicle Deployment">
+<Columns>
+<div>
+<Stat label="Ambulances" value="8" icon="ambulance" note="4 available" />
+<Stat label="Fire engines" value="6" icon="fire-truck" note="2 available" />
+<Stat label="Police units" value="14" icon="police-car" note="6 available" />
+</div>
+<div>
+<Timeline title="Latest dispatches">
+- 14:32 — Ambulance A-3 to Eastbank water main
+- 14:18 — Fire engine F-2 to Northgate tree
+- 13:55 — Police P-7 to Downtown signal outage
+</Timeline>
+</div>
+</Columns>
+</Card>
+
+<Card title="Downtown Parking Availability">
+<Columns>
+<Stat label="Spaces free" value="1,248" tone="success" icon="car" note="of 3,400 total" />
+<Progress value="63" max="100" label="Occupancy" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Public Events This Weekend">
+| Event | Location | Day | Time |
+|---|---|---|---|
+| Farmers Market | Downtown Square | Sat | 8 AM – 1 PM |
+| Riverside Festival | Riverside Park | Sat & Sun | 10 AM – 8 PM |
+| Open Air Cinema | Northgate Fields | Sun | 7 PM – 10 PM |
+| Southfield Marathon | Southfield Loop | Sun | 6 AM – 12 PM |
+
+<AddToCalendar title="Riverside Festival" start="2025-06-14T10:00" end="2025-06-15T20:00" where="Riverside Park" note="Family festival with food stalls and live music">Add to my calendar</AddToCalendar>
+</Card>
+
+<Card title="Citizen Reports — Live Feed">
+<Columns>
+<Callout tone="info" title="14:36 — Eastbank">Pothole on Maple Ave near 5th St. <Avatar name="Resident M." /></Callout>
+<Callout tone="info" title="14:31 — Downtown">Noisy construction after hours on Main St. <Avatar name="Resident K." /></Callout>
+<Callout tone="info" title="14:27 — Northgate">Damaged street sign at Oak & 2nd. <Avatar name="Resident J." /></Callout>
+<Callout tone="info" title="14:20 — Southfield">Illegal dumping behind the mall. <Avatar name="Resident R." /></Callout>
+</Columns>
+</Card>
+
+<Card title="Service Request Backlog">
+<Columns>
+<Stat label="Open requests" value="342" tone="warning" icon="clipboard-text" note="Aging: 28 over 30 days" />
+<Stat label="Closed today" value="57" tone="success" note="Avg. resolution 2.1 days" />
+</Columns>
+<Chart type="bar" title="By category" x="Category" y="Requests">
+| Category | Requests |
+|---|---|
+| Potholes | 118 |
+| Streetlights | 76 |
+| Trash | 54 |
+| Parks | 42 |
+| Other | 52 |
+</Chart>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch">
+<Select label="Incident" name="incident" placeholder="Select incident" options="Water main break — Eastbank | Traffic signal outage — Downtown | Fallen tree — Northgate | Streetlight outage — Riverside | Graffiti — Southfield" />
+<Select label="Crew type" name="crew" options="Water crew | Traffic crew | Parks crew | Streetlight crew | General crew" />
+<Input label="Notes" placeholder="e.g., Bring extra cones" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert">
+<Form name="alert">
+<Select label="Alert type" name="alert-type" options="Weather warning | Traffic disruption | Public safety | Utility outage | General notice" />
+<TextArea label="Message" name="message" placeholder="Write the alert message citizens will see…" rows="4" />
+<Select label="Target districts" name="alert-districts" options="All districts | Downtown | Riverside | Northgate | Southfield | Eastbank" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks — This Month">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| Main St. resurfacing | Downtown | Jun 10 – 18 | Lane closure |
+| Riverside Bridge repairs | Riverside | Jun 12 – 20 | One lane each way |
+| Northgate Ave. paving | Northgate | Jun 15 – 24 | Full closure 9 PM – 5 AM |
+| Southfield drainage | Southfield | Jun 20 – 30 | Shoulder work |
+
+<Map title="Roadworks map" route="false">
+| Location | Lat | Lng | Dates |
+|---|---|---|---|
+| Main St. | 41.878 | -87.629 | Jun 10–18 |
+| Riverside Bridge | 41.890 | -87.645 | Jun 12–20 |
+| Northgate Ave. | 41.908 | -87.615 | Jun 15–24 |
+| Southfield | 41.860 | -87.618 | Jun 20–30 |
+</Map>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+| Asset | District | Due date | Status |
+|---|---|---|---|
+| Water pump station #4 | Eastbank | Jun 16 | <Badge tone="warning">Due soon</Badge> |
+| Traffic sensors — Main St. | Downtown | Jun 18 | <Badge tone="warning">Due soon</Badge> |
+| Sewer line — Riverside | Riverside | Jun 22 | <Badge tone="neutral">Scheduled</Badge> |
+| Streetlight control box | Northgate | Jun 25 | <Badge tone="neutral">Scheduled</Badge> |
+| Bridge inspection — Southfield | Southfield | Jun 30 | <Badge tone="neutral">Scheduled</Badge> |
+
+<Checklist title="This week's maintenance" name="maint-checklist">
+- [ ] Pump station #4 — order parts
+- [ ] Traffic sensors — confirm vendor
+- [ ] Sewer line — notify residents
+</Checklist>
+</Card>
+
+<FollowUps>
+- Show me the incident details for the water main break
+- What's the parking situation in Northgate?
+- Send me the weekly energy report
+- Which crews are available right now?
+</FollowUps>

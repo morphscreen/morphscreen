@@ -1,0 +1,112 @@
+# Content Studio Dashboard
+
+<Card title="Filters">
+<Columns>
+<Select label="Category" name="category" placeholder="All categories" options="All | News | Features | Opinion | Reviews | Guides | Interviews" />
+<Select label="Status" name="status" placeholder="All statuses" options="All | Draft | In Review | Scheduled | Published | Archived" />
+<Select label="Author" name="author" placeholder="All authors" options="All | Me | Team | Guest" />
+</Columns>
+</Card>
+
+<Card title="Drafts">
+| Title | Status | Category | Updated | Actions |
+|---|---|---|---|---|
+| The Future of AI in Creative Work | <Badge tone="warning">In Review</Badge> | Features | 2 hours ago | Edit · Schedule |
+| How to Build a Design System from Scratch | <Badge tone="neutral">Draft</Badge> | Guides | 5 hours ago | Edit · Schedule |
+| Interview: Sarah Chen on Scaling Startups | <Badge tone="info">Scheduled</Badge> | Interviews | Yesterday | View · Reschedule |
+| Quarterly Market Analysis: Q4 2024 | <Badge tone="neutral">Draft</Badge> | News | 3 days ago | Edit · Delete |
+| Why Remote Work Isn't Going Away | <Badge tone="danger">Needs Revision</Badge> | Opinion | 1 week ago | Edit · View Feedback |
+</Card>
+
+<Card title="Published This Week">
+| Title | Category | Published | Views | Read Time |
+|---|---|---|---|---|
+| The Rise of Local-First Software | Features | Mon 9:00 AM | 12,450 | 8 min |
+| Debugging Memory Leaks in Node.js | Guides | Tue 2:30 PM | 8,210 | 12 min |
+| Designing for Accessibility: A Checklist | Guides | Wed 10:00 AM | 6,890 | 6 min |
+| The Economics of Creator Platforms | Features | Thu 11:30 AM | 5,670 | 10 min |
+| Building Trust in Distributed Teams | Opinion | Fri 8:00 AM | 4,320 | 7 min |
+</Card>
+
+<Card title="Most-Read Article This Month">
+<Columns>
+<Avatar name="The Rise of Local-First Software" subtitle="Features · Published Mon 9:00 AM" src="https://picsum.photos/seed/local-first/120/80" />
+<Columns>
+<Stat label="Total Views" value="12,450" change="+23% vs last month" tone="success" />
+<Stat label="Avg. Read Time" value="6:42" change="+0:45 vs avg" tone="info" />
+<Stat label="Completion Rate" value="68%" change="+5% vs avg" tone="success" />
+<Stat label="Shares" value="342" change="+12% vs avg" tone="info" />
+</Columns>
+</Columns>
+<Callout tone="success" title="Top Traffic Sources">Direct (42%) · Newsletter (28%) · Twitter/X (15%) · Search (10%) · Referral (5%)</Callout>
+</Card>
+
+<Card title="Readership — Past 30 Days">
+<Chart type="area" x="Date" y="Views" title="Daily Unique Readers">
+| Date | Views |
+|---|---|
+| Nov 20 | 3,200 |
+| Nov 21 | 3,450 |
+| Nov 22 | 3,100 |
+| Nov 23 | 2,800 |
+| Nov 24 | 2,950 |
+| Nov 25 | 4,200 |
+| Nov 26 | 5,100 |
+| Nov 27 | 4,800 |
+| Nov 28 | 3,900 |
+| Nov 29 | 3,600 |
+| Nov 30 | 3,300 |
+| Dec 1 | 3,100 |
+| Dec 2 | 4,500 |
+| Dec 3 | 5,200 |
+| Dec 4 | 4,900 |
+| Dec 5 | 4,100 |
+| Dec 6 | 3,800 |
+| Dec 7 | 3,400 |
+| Dec 8 | 3,200 |
+| Dec 9 | 4,800 |
+| Dec 10 | 5,600 |
+| Dec 11 | 5,100 |
+| Dec 12 | 4,300 |
+| Dec 13 | 3,900 |
+| Dec 14 | 3,500 |
+| Dec 15 | 3,200 |
+| Dec 16 | 4,600 |
+| Dec 17 | 5,300 |
+| Dec 18 | 4,800 |
+| Dec 19 | 4,100 |
+</Chart>
+</Card>
+
+<Card title="Comments Awaiting Reply">
+| Article | Commenter | Comment | Time | Actions |
+|---|---|---|---|---|
+| The Rise of Local-First Software | @dev_maria | "Great piece! How does this compare to CRDT-based approaches?" | 1 hour ago | Reply · Like |
+| Debugging Memory Leaks in Node.js | @backend_bob | "The heap snapshot section saved me hours. Thanks!" | 3 hours ago | Reply · Like |
+| Designing for Accessibility | @a11y_advocate | "Missing mention of WCAG 2.2 updates. Could you add?" | 5 hours ago | Reply · Edit Article |
+| The Economics of Creator Platforms | @creator_jay | "What about platform fee structures for micro-creators?" | 8 hours ago | Reply |
+| Building Trust in Distributed Teams | @manager_mike | "Any tools you recommend for async standups?" | 12 hours ago | Reply · Like |
+</Card>
+
+<Card title="Schedule a Piece">
+<Form name="schedule-piece">
+<Input label="Article Title" name="title" placeholder="Enter article title" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="News | Features | Opinion | Reviews | Guides | Interviews" required="true" />
+<Date label="Publish Date" name="publishDate" hint="Choose date and time" required="true" />
+<Select label="Time" name="publishTime" placeholder="Select time" options="9:00 AM | 10:00 AM | 11:00 AM | 12:00 PM | 1:00 PM | 2:00 PM | 3:00 PM | 4:00 PM | 5:00 PM" />
+<Switch label="Send newsletter notification" name="notify" value="true" hint="Notify subscribers when published" />
+<Button>Schedule Article</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Start a New Draft">
+<Form name="new-draft">
+<Input label="Working Title" name="title" placeholder="What's this piece about?" required="true" />
+<Select label="Category" name="category" placeholder="Choose category" options="News | Features | Opinion | Reviews | Guides | Interviews" required="true" />
+<TextArea label="Brief / Outline" name="outline" placeholder="Key points, angle, sources, target word count..." rows="4" hint="Optional but recommended" />
+<Checkboxes label="Assign to" name="assignee" options="Me | Alex Chen | Jordan Park | Sam Rivera | Guest Contributor" value="Me" />
+<Button size="large">Create Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

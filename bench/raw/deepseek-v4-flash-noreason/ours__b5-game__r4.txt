@@ -1,0 +1,163 @@
+# Live-Ops Command Center
+
+<Callout tone="info" title="Live-ops overview">All metrics update in real time. Region filter applies to all panels below.</Callout>
+
+<Columns>
+<Stat label="Players Online" value="8,742" change="+12%" tone="success" icon="users" />
+<Stat label="Daily Active" value="412,390" change="+4.2%" tone="success" icon="chart-line" />
+<Stat label="Monthly Active" value="3,847,201" change="+1.8%" tone="info" icon="calendar" />
+</Columns>
+
+<Columns>
+<Stat label="Revenue Today" value="$124,380" change="+7.5%" tone="success" icon="currency-dollar" />
+<Stat label="Revenue Per User" value="$0.30" change="+3.1%" tone="info" icon="chart-line" />
+</Columns>
+
+<Card title="Session Length — Past 14 Days" subtitle="Average minutes per session">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Session Length |
+|---|---|
+| D-13 | 24.1 |
+| D-12 | 25.3 |
+| D-11 | 23.8 |
+| D-10 | 26.2 |
+| D-9 | 27.4 |
+| D-8 | 25.9 |
+| D-7 | 24.6 |
+| D-6 | 23.1 |
+| D-5 | 25.8 |
+| D-4 | 26.9 |
+| D-3 | 28.2 |
+| D-2 | 27.1 |
+| D-1 | 26.4 |
+| Today | 27.8 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items" subtitle="By units sold today">
+| Item | Units Sold |
+|---|---|
+| Dragon Slayer Bundle | 3,482 |
+| Legendary Loot Crate | 2,914 |
+| Golden Wings | 2,207 |
+| XP Boost (7-day) | 1,876 |
+| Royal Guard Skin | 1,543 |
+| Starter Pack | 1,210 |
+</Card>
+
+<Card title="Server Regions & Health">
+<Radio label="Focus region" options="All Regions | North America | Europe | Asia Pacific | South America" name="region-filter" value="All Regions" />
+<Chart type="bar" x="Region" y="Health %">
+| Region | Health |
+|---|---|
+| North America | 98 |
+| Europe | 95 |
+| Asia Pacific | 91 |
+| South America | 87 |
+</Chart>
+<Callout tone="warning" title="South America">Latency spikes detected. 3 instances at 72% capacity.</Callout>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash %">
+| Version | Crash Rate |
+|---|---|
+| v2.4.0 | 0.8 |
+| v2.4.1 | 0.5 |
+| v2.4.2 | 0.4 |
+| v2.5.0 | 2.3 |
+| v2.5.1 | 1.1 |
+</Chart>
+<Badge tone="warning">v2.5.0 elevated crash rate</Badge>
+</Card>
+
+<Card title="Live Events">
+| Event | Status | Ends In |
+|---|---|---|
+| Summer Festival | <Badge tone="success">Live</Badge> | 2 days |
+| Double XP Weekend | <Badge tone="success">Live</Badge> | 14 hours |
+| Boss Rush | <Badge tone="info">Upcoming</Badge> | Starts in 3 days |
+| Halloween Haunt | <Badge tone="info">Upcoming</Badge> | Starts in 12 days |
+</Card>
+
+<Columns>
+<Card title="Player Reports" subtitle="Awaiting review">
+<Stat label="Total" value="342" tone="warning" icon="flag" />
+<Progress value="342" max="500" label="Queue capacity" tone="warning" />
+<Button variant="secondary" size="small">Review queue</Button>
+</Card>
+<Card title="Ban Appeals" subtitle="Awaiting review">
+<Stat label="Total" value="87" tone="info" icon="shield" />
+<Progress value="87" max="200" label="Queue capacity" tone="info" />
+<Button variant="secondary" size="small">Review appeals</Button>
+</Card>
+</Columns>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="line" x="Week" y="Gold per Player">
+| Week | Avg Gold |
+|---|---|
+| W-8 | 12,400 |
+| W-7 | 13,100 |
+| W-6 | 14,200 |
+| W-5 | 15,800 |
+| W-4 | 17,300 |
+| W-3 | 19,100 |
+| W-2 | 21,400 |
+| W-1 | 24,200 |
+| This Week | 27,900 |
+</Chart>
+<Callout tone="danger" title="Inflation accelerating">Gold supply growing 15% week-over-week. Consider sink adjustments.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Tabs>
+<Tab title="Experiment A: Loot Crate Pricing">
+<Chart type="bar" x="Cohort" y="Conversion %">
+| Cohort | Conversion |
+|---|---|
+| Control ($4.99) | 3.2 |
+| Test ($3.99) | 4.8 |
+</Chart>
+<Callout tone="success" title="Winner">Test price $3.99 converts 50% better. Revenue per user up 12%.</Callout>
+</Tab>
+<Tab title="Experiment B: Tutorial Length">
+<Chart type="bar" x="Cohort" y="D1 Retention %">
+| Cohort | Retention |
+|---|---|
+| Control (6 min) | 38 |
+| Test (3 min) | 44 |
+</Chart>
+<Callout tone="success" title="Winner">Shortened tutorial improves D1 retention by 16%. Ship to all players.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Patch Notes Draft" subtitle="Auto-saved 2 minutes ago">
+<Form name="patch-notes">
+<Input label="Version" name="version" placeholder="v2.5.2" required />
+<Input label="Title" name="title" placeholder="Stability & Balance Update" required />
+<TextArea label="Notes" name="notes" rows="6" placeholder="• Fixed crash on Android 14 devices&#10;• Reduced gold drops in high-level zones by 10%&#10;• Buffed Royal Guard armor set by 8%&#10;• Improved matchmaking times in South America" />
+<Button>Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Hotfix Deployment">
+<Form name="hotfix">
+<Select label="Target version" options="v2.5.1 | v2.5.0 | v2.4.2" name="target-version" placeholder="Select version" />
+<Input label="Hotfix tag" name="tag" placeholder="hotfix-2024-11-01" />
+<TextArea label="Changes" name="changes" rows="3" placeholder="Fix crash on startup for Android 14" required />
+<Callout tone="warning" title="Rollback plan">If crash rate exceeds 5% after deploy, auto-rollback will trigger in 10 minutes.</Callout>
+<Button variant="danger">Ship Hotfix</Button>
+<Button variant="secondary">Stage & Test</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show crash rate for South America only
+- Compare revenue by region this week
+- Draft patch notes for the currency inflation fix
+- Show the ban appeal queue details
+</FollowUps>

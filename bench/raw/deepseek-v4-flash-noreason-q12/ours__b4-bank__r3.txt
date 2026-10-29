@@ -1,0 +1,84 @@
+# Personal Banking Home
+
+<Badge tone="success">All accounts healthy</Badge>
+
+<Card title="Balances">
+<Columns>
+<Stat label="Checking" value="$4,280" change="+$320 this month" icon="bank" />
+<Stat label="Savings" value="$12,540" change="+$180 this month" icon="piggy-bank" />
+<Stat label="Credit" value="$1,240" change="-$60 this month" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer">
+<Select label="From" options="Checking •••• 4821 | Savings •••• 9034 | Credit •••• 7712" />
+<Select label="To" options="Savings •••• 9034 | Checking •••• 4821 | Credit •••• 7712" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Recent Transactions">
+| Merchant | Amount |
+|---|---|
+| Whole Foods Market | −$86.40 |
+| Shell Gas | −$42.10 |
+| Netflix | −$15.99 |
+| PayPal — Freelance | +$450.00 |
+| Starbucks | −$6.75 |
+</Card>
+
+<Card title="Spending by Category — This Month">
+<Chart type="donut" title="Category split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 420 |
+| Dining | 260 |
+| Transport | 180 |
+| Utilities | 150 |
+| Entertainment | 90 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+<Columns>
+<Stat label="Electric" value="$78" note="Due Mar 28" icon="lightning" />
+<Stat label="Internet" value="$65" note="Due Apr 2" icon="wifi" />
+<Stat label="Rent" value="$1,400" note="Due Apr 1" icon="house" />
+</Columns>
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Stat label="Saved" value="$12,540" note="Goal: $15,000" />
+<Progress value="12540" max="15000" label="83% toward Maui trip" tone="success" />
+</Card>
+
+<Card title="Credit Score">
+<Stat label="FICO Score" value="742" change="+8 this quarter" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Credit Card Controls">
+<Switch label="Freeze credit line" hint="Blocks new purchases & cash advances" />
+<Details title="Statement period">
+<Radio label="Statement cycle" options="1st – 28th (current) | 5th – 4th (alternate)" />
+</Details>
+</Card>
+
+<Card title="Alert Preferences">
+<Checkboxes label="Trigger alerts for" options="Large purchases over $200 | Unusual location | Balance below $100 | Payment due reminders | New card not present" value="Large purchases over $200 | Payment due reminders" />
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods Market — $86.40 | Shell Gas — $42.10 | Netflix — $15.99" />
+<TextArea label="Reason" placeholder="Describe what's wrong" rows="3" />
+<Button variant="danger">Submit Dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my last statement
+- What's my available credit?
+- Can I increase my savings goal?
+</FollowUps>

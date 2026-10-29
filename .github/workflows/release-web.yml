@@ -1,0 +1,74 @@
+name: Release the web SDK
+
+# Publishes @morphscreen/web to npm (roadmap H4), by hand: run it with the
+# version written in sdk/web/CHANGELOG.md. It builds and tests first, then
+# refuses unless the package is ready (sdk/web/release-check.mjs: a licence,
+# not private, the changelog, the SBOM). npm trusts this workflow by OIDC
+# (trusted publishing, set on the package at npmjs.com), so no token is
+# kept anywhere. Provenance needs a public repository; it's added once this
+# one is open (J6).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "The version to publish, as written in sdk/web/CHANGELOG.md"
+        required: true
+      tag:
+        description: "npm's dist-tag: beta before 1.0"
+        default: beta
+        required: true
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: release-web
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish @morphscreen/web ${{ inputs.version }}
+    runs-on: ubuntu-24.04
+    env:
+      CHROME: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: wasm-opt (binaryen 133)
+        run: |
+          curl -sSL https://github.com/WebAssembly/binaryen/releases/download/version_133/binaryen-version_133-x86_64-linux.tar.gz | tar xz -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/binaryen-version_133/bin" >> "$GITHUB_PATH"
+      - name: Build and test tools (sdk/web/tools)
+        run: |
+          mkdir -p ~/.cache/morphscreen-web
+          cp sdk/web/tools/package.json sdk/web/tools/package-lock.json ~/.cache/morphscreen-web/
+          npm ci --prefix ~/.cache/morphscreen-web
+          ln -sfn ~/.cache/morphscreen-web/node_modules sdk/web/node_modules
+      - name: Let Chrome run sandboxed
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: The version
+        working-directory: sdk/web
+        run: npm version "${{ inputs.version }}" --no-git-tag-version --allow-same-version
+      - run: node sdk/web/build.mjs
+      - run: node sdk/web/size.mjs
+      - run: node tools/sbom.mjs
+      - run: node sdk/web/test-stream.mjs
+      - run: node sdk/web/test-states.mjs
+      - run: node sdk/web/test-embed.mjs
+      - name: Ready to publish
+        run: node sdk/web/release-check.mjs "${{ inputs.version }}"
+      - name: Publish
+        working-directory: sdk/web
+        run: npm publish --access public --tag "${{ inputs.tag }}"
+      - name: Tag the release
+        run: |
+          git tag "web-v${{ inputs.version }}"
+          git push origin "web-v${{ inputs.version }}"

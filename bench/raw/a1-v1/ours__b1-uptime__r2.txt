@@ -1,0 +1,28 @@
+<Card title="Platform Status" subtitle="API uptime and incident summary">
+<Columns>
+<Stat label="API Uptime (this month)" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Stat label="Incidents this month" value="1" change="0 critical" tone="info" />
+</Columns>
+
+<Callout tone="info" title="Most Recent Incident">
+**Partial API degradation** — Elevated error rates on `/v1/search` endpoint due to a downstream cache cluster failure.
+<br />
+**Resolved:** 2025-01-14 03:42 UTC (2 hours 17 minutes duration)
+<br />
+**Impact:** ~12% of search requests returned 5xx errors; all other endpoints unaffected.
+<br />
+**Root cause:** Cache node memory exhaustion after a config drift; mitigated by rolling restart and config pinning.
+</Callout>
+
+<Details title="Incident timeline" open="false">
+**2025-01-14 01:25 UTC** — Alert fired: search error rate >5%
+<br />
+**01:30 UTC** — On-call engaged; identified cache cluster `cache-us-east-1c` unhealthy
+<br />
+**01:45 UTC** — Traffic shifted away from affected cluster; error rate dropped to ~3%
+<br />
+**03:10 UTC** — Rolling restart of cache nodes completed
+<br />
+**03:42 UTC** — Full recovery confirmed; all-clear issued
+</Details>
+</Card>

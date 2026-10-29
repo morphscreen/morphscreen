@@ -1,0 +1,147 @@
+# Store Manager's Daily Console
+
+<Callout tone="info" title="Good morning, Alex">Here's your store overview for today. All systems normal.</Callout>
+
+## Sales Overview
+
+<Columns>
+<Stat label="Sales Today" value="$8,420" change="+12% vs target" tone="success" icon="chart-line" />
+<Stat label="Daily Target" value="$9,500" change="88% achieved" tone="info" icon="target" />
+<Stat label="Avg Basket Size" value="$42.30" change="+$3.10 vs last week" tone="success" icon="shopping-bag" />
+<Stat label="Returns This Week" value="14" change="-$6 vs last week" tone="neutral" icon="arrow-counter-clockwise" />
+</Columns>
+
+<Card title="Sales Today vs Target">
+<Chart type="bar" x="Hour" y="USD">
+| Hour | Sales | Target |
+|---|---|---|
+| 9 AM | 520 | 600 |
+| 10 AM | 780 | 850 |
+| 11 AM | 940 | 950 |
+| 12 PM | 1,100 | 1,050 |
+| 1 PM | 890 | 950 |
+| 2 PM | 1,020 | 1,000 |
+| 3 PM | 1,150 | 1,100 |
+| 4 PM | 1,020 | 1,000 |
+| 5 PM | 1,000 | 1,000 |
+</Chart>
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="line" x="Day" y="USD">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 7,200 | 6,800 |
+| Tue | 7,900 | 7,400 |
+| Wed | 8,100 | 7,600 |
+| Thu | 8,420 | 7,900 |
+</Chart>
+</Card>
+
+## Foot Traffic Through the Day
+
+<Card title="Store Visits by Hour">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 85 |
+| 10 AM | 140 |
+| 11 AM | 210 |
+| 12 PM | 260 |
+| 1 PM | 195 |
+| 2 PM | 230 |
+| 3 PM | 280 |
+| 4 PM | 250 |
+| 5 PM | 220 |
+</Chart>
+</Card>
+
+## Best Sellers
+
+<Card title="Top Products Today">
+| Product | Units Sold | Revenue |
+|---|---|---|
+| Organic Cold Brew (12oz) | 86 | $645 |
+| Sourdough Loaf | 54 | $432 |
+| Avocado Toast | 48 | $480 |
+| Almond Croissant | 42 | $294 |
+| Seasonal Salad | 35 | $350 |
+</Card>
+
+## Inventory Alerts
+
+<Card title="Out of Stock Items">
+<Callout tone="warning" title="6 items need attention">
+These products are unavailable for customers right now.
+</Callout>
+
+| Item | SKU | Last In Stock | Reorder |
+|---|---|---|---|
+| Blueberry Muffin | MUFF-102 | Yesterday | <Button size="small" variant="secondary">Reorder</Button> |
+| Oat Milk | MLK-045 | 2 days ago | <Button size="small" variant="secondary">Reorder</Button> |
+| Turkey Sandwich | SND-220 | Today 8 AM | <Button size="small" variant="secondary">Reorder</Button> |
+| Matcha Latte Mix | MIX-009 | 3 days ago | <Button size="small" variant="secondary">Reorder</Button> |
+| Chocolate Chip Cookie | COOK-118 | Yesterday | <Button size="small" variant="secondary">Reorder</Button> |
+| Greek Yogurt Cup | YOG-301 | Today 7 AM | <Button size="small" variant="secondary">Reorder</Button> |
+</Card>
+
+<Details title="Reorder an item" open="false">
+<Form name="reorder">
+<Select label="Item" options="Blueberry Muffin (SKU: MUFF-102) | Oat Milk (SKU: MLK-045) | Turkey Sandwich (SKU: SND-220) | Matcha Latte Mix (SKU: MIX-009) | Chocolate Chip Cookie (SKU: COOK-118) | Greek Yogurt Cup (SKU: YOG-301)" placeholder="Select item to reorder" />
+<Input label="Quantity" type="number" min="1" placeholder="e.g., 24" hint="Standard case size: 12 units" />
+<Button>Submit Reorder</Button>
+</Form>
+</Details>
+
+## Team on Shift Today
+
+<Card title="Today's Schedule">
+<Columns>
+<div>
+<Avatar name="Maria Gonzalez" subtitle="Shift Lead · 7 AM – 3 PM" />
+<Avatar name="James Chen" subtitle="Barista · 7 AM – 1 PM" />
+<Avatar name="Priya Patel" subtitle="Cashier · 8 AM – 2 PM" />
+</div>
+<div>
+<Avatar name="Sam Rodriguez" subtitle="Kitchen · 9 AM – 5 PM" />
+<Avatar name="Emily Watson" subtitle="Cashier · 12 PM – 6 PM" />
+<Avatar name="David Kim" subtitle="Barista · 1 PM – 7 PM" />
+</div>
+</Columns>
+</Card>
+
+## Register Status
+
+<Card title="Point of Sale">
+| Register | Status | Cashier | Open Since |
+|---|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Priya Patel | 8:00 AM |
+| Register 2 | <Badge tone="success">Open</Badge> | Emily Watson | 12:00 PM |
+| Register 3 | <Badge tone="warning">Closed</Badge> | — | — |
+| Register 4 | <Badge tone="success">Open</Badge> | James Chen | 7:30 AM |
+</Card>
+
+## Promotions Performance
+
+<Card title="Active Promotions">
+| Promotion | Type | Sales Impact | Progress |
+|---|---|---|---|
+| Summer Drink Bundle — Buy 2 Get 1 Free | BOGO | +18% on cold drinks | <Progress value="72" max="100" label="72% of goal" tone="success" /> |
+| $5 Lunch Combo (11 AM – 2 PM) | Bundle | +9% on sandwiches | <Progress value="54" max="100" label="54% of goal" tone="info" /> |
+| Loyalty Double Points Weekend | Rewards | +22% repeat visits | <Progress value="85" max="100" label="85% of goal" tone="success" /> |
+| New Pastry Tasting — 50¢ samples | Sampling | +11% pastry sales | <Progress value="38" max="100" label="38% of goal" tone="warning" /> |
+</Card>
+
+<Card title="Store Selector">
+<Form name="store-select">
+<Select label="View another store" options="Downtown (Store #101) | Riverside (Store #102) | Midtown (Store #103) | Airport (Store #104) | University (Store #105)" placeholder="Select store to view" />
+<Button variant="secondary">Switch Store</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What's the sales forecast for the rest of today?
+- Which promotion should I extend to next week?
+- Show me hourly foot traffic for the last 7 days.
+- Flag any inventory that needs reordering tonight.
+</FollowUps>

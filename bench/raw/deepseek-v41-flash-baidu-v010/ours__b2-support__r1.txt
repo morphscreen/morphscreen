@@ -1,0 +1,63 @@
+# Support lead morning view
+
+<Columns>
+<Stat label="Open tickets" value="47" change="+6 since yesterday" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="18 min" change="-4 min vs last week" tone="success" icon="clock" />
+<Stat label="High priority open" value="9" tone="danger" icon="warning" />
+<Stat label="Resolved yesterday" value="31" tone="neutral" icon="check-circle" />
+</Columns>
+
+<Card title="Queue health" subtitle="Open tickets against today's target">
+<Progress value="47" max="60" label="Open vs capacity (60)" tone="warning" />
+<Progress value="9" max="47" label="High priority share" tone="danger" />
+</Card>
+
+<Card title="Most recent tickets" subtitle="Five newest, newest first">
+<Chart type="bar" title="Priority mix of the five newest" x="Priority" y="Tickets">
+| Priority | Tickets |
+|---|---|
+| Urgent | 1 |
+| High | 2 |
+| Normal | 2 |
+</Chart>
+</Card>
+
+<Card title="Latest five">
+| Ticket | Subject | Priority | Waiting |
+|---|---|---|---|
+| #4821 | Checkout fails on Safari | <Badge tone="danger">Urgent</Badge> | 6 min |
+| #4820 | Billing charged twice | <Badge tone="warning">High</Badge> | 14 min |
+| #4819 | SSO login loop | <Badge tone="warning">High</Badge> | 22 min |
+| #4818 | Export CSV missing rows | <Badge tone="neutral">Normal</Badge> | 41 min |
+| #4817 | How do I add a teammate? | <Badge tone="neutral">Normal</Badge> | 55 min |
+</Card>
+
+<Card title="Narrow the queue">
+<Form name="filter-tickets">
+<Radio label="Show" options="All open tickets | High priority only" value="High priority only" name="priority-filter" hint="High priority only hides Normal and Low" />
+<Checkboxes label="Also include" options="Urgent | High | Normal | Low" value="Urgent | High" name="priority-levels" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Open a new ticket" subtitle="Log it now, assign later">
+<Form name="new-ticket">
+<Input label="Requester email" type="email" name="requester" placeholder="customer@company.com" required="true" />
+<Input label="Subject" name="subject" placeholder="Short summary of the issue" required="true" />
+<TextArea label="Details" name="details" rows="4" placeholder="What happened, what they expected, steps to reproduce" />
+<Select label="Priority" name="priority" options="Urgent | High | Normal | Low" value="Normal" required="true" />
+<Select label="Team" name="team" options="Tier 1 | Tier 2 | Billing | Platform" placeholder="Choose a team" />
+<Switch label="Notify requester on reply" name="notify" value="true" />
+<Button>Create ticket</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Start here">9 high-priority tickets are open and #4821 has been waiting 6 minutes. Filter to high priority, then work newest first.</Callout>
+
+<FollowUps>
+- Show me only the high-priority tickets
+- Who is on call for Tier 2 right now?
+- How has first-response time trended this week?
+</FollowUps>

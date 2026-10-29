@@ -1,0 +1,98 @@
+# Content Studio
+
+<Columns>
+<Stat label="Drafts in progress" value="6" change="+2 this week" tone="info" icon="pencil-simple" />
+<Stat label="Published this week" value="4" change="+1 vs last week" tone="success" icon="paper-plane-tilt" />
+<Stat label="Most-read article" value="18,402 reads" note="'The Quiet Return of Longform'" tone="success" icon="chart-line" />
+<Stat label="Comments awaiting reply" value="9" change="3 over 24h old" tone="warning" icon="chat-circle-dots" />
+</Columns>
+
+<Card title="Drafts" subtitle="6 pieces in progress">
+| Title | Category | Status | Last edited |
+|---|---|---|---|
+| The Quiet Return of Longform | Culture | <Badge tone="success">Ready</Badge> | 2h ago |
+| Field Notes: Lisbon | Travel | <Badge tone="info">In review</Badge> | 5h ago |
+| Why We Stopped Chasing Trends | Opinion | <Badge tone="neutral">Draft</Badge> | Yesterday |
+| A Short History of the Sidebar | Design | <Badge tone="warning">Needs edits</Badge> | 2 days ago |
+| Interview: The Night Editor | People | <Badge tone="neutral">Draft</Badge> | 3 days ago |
+| Ten Tools We Actually Use | Craft | <Badge tone="info">In review</Badge> | 4 days ago |
+
+<Button variant="primary" icon="plus" ask="Start a new draft">New draft</Button>
+<Button variant="secondary" ask="Show all drafts">View all drafts</Button>
+</Card>
+
+<Card title="Published this week" subtitle="4 pieces live since Monday">
+<Steps>
+<Step title="The Quiet Return of Longform" status="done" subtitle="Culture · Mon 09:00 · 18,402 reads">Top performer of the month.</Step>
+<Step title="Field Notes: Lisbon" status="done" subtitle="Travel · Tue 07:30 · 6,140 reads">Photo essay, 14 images.</Step>
+<Step title="Why We Stopped Chasing Trends" status="done" subtitle="Opinion · Thu 12:00 · 4,905 reads">Shared 312 times.</Step>
+<Step title="A Short History of the Sidebar" status="done" subtitle="Design · Fri 16:15 · 2,388 reads">Evergreen, low traffic so far.</Step>
+</Steps>
+</Card>
+
+<Card title="Readership, past 30 days">
+<Chart type="area" x="Week" y="Readers">
+| Week | Readers |
+|---|---|
+| W1 | 41200 |
+| W2 | 46800 |
+| W3 | 52100 |
+| W4 | 60400 |
+</Chart>
+<Progress value="60400" max="80000" label="Toward 80k monthly readers" tone="info" />
+</Card>
+
+<Card title="Narrow by category">
+<Tabs>
+<Tab title="All">
+Showing every category. 6 drafts, 4 published this week.
+</Tab>
+<Tab title="Culture">
+2 drafts, 1 published this week.
+</Tab>
+<Tab title="Travel">
+1 draft, 1 published this week.
+</Tab>
+<Tab title="Design">
+2 drafts, 1 published this week.
+</Tab>
+<Tab title="Opinion">
+1 draft, 1 published this week.
+</Tab>
+</Tabs>
+
+<Select label="Category" name="category" placeholder="Choose a category" options="All | Culture | Travel | Design | Opinion | People | Craft" hint="Filters the draft list above" />
+</Card>
+
+<Card title="Schedule a piece">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="The Quiet Return of Longform" required="true" />
+<Date label="Publish date" name="publish-date" required="true" hint="Goes live at 09:00 local time" />
+<Select label="Category" name="schedule-category" placeholder="Choose a category" options="Culture | Travel | Design | Opinion | People | Craft" required="true" />
+<TextArea label="Editor's note" name="note" placeholder="Anything the desk should know before this goes out" rows="3" />
+<Switch label="Notify subscribers on publish" name="notify" value="true" />
+<Button variant="primary" icon="calendar-check" label="Schedule piece">Schedule piece</Button>
+</Form>
+</Card>
+
+<Card title="Comments awaiting reply" subtitle="9 total · oldest 3 days">
+| Commenter | On | Comment | Waiting |
+|---|---|---|---|
+| <Avatar name="Marta Reyes" subtitle="Reader since 2021" /> | The Quiet Return of Longform | "Does the print edition include the footnotes?" | 3 days |
+| <Avatar name="Devon Okafor" /> | Field Notes: Lisbon | "Which tram line was photo 6 on?" | 2 days |
+| <Avatar name="Priya Nandakumar" /> | Why We Stopped Chasing Trends | "This argues against your own 2023 piece." | 1 day |
+| <Avatar name="Sam Whitlock" /> | A Short History of the Sidebar | "Typo in paragraph 4: 'recieve'." | 6 hours |
+
+<Button variant="primary" ask="Show all 9 comments awaiting reply">Reply to comments</Button>
+</Card>
+
+<Callout tone="info" title="One thing to do first">
+Priya's comment on *Why We Stopped Chasing Trends* contradicts a 2023 piece — worth a public reply before it spreads.
+</Callout>
+
+<FollowUps>
+- Which draft is closest to ready?
+- Show me the full comment thread on the Lisbon piece
+- How does readership compare to the same month last year?
+- Schedule "Ten Tools We Actually Use" for next Tuesday
+</FollowUps>

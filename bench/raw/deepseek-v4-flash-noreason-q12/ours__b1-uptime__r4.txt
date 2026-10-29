@@ -1,0 +1,41 @@
+<Card title="Platform Status" subtitle="Live overview for the API and recent incidents">
+  <Columns>
+    <Stat label="API Uptime (this month)" value="99.94%" change="+0.12% vs last month" tone="success" icon="chart-line" />
+    <Stat label="Most recent incident" value="Resolved" change="2025-04-12, 14:32 UTC" tone="success" icon="check-circle" />
+  </Columns>
+</Card>
+
+<Card title="Most recent incident">
+  <Callout tone="success" title="Resolved — Database connection timeouts">
+    On **2025-04-12**, from **13:05 UTC to 14:32 UTC**, some API requests experienced intermittent 5xx errors due to a connection pool exhaustion in the primary PostgreSQL cluster. The issue was caused by a misconfigured connection timeout after a routine failover test. The pool settings were rolled back and the cluster was restarted. No data loss occurred. Monitoring has been increased with an alert threshold at 80% pool usage.
+  </Callout>
+</Card>
+
+<Card title="Uptime this month">
+  <Chart type="area" x="Day" y="Uptime %">
+    | Day | Uptime |
+    |---|---|
+    | Apr 1 | 100 |
+    | Apr 2 | 100 |
+    | Apr 3 | 100 |
+    | Apr 4 | 100 |
+    | Apr 5 | 100 |
+    | Apr 6 | 100 |
+    | Apr 7 | 100 |
+    | Apr 8 | 100 |
+    | Apr 9 | 100 |
+    | Apr 10 | 100 |
+    | Apr 11 | 100 |
+    | Apr 12 | 99.2 |
+    | Apr 13 | 100 |
+    | Apr 14 | 100 |
+    | Apr 15 | 100 |
+  </Chart>
+  <p>Uptime for the current month is **99.94%**, based on 15 days of data. The only downtime was the incident on April 12.</p>
+</Card>
+
+<FollowUps>
+- Show the full incident history for this month
+- Display latency and error rate for the API
+- View status of all platform services (database, cache, workers)
+</FollowUps>

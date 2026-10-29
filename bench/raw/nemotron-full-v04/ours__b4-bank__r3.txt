@@ -1,0 +1,126 @@
+# Personal Banking
+
+Welcome back, **Alex**. Your accounts are up to date as of today.
+
+<Columns>
+<Card title="Account Balances">
+<Stat label="Checking" value="$4,287.50" change="+$215.30 this month" tone="success" />
+<Stat label="Savings" value="$12,450.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,842.30" change="-$320.45 this month" tone="warning" />
+</Card>
+
+<Card title="Credit Score">
+<Stat label="Current Score" value="742" change="+12 since last month" tone="success" />
+<Progress value="742" max="850" label="Excellent range (720–850)" />
+<p style="margin-top: 8px; font-size: 13px; color: var(--muted);">Updated 3 days ago · Next update in 27 days</p>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Vacation Savings Goal">
+<Progress value="6200" max="10000" label="$6,200 of $10,000 saved (62%)" />
+<p style="margin-top: 8px; font-size: 13px; color: var(--muted);">Target date: June 15, 2025 · Need $312/month to stay on track</p>
+<Button variant="secondary" size="small">Add to goal</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Form name="move-money">
+<Select label="From account" name="fromAccount" options="Checking (*••• 4287) | Savings (*••• 1245) | Credit Card (*••• 1842)" placeholder="Select source" required="true" />
+<Select label="To account" name="toAccount" options="Checking (*••• 4287) | Savings (*••• 1245) | Credit Card (*••• 1842)" placeholder="Select destination" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" required="true" />
+<Button>Transfer</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+<Details title="Freeze credit line" open="false">
+<Switch label="Freeze new charges on credit card" name="freezeCredit" value="false" hint="Recurring payments will still process" />
+<Button variant="danger" size="small" style="margin-top: 12px;">Confirm freeze</Button>
+</Details>
+</Card>
+</Columns>
+
+<Card title="Recent Transactions">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Today | Whole Foods Market | Groceries | -$87.42 |
+| Yesterday | Shell Gas Station | Transportation | -$45.00 |
+| 2 days ago | Netflix | Subscriptions | -$15.99 |
+| 3 days ago | Amazon | Shopping | -$124.99 |
+| 4 days ago | Payroll Deposit | Income | +$2,847.50 |
+| 5 days ago | Electric Bill | Utilities | -$132.45 |
+| 6 days ago | Local Coffee Shop | Dining | -$12.50 |
+<Button variant="secondary" size="small">View all transactions</Button>
+</Card>
+
+<Columns>
+<Card title="Spending This Month">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Transportation | 340 |
+| Groceries | 420 |
+| Dining | 280 |
+| Subscriptions | 65 |
+| Shopping | 310 |
+| Utilities | 185 |
+| Other | 142 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Due Date | Payee | Amount | Status |
+|---|---|---|---|
+| Tomorrow | Internet Provider | $79.99 | Pending |
+| In 3 days | Car Insurance | $185.00 | Pending |
+| In 5 days | Phone Bill | $65.00 | Pending |
+| In 12 days | Rent | $1,800.00 | Scheduled |
+<Button variant="secondary" size="small">View all bills</Button>
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Statement Period">
+<Card title="Pick a Statement Period" subtitle="Choose the date range for your statements and exports">
+<Form name="statement-period">
+<Radio label="Preset periods" name="preset" options="This month | Last month | Last 3 months | Last 6 months | Year to date" value="This month" />
+<Details title="Custom date range" open="false">
+<Date label="Start date" name="startDate" />
+<Date label="End date" name="endDate" />
+</Details>
+<Button>Generate statement</Button>
+<Button variant="secondary">Download PDF</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Alert Settings">
+<Card title="Manage Alert Triggers" subtitle="Choose what triggers push, email, or SMS notifications">
+<Form name="alert-settings">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (> $100) | International transactions | Online purchases | Gas station purchases | ATM withdrawals" value="Large purchases (> $100) | International transactions" hint="Get notified for each matching transaction" />
+<Checkboxes label="Balance & security" name="balanceAlerts" options="Low balance (< $500) | Direct deposit received | Unusual login location | Password changed | Credit score changed" value="Low balance (< $500) | Direct deposit received" />
+<Checkboxes label="Bills & payments" name="billAlerts" options="Bill due in 3 days | Bill paid successfully | Payment failed | Auto-pay scheduled" value="Bill due in 3 days | Payment failed" />
+<Checkboxes label="Delivery methods" name="delivery" options="Push notification | Email | SMS" value="Push notification | Email" hint="Where to send alerts" />
+<Button>Save preferences</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Dispute Transaction">
+<Card title="Dispute a Transaction" subtitle="Report an unrecognized or incorrect charge">
+<Form name="dispute-transaction">
+<Select label="Select transaction" name="disputeTx" options="Whole Foods Market — $87.42 (Today) | Shell Gas Station — $45.00 (Yesterday) | Netflix — $15.99 (2 days ago) | Amazon — $124.99 (3 days ago) | Electric Bill — $132.45 (5 days ago) | Local Coffee Shop — $12.50 (6 days ago)" placeholder="Choose a transaction to dispute" required="true" />
+<Radio label="Reason for dispute" name="disputeReason" options="I didn't authorize this charge | Wrong amount charged | Duplicate charge | Service not received | Canceled subscription still charging | Other" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Provide any relevant information, order numbers, or communication with the merchant..." rows="4" hint="Optional but helpful for faster resolution" />
+<Button variant="danger">Submit dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Show me my net worth trend over the last year
+- Set up a new savings goal for emergency fund
+- Review my subscription spending
+- Increase my credit limit
+</FollowUps>

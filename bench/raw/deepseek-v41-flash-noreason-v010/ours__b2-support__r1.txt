@@ -1,0 +1,60 @@
+# Morning support desk
+
+<Badge tone="warning">3 breaches need attention</Badge>
+
+<Columns>
+<Stat label="Open tickets" value="48" change="+6 since yesterday" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="1h 24m" change="-12m vs last week" tone="success" icon="clock" />
+<Stat label="SLA met today" value="91%" change="+3 pts" tone="success" icon="chart-line" />
+</Columns>
+
+<Card title="Open backlog" subtitle="Tickets awaiting first or follow-up reply">
+<Progress value="48" max="60" label="Open vs daily capacity (60)" tone="warning" />
+</Card>
+
+<Card title="Five most recent tickets" subtitle="Newest first, with priority">
+| Ticket | Subject | Priority | Waiting |
+|---|---|---|---|
+| #4821 | Checkout fails on mobile Safari | <Badge tone="danger">Urgent</Badge> | 8m |
+| #4820 | Cannot reset password — email not arriving | <Badge tone="warning">High</Badge> | 22m |
+| #4819 | Billing: charged twice for March | <Badge tone="warning">High</Badge> | 41m |
+| #4818 | Export CSV missing last column | <Badge tone="neutral">Normal</Badge> | 1h 05m |
+| #4817 | Feature request: dark mode | <Badge tone="info">Low</Badge> | 1h 38m |
+
+<Button variant="secondary" icon="funnel">Show high-priority only</Button>
+<Button variant="tertiary">See all 48 tickets</Button>
+</Card>
+
+<Card title="Narrow the queue">
+<Form name="ticket-filter">
+<Checkboxes label="Priority" options="Urgent | High | Normal | Low" value="Urgent | High" hint="Uncheck all to see every ticket" />
+<Select label="Status" placeholder="Any status" options="New | Waiting on us | Waiting on customer | Escalated" />
+<Select label="Assignee" placeholder="Anyone" options="Me | Unassigned | Dana R. | Priya M. | Tomás L." />
+<Switch label="Only breached SLA" value="false" hint="Show tickets past their response target" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Open a new ticket" subtitle="Log it now, triage later">
+<Form name="new-ticket">
+<Input label="Customer" name="customer" placeholder="Name or company" required="true" />
+<Input label="Subject" name="subject" placeholder="Short summary of the issue" required="true" />
+<TextArea label="Details" name="details" rows="4" placeholder="What the customer reported, steps to reproduce, links" />
+<Radio label="Priority" options="Urgent | High | Normal | Low" value="Normal" />
+<Select label="Assignee" placeholder="Unassigned" options="Me | Unassigned | Dana R. | Priya M. | Tomás L." />
+<Button icon="plus">Create ticket</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Two tickets are close to breaching">
+#4820 and #4819 hit their first-response target in under 15 minutes. Triage them before the queue below.
+</Callout>
+
+<FollowUps>
+- Show me only the urgent and high-priority tickets
+- Who has the most open tickets right now?
+- Draft a first reply to ticket #4821
+- What is our first-response time by channel?
+</FollowUps>

@@ -1,0 +1,139 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="Network Overview" subtitle="Real-time system status">
+<Stat label="Current Load" value="42,850 MW" change="+2.3% vs 1hr ago" tone="info" />
+<Stat label="Available Capacity" value="58,200 MW" change="-1.1% vs 1hr ago" tone="neutral" />
+<Stat label="Reserve Margin" value="15,350 MW" change="26.0%" tone="success" />
+<Progress value="42850" max="58200" label="Network Utilization: 73.6%" />
+</Card>
+
+<Card title="Market & Emissions" subtitle="Current pricing and environmental impact">
+<Stat label="Current Price" value="$87.50/MWh" change="+$4.20 vs 1hr ago" tone="warning" />
+<Stat label="CO₂ Emissions Today" value="1,247 kt" change="-3.2% vs yesterday" tone="success" />
+<Stat label="Renewable Share" value="38.2%" change="+1.4% vs 1hr ago" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Region Focus">
+<Select label="Select Region" name="region" placeholder="All Regions" options="All Regions | Northwest | Northeast | Central | Southwest | Southeast" value="All Regions" />
+</Card>
+
+<Columns>
+<Card title="Generation Mix" subtitle="Real-time output by source">
+<Chart type="donut" title="Current Generation by Source">
+| Source | Output (MW) |
+|---|---|
+| Natural Gas | 16,400 |
+| Nuclear | 12,800 |
+| Wind | 9,200 |
+| Solar | 6,800 |
+| Hydro | 4,500 |
+| Coal | 3,200 |
+| Battery | 1,100 |
+| Other | 850 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast (Next 24 Hours)" subtitle="Hourly load projection">
+<Chart type="line" x="Hour" y="Load (MW)">
+| Hour | Forecast (MW) | Actual (MW) |
+|---|---|---|
+| 00:00 | 38,200 | 38,450 |
+| 01:00 | 36,800 | 36,920 |
+| 02:00 | 35,500 | 35,610 |
+| 03:00 | 34,800 | 34,890 |
+| 04:00 | 34,500 | 34,580 |
+| 05:00 | 35,200 | 35,340 |
+| 06:00 | 38,500 | 38,720 |
+| 07:00 | 42,100 | 42,350 |
+| 08:00 | 45,800 | 45,920 |
+| 09:00 | 47,200 | 47,100 |
+| 10:00 | 48,500 | 48,350 |
+| 11:00 | 49,200 | 49,050 |
+| 12:00 | 49,800 | 49,620 |
+| 13:00 | 50,100 | 49,880 |
+| 14:00 | 50,300 | 50,050 |
+| 15:00 | 50,200 | 49,950 |
+| 16:00 | 50,500 | 50,180 |
+| 17:00 | 51,200 | 50,850 |
+| 18:00 | 52,800 | 52,400 |
+| 19:00 | 53,500 | 53,100 |
+| 20:00 | 52,800 | 52,350 |
+| 21:00 | 50,200 | 49,800 |
+| 22:00 | 46,500 | 46,100 |
+| 23:00 | 42,800 | 42,400 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Capacity (MW) | Output (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Cascade Nuclear | Northwest | Nuclear | 2,400 | 2,350 | 97.9% | <Badge tone="success">Online</Badge> |
+| Riverbend Hydro | Northwest | Hydro | 1,800 | 1,620 | 90.0% | <Badge tone="success">Online</Badge> |
+| Windridge Farm | Northeast | Wind | 1,200 | 980 | 81.7% | <Badge tone="success">Online</Badge> |
+| Solar Valley | Southwest | Solar | 2,500 | 1,850 | 74.0% | <Badge tone="success">Online</Badge> |
+| Gas Creek CCGT | Central | Natural Gas | 1,600 | 1,420 | 88.8% | <Badge tone="success">Online</Badge> |
+| Coal Ridge | Central | Coal | 1,200 | 950 | 79.2% | <Badge tone="warning">Derated</Badge> |
+| Peak Valley Peaker | Southeast | Natural Gas | 800 | 0 | 0% | <Badge tone="neutral">Standby</Badge> |
+| Battery Ridge Storage | Southwest | Battery | 500 | 320 | 64.0% | <Badge tone="success">Discharging</Badge> |
+| Offshore Wind Array | Northeast | Wind | 1,600 | 1,420 | 88.8% | <Badge tone="success">Online</Badge> |
+| Desert Sun Solar | Southwest | Solar | 1,800 | 1,620 | 90.0% | <Badge tone="success">Online</Badge> |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Current service interruptions">
+| Outage ID | Region | Affected Customers | Cause | Est. Restoration | Crew Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | Northeast | 12,450 | Storm damage — fallen trees | 2024-01-16 14:30 | <Badge tone="info">En route</Badge> |
+| OUT-2024-0852 | Central | 8,200 | Equipment failure — transformer | 2024-01-16 18:00 | <Badge tone="warning">On site</Badge> |
+| OUT-2024-0856 | Southwest | 3,100 | Planned maintenance overrun | 2024-01-16 12:00 | <Badge tone="success">Restoring</Badge> |
+| OUT-2024-0859 | Southeast | 1,850 | Vehicle collision — pole down | 2024-01-16 16:45 | <Badge tone="info">En route</Badge> |
+</Card>
+
+<Card title="Planned Maintenance (This Month)" subtitle="Scheduled work affecting capacity">
+| Asset | Region | Type | Start | End | Capacity Impact | Status |
+|---|---|---|---|---|---|---|
+| Transformer T-44 | Northwest | Preventive | 2024-01-20 06:00 | 2024-01-20 18:00 | 400 MW | <Badge tone="info">Scheduled</Badge> |
+| Gas Creek Unit 2 | Central | Inspection | 2024-01-25 00:00 | 2024-01-27 23:59 | 800 MW | <Badge tone="info">Scheduled</Badge> |
+| Windridge Turbines 3-7 | Northeast | Blade repair | 2024-02-03 06:00 | 2024-02-05 18:00 | 300 MW | <Badge tone="info">Scheduled</Badge> |
+| Solar Valley Inverter Row B | Southwest | Replacement | 2024-02-10 06:00 | 2024-02-12 18:00 | 500 MW | <Badge tone="info">Scheduled</Badge> |
+| Battery Ridge BMS Update | Southwest | Software | 2024-02-15 22:00 | 2024-02-16 06:00 | 500 MW | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Columns>
+<Callout tone="danger" title="CRITICAL — 09:42:15">Line 500kV Northwest-Central approaching thermal limit (96%). Immediate action may be required.</Callout>
+<Callout tone="warning" title="WARNING — 09:38:40">Wind forecast revised down 15% for Northeast region 10:00-14:00. Reserve deployment recommended.</Callout>
+<Callout tone="info" title="INFO — 09:35:22">Solar Valley output ramped to 90% capacity. Cloud cover clearing faster than modeled.</Callout>
+<Callout tone="success" title="RESOLVED — 09:30:10">Frequency deviation corrected. AGC restored to normal operation.</Callout>
+<Callout tone="warning" title="WARNING — 09:25:55">Coal Ridge Unit 3 derated to 79% due to mill issue. Expected recovery 12:00.</Callout>
+<Callout tone="info" title="INFO — 09:20:00">Battery Ridge Storage initiated discharge cycle per market signal.</Callout>
+</Columns>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Reduce load or generation in constrained areas">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Curtailment Type" name="type" placeholder="Select type" options="Load Shedding | Generation Reduction | Demand Response" value="Load Shedding" required="true" />
+<Select label="Region" name="region" placeholder="Select region" options="Northwest | Northeast | Central | Southwest | Southeast" required="true" />
+<Input label="Target Reduction (MW)" name="mw" type="number" placeholder="e.g., 500" required="true" />
+<Input label="Duration (minutes)" name="duration" type="number" placeholder="e.g., 60" required="true" />
+</Columns>
+<TextArea label="Reason / Justification" name="reason" placeholder="Enter operational reason for curtailment order..." rows="3" required="true" />
+<Columns>
+<Button variant="danger" size="large">Issue Curtailment Order</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed plant telemetry for Cascade Nuclear
+- View transmission line loading for Northwest-Central corridor
+- Run contingency analysis for next 4 hours
+- Export current dispatch to EMS
+- Open market pricing dashboard
+</FollowUps>

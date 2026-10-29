@@ -1,0 +1,110 @@
+# Service Health Dashboard
+
+<Callout tone="warning" title="Active incident">Payment API is degraded — 3 open incidents require attention</Callout>
+
+<Columns>
+<Stat label="Uptime (this quarter)" value="99.94%" tone="success" icon="trend-up" />
+<Stat label="Error rate (right now)" value="1.2%" tone="warning" icon="warning-circle" />
+<Stat label="Open incidents" value="3" tone="danger" icon="siren" />
+<Stat label="P95 latency" value="412 ms" tone="info" icon="clock" />
+</Columns>
+
+<Card title="Infrastructure">
+<Select label="Region" name="region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" placeholder="All regions" />
+
+<Columns>
+<Card title="CPU usage — past 24 hours">
+<Chart type="line" x="Time" y="CPU %">
+| Time | CPU |
+|---|---|
+| 00:00 | 38 |
+| 04:00 | 42 |
+| 08:00 | 61 |
+| 12:00 | 78 |
+| 16:00 | 65 |
+| 20:00 | 47 |
+| Now | 52 |
+</Chart>
+</Card>
+
+<Card title="Memory usage — past 24 hours">
+<Chart type="line" x="Time" y="Memory %">
+| Time | Memory |
+|---|---|
+| 00:00 | 54 |
+| 04:00 | 58 |
+| 08:00 | 63 |
+| 12:00 | 71 |
+| 16:00 | 69 |
+| 20:00 | 66 |
+| Now | 64 |
+</Chart>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Open incidents">
+<Tabs>
+<Tab title="Critical (1)">
+<Card title="INC-4821 — Payment API timeouts" subtitle="us-east-1 · Started 14:32 UTC">
+<Badge tone="danger">Critical</Badge> <Badge tone="warning">P1</Badge>
+<Progress value="45" max="100" label="Impacted traffic" tone="danger" />
+<Button variant="primary">Acknowledge incident</Button>
+<Button variant="secondary">View runbook</Button>
+</Card>
+</Tab>
+
+<Tab title="High (2)">
+<Card title="INC-4820 — Search latency spike" subtitle="eu-west-1 · Started 09:15 UTC">
+<Badge tone="warning">High</Badge> <Badge tone="warning">P2</Badge>
+<Progress value="30" max="100" label="Impacted traffic" tone="warning" />
+<Button variant="primary">Acknowledge incident</Button>
+<Button variant="secondary">View runbook</Button>
+</Card>
+
+<Card title="INC-4819 — Auth failures on mobile" subtitle="ap-southeast-2 · Started 06:40 UTC">
+<Badge tone="warning">High</Badge> <Badge tone="warning">P2</Badge>
+<Progress value="15" max="100" label="Impacted traffic" tone="warning" />
+<Button variant="primary">Acknowledge incident</Button>
+<Button variant="secondary">View runbook</Button>
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Slowest endpoints (last 5 min)">
+<Chart type="horizontal" title="Latency by endpoint" x="Endpoint" y="ms">
+| Endpoint | P95 latency (ms) |
+|---|---|
+| /api/v1/payments | 890 |
+| /api/v1/search | 745 |
+| /api/v1/orders | 612 |
+| /api/v1/auth/login | 540 |
+| /api/v1/reports | 488 |
+</Chart>
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Columns>
+<Slider label="Error rate threshold" min="0" max="10" step="0.5" value="2" name="error-threshold" unit="%" />
+<Slider label="Latency threshold" min="100" max="2000" step="50" value="800" name="latency-threshold" unit="ms" />
+</Columns>
+<Checkboxes label="Notify via" options="Email | Slack | PagerDuty | SMS" name="notify-channels" value="Slack | PagerDuty" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<Details title="Acknowledged incidents this shift" open="false">
+<Card title="INC-4818 — CDN cache miss" subtitle="Resolved 11:20 UTC">
+<Badge tone="success">Resolved</Badge> <Badge tone="neutral">P3</Badge>
+<Button variant="secondary">View postmortem</Button>
+</Card>
+</Details>
+
+<FollowUps>
+- Show me the top error types right now
+- Which region has the worst latency?
+- Compare today's CPU with last week
+- Escalate the critical incident to the on-call lead
+</FollowUps>

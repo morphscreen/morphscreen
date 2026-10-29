@@ -1,0 +1,101 @@
+# Training Platform Analytics
+
+<Callout tone="info" title="Live data">All metrics update in real time. Filter by cohort to see segmented performance.</Callout>
+
+<Card title="Key metrics" subtitle="This week's snapshot">
+<Columns>
+<Stat label="Active learners" value="1,284" change="+12% vs last week" icon="users" tone="success" />
+<Stat label="Course completion rate" value="78%" change="+3 pts" icon="graduation-cap" tone="success" />
+<Stat label="Average quiz score" value="84%" change="+2 pts" icon="chart-line" tone="info" />
+<Stat label="At-risk learners" value="96" change="−8% vs last week" icon="warning" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Cohort filter">
+<Form name="cohort-filter">
+<Select label="Cohort" placeholder="All cohorts" options="All cohorts | Engineering Onboarding | Sales Academy | Design Leadership | Data Science Bootcamp | Customer Success" name="cohort" />
+<Button variant="secondary">Apply filter</Button>
+</Form>
+</Card>
+
+<Card title="Engagement — last 8 weeks" subtitle="Weekly active learners by cohort">
+<Chart type="area" x="Week" y="Active learners">
+| Week | All cohorts | Engineering | Sales | Design | Data Science |
+|---|---|---|---|---|---|
+| W-8 | 980 | 310 | 240 | 180 | 250 |
+| W-7 | 1,050 | 340 | 260 | 190 | 260 |
+| W-6 | 1,100 | 360 | 270 | 200 | 270 |
+| W-5 | 1,150 | 380 | 280 | 210 | 280 |
+| W-4 | 1,180 | 390 | 290 | 215 | 285 |
+| W-3 | 1,220 | 400 | 300 | 220 | 300 |
+| W-2 | 1,250 | 410 | 310 | 230 | 300 |
+| W-1 | 1,284 | 420 | 315 | 235 | 314 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Top 5 by active enrollments">
+<Chart type="horizontal" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Python for Data Science | 412 |
+| Sales Fundamentals | 368 |
+| UX Design Principles | 291 |
+| Cloud Architecture Basics | 254 |
+| Leadership Essentials | 203 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Low engagement or failing scores in the last 14 days">
+<Tabs>
+<Tab title="All at-risk (96)">
+| Learner | Cohort | Last active | Quiz avg | Risk score |
+|---|---|---|---|---|
+| Maya Chen | Data Science | 6 days ago | 52% | <Badge tone="danger">High</Badge> |
+| James Okafor | Engineering | 8 days ago | 61% | <Badge tone="danger">High</Badge> |
+| Sofia Rossi | Sales | 5 days ago | 58% | <Badge tone="danger">High</Badge> |
+| Liam Patel | Design | 4 days ago | 66% | <Badge tone="warning">Medium</Badge> |
+| Emma Novak | Customer Success | 7 days ago | 63% | <Badge tone="warning">Medium</Badge> |
+| Noah Kim | Data Science | 9 days ago | 68% | <Badge tone="warning">Medium</Badge> |
+</Tabs>
+<Tab title="High risk (32)">
+| Learner | Cohort | Last active | Quiz avg | Risk score |
+|---|---|---|---|---|
+| Maya Chen | Data Science | 6 days ago | 52% | <Badge tone="danger">High</Badge> |
+| James Okafor | Engineering | 8 days ago | 61% | <Badge tone="danger">High</Badge> |
+| Sofia Rossi | Sales | 5 days ago | 58% | <Badge tone="danger">High</Badge> |
+</Tabs>
+<Tab title="Medium risk (64)">
+| Learner | Cohort | Last active | Quiz avg | Risk score |
+|---|---|---|---|---|
+| Liam Patel | Design | 4 days ago | 66% | <Badge tone="warning">Medium</Badge> |
+| Emma Novak | Customer Success | 7 days ago | 63% | <Badge tone="warning">Medium</Badge> |
+| Noah Kim | Data Science | 9 days ago | 68% | <Badge tone="warning">Medium</Badge> |
+</Tabs>
+</Tabs>
+</Card>
+
+<Card title="Message cohort" subtitle="Send a nudge, reminder, or announcement">
+<Form name="cohort-message">
+<Select label="Recipients" options="All cohorts | Engineering Onboarding | Sales Academy | Design Leadership | Data Science Bootcamp | Customer Success | At-risk learners (96) | High-risk learners (32)" name="recipients" />
+<Input label="Subject" placeholder="Quick check-in on your progress" name="subject" />
+<TextArea label="Message" placeholder="Hi team, we noticed you haven't been active lately. Here's a refresher on the next module…" rows="5" name="message" />
+<Checkboxes label="Options" options="Send as email | Send as in-app notification | Schedule for later" name="options" />
+<Button>Send message</Button>
+</Form>
+</Card>
+
+<Card title="Cohort breakdown" subtitle="Performance by cohort this week">
+<Columns>
+<Stat label="Engineering Onboarding" value="420 active" note="82% completion · 86% quiz avg" icon="code" tone="success" />
+<Stat label="Sales Academy" value="315 active" note="74% completion · 79% quiz avg" icon="megaphone" tone="info" />
+<Stat label="Design Leadership" value="235 active" note="71% completion · 81% quiz avg" icon="palette" tone="neutral" />
+<Stat label="Data Science" value="314 active" note="69% completion · 76% quiz avg" icon="brain" tone="warning" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me which courses have the highest dropout risk
+- Compare quiz scores across cohorts over time
+- Draft a message template for at-risk learners
+- Export the at-risk learner list as CSV
+</FollowUps>

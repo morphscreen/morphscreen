@@ -1,0 +1,156 @@
+# Live Operations Room
+
+<Card title="Live Ops Dashboard" subtitle="Game Studio Command Center">
+<Columns>
+<Stat label="Players Online" value="12,847" icon="users" tone="success" note="+3.2% vs last hour" />
+<Stat label="Daily Active" value="184,203" icon="calendar" tone="info" note="Daily goal: 180K ✓" />
+<Stat label="Monthly Active" value="2.1M" icon="chart-line" tone="info" note="+8% vs last month" />
+</Columns>
+</Card>
+
+<Card title="Revenue Today">
+<Columns>
+<Stat label="Revenue Today" value="$47,832" icon="chart-line" tone="success" note="vs $42,100 yesterday" />
+<Stat label="Revenue Per User" value="$0.26" icon="chart-line" tone="info" note="RPU target: $0.25 ✓" />
+</Columns>
+</Card>
+
+<Card title="Session Length (Last 2 Weeks)">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session |
+|---|---|
+| Jan 1 | 18.2 |
+| Jan 2 | 19.1 |
+| Jan 3 | 17.8 |
+| Jan 4 | 20.3 |
+| Jan 5 | 21.0 |
+| Jan 6 | 19.5 |
+| Jan 7 | 18.9 |
+| Jan 8 | 22.1 |
+| Jan 9 | 20.7 |
+| Jan 10 | 19.8 |
+| Jan 11 | 21.3 |
+| Jan 12 | 20.5 |
+| Jan 13 | 19.2 |
+| Jan 14 | 20.8 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items">
+| Item | Units Sold |
+|---|---|
+| Legendary Sword | 1,204 |
+| Dragon Pet | 987 |
+| Speed Boost (7d) | 856 |
+| Epic Armor Set | 743 |
+| Premium Battle Pass | 612 |
+<Button ask="Show full item sales breakdown">View all items</Button>
+</Card>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Stat label="NA East" value="98%" icon="map-pin" tone="success" note="4,021 players" />
+<Stat label="NA West" value="95%" icon="map-pin" tone="success" note="2,847 players" />
+<Stat label="Europe" value="91%" icon="map-pin" tone="info" note="3,512 players" />
+<Stat label="Asia" value="87%" icon="map-pin" tone="warning" note="2,103 players" />
+<Stat label="South America" value="78%" icon="map-pin" tone="danger" note="364 players" />
+</Columns>
+<Button ask="Focus on Asia region">Focus on Asia</Button>
+<Button ask="Focus on South America region">Focus on South America</Button>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash Rate %">
+| Version | Crash Rate |
+|---|---|
+| v3.2.1 | 0.8 |
+| v3.2.0 | 1.2 |
+| v3.1.5 | 2.1 |
+| v3.1.4 | 3.5 |
+| v3.1.3 | 5.8 |
+</Chart>
+<Callout tone="warning" title="Action needed">v3.1.3 and v3.1.4 exceed the 3% crash rate threshold. Consider forcing update.</Callout>
+</Card>
+
+<Card title="Live Events & Upcoming">
+<Tabs>
+<Tab title="Running Now">
+- **Dragon Hunt** — Ends in 2h 15m (12,400 participants)
+- **Double XP Weekend** — Ends in 47h (active)
+<Button ask="Show Dragon Hunt details">Dragon Hunt details</Button>
+</Tab>
+<Tab title="Upcoming">
+- **Valentine's Event** — Starts Feb 14 (3 days away)
+- **Season 4 Launch** — Starts Mar 1 (18 days away)
+<Button ask="Plan Valentine's Event">Plan Valentine's Event</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Player Reports & Ban Appeals">
+<Columns>
+<Stat label="Reports Awaiting Review" value="247" icon="users" tone="warning" note="Avg response time: 4.2h" />
+<Stat label="Ban Appeals Awaiting" value="89" icon="users" tone="info" note="Avg response time: 6.1h" />
+</Columns>
+<Button ask="Review player reports">Review reports</Button>
+<Button ask="Review ban appeals">Review appeals</Button>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="line" x="Week" y="Gold Supply (millions)">
+| Week | Gold Supply |
+|---|---|
+| W1 | 12.4 |
+| W2 | 13.1 |
+| W3 | 14.2 |
+| W4 | 15.8 |
+| W5 | 17.3 |
+| W6 | 19.1 |
+</Chart>
+<Callout tone="warning" title="Inflation alert">Gold supply growing at 9% weekly. Consider sink mechanics or adjust drop rates.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Stat label="Experiment A: New Shop Layout" value="Variant B" icon="chart-line" tone="success" note="+12% conversion vs control" />
+<Stat label="Experiment B: Difficulty Tuning" value="Variant A" icon="chart-line" tone="info" note="+8% retention, -3% revenue" />
+</Columns>
+<Button ask="Show Experiment A full results">Experiment A details</Button>
+<Button ask="Show Experiment B full results">Experiment B details</Button>
+</Card>
+
+<Card title="Patch Notes Draft">
+<Form name="patch-notes">
+<Input label="Patch Version" placeholder="e.g., v3.2.2" />
+<TextArea label="Patch Notes Content" placeholder="Write your patch notes here..." rows="6" />
+<Checkboxes label="Include in notes" options="Bug fixes | Balance changes | New content | Performance | Known issues" />
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Ship Hotfix">
+<Callout tone="danger" title="Hotfix required">Critical crash on v3.1.3 affecting 5.8% of sessions. Prepare hotfix now.</Callout>
+<Form name="hotfix">
+<Input label="Hotfix Version" placeholder="e.g., v3.2.2-hotfix.1" />
+<TextArea label="Hotfix Notes" placeholder="Describe what this hotfix addresses..." rows="3" />
+<Select label="Target platforms" options="All platforms | iOS only | Android only | PC only | Console only" />
+<Button variant="danger" label="Ship Hotfix">Ship Hotfix</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Focus on One Region">
+<Form name="region-focus">
+<Select label="Select region to focus" options="NA East | NA West | Europe | Asia | South America | All Regions" />
+<Button ask="Focus on selected region">Apply Focus</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full player metrics breakdown
+- What's the revenue forecast for this week?
+- Compare crash rates across all versions
+- Show me the top 10 best-selling items
+- What events are planned for next month?
+</FollowUps>

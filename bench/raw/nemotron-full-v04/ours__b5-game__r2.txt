@@ -1,0 +1,262 @@
+# Live Ops Dashboard — *Project Aurora*
+
+<Card title="Global KPIs" subtitle="Real-time as of 14:32 UTC">
+<Columns>
+<Stat label="Players Online" value="247,891" change="+3.2% vs 1hr ago" tone="success" />
+<Stat label="DAU" value="1.24M" change="+1.8% WoW" tone="info" />
+<Stat label="MAU" value="4.87M" change="+0.9% MoM" tone="info" />
+<Stat label="Revenue Today" value="$387,420" change="+12% vs yesterday" tone="success" />
+<Stat label="ARPDAU" value="$0.31" change="-0.02 vs 7d avg" tone="warning" />
+<Stat label="Avg Session" value="28m 14s" change="+1m 22s vs 7d avg" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Session Length — Last 14 Days">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session (min) |
+|---|---|
+| 2024-01-01 | 26.2 |
+| 2024-01-02 | 27.1 |
+| 2024-01-03 | 25.8 |
+| 2024-01-04 | 28.4 |
+| 2024-01-05 | 29.7 |
+| 2024-01-06 | 31.2 |
+| 2024-01-07 | 30.5 |
+| 2024-01-08 | 27.9 |
+| 2024-01-09 | 28.3 |
+| 2024-01-10 | 29.1 |
+| 2024-01-11 | 28.7 |
+| 2024-01-12 | 30.2 |
+| 2024-01-13 | 29.8 |
+| 2024-01-14 | 28.2 |
+</Chart>
+</Card>
+
+<Card title="Top-Selling Items (Last 7 Days)">
+| Item | Category | Units Sold | Revenue | Conversion |
+|---|---|---|---|---|
+| Crimson Battle Pass | Battle Pass | 42,156 | $418,900 | 3.4% |
+| Dragonborn Skin Bundle | Cosmetic | 18,923 | $283,845 | 1.5% |
+| 5,000 Premium Currency | Currency | 31,407 | $157,035 | 2.1% |
+| Seasonal Weapon Skin | Cosmetic | 24,581 | $122,905 | 1.8% |
+| XP Boost (30-day) | Consumable | 15,672 | $78,360 | 1.2% |
+| Starter Pack | Bundle | 8,934 | $89,340 | 0.7% |
+| Pet — Emberfox | Cosmetic | 12,405 | $62,025 | 0.9% |
+| Guild Banner Customization | Cosmetic | 6,789 | $33,945 | 0.5% |
+</Card>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Card title="US-East (Ashburn)" subtitle="Primary">
+<Stat label="Players" value="89,234" />
+<Stat label="CPU" value="62%" />
+<Stat label="Memory" value="71%" />
+<Stat label="P99 Latency" value="42ms" />
+<Badge tone="success">Healthy</Badge>
+</Card>
+<Card title="US-West (Oregon)" subtitle="Primary">
+<Stat label="Players" value="67,891" />
+<Stat label="CPU" value="58%" />
+<Stat label="Memory" value="65%" />
+<Stat label="P99 Latency" value="38ms" />
+<Badge tone="success">Healthy</Badge>
+</Card>
+<Card title="EU-Central (Frankfurt)" subtitle="Primary">
+<Stat label="Players" value="54,312" />
+<Stat label="CPU" value="74%" />
+<Stat label="Memory" value="68%" />
+<Stat label="P99 Latency" value="51ms" />
+<Badge tone="warning">Elevated Load</Badge>
+</Card>
+<Card title="AP-Southeast (Singapore)" subtitle="Primary">
+<Stat label="Players" value="36,454" />
+<Stat label="CPU" value="45%" />
+<Stat label="Memory" value="52%" />
+<Stat label="P99 Latency" value="67ms" />
+<Badge tone="success">Healthy</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash Rate (%)">
+| Version | Crash Rate (%) |
+|---|---|
+| 3.2.1 | 0.12 |
+| 3.2.0 | 0.34 |
+| 3.1.5 | 0.87 |
+| 3.1.4 | 1.23 |
+| 3.1.3 | 2.15 |
+| 3.0.9 | 3.42 |
+| 3.0.8 | 4.11 |
+</Chart>
+<Callout tone="warning" title="Action needed">Versions 3.1.x and below exceed 0.5% crash threshold. Force-update recommended for ≤3.1.4.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Tabs>
+<Tab title="Running Now (3)">
+<Columns>
+<Card title="Winter Festival" subtitle="Ends Jan 21 • 7 days left">
+<Stat label="Active Participants" value="892K" />
+<Stat label="Completion Rate" value="34%" />
+<Progress value="34" max="100" label="Event Progress" />
+<Badge tone="info">Seasonal</Badge>
+</Card>
+<Card title="Double XP Weekend" subtitle="Ends Jan 15 • 48h left">
+<Stat label="Active Participants" value="1.1M" />
+<Stat label="Avg Sessions/Player" value="4.2" />
+<Progress value="60" max="100" label="Event Progress" />
+<Badge tone="success">Recurring</Badge>
+</Card>
+<Card title="Guild Conquest: Season 3" subtitle="Ends Feb 4 • 21 days left">
+<Stat label="Active Guilds" value="12,400" />
+<Stat label="Avg Guild Progress" value="52%" />
+<Progress value="52" max="100" label="Event Progress" />
+<Badge tone="info">Competitive</Badge>
+</Card>
+</Columns>
+</Tab>
+<Tab title="Upcoming (2)">
+<Columns>
+<Card title="Lunar New Year Celebration" subtitle="Starts Jan 28 • 14 days">
+<Stat label="Expected Reach" value="~3.2M" />
+<Badge tone="info">Seasonal</Badge>
+<Callout tone="neutral" title="Prep status">Assets delivered. QA sign-off pending. Marketing kit distributed.</Callout>
+</Card>
+<Card title="Valentine's Duo Event" subtitle="Starts Feb 10 • 27 days">
+<Stat label="Expected Reach" value="~1.8M" />
+<Badge tone="info">Social</Badge>
+<Callout tone="neutral" title="Prep status">Design approved. Engineering in progress (ETA Jan 20).</Callout>
+</Card>
+</Columns>
+</Tab>
+<Tab title="Calendar View">
+<Chart type="bar" x="Week" y="Events">
+| Week | Running | Upcoming |
+|---|---|---|
+| Jan 8-14 | 3 | 0 |
+| Jan 15-21 | 2 | 1 |
+| Jan 22-28 | 1 | 1 |
+| Jan 29-Feb 4 | 1 | 1 |
+| Feb 5-11 | 0 | 1 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Moderation Queue">
+<Columns>
+<Card title="Player Reports Awaiting Review">
+<Stat label="Total Open" value="1,247" change="+89 vs 1hr ago" tone="warning" />
+<Stat label="High Priority" value="234" tone="danger" />
+<Stat label="Avg Resolution Time" value="4.2h" tone="info" />
+<Callout tone="warning" title="Spike detected">Cheating reports up 40% since v3.2.1 launch. Anti-cheat team notified.</Callout>
+</Card>
+<Card title="Ban Appeals Awaiting Review">
+<Stat label="Total Open" value="312" change="-12 vs 1hr ago" tone="info" />
+<Stat label="Overturned (7d)" value="18%" tone="neutral" />
+<Stat label="Avg Resolution Time" value="18h" tone="info" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="line" x="Date" y="Gold per USD (Black Market)">
+| Date | Official Rate | Black Market Rate | Inflation Index |
+|---|---|---|---|
+| 2023-12-01 | 100 | 105 | 1.00 |
+| 2023-12-08 | 100 | 112 | 1.07 |
+| 2023-12-15 | 100 | 118 | 1.12 |
+| 2023-12-22 | 100 | 125 | 1.19 |
+| 2023-12-29 | 100 | 131 | 1.25 |
+| 2024-01-05 | 100 | 138 | 1.31 |
+| 2024-01-12 | 100 | 142 | 1.35 |
+</Chart>
+<Callout tone="danger" title="Inflation accelerating">Black market premium at 42%. Gold sinks underperforming. Economy team reviewing sink rates for next patch.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Card title="Exp #A-204: Battle Pass Price Test" subtitle="Started Jan 5 • 9 days running • 95% confidence">
+<Stat label="Variant A (Control)" value="$0.31 ARPDAU" />
+<Stat label="Variant B (-15% price)" value="$0.34 ARPDAU" />
+<Stat label="Lift" value="+9.7%" tone="success" />
+<Stat label="P-value" value="0.023" tone="success" />
+<Progress value="92" max="100" label="Statistical Power" />
+<Badge tone="success">Winner: Variant B</Badge>
+<Callout tone="success" title="Recommendation">Roll out 15% price reduction to 100%. Projected +$1.2M/mo revenue.</Callout>
+</Card>
+<Card title="Exp #B-112: Daily Login Reward Restructure" subtitle="Started Jan 8 • 6 days running • 80% confidence">
+<Stat label="Variant A (Control)" value="Day 7 Retention: 28.4%" />
+<Stat label="Variant B (Streak rewards)" value="Day 7 Retention: 31.1%" />
+<Stat label="Lift" value="+9.5%" tone="info" />
+<Stat label="P-value" value="0.067" tone="warning" />
+<Progress value="78" max="100" label="Statistical Power" />
+<Badge tone="warning">Inconclusive</Badge>
+<Callout tone="warning" title="Needs more time">Run for 7 more days to reach 95% confidence. No harm detected in Variant B.</Callout>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Patch Notes Draft — v3.2.2">
+<Form name="patch-notes-draft">
+<TextArea label="Patch Notes (Markdown)" name="patch-notes" rows="12" placeholder="## v3.2.2 — January 18, 2024
+
+### 🎮 Gameplay
+- Fixed issue where Dragon's Breath ability would not apply burn effect under specific network conditions
+- Adjusted Crimson Battle Pass XP curve: reduced Tier 50-100 requirements by 8%
+- Guild Conquest: Fixed scoring exploit in Territory Control mode
+
+### 🛡️ Balance
+- Emberfox pet: Reduced auto-loot radius from 12m → 8m
+- XP Boost (30-day): Now stacks additively with event bonuses (was multiplicative)
+
+### 🐛 Bug Fixes
+- Crash on launch for iOS 17.2 devices (v3.2.1 regression)
+- Memory leak in Guild Hall when >50 members online
+- Currency display desync after rapid purchases
+
+### 🔧 Technical
+- Updated Unity to 2022.3.18f1
+- Migrated matchmaking to new backend service (phased rollout)
+- Added telemetry for Economy v2 migration" hint="Use Markdown. Preview renders in real-time." />
+<Columns>
+<Button variant="primary">Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary" ask="true">Publish to Changelog</Button>
+</Columns>
+</Form>
+</Card>
+
+<Card title="Region Focus">
+<Select label="Focus Region" name="region-focus" placeholder="Select a region to drill down" options="Global (All) | US-East (Ashburn) | US-West (Oregon) | EU-Central (Frankfurt) | AP-Southeast (Singapore) | SA-East (São Paulo) | EU-West (London) | AP-Northeast (Tokyo)" value="Global (All)" />
+<Callout tone="info" title="Region filter applied">All charts, tables, and KPIs above will filter to the selected region. Server health, experiment results, and moderation queues are region-scoped.</Callout>
+</Card>
+
+<Card title="Ship Hotfix">
+<Form name="hotfix-deploy">
+<Input label="Hotfix ID" name="hotfix-id" placeholder="HF-2024-014" required="true" />
+<Input label="Target Version" name="target-version" placeholder="3.2.1" required="true" />
+<Select label="Severity" name="severity" options="Critical (Crash/Data Loss) | High (Major Bug) | Medium (Minor Bug) | Low (Cosmetic)" value="High (Major Bug)" required="true" />
+<TextArea label="Changes Summary" name="changes" rows="4" placeholder="• Fix crash on iOS 17.2 launch (regression in v3.2.1)
+• Patch memory leak in Guild Hall (>50 members)
+• Add safety check for currency desync" required="true" />
+<Checkboxes label="Target Regions" name="target-regions" options="US-East | US-West | EU-Central | AP-Southeast | SA-East | EU-West | AP-Northeast" value="US-East | US-West | EU-Central | AP-Southeast" hint="Select all regions to receive this hotfix" />
+<Radio label="Rollout Strategy" name="rollout" options="Immediate (all regions) | Phased (25% → 50% → 100% over 2h) | Canary (US-East only, 30min) | Manual per region" value="Phased (25% → 50% → 100% over 2h)" />
+<Switch label="Require QA Sign-off" name="qa-signoff" value="true" hint="Block deployment until QA approves" />
+<Switch label="Notify Player-Facing Channels" name="notify-players" value="true" hint="Post to Discord, Twitter, in-game notice" />
+<Columns>
+<Button variant="danger" ask="true">Deploy Hotfix</Button>
+<Button variant="secondary">Save as Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the economy team's proposed gold sink changes for next patch
+- What's the rollback plan if HF-2024-014 introduces new issues?
+- Compare EU-Central latency before/after the matchmaking migration
+- List all experiments completed in Q4 2023 with outcomes
+</FollowUps>

@@ -1,0 +1,63 @@
+# Async Standup — <span id="today"></span>
+
+<Script>
+document.getElementById('today').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+</Script>
+
+<Columns>
+<Stat label="Updates posted" value="7" change="of 10 team members" tone="info" />
+<Stat label="Missing updates" value="3" tone="warning" />
+<Stat label="Blocked" value="2" tone="danger" />
+</Columns>
+
+<Card title="Team Updates" subtitle="Today's check-ins">
+<Tabs>
+<Tab title="All (10)">
+| Teammate | Status | Update | Blocked |
+|---|---|---|---|
+| **Alex Chen** | ✅ Done | Shipped the new onboarding flow. Tests passing. | No |
+| **Maria Santos** | 🚧 In progress | Finishing API integration. Waiting on staging deploy. | No |
+| **James Wilson** | ⏳ Blocked | **Blocked:** Design system PR needs review from design team. | **Yes** |
+| **Priya Patel** | ✅ Done | Completed user research synthesis. Shared deck in #product. | No |
+| **Sam Okonkwo** | 🚧 In progress | Refactoring auth middleware. 60% done. | No |
+| **Lisa Zhang** | ⏳ Blocked | **Blocked:** Staging DB migration failed. Need DevOps help. | **Yes** |
+| **Diego Morales** | ✅ Done | Wrote docs for new webhook endpoints. | No |
+| **Aisha Kumar** | — | *No update yet* | — |
+| **Tommy Nguyen** | — | *No update yet* | — |
+| **Rachel Kim** | — | *No update yet* | — |
+</Tab>
+<Tab title="Blocked (2)">
+<Callout tone="danger" title="James Wilson — Blocked">
+**Blocked:** Design system PR needs review from design team.  
+*Posted 9:14 AM*
+</Callout>
+<Callout tone="danger" title="Lisa Zhang — Blocked">
+**Blocked:** Staging DB migration failed. Need DevOps help.  
+*Posted 8:52 AM*
+</Callout>
+</Tab>
+<Tab title="Missing (3)">
+<Badge tone="warning">Aisha Kumar</Badge> — No update yet  
+<Badge tone="warning">Tommy Nguyen</Badge> — No update yet  
+<Badge tone="warning">Rachel Kim</Badge> — No update yet
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Post Your Update">
+<Form name="standup-update">
+<TextArea label="What did you do yesterday? What's today? Any blockers?" name="update" placeholder="I finished the onboarding flow PR (#234). Today I'll start on the settings page. No blockers." rows="4" hint="Keep it brief. Mention blockers explicitly so the team can help." required="true" />
+<Select label="Status" name="status" options="✅ Done | 🚧 In progress | ⏳ Blocked | 📅 Planned" placeholder="Choose your status" required="true" />
+<Checkboxes label="Tag teammates (optional)" name="tags" options="Alex Chen | Maria Santos | James Wilson | Priya Patel | Sam Okonkwo | Lisa Zhang | Diego Morales | Aisha Kumar | Tommy Nguyen | Rachel Kim" hint="Notify specific people" />
+<Button>Post update</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Details title="Standup guidelines" open="false">
+- Post by **10:00 AM** your local time
+- Keep updates to **2–3 sentences**
+- Use **⏳ Blocked** status when you need help — the team will see it in the Blocked tab
+- Tag teammates with `@` in your update if you need their attention
+- Missing updates are nudged automatically at 10:30 AM
+</Details>

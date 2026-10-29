@@ -1,0 +1,61 @@
+# Daily Fitness Summary
+
+<Card title="Today's Progress" subtitle="Monday, June 12">
+<Columns>
+<Stat label="Steps" value="7,842" note="of 10,000 goal" icon="footprints" />
+<Stat label="Calories Burned" value="1,843 kcal" note="Active + resting" icon="fire" />
+</Columns>
+
+<Progress value="78" max="100" label="Steps toward daily goal" tone="info" />
+
+<Callout tone="success" title="Almost there!">You're 2,158 steps from hitting your daily goal. A 20-minute walk will get you there.</Callout>
+</Card>
+
+<Card title="Workout Summary — Past 7 Days">
+<Tabs>
+<Tab title="Overview">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Workout Minutes |
+|---|---|
+| Mon | 35 |
+| Tue | 42 |
+| Wed | 28 |
+| Thu | 55 |
+| Fri | 60 |
+| Sat | 45 |
+| Sun | 50 |
+</Chart>
+
+<Columns>
+<Stat label="Total Workouts" value="7" icon="calendar" />
+<Stat label="Avg Duration" value="45 min" icon="clock" />
+<Stat label="Best Day" value="Friday" note="60 min" icon="trophy" />
+</Columns>
+</Tab>
+<Tab title="By Type">
+<Chart type="pie" x="Type" y="Minutes">
+| Type | Minutes |
+|---|---|
+| Running | 120 |
+| Cycling | 90 |
+| Strength | 75 |
+| Yoga | 60 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Log a New Workout">
+<Form name="log-workout">
+<Select label="Workout Type" options="Running | Cycling | Strength Training | Yoga | Swimming | Walking | HIIT" name="workout-type" placeholder="Choose workout type" required />
+<Input label="Duration (minutes)" type="number" name="duration" placeholder="e.g. 30" min="1" max="480" required />
+<Slider label="Perceived Effort" min="1" max="10" step="1" value="5" name="effort" unit="/10" />
+<Button variant="primary">Log Workout</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my step history for the past week
+- Suggest a workout to close my step ring
+- Compare this week to last week
+</FollowUps>

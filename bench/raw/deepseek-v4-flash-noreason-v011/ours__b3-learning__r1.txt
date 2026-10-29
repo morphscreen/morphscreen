@@ -1,0 +1,73 @@
+# Training Platform Analytics
+
+<Stat label="Active Learners (This Week)" value="847" change="+12.4%" tone="success" icon="users" />
+<Stat label="Course Completion Rate" value="73%" change="+5.1%" tone="info" icon="check-circle" />
+<Stat label="Average Quiz Score" value="81%" change="-2.3%" tone="warning" icon="chart-line" />
+
+<Card title="Filter by Cohort">
+<Form name="cohort-filter">
+<Select label="Select Cohort" name="cohort" options="All Cohorts | Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025 | Engineering Onboarding | Sales Enablement | Leadership Accelerator" placeholder="Choose a cohort" />
+<Button variant="primary">Apply Filter</Button>
+<Button variant="secondary">Clear Filter</Button>
+</Form>
+</Card>
+
+<Card title="Engagement Over Past 8 Weeks">
+<Chart type="line" x="Week" y="Active Learners">
+| Week | Active Learners | Avg Session (min) |
+|---|---|---|
+| Week 1 | 620 | 24 |
+| Week 2 | 710 | 28 |
+| Week 3 | 685 | 26 |
+| Week 4 | 750 | 31 |
+| Week 5 | 790 | 33 |
+| Week 6 | 820 | 35 |
+| Week 7 | 835 | 34 |
+| Week 8 | 847 | 36 |
+</Chart>
+</Card>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="bar" x="Course" y="Enrolled Learners">
+| Course | Enrolled | Completed |
+|---|---|---|
+| Python Fundamentals | 340 | 251 |
+| Data Science Bootcamp | 285 | 198 |
+| Cloud Architecture | 220 | 167 |
+| Agile Project Mgmt | 195 | 150 |
+| UX Design Principles | 175 | 128 |
+| DevOps Pipeline | 160 | 104 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+<Columns>
+<Stat label="At Risk" value="42" tone="danger" icon="warning" />
+<Stat label="Inactive >7 Days" value="18" tone="danger" icon="clock" />
+<Stat label="Low Quiz Scores" value="24" tone="warning" icon="chart-line" />
+</Columns>
+
+| Learner | Course | Last Activity | Quiz Avg | Risk Level |
+|---|---|---|---|---|
+| Alex Rivera | Python Fundamentals | 5 days ago | 52% | <Badge tone="danger">High</Badge> |
+| Jordan Kim | Data Science Bootcamp | 8 days ago | 48% | <Badge tone="danger">High</Badge> |
+| Sam Patel | Cloud Architecture | 6 days ago | 55% | <Badge tone="warning">Medium</Badge> |
+| Taylor Chen | Agile Project Mgmt | 9 days ago | 60% | <Badge tone="warning">Medium</Badge> |
+| Morgan Lee | UX Design Principles | 4 days ago | 45% | <Badge tone="danger">High</Badge> |
+| Casey Brown | DevOps Pipeline | 7 days ago | 58% | <Badge tone="warning">Medium</Badge> |
+
+<Card title="Message the Cohort">
+<Form name="message-cohort">
+<Select label="Send to" name="recipients" options="Current Cohort | All Cohorts | At-Risk Learners | All Active Learners" placeholder="Choose recipients" />
+<Input label="Subject" name="subject" placeholder="e.g., Weekly check-in" />
+<TextArea label="Message" name="message" placeholder="Type your message to the cohort..." rows="4" />
+<Button variant="primary">Send Message</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the trend for course completion rates
+- Who are the top 5 learners this week?
+- Compare engagement across cohorts
+- Suggest interventions for at-risk learners
+</FollowUps>

@@ -1,0 +1,150 @@
+# Speeding Up Your Python CSV Processing
+
+Reading a 2 GB CSV in Python can be painfully slow if you're using naive approaches. Here's a practical guide to dramatically improve performance.
+
+<Card title="Quick wins first" subtitle="Try these before anything else">
+<Columns>
+<div>
+<Stat label="Pandas read_csv" value="~30-60s" note="For 2GB file" icon="chart-line" tone="success" />
+</div>
+<div>
+<Stat label="Default Python" value="~5-10 min" note="Using csv module" icon="warning" tone="warning" />
+</div>
+</Columns>
+
+1. **Use Pandas with the right engine** — `pd.read_csv()` with `engine='c'` (default) is much faster than pure Python.
+
+2. **Specify data types** — Let Pandas know what each column is to avoid guessing:
+
+<Code file="optimized.py" highlight="3-6">
+import pandas as pd
+
+dtypes = {
+    'id': 'int32',
+    'name': 'str',
+    'amount': 'float32',
+    'date': 'str'
+}
+
+df = pd.read_csv('large_file.csv', dtype=dtypes)
+</Code>
+
+3. **Read only what you need** — Use `usecols` to load only required columns.
+</Card>
+
+<Card title="Advanced strategies" subtitle="For when basic optimization isn't enough">
+<Tabs>
+<Tab title="Chunked processing">
+Process the file in chunks to avoid memory issues and speed up I/O:
+
+<Code file="chunked.py">
+import pandas as pd
+
+chunk_size = 100_000  # rows per chunk
+results = []
+
+for chunk in pd.read_csv('large_file.csv', chunksize=chunk_size):
+    # Process each chunk
+    filtered = chunk[chunk['amount'] > 100]
+    results.append(filtered)
+
+final_df = pd.concat(results, ignore_index=True)
+</Code>
+</Tab>
+
+<Tab title="Parallel processing">
+Use multiple cores with `pandas` + `concurrent.futures`:
+
+<Code file="parallel.py">
+import pandas as pd
+from concurrent.futures import ProcessPoolExecutor
+
+def process_chunk(file_path, start, end):
+    df = pd.read_csv(file_path, skiprows=range(1, start), nrows=end-start)
+    return df[df['amount'] > 100]
+
+with ProcessPoolExecutor(max_workers=4) as executor:
+    futures = []
+    for i in range(0, 2_000_000, 500_000):
+        futures.append(executor.submit(process_chunk, 'large_file.csv', i, i+500_000))
+    results = [f.result() for f in futures]
+</Code>
+</Tab>
+
+<Tab title="DuckDB for heavy lifting">
+For complex queries on large CSVs, DuckDB is often 10-100x faster:
+
+<Code file="duckdb.py">
+import duckdb
+
+# Run SQL directly on the CSV
+result = duckdb.sql("""
+    SELECT category, SUM(amount) as total
+    FROM 'large_file.csv'
+    WHERE date >= '2024-01-01'
+    GROUP BY category
+""").df()
+</Code>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Performance comparison" subtitle="Processing a 2GB CSV with 5 million rows">
+<Chart type="bar" title="Time to read + process" x="Method" y="Seconds">
+| Method | Seconds |
+|---|---|
+| Pure Python csv | 480 |
+| Pandas (naive) | 65 |
+| Pandas + dtypes | 42 |
+| Chunked pandas | 38 |
+| DuckDB SQL | 4.5 |
+| Polars | 3.8 |
+</Chart>
+</Card>
+
+<Card title="Memory-efficient alternatives">
+<Columns>
+<div>
+<Badge tone="info">Polars</Badge>
+
+Rust-based DataFrame library with lazy evaluation:
+
+```python
+import polars as pl
+
+df = pl.scan_csv('large_file.csv')
+result = df.filter(pl.col('amount') > 100).collect()
+```
+</div>
+<div>
+<Badge tone="info">Dask</Badge>
+
+Scales pandas workflows across cores:
+
+```python
+import dask.dataframe as dd
+
+df = dd.read_csv('large_file.csv')
+result = df.groupby('category').amount.sum().compute()
+```
+</div>
+</Columns>
+</Card>
+
+<Callout tone="success" title="Bottom line">
+For a 2GB CSV, switch to **Polars** or **DuckDB** if you're doing real analysis. If you must use Pandas, at minimum specify `dtypes` and use `usecols`. Avoid the native `csv` module for anything over ~100MB.
+</Callout>
+
+<Card title="Don't forget I/O optimizations">
+- **Compress the file**: A `.csv.gz` often reads *faster* than plain CSV because less disk I/O
+- **Use SSD storage**: If your file is on HDD, moving to SSD can give 5-10x speedup
+- **Close other programs**: Memory pressure causes swapping, which kills performance
+- **Consider Parquet**: If you control the data format, convert once to Parquet for 20-50x faster future reads
+</Card>
+
+<FollowUps>
+- How do I handle a CSV that doesn't fit in memory at all?
+- What's the best way to convert a large CSV to Parquet?
+- How do I speed up string operations on large CSV columns?
+- Can I use SQL directly on a CSV file?
+</FollowUps>

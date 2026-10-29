@@ -1,0 +1,82 @@
+<Card title="Service Health Dashboard" subtitle="Production • Last updated: 2024-01-15 14:32 UTC">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Error rate (now)" value="0.23%" change="+0.08% vs 1h ago" tone="warning" />
+<Stat label="Open incidents" value="3" change="2 critical, 1 warning" tone="danger" />
+</Columns>
+
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" />
+
+<Tabs>
+<Tab title="CPU & Memory (24h)">
+<Chart type="area" title="Resource Utilization" x="Time" y="% Used">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 45 | 60 |
+| 08:00 | 62 | 68 |
+| 10:00 | 78 | 75 |
+| 12:00 | 85 | 82 |
+| 14:00 | 71 | 70 |
+| 16:00 | 68 | 65 |
+| 18:00 | 74 | 72 |
+| 20:00 | 58 | 62 |
+| 22:00 | 48 | 58 |
+</Chart>
+</Tab>
+
+<Tab title="Open Incidents">
+<Details title="INC-2024-0189 • Critical • Payment API latency spike" open="true">
+**Service:** payments-api (us-east-1)
+**Started:** 2024-01-15 13:45 UTC
+**Impact:** p99 latency > 8s, 12% error rate
+**Runbook:** [Payment API Latency Runbook](https://runbooks.company.com/payments-latency)
+<Button variant="danger">Acknowledge</Button>
+<Button variant="secondary">View details</Button>
+</Details>
+
+<Details title="INC-2024-0187 • Critical • Database connection pool exhaustion" open="false">
+**Service:** user-db-primary (eu-west-1)
+**Started:** 2024-01-15 12:20 UTC
+**Impact:** New connections failing, read replicas healthy
+**Runbook:** [DB Connection Pool Exhaustion](https://runbooks.company.com/db-pool)
+<Button variant="danger">Acknowledge</Button>
+<Button variant="secondary">View details</Button>
+</Details>
+
+<Details title="INC-2024-0185 • Warning • Elevated 5xx on auth service" open="false">
+**Service:** auth-service (us-west-2)
+**Started:** 2024-01-15 11:10 UTC
+**Impact:** ~3% 500 errors on /token endpoint
+**Runbook:** [Auth Service Errors](https://runbooks.company.com/auth-errors)
+<Button variant="warning">Acknowledge</Button>
+<Button variant="secondary">View details</Button>
+</Details>
+</Tab>
+
+<Tab title="Slowest Endpoints">
+| Endpoint | Service | Region | p99 Latency | Trend |
+|---|---|---|---|---|
+| POST /api/v1/payments/charge | payments-api | us-east-1 | 8,240 ms | ↗ +42% |
+| GET /api/v1/users/{id}/profile | user-service | eu-west-1 | 3,180 ms | ↗ +18% |
+| POST /api/v1/orders | orders-api | us-east-1 | 2,950 ms | → stable |
+| GET /api/v1/search | search-service | ap-southeast-1 | 2,610 ms | ↘ -8% |
+| PUT /api/v1/inventory/reserve | inventory-svc | us-west-2 | 2,340 ms | ↗ +23% |
+</Tab>
+</Tabs>
+
+<Callout tone="info" title="Alert Thresholds">
+<Form name="alert-thresholds">
+<Columns>
+<Slider label="Error rate alert threshold (%)" min="0.1" max="5" step="0.1" value="1" name="error-rate-threshold" />
+<Slider label="CPU alert threshold (%)" min="50" max="95" step="1" value="80" name="cpu-threshold" />
+<Slider label="Memory alert threshold (%)" min="50" max="95" step="1" value="85" name="memory-threshold" />
+<Slider label="p99 latency alert (ms)" min="500" max="10000" step="100" value="3000" name="latency-threshold" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Callout>
+</Card>

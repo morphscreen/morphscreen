@@ -1,0 +1,22 @@
+# Platform Status
+
+<Card title="API Uptime (This Month)">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Callout tone="info" title="Resolved – Aug 28, 2024, 14:22 UTC">
+**Elevated API latency** – A subset of requests experienced 2–5s latency due to a downstream dependency timeout. The circuit breaker was tuned and the dependency scaled. No data loss. Root cause analysis published in #incidents.
+</Callout>
+<Details title="View timeline">
+| Time (UTC) | Event |
+|---|---|
+| 13:41 | Alert fired: p99 latency > 2s |
+| 13:45 | On-call acknowledged |
+| 13:52 | Identified downstream timeout |
+| 14:05 | Circuit breaker threshold adjusted |
+| 14:18 | Dependency autoscaled |
+| 14:22 | Latency returned to baseline; incident resolved |
+</Details>
+</Card>

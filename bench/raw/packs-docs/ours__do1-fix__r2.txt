@@ -1,0 +1,133 @@
+# Code Review: Bug Fix for User Session Timeout
+
+## Bug Summary
+
+<Card title="Bug Report" subtitle="PR #2847 · High Priority">
+**Title:** User sessions expire prematurely after 15 minutes instead of configured 30 minutes
+
+**Description:** Users are being logged out after 15 minutes of inactivity despite the `SESSION_TIMEOUT_MINUTES` environment variable being set to `30`. The issue occurs because the timeout calculation incorrectly uses milliseconds in one place and minutes in another, causing a 1000x discrepancy.
+
+**Impact:** All authenticated users experience unexpected logouts, leading to lost work and frustration. Affects 100% of active sessions.
+
+**Root Cause:** In `sessionManager.ts`, the `calculateExpiry()` function multiplies the configured minutes by `60` (seconds) instead of `60 * 1000` (milliseconds), but the comparison in `isExpired()` uses `Date.now()` which returns milliseconds.
+
+**Reported by:** @sarah-chen · **Assigned to:** @marcus-dev
+</Card>
+
+## The Fix
+
+<Card title="Code Change" subtitle="src/auth/sessionManager.ts">
+<Diff file="src/auth/sessionManager.ts">
+```diff
+@@ -12,11 +12,11 @@ export class SessionManager {
+   private readonly warningThresholdMs = 5 * 60 * 1000; // 5 minutes
+ 
+   calculateExpiry(createdAt: number): number {
+-    return createdAt + this.config.timeoutMinutes * 60;
++    return createdAt + this.config.timeoutMinutes * 60 * 1000;
+   }
+ 
+   isExpired(session: Session): boolean {
+-    return Date.now() > session.expiresAt;
++    return Date.now() >= session.expiresAt;
+   }
+ 
+   getTimeUntilExpiry(session: Session): number {
+@@ -28,7 +28,7 @@ export class SessionManager {
+   shouldWarn(session: Session): boolean {
+     const timeLeft = this.getTimeUntilExpiry(session);
+-    return timeLeft < this.warningThresholdMs && timeLeft > 0;
++    return timeLeft <= this.warningThresholdMs && timeLeft > 0;
+   }
+ 
+   extend(session: Session): Session {
+```
+</Diff>
+</Card>
+
+## How to Test
+
+<Card title="Test Plan" subtitle="Verification steps for QA and automated tests">
+<Columns>
+<Card title="Manual Testing">
+**Steps to reproduce the bug (before fix):**
+1. Set `SESSION_TIMEOUT_MINUTES=30` in `.env`
+2. Start the dev server: `npm run dev`
+3. Log in as a test user
+4. Wait 16 minutes without activity
+5. Observe: User is redirected to login (bug: should be 30 min)
+
+**Steps to verify the fix:**
+1. Apply the fix and restart the server
+2. Log in as a test user
+3. Wait 16 minutes without activity
+4. Verify: User remains logged in
+5. Wait 31 minutes total
+6. Verify: User is now logged out (correct behavior)
+7. Test warning banner appears at 25 minutes (5 min before expiry)
+</Card>
+
+<Card title="Automated Tests">
+**Unit tests to add/update:**
+```typescript
+// sessionManager.test.ts
+describe('SessionManager', () => {
+  it('calculates expiry in milliseconds', () => {
+    const mgr = new SessionManager({ timeoutMinutes: 30 });
+    const created = Date.now();
+    const expiry = mgr.calculateExpiry(created);
+    expect(expiry - created).toBe(30 * 60 * 1000);
+  });
+
+  it('returns true when session is expired', () => {
+    const mgr = new SessionManager({ timeoutMinutes: 30 });
+    const session = { expiresAt: Date.now() - 1 };
+    expect(mgr.isExpired(session)).toBe(true);
+  });
+
+  it('returns false at exact expiry moment', () => {
+    const mgr = new SessionManager({ timeoutMinutes: 30 });
+    const session = { expiresAt: Date.now() };
+    expect(mgr.isExpired(session)).toBe(true); // >= not >
+  });
+
+  it('triggers warning at threshold boundary', () => {
+    const mgr = new SessionManager({ timeoutMinutes: 30 });
+    const session = { expiresAt: Date.now() + 5 * 60 * 1000 };
+    expect(mgr.shouldWarn(session)).toBe(true);
+  });
+});
+```
+
+**E2E test (Cypress):**
+```javascript
+// cypress/e2e/session-timeout.cy.js
+it('respects configured timeout', () => {
+  cy.login();
+  cy.wait(16 * 60 * 1000); // 16 min
+  cy.url().should('not.include', '/login');
+  cy.wait(15 * 60 * 1000); // 15 more = 31 total
+  cy.url().should('include', '/login');
+});
+```
+</Card>
+</Columns>
+</Card>
+
+<Card title="Review Checklist">
+| Item | Status |
+|------|--------|
+| Bug root cause identified and fixed | ✅ |
+| Diff shows minimal, focused change | ✅ |
+| Unit tests cover edge cases (boundary conditions) | ✅ |
+| E2E test validates full user flow | ✅ |
+| No breaking changes to public API | ✅ |
+| Documentation updated (README timeout config) | ⏳ Pending |
+| Deployed to staging for smoke test | ⏳ Pending |
+</Card>
+
+<FollowUps>
+- What other places in the codebase use similar timeout calculations?
+- Should we add a integration test for the warning banner UI?
+- Can we add a feature flag to roll back quickly if issues arise?
+</FollowUps>

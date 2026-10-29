@@ -1,0 +1,105 @@
+# Admin overview
+
+Company-wide operational snapshot. <Badge tone="success">All systems operational</Badge>
+
+<Columns>
+<Card title="Reporting period">
+<Select label="Period" options="Last 30 days | Last 90 days | Last 12 months | Year to date" name="reporting-period" hint="Updates every metric on this screen" />
+</Card>
+<Card title="Invite another admin">
+<Form name="invite-admin">
+<Input label="Admin email" type="email" placeholder="teammate@company.com" hint="They'll receive a magic link to sign in" required="true" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Key metrics" subtitle="As of today, compared with the previous 30-day period">
+<Columns>
+<Stat label="MRR" value="$128,400" change="+8.2%" tone="success" icon="chart-line" />
+<Stat label="ARR" value="$1,540,800" change="+18.4%" tone="success" icon="trend-up" />
+<Stat label="Churn this month" value="2.3%" change="−0.4 pts" tone="warning" icon="warning" />
+<Stat label="NPS" value="41" change="+6 pts" tone="info" icon="heart" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="New signups" subtitle="Past 90 days, by week">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 38 |
+| W2 | 42 |
+| W3 | 35 |
+| W4 | 51 |
+| W5 | 47 |
+| W6 | 58 |
+| W7 | 54 |
+| W8 | 66 |
+| W9 | 61 |
+| W10 | 73 |
+| W11 | 69 |
+| W12 | 84 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan" subtitle="128 active accounts">
+<Chart type="donut">
+| Plan | Accounts |
+|---|---|
+| Starter | 54 |
+| Growth | 48 |
+| Enterprise | 26 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="New feature adoption" subtitle="Share of accounts using each feature in the last 30 days">
+<Progress value="61" max="100" label="Dark mode — 61%" tone="success" />
+<Progress value="44" max="100" label="API keys — 44%" tone="info" />
+<Progress value="28" max="100" label="Auto-reports — 28%" tone="warning" />
+</Card>
+
+<Card title="Seat utilization" subtitle="Paid seats in use per plan">
+<Progress value="71" max="100" label="Overall — 71% (1,284 of 1,820 seats)" tone="info" />
+<Progress value="64" max="100" label="Starter — 64%" />
+<Progress value="78" max="100" label="Growth — 78%" />
+<Progress value="82" max="100" label="Enterprise — 82%" />
+</Card>
+</Columns>
+
+<Card title="Ten largest customers" subtitle="Ranked by monthly spend">
+| Customer | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Acme Corp | Enterprise | 142 | $4,200 |
+| Globex | Enterprise | 118 | $3,600 |
+| Initech | Enterprise | 96 | $3,100 |
+| Umbrella Corp | Enterprise | 84 | $2,800 |
+| Stark Industries | Enterprise | 71 | $2,400 |
+| Wayne Enterprises | Growth | 63 | $1,900 |
+| Hooli | Growth | 58 | $1,750 |
+| Pied Piper | Growth | 44 | $1,300 |
+| Cyberdyne | Growth | 39 | $1,150 |
+| Massive Dynamic | Starter | 27 | $850 |
+</Card>
+
+<Columns>
+<Card title="Accounts at risk" subtitle="Flagged by health score or manual review">
+| Customer | Risk | Reason |
+|---|---|---|
+| Acme Corp | <Badge tone="danger">High</Badge> | Renewal in 14 days; no response to outreach |
+| Initech | <Badge tone="danger">High</Badge> | Active seats dropped to 12% of 96 |
+| Pied Piper | <Badge tone="warning">Medium</Badge> | Integration errors; ticket open 6 days |
+| Massive Dynamic | <Badge tone="warning">Medium</Badge> | Budget cuts announced |
+</Card>
+
+<Card title="Failed payments" subtitle="Automatic retries exhausted">
+| Customer | Amount | Reason | Action |
+|---|---|---|---|
+| Globex | $3,600 | Card declined | <Button ask>Retry</Button> |
+| Hooli | $1,750 | Card expired | <Button ask>Retry</Button> |
+| Stark Industries | $2,400 | Card declined | <Button ask>Retry</Button> |
+| Wayne Enterprises | $1,900 | Insufficient funds | <Button ask>Retry</Button> |
+</Card>
+</Columns>

@@ -1,0 +1,160 @@
+# Streaming Operations Room
+
+Live monitoring dashboard for your streaming platform. All metrics update every 60 seconds.
+
+<Callout tone="info" title="Live view">
+All numbers below are real-time. Buffering is within target, but EU West is approaching the warning threshold.
+</Callout>
+
+<Card title="Right now">
+<Columns>
+<Stat label="Viewers watching" value="1,284,392" change="+3.2% vs last hour" icon="users" />
+<Stat label="Buffering rate" value="0.8%" change="+0.2 pts vs target" tone="warning" icon="pulse" />
+<Stat label="Recommendation CTR" value="4.6%" change="-0.4 pts vs yesterday" tone="warning" icon="mouse" />
+</Columns>
+</Card>
+
+<Card title="Most-watched titles" subtitle="Last 24 hours">
+<Chart type="bar" x="Title" y="Hours watched (millions)" title="Hours watched">
+| Title | Hours |
+|---|---|
+| Midnight Protocol | 12.4 |
+| The Last Signal | 9.8 |
+| Crown of Embers | 8.1 |
+| Neon Drift | 7.3 |
+| Silent Harbor | 6.2 |
+</Chart>
+</Card>
+
+<Card title="Watch time" subtitle="Past 30 days">
+<Chart type="area" x="Day" y="Million hours" title="Daily watch time">
+| Day | Hours |
+|---|---|
+| Jun 1 | 18.2 |
+| Jun 5 | 19.1 |
+| Jun 10 | 18.8 |
+| Jun 15 | 21.4 |
+| Jun 20 | 22.9 |
+| Jun 25 | 23.5 |
+| Jun 30 | 24.1 |
+</Chart>
+</Card>
+
+<Card title="Subscribers" subtitle="New vs cancelled — past 30 days">
+<Chart type="line" x="Week" y="Count" title="New vs cancellations">
+| Week | New | Cancelled |
+|---|---|---|
+| W1 | 48,200 | 21,400 |
+| W2 | 52,800 | 19,900 |
+| W3 | 61,300 | 22,700 |
+| W4 | 57,900 | 24,100 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre" subtitle="Share of total watch time">
+<Chart type="donut" title="Genre mix">
+| Genre | Share % |
+|---|---|
+| Drama | 32 |
+| Sci-Fi | 24 |
+| Comedy | 18 |
+| Documentary | 14 |
+| Reality | 12 |
+</Chart>
+</Card>
+
+<Card title="Delivery health by region" subtitle="Buffering rate per region — target under 1.0%">
+<Columns>
+<Stat label="US East" value="0.4%" tone="success" />
+<Stat label="US West" value="0.6%" tone="success" />
+<Stat label="EU West" value="1.4%" tone="warning" />
+<Stat label="EU North" value="0.7%" tone="success" />
+<Stat label="APAC" value="0.9%" tone="success" />
+</Columns>
+<Progress value="1.4" max="3" label="EU West buffering vs target" tone="warning" />
+</Card>
+
+<Card title="Focus on one region">
+<Form name="region-focus">
+<Select label="Region" name="region" options="Global | US East | US West | EU West | EU North | APAC" placeholder="Global" />
+<Button>Apply region filter</Button>
+</Form>
+</Card>
+
+<Card title="Releases this month">
+<Columns>
+<Avatar name="Midnight Protocol S2" subtitle="Jul 4 · Sci-Fi" />
+<Avatar name="The Last Signal" subtitle="Jul 12 · Thriller" />
+<Avatar name="Neon Drift" subtitle="Jul 19 · Action" />
+<Avatar name="Silent Harbor" subtitle="Jul 26 · Drama" />
+</Columns>
+</Card>
+
+<Card title="Licenses expiring soon">
+| Title | Expiry | Days left | Status |
+|---|---|---|---|
+| Crown of Embers | Jul 15 | 12 | <Badge tone="danger">Critical</Badge> |
+| Old Town Tales | Jul 22 | 19 | <Badge tone="warning">At risk</Badge> |
+| River Run | Aug 3 | 31 | <Badge tone="neutral">Review</Badge> |
+</Card>
+
+<Card title="Search without playback" subtitle="Top 5 searches that ended with no playback — last 7 days">
+| Search term | Count |
+|---|---|
+| "cowboy movie" | 4,812 |
+| "anime dubs" | 3,904 |
+| "zombie series" | 3,208 |
+| "kids cartoons" | 2,756 |
+| "k-drama" | 2,311 |
+</Card>
+
+<Card title="Revenue by plan" subtitle="Monthly recurring revenue split">
+<Chart type="pie" title="Revenue share">
+| Plan | Revenue |
+|---|---|
+| Premium | 58 |
+| Standard | 31 |
+| Basic | 11 |
+</Chart>
+</Card>
+
+<Card title="Viewing by device">
+<Chart type="horizontal" title="Device share">
+| Device | Share % |
+|---|---|
+| Smart TV | 48 |
+| Mobile | 27 |
+| Tablet | 12 |
+| Web | 9 |
+| Console | 4 |
+</Chart>
+</Card>
+
+<Card title="Feature flags" subtitle="Current state of all active flags">
+<Columns>
+<Stat label="New player UI" value="On" tone="success" icon="toggle-right" />
+<Stat label="4K HDR" value="On" tone="success" icon="toggle-right" />
+<Stat label="Kids mode" value="On" tone="success" icon="toggle-right" />
+<Stat label="AI recommendations" value="Off" tone="neutral" icon="toggle-left" />
+<Stat label="Social sharing" value="Rollout 50%" tone="warning" icon="toggle-right" />
+</Columns>
+<Progress value="50" max="100" label="Social sharing rollout" tone="warning" />
+</Card>
+
+<Card title="Promote a title on home screen" subtitle="Pin a title to the top row for all users">
+<Form name="promote-title">
+<Select label="Title" name="title" options="Midnight Protocol S2 | The Last Signal | Crown of Embers | Neon Drift | Silent Harbor" placeholder="Choose a title" />
+<Date label="Start date" name="start-date" />
+<Date label="End date" name="end-date" />
+<Switch label="Show badge (e.g. 'New Season')" name="show-badge" value="true" />
+<Button>Promote now</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the EU West buffering breakdown by city
+- Who are the top 10 viewers by watch time this week?
+- Compare revenue by plan against last month
+- What titles are trending up in searches?
+- Show me the license renewal costs
+</FollowUps>

@@ -1,0 +1,74 @@
+# Service Health Dashboard
+
+<Card title="Service Health Overview">
+<Columns>
+<Stat label="Uptime (This Quarter)" value="99.97%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error Rate (Now)" value="0.08%" change="Within SLO" tone="success" icon="warning-circle" />
+<Stat label="Open Incidents" value="3" change="2 critical, 1 warning" tone="danger" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Filter by Region">
+<Select label="Region" name="region" options="All Regions | US East | US West | EU West | EU Central | AP Southeast | AP Northeast" placeholder="All Regions" />
+<Button variant="secondary" ask="Show dashboard for US East region">Apply</Button>
+</Card>
+
+<Card title="CPU & Memory Usage (Past 24 Hours)">
+<Chart type="line" x="Time" y="Usage (%)">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 45 | 62 |
+| 04:00 | 52 | 68 |
+| 08:00 | 78 | 85 |
+| 12:00 | 82 | 90 |
+| 16:00 | 74 | 81 |
+| 20:00 | 58 | 70 |
+| 23:00 | 48 | 64 |
+</Chart>
+<Callout tone="info" title="Peak usage">CPU peaked at 82% at 12:00. Memory peaked at 90% at 12:00. No throttling detected.</Callout>
+</Card>
+
+<Card title="Open Incidents">
+| Severity | Incident | Status | Region | Acknowledge |
+|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Database connection pool exhausted | Unacknowledged | US East | <Button variant="primary" size="small" ask="Acknowledge incident: Database connection pool exhausted">Acknowledge</Button> |
+| <Badge tone="danger">Critical</Badge> | Payment API latency spike | Acknowledged | EU West | <Button variant="secondary" size="small" disabled>Acknowledged</Button> |
+| <Badge tone="warning">Warning</Badge> | Cache hit rate below 90% | Unacknowledged | AP Southeast | <Button variant="primary" size="small" ask="Acknowledge incident: Cache hit rate below 90%">Acknowledge</Button> |
+</Card>
+
+<Card title="Slowest Endpoints (Last 5 Minutes)">
+| Endpoint | Method | P99 Latency | P50 Latency | Requests/min |
+|---|---|---|---|---|
+| /api/orders/bulk | POST | 2,450 ms | 890 ms | 142 |
+| /api/reports/export | GET | 1,820 ms | 620 ms | 67 |
+| /api/users/sync | PUT | 1,450 ms | 510 ms | 203 |
+| /api/search/fulltext | POST | 1,230 ms | 380 ms | 891 |
+| /api/analytics/query | GET | 980 ms | 210 ms | 445 |
+<Callout tone="warning" title="Action needed">/api/orders/bulk exceeds the 2,000 ms P99 threshold. Review the recent deployment.</Callout>
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Slider label="Error Rate Threshold (%)" min="0.1" max="5" step="0.1" value="1" name="error-rate" unit="%" />
+<Slider label="P99 Latency Threshold (ms)" min="500" max="5000" step="100" value="2000" name="latency-threshold" unit="ms" />
+<Slider label="CPU Usage Threshold (%)" min="50" max="100" step="5" value="85" name="cpu-threshold" unit="%" />
+<Slider label="Memory Usage Threshold (%)" min="50" max="100" step="5" value="90" name="memory-threshold" unit="%" />
+<Checkboxes label="Notify via" options="Email | Slack | PagerDuty | SMS" name="notify-channels" />
+<Button>Save Thresholds</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" ask="Show me the full incident report">View Incident Report</Button>
+<Button variant="secondary" ask="Show me the deployment timeline">Deployment Timeline</Button>
+<Button variant="tertiary" ask="Run a health check on all services">Run Health Check</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the root cause analysis for the database incident
+- What changed in the last deployment?
+- Compare today's error rate to yesterday's
+- Which services are most affected by the latency?
+</FollowUps>

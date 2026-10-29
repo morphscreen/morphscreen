@@ -1,0 +1,73 @@
+# Training Platform Analytics
+
+<Card title="Cohort filter">
+<Form name="cohort-filter">
+<Select label="Cohort" placeholder="All cohorts" options="All cohorts | Marketing 2024 | Sales Q3 | Engineering Onboarding | Design Bootcamp" />
+<Button>Apply filter</Button>
+</Form>
+</Card>
+
+<Columns>
+<Stat label="Active learners this week" value="1,284" change="+8.2% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="72%" change="+3.1 pts" tone="info" icon="check-circle" />
+<Stat label="Average quiz score" value="84%" change="+1.5 pts" tone="neutral" icon="chart-line" />
+</Columns>
+
+<Card title="Engagement — past eight weeks">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active learners |
+|---|---|
+| 8 weeks ago | 980 |
+| 7 weeks ago | 1,050 |
+| 6 weeks ago | 1,120 |
+| 5 weeks ago | 1,085 |
+| 4 weeks ago | 1,160 |
+| 3 weeks ago | 1,190 |
+| 2 weeks ago | 1,240 |
+| Last week | 1,284 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="bar" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Data Analytics Basics | 512 |
+| UX Fundamentals | 438 |
+| Python for Beginners | 391 |
+| Project Management 101 | 287 |
+| SQL Crash Course | 243 |
+| Leadership Essentials | 198 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out">
+<Callout tone="danger" title="Action needed">12 learners haven't logged in for 14+ days and are behind on quizzes.</Callout>
+
+| Learner | Course | Last active | Quiz avg | Risk |
+|---|---|---|---|---|
+| Alex Rivera | Data Analytics Basics | 12 days ago | 41% | <Badge tone="danger">High</Badge> |
+| Jamie Chen | Python for Beginners | 9 days ago | 55% | <Badge tone="danger">High</Badge> |
+| Priya Sharma | UX Fundamentals | 15 days ago | 38% | <Badge tone="danger">High</Badge> |
+| Sam Wilson | SQL Crash Course | 7 days ago | 62% | <Badge tone="warning">Medium</Badge> |
+| Taylor Kim | Project Management 101 | 6 days ago | 58% | <Badge tone="warning">Medium</Badge> |
+| Morgan Lee | Leadership Essentials | 10 days ago | 49% | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Message cohort">
+<Form name="cohort-message">
+<Select label="Send to" options="All cohorts | Marketing 2024 | Sales Q3 | Engineering Onboarding | Design Bootcamp | At-risk learners" />
+<Input label="Subject" placeholder="Reminder: your next module awaits" />
+<TextArea label="Message" placeholder="Hi team, we noticed you haven't completed the latest quiz. Here's a tip to help you finish strong…" rows="4" />
+<Checkboxes label="Include" options="Personalized first name | Link to course | Unsubscribe option" value="Link to course | Unsubscribe option" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the at-risk list for just the Marketing 2024 cohort
+- What's driving the completion rate increase?
+- Draft a message to learners who scored below 60% on the last quiz
+- Compare engagement between cohorts
+</FollowUps>

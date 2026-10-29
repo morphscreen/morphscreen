@@ -1,0 +1,241 @@
+We need to build a single screen for a university administrator's overview, covering 16 items. Must produce openui-lang code with root = Card(...) as first line. Must ensure every variable is referenced. Also need to consider streaming recommendation: root first, then component definitions, then data values. Must ensure all defined variables are referenced somewhere (directly or indirectly). Also need to ensure each component arguments are positional, no named arguments. Must follow component signatures.
+
+We need to cover many items, possibly using tables, charts, forms, etc. Also need a way to focus on one department (maybe a dropdown/select). A way to approve a new course (maybe a button or form). A way to send a message to a student group (maybe a button that triggers something, but we just need a component that represents that ability, maybe a button with action). Since we cannot embed actions, just include a button.
+
+We need to ensure each defined variable is referenced. Let's plan.
+
+Define root children list includes many sections. We'll need components for each item.
+
+Potential structure:
+
+- Card with direction row? maybe column. Let's use Card with direction column (default). We'll put items vertically.
+
+We need:
+
+1. total enrollment and how it moved over five years -> maybe a CardHeader then a Table or Chart. Could use a LineChart showing enrollment over five years. Use LineChart.
+
+Define: enrollmentLabels = ["Y1","Y2","Y3","Y4","Y5"]; enrollmentSeries = Series("Enrollment", [10000,10500,11200,11900,12600]) (example numbers). Then lineChart = LineChart(labels, series, "natural", "Year", "Students").
+
+2. applications by program -> maybe a BarChart (horizontal) showing applications per program. Use HorizontalBarChart. Define programLabels = ["Engineering","Arts","Business","Sciences"]; series = Series("Applications", [2000,1500,3000,1200]) etc. Then horizontalBarChart = HorizontalBarChart(labels, series, "grouped", "Program", "Count").
+
+3. acceptance rate -> maybe a Badge or a TextCallout. Could use Badge with "92%"? But need to show acceptance rate value. Could use TextContent "Acceptance Rate: 92%". Or a Badge. Let's use Badge("92%", "success")? But Badge variant options: "default","secondary","destructive","outline","ghost","link". No success. So maybe use TextContent. Or use Callout with variant "info". Let's use TextContent.
+
+Define: acceptanceRate = TextContent("Acceptance Rate: 92%", "default").
+
+But we need to reference variable. Let's create acceptanceRate = TextContent("Acceptance Rate: 92%", "default").
+
+4. tuition revenue this year -> maybe a TextContent or a Badge. Could use TextContent. Or a Callout. Let's use TextContent("Tuition Revenue: $12M", "default").
+
+Define: tuitionRevenue = TextContent("Tuition Revenue: $12M", "default").
+
+5. how full each course offering is -> maybe a PieChart showing enrollment per course. Use PieChart. Define courseLabels = ["Math","Physics","Chemistry","Biology"]; courseValues = [300,250,200,150]; pieChart = PieChart(courseLabels, courseValues, "pie", "circular").
+
+6. teaching load by faculty member -> maybe a Table showing faculty and load. Use Table. Define columns: Faculty (string), Load (number). Data rows. Use Table.
+
+Define facultyData = Col("Faculty", ["Dr. Smith","Prof. Lee","Dr. Patel"], "string"); loadData = Col("Load (courses)", [3,4,2], "number"); table = Table([facultyData, loadData]).
+
+But need to ensure each column has same number of values. We'll have 3 rows.
+
+7. students at academic risk -> maybe a ListBlock with items. Use ListBlock(items: (ListItem)[]). Each ListItem could be "Student A - at risk". Could also use TextContent.
+
+Define riskStudents = ListBlock([ListItem("Student A - at risk", "Low GPA", [], ""), ListItem("Student B - at risk", "Low GPA", [], "")]) but ListItem signature: (title:string, subtitle?:string, image?:(string|number)[], actionLabel?:string). We'll use simple.
+
+8. scholarship budget used against total -> maybe a Progress bar. Use Progress(value:number, label:string). Define scholarshipUsed = Progress(450000, "Scholarship Used"). But need total budget maybe 1M. Use value 450000. We'll need total budget variable.
+
+Define totalScholarshipBudget = 1000000; scholarshipUsed = Progress(450000, "Scholarship Used").
+
+9. housing occupancy -> maybe a PieChart or a BarChart. Use PieChart showing occupancy per building. Define buildingLabels = ["Dorm A","Dorm B","Apartment"]; buildingValues = [800,600,200]; housingPie = PieChart(buildingLabels, buildingValues, "pie", "circular").
+
+10. campus events this month -> maybe a ListBlock of events. Use ListBlock(items: (ListItem)[]). Each ListItem could be event name. Or maybe a TextCallout. Let's use ListBlock.
+
+Define events = ListBlock([ListItem("Science Fair", "2025-04-10", [], ""), ListItem("Career Expo", "2025-04-15", [], "")]).
+
+But ListItem requires title, subtitle optional, image optional, actionLabel optional. We'll just provide title and maybe subtitle.
+
+11. alumni giving over past four years -> maybe a LineChart showing giving amounts. Define years = ["Y1","Y2","Y3","Y4"]; givingSeries = Series("Alumni Giving", [50000,75000,100000,125000]); alumniChart = LineChart(years, givingSeries, "linear", "Year", "USD").
+
+12. a way to focus on one department -> maybe a Select component. Use Select with items representing departments. Define departmentSelect = Select("dept_select", ["Engineering","Arts","Business","Sciences"], "Choose a department").
+
+But need to include a Form? Could just include a Select as a component.
+
+13. this semester compared with last -> maybe a BarChart comparing two semesters. Use BarChart (grouped). Define labels = ["Fall","Spring"]; series = [Series("Enrollment", [12000,11500]), Series("Applications", [1500,1300])]? Might be too many. Simpler: just show enrollment numbers. Use BarChart with two series? Let's keep simple: BarChart(labels, series, "grouped", "Semester", "Students"). We'll need two series: enrollment series and maybe something else. Let's just have one series for enrollment. Actually we need compare this semester vs last, could be two series: "Current" and "Previous". Use two series.
+
+Define labels = ["Fall","Spring"]; series = [Series("Current", [12000,11500]), Series("Previous", [11800,11200])]; barChart = BarChart(labels, series, "grouped", "Semester", "Students").
+
+14. waitlisted students per program -> maybe a Table. Define columns: Program, Waitlist. Use Table.
+
+Define waitlistCols = Col("Program", ["Engineering","Arts","Business","Sciences"], "string"); waitlistData = Col("Waitlisted", [30,15,40,10], "number"); waitlistTable = Table([waitlistCols, waitlistData]).
+
+15. a way to approve a new course -> maybe a Button. Define approveCourseBtn = Button("Approve New Course", null, "primary").
+
+But need to reference variable. We'll create approveBtn = Button("Approve New Course", null, "primary").
+
+16. a way to send a message to a student group -> maybe a Button. Define sendMsgBtn = Button("Send to Student Group", null, "secondary").
+
+Now we need to ensure all defined variables are referenced in root children list.
+
+Let's list all defined variables:
+
+- root (the root card)
+- header? maybe not needed. We'll just put everything directly in root children.
+
+Variables:
+
+- enrollmentLabels (list)
+- enrollmentSeries (Series)
+- lineChart (LineChart) -> need to reference lineChart in root children.
+
+- applicationsLabels (list)
+- applicationsSeries (Series)
+- applicationsChart (HorizontalBarChart)
+
+- acceptanceRate (TextContent)
+
+- tuitionRevenue (TextContent)
+
+- courseLabels (list)
+- courseValues (list)
+- pieChart (PieChart)
+
+- facultyData (Col)
+- loadData (Col)
+- teachingTable (Table)
+
+- riskStudents (ListBlock) -> need to reference riskStudents.
+
+- totalScholarshipBudget (number) maybe not needed as separate variable; but we can define it and then use scholarshipUsed.
+
+- scholarshipUsed (Progress)
+
+- buildingLabels (list)
+- buildingValues (list)
+- housingPie (PieChart)
+
+- events (ListBlock) -> need to reference events.
+
+- alumniLabels (list)
+- alumniSeries (Series)
+- alumniChart (LineChart)
+
+- deptSelect (Select) -> need to reference.
+
+- barChartLabels (list)
+- barChartSeries (list of Series)
+- barChart (BarChart)
+
+- waitlistCols (Col)
+- waitlistData (Col)
+- waitlistTable (Table)
+
+- approveBtn (Button)
+- sendMsgBtn (Button)
+
+Also maybe need a CardHeader for title? Not required but could add.
+
+But we must ensure each defined variable is referenced in root children list (directly or via other variables). The root children list is a list of components; each component may reference variables.
+
+We need to ensure that all defined variables appear in root's children list (or are referenced by other components that are in root children). For readability, we can include each component as a variable and then include that variable in root children list.
+
+But we need root = Card([...]) as first line. Then we need to list all components in the children array. We can reference variables directly in the array, like [header, status, alert, ...] but we need to ensure each variable is defined before use (though hoisting allows definition after usage). However for clarity, we should define variables before using them in root children.
+
+Better: define all variables (including component definitions) before root, but root must be first line. Wait, rule: root = Card(...) must be the FIRST line. So we cannot define variables before root. But we can define variables after root; they will be hoisted, but the root children list must reference them. However if we define root first with an empty children list (or placeholder), then later define components, then we need to modify root children list to include them. But root definition is a single line; we cannot modify after. Actually we can define root = Card([...]) with placeholders like [item1, item2] but we need actual components. Since we can't edit after root line, we need to include all components in the root children list at definition time.
+
+But we can use hoisting: we can define root = Card([...]) with placeholders like [x, y] where x and y are variables that will be defined later. Since hoisting resolves after parsing, the root can reference variables defined later. So we can define root first with an empty list? But root must have children list; we can put a placeholder like [] but that would be empty and not show anything. However we need to include all components. So we need to include them in the children list. Since we cannot edit root after defining, we need to define root with the full list of children components, referencing variables that we will define later. That's okay because of hoisting: the parser will resolve references after reading all lines.
+
+Thus we can write root = Card([...]) with references to variables that we will define later (like enrollmentChart, applicationsChart, etc.). As long as those variables are defined somewhere (even after root) they will be resolved.
+
+But we must ensure that root's children list includes all components. So we need to list each component (maybe as variable references) inside the children list.
+
+Simplify: we can define each component as a variable (e.g., lineChart = LineChart(...)), then include lineChart in root children list.
+
+But root children list must be a list of components, not variable names. However we can write root = Card([lineChart, applicationsChart, acceptanceRate, ...]) where each item is a component reference (the variable). Since variables hold component instances, that's fine.
+
+Thus we need to ensure root children list includes all components.
+
+Now we need to ensure every defined variable is referenced somewhere. That includes all component variables (like lineChart, applicationsChart, etc.) and also any data variables like enrollmentLabels, enrollmentSeries, etc. However the rule says "Every variable (except root) MUST be referenced by at least one other variable." So each defined variable must be referenced by at least one other variable. That means we cannot have a variable that is defined but never used. For example, enrollmentLabels is defined but if we never use it (maybe we embed it directly in lineChart arguments), then it's referenced via lineChart. But lineChart's arguments are inline; we need to reference the variable for the arguments. In openui-lang, component arguments are expressions; we can embed the variable directly: e.g., lineChart = LineChart(enrollmentLabels, enrollmentSeries, "natural", "Year", "Students"). Here enrollmentLabels and enrollmentSeries are variables; they are referenced in the expression. So they are referenced.
+
+But we need to ensure each variable is referenced by at least one other variable (i.e., not standalone). So we need to make sure each variable appears in some expression (like being passed as argument). For data variables like enrollmentLabels, they are used in lineChart, so referenced.
+
+But what about variables like totalScholarshipBudget? It may be used only to compute scholarshipUsed, but we might not need a separate variable; we can directly set scholarshipUsed = Progress(450000, "Scholarship Used") without a total variable. So we can avoid unnecessary variables.
+
+But we must ensure each defined variable is referenced. So we need to define each variable and then use it somewhere. For simplicity, we can define each variable and then include it in root children list (or in other component definitions). For example, we can define enrollmentLabels = ["Y1","Y2","Y3","Y4","Y5"]; then lineChart = LineChart(enrollmentLabels, enrollmentSeries, ...). That references enrollmentLabels.
+
+Similarly, enrollmentSeries = Series("Enrollment", [10000,10500,11200,11900,12600]); then lineChart references enrollmentSeries.
+
+Thus each variable is referenced.
+
+Now we need to ensure we have 16 items covered. Let's map each item to a component:
+
+1. total enrollment and movement over five years -> LineChart (enrollment). Also maybe a TextContent showing total enrollment. Could add a TextContent "Total Enrollment: 12,600". But we can embed that in the same card header maybe. But we need to cover item 1; we can have a CardHeader "Total Enrollment", then a TextContent showing current total, and a LineChart showing trend. However we need to keep within one screen; maybe we combine.
+
+Simplify: We'll create a component "enrollmentSection" that includes a TextContent for total and a LineChart for trend. But we need to reference variables.
+
+Let's design:
+
+- enrollmentLabels = ["Y1","Y2","Y3","Y4","Y5"]
+- enrollmentSeries = Series("Enrollment", [10000,10500,11200,11900,12600])
+- enrollmentChart = LineChart(enrollmentLabels, enrollmentSeries, "natural", "Year", "Students")
+- enrollmentTotal = TextContent("Total Enrollment: 12,600", "default") (maybe we can compute but just static)
+
+But we need to ensure each variable is referenced. enrollmentTotal is referenced maybe not; we can include it in root children list.
+
+2. applications by program -> HorizontalBarChart. Define programLabels, programSeries, applicationsChart.
+
+- programLabels = ["Engineering","Arts","Business","Sciences"]
+- programSeries = Series("Applications", [2000,1500,3000,1200])
+- applicationsChart = HorizontalBarChart(programLabels, programSeries, "grouped", "Program", "Count")
+
+3. acceptance rate -> TextContent "Acceptance Rate: 92%" (or maybe a Badge). Use TextContent.
+
+- acceptanceRate = TextContent("Acceptance Rate: 92%", "default")
+
+4. tuition revenue -> TextContent "Tuition Revenue: $12M"
+
+- tuitionRevenue = TextContent("Tuition Revenue: $12M", "default")
+
+5. how full each course offering is -> PieChart.
+
+- courseLabels = ["Math","Physics","Chemistry","Biology"]
+- courseValues = [300,250,200,150]
+- coursePie = PieChart(courseLabels, courseValues, "pie", "circular")
+
+6. teaching load by faculty member -> Table.
+
+- facultyData = Col("Faculty", ["Dr. Smith","Prof. Lee","Dr. Patel"], "string")
+- loadData = Col("Load (courses)", [3,4,2], "number")
+- teachingTable = Table([facultyData, loadData])
+
+7. students at academic risk -> ListBlock.
+
+- riskStudents = ListBlock([ListItem("Student A - at risk", "Low GPA", [], ""), ListItem("Student B - at risk", "Low GPA", [], "")])
+
+But ListItem signature: (title:string, subtitle?:string, image?:(string|number)[], actionLabel?:string). We'll provide title and subtitle.
+
+8. scholarship budget used against total -> Progress.
+
+- scholarshipUsed = Progress(450000, "Scholarship Used") (value 450k out of 1M total). We might not need total variable.
+
+9. housing occupancy -> PieChart.
+
+- buildingLabels = ["Dorm A","Dorm B","Apartment"]
+- buildingValues = [800,600,200]
+- housingPie = PieChart(buildingLabels, buildingValues, "pie", "circular")
+
+10. campus events this month -> ListBlock.
+
+- events = ListBlock([ListItem("Science Fair", "2025-04-10", [], ""), ListItem("Career Expo", "2025-04-15", [], "")])
+
+11. alumni giving over past four years -> LineChart.
+
+- alumniLabels = ["Y1","Y2","Y3","Y4"]
+- alumniSeries = Series("Alumni Giving", [50000,75000,100000,125000])
+- alumniChart = LineChart(alumniLabels, alumniSeries, "linear", "Year", "USD")
+
+12. way to focus on one department -> Select.
+
+- deptSelect = Select("dept_select", ["Engineering","Arts","Business","Sciences"], "Choose a department")
+
+13. this semester compared with last -> BarChart.
+
+- barLabels = ["Y"]<unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk> [TextContent, MarkDownRenderer, CardHeader, Callout, TextCallout, CodeBlock, Image, ImageBlock, ImageGallery, Separator, HorizontalBarChart, RadarChart, PieChart, RadialChart, SingleStackedBarChart, ScatterChart, AreaChart, BarChart, LineChart, Table, TagBlock, Form, Buttons, Steps<unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk><unk>[100, 20, 30, 10], [1, 2, 3])
+openui-lang

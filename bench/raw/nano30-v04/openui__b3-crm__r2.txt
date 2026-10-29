@@ -1,0 +1,25 @@
+root = Card(children: [header, totalDeal, dealStage, recentActivity, contacts, followUps, noteForm, renewalCallout, logCallBtn], variant: "card", direction: "column", gap: "m", align: "start", justify: "start", wrap: false)
+header = CardHeader(title: "Acme Corp", subtitle: "Owner: John Doe")
+totalDeal = TextContent(text: "Total Deal Value: $250,000", size: "large")
+dealStage = Tag(text: "Negotiation", variant: "info")
+recentActivity = ListBlock(items: [
+    ListItem(title: "Call with client", subtitle: "Discussed pricing"),
+    ListItem(title: "Email sent", subtitle: "Follow-up on proposal"),
+    ListItem(title: "Meeting scheduled", subtitle: "Demo for next week")
+])
+contacts = ListBlock(items: [
+    ListItem(title: "John Smith", subtitle: "CEO"),
+    ListItem(title: "Jane Doe", subtitle: "Sales Lead"),
+    ListItem(title: "Bob Brown", subtitle: "Support")
+])
+followUps = FollowUpBlock(items: [
+    FollowUpItem(text: "Send proposal to Acme Corp (due 2025-12-01)"),
+    FollowUpItem(text: "Review contract terms (due 2025-12-10)")
+])
+noteArea = TextArea(name: "note", placeholder: "Write a note", rows: 4)
+noteField = FormControl("Note", noteArea)
+saveNoteBtn = Button(label: "Save", action: null, variant: "primary", type: "normal", size: "medium")
+noteButtons = Buttons(buttons: [saveNoteBtn])
+noteForm = Form(name: "noteForm", buttons: noteButtons, fields: [noteField])
+renewalCallout = Callout(variant: "warning", title: "Renewal", description: "Renewal on 2025-12-15 (3 days left)")
+logCallBtn = Button(label: "Log Call", action: null, variant: "secondary", type: "normal", size: "small")

@@ -1,0 +1,97 @@
+# Service Health Dashboard
+
+<Callout tone="warning" title="Active incident">Payment API is degraded in `eu-west-1` — paging on-call engineer.</Callout>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Uptime (Q3)" value="99.95%" tone="success" icon="trend-up" note="Target 99.9%" />
+<Stat label="Error rate now" value="1.2%" tone="warning" icon="warning" note="Up from 0.3% 1h ago" />
+<Stat label="Open incidents" value="3" tone="danger" icon="siren" note="2 critical, 1 high" />
+</Columns>
+</Card>
+
+<Card title="Region filter">
+<Radio label="Narrow to region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" name="region" value="All regions" />
+</Card>
+
+<Card title="CPU & memory — last 24 hours" subtitle="All regions combined">
+<Tabs>
+<Tab title="CPU">
+<Chart type="area" x="Time" y="%">
+| Time | CPU % |
+|---|---|
+| 00:00 | 42 |
+| 04:00 | 38 |
+| 08:00 | 51 |
+| 12:00 | 63 |
+| 16:00 | 58 |
+| 20:00 | 47 |
+| Now | 55 |
+</Chart>
+</Tab>
+<Tab title="Memory">
+<Chart type="area" x="Time" y="%">
+| Time | Memory % |
+|---|---|
+| 00:00 | 61 |
+| 04:00 | 64 |
+| 08:00 | 68 |
+| 12:00 | 72 |
+| 16:00 | 70 |
+| 20:00 | 66 |
+| Now | 69 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open incidents">
+<Columns>
+<Card title="INC-4821" subtitle="Payment API timeout">
+<Badge tone="danger">Critical</Badge>
+<Badge tone="warning">eu-west-1</Badge>
+<Callout tone="warning" title="Impact">Checkout failures at 12% — affecting all payment methods.</Callout>
+<Button variant="primary" ask> Acknowledge INC-4821</Button>
+</Card>
+<Card title="INC-4817" subtitle="Auth service latency">
+<Badge tone="danger">Critical</Badge>
+<Badge tone="info">us-east-1</Badge>
+<Callout tone="warning" title="Impact">Login p95 at 4.2s (baseline 800ms).</Callout>
+<Button variant="primary" ask>Acknowledge INC-4817</Button>
+</Card>
+<Card title="INC-4809" subtitle="Search index lag">
+<Badge tone="warning">High</Badge>
+<Badge tone="info">us-west-2</Badge>
+<Callout tone="info" title="Impact">Results up to 10 min stale — no user-facing errors.</Callout>
+<Button variant="primary" ask>Acknowledge INC-4809</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="Last 5 minutes, all regions">
+| Endpoint | p95 latency |
+|---|---|
+| `POST /v1/payments/charge` | 2,840 ms |
+| `GET /v1/orders/history` | 1,920 ms |
+| `POST /v1/auth/login` | 1,450 ms |
+| `GET /v1/products/search` | 980 ms |
+| `GET /v1/users/profile` | 640 ms |
+
+<Callout tone="info" title="Note">Latency target is < 800 ms p95. First three endpoints exceed it.</Callout>
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0" max="10" step="0.5" value="2" unit="%" name="error-rate" />
+<Slider label="Latency threshold (p95)" min="500" max="5000" step="100" value="2000" unit="ms" name="latency" />
+<Switch label="Page on-call when breached" name="page-oncall" value="true" hint="Send to PagerDuty rotation" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which incidents are still unacknowledged?
+- Show me CPU breakdown by region
+- What changed in the last hour?
+- Create a new incident
+</FollowUps>

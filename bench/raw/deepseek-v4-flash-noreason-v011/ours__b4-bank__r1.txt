@@ -1,0 +1,116 @@
+# Personal Banking Home
+
+<Columns>
+
+<Card title="Checking" subtitle="•••• 4821">
+<Stat label="Available" value="$4,320.15" icon="bank" />
+</Card>
+
+<Card title="Savings" subtitle="•••• 7390">
+<Stat label="Available" value="$12,850.00" icon="piggy-bank" />
+</Card>
+
+<Card title="Credit" subtitle="•••• 2156">
+<Stat label="Current balance" value="$2,145.80" icon="credit-card" />
+<Badge tone="warning">$250 minimum due</Badge>
+</Card>
+
+</Columns>
+
+<Card title="Recent transactions">
+<Tabs>
+<Tab title="All">
+| Merchant | Amount |
+|---|---|
+| Whole Foods Market | -$87.32 |
+| Uber Ride | -$24.50 |
+| Starbucks | -$5.75 |
+| Direct Deposit - Employer | +$3,200.00 |
+| Netflix | -$15.99 |
+</Tab>
+<Tab title="Pending">
+| Merchant | Amount |
+|---|---|
+| Amazon.com | -$129.99 |
+| Shell Gas | -$48.20 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Spending this month">
+<Chart type="donut" title="By category">
+| Category | Amount |
+|---|---|
+| Groceries | 520 |
+| Dining | 340 |
+| Transport | 210 |
+| Entertainment | 180 |
+| Utilities | 150 |
+| Other | 95 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+<Badge tone="warning">2 upcoming</Badge>
+
+| Bill | Due date | Amount | Status |
+|---|---|---|---|
+| Electric bill | Apr 10 | $95.00 | <Badge tone="warning">Due in 5 days</Badge> |
+| Internet | Apr 15 | $65.00 | <Badge tone="info">Due in 10 days</Badge> |
+</Card>
+
+<Card title="Vacation savings goal">
+<Stat label="Saved" value="$4,500 / $6,000" />
+<Progress value="75" max="100" label="75% toward goal" tone="success" />
+<Button variant="secondary" ask="Add more to my vacation savings goal">Add funds</Button>
+</Card>
+
+<Card title="Credit score">
+<Stat label="Score" value="742" icon="chart-line" tone="success" />
+<Badge tone="success">Good</Badge>
+</Card>
+
+<Card title="Move money">
+<Form name="transfer">
+<Select label="From" options="Checking (••••4821) | Savings (••••7390) | Credit (••••2156)" placeholder="Choose account" />
+<Select label="To" options="Checking (••••4821) | Savings (••••7390) | Credit (••••2156)" placeholder="Choose account" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Account controls">
+<Columns>
+
+<Card title="Freeze credit line">
+<Switch label="Freeze" value="false" hint="Prevents new purchases and cash advances" />
+<Button variant="secondary" ask="Confirm freeze my credit line">Freeze now</Button>
+</Card>
+
+<Card title="Statement period">
+<Select label="Period" options="1st – 28th | 5th – 4th | 10th – 9th | 15th – 14th | 20th – 19th | 25th – 24th" placeholder="Choose period" />
+</Card>
+
+<Card title="Alert triggers">
+<Checkboxes label="Alert me when" options="Balance below $100 | Large purchase over $500 | Payment due in 3 days | Unusual login detected | Foreign transaction" name="alerts" />
+</Card>
+
+</Columns>
+</Card>
+
+<Card title="Dispute a transaction">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods Market -$87.32 | Uber Ride -$24.50 | Amazon.com -$129.99 | Netflix -$15.99" placeholder="Select transaction" />
+<Radio label="Reason" options="Unauthorized charge | Incorrect amount | Duplicate charge | Service not received | Other" name="reason" />
+<TextArea label="Details" placeholder="Describe what happened…" rows="3" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my full transaction history for March
+- How much interest did I earn on savings this year?
+- What's my credit utilization ratio?
+- Can I set up automatic transfers to savings?
+- Show me a breakdown of my grocery spending
+</FollowUps>

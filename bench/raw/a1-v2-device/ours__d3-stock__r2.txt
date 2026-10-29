@@ -1,0 +1,42 @@
+# Warehouse Stock Check
+
+<Card title="Scan Product">
+<Scan label="Scan barcode" name="product-barcode" kind="barcode" hint="Point camera at product barcode" required="true" />
+</Card>
+
+<Card title="Product Details" subtitle="SKU: WH-84729 | Widget Pro Max">
+<Stat label="Total Stock" value="1,247" />
+<Stat label="Warehouses" value="4" />
+<Stat label="Low Stock Alerts" value="2" tone="warning" />
+</Card>
+
+<Card title="Stock by Warehouse">
+| Warehouse | Location | Current Stock | Reorder Point | Status |
+|---|---|---|---|---|
+| North Depot | Seattle, WA | 420 | 100 | <Badge tone="success">OK</Badge> |
+| South Hub | Atlanta, GA | 380 | 100 | <Badge tone="success">OK</Badge> |
+| East Center | Newark, NJ | 85 | 100 | <Badge tone="warning">Low</Badge> |
+| West Facility | Phoenix, AZ | 362 | 100 | <Badge tone="success">OK</Badge> |
+</Card>
+
+<Callout tone="warning" title="Low Stock Warning">
+East Center (Newark, NJ) has only 85 units — below the reorder point of 100. Consider initiating a transfer or restock.
+</Callout>
+
+<Card title="Request Restock">
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-84729" required="true" />
+<Select label="Destination Warehouse" name="warehouse" options="East Center (Newark) | North Depot (Seattle) | South Hub (Atlanta) | West Facility (Phoenix)" placeholder="Select warehouse" required="true" />
+<Input label="Quantity Requested" name="quantity" type="number" placeholder="Enter quantity" hint="Minimum order: 50 units" required="true" />
+<Select label="Priority" name="priority" options="Standard (3-5 days) | Expedited (1-2 days) | Emergency (24 hours)" placeholder="Select priority" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Additional context (supplier preference, reason, etc.)" rows="3" />
+<Button>Submit Restock Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- View restock request history
+- Set up automatic reorder alerts
+- Transfer stock between warehouses
+</FollowUps>

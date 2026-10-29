@@ -1,0 +1,192 @@
+# University Administrator Overview
+
+<Card title="Institutional Dashboard" subtitle="Spring 2025 Semester">
+<Columns>
+<Stat label="Total Enrollment" value="24,832" change="+3.2%" tone="success" icon="users" />
+<Stat label="Acceptance Rate" value="42.1%" change="-1.8%" tone="warning" icon="chart-line" />
+<Stat label="Tuition Revenue (YTD)" value="$487.2M" change="+5.1%" tone="success" icon="chart-line" />
+<Stat label="Scholarship Budget Used" value="78%" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Enrollment Trend (5 Years)">
+<Chart type="line" x="Year" y="Students">
+| Year | Enrollment |
+|---|---|
+| 2020 | 21,450 |
+| 2021 | 22,108 |
+| 2022 | 22,893 |
+| 2023 | 23,674 |
+| 2024 | 24,832 |
+</Chart>
+</Card>
+
+<Card title="Applications by Program">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Engineering | 3,421 |
+| Business | 2,987 |
+| Computer Science | 2,654 |
+| Biology | 1,876 |
+| Psychology | 1,543 |
+| Nursing | 1,298 |
+| Economics | 1,102 |
+| Political Science | 876 |
+</Chart>
+</Card>
+
+<Card title="Course Offering Capacity">
+<Chart type="horizontal" x="Course" y="Fill Rate (%)">
+| Course | Fill Rate |
+|---|---|
+| BIO 101 | 95 |
+| CS 201 | 88 |
+| ENG 301 | 72 |
+| MGT 401 | 65 |
+| PSY 202 | 58 |
+| CHEM 101 | 45 |
+</Chart>
+</Card>
+
+<Card title="Teaching Load by Faculty Member">
+<Chart type="bar" x="Faculty" y="Courses">
+| Faculty | Courses | Students |
+|---|---|---|
+| Dr. Patel | 4 | 312 |
+| Dr. Chen | 3 | 245 |
+| Dr. Williams | 5 | 401 |
+| Dr. Okafor | 2 | 178 |
+| Dr. Martinez | 4 | 289 |
+| Dr. Kim | 3 | 234 |
+</Chart>
+</Card>
+
+<Card title="Students at Academic Risk">
+<Callout tone="danger" title="Action needed">342 students below 2.0 GPA this semester</Callout>
+<Progress value="342" max="24832" label="At-risk students" tone="danger" />
+<Details title="By program">
+- Engineering: 78 students
+- Business: 64 students
+- Computer Science: 52 students
+- Biology: 41 students
+- Psychology: 35 students
+- Nursing: 28 students
+- Economics: 22 students
+- Political Science: 22 students
+</Details>
+<Button variant="secondary" ask="Show at-risk student list">View list</Button>
+<Button variant="secondary" ask="Send academic alert to at-risk students">Send alerts</Button>
+</Card>
+
+<Card title="Scholarship Budget">
+<Columns>
+<Stat label="Total Budget" value="$52.4M" icon="chart-line" />
+<Stat label="Used" value="$40.9M" icon="chart-line" />
+<Stat label="Remaining" value="$11.5M" icon="chart-line" />
+</Columns>
+<Progress value="78" max="100" label="Budget utilization" tone="info" />
+</Card>
+
+<Card title="Housing Occupancy">
+<Columns>
+<Stat label="Total Capacity" value="8,400" />
+<Stat label="Occupied" value="7,644" change="91%" tone="success" />
+<Stat label="Available" value="756" />
+</Columns>
+<Progress value="7644" max="8400" label="Occupancy rate" tone="success" />
+</Card>
+
+<Card title="Campus Events This Month">
+<Badge tone="info">7 upcoming events</Badge>
+
+| Date | Event | Location | Expected Attendance |
+|---|---|---|---|
+| Mar 5 | Spring Career Fair | Student Center | 2,500 |
+| Mar 10 | Research Symposium | Science Building | 800 |
+| Mar 15 | Alumni Networking Night | Alumni Hall | 400 |
+| Mar 18 | Guest Lecture: AI Ethics | Auditorium | 600 |
+| Mar 22 | Cultural Festival | Quad | 3,000 |
+| Mar 25 | Graduate School Fair | Student Center | 1,200 |
+| Mar 29 | Spring Concert | Stadium | 5,000 |
+
+<Button ask="Show event details">View all events</Button>
+</Card>
+
+<Card title="Alumni Giving (4 Years)">
+<Chart type="line" x="Year" y="Donations ($M)">
+| Year | Annual Giving | Major Gifts |
+|---|---|---|
+| 2021 | 12.4 | 8.2 |
+| 2022 | 13.1 | 9.5 |
+| 2023 | 14.8 | 11.3 |
+| 2024 | 16.2 | 13.7 |
+</Chart>
+<Stat label="Total Raised (4 Years)" value="$85.2M" change="+22%" tone="success" />
+</Card>
+
+<Card title="Department Focus">
+<Form name="department-focus">
+<Select label="Select department" options="All Departments | Engineering | Business | Computer Science | Biology | Psychology | Nursing | Economics | Political Science" placeholder="Choose a department" />
+<Button>Apply Filter</Button>
+</Form>
+</Card>
+
+<Card title="This Semester vs. Last">
+<Chart type="bar" x="Metric" y="Value">
+| Metric | Fall 2024 | Spring 2025 |
+|---|---|---|
+| Enrollment | 24,112 | 24,832 |
+| Applications | 8,450 | 9,757 |
+| Acceptance Rate (%) | 44.3 | 42.1 |
+| Avg. GPA | 3.21 | 3.18 |
+| Retention Rate (%) | 89.2 | 88.7 |
+</Chart>
+</Card>
+
+<Card title="Waitlisted Students per Program">
+<Chart type="bar" x="Program" y="Waitlisted">
+| Program | Waitlisted |
+|---|---|
+| Engineering | 234 |
+| Computer Science | 198 |
+| Nursing | 167 |
+| Business | 145 |
+| Biology | 89 |
+| Psychology | 67 |
+| Economics | 45 |
+| Political Science | 34 |
+</Chart>
+<Button variant="secondary" ask="Show waitlist details by program">Manage waitlists</Button>
+</Card>
+
+<Card title="Course Approval">
+<Form name="new-course-approval">
+<Input label="Course Code" placeholder="e.g., CS 450" required />
+<Input label="Course Title" placeholder="e.g., Machine Learning" required />
+<Select label="Department" options="Engineering | Business | Computer Science | Biology | Psychology | Nursing | Economics | Political Science" placeholder="Select department" required />
+<Input label="Credits" type="number" placeholder="3" min="1" max="6" required />
+<TextArea label="Course Description" placeholder="Brief description of the course" rows="3" />
+<Radio label="Prerequisites required?" options="Yes | No" />
+<Button>Submit for Approval</Button>
+</Form>
+</Card>
+
+<Card title="Send Message to Student Group">
+<Form name="student-message">
+<Select label="Target group" options="All Students | Engineering | Business | Computer Science | Biology | Psychology | Nursing | Economics | Political Science | At-risk Students | Honors Program | Freshmen | Seniors" placeholder="Select group" required />
+<Input label="Subject" placeholder="Message subject" required />
+<TextArea label="Message" placeholder="Type your message here..." rows="5" required />
+<Checkboxes label="Send options" options="Send as email | Send as SMS | Send as push notification" />
+<Button variant="primary">Send Message</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed enrollment breakdown by class year
+- Compare acceptance rates by department
+- Show scholarship distribution by program
+- List all courses with low enrollment
+- Show faculty research productivity metrics
+- Generate semester comparison report
+</FollowUps>

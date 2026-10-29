@@ -1,0 +1,161 @@
+# City Operations Center
+
+<Card title="Current Conditions" subtitle="Live city dashboard">
+<Columns>
+<div>
+<Stat label="Congestion" value="73%" change="+5%" tone="warning" icon="car" />
+<Stat label="Transit Punctuality" value="89%" change="-2%" tone="warning" icon="train" />
+<Stat label="Water Use Today" value="2.4M L" change="+3%" tone="info" icon="drop" />
+</div>
+<div>
+<Stat label="Temperature" value="22°C" icon="thermometer" />
+<Stat label="Humidity" value="58%" icon="droplet" />
+<Stat label="Wind" value="12 km/h" icon="wind" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| North | 42 |
+| South | 55 |
+| East | 39 |
+| West | 71 |
+</Chart>
+<Callout tone="warning" title="West district">AQI at 71 — moderate. Sensitive groups should limit outdoor activity.</Callout>
+</Card>
+
+<Card title="Energy Use Over Past Week">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 12,400 |
+| Tue | 13,100 |
+| Wed | 12,800 |
+| Thu | 13,500 |
+| Fri | 14,200 |
+| Sat | 11,900 |
+| Sun | 11,200 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+| Location | Severity | Status |
+|---|---|---|
+| 5th & Main | <Badge tone="danger">Critical</Badge> | Fire, road closed |
+| Oak Ave & 12th | <Badge tone="warning">Major</Badge> | Water main break |
+| Elm St & Park | <Badge tone="info">Minor</Badge> | Traffic light out |
+| Harbor Blvd | <Badge tone="warning">Major</Badge> | Gas leak |
+</Card>
+
+<Card title="Emergency Vehicle Deployment">
+<Columns>
+<div>
+<Stat label="Ambulances" value="12" icon="ambulance" />
+<Stat label="Fire Engines" value="8" icon="fire-truck" />
+<Stat label="Police Units" value="24" icon="police-car" />
+</div>
+<div>
+<Badge tone="success">All units active</Badge>
+<Button variant="secondary" ask="Show emergency vehicle map">View map</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Parking Availability Downtown">
+<Chart type="bar" x="Garage" y="Spots available">
+| Garage | Available |
+|---|---|
+| Central | 42 |
+| Market | 18 |
+| Waterfront | 67 |
+| Civic | 31 |
+</Chart>
+</Card>
+
+<Card title="Public Events This Weekend">
+| Event | Location | Day | Time |
+|---|---|---|---|
+| Farmers Market | Downtown Plaza | Saturday | 8 AM – 2 PM |
+| Jazz in the Park | Riverside Park | Sunday | 3 PM – 7 PM |
+| Art Walk | Gallery District | Saturday | 6 PM – 9 PM |
+| Marathon | City streets | Sunday | 6 AM – 12 PM |
+<Button variant="secondary" ask="Show all weekend events">View all</Button>
+</Card>
+
+<Card title="Citizen Reports (Live Feed)">
+| Time | District | Report |
+|---|---|---|
+| 14:32 | West | Pothole on Oak St |
+| 14:28 | Downtown | Broken streetlight at 3rd & Pine |
+| 14:22 | North | Illegal dumping reported |
+| 14:15 | South | Noise complaint on Elm Ave |
+| 14:08 | East | Overflowing trash bin |
+<Button ask="Show more citizen reports">Load more</Button>
+</Card>
+
+<Card title="Service Request Backlog">
+<Columns>
+<div>
+<Stat label="Open Requests" value="347" change="-12%" tone="success" icon="clipboard-text" />
+<Stat label="Avg Response Time" value="4.2 days" change="+0.5 days" tone="warning" />
+</div>
+<div>
+<Progress value="62" max="100" label="Resolved this week" tone="info" />
+<Progress value="38" max="100" label="Overdue" tone="warning" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Roadworks Planned This Month">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| Main St | Downtown | Apr 10–14 | Lane closures |
+| Oak Ave | North | Apr 12–18 | Full closure |
+| Harbor Rd | West | Apr 15–20 | Night work |
+| Elm St | South | Apr 20–25 | Reduced speed |
+<Button variant="secondary" ask="Show roadworks map">View on map</Button>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance">
+| Asset | District | Due Date | Priority |
+|---|---|---|---|
+| Water pump station | East | Apr 15 | <Badge tone="danger">High</Badge> |
+| Bridge inspection | South | Apr 22 | <Badge tone="warning">Medium</Badge> |
+| Sewer line | North | May 5 | <Badge tone="info">Low</Badge> |
+| Traffic signals | Downtown | Apr 18 | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Focus on One District">
+<Select label="Select district" options="All districts | Downtown | North | South | East | West" name="district-filter" placeholder="Choose a district" />
+<Button variant="secondary" ask="Show data for Downtown district">Apply filter</Button>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Crew type" options="Road maintenance | Water & sewer | Electrical | Emergency response | Tree & parks" name="crew-type" placeholder="Select type" required />
+<Input label="Location" placeholder="e.g. 5th & Main" name="location" required />
+<TextArea label="Instructions" placeholder="Describe the job or emergency" name="instructions" rows="3" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a Public Alert">
+<Form name="public-alert">
+<Select label="Alert type" options="Traffic disruption | Weather warning | Emergency evacuation | Utility outage | Public safety" name="alert-type" placeholder="Select type" required />
+<Input label="Affected area" placeholder="e.g. Downtown, West district" name="area" required />
+<TextArea label="Message" placeholder="Write the alert message to citizens" name="message" rows="4" required hint="Max 500 characters" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the congestion heatmap
+- What's the air quality trend for the West district?
+- List all open incidents on a map
+- Schedule a crew for the water main break
+- View upcoming roadworks in detail
+</FollowUps>

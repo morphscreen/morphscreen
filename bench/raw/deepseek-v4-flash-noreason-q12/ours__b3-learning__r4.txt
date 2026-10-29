@@ -1,0 +1,82 @@
+# Training Platform Analytics
+
+<Card title="Cohort Filter" subtitle="Narrow all analytics to a single cohort">
+<Select label="Cohort" options="All cohorts | Engineering Q1 2025 | Design Q1 2025 | Marketing Q2 2025 | Sales Q2 2025 | Data Science Q3 2025" placeholder="Select a cohort" />
+<Button variant="secondary" label="Message cohort">Message cohort</Button>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Active Learners (This Week)" value="1,204" change="+8.2% vs last week" tone="success" icon="users" />
+<Stat label="Course Completion Rate" value="72%" change="+3.1 pts vs last month" tone="success" icon="check-circle" />
+<Stat label="Average Quiz Score" value="84%" change="-2.4 pts vs last month" tone="warning" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Engagement — Past 8 Weeks" subtitle="Active learners per week">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active Learners |
+|---|---|
+| 8 weeks ago | 860 |
+| 7 weeks ago | 912 |
+| 6 weeks ago | 978 |
+| 5 weeks ago | 1,045 |
+| 4 weeks ago | 1,102 |
+| 3 weeks ago | 1,158 |
+| 2 weeks ago | 1,121 |
+| Last week | 1,204 |
+</Chart>
+</Card>
+
+<Card title="Courses Ranked by Enrollment" subtitle="Top 5 courses across selected cohort">
+<Chart type="bar" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Python for Data Analysis | 482 |
+| UX Research Fundamentals | 431 |
+| SQL Bootcamp | 398 |
+| Agile Project Management | 356 |
+| Cloud Architecture Basics | 289 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out" subtitle="Low engagement or failing quizzes in the last 14 days">
+<Tabs>
+<Tab title="At-risk list">
+| Learner | Course | Last activity | Quiz score | Risk |
+|---|---|---|---|---|
+| Maya Chen | SQL Bootcamp | 9 days ago | 52% | <Badge tone="danger">High</Badge> |
+| James Okafor | Python for Data Analysis | 12 days ago | 61% | <Badge tone="danger">High</Badge> |
+| Sofia Rossi | UX Research Fundamentals | 7 days ago | 58% | <Badge tone="warning">Medium</Badge> |
+| Liam Murphy | Agile Project Management | 6 days ago | 66% | <Badge tone="warning">Medium</Badge> |
+| Aisha Patel | Cloud Architecture Basics | 11 days ago | 70% | <Badge tone="warning">Medium</Badge> |
+
+<Button variant="secondary" label="Message at-risk learners">Message at-risk learners</Button>
+</Tab>
+<Tab title="Risk summary">
+<Columns>
+<Stat label="High risk" value="2" tone="danger" icon="warning" />
+<Stat label="Medium risk" value="3" tone="warning" icon="warning" />
+<Stat label="Total at-risk" value="5" tone="warning" icon="users" />
+</Columns>
+<Callout tone="warning" title="Suggested action">Send a nudge message to the 5 at-risk learners with a link to their pending quizzes and a reminder of course deadlines.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Message Cohort" subtitle="Send a message to everyone in the selected cohort">
+<Form name="cohort-message">
+<Input label="Subject" placeholder="Reminder: Upcoming quiz deadline" />
+<TextArea label="Message" placeholder="Hi team, just a reminder that the next quiz closes Friday…" rows="5" />
+<Checkboxes label="Include at-risk learners only" options="Yes, only message the 5 at-risk learners" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me completion rate by course
+- Which learners are at-risk in the Design cohort?
+- Compare engagement between two cohorts
+- Export the at-risk list as CSV
+</FollowUps>

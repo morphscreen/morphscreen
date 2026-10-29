@@ -1,0 +1,80 @@
+# Clinic Receptionist — Day View
+
+<Card title="Today's Appointments" subtitle="Tuesday, 14 May 2025">
+<Columns>
+<div>
+
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 08:30 | Eleanor Vance | 2 | Checked in |
+| 09:00 | Marcus Webb | 1 | Checked in |
+| 09:30 | Priya Raman | 3 | Waiting |
+| 10:00 | Tomás Ferreira | 4 | Waiting |
+| 10:30 | Hannah Lee | 2 | Scheduled |
+| 11:00 | George Okafor | — | Scheduled |
+| 11:30 | Sarah Kim | 1 | Scheduled |
+| 13:00 | Daniel Ruiz | 3 | Scheduled |
+| 13:30 | Amelia Brooks | 4 | Scheduled |
+| 14:00 | James Carter | 2 | Scheduled |
+| 14:30 | Nina Patel | — | Scheduled |
+| 15:00 | Oliver Grant | 1 | Scheduled |
+
+</div>
+<div>
+
+<Stat label="Patients expected today" value="12" icon="users" tone="info" />
+<Stat label="Checked in so far" value="2" icon="clipboard-text" />
+<Stat label="No-show rate (this month)" value="8.3%" change="down 2.1% from last month" tone="success" icon="trend-down" />
+
+</div>
+</Columns>
+</Card>
+
+<Card title="Rooms & Next Patient">
+<Columns>
+<div>
+
+<Card title="Room availability" subtitle="Current status">
+| Room | Status |
+|---|---|
+| Room 1 | <Badge tone="success">Free</Badge> |
+| Room 2 | <Badge tone="warning">In use</Badge> |
+| Room 3 | <Badge tone="success">Free</Badge> |
+| Room 4 | <Badge tone="warning">In use</Badge> |
+
+</Card>
+
+</div>
+<div>
+
+<Card title="Next patient to call">
+<Callout tone="info" title="Now calling">**Priya Raman** — Room 3, 09:30 appointment</Callout>
+<Button variant="primary" label="Call next patient">Call next patient</Button>
+
+</Card>
+
+</div>
+</Columns>
+</Card>
+
+<Card title="Check in a patient">
+<Form name="check-in">
+<Input label="Patient name" placeholder="Search by name or appointment time" hint="Start typing to see matching appointments" />
+<Select label="Appointment" placeholder="Select the appointment to check in" options="08:30 — Eleanor Vance | 09:00 — Marcus Webb | 09:30 — Priya Raman | 10:00 — Tomás Ferreira | 10:30 — Hannah Lee | 11:00 — George Okafor | 11:30 — Sarah Kim | 13:00 — Daniel Ruiz | 13:30 — Amelia Brooks | 14:00 — James Carter | 14:30 — Nina Patel | 15:00 — Oliver Grant" />
+<Button>Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Form name="change-day">
+<Date label="Select date" name="selected-date" hint="Today is Tuesday, 14 May 2025" />
+<Button variant="secondary" label="View this day">View this day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full schedule for this week
+- Which patients haven't been checked in yet?
+- Add a new appointment for today
+- View the no-show list for this month
+</FollowUps>

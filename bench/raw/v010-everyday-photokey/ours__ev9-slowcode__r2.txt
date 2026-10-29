@@ -1,0 +1,215 @@
+# Speeding Up Your 2 GB CSV Processing
+
+Reading a 2 GB CSV in Python can be slow, but there are several strategies to dramatically improve performance. Let's start by identifying the bottleneck, then apply the right fix.
+
+<Card title="Quick diagnostic" subtitle="Where's your bottleneck?">
+<Tabs>
+<Tab title="Reading only">
+If you're just reading the file and doing simple operations, the bottleneck is likely I/O and parsing. Try the fastest readers first.
+</Tab>
+<Tab title="Processing + reading">
+If you're transforming data, aggregating, or filtering, the bottleneck may shift to your processing logic. Consider chunking or parallelization.
+</Tab>
+<Tab title="Memory constraints">
+If your machine has limited RAM, loading 2 GB at once may cause swapping. Chunking becomes essential.
+</Tab>
+</Tabs>
+</Card>
+
+## 1. Use the Fastest CSV Reader
+
+The built-in `csv` module is slow. Here's a comparison of common approaches on a typical 2 GB CSV with ~5 million rows:
+
+<Card title="Reader performance comparison">
+<Chart type="bar" title="Time to read 2 GB CSV" x="Method" y="Seconds (lower is better)">
+| Method | Seconds |
+|---|---|
+| csv.reader | 120 |
+| pandas (default) | 45 |
+| pandas + engine='c' | 25 |
+| polars | 8 |
+| duckdb | 5 |
+</Chart>
+</Card>
+
+### Recommended: Polars (fastest pure-Python option)
+
+```python
+import polars as pl
+
+# Lazy evaluation — only reads what you need
+df = pl.scan_csv("large.csv").filter(pl.col("value") > 100).collect()
+```
+
+### Or: Pandas with C engine
+
+```python
+import pandas as pd
+
+# Specify dtype to avoid inference overhead
+df = pd.read_csv("large.csv", engine="c", dtype={"id": "int32", "value": "float32"})
+```
+
+<Callout tone="info" title="Memory tip">
+If you don't need all columns, use `usecols` in pandas or `columns` in polars to read only what you need. This can cut both time and memory by 50%+.
+</Callout>
+
+## 2. Process in Chunks (if your logic allows)
+
+If your processing is per-row or per-batch, don't load everything at once:
+
+<Card title="Chunked processing with pandas">
+```python
+import pandas as pd
+
+chunk_size = 100_000  # rows per chunk
+results = []
+
+for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+    # Process each chunk
+    filtered = chunk[chunk["value"] > 100]
+    results.append(filtered)
+
+final_df = pd.concat(results)
+```
+</Card>
+
+<Card title="Chunked processing with polars">
+```python
+import polars as pl
+
+# Polars handles batching internally with lazy evaluation
+df = pl.scan_csv("large.csv") \
+        .filter(pl.col("value") > 100) \
+        .collect(streaming=True)  # streams results
+```
+</Card>
+
+## 3. Optimize Your Processing Logic
+
+<Checklist title="Processing optimizations" name="processing-opt">
+- [ ] **Use vectorized operations** (pandas/polars) instead of Python loops
+- [ ] **Downcast numeric types** — `int64` → `int32` or `float64` → `float32` when precision allows
+- [ ] **Use categoricals** for string columns with few unique values
+- [ ] **Avoid `apply()`** — use built-in vectorized methods where possible
+- [ ] **Parallelize with `polars`** — it uses all CPU cores by default
+</Checklist>
+
+## 4. Consider Alternative Formats
+
+If you control the data format, CSV is the worst for performance. Consider:
+
+<Card title="Format comparison">
+<Compare title="CSV vs alternatives for 2 GB data">
+| Feature | CSV | Parquet | Feather |
+|---|---|---|---|
+| Read speed | 1x (baseline) | 5-10x faster | 10-20x faster |
+| File size | 2 GB | ~500 MB | ~500 MB |
+| Compression | None | Built-in | Built-in |
+| Schema | Implicit | Explicit | Explicit |
+| Best for | Interchange | Analytics | Fast I/O |
+</Compare>
+</Card>
+
+```python
+# Convert once, then read fast forever
+import polars as pl
+
+pl.scan_csv("large.csv").sink_parquet("large.parquet")
+
+# Now read in ~2 seconds
+df = pl.read_parquet("large.parquet")
+```
+
+## 5. Use DuckDB for Complex Queries
+
+If you're doing SQL-style aggregations, DuckDB can query CSV files directly without loading them fully:
+
+<Card title="DuckDB example">
+```python
+import duckdb
+
+# Query directly on the CSV — no full load
+result = duckdb.sql("""
+    SELECT category, AVG(value) as avg_value
+    FROM read_csv_auto('large.csv')
+    WHERE date > '2024-01-01'
+    GROUP BY category
+""").fetchdf()
+```
+</Card>
+
+## 6. Parallel Processing with Dask
+
+For embarrassingly parallel workloads, Dask scales across cores:
+
+<Card title="Dask parallel processing">
+```python
+import dask.dataframe as dd
+
+# Read lazily
+df = dd.read_csv("large.csv")
+
+# Compute in parallel
+result = df.groupby("category")["value"].mean().compute()
+```
+</Card>
+
+## Putting It All Together
+
+Here's a decision tree for your specific case:
+
+<Steps>
+<Step title="Measure first" status="done">
+Time your current script to get a baseline. `time python your_script.py`
+</Step>
+<Step title="Try the fastest simple read" status="current">
+Switch to `polars` or `pandas` with C engine and proper dtypes. This alone often gives 3-5x speedup.
+</Step>
+<Step title="Optimize memory" status="todo">
+If memory is tight, add `usecols` and downcast types.
+</Step>
+<Step title="Chunk or stream if needed" status="todo">
+If processing is per-row, use chunking. If it's aggregations, try DuckDB.
+</Step>
+<Step title="Consider format migration" status="todo">
+If this is a recurring task, convert to Parquet once for 10x+ future speedups.
+</Step>
+</Steps>
+
+<Callout tone="success" title="Expected results">
+With these optimizations, expect to cut processing time from ~2 minutes to ~10-20 seconds for a typical 2 GB CSV on a modern laptop.
+</Callout>
+
+<Quiz title="Quick check: CSV performance">
+<Question text="What's the single biggest speedup for reading a 2 GB CSV in Python?" answer="Using a faster reader like polars or pandas with C engine">
+- Using a faster reader like polars or pandas with C engine
+- Adding more RAM
+- Using a for loop instead of list comprehension
+- Converting to JSON first
+</Question>
+<Question text="When should you use chunking?" answer="When your processing is per-row or per-batch and memory is limited">
+- When your processing is per-row or per-batch and memory is limited
+- Always, even for small files
+- Never — it's always slower
+- Only when using DuckDB
+</Question>
+</Quiz>
+
+<Card title="Your next steps">
+<Columns>
+<Stat label="Current speed" value="~2 min" note="Typical baseline" icon="clock" />
+<Stat label="With polars" value="~10 sec" note="10-20x faster" icon="chart-line" tone="success" />
+<Stat label="With Parquet" value="~2 sec" note="After conversion" icon="lightning" tone="info" />
+</Columns>
+</Card>
+
+<Button variant="primary">Show me a complete optimized script</Button>
+<Button variant="secondary">Help me convert to Parquet</Button>
+
+<FollowUps>
+- How do I handle a CSV with inconsistent formatting or missing values?
+- What's the best way to parallelize my specific processing logic?
+- Can I use GPU acceleration for CSV processing?
+- How do I choose between polars, duckdb, and dask for my use case?
+</FollowUps>

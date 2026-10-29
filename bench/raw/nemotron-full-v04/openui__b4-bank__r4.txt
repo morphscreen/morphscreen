@@ -1,0 +1,97 @@
+root = Card([header, balancesRow, creditScoreGoalRow, transactionsSection, spendingChartSection, billsSection, actionsSection], "card", "column", "l")
+
+header = CardHeader("Personal Banking", "Welcome back, Alex")
+
+balancesRow = Card([checkingCard, savingsCard, creditCard], "clear", "row", "m", "stretch", "start", true)
+checkingCard = Card([checkingLabel, checkingAmount], "card", "column", "xs", "start")
+checkingLabel = TextContent("Checking", "small-heavy")
+checkingAmount = TextContent("$3,247.89", "large-heavy")
+savingsCard = Card([savingsLabel, savingsAmount], "card", "column", "xs", "start")
+savingsLabel = TextContent("Savings", "small-heavy")
+savingsAmount = TextContent("$12,580.42", "large-heavy")
+creditCard = Card([creditLabel, creditAmount], "card", "column", "xs", "start")
+creditLabel = TextContent("Credit Card", "small-heavy")
+creditAmount = TextContent("-$1,842.15", "large-heavy")
+
+creditScoreGoalRow = Card([creditScoreCard, vacationGoalCard], "clear", "row", "m", "stretch", "start", true)
+creditScoreCard = Card([creditScoreLabel, creditScoreValue, creditScoreDesc], "card", "column", "s", "start")
+creditScoreLabel = TextContent("Credit Score", "small-heavy")
+creditScoreValue = TextContent("742", "large-heavy")
+creditScoreDesc = TextContent("Good • Updated 3 days ago", "small")
+vacationGoalCard = Card([vacationLabel, vacationProgress, vacationAmount], "card", "column", "s", "start")
+vacationLabel = TextContent("Vacation Fund", "small-heavy")
+vacationProgress = Progress(65, "$3,250 of $5,000")
+vacationAmount = TextContent("65% complete", "small")
+
+transactionsSection = Card([transactionsHeader, transactionsTable], "card", "column", "m")
+transactionsHeader = Heading("Recent Transactions", "h3")
+transactionsTable = Table([txnMerchantCol, txnAmountCol, txnDateCol])
+txnMerchantCol = Col("Merchant", ["Whole Foods", "Shell Gas", "Netflix", "Amazon", "Uber", "Starbucks", "Target", "Spotify"])
+txnAmountCol = Col("Amount", ["-$87.42", "-$45.00", "-$15.99", "-$124.99", "-$22.50", "-$6.75", "-$156.30", "-$10.99"])
+txnDateCol = Col("Date", ["Dec 12", "Dec 11", "Dec 10", "Dec 9", "Dec 8", "Dec 7", "Dec 6", "Dec 5"])
+
+spendingChartSection = Card([spendingHeader, spendingChart], "card", "column", "m")
+spendingHeader = Heading("Spending by Category This Month", "h3")
+spendingChart = HorizontalBarChart(spendingLabels, [spendingSeries], "grouped", "Amount ($)", "Category")
+spendingLabels = ["Groceries", "Transport", "Dining", "Shopping", "Entertainment", "Subscriptions", "Utilities", "Other"]
+spendingSeries = Series("This Month", [420, 180, 210, 340, 120, 85, 150, 95])
+
+billsSection = Card([billsHeader, billsList], "card", "column", "m")
+billsHeader = Heading("Bills Due Soon", "h3")
+billsList = ListBlock(billItems, "number")
+billItems = [bill1, bill2, bill3, bill4]
+bill1 = ListItem("Electric Bill", "Due Dec 15 • $87.42", null, "Pay")
+bill2 = ListItem("Internet", "Due Dec 18 • $65.00", null, "Pay")
+bill3 = ListItem("Car Insurance", "Due Dec 22 • $142.00", null, "Pay")
+bill4 = ListItem("Phone Bill", "Due Dec 25 • $85.00", null, "Pay")
+
+actionsSection = Card([actionsHeader, moveMoneyForm, freezeCreditBtn, statementPeriodSelect, alertSettingsForm, disputeBtn], "card", "column", "m")
+actionsHeader = Heading("Quick Actions", "h3")
+
+moveMoneyForm = Form("move-money", moveMoneyButtons, [fromAccountField, toAccountField, amountField])
+fromAccountField = FormControl("From Account", fromAccountSelect)
+fromAccountSelect = Select("from_account", fromAccountItems, "Select account")
+fromAccountItems = [fromChecking, fromSavings, fromCredit]
+fromChecking = SelectItem("checking", "Checking • $3,247.89")
+fromSavings = SelectItem("savings", "Savings • $12,580.42")
+fromCredit = SelectItem("credit", "Credit Card • -$1,842.15")
+toAccountField = FormControl("To Account", toAccountSelect)
+toAccountSelect = Select("to_account", toAccountItems, "Select account")
+toAccountItems = [toChecking, toSavings, toCredit]
+toChecking = SelectItem("checking", "Checking • $3,247.89")
+toSavings = SelectItem("savings", "Savings • $12,580.42")
+toCredit = SelectItem("credit", "Credit Card • -$1,842.15")
+amountField = FormControl("Amount", amountInput, "Minimum $1.00")
+amountInput = Input("amount", "0.00", "number", null, "")
+moveMoneyButtons = Buttons([moveMoneySubmit, moveMoneyCancel])
+moveMoneySubmit = Button("Transfer", null, "primary")
+moveMoneyCancel = Button("Cancel", null, "tertiary")
+
+freezeCreditBtn = Buttons([freezeCreditButton])
+freezeCreditButton = Button("Freeze Credit Line", null, "primary", "destructive")
+
+statementPeriodSelect = Form("statement-period", statementButtons, [periodField])
+periodField = FormControl("Statement Period", periodSelect)
+periodSelect = Select("period", periodItems, "Choose period")
+periodItems = [periodCurrent, periodLast, periodCustom]
+periodCurrent = SelectItem("current", "Current Month (Dec 1–31)")
+periodLast = SelectItem("last", "Last Month (Nov 1–30)")
+periodCustom = SelectItem("custom", "Custom Range...")
+statementButtons = Buttons([statementApply])
+statementApply = Button("Apply", null, "primary")
+
+alertSettingsForm = Form("alert-settings", alertButtons, [alertTriggersField])
+alertTriggersField = FormControl("Alert Triggers", alertTriggersCheckbox)
+alertTriggersCheckbox = CheckBoxGroup("alert_triggers", alertTriggerItems, null, ["large_txn", "low_balance", "bill_due"])
+alertTriggerItems = [alertLargeTxn, alertLowBalance, alertBillDue, alertForeignTxn, alertCreditChange, alertLogin]
+alertLargeTxn = CheckBoxItem("Large Transactions", "Notify for transactions over $100", "large_txn", true)
+alertLowBalance = CheckBoxItem("Low Balance", "Alert when checking falls below $500", "low_balance", true)
+alertBillDue = CheckBoxItem("Bill Due", "Remind 3 days before bills are due", "bill_due", true)
+alertForeignTxn = CheckBoxItem("Foreign Transactions", "Alert on international purchases", "foreign_txn", false)
+alertCreditChange = CheckBoxItem("Credit Score Changes", "Notify when score changes", "credit_change", true)
+alertLogin = CheckBoxItem("New Device Login", "Alert on sign-in from new device", "new_login", true)
+alertButtons = Buttons([alertSave])
+alertSave = Button("Save Settings", null, "primary")
+
+disputeBtn = Buttons([disputeButton])
+disputeButton = Button("Dispute a Transaction", null, "secondary")

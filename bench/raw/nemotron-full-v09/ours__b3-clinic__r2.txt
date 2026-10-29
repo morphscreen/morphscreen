@@ -1,0 +1,84 @@
+# Clinic Reception — Today's View
+
+<Card subtitle="Monday, January 15, 2024">
+<Columns>
+<Button variant="tertiary" icon="chevron-left" ask="true">Previous day</Button>
+<Button variant="tertiary" icon="chevron-right" ask="true">Next day</Button>
+<Button variant="secondary" icon="calendar" ask="true">Pick a date</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Patients expected" value="18" change="+2 vs yesterday" tone="info" icon="users" />
+<Stat label="No-show rate this month" value="8.3%" change="−1.2% vs last month" tone="success" icon="chart-line" />
+</Columns>
+
+<Card title="Next patient called out">
+<Callout tone="info" title="Exam Room 2 — Ready for check-in">
+<strong>Maria Santos</strong> • 10:15 AM • Annual physical
+<br />
+<Badge tone="info">Checked in 2 min ago</Badge>
+</Callout>
+</Card>
+
+<Card title="Room status right now">
+<Columns>
+<Card subtitle="Exam Room 1">
+<Badge tone="success">Free</Badge>
+<p style={{marginTop:8, color:'var(--muted)'}}>Available since 9:45 AM</p>
+</Card>
+<Card subtitle="Exam Room 2">
+<Badge tone="warning">Occupied</Badge>
+<p style={{marginTop:8, color:'var(--muted)'}}>Maria Santos • until ~10:45 AM</p>
+</Card>
+<Card subtitle="Exam Room 3">
+<Badge tone="success">Free</Badge>
+<p style={{marginTop:8, color:'var(--muted)'}}>Available since 10:00 AM</p>
+</Card>
+<Card subtitle="Procedure Room">
+<Badge tone="danger">Cleaning</Badge>
+<p style={{marginTop:8, color:'var(--muted)'}}>Ready by 10:30 AM</p>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Today's appointments">
+<Table>
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 8:00 AM | James Chen | Follow-up | Exam 1 | ✅ Completed | — |
+| 8:30 AM | Priya Patel | Vaccination | Exam 2 | ✅ Completed | — |
+| 9:00 AM | Robert Kim | Annual physical | Exam 1 | ✅ Completed | — |
+| 9:30 AM | Linda Torres | Consultation | Exam 3 | ✅ Completed | — |
+| 10:00 AM | David Park | Acute visit | Exam 2 | 🔄 In progress | — |
+| 10:15 AM | Maria Santos | Annual physical | Exam 2 | ✅ Checked in | — |
+| 10:30 AM | Ahmed Hassan | Follow-up | Exam 1 | ⏳ Waiting | <Button size="small" variant="primary" ask="true" name="checkin_ahmed">Check in</Button> |
+| 11:00 AM | Sophie Martin | Vaccination | Exam 3 | ⏳ Waiting | <Button size="small" variant="primary" ask="true" name="checkin_sophie">Check in</Button> |
+| 11:30 AM | Carlos Ruiz | Consultation | Exam 1 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_carlos">Check in</Button> |
+| 1:00 PM | Emma Wilson | Annual physical | Exam 2 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_emma">Check in</Button> |
+| 1:30 PM | Thomas Ng | Acute visit | Exam 3 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_thomas">Check in</Button> |
+| 2:00 PM | Aisha Khan | Follow-up | Exam 1 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_aisha">Check in</Button> |
+| 2:30 PM | Miguel Santos | Vaccination | Procedure | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_miguel">Check in</Button> |
+| 3:00 PM | Nora Jensen | Consultation | Exam 2 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_nora">Check in</Button> |
+| 3:30 PM | Kevin O'Brien | Annual physical | Exam 3 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_kevin">Check in</Button> |
+| 4:00 PM | Rachel Green | Follow-up | Exam 1 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_rachel">Check in</Button> |
+| 4:30 PM | Daniel Lee | Acute visit | Exam 2 | 📅 Scheduled | <Button size="small" variant="primary" ask="true" name="checkin_daniel">Check in</Button> |
+</Table>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="primary" icon="user-plus" ask="true">Add walk-in</Button>
+<Button variant="secondary" icon="phone" ask="true">Call next patient</Button>
+<Button variant="secondary" icon="printer" ask="true">Print day sheet</Button>
+<Button variant="tertiary" icon="bell" ask="true">Notify Dr. Chen</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Check in Ahmed Hassan for 10:30 AM follow-up
+- Move Sophie Martin to Exam Room 1 (free now)
+- Mark David Park as no-show (left without checking out)
+- View Maria Santos's chart before her physical
+- See tomorrow's schedule (14 booked, 3 slots open)
+</FollowUps>

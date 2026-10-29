@@ -1,0 +1,46 @@
+# Personal budget check
+
+Viewing <Badge tone="info">March 2025</Badge>. Select another month below.
+
+<Card title="Look at a different month" subtitle="Pick a month to load its budget and expenses">
+<Select label="Month" options="March 2025 | February 2025 | January 2025 | December 2024" value="March 2025" />
+</Card>
+
+<Card title="Total spent this month" subtitle="Against a $3,500 budget">
+<Columns>
+<Stat label="Spent so far" value="$2,845" icon="receipt" />
+<Stat label="Budget" value="$3,500" icon="wallet" />
+<Stat label="Remaining" value="$655" icon="piggy-bank" />
+</Columns>
+
+<Progress value="2845" max="3500" label="$2,845 of $3,500 budget used" tone="warning" />
+</Card>
+
+<Card title="Spending by category" subtitle="Where your money went this month">
+<Chart type="donut" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Bills | 900 |
+| Dining | 640 |
+| Groceries | 520 |
+| Transport | 310 |
+| Fun | 275 |
+| Other | 200 |
+</Chart>
+</Card>
+
+<Card title="Largest expense" subtitle="Across all categories this month">
+<Callout tone="danger" title="Car insurance is your largest expense">
+$900 on 5 March in the Bills category. This is more than 31% of what you’ve spent this month.
+</Callout>
+</Card>
+
+<Card title="Add an expense" subtitle="Record a new purchase for the selected month">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" min="0" step="0.01" required="true" />
+<Select label="Category" name="category" options="Bills | Dining | Groceries | Transport | Fun | Other" placeholder="Choose a category" required="true" />
+<Date label="Date" name="date" hint="Defaults to today" required="true" />
+<Button>Add expense</Button>
+</Form>
+</Card>

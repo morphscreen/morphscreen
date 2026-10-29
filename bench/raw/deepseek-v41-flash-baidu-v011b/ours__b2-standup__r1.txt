@@ -1,0 +1,83 @@
+# Async Standup — Thursday, 12 June 2025
+
+<Card title="Today at a glance" subtitle="Thursday, 12 June 2025 · 09:00 UTC">
+<Columns>
+<Stat label="Updates posted" value="5 / 8" icon="users" />
+<Stat label="Still missing" value="3" tone="warning" icon="clock" />
+<Stat label="Blocked" value="2" tone="danger" icon="warning" />
+</Columns>
+<Progress value="5" max="8" label="Standup completion" tone="info" />
+</Card>
+
+<Callout tone="danger" title="2 teammates are blocked">
+**Priya** is waiting on staging credentials from infra. **Marco** can't finish the export work until the schema decision lands. Both need a reply today.
+</Callout>
+
+<Card title="Status updates" subtitle="Posted before 09:00 UTC">
+<Tabs>
+<Tab title="All">
+**Ana Ribeiro** <Badge tone="success">Done</Badge>
+Shipped the onboarding email sequence. Starting A/B test setup on subject lines this afternoon. No blockers.
+
+**Jonas Weber** <Badge tone="success">Done</Badge>
+Finished the billing webhook retry logic and merged it. Next: writing tests for the refund edge case. No blockers.
+
+**Priya Nair** <Badge tone="danger">Blocked</Badge>
+Staging deploy keeps failing on the new env vars. I need infra to grant me access to the staging secret store — pinged @devops this morning. Otherwise I'm moving to docs.
+
+**Marco Silva** <Badge tone="danger">Blocked</Badge>
+Held off on the CSV export refactor. Waiting on the schema decision from yesterday's thread — can someone confirm we're keeping `order_id` as a string?
+
+**Lena Fischer** <Badge tone="success">Done</Badge>
+Reviewed two PRs and closed the accessibility tickets from last week. Picking up the mobile nav redesign today. No blockers.
+
+**Tom Okafor** <Badge tone="info">In progress</Badge>
+Halfway through the search indexing spike. Will post numbers in #eng by end of day. No blockers.
+</Tab>
+<Tab title="Blocked only">
+**Priya Nair** <Badge tone="danger">Blocked</Badge>
+Staging deploy keeps failing on the new env vars. Needs staging secret store access.
+
+**Marco Silva** <Badge tone="danger">Blocked</Badge>
+CSV export refactor on hold pending the `order_id` schema decision.
+</Tab>
+<Tab title="Missing">
+No update yet from **Sofia Marchetti**, **Dan Iverson**, or **Yuki Tanaka**.
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Post your update" subtitle="Takes about 30 seconds">
+<Form name="standup-update">
+<Input label="Your name" name="name" placeholder="e.g. Ana Ribeiro" required="true" />
+<TextArea label="What did you do since yesterday?" name="yesterday" rows="3" placeholder="Shipped the onboarding sequence..." required="true" />
+<TextArea label="What are you doing today?" name="today" rows="3" placeholder="Setting up the subject-line A/B test..." required="true" />
+<Select label="Are you blocked?" name="blocked" options="No, all clear | Yes, I need help" hint="Blocked updates get flagged to the whole team" />
+<Input label="If blocked, what do you need?" name="blocker" placeholder="Access, a decision, a review..." hint="Skip if you're not blocked" />
+<Button>Post update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Who's still missing" subtitle="3 of 8 haven't posted">
+<Columns>
+<Avatar name="Sofia Marchetti" subtitle="No update · 09:00 UTC" />
+<Avatar name="Dan Iverson" subtitle="No update · 09:00 UTC" />
+<Avatar name="Yuki Tanaka" subtitle="No update · 09:00 UTC" />
+</Columns>
+<Button variant="secondary" ask="Nudge Sofia, Dan and Yuki about their standup update">Nudge all three</Button>
+</Card>
+
+<Details title="Standup rules for this team">
+- Post before **10:00 UTC** — updates after that count for the next day.
+- One update per person, edited in place rather than posted twice.
+- If you're blocked, say exactly what you need and from whom.
+- No update needed on public holidays or approved leave.
+</Details>
+
+<FollowUps>
+- Show me only the blocked updates and what they need
+- Draft my standup update for me
+- Who has missed standup more than twice this week?
+- Turn this into a daily summary I can paste into Slack
+</FollowUps>

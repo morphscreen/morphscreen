@@ -1,0 +1,50 @@
+# Platform Status
+
+<Card title="Current status" subtitle="Live view · updates every 60 seconds">
+<Columns>
+<Stat label="API uptime this month" value="99.97%" change="+0.02%" note="vs. last month" tone="success" icon="chart-line" />
+<Stat label="Incidents this month" value="2" note="1 resolved, 1 monitoring" tone="info" icon="warning" />
+<Stat label="Open incidents" value="0" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="99.97" max="100" label="API uptime · 30-day window" tone="success" />
+</Card>
+
+<Card title="Most recent incident" subtitle="INC-2841 · Elevated API error rates">
+<Callout tone="success" title="Resolved">
+Elevated 5xx error rates on the public API, caused by a bad config rollout to the edge cache tier. Traffic was shifted to the standby region within 4 minutes and the faulty config was reverted at **14:52 UTC on March 18**. No data loss; requests during the window were retried automatically.
+</Callout>
+
+<Columns>
+<Stat label="Started" value="14:31 UTC" note="March 18" />
+<Stat label="Resolved" value="14:52 UTC" note="March 18" />
+<Stat label="Time to resolve" value="21 min" tone="warning" />
+<Stat label="Requests affected" value="0.4%" note="of monthly volume" />
+</Columns>
+
+<Button ask="Show the full incident timeline for INC-2841">Full incident timeline</Button>
+</Card>
+
+<Card title="Recent history">
+| Incident | Impact | Started | Resolved | Duration |
+|---|---|---|---|---|
+| INC-2841 | Elevated API errors | Mar 18, 14:31 | Mar 18, 14:52 | 21 min |
+| INC-2830 | Slow dashboard loads | Mar 04, 09:12 | Mar 04, 09:40 | 28 min |
+| INC-2818 | Webhook retries delayed | Feb 26, 22:05 | Feb 26, 23:11 | 66 min |
+
+<Button variant="secondary" ask="Show all incidents from the last 90 days">See 90-day history</Button>
+</Card>
+
+<Card title="Subscribe to updates">
+<Form name="status-subscribe">
+<Input label="Email" type="email" name="email" placeholder="you@company.com" hint="We email only when status changes" required="true" />
+<Checkboxes label="Notify me about" name="scope" options="API | Dashboard | Webhooks | Scheduled maintenance" value="API" />
+<Button>Subscribe</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What is the API uptime over the last 90 days?
+- What caused INC-2841 and what changed since?
+- When is the next scheduled maintenance window?
+- Show me the status of the Dashboard and Webhooks services
+</FollowUps>

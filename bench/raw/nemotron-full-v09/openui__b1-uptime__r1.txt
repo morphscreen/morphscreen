@@ -1,0 +1,7 @@
+root = Card([header, uptimeSection, incidentSection])
+header = CardHeader("Platform Status", "Real-time API health and incident timeline")
+uptimeSection = Card([uptimeLabel, uptimeValue, uptimeProgress], "sunk", "column", "m")
+uptimeLabel = TextContent("API Uptime (Current Month)", "small-heavy")
+uptimeValue = TextContent("99.97%", "large-heavy")
+uptimeProgress = Progress(99.97, "Target: ≥ 99.9%")
+incidentSection = Callout("info", "Most Recent Incident", "Partial degradation on the payments API (p99 latency > 2s) — detected 2024-01-15 14:22 UTC, resolved 2024-01-15 15:05 UTC. Root cause: downstream provider timeout; mitigated by circuit-breaker failover to secondary provider.")

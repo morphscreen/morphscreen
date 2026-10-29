@@ -1,0 +1,16 @@
+root = Card([header, appointmentsTable, expectedCountText, noShowCallout, freeRoomsList, nextPatientCallout, checkInButton, daySwitchButton])
+header = CardHeader("Receptionist Dashboard", null)
+timesArray = ["9:00", "9:30", "10:00", "10:30", "11:00"]
+namesArray = ["Alice", "Bob", "Carol", "Dave", "Eve"]
+colTime = Col("Time", timesArray)
+colPatient = Col("Patient", namesArray)
+appointmentsTable = Table([colTime, colPatient])
+expectedCountText = TextContent("Expected patients: 5", "default")
+noShowCallout = Callout(variant:"info", title:"No-show rate", description:"2% this month")
+roomAItem = ListItem("Room A", "Free")
+roomBItem = ListItem("Room B", "Free")
+roomCItem = ListItem("Room C", "Free")
+freeRoomsList = ListBlock([roomAItem, roomBItem, roomCItem])
+nextPatientCallout = Callout(variant:"info", title:"Next patient", description:"Bob")
+checkInButton = Button("Check in")
+daySwitchButton = Button("Next day")

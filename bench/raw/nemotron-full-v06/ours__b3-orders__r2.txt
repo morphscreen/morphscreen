@@ -1,0 +1,44 @@
+# E-Commerce Operations Desk
+
+<Columns>
+<Stat label="Orders Today" value="247" change="+12% vs yesterday" tone="success" />
+<Stat label="Revenue Today" value="$48,320" change="+8% vs yesterday" tone="success" />
+<Stat label="Avg Order Value" value="$195.63" change="-2% vs yesterday" tone="neutral" />
+<Stat label="Refund Rate (Month)" value="3.2%" change="-0.4pp vs last month" tone="success" />
+</Columns>
+
+<Card title="Recent Orders" subtitle="Filter and search to find specific orders">
+<Columns>
+<Select label="Status" name="status-filter" placeholder="All statuses" options="All | Pending | Processing | Shipped | Delivered | Cancelled | Refunded" />
+<Input label="Search customer" name="customer-search" placeholder="Type customer name..." type="search" />
+</Columns>
+
+| Order ID | Customer | Total | Status | Actions |
+|---|---|---|---|---|
+| #ORD-8842 | Sarah Chen | $287.50 | <Badge tone="info">Processing</Badge> | <Button variant="primary" size="small">Mark Fulfilled</Button> |
+| #ORD-8841 | Marcus Johnson | $156.00 | <Badge tone="success">Shipped</Badge> | <Button variant="tertiary" size="small" disabled>Fulfilled</Button> |
+| #ORD-8840 | Emily Rodriguez | $412.75 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark Fulfilled</Button> |
+| #ORD-8839 | David Kim | $89.99 | <Badge tone="success">Delivered</Badge> | <Button variant="tertiary" size="small" disabled>Fulfilled</Button> |
+| #ORD-8838 | Lisa Thompson | $324.20 | <Badge tone="danger">Cancelled</Badge> | <Button variant="tertiary" size="small" disabled>Cancelled</Button> |
+| #ORD-8837 | James Wilson | $198.00 | <Badge tone="info">Processing</Badge> | <Button variant="primary" size="small">Mark Fulfilled</Button> |
+| #ORD-8836 | Amanda Foster | $267.45 | <Badge tone="success">Shipped</Badge> | <Button variant="tertiary" size="small" disabled>Fulfilled</Button> |
+| #ORD-8835 | Robert Martinez | $143.80 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark Fulfilled</Button> |
+</Card>
+
+<Card title="Order Volume — Past 4 Weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 1,240 |
+| Week 2 | 1,385 |
+| Week 3 | 1,520 |
+| Week 4 | 1,687 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me orders needing attention
+- Export today's orders to CSV
+- View refund details for this month
+- Compare this week to last week
+</FollowUps>

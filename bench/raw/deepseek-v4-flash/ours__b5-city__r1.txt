@@ -1,0 +1,143 @@
+# City Operations Center
+
+City of Meridian · Updated 09:14 <Badge tone="success">Live</Badge>
+
+<Card title="Focus on a district" subtitle="All figures on this screen filter to the selected district">
+<Form name="district-focus">
+<Select label="District" placeholder="All districts" options="All districts | Downtown | North | East | South | West" name="district" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="City pulse" subtitle="Live conditions right now">
+<Columns>
+<Stat label="Current weather" value="16°C" note="Light rain · wind 12 km/h" icon="cloud-rain" />
+<Stat label="Congestion right now" value="72%" change="-4% since 6am" tone="warning" icon="traffic-sign" />
+<Stat label="Transit punctuality" value="91%" change="+2 pts vs yesterday" tone="success" icon="bus" />
+<Stat label="Water use today" value="418M L" note="38% of daily budget" icon="droplet" />
+<Stat label="Parking availability downtown" value="312 spots" note="18% of capacity" icon="parking" />
+<Stat label="Service request backlog" value="1,204" note="6% below last week" icon="clipboard-text" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Air quality by district" subtitle="Air Quality Index now — lower is better">
+<Chart type="bar" title="AQI by district" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| North | 52 |
+| East | 63 |
+| South | 71 |
+| West | 58 |
+</Chart>
+</Card>
+<Card title="Energy use over the past week" subtitle="Daily consumption in MWh">
+<Chart type="line" title="Energy use" x="Day" y="MWh">
+| Day | MWh |
+|---|---|
+| Mon | 1420 |
+| Tue | 1510 |
+| Wed | 1460 |
+| Thu | 1580 |
+| Fri | 1690 |
+| Sat | 1380 |
+| Sun | 1240 |
+</Chart>
+</Card>
+</Columns>
+
+<Callout tone="danger" title="3 critical incidents active">Building fire, gas leak and collision — all crews assigned.</Callout>
+
+<Columns>
+<Card title="Open incidents" subtitle="12 active · location and severity">
+| Incident | Location | Severity |
+|---|---|---|
+| RTC, 2 vehicles | Fifth & Main | <Badge tone="danger">Critical</Badge> |
+| Gas leak | Elm St, East | <Badge tone="danger">Critical</Badge> |
+| Building fire | Northgate Mall | <Badge tone="danger">Critical</Badge> |
+| Traffic light failure | 12th Ave | <Badge tone="warning">Medium</Badge> |
+| Sewer overflow | Riverside, South | <Badge tone="warning">Medium</Badge> |
+| Fallen tree | Park Rd, West | <Badge tone="neutral">Low</Badge> |
+</Card>
+<Card title="Emergency vehicles deployed" subtitle="Live positions">
+| Vehicle | District | Assignment | Status |
+|---|---|---|---|
+| Engine 3 | Downtown | Building fire | <Badge tone="danger">On scene</Badge> |
+| Ladder 1 | North | Building fire | <Badge tone="danger">On scene</Badge> |
+| Medic 2 | North | Medical call | <Badge tone="warning">En route</Badge> |
+| Rescue 7 | East | RTC | <Badge tone="warning">En route</Badge> |
+| HAZMAT 1 | East | Gas leak | <Badge tone="warning">En route</Badge> |
+| Utility 4 | South | Sewer overflow | <Badge tone="success">On site</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen reports" subtitle="Live as they come in">
+| Time | Report | District |
+|---|---|---|
+| 09:12 | Pothole at Maple & 3rd | Downtown |
+| 09:08 | Smell of gas near school | East |
+| 09:01 | Traffic signal dark at 12th | Downtown |
+| 08:54 | Noise complaint, construction | North |
+| 08:47 | Illegal dumping | South |
+| 08:39 | Damaged sidewalk | West |
+| 08:31 | Flooded crosswalk | East |
+</Card>
+<Card title="Public events this weekend" subtitle="Permits approved">
+| Event | Location | Time |
+|---|---|---|
+| Farmers Market | Plaza Park, Downtown | Sat 8:00–13:00 |
+| Riverside Jazz Fest | Riverside Amphitheatre | Sat 16:00–22:00 |
+| Street Food Fair | Fifth Ave Mall, Downtown | Sun 11:00–19:00 |
+| Hillside Half Marathon | North Hills | Sun 7:00–11:00 |
+| Kids Art in the Park | Eastgate Common | Sat 10:00–14:00 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks planned this month" subtitle="Scheduled closures and impacts">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| Maple St | Downtown | Mar 4–9 | Lane closed |
+| I-95 North | North | Mar 6–20 | Night works |
+| Riverside Dr | South | Mar 11–15 | Two-way signals |
+| 12th Ave | Downtown | Mar 15–28 | Full closure |
+| Park Rd | West | Mar 20–24 | One lane |
+</Card>
+<Card title="Infrastructure jobs due for maintenance" subtitle="Next 30 days">
+| Asset | District | Due | Priority |
+|---|---|---|---|
+| Bridge 12 bearings | North | Mar 8 | <Badge tone="danger">High</Badge> |
+| Pump station 4 | East | Mar 10 | <Badge tone="warning">Medium</Badge> |
+| Street lights, sector 7 | Downtown | Mar 12 | <Badge tone="warning">Medium</Badge> |
+| Reservoir inlet valve | West | Mar 15 | <Badge tone="danger">High</Badge> |
+| Traffic camera 23 | South | Mar 19 | <Badge tone="neutral">Low</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a crew" subtitle="Assign resources to an incident">
+<Form name="dispatch-crew">
+<Select label="Incident" placeholder="Choose an incident" options="RTC – Fifth and Main | Gas leak – Elm St | Building fire – Northgate Mall | Traffic light – 12th Ave | Sewer overflow – Riverside" name="incident" />
+<Select label="Crew type" placeholder="Choose type" options="Engine | Medic | Ladder | Rescue | Utility | HAZMAT" name="crew-type" />
+<Select label="District" placeholder="Choose district" options="Downtown | North | East | South | West" name="district" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+<Card title="Send a public alert" subtitle="Broadcast to phones and city sirens">
+<Form name="public-alert">
+<Input label="Alert title" placeholder="Weather warning, road closure…" name="alert-title" />
+<TextArea label="Message" placeholder="Write the message residents will see…" rows="3" name="alert-message" required="true" />
+<Select label="Audience" placeholder="Select area" options="All districts | Downtown | North | East | South | West" name="audience" />
+<Select label="Severity" placeholder="Select severity" options="Info | Watch | Warning | Emergency" name="severity" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Drill into the Downtown district for a detailed view
+- Show open incidents on a city map
+- Export the night shift handover report
+</FollowUps>

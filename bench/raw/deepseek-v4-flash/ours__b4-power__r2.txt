@@ -1,0 +1,120 @@
+# Grid Control Console
+
+<Badge tone="success">● Live telemetry</Badge>
+
+Operator screen refreshed every 5 s · data as of 13:42 UTC.
+
+<Card title="Operating view" subtitle="Scopes the whole console to one region">
+<Columns>
+<Select label="Focus region" options="All regions | North | East | South | West" placeholder="All regions" hint="Pick a region to filter plants, outages, maintenance and alerts" />
+<Stat label="Console scope" value="Entire network" note="Select a region to focus" tone="info" icon="map-pin" />
+</Columns>
+</Card>
+
+<Card title="System status" subtitle="Whole network, as of 13:42 UTC">
+<Columns>
+<Stat label="Current load" value="8,760 MW" note="74% of firm capacity" tone="info" icon="lightning" />
+<Stat label="Capacity headroom" value="3,040 MW" note="26% margin, above 15% threshold" tone="success" icon="gauge" />
+<Stat label="Market price" value="$58.40 / MWh" note="Spot price, last settlement" tone="neutral" icon="currency-circle-dollar" />
+<Stat label="Emissions today" value="5,240 tCO₂" note="Intensity 182 g/kWh" tone="warning" icon="leaf" />
+</Columns>
+<Progress value="8760" max="11800" label="Load vs capacity" tone="info" />
+</Card>
+
+<Callout tone="success" title="No action needed on margin">Evening peak forecast is 9,720 MW at 19:00, still 2,080 MW below firm capacity.</Callout>
+
+<Columns>
+<Card title="Generation by source">
+<Chart type="donut" title="Active generation mix (MW)">
+| Source | MW |
+|---|---|
+| Nuclear | 2800 |
+| Natural gas | 2100 |
+| Solar | 1860 |
+| Wind | 1360 |
+| Hydro | 640 |
+</Chart>
+Coal and battery plants are online but not generating.
+</Card>
+<Card title="Demand forecast" subtitle="Next 24 hours, hourly">
+<Chart type="line" title="Forecast demand (MW)" x="Hour" y="MW">
+| Hour | MW |
+|---|---|
+| 13:00 | 8760 |
+| 14:00 | 8580 |
+| 15:00 | 8460 |
+| 16:00 | 8520 |
+| 17:00 | 9020 |
+| 18:00 | 9480 |
+| 19:00 | 9720 |
+| 20:00 | 9610 |
+| 21:00 | 9250 |
+| 22:00 | 8890 |
+| 23:00 | 8420 |
+| 00:00 | 7850 |
+| 01:00 | 7420 |
+| 02:00 | 7180 |
+| 03:00 | 7050 |
+| 04:00 | 7100 |
+| 05:00 | 7380 |
+| 06:00 | 7810 |
+| 07:00 | 8390 |
+| 08:00 | 8790 |
+| 09:00 | 9280 |
+| 10:00 | 9210 |
+| 11:00 | 9010 |
+| 12:00 | 8830 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Plants" subtitle="All units, output and status">
+| Unit | Source | Region | Output | Capacity | Status |
+|---|---|---|---|---|---|
+| Nuclear – Coastal | Nuclear | North | 2,800 MW | 2,900 MW | <Badge tone="success">Running</Badge> |
+| CCGT – East | Natural gas | East | 2,100 MW | 2,400 MW | <Badge tone="success">Running</Badge> |
+| Solar – South | Solar | South | 1,860 MW | 2,200 MW | <Badge tone="success">Running</Badge> |
+| Wind – North Sea | Wind | North | 1,120 MW | 1,500 MW | <Badge tone="success">Running</Badge> |
+| Wind – East | Wind | East | 240 MW | 400 MW | <Badge tone="warning">Derated</Badge> |
+| Hydro – River | Hydro | West | 640 MW | 800 MW | <Badge tone="success">Running</Badge> |
+| Coal – Reserve | Coal | South | 0 MW | 1,100 MW | <Badge tone="neutral">Standby</Badge> |
+| Battery – Storage | Storage | West | 0 MW | 500 MW | <Badge tone="neutral">Idle</Badge> |
+</Card>
+
+<Columns>
+<Card title="Active outages" subtitle="Affected region shown for each">
+| Infrastructure | Region | Impact | Status |
+|---|---|---|---|
+| Transformer T-104 | North | 140 MW constrained | <Badge tone="danger">Active</Badge> ETA 14:30 |
+| Submarine cable SC-2 | East | 230 MW constrained | <Badge tone="danger">Active</Badge> ETA Thu 18:00 |
+| Line L-217 | West | 85 MW constrained | <Badge tone="warning">Repair in progress</Badge> |
+</Card>
+<Card title="Maintenance this month">
+| Date | Unit | Region | Work |
+|---|---|---|---|
+| Jun 18 | CCGT – East Unit 2 | East | Turbine inspection |
+| Jun 21 | Wind – North Sea | North | Foundation inspection |
+| Jun 28 | Hydro – River | West | Turbine overhaul |
+</Card>
+<Card title="Live alerts" subtitle="Streaming from SCADA">
+<Badge tone="danger">● Live</Badge>
+| Time | Event |
+|---|---|
+| 13:42 | <Badge tone="danger">Overfrequency</Badge> 50.4 Hz at East substation — AGC active |
+| 13:18 | <Badge tone="warning">Derated</Badge> Wind – East limited to 60% output |
+| 12:55 | <Badge tone="info">Forecast</Badge> Evening peak revised up to 9,720 MW |
+| 12:31 | <Badge tone="success">Resolved</Badge> Line L-214 back in service |
+| 12:02 | <Badge tone="warning">Constraint</Badge> Cable SC-2 derated to 70% |
+</Card>
+</Columns>
+
+<Card title="Order curtailment" subtitle="Dispatch a reduction to a selected plant">
+<Form name="curtailment">
+<Select label="Plant" options="Nuclear – Coastal | CCGT – East | Wind – North Sea | Solar – South | Hydro – River | Coal – Reserve" placeholder="Select plant" hint="Choose the plant to curtail" />
+<Input label="Reduction (MW)" type="number" min="0" max="2800" placeholder="e.g. 150" hint="Must be within plant headroom" />
+<Select label="Duration" options="30 minutes | 1 hour | 2 hours | 4 hours" placeholder="Select duration" />
+<TextArea label="Reason" placeholder="e.g. Grid constraint in East region" rows="2" />
+<Button>Order curtailment</Button>
+</Form>
+<Callout tone="warning" title="Compliance log">Every curtailment order is timestamped and logged for the regulator.</Callout>
+</Card>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/sdk/web/dist/morphscreen.css"><link rel="stylesheet" href="/sdk/web/dist/morphscreen-page.css"></head>
+<body><main id="answer" class="ms-answer"></main>
+<script type="module">
+import { loadCore, createAnswer } from "/sdk/web/dist/index.js";
+const core = await loadCore("/sdk/web/dist/morphscreen.wasm");
+const frames = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+// Streams `text` in chunks; with delay 0 it measures CPU time (layout forced
+// after every chunk), with a delay it measures what a reader sees.
+window.run = async (text, { chunk = 32, delay = 0, packs = [], imageHosts, maps } = {}) => {
+  const el = document.getElementById("answer");
+  el.textContent = "";
+  window.gc?.();
+  const heap0 = performance.memory?.usedJSHeapSize ?? 0;
+  let cls = 0;
+  const t0 = performance.now();
+  window.shifts = [];
+  const desc = (n) => n ? `${n.tagName?.toLowerCase()}${n.className ? "." + String(n.className).replace(/ /g, ".") : ""}${n.dataset?.msType ? "[" + n.dataset.msType + "]" : ""}` : "?";
+  const po = new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) { cls += e.value; window.shifts.push({ v: +e.value.toFixed(4), at: Math.round(e.startTime - t0), src: (e.sources ?? []).map((s) => `${desc(s.node)} dy=${Math.round(s.currentRect.y - s.previousRect.y)} dx=${Math.round(s.currentRect.x - s.previousRect.x)}`) }); } });
+  po.observe({ type: "layout-shift" });
+  let first = null, busy = 0;
+  // Actions the reader causes are kept on window.actions for tests to read.
+  const a = createAnswer(el, { core, packs, imageHosts, maps, onAction: (x) => (window.actions ??= []).push(x) });
+  for (let i = 0; i < text.length; i += chunk) {
+    const s = performance.now();
+    a.push(text.slice(i, i + chunk));
+    void el.offsetHeight;
+    busy += performance.now() - s;
+    if (first === null && el.innerText.trim()) first = performance.now() - t0;
+    if (delay) await new Promise((r) => setTimeout(r, delay));
+  }
+  const s = performance.now();
+  a.end();
+  void el.offsetHeight;
+  busy += performance.now() - s;
+  await frames();
+  po.disconnect();
+  window.gc?.();
+  const heap = (performance.memory?.usedJSHeapSize ?? 0) - heap0;
+  const result = { first, busy, cls, heap, wasm: core.exports.memory.buffer.byteLength, dom: el.innerHTML, server: a.html() };
+  window.last = a;
+  return result;
+};
+window.ready = true;
+</script>
+</body></html>

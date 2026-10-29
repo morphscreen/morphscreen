@@ -1,0 +1,36 @@
+# Delivery Tracking
+
+<Card title="Current Status" icon="map-pin">
+<Columns>
+<Stat label="Location" value="Out for delivery" change="Last scan: 14 min ago" tone="info" icon="truck" />
+<Stat label="Driver" value="Maria S." change="Vehicle: VAN-442" tone="neutral" icon="user" />
+</Columns>
+
+<Progress value="85" max="100" label="Delivery progress" tone="info" />
+
+<Details title="View full journey" open="false">
+<Steps>
+<Step title="Order placed" status="done" subtitle="Jun 12, 10:14 AM" />
+<Step title="Package picked up" status="done" subtitle="Jun 13, 8:30 AM" />
+<Step title="At sorting facility" status="done" subtitle="Jun 13, 2:45 PM" />
+<Step title="Out for delivery" status="current" subtitle="Jun 14, 9:12 AM" />
+<Step title="Delivered" status="todo" subtitle="Estimated today by 2:00 PM" />
+</Steps>
+</Details>
+</Card>
+
+<Card title="Estimated Delivery" icon="calendar" subtitle="Tracked by GPS">
+<Stat label="Today" value="Jun 14" change="By 2:00 PM" tone="success" icon="calendar-check" />
+<Callout tone="info" title="Delivery window">Your package is on the vehicle and scheduled for delivery between 12:30 PM – 2:00 PM. You'll receive a notification when the driver is 10 minutes away.</Callout>
+</Card>
+
+<Card title="Report a Problem" icon="flag">
+<Form name="delivery-issue">
+<Select label="Issue type" placeholder="Select an issue" options="Package not delivered but marked delivered | Driver didn't attempt delivery | Package damaged | Wrong address | Missing items | Other" required="true" />
+<TextArea label="Describe the problem" placeholder="Add details, tracking discrepancies, photos, etc." rows="4" hint="Include any reference numbers or photos if available" required="true" />
+<Input label="Contact phone" type="tel" placeholder="+1 (555) 000-0000" hint="We'll call if we need more info" required="true" />
+<Input label="Email" type="email" placeholder="you@example.com" hint="Confirmation will be sent here" required="true" />
+<Button>Submit report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

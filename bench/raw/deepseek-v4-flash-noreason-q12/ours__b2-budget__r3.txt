@@ -1,0 +1,60 @@
+# Personal Budget Check
+
+<Card title="Budget Overview">
+<Columns>
+<Stat label="Monthly Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent This Month" value="$2,147" icon="shopping-cart" tone="warning" />
+<Stat label="Remaining" value="$853" icon="piggy-bank" tone="success" />
+</Columns>
+<Progress value="2147" max="3000" label="72% of budget used" tone="warning" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Where your money went" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Groceries | 420 |
+| Transport | 265 |
+| Dining Out | 180 |
+| Utilities | 152 |
+| Entertainment | 90 |
+| Other | 90 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense Highlighted">
+<Callout tone="danger" title="Top expense this month">
+Rent — $950 (44% of monthly spending)
+</Callout>
+<Columns>
+<Badge tone="danger">Housing</Badge>
+<Badge tone="neutral">Paid on the 1st</Badge>
+</Columns>
+</Card>
+
+<Card title="View Another Month">
+<Form name="month-selector">
+<Select label="Select month" name="month" options="February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025" value="July 2025" />
+<Button variant="secondary">View Month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Groceries at Trader Joe's" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" />
+<Select label="Category" name="category" options="Housing | Groceries | Transport | Dining Out | Utilities | Entertainment | Other" placeholder="Choose a category" required="true" />
+<Date label="Date" name="date" required="true" />
+<TextArea label="Notes (optional)" name="notes" placeholder="Any details about this expense" rows="2" />
+<Button>Add Expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me a breakdown of my spending trends over the last 6 months
+- How can I reduce my spending in the Dining Out category?
+- Compare this month's spending to last month's
+- What's my average daily spending so far this month?
+</FollowUps>

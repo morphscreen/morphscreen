@@ -1,0 +1,13 @@
+root = Card([header, leaseForm])
+header = CardHeader("Lease Agreement Signing", "Review the key terms below, then sign to accept")
+leaseForm = Form("lease-signing", formButtons, [fcTerms, fcAccept, fcSignature])
+formButtons = Buttons([btnSubmit], "row")
+btnSubmit = Button("Sign & Submit Lease", { type: "continue_conversation", context: "Lease signed and submitted with accepted terms" }, "primary", "normal", "large")
+fcTerms = FormControl("Key Lease Terms", termsDisplay, "Please review all terms carefully before accepting")
+termsDisplay = TextContent(termsText, "default")
+termsText = "**Property:** 123 Main Street, Apt 4B, Springfield, IL 62704\n\n**Lease Term:** 12 months (January 1, 2026 – December 31, 2026)\n\n**Monthly Rent:** $1,850.00 due on the 1st of each month\n\n**Security Deposit:** $1,850.00 (refundable, held per state law)\n\n**Utilities Included:** Water, trash, and sewer\n\n**Tenant Responsibilities:** Electricity, gas, internet, renter's insurance\n\n**Late Fee:** $75 if rent received after the 5th; $10/day thereafter\n\n**Pet Policy:** No pets without prior written approval\n\n**Subletting:** Not permitted without landlord consent\n\n**Termination Notice:** 60 days written notice required\n\n**Governing Law:** State of Illinois"
+fcAccept = FormControl("Acceptance", acceptCheckbox, "You must check this box to proceed")
+acceptCheckbox = CheckBoxGroup("accept-terms", [acceptItem], { required: true })
+acceptItem = CheckBoxItem("I have read and agree to all terms and conditions of this lease agreement", "By checking this box, you legally accept the lease terms above", "acceptance", false)
+fcSignature = FormControl("Your Signature", signatureInput, "Type your full legal name as it appears on the lease")
+signatureInput = Input("signature", "Full legal name", "text", { required: true, minLength: 2, maxLength: 100 })

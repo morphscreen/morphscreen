@@ -1,0 +1,117 @@
+# Store Manager Console — Downtown Location
+
+<Select label="Store" name="store-select" placeholder="Select store" options="Downtown Flagship | Mall West | Uptown Plaza | Airport Terminal | Online Only" value="Downtown Flagship" />
+
+<Columns>
+<Card title="Sales Today vs Target">
+<Stat label="Revenue" value="$42,840" change="$3,240 vs target" tone="success" icon="chart-line" />
+<Progress value="42840" max="50000" label="Target: $50,000" tone="success" />
+</Card>
+
+<Card title="Average Basket Size">
+<Stat label="Avg. Basket" value="$47.20" change="+$2.10 vs last week" tone="info" icon="shopping-cart" />
+</Card>
+
+<Card title="Returns This Week">
+<Stat label="Returns" value="23" change="12 units, $1,180" tone="warning" icon="arrow-return-left" />
+</Card>
+</Columns>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="area" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 28 |
+| 10 AM | 45 |
+| 11 AM | 67 |
+| 12 PM | 89 |
+| 1 PM | 102 |
+| 2 PM | 94 |
+| 3 PM | 78 |
+| 4 PM | 65 |
+| 5 PM | 58 |
+| 6 PM | 42 |
+| 7 PM | 31 |
+| 8 PM | 18 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best Sellers (Units Today)">
+| Product | Units Sold | Revenue |
+|---|---|---|
+| Organic Cotton Tee | 34 | $1,190 |
+| Slim Fit Jeans | 28 | $2,240 |
+| Canvas Sneakers | 22 | $1,980 |
+| Lightweight Hoodie | 19 | $1,330 |
+| Baseball Cap | 15 | $375 |
+</Card>
+
+<Card title="Items Out of Stock">
+<Badge tone="danger">5 items</Badge>
+| SKU | Product | Category | Days OOS |
+|---|---|---|---|
+| SKU-8842 | Women's Tank - Black / M | Apparel | 3 |
+| SKU-9103 | Running Shorts - Navy / L | Activewear | 1 |
+| SKU-7721 | Crew Socks 3-pack - White | Accessories | 5 |
+| SKU-5509 | Denim Jacket - Indigo / S | Outerwear | 2 |
+| SKU-3347 | Beanie - Charcoal | Accessories | 4 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="On Shift Today">
+<Avatar name="Maria Santos" subtitle="Shift Lead • 8 AM – 4 PM" />
+<Avatar name="James Chen" subtitle="Cashier • 8 AM – 4 PM" />
+<Avatar name="Priya Patel" subtitle="Floor Associate • 10 AM – 6 PM" />
+<Avatar name="David Kim" subtitle="Stock • 7 AM – 3 PM" />
+<Avatar name="Aisha Rahman" subtitle="Cashier • 12 PM – 8 PM" />
+<Avatar name="Tommy Nguyen" subtitle="Floor Associate • 2 PM – 10 PM" />
+</Card>
+
+<Card title="Register Status">
+| Register | Status | Cashier | Since |
+|---|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | James Chen | 8:00 AM |
+| Register 2 | <Badge tone="success">Open</Badge> | Aisha Rahman | 12:00 PM |
+| Register 3 | <Badge tone="neutral">Closed</Badge> | — | — |
+| Register 4 | <Badge tone="neutral">Closed</Badge> | — | — |
+| Self-Checkout A | <Badge tone="success">Open</Badge> | Unattended | 8:00 AM |
+| Self-Checkout B | <Badge tone="warning">Issue</Badge> | — | Paper jam |
+</Card>
+</Columns>
+
+<Card title="Promotion Performance">
+| Promotion | Type | Revenue | Units | ROI | Status |
+|---|---|---|---|---|---|
+| Summer Tees 20% Off | Percentage | $3,420 | 68 | 3.2x | <Badge tone="success">Active</Badge> |
+| Buy 2 Jeans, Get 1 Free | BOGO | $5,180 | 31 | 2.8x | <Badge tone="success">Active</Badge> |
+| Student Discount 15% | Segment | $890 | 22 | 4.1x | <Badge tone="info">Active</Badge> |
+| Loyalty Double Points | Loyalty | $1,240 | 18 | 1.9x | <Badge tone="neutral">Ends tomorrow</Badge> |
+| Free Shipping $75+ | Threshold | $2,100 | 34 | 2.3x | <Badge tone="success">Active</Badge> |
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Revenue">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 38200 | 35100 |
+| Tue | 41500 | 38900 |
+| Wed | 42840 | 39200 |
+| Thu | 0 | 41800 |
+| Fri | 0 | 48600 |
+| Sat | 0 | 52300 |
+| Sun | 0 | 29400 |
+</Chart>
+</Card>
+
+<Card title="Reorder Item" subtitle="Create a purchase order for out-of-stock or low-stock items">
+<Form name="reorder-form">
+<Select label="Product" name="product" placeholder="Search or select product" options="Women's Tank - Black / M (SKU-8842) | Running Shorts - Navy / L (SKU-9103) | Crew Socks 3-pack - White (SKU-7721) | Denim Jacket - Indigo / S (SKU-5509) | Beanie - Charcoal (SKU-3347) | Organic Cotton Tee (SKU-1102) | Slim Fit Jeans (SKU-2205) | Canvas Sneakers (SKU-3311)" />
+<Input label="Quantity" name="qty" type="number" placeholder="50" min="1" step="1" hint="Suggested: 50–100 based on velocity" />
+<Input label="Supplier" name="supplier" placeholder="Auto-filled from product" value="ApparelCo Wholesale" />
+<Button>Submit Reorder</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>

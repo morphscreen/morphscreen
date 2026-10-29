@@ -1,0 +1,72 @@
+# Clinic Receptionist Dashboard
+
+<Card title="Today's Overview" subtitle="Wednesday, 14 May 2025">
+<Columns>
+<Stat label="Patients expected today" value="24" icon="calendar" />
+<Stat label="No-show rate this month" value="8.3%" change="-2.1% vs last month" tone="success" icon="chart-line" />
+<Stat label="Free rooms now" value="3" note="Rooms 2, 5, 7" icon="map-pin" />
+</Columns>
+</Card>
+
+<Card title="Next Patient Called">
+<Avatar name="Eleanor Walsh" subtitle="Room 3 • Arrived 09:10" />
+<Button variant="secondary" ask="Call next patient">Call next patient</Button>
+</Card>
+
+<Card title="Today's Appointments">
+<Tabs>
+<Tab title="Morning">
+| Time | Patient | Status |
+|---|---|---|
+| 09:00 | James Carter | <Badge tone="success">Checked in</Badge> |
+| 09:20 | Maria Lopez | <Badge tone="success">Checked in</Badge> |
+| 09:40 | David Kim | <Badge tone="warning">Late</Badge> |
+| 10:00 | Eleanor Walsh | <Badge tone="info">In room 3</Badge> |
+| 10:20 | Priya Sharma | <Badge tone="neutral">Waiting</Badge> |
+| 10:40 | Robert Chen | <Badge tone="neutral">Waiting</Badge> |
+| 11:00 | Sarah Johnson | <Badge tone="neutral">Waiting</Badge> |
+| 11:20 | Michael Brown | <Badge tone="neutral">Waiting</Badge> |
+| 11:40 | Lisa Anderson | <Badge tone="neutral">Waiting</Badge> |
+</Tabs>
+<Tab title="Afternoon">
+| Time | Patient | Status |
+|---|---|---|
+| 13:00 | Thomas White | <Badge tone="neutral">Waiting</Badge> |
+| 13:20 | Olivia Martinez | <Badge tone="neutral">Waiting</Badge> |
+| 13:40 | Daniel Lee | <Badge tone="neutral">Waiting</Badge> |
+| 14:00 | Emma Wilson | <Badge tone="neutral">Waiting</Badge> |
+| 14:20 | Noah Taylor | <Badge tone="neutral">Waiting</Badge> |
+| 14:40 | Ava Harris | <Badge tone="neutral">Waiting</Badge> |
+| 15:00 | Ethan Clark | <Badge tone="neutral">Waiting</Badge> |
+| 15:20 | Sophia Lewis | <Badge tone="neutral">Waiting</Badge> |
+| 15:40 | Liam Walker | <Badge tone="neutral">Waiting</Badge> |
+| 16:00 | Isabella Hall | <Badge tone="neutral">Waiting</Badge> |
+| 16:20 | Mason Allen | <Badge tone="neutral">Waiting</Badge> |
+| 16:40 | Mia Young | <Badge tone="neutral">Waiting</Badge> |
+| 17:00 | Lucas King | <Badge tone="neutral">Waiting</Badge> |
+| 17:20 | Charlotte Wright | <Badge tone="neutral">Waiting</Badge> |
+</Tabs>
+</Tabs>
+</Card>
+
+<Card title="Check In a Patient">
+<Form name="check-in">
+<Input label="Patient name" placeholder="Start typing name..." required />
+<Input label="Appointment time" type="time" placeholder="e.g. 10:20" hint="Leave blank if walk-in" />
+<Button>Check In</Button>
+</Form>
+</Card>
+
+<Card title="Move to Another Day">
+<Form name="change-day">
+<Date label="Select a date" name="view-date" hint="View appointments for that day" />
+<Button variant="secondary">Go to Date</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- [Show me the full patient list for today](#)
+- [What's the no-show breakdown by doctor?](#)
+- [Mark a patient as arrived](#)
+- [View room availability in detail](#)
+</FollowUps>

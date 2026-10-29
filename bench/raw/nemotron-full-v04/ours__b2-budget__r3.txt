@@ -1,0 +1,50 @@
+# Personal Budget Check
+
+<Card title="Month Selector" subtitle="Choose a month to review">
+<Select label="Month" name="month" placeholder="Select month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Card>
+
+<Columns>
+<Card title="Budget Overview">
+<Stat label="Total Budget" value="$3,000" />
+<Stat label="Total Spent" value="$2,147.50" change="$852.50 remaining" tone="success" />
+<Stat label="Largest Expense" value="$450.00" note="Rent" tone="info" />
+<Progress value="2147.5" max="3000" label="Budget Used: 71.6%" />
+</Card>
+
+<Card title="Largest Expense" subtitle="Single biggest transaction this month">
+<Avatar name="Rent Payment" subtitle="$450.00 • Jan 1, 2025" />
+**Category:** Housing  
+**Date:** January 1, 2025  
+**Amount:** $450.00  
+**Notes:** Monthly rent payment
+<Badge tone="warning">Largest this month</Badge>
+</Card>
+</Columns>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 450.00 |
+| Food & Dining | 380.25 |
+| Transportation | 245.50 |
+| Utilities | 180.00 |
+| Entertainment | 156.75 |
+| Shopping | 125.00 |
+| Health & Fitness | 95.00 |
+| Other | 515.00 |
+</Chart>
+</Card>
+
+<Card title="Add Expense" subtitle="Record a new transaction">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" hint="Enter expense amount" required="true" />
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Health & Fitness | Other" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Input label="Notes (optional)" name="notes" placeholder="Any additional details" />
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

@@ -1,0 +1,41 @@
+# Daily Fitness Summary
+
+<Card title="Today's Progress" subtitle="Keep moving toward your goals">
+<Columns>
+<Stat label="Steps" value="7,432" change="of 10,000" tone="info" icon="footprints" />
+<Stat label="Calories Burned" value="1,847" unit="kcal" tone="success" icon="flame" />
+</Columns>
+<Progress value="7432" max="10000" label="Step goal progress" tone="info" />
+</Card>
+
+<Card title="Workout Performance This Week">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Duration (min) | Intensity Score |
+|---|---|---|
+| Mon | 45 | 82 |
+| Tue | 30 | 68 |
+| Wed | 50 | 91 |
+| Thu | 20 | 55 |
+| Fri | 60 | 95 |
+| Sat | 40 | 78 |
+| Sun | 35 | 72 |
+</Chart>
+<Callout tone="success" title="Great consistency">You averaged 40 minutes per workout this week, up 12% from last week!</Callout>
+<Button ask="Show me more workout insights">More on this week</Button>
+</Card>
+
+<Card title="Log a New Workout" subtitle="Record today's effort">
+<Form name="log-workout">
+<Select label="Workout type" options="Walking | Running | Cycling | Strength Training | Yoga | Swimming | HIIT | Other" placeholder="Choose type" />
+<Slider label="Duration" min="5" max="180" step="5" value="30" name="duration" unit="min" />
+<Input label="Calories burned (optional)" type="number" placeholder="e.g. 250" name="calories" min="0" />
+<Radio label="How did it feel?" options="Easy | Moderate | Hard | Very Hard" name="intensity" />
+<Button variant="primary" icon="plus-circle">Log Workout</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- [Show my step history this week](#)
+- [Compare calories by workout type](#)
+- [Set a new daily goal](#)
+</FollowUps>

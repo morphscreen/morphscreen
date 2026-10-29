@@ -1,0 +1,21 @@
+root = Card([header, question, pollForm])
+
+header = CardHeader("Team Lunch Poll", "Vote for Friday's spot")
+question = Heading("Where should we go for lunch on Friday?", "h3")
+
+pollForm = Form("lunch-poll", pollButtons, [sushiField, tacoField, burgerField])
+
+sushiField = FormControl("Sushi", sushiRadio)
+sushiRadio = RadioGroup("restaurant", [sushiOption])
+sushiOption = RadioItem("Sushi Place", "Fresh rolls and bento boxes", "sushi")
+
+tacoField = FormControl("Tacos", tacoRadio)
+tacoRadio = RadioGroup("restaurant", [tacoOption])
+tacoOption = RadioItem("Taco Stand", "Street tacos and burritos", "tacos")
+
+burgerField = FormControl("Burgers", burgerRadio)
+burgerRadio = RadioGroup("restaurant", [burgerOption])
+burgerOption = RadioItem("Burger Joint", "Gourmet burgers and fries", "burgers")
+
+pollButtons = Buttons([submitBtn])
+submitBtn = Button("Vote", null, "primary")

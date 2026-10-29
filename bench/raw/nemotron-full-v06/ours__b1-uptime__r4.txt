@@ -1,0 +1,12 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Callout tone="info" title="API Latency Spike — Resolved Oct 12, 2024 14:23 UTC">
+On Oct 12 at 13:41 UTC, elevated latency was detected on the `/v1/search` endpoint due to a database connection pool exhaustion. The on-call engineer scaled the read replicas and restarted the affected workers. Full recovery confirmed at 14:23 UTC. Root cause: a misconfigured connection timeout in the new deploy. Preventive fix deployed in PR #4821.
+</Callout>
+</Card>

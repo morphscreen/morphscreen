@@ -1,0 +1,268 @@
+# City Operations Center
+
+Live overview of the city, updated every 60 seconds. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Current weather & key stats">
+<Columns>
+<div>
+<Stat label="Temperature" value="21°C" icon="thermometer" />
+<Stat label="Wind" value="14 km/h" icon="wind" />
+<Stat label="Humidity" value="58%" icon="drop" />
+<Stat label="Air quality index" value="42" note="Good" tone="success" icon="leaf" />
+</div>
+<div>
+<Stat label="Congestion level" value="62%" note="Moderate" tone="warning" icon="car" />
+<Stat label="Transit punctuality" value="91%" note="On time" tone="success" icon="bus" />
+<Stat label="Water use today" value="48.2 ML" note="12% below avg" tone="success" icon="droplet" />
+<Stat label="Service request backlog" value="347" note="−28 today" tone="info" icon="clipboard" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Congestion right now">
+<Chart type="bar" x="District" y="Congestion %" title="Live traffic by district">
+| District | Congestion |
+|---|---|
+| Downtown | 78 |
+| Riverside | 65 |
+| Northgate | 54 |
+| Eastside | 71 |
+| Westfield | 48 |
+| Southport | 59 |
+</Chart>
+<Callout tone="warning" title="Downtown slow">Average speed 12 km/h on Main St between 5th and 8th Ave. Expect 15 min delays.</Callout>
+</Card>
+
+<Card title="Transit punctuality">
+<Columns>
+<div>
+<Stat label="Buses on time" value="89%" tone="success" />
+<Stat label="Trains on time" value="94%" tone="success" />
+<Stat label="Trams on time" value="87%" tone="warning" />
+</div>
+<div>
+<Chart type="line" x="Hour" y="% on time" title="Today's punctuality trend">
+| Hour | Buses | Trains |
+|---|---|---|
+| 06:00 | 92 | 96 |
+| 08:00 | 85 | 91 |
+| 10:00 | 90 | 95 |
+| 12:00 | 88 | 93 |
+| 14:00 | 91 | 94 |
+| 16:00 | 84 | 90 |
+| 18:00 | 86 | 92 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Air quality by district">
+<Chart type="bar" x="District" y="AQI" title="Live AQI per district">
+| District | AQI |
+|---|---|
+| Downtown | 58 |
+| Riverside | 44 |
+| Northgate | 39 |
+| Eastside | 52 |
+| Westfield | 35 |
+| Southport | 47 |
+</Chart>
+<Callout tone="info" title="Sensitive groups">Eastside and Downtown AQI above 50 — advise reduced outdoor exertion for sensitive groups.</Callout>
+</Card>
+
+<Card title="Energy use — past week">
+<Chart type="area" x="Day" y="MWh" title="Daily energy consumption">
+| Day | MWh |
+|---|---|
+| Mon | 1420 |
+| Tue | 1380 |
+| Wed | 1510 |
+| Thu | 1465 |
+| Fri | 1590 |
+| Sat | 1320 |
+| Sun | 1280 |
+</Chart>
+<Stat label="Weekly total" value="9,965 MWh" note="3% below target" tone="success" />
+</Card>
+
+<Card title="Water use today">
+<Columns>
+<div>
+<Stat label="Current use" value="48.2 ML" note="as of 14:00" />
+<Stat label="Peak hour" value="4.1 ML" note="08:00–09:00" />
+<Stat label="Daily target" value="55 ML" />
+</div>
+<div>
+<Chart type="line" x="Hour" y="ML/h" title="Hourly water consumption">
+| Hour | ML |
+|---|---|
+| 00:00 | 1.2 |
+| 02:00 | 0.9 |
+| 04:00 | 0.8 |
+| 06:00 | 2.1 |
+| 08:00 | 4.1 |
+| 10:00 | 3.2 |
+| 12:00 | 3.5 |
+| 14:00 | 2.8 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Open incidents">
+| Incident | Location | Severity | Status |
+|---|---|---|---|
+| Water main break | Riverside — 12th St & Oak Ave | <Badge tone="danger">Critical</Badge> | Crew en route |
+| Traffic signal outage | Downtown — 5th & Main | <Badge tone="warning">High</Badge> | Technician assigned |
+| Fallen tree | Northgate — Park Rd | <Badge tone="warning">High</Badge> | Parks crew on site |
+| Pothole cluster | Eastside — Industrial Blvd | <Badge tone="info">Medium</Badge> | Scheduled |
+| Streetlight out | Westfield — Maple Ln | <Badge tone="neutral">Low</Badge> | Queued |
+| Sewer odor | Southport — Dock St | <Badge tone="info">Medium</Badge> | Inspecting |
+</Card>
+
+<Card title="Emergency vehicle deployment">
+<Map title="Live emergency units" route="false">
+| Location | Lat | Lng | Unit |
+|---|---|---|---|
+| Fire Station 1 | 40.7128 | -74.0060 | Engine 3, Ladder 2 |
+| Downtown | 40.7135 | -74.0050 | Ambulance 7 |
+| Riverside | 40.7150 | -74.0120 | Ambulance 12 |
+| Eastside | 40.7180 | -74.0000 | Police Unit 4 |
+| Northgate | 40.7100 | -74.0200 | Engine 1 |
+| Westfield | 40.7200 | -74.0300 | Police Unit 9 |
+</Map>
+<Callout tone="success" title="Coverage">All 6 zones have at least one unit within 5 minutes.</Callout>
+</Card>
+
+<Card title="Parking availability downtown">
+<Columns>
+<div>
+<Stat label="Spaces free" value="1,847" note="of 4,200 total" tone="success" icon="parking" />
+<Stat label="Occupancy" value="56%" tone="success" />
+</div>
+<div>
+<Chart type="bar" x="Garage" y="Free spaces" title="By garage">
+| Garage | Free |
+|---|---|
+| Central Garage | 320 |
+| Market Square | 215 |
+| Civic Center | 180 |
+| Harbor View | 412 |
+| Grand Ave | 290 |
+| Library Lot | 430 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Public events this weekend">
+| Event | When | Where | Status |
+|---|---|---|---|
+| Farmers Market | Sat 08:00–14:00 | Market Square | <Badge tone="success">On</Badge> |
+| Riverside Jazz Fest | Sat 16:00–22:00 | Riverside Park | <Badge tone="success">On</Badge> |
+| City Marathon | Sun 06:00–12:00 | Downtown loop | <Badge tone="warning">Road closures</Badge> |
+| Art in the Park | Sun 10:00–18:00 | Northgate Park | <Badge tone="success">On</Badge> |
+| Food Truck Rally | Sat–Sun 11:00–20:00 | Harbor View | <Badge tone="success">On</Badge> |
+</Card>
+
+<Card title="Citizen reports — live feed">
+<Timeline title="Latest reports">
+- 13:58 — Pothole on 5th Ave near City Hall — Eastside — <Badge tone="info">New</Badge>
+- 13:55 — Graffiti on bus shelter, Main St & 3rd — Downtown — <Badge tone="info">New</Badge>
+- 13:51 — Broken sidewalk slab, Oak St — Riverside — <Badge tone="info">New</Badge>
+- 13:47 — Illegal dumping, Industrial Blvd — Eastside — <Badge tone="warning">Assigned</Badge>
+- 13:42 — Streetlight flickering, Maple Ln — Westfield — <Badge tone="info">New</Badge>
+- 13:38 — Overflowing trash can, Dock St — Southport — <Badge tone="success">Resolved</Badge>
+</Timeline>
+</Card>
+
+<Card title="Service request backlog">
+<Columns>
+<div>
+<Stat label="Total open" value="347" note="−28 today" tone="info" />
+<Stat label="Median age" value="3.2 days" tone="warning" />
+<Stat label="Oldest" value="12 days" tone="danger" />
+</div>
+<div>
+<Chart type="bar" x="Category" y="Open requests" title="By category">
+| Category | Open |
+|---|---|
+| Potholes | 89 |
+| Streetlights | 64 |
+| Graffiti | 52 |
+| Trash | 48 |
+| Sidewalks | 41 |
+| Trees | 33 |
+| Other | 20 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Focus on a district">
+<Select label="Select district" name="district" options="Downtown | Riverside | Northgate | Eastside | Westfield | Southport" placeholder="Choose a district" />
+<Callout tone="info" title="Downtown snapshot">
+- Congestion: 78% (highest)
+- AQI: 58 (moderate)
+- Open incidents: 2
+- Parking free: 1,847 spaces
+- Events this weekend: 3
+</Callout>
+<Button>Show district dashboard</Button>
+</Card>
+
+<Card title="Dispatch a crew">
+<Form name="dispatch">
+<Select label="Incident type" name="incident-type" options="Water main | Power outage | Traffic signal | Fallen tree | Sewer issue | Streetlight" placeholder="Select type" required="true" />
+<Select label="District" name="district" options="Downtown | Riverside | Northgate | Eastside | Westfield | Southport" placeholder="Select district" required="true" />
+<Select label="Priority" name="priority" options="Low | Medium | High | Critical" placeholder="Select priority" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Add details for the crew…" rows="3" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send public alert">
+<Form name="alert">
+<Input label="Alert title" name="alert-title" placeholder="e.g. Water outage on Oak St" required="true" />
+<TextArea label="Message" name="message" placeholder="Write the public alert message…" rows="4" required="true" />
+<Select label="Audience" name="audience" options="Whole city | Downtown | Riverside | Northgate | Eastside | Westfield | Southport" placeholder="Select audience" required="true" />
+<Select label="Channel" name="channel" options="Push notification | SMS | Email | All channels" placeholder="Select channel" required="true" />
+<Button>Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks planned this month">
+| Road | District | Dates | Impact |
+|---|---|---|---|
+| Main St (5th–8th) | Downtown | Jun 12–18 | Lane closure |
+| Oak Ave (10th–14th) | Riverside | Jun 15–22 | Full closure |
+| Park Rd | Northgate | Jun 20–27 | Night work |
+| Industrial Blvd | Eastside | Jun 25–30 | Partial closure |
+| Harbor View | Southport | Jun 28–Jul 5 | Shoulder work |
+</Card>
+
+<Card title="Infrastructure maintenance due">
+<Columns>
+<div>
+<Stat label="Overdue" value="14" tone="danger" />
+<Stat label="Due this month" value="23" tone="warning" />
+<Stat label="Completed" value="31" tone="success" />
+</div>
+</Columns>
+| Asset | District | Due date | Status |
+|---|---|---|---|
+| Bridge 7 inspection | Downtown | Jun 10 | <Badge tone="danger">Overdue</Badge> |
+| Water pump station | Riverside | Jun 14 | <Badge tone="warning">Due soon</Badge> |
+| Traffic signal controller | Eastside | Jun 18 | <Badge tone="warning">Due soon</Badge> |
+| Sewer line cleaning | Northgate | Jun 22 | <Badge tone="info">Scheduled</Badge> |
+| Streetlight transformer | Westfield | Jun 26 | <Badge tone="info">Scheduled</Badge> |
+| Road resurfacing | Southport | Jun 30 | <Badge tone="info">Planned</Badge> |
+<Button>View maintenance calendar</Button>
+</Card>
+
+<FollowUps>
+- Show me the full incident report for the water main break
+- Which districts need more parking capacity?
+- What’s the expected impact of the marathon on traffic?
+- Send me the weekly energy report
+</FollowUps>

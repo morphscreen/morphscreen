@@ -1,0 +1,186 @@
+# Power Network Operator Console
+
+<Callout tone="warning" title="Live alert">Unplanned outage at **Nordsee Wind Farm** — 320 MW lost. Crew dispatched. Estimated restoration 14:30.</Callout>
+
+## Network Status
+
+<Columns>
+<Stat label="Current Load" value="8,412 MW" change="+3.2% vs forecast" icon="lightning" />
+<Stat label="Capacity Used" value="84.1%" change="15.9% headroom" tone="info" icon="gauge" />
+<Stat label="Spot Price" value="€87.40" change="+€4.10 / MWh" tone="warning" icon="currency-eur" />
+<Stat label="Emissions Today" value="12,840 tCO₂" change="−8% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+
+<Card title="Capacity Headroom">
+<Progress value="84.1" max="100" label="Load vs. capacity — 1,590 MW reserve" tone="warning" />
+</Card>
+
+## Generation Mix
+
+<Card title="Live Generation by Source">
+<Chart type="donut" title="Share of total generation">
+| Source | MW |
+|---|---|
+| Wind offshore | 2840 |
+| Wind onshore | 1410 |
+| Solar | 980 |
+| Gas CCGT | 1650 |
+| Coal | 620 |
+| Nuclear | 480 |
+| Biomass | 270 |
+| Hydro | 162 |
+</Chart>
+</Card>
+
+## Plant Overview
+
+<Card title="All Plants — Output & Status">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Nordsee Wind Farm | Offshore wind | 0 | <Badge tone="danger">Outage</Badge> |
+| Dogger Bank West | Offshore wind | 1,240 | <Badge tone="success">Running</Badge> |
+| Hornsea One | Offshore wind | 1,600 | <Badge tone="success">Running</Badge> |
+| East Anglia Array | Offshore wind | 980 | <Badge tone="warning">Derated</Badge> |
+| Teesside Onshore Cluster | Onshore wind | 610 | <Badge tone="success">Running</Badge> |
+| Pennine Wind Park | Onshore wind | 800 | <Badge tone="success">Running</Badge> |
+| Valencia Solar Farm | Solar | 540 | <Badge tone="success">Running</Badge> |
+| Almería PV Plant | Solar | 440 | <Badge tone="success">Running</Badge> |
+| Grain LNG CCGT | Gas | 910 | <Badge tone="success">Running</Badge> |
+| Pembroke CCGT | Gas | 740 | <Badge tone="success">Running</Badge> |
+| Drax Unit 2 | Coal | 620 | <Badge tone="success">Running</Badge> |
+| Sizewell B | Nuclear | 480 | <Badge tone="success">Running</Badge> |
+| Tilbury Biomass | Biomass | 270 | <Badge tone="success">Running</Badge> |
+| Ffestiniog Hydro | Hydro | 162 | <Badge tone="success">Running</Badge> |
+</Card>
+
+## Outages
+
+<Card title="Active Outages">
+| Region affected | Plant / Asset | Lost capacity | Started | ETA |
+|---|---|---|---|---|
+| **North Sea coast** — Schleswig-Holstein | Nordsee Wind Farm | 320 MW | 09:12 | 14:30 |
+| **East Anglia** — Norwich area | East Anglia Array feeder B | 210 MW (derated) | 07:45 | 16:00 |
+| **Wales** — Aberystwyth | 132 kV line 14 | — (load shed 40 MW) | 11:20 | 19:00 |
+</Card>
+
+## Demand Forecast — Next 24 Hours
+
+<Card title="Forecast vs. Available Capacity">
+<Chart type="area" title="MW by hour" x="Hour" y="MW">
+| Hour | Forecast | Capacity |
+|---|---|---|
+| 12:00 | 8412 | 10000 |
+| 13:00 | 8780 | 10000 |
+| 14:00 | 8940 | 10000 |
+| 15:00 | 8810 | 10000 |
+| 16:00 | 8490 | 10000 |
+| 17:00 | 8230 | 10000 |
+| 18:00 | 8100 | 10000 |
+| 19:00 | 8350 | 10000 |
+| 20:00 | 8790 | 10000 |
+| 21:00 | 9120 | 10000 |
+| 22:00 | 9280 | 10000 |
+| 23:00 | 9050 | 10000 |
+| 00:00 | 8610 | 10000 |
+| 01:00 | 7980 | 10000 |
+| 02:00 | 7420 | 10000 |
+| 03:00 | 7150 | 10000 |
+| 04:00 | 7030 | 10000 |
+| 05:00 | 7210 | 10000 |
+| 06:00 | 7680 | 10000 |
+| 07:00 | 8340 | 10000 |
+| 08:00 | 8910 | 10000 |
+| 09:00 | 9240 | 10000 |
+| 10:00 | 9470 | 10000 |
+| 11:00 | 9610 | 10000 |
+</Chart>
+<Callout tone="info" title="Peak risk">Forecast peak at 22:00 (9,280 MW) — 72% of available capacity. Watch the evening ramp.</Callout>
+</Card>
+
+## Maintenance — This Month
+
+<Card title="Planned Maintenance Schedule">
+| Date | Asset | Region | Duration | Type |
+|---|---|---|---|---|
+| 12 Jun | Sizewell B — turbine inspection | Suffolk | 08:00–16:00 | Inspection |
+| 14 Jun | Teesside Onshore — blade repair | Teesside | 06:00–14:00 | Repair |
+| 18 Jun | Grain LNG CCGT — HRSG cleaning | Kent | 00:00–08:00 | Cleaning |
+| 21 Jun | Hornsea One — export cable test | Yorkshire coast | 10:00–18:00 | Testing |
+| 25 Jun | Ffestiniog Hydro — penstock check | Gwynedd | 09:00–17:00 | Inspection |
+</Card>
+
+## Live Alerts
+
+<Card title="Alert Feed — Most Recent First">
+<Details title="14:32 — Voltage dip on 400 kV busbar B6" open="true">
+<Badge tone="danger">Critical</Badge> — Norwich substation. Breaker reclosed automatically. Monitoring.
+</Details>
+<Details title="14:05 — East Anglia Array feeder B derated to 70%">
+<Badge tone="warning">Warning</Badge> — Cable temperature above limit. Output reduced automatically.
+</Details>
+<Details title="13:47 — Nordsee Wind Farm crew dispatched">
+<Badge tone="info">Info</Badge> — Transformer fault suspected. ETA on site 14:20.
+</Details>
+<Details title="12:58 — Wind ramp forecast updated">
+<Badge tone="info">Info</Badge> — Offshore wind +400 MW expected 16:00–19:00.
+</Details>
+<Details title="11:20 — 132 kV line 14 tripped in Wales">
+<Badge tone="danger">Critical</Badge> — Aberystwyth area. 40 MW load shed. Rerouting in progress.
+</Details>
+</Card>
+
+## Region Focus
+
+<Card title="Select a Region to Focus">
+<Radio label="Region" name="region" options="North Sea coast | East Anglia | Wales | Yorkshire | Kent | Gwynedd | Teesside | Suffolk" value="North Sea coast" hint="Filters plants, outages, and alerts to that region" />
+<Button>Apply region focus</Button>
+</Card>
+
+<Card title="North Sea Coast — Focused View">
+| Metric | Value |
+|---|---|
+| Plants | Nordsee Wind Farm (outage), Dogger Bank West (running) |
+| Total output | 1,240 MW of 1,560 MW nameplate |
+| Active outage | Nordsee Wind Farm — 320 MW lost |
+| Load in region | 1,180 MW |
+| Alerts | 1 critical, 2 info |
+</Card>
+
+## Curtailment Order
+
+<Card title="Order Curtailment">
+<Form name="curtailment">
+<Select label="Plant to curtail" placeholder="Select plant" options="Nordsee Wind Farm | Dogger Bank West | Hornsea One | East Anglia Array | Teesside Onshore Cluster | Pennine Wind Park | Valencia Solar Farm | Almería PV Plant | Grain LNG CCGT | Pembroke CCGT | Drax Unit 2 | Sizewell B | Tilbury Biomass | Ffestiniog Hydro" />
+<Slider label="Target reduction" min="0" max="1000" step="10" value="200" unit="MW" />
+<Date label="Start date" value="2025-06-12" />
+<Date label="End date" value="2025-06-12" />
+<TextArea label="Reason" placeholder="e.g. Grid congestion on 400 kV corridor" hint="Required for audit trail" />
+<Checkboxes label="Notify" options="Plant operator | TSO | Market participants | Regulator" value="Plant operator | TSO" />
+<Button>Submit curtailment order</Button>
+</Form>
+</Card>
+
+## Emissions Today
+
+<Card title="Emissions Tracker">
+<Columns>
+<Stat label="Total CO₂" value="12,840 t" change="−8% vs yesterday" tone="success" icon="leaf" />
+<Stat label="CO₂ intensity" value="328 kg/MWh" change="−12% vs 2024 avg" tone="success" icon="trend-down" />
+</Columns>
+<Chart type="bar" title="Emissions by source (tCO₂ today)">
+| Source | tCO₂ |
+|---|---|
+| Gas CCGT | 6,870 |
+| Coal | 4,980 |
+| Biomass | 990 |
+| Other | 0 |
+</Chart>
+<Callout tone="success" title="Good progress">Renewables are covering 54% of load today, keeping emissions 8% below yesterday's total.</Callout>
+</Card>
+
+<FollowUps>
+- Show me the full maintenance calendar for next quarter
+- Which regions are at highest curtailment risk right now?
+- Drill into the Nordsee Wind Farm outage details
+- Compare today's emissions with last week's average
+</FollowUps>

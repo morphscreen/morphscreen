@@ -1,0 +1,145 @@
+# Speeding up a 2 GB CSV read in Python
+
+The single biggest win is almost always the same: **stop using `csv.reader` in a Python loop and let pandas (or a vectorized parser) read it in C.** After that, it's about cutting rows, cutting columns, and cutting dtypes.
+
+<Callout tone="info" title="Rule of thumb">
+A pure-Python `csv` loop over 2 GB typically runs 20–60× slower than `pandas.read_csv` on the same file. If you're already on pandas, the wins come from `dtype`, `usecols`, and `chunksize`.
+</Callout>
+
+## Where the time actually goes
+
+<Chart type="bar" title="Typical 2 GB CSV read, seconds" x="Method" y="Seconds">
+| Method | Seconds |
+|---|---|
+| csv.reader loop | 240 |
+| pandas read_csv (defaults) | 22 |
+| pandas + dtype + usecols | 11 |
+| pandas + engine="c" + chunks | 9 |
+| pyarrow.csv.read_csv | 4 |
+| DuckDB read_csv_auto | 3 |
+</Chart>
+
+<Callout tone="neutral" title="Note">
+Numbers are illustrative for a ~10M-row, ~30-column file on an SSD. Your mix of string vs numeric columns changes these a lot — wide string columns are the expensive part.
+</Callout>
+
+## The fast path
+
+<Steps>
+<Step title="Profile before you change anything" status="current">
+Time the read alone, not the read plus your processing. If the read is 5 s and your loop is 200 s, the parser isn't your problem.
+</Step>
+<Step title="Swap csv.reader for pandas or pyarrow">
+`pandas.read_csv` is C-backed. `pyarrow.csv.read_csv` is faster still and gives you a typed Arrow table you can hand to pandas with zero copy.
+</Step>
+<Step title="Declare dtypes explicitly">
+Without `dtype`, pandas guesses per column and falls back to `object` for anything ambiguous — that's the slowest possible representation.
+</Step>
+<Step title="Drop columns you don't use">
+`usecols` means the parser never builds the columns you skip. On a 30-column file where you need 6, this alone can halve the time.
+</Step>
+<Step title="Read in chunks if it doesn't fit comfortably">
+`chunksize=` keeps memory flat and lets you aggregate as you go instead of materializing 2 GB in RAM.
+</Step>
+<Step title="Consider DuckDB for one-shot analytics" status="todo">
+If you're filtering and aggregating, `duckdb.read_csv('file.csv')` pushes the work into a columnar engine and can beat pandas by another 2–3×.
+</Step>
+</Steps>
+
+## The code
+
+<Diff file="read_fast.py">
+```diff
+-import csv
+-
+-with open("big.csv") as f:
+-    reader = csv.reader(f)
+-    header = next(reader)
+-    rows = [row for row in reader]
++import pandas as pd
++
++DTYPES = {
++    "user_id": "int64",
++    "event": "category",
++    "ts": "datetime64[ns]",
++    "amount": "float32",
++}
++
++df = pd.read_csv(
++    "big.csv",
++    usecols=list(DTYPES),
++    dtype=DTYPES,
++    engine="c",
++    parse_dates=["ts"],
++)
+```
+</Diff>
+
+<Card title="Chunked version, when 2 GB won't sit in RAM">
+```python
+import pandas as pd
+
+DTYPES = {"user_id": "int64", "event": "category", "amount": "float32"}
+
+totals = {}
+for chunk in pd.read_csv(
+    "big.csv",
+    usecols=list(DTYPES),
+    dtype=DTYPES,
+    chunksize=500_000,
+    engine="c",
+):
+    g = chunk.groupby("event", observed=True)["amount"].sum()
+    totals = (pd.Series(totals).add(g, fill_value=0)).to_dict()
+```
+</Card>
+
+<Card title="Arrow, the fastest pure-Python option">
+```python
+import pyarrow.csv as pcsv
+import pyarrow as pa
+
+convert = pcsv.ConvertOptions(
+    include_columns=["user_id", "event", "amount"],
+    column_types={"user_id": pa.int64(), "amount": pa.float32()},
+)
+table = pcsv.read_csv("big.csv", convert_options=convert)
+```
+</Card>
+
+## What to check in your own data
+
+<Checklist title="CSV read audit" name="csv-audit">
+- [ ] I timed the read in isolation
+- [ ] I'm not using `csv.reader` in a Python loop
+- [ ] Every column has an explicit `dtype`
+- [ ] `usecols` drops everything I don't need
+- [ ] Low-cardinality strings are `category`, not `object`
+- [ ] Floats are `float32` where precision allows
+- [ ] Dates are parsed once, not per-row with `strptime`
+- [ ] File is on local SSD, not a network mount
+- [ ] I tried `pyarrow` or `duckdb` before optimizing further
+</Checklist>
+
+<Callout tone="warning" title="Common trap">
+Reading the whole file and then filtering with `df[df.x == 5]` wastes the entire parse. If your filter is simple, filter while reading (`chunksize` + mask per chunk) or let DuckDB do it in SQL.
+</Callout>
+
+## Try the numbers yourself
+
+<WhatIf title="Estimated read time">
+<Slider label="File size" min="0.5" max="8" step="0.5" value="2" name="size" unit="GB" />
+<Slider label="Columns used" min="1" max="30" step="1" value="6" name="cols" />
+<Slider label="Rows in millions" min="1" max="40" step="1" value="10" name="rows" />
+<Result label="csv.reader loop" value="rows * 24 * (cols / 6)" unit="s" />
+<Result label="pandas defaults" value="rows * 2.2 * (cols / 6)" unit="s" />
+<Result label="pandas tuned" value="rows * 1.1 * (cols / 6) * (size / 2)" unit="s" />
+<Result label="pyarrow" value="rows * 0.4 * (cols / 6) * (size / 2)" unit="s" decimals="1" />
+</WhatIf>
+
+<FollowUps>
+- Show me the DuckDB version for filtering and aggregating
+- How do I convert object columns to category without blowing memory
+- My file has a bad row that breaks pandas — how do I skip it
+- Compare pandas vs polars vs DuckDB for a 2 GB file
+</FollowUps>

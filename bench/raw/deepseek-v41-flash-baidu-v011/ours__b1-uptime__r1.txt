@@ -1,0 +1,43 @@
+# Platform Status
+
+<Callout tone="success" title="All systems operational">
+No active incidents. API serving normally across all regions.
+</Callout>
+
+<Card title="API uptime — this month">
+<Stat label="API uptime (month to date)" value="99.98%" change="+0.03% vs last month" tone="success" icon="chart-line" />
+<Progress value="99.98" max="100" label="99.98% of 100% target" tone="success" />
+</Card>
+
+<Card title="Most recent incident" subtitle="Resolved">
+<Callout tone="info" title="Elevated API error rates — resolved">
+Between 14:02 and 14:41 UTC on 12 June, a bad config rollout to the auth service caused elevated 5xx errors on the API (peaked at 4.1% of requests). Rollback completed and error rates returned to baseline. <Badge tone="success">Resolved 14:41 UTC</Badge>
+</Callout>
+
+| Field | Detail |
+|---|---|
+| Status | Resolved |
+| Resolved | 12 June, 14:41 UTC |
+| Duration | 39 minutes |
+| Impact | API requests, auth-dependent endpoints |
+| Root cause | Bad config rollout to auth service |
+</Card>
+
+<Card title="Service health">
+| Service | Status | Uptime (30d) |
+|---|---|---|
+| API | Operational | 99.98% |
+| Dashboard | Operational | 99.99% |
+| Webhooks | Operational | 99.95% |
+| Auth | Operational | 99.97% |
+</Card>
+
+<Button ask="Show the full incident history for this month" icon="clock-counter-clockwise">Full incident history</Button>
+<Button variant="secondary" ask="Subscribe to status updates" icon="bell">Subscribe to updates</Button>
+
+<FollowUps>
+- What caused the 12 June incident in more detail?
+- Show the uptime trend for the last 90 days
+- Which regions were affected by the incident?
+- How do I get notified when a new incident opens?
+</FollowUps>

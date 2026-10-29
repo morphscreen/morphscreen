@@ -1,0 +1,165 @@
+# Hospital Operations Command Center
+
+<Card title="Command Center" subtitle="Real-time operational view">
+<Columns>
+<Date label="View date" name="view-date" value="2025-01-15" />
+<Select label="Shift" name="shift" options="Day (7a-3p) | Evening (3p-11p) | Night (11p-7a)" value="Day (7a-3p)" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Progress value="87" max="100" label="87 of 100 beds occupied" />
+<Stat label="Available" value="13" change="3 discharged today" tone="success" />
+<Stat label="Pending admits" value="8" change="From ER" tone="warning" />
+</Card>
+
+<Card title="ER Wait Time">
+<Stat label="Current wait" value="42 min" change="Target: <30 min" tone="warning" />
+<Stat label="Patients in ER" value="24" change="6 critical" tone="danger" />
+<Stat label="LWBS today" value="2" change="Left without being seen" tone="danger" />
+</Card>
+
+<Card title="Critical Patients">
+<Stat label="ICU critical" value="7" tone="danger" />
+<Stat label="Step-down critical" value="4" tone="warning" />
+<Stat label="Code calls (24h)" value="3" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" x="Date" y="Admissions" title="Daily Admissions">
+| Date | Admissions |
+|---|---|
+| Jan 1 | 18 |
+| Jan 2 | 22 |
+| Jan 3 | 19 |
+| Jan 4 | 25 |
+| Jan 5 | 21 |
+| Jan 6 | 28 |
+| Jan 7 | 24 |
+| Jan 8 | 30 |
+| Jan 9 | 26 |
+| Jan 10 | 23 |
+| Jan 11 | 29 |
+| Jan 12 | 27 |
+| Jan 13 | 31 |
+| Jan 14 | 25 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients" title="Current Census by Department">
+| Department | Patients |
+|---|---|
+| Medicine | 28 |
+| Surgery | 19 |
+| ICU | 14 |
+| Cardiology | 12 |
+| Orthopedics | 11 |
+| Oncology | 9 |
+| Pediatrics | 7 |
+| OB/GYN | 6 |
+| Psychiatry | 5 |
+| Other | 9 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Staff on Shift (Day)">
+| Role | Scheduled | Present | Gap |
+|---|---|---|---|
+| Physicians | 12 | 11 | 1 |
+| RNs | 34 | 32 | 2 |
+| LPNs | 8 | 8 | 0 |
+| Techs/CNAs | 16 | 15 | 1 |
+| Respiratory | 6 | 6 | 0 |
+| Pharmacy | 4 | 4 | 0 |
+| Case Mgmt | 5 | 5 | 0 |
+| **Total** | **85** | **81** | **4** |
+</Card>
+
+<Card title="Today's OR Bookings">
+| Time | Room | Procedure | Surgeon | Status | Duration |
+|---|---|---|---|---|---|
+| 07:30 | OR 1 | Lap cholecystectomy | Dr. Chen | In progress | 1.5h |
+| 08:00 | OR 2 | Total knee arthroplasty | Dr. Patel | Pre-op | 2.5h |
+| 09:00 | OR 3 | Craniotomy | Dr. Kim | Pre-op | 4h |
+| 10:30 | OR 1 | Appendectomy | Dr. Chen | Scheduled | 1h |
+| 11:00 | OR 4 | C-section | Dr. Ross | Scheduled | 1.5h |
+| 13:00 | OR 2 | ORIF femur | Dr. Patel | Scheduled | 3h |
+| 14:00 | OR 5 | Thyroidectomy | Dr. Lee | Scheduled | 2h |
+| 15:30 | OR 1 | Hernia repair | Dr. Chen | Scheduled | 1.5h |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Critical Patients — Active Alerts">
+| Patient | Unit | Condition | Alert Since | Attending |
+|---|---|---|---|---|
+| M. Rodriguez, 67 | ICU 3 | Septic shock, on pressors | 04:22 | Dr. Ahmed |
+| J. Thompson, 45 | ICU 1 | Post-op bleed, Hb 6.2 | 05:10 | Dr. Kim |
+| A. Williams, 72 | Step-down | Acute MI, awaiting cath | 06:05 | Dr. Patel |
+| R. Davis, 38 | ICU 5 | Status asthmaticus, intubated | 06:40 | Dr. Chen |
+| L. Brown, 55 | ICU 2 | DKA, pH 7.12 | 07:15 | Dr. Ross |
+| K. Wilson, 29 | ER Bay 4 | GSW abdomen, OR pending | 07:30 | Dr. Lee |
+| P. Garcia, 61 | Step-down | PE on heparin, unstable | 08:00 | Dr. Ahmed |
+</Card>
+
+<Card title="Ready for Discharge">
+| Patient | Unit | LOS | Barrier | Target Time |
+|---|---|---|---|---|
+| S. Miller, 54 | Med 3 | 4d | Transport arranged | 10:00 |
+| T. Anderson, 68 | Surg 2 | 3d | Home health confirmed | 11:00 |
+| D. Thomas, 41 | Cardio | 2d | Prescriptions ready | 10:30 |
+| M. Jackson, 73 | Ortho | 5d | PT clearance done | 11:30 |
+| R. White, 36 | Oncology | 6d | PICC line removal | 12:00 |
+| J. Harris, 49 | Med 1 | 3d | Awaiting ride | 10:00 |
+</Card>
+</Columns>
+
+<Card title="Supplies Running Low">
+| Item | Current | Par Level | Unit | Status | Reorder ETA |
+|---|---|---|---|---|---|
+| Normal saline 1L | 24 | 60 | Cases | <Badge tone="danger">Critical</Badge> | 4 hours |
+| Heparin 5000u vials | 12 | 40 | Boxes | <Badge tone="danger">Critical</Badge> | 6 hours |
+| Fentanyl 100mcg | 18 | 50 | Amps | <Badge tone="warning">Low</Badge> | 2 hours |
+| Central line kits | 6 | 20 | Kits | <Badge tone="warning">Low</Badge> | 8 hours |
+| Chest tubes 28Fr | 3 | 12 | Each | <Badge tone="danger">Critical</Badge> | 12 hours |
+| Blood gas syringes | 45 | 100 | Boxes | <Badge tone="warning">Low</Badge> | 4 hours |
+| N95 masks (S) | 120 | 300 | Boxes | <Badge tone="warning">Low</Badge> | 24 hours |
+</Card>
+
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Incident type" name="incident-type" options="Safety event | Near miss | Equipment failure | Medication error | Fall | Pressure injury | Security | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 - No harm | Level 2 - Minor harm | Level 3 - Moderate harm | Level 4 - Severe harm | Level 5 - Death" placeholder="Select severity" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room / Area" required="true" />
+<TextArea label="Description" name="description" placeholder="What happened? Include timeline, people involved, immediate actions taken." rows="4" required="true" />
+<TextArea label="Contributing factors" name="factors" placeholder="System, process, human, environmental factors" rows="3" />
+<Input label="Reported by" name="reporter" placeholder="Your name / ID" required="true" />
+<Button variant="primary">Submit Incident Report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient name" name="patient-name" placeholder="Last, First" required="true" />
+<Input label="MRN" name="mrn" placeholder="Medical record number" required="true" />
+<Select label="Current unit" name="from-unit" options="ER | ICU | Step-down | Med 1 | Med 2 | Med 3 | Surg 1 | Surg 2 | Cardio | Ortho | Oncology | Peds | OB/GYN | Psych" required="true" />
+<Select label="Destination" name="to-unit" options="ICU | Step-down | Med 1 | Med 2 | Med 3 | Surg 1 | Surg 2 | Cardio | Ortho | Oncology | Peds | OB/GYN | Psych | External facility" required="true" />
+<Select label="Urgency" name="urgency" options="Emergent (now) | Urgent (<1h) | Semi-urgent (<4h) | Routine (next bed)" required="true" />
+<TextArea label="Clinical reason" name="reason" placeholder="Clinical justification for transfer" rows="3" required="true" />
+<Input label="Accepting physician" name="accepting-md" placeholder="Name / Contact" />
+<Input label="Requesting provider" name="requesting-md" placeholder="Your name / ID" required="true" />
+<Button variant="primary">Submit Transfer Request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Callout tone="info" title="Auto-refresh">Dashboard refreshes every 60 seconds. Last updated: 08:47 AM. <Badge tone="neutral">Live</Badge></Callout>

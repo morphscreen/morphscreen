@@ -1,0 +1,147 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="warning" title="Live andon alert">
+Line 3 – Press B32 stopped: sensor fault. 4 min since alert.
+</Callout>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE today" value="78.4%" change="+2.1 pts vs yesterday" tone="success" icon="chart-line" />
+<Progress value="78.4" max="100" label="Target 85%" tone="success" />
+</Card>
+<Card title="Units produced vs target">
+<Stat label="Produced" value="8,412" change="Target 10,000" icon="gear-six" />
+<Progress value="8412" max="10000" label="84.1% of shift target" />
+</Card>
+<Card title="Energy use today">
+<Stat label="kWh used" value="12,480" change="−3.2% vs yesterday" tone="info" icon="lightning" />
+<Stat label="Cost" value="$1,872" />
+</Card>
+</Columns>
+
+<Card title="Production lines" subtitle="Tap a line to focus">
+| Line | Product | Rate (units/hr) | Status |
+|---|---|---|---|
+| Line 1 | Steel beams | 320 | <Badge tone="success">Running</Badge> |
+| Line 2 | Resin fittings | 280 | <Badge tone="success">Running</Badge> |
+| Line 3 | Packaging rolls | 0 | <Badge tone="danger">Stopped</Badge> |
+| Line 4 | Steel coils | 245 | <Badge tone="warning">Reduced speed</Badge> |
+
+<Columns>
+<Button variant="primary">Focus on Line 1</Button>
+<Button variant="secondary">Focus on Line 2</Button>
+<Button variant="secondary">Focus on Line 3</Button>
+<Button variant="secondary">Focus on Line 4</Button>
+</Columns>
+</Card>
+
+<Card title="Defect rate – past month">
+<Chart type="line" x="Week" y="Defect rate (%)">
+| Week | Defect rate |
+|---|---|
+| Week 1 | 2.1 |
+| Week 2 | 1.8 |
+| Week 3 | 2.4 |
+| Week 4 | 1.6 |
+</Chart>
+</Card>
+
+<Card title="Downtime by cause – this week">
+<Chart type="pie" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Equipment failure | 6.5 |
+| Material shortage | 3.2 |
+| Changeover | 2.8 |
+| Quality checks | 1.4 |
+| Operator unavailable | 0.9 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Machines due for maintenance">
+| Machine | Line | Due |
+|---|---|---|
+| Press B32 | Line 3 | Today |
+| Conveyor C7 | Line 1 | Tomorrow |
+| Mixer M4 | Line 2 | Feb 21 |
+| Winder W9 | Line 4 | Feb 22 |
+</Card>
+
+<Card title="Schedule maintenance">
+<Form name="maintenance">
+<Select label="Machine" placeholder="Select machine" options="Press B32 | Conveyor C7 | Mixer M4 | Winder W9" />
+<Date label="Date" name="maint-date" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Stock levels">
+| Material | Current | Reorder point | Status |
+|---|---|---|---|
+| Steel (tonnes) | 42.5 | 30 | <Badge tone="success">OK</Badge> |
+| Resin (kg) | 1,180 | 1,500 | <Badge tone="danger">Below reorder</Badge> |
+| Packaging (pallets) | 86 | 50 | <Badge tone="success">OK</Badge> |
+</Card>
+
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Qty | Due | Status |
+|---|---|---|---|---|
+| MetalWorks Co. | Steel coils | 20 t | Mon | <Badge tone="info">Scheduled</Badge> |
+| PolymerPlus | Resin pellets | 500 kg | Wed | <Badge tone="info">Scheduled</Badge> |
+| PackRight Ltd. | Cardboard rolls | 40 pallets | Fri | <Badge tone="warning">Confirming</Badge> |
+</Card>
+
+<Card title="Shift output comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 3,650 |
+| Afternoon | 3,120 |
+| Night | 1,642 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Safety incidents">
+<Stat label="Incidents this year" value="2" tone="warning" icon="warning-circle" />
+<Stat label="Days since last" value="47" tone="success" icon="calendar" />
+</Card>
+
+<Card title="Batches on quality hold">
+| Batch | Product | Line | Reason | Since |
+|---|---|---|---|---|
+| B-2041 | Steel beams | Line 1 | Dimensional variance | 2 h |
+| B-2043 | Resin fittings | Line 2 | Colour mismatch | 45 min |
+</Card>
+</Columns>
+
+<Card title="Open work orders">
+| WO # | Line | Product | Qty | Priority |
+|---|---|---|---|---|
+| WO-1184 | Line 3 | Packaging rolls | 1,200 | <Badge tone="danger">Critical</Badge> |
+| WO-1185 | Line 1 | Steel beams | 800 | <Badge tone="warning">High</Badge> |
+| WO-1186 | Line 4 | Steel coils | 1,500 | <Badge tone="info">Normal</Badge> |
+| WO-1187 | Line 2 | Resin fittings | 950 | <Badge tone="neutral">Low</Badge> |
+</Card>
+
+<Card title="Andon alerts – live">
+| Time | Line | Station | Issue | Status |
+|---|---|---|---|---|
+| 14:32 | Line 3 | Press B32 | Sensor fault | <Badge tone="danger">Active</Badge> |
+| 14:28 | Line 4 | Winder W9 | Speed drop | <Badge tone="warning">Acknowledged</Badge> |
+| 14:15 | Line 2 | Mixer M4 | Temperature high | <Badge tone="warning">Resolved</Badge> |
+</Card>
+
+<Card title="Shift report">
+<Button variant="primary" label="Export shift report">Export PDF</Button>
+<Button variant="secondary">Export CSV</Button>
+</Card>
+
+<FollowUps>
+- Show detailed OEE breakdown for Line 1
+- List all maintenance requests pending approval
+- Compare defect rates by product type
+- View energy usage by shift
+</FollowUps>

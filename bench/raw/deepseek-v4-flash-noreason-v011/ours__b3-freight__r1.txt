@@ -1,0 +1,153 @@
+# Logistics Coordinator Board
+
+<Badge tone="warning">Data refreshed 2 minutes ago</Badge>
+
+## Shipments in Transit
+
+<Card title="Live Shipments">
+<Tabs>
+<Tab title="All (12)">
+<Columns>
+<Card title="CHI‑NYC‑001" subtitle="ETA: Today 14:30">
+<Stat label="Origin" value="Chicago, IL" />
+<Stat label="Destination" value="New York, NY" />
+<Stat label="Status" value="On time" tone="success" />
+<Button ask="Flag shipment CHI‑NYC‑001">Flag shipment</Button>
+</Card>
+<Card title="LA‑SEA‑002" subtitle="ETA: Today 18:00">
+<Stat label="Origin" value="Los Angeles, CA" />
+<Stat label="Destination" value="Seattle, WA" />
+<Stat label="Status" value="Delayed" tone="danger" />
+<Button ask="Flag shipment LA‑SEA‑002">Flag shipment</Button>
+</Card>
+<Card title="DAL‑MIA‑003" subtitle="ETA: Tomorrow 09:00">
+<Stat label="Origin" value="Dallas, TX" />
+<Stat label="Destination" value="Miami, FL" />
+<Stat label="Status" value="On time" tone="success" />
+<Button ask="Flag shipment DAL‑MIA‑003">Flag shipment</Button>
+</Card>
+<Card title="PHX‑DEN‑004" subtitle="ETA: Tomorrow 11:30">
+<Stat label="Origin" value="Phoenix, AZ" />
+<Stat label="Destination" value="Denver, CO" />
+<Stat label="Status" value="On time" tone="success" />
+<Button ask="Flag shipment PHX‑DEN‑004">Flag shipment</Button>
+</Card>
+<Card title="ATL‑BOS‑005" subtitle="ETA: Tomorrow 15:00">
+<Stat label="Origin" value="Atlanta, GA" />
+<Stat label="Destination" value="Boston, MA" />
+<Stat label="Status" value="Delayed" tone="danger" />
+<Button ask="Flag shipment ATL‑BOS‑005">Flag shipment</Button>
+</Card>
+<Card title="SFO‑PDX‑006" subtitle="ETA: Tomorrow 17:00">
+<Stat label="Origin" value="San Francisco, CA" />
+<Stat label="Destination" value="Portland, OR" />
+<Stat label="Status" value="On time" tone="success" />
+<Button ask="Flag shipment SFO‑PDX‑006">Flag shipment</Button>
+</Card>
+</Columns>
+</Tab>
+<Tab title="Delayed (2)">
+<Callout tone="danger" title="2 delayed shipments require attention">
+<Columns>
+<Card title="LA‑SEA‑002" subtitle="ETA: Today 18:00 (30 min late)">
+<Stat label="Origin" value="Los Angeles, CA" />
+<Stat label="Destination" value="Seattle, WA" />
+<Stat label="Status" value="Delayed" tone="danger" />
+<Button ask="Flag shipment LA‑SEA‑002">Flag shipment</Button>
+</Card>
+<Card title="ATL‑BOS‑005" subtitle="ETA: Tomorrow 15:00 (1 hr late)">
+<Stat label="Origin" value="Atlanta, GA" />
+<Stat label="Destination" value="Boston, MA" />
+<Stat label="Status" value="Delayed" tone="danger" />
+<Button ask="Flag shipment ATL‑BOS‑005">Flag shipment</Button>
+</Card>
+</Columns>
+</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Map>
+| Place | Lat | Lng |
+|---|---|---|
+| Chicago, IL | 41.8781 | -87.6298 |
+| New York, NY | 40.7128 | -74.0060 |
+| Los Angeles, CA | 34.0522 | -118.2437 |
+| Seattle, WA | 47.6062 | -122.3321 |
+| Dallas, TX | 32.7767 | -96.7970 |
+| Miami, FL | 25.7617 | -80.1918 |
+| Phoenix, AZ | 33.4484 | -112.0740 |
+| Denver, CO | 39.7392 | -104.9903 |
+| Atlanta, GA | 33.7490 | -84.3880 |
+| Boston, MA | 42.3601 | -71.0589 |
+| San Francisco, CA | 37.7749 | -122.4194 |
+| Portland, OR | 45.5152 | -122.6784 |
+</Map>
+
+## Key Metrics
+
+<Columns>
+<Card title="Performance">
+<Stat label="On‑time percentage" value="83.3%" change="−2.1% vs last month" tone="warning" icon="chart-line" />
+<Stat label="Average cost per shipment" value="$247.50" change="+$12.30 vs last month" tone="warning" icon="currency-dollar" />
+</Card>
+<Card title="Volume">
+<Stat label="Shipments this month" value="48" icon="truck" />
+<Stat label="Volume split by carrier" value="" />
+<Chart type="pie" title="Carrier share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 18 |
+| UPS | 14 |
+| DHL | 10 |
+| USPS | 6 |
+</Chart>
+</Card>
+</Columns>
+
+## Search by Route
+
+<Card title="Find a shipment">
+<Form name="route-search">
+<Columns>
+<Input label="Origin city" placeholder="e.g. Chicago" />
+<Input label="Destination city" placeholder="e.g. New York" />
+</Columns>
+<Button>Search</Button>
+</Form>
+</Card>
+
+## Weekly Volume (Past 2 Months)
+
+<Card title="Weekly shipment volume">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| Sep 1–7 | 14 |
+| Sep 8–14 | 16 |
+| Sep 15–21 | 12 |
+| Sep 22–28 | 15 |
+| Sep 29–Oct 5 | 13 |
+| Oct 6–12 | 17 |
+| Oct 13–19 | 11 |
+| Oct 20–26 | 14 |
+</Chart>
+</Card>
+
+## Flag a Shipment
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Input label="Shipment ID" placeholder="e.g. LA‑SEA‑002" hint="Enter the full ID from the list above" />
+<Select label="Reason" options="Weather delay | Traffic delay | Customs hold | Missing docs | Other" placeholder="Select a reason" />
+<TextArea label="Notes" placeholder="Optional details about the issue" rows="2" />
+<Button>Submit flag</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed route for LA‑SEA‑002
+- What caused the delay on ATL‑BOS‑005?
+- Compare this month's on‑time rate with last month
+- List all shipments by carrier
+</FollowUps>

@@ -1,0 +1,88 @@
+# Clinic Receptionist — Day View
+
+<Card title="Today's Schedule">
+<Columns>
+<Stat label="Patients expected" value="24" icon="users" />
+<Stat label="No-show rate (this month)" value="8%" change="-3% vs last month" tone="success" icon="chart-line" />
+<Stat label="Rooms free now" value="2/5" tone="info" icon="door" />
+</Columns>
+
+<Agenda title="Today's appointments">
+| Time | Appointment |
+|---|---|
+| 09:00 | **Olivia Martin** — Dr. Chen, Room 2 |
+| 09:20 | **James Wilson** — Dr. Patel, Room 4 |
+| 09:40 | **Sophia Davis** — Dr. Chen, Room 2 |
+| 10:00 | **Liam Brown** — Dr. Patel, Room 4 |
+| 10:20 | **Emma Garcia** — Dr. Lee, Room 1 |
+| 10:40 | **Noah Martinez** — Dr. Chen, Room 2 |
+| 11:00 | **Ava Rodriguez** — Dr. Patel, Room 4 |
+| 11:20 | **Ethan Hernandez** — Dr. Lee, Room 1 |
+| 11:40 | **Isabella Lopez** — Dr. Chen, Room 2 |
+| 12:00 | **Mason Gonzalez** — Dr. Patel, Room 4 |
+| 13:00 | **Mia Perez** — Dr. Lee, Room 1 |
+| 13:20 | **Lucas Torres** — Dr. Chen, Room 2 |
+| 13:40 | **Amelia Rivera** — Dr. Patel, Room 4 |
+| 14:00 | **Elijah Ramirez** — Dr. Lee, Room 1 |
+| 14:20 | **Harper Flores** — Dr. Chen, Room 2 |
+| 14:40 | **Benjamin Morales** — Dr. Patel, Room 4 |
+| 15:00 | **Evelyn Ortiz** — Dr. Lee, Room 1 |
+| 15:20 | **Alexander Cruz** — Dr. Chen, Room 2 |
+| 15:40 | **Sofia Reyes** — Dr. Patel, Room 4 |
+| 16:00 | **Daniel Gutierrez** — Dr. Lee, Room 1 |
+| 16:20 | **Charlotte Chavez** — Dr. Chen, Room 2 |
+| 16:40 | **Henry Ramos** — Dr. Patel, Room 4 |
+</Agenda>
+</Card>
+
+<Card title="Next patient to call out">
+<Callout tone="info" title="Now serving">
+**Liam Brown** — Room 4, Dr. Patel — arrived 10:02, waiting
+</Callout>
+<Button ask="Call Liam Brown to Room 4">Call out next patient</Button>
+</Card>
+
+<Card title="Room availability right now">
+<KeyValue title="Rooms">
+| Room | Status |
+|---|---|
+| Room 1 | **Free** |
+| Room 2 | In use |
+| Room 3 | **Free** |
+| Room 4 | In use |
+| Room 5 | Cleaning |
+</KeyValue>
+<Callout tone="success" title="Free rooms">Rooms 1 and 3 are ready for the next patients.</Callout>
+</Card>
+
+<Card title="Check in a patient">
+<Form name="check-in">
+<Input label="Patient name" placeholder="Start typing to search" hint="Search by name or date of birth" />
+<Button>Check in</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Form name="change-day">
+<Date label="Select date" hint="Today is May 15, 2025" />
+<Button variant="secondary">Show that day</Button>
+</Form>
+</Card>
+
+<Card title="No-show rate this month">
+<Chart type="bar" x="Week" y="Patients">
+| Week | Scheduled | No-shows |
+|---|---|---|
+| Week 1 | 102 | 9 |
+| Week 2 | 98 | 7 |
+| Week 3 | 110 | 8 |
+| Week 4 | 104 | 9 |
+</Chart>
+<Callout tone="success" title="Improving">No-show rate is down 3% from last month — great job!</Callout>
+</Card>
+
+<FollowUps>
+- Which patients haven't arrived yet?
+- Who is waiting the longest right now?
+- Show me tomorrow's schedule
+</FollowUps>

@@ -1,0 +1,216 @@
+# Speeding Up Your 2 GB CSV Processing
+
+Reading a 2 GB CSV in Python can be painfully slow if you're using the naive approach. Here's how to get from minutes to seconds.
+
+<Callout tone="warning" title="First, check your bottleneck">
+Before optimizing, profile your current script to see if it's the CSV reading itself, memory usage, or downstream processing that's slow. Use `cProfile` or simply time each section.
+</Callout>
+
+## 1. The Fastest Ways to Read a Large CSV
+
+<Card title="Comparison of approaches">
+<Compare title="CSV reading methods">
+| Method | Speed (2 GB) | Memory | Best for |
+|---|---|---|---|
+| pandas `read_csv` (default) | ~30-60s | ~2-4× file size | Most data analysis |
+| pandas `read_csv` with `dtype` | ~15-30s | ~1-2× file size | Known column types |
+| `polars.read_csv` | ~5-10s | ~1× file size | Speed + low memory |
+| `pandas` + `chunksize` | ~60-120s | Constant | Streaming, huge files |
+| `csv.DictReader` | ~5-10 min | Low | Simple parsing, no analysis |
+| `datatable.fread` | ~3-5s | ~1× file size | Fastest pure-Python option |
+</Compare>
+</Card>
+
+<Card title="The winning combo">
+<Steps>
+<Step title="Use Polars if you can" status="current" subtitle="Best speed-to-code ratio">
+Polars is a Rust-based DataFrame library that's 5-10× faster than pandas for CSV reading:
+<Code file="read_fast.py">
+import polars as pl
+
+df = pl.read_csv("huge_file.csv")
+# That's it — 2 GB in ~5 seconds
+</Code>
+</Step>
+<Step title="Or optimize pandas with dtypes" subtitle="If you must use pandas">
+<Code file="read_optimized.py">
+import pandas as pd
+
+# Specify dtypes to avoid inference overhead
+dtypes = {
+    "user_id": "int32",
+    "timestamp": "datetime64[ms]",
+    "amount": "float32",
+    # ... add all columns
+}
+
+df = pd.read_csv(
+    "huge_file.csv",
+    dtype=dtypes,
+    parse_dates=["timestamp"],
+    usecols=["user_id", "timestamp", "amount"],  # only needed columns
+    engine="c",  # default, but explicit
+)
+</Code>
+</Step>
+</Steps>
+</Card>
+
+## 2. Reduce Memory Usage
+
+<Card title="Memory-saving tricks">
+<Columns>
+<div>
+<Stat label="Default pandas" value="8 GB" tone="warning" icon="database" note="for a 2 GB CSV" />
+</div>
+<div>
+<Stat label="With optimization" value="2 GB" tone="success" icon="database" note="same file" />
+</div>
+</Columns>
+
+- **Use `usecols`** — only read columns you actually need
+- **Set `dtype` for every column** — avoids object dtype (strings) which are memory hogs
+- **Convert to categorical** for columns with few unique values:
+<Code file="categorical.py">
+df["category"] = df["category"].astype("category")
+</Code>
+- **Use smaller int types**: `int32` instead of `int64`, `float32` instead of `float64`
+- **For truly massive files**, process in chunks:
+
+<Code file="chunked.py">
+import pandas as pd
+
+chunk_size = 500_000  # rows per chunk
+results = []
+
+for chunk in pd.read_csv("huge.csv", chunksize=chunk_size):
+    # Process each chunk
+    filtered = chunk[chunk["value"] > 100]
+    results.append(filtered)
+
+# Combine results
+final = pd.concat(results)
+</Code>
+</Card>
+
+## 3. Parallel Processing
+
+<Card title="Split the work across cores">
+If your processing is CPU-bound, parallelize:
+
+<Code file="parallel.py">
+from multiprocessing import Pool
+import pandas as pd
+
+def process_chunk(filename, start, end):
+    # Read only lines start to end
+    df = pd.read_csv(filename, skiprows=range(1, start), nrows=end-start)
+    # ... your processing
+    return result
+
+# Split file into 8 chunks
+file_size = 2_000_000_000  # bytes
+chunks = [(0, 250_000_000), (250_000_001, 500_000_000), ...]
+
+with Pool(8) as pool:
+    results = pool.starmap(process_chunk, 
+                          [(filename, s, e) for s, e in chunks])
+</Code>
+
+<Callout tone="info" title="Better alternative">
+Instead of manual chunking, use `polars` with `pl.scan_csv()` which automatically parallelizes:
+<Code file="lazy.py">
+import polars as pl
+
+# Lazy evaluation — only reads what you need
+query = (
+    pl.scan_csv("huge.csv")
+    .filter(pl.col("value") > 100)
+    .group_by("category")
+    .agg(pl.col("value").sum())
+)
+
+result = query.collect()  # executes now
+</Code>
+</Callout>
+</Card>
+
+## 4. Quick Wins Checklist
+
+<Checklist title="Speed-up checklist" name="speed-checklist">
+- [ ] Use `polars` instead of pandas (biggest win)
+- [ ] Specify `dtype` for all columns
+- [ ] Only read needed columns with `usecols`
+- [ ] Use `chunksize` for streaming
+- [ ] Convert low-cardinality columns to `category`
+- [ ] Use smaller numeric types (`int32`, `float32`)
+- [ ] Avoid `object` dtype — parse dates/numbers explicitly
+- [ ] For simple parsing, use `datatable` or `csv` module
+- [ ] Parallelize with `multiprocessing` if CPU-bound
+- [ ] Consider converting CSV to Parquet once, then reading fast forever
+</Checklist>
+
+<Card title="One-time conversion for future speed">
+If you'll read this file repeatedly, convert it once to Parquet:
+
+<Code file="convert_to_parquet.py">
+import polars as pl
+
+# One-time conversion
+pl.read_csv("huge.csv").write_parquet("huge.parquet")
+
+# Then future reads are 10× faster
+df = pl.read_parquet("huge.parquet")
+</Code>
+</Card>
+
+## 5. Benchmark Your Current Setup
+
+<Card title="Quick benchmark">
+Run this to see where you stand:
+
+<Code file="benchmark.py">
+import time
+import pandas as pd
+import polars as pl
+
+# Test pandas
+start = time.time()
+df = pd.read_csv("huge.csv")
+print(f"pandas: {time.time() - start:.2f}s")
+
+# Test polars
+start = time.time()
+df = pl.read_csv("huge.csv")
+print(f"polars: {time.time() - start:.2f}s")
+</Code>
+
+<Callout tone="success" title="Expected results">
+For a 2 GB CSV: pandas ~40s, polars ~5s. If your pandas is much slower, check if you're on a slow disk or have insufficient RAM.
+</Callout>
+</Card>
+
+<Quiz title="Quick check">
+<Question text="What's the single biggest speedup you can apply?" answer="Switch to Polars">
+- Switch to Polars
+- Use more RAM
+- Compress the CSV
+- Use a faster hard drive
+</Question>
+<Question text="Why does specifying `dtype` help?" answer="It avoids guessing column types">
+- It avoids guessing column types
+- It compresses the data
+- It uses less disk space
+- It makes the code shorter
+</Question>
+</Quiz>
+
+<FollowUps>
+- How do I convert my existing pandas code to Polars?
+- What's the best way to handle a CSV larger than my RAM?
+- How do I profile which part of my script is slowest?
+- Can I stream-process a CSV without loading it fully?
+</FollowUps>
+
+<Button variant="primary">Show me a Polars migration guide</Button>
+<Button variant="secondary">Profile my current script</Button>

@@ -1,0 +1,57 @@
+root = Card([header, kpiRow, openRolesSection, pipelineSection, timeToHire, deptSplit, interviewsSection, attritionSection, newRoleAction])
+header = CardHeader("Hiring Overview", "Live snapshot of recruiting health · Updated moments ago")
+kpiRow = Card([headcountCard, timeToHireCard, openRolesCard, attritionCard], "clear", "row", "m", "stretch", "between", true)
+headcountCard = Card([headcountLabel, headcountValue], "sunk", "column", "s", "center")
+headcountLabel = TextContent("Current Headcount", "small-heavy")
+headcountValue = TextContent("247", "large-heavy")
+timeToHireCard = Card([ttlLabel, ttlValue], "sunk", "column", "s", "center")
+ttlLabel = TextContent("Avg Time to Hire", "small-heavy")
+ttlValue = TextContent("32 days", "large-heavy")
+openRolesCard = Card([orLabel, orValue], "sunk", "column", "s", "center")
+orLabel = TextContent("Open Roles", "small-heavy")
+orValue = TextContent("8", "large-heavy")
+attritionCard = Card([atLabel, atValue], "sunk", "column", "s", "center")
+atLabel = TextContent("6-Mo Attrition", "small-heavy")
+atValue = TextContent("4.2%", "large-heavy")
+openRolesSection = Card([orHeader, openRolesTable], "card", "column", "m")
+orHeader = Heading("Open Roles", "h3")
+openRolesTable = Table([orRoleCol, orDeptCol, orPriorityCol, orPostedCol])
+orRoleCol = Col("Role", ["Senior Backend Engineer", "Product Designer", "Account Executive", "DevOps Engineer", "Marketing Manager", "Data Analyst", "Customer Success Lead", "Frontend Engineer"])
+orDeptCol = Col("Department", ["Engineering", "Design", "Sales", "Engineering", "Marketing", "Data", "Customer Success", "Engineering"])
+orPriorityCol = Col("Priority", ["High", "Medium", "High", "High", "Medium", "Low", "Medium", "Medium"])
+orPostedCol = Col("Days Open", [12, 8, 21, 5, 14, 30, 18, 3])
+pipelineSection = Card([pipeHeader, pipelineChart], "card", "column", "m")
+pipeHeader = Heading("Candidates by Pipeline Stage", "h3")
+pipelineChart = HorizontalBarChart(pipeLabels, [pipeSeries], "grouped", "Candidates", "Stage")
+pipeLabels = ["Applied", "Screening", "Technical Interview", "Final Interview", "Offer Extended", "Hired"]
+pipeSeries = Series("Count", [142, 38, 24, 16, 9, 4])
+timeToHire = Card([tthHeader, tthDetail], "card", "column", "m")
+tthHeader = Heading("Time to Hire Trend (Last 6 Months)", "h3")
+tthDetail = LineChart(tthLabels, [tthSeries], "natural", "Month", "Days")
+tthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+tthSeries = Series("Avg Days", [38, 35, 34, 33, 32, 32])
+deptSplit = Card([dsHeader, deptPie], "card", "column", "m")
+dsHeader = Heading("Headcount Split by Department", "h3")
+deptPie = PieChart(dsLabels, dsValues, "donut", "circular")
+dsLabels = ["Engineering", "Sales", "Marketing", "Product", "Design", "Customer Success", "HR", "Finance", "Operations"]
+dsValues = [95, 52, 28, 22, 18, 12, 12, 10, 10]
+interviewsSection = Card([intHeader, interviewsList], "card", "column", "m")
+intHeader = Heading("Interviews Scheduled This Week", "h3")
+interviewsList = ListBlock(intItems, "number")
+intItems = [
+  ListItem("Senior Backend Engineer — Technical Interview", "Mon 10:00 AM · Sarah Chen (Engineering)", null, "View"),
+  ListItem("Product Designer — Portfolio Review", "Tue 2:00 PM · Marcus Webb (Design)", null, "View"),
+  ListItem("Account Executive — Role Play", "Wed 11:00 AM · Priya Patel (Sales)", null, "View"),
+  ListItem("DevOps Engineer — System Design", "Thu 9:00 AM · James Liu (Engineering)", null, "View"),
+  ListItem("Marketing Manager — Case Study", "Fri 1:00 PM · Elena Rossi (Marketing)", null, "View"),
+  ListItem("Frontend Engineer — Code Review", "Fri 3:30 PM · Sarah Chen (Engineering)", null, "View")
+]
+attritionSection = Card([atHeader, attritionChart], "card", "column", "m")
+atHeader = Heading("Monthly Attrition (Last 6 Months)", "h3")
+attritionChart = AreaChart(atLabels, [atSeries], "natural", "Month", "Attrition %")
+atLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+atSeries = Series("Attrition %", [0.8, 0.6, 0.9, 0.7, 0.5, 0.7])
+newRoleAction = Card([newRoleHeader, newRoleBtn], "clear", "column", "m", "center")
+newRoleHeader = TextContent("Need to hire? Open a new requisition in seconds.", "default")
+newRoleBtn = Buttons([openRoleBtn], "row")
+openRoleBtn = Button("Open New Role", null, "primary", "normal", "medium")

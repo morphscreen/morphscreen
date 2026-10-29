@@ -1,0 +1,82 @@
+# Async Standup
+
+**Today, December 19, 2024** · <Stat label="Missing updates" value="3" tone="warning" icon="users" />
+
+---
+
+<Card title="Post your update">
+<Form name="standup-update">
+<TextArea label="What did you do yesterday? What's today? Any blockers?" name="update" placeholder="Shipped the auth refactor. Today: API docs. Blocked: waiting on design review for new dashboard." rows="3" hint="Keep it brief — 2-3 sentences max" required="true" />
+<Button>Post update</Button>
+<Button variant="tertiary">Skip today</Button>
+</Form>
+</Card>
+
+---
+
+<Card title="Team updates" subtitle="12 of 15 posted">
+<Columns>
+<Card title="Maya Chen" subtitle="Engineering Lead">
+**Yesterday:** Finished PR review for auth service v2  
+**Today:** Writing migration guide for v2 rollout  
+**Blockers:** None
+</Card>
+
+<Card title="James Park" subtitle="Backend Engineer">
+**Yesterday:** Optimized query performance on /analytics endpoint (40% faster)  
+**Today:** Adding caching layer for user preferences  
+**Blockers:** Waiting on infra approval for Redis cluster resize
+</Card>
+
+<Card title="Priya Sharma" subtitle="Frontend Engineer">
+**Yesterday:** Built new onboarding flow components  
+**Today:** Integrating with analytics events  
+**Blockers:** Design tokens not finalized — can't complete dark mode
+</Card>
+
+<Card title="Alex Rivera" subtitle="DevOps Engineer">
+**Yesterday:** Rolled out canary deploy for payments service  
+**Today:** Monitoring error rates, updating runbooks  
+**Blockers:** None
+</Card>
+
+<Card title="Sam Okafor" subtitle="Product Designer">
+**Yesterday:** Delivered dashboard redesign mockups  
+**Today:** Prototyping mobile responsive breakpoints  
+**Blockers:** Need engineering feedback on feasibility of nested tabs
+</Card>
+
+<Card title="Lena Kowalski" subtitle="QA Engineer">
+**Yesterday:** Wrote e2e tests for checkout flow  
+**Today:** Running regression suite on staging  
+**Blockers:** Flaky test in CI — investigating race condition
+</Card>
+</Columns>
+</Card>
+
+---
+
+<Card title="🚨 Blockers needing help">
+<Callout tone="danger" title="James Park — Redis cluster resize">
+Waiting on infra approval for 2 days. Blocks caching layer work. **@infra-team** can you prioritize?
+</Callout>
+
+<Callout tone="warning" title="Priya Sharma — Design tokens">
+Dark mode blocked on token finalization. **@design-system** — any ETA?
+</Callout>
+
+<Callout tone="warning" title="Sam Okafor — Nested tabs feasibility">
+Need quick engineering sync on whether nested tabs are doable in current component library.
+</Callout>
+
+<Callout tone="info" title="Lena Kowalski — Flaky CI test">
+Race condition in checkout e2e. May need pair debugging session.
+</Callout>
+</Card>
+
+---
+
+<Card title="Still missing updates">
+<Badge tone="neutral">Diego Morales</Badge> <Badge tone="neutral">Fatima Al-Rashid</Badge> <Badge tone="neutral">Chris Thompson</Badge>
+<Callout tone="neutral" title="Remind them?">These teammates haven't posted yet. Tag them in #standup-reminders or wait for async check-in.</Callout>
+</Card>

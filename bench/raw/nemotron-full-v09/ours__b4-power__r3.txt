@@ -1,0 +1,132 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="Network Load" subtitle="Real-time">
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" icon="bolt" />
+<Progress value="78" max="100" label="Capacity Utilization" tone="warning" />
+</Card>
+
+<Card title="Market Price" subtitle="Spot market">
+<Stat label="Current Price" value="$87.40 / MWh" change="-$4.20 vs yesterday" tone="success" icon="currency-usd" />
+</Card>
+
+<Card title="Emissions Today" subtitle="CO₂ equivalent">
+<Stat label="Total Emissions" value="184,200 tCO₂" change="-3.1% vs same day last year" tone="success" icon="leaf" />
+<Stat label="Intensity" value="342 gCO₂/kWh" change="-12 gCO₂/kWh" tone="neutral" icon="chart-line" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Live output">
+<Chart type="donut" title="Generation Mix (MW)" x="Source" y="Output">
+| Source | Output |
+|---|---|
+| Natural Gas | 15,200 |
+| Coal | 11,800 |
+| Nuclear | 8,400 |
+| Wind | 4,200 |
+| Solar | 2,100 |
+| Hydro | 1,147 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Updated 06:00 UTC">
+<Chart type="line" title="Forecast vs Actual (MW)" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38200 | 38150 |
+| 02:00 | 36800 | 36750 |
+| 04:00 | 35900 | 35880 |
+| 06:00 | 36500 | 36420 |
+| 08:00 | 39800 | 39650 |
+| 10:00 | 42100 | 41980 |
+| 12:00 | 44200 |  |
+| 14:00 | 45800 |  |
+| 16:00 | 46500 |  |
+| 18:00 | 47200 |  |
+| 20:00 | 45100 |  |
+| 22:00 | 41800 |  |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Capacity (MW) | Output (MW) | Status | Last Update |
+|---|---|---|---|---|---|---|
+| Thorpe Combined Cycle | North East | Natural Gas | 1,800 | 1,620 | <Badge tone="success">Online</Badge> | 10:03 |
+| Blackwater Nuclear | South West | Nuclear | 2,200 | 2,180 | <Badge tone="success">Online</Badge> | 10:02 |
+| Highfield Wind Farm | North West | Wind | 600 | 380 | <Badge tone="success">Online</Badge> | 10:03 |
+| Riverside Solar Park | South East | Solar | 450 | 210 | <Badge tone="success">Online</Badge> | 10:01 |
+| Coalbrook Unit 3 | Midlands | Coal | 660 | 580 | <Badge tone="warning">Derated</Badge> | 10:00 |
+| Glenmore Hydro | Scotland | Hydro | 300 | 180 | <Badge tone="success">Online</Badge> | 10:02 |
+| Seabank CCGT | South | Natural Gas | 1,200 | 0 | <Badge tone="danger">Offline</Badge> | 09:45 |
+| Moorland Wind | North East | Wind | 400 | 340 | <Badge tone="success">Online</Badge> | 10:03 |
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="5 incidents">
+| ID | Region | Affected Customers | Cause | Est. Restore | Crew Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North East (Durham) | 12,400 | Storm damage | 14:30 | Dispatched |
+| OUT-2024-0851 | South West (Cornwall) | 3,200 | Cable fault | 16:00 | On site |
+| OUT-2024-0853 | Midlands (Leicester) | 8,700 | Substation fire | 18:00 | En route |
+| OUT-2024-0854 | Scotland (Aberdeen) | 1,100 | Tree on lines | 12:00 | Dispatched |
+| OUT-2024-0855 | South East (Kent) | 4,500 | Equipment failure | 15:30 | Assessing |
+
+<Card title="Planned Maintenance — This Month" subtitle="12 scheduled">
+| Date | Plant | Region | Type | Duration | Impact (MW) |
+|---|---|---|---|---|---|
+| 2024-01-15 | Thorpe CCGT Unit 2 | North East | Turbine inspection | 12 hrs | 600 |
+| 2024-01-18 | Blackwater Nuclear | South West | Refueling prep | 72 hrs | 2,200 |
+| 2024-01-22 | Highfield Wind Farm | North West | Blade maintenance | 8 hrs | 600 |
+| 2024-01-25 | Riverside Solar | South East | Inverter replacement | 6 hrs | 450 |
+| 2024-01-28 | Coalbrook Unit 1 | Midlands | Boiler overhaul | 120 hrs | 660 |
+| 2024-01-30 | Glenmore Hydro | Scotland | Penstock repair | 24 hrs | 300 |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Auto-refreshing · 3 new since 10:00">
+<Details title="⚠ 10:03 — Frequency deviation: 49.92 Hz (North region)" open="true">
+Automatic generation control responding. Monitoring for secondary dip.
+</Details>
+<Details title="⚠ 10:01 — Voltage sag detected: Seabank 400kV bus" open="false">
+Investigating possible transformer tap changer issue. Standby capacitor banks armed.
+</Details>
+<Details title="ℹ 09:58 — Wind forecast revised: -400 MW next 4 hrs (North West)" open="false">
+Updated Met Office data. Gas peakers notified for potential dispatch.
+</Details>
+<Details title="✓ 09:45 — Seabank CCGT tripped offline (1,200 MW)" open="false">
+Unit protection operated. Root cause analysis initiated. Expected return: 2024-01-16.
+</Details>
+<Details title="ℹ 09:30 — Interconnector flow change: FR-UK +500 MW" open="false">
+Scheduled commercial flow adjustment. No operational impact.
+</Details>
+</Card>
+
+<Columns>
+<Card title="Regional Focus" subtitle="Filter all views by region">
+<Select label="Select Region" placeholder="All Regions" options="All Regions | North East | North West | Midlands | South East | South West | Scotland | South" name="region-filter" />
+<Callout tone="info" title="North East Selected">
+Showing 3 plants · 1 active outage · 1,240 MW load · 28 gCO₂/kWh intensity
+</Callout>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Reduce generation or demand">
+<Form name="curtailment-order">
+<Select label="Curtailment Type" name="curtail-type" placeholder="Select type" options="Generation reduction | Demand response | Interconnector export reduction | Emergency load shedding" required="true" />
+<Select label="Target Plant / Region" name="curtail-target" placeholder="Select target" options="Thorpe CCGT (North East) | Highfield Wind (North West) | Moorland Wind (North East) | Coalbrook Unit 3 (Midlands) | North East region (demand) | South West region (demand)" required="true" />
+<Input label="Reduction Amount (MW)" name="curtail-mw" type="number" placeholder="e.g. 200" min="1" max="2000" step="10" required="true" />
+<Input label="Duration (minutes)" name="curtail-duration" type="number" placeholder="e.g. 60" min="5" max="1440" step="5" required="true" />
+<TextArea label="Reason / Justification" name="curtail-reason" placeholder="Grid stability, frequency response, constraint management..." rows="3" required="true" />
+<Button variant="danger" icon="warning">Issue Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show frequency response reserves status
+- Display interconnector flows (FR, NL, BE, NO, IE)
+- Open balancing mechanism dispatch log
+- View 7-day generation adequacy forecast
+</FollowUps>

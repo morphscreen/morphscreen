@@ -1,0 +1,164 @@
+# City Operations Center
+
+Live operational overview of the city. <Badge tone="success">All systems nominal</Badge>
+
+<Callout tone="info" title="Morning update">
+Traffic is easing after the 8 AM peak. Air quality improved overnight — no alerts active.
+</Callout>
+
+<Card title="Current conditions" subtitle="Updated 2 minutes ago">
+<Columns>
+<div>
+<Stat label="Congestion" value="Moderate" change="▼ 12% vs. usual" tone="info" icon="car" />
+<Stat label="Transit punctuality" value="91.4%" change="▲ 2.1 pts" tone="success" icon="clock" />
+<Stat label="Water used today" value="48.2M L" change="On pace" tone="neutral" icon="drop" />
+</div>
+<div>
+<Stat label="Temperature" value="18°C" change="Feels like 17°C" icon="thermometer" />
+<Stat label="Wind" value="12 km/h" change="From NW" icon="wind" />
+<Stat label="Air quality index" value="42" change="Good" tone="success" icon="leaf" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Energy use — past 7 days" subtitle="MWh consumed per day">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 4120 |
+| Tue | 4380 |
+| Wed | 4210 |
+| Thu | 4450 |
+| Fri | 4720 |
+| Sat | 3890 |
+| Sun | 3560 |
+</Chart>
+</Card>
+
+<Card title="Air quality by district" subtitle="AQI — lower is better">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Center | 38 |
+| North | 51 |
+| East | 44 |
+| South | 47 |
+| West | 35 |
+| Harbor | 62 |
+</Chart>
+</Card>
+
+<Card title="District focus" subtitle="Filter the full dashboard to one district">
+<Form name="district-focus">
+<Select label="District" placeholder="Select a district" options="Center | North | East | South | West | Harbor" name="district" />
+<Radio label="Apply to" options="All widgets | Traffic & incidents only | Air quality & energy" name="scope" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="Open incidents" subtitle="Active across the city">
+| Incident | Location | Severity | Status |
+|---|---|---|---|
+| Water main break | Center — 5th Ave & Main | <Badge tone="danger">Critical</Badge> | Crew en route |
+| Traffic signal outage | North — Elm St & 2nd St | <Badge tone="warning">High</Badge> | Technician assigned |
+| Fallen tree | East — Park Blvd | <Badge tone="warning">High</Badge> | Parks crew on site |
+| Flooded underpass | South — River Rd | <Badge tone="info">Moderate</Badge> | Pump deployed |
+| Graffiti complaint | West — Market Sq | <Badge tone="neutral">Low</Badge> | Scheduled |
+</Card>
+
+<Card title="Emergency vehicles deployed" subtitle="Live positions">
+<Gallery>
+![Map showing emergency vehicle positions](https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?w=800)
+</Gallery>
+
+| Unit | Type | District | Status |
+|---|---|---|---|
+| Ambulance 4 | Medical | Center | Responding |
+| Engine 2 | Fire | North | On scene |
+| Patrol 7 | Police | East | Patrol |
+| Rescue 1 | Technical | Harbor | Standby |
+</Card>
+
+<Card title="Parking availability — downtown" subtitle="Spots free now">
+<Chart type="horizontal" x="Facility" y="Free spots">
+| Facility | Free |
+|---|---|
+| Central Garage | 42 |
+| Market Deck | 18 |
+| River Lot | 67 |
+| City Hall Garage | 33 |
+</Chart>
+</Card>
+
+<Card title="Public events this weekend">
+| Event | Location | Day | Time |
+|---|---|---|---|
+| Farmers Market | Market Sq | Sat | 8:00–14:00 |
+| Marathon | Center streets | Sun | 6:00–12:00 |
+| Open-air concert | Riverside Park | Sat | 18:00–22:00 |
+| Street food festival | East Promenade | Sun | 11:00–20:00 |
+</Card>
+
+<Card title="Citizen reports — live feed" subtitle="Most recent first">
+| Time | Report | District | Status |
+|---|---|---|---|
+| 09:41 | Pothole on Oak Ave | North | <Badge tone="info">New</Badge> |
+| 09:37 | Broken bench at park | East | <Badge tone="info">New</Badge> |
+| 09:30 | Streetlight flickering | Center | Assigned |
+| 09:22 | Overflowing bin | South | Resolved |
+| 09:14 | Noise complaint | West | In review |
+</Card>
+
+<Card title="Service request backlog" subtitle="By category">
+| Category | Open | Overdue | SLA compliance |
+|---|---|---|---|
+| Potholes | 34 | 6 | 82% |
+| Streetlights | 21 | 3 | 88% |
+| Waste collection | 12 | 1 | 95% |
+| Parks maintenance | 18 | 4 | 78% |
+| Water & sewer | 9 | 2 | 85% |
+</Card>
+
+<Card title="Dispatch a crew" subtitle="Assign units to an incident">
+<Form name="dispatch">
+<Select label="Incident" placeholder="Select an incident" options="Water main break — Center | Traffic signal outage — North | Fallen tree — East | Flooded underpass — South" name="incident" />
+<Select label="Crew type" placeholder="Choose crew" options="Utility | Traffic | Parks | Fire | Police" name="crew" />
+<Input label="Estimated arrival (minutes)" type="number" placeholder="15" name="eta" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a public alert" subtitle="Broadcast to citizen channels">
+<Form name="public-alert">
+<Select label="Audience" placeholder="Select audience" options="All residents | One district | Incident-affected areas" name="audience" />
+<TextArea label="Message" placeholder="Write the alert message…" name="message" rows="3" hint="Max 280 characters" />
+<Checkboxes label="Channels" options="SMS | Email | App push | Social media" name="channels" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="Roadworks planned — this month">
+| Road | District | Start | End | Impact |
+|---|---|---|---|---|
+| Main St resurfacing | Center | Mar 12 | Mar 19 | Lane closure |
+| Elm St utility work | North | Mar 15 | Mar 17 | Full closure |
+| Harbor Bridge repairs | Harbor | Mar 20 | Mar 27 | Night work |
+| River Rd drainage | South | Mar 22 | Mar 26 | Partial closure |
+</Card>
+
+<Card title="Infrastructure jobs due for maintenance">
+| Asset | District | Due date | Priority | Status |
+|---|---|---|---|---|
+| Bridge 14 inspection | East | Mar 28 | <Badge tone="warning">High</Badge> | Not started |
+| Water pump station | North | Apr 02 | <Badge tone="info">Medium</Badge> | Scheduled |
+| Traffic signal controller | Center | Apr 05 | <Badge tone="info">Medium</Badge> | Not started |
+| Sewer line flushing | South | Apr 10 | <Badge tone="neutral">Low</Badge> | Planned |
+</Card>
+
+<FollowUps>
+- Show me the detail for the water main break
+- Compare air quality trends across districts this week
+- What caused the congestion spike on Friday?
+- List overdue maintenance jobs by priority
+- Compose an alert about the marathon road closures
+</FollowUps>

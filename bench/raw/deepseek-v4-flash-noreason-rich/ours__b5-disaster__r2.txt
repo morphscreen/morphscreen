@@ -1,0 +1,273 @@
+# Emergency Response Coordination Center
+
+<Callout tone="danger" title="Live Status: Active Response">
+All times local. Update frequency: 5 minutes. Last sync: 14:32.
+</Callout>
+
+<Card title="Zone Focus" subtitle="Select a zone to filter all data below">
+<Radio label="Active zone" name="zone-focus" options="All zones | Zone A – North District | Zone B – East District | Zone C – South District | Zone D – West District" value="All zones" />
+<Button variant="primary">Apply zone filter</Button>
+</Card>
+
+<Card title="1. Active Incidents by Zone">
+<Columns>
+<div>
+<Badge tone="danger">Zone A – North</Badge>
+- Wildfire – **Critical** (3 km from residential)
+- Structural collapse – **Severe**
+- Gas leak – **Moderate**
+</div>
+<div>
+<Badge tone="warning">Zone B – East</Badge>
+- Flooding – **Severe**
+- Power outage – **Moderate**
+- Road washout – **Moderate**
+</div>
+<div>
+<Badge tone="info">Zone C – South</Badge>
+- Flash flood – **Moderate**
+- Landslide – **Moderate**
+- Hail damage – **Minor**
+</div>
+<div>
+<Badge tone="neutral">Zone D – West</Badge>
+- No active incidents
+</div>
+</Columns>
+<Chart type="bar" title="Incidents by Zone and Severity" x="Zone" y="Count">
+| Zone | Critical | Severe | Moderate | Minor |
+|---|---|---|---|---|
+| Zone A | 1 | 1 | 1 | 0 |
+| Zone B | 0 | 2 | 2 | 0 |
+| Zone C | 0 | 0 | 2 | 1 |
+| Zone D | 0 | 0 | 0 | 0 |
+</Chart>
+</Card>
+
+<Card title="2. Overall Severity Summary">
+<Columns>
+<Stat label="Critical incidents" value="1" tone="danger" icon="alert-octagon" />
+<Stat label="Severe incidents" value="3" tone="warning" icon="warning" />
+<Stat label="Moderate incidents" value="5" tone="info" icon="info" />
+<Stat label="Minor incidents" value="1" tone="neutral" icon="circle" />
+</Columns>
+<Progress value="1" max="10" label="Critical load" tone="danger" />
+<Progress value="3" max="10" label="Severe load" tone="warning" />
+</Card>
+
+<Card title="3. Available Resources">
+<Columns>
+<Stat label="Vehicles ready" value="12 / 18" tone="success" icon="truck" note="6 deployed" />
+<Stat label="Personnel ready" value="34 / 52" tone="success" icon="users" note="18 on assignment" />
+<Stat label="Supplies – water" value="480 L" tone="success" icon="drop" />
+<Stat label="Supplies – food" value="320 meals" tone="success" icon="fork-knife" />
+<Stat label="Supplies – first aid" value="45 kits" tone="warning" icon="cross" note="Below reorder level" />
+<Stat label="Supplies – blankets" value="200 units" tone="success" icon="bed" />
+</Columns>
+</Card>
+
+<Card title="4. Shelters – Capacity and Occupancy">
+<Columns>
+<div>
+<Badge tone="warning">North High School</Badge>
+Occupancy: 85 / 120
+<Progress value="85" max="120" label="71%" tone="warning" />
+</div>
+<div>
+<Badge tone="danger">Community Center</Badge>
+Occupancy: 60 / 60
+<Progress value="60" max="60" label="100%" tone="danger" />
+</div>
+<div>
+<Badge tone="success">East Church Hall</Badge>
+Occupancy: 40 / 80
+<Progress value="40" max="80" label="50%" tone="success" />
+</div>
+<div>
+<Badge tone="success">South Arena</Badge>
+Occupancy: 25 / 150
+<Progress value="25" max="150" label="17%" tone="success" />
+</div>
+</Columns>
+<Callout tone="warning" title="Capacity alert">Community Center at 100% – consider diverting new arrivals to South Arena.</Callout>
+</Card>
+
+<Card title="5. Evacuation Route Status">
+<Columns>
+<div>
+<Badge tone="success">Route 1 – North to Highway 9</Badge> Open
+</div>
+<div>
+<Badge tone="warning">Route 2 – East to River Bridge</Badge> Congested – 20 min delay
+</div>
+<div>
+<Badge tone="danger">Route 3 – South to Coastal Road</Badge> Closed – flooding
+</div>
+<div>
+<Badge tone="success">Route 4 – West to Interstate 5</Badge> Open
+</div>
+</Columns>
+</Card>
+
+<Card title="6. Weather Forecast – Next 48 Hours">
+<Chart type="line" title="Temperature and Precipitation" x="Hour" y="°C / mm">
+| Hour | Temp (°C) | Precip (mm) |
+|---|---|---|
+| Now | 18 | 0.5 |
+| +6h | 16 | 2.1 |
+| +12h | 15 | 4.8 |
+| +18h | 14 | 6.2 |
+| +24h | 13 | 7.5 |
+| +30h | 14 | 5.0 |
+| +36h | 15 | 3.2 |
+| +42h | 16 | 1.5 |
+| +48h | 17 | 0.8 |
+</Chart>
+<Callout tone="danger" title="Heavy rain expected">Rain intensifies over the next 18–24 hours. Flooding risk increases in Zones B and C.</Callout>
+</Card>
+
+<Card title="7. People Rescued and Casualties">
+<Columns>
+<Stat label="Rescued" value="214" tone="success" icon="heart" />
+<Stat label="Injured – treated" value="38" tone="warning" icon="cross" />
+<Stat label="Fatalities" value="3" tone="danger" icon="warning" />
+<Stat label="Missing" value="7" tone="danger" icon="magnifying-glass" />
+</Columns>
+</Card>
+
+<Card title="8. Volunteers on Duty">
+<Columns>
+<div>
+<Avatar name="Maria Lopez" subtitle="Zone A – Search & Rescue" />
+<Avatar name="James Chen" subtitle="Zone B – Shelter support" />
+<Avatar name="Aisha Patel" subtitle="Zone C – Medical triage" />
+<Avatar name="Tom O'Brien" subtitle="Zone A – Logistics" />
+<Avatar name="Elena Rodriguez" subtitle="Zone B – Communications" />
+<Avatar name="David Kim" subtitle="Zone D – Dispatch" />
+<Avatar name="Sarah Johnson" subtitle="Zone C – Evacuation" />
+<Avatar name="Chris Miller" subtitle="Zone A – First aid" />
+</div>
+</Columns>
+<Stat label="Total volunteers on duty" value="8" tone="info" icon="users" />
+</Card>
+
+<Card title="9. Donations Received">
+<Columns>
+<Stat label="Monetary donations" value="$24,500" tone="success" icon="currency-dollar" />
+<Stat label="Supply donations" value="150 items" tone="success" icon="package" />
+<Stat label="Food donations" value="800 meals" tone="success" icon="fork-knife" />
+<Stat label="Blood donations" value="40 units" tone="success" icon="droplet" />
+</Columns>
+</Card>
+
+<Card title="10. Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Status |
+|---|---|---|---|---|
+| AR-104 | Zone B | Drinking water | High | Pending |
+| AR-105 | Zone C | Medical supplies | High | Pending |
+| AR-106 | Zone A | Sandbags | Medium | Pending |
+| AR-107 | Zone B | Generator fuel | High | Pending |
+| AR-108 | Zone C | Baby formula | Medium | Pending |
+<Callout tone="warning" title="5 requests pending">Highest priority: AR-104 (water) and AR-105 (medical).</Callout>
+</Card>
+
+<Card title="11. Communication Channels">
+<Columns>
+<div>
+<Badge tone="success">Radio – Dispatch</Badge> Up
+<Badge tone="success">Radio – Field ops</Badge> Up
+<Badge tone="success">Phone lines</Badge> Up
+<Badge tone="danger">Satellite link</Badge> Down – degraded
+<Badge tone="success">Data network</Badge> Up
+<Badge tone="warning">Public alert system</Badge> Partial – SMS only
+</div>
+</Columns>
+</Card>
+
+<Card title="12. Roads Closed">
+| Road | Location | Reason | Estimated reopen |
+|---|---|---|---|
+| Route 3 | South to Coastal Rd | Flooding | Unknown |
+| Main St | Zone B, blocks 4–6 | Structural collapse | 48 hrs |
+| Hill Rd | Zone A, mile 2 | Landslide | 24 hrs |
+| Bridge St | Zone C, river crossing | Flooding | 36 hrs |
+</Card>
+
+<Card title="13. Nearby Hospitals – Free Beds">
+<Columns>
+<div>
+<Badge tone="success">General Hospital</Badge>
+Free beds: 12 / 40
+<Progress value="12" max="40" label="30% free" tone="success" />
+</div>
+<div>
+<Badge tone="warning">St. Mary's</Badge>
+Free beds: 4 / 25
+<Progress value="4" max="25" label="16% free" tone="warning" />
+</div>
+<div>
+<Badge tone="success">County Medical</Badge>
+Free beds: 18 / 35
+<Progress value="18" max="35" label="51% free" tone="success" />
+</div>
+<div>
+<Badge tone="danger">East Side Clinic</Badge>
+Free beds: 1 / 10
+<Progress value="1" max="10" label="10% free" tone="danger" />
+</div>
+</Columns>
+</Card>
+
+<Card title="14. Open Tasks">
+| Task ID | Description | Assignee | Due | Status |
+|---|---|---|---|---|
+| T-221 | Deliver water to AR-104 | James Chen | 15:00 | In progress |
+| T-222 | Set up medical triage at South Arena | Elena Rodriguez | 16:00 | In progress |
+| T-223 | Sandbag Route 2 | Tom O'Brien | 17:30 | Pending |
+| T-224 | Fuel generator at Community Center | David Kim | 15:30 | In progress |
+| T-225 | Evacuate block 3, Zone C | Sarah Johnson | 18:00 | Pending |
+</Card>
+
+<Card title="15. Request More Resources">
+<Form name="resource-request">
+<Select label="Resource type" name="resource-type" placeholder="Choose type" options="Vehicles | Personnel | Water | Food | Medical supplies | Blankets | Sandbags | Fuel | Generators | Other" />
+<Input label="Quantity" name="quantity" type="number" placeholder="e.g. 50" min="1" required="true" />
+<Input label="Destination zone" name="destination-zone" placeholder="e.g. Zone B" />
+<TextArea label="Additional notes" name="notes" placeholder="Urgency, special handling, etc." rows="3" />
+<Button variant="primary">Submit resource request</Button>
+</Form>
+</Card>
+
+<Card title="16. Broadcast Update">
+<Form name="broadcast">
+<TextArea label="Message" name="broadcast-message" placeholder="Type the message to broadcast to all teams and the public…" rows="4" required="true" hint="This will be sent via all available channels." />
+<Select label="Audience" name="audience" placeholder="Choose audience" options="All teams + public | Teams only | Zone A teams | Zone B teams | Zone C teams | Zone D teams" />
+<Button variant="primary">Send broadcast</Button>
+</Form>
+</Card>
+
+<Card title="17. Focus on One Zone">
+<Select label="Focus zone" name="focus-zone" placeholder="Select a zone" options="All zones | Zone A – North District | Zone B – East District | Zone C – South District | Zone D – West District" />
+<Button variant="primary">Focus view on this zone</Button>
+<Button variant="secondary">Reset to all zones</Button>
+</Card>
+
+<Card title="18. File Situation Report">
+<Form name="sitrep">
+<Input label="Reported by" name="reporter" placeholder="Name / role" required="true" />
+<Select label="Zone" name="sitrep-zone" placeholder="Select zone" options="Zone A – North | Zone B – East | Zone C – South | Zone D – West | All zones" required="true" />
+<TextArea label="Situation summary" name="sitrep-summary" placeholder="Describe the current situation, changes, and needs…" rows="5" required="true" />
+<Select label="Overall condition" name="condition" placeholder="Rate condition" options="Stable | Deteriorating | Improving | Critical" required="true" />
+<Radio label="Urgency" name="urgency" options="Routine | Priority | Emergency" required="true" />
+<Button variant="primary">Submit situation report</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full incident list for Zone A
+- Which shelters have the most free space right now?
+- What's the latest on Route 3 reopening?
+- List all hospitals that can accept new patients immediately
+- What tasks are overdue?
+- Summarize the last broadcast message
+</FollowUps>

@@ -1,0 +1,165 @@
+# Personal Banking Home
+
+<Callout tone="info" title="Good morning, Alex">Here's your financial snapshot for today. You're on track across all accounts.</Callout>
+
+## Account Balances
+
+<Columns>
+<Card title="Checking">
+<Stat label="Available" value="$12,480.32" change="+$2,150.00 this month" icon="bank" tone="success" />
+<Badge tone="success">Active</Badge>
+</Card>
+
+<Card title="Savings">
+<Stat label="Available" value="$38,210.75" change="+$350.00 this month" icon="piggy-bank" tone="info" />
+<Badge tone="info">Auto-save on</Badge>
+</Card>
+
+<Card title="Credit">
+<Stat label="Available" value="$6,890.00" change="$1,110.00 of $8,000.00 used" icon="credit-card" tone="neutral" />
+<Badge tone="warning">$110.00 minimum due</Badge>
+</Card>
+</Columns>
+
+## Recent Transactions
+
+<Card title="Latest activity" subtitle="Last 7 days">
+| Date | Merchant | Amount | Account |
+|---|---|---|---|
+| Today | Whole Foods Market | -$84.23 | Checking |
+| Yesterday | Shell Gas | -$48.50 | Checking |
+| Yesterday | Netflix | -$15.99 | Credit |
+| Oct 12 | Amazon | -$129.40 | Credit |
+| Oct 11 | Salary – Acme Corp | +$4,583.33 | Checking |
+| Oct 10 | Starbucks | -$7.85 | Checking |
+| Oct 9 | Con Edison | -$92.17 | Checking |
+
+<Button variant="secondary" label="Dispute a transaction" icon="warning-circle">Dispute a transaction</Button>
+</Card>
+
+## Spending This Month
+
+<Card title="By category" subtitle="October 2025">
+<Chart type="donut" title="Spending split">
+| Category | Amount |
+|---|---|
+| Housing | 1450 |
+| Groceries | 620 |
+| Dining | 340 |
+| Transport | 210 |
+| Entertainment | 150 |
+| Utilities | 190 |
+| Other | 95 |
+</Chart>
+</Card>
+
+## Bills Due Soon
+
+<Card title="Upcoming bills" subtitle="Next 14 days">
+<Tabs>
+<Tab title="All bills">
+| Bill | Amount | Due date | Status |
+|---|---|---|---|
+| Rent | $1,450.00 | Oct 18 | <Badge tone="warning">Due in 5 days</Badge> |
+| Electric | $92.17 | Oct 20 | <Badge tone="warning">Due in 7 days</Badge> |
+| Internet | $69.99 | Oct 22 | <Badge tone="neutral">Due in 9 days</Badge> |
+| Phone | $55.00 | Oct 25 | <Badge tone="neutral">Due in 12 days</Badge> |
+</Table>
+</Tab>
+<Tab title="Paid this month">
+| Bill | Amount | Paid on |
+|---|---|---|
+| Water | $34.50 | Oct 3 |
+| Insurance | $120.00 | Oct 5 |
+</Tab>
+</Tabs>
+</Card>
+
+## Vacation Savings Goal
+
+<Card title="Hawaii trip – 2026" subtitle="Target: $6,000.00 by June 2026">
+<Columns>
+<Stat label="Saved so far" value="$4,350.00" change="+$350.00 this month" icon="airplane" tone="success" />
+<Stat label="Remaining" value="$1,650.00" change="72% complete" icon="target" tone="info" />
+</Columns>
+
+<Progress value="4350" max="6000" label="72% of goal" tone="success" />
+
+<Callout tone="success" title="On track">At your current pace of $350/month, you'll reach your goal by March 2026 — 3 months early.</Callout>
+</Card>
+
+## Credit Score
+
+<Card title="Your credit health" subtitle="Updated October 12, 2025">
+<Columns>
+<Stat label="FICO Score" value="742" change="+12 points this year" icon="chart-line" tone="success" />
+<Stat label="Rating" value="Good" icon="shield-check" tone="info" />
+</Columns>
+
+<Progress value="742" max="850" label="742 / 850" tone="success" />
+
+| Factor | Status |
+|---|---|
+| Payment history | <Badge tone="success">Excellent</Badge> |
+| Credit utilization | <Badge tone="success">18%</Badge> |
+| Credit age | <Badge tone="info">7 years 4 months</Badge> |
+| New inquiries | <Badge tone="neutral">1 in last 6 months</Badge> |
+
+<Details title="Freeze credit line" open="false">
+<Callout tone="warning" title="Impact of freezing">Freezing your credit line prevents new purchases and balance transfers. Recurring payments and returns are unaffected. You can unfreeze anytime.</Callout>
+<Button variant="danger" label="Freeze credit line" icon="lock">Freeze credit line</Button>
+</Details>
+</Card>
+
+## Move Money
+
+<Card title="Transfer between accounts" subtitle="Instant transfers, no fee">
+<Form name="transfer">
+<Select label="From" options="Checking – $12,480.32 | Savings – $38,210.75 | Credit – $6,890.00 available" name="from" placeholder="Choose account" />
+<Select label="To" options="Checking – $12,480.32 | Savings – $38,210.75 | Credit – $6,890.00 available" name="to" placeholder="Choose account" />
+<Input label="Amount" type="number" placeholder="0.00" name="amount" min="1" hint="Max $10,000 per transfer" required="true" />
+<Input label="Note (optional)" placeholder="e.g. Rent, savings top-up" name="note" />
+<Radio label="When" options="Now | Scheduled for later" name="timing" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+## Statement Period
+
+<Card title="Statement preferences" subtitle="Choose when your billing cycle starts">
+<Form name="statement">
+<Select label="Statement period" options="1st – 30th | 5th – 4th | 10th – 9th | 15th – 14th | 20th – 19th | 25th – 24th" name="period" placeholder="Current: 1st – 30th" hint="Your next statement closes on Oct 31" />
+<Button variant="secondary">Save period</Button>
+</Form>
+</Card>
+
+## Alert Settings
+
+<Card title="Transaction alerts" subtitle="Choose what to be notified about">
+<Form name="alerts">
+<Checkboxes label="Alert me when" options="Balance drops below $500 | Single purchase over $200 | International transaction | Card not present | Large deposit over $2,000 | Monthly statement available | Payment due in 3 days | Credit utilization exceeds 30%" name="triggers" value="Balance drops below $500 | Single purchase over $200 | International transaction" hint="You'll get push, email, and SMS notifications" />
+<Switch label="Email notifications" name="email" value="true" hint="Send alerts to alex@email.com" />
+<Switch label="Push notifications" name="push" value="true" />
+<Switch label="SMS notifications" name="sms" value="false" hint="Standard rates apply" />
+<Button>Save preferences</Button>
+</Form>
+</Card>
+
+## Dispute a Transaction
+
+<Card title="Report an issue" subtitle="We'll investigate within 10 business days">
+<Form name="dispute">
+<Select label="Transaction" options="Netflix – $15.99 on Oct 12 | Amazon – $129.40 on Oct 11 | Shell Gas – $48.50 on Oct 13 | Other" name="transaction" placeholder="Select transaction" required="true" />
+<Radio label="Reason" options="I didn't make this purchase | Wrong amount charged | Duplicate charge | Item not received | Cancelled but still charged | Other" name="reason" required="true" />
+<TextArea label="Details" placeholder="Explain what happened… Include dates, amounts, and any communication with the merchant." name="details" rows="4" hint="The more detail you provide, the faster we can resolve it" />
+<Input label="Expected resolution" type="text" placeholder="e.g. Refund of $15.99" name="resolution" />
+<Button variant="danger" label="Submit dispute" icon="warning-circle">Submit dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my full transaction history for October
+- What's my projected credit score in 6 months?
+- Can I increase my credit limit?
+- How much interest will I earn on savings this year?
+</FollowUps>

@@ -1,0 +1,119 @@
+# Sales Dashboard — This Year
+
+<Callout tone="info" title="How to read this">
+Numbers below are a worked example for a small shop, running Jan–Oct 2026 with today at 2026-10-25. Swap in your own figures and the shape of the story stays the same.
+</Callout>
+
+<Card title="Headline numbers" subtitle="Year to date, 2026">
+<Columns>
+<Stat label="Revenue YTD" value="$412,800" change="+18% vs last year" tone="success" icon="chart-line" />
+<Stat label="Orders" value="6,140" change="+11%" tone="success" icon="shopping-bag" />
+<Stat label="Average order value" value="$67.23" change="+6%" tone="info" icon="receipt" />
+<Stat label="Refund rate" value="2.4%" change="+0.3 pts" tone="warning" icon="arrow-u-up-left" />
+</Columns>
+</Card>
+
+<Card title="Revenue by month">
+<Chart type="line" x="Month" y="USD">
+| Month | Revenue |
+|---|---|
+| Jan | 24800 |
+| Feb | 26300 |
+| Mar | 31200 |
+| Apr | 33900 |
+| May | 37600 |
+| Jun | 35400 |
+| Jul | 38800 |
+| Aug | 41200 |
+| Sep | 44600 |
+| Oct | 48900 |
+</Chart>
+</Card>
+
+<Card title="Where the money comes from">
+<Chart type="donut" title="Revenue share by channel">
+| Channel | Revenue |
+|---|---|
+| In-store | 226400 |
+| Online | 128600 |
+| Wholesale | 57800 |
+</Chart>
+</Card>
+
+<Card title="Top product categories">
+<Chart type="horizontal" x="Category" y="Revenue">
+| Category | Revenue |
+|---|---|
+| Coffee & beans | 118400 |
+| Brewing gear | 94600 |
+| Pastry & food | 82300 |
+| Merch & gifts | 61900 |
+| Subscriptions | 55600 |
+</Chart>
+</Card>
+
+<Card title="Conversion funnel" subtitle="Online store, YTD">
+<Funnel title="Visits to orders">
+| Stage | Count |
+|---|---|
+| Site visits | 184000 |
+| Product views | 61200 |
+| Added to cart | 12800 |
+| Checkout started | 7900 |
+| Orders | 6140 |
+</Funnel>
+</Card>
+
+<Card title="Month-on-month detail">
+<Heatmap title="Revenue by weekday (USD, avg per day)">
+| Weekday | Jan-Mar | Apr-Jun | Jul-Sep | Oct |
+|---|---|---|---|---|
+| Mon | 780 | 840 | 910 | 1020 |
+| Tue | 810 | 880 | 950 | 1080 |
+| Wed | 860 | 930 | 1010 | 1150 |
+| Thu | 900 | 980 | 1060 | 1210 |
+| Fri | 1240 | 1360 | 1480 | 1690 |
+| Sat | 1620 | 1780 | 1940 | 2210 |
+| Sun | 1180 | 1290 | 1410 | 1600 |
+</Heatmap>
+</Card>
+
+<Card title="Year at a glance">
+<KeyValue title="Key facts">
+| Metric | Value |
+|---|---|
+| Best month | October — $48,900 |
+| Best weekday | Saturday |
+| Top channel | In-store (55%) |
+| Repeat customer share | 41% |
+| Stockouts this year | 14 SKUs |
+| Average basket size | 3.2 items |
+</KeyValue>
+</Card>
+
+<Card title="What to do next">
+<Checklist title="Q4 action list" name="q4-actions">
+- [x] Pull YTD revenue and order counts
+- [ ] Restock the 14 stockout SKUs before the holiday rush
+- [ ] Push Saturday staffing up — it's the strongest day
+- [ ] Test a bundle on coffee + pastry to lift basket size
+- [ ] Review refund rate by category to find the 2.4%
+- [ ] Set next year's target off the +18% trend
+</Checklist>
+</Card>
+
+<Card title="Try your own numbers">
+<WhatIf title="What a 10% lift would do">
+<Slider label="Revenue lift" name="lift" min="0" max="30" step="1" value="10" unit="%" />
+<Slider label="Refund rate" name="refunds" min="0" max="10" step="0.1" value="2.4" unit="%" />
+<Result label="Projected revenue" value="412800 * (1 + lift / 100)" unit="$" />
+<Result label="Refund cost" value="412800 * (1 + lift / 100) * refunds / 100" unit="$" />
+</WhatIf>
+</Card>
+
+<FollowUps>
+- Break October's $48,900 down by product
+- Which SKUs are driving the refund rate?
+- Build me a target for next year
+- Show the online funnel month by month
+</FollowUps>

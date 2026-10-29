@@ -1,0 +1,140 @@
+# StreamOps — Live Operations Room
+
+<Card title="Region focus" subtitle="Every metric on this screen updates for the selected region">
+<Select label="Focus region" options="Global | North America | Europe | Asia-Pacific | Latin America | Middle East & Africa" value="Global" />
+</Card>
+
+<Columns>
+<Stat label="Viewers watching now" value="1,284,392" change="+6.2%" note="vs last hour" />
+<Stat label="Buffering rate" value="0.42%" change="-0.03 pt" note="target under 0.5%" />
+<Stat label="Recommendation CTR" value="3.8%" change="+0.4 pt" note="vs last week" />
+<Stat label="Searches without playback" value="1,204" change="-8.1%" note="no title started" />
+</Columns>
+
+<Callout tone="warning" title="Latin America is degrading">
+Buffering hit 1.2% and error rate is up. Switch the region focus above to Latin America to inspect further.
+</Callout>
+
+<Columns>
+<Card title="Most-watched titles" subtitle="Hours watched in the last 24 hours">
+| Title | Hours | Trend |
+|---|---|---|
+| Neon Horizon | 2.41M | +12% |
+| The Last Signal | 1.87M | +8% |
+| Midnight Protocol | 1.62M | -3% |
+| Crimson Tide: Reboot | 1.34M | +21% |
+| Paper Moons | 1.08M | +5% |
+</Card>
+
+<Card title="Watch time over the past month" subtitle="Millions of hours per week">
+<Chart type="area" title="Watch time" x="Week" y="Million hours">
+| Week | Watch time |
+|---|---|
+| W1 | 42.1 |
+| W2 | 45.8 |
+| W3 | 44.3 |
+| W4 | 48.9 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="New subscribers vs cancellations" subtitle="Past month, by week">
+<Chart type="bar" title="Subscribers vs cancellations" x="Week" y="Count">
+| Week | New subscribers | Cancellations |
+|---|---|---|
+| W1 | 82400 | 31200 |
+| W2 | 91100 | 29800 |
+| W3 | 88700 | 33400 |
+| W4 | 104300 | 28900 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre" subtitle="Hours watched in the last 7 days">
+<Chart type="bar" title="Hours by genre" x="Genre" y="Million hours">
+| Genre | Hours |
+|---|---|
+| Drama | 18.2 |
+| Sci-Fi | 14.7 |
+| Comedy | 12.1 |
+| Documentary | 9.4 |
+| Thriller | 8.8 |
+| Kids | 7.3 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Delivery health by region" subtitle="Error rate and latency per region">
+| Region | Health | Error rate | Latency |
+|---|---|---|---|
+| North America | <Badge tone="success">Excellent</Badge> | 0.2% | 120 ms |
+| Europe | <Badge tone="info">Good</Badge> | 0.4% | 140 ms |
+| Asia-Pacific | <Badge tone="info">Good</Badge> | 0.5% | 180 ms |
+| Latin America | <Badge tone="warning">Degraded</Badge> | 1.2% | 260 ms |
+| Middle East & Africa | <Badge tone="info">Good</Badge> | 0.6% | 210 ms |
+</Card>
+
+<Card title="Releases coming this month" subtitle="New titles landing in March">
+| Date | Title | Type |
+|---|---|---|
+| Mar 5 | Solaris Rising S2 | <Badge tone="info">Series</Badge> |
+| Mar 12 | The Quiet War | <Badge tone="neutral">Film</Badge> |
+| Mar 19 | Laugh Track | <Badge tone="neutral">Stand-up</Badge> |
+| Mar 26 | Deep Currents | <Badge tone="info">Documentary</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Licenses expiring soon" subtitle="Renew or drop before these dates">
+| Title | Expires | Days left |
+|---|---|---|
+| Starlight Express | Mar 28 | <Badge tone="danger">9</Badge> |
+| Old Town Stories | Apr 3 | <Badge tone="warning">15</Badge> |
+| The Great Bake | Apr 9 | <Badge tone="warning">21</Badge> |
+| Iron Skies | Apr 15 | <Badge tone="neutral">27</Badge> |
+</Card>
+
+<Card title="Revenue split by plan" subtitle="Share of monthly revenue">
+<Chart type="donut" title="Revenue by plan" x="Plan" y="Share">
+| Plan | Share |
+|---|---|
+| Premium | 48 |
+| Standard | 33 |
+| Basic | 14 |
+| Mobile | 5 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Viewing split by device" subtitle="Share of total watch time">
+<Chart type="pie" title="Viewing by device" x="Device" y="Share">
+| Device | Share |
+|---|---|
+| Smart TV | 42 |
+| Mobile | 28 |
+| Tablet | 12 |
+| Web | 11 |
+| Game console | 7 |
+</Chart>
+</Card>
+
+<Card title="Feature flags" subtitle="Product features and their current state">
+<Switch label="4K HDR for all tiers" name="4k-hdr" value="true" hint="Rolled out to 100%" />
+<Switch label="New onboarding flow" name="onboarding" value="true" hint="A/B test on 50% of new users" />
+<Switch label="AI-generated trailers" name="ai-trailers" value="false" hint="Paused until quality review passes" />
+<Switch label="Social watch parties" name="watch-parties" value="false" hint="Invite-only beta" />
+<Switch label="Offline downloads on Mobile" name="offline-mobile" value="true" hint="Available on all mobile tiers" />
+</Card>
+</Columns>
+
+<Card title="Promote a title on the home screen" subtitle="Choose a title, placement, and window">
+<Form name="promote-title">
+<Select label="Title" options="Neon Horizon | The Last Signal | Midnight Protocol | Crimson Tide: Reboot | Paper Moons" placeholder="Choose a title" />
+<Radio label="Placement" options="Hero banner | Row 2 | Row 5" />
+<Date label="Start date" />
+<Date label="End date" />
+<Button>Promote on home screen</Button>
+</Form>
+</Card>

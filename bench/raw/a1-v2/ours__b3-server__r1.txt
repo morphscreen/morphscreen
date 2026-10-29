@@ -1,0 +1,87 @@
+# Service Health Dashboard
+
+<Card title="Service Health Overview" subtitle="Last updated: 2024-01-15 14:32 UTC">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Stat label="Current error rate" value="0.23%" change="+0.05% vs 1h ago" tone="warning" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 warning" tone="danger" />
+<Stat label="P99 latency" value="847ms" change="+12ms vs 1h ago" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Region Filter">
+<Select label="Select region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="All regions" />
+</Card>
+
+<Card title="CPU & Memory Usage (Last 24 Hours)">
+<Chart type="line" x="Time" y="Usage %" title="Resource Utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 32 | 45 |
+| 02:00 | 28 | 42 |
+| 04:00 | 25 | 38 |
+| 06:00 | 35 | 48 |
+| 08:00 | 52 | 62 |
+| 10:00 | 68 | 71 |
+| 12:00 | 74 | 78 |
+| 14:00 | 71 | 75 |
+| 16:00 | 65 | 70 |
+| 18:00 | 58 | 64 |
+| 20:00 | 48 | 55 |
+| 22:00 | 38 | 49 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (3)">
+| ID | Title | Severity | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-1847 | Database connection pool exhaustion | <Badge tone="danger">Critical</Badge> | us-east-1 | 2024-01-15 13:45 | Investigating | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-1846 | Elevated 5xx errors on /api/v2/payments | <Badge tone="warning">Warning</Badge> | eu-west-1 | 2024-01-15 12:20 | Mitigating | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-1845 | High latency on authentication service | <Badge tone="warning">Warning</Badge> | ap-southeast-1 | 2024-01-15 11:10 | Monitoring | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="Critical (1)">
+| ID | Title | Severity | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-1847 | Database connection pool exhaustion | <Badge tone="danger">Critical</Badge> | us-east-1 | 2024-01-15 13:45 | Investigating | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="Warning (2)">
+| ID | Title | Severity | Region | Started | Status | Actions |
+|---|---|---|---|---|---|---|
+| INC-1846 | Elevated 5xx errors on /api/v2/payments | <Badge tone="warning">Warning</Badge> | eu-west-1 | 2024-01-15 12:20 | Mitigating | <Button variant="secondary" size="small">Acknowledge</Button> |
+| INC-1845 | High latency on authentication service | <Badge tone="warning">Warning</Badge> | ap-southeast-1 | 2024-01-15 11:10 | Monitoring | <Button variant="secondary" size="small">Acknowledge</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Five Slowest Endpoints (P99 Latency)">
+| Rank | Endpoint | Method | P99 Latency | P95 Latency | Error Rate | Region |
+|---|---|---|---|---|---|---|
+| 1 | /api/v2/reports/generate | POST | 2.4s | 1.8s | 1.2% | us-east-1 |
+| 2 | /api/v1/search/fulltext | GET | 1.9s | 1.3s | 0.8% | eu-west-1 |
+| 3 | /api/v2/payments/process | POST | 1.7s | 1.1s | 2.1% | us-east-1 |
+| 4 | /api/v1/analytics/export | GET | 1.5s | 980ms | 0.3% | ap-southeast-1 |
+| 5 | /api/v2/users/batch-update | PUT | 1.3s | 890ms | 0.5% | us-west-2 |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error-rate-threshold" type="number" placeholder="0.5" value="0.5" hint="Trigger alert when error rate exceeds this value" />
+<Input label="P99 latency threshold (ms)" name="latency-threshold" type="number" placeholder="1000" value="1000" hint="Trigger alert when P99 latency exceeds this value" />
+<Input label="CPU usage threshold (%)" name="cpu-threshold" type="number" placeholder="80" value="80" hint="Trigger alert when CPU usage exceeds this value" />
+<Input label="Memory usage threshold (%)" name="memory-threshold" type="number" placeholder="85" value="85" hint="Trigger alert when memory usage exceeds this value" />
+</Columns>
+<Button variant="primary">Save Thresholds</Button>
+<Button variant="tertiary">Reset to Defaults</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Acknowledge All Incidents</Button>
+<Button variant="secondary" size="large">Create Runbook Link</Button>
+<Button variant="tertiary" size="large">Page On-Call</Button>
+</Columns>
+</Callout>

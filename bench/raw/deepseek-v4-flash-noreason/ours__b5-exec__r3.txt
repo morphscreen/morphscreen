@@ -1,0 +1,134 @@
+# CEO Quarterly Command View
+
+<Card title="Quarter Selector & Filters">
+<Columns>
+<div>
+<Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" name="quarter" value="Q3 2025" />
+</div>
+<div>
+<Select label="Region" options="All Regions | North America | EMEA | APAC | LATAM" name="region" value="All Regions" />
+</div>
+<div>
+<Button variant="primary" label="Export Full Pack">Export Full Pack</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Financial Snapshot">
+<Columns>
+<Stat label="Revenue" value="$48.2M" change="+8.3% QoQ" tone="success" icon="trend-up" />
+<Stat label="Costs" value="$36.1M" change="+4.1% QoQ" tone="warning" icon="receipt" />
+<Stat label="Profit" value="$12.1M" change="+15.2% QoQ" tone="success" icon="chart-line" />
+<Stat label="Months of Runway" value="14.2" change="Stable" tone="info" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Revenue & Costs — Four Quarters" subtitle="Trend across Q4 2024 – Q3 2025">
+<Chart type="line" x="Quarter" y="USD (M)">
+| Quarter | Revenue | Costs |
+|---|---|---|
+| Q4 2024 | 38.4 | 30.2 |
+| Q1 2025 | 41.8 | 32.5 |
+| Q2 2025 | 44.5 | 34.7 |
+| Q3 2025 | 48.2 | 36.1 |
+</Chart>
+</Card>
+
+<Card title="Budget vs. Plan by Department" subtitle="Actual spend vs. approved plan, Q3 2025">
+<Chart type="bar" x="Department" y="USD (M)">
+| Department | Actual | Plan |
+|---|---|---|
+| Engineering | 12.4 | 13.0 |
+| Sales & Marketing | 9.8 | 10.2 |
+| Operations | 6.2 | 5.8 |
+| Product | 4.9 | 5.0 |
+| G&A | 2.8 | 2.6 |
+</Chart>
+<Columns>
+<Stat label="Total Budget" value="$36.1M" change="−$0.5M vs plan" tone="warning" />
+<Stat label="Variance" value="−1.4%" note="Under plan" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Headcount by Department">
+<Chart type="bar" x="Department" y="Employees">
+| Department | Headcount |
+|---|---|
+| Engineering | 142 |
+| Sales & Marketing | 98 |
+| Operations | 64 |
+| Product | 41 |
+| G&A | 27 |
+</Chart>
+<Callout tone="info" title="Hiring status">Engineering and Sales are approved for +12 and +8 headcount in Q4. Operations is in a freeze.</Callout>
+</Card>
+
+<Card title="Top Risks">
+| Risk | Owner | Severity |
+|---|---|---|
+| Key customer concentration — top 3 accounts = 38% of revenue | Sarah Chen (CFO) | <Badge tone="danger">High</Badge> |
+| Supply chain disruption in APAC region | Marcus Webb (COO) | <Badge tone="warning">Medium</Badge> |
+| Engineering attrition — 14% trailing 12 months | Priya Sharma (CHRO) | <Badge tone="warning">Medium</Badge> |
+| Regulatory compliance — new EU data rules | David Okafor (General Counsel) | <Badge tone="info">Low</Badge> |
+</Card>
+
+<Card title="Strategic Initiatives">
+<Steps>
+<Step title="Enterprise Platform Migration" status="done" subtitle="Completed Jul 12 — all workloads migrated to new stack" />
+<Step title="APAC Market Expansion" status="current" subtitle="On track — 2 new offices, 14 enterprise deals in pipeline" />
+<Step title="AI-Powered Analytics Product" status="current" subtitle="Beta with 8 design partners; GA planned for Q4" />
+<Step title="Zero Trust Security Rollout" status="todo" subtitle="Kickoff next quarter — vendor selection in progress" />
+</Steps>
+</Card>
+
+<Card title="Sales Pipeline & Win Rate">
+<Columns>
+<Stat label="Pipeline Value" value="$84.6M" change="+12% QoQ" tone="success" icon="funnel" />
+<Stat label="Win Rate" value="27.4%" change="+2.1 pts" tone="success" icon="target" />
+</Columns>
+<Chart type="bar" x="Stage" y="USD (M)">
+| Stage | Value |
+|---|---|
+| Discovery | 18.2 |
+| Qualification | 26.4 |
+| Proposal | 22.8 |
+| Negotiation | 17.2 |
+</Chart>
+</Card>
+
+<Card title="Customer Health">
+<Columns>
+<Stat label="Active Customers" value="1,284" change="+64 net new" tone="success" icon="users" />
+<Stat label="Churn Rate" value="2.1%" change="−0.4 pts" tone="success" icon="user-minus" />
+<Stat label="NPS" value="52" change="+6 pts" tone="info" icon="star" />
+</Columns>
+<Progress value="52" max="100" label="NPS Score" tone="success" />
+</Card>
+
+<Card title="Next Board Meeting — Agenda Items" subtitle="Board meeting scheduled for Oct 24, 2025">
+<Checkboxes label="Agenda items" options="Q3 financial review & guidance update | APAC expansion progress & Q4 investment ask | AI product launch plan & market positioning | Executive succession planning update | Risk review — customer concentration mitigation | FY2026 preliminary budget approval" name="board-items" value="Q3 financial review & guidance update | APAC expansion progress & Q4 investment ask | AI product launch plan & market positioning" />
+<Callout tone="warning" title="Prep needed">CFO to finalize Q3 board pack by Oct 10. General Counsel to circulate regulatory memo by Oct 14.</Callout>
+</Card>
+
+<Card title="Region Focus — All Regions">
+<Columns>
+<Stat label="Revenue by Region" value="NA 52% · EMEA 28% · APAC 15% · LATAM 5%" note="Split of $48.2M" icon="globe" />
+<Stat label="Fastest Growing" value="APAC" change="+24% QoQ" tone="success" />
+</Columns>
+<Details title="Compare regions" open="false">
+| Region | Revenue | Growth | Pipeline | Churn |
+|---|---|---|---|---|
+| North America | $25.1M | +6% | $41.2M | 1.8% |
+| EMEA | $13.5M | +9% | $24.8M | 2.4% |
+| APAC | $7.2M | +24% | $15.6M | 2.9% |
+| LATAM | $2.4M | +3% | $3.0M | 3.2% |
+</Details>
+</Card>
+
+<FollowUps>
+- Drill into Q3 revenue by product line
+- Show detailed cost breakdown for Engineering
+- List top 10 deals in the pipeline
+- Compare NPS by customer segment
+- Draft board meeting summary for Q3
+</FollowUps>

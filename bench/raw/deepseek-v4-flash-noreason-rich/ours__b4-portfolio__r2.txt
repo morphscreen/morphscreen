@@ -1,0 +1,148 @@
+# Portfolio Review — Q3 2025
+
+<Badge tone="warning">Portfolio health: At risk</Badge> 2 of 5 projects are on track; 3 need attention.
+
+<Columns>
+<Stat label="Active projects" value="5" icon="folder" />
+<Stat label="Budget used" value="68%" tone="warning" icon="chart-line" />
+<Stat label="Team utilization" value="82%" tone="info" icon="users" />
+<Stat label="Open risks" value="7" tone="danger" icon="warning" />
+</Columns>
+
+<Card title="Quarter selector">
+<Select label="Reporting quarter" options="Q2 2025 | Q3 2025 | Q4 2025" name="quarter" placeholder="Q3 2025" />
+</Card>
+
+<Card title="Active projects" subtitle="Health, owner, deadline and budget">
+| Project | Owner | Deadline | Health | Budget |
+|---|---|---|---|---|
+| Atlas CRM Migration | Priya Sharma | Oct 24, 2025 | <Badge tone="success">On track</Badge> | $412k / $620k |
+| Nova Mobile App | Jonas Weber | Nov 07, 2025 | <Badge tone="warning">At risk</Badge> | $318k / $400k |
+| Data Warehouse Revamp | Mei Lin | Nov 28, 2025 | <Badge tone="danger">Critical</Badge> | $512k / $580k |
+| Customer Portal V2 | Tomás Rivera | Dec 12, 2025 | <Badge tone="success">On track</Badge> | $145k / $210k |
+| Security Hardening | Aisha Bello | Dec 19, 2025 | <Badge tone="warning">At risk</Badge> | $98k / $150k |
+</Card>
+
+<Card title="Budget spent vs allocation">
+<Chart type="bar" title="Budget utilization per project" x="Project" y="% of allocation">
+| Project | Spent % |
+|---|---|
+| Atlas CRM | 66 |
+| Nova Mobile | 80 |
+| Data Warehouse | 88 |
+| Customer Portal | 69 |
+| Security Hardening | 65 |
+</Chart>
+</Card>
+
+<Card title="Overdue milestones">
+| Milestone | Project | Due date | Days overdue |
+|---|---|---|---|
+| Data modeling sign-off | Data Warehouse Revamp | Sep 02, 2025 | 12 |
+| API contract freeze | Nova Mobile App | Sep 09, 2025 | 5 |
+| Pen test phase 1 | Security Hardening | Sep 11, 2025 | 3 |
+</Card>
+
+<Card title="Team utilization">
+<Columns>
+<div>
+<Stat label="Overall" value="82%" tone="info" icon="users" />
+<Progress value="82" max="100" label="Allocation" tone="info" />
+</div>
+<div>
+| Team | Utilization |
+|---|---|
+| Engineering | 94% |
+| Design | 76% |
+| QA | 71% |
+| Data | 88% |
+</div>
+</Columns>
+<Callout tone="warning" title="Engineering over-allocated">Engineering is at 94% utilization — likely cause of blocked work and slippage.</Callout>
+</Card>
+
+<Card title="Risks by severity">
+| Risk | Project | Severity | Mitigation |
+|---|---|---|---|
+| Vendor API delays | Atlas CRM Migration | <Badge tone="danger">High</Badge> | Escalated to vendor; fallback adapter in progress |
+| Data quality gaps | Data Warehouse Revamp | <Badge tone="danger">High</Badge> | Data cleansing sprint added |
+| Key engineer departure | Nova Mobile App | <Badge tone="warning">Medium</Badge> | Backfill request submitted |
+| Scope creep on portal | Customer Portal V2 | <Badge tone="warning">Medium</Badge> | Change control board review |
+| Compliance deadline shift | Security Hardening | <Badge tone="info">Low</Badge> | Monitoring weekly |
+</Card>
+
+<Card title="Deadlines in the next two weeks">
+| Project | Milestone | Due date |
+|---|---|---|
+| Atlas CRM Migration | UAT launch | Sep 22, 2025 |
+| Nova Mobile App | Beta build | Sep 25, 2025 |
+| Data Warehouse Revamp | ETL pipeline test | Sep 26, 2025 |
+</Card>
+
+<Card title="Delivery pace — last six sprints">
+<Chart type="line" title="Story points delivered per sprint" x="Sprint" y="Points">
+| Sprint | Delivered |
+|---|---|
+| S-12 | 142 |
+| S-13 | 151 |
+| S-14 | 138 |
+| S-15 | 129 |
+| S-16 | 118 |
+| S-17 | 104 |
+</Chart>
+<Callout tone="danger" title="Declining velocity">Delivery pace has dropped 27% over six sprints. Consider re-scoping or adding capacity.</Callout>
+</Card>
+
+<Card title="Blocked work items">
+| Item | Project | Blocked by | Days blocked |
+|---|---|---|---|
+| Payment gateway integration | Nova Mobile App | Vendor API unresponsive | 6 |
+| Historical data load | Data Warehouse Revamp | Data quality issues | 9 |
+| SSO configuration | Customer Portal V2 | Awaiting security review | 3 |
+</Card>
+
+<Card title="Portfolio health summary">
+<Callout tone="warning" title="One-line summary">Portfolio is at risk: velocity is trending down, engineering is over-allocated, and two high-severity risks need executive attention this week.</Callout>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<div>
+<Button variant="primary" icon="user-plus">Request more people</Button>
+</div>
+<div>
+<Button variant="secondary" icon="download">Export review</Button>
+</div>
+<div>
+<Button variant="tertiary" icon="archive">Archive finished project</Button>
+</div>
+</Columns>
+</Card>
+
+<Card title="Request more people">
+<Form name="staffing-request">
+<Select label="Project" options="Atlas CRM Migration | Nova Mobile App | Data Warehouse Revamp | Customer Portal V2 | Security Hardening" name="project" placeholder="Select project" required="true" />
+<Select label="Role needed" options="Engineer | Designer | QA | Data Analyst | Scrum Master" name="role" placeholder="Select role" required="true" />
+<Slider label="Headcount" min="1" max="5" step="1" value="1" name="headcount" unit=" people" />
+<Input label="Start date" type="date" name="start_date" required="true" />
+<TextArea label="Justification" name="justification" placeholder="Why this role is needed and expected impact" rows="3" required="true" />
+<Button>Submit request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Archive a finished project">
+<Form name="archive-project">
+<Select label="Project to archive" options="Atlas CRM Migration | Nova Mobile App | Data Warehouse Revamp | Customer Portal V2 | Security Hardening" name="archive_project" placeholder="Select project" required="true" />
+<Input label="Completion date" type="date" name="completion_date" required="true" />
+<Checkboxes label="Confirm" options="All deliverables accepted | Final budget reconciled | Lessons learned captured" name="confirmation" required="true" />
+<Button variant="danger">Archive project</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the risk register in detail
+- What's driving the velocity decline?
+- Compare this quarter to last quarter
+- Draft the staffing request for engineering
+</FollowUps>

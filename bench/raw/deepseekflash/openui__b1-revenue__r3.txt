@@ -1,0 +1,8 @@
+root = Card([header, stats, chart, takeaway])
+header = CardHeader("Morning check-in", "Revenue so far today")
+stats = Table([metricCol, valueCol])
+metricCol = Col("Metric", ["Today so far", "Yesterday at this time", "Difference"])
+valueCol = Col("Amount", ["$1,284", "$1,102", "+16.5%"])
+chart = BarChart(["Today", "Yesterday"], [revenueSeries], "grouped", "Period", "Revenue (USD)")
+revenueSeries = Series("Revenue", [1284, 1102])
+takeaway = Callout("success", "Ahead of yesterday", "You're 16.5% ahead of yesterday's pace at this time.")

@@ -1,0 +1,121 @@
+# Hub Operations Desk — KORD (Chicago O'Hare)
+
+<Select label="Select Hub" name="hub-select" options="KORD — Chicago O'Hare | KATL — Atlanta | KDFW — Dallas/Fort Worth | KDEN — Denver | KLAX — Los Angeles" value="KORD — Chicago O'Hare" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Progress value="78" max="100" label="78% of 412 departures on time" tone="success" />
+<Stat label="Target" value="85%" />
+<Stat label="Yesterday" value="82%" change="-4pp" tone="warning" />
+</Card>
+
+<Card title="Average Passenger Load">
+<Stat label="System Wide" value="84%" tone="info" />
+<Stat label="Domestic" value="87%" />
+<Stat label="International" value="78%" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Current Avg" value="42 min" tone="neutral" />
+<Stat label="Target" value="38 min" />
+<Stat label="Yesterday" value="40 min" change="+2 min" tone="warning" />
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Total Cancelled" value="12" tone="danger" />
+<Stat label="Weather" value="7" />
+<Stat label="Mechanical" value="3" />
+<Stat label="Crew" value="2" />
+</Card>
+</Columns>
+
+<Card title="Weather Advisories at KORD">
+<Callout tone="warning" title="Low Visibility Advisory — Active until 18:00Z">
+Ceiling 800 ft, visibility 1.5 SM in mist. RVR 6000 ft. Expect arrival delays 30-45 min. Departure spacing increased to 3 min.
+</Callout>
+<Callout tone="info" title="Wind Shear Alert — Runways 27L/27R">
+LLWS reported on final approach. Pilots advised to expect +15/-15 kt shear at 300 ft AGL.
+</Callout>
+</Card>
+
+<Card title="Flights — Live Status">
+| Flt | Route | Gate | STD | ATD/ETD | Status | Pax | Load |
+|---|---|---|---|---|---|---|---|
+| UA 1284 | KORD → KLAX | B12 | 06:15 | 06:18 | <Badge tone="success">Departed</Badge> | 162/179 | 91% |
+| UA 2301 | KORD → KJFK | C24 | 06:30 | 06:30 | <Badge tone="success">On Time</Badge> | 148/160 | 93% |
+| UA 547 | KORD → KSFO | B8 | 06:45 | 07:12 | <Badge tone="warning">Delayed 27m</Badge> | 155/179 | 87% |
+| UA 1892 | KORD → KMIA | C18 | 07:00 | 07:00 | <Badge tone="success">Boarding</Badge> | 134/160 | 84% |
+| UA 316 | KORD → KSEA | B20 | 07:15 | 07:15 | <Badge tone="success">On Time</Badge> | 167/179 | 93% |
+| UA 2045 | KORD → KBOS | C30 | 07:30 | 08:05 | <Badge tone="warning">Delayed 35m</Badge> | 141/160 | 88% |
+| UA 782 | KORD → KLAS | B14 | 07:45 | — | <Badge tone="danger">Cancelled</Badge> | — | — |
+| UA 1103 | KORD → KPHX | C22 | 08:00 | 08:00 | <Badge tone="success">On Time</Badge> | 152/179 | 85% |
+| UA 459 | KORD → KDEN | B16 | 08:15 | 08:15 | <Badge tone="success">On Time</Badge> | 138/160 | 86% |
+| UA 2210 | KORD → KTPA | C26 | 08:30 | 09:10 | <Badge tone="warning">Delayed 40m</Badge> | 149/160 | 93% |
+</Card>
+
+<Columns>
+<Card title="Delayed Flights — Called Out">
+| Flight | Route | Delay | Reason | New ETD | Impact |
+|---|---|---|---|---|---|
+| UA 547 | KORD→KSFO | 27 min | Late inbound (UA 546) | 07:12 | 12 connecting pax at risk |
+| UA 2045 | KORD→KBOS | 35 min | Mechanical — coffee maker | 08:05 | 8 connecting pax at risk |
+| UA 2210 | KORD→KTPA | 40 min | Crew rest violation | 09:10 | 15 connecting pax at risk |
+| UA 1422 | KORD→KFLL | 52 min | Weather — T-storms enroute | 09:45 | 22 connecting pax at risk |
+| UA 891 | KORD→KMSP | 18 min | ATC ground stop | 08:33 | 5 connecting pax at risk |
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From → To | Reason |
+|---|---|---|---|
+| 05:42 | UA 1284 | B14 → B12 | Gate conflict with UA 2301 |
+| 05:58 | UA 2045 | C28 → C30 | Aircraft swap (A320→B738) |
+| 06:10 | UA 2210 | C24 → C26 | Delayed inbound at C24 |
+| 06:25 | UA 1422 | B10 → B18 | Weather hold — remote stand |
+| 06:40 | UA 316 | B22 → B20 | Gate equipment issue |
+</Card>
+</Columns>
+
+<Card title="Connections at Risk of Being Missed">
+| Connecting Pax | Inbound | Inbound Status | Outbound | Outbound Gate | Min Connect Time | Risk Level |
+|---|---|---|---|---|---|---|
+| 12 | UA 546 (KSFO) | Landed 06:58 | UA 547 (KSFO) | B8 | 35 min | <Badge tone="danger">HIGH</Badge> |
+| 8 | UA 2044 (KBOS) | ETA 07:40 | UA 2045 (KBOS) | C30 | 25 min | <Badge tone="danger">HIGH</Badge> |
+| 15 | UA 2209 (KTPA) | ETA 08:35 | UA 2210 (KTPA) | C26 | 35 min | <Badge tone="warning">MEDIUM</Badge> |
+| 22 | UA 1421 (KFLL) | ETA 09:00 | UA 1422 (KFLL) | B18 | 45 min | <Badge tone="warning">MEDIUM</Badge> |
+| 5 | UA 890 (KMSP) | ETA 08:15 | UA 891 (KMSP) | C20 | 18 min | <Badge tone="danger">HIGH</Badge> |
+| 9 | UA 315 (KSEA) | Landed 06:45 | UA 316 (KSEA) | B20 | 30 min | <Badge tone="success">LOW</Badge> |
+</Card>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Position | Current Duty | Available From | Max Duty Remaining | Qualifications |
+|---|---|---|---|---|---|
+| CRW-4421 | CA | Reserve | 06:00 | 10:00 | B737, A320, B757 |
+| CRW-4422 | FO | Reserve | 06:00 | 10:00 | B737, A320 |
+| CRW-3891 | FA | Off-duty (call-out) | 07:30 | 12:00 | All narrow-body |
+| CRW-3892 | FA | Off-duty (call-out) | 07:30 | 12:00 | All narrow-body |
+| CRW-3893 | FA | Off-duty (call-out) | 07:30 | 12:00 | All narrow-body |
+| CRW-5102 | CA | Deadhead return | 08:15 | 9:00 | B737, B757, B767 |
+| CRW-5103 | FO | Deadhead return | 08:15 | 9:00 | B737, B757 |
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Select label="Select Flight" name="rebook-flight" options="UA 547 — KORD→KSFO (27m delay) | UA 2045 — KORD→KBOS (35m delay) | UA 2210 — KORD→KTPA (40m delay) | UA 1422 — KORD→KFLL (52m delay) | UA 782 — KORD→KLAS (CANCELLED) | UA 891 — KORD→KMSP (18m delay)" placeholder="Choose affected flight" required="true" />
+<Input label="Passenger Name / PNR" name="pax-name" placeholder="Smith, John / ABC123" required="true" />
+<Select label="Rebook Option" name="rebook-option" options="Next available UA flight | Partner airline (AA/DL) | Next day UA flight | Refund + rebook later" placeholder="Select rebooking option" required="true" />
+<Select label="Class" name="rebook-class" options="Same cabin | Upgrade if available | Any available" value="Same cabin" />
+<Button variant="primary">Process Rebooking</Button>
+<Button variant="secondary">View Alternatives</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Notify All At-Risk Connections</Button>
+<Button variant="secondary" size="large">Request Additional Gate Space</Button>
+<Button variant="secondary" size="large">Escalate to Network Ops</Button>
+<Button variant="tertiary" size="large">Print Delay Summary</Button>
+</Columns>
+</Card>

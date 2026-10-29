@@ -1,0 +1,74 @@
+# Low Inventory
+
+This screen shows every item that has hit its reorder threshold. Search to narrow the list, then reorder right from each row.
+
+6 items are running low. <Badge tone="warning">6 below threshold</Badge>
+
+<Columns>
+<Stat label="Items below threshold" value="6" tone="warning" icon="warning" />
+<Stat label="Units to reorder" value="113" icon="package" />
+<Stat label="Default threshold" value="10 units" icon="bell" />
+</Columns>
+
+<Card title="Search items" subtitle="Filter the low-inventory list">
+<Input label="Search items" name="search" placeholder="e.g., tea, COF-1L, cookies…" hint="Matches item name, SKU, or category." />
+<Button variant="secondary">Search</Button>
+</Card>
+
+<Callout tone="info" title="What triggers this warning">
+An item appears on this screen when its remaining stock is **at or below the threshold** shown next to it. Most items use the default threshold of 10 units; a few have a custom threshold.
+</Callout>
+
+<Card title="Items running low" subtitle="Reorder each item to restock it before it runs out">
+
+### Almond Milk 750ml
+SKU: `MLK-750` · <Badge tone="danger">3 units left</Badge> · Threshold: 8 units
+
+<Columns>
+<Progress value="3" max="8" label="3 of 8 remaining" tone="danger" />
+<Button variant="danger" size="small">Reorder 18</Button>
+</Columns>
+
+### Cold Brew Coffee 1L
+SKU: `COF-1L` · <Badge tone="danger">5 units left</Badge> · Threshold: 12 units
+
+<Columns>
+<Progress value="5" max="12" label="5 of 12 remaining" tone="danger" />
+<Button variant="danger" size="small">Reorder 24</Button>
+</Columns>
+
+### Peanut Butter 350g
+SKU: `PNB-350` · <Badge tone="warning">6 units left</Badge> · Threshold: 10 units
+
+<Columns>
+<Progress value="6" max="10" label="6 of 10 remaining" tone="warning" />
+<Button variant="primary" size="small">Reorder 15</Button>
+</Columns>
+
+### Organic Green Tea 500g
+SKU: `TEA-500` · <Badge tone="warning">8 units left</Badge> · Threshold: 10 units
+
+<Columns>
+<Progress value="8" max="10" label="8 of 10 remaining" tone="warning" />
+<Button variant="primary" size="small">Reorder 12</Button>
+</Columns>
+
+### Sparkling Water 12-pack
+SKU: `SPR-12` · <Badge tone="warning">9 units left</Badge> · Threshold: 10 units
+
+<Columns>
+<Progress value="9" max="10" label="9 of 10 remaining" tone="warning" />
+<Button variant="primary" size="small">Reorder 24</Button>
+</Columns>
+
+### Oatmeal Cookies 400g
+SKU: `COK-400` · <Badge tone="warning">12 units left</Badge> · Threshold: 15 units
+
+<Columns>
+<Progress value="12" max="15" label="12 of 15 remaining" tone="warning" />
+<Button variant="primary" size="small">Reorder 20</Button>
+</Columns>
+
+<Button>Reorder all 113 units</Button>
+
+</Card>

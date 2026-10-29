@@ -1,0 +1,84 @@
+# API Reference: Create Payment Intent
+
+<Card title="POST /v1/payment_intents" subtitle="Payments API • Version 2024-01-01">
+Creates a new PaymentIntent object. This is the first step in collecting a payment from your customer. A PaymentIntent tracks the lifecycle of a payment from creation through confirmation and capture.
+
+**Authentication**: Required (Bearer token)
+**Idempotency**: Supported via `Idempotency-Key` header
+**Rate limit**: 100 requests per second per account
+</Card>
+
+<Card title="Example Request">
+<Code file="create-payment-intent.sh" highlight="4">
+curl -X POST https://api.example.com/v1/payment_intents \
+  -H "Authorization: Bearer sk_test_abc123" \
+  -H "Content-Type: application/json" \
+  -H "Idempotency-Key: pi_123456789" \
+  -d '{
+    "amount": 2000,
+    "currency": "usd",
+    "payment_method_types": ["card"],
+    "metadata": {
+      "order_id": "order_abc123"
+    }
+  }'
+</Code>
+</Card>
+
+<Card title="Example Response (201 Created)">
+<Code file="response.json">
+{
+  "id": "pi_1NxYzAbCdEfGhIjKlMnOpQrSt",
+  "object": "payment_intent",
+  "amount": 2000,
+  "amount_capturable": 0,
+  "amount_received": 0,
+  "application": null,
+  "application_fee_amount": null,
+  "canceled_at": null,
+  "cancellation_reason": null,
+  "capture_method": "automatic",
+  "client_secret": "pi_1NxYzAbCdEfGhIjKlMnOpQrSt_secret_xYzAbCdEfGhIjKl",
+  "confirmation_method": "automatic",
+  "created": 1704067200,
+  "currency": "usd",
+  "customer": null,
+  "description": null,
+  "last_payment_error": null,
+  "livemode": false,
+  "metadata": {
+    "order_id": "order_abc123"
+  },
+  "next_action": null,
+  "payment_method": null,
+  "payment_method_options": {},
+  "payment_method_types": [
+    "card"
+  ],
+  "processing": null,
+  "receipt_email": null,
+  "review": null,
+  "setup_future_usage": null,
+  "shipping": null,
+  "source": null,
+  "statement_descriptor": null,
+  "statement_descriptor_suffix": null,
+  "status": "requires_payment_method",
+  "transfer_data": null,
+  "transfer_group": null
+}
+</Code>
+</Card>
+
+<Card title="Error Codes">
+| Code | HTTP Status | Description |
+|------|-------------|-------------|
+| `amount_too_small` | 400 | The amount is less than the minimum allowed for the currency. |
+| `amount_too_large` | 400 | The amount exceeds the maximum allowed for the currency. |
+| `currency_not_supported` | 400 | The requested currency is not supported. |
+| `payment_method_type_not_available` | 400 | The requested payment method type is not available in the given country. |
+| `idempotency_key_in_use` | 409 | An idempotency key was reused with different request parameters. |
+| `authentication_required` | 401 | No valid API key provided. |
+| `rate_limit_exceeded` | 429 | Too many requests. Retry after the `Retry-After` header. |
+| `internal_server_error` | 500 | An unexpected error occurred. Contact support with the request ID. |
+</Card>

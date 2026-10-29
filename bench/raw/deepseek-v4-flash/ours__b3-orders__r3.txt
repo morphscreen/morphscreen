@@ -1,0 +1,54 @@
+# E-commerce operations desk
+
+Live view of today's store performance. <Badge tone="success">Live</Badge>
+
+<Columns>
+<Stat label="Orders placed today" value="128" change="+12 vs yesterday" icon="package" />
+<Stat label="Revenue today" value="$12,480.00" change="+8.2% vs yesterday" icon="currency-dollar" />
+<Stat label="Average order value" value="$97.50" change="+$3.10 vs yesterday" icon="chart-line" />
+<Stat label="Refund rate this month" value="2.3%" change="-0.4 pts vs last month" tone="warning" icon="arrow-counter-clockwise" />
+</Columns>
+
+<Card title="Order volume — past 4 weeks" subtitle="Weekly orders">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 842 |
+| Week 2 | 915 |
+| Week 3 | 1024 |
+| Week 4 | 1138 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Placed today, newest first">
+<Columns>
+<Input label="Search by customer name" name="search" type="search" placeholder="e.g. Olivia Martin" />
+<Select label="Narrow by status" name="status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Refunded" />
+</Columns>
+
+| Order ID | Customer | Total | Status |
+|---|---|---|---|
+| #1042 | Olivia Martin | $129.00 | Pending |
+| #1041 | Ethan Chen | $84.50 | Paid |
+| #1040 | Sofia Reyes | $210.00 | Fulfilled |
+| #1039 | Liam Walker | $45.00 | Refunded |
+| #1038 | Ava Patel | $158.75 | Paid |
+| #1037 | Noah Kim | $92.00 | Pending |
+
+Status key: <Badge tone="warning">Pending</Badge> <Badge tone="info">Paid</Badge> <Badge tone="success">Fulfilled</Badge> <Badge tone="danger">Refunded</Badge>
+
+<Callout tone="info" title="4 orders awaiting fulfillment">Orders #1042, #1041, #1038 and #1037 still need to be packed and shipped.</Callout>
+
+<Details title="Mark an order as fulfilled" open=true>
+<Form name="fulfill-order">
+<Select label="Order to fulfill" name="order" placeholder="Choose an order" options="#1042 — Olivia Martin | #1041 — Ethan Chen | #1038 — Ava Patel | #1037 — Noah Kim" />
+<Button ask="Mark the selected order as fulfilled">Mark fulfilled</Button>
+</Form>
+</Details>
+</Card>
+
+<FollowUps>
+- Show today's pending orders
+- Which orders are waiting longest?
+- What was the top-selling product today?
+</FollowUps>

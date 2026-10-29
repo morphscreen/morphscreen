@@ -1,0 +1,39 @@
+# Daily Fitness Summary
+
+<Card title="Today's Activity">
+<Columns>
+<Stat label="Steps" value="8,432 / 10,000" change="+1,200 vs yesterday" tone="info" />
+<Stat label="Calories Burned" value="487 kcal" change="+42 vs goal" tone="success" />
+<Stat label="Active Minutes" value="42 min" change="Target: 30 min" tone="neutral" />
+</Columns>
+
+<Progress value="8432" max="10000" label="Step goal progress" tone="info" />
+</Card>
+
+<Card title="Workouts This Week">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Cardio | Strength | Yoga |
+|---|---|---|---|
+| Mon | 30 | 45 | 0 |
+| Tue | 0 | 0 | 20 |
+| Wed | 40 | 30 | 0 |
+| Thu | 25 | 0 | 15 |
+| Fri | 35 | 40 | 0 |
+| Sat | 0 | 50 | 20 |
+| Sun | 20 | 0 | 0 |
+</Chart>
+</Card>
+
+<Card title="Log New Workout">
+<Form name="workout-log">
+<Select label="Workout Type" placeholder="Select type" options="Running | Cycling | Swimming | Weight Training | Yoga | HIIT | Walking | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="30" min="1" max="300" required="true" />
+<Input label="Calories Burned" type="number" placeholder="250" min="1" max="2000" />
+<Select label="Intensity" placeholder="Choose intensity" options="Low | Moderate | High" />
+<TextArea label="Notes" placeholder="How did it feel? Any details to remember..." rows="3" />
+<Button>Save Workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Keep it up!">You're 1,568 steps from your daily goal. A 15-minute walk will get you there.</Callout>

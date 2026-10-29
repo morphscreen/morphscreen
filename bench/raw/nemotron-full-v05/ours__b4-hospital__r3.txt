@@ -1,0 +1,182 @@
+# Hospital Operations Command Center
+
+<Card subtitle="Select a date to view historical data or future schedules">
+<Date label="View Date" name="view-date" value="2025-01-15" />
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Progress value="87" max="100" label="87% occupied (348/400 beds)" tone="warning" />
+<Stat label="Available Beds" value="52" change="12 ICU | 24 Med-Surg | 16 Step-down" tone="info" />
+</Card>
+
+<Card title="Current ER Wait Time">
+<Stat label="Average Wait" value="42 min" change="Target: <30 min" tone="danger" />
+<Stat label="Patients in Queue" value="18" change="3 critical | 7 urgent | 8 stable" tone="warning" />
+<Progress value="18" max="25" label="ER Capacity: 72%" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" x="Date" y="Admissions" title="Daily Admissions">
+| Date | Admissions |
+|---|---|
+| 2025-01-01 | 42 |
+| 2025-01-02 | 38 |
+| 2025-01-03 | 45 |
+| 2025-01-04 | 51 |
+| 2025-01-05 | 47 |
+| 2025-01-06 | 39 |
+| 2025-01-07 | 44 |
+| 2025-01-08 | 48 |
+| 2025-01-09 | 52 |
+| 2025-01-10 | 46 |
+| 2025-01-11 | 41 |
+| 2025-01-12 | 37 |
+| 2025-01-13 | 43 |
+| 2025-01-14 | 49 |
+| 2025-01-15 | 44 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients" title="Current Census by Department">
+| Department | Patients |
+|---|---|
+| Emergency | 28 |
+| ICU | 24 |
+| Med-Surg | 86 |
+| Step-down | 32 |
+| Cardiology | 18 |
+| Orthopedics | 22 |
+| Oncology | 15 |
+| Pediatrics | 12 |
+| OB/GYN | 14 |
+| Psychiatry | 8 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Staff on Shift — 07:00–19:00">
+| Role | Scheduled | Present | On Break | Notes |
+|---|---|---|---|---|
+| Attending Physicians | 12 | 11 | 1 | Dr. Chen delayed 30 min |
+| Residents/Fellows | 18 | 18 | 0 | |
+| Charge Nurses | 8 | 8 | 0 | |
+| RNs — ICU | 24 | 23 | 1 | 1 call-out, agency covering |
+| RNs — Med-Surg | 36 | 34 | 2 | 2 call-outs |
+| RNs — ER | 16 | 15 | 1 | |
+| Respiratory Therapists | 10 | 10 | 0 | |
+| Pharmacists | 6 | 6 | 0 | |
+| Techs/CNAs | 28 | 26 | 2 | |
+| Environmental Services | 12 | 12 | 0 | |
+| Transport | 8 | 8 | 0 | |
+</Card>
+
+<Columns>
+<Card title="Critical Patients — Requiring Attention">
+<Callout tone="danger" title="MRN 847291 — ICU Bed 3">
+Septic shock, lactate 5.2, on norepinephrine 0.3 mcg/kg/min. Nephrology consulted for CRRT. Family updated 06:30.
+</Callout>
+<Callout tone="danger" title="MRN 847302 — ER Bay 2">
+STEMI, door-to-balloon 42 min. Cath lab activated. Cardiologist en route.
+</Callout>
+<Callout tone="warning" title="MRN 847156 — Step-down 14">
+Post-op day 1 Whipple, new Afib RVR 148, hypotensive. Cardiology at bedside.
+</Callout>
+<Callout tone="warning" title="MRN 847410 — Med-Surg 312">
+GI bleed, Hb 6.8, 2 units PRBC transfusing. GI consult placed for EGD.
+</Callout>
+<Callout tone="info" title="MRN 847388 — ICU Bed 7">
+ARDS on ventilator, P/F ratio 110. Prone positioning completed 04:00. Paralytics weaning.
+</Callout>
+</Card>
+
+<Card title="Patients Ready for Discharge">
+<Callout tone="success" title="MRN 847001 — Med-Surg 204 | DRG 194">
+Pneumonia, IV→PO switch complete, afebrile 24h. Discharge meds reconciled. Ride confirmed 10:00.
+</Callout>
+<Callout tone="success" title="MRN 847023 — Med-Surg 218 | DRG 247">
+Total knee replacement, PT goals met, pain controlled on PO. Home health arranged.
+</Callout>
+<Callout tone="success" title="MRN 847045 — Step-down 8 | DRG 291">
+Heart failure exacerbation, euvolemic on oral diuretics. Cardiology follow-up scheduled.
+</Callout>
+<Callout tone="success" title="MRN 847067 — Pediatrics 12 | DRG 542">
+Asthma exacerbation, weaned to q4h albuterol, O2 sat >95% RA. Parent education done.
+</Callout>
+<Callout tone="success" title="MRN 847089 — OB/GYN 5 | DRG 775">
+Vaginal delivery day 2, mom/baby stable. Lactation consult complete. Car seat verified.
+</Callout>
+<Callout tone="info" title="MRN 847112 — ICU 2 | DRG 003">
+Sepsis resolved, extubated day 3. Awaiting step-down bed. Projected discharge tomorrow.
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Today's Operating Room Bookings">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Patient |
+|---|---|---|---|---|---|---|
+| 1 | 07:30–11:00 | Laparoscopic Whipple | Dr. Patel | Dr. Kim | In progress | MRN 847156 |
+| 2 | 08:00–10:30 | Total Hip Arthroplasty | Dr. Rodriguez | Dr. Liu | Pre-op holding | MRN 847201 |
+| 3 | 07:45–12:15 | CABG ×3 | Dr. Okafor | Dr. Singh | In progress | MRN 847210 |
+| 4 | 09:00–11:30 | Laparoscopic Colectomy | Dr. Chen | Dr. Brown | Pre-op holding | MRN 847234 |
+| 5 | 10:00–12:00 | Thyroidectomy | Dr. Gupta | Dr. Wilson | Scheduled | MRN 847245 |
+| 6 | 11:00–13:30 | Laminectomy L4–L5 | Dr. Taylor | Dr. Davis | Scheduled | MRN 847256 |
+| 7 | 13:00–15:30 | Laparoscopic Cholecystectomy | Dr. Patel | Dr. Kim | Scheduled | MRN 847267 |
+| 8 | 14:00–16:00 | Carpal Tunnel Release | Dr. Rodriguez | Dr. Liu | Scheduled | MRN 847278 |
+| 9 | 15:00–17:00 | Breast Lumpectomy + SLNB | Dr. Ahmed | Dr. Brown | Scheduled | MRN 847289 |
+| 10 | 16:00–18:00 | Diagnostic Laparoscopy | Dr. Chen | Dr. Wilson | Scheduled | MRN 847300 |
+</Card>
+
+<Card title="Supplies Running Low — Reorder Threshold Breached">
+| Item | Current Stock | Par Level | Days on Hand | Status | Action |
+|---|---|---|---|---|---|
+| N95 Respirators (M) | 240 | 500 | 3 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Expedite Order</Button> |
+| IV Normal Saline 1L | 180 | 400 | 4 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Expedite Order</Button> |
+| Heparin 5000U Vials | 45 | 120 | 5 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Fentanyl 100mcg/2mL | 60 | 150 | 6 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Central Line Kits (Triple) | 18 | 40 | 7 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Chest Tray Kits | 12 | 25 | 8 | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small">Reorder</Button> |
+| Blood Culture Bottles | 85 | 200 | 9 | <Badge tone="info">Watch</Badge> | <Button variant="tertiary" size="small">Monitor</Button> |
+| Surgical Gowns XL | 95 | 200 | 10 | <Badge tone="info">Watch</Badge> | <Button variant="tertiary" size="small">Monitor</Button> |
+</Card>
+
+<Columns>
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Select label="Incident Type" name="incident-type" placeholder="Select type" options="Patient Safety Event | Medication Error | Fall | Equipment Failure | Security Incident | Near Miss | Other" required="true" />
+<Input label="Location" name="location" placeholder="Unit/Room (e.g., ICU Bed 3, OR 2)" required="true" />
+<Input label="Patient MRN (if applicable)" name="mrn" placeholder="847291" type="text" />
+<Date label="Date/Time of Incident" name="incident-datetime" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened, contributing factors, immediate actions taken..." rows="4" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Level 1 — No Harm | Level 2 — Minor Harm | Level 3 — Moderate Harm | Level 4 — Severe Harm | Level 5 — Death" required="true" />
+<Checkboxes label="Notifications" name="notifications" options="Risk Management | Quality & Safety | Unit Manager | Medical Director | Compliance" value="Risk Management | Unit Manager" />
+<Button>Submit Incident Report</Button>
+<Button variant="tertiary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient MRN" name="transfer-mrn" placeholder="847291" required="true" />
+<Input label="Patient Name" name="patient-name" placeholder="Auto-populated from MRN" />
+<Select label="From Unit" name="from-unit" placeholder="Current location" options="ER | ICU | Step-down | Med-Surg | Cardiology | Orthopedics | Oncology | Pediatrics | OB/GYN | Psychiatry" required="true" />
+<Select label="To Unit" name="to-unit" placeholder="Requested destination" options="ER | ICU | Step-down | Med-Surg | Cardiology | Orthopedics | Oncology | Pediatrics | OB/GYN | Psychiatry | External Facility" required="true" />
+<Select label="Urgency" name="urgency" placeholder="Select urgency" options="Emergent — Immediate | Urgent — Within 1 hour | Semi-Urgent — Within 4 hours | Routine — Next available bed" required="true" />
+<TextArea label="Clinical Reason for Transfer" name="clinical-reason" placeholder="Clinical justification, acuity change, specialty needs..." rows="3" required="true" />
+<Input label="Accepting Physician/Service" name="accepting-physician" placeholder="Dr. Smith, Cardiology" />
+<Checkboxes label="Requirements" name="requirements" options="Telemetry | Ventilator | Continuous Infusion(s) | Isolation (Contact/Droplet/Airborne) | 1:1 Sitter | Bariatric Equipment" />
+<Button>Submit Transfer Request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the 7-day capacity forecast
+- List all patients boarding in ER > 6 hours
+- Generate the morning huddle summary report
+- Review pending discharge barriers by unit
+</FollowUps>

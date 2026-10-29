@@ -1,0 +1,267 @@
+# City Operations Center
+
+<Select label="Focus District" name="district-focus" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastport | Westville | Riverside | University District | Harbor View | Industrial Park" />
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="City-wide traffic index">
+<Stat label="Congestion Level" value="67%" change="+3% vs last hour" tone="warning" />
+<Progress value="67" max="100" label="Traffic Flow" tone="warning" />
+<Badge tone="warning">Peak Hours Active</Badge>
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance across all lines">
+<Stat label="System On-Time" value="92%" change="-1.2% vs yesterday" tone="success" />
+<Chart type="bar" x="Line" y="On-Time %" title="By Transit Line">
+| Line | On-Time % |
+|---|---|
+| Blue Line | 95 |
+| Red Line | 93 |
+| Green Line | 91 |
+| Yellow Line | 89 |
+| Orange Line | 87 |
+| Bus Network | 90 |
+</Chart>
+</Card>
+
+<Card title="Air Quality by District" subtitle="AQI readings (lower is better)">
+<Chart type="horizontal" x="District" y="AQI" title="Current Air Quality Index">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Northside | 42 |
+| Eastport | 55 |
+| Westville | 38 |
+| Riverside | 31 |
+| University District | 45 |
+| Harbor View | 28 |
+| Industrial Park | 92 |
+</Chart>
+<Badge tone="danger">Industrial Park: Unhealthy</Badge>
+<Badge tone="warning">Downtown: Moderate</Badge>
+<Badge tone="success">Harbor View: Good</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use - Past Week" subtitle="Megawatt hours consumed">
+<Chart type="line" x="Day" y="MWh" title="Daily Energy Consumption">
+| Day | MWh |
+|---|---|
+| Mon | 18420 |
+| Tue | 19100 |
+| Wed | 18750 |
+| Thu | 19300 |
+| Fri | 20100 |
+| Sat | 17800 |
+| Sun | 16950 |
+</Chart>
+<Stat label="Week Total" value="130,420 MWh" change="+4.2% vs prior week" tone="neutral" />
+</Card>
+
+<Card title="Water Use Today" subtitle="Real-time consumption tracking">
+<Stat label="Current Rate" value="4.2M gal/hr" change="+0.3M vs avg" tone="info" />
+<Stat label="Today Total" value="89.4M gal" change="Projected 101M by midnight" tone="neutral" />
+<Progress value="72" max="100" label="Daily Capacity Used" tone="info" />
+<Badge tone="neutral">Reservoir: 78% full</Badge>
+</Card>
+
+<Card title="Current Weather" subtitle="Conditions at City Hall station">
+<Columns>
+<Stat label="Temperature" value="72°F" tone="neutral" />
+<Stat label="Humidity" value="58%" tone="neutral" />
+<Stat label="Wind" value="8 mph SW" tone="neutral" />
+<Stat label="Pressure" value="30.12 inHg" tone="neutral" />
+</Columns>
+<Badge tone="success">Clear Skies</Badge>
+<Badge tone="info">UV Index: 4 (Moderate)</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents" subtitle="Active emergencies and issues">
+<Chart type="table" x="Incident" y="Severity" title="Active Incidents">
+| Incident ID | Type | Location | Severity | Since | Status |
+|---|---|---|---|---|---|
+| INC-2024-0847 | Water Main Break | 3rd & Main (Downtown) | Critical | 06:23 | Crew En Route |
+| INC-2024-0846 | Multi-Vehicle Crash | I-90 Exit 12 (Eastport) | High | 07:11 | Police On Scene |
+| INC-2024-0845 | Power Outage | Riverside Substation | High | 07:45 | Assessing |
+| INC-2024-0844 | Gas Leak | 1400 Block Oak St (Westville) | Critical | 08:02 | Evacuating |
+| INC-2024-0843 | Sewer Backup | University & College (Univ Dist) | Medium | 08:15 | Crew Dispatched |
+| INC-2024-0842 | Traffic Signal Failure | 5th & Broadway (Downtown) | Medium | 08:30 | Technician En Route |
+| INC-2024-0841 | Downed Tree | Harbor Blvd (Harbor View) | Low | 08:42 | Queued |
+</Chart>
+</Card>
+
+<Card title="Emergency Vehicles Deployed" subtitle="Real-time unit locations">
+<Chart type="table" x="Unit" y="Status" title="Active Emergency Units">
+| Unit | Type | Location | Incident | Status |
+|---|---|---|---|---|
+| ENG-12 | Fire Engine | 3rd & Main | INC-0847 | On Scene |
+| MED-7 | Ambulance | I-90 Exit 12 | INC-0846 | Transporting |
+| HAZ-3 | Hazmat | 1400 Oak St | INC-0844 | On Scene |
+| ENG-8 | Fire Engine | Riverside Substation | INC-0845 | Staging |
+| TRK-4 | Ladder Truck | University & College | INC-0843 | En Route |
+| POL-22 | Police | 5th & Broadway | INC-0842 | Traffic Control |
+| MED-11 | Ambulance | Harbor Blvd | INC-0841 | En Route |
+| BAT-2 | Battalion Chief | 3rd & Main | INC-0847 | Command |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Parking Availability - Downtown" subtitle="Real-time garage and street occupancy">
+<Chart type="bar" x="Facility" y="Available %" title="Parking Structures">
+| Facility | Available % |
+|---|---|
+| Civic Center Garage | 34 |
+| Market Street Garage | 18 |
+| Library Garage | 52 |
+| Convention Center | 67 |
+| Riverside Deck | 41 |
+| Union Station Lot | 23 |
+| Street Meters (Zone A) | 12 |
+| Street Meters (Zone B) | 28 |
+</Chart>
+<Stat label="Total Downtown Spaces" value="1,847 / 4,200" change="44% available" tone="warning" />
+<Badge tone="danger">Market St Garage: Near Capacity</Badge>
+</Card>
+
+<Card title="Public Events This Weekend" subtitle="Permitted events affecting operations">
+<Tabs>
+<Tab title="Saturday">
+<Chart type="table" x="Event" y="Impact" title="Saturday Events">
+| Event | Location | Time | Expected Attendance | Impact |
+|---|---|---|---|---|
+| Farmers Market | Downtown Plaza | 08:00-13:00 | 3,500 | Street Closures |
+| Marathon | Citywide Route | 07:00-11:00 | 8,200 | Major Road Closures |
+| Jazz Festival | Riverside Park | 14:00-22:00 | 12,000 | Parking/Transit Surge |
+| Art Walk | Arts District | 17:00-23:00 | 5,000 | Pedestrian Traffic |
+</Chart>
+</Tab>
+<Tab title="Sunday">
+<Chart type="table" x="Event" y="Impact" title="Sunday Events">
+| Event | Location | Time | Expected Attendance | Impact |
+|---|---|---|---|---|
+| Cyclovia | Northside Loop | 09:00-14:00 | 6,500 | Street Closures |
+| Food Truck Rally | Harbor View | 11:00-19:00 | 4,200 | Parking Demand |
+| Community Parade | Main St (Downtown) | 10:00-12:00 | 15,000 | Major Disruption |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen Reports (Live Feed)" subtitle="Incoming 311 reports - auto-refreshes">
+<Details title="Recent Reports (click to expand)" open="true">
+<Chart type="table" x="Report" y="Status" title="Last 20 Reports">
+| Time | Category | Location | Description | Status |
+|---|---|---|---|---|
+| 08:52 | Pothole | 1200 Elm St (Northside) | Large pothole in right lane | New |
+| 08:49 | Graffiti | Library Garage (Downtown) | Tagging on level 3 stairwell | Assigned |
+| 08:47 | Noise Complaint | 400 Block Pine (Westville) | Construction after hours | Investigating |
+| 08:44 | Streetlight Out | Riverside Dr & 5th (Riverside) | Pole #R-234 not working | Dispatched |
+| 08:41 | Trash Missed | 800 Oak Ave (Univ District) | Recycling not collected | New |
+| 08:38 | Traffic Signal | 7th & Maple (Eastport) | Left turn arrow stuck red | Assigned |
+| 08:35 | Water Leak | 2100 Harbor Blvd (Harbor View) | Sidewalk bubbling water | Dispatched |
+| 08:32 | Abandoned Vehicle | Industrial Pkwy (Industrial) | White sedan, 3+ days | New |
+</Chart>
+</Details>
+<Badge tone="info">8 new reports in last hour</Badge>
+</Card>
+
+<Card title="Service Request Backlog" subtitle="Open 311 requests by category and age">
+<Chart type="stacked" x="Category" y="Count" title="Backlog by Category & Age">
+| Category | 0-3 Days | 4-7 Days | 8-14 Days | 15+ Days |
+|---|---|---|---|---|
+| Potholes | 42 | 28 | 15 | 8 |
+| Streetlights | 18 | 12 | 7 | 3 |
+| Graffiti | 35 | 22 | 11 | 5 |
+| Trash/Recycling | 24 | 15 | 9 | 4 |
+| Traffic Signals | 8 | 5 | 3 | 2 |
+| Sidewalk Repair | 15 | 18 | 12 | 9 |
+| Drainage | 11 | 9 | 6 | 4 |
+| Tree Maintenance | 9 | 14 | 11 | 7 |
+</Chart>
+<Stat label="Total Backlog" value="342" change="+12 vs yesterday" tone="warning" />
+<Stat label="Oldest Request" value="23 days" change="Sidewalk repair - Westville" tone="danger" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks Planned This Month" subtitle="Scheduled construction impacting traffic">
+<Tabs>
+<Tab title="This Week">
+<Chart type="table" x="Project" y="Impact" title="Active & Starting This Week">
+| Project | Location | Dates | Type | Lanes Affected | Detour |
+|---|---|---|---|---|---|
+| Bridge Deck Rehab | I-90 Riverside Bridge | Mon-Fri 9a-3p | Structural | 2 of 4 closed | Use Exit 14 |
+| Water Main Replace | 4th Ave (Downtown) | Tue-Thu 7a-5p | Utility | Full closure | Via 3rd/5th |
+| Resurfacing | University Blvd | Wed-Sat 8a-4p | Paving | 1 of 3 closed | Flaggers |
+| Fiber Install | Harbor Blvd | Mon-Wed 9a-3p | Telecom | Shoulder only | Minimal |
+</Chart>
+</Tab>
+<Tab title="Next 3 Weeks">
+<Chart type="table" x="Project" y="Impact" title="Upcoming Roadworks">
+| Project | Location | Dates | Type | Lanes Affected |
+|---|---|---|---|---|
+| Intersection Rebuild | 5th & Broadway | May 20-31 | Reconstruction | Full closure |
+| Sewer Lining | Northside Trunk | May 22-Jun 5 | Trenchless | Night only |
+| ADA Ramps | Downtown Core | May 27-Jun 14 | Accessibility | Rolling closures |
+| Bike Lane Install | Eastport Corridor | Jun 3-21 | Active Transport | 1 lane each way |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Preventive maintenance schedule">
+<Chart type="table" x="Asset" y="Priority" title="Due This Month">
+| Asset ID | Asset Type | Location | Last Service | Due Date | Priority |
+|---|---|---|---|---|---|
+| PS-045 | Pump Station | Riverside | 2023-11-15 | 2024-05-18 | Critical |
+| BR-112 | Bridge | I-90 @ Mile 12 | 2023-05-20 | 2024-05-22 | High |
+| WTP-03 | Water Treatment | Filter Bank 3 | 2024-02-10 | 2024-05-25 | High |
+| SUB-07 | Substation | Eastport | 2023-11-01 | 2024-05-28 | Medium |
+| SWL-200 | Sewer Lift | Industrial Park | 2023-12-05 | 2024-05-30 | Medium |
+| TSG-088 | Traffic Signal | 12th & Main | 2024-01-15 | 2024-06-01 | Low |
+| RES-04 | Reservoir | Harbor View | 2023-08-20 | 2024-06-05 | Low |
+</Chart>
+<Badge tone="danger">2 Critical due this week</Badge>
+<Badge tone="warning">3 High priority due this month</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a Crew" subtitle="Assign personnel to incident or task">
+<Form name="dispatch-crew">
+<Select label="Incident / Task" name="dispatch-incident" placeholder="Select or enter custom" options="INC-2024-0847 (Water Main) | INC-2024-0846 (Crash) | INC-2024-0845 (Power) | INC-2024-0844 (Gas Leak) | INC-2024-0843 (Sewer) | INC-2024-0842 (Signal) | INC-2024-0841 (Tree) | Custom Task" required="true" />
+<Select label="Crew Type" name="crew-type" placeholder="Select crew type" options="Water Maintenance | Electrical | Roads/Paving | Sewer/Drainage | Traffic Signals | Tree/Vegetation | General Maintenance | Hazmat" required="true" />
+<Select label="Unit(s) to Dispatch" name="dispatch-units" placeholder="Select units" options="ENG-12 | ENG-8 | TRK-4 | HAZ-3 | BAT-2 | PW-1 (Water) | PW-2 (Roads) | PW-3 (Sewer) | PW-4 (Electrical) | PW-5 (Signals) | PW-6 (Trees) | Custom Unit" required="true" />
+<Input label="Custom Location (if not incident)" name="dispatch-location" placeholder="Address or landmark" />
+<TextArea label="Instructions / Notes" name="dispatch-notes" placeholder="Special instructions, safety hazards, contact info..." rows="3" />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Broadcast emergency or informational message">
+<Form name="public-alert">
+<Radio label="Alert Type" name="alert-type" options="Emergency Alert (EAS/WEA) | Traffic Advisory | Service Disruption | Air Quality Alert | Weather Warning | General Information" value="Traffic Advisory" required="true" />
+<Select label="Target Area" name="alert-area" placeholder="Select geographic target" options="Citywide | Downtown | Northside | Eastport | Westville | Riverside | University District | Harbor View | Industrial Park | Custom Polygon" required="true" />
+<Input label="Headline" name="alert-headline" placeholder="Brief headline (max 90 chars)" value="Marathon Road Closures - Saturday 7-11 AM" required="true" />
+<TextArea label="Message Body" name="alert-message" placeholder="Full alert text for public distribution..." rows="4" value="The annual City Marathon will cause significant road closures Saturday 7:00-11:00 AM. Affected routes: Main St (Downtown to University), Riverside Dr, Harbor Blvd. Use transit where possible. Detour maps at city.gov/marathon." required="true" />
+<Checkboxes label="Distribution Channels" name="alert-channels" options="Wireless Emergency Alert (WEA) | Emergency Alert System (EAS) | Mobile App Push | SMS Subscribers | Email Subscribers | Social Media (City Accounts) | Website Banner | Variable Message Signs | 511 System" value="Mobile App Push | SMS Subscribers | Email Subscribers | Social Media (City Accounts) | Website Banner | Variable Message Signs | 511 System" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the marathon detour routes in detail
+- What's the status of the water main repair on 3rd & Main?
+- Which districts have the worst air quality trends this month?
+- Generate a report on this week's citizen report categories
+- Show me all crews currently available for dispatch
+</FollowUps>

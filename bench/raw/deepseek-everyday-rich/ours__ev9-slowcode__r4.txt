@@ -1,0 +1,174 @@
+# Speeding Up Reading a 2 GB CSV in Python
+
+<Callout tone="warning" title="Start with measurement">
+Before optimizing, profile your current code to identify the bottleneck. Is it disk I/O, parsing, or memory allocation? Use `time` and `memory_profiler` to measure.
+</Callout>
+
+## 1. Choose the Right Tool
+
+<Columns>
+<div>
+<Card title="Pandas (read_csv)">
+**Best for:** Data analysis, structured data, mixed types
+```python
+import pandas as pd
+df = pd.read_csv("large.csv", low_memory=False)
+```
+- Fast C-engine parsing
+- Handles most CSV quirks automatically
+- Memory-heavy for large files
+</Card>
+</div>
+<div>
+<Card title="DuckDB">
+**Best for:** SQL queries, very large files, minimal memory
+```python
+import duckdb
+df = duckdb.query("SELECT * FROM 'large.csv'").df()
+```
+- Columnar execution, reads only needed columns
+- 10-100x faster than pandas for aggregations
+- Excellent for filtering before loading
+</Card>
+</div>
+</Card>
+
+## 2. Optimize Your Reading Parameters
+
+<Card title="Pandas read_csv speed tweaks">
+```python
+df = pd.read_csv(
+    "large.csv",
+    engine="c",                # C engine (default) is faster than Python
+    low_memory=False,          # Read all columns at once, avoid mixed-type warnings
+    dtype={"col1": "int32", "col2": "category"},  # Specify types upfront
+    usecols=["col1", "col2"],  # Only load needed columns
+    nrows=100_000,             # Preview first N rows for dtype inference
+    parse_dates=["date_col"],  # Parse dates in C engine
+    chunksize=100_000,         # Process in chunks for memory efficiency
+)
+```
+<Callout tone="info" title="Key insight">
+Specifying `dtype` and `usecols` can cut read time by 50-80% because pandas skips type inference and column parsing overhead.
+</Callout>
+</Card>
+
+## 3. Process in Chunks Instead of All at Once
+
+<Card title="Chunked processing pattern">
+```python
+import pandas as pd
+
+chunk_size = 500_000
+results = []
+
+for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+    # Process each chunk (filter, aggregate, transform)
+    filtered = chunk[chunk["value"] > 100]
+    results.append(filtered)
+
+final_df = pd.concat(results, ignore_index=True)
+```
+This keeps memory flat and lets you start processing while the file is still being read.
+</Card>
+
+## 4. Parallelize with Multiple Cores
+
+<Card title="Parallel reading with Dask or Polars">
+**Dask** – parallel pandas:
+```python
+import dask.dataframe as dd
+df = dd.read_csv("large.csv")
+result = df.groupby("category").sum().compute()
+```
+
+**Polars** – Rust-powered, multithreaded:
+```python
+import polars as pl
+df = pl.read_csv("large.csv")
+```
+Polars is often 5-10x faster than pandas on large CSVs and uses all CPU cores by default.
+</Card>
+
+## 5. Pre-Process the CSV Itself
+
+<Card title="One-time file optimizations">
+<Steps>
+<Step title="Convert to Parquet" status="done">
+Save as Parquet once, then read that instead:
+```python
+df.to_parquet("large.parquet")
+# Later: pd.read_parquet("large.parquet") – 10x faster
+```
+</Step>
+<Step title="Compress the CSV">
+```python
+import gzip
+with open("large.csv", "rb") as f_in:
+    with gzip.open("large.csv.gz", "wb") as f_out:
+        f_out.write(f_in.read())
+# pandas reads .gz automatically
+```
+</Step>
+<Step title="Remove unused columns/rows">
+Trim the file before loading if you don't need everything:
+```bash
+# Keep only first 3 columns, skip header, first 1M rows
+cut -d',' -f1,2,3 large.csv | head -n 1000000 > trimmed.csv
+```
+</Step>
+</Steps>
+</Card>
+
+## 6. Memory-Efficient Data Types
+
+<Card title="Downcast numeric columns">
+```python
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("large.csv", low_memory=False)
+
+# Reduce memory by up to 50%
+for col in df.select_dtypes(include=["int64"]).columns:
+    df[col] = pd.to_numeric(df[col], downcast="integer")
+for col in df.select_dtypes(include=["float64"]).columns:
+    df[col] = pd.to_numeric(df[col], downcast="float")
+
+# Convert repeated strings to categories
+for col in df.select_dtypes(include=["object"]).columns:
+    if df[col].nunique() < 100:
+        df[col] = df[col].astype("category")
+```
+</Card>
+
+## 7. Quick Benchmark
+
+<Card title="Compare approaches on your file">
+| Method | Typical Time (2 GB) | Memory |
+|---|---|---|
+| Pandas default | 30-60s | 4-8 GB |
+| Pandas + dtype/usecols | 10-20s | 2-4 GB |
+| Polars | 3-8s | 1-2 GB |
+| DuckDB (filter first) | 1-3s | <1 GB |
+| Parquet (after conversion) | 1-2s | <1 GB |
+
+<Callout tone="success" title="Recommendation">
+If you only need a subset of rows or columns, **DuckDB** is the fastest. For full DataFrame processing, **Polars** wins. If you must stick with pandas, add `dtype` and `usecols` immediately.
+</Callout>
+</Card>
+
+<Card title="Your turn – what's your bottleneck?">
+<Form name="csv-optimization">
+<Select label="Current approach" placeholder="Choose one" options="Pandas read_csv | Polars | DuckDB | Manual Python (csv module) | Other" />
+<Select label="Main issue" placeholder="Choose one" options="Too slow | Too much memory | Both | Don't know yet" />
+<Button>Get tailored advice</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How do I convert my CSV to Parquet step by step?
+- Can I read a CSV directly from a URL or S3 without downloading?
+- What's the best way to handle messy CSV files (bad rows, inconsistent delimiters)?
+- How do I stream-process a CSV that's larger than my RAM?
+</FollowUps>

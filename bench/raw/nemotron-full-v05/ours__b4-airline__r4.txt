@@ -1,0 +1,164 @@
+# Hub Operations Desk — ORD (Chicago O'Hare)
+
+<Card title="Hub Selector" subtitle="Current hub: ORD — Chicago O'Hare">
+<Select label="Switch hub" name="hub-select" placeholder="Select hub" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles | JFK — New York JFK | SEA — Seattle | MIA — Miami | LAS — Las Vegas | PHX — Phoenix" />
+</Card>
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="82%" change="+3% vs yesterday" tone="success" />
+<Stat label="On-Time Arrivals" value="79%" change="-1% vs yesterday" tone="info" />
+<Progress value="82" max="100" label="Departure OTP Target: 85%" tone="success" />
+<Progress value="79" max="100" label="Arrival OTP Target: 85%" tone="info" />
+</Card>
+
+<Card title="Average Passenger Load Today">
+<Stat label="System Load Factor" value="87%" change="+2% vs same day last week" tone="success" />
+<Stat label="Total Pax Boarded" value="142,340" change="+1,240 vs yesterday" tone="neutral" />
+<Progress value="87" max="100" label="Load Factor" tone="success" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Avg Turnaround" value="42 min" change="-3 min vs target" tone="success" />
+<Stat label="Best Turnaround" value="28 min" change="UA 2451" tone="info" />
+<Stat label="Longest Turnaround" value="67 min" change="UA 1892 — gate hold" tone="warning" />
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Total Cancellations" value="12" change="+4 vs yesterday" tone="danger" />
+<Stat label="Weather-Related" value="7" change="" tone="warning" />
+<Stat label="Crew-Related" value="3" change="" tone="info" />
+<Stat label="Mechanical" value="2" change="" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Weather Advisories at ORD">
+<Callout tone="warning" title="Active Weather Advisory — Updated 14:22 CDT">
+<strong>Low IFR Conditions:</strong> Ceiling 400 ft, visibility 1/2 SM in fog. Expected to improve to VFR by 18:00 CDT.<br/>
+<strong>Wind:</strong> 280° at 18 kt, gusting to 28 kt. Crosswind component on Runways 22L/22R: 15 kt.<br/>
+<strong>Ground Stop:</strong> Not in effect. Ground Delay Program active — avg delay 45 min for arrivals.<br/>
+<strong>Forecast:</strong> Fog lifting 16:00–18:00. Winds shifting NW 20–25 kt this evening. Chance of rain showers after 20:00.
+</Callout>
+</Card>
+
+<Tabs>
+<Tab title="All Flights (142)">
+<Card title="Flight Schedule — ORD">
+| Flight | Route | Gate | STD | ATD/ETD | Status | Pax | Load |
+|---|---|---|---|---|---|---|---|
+| UA 2451 | ORD → LAX | B12 | 06:00 | 06:02 | **Departed** | 178/180 | 99% |
+| UA 1102 | ORD → DEN | B18 | 06:15 | 06:18 | **Departed** | 156/166 | 94% |
+| UA 304 | ORD → SFO | B22 | 06:30 | 06:35 | **Departed** | 189/200 | 95% |
+| UA 1892 | ORD → LAS | C4 | 07:00 | 08:07 | **Delayed** | 142/179 | 79% |
+| UA 551 | ORD → SEA | B14 | 07:15 | 07:22 | **Departed** | 167/179 | 93% |
+| UA 2208 | ORD → PHX | C8 | 07:30 | 07:45 | **Delayed** | 134/150 | 89% |
+| UA 734 | ORD → MIA | B20 | 08:00 | — | **Boarding** | 156/179 | 87% |
+| UA 1023 | ORD → ATL | B16 | 08:15 | — | **On Time** | 145/166 | 87% |
+| UA 445 | ORD → JFK | B24 | 08:30 | — | **On Time** | 123/150 | 82% |
+| UA 889 | ORD → LAS | C6 | 08:45 | — | **Gate Change** | 167/179 | 93% |
+| UA 1567 | ORD → SAN | B10 | 09:00 | — | **On Time** | 112/150 | 75% |
+| UA 3321 | ORD → PDX | C12 | 09:15 | — | **Delayed** | 145/179 | 81% |
+| UA 998 | ORD → BOS | B26 | 09:30 | — | **On Time** | 134/150 | 89% |
+| UA 2104 | ORD → MCO | C10 | 09:45 | — | **On Time** | 178/189 | 94% |
+| UA 672 | ORD → IAH | B8 | 10:00 | — | **Cancelled** | — | — |
+| UA 1450 | ORD → LAX | B12 | 10:15 | — | **On Time** | 156/179 | 87% |
+</Card>
+</Tab>
+
+<Tab title="Delayed Flights (8)">
+<Card title="Delayed Flights — Requiring Attention">
+<Callout tone="danger" title="UA 1892 — ORD → LAS | Gate C4 | Delay: 67 min">
+<strong>Reason:</strong> Late inbound aircraft (UA 1891 from LAS, arrived 07:32 vs 06:45 scheduled).<br/>
+<strong>Impact:</strong> 12 connecting passengers at risk (see Connections at Risk).<br/>
+<strong>Action:</strong> Gate hold until 08:07. Crew timing OK (reports 07:45). Consider aircraft swap if further delay.
+</Callout>
+
+<Callout tone="warning" title="UA 2208 — ORD → PHX | Gate C8 | Delay: 15 min">
+<strong>Reason:</strong> ATC flow control — EDCT 07:45 due to PHX weather.<br/>
+<strong>Impact:</strong> 5 connecting passengers.<br/>
+<strong>Action:</strong> Hold at gate. Update passengers at 07:30.
+</Callout>
+
+<Callout tone="warning" title="UA 3321 — ORD → PDX | Gate C12 | Delay: TBD">
+<strong>Reason:</strong> Maintenance — hydraulic indicator light. Mx crew en route.<br/>
+<strong>Impact:</strong> 8 connecting passengers.<br/>
+<strong>Action:</strong> ETA for Mx sign-off: 09:45. Prepare backup aircraft (N372UA at Gate C14).
+</Callout>
+
+<Callout tone="info" title="UA 889 — ORD → LAS | Gate C6→C14 | Delay: 20 min (gate change)">
+<strong>Reason:</strong> Gate conflict with UA 1892 extended occupancy.<br/>
+<strong>Action:</strong> Reassigned to C14. Pax notified via app/announcement.
+</Callout>
+</Card>
+</Tab>
+
+<Tab title="Recent Gate Changes (6)">
+<Card title="Gate Changes — Last 4 Hours">
+| Time | Flight | Route | Old Gate | New Gate | Reason |
+|---|---|---|---|---|---|
+| 07:42 | UA 889 | ORD → LAS | C6 | C14 | Gate conflict — UA 1892 extended |
+| 07:15 | UA 2208 | ORD → PHX | C10 | C8 | ATC flow — moved to common-use |
+| 06:58 | UA 1450 | ORD → LAX | B14 | B12 | Aircraft swap (N372UA → N381UA) |
+| 06:30 | UA 3321 | ORD → PDX | C14 | C12 | Mx bay access needed |
+| 05:45 | UA 672 | ORD → IAH | B8 | — | **Cancelled** — gate released |
+| 05:20 | UA 2104 | ORD → MCO | C12 | C10 | Widebody gate requirement |
+</Card>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Position | Current Duty | Time Avail | Qualifications | Notes |
+|---|---|---|---|---|---|
+| CRW-4421 | Captain | Off-duty (reserve) | Now | 737, 320 | 11 hr rest — legal for 12 hr duty |
+| CRW-4422 | FO | Off-duty (reserve) | Now | 737, 320 | Paired with CRW-4421 |
+| CRW-3108 | FA Lead | Off-duty (reserve) | Now | All narrowbody | 10 hr rest |
+| CRW-3109 | FA | Off-duty (reserve) | Now | All narrowbody | 10 hr rest |
+| CRW-3110 | FA | Off-duty (reserve) | Now | All narrowbody | 10 hr rest |
+| CRW-3111 | FA | Off-duty (reserve) | Now | All narrowbody | 10 hr rest |
+| CRW-5572 | Captain | Deadhead UA 1102 | 08:30 | 737, 777 | Arrives DEN 08:30 — not local |
+| CRW-5573 | FO | Deadhead UA 1102 | 08:30 | 737, 777 | Arrives DEN 08:30 — not local |
+</Card>
+
+<Card title="Connections at Risk (27 passengers)">
+<Callout tone="danger" title="High Risk — Missed Connection Likely">
+<strong>UA 1892 → UA 2451 (LAX)</strong>: 12 pax connecting to UA 2451 (dep 06:00, already departed).<br/>
+<strong>Action:</strong> Rebook on UA 1450 (10:15) or UA 304 (next day 06:30). Hotel vouchers needed for 8 pax.
+</Callout>
+
+<Callout tone="warning" title="Medium Risk — Tight Connection">
+<strong>UA 2208 → UA 551 (SEA)</strong>: 5 pax, 35 min connection (UA 551 dep 07:22, already departed).<br/>
+<strong>Action:</strong> Rebook on UA 1102 (next day 06:15) or partner AS 445 (12:30).
+</Callout>
+
+<Callout tone="warning" title="Medium Risk — Tight Connection">
+<strong>UA 3321 → UA 998 (BOS)</strong>: 8 pax, 45 min connection if UA 3321 departs 09:45.<br/>
+<strong>Action:</strong> Monitor UA 3321 Mx progress. Protect on UA 1567 (next day 09:00) if needed.
+</Callout>
+
+<Callout tone="info" title="Low Risk — Monitor">
+<strong>UA 889 → UA 2104 (MCO)</strong>: 2 pax, 60 min connection. Gate change adds 10 min walk.
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Input label="Passenger Name / PNR" name="pax-pnr" placeholder="Enter name or 6-char PNR" hint="Search by name, PNR, or ticket number" required="true" />
+<Select label="Original Flight" name="orig-flight" placeholder="Select disrupted flight" options="UA 1892 — ORD→LAS (07:00) | UA 2208 — ORD→PHX (07:30) | UA 3321 — ORD→PDX (09:15) | UA 672 — ORD→IAH (10:00) | UA 889 — ORD→LAS (08:45)" required="true" />
+<Select label="New Flight" name="new-flight" placeholder="Select replacement flight" options="UA 1450 — ORD→LAX (10:15) | UA 304 — ORD→SFO (next day 06:30) | UA 1102 — ORD→DEN (next day 06:15) | AS 445 — ORD→SEA (12:30) | UA 1567 — ORD→PDX (next day 09:00) | UA 2104 — ORD→MCO (09:45) | Other (manual entry)" required="true" />
+<Checkboxes label="Ancillary Services" name="ancillaries" options="Hotel voucher | Meal voucher | Ground transport | Baggage delivery | Lounge access" hint="Select all that apply" />
+<TextArea label="Notes" name="rebook-notes" placeholder="Special instructions, ADA requirements, VIP status, etc." rows="3" />
+<Button variant="primary">Confirm Rebooking</Button>
+<Button variant="secondary">Print Itinerary</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full rebooking history for UA 1892 passengers
+- What's the crew legality for CRW-4421/4422 if assigned to UA 3321?
+- Escalate UA 3321 maintenance to Mx Control for ETA confirmation
+- Request additional reserve crew for evening push (16:00–22:00)
+- Generate delay code report for today's operations
+</FollowUps>

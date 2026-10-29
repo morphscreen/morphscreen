@@ -1,0 +1,268 @@
+# Emergency Operations Center — Live Board
+
+<Callout tone="danger" title="Priority: Zone B flood surge">
+Two breaches on the north levee. Zone B is at <Badge tone="danger">Critical</Badge> — reallocate pumps and boats before 18:00.
+</Callout>
+
+<Columns>
+<Stat label="Active incidents" value="14" change="+3 last hour" tone="danger" icon="warning" />
+<Stat label="People rescued" value="1,284" change="+96 today" tone="success" icon="users" />
+<Stat label="Confirmed casualties" value="37" change="+4 today" tone="danger" icon="heart" />
+<Stat label="Shelters open" value="9 of 12" note="3 at capacity" tone="warning" icon="house" />
+</Columns>
+
+<Card title="Overall severity summary" subtitle="Weighted across all active zones">
+<Columns>
+<Stat label="Critical zones" value="2" tone="danger" />
+<Stat label="High zones" value="3" tone="warning" />
+<Stat label="Moderate zones" value="4" tone="info" />
+<Stat label="Stable zones" value="5" tone="success" />
+</Columns>
+<Progress value="72" max="100" label="System-wide severity index" tone="danger" />
+</Card>
+
+<Card title="Active incidents by zone" subtitle="Tap a zone to focus the board on it">
+| Zone | Incident | Severity | Since |
+|---|---|---|---|
+| A | Riverbank overflow | <Badge tone="warning">High</Badge> | 06:10 |
+| B | Levee breach, north | <Badge tone="danger">Critical</Badge> | 04:45 |
+| C | Bridge structural damage | <Badge tone="warning">High</Badge> | 09:20 |
+| D | Landslide, Route 7 | <Badge tone="info">Moderate</Badge> | 11:05 |
+| E | Power grid failure | <Badge tone="warning">High</Badge> | 07:30 |
+| F | Water contamination | <Badge tone="info">Moderate</Badge> | 12:40 |
+| G | Shelter overcrowding | <Badge tone="info">Moderate</Badge> | 13:15 |
+| H | Comms tower down | <Badge tone="info">Moderate</Badge> | 10:00 |
+| I | Road washout, south | <Badge tone="success">Stable</Badge> | 08:50 |
+
+<Button ask="Focus the board on Zone B">Focus Zone B</Button>
+<Button variant="secondary" ask="Show all incidents in Zone A">Focus Zone A</Button>
+<Button variant="tertiary" ask="Show the full incident list">All zones</Button>
+</Card>
+
+<Card title="Resources available">
+<Columns>
+<Stat label="Rescue vehicles" value="38" note="22 boats, 16 trucks" icon="truck" />
+<Stat label="Personnel on shift" value="212" note="68 medical" icon="users" />
+<Stat label="Supply kits" value="1,940" note="water, food, blankets" icon="package" />
+<Stat label="Fuel reserve" value="11,400 L" change="-8% since noon" tone="warning" icon="gas-pump" />
+</Columns>
+<Progress value="38" max="60" label="Vehicles deployed" tone="info" />
+<Progress value="212" max="300" label="Personnel on duty" tone="success" />
+</Card>
+
+<Card title="Shelters — capacity and occupancy">
+| Shelter | Zone | Capacity | Occupancy | Status |
+|---|---|---|---|---|
+| Central High Gym | A | 400 | 312 | <Badge tone="success">Open</Badge> |
+| Riverside Community Hall | B | 250 | 250 | <Badge tone="danger">Full</Badge> |
+| Northgate Sports Arena | C | 800 | 540 | <Badge tone="success">Open</Badge> |
+| St. Mary's Parish | D | 180 | 96 | <Badge tone="success">Open</Badge> |
+| Eastside School | E | 300 | 288 | <Badge tone="warning">Near full</Badge> |
+| Harbor Warehouse | F | 600 | 401 | <Badge tone="success">Open</Badge> |
+| Hilltop Clinic Annex | G | 120 | 120 | <Badge tone="danger">Full</Badge> |
+| Old Mill Depot | H | 220 | 74 | <Badge tone="success">Open</Badge> |
+| Southfield Camp | I | 500 | 233 | <Badge tone="success">Open</Badge> |
+
+<Button ask="Show shelter intake details for Riverside Community Hall">Riverside details</Button>
+<Button variant="secondary" ask="Find the nearest shelter with free space to Zone B">Nearest with space</Button>
+</Card>
+
+<Card title="Evacuation routes">
+| Route | From → To | Status | Notes |
+|---|---|---|---|
+| R1 | Zone B → Northgate Arena | <Badge tone="danger">Blocked</Badge> | Flooded at km 3 |
+| R2 | Zone A → Central High | <Badge tone="warning">Congested</Badge> | 40 min delay |
+| R3 | Zone C → Harbor Warehouse | <Badge tone="success">Open</Badge> | Clear |
+| R4 | Zone D → St. Mary's | <Badge tone="warning">Single lane</Badge> | Landslide debris |
+| R5 | Zone E → Eastside School | <Badge tone="success">Open</Badge> | Clear |
+| R6 | Zone F → Southfield Camp | <Badge tone="info">Rerouted</Badge> | Via Route 9 |
+| R7 | Zone G → Old Mill Depot | <Badge tone="success">Open</Badge> | Clear |
+
+<Button ask="Show alternate route for R1 around the flooded section">Alternate for R1</Button>
+<Button variant="secondary" ask="Assign traffic control to Route R2">Control R2 traffic</Button>
+</Card>
+
+<Card title="Weather — next 48 hours">
+<Chart type="line" x="Hour" y="Rainfall (mm)">
+| Hour | Rainfall | Wind (km/h) |
+|---|---|---|
+| 0 | 18 | 42 |
+| 6 | 24 | 51 |
+| 12 | 31 | 63 |
+| 18 | 27 | 58 |
+| 24 | 14 | 39 |
+| 30 | 9 | 28 |
+| 36 | 5 | 22 |
+| 42 | 3 | 18 |
+| 48 | 2 | 15 |
+</Chart>
+<Callout tone="warning" title="Peak at hour 12">Heaviest rain and 63 km/h gusts expected mid-cycle. Pause boat ops on open water if gusts exceed 60.</Callout>
+</Card>
+
+<Card title="People rescued and casualties">
+<Columns>
+<Stat label="Rescued" value="1,284" change="+96 today" tone="success" icon="lifebuoy" />
+<Stat label="Injured, treated" value="143" tone="info" icon="first-aid" />
+<Stat label="Critical, hospitalized" value="22" tone="warning" icon="heartbeat" />
+<Stat label="Confirmed dead" value="37" change="+4 today" tone="danger" icon="heart" />
+<Stat label="Missing" value="61" change="-12 since dawn" tone="warning" icon="magnifying-glass" />
+</Columns>
+</Card>
+
+<Card title="Volunteers on duty">
+| Volunteer | Assignment | Zone | Shift |
+|---|---|---|---|
+| A. Okafor | Shelter intake | A | 08–16 |
+| M. Delgado | Boat crew 4 | B | 06–18 |
+| R. Singh | Supply distribution | C | 09–17 |
+| L. Chen | Medical triage | B | 06–18 |
+| T. Bauer | Traffic control | D | 10–18 |
+| S. Novak | Comms relay | H | 12–20 |
+| J. Ferreira | Shelter intake | E | 08–16 |
+| K. Ahmed | Sandbag crew 2 | B | 06–18 |
+| P. Rossi | Logistics desk | HQ | 07–19 |
+| N. Haddad | Animal rescue | F | 09–17 |
+
+<Button ask="Show the volunteer roster for the next shift">Next shift roster</Button>
+<Button variant="secondary" ask="Assign more volunteers to Zone B">Add to Zone B</Button>
+</Card>
+
+<Card title="Donations received">
+| Donor | Type | Amount | Received |
+|---|---|---|---|
+| Meridian Bank | Cash | $250,000 | 09:12 |
+| Northline Logistics | Transport | 12 trucks | 10:04 |
+| GreenMart | Food & water | 4,000 kits | 11:30 |
+| City Pharmacy Group | Medical supplies | 900 crates | 12:15 |
+| Anonymous | Cash | $18,400 | 13:02 |
+| Harbor Freight Co. | Fuel | 6,000 L | 13:48 |
+| Sunridge Farms | Blankets | 2,200 units | 14:20 |
+
+<Columns>
+<Stat label="Cash total" value="$268,400" tone="success" />
+<Stat label="In-kind value" value="$412,000" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Aid requests awaiting action">
+| Request | Zone | Priority | Age |
+|---|---|---|---|
+| 20 rescue boats | B | <Badge tone="danger">Critical</Badge> | 12 min |
+| Insulin and dialysis kits | G | <Badge tone="danger">Critical</Badge> | 26 min |
+| 3 generators | E | <Badge tone="warning">High</Badge> | 41 min |
+| 500 blankets | F | <Badge tone="info">Moderate</Badge> | 1 h 10 m |
+| Portable toilets | H | <Badge tone="info">Moderate</Badge> | 2 h 05 m |
+| Infant formula | A | <Badge tone="warning">High</Badge> | 55 min |
+
+<Button ask="Approve the 20 rescue boats for Zone B">Approve boats</Button>
+<Button variant="secondary" ask="Show all pending aid requests">All requests</Button>
+</Card>
+
+<Card title="Communication channels">
+| Channel | Status | Last check |
+|---|---|---|
+| Primary radio (VHF) | <Badge tone="success">Up</Badge> | 14:52 |
+| Backup radio (UHF) | <Badge tone="success">Up</Badge> | 14:51 |
+| Satellite phone | <Badge tone="success">Up</Badge> | 14:50 |
+| Cellular network | <Badge tone="warning">Degraded</Badge> | 14:49 |
+| Public alert SMS | <Badge tone="success">Up</Badge> | 14:53 |
+| Zone H tower | <Badge tone="danger">Down</Badge> | 14:40 |
+| Emergency web portal | <Badge tone="success">Up</Badge> | 14:52 |
+
+<Callout tone="danger" title="Zone H is dark">Comms tower down since 10:00. Relay through satellite phone until restored.</Callout>
+</Card>
+
+<Card title="Roads closed">
+| Road | Segment | Reason | Est. reopen |
+|---|---|---|---|
+| Route 7 | km 12–18 | Landslide | 20:00 |
+| Riverside Drive | Full length | Flooding | Unknown |
+| North Bridge | Both directions | Structural damage | 48 h |
+| Route 9 | km 4–9 | Washout | 22:30 |
+| Harbor Access Rd | Gate 2 | Debris | 17:00 |
+
+<Button ask="Show open detour for Route 7">Detour for Route 7</Button>
+<Button variant="secondary" ask="Notify all units of road closures">Notify units</Button>
+</Card>
+
+<Card title="Nearby hospitals — free beds">
+| Hospital | Distance | Free beds | ICU free | Status |
+|---|---|---|---|---|
+| Central General | 4.2 km | 38 | 6 | <Badge tone="success">Accepting</Badge> |
+| St. Anne's | 7.8 km | 12 | 2 | <Badge tone="warning">Limited</Badge> |
+| Northgate Medical | 11.4 km | 54 | 9 | <Badge tone="success">Accepting</Badge> |
+| Riverside Clinic | 3.1 km | 4 | 0 | <Badge tone="danger">Full</Badge> |
+| Hilltop Regional | 15.6 km | 61 | 11 | <Badge tone="success">Accepting</Badge> |
+
+<Button ask="Route the next critical patient to Hilltop Regional">Send to Hilltop</Button>
+<Button variant="secondary" ask="Show ICU capacity across all hospitals">ICU detail</Button>
+</Card>
+
+<Card title="Open tasks">
+| Task | Assignee | Due | Status |
+|---|---|---|---|
+| Seal levee breach, north | K. Ahmed | 18:00 | <Badge tone="danger">Overdue risk</Badge> |
+| Restore Zone H tower | S. Novak | 16:30 | <Badge tone="warning">In progress</Badge> |
+| Clear Route 9 washout | T. Bauer | 22:30 | <Badge tone="info">Assigned</Badge> |
+| Open overflow shelter | A. Okafor | 15:30 | <Badge tone="warning">In progress</Badge> |
+| Distribute water kits | R. Singh | 17:00 | <Badge tone="info">Assigned</Badge> |
+| Triage intake at Riverside | L. Chen | 15:00 | <Badge tone="success">Done</Badge> |
+
+<Button ask="Reassign the levee task to a second crew">Reassign levee task</Button>
+<Button variant="secondary" ask="Show all overdue tasks">Overdue tasks</Button>
+</Card>
+
+<Card title="Request more resources">
+<Form name="resource-request">
+<Select label="Resource type" placeholder="Choose a type" options="Rescue boats | Generators | Medical personnel | Water kits | Fuel | Blankets | Ambulances" />
+<Input label="Quantity" type="number" min="1" max="500" placeholder="20" hint="Units of the selected resource" />
+<Select label="Destination zone" placeholder="Choose a zone" options="Zone A | Zone B | Zone C | Zone D | Zone E | Zone F | Zone G | Zone H | Zone I" />
+<Select label="Priority" placeholder="Choose priority" options="Critical | High | Moderate | Low" />
+<TextArea label="Justification" placeholder="Why this is needed now" rows="3" />
+<Button>Submit resource request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast an update">
+<Form name="broadcast">
+<Input label="Headline" placeholder="Levee breach contained" required="true" />
+<TextArea label="Message" placeholder="Write the update for all channels" rows="4" required="true" />
+<Checkboxes label="Send to channels" options="Primary radio | Public alert SMS | Emergency web portal | Satellite phone | Cellular network" value="Primary radio | Public alert SMS" />
+<Radio label="Audience" options="All responders | Public | Zone B only | Command staff" />
+<Switch label="Mark as urgent" name="urgent" value="false" hint="Adds an alert tone to every channel" />
+<Button>Broadcast now</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="File a situation report">
+<Form name="sitreps">
+<Select label="Zone" placeholder="Choose a zone" options="Zone A | Zone B | Zone C | Zone D | Zone E | Zone F | Zone G | Zone H | Zone I" />
+<Select label="Severity" placeholder="Choose severity" options="Critical | High | Moderate | Stable" />
+<Input label="Incidents active" type="number" min="0" placeholder="3" />
+<Input label="People rescued in period" type="number" min="0" placeholder="96" />
+<Input label="Casualties in period" type="number" min="0" placeholder="4" />
+<TextArea label="Narrative" placeholder="What changed, what is blocked, what you need" rows="4" required="true" />
+<Date label="Report date" />
+<Button>File situation report</Button>
+</Form>
+</Card>
+
+<Card title="Map of key locations">
+<Map>
+<Place name="Zone B — Levee breach" Lat="40.7128" Lng="-74.0060" />
+<Place name="Riverside Community Hall (full)" Lat="40.7180" Lng="-74.0110" />
+<Place name="Central General Hospital" Lat="40.7060" Lng="-73.9980" />
+<Place name="Northgate Sports Arena" Lat="40.7230" Lng="-73.9890" />
+<Place name="Harbor Warehouse shelter" Lat="40.7000" Lng="-74.0150" />
+<Place name="Route 7 landslide" Lat="40.6900" Lng="-74.0220" />
+<Place name="Zone H comms tower" Lat="40.7290" Lng="-73.9800" />
+</Map>
+</Card>
+
+<FollowUps>
+- Show the incident timeline for Zone B
+- Draft a public alert about the levee breach
+- List all shelters with space within 5 km of Zone B
+- Summarize casualties by zone
+</FollowUps>

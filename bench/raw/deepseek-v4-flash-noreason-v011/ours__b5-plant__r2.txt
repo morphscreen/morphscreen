@@ -1,0 +1,136 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="warning">Live</Badge> <Badge tone="info">Shift A — Running</Badge>
+
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1%" tone="success" icon="chart-line" />
+<Stat label="Units Today" value="1,247 / 1,600" change="78%" tone="info" icon="package" />
+<Stat label="Days Since Last Incident" value="43" tone="success" icon="shield-check" />
+<Stat label="Safety Incidents (YTD)" value="3" tone="warning" icon="warning-circle" />
+</Columns>
+
+<Card title="Production Lines">
+<Columns>
+<Card title="Line A — Stamping" subtitle="Rate: 142 units/hr">
+<Badge tone="success">Running</Badge>
+<Progress value="85" max="100" label="85%" tone="success" />
+<Button ask="Show Line A in detail" variant="secondary" size="small">Focus on Line A</Button>
+</Card>
+<Card title="Line B — Assembly" subtitle="Rate: 98 units/hr">
+<Badge tone="warning">Reduced speed</Badge>
+<Progress value="62" max="100" label="62%" tone="warning" />
+<Button ask="Show Line B in detail" variant="secondary" size="small">Focus on Line B</Button>
+</Card>
+<Card title="Line C — Painting" subtitle="Rate: 76 units/hr">
+<Badge tone="danger">Down — 23 min</Badge>
+<Progress value="0" max="100" label="0%" tone="danger" />
+<Button ask="Show Line C in detail" variant="secondary" size="small">Focus on Line C</Button>
+</Card>
+<Card title="Line D — Packaging" subtitle="Rate: 120 units/hr">
+<Badge tone="success">Running</Badge>
+<Progress value="91" max="100" label="91%" tone="success" />
+<Button ask="Show Line D in detail" variant="secondary" size="small">Focus on Line D</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Week" y="Defect %">
+| Week | Defect % |
+|---|---|
+| W1 | 2.1 |
+| W2 | 1.8 |
+| W3 | 2.4 |
+| W4 | 1.5 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical | 187 |
+| Material shortage | 94 |
+| Changeover | 63 |
+| Quality issue | 41 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<Steps>
+<Step title="Press #3" subtitle="Due: Tomorrow" status="current">Hydraulic fluid change — 45 min</Step>
+<Step title="Conveyor B" subtitle="Due: In 2 days" status="todo">Belt tension adjustment — 30 min</Step>
+<Step title="Robot Arm #1" subtitle="Due: In 5 days" status="todo">Lubrication & calibration — 60 min</Step>
+</Steps>
+</Card>
+
+<Card title="Stock Levels">
+<Columns>
+<Stat label="Steel" value="12.4 tons" change="-8% from target" tone="warning" icon="cube" />
+<Stat label="Resin" value="3.8 tons" change="-22% from target" tone="danger" icon="drop" />
+<Stat label="Packaging" value="8,200 units" change="+5% from target" tone="success" icon="box" />
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| Acme Steel | Steel coils | Wed | <Badge tone="success">On time</Badge> |
+| PolyCorp | Resin pellets | Thu | <Badge tone="warning">Delayed 1 day</Badge> |
+| BoxMakers | Corrugated cartons | Fri | <Badge tone="success">On time</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A (6–14) | 1,247 |
+| Shift B (14–22) | 1,102 |
+| Shift C (22–6) | 891 |
+</Chart>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Product | Qty | Issue | Since |
+|---|---|---|---|---|
+| B-2104 | Bracket 42A | 340 | Dimensional variance | 3h ago |
+| B-2117 | Panel 88X | 120 | Surface defect | 1h ago |
+</Card>
+
+<Card title="Open Work Orders">
+| Order | Product | Priority | Qty | Due |
+|---|---|---|---|---|
+| WO-8921 | Bracket 42A | <Badge tone="danger">Critical</Badge> | 500 | Today 16:00 |
+| WO-8922 | Panel 88X | <Badge tone="warning">High</Badge> | 300 | Tomorrow 08:00 |
+| WO-8923 | Bushing 12B | <Badge tone="info">Medium</Badge> | 150 | Fri 12:00 |
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="warning" title="Line C — Down">Painting robot fault — ETA 14 min</Callout>
+<Callout tone="info" title="Line A — Material low">Steel coil remaining: 15 min of run time</Callout>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" options="Press #3 | Conveyor B | Robot Arm #1 | Line C Conveyor" placeholder="Select machine" />
+<Date label="Date" />
+<Button>Schedule Maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Button variant="secondary" ask="Show me the full dashboard for Line A">Focus on Line A</Button>
+<Button variant="secondary" ask="Show me the full dashboard for Line B">Focus on Line B</Button>
+<Button variant="secondary" ask="Show me the full dashboard for Line C">Focus on Line C</Button>
+<Button variant="secondary" ask="Show me the full dashboard for Line D">Focus on Line D</Button>
+<Button ask="Export the shift report as PDF">Export Shift Report</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the maintenance history for Press #3
+- Which batches are on hold right now?
+- What caused the downtime on Line C today?
+- Compare this week's OEE to last week
+</FollowUps>

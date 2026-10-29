@@ -1,0 +1,60 @@
+# Support lead — morning view
+
+<Columns>
+<Stat label="Open tickets" value="142" change="+18 overnight" tone="warning" icon="ticket" />
+<Stat label="Avg first response" value="38 min" change="-6 min vs yesterday" tone="success" icon="timer" />
+<Stat label="Breaching SLA" value="9" change="4 high priority" tone="danger" icon="warning" />
+<Stat label="Resolved yesterday" value="87" tone="success" icon="check-circle" />
+</Columns>
+
+<Card title="Open ticket load" subtitle="142 open against a 180 cap">
+<Progress value="142" max="180" label="Queue capacity" tone="warning" />
+</Card>
+
+<Card title="Most recent tickets" subtitle="Five newest, newest first">
+| Ticket | Subject | Priority | Age | Channel |
+|---|---|---|---|---|
+| #4821 | Checkout fails on Safari 17 | <Badge tone="danger">High</Badge> | 4 min | Email |
+| #4820 | Refund not received after 9 days | <Badge tone="danger">High</Badge> | 11 min | Chat |
+| #4819 | How do I export my invoices? | <Badge tone="neutral">Low</Badge> | 26 min | Help center |
+| #4818 | Two-factor codes arriving late | <Badge tone="warning">Medium</Badge> | 41 min | Chat |
+| #4817 | Wrong plan charged after upgrade | <Badge tone="warning">Medium</Badge> | 58 min | Email |
+
+<Button ask="Show me the full detail of ticket #4821">Open #4821</Button>
+<Button variant="secondary" ask="Show all tickets assigned to me, sorted by priority">My queue</Button>
+</Card>
+
+<Card title="Narrow the view">
+<Form name="ticket-filters">
+<Checkboxes label="Priority" options="High only | Medium | Low" value="High only" name="priority" hint="High only hides everything below P1" />
+<Select label="Channel" placeholder="Any channel" options="Any channel | Email | Chat | Help center | Phone" name="channel" />
+<Select label="Age" placeholder="Any age" options="Any age | Under 15 min | 15-60 min | Over 1 hour" name="age" />
+<Switch label="Only unassigned" name="unassigned" value=false hint="Useful for triage before standup" />
+<Button>Apply filters</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="New ticket">
+<Form name="new-ticket">
+<Input label="Requester email" type="email" name="requester" placeholder="customer@example.com" required=true />
+<Input label="Subject" name="subject" placeholder="Short summary of the issue" required=true />
+<Select label="Priority" name="priority" options="High | Medium | Low" placeholder="Choose priority" required=true />
+<Select label="Channel" name="channel" options="Email | Chat | Phone | Walk-in" placeholder="Where did it come from" />
+<TextArea label="Description" name="description" rows="4" placeholder="What the customer reported, in their words" hint="Paste the original message if you have it" />
+<Input label="Assign to" name="assignee" placeholder="Name or leave blank for triage" />
+<Button>Create ticket</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Before you start triaging">
+Nine tickets are close to breaching SLA, four of them high priority. Clear those before the standup at 9:30.
+</Callout>
+
+<FollowUps>
+- Which high-priority tickets are closest to breaching?
+- Draft a reply to ticket #4821
+- Show yesterday's first-response time by channel
+- Who has the most open tickets right now?
+</FollowUps>

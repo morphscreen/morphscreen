@@ -1,0 +1,58 @@
+# Month-End Finance View
+
+<Callout tone="info" title="Snapshot: November 2024">
+Cash runway is 14.2 months. Two transactions over $10k need review before close.
+</Callout>
+
+<Columns>
+<Stat label="Cash on hand" value="$1,840,000" change="+2.1% MoM" tone="success" icon="currency-dollar" />
+<Stat label="Monthly burn" value="$129,400" change="+8.4% MoM" tone="warning" icon="fire" />
+<Stat label="Months of runway" value="14.2 mo" note="At current burn rate" tone="info" icon="chart-line" />
+</Columns>
+
+<Card title="Runway health" subtitle="Cash vs. burn">
+<Progress value="14.2" max="24" label="14.2 of 24 month target" tone="info" />
+</Card>
+
+<Card title="Expenses by category" subtitle="November 2024">
+<Chart type="donut" title="Expenses by category" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Payroll | 82000 |
+| Cloud & infra | 18400 |
+| Marketing | 14200 |
+| Software | 8600 |
+| Office & admin | 6200 |
+</Chart>
+</Card>
+
+<Card title="Transactions over $10,000" subtitle="This month — 4 items">
+| Date | Vendor | Category | Amount |
+|---|---|---|---|
+| Nov 03 | Gusto Payroll | Payroll | $41,200 |
+| Nov 09 | AWS | Cloud & infra | $18,400 |
+| Nov 15 | Gusto Payroll | Payroll | $40,800 |
+| Nov 22 | Northline Ads | Marketing | $12,500 |
+</Card>
+
+<Card title="View another month">
+<Form name="month-select">
+<Select label="Reporting month" name="month" options="November 2024 | October 2024 | September 2024 | August 2024" value="November 2024" hint="Switches the whole view" />
+<Button>Load month</Button>
+</Form>
+</Card>
+
+<Card title="Download statement">
+<Form name="statement-download">
+<Radio label="Format" name="format" options="PDF | CSV | XLSX" value="PDF" />
+<Date label="As of date" name="asof" value="2024-11-30" />
+<Button icon="download">Download statement</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which transactions over $10k are still unreconciled?
+- Break down November burn by category versus October
+- What is the runway if burn stays at this level?
+- Show the largest vendor spend this quarter
+</FollowUps>

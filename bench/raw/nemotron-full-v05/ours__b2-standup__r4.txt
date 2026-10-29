@@ -1,0 +1,72 @@
+# Async Standup — August 15, 2025
+
+<Stat label="Updates received" value="7" change="of 10 teammates" tone="info" />
+<Stat label="Missing updates" value="3" change="Sarah, Marcus, Priya" tone="warning" />
+
+<Card title="Post your update" subtitle="Share what you did, what's next, and any blockers">
+<Form name="standup-update">
+<TextArea label="What did you complete yesterday?" name="done" placeholder="Shipped the new onboarding flow..." rows="2" required="true" />
+<TextArea label="What will you tackle today?" name="next" placeholder="Review PR #247, fix mobile layout bug..." rows="2" required="true" />
+<Switch label="I'm blocked — need help" name="blocked" value="false" hint="Your name will be highlighted for the team" />
+<Button>Post update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Team updates">
+<Columns>
+<Card title="Alex Chen" subtitle="Engineering • Posted 8:42 AM">
+**Done:** Refactored auth middleware, added rate limiting tests
+**Next:** Deploy to staging, pair with Jamie on API contracts
+</Card>
+
+<Card title="Jamie Park" subtitle="Engineering • Posted 8:55 AM">
+**Done:** Finished API contract v2, updated OpenAPI specs
+**Next:** Review Alex's PR, write integration tests
+</Card>
+
+<Card title="Riley Brooks" subtitle="Design • Posted 9:03 AM">
+**Done:** Delivered new dashboard mockups, handed off to eng
+**Next:** Design system audit, accessibility review
+</Card>
+
+<Card title="Casey Morgan" subtitle="Product • Posted 9:11 AM">
+**Done:** Prioritized Q3 roadmap, synced with sales on feedback
+**Next:** Write spec for bulk export feature, user interviews
+</Card>
+
+<Card title="Jordan Lee" subtitle="Engineering • Posted 9:18 AM" >
+<Badge tone="danger">BLOCKED</Badge>
+**Done:** Started migration script for legacy users
+**Next:** Need DBA approval for schema change — waiting on infra ticket #INFRA-882
+</Card>
+
+<Card title="Taylor Kim" subtitle="Engineering • Posted 9:25 AM">
+**Done:** Fixed mobile nav bug, updated snapshot tests
+**Next:** Code review for Riley's handoff, investigate CI flakiness
+</Card>
+
+<Card title="Morgan Davis" subtitle="DevOps • Posted 9:33 AM">
+**Done:** Rolled out new log aggregation, tuned alerts
+**Next:** Capacity planning for Q3, review Terraform modules
+</Card>
+
+<Card title="Sam Rivera" subtitle="QA • Posted 9:41 AM">
+**Done:** Regression suite for release 4.2, all green
+**Next:** Exploratory testing on bulk export, update test plan
+</Card>
+</Columns>
+</Card>
+
+<Card title="Still missing updates">
+<Badge tone="warning">Sarah Mitchell</Badge> — Engineering
+<Badge tone="warning">Marcus Johnson</Badge> — Engineering  
+<Badge tone="warning">Priya Patel</Badge> — Product
+<Callout tone="info" title="Reminder sent">Automatic nudge sent at 10:00 AM. They'll appear here once posted.</Callout>
+</Card>
+
+<FollowUps>
+- Nudge missing teammates
+- Export standup summary
+- View yesterday's standup
+</FollowUps>

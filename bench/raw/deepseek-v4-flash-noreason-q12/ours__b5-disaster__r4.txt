@@ -1,0 +1,338 @@
+# Emergency Response Coordination Center
+
+**Operational Dashboard** — Last updated: 14:32 UTC
+
+<Badge tone="danger">Critical Event Active</Badge> <Badge tone="warning">Zone B Escalating</Badge>
+
+---
+
+<Card title="Zone Focus" subtitle="Select a zone to filter all data below">
+<Radio label="Filter by zone" options="All Zones | Zone A – Coastal | Zone B – Riverside | Zone C – Hill District | Zone D – Industrial" name="zone-filter" value="All Zones" />
+</Card>
+
+<Card title="1. Active Incidents by Zone">
+<Chart type="bar" x="Zone" y="Severity Score">
+| Zone | Critical | High | Moderate | Low |
+|---|---|---|---|---|
+| Zone A – Coastal | 2 | 3 | 1 | 0 |
+| Zone B – Riverside | 4 | 2 | 0 | 0 |
+| Zone C – Hill District | 1 | 1 | 3 | 2 |
+| Zone D – Industrial | 0 | 2 | 2 | 1 |
+</Chart>
+
+| Zone | Incident | Severity | Status |
+|---|---|---|---|
+| Zone A | Flooding – Harbor Rd | <Badge tone="danger">Critical</Badge> | Contained |
+| Zone A | Structural collapse – Marina | <Badge tone="danger">Critical</Badge> | Rescue ongoing |
+| Zone A | Power outage – Grid 4 | <Badge tone="warning">High</Badge> | Crew dispatched |
+| Zone A | Road flooding – Seaview Ave | <Badge tone="warning">High</Badge> | Barricaded |
+| Zone A | Gas leak – Elm St | <Badge tone="warning">High</Badge> | Crew on site |
+| Zone A | Water contamination – Plant 2 | <Badge tone="info">Moderate</Badge> | Testing |
+| Zone B | Levee breach – North Bank | <Badge tone="danger">Critical</Badge> | Evacuation in progress |
+| Zone B | Flash flood – Mill Rd | <Badge tone="danger">Critical</Badge> | Swift-water rescue |
+| Zone B | Building flooding – Depot | <Badge tone="danger">Critical</Badge> | Pumping |
+| Zone B | Bridge washout – Old Crossing | <Badge tone="danger">Critical</Badge> | Closed |
+| Zone B | Sewage overflow – Treatment | <Badge tone="warning">High</Badge> | Bypass active |
+| Zone B | Road washout – Riverside Dr | <Badge tone="warning">High</Badge> | Closed |
+| Zone C | Landslide – Ridge Rd | <Badge tone="danger">Critical</Badge> | Search underway |
+| Zone C | Road slip – Hillcrest | <Badge tone="warning">High</Badge> | Monitoring |
+| Zone C | Power lines down – Summit | <Badge tone="info">Moderate</Badge> | Crew dispatched |
+| Zone C | Water runoff – Valley | <Badge tone="info">Moderate</Badge> | Sandbags placed |
+| Zone C | Minor flooding – Park Ln | <Badge tone="info">Moderate</Badge> | Monitoring |
+| Zone C | Debris on road – Cedar | <Badge tone="success">Low</Badge> | Cleared |
+| Zone C | Drain blockage – Oak | <Badge tone="success">Low</Badge> | Cleared |
+| Zone D | Chemical spill – Plant 7 | <Badge tone="warning">High</Badge> | Containment |
+| Zone D | Fire – Warehouse 3 | <Badge tone="warning">High</Badge> | Suppression |
+| Zone D | Rail disruption – Freight line | <Badge tone="info">Moderate</Badge> | Assessment |
+| Zone D | Road flooding – Industry Way | <Badge tone="info">Moderate</Badge> | Pumping |
+| Zone D | Minor leak – Storage 2 | <Badge tone="success">Low</Badge> | Repaired |
+</Card>
+
+<Card title="2. Overall Severity Summary">
+<Columns>
+<Stat label="Critical Incidents" value="7" tone="danger" icon="warning-circle" />
+<Stat label="High Severity" value="8" tone="warning" icon="alert" />
+<Stat label="Moderate" value="6" tone="info" icon="info" />
+<Stat label="Low Severity" value="3" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="54" max="100" label="System stress index" tone="danger" />
+</Card>
+
+<Card title="3. Available Resources — Vehicles, Personnel & Supplies">
+<Columns>
+<Stat label="Vehicles Available" value="23" change="+4 en route" tone="success" icon="truck" />
+<Stat label="Personnel On Duty" value="148" change="+12 in last hour" tone="success" icon="users" />
+<Stat label="Supplies Stocked" value="76%" change="Replenishment due" tone="warning" icon="package" />
+</Columns>
+
+| Type | Available | Deployed | Total |
+|---|---|---|---|
+| Ambulances | 8 | 11 | 19 |
+| Fire engines | 5 | 7 | 12 |
+| Rescue boats | 3 | 4 | 7 |
+| Utility trucks | 4 | 6 | 10 |
+| Helicopters | 2 | 1 | 3 |
+| Buses (evacuation) | 6 | 4 | 10 |
+| **Vehicles total** | **28** | **33** | **61** |
+
+| Personnel Role | Available | Deployed |
+|---|---|---|
+| Paramedics | 18 | 22 |
+| Firefighters | 25 | 31 |
+| Police officers | 30 | 26 |
+| Search & rescue | 12 | 14 |
+| Engineers | 8 | 6 |
+| Medical staff | 20 | 15 |
+| Logistics | 10 | 6 |
+| **Personnel total** | **123** | **120** |
+
+| Supply Item | Stock | Reorder Level |
+|---|---|---|
+| Water (liters) | 12,500 | 5,000 |
+| Food packs | 3,200 | 1,500 |
+| Blankets | 1,800 | 800 |
+| Medical kits | 240 | 100 |
+| Sandbags | 8,500 | 3,000 |
+| Fuel (gallons) | 4,200 | 2,000 |
+| Generators | 18 | 8 |
+| Tents | 45 | 20 |
+</Card>
+
+<Card title="4. Shelters — Capacity & Occupancy">
+<Chart type="bar" x="Shelter" y="Occupancy">
+| Shelter | Occupancy | Capacity |
+|---|---|---|
+| North High School | 420 | 600 |
+| Community Center A | 180 | 250 |
+| Riverside Church | 95 | 150 |
+| Hill District Hall | 210 | 300 |
+| Industrial Gym | 60 | 200 |
+| Harbor Convention Ctr | 350 | 500 |
+</Chart>
+
+| Shelter | Zone | Occupancy | Capacity | Percent Full | Status |
+|---|---|---|---|---|---|
+| North High School | A | 420 | 600 | 70% | <Badge tone="warning">Near capacity</Badge> |
+| Community Center A | A | 180 | 250 | 72% | <Badge tone="warning">Near capacity</Badge> |
+| Riverside Church | B | 95 | 150 | 63% | <Badge tone="success">Open</Badge> |
+| Hill District Hall | C | 210 | 300 | 70% | <Badge tone="warning">Near capacity</Badge> |
+| Industrial Gym | D | 60 | 200 | 30% | <Badge tone="success">Open</Badge> |
+| Harbor Convention Ctr | A | 350 | 500 | 70% | <Badge tone="warning">Near capacity</Badge> |
+| **Total** | — | **1,315** | **2,000** | **66%** | — |
+</Card>
+
+<Card title="5. Evacuation Route Status">
+| Route | Zone | Status | Condition | Est. Delay |
+|---|---|---|---|---|
+| Route 1 – Coastal Hwy | A | <Badge tone="success">Open</Badge> | Clear | None |
+| Route 2 – Riverside Dr | B | <Badge tone="danger">Closed</Badge> | Washout at mile 3 | N/A |
+| Route 3 – Ridge Rd | C | <Badge tone="warning">Partially open</Badge> | Landslide debris, one lane | 45 min |
+| Route 4 – Industrial Way | D | <Badge tone="success">Open</Badge> | Light flooding, passable | 10 min |
+| Route 5 – Mill Rd | B | <Badge tone="danger">Closed</Badge> | Flash flood | N/A |
+| Route 6 – Summit Pass | C | <Badge tone="warning">Partially open</Badge> | Downed lines, one lane | 30 min |
+| Route 7 – Harbor Bridge | A | <Badge tone="success">Open</Badge> | Clear | None |
+</Card>
+
+<Card title="6. Weather Forecast — Next 48 Hours">
+<Chart type="line" x="Hour" y="Rain (mm) & Temp (°C)">
+| Hour | Rain mm | Temp C |
+|---|---|---|
+| Now | 18 | 16 |
+| +6h | 22 | 15 |
+| +12h | 28 | 14 |
+| +18h | 15 | 14 |
+| +24h | 8 | 15 |
+| +30h | 4 | 17 |
+| +36h | 2 | 18 |
+| +42h | 1 | 19 |
+| +48h | 0 | 20 |
+</Chart>
+
+| Period | Condition | Rain | Wind | Temp | Warning |
+|---|---|---|---|---|---|
+| Next 6h | Heavy rain | 18–22 mm/h | 35 km/h | 15–16°C | <Badge tone="danger">Flash flood risk</Badge> |
+| 6–12h | Heavy rain | 22–28 mm/h | 40 km/h | 14–15°C | <Badge tone="danger">Levee stress</Badge> |
+| 12–24h | Moderate rain | 8–15 mm/h | 25 km/h | 14–15°C | <Badge tone="warning">River level high</Badge> |
+| 24–36h | Light rain | 2–4 mm/h | 15 km/h | 15–17°C | <Badge tone="info">Improving</Badge> |
+| 36–48h | Drizzle clearing | 0–1 mm/h | 10 km/h | 17–20°C | <Badge tone="success">All clear expected</Badge> |
+</Card>
+
+<Card title="7. People Rescued & Casualties">
+<Columns>
+<Stat label="People Rescued" value="412" change="+38 this hour" tone="success" icon="lifebuoy" />
+<Stat label="Injured (Treated)" value="127" tone="warning" icon="first-aid-kit" />
+<Stat label="Fatalities" value="3" tone="danger" icon="warning" />
+<Stat label="Missing" value="5" tone="danger" icon="magnifying-glass" />
+</Columns>
+
+| Zone | Rescued | Injured | Fatalities | Missing |
+|---|---|---|---|---|
+| Zone A | 156 | 48 | 0 | 1 |
+| Zone B | 189 | 61 | 3 | 3 |
+| Zone C | 52 | 14 | 0 | 1 |
+| Zone D | 15 | 4 | 0 | 0 |
+| **Total** | **412** | **127** | **3** | **5** |
+</Card>
+
+<Card title="8. Volunteers on Duty">
+<Columns>
+<Avatar name="Maria Chen" subtitle="Zone A – Shelter support" />
+<Avatar name="James Okafor" subtitle="Zone B – Swift-water rescue" />
+<Avatar name="Priya Sharma" subtitle="Zone C – Medical triage" />
+<Avatar name="Tomás Rivera" subtitle="Zone D – Supply distribution" />
+<Avatar name="Sarah Kim" subtitle="Zone A – Communications" />
+<Avatar name="David Müller" subtitle="Zone B – Evacuation bus" />
+</Columns>
+
+| Volunteer | Zone | Assignment | Shift |
+|---|---|---|---|
+| Maria Chen | A | Shelter support – North HS | 06:00–18:00 |
+| James Okafor | B | Swift-water rescue team 2 | 12:00–00:00 |
+| Priya Sharma | C | Medical triage – Hill Hall | 06:00–18:00 |
+| Tomás Rivera | D | Supply distribution – Gym | 12:00–00:00 |
+| Sarah Kim | A | Communications desk | 06:00–18:00 |
+| David Müller | B | Evacuation bus driver | 12:00–00:00 |
+| Aisha Bello | C | Search & rescue – Ridge Rd | 06:00–18:00 |
+| Liam O'Connor | A | Damage assessment – Harbor | 12:00–00:00 |
+| Yuki Tanaka | B | Shelter support – Church | 06:00–18:00 |
+| Elena Petrova | D | First aid – Industrial | 12:00–00:00 |
+| **Total on duty** | — | **34 volunteers** | — |
+</Card>
+
+<Card title="9. Donations Received">
+<Columns>
+<Stat label="Total Donations" value="$184,500" change="+$12,300 today" tone="success" icon="hand-heart" />
+<Stat label="In-kind Items" value="2,140" tone="info" icon="package" />
+</Columns>
+
+| Category | Amount / Qty | Notes |
+|---|---|---|
+| Cash donations | $184,500 | From 1,240 donors |
+| Water (liters) | 8,000 | 400 pallets |
+| Food packs | 1,200 | Non-perishable |
+| Blankets | 850 | New, sealed |
+| Medical supplies | 320 kits | First aid & trauma |
+| Clothing | 2,100 items | Sorted & labeled |
+| Generators | 6 | 5 kW each |
+| Baby supplies | 180 kits | Diapers, formula |
+| Pet food | 400 kg | For shelter pets |
+</Card>
+
+<Card title="10. Aid Requests Awaiting Action">
+<Callout tone="warning" title="Priority queue">5 requests waiting — oldest is 1h 20m old</Callout>
+
+| Request ID | Zone | Type | Details | Priority | Age |
+|---|---|---|---|---|---|
+| AR-104 | B | Pump | 2 high-capacity water pumps | <Badge tone="danger">Critical</Badge> | 1h 20m |
+| AR-105 | B | Boats | 1 additional rescue boat | <Badge tone="danger">Critical</Badge> | 1h 05m |
+| AR-106 | C | Medical | 2 paramedic teams | <Badge tone="warning">High</Badge> | 45m |
+| AR-107 | A | Fuel | 500 gallons diesel | <Badge tone="warning">High</Badge> | 30m |
+| AR-108 | D | Sandbags | 2,000 sandbags | <Badge tone="info">Moderate</Badge> | 15m |
+</Card>
+
+<Card title="11. Communication Channels Status">
+| Channel | Status | Notes |
+|---|---|---|
+| Radio – Dispatch | <Badge tone="success">Up</Badge> | Primary, all zones |
+| Radio – Backup | <Badge tone="warning">Degraded</Badge> | Zone C interference |
+| Phone – Landline | <Badge tone="success">Up</Badge> | Main office lines |
+| Phone – Mobile | <Badge tone="warning">Degraded</Badge> | Zone B towers congested |
+| Satellite uplink | <Badge tone="success">Up</Badge> | Redundant link active |
+| Internet / Data | <Badge tone="success">Up</Badge> | Fiber intact |
+| Public alert system | <Badge tone="success">Up</Badge> | SMS & sirens working |
+| Inter-agency link | <Badge tone="warning">Degraded</Badge> | Police radio patch intermittent |
+| Amateur radio net | <Badge tone="success">Up</Badge> | Volunteer operators on duty |
+</Card>
+
+<Card title="12. Roads Closed">
+| Road / Bridge | Zone | Closure Reason | Expected Reopen |
+|---|---|---|---|
+| Riverside Dr (full) | B | Washout at mile 3 | Unknown — assessment |
+| Mill Rd (full) | B | Flash flood | 6–12 hrs |
+| Old Crossing Bridge | B | Bridge washout | Days — structural |
+| Ridge Rd (partial) | C | Landslide debris | 4–6 hrs |
+| Summit Pass (partial) | C | Downed power lines | 2–3 hrs |
+| Seaview Ave (full) | A | Flooding | 8–12 hrs |
+| Harbor Rd (full) | A | Flooding | 6–10 hrs |
+| Industry Way (partial) | D | Street flooding | 2–4 hrs |
+| Elm St (full) | A | Gas leak | Until repaired |
+</Card>
+
+<Card title="13. Nearby Hospitals — Free Beds">
+| Hospital | Zone | Total Beds | Occupied | Free Beds | ER Status |
+|---|---|---|---|---|---|
+| St. Mary's General | A | 320 | 245 | 75 | <Badge tone="success">Open</Badge> |
+| Riverside Medical Center | B | 210 | 178 | 32 | <Badge tone="warning">Near capacity</Badge> |
+| Hillcrest Community Hospital | C | 150 | 118 | 32 | <Badge tone="success">Open</Badge> |
+| Industrial District Clinic | D | 80 | 52 | 28 | <Badge tone="success">Open</Badge> |
+| Harbor View Urgent Care | A | 45 | 38 | 7 | <Badge tone="danger">Critical — diverting</Badge> |
+| **Total** | — | **805** | **631** | **174** | — |
+</Card>
+
+<Card title="14. Open Tasks">
+| Task ID | Description | Zone | Assignee | Priority | Due |
+|---|---|---|---|---|---|
+| T-201 | Deploy pumps to levee | B | Engine Co. 3 | <Badge tone="danger">Critical</Badge> | 15:00 |
+| T-202 | Swift-water rescue – Mill Rd | B | Rescue Team 2 | <Badge tone="danger">Critical</Badge> | ASAP |
+| T-203 | Clear landslide – Ridge Rd | C | Crew 7 | <Badge tone="danger">Critical</Badge> | 16:30 |
+| T-204 | Restore power – Grid 4 | A | Utility Crew 1 | <Badge tone="warning">High</Badge> | 18:00 |
+| T-205 | Deliver supplies to shelters | A | Logistics – Tomás | <Badge tone="warning">High</Badge> | 17:00 |
+| T-206 | Damage assessment – Harbor | A | Liam O'Connor | <Badge tone="warning">High</Badge> | 19:00 |
+| T-207 | Repair radio patch – Zone C | C | Comms Team | <Badge tone="warning">High</Badge> | 20:00 |
+| T-208 | Sanitize water plant 2 | A | Eng. Team 4 | <Badge tone="info">Moderate</Badge> | 22:00 |
+| T-209 | Inventory donations | D | Sarah Kim | <Badge tone="info">Moderate</Badge> | 21:00 |
+| T-210 | Survey bridge stability | B | Structural Eng. | <Badge tone="info">Moderate</Badge> | Tomorrow |
+</Card>
+
+<Card title="15. Request More Resources">
+<Form name="resource-request">
+<Select label="Resource type" placeholder="Select type" options="Vehicles | Personnel | Water | Food | Medical supplies | Fuel | Sandbags | Generators | Blankets | Other" name="resource-type" required />
+<Input label="Quantity" type="number" placeholder="e.g. 10" name="quantity" required />
+<Select label="Zone" placeholder="Select zone" options="Zone A – Coastal | Zone B – Riverside | Zone C – Hill District | Zone D – Industrial | General" name="zone" required />
+<TextArea label="Notes" placeholder="Any details about the need" name="notes" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="16. Broadcast Update">
+<Form name="broadcast">
+<Select label="Audience" placeholder="Select audience" options="All zones | Zone A only | Zone B only | Zone C only | Zone D only | Shelters | Volunteers | Staff" name="audience" required />
+<Select label="Channel" placeholder="Select channel" options="Public alert (SMS) | Radio | All channels | Social media | Shelter PA systems" name="channel" required />
+<TextArea label="Message" placeholder="Type the update to broadcast…" name="message" required rows="4" />
+<Button>Broadcast now</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="17. Focus on One Zone">
+<Columns>
+<Button variant="secondary" size="small">Zone A</Button>
+<Button variant="secondary" size="small">Zone B</Button>
+<Button variant="secondary" size="small">Zone C</Button>
+<Button variant="secondary" size="small">Zone D</Button>
+<Button variant="primary" size="small">All Zones</Button>
+</Columns>
+<Callout tone="info" title="How it works">Selecting a zone filters all data above — incidents, resources, shelters, routes, tasks and more — to show only that zone's operational picture.</Callout>
+</Card>
+
+<Card title="18. File Situation Report">
+<Form name="sitrep">
+<Select label="Report type" placeholder="Select type" options="Standard SITREP | Damage assessment | Casualty update | Resource status | Incident-specific | End-of-shift" name="type" required />
+<Select label="Zone" placeholder="Select zone" options="Zone A – Coastal | Zone B – Riverside | Zone C – Hill District | Zone D – Industrial | All zones" name="zone" required />
+<Input label="Report period start" type="datetime-local" name="period-start" required />
+<Input label="Report period end" type="datetime-local" name="period-end" required />
+<TextArea label="Summary" placeholder="Key facts, status changes, decisions made…" name="summary" required rows="4" />
+<TextArea label="Actions taken" placeholder="What was done this period" name="actions" rows="3" />
+<TextArea label="Issues & needs" placeholder="Gaps, risks, resource shortfalls" name="issues" rows="3" />
+<Input label="Prepared by" placeholder="Name / Role" name="prepared-by" required />
+<Button>Submit situation report</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full incident list for Zone B
+- What's the current status of the levee breach?
+- Which shelters need more supplies right now?
+- Generate a printable summary for the command briefing
+- List all volunteers available for the next shift
+</FollowUps>

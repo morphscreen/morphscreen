@@ -1,0 +1,163 @@
+# Streaming Operations Room
+
+Live control surface for the whole service. <Badge tone="success">All regions nominal</Badge>
+
+<Columns>
+<Stat label="Viewers watching now" value="1,284,930" change="+4.2% vs 1h ago" tone="success" icon="users" />
+<Stat label="Buffering rate" value="0.42%" change="-0.08 pp" tone="success" icon="activity" />
+<Stat label="New subs (30d)" value="184,200" change="+11%" tone="info" icon="user-plus" />
+<Stat label="Cancellations (30d)" value="96,400" change="-3%" tone="warning" icon="user-minus" />
+</Columns>
+
+<Card title="Most-watched titles" subtitle="Last 24 hours, hours streamed">
+| Title | Hours |
+|---|---|
+| The Long Coast | 4,120,000 |
+| Nightfall Protocol | 3,680,000 |
+| Harbor Lights | 2,910,000 |
+| Iron Meridian | 2,240,000 |
+| Paper Kingdom | 1,870,000 |
+</Chart>
+</Card>
+
+<Card title="Watch time — past month">
+<Chart type="area" x="Day" y="Hours">
+| Day | Hours |
+|---|---|
+| W1 | 18200000 |
+| W2 | 19650000 |
+| W3 | 21100000 |
+| W4 | 20440000 |
+</Chart>
+</Card>
+
+<Tabs>
+<Tab title="Growth">
+<Chart type="bar" x="Month" y="Subscribers">
+| Month | New subs | Cancellations |
+|---|---|---|
+| M1 | 142000 | 88000 |
+| M2 | 158000 | 91000 |
+| M3 | 171000 | 94000 |
+| M4 | 184200 | 96400 |
+</Chart>
+</Tab>
+<Tab title="Genres">
+<Chart type="horizontal" x="Genre" y="Share %">
+| Genre | Share |
+|---|---|
+| Drama | 34 |
+| Comedy | 22 |
+| Documentary | 17 |
+| Thriller | 15 |
+| Kids | 12 |
+</Chart>
+</Tab>
+</Tabs>
+
+<Card title="Delivery health by region">
+| Region | Status | Buffering | Uptime |
+|---|---|---|---|
+| North America | <Badge tone="success">Healthy</Badge> | 0.31% | 99.99% |
+| Europe | <Badge tone="success">Healthy</Badge> | 0.38% | 99.98% |
+| LATAM | <Badge tone="warning">Degraded</Badge> | 0.94% | 99.71% |
+| APAC | <Badge tone="info">Watch</Badge> | 0.61% | 99.92% |
+</Card>
+
+<Card title="Focus a region" subtitle="Scopes all live panels to one region">
+<Select label="Region" options="Global | North America | Europe | LATAM | APAC" value="Global" hint="Applies to viewers, buffering and delivery panels" />
+</Card>
+
+<Card title="Coming this month">
+<Steps>
+<Step title="The Long Coast — S2" status="current" subtitle="Drops in 3 days">Marketing push scheduled</Step>
+<Step title="Nightfall Protocol — Finale" status="todo" subtitle="Drops in 11 days">Trailer live</Step>
+<Step title="Harbor Lights — S1" status="todo" subtitle="Drops in 19 days">Subtitles in review</Step>
+</Steps>
+</Card>
+
+<Card title="Licenses expiring soon">
+| Title | Expires | Action |
+|---|---|---|
+| Iron Meridian | 9 days | <Badge tone="danger">Urgent</Badge> |
+| Paper Kingdom | 24 days | <Badge tone="warning">Renew</Badge> |
+| Old Harbor | 41 days | <Badge tone="neutral">Review</Badge> |
+</Card>
+
+<Columns>
+<Card title="Recommendation CTR">
+<Stat label="Click-through rate" value="6.8%" change="+0.4 pp" tone="success" icon="cursor-click" />
+<Chart type="line" x="Week" y="CTR %">
+| Week | CTR |
+|---|---|
+| W1 | 6.1 |
+| W2 | 6.3 |
+| W3 | 6.6 |
+| W4 | 6.8 |
+</Chart>
+</Card>
+<Card title="Searches with no playback">
+<Stat label="Zero-result rate" value="9.4%" change="+1.1 pp" tone="warning" icon="magnifying-glass" />
+<Chart type="bar" x="Term" y="Searches">
+| Term | Searches |
+|---|---|
+| "space doc" | 12400 |
+| "k drama" | 9800 |
+| "live sports" | 7300 |
+| "old sitcom" | 5100 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Revenue split by plan">
+<Chart type="donut" x="Plan" y="Revenue %">
+| Plan | Share |
+|---|---|
+| Premium | 52 |
+| Standard | 31 |
+| Basic | 12 |
+| Ad-supported | 5 |
+</Chart>
+</Card>
+<Card title="Viewing split by device">
+<Chart type="pie" x="Device" y="Sessions %">
+| Device | Share |
+|---|---|
+| TV | 58 |
+| Mobile | 24 |
+| Laptop | 13 |
+| Tablet | 5 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Feature flags">
+| Flag | State | Rollout |
+|---|---|---|
+| Adaptive bitrate v3 | <Badge tone="success">On</Badge> | 100% |
+| Personalized trailers | <Badge tone="info">On</Badge> | 40% |
+| New player UI | <Badge tone="warning">Canary</Badge> | 5% |
+| Download limits | <Badge tone="neutral">Off</Badge> | 0% |
+</Card>
+
+<Card title="Promote a title on the home screen">
+<Form name="promote-title">
+<Select label="Title" options="The Long Coast | Nightfall Protocol | Harbor Lights | Iron Meridian | Paper Kingdom" placeholder="Choose a title" required="true" />
+<Radio label="Placement" options="Hero banner | Top row | Genre row" />
+<Date label="Start date" required="true" />
+<Date label="End date" />
+<Slider label="Audience reach" min="0" max="100" step="5" value="50" name="reach" unit="%" />
+<Switch label="Pin to top for all users" name="pin" value="false" />
+<Button>Promote title</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+
+<Callout tone="warning" title="LATAM degraded">Buffering at 0.94% — investigate edge capacity before the weekend peak</Callout>
+
+<FollowUps>
+- Which region is driving the buffering increase?
+- Show me the full license renewal calendar
+- What are the top zero-result search terms this week?
+</FollowUps>

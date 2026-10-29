@@ -1,0 +1,148 @@
+# Hub Operations Desk
+
+<Card title="Hub Overview" subtitle="Atlanta (ATL) · Tuesday, June 3 · 14:32 EDT">
+<Columns>
+<Stat label="On-Time Performance" value="87.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Avg Passenger Load" value="82%" change="+3 pts vs yesterday" tone="info" icon="users" />
+<Stat label="Avg Turnaround Time" value="54 min" change="−6 min vs target" tone="success" icon="clock" />
+<Stat label="Cancellations Today" value="7" change="3 weather-related" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Flight Board" subtitle="All departures and arrivals for ATL">
+<Tabs>
+<Tab title="Departures">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 412 | ATL → JFK | A12 | <Badge tone="success">On time</Badge> |
+| DL 887 | ATL → LAX | B7 | <Badge tone="warning">Delayed 45 min</Badge> |
+| DL 203 | ATL → ORD | C3 | <Badge tone="success">On time</Badge> |
+| DL 654 | ATL → MIA | A5 | <Badge tone="success">Boarding</Badge> |
+| DL 991 | ATL → SFO | B12 | <Badge tone="danger">Cancelled</Badge> |
+| DL 338 | ATL → DFW | C9 | <Badge tone="warning">Delayed 20 min</Badge> |
+| DL 771 | ATL → SEA | A2 | <Badge tone="success">On time</Badge> |
+| DL 529 | ATL → BOS | B4 | <Badge tone="success">On time</Badge> |
+</Tab>
+<Tab title="Arrivals">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 118 | LHR → ATL | E1 | <Badge tone="success">On time</Badge> |
+| DL 340 | CDG → ATL | E3 | <Badge tone="warning">Delayed 30 min</Badge> |
+| DL 552 | AMS → ATL | E5 | <Badge tone="success">On time</Badge> |
+| DL 774 | MEX → ATL | E2 | <Badge tone="success">Landed</Badge> |
+| DL 902 | GRU → ATL | E4 | <Badge tone="danger">Cancelled</Badge> |
+| DL 665 | FRA → ATL | E6 | <Badge tone="success">On time</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Delayed Flights" subtitle="Flights exceeding 15-minute delay">
+<Callout tone="warning" title="3 flights delayed">
+Weather at ATL is causing ripple effects on eastbound departures.
+</Callout>
+| Flight | Route | Gate | Delay | Reason |
+|---|---|---|---|---|
+| DL 887 | ATL → LAX | B7 | 45 min | Ground stop at LAX |
+| DL 340 | CDG → ATL | E3 | 30 min | Late inbound from CDG |
+| DL 338 | ATL → DFW | C9 | 20 min | Weather hold |
+
+<Button variant="secondary" label="View delay reasons">View delay reasons</Button>
+</Card>
+
+<Card title="Recent Gate Changes" subtitle="Last 2 hours">
+| Time | Flight | From | To |
+|---|---|---|---|
+| 14:10 | DL 654 | A7 | A5 |
+| 13:55 | DL 203 | C1 | C3 |
+| 13:40 | DL 118 | E2 | E1 |
+| 13:25 | DL 771 | A4 | A2 |
+| 13:05 | DL 529 | B6 | B4 |
+</Card>
+
+<Card title="Crew Availability" subtitle="Ready for reassignment">
+<Columns>
+<Avatar name="Sarah Kim" subtitle="Captain · 8h duty left" />
+<Avatar name="Marcus Reed" subtitle="First Officer · 6h duty left" />
+<Avatar name="Elena Vasquez" subtitle="Flight Attendant · 10h duty left" />
+<Avatar name="David Chen" subtitle="Flight Attendant · 7h duty left" />
+</Columns>
+<Callout tone="info" title="4 crew members available">
+All have valid credentials and are within duty limits for a 4-hour assignment.
+</Callout>
+</Card>
+
+<Card title="Weather Advisories" subtitle="ATL and surrounding region">
+<Callout tone="warning" title="Thunderstorm watch until 18:00 EDT">
+Scattered thunderstorms within 30 nm of ATL. Expect wind gusts up to 35 kt. Possible ground stops between 15:30–17:00.
+</Callout>
+| Advisory | Valid Until | Impact |
+|---|---|---|
+| Thunderstorm watch | 18:00 EDT | Moderate — possible holds |
+| Wind shear alert (runway 27L) | 16:30 EDT | Low — approach monitoring |
+| Fog potential (overnight) | 06:00 EDT | Low — early morning arrivals |
+
+<Button variant="secondary" label="View full weather briefing">View full weather briefing</Button>
+</Card>
+
+<Card title="Connections at Risk" subtitle="Passengers with tight or disrupted connections">
+| Passenger | Flight | Connection | Connection Time | Status |
+|---|---|---|---|---|
+| J. Thompson | DL 887 → DL 210 | ATL → SFO | 35 min | <Badge tone="danger">At risk</Badge> |
+| A. Okafor | DL 340 → DL 115 | ATL → IAH | 40 min | <Badge tone="warning">Tight</Badge> |
+| M. Lindqvist | DL 338 → DL 440 | ATL → DEN | 45 min | <Badge tone="warning">Tight</Badge> |
+| R. Patel | DL 887 → DL 312 | ATL → PHX | 50 min | <Badge tone="warning">Tight</Badge> |
+
+<Button label="Rebook affected passengers">Rebook affected passengers</Button>
+</Card>
+
+<Card title="Rebooking Tool" subtitle="Find alternate flights for disrupted passengers">
+<Form name="rebooking">
+<Input label="Passenger confirmation code" placeholder="e.g. ABC123" />
+<Select label="Current flight" placeholder="Select flight" options="DL 887 ATL→LAX | DL 340 CDG→ATL | DL 338 ATL→DFW" />
+<Select label="Destination" placeholder="Select destination" options="JFK | LAX | ORD | MIA | SFO | DFW | SEA | BOS" />
+<Input label="Preferred time" type="time" placeholder="14:00" />
+<Radio label="Rebooking preference" options="Earliest available | Same day only | Flexible +1 day" />
+<Button>Search alternates</Button>
+</Form>
+</Card>
+
+<Card title="Hub Selector" subtitle="Switch to a different operations view">
+<Select label="Select hub" placeholder="Choose a hub" options="ATL — Atlanta | JFK — New York | LAX — Los Angeles | ORD — Chicago | DFW — Dallas | SEA — Seattle" />
+<Button variant="primary" label="Switch hub">Switch hub</Button>
+</Card>
+
+<Card title="Cancellations Today" subtitle="7 total cancellations">
+| Flight | Route | Gate | Reason | Passengers Rebooked |
+|---|---|---|---|---|
+| DL 991 | ATL → SFO | B12 | Crew availability | 89% |
+| DL 902 | GRU → ATL | E4 | Mechanical | 76% |
+| DL 145 | ATL → MCO | D2 | Weather | 100% |
+| DL 227 | ATL → TPA | D5 | Weather | 100% |
+| DL 508 | ATL → RDU | D7 | Weather | 95% |
+| DL 612 | ATL → PBI | D9 | Crew availability | 82% |
+| DL 733 | ATL → JAX | D11 | Weather | 100% |
+
+<Button variant="secondary" label="View rebooking progress">View rebooking progress</Button>
+</Card>
+
+<Card title="Turnaround Performance" subtitle="Average turnaround by hour today">
+<Chart type="bar" title="Average turnaround time (minutes)" x="Hour" y="Minutes">
+| Hour | Turnaround |
+|---|---|
+| 06:00 | 48 |
+| 08:00 | 52 |
+| 10:00 | 55 |
+| 12:00 | 58 |
+| 14:00 | 61 |
+</Chart>
+<Callout tone="info" title="Target: 60 minutes">
+Current average is 54 minutes, within target. Delays in the 14:00 hour are weather-related.
+</Callout>
+</Card>
+
+<FollowUps>
+- Show me the next 3 hours of arrivals
+- Which crews can cover DL 887?
+- List passengers on DL 991 who still need rebooking
+- What's the weather outlook for the evening?
+</FollowUps>

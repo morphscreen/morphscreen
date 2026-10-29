@@ -1,0 +1,136 @@
+# Hub Operations Desk — ATL (Atlanta)
+
+<Select label="Select Hub" name="hub-select" options="ATL — Atlanta | ORD — Chicago O'Hare | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles | JFK — New York JFK | SEA — Seattle | MIA — Miami" value="ATL — Atlanta" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="82%" change="−3% vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="On-Time Arrivals" value="79%" change="−5% vs yesterday" tone="warning" icon="chart-line" />
+<Progress value="82" max="100" label="Departure Target: 85%" tone="warning" />
+<Progress value="79" max="100" label="Arrival Target: 85%" tone="warning" />
+</Card>
+
+<Card title="Key Metrics">
+<Stat label="Cancellations Today" value="12" change="+4 vs yesterday" tone="danger" icon="x-circle" />
+<Stat label="Avg Turnaround Time" value="42 min" change="+3 min vs target" tone="warning" icon="timer" />
+<Stat label="Avg Passenger Load" value="87%" change="+2% vs last week" tone="info" icon="users" />
+<Stat label="Crews on Reserve" value="18" change="3 reassigned" tone="success" icon="user-check" />
+</Card>
+</Columns>
+
+<Card title="Flights — Live Board">
+<Tabs>
+<Tab title="All Flights (142)">
+| Flight | Route | Gate | STD | ATD/Est | Status |
+|---|---|---|---|---|---|
+| DL 1024 | ATL → LAX | B12 | 06:15 | 06:18 | **Departed** |
+| DL 843 | ATL → JFK | A4 | 06:30 | 06:45 | **Delayed** ⚠ |
+| DL 219 | ATL → ORD | C22 | 06:45 | 06:47 | **Departed** |
+| DL 567 | ATL → MIA | D8 | 07:00 | 07:00 | **On Time** |
+| DL 3341 | ATL → DEN | B19 | 07:10 | 07:28 | **Delayed** ⚠ |
+| DL 902 | ATL → SEA | A11 | 07:20 | 07:20 | **On Time** |
+| DL 158 | ATL → DFW | C5 | 07:30 | — | **Cancelled** ✕ |
+| DL 447 | ATL → LAS | D14 | 07:40 | 07:42 | **Departed** |
+| DL 2210 | ATL → BOS | A2 | 07:50 | 08:10 | **Delayed** ⚠ |
+| DL 776 | ATL → SFO | B7 | 08:00 | 08:00 | **On Time** |
+| DL 305 | ATL → PHX | C18 | 08:10 | 08:25 | **Delayed** ⚠ |
+| DL 1189 | ATL → MCO | D3 | 08:20 | 08:20 | **On Time** |
+</Tab>
+<Tab title="Delayed (18)">
+| Flight | Route | Gate | STD | Est Dep | Delay | Reason |
+|---|---|---|---|---|---|---|
+| DL 843 | ATL → JFK | A4 | 06:30 | 06:45 | +15 min | Late inbound |
+| DL 3341 | ATL → DEN | B19 | 07:10 | 07:28 | +18 min | Crew timing |
+| DL 2210 | ATL → BOS | A2 | 07:50 | 08:10 | +20 min | Weather hold |
+| DL 305 | ATL → PHX | C18 | 08:10 | 08:25 | +15 min | Maintenance |
+| DL 512 | ATL → LGA | A15 | 08:30 | 08:55 | +25 min | ATC flow |
+| DL 1407 | ATL → SAN | B24 | 08:45 | 09:10 | +25 min | Late inbound |
+| DL 663 | ATL → IAH | C11 | 09:00 | 09:22 | +22 min | Weather |
+| DL 891 | ATL → EWR | A7 | 09:15 | 09:40 | +25 min | ATC flow |
+</Tab>
+<Tab title="Cancelled (12)">
+| Flight | Route | Gate | STD | Reason | Rebooked |
+|---|---|---|---|---|---|
+| DL 158 | ATL → DFW | C5 | 07:30 | Mechanical | 89/142 pax |
+| DL 204 | ATL → CLT | D10 | 06:50 | Crew shortage | 67/98 pax |
+| DL 771 | ATL → TPA | B3 | 08:00 | Weather | 112/156 pax |
+| DL 442 | ATL → RDU | A18 | 08:20 | Mechanical | 45/76 pax |
+| DL 915 | ATL → CLE | C14 | 08:45 | Weather | 78/110 pax |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Recent Gate Changes (Last 30 min)">
+| Time | Flight | From → To | Reason |
+|---|---|---|---|
+| 07:42 | DL 567 | D8 → D11 | Gate conflict |
+| 07:38 | DL 902 | A11 → A14 | Aircraft swap |
+| 07:31 | DL 447 | D14 → D16 | Cleaning delay |
+| 07:25 | DL 776 | B7 → B10 | Early arrival |
+| 07:18 | DL 1189 | D3 → D6 | Gate hold |
+<Button variant="secondary" size="small">View All Gate Changes</Button>
+</Card>
+
+<Card title="Weather Advisories — ATL">
+<Callout tone="warning" title="Convective SIGMET 12C Valid Until 14:00Z">Scattered to broken thunderstorms moving NE at 25 kts. Expect wind shear, hail to 1", gusts 45 kts. Impact: Departure corridors RWY 26L/27R, arrival fixes HOBOW/NASSA.</Callout>
+<Callout tone="info" title="METAR ATL 081251Z 24012G22KT 8SM SCT025 BKN040CB 28/22 A3001 RMK SLP156">Surface wind 240° at 12G22, scattered clouds 2,500ft, broken cumulonimbus 4,000ft. VFR but deteriorating.</Callout>
+<Callout tone="neutral" title="TAF AMD 0812/0912 24015G25KT 6SM -SHRA BKN030CB TEMPO 1316 3SM TSRA BKN020CB">Tempo thunderstorms 13-16Z, visibility 3SM, ceiling 2,000ft. Improvement expected after 18Z.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment">
+| Crew ID | Base | Position | Current Duty | Available At | Qualifications |
+|---|---|---|---|---|---|
+| ATL-CR-042 | ATL | Captain | Reserve | Now | B737, B757, A321 |
+| ATL-FO-118 | ATL | First Officer | Reserve | Now | B737, A321 |
+| ATL-FA-203 | ATL | Lead FA | Reserve | Now | All narrowbody |
+| ATL-FA-204 | ATL | FA | Reserve | Now | All narrowbody |
+| ATL-FA-205 | ATL | FA | Reserve | Now | All narrowbody |
+| ATL-CR-055 | ATL | Captain | Deadhead DL 843 | 08:30 | B737, B757 |
+| ATL-FO-131 | ATL | First Officer | Deadhead DL 843 | 08:30 | B737, A321 |
+| ATL-CR-067 | ATL | Captain | Off-duty (callout) | 09:00 | B737, B757, B767, A330 |
+<Button variant="secondary" size="small">Request Crew Reassignment</Button>
+</Card>
+
+<Card title="Connections at Risk (≥15 min buffer lost)">
+| Pax | Inbound | Arr Gate | Connecting | Dep Gate | Buffer | Status |
+|---|---|---|---|---|---|---|
+| 23 | DL 1422 (LAX) | B14 | DL 843 → JFK | A4 | 8 min | **Critical** |
+| 18 | DL 2301 (SFO) | A18 | DL 3341 → DEN | B19 | 12 min | **Critical** |
+| 12 | DL 556 (SEA) | C24 | DL 2210 → BOS | A2 | 10 min | **Critical** |
+| 9 | DL 1887 (SAN) | D12 | DL 305 → PHX | C18 | 14 min | **At Risk** |
+| 7 | DL 944 (LAS) | B22 | DL 512 → LGA | A15 | 11 min | **Critical** |
+| 5 | DL 602 (PDX) | A20 | DL 1407 → SAN | B24 | 13 min | **At Risk** |
+<Button variant="danger" size="small">Protect All Connections</Button>
+</Card>
+</Columns>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-form">
+<Columns>
+<Input label="Passenger Name / PNR" name="pnr" placeholder="Enter PNR or last name" required="true" />
+<Select label="Original Flight" name="orig-flight" options="DL 158 — ATL→DFW 07:30 | DL 204 — ATL→CLT 06:50 | DL 771 — ATL→TPA 08:00 | DL 442 — ATL→RDU 08:20 | DL 915 — ATL→CLE 08:45 | Other…" required="true" />
+</Columns>
+<Columns>
+<Select label="New Flight" name="new-flight" options="DL 219 — ATL→DFW 09:15 (12 seats) | DL 445 — ATL→DFW 11:30 (28 seats) | DL 1024 — ATL→LAX 12:45 (15 seats) | DL 567 — ATL→MIA 10:00 (8 seats) | DL 902 — ATL→SEA 13:20 (22 seats) | Search all…" required="true" />
+<Select label="Cabin" name="cabin" options="Main Cabin | Comfort+ | First Class" value="Main Cabin" />
+</Columns>
+<Columns>
+<Checkboxes label="Options" name="rebook-opts" options="Auto-assign seats | Email itinerary | SMS notification | Meal preference transfer | Baggage re-tag" value="Email itinerary | SMS notification" />
+<Radio label="Fare Difference" name="fare-diff" options="Waive (irregular ops) | Collect difference | Issue credit" value="Waive (irregular ops)" />
+</Columns>
+<Button>Rebook Passenger(s)</Button>
+<Button variant="secondary">Bulk Rebook by Flight</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me all flights delayed >30 minutes with crew impact
+- List passengers misconnected on DL 843 to JFK
+- What's the weather forecast for the next 6 hours at ATL?
+- Show crew legality for DL 3341 to DEN
+- Generate delay summary report for DOT filing
+</FollowUps>

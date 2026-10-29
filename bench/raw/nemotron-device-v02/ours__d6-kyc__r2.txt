@@ -1,0 +1,32 @@
+<Card title="Identity Verification" subtitle="New bank account setup">
+<Steps>
+<Step title="ID Front" status="current" />
+<Step title="ID Back" status="todo" />
+<Step title="Selfie" status="todo" />
+<Step title="Address" status="todo" />
+<Step title="Submit" status="todo" />
+</Steps>
+
+<Form name="identity-check">
+### 1. Front of ID Card
+<Camera label="Front of ID card" name="id_front" facing="back" required="true" hint="Place the front of your ID card within the frame" />
+
+### 2. Back of ID Card
+<Camera label="Back of ID card" name="id_back" facing="back" required="true" hint="Place the back of your ID card within the frame" />
+
+### 3. Selfie
+<Camera label="Selfie" name="selfie" facing="front" required="true" hint="Take a clear photo of your face" />
+
+### 4. Home Address
+<Switch label="Use current location" name="use_current_location" value="false" hint="Enable to automatically fill your address" />
+<Input label="Street address" name="street" placeholder="123 Main St" required="true" />
+<Input label="City" name="city" placeholder="New York" required="true" />
+<Input label="Postal code" name="postal_code" placeholder="10001" required="true" />
+<Select label="Country" name="country" placeholder="Select country" options="United States | Canada | United Kingdom | Australia | Other" required="true" />
+<Location label="Current location (auto-filled)" name="current_location" precision="approximate" hint="Your location will be used if 'Use current location' is enabled" required="false" />
+
+### 5. Submit
+<Button variant="primary">Submit Application</Button>
+<Button variant="secondary">Save & Continue Later</Button>
+</Form>
+</Card>

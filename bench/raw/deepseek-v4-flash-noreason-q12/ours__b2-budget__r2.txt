@@ -1,0 +1,75 @@
+<Card title="Budget Check" subtitle="Personal finance at a glance">
+<Columns>
+<Stat label="Budget" value="$3,200" note="Monthly cap" icon="wallet" />
+<Stat label="Spent" value="$2,480" note="77.5% of budget" icon="shopping-cart" tone="info" />
+<Stat label="Remaining" value="$720" note="22.5% left" icon="piggy-bank" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Spending vs. Budget">
+<Progress value="2480" max="3200" label="Spent this month" tone="info" />
+<Callout tone="warning" title="You're over 75% of your budget">
+With 12 days left in March, you're on pace to exceed your budget by ~$180.
+</Callout>
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1100 |
+| Food | 540 |
+| Transport | 310 |
+| Utilities | 180 |
+| Entertainment | 150 |
+| Other | 200 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="danger" title="Rent — $1,100">
+This is your single largest expense this month, making up 44% of total spending.
+</Callout>
+</Card>
+
+<Card title="Expense Details">
+<Tabs>
+<Tab title="All Expenses">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Mar 28 | Housing | Rent | $1,100 |
+| Mar 26 | Food | Groceries | $85 |
+| Mar 24 | Transport | Fuel | $60 |
+| Mar 22 | Utilities | Electricity | $90 |
+| Mar 20 | Food | Dining out | $120 |
+</Tab>
+<Tab title="Largest Only">
+| Date | Category | Description | Amount |
+|---|---|---|---|
+| Mar 28 | Housing | Rent | $1,100 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Change Month">
+<Form name="month-picker">
+<Select label="Select month" options="March 2025 (current) | February 2025 | January 2025 | December 2024" placeholder="Pick a month" />
+<Button variant="secondary">View month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g., Groceries at Trader Joe's" required />
+<Select label="Category" options="Housing | Food | Transport | Utilities | Entertainment | Other" placeholder="Choose category" required />
+<Input label="Amount" type="number" placeholder="0.00" min="0" step="0.01" required />
+<Date label="Date" required />
+<Button variant="primary">Add expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How can I reduce my food spending?
+- What was my spending last month?
+- Show me a breakdown of my housing costs.
+</FollowUps>

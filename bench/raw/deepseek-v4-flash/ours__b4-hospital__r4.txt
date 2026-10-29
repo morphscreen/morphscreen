@@ -1,0 +1,156 @@
+# Hospital Operations Command
+
+<Badge tone="success">Live</Badge>
+<Badge tone="info">Refreshed 2 min ago</Badge>
+
+<Columns>
+<Stat label="Bed occupancy" value="87%" note="312 / 360 beds" icon="bed" tone="info" />
+<Stat label="Current ER wait" value="42 min" note="Average, last hour" icon="clock" tone="warning" />
+<Stat label="Admissions today" value="28" note="+4 vs same day last week" icon="trend-up" />
+<Stat label="Critical patients" value="6" note="Page team lead" icon="warning" tone="danger" />
+</Columns>
+
+<Callout tone="danger" title="6 critical patients — page the team lead">
+- **ICU Bed 3** — Mr. D. Nguyen — MI, on nitroglycerin drip
+- **ICU Bed 7** — Mrs. R. Coleman — Sepsis, on pressors
+- **ER Bay 5** — Mr. J. Alvarez — Stroke, awaiting CT
+- **ICU Bed 11** — Ms. F. Adeyemi — ARDS, ventilated
+- **Cardiology 412** — Mr. G. Patel — Post-arrest, cooling protocol
+- **PICU Bed 2** — L. Wilson — Diabetic ketoacidosis
+</Callout>
+
+<Columns>
+<Card title="Bed occupancy by unit">
+<Progress value="312" max="360" label="Overall 312 / 360 beds (87%)" tone="info" />
+
+| Unit | Occupied | Total | Utilization |
+|---|---|---|---|
+| ICU | 18 | 20 | 90% |
+| Cardiology | 42 | 48 | 88% |
+| Neurology | 33 | 40 | 83% |
+| Pediatrics | 28 | 34 | 82% |
+| Maternity | 22 | 30 | 73% |
+| Orthopedics | 30 | 36 | 83% |
+| General | 139 | 152 | 91% |
+</Card>
+<Card title="Current ER wait">
+<Stat label="Average wait" value="42 min" note="Target under 30 min" tone="warning" icon="clock" />
+<Stat label="Longest wait" value="78 min" note="Triage 3" tone="danger" icon="arrow-up" />
+<Stat label="Open treatment bays" value="4" note="of 12" icon="bed" />
+
+| Queue | Patients |
+|---|---|
+| Waiting to triage | 6 |
+| Treated, awaiting bed | 9 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Admissions — last 14 days">
+<Chart type="area" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Jun 1 | 22 |
+| Jun 2 | 25 |
+| Jun 3 | 19 |
+| Jun 4 | 27 |
+| Jun 5 | 24 |
+| Jun 6 | 30 |
+| Jun 7 | 21 |
+| Jun 8 | 18 |
+| Jun 9 | 26 |
+| Jun 10 | 23 |
+| Jun 11 | 29 |
+| Jun 12 | 25 |
+| Jun 13 | 31 |
+| Jun 14 | 28 |
+</Chart>
+</Card>
+<Card title="Patients per department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| ICU | 18 |
+| Cardiology | 42 |
+| Neurology | 33 |
+| Pediatrics | 28 |
+| Maternity | 22 |
+| Orthopedics | 30 |
+| General | 45 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Staff on shift" subtitle="Roster 07:00 – 19:00">
+| Name | Role | Department |
+|---|---|---|
+| Dr. Elena Ruiz | Attending | ICU |
+| Dr. Marcus Chen | Resident | ER |
+| Nurse Omar Farouk | Charge nurse | ER |
+| Nurse Priya Patel | RN | Cardiology |
+| Dr. John Okafor | Surgeon | OR |
+| Dr. Sarah Lindqvist | Attending | Neurology |
+| Nurse Tom Becker | RN | Pediatrics |
+| Tech Lena Fischer | Lab tech | Pathology |
+</Card>
+
+<Columns>
+<Card title="Ready for discharge" subtitle="Confirmed by attending">
+| Patient | Room | Department | Destination |
+|---|---|---|---|
+| Mrs. G. Hall | 412 | Cardiology | Home |
+| Mr. T. Yamada | 208 | Orthopedics | Rehab |
+| Ms. K. Dupont | 119 | Neurology | Home |
+| Mr. R. Silva | 305 | General | Home |
+| Mrs. A. Boggs | 221 | Pediatrics | Home |
+</Card>
+<Card title="Today's OR bookings">
+| Time | Procedure | Surgeon | OR |
+|---|---|---|---|
+| 07:30 | CABG ×3 | Dr. Okafor | OR 2 |
+| 08:00 | Hip replacement | Dr. Weber | OR 4 |
+| 09:15 | Appendectomy | Dr. Kim | OR 1 |
+| 10:30 | Craniotomy | Dr. Lindqvist | OR 3 |
+| 11:00 | Cholecystectomy | Dr. Chen | OR 2 |
+| 13:00 | Knee arthroscopy | Dr. Weber | OR 4 |
+| 14:30 | Bowel resection | Dr. Okafor | OR 1 |
+</Card>
+</Columns>
+
+<Card title="Supplies running low" subtitle="Reorder triggered at threshold">
+| Supply | Current stock | Reorder point | Status |
+|---|---|---|---|
+| Saline 500 ml | 40 | 120 | **Low** |
+| N95 masks | 60 | 200 | **Low** |
+| IV pumps | 5 | 8 | **Low** |
+| Blood culture bottles | 12 | 20 | **Low** |
+| ECG electrodes | 30 | 50 | **Low** |
+</Card>
+
+<Columns>
+<Card title="File an incident">
+<Form name="incident">
+<Input label="Your name" placeholder="Dr. Jane Smith" />
+<Select label="Severity" options="Near miss | Minor | Moderate | Severe | Critical" placeholder="Choose severity" />
+<Select label="Category" options="Medication | Equipment | Fall | Infection | Behavioral | Other" placeholder="Choose category" />
+<TextArea label="Description" placeholder="What happened?" rows="3" />
+<Button>Submit incident</Button>
+</Form>
+</Card>
+<Card title="Request patient transfer">
+<Form name="transfer">
+<Select label="Patient" options="Mr. T. Yamada (208) | Ms. K. Dupont (119) | Mr. R. Silva (305) | Mrs. A. Boggs (221)" placeholder="Choose patient" />
+<Select label="Transfer type" options="To ICU | To step-down | To general ward | To another facility" placeholder="Choose type" />
+<Input label="Destination" placeholder="e.g. St. Mary's ICU" />
+<TextArea label="Reason" placeholder="Clinical summary and reason" rows="3" />
+<Button>Request transfer</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Look at another day" subtitle="Loads beds, ER wait, admissions, staffing, OR, and supplies for the selected date">
+<Form name="day-lookup">
+<Input label="Date" type="date" value="2025-06-14" />
+<Button>Load day</Button>
+</Form>
+</Card>

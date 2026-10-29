@@ -1,0 +1,126 @@
+# Hub Operations Desk — ORD (Chicago O'Hare)
+
+<Card subtitle="Select a different hub to view its operations">
+<Select label="Hub" name="hub-select" options="ORD — Chicago O'Hare | ATL — Atlanta Hartsfield-Jackson | DFW — Dallas/Fort Worth | DEN — Denver | LAX — Los Angeles" value="ORD — Chicago O'Hare" />
+</Card>
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Progress value="78" max="100" label="78% of 1,247 flights on time" tone="success" />
+<Stat label="Target" value="85%" />
+</Card>
+
+<Card title="Average Passenger Load">
+<Stat label="Load Factor" value="84.2%" change="+2.1% vs yesterday" tone="info" />
+<Stat label="Total Pax Today" value="142,380" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Current Avg" value="42 min" change="-3 min vs target" tone="success" />
+<Stat label="Target" value="45 min" />
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Cancelled Flights" value="23" change="1.8% of schedule" tone="danger" />
+<Stat label="Pax Affected" value="2,840" tone="danger" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Flights — Live Status" subtitle="1,247 flights | 78% on time | 156 delayed | 23 cancelled">
+| Flight | Route | Gate | STD | Status | Pax |
+|---|---|---|---|---|---|
+| UA 1422 | ORD → LAX | B12 | 06:15 | **On Time** | 168/180 |
+| UA 2301 | ORD → SFO | C24 | 06:30 | **On Time** | 152/179 |
+| UA 458 | ORD → JFK | B8 | 06:45 | **Delayed** 25m | 145/160 |
+| UA 1093 | ORD → DEN | C18 | 07:00 | **On Time** | 138/150 |
+| UA 772 | ORD → LHR | E5 | 07:15 | **Delayed** 45m | 210/246 |
+| UA 341 | ORD → MIA | B22 | 07:30 | **On Time** | 128/150 |
+| UA 566 | ORD → SEA | C30 | 07:45 | **Cancelled** | — |
+| UA 890 | ORD → BOS | B15 | 08:00 | **On Time** | 112/126 |
+| UA 215 | ORD → IAH | C12 | 08:15 | **Delayed** 18m | 134/160 |
+| UA 677 | ORD → LAS | B19 | 08:30 | **On Time** | 156/179 |
+</Card>
+
+<Card title="Delayed Flights — Action Required" subtitle="156 flights delayed | 34 > 60 min">
+<Callout tone="warning" title="UA 772 ORD→LHR (Gate E5)">45 min delay — ATC flow control. 210 pax. 42 connecting. Consider rebooking on UA 934 (09:30) or BA 294 (10:15).</Callout>
+<Callout tone="warning" title="UA 458 ORD→JFK (Gate B8)">25 min delay — Late inbound aircraft. 145 pax. 18 connecting.</Callout>
+<Callout tone="warning" title="UA 215 ORD→IAH (Gate C12)">18 min delay — Crew timing. 134 pax. 9 connecting.</Callout>
+<Callout tone="info" title="UA 1182 ORD→SAN (Gate B4)">62 min delay — Mechanical. 162 pax. 28 connecting. **Rebooking recommended.**</Callout>
+<Callout tone="info" title="UA 3091 ORD→PDX (Gate C26)">78 min delay — Weather at PDX. 148 pax. 15 connecting.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Recent Gate Changes (Last 60 min)">
+| Flight | From | To | Time | Reason |
+|---|---|---|---|---|
+| UA 1422 | B14 | **B12** | 05:42 | Gate conflict |
+| UA 2301 | C21 | **C24** | 05:55 | Aircraft swap |
+| UA 772 | E3 | **E5** | 06:10 | Widebody stand |
+| UA 341 | B18 | **B22** | 06:28 | Adjacent delay |
+| UA 890 | B11 | **B15** | 06:45 | Cleaning delay |
+| UA 677 | B21 | **B19** | 07:02 | Pax boarding bridge |
+</Card>
+
+<Card title="Crews Available for Reassignment" subtitle="12 crews within 90 min call-out">
+| Crew ID | Position | Current Location | Available At | Max Duty Remaining | Qualifications |
+|---|---|---|---|---|---|
+| CRW-8842 | Captain/FO | ORD Crew Base | 07:30 (Now) | 10:45 | 737, 757, 767 |
+| CRW-9103 | Captain/FO | Layover Hotel | 08:15 | 11:30 | 777, 787 |
+| CRW-7721 | FA Lead +3 | ORD Crew Base | 07:45 | 12:00 | All narrowbody |
+| CRW-5568 | FA Lead +2 | Layover Hotel | 08:30 | 11:00 | 777, 787, 767 |
+| CRW-3341 | Captain/FO | Deadhead inbound | 09:00 | 9:30 | 737 MAX |
+| CRW-2209 | FA +4 | ORD Crew Base | 08:00 | 13:00 | All fleet |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Weather Advisories — ORD">
+<Callout tone="warning" title="Convective SIGMET Valid Until 14:00Z">Scattered thunderstorms moving NE across N IL. Expect 20-30 min departure delays. Wind shear alerts on final RWY 28R/10L.</Callout>
+<Callout tone="info" title="METAR 12:53Z">ORD 121753Z 27012G22KT 8SM -RA SCT025 BKN040 OVC060 18/14 A2992 RMK AO2 PK WND 27028/1745</Callout>
+<Callout tone="neutral" title="TAF Forecast">1218/1318 27015G25KT 5SM -RA BKN030 PROB30 1820/1822 2SM TSRA OVC020</Callout>
+<Stat label="Departure Delay Index" value="Moderate (25-45 min)" tone="warning" />
+<Stat label="Arrival Delay Index" value="Moderate (20-40 min)" tone="warning" />
+</Card>
+
+<Card title="Connections at Risk of Missed Connection" subtitle="67 connections < 45 min | 23 < 30 min">
+| Inbound Flight | Arr Gate | Arr Time | Connecting Flight | Dep Gate | Dep Time | Conn Time | Pax |
+|---|---|---|---|---|---|---|---|
+| UA 1422 (LAX) | B12 | 09:15 | UA 544 (ATL) | B14 | 09:40 | **25 min** | 12 |
+| UA 2301 (SFO) | C24 | 09:28 | UA 891 (MCO) | C26 | 09:55 | **27 min** | 8 |
+| UA 458 (JFK) | B8 | 09:35 | UA 302 (TPA) | B10 | 10:00 | **25 min** | 15 |
+| UA 1093 (DEN) | C18 | 09:42 | UA 1182 (SAN) | B4 | 10:15 | **33 min** | 6 |
+| UA 772 (LHR) | E5 | 10:05 | UA 215 (IAH) | C12 | 10:35 | **30 min** | 11 |
+| UA 341 (MIA) | B22 | 10:18 | UA 677 (LAS) | B19 | 10:50 | **32 min** | 9 |
+</Card>
+</Columns>
+
+<Card title="Rebook Affected Passengers" subtitle="Select passengers and choose rebooking options">
+<Form name="rebook-form">
+<Columns>
+<Input label="Passenger Name / PNR" name="pax-search" placeholder="Search by name, PNR, or ticket number" hint="Supports multi-select for groups" />
+<Select label="Reason" name="rebook-reason" options="Delay > 60 min | Cancellation | Missed Connection | Voluntary | Involuntary" placeholder="Select reason" required="true" />
+</Columns>
+<Columns>
+<Select label="New Flight" name="new-flight" options="UA 934 ORD→LHR 09:30 (28 seats) | BA 294 ORD→LHR 10:15 (12 seats) | UA 936 ORD→LHR 12:45 (45 seats) | Next available any carrier" placeholder="Choose replacement flight" required="true" />
+<Select label="Cabin" name="cabin" options="Same cabin | Upgrade if available | Any available" value="Same cabin" />
+</Columns>
+<Columns>
+<Switch label="Auto-assign seats" name="auto-seat" value="true" />
+<Switch label="Send notification (SMS/Email)" name="notify" value="true" />
+<Switch label="Retain original baggage tags" name="bags" value="true" />
+</Columns>
+<Button variant="primary">Rebook Selected Passengers</Button>
+<Button variant="secondary">Preview Changes</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me all flights delayed > 60 minutes with crew impact
+- List all cancellations with passenger rebooking status
+- View gate utilization heatmap for next 4 hours
+- Check crew legality for UA 772 ORD→LHR delayed departure
+- Generate delay summary report for 06:00-12:00 window
+</FollowUps>

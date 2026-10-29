@@ -1,0 +1,176 @@
+# Streaming Operations Room
+
+Live overview of the platform. <Badge tone="success">All systems nominal</Badge>
+
+<Card title="Now" subtitle="Live metrics">
+<Columns>
+<Stat label="Viewers right now" value="1,284,392" change="+4.2% vs last hour" tone="success" icon="users" />
+<Stat label="Buffering rate" value="1.8%" change="0.3% above target" tone="warning" icon="chart-line" />
+<Stat label="Recommendation clicks" value="12.4%" change="+1.1 pt this week" tone="success" icon="cursor-click" />
+</Columns>
+</Card>
+
+<Card title="Most-watched titles" subtitle="Hours watched, last 24h">
+<Chart type="bar" x="Title" y="Hours">
+| Title | Hours |
+|---|---|
+| Nightfall Protocol | 482,100 |
+| The Last Harbor | 391,400 |
+| Echoes of Tomorrow | 318,700 |
+| Crown of Ash | 287,900 |
+| Silent Meridian | 241,600 |
+</Chart>
+</Card>
+
+<Card title="Watch time — past month">
+<Chart type="area" x="Week" y="Million hours">
+| Week | Hours |
+|---|---|
+| W1 | 42.1 |
+| W2 | 45.8 |
+| W3 | 44.3 |
+| W4 | 49.6 |
+</Chart>
+</Card>
+
+<Card title="Subscriber movement" subtitle="New vs. cancelled, last 30 days">
+<Chart type="line" x="Day" y="Count">
+| Day | New | Cancelled |
+|---|---|---|
+| Sep 1 | 12,400 | 8,100 |
+| Sep 5 | 13,200 | 7,600 |
+| Sep 10 | 11,800 | 8,900 |
+| Sep 15 | 14,100 | 7,200 |
+| Sep 20 | 15,600 | 6,800 |
+| Sep 25 | 13,900 | 7,400 |
+| Sep 30 | 16,200 | 6,100 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre" subtitle="Average completion rate">
+<Columns>
+<Chart type="horizontal" x="Genre" y="Completion %">
+| Genre | Completion |
+|---|---|
+| Drama | 78 |
+| Sci-Fi | 74 |
+| Comedy | 71 |
+| Documentary | 68 |
+| Thriller | 82 |
+| Kids | 65 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Delivery health by region">
+<Tabs>
+<Tab title="North America">
+<Stat label="CDN uptime" value="99.98%" tone="success" />
+<Stat label="Avg bitrate" value="6.2 Mbps" tone="success" />
+<Stat label="Buffering" value="1.2%" tone="success" />
+</Tab>
+<Tab title="Europe">
+<Stat label="CDN uptime" value="99.95%" tone="success" />
+<Stat label="Avg bitrate" value="5.9 Mbps" tone="success" />
+<Stat label="Buffering" value="1.5%" tone="success" />
+</Tab>
+<Tab title="Asia-Pacific">
+<Stat label="CDN uptime" value="99.2%" tone="warning" />
+<Stat label="Avg bitrate" value="4.7 Mbps" tone="warning" />
+<Stat label="Buffering" value="3.1%" tone="warning" />
+</Tab>
+<Tab title="Latin America">
+<Stat label="CDN uptime" value="98.7%" tone="danger" />
+<Stat label="Avg bitrate" value="3.9 Mbps" tone="danger" />
+<Stat label="Buffering" value="4.4%" tone="danger" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Regional focus">
+<Form name="region-filter">
+<Select label="Region" options="All regions | North America | Europe | Asia-Pacific | Latin America | Middle East | Africa" placeholder="All regions" />
+<Radio label="Scope" options="Viewers | Delivery | Subscribers | All metrics" value="All metrics" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="Releases this month">
+| Title | Type | Date |
+|---|---|---|
+| The Silent Meridian S2 | Series | Oct 12 |
+| Neon Drift | Film | Oct 18 |
+| Paper Crowns | Series | Oct 23 |
+| Deep Field | Documentary | Oct 27 |
+</Card>
+
+<Card title="Licenses expiring soon" subtitle="Next 60 days">
+<Callout tone="warning" title="Action needed">3 licenses expire within 30 days</Callout>
+
+| Title | Expiry | Status |
+|---|---|---|
+| Crown of Ash | Nov 4 | <Badge tone="danger">Expiring in 5 days</Badge> |
+| Echoes of Tomorrow | Nov 18 | <Badge tone="warning">Renegotiating</Badge> |
+| Last Harbor (S1) | Dec 2 | <Badge tone="warning">Reviewing</Badge> |
+| Old Town Stories | Dec 15 | <Badge tone="success">Renewed</Badge> |
+</Card>
+
+<Card title="Search & discovery" subtitle="Last 7 days">
+<Columns>
+<Stat label="Recommendation CTR" value="12.4%" change="+1.1 pt" tone="success" icon="cursor-click" />
+<Stat label="Searches without playback" value="18,204" change="-3.2%" tone="warning" icon="magnifying-glass" />
+</Columns>
+
+<Callout tone="info" title="Top dead-end searches">"the last harb" · "nightfall season 3" · "dubbed anime" — consider adding spelling suggestions or aliases.</Callout>
+</Card>
+
+<Card title="Revenue by plan">
+<Chart type="donut" x="Plan" y="Revenue">
+| Plan | Revenue |
+|---|---|
+| Premium | 5,420,000 |
+| Standard | 3,180,000 |
+| Basic | 1,240,000 |
+| Mobile-only | 640,000 |
+</Chart>
+</Card>
+
+<Card title="Viewing by device">
+<Chart type="pie" x="Device" y="Share">
+| Device | Share |
+|---|---|
+| Smart TV | 42 |
+| Mobile | 31 |
+| Tablet | 12 |
+| Web | 10 |
+| Console | 5 |
+</Chart>
+</Card>
+
+<Card title="Feature flags">
+<Form name="feature-flags">
+<Switch label="Personalized home row" name="personalized-home" value="true" hint="Rollout 100%" />
+<Switch label="Skip intro button" name="skip-intro" value="true" hint="Rollout 100%" />
+<Switch label="4K on Premium" name="4k-premium" value="false" hint="Rollout 25% — test group only" />
+<Switch label="New search autocomplete" name="search-autocomplete" value="false" hint="Rollout 10%" />
+<Switch label="Download for offline" name="offline-downloads" value="true" hint="Rollout 100%" />
+</Form>
+</Card>
+
+<Card title="Promote a title on home screen">
+<Form name="promote-title">
+<Select label="Title to promote" options="Nightfall Protocol | The Last Harbor | Crown of Ash | Silent Meridian | Neon Drift | Deep Field" placeholder="Choose a title" />
+<Select label="Placement" options="Hero banner | Row 2 | Row 3 | Continue watching | Genre row" placeholder="Choose placement" />
+<Date label="Start date" name="promo-start" />
+<Date label="End date" name="promo-end" />
+<Slider label="Audience %" min="5" max="100" step="5" value="50" name="audience-pct" unit="%" />
+<Button>Schedule promotion</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the top titles in Asia-Pacific
+- Which plans are most affected by cancellations?
+- What's the buffering trend over the last hour?
+- Compare recommendation CTR by device
+</FollowUps>

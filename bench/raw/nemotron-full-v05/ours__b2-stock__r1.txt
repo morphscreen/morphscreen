@@ -1,0 +1,34 @@
+# Low Inventory Warning
+
+<Card title="Inventory Alert" subtitle="Items below reorder threshold">
+<Stat label="Reorder threshold" value="≤ 10 units" tone="warning" />
+<Stat label="Items flagged" value="7" tone="danger" />
+</Card>
+
+<Card title="Search items">
+<Form name="inventory-search">
+<Input label="Search" name="query" placeholder="Search by name, SKU, or category" type="search" hint="Filters the list below in real time" />
+</Form>
+</Card>
+
+<Card title="Low stock items">
+| Item | SKU | Category | On hand | Status | Action |
+|---|---|---|---|---|---|
+| Organic Almond Milk 1L | AM-1001 | Dairy Alternatives | 3 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Gluten-Free Bread Loaf | GF-2205 | Bakery | 5 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Cold-Press Juice 500ml | CP-3341 | Beverages | 7 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Plant-Based Burger Patties | PB-4412 | Frozen | 8 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Oat Milk Barista Edition 1L | OM-5509 | Dairy Alternatives | 9 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Keto Granola 400g | KG-6673 | Pantry | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Sparkling Water 12-pack | SW-7788 | Beverages | 10 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+</Card>
+
+<Callout tone="info" title="Threshold configuration">
+The low-stock warning triggers when on-hand quantity falls to **10 units or below**. Adjust this threshold in Settings → Inventory → Alerts.
+</Callout>
+
+<Card title="Quick actions">
+<Button variant="primary">Reorder all flagged items</Button>
+<Button variant="secondary">Export low-stock report</Button>
+<Button variant="tertiary">Adjust thresholds</Button>
+</Card>

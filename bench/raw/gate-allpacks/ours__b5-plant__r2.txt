@@ -1,0 +1,324 @@
+# Factory Floor Supervisor Console
+
+<Badge tone="info">Live</Badge> <Badge tone="success">Shift B Active</Badge> <Badge tone="warning">2 Andon Alerts</Badge>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Gauge label="OEE" value="82.4" min="0" max="100" unit="%" tone="success" />
+<KeyValue title="Breakdown">
+| Metric | Value |
+|---|---|
+| Availability | 94.2% |
+| Performance | 89.7% |
+| Quality | 97.3% |
+</KeyValue>
+</Card>
+
+<Card title="Today's Production Target">
+<Progress value="1847" max="2500" label="Units Produced" tone="info" />
+<Stat label="Target" value="2,500" />
+<Stat label="Remaining" value="653" change="73.9% complete" tone="neutral" />
+<Stat label="Rate" value="231/hr" change="vs 210/hr target" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Production Lines">
+<Tabs>
+<Tab title="All Lines">
+<KeyValue title="Line Status">
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alerts |
+|---|---|---|---|---|---|
+| Line 1 - Injection | Running | 245 | 220 | 87.2% | 0 |
+| Line 2 - Stamping | Running | 198 | 210 | 79.5% | 1 |
+| Line 3 - Assembly | Running | 312 | 300 | 85.8% | 0 |
+| Line 4 - Packaging | Changeover | 0 | 180 | 0% | 0 |
+| Line 5 - Welding | Maintenance | 0 | 150 | 0% | 0 |
+</KeyValue>
+</Tab>
+<Tab title="Line 1">
+<KeyValue title="Line 1 - Injection Molding">
+| Metric | Value |
+|---|---|
+| Current Rate | 245 units/hr |
+| Shift Output | 1,847 units |
+| OEE | 87.2% |
+| Active Mold | Mold #A-204 |
+| Cycle Time | 14.2 sec |
+| Scrap Rate | 1.8% |
+| Next Maintenance | 2025-01-18 |
+</KeyValue>
+</Tab>
+<Tab title="Line 2">
+<KeyValue title="Line 2 - Stamping">
+| Metric | Value |
+|---|---|
+| Current Rate | 198 units/hr |
+| Shift Output | 1,492 units |
+| OEE | 79.5% |
+| Active Die | Die #S-112 |
+| Cycle Time | 18.5 sec |
+| Scrap Rate | 3.2% |
+| Alert | Feeder jam (Andon) |
+</KeyValue>
+</Tab>
+<Tab title="Line 3">
+<KeyValue title="Line 3 - Assembly">
+| Metric | Value |
+|---|---|
+| Current Rate | 312 units/hr |
+| Shift Output | 2,356 units |
+| OEE | 85.8% |
+| Stations Active | 12/12 |
+| Cycle Time | 11.8 sec |
+| Scrap Rate | 1.1% |
+| Next Maintenance | 2025-01-22 |
+</KeyValue>
+</Tab>
+<Tab title="Line 4">
+<KeyValue title="Line 4 - Packaging">
+| Metric | Value |
+|---|---|
+| Status | Changeover |
+| Changeover Type | Product B → Product C |
+| Elapsed | 23 min |
+| Estimated Remaining | 17 min |
+| Target Rate | 180 units/hr |
+| Last Output | 1,102 units |
+</KeyValue>
+</Tab>
+<Tab title="Line 5">
+<KeyValue title="Line 5 - Welding">
+| Metric | Value |
+|---|---|
+| Status | Scheduled Maintenance |
+| Maintenance Type | PM-500 (Preventive) |
+| Started | 06:00 |
+| Estimated Completion | 14:00 |
+| Target Rate | 150 units/hr |
+| Last Output | 0 units |
+</KeyValue>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Defect Rate - Past 30 Days">
+<Chart type="line" x="Date" y="Defect Rate %" title="Daily Defect Rate Trend">
+| Date | Defect Rate % |
+|---|---|
+| 2024-12-15 | 2.1 |
+| 2024-12-16 | 1.9 |
+| 2024-12-17 | 2.3 |
+| 2024-12-18 | 2.0 |
+| 2024-12-19 | 1.8 |
+| 2024-12-20 | 2.2 |
+| 2024-12-21 | 2.5 |
+| 2024-12-22 | 2.1 |
+| 2024-12-23 | 1.9 |
+| 2024-12-24 | 1.7 |
+| 2024-12-25 | 1.6 |
+| 2024-12-26 | 1.8 |
+| 2024-12-27 | 2.0 |
+| 2024-12-28 | 2.2 |
+| 2024-12-29 | 2.1 |
+| 2024-12-30 | 1.9 |
+| 2024-12-31 | 1.8 |
+| 2025-01-01 | 1.7 |
+| 2025-01-02 | 1.6 |
+| 2025-01-03 | 1.9 |
+| 2025-01-04 | 2.0 |
+| 2025-01-05 | 1.8 |
+| 2025-01-06 | 1.7 |
+| 2025-01-07 | 1.5 |
+| 2025-01-08 | 1.6 |
+| 2025-01-09 | 1.8 |
+| 2025-01-10 | 1.7 |
+| 2025-01-11 | 1.6 |
+| 2025-01-12 | 1.5 |
+| 2025-01-13 | 1.4 |
+</Chart>
+<Stat label="30-Day Avg" value="1.86%" change="Down from 2.1% last month" tone="success" />
+<Stat label="Current Trend" value="1.4%" change="Yesterday" tone="info" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Downtime by Cause (This Month)">
+<Chart type="donut" title="Downtime Hours by Cause">
+| Cause | Hours |
+|---|---|
+| Changeover | 42 |
+| Mechanical Failure | 28 |
+| Material Shortage | 18 |
+| Quality Hold | 15 |
+| Electrical | 12 |
+| Operator Unavailable | 8 |
+| Planned Maintenance | 6 |
+| Software/Control | 4 |
+</Chart>
+<Stat label="Total Downtime" value="133 hrs" change="8.2% of scheduled time" tone="warning" />
+<Stat label="MTBF" value="142 hrs" change="Mean Time Between Failures" tone="neutral" />
+<Stat label="MTTR" value="2.3 hrs" change="Mean Time To Repair" tone="neutral" />
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<KeyValue title="Upcoming Maintenance">
+| Machine | Type | Due Date | Hours Since Last | Priority |
+|---|---|---|---|---|
+| INJ-04 | PM-500 | 2025-01-18 | 498 | High |
+| STM-02 | PM-250 | 2025-01-19 | 247 | Medium |
+| ASM-07 | PM-1000 | 2025-01-22 | 995 | High |
+| WLD-03 | PM-500 | 2025-01-25 | 492 | Medium |
+| PKG-01 | PM-250 | 2025-01-28 | 241 | Low |
+| INJ-01 | PM-1000 | 2025-02-01 | 987 | Medium |
+</KeyValue>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock">
+<KeyValue title="Inventory Levels">
+| Material | Current | Min Level | Max Level | Days Remaining | Status |
+|---|---|---|---|---|---|
+| Steel Coil (tons) | 42.3 | 15 | 80 | 18 | OK |
+| Resin Pellets (tons) | 8.7 | 5 | 25 | 12 | Low |
+| Packaging (pallets) | 156 | 50 | 300 | 22 | OK |
+| Welding Wire (spools) | 34 | 20 | 100 | 15 | OK |
+| Lubricant (drums) | 12 | 8 | 30 | 20 | OK |
+</KeyValue>
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+<Timeline title="Scheduled Deliveries">
+- 2025-01-14 08:00: Steel coil - 20 tons from Apex Metals (PO #4421)
+- 2025-01-14 14:00: Resin pellets - 5 tons from PolymerTech (PO #4423)
+- 2025-01-15 10:00: Packaging materials - 100 pallets from BoxCo (PO #4425)
+- 2025-01-16 07:00: Welding wire - 50 spools from WeldSupply (PO #4427)
+- 2025-01-17 09:00: Lubricant - 10 drums from LubriCorp (PO #4429)
+- 2025-01-17 13:00: Steel coil - 15 tons from Apex Metals (PO #4431)
+</Timeline>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units" title="Units Produced per Shift (Last 7 Days)">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift A (06-14) | 1820 | 1845 | 1790 | 1860 | 1835 | 1650 | 0 |
+| Shift B (14-22) | 1940 | 1910 | 1980 | 1925 | 1955 | 1720 | 0 |
+| Shift C (22-06) | 1680 | 1710 | 1695 | 1730 | 1705 | 1580 | 0 |
+</Chart>
+<Stat label="Best Shift" value="Shift B" change="Avg 1,922 units" tone="success" />
+<Stat label="Weekly Total" value="38,415" change="vs 36,200 target" tone="success" />
+</Card>
+
+<Card title="Safety Incidents">
+<Columns>
+<Stat label="Incidents YTD" value="3" change="Target: 0" tone="danger" />
+<Stat label="Days Since Last" value="47" change="Last: 2024-11-28" tone="success" />
+<Stat label="Near Misses" value="12" change="Down from 18 last year" tone="info" />
+<Stat label="LTIFR" value="0.82" change="Lost Time Injury Freq. Rate" tone="warning" />
+</Columns>
+<Details title="Incident Details">
+- 2024-11-28: Minor laceration - Line 2 operator, treated on-site (1 day restricted)
+- 2024-09-14: Slip/fall - Warehouse, no lost time
+- 2024-06-03: Pinch point - Line 5 maintenance, 3 days lost time
+</Details>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+<KeyValue title="Held Batches">
+| Batch | Line | Product | Qty | Reason | Held Since | Status |
+|---|---|---|---|---|---|---|
+| B-20250113-04 | Line 1 | Widget-A | 500 | Dimensional variance | 2025-01-13 14:22 | Under review |
+| B-20250113-07 | Line 3 | Gadget-C | 300 | Surface finish | 2025-01-13 16:45 | Awaiting lab |
+| B-20250112-12 | Line 2 | Part-B | 800 | Material cert missing | 2025-01-12 10:15 | Supplier contact |
+</KeyValue>
+<Stat label="Total Held" value="1,600 units" change="3 batches" tone="warning" />
+</Card>
+
+<Card title="Energy Use Today">
+<Gauge label="Energy Consumption" value="1,847" min="0" max="3000" unit="kWh" tone="info" />
+<KeyValue title="Breakdown">
+| Area | kWh | % of Total |
+|---|---|---|
+| Injection Molding | 720 | 39% |
+| Stamping | 410 | 22% |
+| Assembly | 280 | 15% |
+| Packaging | 180 | 10% |
+| Welding | 95 | 5% |
+| HVAC/Lighting | 162 | 9% |
+</KeyValue>
+<Stat label="Cost Today" value="$248.36" change="vs $231 avg" tone="neutral" />
+<Stat label="Carbon" value="1,108 kg CO₂" change="0.6 kg/kWh grid factor" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Open Work Orders">
+<KeyValue title="Work Orders by Priority">
+| WO # | Priority | Line | Description | Assigned | Created | Status |
+|---|---|---|---|---|---|---|
+| WO-20250113-001 | Critical | Line 2 | Feeder mechanism replacement | M. Torres | 2025-01-13 06:15 | In Progress |
+| WO-20250113-002 | High | Line 1 | Mold temperature sensor calibration | J. Chen | 2025-01-13 07:30 | Queued |
+| WO-20250112-008 | High | Line 3 | Station 4 torque wrench replacement | R. Patel | 2025-01-12 14:20 | Waiting Parts |
+| WO-20250112-005 | Medium | Line 4 | Conveyor belt tracking adjustment | K. Williams | 2025-01-12 09:45 | Scheduled |
+| WO-20250111-012 | Medium | Facility | Compressor #2 oil change | Facilities | 2025-01-11 11:00 | Scheduled |
+| WO-20250110-003 | Low | Line 5 | Guard interlock testing | Safety | 2025-01-10 13:30 | Planned |
+</KeyValue>
+</Card>
+
+<Columns>
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Select machine" options="INJ-01 | INJ-02 | INJ-03 | INJ-04 | STM-01 | STM-02 | ASM-01 | ASM-02 | ASM-03 | ASM-04 | ASM-05 | ASM-06 | ASM-07 | PKG-01 | PKG-02 | WLD-01 | WLD-02 | WLD-03" required="true" />
+<Select label="Maintenance Type" name="type" placeholder="Select type" options="PM-250 (Minor) | PM-500 (Standard) | PM-1000 (Major) | Corrective | Calibration | Inspection" required="true" />
+<Date label="Scheduled Date" name="date" required="true" />
+<Select label="Shift" name="shift" placeholder="Select shift" options="Shift A (06:00-14:00) | Shift B (14:00-22:00) | Shift C (22:00-06:00) | Any" value="Shift A (06:00-14:00)" />
+<TextArea label="Notes" name="notes" placeholder="Special instructions, parts needed, etc." rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Focus Line Selector">
+<Select label="Select Line to Focus" name="focus-line" placeholder="Choose a production line" options="Line 1 - Injection Molding | Line 2 - Stamping | Line 3 - Assembly | Line 4 - Packaging | Line 5 - Welding" value="Line 1 - Injection Molding" />
+<Callout tone="info" title="Line Focus Active">Showing detailed metrics for Line 1 - Injection Molding. Other panels will filter to this line.</Callout>
+</Card>
+</Columns>
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="🔴 CRITICAL - Line 2 Stamping">
+Feeder jam detected at Station 3. Machine stopped. Operator dispatched. Estimated recovery: 15 min.
+</Callout>
+<Callout tone="warning" title="🟡 WARNING - Line 1 Injection">
+Mold temperature 2°C above setpoint. Quality monitoring increased. Adjust cooling if trend continues.
+</Callout>
+<Callout tone="info" title="🔵 INFO - Line 4 Packaging">
+Changeover in progress. Product B → Product C. 17 min remaining.
+</Callout>
+<Callout tone="success" title="🟢 RESOLVED - Line 3 Assembly">
+Station 7 sensor fault cleared. Full production resumed at 08:42.
+</Callout>
+</Columns>
+<Timeline title="Recent Andon History">
+- 2025-01-13 09:15: Line 2 - Feeder jam (ACTIVE)
+- 2025-01-13 09:08: Line 1 - Mold temp high (ACTIVE)
+- 2025-01-13 08:42: Line 3 - Sensor fault (RESOLVED)
+- 2025-01-13 07:30: Line 5 - Maintenance start (PLANNED)
+- 2025-01-13 06:45: Line 4 - Changeover start (PLANNED)
+</Timeline>
+</Card>
+
+<Card title="Export Shift Report">
+<Callout tone="neutral" title="Shift Report Ready">Shift B (14:00-22:00) report will include: production summary, OEE by line, quality data, downtime log, maintenance actions, safety observations, material consumption, and energy use.</Callout>
+<Columns>
+<Button size="large">Export PDF Report</Button>
+<Button variant="secondary" size="large">Export Excel Data</Button>
+<Button variant="tertiary" size="large">Email to Management</Button>
+<Button variant="tertiary" size="large">Save to Archive</Button>
+</Columns>
+</Card>

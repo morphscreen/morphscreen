@@ -1,0 +1,74 @@
+root = Card([header, congestionCallout, transitTag, airQualityTable, energyChart, waterUseCallout, incidentsTable, emergencyVehiclesList, parkingBadge, eventsList, citizenReports, serviceBacklogTable, weatherCard, districtFocusForm, dispatchForm, alertForm, roadworksList, maintenanceList])
+header = CardHeader("City Operations Center Dashboard", null)
+congestionCallout = Callout(variant:"warning", title:"Current Congestion", description:"Heavy traffic on Main St")
+transitTag = Tag("Transit Punctuality: 87% on time", null, null, "success")
+airQualityCols = [
+  Col("District", ["Downtown","Midtown","Eastside","Westside"], "string"),
+  Col("AQI", [45,55,30,60], "number"),
+  Col("Status", ["Good","Moderate","Good","Unhealthy"], "string")
+]
+airQualityTable = Table(columns: airQualityCols)
+energyLabels = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+revSeries = Series("Energy", [1200,1300,1250,1400,1500,1600,1550])
+energyChart = LineChart(labels: energyLabels, series: [revSeries], "natural", "Day", "kWh")
+waterUseCallout = Callout(variant:"info", title:"Water Use Today", description:"1.2 million gallons used")
+incidentsCols = [
+  Col("Location", ["Main St & 5th","Park Blvd","River Rd","Highway 9"], "string"),
+  Col("Severity", ["High","Medium","Low","Medium"], "string")
+]
+incidentsTable = Table(columns: incidentsCols)
+emergencyVehiclesItems = [
+  ListItem("Fire Engine", "Downtown", null, null),
+  ListItem("Ambulance", "Midtown", null, null),
+  ListItem("Police Car", "Eastside", null, null)
+]
+emergencyVehiclesList = ListBlock(items: emergencyVehiclesItems, variant:"number")
+parkingBadge = Badge("Downtown Parking: 24/30 spots", "secondary")
+eventsItems = [
+  ListItem("Music Festival", "Central Park", null, null),
+  ListItem("Farmers Market", "Downtown Square", null, null),
+  ListItem("Tech Meetup", "Conference Center", null, null)
+]
+eventsList = ListBlock(items: eventsItems, variant:"number")
+citizenReportsItems = [
+  ListItem("Noise complaint", "Maple St", null, null),
+  ListItem("Street light out", "Elm Ave", null, null),
+  ListItem("Pothole report", "Oak St near 3rd", null, null)
+]
+citizenReports = ListBlock(items: citizenReportsItems, variant:"number")
+backlogCols = [
+  Col("ID", [101,102,103,104], "number"),
+  Col("Description", ["Leaking pipe","Broken streetlight","Tree removal","Power outage"], "string"),
+  Col("Status", ["Open","In Progress","Closed","Open"], "string")
+]
+serviceBacklogTable = Table(columns: backlogCols)
+weatherImage = Image(alt:"Weather icon", src:"https://picsum.photos/seed/weather/100/100")
+weatherCard = Card([weatherImage, TextContent("Sunny, 72°F, 0% rain")])
+downtownOption = SelectItem("Downtown","Downtown")
+midtownOption = SelectItem("Midtown","Midtown")
+eastsideOption = SelectItem("Eastside","Eastside")
+westsideOption = SelectItem("Westside","Westside")
+districtOptions = [downtownOption, midtownOption, eastsideOption, westsideOption]
+districtSelectInput = Select("district", districtOptions, "Choose a district", null, "district", "medium")
+districtSelectControl = FormControl("Focus District", districtSelectInput)
+applyBtn = Button("Apply", null, "primary")
+districtFocusForm = Form("district-select", Buttons([applyBtn]), [districtSelectControl])
+dispatchControl = FormControl("Select District to Dispatch", districtSelectInput)
+dispatchBtn = Button("Dispatch Crew", null, "primary")
+dispatchForm = Form("dispatch-crew", Buttons([dispatchBtn]), [dispatchControl])
+alertTextArea = TextArea("message", "Enter alert message", 4, null, null, "text")
+alertControl = FormControl("Alert Message", alertTextArea)
+sendBtn = Button("Send Alert", null, "primary")
+alertForm = Form("public-alert", Buttons([sendBtn]), [alertControl])
+roadworksItems = [
+  ListItem("Roadwork on Main St", "Repaving from 1st to 5th Ave", null, null),
+  ListItem("Bridge inspection", "Scheduled for next week", null, null),
+  ListItem("Traffic signal upgrade", "Installation of smart signals", null, null)
+]
+roadworksList = ListBlock(items: roadworksItems, variant:"number")
+maintenanceItems = [
+  ListItem("Streetlight replacement", "Replace 10 streetlights on Oak St", null, null),
+  ListItem("Water main repair", "Fix burst pipe on Pine Rd", null, null),
+  ListItem("Parking lot resurfacing", "Resurface downtown parking lot", null, null)
+]
+maintenanceList = ListBlock(items: maintenanceItems, variant:"number")

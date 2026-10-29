@@ -1,0 +1,189 @@
+# Hospital Operations Command View
+
+<Card title="Live Overview">
+<Columns>
+<Stat label="Bed Occupancy" value="78%" change="+3% vs yesterday" icon="bed" tone="warning" />
+<Stat label="Current ER Wait" value="42 min" change="Avg, down 8 min" icon="clock" tone="success" />
+<Stat label="Admissions (14d)" value="1,284" change="+6% vs prior period" icon="trend-up" />
+<Stat label="Critical Patients" value="9" change="2 in ICU, 3 in ER" icon="warning" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Bed Occupancy by Floor">
+<Chart type="bar" x="Floor" y="Beds occupied">
+| Floor | Occupied | Available |
+|---|---|---|
+| 1 – ER & ICU | 42 | 8 |
+| 2 – Surgery | 58 | 12 |
+| 3 – Medicine | 67 | 15 |
+| 4 – Pediatrics | 35 | 10 |
+| 5 – Maternity | 28 | 7 |
+</Chart>
+</Card>
+
+<Card title="Admissions – Past Two Weeks">
+<Chart type="line" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Mon | 88 |
+| Tue | 95 |
+| Wed | 102 |
+| Thu | 91 |
+| Fri | 110 |
+| Sat | 76 |
+| Sun | 82 |
+| Mon | 93 |
+| Tue | 101 |
+| Wed | 98 |
+| Thu | 104 |
+| Fri | 112 |
+| Sat | 84 |
+| Sun | 90 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="pie" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| Emergency | 45 |
+| Cardiology | 32 |
+| Oncology | 28 |
+| Orthopedics | 24 |
+| Neurology | 19 |
+| Pediatrics | 35 |
+| Maternity | 28 |
+| General Medicine | 41 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+<Columns>
+<Avatar name="Dr. Sarah Chen" src="find" subtitle="Attending – ER" />
+<Avatar name="Dr. James Okafor" src="find" subtitle="Surgeon – OR" />
+<Avatar name="Nurse Maria Lopez" src="find" subtitle="Charge Nurse – ICU" />
+<Avatar name="Dr. Priya Patel" src="find" subtitle="Cardiologist – Consult" />
+<Avatar name="Nurse Tom Becker" src="find" subtitle="RN – Pediatrics" />
+<Avatar name="Dr. Alan Wu" src="find" subtitle="Radiologist" />
+</Columns>
+</Card>
+
+<Card title="Critical Patients – Immediate Attention" subtitle="Updated 2 minutes ago">
+<Callout tone="danger" title="9 critical patients">
+- **Room 214** – M. Alvarez, 68, post-MI, unstable rhythm
+- **Room 218** – J. Thompson, 54, septic shock, on pressors
+- **Room 305** – R. Gupta, 72, respiratory failure, BiPAP
+- **ER Bay 4** – S. Kim, 45, suspected stroke, awaiting CT
+- **ER Bay 7** – L. Rodriguez, 33, trauma, OR standby
+- **ICU 3** – D. Miller, 61, multi-organ failure
+- **ICU 5** – K. O'Brien, 70, post-arrest, hypothermic
+- **NICU 2** – Baby W., 2 days, neonatal sepsis
+- **OR 4** – Patient in active code, team responding
+</Callout>
+</Card>
+
+<Card title="Ready for Discharge" subtitle="7 patients, beds freed in 1–3 hours">
+| Patient | Room | Discharge Time | Waiting On |
+|---|---|---|---|
+| G. Harrison | 312 | 10:30 AM | Transport |
+| A. Novak | 318 | 11:00 AM | Meds pickup |
+| F. Duarte | 402 | 11:30 AM | Family arrival |
+| C. Evans | 405 | 12:00 PM | Paperwork |
+| N. Ali | 407 | 1:00 PM | Lab results |
+| R. Santos | 410 | 1:30 PM | Home health setup |
+| E. Brown | 415 | 2:00 PM | Insurance approval |
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<Chart type="horizontal" x="Time" y="OR">
+| OR | Bookings |
+|---|---|
+| OR 1 | 3 |
+| OR 2 | 4 |
+| OR 3 | 2 |
+| OR 4 | 5 |
+| OR 5 | 3 |
+</Chart>
+<Details title="View full OR schedule">
+| Time | OR 1 | OR 2 | OR 3 | OR 4 | OR 5 |
+|---|---|---|---|---|---|
+| 07:00–09:00 | Cholecystectomy | Knee arthroscopy | — | Craniotomy | Hernia repair |
+| 09:00–11:00 | Appendectomy | Hip replacement | ACL repair | Spinal fusion | — |
+| 11:00–13:00 | Colectomy | — | Carpal tunnel | Trauma case | C-section |
+| 13:00–15:00 | — | Bariatric | — | Emergency | Thyroidectomy |
+| 15:00–17:00 | Scheduled | Scheduled | Scheduled | Scheduled | Scheduled |
+</Details>
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Reorder threshold crossed">
+<Columns>
+<Stat label="IV Fluids (NS)" value="12%" change="Reorder now" icon="droplet" tone="danger" />
+<Stat label="Surgical Gloves" value="18%" change="Reorder now" icon="hand" tone="danger" />
+<Stat label="Blood Bags (O−)" value="25%" change="Reorder soon" icon="blood" tone="warning" />
+<Stat label="Syringes (10ml)" value="30%" change="Reorder soon" icon="syringe" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<Button variant="primary" icon="warning">File an Incident</Button>
+<Button variant="secondary" icon="calendar">View Another Day</Button>
+<Button variant="secondary" icon="arrows-left-right">Request Patient Transfer</Button>
+</Columns>
+</Card>
+
+<Card title="File an Incident" subtitle="For safety events, near misses, or equipment issues">
+<Form name="incident-report">
+<Select label="Incident type" placeholder="Select type" options="Medication error | Fall / injury | Equipment failure | Behavioral event | Infection concern | Other" required="true" />
+<Select label="Severity" placeholder="Select severity" options="Low – no harm | Moderate – temporary harm | High – permanent harm | Critical – life-threatening" required="true" />
+<Input label="Location" placeholder="e.g., Room 412, ER Bay 3" />
+<Input label="Patient MRN (if applicable)" placeholder="e.g., 00-48291" />
+<TextArea label="Describe what happened" placeholder="Provide a factual account…" rows="4" required="true" />
+<Input label="Reporter name" placeholder="Your name" />
+<Button>Submit Incident</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="View Another Day" subtitle="Select a date to load historical operations data">
+<Form name="date-selector">
+<Date label="Select date" name="ops-date" hint="Data available from 90 days ago to tomorrow" required="true" />
+<Button>Load Day</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer" subtitle="Between departments or to another facility">
+<Form name="transfer-request">
+<Input label="Patient MRN" placeholder="e.g., 00-48291" required="true" />
+<Select label="Current department" placeholder="Select" options="ER | ICU | Cardiology | Oncology | Orthopedics | Neurology | Pediatrics | Maternity | General Medicine" required="true" />
+<Select label="Transfer to" placeholder="Select" options="ER | ICU | Cardiology | Oncology | Orthopedics | Neurology | Pediatrics | Maternity | General Medicine | Another facility" required="true" />
+<Select label="Priority" placeholder="Select" options="Routine | Urgent | Emergency" required="true" />
+<TextArea label="Reason for transfer" placeholder="Clinical justification…" rows="3" required="true" />
+<Button>Submit Transfer Request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Quick Reference">
+<Details title="Current staffing summary" open="false">
+- **ER:** 4 attendings, 6 residents, 12 nurses
+- **ICU:** 2 intensivists, 4 residents, 8 nurses
+- **OR:** 3 surgeons, 5 anesthesiologists, 10 OR nurses
+- **Floors:** 6 attendings, 9 residents, 28 floor nurses
+- **Support:** 4 pharmacists, 3 respiratory therapists, 2 social workers
+</Details>
+<Details title="Transfer policy reminder" open="false">
+- Routine transfers: complete within 4 hours
+- Urgent transfers: complete within 1 hour
+- Emergency transfers: immediate, page transfer team
+- All transfers require physician sign-off and receiving unit confirmation
+</Details>
+</Card>
+
+<FollowUps>
+- Show me today's staffing by shift
+- What's the current ICU capacity?
+- List recent incident reports
+- Compare this week's admissions to last week
+- Which supplies need reordering urgently?
+</FollowUps>

@@ -1,0 +1,65 @@
+<Card title="Service Health" subtitle="On-call engineer view · live">
+<Columns>
+<Select label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" placeholder="All regions" name="region" hint="Narrows every metric, incident, and endpoint below to one region" />
+</Columns>
+</Card>
+
+<Callout tone="danger" title="SEV-1 incident active">API latency spike in us-east-1 is affecting checkout. Current error rate 1.8% is above the 1.0% alert threshold.</Callout>
+
+<Columns>
+<Stat label="Uptime (this quarter)" value="99.95%" change="+0.02 pts vs last quarter" />
+<Stat label="Error rate (right now)" value="1.8%" change="5-min avg · threshold 1.0%" />
+<Stat label="Open incidents" value="3" change="1 SEV-1 · 1 SEV-2 · 1 SEV-3" />
+</Columns>
+
+<Card title="CPU & Memory — last 24 hours" subtitle="Averaged across the selected region">
+<Chart type="line" title="CPU and memory usage" x="Time (UTC)" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 32 | 41 |
+| 04:00 | 38 | 44 |
+| 08:00 | 55 | 52 |
+| 12:00 | 61 | 58 |
+| 16:00 | 48 | 50 |
+| 20:00 | 42 | 47 |
+</Chart>
+</Card>
+
+<Card title="Open incidents" subtitle="3 active">
+<Columns>
+<div>
+<Badge tone="danger">SEV-1</Badge> <strong>#4821 · API latency spike</strong>
+<p>us-east-1 · Started 14:22 UTC · 38m · Unacknowledged</p>
+</div>
+<Button ask="Acknowledge incident #4821">✓ Acknowledge</Button>
+</Columns>
+<Columns>
+<div>
+<Badge tone="warning">SEV-2</Badge> <strong>#4819 · Checkout failures</strong>
+<p>eu-west-1 · Started 13:05 UTC · 1h 55m · Unacknowledged</p>
+</div>
+<Button ask="Acknowledge incident #4819">✓ Acknowledge</Button>
+</Columns>
+<Columns>
+<div>
+<Badge tone="info">SEV-3</Badge> <strong>#4815 · DB connection pool exhausted</strong>
+<p>All regions · Started 09:40 UTC · 5h 20m · Acknowledged</p>
+</div>
+<Button variant="secondary">✓ Acknowledged</Button>
+</Columns>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="p95 latency over the last hour">
+| Endpoint | p95 latency | vs 24h avg |
+|---|---|---|
+| POST /api/v1/checkout | 1,240 ms | ↑ 18% |
+| GET /api/v1/recommendations | 890 ms | ↑ 9% |
+| POST /api/v1/payments | 742 ms | ↓ 3% |
+| GET /api/v1/search | 618 ms | ↑ 12% |
+| PUT /api/v1/users/{id} | 512 ms | ↓ 1% |
+</Card>
+
+<Card title="Alert threshold" subtitle="Pages the on-call engineer when error rate exceeds this value">
+<Slider label="Error rate threshold" min="0" max="5" step="0.1" value="1" name="error-threshold" />
+<Button ask="Save alert threshold at 1.0%">Save threshold</Button>
+</Card>

@@ -1,0 +1,93 @@
+# Logistics Coordinator Board
+
+<Card subtitle="Last refreshed: 2024-01-15 14:32 UTC">
+<Columns>
+<Input label="Search route" placeholder="e.g., LAX → JFK, SEA → ORD" type="search" hint="Filter by origin → destination" />
+<Select label="Carrier filter" placeholder="All carriers" options="All | FedEx | UPS | DHL | USPS | Regional" />
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-time % (Jan)" value="87.3%" change="+2.1% vs Dec" tone="success" />
+<Stat label="Avg cost/shipment" value="$247" change="-$12 vs last month" tone="info" />
+<Stat label="Active shipments" value="1,247" change="+23 today" tone="neutral" />
+<Stat label="Delayed" value="158" change="+7 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Callout tone="warning" title="⚠ 158 delayed shipments — 12 critical (>48h late)">
+Top delayed lanes: LAX→JFK (23), ORD→ATL (18), SEA→LAX (15). Weather impacting Pacific NW and Northeast corridors.
+</Callout>
+
+<Card title="Shipments in Transit">
+<Tabs>
+<Tab title="All (1,247)">
+| Shipment | Origin → Destination | Carrier | ETA | Status | Action |
+|---|---|---|---|---|---|
+| FDX-88472 | LAX → JFK | FedEx | 2024-01-16 08:00 | In transit | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-91203 | ORD → ATL | UPS | 2024-01-16 10:30 | In transit | <Button variant="tertiary" size="small">Flag</Button> |
+| DHL-44511 | SEA → LAX | DHL | 2024-01-15 22:00 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| FDX-77109 | DFW → MIA | FedEx | 2024-01-16 14:00 | In transit | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-55234 | JFK → LHR | UPS | 2024-01-17 06:00 | Customs | <Button variant="tertiary" size="small">Flag</Button> |
+| RGL-11882 | DEN → PHX | Regional | 2024-01-15 18:30 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| FDX-66321 | SFO → ORD | FedEx | 2024-01-16 09:15 | In transit | <Button variant="tertiary" size="small">Flag</Button> |
+| DHL-33901 | ATL → DFW | DHL | 2024-01-16 11:45 | In transit | <Button variant="tertiary" size="small">Flag</Button> |
+| UPS-22456 | LAX → SEA | UPS | 2024-01-15 20:00 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| FDX-99812 | MIA → ORD | FedEx | 2024-01-16 13:20 | In transit | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (158)">
+| Shipment | Origin → Destination | Carrier | ETA | Delay | Reason | Action |
+|---|---|---|---|---|---|---|
+| DHL-44511 | SEA → LAX | DHL | 2024-01-15 22:00 | 16h 32m | Weather — snow | <Button variant="danger" size="small">Flag</Button> |
+| RGL-11882 | DEN → PHX | Regional | 2024-01-15 18:30 | 20h 02m | Mechanical | <Button variant="danger" size="small">Flag</Button> |
+| UPS-22456 | LAX → SEA | UPS | 2024-01-15 20:00 | 18h 32m | Weather — fog | <Button variant="danger" size="small">Flag</Button> |
+| FDX-55102 | ORD → BOS | FedEx | 2024-01-15 14:00 | 24h 32m | Sorting delay | <Button variant="danger" size="small">Flag</Button> |
+| UPS-88734 | JFK → MIA | UPS | 2024-01-15 16:30 | 22h 02m | Volume surge | <Button variant="danger" size="small">Flag</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Volume Split by Carrier (Jan)">
+<Chart type="donut" title="Shipments by Carrier">
+| Carrier | Shipments | % |
+|---|---|---|
+| FedEx | 412 | 33.0% |
+| UPS | 387 | 31.0% |
+| DHL | 211 | 16.9% |
+| USPS | 149 | 11.9% |
+| Regional | 88 | 7.1% |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Shipments per Week" x="Week" y="Volume">
+| Week | FedEx | UPS | DHL | USPS | Regional | Total |
+|---|---|---|---|---|---|---|
+| W1 (Nov 25) | 89 | 82 | 45 | 31 | 18 | 265 |
+| W2 (Dec 2) | 94 | 88 | 48 | 34 | 20 | 284 |
+| W3 (Dec 9) | 102 | 95 | 52 | 38 | 22 | 309 |
+| W4 (Dec 16) | 118 | 110 | 61 | 42 | 25 | 356 |
+| W5 (Dec 23) | 98 | 92 | 50 | 36 | 21 | 297 |
+| W6 (Dec 30) | 85 | 79 | 42 | 28 | 16 | 250 |
+| W7 (Jan 6) | 105 | 98 | 54 | 39 | 23 | 319 |
+| W8 (Jan 13) | 112 | 104 | 57 | 41 | 24 | 338 |
+</Chart>
+</Card>
+
+<Card title="Flag Shipment">
+<Form name="flag-shipment">
+<Input label="Shipment ID" placeholder="e.g., FDX-88472" required="true" />
+<Select label="Flag reason" options="Damage risk | Temperature excursion | Security concern | Documentation issue | Customer request | Other" required="true" />
+<TextArea label="Notes" placeholder="Add context for the operations team..." rows="3" />
+<Button variant="primary">Submit flag</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me all flagged shipments this week
+- Export delayed shipments to CSV
+- Set up alerts for LAX→JFK lane
+- Compare carrier performance Q4 vs Q1
+</FollowUps>

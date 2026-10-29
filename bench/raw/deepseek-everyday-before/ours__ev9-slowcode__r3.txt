@@ -1,0 +1,257 @@
+# Speeding Up Large CSV Processing in Python
+
+Reading a 2 GB CSV in Python can be painfully slow, but there are several proven strategies to dramatically improve performance. Here's a systematic approach.
+
+<Card title="Quick Performance Wins" subtitle="Start here for immediate improvements">
+<Columns>
+<div>
+<Stat label="Baseline" value="~60s" note="Typical pandas read_csv on 2GB" icon="clock" />
+</div>
+<div>
+<Stat label="With optimizations" value="~10s" note="Using chunking + dtype" icon="rocket" />
+</div>
+<div>
+<Stat label="Best case" value="~3s" note="Polars or parallel processing" icon="lightning" />
+</div>
+</Columns>
+
+<Callout tone="info" title="First, measure">
+Before optimizing, profile your current code with `time` or `cProfile`. You might be surprised where the bottleneck actually is.
+</Callout>
+</Card>
+
+<Card title="1. Use the Right Tool" subtitle="Library comparison for large CSVs">
+<Compare title="CSV reading libraries">
+| Feature | pandas | Polars | Dask | Modin |
+|---|---|---|---|---|
+| Memory efficient | No | Yes | Yes | No |
+| Parallel processing | No | Yes | Yes | Yes |
+| Lazy evaluation | No | Yes | Yes | No |
+| Learning curve | Low | Moderate | Moderate | Low |
+| Best for | Small-medium data | Large data, speed | Very large, distributed | Drop-in pandas replacement |
+</Compare>
+
+<Callout tone="success" title="Recommendation">
+For a 2 GB file, **Polars** is often the fastest and most memory-efficient choice. It's a drop-in replacement for many pandas workflows with 10-100x speedups.
+</Callout>
+</Card>
+
+<Card title="2. Optimize pandas Reading" subtitle="If you must stick with pandas">
+<Steps>
+<Step title="Specify dtypes" status="done" subtitle="Biggest single win">
+Tell pandas what types to expect. This avoids expensive type inference:
+```python
+import pandas as pd
+
+dtypes = {
+    'user_id': 'int32',
+    'name': 'category',
+    'amount': 'float32',
+    'timestamp': 'str'
+}
+df = pd.read_csv('large.csv', dtype=dtypes)
+```
+</Step>
+
+<Step title="Use chunking" status="done" subtitle="Process in pieces">
+Read and process in chunks rather than loading everything:
+```python
+chunksize = 100_000
+results = []
+for chunk in pd.read_csv('large.csv', chunksize=chunksize):
+    # process each chunk
+    results.append(chunk.groupby('category')['amount'].sum())
+    
+final_result = pd.concat(results).groupby(level=0).sum()
+```
+</Step>
+
+<Step title="Select only needed columns" status="done" subtitle="Less data to read">
+```python
+df = pd.read_csv('large.csv', usecols=['id', 'name', 'amount'])
+```
+</Step>
+
+<Step title="Skip unnecessary rows" status="done" subtitle="Filter early">
+```python
+# Read only rows where amount > 100
+df = pd.read_csv('large.csv', 
+                 usecols=['id', 'amount'],
+                 skiprows=lambda i: i > 0 and amount_condition(i))
+```
+</Step>
+</Steps>
+</Card>
+
+<Card title="3. Use Polars for Maximum Speed" subtitle="Modern, fast, memory-efficient">
+```python
+import polars as pl
+
+# Read entire file (lazy by default)
+df = pl.read_csv('large.csv', 
+                 dtypes={'user_id': pl.Int32, 'name': pl.Categorical})
+
+# Or use lazy evaluation for complex pipelines
+query = (
+    pl.scan_csv('large.csv')
+    .filter(pl.col('amount') > 100)
+    .group_by('category')
+    .agg(pl.col('amount').sum())
+)
+result = query.collect()
+```
+
+<Callout tone="success" title="Why it's faster">
+- Written in Rust, compiled to native code
+- Uses all CPU cores by default
+- Columnar storage with efficient memory layout
+- No intermediate copies or type inference overhead
+</Callout>
+</Card>
+
+<Card title="4. Alternative Strategies" subtitle="When the above isn't enough">
+<Columns>
+<div>
+<Card title="Parallel processing" subtitle="Use all your cores">
+```python
+from multiprocessing import Pool
+
+def process_chunk(filename, start, end):
+    # read lines from start to end
+    # process and return results
+    
+with Pool(4) as pool:
+    chunks = [(0, 500_000), (500_000, 1_000_000), ...]
+    results = pool.starmap(process_chunk, chunks)
+```
+</Card>
+</div>
+<div>
+<Card title="Convert to better formats" subtitle="One-time cost, huge wins">
+```python
+# Convert to Parquet (compressed, columnar)
+df.to_parquet('large.parquet')
+
+# Future reads become 10x faster
+df = pd.read_parquet('large.parquet')
+```
+</Card>
+</div>
+</Columns>
+</Card>
+
+<Card title="5. Memory Management" subtitle="Avoid swapping to disk">
+<KeyValue title="Memory tips">
+| Strategy | Benefit |
+|---|---|
+| Use `float32` instead of `float64` | Halves memory for floats |
+| Use `category` for repeated strings | Massive savings for categorical data |
+| Process in chunks | Keep memory under control |
+| Use `del` and `gc.collect()` | Free memory between chunks |
+| Monitor with `memory_profiler` | Find leaks and peaks |
+</KeyValue>
+
+<Callout tone="warning" title="Watch out">
+If your system swaps to disk, everything slows to a crawl. Keep an eye on memory usage with:
+```python
+import psutil
+print(f"Memory used: {psutil.virtual_memory().percent}%")
+```
+</Callout>
+</Card>
+
+<Card title="6. Real-World Example" subtitle="Complete optimized solution">
+<Tabs>
+<Tab title="Polars">
+```python
+import polars as pl
+import time
+
+start = time.time()
+
+# Lazy query that only reads what's needed
+df = (
+    pl.scan_csv('sales_2gb.csv')
+    .filter(pl.col('date') >= '2024-01-01')
+    .with_columns([
+        pl.col('amount').cast(pl.Float32),
+        pl.col('category').cast(pl.Categorical)
+    ])
+    .group_by('category')
+    .agg([
+        pl.col('amount').sum().alias('total_sales'),
+        pl.col('user_id').n_unique().alias('unique_users')
+    ])
+    .collect(streaming=True)  # Process in chunks
+)
+
+print(f"Processed in {time.time() - start:.2f} seconds")
+print(df)
+```
+</Tab>
+<Tab title="Pandas optimized">
+```python
+import pandas as pd
+import time
+
+start = time.time()
+
+# Define dtypes once
+dtypes = {
+    'user_id': 'int32',
+    'category': 'category',
+    'amount': 'float32',
+    'date': 'str'
+}
+
+# Process in chunks
+chunks = []
+for chunk in pd.read_csv('sales_2gb.csv', 
+                         dtype=dtypes,
+                         chunksize=500_000):
+    # Filter early
+    chunk = chunk[chunk['date'] >= '2024-01-01']
+    # Aggregate
+    result = chunk.groupby('category')['amount'].sum()
+    chunks.append(result)
+
+# Combine results
+final = pd.concat(chunks).groupby(level=0).sum()
+print(f"Processed in {time.time() - start:.2f} seconds")
+print(final)
+```
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="7. Decision Guide" subtitle="Which approach should you use?">
+<Compare title="Choose your path">
+| Scenario | Best approach |
+|---|---|
+| One-time analysis | Polars with lazy evaluation |
+| Need pandas compatibility | pandas with dtypes + chunking |
+| Very large files (10GB+) | Dask for distributed processing |
+| Streaming/real-time | Chunked reading with generators |
+| Cloud processing | Use cloud-native formats (Parquet, Delta) |
+</Compare>
+</Card>
+
+<Card title="Summary Checklist">
+<Checklist title="Optimization checklist" name="csv-optimization">
+- [x] Measure current performance first
+- [x] Specify dtypes to avoid type inference
+- [x] Use `usecols` to read only needed columns
+- [x] Process in chunks if memory is limited
+- [x] Consider Polars for 10-100x speedup
+- [x] Convert to Parquet for repeated reads
+- [x] Use all CPU cores with parallel processing
+- [x] Monitor memory usage to avoid swapping
+</Checklist>
+</Card>
+
+<FollowUps>
+- How do I handle CSV files with inconsistent formatting or missing values?
+- What's the best way to write a 2 GB result back to disk efficiently?
+- Can I use GPU acceleration for CSV processing?
+- How do I process multiple large CSV files in parallel?
+</FollowUps>

@@ -1,0 +1,74 @@
+# Personal Budget Check
+
+<Card title="This Month" subtitle="October 2024">
+<Columns>
+<Stat label="Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent" value="$2,412" tone="warning" icon="shopping-cart" />
+<Stat label="Remaining" value="$588" tone="success" icon="piggy-bank" />
+</Columns>
+<Progress value="2412" max="3000" label="80% of budget used" tone="warning" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="October spending breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 850 |
+| Food | 520 |
+| Transport | 340 |
+| Utilities | 210 |
+| Entertainment | 180 |
+| Other | 312 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="Highlighted for review">
+<Callout tone="danger" title="Rent — $850">
+This single expense makes up **35%** of your total spending this month. It's within your housing budget, but consider reviewing if it's still aligned with your goals.
+</Callout>
+</Card>
+
+<Card title="View Another Month">
+<Tabs>
+<Tab title="September 2024">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,180" tone="success" />
+<Stat label="Remaining" value="$820" tone="success" />
+</Columns>
+<Progress value="2180" max="3000" label="73% of budget used" tone="success" />
+</Tab>
+<Tab title="August 2024">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,890" tone="danger" />
+<Stat label="Remaining" value="$110" tone="danger" />
+</Columns>
+<Progress value="2890" max="3000" label="96% of budget used" tone="danger" />
+</Tab>
+<Tab title="July 2024">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,340" tone="warning" />
+<Stat label="Remaining" value="$660" tone="success" />
+</Columns>
+<Progress value="2340" max="3000" label="78% of budget used" tone="warning" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Add an Expense" subtitle="Log a new purchase or bill">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g. Groceries, Netflix, Gas" required="true" />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" />
+<Select label="Category" placeholder="Choose a category" options="Housing | Food | Transport | Utilities | Entertainment | Other" required="true" />
+<Date label="Date" value="2024-10-15" required="true" />
+<Button variant="primary" label="Add expense">Add expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me my spending trends over the last 6 months
+- Suggest ways to cut down my food spending
+- Compare my spending to last month
+</FollowUps>

@@ -1,0 +1,66 @@
+# Platform Team Status
+
+<Card title="API Uptime — This Month" subtitle="Rolling 30-day availability for the production API">
+<Stat label="Current uptime" value="99.98%" change="+0.02% vs last month" tone="success" icon="chart-line" />
+<Progress value="99.98" max="100" label="Uptime target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Recent Incident" subtitle="Most recent resolved issue">
+<Badge tone="success">Resolved</Badge>
+
+**Database connection pool exhaustion** — Brief latency spike and elevated 5xx errors for ~12 minutes.
+
+**Resolved:** Monday, 14:32 UTC · 2 days ago
+
+<Callout tone="info" title="Post-incident actions">
+- Increased connection pool limits and added autoscaling
+- Added alerting on pool saturation at 70% threshold
+- Postmortem published in the team wiki
+</Callout>
+</Card>
+
+<Card title="Service Overview" subtitle="All systems operational">
+<Columns>
+<div>
+
+### API Gateway
+<Badge tone="success">Operational</Badge>
+
+### Auth Service
+<Badge tone="success">Operational</Badge>
+
+### Database Cluster
+<Badge tone="success">Operational</Badge>
+
+</div>
+<div>
+
+### Queue Workers
+<Badge tone="success">Operational</Badge>
+
+### Object Storage
+<Badge tone="success">Operational</Badge>
+
+### CDN / Edge
+<Badge tone="success">Operational</Badge>
+
+</div>
+</Columns>
+</Card>
+
+<Card title="Uptime History">
+<Chart type="line" x="Week" y="Uptime %">
+| Week | Uptime |
+|---|---|
+| Week 1 | 99.99 |
+| Week 2 | 99.97 |
+| Week 3 | 100.00 |
+| Week 4 | 99.98 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show the full incident timeline
+- Display per-endpoint latency breakdown
+- View the postmortem document
+</FollowUps>

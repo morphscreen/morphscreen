@@ -1,0 +1,42 @@
+# Month-End Finance Dashboard
+
+<Card title="Period" subtitle="Select a month to view its financial summary">
+<Columns>
+<Select label="Month" name="month-select" placeholder="Choose month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="December 2025" />
+<Button variant="secondary" size="small" label="Download Statement">Download Statement</Button>
+</Columns>
+</Card>
+
+<Card title="Key Metrics" subtitle="December 2025">
+<Columns>
+<Stat label="Cash on Hand" value="$847,200" change="-$42,300 vs Nov" tone="info" />
+<Stat label="Monthly Burn" value="$142,500" change="+$8,200 vs Nov" tone="warning" />
+<Stat label="Runway" value="5.9 months" change="-0.4 months vs Nov" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category" subtitle="December 2025 • Total: $142,500">
+<Chart type="donut" title="Expense Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Payroll & Benefits | 78,400 |
+| Cloud & Infrastructure | 24,600 |
+| Marketing & Growth | 18,900 |
+| Office & Operations | 12,300 |
+| Professional Services | 8,300 |
+</Chart>
+</Card>
+
+<Card title="Large Transactions (>$10,000)" subtitle="5 transactions this month">
+| Date | Vendor | Category | Amount | Status |
+|---|---|---|---|---|
+| Dec 3 | AWS | Cloud & Infrastructure | $24,600 | ✅ Settled |
+| Dec 5 | Payroll (Nov) | Payroll & Benefits | $78,400 | ✅ Settled |
+| Dec 12 | Sequoia Legal | Professional Services | $12,500 | ✅ Settled |
+| Dec 18 | Meta Ads | Marketing & Growth | $18,900 | ✅ Settled |
+| Dec 22 | Stripe Atlas | Professional Services | $10,800 | ⏳ Pending |
+</Card>
+
+<Callout tone="info" title="Notes">
+• Runway calculated as Cash on Hand ÷ Monthly Burn (net of revenue).<br>• December burn includes $18.9K in Q4 marketing push.<br>• $10.8K Stripe Atlas payment pending clearance Jan 3.
+</Callout>

@@ -1,0 +1,171 @@
+# Store Manager Console — Main Street Location
+
+<Select label="Store" name="store-select" placeholder="Select store" options="Main Street (current) | Downtown Mall | Westside Plaza | Airport Terminal" value="Main Street (current)" />
+
+---
+
+<Card title="Sales Today vs Target">
+<Columns>
+<Stat label="Sales Today" value="$24,850" change="+$2,350 vs target" tone="success" />
+<Stat label="Target" value="$22,500" />
+<Stat label="Avg Basket Size" value="$42.80" change="+$1.20 vs last week" tone="info" />
+</Columns>
+<Progress value="24850" max="22500" label="110% of daily target" />
+</Card>
+
+---
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="area" x="Hour" y="Visitors" title="Hourly Foot Traffic">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 12 |
+| 10 AM | 28 |
+| 11 AM | 45 |
+| 12 PM | 67 |
+| 1 PM | 89 |
+| 2 PM | 76 |
+| 3 PM | 58 |
+| 4 PM | 72 |
+| 5 PM | 94 |
+| 6 PM | 88 |
+| 7 PM | 54 |
+| 8 PM | 31 |
+</Chart>
+<Stat label="Total Visitors Today" value="714" change="+8% vs last Tue" tone="success" />
+</Card>
+
+---
+
+<Card title="Best Sellers (Units Today)">
+<Chart type="bar" x="Product" y="Units" title="Top 5 by Units Sold">
+| Product | Units |
+|---|---|
+| Organic Oat Milk 1L | 42 |
+| Sourdough Loaf | 38 |
+| Free-Range Eggs 12pk | 35 |
+| Greek Yogurt 500g | 29 |
+| Artisan Granola 400g | 24 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Items Out of Stock">
+<Table>
+| SKU | Product | Category | Days OOS | Reorder Qty | Action |
+|---|---|---|---|---|---|
+| PRD-0442 | Almond Butter 250g | Pantry | 3 | 24 | Reorder |
+| PRD-0198 | Gluten-Free Bread | Bakery | 1 | 18 | Reorder |
+| PRD-0311 | Cold Brew Concentrate | Beverages | 2 | 30 | Reorder |
+| PRD-0276 | Vegan Cheese Shreds | Dairy Alt | 4 | 15 | Reorder |
+</Table>
+</Card>
+
+---
+
+<Card title="On Shift Today">
+<Columns>
+<Avatar name="Maria Santos" subtitle="Shift Lead • 8AM–4PM" src="https://i.pravatar.cc/48?u=maria" />
+<Avatar name="James Chen" subtitle="Cashier • 8AM–4PM" src="https://i.pravatar.cc/48?u=james" />
+<Avatar name="Priya Patel" subtitle="Floor • 10AM–6PM" src="https://i.pravatar.cc/48?u=priya" />
+<Avatar name="Carlos Ruiz" subtitle="Cashier • 12PM–8PM" src="https://i.pravatar.cc/48?u=carlos" />
+<Avatar name="Aisha Johnson" subtitle="Floor • 12PM–8PM" src="https://i.pravatar.cc/48?u=aisha" />
+<Avatar name="Tom Wilson" subtitle="Stock • 6AM–2PM" src="https://i.pravatar.cc/48?u=tom" />
+</Columns>
+<Stat label="Total Scheduled" value="6" />
+<Stat label="On Break" value="1" tone="warning" />
+<Stat label="Called Out" value="0" tone="success" />
+</Card>
+
+---
+
+<Card title="Returns This Week">
+<Columns>
+<Stat label="Return Count" value="23" change="-4 vs last week" tone="success" />
+<Stat label="Return Value" value="$647.50" change="-$89 vs last week" tone="success" />
+<Stat label="Return Rate" value="2.1%" change="-0.3pp vs last week" tone="success" />
+</Columns>
+<Chart type="bar" x="Day" y="Returns" title="Daily Returns Count">
+| Day | Returns |
+|---|---|
+| Mon | 5 |
+| Tue | 3 |
+| Wed | 4 |
+| Thu | 6 |
+| Fri | 5 |
+| Sat | 0 |
+| Sun | 0 |
+</Chart>
+</Card>
+
+---
+
+<Card title="Running Promotions Performance">
+<Table>
+| Promo | Type | Started | Ends | Redemptions | Revenue Lift | Status |
+|---|---|---|---|---|---|---|
+| Summer Sips 20% | Category | Jun 1 | Jun 30 | 187 | +$1,240 | <Badge tone="success">Active</Badge> |
+| Buy 2 Get 1 Free Granola | BOGO | Jun 10 | Jun 24 | 92 | +$890 | <Badge tone="success">Active</Badge> |
+| Loyalty Double Points | Loyalty | Jun 15 | Jun 28 | 203 | +$2,100 | <Badge tone="success">Active</Badge> |
+| Student 10% Tuesdays | Segment | Ongoing | — | 67 | +$445 | <Badge tone="info">Active</Badge> |
+| Flash: Artisan Bread | Flash | Today | Today | 14 | +$126 | <Badge tone="warning">Ends 8PM</Badge> |
+</Table>
+</Card>
+
+---
+
+<Card title="Register Status">
+<Table>
+| Register | Status | Cashier | Session Sales | Transactions | Uptime |
+|---|---|---|---|---|---|
+| REG-01 | <Badge tone="success">Open</Badge> | James Chen | $8,420 | 197 | 99.2% |
+| REG-02 | <Badge tone="success">Open</Badge> | Carlos Ruiz | $6,180 | 143 | 98.7% |
+| REG-03 | <Badge tone="warning">Break</Badge> | — | $4,950 | 112 | 97.1% |
+| REG-04 | <Badge tone="danger">Closed</Badge> | — | $0 | 0 | — |
+| SCO-01 | <Badge tone="success">Open</Badge> | Self-checkout | $3,210 | 89 | 99.8% |
+| SCO-02 | <Badge tone="success">Open</Badge> | Self-checkout | $2,090 | 58 | 99.5% |
+</Table>
+</Card>
+
+---
+
+<Card title="Quick Reorder">
+<Form name="quick-reorder">
+<Columns>
+<Select label="Product" name="reorder-product" placeholder="Search or select..." options="Almond Butter 250g (PRD-0442) | Gluten-Free Bread (PRD-0198) | Cold Brew Concentrate (PRD-0311) | Vegan Cheese Shreds (PRD-0276) | Other..." required="true" />
+<Input label="Quantity" name="reorder-qty" type="number" placeholder="24" value="24" step="1" min="1" required="true" />
+</Columns>
+<Input label="Notes" name="reorder-notes" placeholder="Urgent, supplier lead time 2 days" />
+<Button>Submit Reorder</Button>
+<Button variant="secondary">View Full Catalog</Button>
+</Form>
+</Card>
+
+---
+
+<Card title="This Week vs Last Week">
+<Chart type="grouped" x="Day" y="Value" title="Daily Sales Comparison">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 21,400 | 19,800 |
+| Tue | 24,850 | 22,900 |
+| Wed | 0 | 23,100 |
+| Thu | 0 | 24,500 |
+| Fri | 0 | 28,200 |
+| Sat | 0 | 31,400 |
+| Sun | 0 | 18,600 |
+</Chart>
+<Columns>
+<Stat label="Week to Date" value="$46,250" change="+$3,550 vs LW" tone="success" />
+<Stat label="Projected Week" value="$168,000" change="+$12,400 vs LW" tone="info" />
+<Stat label="Avg Daily (WTD)" value="$23,125" change="+$1,775 vs LW" tone="success" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the full inventory reorder report
+- Compare this month vs last month
+- View staff schedule for next week
+- Export today's sales summary
+</FollowUps>

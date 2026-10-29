@@ -1,0 +1,69 @@
+<Card title="Account Balances">
+<Stat label="Checking" value="$1,200.00" change="0.00" note="" tone="info" />
+<Stat label="Savings" value="$5,800.00" change="200.00" note="" tone="success" />
+<Stat label="Credit" value="$2,500.00" change="-150.00" note="" tone="warning" />
+</Card>
+
+<Card title="Recent Transactions">
+<Details title="View recent activity" open="false">
+- Amazon.com, $45.67
+- Starbucks, $5.20
+- Grocery Store, $120.00
+- PayPal, $200.00
+</Details>
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="pie" title="Monthly Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Food | $300 |
+| Transport | $150 |
+| Entertainment | $100 |
+| Utilities | $80 |
+| Shopping | $200 |
+</Chart>
+</Card>
+
+<Card title="Upcoming Bills">
+<Details title="Bills due in the next 7 days" open="false">
+- Electricity, $120, Due 2025-10-05
+- Internet, $60, Due 2025-10-10
+- Phone, $50, Due 2025-10-08
+</Details>
+</Card>
+
+<Card title="Vacation Savings">
+<Progress value="3500" max="5000" label="Saved" tone="info" />
+<Stat label="Goal" value="$5,000" change="0.00" note="" tone="success" />
+</Card>
+
+<Card title="Credit Score">
+<Stat label="Score" value="720" change="10" note="" tone="success" />
+</Card>
+
+<Card title="Transfer Funds">
+<Form name="transfer">
+<Input label="Amount" name="amount" type="number" placeholder="Enter amount" step="0.01" min="0" max="10000" required="true" />
+<Select label="From Account" name="from" options="Checking | Savings | Credit" placeholder="Choose account" required="true" />
+<Select label="To Account" name="to" options="Checking | Savings | Credit" placeholder="Choose account" required="true" />
+<Button variant="primary" href="#" ask="Transfer" disabled="false" size="medium" label="Transfer" />
+</Form>
+</Card>
+
+<Card title="Credit Line">
+<Switch label="Freeze credit line" name="freeze" value="false" hint="Turn off to prevent new charges" />
+</Card>
+
+<Card title="Statement Period">
+<Select label="Period" name="period" options="Last 7 days | Last 30 days | Custom" placeholder="Select period" required="true" />
+</Card>
+
+<Card title="Alert Settings">
+<Checkboxes label="Alert triggers" name="alerts" options="Low balance | Large purchase | Bill due | Suspicious activity" value="Low balance | Large purchase | Bill due | Suspicious activity" required="true" />
+</Card>
+
+<Card title="Dispute Transaction">
+<Callout tone="warning" title="Dispute a transaction">Select a transaction to start a dispute.</Callout>
+<Button variant="danger" href="#" ask="Dispute" label="Dispute" />
+</Card>

@@ -1,0 +1,144 @@
+# Airline Hub Operations Desk
+
+<Callout tone="info" title="Current hub">Atlanta (ATL) — Eastern Time (ET)</Callout>
+
+<Columns>
+<Stat label="On-time performance" value="87.4%" change="+2.1% vs yesterday" icon="chart-line" tone="success" />
+<Stat label="Avg passenger load" value="82.6%" change="+1.3% vs yesterday" icon="users" tone="info" />
+<Stat label="Avg turnaround time" value="41 min" change="−3 min vs yesterday" icon="timer" tone="success" />
+<Stat label="Cancellations today" value="6" change="+2 vs yesterday" icon="x-circle" tone="warning" />
+</Columns>
+
+<Card title="Flights at ATL — Departures & Arrivals" subtitle="Live status as of 14:32 ET">
+<Chart type="bar" x="Hour" y="Flights">
+| Hour | On time | Delayed | Cancelled |
+|---|---|---|---|
+| 06–08 | 18 | 2 | 0 |
+| 08–10 | 22 | 3 | 1 |
+| 10–12 | 19 | 4 | 1 |
+| 12–14 | 21 | 5 | 2 |
+| 14–16 | 16 | 6 | 2 |
+</Chart>
+
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 401 | ATL → JFK | B12 | <Badge tone="success">On time</Badge> |
+| DL 872 | ATL → LAX | C34 | <Badge tone="success">On time</Badge> |
+| DL 1154 | ATL → MIA | A18 | <Badge tone="warning">Delayed 35 min</Badge> |
+| DL 2231 | ATL → ORD | B27 | <Badge tone="success">On time</Badge> |
+| DL 3098 | ATL → DFW | C11 | <Badge tone="danger">Cancelled</Badge> |
+| DL 567 | ATL → SEA | A22 | <Badge tone="warning">Delayed 22 min</Badge> |
+| DL 741 | ATL → BOS | B05 | <Badge tone="success">On time</Badge> |
+| DL 1892 | ATL → SFO | C41 | <Badge tone="warning">Delayed 48 min</Badge> |
+| DL 634 | ATL → DEN | A09 | <Badge tone="success">On time</Badge> |
+| DL 2901 | ATL → PHX | B19 | <Badge tone="success">On time</Badge> |
+</Card>
+
+<Card title="Delayed flights — needs attention">
+<Callout tone="warning" title="6 flights delayed over 20 minutes">Weather at ATL is causing upstream delays. Crews may need reassignment.</Callout>
+
+| Flight | Route | Gate | New ETD | Delay |
+|---|---|---|---|---|
+| DL 1154 | ATL → MIA | A18 | 15:25 | 35 min |
+| DL 567 | ATL → SEA | A22 | 15:10 | 22 min |
+| DL 1892 | ATL → SFO | C41 | 15:50 | 48 min |
+| DL 445 | ATL → IAH | B08 | 15:35 | 30 min |
+| DL 910 | ATL → MCO | C27 | 15:15 | 18 min |
+| DL 778 | ATL → EWR | A14 | 15:40 | 26 min |
+</Card>
+
+<Card title="Recent gate changes">
+| Time | Flight | Route | From | To |
+|---|---|---|---|---|
+| 14:18 | DL 872 | ATL → LAX | C36 | C34 |
+| 14:05 | DL 741 | ATL → BOS | B07 | B05 |
+| 13:52 | DL 634 | ATL → DEN | A11 | A09 |
+| 13:41 | DL 2901 | ATL → PHX | B21 | B19 |
+| 13:29 | DL 401 | ATL → JFK | B14 | B12 |
+</Card>
+
+<Columns>
+<Card title="Crews available for reassignment">
+| Crew ID | Role | Base | Available until |
+|---|---|---|---|
+| CRW-221 | Captain | ATL | 16:00 |
+| CRW-118 | First Officer | ATL | 15:30 |
+| CRW-334 | Flight Attendant | ATL | 17:15 |
+| CRW-092 | Flight Attendant | ATL | 15:45 |
+| CRW-507 | Captain | ATL | 18:00 |
+| CRW-263 | First Officer | ATL | 16:30 |
+
+<Button variant="secondary" size="small">Assign crew</Button>
+</Card>
+
+<Card title="Weather advisories — ATL">
+<Callout tone="warning" title="Thunderstorm watch until 18:00">Isolated storms within 15 nm of the field. Expect holding delays of 20–45 minutes on arrivals.</Callout>
+
+- Winds: 12 kt from 210°, gusting to 25 kt
+- Visibility: 6 mi, occasional 2 mi in rain
+- Ceiling: 2,500 ft broken
+- Temp: 28°C / 82°F
+- Next update: 15:00 ET
+</Card>
+</Columns>
+
+<Card title="Connections at risk of being missed">
+<Callout tone="danger" title="10 passengers across 4 flights">Act quickly to rebook before next departure wave.</Callout>
+
+| Passenger | From flight | To flight | Connection time | Risk |
+|---|---|---|---|---|
+| J. Alvarez | DL 1154 (MIA) | DL 872 (LAX) | 25 min | <Badge tone="danger">High</Badge> |
+| M. Chen | DL 567 (SEA) | DL 401 (JFK) | 18 min | <Badge tone="danger">High</Badge> |
+| S. Patel | DL 1892 (SFO) | DL 634 (DEN) | 30 min | <Badge tone="warning">Medium</Badge> |
+| R. Okafor | DL 910 (MCO) | DL 741 (BOS) | 22 min | <Badge tone="danger">High</Badge> |
+| L. García | DL 445 (IAH) | DL 2901 (PHX) | 35 min | <Badge tone="warning">Medium</Badge> |
+| T. Nguyen | DL 778 (EWR) | DL 2231 (ORD) | 28 min | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Rebook affected passengers">
+<Form name="rebooking">
+<Input label="Passenger name or confirmation" placeholder="e.g. J. Alvarez or DL-88213" />
+<Select label="New flight" placeholder="Choose a flight" options="DL 872 ATL→LAX 15:10 | DL 634 ATL→DEN 16:05 | DL 401 ATL→JFK 15:45 | DL 741 ATL→BOS 16:20 | DL 2901 ATL→PHX 17:00" />
+<Select label="Rebook reason" placeholder="Select reason" options="Missed connection | Flight cancellation | Schedule change | Passenger request" />
+<TextArea label="Notes" placeholder="Add internal notes for the rebooking" rows="3" />
+<Button>Rebook passenger</Button>
+<Button variant="secondary">View standby list</Button>
+</Form>
+</Card>
+
+<Card title="Switch hub">
+<Select label="Select a different hub" options="ATL — Atlanta | JFK — New York | LAX — Los Angeles | ORD — Chicago | DFW — Dallas | SEA — Seattle" placeholder="Choose hub" />
+<Button>Load hub</Button>
+</Card>
+
+<Card title="Cancellations today — ATL">
+| Flight | Route | Gate | Time of cancellation | Reason |
+|---|---|---|---|---|
+| DL 3098 | ATL → DFW | C11 | 13:47 | Crew availability |
+| DL 2204 | ATL → MEX | A31 | 12:15 | Weather |
+| DL 1550 | ATL → YYZ | B02 | 11:38 | Mechanical |
+| DL 873 | ATL → SLC | C19 | 10:52 | Weather |
+| DL 642 | ATL → MSP | A07 | 09:24 | Crew availability |
+| DL 381 | ATL → RDU | B16 | 08:11 | Weather |
+</Card>
+
+<Card title="Turnaround time performance">
+<Chart type="line" x="Aircraft" y="Minutes">
+| Aircraft | Turnaround time | Target |
+|---|---|---|
+| N101DL | 38 | 45 |
+| N204DL | 52 | 45 |
+| N315DL | 35 | 45 |
+| N422DL | 44 | 45 |
+| N508DL | 61 | 45 |
+| N633DL | 39 | 45 |
+| N741DL | 47 | 45 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me the next 2 hours of arrivals at ATL
+- Which crews are close to exceeding duty limits?
+- What's the weather outlook for the next 6 hours?
+- List passengers on DL 3098 who need rebooking
+</FollowUps>

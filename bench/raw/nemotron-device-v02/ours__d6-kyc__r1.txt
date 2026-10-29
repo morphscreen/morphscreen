@@ -1,0 +1,47 @@
+<Card title="Identity Verification" subtitle="New bank account onboarding">
+<Steps>
+<Step title="ID Front" status="current" />
+<Step title="ID Back" status="todo" />
+<Step title="Selfie" status="todo" />
+<Step title="Address" status="todo" />
+</Steps>
+
+<Callout tone="info" title="Required documents">
+Please have your government-issued ID card ready. All photos must be clear, well-lit, and show all four corners.
+</Callout>
+
+### 1. Photograph your ID card
+
+<Columns>
+<Camera label="ID Card – Front" name="idFront" facing="back" hint="Place ID on a dark background, fill the frame" required="true" />
+<Camera label="ID Card – Back" name="idBack" facing="back" hint="Capture the back side with barcode visible" required="true" />
+</Columns>
+
+### 2. Take a selfie
+
+<Camera label="Selfie" name="selfie" facing="front" hint="Face the camera, remove glasses, neutral expression" required="true" />
+
+### 3. Home address
+
+<Columns>
+<Input label="Street address" name="street" placeholder="123 Main St" required="true" />
+<Input label="Apartment / Suite" name="unit" placeholder="Apt 4B" />
+</Columns>
+<Columns>
+<Input label="City" name="city" placeholder="New York" required="true" />
+<Input label="State / Province" name="state" placeholder="NY" required="true" />
+</Columns>
+<Columns>
+<Input label="ZIP / Postal code" name="zip" placeholder="10001" required="true" />
+<Select label="Country" name="country" options="United States | Canada | United Kingdom | Australia | Other" required="true" />
+</Columns>
+
+<Switch label="Use my current location instead" name="useCurrentLocation" hint="We'll request precise location permission" />
+
+<Location label="Current location" name="currentLocation" precision="precise" hint="Tap to fetch your address automatically" required="false" />
+
+### 4. Submit application
+
+<Button variant="primary">Submit for verification</Button>
+<Button variant="tertiary">Save and continue later</Button>
+</Card>

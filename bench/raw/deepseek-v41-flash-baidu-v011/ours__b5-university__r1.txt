@@ -1,0 +1,155 @@
+# University Operations Overview
+
+<Callout tone="info" title="Fall 2024 semester">All figures below are for the current term unless noted. Use the department filter to narrow the view.</Callout>
+
+<Card title="Focus view" subtitle="Narrow every panel to one department">
+<Select label="Department" name="department" options="All departments | Arts & Sciences | Engineering | Business | Education | Health Sciences" value="All departments" hint="Charts and lists below reflect this selection" />
+</Card>
+
+<Card title="Enrollment & applications">
+<Columns>
+<Stat label="Total enrollment" value="18,420" change="+4.2% vs last year" tone="success" icon="users" />
+<Stat label="Acceptance rate" value="61.3%" change="-2.1 pts" tone="warning" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Enrollment over five years">
+<Chart type="line" x="Year" y="Students">
+| Year | Enrollment |
+|---|---|
+| 2020 | 16240 |
+| 2021 | 16980 |
+| 2022 | 17410 |
+| 2023 | 17670 |
+| 2024 | 18420 |
+</Chart>
+</Card>
+
+<Card title="Applications by program">
+<Chart type="bar" x="Program" y="Applications">
+| Program | Applications |
+|---|---|
+| Arts & Sciences | 9420 |
+| Engineering | 6180 |
+| Business | 5340 |
+| Health Sciences | 3120 |
+| Education | 2210 |
+</Chart>
+</Card>
+
+<Card title="Waitlisted students per program">
+| Program | Waitlisted |
+|---|---|
+| Arts & Sciences | 412 |
+| Engineering | 288 |
+| Business | 196 |
+| Health Sciences | 143 |
+| Education | 87 |
+</Card>
+
+<Card title="Tuition revenue & scholarships">
+<Columns>
+<Stat label="Tuition revenue this year" value="$214.6M" change="+5.8%" tone="success" icon="chart-line" />
+<Stat label="Scholarship budget used" value="$41.2M" note="of $52.0M total" tone="info" icon="chart-line" />
+</Columns>
+<Progress value="79" max="100" label="Scholarship budget used (79%)" tone="info" />
+</Card>
+
+<Card title="Course offering fill rates">
+<Chart type="horizontal" x="Course" y="Fill %">
+| Course | Fill % |
+|---|---|
+| Intro Psychology | 98 |
+| Data Structures | 91 |
+| Financial Accounting | 84 |
+| Organic Chemistry | 76 |
+| Curriculum Design | 62 |
+</Chart>
+</Card>
+
+<Card title="Teaching load by faculty">
+| Faculty | Courses | Students | Load |
+|---|---|---|---|
+| Dr. A. Okafor | 3 | 412 | <Badge tone="danger">Over</Badge> |
+| Prof. L. Nguyen | 3 | 388 | <Badge tone="danger">Over</Badge> |
+| Dr. M. Rossi | 2 | 274 | <Badge tone="success">Balanced</Badge> |
+| Dr. S. Patel | 2 | 241 | <Badge tone="success">Balanced</Badge> |
+| Prof. J. Kim | 1 | 118 | <Badge tone="info">Light</Badge> |
+</Card>
+
+<Card title="Students at academic risk">
+<Columns>
+<Stat label="Flagged students" value="326" change="+38 this month" tone="warning" icon="users" />
+<Stat label="On probation" value="94" tone="danger" icon="users" />
+</Columns>
+<Button ask="Show the list of at-risk students and their advisors">View at-risk list</Button>
+</Card>
+
+<Card title="Housing occupancy">
+<Progress value="93" max="100" label="Residence halls 93% full" tone="warning" />
+<Columns>
+<Stat label="Beds occupied" value="5,412" note="of 5,820" />
+<Stat label="Waitlist for housing" value="184" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="This semester vs last">
+| Metric | Last term | This term | Change |
+|---|---|---|---|
+| Enrollment | 17,670 | 18,420 | +4.2% |
+| Applications | 24,910 | 26,270 | +5.5% |
+| Acceptance rate | 63.4% | 61.3% | -2.1 pts |
+| Tuition revenue | $202.9M | $214.6M | +5.8% |
+| At-risk students | 288 | 326 | +13.2% |
+</Card>
+
+<Card title="Alumni giving, past four years">
+<Chart type="area" x="Year" y="USD">
+| Year | Giving |
+|---|---|
+| 2021 | 8.4 |
+| 2022 | 9.1 |
+| 2023 | 10.6 |
+| 2024 | 12.3 |
+</Chart>
+<Stat label="2024 alumni giving" value="$12.3M" change="+16.0%" tone="success" />
+</Card>
+
+<Card title="Campus events this month">
+| Date | Event | Location | Status |
+|---|---|---|---|
+| Oct 3 | Fall Convocation | Main Auditorium | <Badge tone="success">Confirmed</Badge> |
+| Oct 9 | Career Fair | Student Union | <Badge tone="success">Confirmed</Badge> |
+| Oct 17 | Research Symposium | Science Hall | <Badge tone="info">Planning</Badge> |
+| Oct 24 | Homecoming | Stadium | <Badge tone="success">Confirmed</Badge> |
+| Oct 30 | Alumni Gala | Grand Ballroom | <Badge tone="warning">Tentative</Badge> |
+</Card>
+
+<Card title="Approve a new course">
+<Form name="course-approval">
+<Input label="Course title" name="title" placeholder="e.g. Applied Machine Learning" required="true" />
+<Select label="Department" name="dept" options="Arts & Sciences | Engineering | Business | Education | Health Sciences" required="true" />
+<Input label="Instructor" name="instructor" placeholder="Faculty name" required="true" />
+<Input label="Credits" name="credits" type="number" min="1" max="6" value="3" />
+<TextArea label="Rationale" name="rationale" placeholder="Why this course is needed" rows="3" />
+<Button>Submit for approval</Button>
+<Button variant="tertiary">Save draft</Button>
+</Form>
+</Card>
+
+<Card title="Message a student group">
+<Form name="group-message">
+<Select label="Recipient group" name="group" options="All students | At-risk students | First-years | Engineering majors | Scholarship recipients | Waitlisted applicants" required="true" />
+<Input label="Subject" name="subject" placeholder="Message subject" required="true" />
+<TextArea label="Message" name="body" placeholder="Write your message" rows="4" required="true" />
+<Switch label="Send as urgent" name="urgent" value="false" hint="Flags the message in student inboxes" />
+<Button>Send message</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the at-risk student list with advisors
+- Break down enrollment by department
+- Draft a message to waitlisted applicants
+- Show housing occupancy by residence hall
+</FollowUps>

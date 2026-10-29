@@ -1,0 +1,65 @@
+<Card title="Learning Analytics" subtitle="Training platform · Updated 2 minutes ago">
+  <Badge tone="success">Live</Badge>
+
+  <Columns>
+    <Select label="Narrow to one cohort" placeholder="All cohorts" options="All cohorts | Product Design Spring 2025 | Data Analytics Winter 2025 | UX Research Fall 2024" hint="Filters every metric on this screen" />
+    <Button ask="Compose a message to the selected cohort">Message cohort</Button>
+  </Columns>
+</Card>
+
+<Columns>
+  <Stat label="Active learners this week" value="1,284" change="+12.4% vs last week" />
+  <Stat label="Course completion rate" value="78.4%" change="+3.2 pts vs last month" />
+  <Stat label="Average quiz score" value="86.2%" change="+1.8 pts vs last month" />
+</Columns>
+
+<Columns>
+  <Card title="Engagement across the past eight weeks" subtitle="Weekly active hours">
+    <Chart type="line" x="Week" y="Active hours">
+    | Week | Active hours |
+    |---|---|
+    | W1 | 420 |
+    | W2 | 485 |
+    | W3 | 460 |
+    | W4 | 512 |
+    | W5 | 548 |
+    | W6 | 530 |
+    | W7 | 572 |
+    | W8 | 615 |
+    </Chart>
+  </Card>
+  <Card title="Courses ranked by enrollment" subtitle="By current enrollment count">
+    <Chart type="horizontal" x="Course" y="Enrolled learners">
+    | Course | Enrolled learners |
+    |---|---|
+    | Intro to Design | 412 |
+    | Data Fundamentals | 368 |
+    | UX Research Methods | 295 |
+    | Advanced Prototyping | 241 |
+    | Product Strategy | 187 |
+    </Chart>
+  </Card>
+</Columns>
+
+<Card title="Learners at risk of dropping out" subtitle="Flagged by low activity and declining quiz scores">
+  <Callout tone="warning" title="3 learners at high risk">
+    Ava, Maya, and Sofia haven't logged in for 6+ days. A quick check-in message can help bring them back.
+  </Callout>
+
+  | Learner | Course | Last active | Risk score | Risk level |
+  |---|---|---|---|---|
+  | Ava Thompson | Advanced Prototyping | 12 days ago | 88/100 | <Badge tone="danger">High</Badge> |
+  | Maya Chen | Data Fundamentals | 6 days ago | 82/100 | <Badge tone="danger">High</Badge> |
+  | Sofia Reyes | UX Research Methods | 9 days ago | 76/100 | <Badge tone="danger">High</Badge> |
+  | James Okafor | Intro to Design | 4 days ago | 61/100 | <Badge tone="warning">Medium</Badge> |
+  | Liam Patel | Product Strategy | 3 days ago | 58/100 | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Details title="Message a cohort">
+  <Form name="message-cohort">
+    <Select label="Send to" options="Product Design Spring 2025 | Data Analytics Winter 2025 | UX Research Fall 2024" placeholder="Choose a cohort" />
+    <Input label="Subject" placeholder="Weekly check-in" />
+    <TextArea label="Message" placeholder="Hi team, here's what's coming up this week..." rows="4" />
+    <Button>Send message</Button>
+  </Form>
+</Details>

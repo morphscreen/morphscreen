@@ -1,0 +1,58 @@
+# Training Platform Analytics
+
+<Select label="Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | New Hires Q1 | Engineering Bootcamp | Sales Onboarding | Leadership Track | Customer Success" />
+
+<Columns>
+<Stat label="Active learners this week" value="1,247" change="+12% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="78%" change="+5% vs last month" tone="info" icon="chart-line" />
+<Stat label="Average quiz score" value="84%" change="-2% vs last month" tone="warning" icon="award" />
+</Columns>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="horizontal" x="Enrollment" y="Course">
+| Course | Enrollment |
+|---|---|
+| Python Fundamentals | 342 |
+| Data Analysis with Pandas | 287 |
+| React for Beginners | 256 |
+| SQL Essentials | 234 |
+| Machine Learning Basics | 198 |
+| DevOps Foundations | 167 |
+| UX Design Principles | 145 |
+| Cloud Architecture | 123 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out">
+| Learner | Course | Last activity | Risk level |
+|---|---|---|---|
+| Alex Chen | Machine Learning Basics | 14 days ago | <Badge tone="danger">High</Badge> |
+| Priya Sharma | DevOps Foundations | 11 days ago | <Badge tone="danger">High</Badge> |
+| Marcus Johnson | React for Beginners | 9 days ago | <Badge tone="warning">Medium</Badge> |
+| Sofia Rodriguez | SQL Essentials | 8 days ago | <Badge tone="warning">Medium</Badge> |
+| James Wilson | Cloud Architecture | 7 days ago | <Badge tone="warning">Medium</Badge> |
+| Aisha Patel | UX Design Principles | 6 days ago | <Badge tone="info">Low</Badge> |
+</Card>
+
+<Card title="Engagement across the past 8 weeks">
+<Chart type="line" x="Week" y="Metric">
+| Week | Active learners | Avg session (min) | Quiz attempts |
+|---|---|---|---|
+| W1 | 980 | 22 | 1,450 |
+| W2 | 1,050 | 24 | 1,620 |
+| W3 | 1,120 | 26 | 1,780 |
+| W4 | 1,180 | 25 | 1,890 |
+| W5 | 1,150 | 23 | 1,750 |
+| W6 | 1,210 | 27 | 1,980 |
+| W7 | 1,190 | 26 | 1,920 |
+| W8 | 1,247 | 28 | 2,100 |
+</Chart>
+</Card>
+
+<Card title="Message a cohort">
+<Form name="message-cohort">
+<TextArea label="Message" name="message" placeholder="Type your message to the selected cohort..." rows="4" hint="Supports markdown. Sent via in-app notification and email." required="true" />
+<Button variant="primary" icon="send">Send message</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

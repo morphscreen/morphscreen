@@ -1,0 +1,198 @@
+# City Operations Center
+
+<Select label="Focus District" name="district" placeholder="All districts" options="All districts | Downtown | Northside | Eastport | Westview | Riverside | University | Industrial | Harbor" />
+<Columns>
+<Card title="Congestion Right Now" subtitle="Citywide traffic index">
+<Stat label="Congestion Level" value="67%" change="+3% vs 1hr ago" tone="warning" icon="chart-line" />
+<Progress value="67" max="100" label="Traffic flow" tone="warning" />
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance">
+<Stat label="System Wide" value="92%" change="+1.2% vs yesterday" tone="success" icon="calendar" />
+<Progress value="92" max="100" label="On-time departures" tone="success" />
+</Card>
+
+<Card title="Air Quality by District" subtitle="AQI (lower is better)">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Northside | 42 |
+| Eastport | 55 |
+| Westview | 38 |
+| Riverside | 48 |
+| University | 45 |
+| Industrial | 92 |
+| Harbor | 61 |
+</Chart>
+</Card>
+
+<Card title="Energy Use — Past 7 Days" subtitle="MWh consumed">
+<Chart type="line" x="Day" y="MWh">
+| Day | Consumption |
+|---|---|
+| Mon | 1420 |
+| Tue | 1380 |
+| Wed | 1450 |
+| Thu | 1490 |
+| Fri | 1520 |
+| Sat | 1310 |
+| Sun | 1280 |
+</Chart>
+</Card>
+
+<Card title="Water Use Today" subtitle="Million gallons">
+<Stat label="Consumption" value="42.3 MG" change="-1.2 MG vs avg" tone="info" icon="chart-line" />
+<Progress value="78" max="100" label="Daily capacity used" tone="info" />
+</Card>
+
+<Card title="Current Weather" subtitle="Downtown station">
+<Columns>
+<Stat label="Temperature" value="72°F" icon="chart-line" />
+<Stat label="Humidity" value="58%" icon="chart-line" />
+<Stat label="Wind" value="8 mph SW" icon="chart-line" />
+<Stat label="Conditions" value="Partly Cloudy" icon="chart-line" />
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents" subtitle="Active across the city">
+| # | Location | Type | Severity | Since |
+|---|---|---|---|---|
+| INC-2041 | 5th & Main | Traffic signal out | <Badge tone="danger">Critical</Badge> | 12 min |
+| INC-2040 | Riverside Bridge | Water main break | <Badge tone="warning">High</Badge> | 47 min |
+| INC-2039 | Northside Station | Elevator stuck | <Badge tone="warning">High</Badge> | 1 hr 23 min |
+| INC-2038 | Eastport Park | Tree down on path | <Badge tone="info">Medium</Badge> | 2 hr 11 min |
+| INC-2037 | Industrial Zone | Power fluctuation | <Badge tone="info">Medium</Badge> | 3 hr 5 min |
+| INC-2036 | Harbor Walk | Lighting failure | <Badge tone="neutral">Low</Badge> | 4 hr 22 min |
+</Card>
+
+<Card title="Emergency Vehicles Deployed" subtitle="Real-time positions">
+| Unit | Type | Location | Status | Incident |
+|---|---|---|---|---|
+| ENG-12 | Engine | Downtown & 3rd | En route | INC-2041 |
+| MED-7 | Ambulance | Riverside Bridge | On scene | INC-2040 |
+| LAD-3 | Ladder | Northside Station | On scene | INC-2039 |
+| ENG-19 | Engine | Industrial Zone | Staged | INC-2037 |
+| CHF-1 | Battalion Chief | Harbor Walk | En route | INC-2036 |
+| RES-2 | Rescue | University & Oak | Available | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Parking Availability — Downtown" subtitle="Core zones">
+<Progress value="23" max="100" label="Zone A (Main St)" tone="danger" />
+<Progress value="45" max="100" label="Zone B (Commerce)" tone="warning" />
+<Progress value="67" max="100" label="Zone C (Arts District)" tone="info" />
+<Progress value="82" max="100" label="Zone D (Waterfront)" tone="success" />
+<Progress value="34" max="100" label="Zone E (Civic Center)" tone="warning" />
+</Card>
+
+<Card title="Public Events This Weekend" subtitle="Permitted gatherings">
+| Date | Event | Location | Expected | Impact |
+|---|---|---|---|---|
+| Sat 10am | Farmers Market | Civic Plaza | 3,500 | <Badge tone="info">Medium</Badge> |
+| Sat 2pm | Marathon | Downtown Loop | 12,000 | <Badge tone="danger">High</Badge> |
+| Sat 7pm | Concert Series | Waterfront Park | 8,000 | <Badge tone="warning">High</Badge> |
+| Sun 11am | Art Walk | Arts District | 5,000 | <Badge tone="info">Medium</Badge> |
+| Sun 3pm | Food Festival | Harbor Walk | 6,500 | <Badge tone="info">Medium</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Citizen Reports (Live)" subtitle="Last 10 minutes">
+<Details title="Pothole on 7th Ave near Library" open="false">
+Reported 2 min ago · <Badge tone="info">Medium</Badge> · Public Works notified
+</Details>
+<Details title="Graffiti on Riverside Bridge" open="false">
+Reported 5 min ago · <Badge tone="neutral">Low</Badge> · Parks Dept notified
+</Details>
+<Details title="Streetlight out at Oak & 12th" open="false">
+Reported 8 min ago · <Badge tone="warning">High</Badge> · Electrical crew dispatched
+</Details>
+<Details title="Noise complaint - Industrial Zone" open="false">
+Reported 9 min ago · <Badge tone="neutral">Low</Badge> · Code Enforcement reviewing
+</Details>
+</Card>
+
+<Card title="Service Request Backlog" subtitle="Open work orders by department">
+<Stat label="Total Backlog" value="1,247" change="+23 this week" tone="warning" icon="chart-line" />
+<Columns>
+<Stat label="Public Works" value="412" tone="neutral" />
+<Stat label="Parks & Rec" value="187" tone="neutral" />
+<Stat label="Water Dept" value="234" tone="neutral" />
+<Stat label="Electrical" value="156" tone="neutral" />
+<Stat label="Transportation" value="198" tone="neutral" />
+<Stat label="Code Enforcement" value="60" tone="neutral" />
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks Planned This Month" subtitle="Scheduled closures & restrictions">
+<Steps>
+<Step title="Main St Resurfacing (5th–12th)" status="todo" subtitle="Oct 14–18 · Full closure · Detour via Oak">
+Traffic control plan approved. Signage going up Oct 13.
+</Step>
+<Step title="Riverside Bridge Deck Repair" status="current" subtitle="Oct 10–25 · Lane shifts · 24/7 work">
+Eastbound lane closed. Westbound two-way traffic.
+</Step>
+<Step title="Harbor Tunnel Lighting Upgrade" status="todo" subtitle="Oct 21–Nov 1 · Night closures 10pm–5am">
+LED replacement. Weekend work possible.
+</Step>
+<Step title="University Ave Bike Lane Extension" status="todo" subtitle="Oct 28–Nov 8 · Parking lane conversion">
+Protected lane install. Minimal traffic impact.
+</Step>
+<Step title="Industrial Zone Utility Relocation" status="done" subtitle="Oct 1–9 · Completed ahead of schedule">
+All services restored. Final inspection passed.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets past due or approaching">
+| Asset ID | Asset | District | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|
+| BR-044 | Riverside Bridge bearings | Riverside | Sep 30 | 12 | <Badge tone="danger">Critical</Badge> |
+| PS-112 | Pump Station 12 valves | Industrial | Oct 5 | 7 | <Badge tone="danger">Critical</Badge> |
+| SW-201 | Stormwater vault 201 | Downtown | Oct 15 | 0 | <Badge tone="warning">High</Badge> |
+| TL-088 | Traffic signal controller | Northside | Oct 18 | -3 | <Badge tone="warning">High</Badge> |
+| WL-334 | Water main cathodic protection | Eastport | Oct 22 | -7 | <Badge tone="info">Medium</Badge> |
+| EL-567 | Substation 5 transformer oil | University | Oct 28 | -13 | <Badge tone="info">Medium</Badge> |
+| PK-091 | Park irrigation backflow | Harbor | Nov 2 | -18 | <Badge tone="neutral">Low</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a Crew" subtitle="Create a new work order">
+<Form name="dispatch-crew">
+<Select label="Department" name="dept" placeholder="Select department" options="Public Works | Water Department | Electrical | Parks & Recreation | Transportation | Code Enforcement" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Emergency | High | Medium | Low" required="true" />
+<Input label="Location / Address" name="location" placeholder="e.g., 5th & Main, Riverside Bridge" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe the issue and required work" rows="3" required="true" />
+<Input label="Assigned Crew (optional)" name="crew" placeholder="Crew ID or leave blank for auto-assign" />
+<Button variant="primary" icon="send">Dispatch Crew</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Broadcast to citizen app & digital signs">
+<Form name="public-alert">
+<Select label="Alert Type" name="alertType" placeholder="Choose alert type" options="Traffic Advisory | Air Quality Alert | Weather Warning | Water Advisory | Emergency Evacuation | Service Disruption | General Notice" required="true" />
+<Select label="Severity" name="severity" placeholder="Choose severity" options="Critical | High | Medium | Low" required="true" />
+<Select label="Target Area" name="area" placeholder="Select districts" options="Citywide | Downtown | Northside | Eastport | Westview | Riverside | University | Industrial | Harbor" required="true" />
+<TextArea label="Message" name="message" placeholder="Enter alert text (max 160 chars for push notification)" rows="3" required="true" hint="Keep concise for mobile push. Full text shown in app." />
+<Checkboxes label="Channels" name="channels" options="Mobile Push | SMS | Digital Signs | Website Banner | Social Media" value="Mobile Push | Digital Signs | Website Banner" />
+<Button variant="danger" icon="bell">Send Alert</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me only Downtown incidents and resources
+- Generate a daily operations summary report
+- What's the status of the Riverside Bridge repair?
+- List all critical maintenance overdue items
+- Send a traffic advisory for the marathon route
+</FollowUps>

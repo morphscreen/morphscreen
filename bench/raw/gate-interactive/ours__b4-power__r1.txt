@@ -1,0 +1,200 @@
+# Power Network Operations Console
+
+<Columns>
+<Card title="System Overview" subtitle="Real-time network status">
+<Columns>
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" icon="bolt" />
+<Stat label="Network Capacity" value="87.4%" change="12.6% headroom" tone="warning" icon="gauge" />
+<Stat label="Current Price" value="$84.50/MWh" change="-$3.20 vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Emissions Today" value="1,247 tCO₂" change="-4.2% vs avg" tone="success" icon="leaf" />
+</Columns>
+</Card>
+
+<Card title="Capacity Utilization" subtitle="Network headroom analysis">
+<Progress value="87.4" max="100" label="Overall network utilization" tone="warning" />
+<Progress value="92.1" max="100" label="North corridor" tone="danger" />
+<Progress value="78.3" max="100" label="South corridor" tone="info" />
+<Progress value="81.7" max="100" label="East corridor" tone="success" />
+<Progress value="94.5" max="100" label="West corridor" tone="danger" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source" subtitle="Current output mix">
+<Chart type="donut" title="Generation Mix (MW)">
+| Source | Output |
+|---|---|
+| Natural Gas | 15,420 |
+| Nuclear | 12,800 |
+| Wind | 8,650 |
+| Solar | 3,200 |
+| Hydro | 2,100 |
+| Coal | 677 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours" subtitle="Hourly MW projection">
+<Chart type="line" x="Hour" y="MW" title="Demand Forecast">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38,200 | 38,150 |
+| 02:00 | 36,800 | 36,750 |
+| 04:00 | 35,900 | 35,880 |
+| 06:00 | 37,200 | 37,180 |
+| 08:00 | 41,500 | 41,480 |
+| 10:00 | 44,800 | 44,750 |
+| 12:00 | 46,200 |  |
+| 14:00 | 47,100 |  |
+| 16:00 | 48,300 |  |
+| 18:00 | 49,800 |  |
+| 20:00 | 47,500 |  |
+| 22:00 | 43,200 |  |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+<Select label="Filter by region" name="region-filter" placeholder="All regions" options="All regions | North | South | East | West | Central" value="All regions" />
+<Tabs>
+<Tab title="All Plants">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Northridge Nuclear | North | Nuclear | 2,200 | 2,200 | 100% | <Badge tone="success">Online</Badge> |
+| GasTurbine Alpha | North | Natural Gas | 850 | 1,200 | 71% | <Badge tone="success">Online</Badge> |
+| Wind Farm Delta | North | Wind | 1,200 | 1,500 | 80% | <Badge tone="success">Online</Badge> |
+| Southland Combined Cycle | South | Natural Gas | 1,800 | 2,400 | 75% | <Badge tone="success">Online</Badge> |
+| Solar Valley | South | Solar | 950 | 1,200 | 79% | <Badge tone="success">Online</Badge> |
+| East River Hydro | East | Hydro | 1,100 | 1,400 | 79% | <Badge tone="success">Online</Badge> |
+| Westridge Coal | West | Coal | 677 | 1,800 | 38% | <Badge tone="warning">Reduced</Badge> |
+| Central Peak Gas | Central | Natural Gas | 420 | 800 | 53% | <Badge tone="success">Online</Badge> |
+| Offshore Wind Beta | East | Wind | 2,100 | 2,500 | 84% | <Badge tone="success">Online</Badge> |
+| Mountain Hydro | Central | Hydro | 1,000 | 1,200 | 83% | <Badge tone="success">Online</Badge> |
+</Tab>
+<Tab title="North Region">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Northridge Nuclear | North | Nuclear | 2,200 | 2,200 | 100% | <Badge tone="success">Online</Badge> |
+| GasTurbine Alpha | North | Natural Gas | 850 | 1,200 | 71% | <Badge tone="success">Online</Badge> |
+| Wind Farm Delta | North | Wind | 1,200 | 1,500 | 80% | <Badge tone="success">Online</Badge> |
+</Tab>
+<Tab title="South Region">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Southland Combined Cycle | South | Natural Gas | 1,800 | 2,400 | 75% | <Badge tone="success">Online</Badge> |
+| Solar Valley | South | Solar | 950 | 1,200 | 79% | <Badge tone="success">Online</Badge> |
+</Tab>
+<Tab title="East Region">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| East River Hydro | East | Hydro | 1,100 | 1,400 | 79% | <Badge tone="success">Online</Badge> |
+| Offshore Wind Beta | East | Wind | 2,100 | 2,500 | 84% | <Badge tone="success">Online</Badge> |
+</Tab>
+<Tab title="West Region">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Westridge Coal | West | Coal | 677 | 1,800 | 38% | <Badge tone="warning">Reduced</Badge> |
+</Tab>
+<Tab title="Central Region">
+| Plant | Region | Type | Output (MW) | Capacity (MW) | Utilization | Status |
+|---|---|---|---|---|---|---|
+| Central Peak Gas | Central | Natural Gas | 420 | 800 | 53% | <Badge tone="success">Online</Badge> |
+| Mountain Hydro | Central | Hydro | 1,000 | 1,200 | 83% | <Badge tone="success">Online</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Active Outages" subtitle="Current service interruptions">
+| Outage ID | Region | Affected Customers | Est. Restoration | Cause | Status |
+|---|---|---|---|---|---|
+| OUT-2024-0847 | North Metro | 12,400 | 2024-01-15 14:30 | Equipment failure | <Badge tone="warning">Crew dispatched</Badge> |
+| OUT-2024-0849 | East Suburban | 8,200 | 2024-01-15 16:00 | Storm damage | <Badge tone="warning">Assessing</Badge> |
+| OUT-2024-0851 | West Industrial | 3,100 | 2024-01-15 12:45 | Planned maintenance | <Badge tone="info">In progress</Badge> |
+| OUT-2024-0852 | Central Downtown | 1,800 | 2024-01-15 13:15 | Cable fault | <Badge tone="warning">Crew en route</Badge> |
+</Card>
+
+<Card title="Planned Maintenance — This Month" subtitle="Scheduled work affecting capacity">
+| Date | Plant / Asset | Region | Type | Capacity Impact | Status |
+|---|---|---|---|---|---|
+| 2024-01-18 | Westridge Coal Unit 2 | West | Boiler inspection | -600 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-01-22 | Northridge Nuclear | North | Refueling outage | -2,200 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-01-25 | GasTurbine Alpha | North | Turbine overhaul | -1,200 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-01-28 | East River Hydro | East | Penstock repair | -400 MW | <Badge tone="info">Scheduled</Badge> |
+| 2024-02-03 | Offshore Wind Beta | East | Cable replacement | -800 MW | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Real-time system notifications">
+<Columns>
+<Callout tone="danger" title="🔴 CRITICAL — 10:42 AM">West corridor at 94.5% capacity. Immediate curtailment may be required if load increases further.</Callout>
+<Callout tone="warning" title="⚠️ WARNING — 10:38 AM">Northridge Nuclear output steady but cooling water temp rising. Monitoring.</Callout>
+<Callout tone="warning" title="⚠️ WARNING — 10:35 AM">Wind Farm Delta forecast revised down 15% for 14:00-18:00 window.</Callout>
+<Callout tone="info" title="ℹ️ INFO — 10:30 AM">Southland Combined Cycle ramped to 1,800 MW per dispatch order.</Callout>
+<Callout tone="info" title="ℹ️ INFO — 10:25 AM">Price spike to $112/MWh at 10:15 resolved; now back to $84.50.</Callout>
+<Callout tone="success" title="✅ RESOLVED — 10:10 AM">OUT-2024-0845 (Central) restored. 2,100 customers back online.</Callout>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Region Focus" subtitle="Select a region for detailed view">
+<Select label="Focus region" name="focus-region" placeholder="Select region" options="All regions | North | South | East | West | Central" value="All regions" />
+<Button variant="primary" label="Apply Focus" icon="map-pin" />
+<Button variant="secondary" label="Clear Filter" icon="x" />
+<Details title="North Region Details" open="false">
+<Stat label="Load" value="14,200 MW" />
+<Stat label="Generation" value="15,800 MW" />
+<Stat label="Net Export" value="+1,600 MW" />
+<Stat label="Avg Price" value="$82.30/MWh" />
+<Stat label="Utilization" value="89.2%" tone="warning" />
+</Details>
+<Details title="South Region Details" open="false">
+<Stat label="Load" value="11,800 MW" />
+<Stat label="Generation" value="10,400 MW" />
+<Stat label="Net Import" value="-1,400 MW" />
+<Stat label="Avg Price" value="$87.10/MWh" />
+<Stat label="Utilization" value="84.7%" tone="info" />
+</Details>
+<Details title="East Region Details" open="false">
+<Stat label="Load" value="9,500 MW" />
+<Stat label="Generation" value="11,200 MW" />
+<Stat label="Net Export" value="+1,700 MW" />
+<Stat label="Avg Price" value="$79.80/MWh" />
+<Stat label="Utilization" value="76.3%" tone="success" />
+</Details>
+<Details title="West Region Details" open="false">
+<Stat label="Load" value="4,800 MW" />
+<Stat label="Generation" value="3,200 MW" />
+<Stat label="Net Import" value="-1,600 MW" />
+<Stat label="Avg Price" value="$94.20/MWh" />
+<Stat label="Utilization" value="94.5%" tone="danger" />
+</Details>
+<Details title="Central Region Details" open="false">
+<Stat label="Load" value="2,547 MW" />
+<Stat label="Generation" value="1,420 MW" />
+<Stat label="Net Import" value="-1,127 MW" />
+<Stat label="Avg Price" value="$88.50/MWh" />
+<Stat label="Utilization" value="71.0%" tone="success" />
+</Details>
+</Card>
+
+<Card title="Order Curtailment" subtitle="Issue load reduction directives">
+<Form name="curtailment-order">
+<Select label="Region" name="curtail-region" placeholder="Select region" options="North | South | East | West | Central" required="true" />
+<Select label="Curtailment Type" name="curtail-type" placeholder="Select type" options="Voluntary (demand response) | Mandatory (load shed) | Industrial interruptible" required="true" />
+<Input label="Target Reduction (MW)" name="target-mw" type="number" placeholder="e.g., 500" min="10" max="5000" step="10" required="true" hint="Must not exceed region's interruptible capacity" />
+<Input label="Duration (minutes)" name="duration" type="number" placeholder="e.g., 60" min="15" max="480" step="15" required="true" />
+<TextArea label="Reason / Justification" name="reason" placeholder="Enter operational reason for curtailment..." rows="3" required="true" hint="Required for audit trail" />
+<Checkboxes label="Notify" name="notify" options="Plant operators | Regional coordinators | Market participants | Emergency services" value="Plant operators | Regional coordinators" />
+<Button variant="danger" label="Issue Curtailment Order" icon="alert-triangle" ask="true" />
+<Button variant="tertiary" label="Cancel" />
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show real-time frequency and voltage stability metrics
+- Display inter-regional power flows on a network diagram
+- Open ancillary services market dashboard
+- View 7-day load and renewable forecast
+- Check transmission line thermal ratings
+</FollowUps>

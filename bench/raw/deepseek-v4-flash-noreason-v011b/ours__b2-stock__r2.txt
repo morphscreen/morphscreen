@@ -1,0 +1,44 @@
+<Card title="Low-Inventory Warning" subtitle="Items at or below the reorder threshold">
+  <Badge tone="warning">3 items below threshold</Badge>
+</Card>
+
+<Card title="Reorder Threshold">
+  <Stat label="Warning threshold" value="10 units" icon="warning-circle" tone="warning" />
+  <Stat label="Critical threshold" value="5 units" icon="bell" tone="danger" />
+  <p>Items with 10 or fewer units remaining trigger the low-inventory warning.</p>
+</Card>
+
+<Card title="Search Items">
+  <Form name="search-items">
+    <Input label="Search" name="search" placeholder="Search by item name or SKU..." hint="Type to filter the list below" />
+    <Button variant="secondary" label="Search">Search</Button>
+  </Form>
+</Card>
+
+<Card title="Items Running Low">
+  <Columns>
+    <Card subtitle="Widget A - SKU: WGT-001">
+      <Stat label="Remaining units" value="8" icon="package" tone="warning" />
+      <Button ask="Reorder Widget A">Reorder</Button>
+    </Card>
+    <Card subtitle="Gadget B - SKU: GDT-002">
+      <Stat label="Remaining units" value="3" icon="package" tone="danger" />
+      <Button ask="Reorder Gadget B">Reorder</Button>
+    </Card>
+    <Card subtitle="Component C - SKU: CMP-003">
+      <Stat label="Remaining units" value="10" icon="package" tone="warning" />
+      <Button ask="Reorder Component C">Reorder</Button>
+    </Card>
+  </Columns>
+</Card>
+
+<Card title="How the threshold works">
+  <p>The low-inventory warning triggers when an item's remaining units fall to or below <strong>10</strong>. Items with 5 or fewer units are marked as critical. You can reorder each item directly from this view.</p>
+  <Button ask="Explain the reorder process">How reordering works</Button>
+</Card>
+
+<FollowUps>
+- How do I change the threshold?
+- Show me items below 5 units
+- What items are most at risk?
+</FollowUps>

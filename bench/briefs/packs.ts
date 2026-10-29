@@ -1,0 +1,95 @@
+// Briefs for the component packs, eight per pack, in the style of the device
+// briefs: numbered requirements, one screen. needs lists the pack components
+// that do what the brief asks for; a pack run gives the model that pack.
+type Brief = { name: string; band: string; needs: string[]; reqs: number; prompt: string };
+
+const b = (name: string, needs: string[], items: string[], what: string): Brief => ({
+  name,
+  band: name.slice(0, 2),
+  needs,
+  reqs: items.length,
+  prompt: `${what} Build a single screen for this. It must show:\n${items.map((x, i) => `${i + 1}. ${x}`).join("\n")}\nCover every numbered item.`,
+});
+
+export const PACK_BRIEFS: Record<string, Brief[]> = {
+  data: [
+    b("da1-server", ["KeyValue", "Gauge"], ["the server's name, region, IP address and uptime", "CPU and memory use against their limits", "the last three alerts"], "A server's details page."),
+    b("da2-company", ["Timeline"], ["the company's milestones from founding to today, in order", "its current headcount and revenue", "its main products"], "A company history page."),
+    b("da3-signup", ["Funnel"], ["how many visitors reached each step of signup, from landing page to paid", "the biggest drop-off and a likely reason", "two ideas to fix it"], "A signup funnel review."),
+    b("da4-activity", ["Heatmap"], ["commits per weekday and hour band for the last month", "the busiest time", "who committed most"], "A team's coding activity."),
+    b("da5-stocks", ["Sparkline"], ["five stocks with their price, today's change and their last ten closing prices", "the portfolio's total value", "a note on the biggest mover"], "A watchlist."),
+    b("da6-org", ["Tree"], ["the company's departments and the teams in each", "each department's head", "open roles per department"], "An org structure."),
+    b("da7-patient", ["KeyValue", "Timeline"], ["the patient's name, age, blood type and allergies", "their visits and procedures in order", "current medications"], "A patient summary."),
+    b("da8-air", ["Gauge", "Sparkline"], ["today's air quality index on its scale", "PM2.5, ozone and NO2 with their trend over the week", "advice for outdoor exercise"], "An air quality report."),
+  ],
+  commerce: [
+    b("co1-headphones", ["Product", "Rating"], ["four headphones with photo, price and rating", "which one is on sale", "a way to add one to the cart"], "Headphone shopping results."),
+    b("co2-pricing", ["Plan"], ["three pricing plans with what each includes", "which plan is most popular", "a monthly and yearly price"], "A SaaS pricing page."),
+    b("co3-cart", ["Cart", "Price"], ["the items in the cart with quantities and prices", "subtotal, shipping, tax and total", "a promo code field", "a way to check out"], "A shopping cart."),
+    b("co4-phones", ["Compare"], ["three phones compared on screen, battery, camera, storage and 5G", "the price of each", "a recommendation"], "A phone comparison."),
+    b("co5-sale", ["Product", "Price"], ["six discounted items with the old and new price", "how long the sale lasts", "a filter by category"], "A flash sale page."),
+    b("co6-review", ["Rating", "RatingInput"], ["the product's average rating and number of reviews", "three recent reviews with their stars", "a way to leave a review with stars"], "Product reviews."),
+    b("co7-order", ["Cart"], ["the order number and its status", "the items and the amount paid", "the delivery address and date", "a way to return an item"], "An order confirmation."),
+    b("co8-hotel", ["Product", "Price", "Rating"], ["four rooms with photo, price per night and guest rating", "what each room includes", "a way to book one"], "Hotel room choices."),
+  ],
+  scheduling: [
+    b("sc1-month", ["Calendar"], ["this month with the days that have events marked", "the next three events", "a way to add an event"], "A personal calendar."),
+    b("sc2-doctor", ["TimeSlots"], ["the doctor's name and specialty", "the free appointment times tomorrow to choose from", "a reason-for-visit field", "a way to book"], "A doctor's appointment booking."),
+    b("sc3-conference", ["Agenda", "Event"], ["the talks on day one in time order", "the keynote's details", "a way to save a talk"], "A conference schedule."),
+    b("sc4-launch", ["Countdown"], ["the time left until the product launch", "what launches", "a way to get a reminder"], "A product launch page."),
+    b("sc5-week", ["Event"], ["this week's meetings with time and place", "which ones clash", "a way to decline one"], "A week's meetings."),
+    b("sc6-barber", ["TimeSlots", "Calendar"], ["the available days this month", "the free times on the chosen day", "the services and prices", "a way to book"], "A barber booking."),
+    b("sc7-shifts", ["Agenda", "Calendar"], ["the shifts this week for each nurse", "who is on call tonight", "a way to swap a shift"], "A nursing shift rota."),
+    b("sc8-deadline", ["Countdown", "Event"], ["the time left until the grant deadline", "the documents still needed", "the next team meeting about it"], "A grant deadline tracker."),
+  ],
+  media: [
+    b("me1-course", ["Video"], ["the lesson video", "the lesson's notes", "the next lesson", "a way to mark it done"], "An online course lesson."),
+    b("me2-podcast", ["Audio"], ["the latest episode to play", "the show notes", "earlier episodes"], "A podcast episode page."),
+    b("me3-recipe", ["Embed", "Carousel"], ["a YouTube video of the recipe", "photos of the steps", "the ingredients", "the steps"], "A recipe page."),
+    b("me4-listing", ["Carousel"], ["photos of the apartment", "rent, size and rooms", "the landlord's contact"], "An apartment listing."),
+    b("me5-music", ["Embed"], ["a Spotify playlist for focus", "why these tracks", "two other playlists"], "A focus music page."),
+    b("me6-trailer", ["Video", "Embed"], ["the film's trailer", "the cast", "showtimes nearby"], "A film page."),
+    b("me7-lecture", ["Audio", "Video"], ["the lecture recording", "the slides' main points", "the reading list"], "A lecture page."),
+    b("me8-portfolio", ["Carousel", "Video"], ["the designer's best projects as images", "a short showreel video", "a way to get in touch"], "A designer's portfolio."),
+  ],
+  docs: [
+    b("do1-fix", ["Diff"], ["the bug", "the change that fixes it as a diff", "how to test it"], "A code review of a bug fix."),
+    b("do2-setup", ["Code", "FileTree"], ["the project's files and folders", "the config file's contents", "the commands to run it"], "A project setup guide."),
+    b("do3-physics", ["Math"], ["the formula for kinetic energy", "a worked example", "the units"], "A physics explainer."),
+    b("do4-research", ["Citation"], ["the answer to whether coffee affects sleep", "three sources with what each says", "the confidence in the answer"], "A research answer with sources."),
+    b("do5-api", ["Code"], ["an API endpoint's description", "an example request in curl with the key line highlighted", "the example response", "the error codes"], "An API reference page."),
+    b("do6-stats", ["Math", "Code"], ["the formula for standard deviation", "Python code that computes it", "when to use the sample version"], "A statistics note."),
+    b("do7-migration", ["Diff", "FileTree"], ["the files a migration touches", "the schema change as a diff", "the rollback steps"], "A database migration plan."),
+    b("do8-legal", ["Citation"], ["what the law says about returns within 30 days", "the two statutes it comes from", "what the customer should do"], "A consumer rights answer."),
+  ],
+  inputs: [
+    b("in1-feedback", ["RatingInput", "ToggleGroup"], ["a star rating", "what went well, choosing several", "a comment box", "a way to send"], "A feedback form."),
+    b("in2-travel", ["Combobox", "Stepper"], ["the departure and destination airports, searchable", "the number of travellers", "the dates", "a way to search"], "A flight search."),
+    b("in3-alarm", ["Time", "ToggleGroup"], ["the alarm time", "the days it repeats", "the sound", "a way to save"], "An alarm setup."),
+    b("in4-lease", ["Signature"], ["the lease's key terms", "a checkbox to accept", "a signature", "a way to submit"], "A lease signing page."),
+    b("in5-order", ["Stepper", "ToggleGroup"], ["a pizza's size", "the toppings", "how many", "the price", "a way to order"], "A pizza order."),
+    b("in6-survey", ["RatingInput", "Combobox"], ["how satisfied the user is from one to five", "their country, searchable", "what they use the product for", "a way to submit"], "A customer survey."),
+    b("in7-delivery", ["Time", "Signature"], ["the parcel's details", "a delivery time window", "the recipient's signature", "a way to confirm"], "A delivery confirmation."),
+    b("in8-gym", ["Stepper", "Time", "ToggleGroup"], ["the workout days", "the start time", "the sets and reps for each exercise", "a way to save the plan"], "A gym plan setup."),
+  ],
+  device: [
+    b("dv1-dinner", ["Contact", "AddToCalendar"], ["the dinner's time and place", "a way to invite friends from contacts", "a way to add it to the calendar"], "A dinner invitation."),
+    b("dv2-wifi", ["QR"], ["the guest Wi-Fi name and password", "a code a guest's phone can scan to join", "the house rules"], "A guest Wi-Fi card."),
+    b("dv3-article", ["Share"], ["the article's headline and summary", "the key points", "a way to share it"], "A news article."),
+    b("dv4-standup", ["VoiceNote"], ["yesterday's tasks", "a way to record a voice update", "blockers"], "A voice standup."),
+    b("dv5-ticket", ["QR", "AddToCalendar"], ["the concert, date and seat", "the ticket's code for the door", "a way to add it to the calendar"], "A concert ticket."),
+    b("dv6-referral", ["Share", "QR"], ["the referral reward", "the referral link as a code to scan", "a way to share the link"], "A referral page."),
+    b("dv7-emergency", ["Contact", "Location"], ["the emergency contact, picked from contacts", "the user's current location", "a way to send an alert"], "An emergency setup."),
+    b("dv8-interview", ["AddToCalendar", "VoiceNote"], ["the interview's time, place and interviewer", "a way to add it to the calendar", "a way to record practice answers"], "Interview prep."),
+  ],
+  interactive: [
+    b("in1-quiz", ["Quiz"], ["five questions on the water cycle, one right answer each", "why each answer is right", "the score at the end"], "A quiz for a year-7 science class."),
+    b("in2-cards", ["Flashcards"], ["ten Spanish words with their English meaning", "a way to flip each card", "how many the learner knows"], "Spanish vocabulary practice."),
+    b("in3-poll", ["Poll"], ["a vote on the date for the team offsite, three options", "the agenda for the day", "who is organising it"], "A team offsite planner."),
+    b("in4-move", ["Checklist"], ["the tasks for moving flat, grouped by week", "which are already done", "progress so far"], "A moving-house checklist."),
+    b("in5-loan", ["WhatIf"], ["sliders for the loan amount, interest rate and years", "the monthly payment", "the total interest paid"], "A mortgage calculator."),
+    b("in6-history", ["Quiz", "Flashcards"], ["key dates of the French Revolution as cards", "a short quiz on them", "a summary of the period"], "A history revision page."),
+    b("in7-budget", ["WhatIf", "Checklist"], ["sliders for income and three spending categories", "what is left each month", "a checklist of money tasks"], "A monthly budget planner."),
+    b("in8-launch", ["Poll", "Checklist"], ["the launch checklist with owners", "a vote on the launch name, three options", "the launch date"], "A product launch page."),
+  ],
+};

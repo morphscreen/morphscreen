@@ -1,0 +1,199 @@
+# City Operations Center — Live Screen
+
+<Callout tone="info" title="Shift status">
+All systems nominal. 3 districts under watch. Last data sync 42 seconds ago.
+</Callout>
+
+<Columns>
+<Stat label="Congestion index" value="1.42" change="+8% vs 1h ago" tone="warning" icon="traffic-sign" />
+<Stat label="Transit punctuality" value="91.4%" change="+1.2 pts today" tone="success" icon="bus" />
+<Stat label="Open incidents" value="27" change="4 high severity" tone="danger" icon="warning" />
+<Stat label="Water use today" value="412 ML" change="78% of daily cap" tone="neutral" icon="drop" />
+</Columns>
+
+<Card title="Focus district" subtitle="Narrow every panel below to one district">
+<Select label="District" name="focus-district" options="All districts | Central | Northgate | Riverside | Harbor | Eastfield | Southpark" value="All districts" hint="Changing this filters congestion, air, incidents, parking, and events" />
+<Button variant="secondary" size="small" icon="funnel">Apply focus</Button>
+</Card>
+
+<Card title="1 · Congestion right now" subtitle="Live segment speeds, citywide">
+<Chart type="bar" x="Corridor" y="Index (1.0 = free flow)">
+| Corridor | Congestion |
+|---|---|
+| Central Ring | 1.71 |
+| Northgate Ave | 1.42 |
+| Riverside Way | 1.28 |
+| Harbor Bridge | 1.55 |
+| Eastfield Rd | 1.09 |
+| Southpark Loop | 1.18 |
+</Chart>
+</Card>
+
+<Card title="2 · Transit punctuality" subtitle="Rolling 60 minutes by mode">
+| Mode | On time | Late >5 min | Cancelled |
+|---|---|---|---|
+| Bus | 89% | 9% | 2% |
+| Tram | 94% | 5% | 1% |
+| Metro | 92% | 7% | 1% |
+| Ferry | 87% | 11% | 2% |
+</Card>
+
+<Card title="3 · Air quality by district">
+<Chart type="horizontal" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Central | 68 |
+| Northgate | 42 |
+| Riverside | 55 |
+| Harbor | 81 |
+| Eastfield | 37 |
+| Southpark | 49 |
+</Chart>
+<Callout tone="warning" title="Harbor elevated">AQI 81 — sensitive groups advised to limit outdoor exertion.</Callout>
+</Card>
+
+<Card title="4 · Energy use, past week">
+<Chart type="area" x="Day" y="GWh">
+| Day | Energy |
+|---|---|
+| Mon | 41.2 |
+| Tue | 43.8 |
+| Wed | 45.1 |
+| Thu | 47.6 |
+| Fri | 46.9 |
+| Sat | 39.4 |
+| Sun | 36.8 |
+</Chart>
+</Card>
+
+<Card title="5 · Water use today">
+<Progress value="78" max="100" label="412 ML of 528 ML daily cap" tone="info" />
+<Columns>
+<Stat label="Residential" value="231 ML" />
+<Stat label="Commercial" value="118 ML" />
+<Stat label="Municipal" value="63 ML" />
+</Columns>
+</Card>
+
+<Card title="6 · Open incidents" subtitle="Location and severity">
+| ID | Type | Location | Severity | Since |
+|---|---|---|---|---|
+| INC-4471 | Multi-vehicle collision | Central Ring, km 4 | <Badge tone="danger">High</Badge> | 18 min |
+| INC-4468 | Water main break | Riverside Way 220 | <Badge tone="danger">High</Badge> | 1 h 04 |
+| INC-4465 | Signal failure | Harbor Bridge north | <Badge tone="warning">Medium</Badge> | 2 h 11 |
+| INC-4462 | Fallen tree | Eastfield Rd 88 | <Badge tone="warning">Medium</Badge> | 3 h 27 |
+| INC-4459 | Streetlight out | Southpark Loop 14 | <Badge tone="neutral">Low</Badge> | 5 h 02 |
+</Card>
+
+<Card title="7 · Emergency vehicle deployment">
+| Unit | Type | District | Status |
+|---|---|---|---|
+| AMB-12 | Ambulance | Central | <Badge tone="danger">On scene</Badge> |
+| AMB-07 | Ambulance | Harbor | <Badge tone="info">En route</Badge> |
+| ENG-03 | Fire engine | Riverside | <Badge tone="danger">On scene</Badge> |
+| ENG-09 | Fire engine | Northgate | <Badge tone="success">Available</Badge> |
+| POL-21 | Police | Central | <Badge tone="info">En route</Badge> |
+| POL-33 | Police | Eastfield | <Badge tone="success">Available</Badge> |
+</Card>
+
+<Card title="8 · Downtown parking availability">
+<Chart type="bar" x="Garage" y="Free spaces">
+| Garage | Spaces |
+|---|---|
+| Civic Center | 62 |
+| Market St | 14 |
+| Harbor Point | 118 |
+| Union Sq | 3 |
+| River Deck | 87 |
+</Chart>
+<Callout tone="warning" title="Union Sq near full">3 spaces left — reroute inbound signage to Harbor Point.</Callout>
+</Card>
+
+<Card title="9 · Public events this weekend">
+| Event | Venue | District | Expected |
+|---|---|---|---|
+| Riverfront Music Fest | River Deck | Riverside | 12,000 |
+| Farmers Market | Union Sq | Central | 2,400 |
+| Youth Football Cup | Eastfield Park | Eastfield | 3,100 |
+| Harbor Fireworks | Harbor Pier | Harbor | 8,500 |
+</Card>
+
+<Card title="10 · Citizen reports" subtitle="Incoming, newest first">
+<Steps>
+<Step title="Blocked bike lane on Northgate Ave" status="current" subtitle="Reported 2 min ago · photo attached">Rider reports construction cones spilling into the lane near stop 14.</Step>
+<Step title="Streetlight flickering, Southpark Loop 14" status="todo" subtitle="Reported 6 min ago">Third report this week for the same pole.</Step>
+<Step title="Standing water after main break" status="todo" subtitle="Reported 11 min ago · Riverside">Water reaching the curb line on Riverside Way.</Step>
+<Step title="Illegal dumping behind Market St" status="done" subtitle="Reported 22 min ago · resolved">Crew cleared the site; case closed.</Step>
+</Steps>
+</Card>
+
+<Card title="11 · Service request backlog">
+<Progress value="340" max="500" label="340 open requests (500 cap)" tone="warning" />
+| Category | Open | Over SLA |
+|---|---|---|
+| Potholes | 96 | 21 |
+| Streetlights | 74 | 9 |
+| Graffiti | 58 | 4 |
+| Water leaks | 41 | 12 |
+| Noise | 71 | 3 |
+</Card>
+
+<Card title="12 · Current weather">
+<Columns>
+<Stat label="Temperature" value="14°C" note="Feels like 12°C" icon="thermometer" />
+<Stat label="Wind" value="22 km/h" note="NW gusting 38" icon="wind" />
+<Stat label="Visibility" value="6.4 km" note="Light haze" icon="eye" />
+<Stat label="Rain next 6h" value="70%" tone="info" icon="cloud-rain" />
+</Columns>
+</Card>
+
+<Card title="13 · Focus on one district">
+<Radio label="District filter" name="district-focus" options="All districts | Central | Northgate | Riverside | Harbor | Eastfield | Southpark" value="All districts" hint="Applies to congestion, air quality, incidents, parking, and events" />
+<Button variant="secondary" size="small">Apply district focus</Button>
+</Card>
+
+<Card title="14 · Dispatch a crew">
+<Form name="dispatch-crew">
+<Select label="Incident" name="incident" options="INC-4471 · Central Ring collision | INC-4468 · Riverside main break | INC-4465 · Harbor signal failure | INC-4462 · Eastfield fallen tree | INC-4459 · Southpark streetlight" placeholder="Select an incident" required="true" />
+<Select label="Crew" name="crew" options="Roads Crew A | Water Crew B | Signals Crew C | Parks Crew D | Electrical Crew E" placeholder="Select a crew" required="true" />
+<Input label="ETA note" name="eta-note" placeholder="e.g. 25 min via Northgate Ave" hint="Visible to the crew and dispatch log" />
+<Switch label="Notify district supervisor" name="notify-supervisor" value="true" />
+<Button icon="truck">Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="15 · Send a public alert">
+<Form name="public-alert">
+<Select label="Channel" name="channel" options="SMS | Push notification | Social media | Emergency sirens | City website banner" required="true" />
+<Select label="Audience" name="audience" options="Citywide | Central | Northgate | Riverside | Harbor | Eastfield | Southpark" required="true" />
+<Input label="Headline" name="headline" placeholder="Short, clear headline" required="true" />
+<TextArea label="Message" name="message" rows="4" placeholder="Write the alert exactly as residents will read it." hint="Keep under 320 characters for SMS delivery" required="true" />
+<Button variant="danger" icon="megaphone">Send alert</Button>
+</Form>
+</Card>
+
+<Card title="16 · Roadworks planned this month">
+| Project | Road | District | Window | Status |
+|---|---|---|---|---|
+| Resurfacing phase 2 | Central Ring | Central | Mar 12–19 | <Badge tone="info">Confirmed</Badge> |
+| Bridge joint replacement | Harbor Bridge | Harbor | Mar 15–28 | <Badge tone="warning">At risk</Badge> |
+| Cycle lane extension | Northgate Ave | Northgate | Mar 20–27 | <Badge tone="info">Confirmed</Badge> |
+| Drainage upgrade | Riverside Way | Riverside | Mar 24–31 | <Badge tone="neutral">Pending</Badge> |
+</Card>
+
+<Card title="17 · Infrastructure due for maintenance">
+| Asset | Last serviced | Due | Priority |
+|---|---|---|---|
+| Pump Station 4 | 2023-09-14 | Overdue 11 days | <Badge tone="danger">Critical</Badge> |
+| Harbor Bridge bearings | 2024-02-02 | In 6 days | <Badge tone="warning">High</Badge> |
+| Northgate signal cabinet | 2024-06-18 | In 21 days | <Badge tone="neutral">Normal</Badge> |
+| Riverside sewer line | 2023-11-30 | In 3 days | <Badge tone="warning">High</Badge> |
+| Eastfield substation | 2024-08-05 | In 44 days | <Badge tone="neutral">Normal</Badge> |
+</Card>
+
+<FollowUps>
+- Show me the full incident log for Central district
+- What's driving the Harbor AQI spike?
+- Draft a public alert for the Riverside main break
+- Which crews are available right now?
+</FollowUps>

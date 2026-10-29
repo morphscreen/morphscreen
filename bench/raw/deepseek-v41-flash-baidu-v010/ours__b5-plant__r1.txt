@@ -1,0 +1,140 @@
+# Floor Console — Line A–D
+
+<Callout tone="danger" title="Live andon alerts (16)">Line C — Welder 3 arc fault, 12 min down. Line B — resin feeder starved. Acknowledge before the next batch starts.</Callout>
+
+<Columns>
+<Stat label="OEE (1)" value="78.4%" change="+2.1 pts vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Units vs target (2)" value="14,820 / 16,000" change="92.6% of today's goal" tone="warning" icon="gauge" />
+<Stat label="Energy today (12)" value="41.2 MWh" change="+6% vs 30-day avg" tone="warning" icon="lightning" />
+<Stat label="Days since last incident (10)" value="63" change="2 incidents YTD" tone="success" icon="shield-check" />
+</Columns>
+
+<Card title="Production lines (3)" subtitle="Rate and status, live">
+| Line | Rate (units/hr) | Status | OEE |
+|---|---|---|---|
+| Line A | 1,240 | Running | 84% |
+| Line B | 980 | Starved | 71% |
+| Line C | 0 | Down — arc fault | 42% |
+| Line D | 1,110 | Running | 79% |
+</Card>
+
+<Card title="Live andon alerts (16)" subtitle="Newest first">
+<Callout tone="danger" title="Line C · Welder 3">Arc fault, 12 min down. Maintenance dispatched.</Callout>
+<Callout tone="warning" title="Line B · Resin feeder">Hopper below 15%, starvation risk on next batch.</Callout>
+<Callout tone="info" title="Line D · Packaging">Label roll change due in ~40 min.</Callout>
+<Button variant="primary" ask="Acknowledge the Line C welder arc fault alert">Acknowledge Line C</Button>
+<Button variant="secondary" ask="Show me the full andon alert history for today">Full alert history</Button>
+</Card>
+
+<Card title="Focus on one line (15)" subtitle="Narrow the console to a single line">
+<Form name="line-focus">
+<Select label="Line" options="All lines | Line A | Line B | Line C | Line D" value="All lines" />
+<Radio label="View" options="Full console | Line detail only" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="Defect rate, past month (4)">
+<Chart type="line" x="Week" y="Defect rate %">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.8 |
+| W2 | 2.4 |
+| W3 | 2.1 |
+| W4 | 1.9 |
+</Chart>
+</Card>
+
+<Card title="Downtime by cause (5)" subtitle="This week, minutes">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Mechanical | 320 |
+| Material starvation | 210 |
+| Changeover | 165 |
+| Quality hold | 90 |
+| Operator error | 55 |
+</Chart>
+</Card>
+
+<Card title="Shift output compared (9)" subtitle="Units per shift, today">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Night | 4,610 |
+| Morning | 5,240 |
+| Afternoon | 4,970 |
+</Chart>
+</Card>
+
+<Card title="Batches on quality hold (11)">
+| Batch | Line | Reason | Held since |
+|---|---|---|---|
+| B-4471 | Line B | Resin lot out of spec | 6h |
+| B-4480 | Line C | Weld porosity | 2h |
+| B-4483 | Line D | Label misprint | 45m |
+</Card>
+
+<Card title="Material stock (7)" subtitle="On hand vs reorder point">
+<Progress value="38" max="100" label="Steel — 38 t (reorder at 20 t)" tone="success" />
+<Progress value="14" max="100" label="Resin — 14 t (reorder at 15 t)" tone="danger" />
+<Progress value="62" max="100" label="Packaging — 62 k units (reorder at 25 k)" tone="success" />
+</Card>
+
+<Card title="Supplier deliveries due this week (8)">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| Kanto Metals | Steel coil | Tue | Confirmed |
+| Polimer Co | Resin | Wed | At risk |
+| BoxRight | Packaging | Thu | Confirmed |
+| Kanto Metals | Steel sheet | Fri | In transit |
+</Card>
+
+<Card title="Machines due for maintenance (6)">
+| Machine | Line | Due | Last service |
+|---|---|---|---|
+| Welder 3 | Line C | Overdue 2d | 41d ago |
+| Press 2 | Line A | In 3d | 28d ago |
+| Extruder 1 | Line B | In 6d | 22d ago |
+| Labeler 4 | Line D | In 9d | 19d ago |
+</Card>
+
+<Card title="Open work orders (13)" subtitle="Highest priority first">
+| WO | Machine | Priority | Age |
+|---|---|---|---|
+| WO-2214 | Welder 3 | <Badge tone="danger">Critical</Badge> | 2h |
+| WO-2216 | Resin feeder | <Badge tone="warning">High</Badge> | 5h |
+| WO-2209 | Press 2 | <Badge tone="info">Medium</Badge> | 1d |
+| WO-2198 | Labeler 4 | <Badge tone="neutral">Low</Badge> | 3d |
+</Card>
+
+<Card title="Safety incidents this year (10)" subtitle="YTD summary">
+| Month | Incidents | Severity |
+|---|---|---|
+| Jan–Mar | 1 | Minor |
+| Apr–Jun | 1 | Minor |
+| Jul–Sep | 0 | — |
+| Oct–Dec | 0 | — |
+</Card>
+
+<Card title="Schedule maintenance (14)">
+<Form name="schedule-maintenance">
+<Select label="Machine" placeholder="Choose a machine" options="Welder 3 | Press 2 | Extruder 1 | Labeler 4" required="true" />
+<Date label="Date" required="true" />
+<Select label="Window" options="06:00–08:00 | 08:00–10:00 | 14:00–16:00 | 22:00–00:00" />
+<TextArea label="Notes" placeholder="Parts needed, lockout/tagout, crew" rows="3" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Export (17)">
+<Button variant="primary" icon="download-simple" ask="Export today's shift report as PDF">Export shift report</Button>
+<Button variant="secondary" ask="Export today's shift report as CSV">Export CSV</Button>
+</Card>
+
+<FollowUps>
+- What is driving the Line C arc fault?
+- Which supplier delivery is most at risk this week?
+- Show me the defect trend for Line B only
+- What should I prioritize in the next hour?
+</FollowUps>

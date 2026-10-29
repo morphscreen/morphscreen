@@ -1,0 +1,196 @@
+# Hospital Operations Command View
+
+<Callout tone="warning" title="Critical alert">2 patients in ICU require immediate attention — see Critical Patients below.</Callout>
+
+<Columns>
+<Stat label="Bed Occupancy" value="78%" note="312 of 400 beds" tone="warning" icon="bed" />
+<Stat label="Current ER Wait" value="42 min" note="Down 8 min from avg" tone="info" icon="clock" />
+<Stat label="Admissions (14d)" value="1,284" note="+6% vs prior period" icon="trend-up" />
+<Stat label="Patients Ready for Discharge" value="18" note="5 pending transport" tone="success" icon="check-circle" />
+</Columns>
+
+<Card title="Bed Occupancy & ER Wait" subtitle="Live as of now">
+<Columns>
+<div>
+<Chart type="donut" title="Occupancy by unit">
+| Unit | Beds |
+|---|---|
+| Medical | 89 |
+| Surgical | 76 |
+| ICU | 24 |
+| Pediatric | 31 |
+| Maternity | 42 |
+| Psych | 18 |
+| Step-down | 32 |
+</Chart>
+</div>
+<div>
+<Chart type="line" title="ER wait — last 24 hours" x="Hour" y="Minutes">
+| Hour | Wait |
+|---|---|
+| 00:00 | 35 |
+| 04:00 | 22 |
+| 08:00 | 48 |
+| 12:00 | 61 |
+| 16:00 | 55 |
+| 20:00 | 38 |
+</Chart>
+</div>
+</Columns>
+</Card>
+
+<Card title="Admissions — past two weeks">
+<Chart type="bar" x="Day" y="Patients">
+| Day | Admissions |
+|---|---|
+| Mon | 84 |
+| Tue | 96 |
+| Wed | 102 |
+| Thu | 88 |
+| Fri | 91 |
+| Sat | 74 |
+| Sun | 69 |
+| Mon | 90 |
+| Tue | 101 |
+| Wed | 98 |
+| Thu | 85 |
+| Fri | 93 |
+| Sat | 71 |
+| Sun | 64 |
+</Chart>
+</Card>
+
+<Card title="Patients per department" subtitle="Current census">
+| Department | Patients | Capacity | Occupancy |
+|---|---|---|---|
+| Emergency | 24 | 30 | 80% |
+| ICU | 24 | 24 | 100% |
+| Medical | 89 | 110 | 81% |
+| Surgical | 76 | 95 | 80% |
+| Pediatric | 31 | 40 | 78% |
+| Maternity | 42 | 45 | 93% |
+| Psychiatry | 18 | 25 | 72% |
+| Step-down | 32 | 40 | 80% |
+
+<Progress value="24" max="24" label="ICU — at capacity" tone="danger" />
+<Progress value="89" max="110" label="Medical" />
+<Progress value="76" max="95" label="Surgical" />
+</Card>
+
+<Card title="Staff on shift" subtitle="Current roster">
+<Columns>
+<div>
+**Nursing**
+- <Avatar name="Sarah Kim" subtitle="Charge Nurse — ICU" /> 
+- <Avatar name="James Okafor" subtitle="RN — Emergency" /> 
+- <Avatar name="Maria Lopez" subtitle="RN — Medical" /> 
+- <Avatar name="David Chen" subtitle="RN — Surgical" /> 
+- <Avatar name="Amira Hassan" subtitle="RN — Pediatrics" /> 
+- <Avatar name="Tom Becker" subtitle="LPN — Step-down" /> 
+</div>
+<div>
+**Physicians**
+- <Avatar name="Dr. Ellen Park" subtitle="Attending — ICU" /> 
+- <Avatar name="Dr. Raj Mehta" subtitle="ER Physician" /> 
+- <Avatar name="Dr. Lisa Nguyen" subtitle="Hospitalist" /> 
+- <Avatar name="Dr. Omar Farouk" subtitle="Surgeon — On call" /> 
+</div>
+</Columns>
+<Columns>
+<div>
+**Ancillary**
+- <Avatar name="Grace Adeyemi" subtitle="Pharmacist" /> 
+- <Avatar name="Robert Silva" subtitle="Respiratory Therapist" /> 
+- <Avatar name="Helen Novak" subtitle="Social Worker" /> 
+</div>
+<div>
+**Support**
+- <Avatar name="Chris Walker" subtitle="Unit Clerk — ER" /> 
+- <Avatar name="Priya Sharma" subtitle="Transporter" /> 
+- <Avatar name="Marcus Lee" subtitle="Security" /> 
+</div>
+</Columns>
+</Card>
+
+<Card title="Critical patients" subtitle="Require immediate review">
+<Callout tone="danger" title="ICU — 2 critical">
+- **Bed 12** — M. Thompson, 68M, post-cardiac arrest, on vent, pressors. <Badge tone="danger">Critical</Badge>
+- **Bed 18** — J. Rivera, 45F, septic shock, escalating vasopressors. <Badge tone="danger">Critical</Badge>
+</Callout>
+<Callout tone="warning" title="ER — 1 critical">
+- **Bay 6** — A. Kowalski, 72M, STEMI, awaiting cath lab. <Badge tone="warning">Time-sensitive</Badge>
+</Callout>
+</Card>
+
+<Card title="Ready for discharge" subtitle="18 patients">
+| Room | Patient | Department | Disposition | Awaiting |
+|---|---|---|---|---|
+| 214A | G. Foster | Medical | Home | Transport |
+| 218B | L. Adams | Medical | Home | Scripts |
+| 305A | P. Novak | Surgical | Rehab | Bed at rehab |
+| 310C | R. Singh | Surgical | Home | Transport |
+| 402B | S. Miller | Pediatric | Home | Parent arrival |
+| 508A | K. Brooks | Maternity | Home | Paperwork |
+
+<Button variant="secondary" size="small">View all 18</Button>
+</Card>
+
+<Card title="Today's operating room bookings">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR1 | Total knee | Dr. Farouk | <Badge tone="success">Completed</Badge> |
+| 08:00 | OR2 | Lap chole | Dr. Weiss | <Badge tone="success">Completed</Badge> |
+| 09:30 | OR3 | C-section | Dr. Patel | <Badge tone="info">In progress</Badge> |
+| 11:00 | OR1 | Hernia repair | Dr. Farouk | <Badge tone="neutral">Scheduled</Badge> |
+| 13:00 | OR2 | Colonoscopy | Dr. Chen | <Badge tone="neutral">Scheduled</Badge> |
+| 14:30 | OR4 | Carpal tunnel | Dr. Lee | <Badge tone="neutral">Scheduled</Badge> |
+| 16:00 | OR3 | Appendectomy | Dr. Weiss | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies running low" subtitle="Below reorder point">
+| Supply | Department | Stock | Reorder point | Status |
+|---|---|---|---|---|
+| Normal saline 1L | ER | 24 | 50 | <Badge tone="danger">Critical</Badge> |
+| N95 masks | ICU | 40 | 100 | <Badge tone="danger">Critical</Badge> |
+| Insulin glargine | Pharmacy | 12 | 30 | <Badge tone="warning">Low</Badge> |
+| IV pumps | Step-down | 6 | 10 | <Badge tone="warning">Low</Badge> |
+| Surgical gowns | OR | 35 | 80 | <Badge tone="warning">Low</Badge> |
+| Pediatric saline locks | Pediatrics | 18 | 40 | <Badge tone="warning">Low</Badge> |
+
+<Button variant="secondary" size="small">View supply order</Button>
+</Card>
+
+<Card title="Actions">
+<Columns>
+<div>
+<Form name="incident">
+<Input label="Incident type" placeholder="e.g., medication error, fall, equipment failure" required />
+<TextArea label="Description" placeholder="Brief description of what happened" rows="3" required />
+<Select label="Severity" options="Low | Moderate | High | Critical" placeholder="Select severity" />
+<Button variant="danger">File incident</Button>
+</Form>
+</div>
+<div>
+<Form name="transfer">
+<Select label="Patient" placeholder="Search patient" options="M. Thompson (ICU-12) | J. Rivera (ICU-18) | A. Kowalski (ER-6) | G. Foster (214A) | Other" />
+<Select label="Destination" placeholder="Select unit" options="ICU | Medical | Surgical | Step-down | Rehab | Other facility" />
+<Input label="Reason" placeholder="e.g., downgrade, specialty care" />
+<Button>Request transfer</Button>
+</Form>
+</div>
+</Columns>
+</Card>
+
+<Card title="View another day" subtitle="Admissions & OR bookings">
+<Form name="date-lookup">
+<Date label="Select date" name="view-date" />
+<Button variant="secondary">Load day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed bed map by unit
+- List all patients in the ICU
+- Show staffing gaps for the next shift
+- Generate a handoff summary
+</FollowUps>

@@ -1,0 +1,47 @@
+# Personal Budget Check
+
+<Card title="Month selector">
+<Select label="Select month" name="month" placeholder="Choose month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Card>
+
+<Columns>
+<Card title="Budget overview">
+<Progress value="2847" max="4000" label="Spent $2,847 of $4,000 budget" tone="warning" />
+<Stat label="Remaining" value="$1,153" change="28.8% left" tone="success" />
+<Stat label="Daily avg" value="$92" change="vs $129 target" tone="info" />
+</Card>
+
+<Card title="Largest expense">
+<Callout tone="warning" title="Rent payment — $1,450">
+<Badge tone="danger">Housing</Badge> • Jan 3 • This single expense is 51% of your total spending
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Spending by category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1450 |
+| Food & Dining | 520 |
+| Transportation | 380 |
+| Shopping | 245 |
+| Entertainment | 152 |
+| Utilities | 100 |
+</Chart>
+</Card>
+
+<Card title="Add expense" subtitle="Log a new transaction">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food & Dining | Transportation | Shopping | Entertainment | Utilities | Health | Other" required="true" />
+</Columns>
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Columns>
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>

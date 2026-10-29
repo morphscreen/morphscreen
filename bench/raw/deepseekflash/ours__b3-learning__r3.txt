@@ -1,0 +1,61 @@
+<Card title="Training Platform Analytics" subtitle="Live overview for all cohorts">
+  <Columns>
+    <Card title="Filter by cohort">
+      <Select label="Narrow to one cohort" options="All cohorts | Sales Onboarding Q3 | Customer Support Q4 | Leadership Track Q1 | Data Analytics Q2" name="cohort" placeholder="Select a cohort" hint="Filters every metric on this screen" />
+    </Card>
+    <Card title="Message cohort">
+      <Form name="message-cohort">
+        <TextArea label="Message" name="message" placeholder="e.g. Reminder: Capstone project due Friday" rows="2" hint="Sends to all learners in the selected cohort" />
+        <Button>Send message</Button>
+      </Form>
+    </Card>
+  </Columns>
+
+  <Columns>
+    <Card title="Active learners this week">
+      <Stat label="Active learners" value="1,284" change="+12%" note="vs. last week" />
+    </Card>
+    <Card title="Course completion rate">
+      <Stat label="Completion rate" value="68%" change="+5 pts" note="target 75%" />
+      <Progress value="68" max="100" label="Completion rate" />
+    </Card>
+    <Card title="Average quiz score">
+      <Stat label="Quiz score" value="82%" change="+3 pts" note="across all quizzes" />
+    </Card>
+  </Columns>
+
+  <Columns>
+    <Card title="Courses ranked by enrollment" subtitle="Current cohort">
+      <Chart type="horizontal" title="Courses ranked by enrollment" x="Course" y="Enrollments">
+        | Course | Enrollments |
+        |---|---|
+        | Customer Service Essentials | 412 |
+        | Data Privacy & GDPR | 358 |
+        | Leadership Fundamentals | 301 |
+        | Excel for Business | 267 |
+        | Conflict Resolution | 198 |
+      </Chart>
+    </Card>
+    <Card title="Learners at risk of dropping out" subtitle="Auto-flagged based on inactivity, low scores, and missed work">
+      <Avatar name="Ava Thompson" subtitle="4 weeks inactive · High risk" />
+      <Avatar name="Liam Chen" subtitle="Quiz score 54% · High risk" />
+      <Avatar name="Sofia Rodriguez" subtitle="3 assignments missed · Medium risk" />
+      <Avatar name="Noah Kim" subtitle="Last login 2 weeks ago · Medium risk" />
+    </Card>
+  </Columns>
+
+  <Card title="Engagement across the past eight weeks" subtitle="Weekly active learners">
+    <Chart type="area" title="Engagement" x="Week" y="Active learners">
+      | Week | Active learners |
+      |---|---|
+      | W1 | 820 |
+      | W2 | 910 |
+      | W3 | 875 |
+      | W4 | 1020 |
+      | W5 | 1180 |
+      | W6 | 1090 |
+      | W7 | 1245 |
+      | W8 | 1284 |
+    </Chart>
+  </Card>
+</Card>

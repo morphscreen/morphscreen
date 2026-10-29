@@ -1,0 +1,99 @@
+# Service Health Dashboard
+
+<Callout tone="warning" title="Action needed">2 incidents require acknowledgment — one is critical.</Callout>
+
+<Columns>
+<div>
+
+<Stat label="Uptime (Q3)" value="99.94%" change="+0.02% vs Q2" tone="success" icon="trend-up" />
+
+</div>
+<div>
+
+<Stat label="Error rate (now)" value="0.42%" change="Threshold: 1.0%" tone="warning" icon="warning-circle" />
+
+</div>
+<div>
+
+<Stat label="Open incidents" value="3" note="1 critical, 1 high, 1 medium" tone="danger" icon="bell" />
+
+</div>
+</Columns>
+
+<Card title="Resource usage — past 24 hours" subtitle="Global average across all regions">
+<Chart type="line" x="Time (UTC)" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 68 |
+| 02:00 | 38 | 66 |
+| 04:00 | 35 | 65 |
+| 06:00 | 41 | 67 |
+| 08:00 | 55 | 71 |
+| 10:00 | 62 | 74 |
+| 12:00 | 58 | 73 |
+| 14:00 | 60 | 75 |
+| 16:00 | 57 | 74 |
+| 18:00 | 52 | 72 |
+| 20:00 | 48 | 70 |
+| 22:00 | 45 | 69 |
+| 23:59 | 44 | 68 |
+</Chart>
+</Card>
+
+<Card title="Filter by region">
+<Radio label="Region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" name="region" value="All regions" />
+</Card>
+
+<Card title="Open incidents" subtitle="Sorted by severity">
+<Tabs>
+<Tab title="All (3)">
+
+| Severity | Incident | Region | Started | Status |
+|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Elevated 5xx errors on checkout API | us-east-1 | 14:32 UTC | <Badge tone="warning">Unacknowledged</Badge> |
+| <Badge tone="warning">High</Badge> | Increased latency on auth service | eu-west-1 | 15:10 UTC | <Badge tone="warning">Unacknowledged</Badge> |
+| <Badge tone="info">Medium</Badge> | Memory leak on worker nodes | us-west-2 | 16:45 UTC | <Badge tone="success">Acknowledged</Badge> |
+
+</Tab>
+<Tab title="Unacknowledged (2)">
+
+| Severity | Incident | Region | Started |
+|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Elevated 5xx errors on checkout API | us-east-1 | 14:32 UTC |
+| <Badge tone="warning">High</Badge> | Increased latency on auth service | eu-west-1 | 15:10 UTC |
+
+</Tab>
+</Tabs>
+
+<Details title="Acknowledge incident">
+<Form name="ack-incident">
+<Select label="Incident" options="INC-4821 — Critical: Elevated 5xx errors on checkout API | INC-4822 — High: Increased latency on auth service" name="incident" placeholder="Select incident" />
+<TextArea label="Acknowledgment note (optional)" name="note" placeholder="e.g. Investigating root cause" rows="2" />
+<Button variant="primary">Acknowledge</Button>
+</Form>
+</Details>
+</Card>
+
+<Card title="Slowest endpoints — last 5 minutes" subtitle="P95 latency">
+| Endpoint | Latency (ms) |
+|---|---|
+| `POST /api/v1/checkout` | 1,240 |
+| `GET /api/v1/orders/sync` | 986 |
+| `POST /api/v1/auth/token` | 742 |
+| `GET /api/v1/reports/export` | 618 |
+| `PUT /api/v1/inventory/batch` | 574 |
+</Card>
+
+<Card title="Alert threshold" subtitle="Trigger when error rate exceeds the threshold for 5 consecutive minutes">
+<Form name="alert-threshold">
+<Slider label="Error rate threshold" min="0.1" max="5" step="0.1" value="1.0" name="threshold" />
+<p style="margin-top: 8px; font-size: 14px; color: #666;">Current threshold: <strong>1.0%</strong> · Suggested: 0.5% (based on historical p95)</p>
+<Button variant="primary">Save threshold</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What are the recent changes or deployments that could explain the error spike?
+- Show the error rate trend for the past 24 hours.
+- Which endpoints are affected by the critical incident in us-east-1?
+</FollowUps>

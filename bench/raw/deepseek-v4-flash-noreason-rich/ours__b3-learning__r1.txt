@@ -1,0 +1,85 @@
+# Training Analytics Dashboard
+
+<Card title="Cohort filter" subtitle="Narrow every metric below to one group">
+<Select label="Cohort" options="All cohorts | Data Science – Spring 2025 | UX Design – Winter 2025 | Frontend – Fall 2024 | Backend – Fall 2024" placeholder="Select a cohort" name="cohort" />
+</Card>
+
+<Columns>
+<Card>
+<Stat label="Active learners this week" value="1,284" change="+8.2% vs last week" tone="success" icon="users" note="Unique learners with ≥1 activity" />
+</Card>
+<Card>
+<Stat label="Course completion rate" value="72%" change="+3.1 pts" tone="success" icon="check-circle" note="Across all active courses" />
+</Card>
+<Card>
+<Stat label="Average quiz score" value="84.6%" change="-1.2 pts" tone="warning" icon="chart-line" note="Last 30 days, all quizzes" />
+</Card>
+</Columns>
+
+<Card title="Engagement – past eight weeks" subtitle="Weekly active sessions per learner">
+<Chart type="area" x="Week" y="Sessions">
+| Week | Sessions |
+|---|---|
+| 8 weeks ago | 3.2 |
+| 7 weeks ago | 3.8 |
+| 6 weeks ago | 4.1 |
+| 5 weeks ago | 3.9 |
+| 4 weeks ago | 4.6 |
+| 3 weeks ago | 4.2 |
+| 2 weeks ago | 4.8 |
+| This week | 5.1 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Top 5, all cohorts">
+<Chart type="horizontal" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Python for Data Analysis | 846 |
+| SQL & Databases | 712 |
+| Machine Learning Intro | 598 |
+| Data Visualization | 443 |
+| Statistics Essentials | 381 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="No activity for 14+ days, or quiz score below 60%">
+<Columns>
+<Card>
+<Stat label="At-risk learners" value="96" change="+12 this week" tone="danger" icon="warning" note="8.4% of active cohort" />
+</Card>
+<Card>
+<Stat label="High priority (inactive 21+ days)" value="34" tone="danger" icon="alert" />
+</Card>
+</Columns>
+
+| Learner | Course | Last activity | Quiz avg | Risk |
+|---|---|---|---|---|
+| Maya Chen | Python for Data Analysis | 16 days ago | 58% | <Badge tone="danger">High</Badge> |
+| Liam O'Connor | Machine Learning Intro | 19 days ago | 62% | <Badge tone="danger">High</Badge> |
+| Sofia Reyes | SQL & Databases | 8 days ago | 55% | <Badge tone="warning">Medium</Badge> |
+| Noah Kim | Data Visualization | 5 days ago | 61% | <Badge tone="warning">Medium</Badge> |
+| Ava Patel | Statistics Essentials | 2 days ago | 59% | <Badge tone="warning">Medium</Badge> |
+
+<Callout tone="warning" title="Suggested action">Learners with a quiz average below 60% are 3.4× more likely to drop out. Consider a targeted nudge.</Callout>
+
+<Button variant="primary" label="View full at-risk list">View full at-risk list</Button>
+</Card>
+
+<Card title="Message cohort" subtitle="Send a note to everyone in the selected cohort">
+<Form name="cohort-message">
+<Select label="Recipients" options="All learners in cohort | At-risk learners only | Learners inactive 14+ days | Top 10% engaged" name="recipients" />
+<Input label="Subject" placeholder="Quick check-in" />
+<TextArea label="Message" placeholder="Hi team – just checking in…" rows="4" />
+<Checkboxes label="Send also as" options="Email | In-app notification | SMS" name="channels" />
+<Button>Preview message</Button>
+<Button variant="primary">Send to cohort</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which cohort has the highest completion rate?
+- Show me the at-risk list for just the UX Design cohort.
+- What content do at-risk learners typically skip?
+- Draft a re-engagement message for inactive learners.
+</FollowUps>

@@ -1,0 +1,186 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="Select operational day">
+<Columns>
+<Date label="Operational Date" name="op-date" value="2025-01-15" />
+<Select label="Shift" name="shift" options="Day (07:00-15:00) | Evening (15:00-23:00) | Night (23:00-07:00)" value="Day (07:00-15:00)" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy">
+<Stat label="Total Beds" value="342" icon="bed" />
+<Stat label="Occupied" value="311" change="+3 vs yesterday" tone="warning" icon="user-check" />
+<Stat label="Available" value="31" change="-3 vs yesterday" tone="danger" icon="bed" />
+<Progress value="311" max="342" label="91% Occupancy" tone="warning" />
+</Card>
+
+<Card title="ER Status">
+<Stat label="Current Wait Time" value="47 min" change="+12 min vs avg" tone="danger" icon="clock" />
+<Stat label="Patients in Waiting" value="23" icon="users" />
+<Stat label="Triage Level 1-2" value="4" tone="danger" icon="alert-triangle" />
+<Stat label="LWBS Today" value="2" tone="warning" icon="user-minus" />
+</Card>
+
+<Card title="Critical Alerts">
+<Callout tone="danger" title="4 Critical Patients">
+<strong>Room 304:</strong> STEMI - Cath lab activated<br />
+<strong>Room 218:</strong> Septic shock - Norepinephrine 0.3 mcg/kg/min<br />
+<strong>ICU Bed 12:</strong> Post-code ROSC - Targeted temp management<br />
+<strong>ER Bay 3:</strong> GSW abdomen - OR #2 standing by
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="bar" x="Date" y="Admissions" title="Daily Admissions">
+| Date | Admissions |
+|---|---|
+| Jan 1 | 28 |
+| Jan 2 | 31 |
+| Jan 3 | 35 |
+| Jan 4 | 29 |
+| Jan 5 | 24 |
+| Jan 6 | 22 |
+| Jan 7 | 30 |
+| Jan 8 | 33 |
+| Jan 9 | 36 |
+| Jan 10 | 34 |
+| Jan 11 | 27 |
+| Jan 12 | 25 |
+| Jan 13 | 32 |
+| Jan 14 | 29 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Patients by Department">
+<Chart type="horizontal" x="Count" y="Department" title="Current Census">
+| Department | Patients |
+|---|---|
+| Med-Surg | 78 |
+| ICU | 24 |
+| Telemetry | 42 |
+| Orthopedics | 31 |
+| Oncology | 18 |
+| Pediatrics | 15 |
+| OB/GYN | 22 |
+| Psychiatry | 12 |
+| Rehabilitation | 18 |
+| Observation | 31 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift — Day (07:00-15:00)">
+| Role | Scheduled | Present | Gap |
+|---|---|---|---|
+| RN | 48 | 46 | -2 |
+| CNA/PCT | 24 | 24 | 0 |
+| Respiratory Therapy | 8 | 8 | 0 |
+| Hospitalists | 6 | 6 | 0 |
+| Residents/Fellows | 12 | 12 | 0 |
+| Pharmacists | 4 | 4 | 0 |
+| Case Management | 5 | 5 | 0 |
+| Transport | 6 | 5 | -1 |
+| Environmental Services | 10 | 10 | 0 |
+| Unit Clerks | 8 | 8 | 0 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patients Ready for Discharge">
+<Callout tone="success" title="12 Patients Ready" />
+| Patient | Unit | LOS | Barrier | Est. D/C Time |
+|---|---|---|---|---|
+| M. Rodriguez | 4201 Med-Surg | 4 | Transport pending | 10:00 |
+| J. Chen | 4205 Med-Surg | 3 | Pharmacy - meds ready | 09:30 |
+| R. Williams | 3102 Telemetry | 5 | Home health confirmed | 11:00 |
+| S. Patel | 3108 Telemetry | 2 | Family en route | 10:30 |
+| K. Johnson | 2204 Ortho | 3 | PT clearance done | 09:45 |
+| L. Garcia | 2207 Ortho | 4 | Equipment delivered | 10:15 |
+| D. Kim | 5103 Oncology | 6 | Outpatient appt set | 11:30 |
+| A. Thompson | 5109 Oncology | 5 | PICC line removed | 10:45 |
+| P. Davis | 6001 Peds | 2 | Parent present | 09:00 |
+| M. Wilson | 6004 Peds | 3 | Prescriptions filled | 10:00 |
+| J. Anderson | 7002 Psych | 7 | Outpatient follow-up | 11:00 |
+| C. Martinez | 7005 Psych | 5 | Housing confirmed | 11:30 |
+</Card>
+
+<Card title="Operating Room Bookings — Today">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| OR 1 | 07:30-10:30 | Lap Cholecystectomy | Dr. Chen | Dr. Park | In Progress | 3h |
+| OR 1 | 11:00-13:00 | Hernia Repair | Dr. Chen | Dr. Park | Scheduled | 2h |
+| OR 1 | 13:30-16:30 | Thyroidectomy | Dr. Chen | Dr. Park | Scheduled | 3h |
+| OR 2 | 08:00-12:00 | **Exploratory Lap (Trauma)** | Dr. Roberts | Dr. Kim | **Standing By** | 4h |
+| OR 2 | 13:00-16:00 | Colectomy | Dr. Roberts | Dr. Kim | Scheduled | 3h |
+| OR 3 | 07:30-11:30 | Total Knee Arthroplasty | Dr. Williams | Dr. Lee | In Progress | 4h |
+| OR 3 | 12:00-14:00 | Carpal Tunnel Release | Dr. Williams | Dr. Lee | Scheduled | 2h |
+| OR 4 | 09:00-12:00 | Craniotomy | Dr. Foster | Dr. Adams | Pre-op | 3h |
+| OR 5 | 07:30-10:00 | C-Section | Dr. Nguyen | Dr. Brown | In Progress | 2.5h |
+| OR 5 | 10:30-12:30 | D&C | Dr. Nguyen | Dr. Brown | Scheduled | 2h |
+</Card>
+</Columns>
+
+<Card title="Supplies Running Low">
+<Columns>
+<Card>
+| Item | Current | Par Level | Days Left | Status |
+|---|---|---|---|---|
+| Normal Saline 1L | 48 | 120 | 2 | <Badge tone="danger">Critical</Badge> |
+| Lactated Ringers 1L | 62 | 100 | 3 | <Badge tone="warning">Low</Badge> |
+| Heparin 5000U vials | 15 | 50 | 1 | <Badge tone="danger">Critical</Badge> |
+| Insulin Regular 100U | 22 | 60 | 2 | <Badge tone="danger">Critical</Badge> |
+| Fentanyl 100mcg/2ml | 35 | 80 | 3 | <Badge tone="warning">Low</Badge> |
+| Propofol 200mg/20ml | 28 | 60 | 2 | <Badge tone="danger">Critical</Badge> |
+</Card>
+<Card>
+| Item | Current | Par Level | Days Left | Status |
+|---|---|---|---|---|
+| Central Line Kits | 12 | 30 | 2 | <Badge tone="danger">Critical</Badge> |
+| Chest Tube Trays | 8 | 20 | 3 | <Badge tone="warning">Low</Badge> |
+| Arterial Line Kits | 10 | 25 | 2 | <Badge tone="danger">Critical</Badge> |
+| Surgical Masks (boxes) | 45 | 100 | 4 | <Badge tone="warning">Low</Badge> |
+| N95 Respirators | 60 | 150 | 3 | <Badge tone="warning">Low</Badge> |
+| Isolation Gowns | 85 | 200 | 4 | <Badge tone="warning">Low</Badge> |
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Reporter Name" name="reporter" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="incident-type" options="Patient Safety | Medication Error | Fall | Equipment Failure | Security | Near Miss | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Major Harm | Level 5 - Death" placeholder="Select severity" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened, when, where, and who was involved..." rows="4" required="true" />
+<Input label="Location/Unit" name="location" placeholder="e.g., 4201 Med-Surg, OR 2, ER Bay 3" required="true" />
+<Input label="Patient MRN (if applicable)" name="mrn" placeholder="Medical Record Number" type="text" />
+<Button variant="primary">Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" name="pt-name" placeholder="Last, First" required="true" />
+<Input label="MRN" name="pt-mrn" placeholder="Medical Record Number" required="true" />
+<Input label="Current Unit/Room" name="current-location" placeholder="e.g., ICU Bed 12" required="true" />
+<Select label="Requested Destination" name="destination" options="ICU | Telemetry | Med-Surg | Step-Down | Rehabilitation | LTAC | External Facility" placeholder="Select destination" required="true" />
+<Select label="Urgency" name="urgency" options="Emergent (immediate) | Urgent (within 1 hour) | Semi-Urgent (within 4 hours) | Routine (next available)" placeholder="Select urgency" required="true" />
+<TextArea label="Clinical Reason for Transfer" name="reason" placeholder="Include current condition, isolation status, lines/drains, vent settings..." rows="3" required="true" />
+<Input label="Requesting Provider" name="requesting-md" placeholder="Dr. Last Name" required="true" />
+<Input label="Contact Phone/Pager" name="contact" placeholder="xxx-xxx-xxxx or pager #" required="true" />
+<Button variant="primary">Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- View bed management dashboard
+- Check pharmacy formulary status
+- Review tomorrow's OR block schedule
+- Page house supervisor for staffing gaps
+- Run discharge planning report for 48hrs
+</FollowUps>

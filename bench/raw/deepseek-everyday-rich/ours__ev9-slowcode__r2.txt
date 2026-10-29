@@ -1,0 +1,217 @@
+# Speeding Up Your 2 GB CSV Processing
+
+Reading a 2 GB CSV in Python can be painfully slow if done naively. Here's a practical guide to get you from minutes to seconds.
+
+<Callout tone="warning" title="First: know your bottleneck">
+Before optimizing, profile your code. Is it the file I/O, parsing, or your processing logic? Use `cProfile` or just time different stages. The fixes below target different bottlenecks.
+</Callout>
+
+## 1. The Quick Wins (Start Here)
+
+<Card title="Fastest approaches compared">
+<Compare title="CSV reading methods">
+| Method | Time for 2 GB | Memory | Best for |
+|---|---|---|---|
+| `csv.reader` (pure Python) | ~90-120 s | Low | Simple, compatible |
+| `pandas.read_csv` (default) | ~20-30 s | High (3-5× file size) | Data analysis |
+| `pandas.read_csv` + `dtype` | ~15-25 s | Medium | Typed data |
+| `polars.read_csv` | ~5-10 s | Medium | Speed-critical |
+| `pandas` + `chunksize` | ~25 s total | Low | Out-of-memory |
+| `DuckDB` | ~3-8 s | Low | SQL queries |
+</Compare>
+</Card>
+
+<Card title="Step 1: Switch to Polars (easiest big win)">
+If you can install libraries, Polars is a drop-in replacement that's 5-10× faster:
+
+```python
+import polars as pl
+
+df = pl.read_csv("large.csv")
+# Or if you need pandas:
+df_pd = pl.read_csv("large.csv").to_pandas()
+```
+
+<Button variant="primary" ask="How do I install and use Polars?">Show me how to migrate</Button>
+</Card>
+
+<Card title="Step 2: Use pandas with dtype hints">
+If you must stay with pandas, specify column types to avoid inference overhead:
+
+```python
+import pandas as pd
+
+dtypes = {
+    'id': 'int32',
+    'name': 'string',
+    'value': 'float32',
+    'date': 'datetime64[ns]'
+}
+
+df = pd.read_csv("large.csv", dtype=dtypes, low_memory=False)
+```
+
+<Callout tone="info" title="Why this helps">
+Without dtypes, pandas guesses each column's type by scanning the file. Specifying them skips that step and uses less memory.
+</Callout>
+</Card>
+
+## 2. If You Don't Need All Columns
+
+<Card title="Read only what you need">
+```python
+# Only specific columns
+df = pd.read_csv("large.csv", usecols=['id', 'value', 'date'])
+
+# Or skip rows you don't need
+df = pd.read_csv("large.csv", skiprows=lambda i: i % 2 == 1)  # every other row
+```
+</Card>
+
+## 3. If You Run Out of Memory
+
+<Card title="Process in chunks">
+```python
+import pandas as pd
+
+chunk_size = 100_000  # adjust based on your RAM
+results = []
+
+for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+    # Process each chunk
+    result = chunk.groupby('category')['value'].sum()
+    results.append(result)
+
+final = pd.concat(results).groupby(level=0).sum()
+```
+
+<Progress value="75" max="100" label="Memory saved vs. loading all at once" tone="success" />
+</Card>
+
+## 4. The Nuclear Option: DuckDB
+
+<Card title="SQL directly on CSV (fastest)">
+```python
+import duckdb
+
+# Query the CSV like a database table
+result = duckdb.sql("""
+    SELECT category, SUM(value) 
+    FROM 'large.csv' 
+    GROUP BY category
+""").df()
+
+# Or just get a pandas DataFrame
+df = duckdb.read_csv("large.csv").df()
+```
+
+<Callout tone="success" title="Why it's fastest">
+DuckDB reads the file in parallel and only parses what's needed for your query. For aggregation-heavy workloads, it can be 10-20× faster than pandas.
+</Callout>
+</Card>
+
+## 5. When You're Stuck with Pure Python
+
+<Card title="Optimizations if you can't add libraries">
+```python
+import csv
+from itertools import islice
+
+# Use a faster parser
+import ctypes
+# Or try: from _csv import reader  # C implementation
+
+with open("large.csv", "r") as f:
+    reader = csv.reader(f)
+    # Skip header
+    next(reader)
+    
+    for row in reader:
+        # Your processing here
+        process(row)
+```
+
+<Callout tone="warning" title="Reality check">
+Pure Python will always be slow for 2 GB. If you can't install anything, consider splitting the file first with `split -l 500000 large.csv part_` (Unix) or using `grep`/`awk` to pre-filter.
+</Callout>
+</Card>
+
+## 6. Parallel Processing
+
+<Card title="Use all your CPU cores">
+```python
+from multiprocessing import Pool
+import pandas as pd
+
+def process_chunk(file_path, start, end):
+    df = pd.read_csv(file_path, skiprows=range(1, start), nrows=end-start)
+    return df.groupby('category')['value'].sum()
+
+# Split 2 GB into 8 parts
+file_size = 2_000_000_000  # bytes
+chunk_rows = 250_000  # ~250 MB each
+
+with Pool(8) as pool:
+    results = pool.starmap(process_chunk, 
+                          [(f, i*chunk_rows, (i+1)*chunk_rows) 
+                           for i in range(8)])
+```
+
+<Stat label="Speedup with 8 cores" value="3-6×" note="vs. single-threaded" icon="chart-line" />
+</Card>
+
+## 7. File Format Matters
+
+<Card title="Convert once, benefit forever">
+If you process this file repeatedly, convert it to a binary format:
+
+```python
+# One-time conversion
+import polars as pl
+pl.read_csv("large.csv").write_parquet("large.parquet")
+
+# Then read in <1 second
+df = pl.read_parquet("large.parquet")
+```
+
+<Compare title="Read speed comparison">
+| Format | 2 GB read time | File size |
+|---|---|---|
+| CSV | 20-30 s | 2.0 GB |
+| Parquet | 0.5-2 s | 0.8-1.5 GB |
+| Feather | 1-3 s | 1.5-2.0 GB |
+</Compare>
+</Card>
+
+## Your Action Plan
+
+<Checklist title="Speed-up checklist" name="csv-speedup">
+- [ ] Profile to find the real bottleneck
+- [ ] Try Polars or DuckDB first (biggest win)
+- [ ] Specify dtypes if using pandas
+- [ ] Use `usecols` to read only needed columns
+- [ ] Process in chunks if memory-limited
+- [ ] Consider parallel processing with multiprocessing
+- [ ] Convert to Parquet if reading repeatedly
+- [ ] Pre-filter with command-line tools if possible
+</Checklist>
+
+<Card title="Quick decision guide">
+| Your situation | Best choice |
+|---|---|
+| One-time read, have RAM | Polars |
+| Repeated reads | Convert to Parquet |
+| Out of memory | Chunks or DuckDB |
+| Only need aggregates | DuckDB |
+| Stuck with pandas | dtype hints + usecols |
+| No libraries allowed | Split file, use awk/grep |
+</Card>
+
+<Button variant="primary" ask="Show me a complete working example with my specific use case">Get a tailored example</Button>
+
+<FollowUps>
+- How do I handle messy CSV files (bad rows, encoding issues)?
+- What's the best way to filter rows before loading?
+- How do I compare memory usage between these methods?
+- Can I stream the CSV processing to avoid loading it at all?
+</FollowUps>

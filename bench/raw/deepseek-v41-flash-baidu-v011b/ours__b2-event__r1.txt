@@ -1,0 +1,116 @@
+# Frontline 2026
+
+<Card title="Frontline 2026" subtitle="The product conference for people who ship">
+<Columns>
+<Stat label="Dates" value="14–16 May 2026" icon="calendar" />
+<Stat label="Venue" value="Pier 27, San Francisco" icon="map-pin" />
+<Stat label="Days remaining" value="87 days" tone="info" icon="chart-line" />
+<Stat label="Speakers" value="12" icon="users" />
+</Columns>
+<Progress value="87" max="180" label="Countdown to doors open" tone="info" />
+<Button ask="Register for Frontline 2026">Register now</Button>
+<Button variant="secondary" ask="Show me the full agenda">See the agenda</Button>
+</Card>
+
+<Card title="Agenda" subtitle="Three days, two tracks, one main stage">
+<Tabs>
+<Tab title="Day 1 — Thu 14 May">
+<Steps>
+<Step title="08:30 — Doors and coffee" status="done" subtitle="Main lobby, badge pickup">Registration desk open until 10:00.</Step>
+<Step title="09:30 — Opening keynote: What shipping really costs" status="current" subtitle="Main stage · Amara Osei">Framing the three days around the trade-offs teams make.</Step>
+<Step title="11:00 — Panel: Roadmaps that survive contact with users" subtitle="Main stage · 4 speakers">Moderated, 45 minutes, live Q&amp;A.</Step>
+<Step title="13:00 — Lunch and hallway track" subtitle="Pier deck">Tables grouped by topic, not by company.</Step>
+<Step title="14:30 — Workshop: Instrumentation from day one" subtitle="Track B · 90 min">Bring a laptop; seats are first come.</Step>
+<Step title="17:00 — Welcome reception" subtitle="Rooftop">Drinks, no slides.</Step>
+</Steps>
+<Button variant="tertiary" ask="Show day 1 in more detail">More on day 1</Button>
+</Tab>
+<Tab title="Day 2 — Fri 15 May">
+<Steps>
+<Step title="09:00 — Keynote: Designing for the second year" subtitle="Main stage · Priya Raman">What changes once the novelty wears off.</Step>
+<Step title="10:30 — Track A: Pricing experiments that didn't blow up" subtitle="Track A · Lena Fischer">Six tests, what they measured, what they broke.</Step>
+<Step title="10:30 — Track B: Incident response for small teams" subtitle="Track B · Diego Marín">On-call without a platform team.</Step>
+<Step title="13:00 — Lunch" subtitle="Pier deck" />
+<Step title="15:00 — Lightning talks" subtitle="Main stage · 8 talks × 10 min">Sign-up sheet at the info desk.</Step>
+<Step title="19:00 — Conference dinner" subtitle="Ferry Building">Ticket add-on, limited seats.</Step>
+</Steps>
+<Button variant="tertiary" ask="Show day 2 in more detail">More on day 2</Button>
+</Tab>
+<Tab title="Day 3 — Sat 16 May">
+<Steps>
+<Step title="09:30 — Keynote: The case against dashboards" subtitle="Main stage · Tomás Berg">Why fewer metrics moved faster.</Step>
+<Step title="11:00 — Workshop: Writing specs people read" subtitle="Track A · 2 hours">Small groups, feedback included.</Step>
+<Step title="13:00 — Lunch" subtitle="Pier deck" />
+<Step title="14:30 — Closing panel and open mic" subtitle="Main stage">Your questions, no pre-screened list.</Step>
+<Step title="16:00 — Close" subtitle="Main stage">See you next year.</Step>
+</Steps>
+<Button variant="tertiary" ask="Show day 3 in more detail">More on day 3</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Speakers" subtitle="One line each, in the order they appear">
+<Columns>
+<Avatar name="Amara Osei" subtitle="Head of Product, Northwind" />
+<Avatar name="Priya Raman" subtitle="Design Director, Cadence" />
+<Avatar name="Lena Fischer" subtitle="Growth Lead, Tallow" />
+<Avatar name="Diego Marín" subtitle="SRE, Independent" />
+<Avatar name="Tomás Berg" subtitle="Founder, Meridian Labs" />
+<Avatar name="Noor Haddad" subtitle="Staff Engineer, Relay" />
+</Columns>
+
+- **Amara Osei** — Head of Product at Northwind; spent a decade learning which launches actually mattered.
+- **Priya Raman** — Design Director at Cadence; builds products meant to be used in year two, not just week one.
+- **Lena Fischer** — Growth Lead at Tallow; runs pricing tests and publishes the ones that failed.
+- **Diego Marín** — Independent SRE; keeps small teams on call without burning them out.
+- **Tomás Berg** — Founder of Meridian Labs; argues most dashboards are decoration.
+- **Noor Haddad** — Staff Engineer at Relay; writes the specs her team actually reads.
+
+<Button variant="secondary" ask="Show the full speaker list">All 12 speakers</Button>
+</Card>
+
+<Card title="Tickets" subtitle="Prices in USD, taxes included">
+<Columns>
+<Card title="Community" subtitle="Day 1 only">
+<Stat label="Price" value="$180" />
+- Main stage talks, day 1
+- Lunch and reception
+- Recordings for 30 days
+<Button ask="Register for the Community ticket">Choose Community</Button>
+</Card>
+<Card title="Full Pass" subtitle="All three days">
+<Stat label="Price" value="$540" tone="info" />
+- Every track and workshop
+- Conference dinner add-on available
+- Recordings forever
+<Button ask="Register for the Full Pass">Choose Full Pass</Button>
+</Card>
+<Card title="Team of 5" subtitle="All three days">
+<Stat label="Price" value="$2,200" tone="success" />
+- Five Full Pass seats
+- Private table at lunch
+- One 45-min team session with a speaker
+<Button ask="Register a team of 5">Choose Team of 5</Button>
+</Card>
+</Columns>
+<Callout tone="info" title="Early rate">Prices rise $80 per ticket after 1 April 2026.</Callout>
+</Card>
+
+<Card title="Register" subtitle="Name and email is all we need to hold your seat">
+<Form name="frontline-registration">
+<Input label="Full name" name="name" placeholder="Jane Smith" required="true" />
+<Input label="Email" name="email" type="email" placeholder="jane@company.com" hint="Your confirmation and badge link go here" required="true" />
+<Select label="Ticket tier" name="tier" placeholder="Choose a tier" options="Community — $180 | Full Pass — $540 | Team of 5 — $2,200" required="true" />
+<Checkboxes label="Which days will you attend?" name="days" options="Day 1 — Thu 14 May | Day 2 — Fri 15 May | Day 3 — Sat 16 May" />
+<Switch label="Add the conference dinner ($95)" name="dinner" value="false" />
+<Button>Register</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What's included in the Full Pass?
+- Which talks are in Track B on day 2?
+- Is there a student or non-profit rate?
+- Where exactly is Pier 27 and how do I get there?
+</FollowUps>

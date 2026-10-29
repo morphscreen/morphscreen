@@ -1,0 +1,153 @@
+# Admin Overview
+
+<Badge tone="success">All systems normal</Badge> <Badge tone="info">Data through today</Badge>
+
+<Card title="Reporting period" subtitle="Item 11 — change the window for every metric below">
+<Form name="reporting-period">
+<Select label="Period" name="period" value="Last 90 days" options="Last 7 days | Last 30 days | Last 90 days | Year to date | Last 12 months" hint="Applies to all charts and tables on this screen" />
+<Radio label="Compare against" options="Previous period | Same period last year | No comparison" name="compare" />
+<Button>Apply period</Button>
+<Button variant="tertiary">Reset to default</Button>
+</Form>
+</Card>
+
+<Card title="Revenue" subtitle="Items 1 and 2">
+<Columns>
+<Stat label="Monthly recurring revenue" value="$412,800" change="+3.4% MoM" tone="success" icon="chart-line" />
+<Stat label="Annual recurring revenue" value="$4.95M" change="+2.9% MoM" tone="success" icon="chart-line" />
+<Stat label="Churn this month" value="1.8%" change="+0.3 pts vs last month" tone="warning" icon="users" />
+<Stat label="Current NPS" value="47" change="+6 vs last quarter" tone="success" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="New signups" subtitle="Item 4 — past 90 days">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 118 |
+| W2 | 132 |
+| W3 | 127 |
+| W4 | 149 |
+| W5 | 161 |
+| W6 | 154 |
+| W7 | 172 |
+| W8 | 168 |
+| W9 | 183 |
+| W10 | 191 |
+| W11 | 186 |
+| W12 | 204 |
+| W13 | 219 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan" subtitle="Item 5">
+<Columns>
+<Chart type="donut" title="Share of customers" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 812 |
+| Growth | 436 |
+| Business | 189 |
+| Enterprise | 54 |
+</Chart>
+<Chart type="bar" title="MRR by plan" x="Plan" y="MRR">
+| Plan | MRR |
+|---|---|
+| Starter | 24360 |
+| Growth | 104640 |
+| Business | 132300 |
+| Enterprise | 151500 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Seat utilization" subtitle="Item 12 — across the whole company">
+<Progress value={78} max={100} label="Seats in use: 12,438 of 16,000" tone="info" />
+<Columns>
+<Stat label="Seats purchased" value="16,000" />
+<Stat label="Seats active" value="12,438" />
+<Stat label="Seats idle 30+ days" value="2,106" tone="warning" />
+<Stat label="Over-provisioned accounts" value="37" tone="warning" />
+</Columns>
+<Callout tone="info" title="Reclaim opportunity">2,106 idle seats across 37 accounts represent roughly $18,900 in monthly spend that could be right-sized at renewal.</Callout>
+</Card>
+
+<Card title="Ten largest customers" subtitle="Item 6 — seats and monthly spend">
+| Customer | Plan | Seats | Monthly spend |
+|---|---|---|---|
+| Northwind Logistics | Enterprise | 1,240 | $38,400 |
+| Helios Health | Enterprise | 980 | $31,200 |
+| Vantage Financial | Enterprise | 910 | $28,700 |
+| Cobalt Manufacturing | Enterprise | 760 | $24,100 |
+| Meridian Retail Group | Business | 640 | $19,800 |
+| Atlas Insurance | Business | 585 | $18,300 |
+| Bluepeak Media | Business | 520 | $16,400 |
+| Ironwood Energy | Business | 470 | $14,900 |
+| Summit Education | Business | 415 | $13,200 |
+| Lumen Biosciences | Growth | 380 | $11,600 |
+</Card>
+
+<Card title="Accounts at risk" subtitle="Item 7 — reason for each">
+| Account | MRR at risk | Reason |
+|---|---|---|
+| Cobalt Manufacturing | $24,100 | Login activity down 62% over 30 days |
+| Bluepeak Media | $16,400 | Support tickets up 4x; two escalations open |
+| Lumen Biosciences | $11,600 | Renewal in 21 days, no exec sponsor engaged |
+| Harborline Freight | $7,300 | Failed payment 3 cycles running |
+| Kestrel Analytics | $5,900 | Downgraded 2 plans in the last quarter |
+| Pinecrest Legal | $4,200 | Champion left the company, no replacement |
+</Card>
+
+<Card title="Failed payments" subtitle="Item 8 — retry individually or in bulk">
+| Invoice | Customer | Amount | Attempts | Status |
+|---|---|---|---|---|
+| INV-4821 | Harborline Freight | $7,300 | 3 | <Badge tone="danger">Failing</Badge> |
+| INV-4809 | Kestrel Analytics | $5,900 | 2 | <Badge tone="danger">Failing</Badge> |
+| INV-4794 | Pinecrest Legal | $4,200 | 1 | <Badge tone="warning">Retrying</Badge> |
+| INV-4788 | Orchard Supply Co | $2,150 | 1 | <Badge tone="warning">Retrying</Badge> |
+
+<Columns>
+<Button variant="primary" icon="refresh">Retry all failed payments</Button>
+<Button variant="secondary" icon="refresh">Retry INV-4821</Button>
+<Button variant="secondary" icon="refresh">Retry INV-4809</Button>
+<Button variant="secondary" icon="refresh">Retry INV-4794</Button>
+<Button variant="secondary" icon="refresh">Retry INV-4788</Button>
+</Columns>
+</Card>
+
+<Card title="Feature adoption" subtitle="Item 9 — the three newest features">
+<Columns>
+<Stat label="Scheduled Reports" value="34%" change="+9 pts in 30 days" tone="success" />
+<Stat label="Audit Log Export" value="21%" change="+4 pts in 30 days" tone="info" />
+<Stat label="Custom Roles" value="12%" change="+2 pts in 30 days" tone="neutral" />
+</Columns>
+<Chart type="line" title="Adoption over the last 6 months" x="Month" y="% of accounts">
+| Month | Scheduled Reports | Audit Log Export | Custom Roles |
+|---|---|---|---|
+| Jan | 12 | 6 | 2 |
+| Feb | 16 | 9 | 4 |
+| Mar | 21 | 12 | 6 |
+| Apr | 25 | 15 | 8 |
+| May | 30 | 18 | 10 |
+| Jun | 34 | 21 | 12 |
+</Chart>
+</Card>
+
+<Card title="Invite another admin" subtitle="Item 13">
+<Form name="invite-admin">
+<Input label="Full name" name="admin-name" placeholder="Jane Smith" required={true} />
+<Input label="Work email" name="admin-email" type="email" placeholder="jane@company.com" hint="They'll get an invite link valid for 7 days" required={true} />
+<Select label="Role" name="admin-role" value="Admin" options="Admin | Billing admin | Read-only analyst" hint="Admins can manage members, billing and integrations" />
+<Checkboxes label="Permissions" name="admin-perms" options="Manage billing | Manage members | Manage integrations | Export data" value="Manage members" />
+<TextArea label="Message" name="admin-message" placeholder="Optional note to include in the invite" rows={3} />
+<Button>Send invite</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which accounts drove the churn increase this month?
+- Show me the idle seats by account so I can right-size at renewal
+- What's the NPS breakdown by plan?
+- Draft a win-back email for the at-risk accounts
+</FollowUps>

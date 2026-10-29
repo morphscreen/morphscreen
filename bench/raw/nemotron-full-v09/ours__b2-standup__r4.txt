@@ -1,0 +1,34 @@
+# Async Standup — August 16, 2025
+
+<Stat label="Updates missing" value="3" change="of 8 teammates" tone="warning" icon="users" />
+
+---
+
+<Card title="Team updates" subtitle="Posted today">
+| Teammate | Update | Blocked? |
+|---|---|---|
+| **Maya Chen** | Finished PR #247 (auth refactor). Writing tests for the new token refresh flow. | No |
+| **James Okonkwo** | Deployed staging env fixes. Starting on the dashboard analytics rewrite. | **Yes** — waiting on design tokens from Design team |
+| **Priya Sharma** | Reviewed 3 PRs. Pairing with Leo on the search indexing bug this afternoon. | No |
+| **Leo Park** | Debugging search index corruption. Found root cause — malformed payload from legacy importer. | **Yes** — need access to prod logs (requested #infra-access) |
+| **Sam Rivera** | — | — |
+| **Aisha Hassan** | — | — |
+| **Diego Morales** | — | — |
+| **You** | — | — |
+
+<Callout tone="danger" title="Blocked teammates">
+<strong>James Okonkwo</strong> — waiting on design tokens from Design team<br />
+<strong>Leo Park</strong> — need access to prod logs (requested #infra-access)
+</Callout>
+</Card>
+
+---
+
+<Card title="Post your update" subtitle="Visible to the team immediately">
+<Form name="standup-update">
+<TextArea label="What did you do yesterday? What's today? Any blockers?" placeholder="Shipped the webhook retry logic. Today: fixing the race condition in the queue worker. Blocked: need review on PR #289." rows="4" name="update" required="true" />
+<Checkboxes label="Blocked?" options="Yes, I'm blocked" name="blocked" hint="Check if you need help unblocking" />
+<Button>Post update</Button>
+<Button variant="tertiary">Skip today</Button>
+</Form>
+</Card>

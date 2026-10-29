@@ -1,0 +1,153 @@
+# Store Manager's Daily Console
+
+<Callout tone="info" title="Daily snapshot">Tuesday, June 11 — all data is live as of 2:40 PM.</Callout>
+
+## Sales & Performance
+
+<Card title="Today's performance">
+<Columns>
+<Stat label="Sales today" value="$8,420" change="+12% vs target pace" tone="success" icon="chart-line" />
+<Stat label="Daily target" value="$12,000" note="70% reached" icon="target" />
+<Stat label="Avg basket size" value="$46.80" change="+$2.10 vs last week" tone="success" icon="shopping-cart" />
+<Stat label="Returns this week" value="$1,240" change="3.1% of sales" tone="warning" icon="arrow-counter-clockwise" />
+</Columns>
+<Progress value="70" max="100" label="Sales vs target" tone="info" />
+</Card>
+
+<Card title="This week vs last week">
+<Chart type="bar" x="Day" y="Sales ($)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 9800 | 9100 |
+| Tue | 8420 | 8900 |
+| Wed | 0 | 8700 |
+| Thu | 0 | 9400 |
+| Fri | 0 | 11200 |
+| Sat | 0 | 13800 |
+| Sun | 0 | 10500 |
+</Chart>
+<Callout tone="success" title="Week-to-date">Sales are 4.2% ahead of last week at the same point.</Callout>
+</Card>
+
+## Foot Traffic
+
+<Card title="Foot traffic through the day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 42 |
+| 9 AM | 88 |
+| 10 AM | 145 |
+| 11 AM | 210 |
+| 12 PM | 268 |
+| 1 PM | 302 |
+| 2 PM | 284 |
+| 3 PM | 196 |
+</Chart>
+<Stat label="Total today" value="1,535" change="+8% vs same time last week" tone="success" icon="users" />
+</Card>
+
+---
+
+## Inventory
+
+<Card title="Best sellers today">
+<Columns>
+<Stat label="1. Espresso Beans" value="86 units" icon="coffee" />
+<Stat label="2. Cold Brew Kit" value="64 units" icon="cup" />
+<Stat label="3. Ceramic Mug" value="51 units" icon="coffee" />
+<Stat label="4. Tea Sampler" value="47 units" icon="leaf" />
+</Columns>
+</Card>
+
+<Card title="Out of stock">
+| Item | SKU | Last in stock |
+|---|---|---|
+| Oat Milk (1L) | OAT-001 | Jun 9 |
+| Almond Croissant | PAST-014 | Jun 10 |
+| Decaf Beans 500g | COF-022 | Jun 8 |
+| Honey Drops | SWE-007 | Jun 11 |
+
+<Callout tone="warning" title="Action needed">Three of four out-of-stock items are top-20 sellers. Reorder below.</Callout>
+
+<Details title="Reorder an item">
+<Form name="reorder">
+<Select label="Item" placeholder="Choose an item" options="Oat Milk (1L) — SKU OAT-001 | Almond Croissant — SKU PAST-014 | Decaf Beans 500g — SKU COF-022 | Honey Drops — SKU SWE-007" />
+<Input label="Quantity" type="number" placeholder="e.g. 24" min="1" />
+<Input label="Preferred delivery date" type="date" />
+<Button>Place reorder</Button>
+</Form>
+</Details>
+</Card>
+
+---
+
+## Promotions
+
+<Card title="Running promotions">
+<Tabs>
+<Tab title="Summer Blend Launch">
+<Columns>
+<Stat label="Units sold" value="214" icon="tag" />
+<Stat label="Revenue" value="$3,210" icon="currency-dollar" />
+</Columns>
+<Progress value="71" max="100" label="Target: 300 units" tone="success" />
+</Tab>
+<Tab title="Buy 1 Get 1 — Pastries">
+<Columns>
+<Stat label="Units sold" value="158" icon="tag" />
+<Stat label="Revenue" value="$1,580" icon="currency-dollar" />
+</Columns>
+<Progress value="53" max="100" label="Target: 300 units" tone="warning" />
+</Tab>
+<Tab title="Loyalty Double Points">
+<Columns>
+<Stat label="Members joined" value="89" icon="users" />
+<Stat label="Redemptions" value="203" icon="gift" />
+</Columns>
+<Progress value="89" max="100" label="Target: 100 members" tone="success" />
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+## Staff & Registers
+
+<Card title="On shift today">
+<Columns>
+<Avatar name="Maria Gomez" subtitle="Shift lead · 8 AM – 4 PM" />
+<Avatar name="James Lee" subtitle="Barista · 8 AM – 2 PM" />
+<Avatar name="Priya Patel" subtitle="Cashier · 10 AM – 6 PM" />
+<Avatar name="Sam Rivera" subtitle="Floor staff · 12 PM – 8 PM" />
+</Columns>
+</Card>
+
+<Card title="Registers">
+| Register | Status | Sales today |
+|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | $3,120 |
+| Register 2 | <Badge tone="success">Open</Badge> | $2,890 |
+| Register 3 | <Badge tone="warning">Paused</Badge> | $1,540 |
+| Register 4 | <Badge tone="danger">Closed</Badge> | $870 |
+
+<Callout tone="neutral" title="Register 3 paused">Awaiting cash drawer swap — expected back in 10 minutes.</Callout>
+</Card>
+
+---
+
+## Store Selection
+
+<Card title="View a different store">
+<Form name="store-switch">
+<Select label="Choose store" placeholder="Select a location" options="Downtown — Main St (current) | Uptown — 5th Ave | Mall — Westfield | Airport — Terminal B" />
+<Button>View store</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What's the conversion rate from foot traffic to sales?
+- Which promotion should I extend or end early?
+- Show me the full reorder list for tomorrow
+- Compare register performance this week
+</FollowUps>

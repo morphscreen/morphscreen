@@ -1,0 +1,136 @@
+<Columns>
+<Card title="Account Balances" subtitle="Available balances">
+<Columns>
+<Stat label="Checking" value="$4,231.58" change="+$245.12 this month" tone="success" />
+<Stat label="Savings" value="$12,847.30" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,243.67" change="Limit: $10,000" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Credit Score" subtitle="Updated 3 days ago">
+<Stat label="742" value="Good" change="+12 points since last month" tone="success" />
+<Progress value="742" max="850" label="Score range: 300–850" />
+<Callout tone="info" title="Key factors">On-time payments (high impact) • Credit utilization 12% (low) • Age of credit 4.2 years (medium)</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Vacation Savings Goal" subtitle="Hawaii trip — Target date: June 15, 2025">
+<Progress value="6800" max="10000" label="$6,800 of $10,000 saved (68%)" />
+<Callout tone="success" title="On track">You're saving $500/month. At this rate, you'll reach your goal by May 2025.</Callout>
+<Button variant="secondary">Adjust contribution</Button>
+</Card>
+
+<Card title="Spending by Category (This Month)" subtitle="October 2024">
+<Chart type="donut" title="Monthly spend" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1450 |
+| Food & Dining | 680 |
+| Transportation | 320 |
+| Shopping | 245 |
+| Entertainment | 180 |
+| Utilities | 165 |
+| Other | 210 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Recent Transactions" subtitle="Last 10 transactions across all accounts">
+<Tabs>
+<Tab title="All accounts">
+| Date | Merchant | Category | Account | Amount |
+|---|---|---|---|---|
+| Oct 28 | Whole Foods Market | Food & Dining | Checking | -$87.43 |
+| Oct 27 | Shell Gas Station | Transportation | Credit Card | -$45.00 |
+| Oct 26 | Netflix | Entertainment | Credit Card | -$15.99 |
+| Oct 25 | Salary Deposit | Income | Checking | +$3,200.00 |
+| Oct 24 | Amazon | Shopping | Credit Card | -$124.50 |
+| Oct 23 | Electric Bill | Utilities | Checking | -$165.00 |
+| Oct 22 | Target | Shopping | Checking | -$67.89 |
+| Oct 21 | Uber | Transportation | Credit Card | -$28.50 |
+| Oct 20 | Rent Payment | Housing | Checking | -$1,450.00 |
+| Oct 19 | Starbucks | Food & Dining | Credit Card | -$12.45 |
+</Tab>
+<Tab title="Checking">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Oct 28 | Whole Foods Market | Food & Dining | -$87.43 |
+| Oct 25 | Salary Deposit | Income | +$3,200.00 |
+| Oct 23 | Electric Bill | Utilities | -$165.00 |
+| Oct 22 | Target | Shopping | -$67.89 |
+| Oct 20 | Rent Payment | Housing | -$1,450.00 |
+</Tab>
+<Tab title="Credit Card">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Oct 27 | Shell Gas Station | Transportation | -$45.00 |
+| Oct 26 | Netflix | Entertainment | -$15.99 |
+| Oct 24 | Amazon | Shopping | -$124.50 |
+| Oct 21 | Uber | Transportation | -$28.50 |
+| Oct 19 | Starbucks | Food & Dining | -$12.45 |
+</Tab>
+</Tabs>
+<Button variant="tertiary">View all transactions</Button>
+</Card>
+
+<Card title="Bills Due Soon" subtitle="Upcoming payments in the next 14 days">
+| Due Date | Payee | Amount | Account | Status |
+|---|---|---|---|---|
+| Nov 1 | Internet Provider | $79.99 | Checking | Scheduled |
+| Nov 3 | Phone Bill | $85.00 | Credit Card | Due soon |
+| Nov 5 | Car Insurance | $142.00 | Checking | Due soon |
+| Nov 10 | Credit Card Payment | $1,243.67 | Checking | Minimum due |
+| Nov 12 | Streaming Services | $34.99 | Credit Card | Due soon |
+<Button variant="secondary">Pay all upcoming</Button>
+</Card>
+
+<Card title="Move Money" subtitle="Transfer between your accounts">
+<Form name="transfer-form">
+<Columns>
+<Select label="From account" name="fromAccount" placeholder="Select account" options="Checking ($4,231.58) | Savings ($12,847.30) | Credit Card (Avail: $8,756.33)" required="true" />
+<Select label="To account" name="toAccount" placeholder="Select account" options="Checking ($4,231.58) | Savings ($12,847.30) | Credit Card (Avail: $8,756.33)" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Minimum $1.00" required="true" />
+<Input label="Memo (optional)" name="memo" placeholder="e.g., Monthly savings transfer" />
+<Button>Transfer now</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Freeze Credit Line" subtitle="Prevent new charges on your credit card">
+<Callout tone="warning" title="What happens when frozen">New purchases, cash advances, and balance transfers will be declined. Recurring payments and returns will still process.</Callout>
+<Switch label="Freeze credit line" name="freezeCredit" value="false" hint="Toggle to freeze or unfreeze instantly" />
+<Callout tone="info" title="Current status">Credit line is **active**. Last changed: Never.</Callout>
+</Card>
+
+<Card title="Statement Period" subtitle="Choose the date range for your statements">
+<Select label="Statement period" name="statementPeriod" placeholder="Select period" options="Monthly (1st–Last day) | Monthly (15th–14th) | Bi-weekly | Custom dates" value="Monthly (1st–Last day)" />
+<Callout tone="info" title="Current period">October 1 – October 31, 2024. Statement available November 2.</Callout>
+</Card>
+</Columns>
+
+<Card title="Alert Preferences" subtitle="Manage what triggers notifications">
+<Checkboxes label="Transaction alerts" name="txAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" hint="Get push, email, or SMS for each" />
+<Checkboxes label="Account alerts" name="acctAlerts" options="Low balance (<$100) | Direct deposit received | Bill payment due | Payment posted | Statement available" hint="Get push, email, or SMS for each" />
+<Checkboxes label="Security alerts" name="secAlerts" options="Login from new device | Password changed | Contact info updated | Credit line freeze/unfreeze | Dispute filed" hint="Always sent via email; optional push/SMS" />
+</Card>
+
+<Card title="Dispute a Transaction" subtitle="Report an unrecognized or incorrect charge">
+<Form name="dispute-form">
+<Select label="Select transaction" name="disputeTx" placeholder="Choose a transaction to dispute" options="Whole Foods Market — $87.43 (Oct 28) | Shell Gas Station — $45.00 (Oct 27) | Netflix — $15.99 (Oct 26) | Amazon — $124.50 (Oct 24) | Target — $67.89 (Oct 22) | Uber — $28.50 (Oct 21) | Starbucks — $12.45 (Oct 19)" required="true" />
+<Radio label="Reason for dispute" name="disputeReason" options="I don't recognize this charge | Wrong amount charged | Charged twice for same purchase | Item not received / service not rendered | Canceled subscription still charging | Fraudulent / unauthorized use" required="true" />
+<TextArea label="Additional details" name="disputeDetails" placeholder="Describe what happened, when you noticed it, and any steps you've taken..." rows="4" hint="Include merchant contact attempts, order numbers, etc." required="true" />
+<Button variant="danger">Submit dispute</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Set up automatic savings transfers
+- Increase credit limit request
+- Order new debit card
+- Link external accounts
+- Download tax documents
+</FollowUps>

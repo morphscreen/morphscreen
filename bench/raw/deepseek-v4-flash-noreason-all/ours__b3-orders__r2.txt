@@ -1,0 +1,68 @@
+# E-commerce Operations Desk
+
+<Callout tone="info" title="Live view">Today's numbers update automatically as orders come in. Use the filters below to focus on specific orders.</Callout>
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Orders placed today" value="47" change="+8 vs yesterday" icon="shopping-bag-open" />
+<Stat label="Revenue today" value="$8,214.50" change="+12.4% vs yesterday" icon="currency-circle-dollar" />
+<Stat label="Average order value" value="$174.78" change="+3.1% vs yesterday" icon="chart-line" />
+<Stat label="Refund rate this month" value="2.4%" change="−0.6 pts vs last month" tone="success" icon="arrow-counter-clockwise" />
+</Columns>
+</Card>
+
+<Card title="Order volume — past four weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 312 |
+| Week 2 | 358 |
+| Week 3 | 341 |
+| Week 4 | 389 |
+</Chart>
+</Card>
+
+<Card title="Recent orders" subtitle="Filter by status or search by customer name">
+
+<Form name="order-filters">
+<Columns>
+<Select label="Filter by status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Delivered | Refunded" />
+<Input label="Search customer" placeholder="Type a customer name…" hint="Matches first or last name" />
+</Columns>
+<Button variant="secondary">Apply filters</Button>
+</Form>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Sarah Mitchell | $189.00 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark fulfilled</Button> |
+| #10481 | James Okafor | $64.50 | <Badge tone="success">Fulfilled</Badge> | <Button variant="secondary" size="small" disabled>Done</Button> |
+| #10480 | Lena Fischer | $245.99 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark fulfilled</Button> |
+| #10479 | Miguel Torres | $132.00 | <Badge tone="success">Fulfilled</Badge> | <Button variant="secondary" size="small" disabled>Done</Button> |
+| #10478 | Aisha Rahman | $78.25 | <Badge tone="danger">Refunded</Badge> | <Button variant="secondary" size="small" disabled>Done</Button> |
+| #10477 | Tom Becker | $312.40 | <Badge tone="info">Shipped</Badge> | <Button variant="secondary" size="small" disabled>Done</Button> |
+| #10476 | Priya Nair | $45.00 | <Badge tone="success">Fulfilled</Badge> | <Button variant="secondary" size="small" disabled>Done</Button> |
+| #10475 | David Chen | $198.75 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small">Mark fulfilled</Button> |
+
+</Card>
+
+<Card title="Mark an order fulfilled">
+<Form name="fulfill-order">
+<Input label="Order ID" placeholder="e.g. #10482" hint="Paste or type the order number" />
+<Button variant="primary">Mark as fulfilled</Button>
+</Form>
+</Card>
+
+<Card title="This month's refund snapshot">
+<Columns>
+<Stat label="Refunds issued" value="9" icon="receipt" />
+<Stat label="Refund rate" value="2.4%" tone="success" note="Target: under 3%" icon="target" />
+</Columns>
+<Progress value="9" max="375" label="Refunded orders out of total" tone="success" />
+</Card>
+
+<FollowUps>
+- Show me orders that are pending fulfilment
+- What's the revenue breakdown by payment method today?
+- Which customers have refunded more than once this month?
+- Export today's orders as a CSV
+</FollowUps>

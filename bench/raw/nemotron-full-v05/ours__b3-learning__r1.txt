@@ -1,0 +1,72 @@
+# Training Platform Analytics
+
+<Select label="Filter by cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Cohort A (Jan 2024) | Cohort B (Feb 2024) | Cohort C (Mar 2024) | Cohort D (Apr 2024)" />
+
+<Columns>
+<Stat label="Active learners this week" value="1,247" change="+8% vs last week" tone="success" />
+<Stat label="Course completion rate" value="73%" change="+3% vs last month" tone="info" />
+<Stat label="Average quiz score" value="84%" change="+2 pts vs last month" tone="success" />
+</Columns>
+
+<Card title="Engagement across past 8 weeks">
+<Chart type="line" x="Week" y="Engagement %" title="Weekly active learners">
+| Week | Active Learners | Session Time (min) | Quiz Attempts |
+|---|---|---|---|
+| Week 1 | 62 | 45 | 1,240 |
+| Week 2 | 68 | 52 | 1,450 |
+| Week 3 | 71 | 48 | 1,380 |
+| Week 4 | 75 | 55 | 1,620 |
+| Week 5 | 73 | 50 | 1,510 |
+| Week 6 | 78 | 58 | 1,720 |
+| Week 7 | 81 | 62 | 1,850 |
+| Week 8 | 84 | 65 | 1,940 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="bar" x="Course" y="Enrollments" title="Top 10 courses by enrollment">
+| Course | Enrollments | Completion Rate |
+|---|---|---|
+| Python Fundamentals | 1,240 | 78% |
+| Data Analysis with Pandas | 980 | 72% |
+| Web Development Basics | 870 | 65% |
+| SQL for Beginners | 760 | 81% |
+| Machine Learning Intro | 650 | 58% |
+| React Essentials | 590 | 70% |
+| Cloud Computing Basics | 520 | 62% |
+| DevOps Foundations | 480 | 55% |
+| Cybersecurity Basics | 430 | 68% |
+| Mobile App Development | 380 | 49% |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out">
+<Callout tone="warning" title="12 learners flagged this week">These learners have had no activity for 14+ days or quiz scores below 60%</Callout>
+| Learner | Cohort | Last Active | Avg Quiz Score | Courses Stalled | Risk Level |
+|---|---|---|---|---|---|
+| Alex Chen | Cohort B | 18 days ago | 52% | 2 | <Badge tone="danger">High</Badge> |
+| Maria Santos | Cohort A | 21 days ago | 48% | 3 | <Badge tone="danger">High</Badge> |
+| James Wilson | Cohort C | 15 days ago | 55% | 1 | <Badge tone="warning">Medium</Badge> |
+| Priya Patel | Cohort B | 14 days ago | 58% | 2 | <Badge tone="warning">Medium</Badge> |
+| Robert Kim | Cohort D | 16 days ago | 51% | 1 | <Badge tone="warning">Medium</Badge> |
+| Lisa Nguyen | Cohort A | 19 days ago | 59% | 2 | <Badge tone="warning">Medium</Badge> |
+| David Brown | Cohort C | 15 days ago | 60% | 1 | <Badge tone="info">Low</Badge> |
+| Sarah Davis | Cohort B | 14 days ago | 62% | 1 | <Badge tone="info">Low</Badge> |
+</Card>
+
+<Card title="Message a cohort" subtitle="Send a targeted message to learners in a specific cohort">
+<Form name="cohort-message">
+<Select label="Select cohort" name="message-cohort" placeholder="Choose a cohort" options="Cohort A (Jan 2024) | Cohort B (Feb 2024) | Cohort C (Mar 2024) | Cohort D (Apr 2024)" required="true" />
+<TextArea label="Message" name="message-body" placeholder="Write your message here..." rows="4" hint="Supports markdown. Learners will receive this via email and in-app notification." required="true" />
+<Checkboxes label="Delivery channels" name="channels" options="Email | In-app notification | SMS" value="Email | In-app notification" />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show completion trends by cohort
+- Export at-risk learners to CSV
+- Set up automated nudge campaigns
+- Compare quiz performance across courses
+</FollowUps>

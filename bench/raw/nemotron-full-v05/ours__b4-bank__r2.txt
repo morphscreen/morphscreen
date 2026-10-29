@@ -1,0 +1,111 @@
+# Personal Banking Dashboard
+
+<Card title="Account Balances" subtitle="Real-time balances across all accounts">
+<Columns>
+<Stat label="Checking" value="$12,450.32" change="+$1,240.15 this month" tone="success" />
+<Stat label="Savings" value="$28,750.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$3,240.18" change="-$420.30 this month" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions" subtitle="Last 10 transactions across all accounts">
+| Date | Merchant | Account | Amount |
+|---|---|---|---|
+| Dec 14 | Whole Foods Market | Checking | -$87.43 |
+| Dec 13 | Salary Deposit | Checking | +$3,200.00 |
+| Dec 12 | Amazon.com | Credit Card | -$142.99 |
+| Dec 11 | Shell Gas Station | Checking | -$45.00 |
+| Dec 10 | Netflix | Credit Card | -$15.99 |
+| Dec 09 | Rent Payment | Checking | -$1,800.00 |
+| Dec 08 | Target | Credit Card | -$67.32 |
+| Dec 07 | Transfer to Savings | Checking → Savings | -$500.00 |
+| Dec 06 | Uber | Credit Card | -$24.50 |
+| Dec 05 | Grocery Outlet | Checking | -$123.67 |
+</Card>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="December Spending" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Food & Dining | 542 |
+| Transportation | 189 |
+| Shopping | 210 |
+| Subscriptions | 42 |
+| Other | 156 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon" subtitle="Upcoming payments in the next 14 days">
+| Due Date | Bill | Amount | Account |
+|---|---|---|---|
+| Dec 16 | Internet (Comcast) | $89.99 | Checking |
+| Dec 18 | Electric Bill | $142.30 | Checking |
+| Dec 20 | Phone Bill | $65.00 | Credit Card |
+| Dec 22 | Car Insurance | $187.50 | Checking |
+| Dec 25 | Credit Card Payment | $150.00 | Checking |
+| Jan 01 | Rent | $1,800.00 | Checking |
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Target: $5,000 by June 2025">
+<Progress value="2750" max="5000" label="Vacation Fund" tone="success" />
+<Stat label="Saved" value="$2,750" change="$2,250 remaining" tone="info" />
+<Stat label="Monthly Target" value="$417" change="On track" tone="success" />
+</Card>
+
+<Card title="Credit Score" subtitle="Updated weekly via TransUnion">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 vs last month" tone="success" />
+<Stat label="Rating" value="Very Good" change="300-850 range" tone="info" />
+</Columns>
+<Details title="Score factors">
+- Payment history: Excellent (100% on-time)
+- Credit utilization: 23% (Good)
+- Credit age: 4.2 years (Fair)
+- Total accounts: 6 (Good)
+- Hard inquiries: 1 in 24 months (Good)
+</Details>
+</Card>
+
+<Card title="Move Money" subtitle="Transfer between your accounts">
+<Form name="transfer-form">
+<Select label="From Account" name="fromAccount" options="Checking ($12,450.32) | Savings ($28,750.00) | Credit Card (-$3,240.18)" placeholder="Select source account" required="true" />
+<Select label="To Account" name="toAccount" options="Checking ($12,450.32) | Savings ($28,750.00) | Credit Card (-$3,240.18)" placeholder="Select destination account" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" max="12450.32" hint="Maximum available: $12,450.32" required="true" />
+<Input label="Description (optional)" name="description" placeholder="e.g., Monthly savings transfer" />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls" subtitle="Manage your credit card security">
+<Switch label="Freeze Credit Line" name="creditFreeze" value="false" hint="When frozen, new purchases will be declined. Recurring payments still process." />
+<Callout tone="info" title="Credit freeze active">Your credit line is currently unfrozen. New transactions will be approved normally.</Callout>
+</Card>
+
+<Card title="Statement Period" subtitle="Choose the date range for statements and spending reports">
+<Select label="Statement Period" name="statementPeriod" options="This Month (Dec 1–31) | Last Month (Nov 1–30) | Last 30 Days | Last 90 Days | Custom Range" placeholder="Select a period" value="This Month (Dec 1–31)" />
+<Callout tone="neutral" title="Current view">Showing transactions and spending for December 1–31, 2024.</Callout>
+</Card>
+
+<Card title="Alert Preferences" subtitle="Choose what triggers notifications">
+<Checkboxes label="Alert Triggers" name="alertTriggers" options="Large transactions (>$100) | Low balance (<$500) | Bill due in 3 days | Bill payment posted | Credit score change | Suspicious activity detected | Weekly spending summary | Direct deposit received" value="Large transactions (>$100) | Low balance (<$500) | Bill due in 3 days | Suspicious activity detected" hint="You'll receive push notifications and emails for selected triggers." />
+</Card>
+
+<Card title="Dispute a Transaction" subtitle="Report an unrecognized or incorrect charge">
+<Form name="dispute-form">
+<Select label="Transaction to Dispute" name="disputeTransaction" options="Whole Foods Market — $87.43 (Dec 14) | Amazon.com — $142.99 (Dec 12) | Shell Gas Station — $45.00 (Dec 11) | Netflix — $15.99 (Dec 10) | Target — $67.32 (Dec 8) | Uber — $24.50 (Dec 6) | Grocery Outlet — $123.67 (Dec 5)" placeholder="Select a transaction" required="true" />
+<Radio label="Dispute Reason" name="disputeReason" options="I don't recognize this charge | Incorrect amount charged | Duplicate charge | Service not received | Canceled but still charged | Fraudulent transaction" required="true" />
+<TextArea label="Additional Details" name="disputeDetails" placeholder="Provide any relevant information, merchant communication, or evidence..." rows="4" hint="Include dates, reference numbers, or screenshots if available." />
+<Button variant="primary">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Set up automatic savings transfers
+- View annual spending report
+- Increase credit limit
+- Order new debit card
+- Link external accounts
+</FollowUps>

@@ -1,0 +1,38 @@
+<Card title="Build Your Pizza" subtitle="Customize and order your perfect pie">
+<Form name="pizza-order">
+<Columns>
+<Card title="Size" subtitle="Choose one">
+<Radio label="Pizza size" name="size" options="Small (10\") | Medium (12\") | Large (14\") | Extra Large (16\")" value="Medium (12\")" required="true" />
+</Card>
+
+<Card title="Toppings" subtitle="Select as many as you like">
+<Checkboxes label="Toppings" name="toppings" options="Pepperoni | Mushrooms | Onions | Sausage | Bacon | Extra Cheese | Black Olives | Green Peppers | Pineapple | Jalapeños" value="Pepperoni | Extra Cheese" hint="First 2 toppings included, $1.50 each additional" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Quantity">
+<Stepper label="How many pizzas?" name="quantity" value="1" min="1" max="10" step="1" unit="pizza" required="true" />
+</Card>
+
+<Card title="Price Summary">
+<Stat label="Base price (Medium)" value="$14.99" tone="neutral" />
+<Stat label="Toppings (2 included)" value="$0.00" tone="neutral" />
+<Stat label="Quantity" value="× 1" tone="neutral" />
+<Stat label="Subtotal" value="$14.99" tone="info" />
+<Stat label="Estimated tax (8%)" value="$1.20" tone="neutral" />
+<Stat label="**Total**" value="**$16.19**" tone="success" change="+$1.20 tax" />
+</Card>
+</Columns>
+
+<Card title="Delivery Info">
+<Input label="Name" name="name" placeholder="John Doe" required="true" />
+<Input label="Phone" name="phone" type="tel" placeholder="(555) 123-4567" required="true" />
+<TextArea label="Delivery address" name="address" placeholder="123 Main St, Apt 4B, Springfield" rows="3" required="true" />
+<Select label="Payment method" name="payment" options="Cash on delivery | Card on file | New card" placeholder="Select payment" required="true" />
+</Card>
+
+<Button size="large">Place Order — $16.19</Button>
+<Button variant="secondary">Save for later</Button>
+</Form>
+</Card>

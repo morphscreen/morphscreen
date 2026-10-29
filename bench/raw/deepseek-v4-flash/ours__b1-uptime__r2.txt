@@ -1,0 +1,49 @@
+# Platform Status
+
+<Badge tone="success">All systems operational</Badge> · Updated June 16, 2025, 09:00 UTC
+
+<Card title="1 · API uptime this month">
+<Columns>
+<Stat label="Current uptime" value="99.98%" note="June 1–16, 2025" tone="success" icon="chart-line" />
+<Stat label="SLO target" value="99.95%" note="monthly target" tone="info" icon="target" />
+</Columns>
+<Progress value="99.98" max="100" label="Observed uptime vs. monthly target" tone="success" />
+</Card>
+
+<Card title="2 · Most recent incident">
+<Callout tone="success" title="Resolved — June 12, 2025 · 14:32 UTC">
+**#4821 – Elevated API error rate.** A bad deploy exhausted the database connection pool, causing 5xx errors on `/api/v2` for 5 minutes. The previous release was rolled back and the incident was resolved. No data loss.
+</Callout>
+</Card>
+
+<Card title="Downtime this month" subtitle="API downtime per week">
+<Chart type="bar" x="Week" y="Minutes">
+| Week | Downtime |
+|---|---|
+| Jun 1–7 | 0 |
+| Jun 8–14 | 5 |
+| Jun 15–16 | 0 |
+</Chart>
+</Card>
+
+<Card title="Service status">
+| Service | Status |
+|---|---|
+| API | <Badge tone="success">Operational</Badge> |
+| Dashboard | <Badge tone="success">Operational</Badge> |
+| Webhooks | <Badge tone="success">Operational</Badge> |
+</Card>
+
+<Card title="Incident history" subtitle="Last 30 days">
+<Steps>
+<Step status="done" title="Elevated API error rate" subtitle="Resolved Jun 12 · 14:32 UTC">#4821 – Bad deploy rolled back; 5 minutes of 5xx errors.</Step>
+<Step status="done" title="Scheduled maintenance" subtitle="Jun 5 · 02:00–02:30 UTC">Edge cache provider upgrade; no user-facing downtime.</Step>
+<Step status="done" title="Billing webhook delays" subtitle="Resolved May 28 · 18:05 UTC">#4807 – Third-party provider latency; deliveries retried automatically.</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- When was the last major outage?
+- What does the monthly SLO history look like?
+- How do I subscribe to incident notifications?
+</FollowUps>

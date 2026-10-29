@@ -1,0 +1,170 @@
+# Portfolio Review — Q3 2025
+
+<Callout tone="warning" title="Portfolio health: 2 of 8 projects at risk, 3 milestones overdue, 14% of capacity blocked">
+Delivery is broadly on track, but Atlas and Nimbus need attention this week.
+</Callout>
+
+<Card title="Review controls" subtitle="Scope the review and take action">
+<Columns>
+<Select label="Quarter" name="quarter" value="Q3 2025" options="Q2 2025 | Q3 2025 | Q4 2025" hint="Switches every panel below to the chosen quarter" />
+<Select label="Portfolio" name="portfolio" value="All portfolios" options="All portfolios | Customer Platform | Data & AI | Internal Ops" />
+</Columns>
+<Button variant="primary" icon="download-simple">Export review</Button>
+<Button variant="secondary" icon="archive">Archive a finished project</Button>
+</Card>
+
+## 1. Active projects
+
+<Card title="Active projects" subtitle="Owner, deadline and health">
+| Project | Owner | Deadline | Health | Budget used |
+|---|---|---|---|---|
+| Atlas — billing rewrite | Priya Raman | 2025-09-30 | <Badge tone="danger">Red</Badge> | 78% |
+| Nimbus — data lake migration | Marco Feld | 2025-10-24 | <Badge tone="warning">Amber</Badge> | 64% |
+| Orbit — mobile redesign | Lena Ortiz | 2025-11-14 | <Badge tone="success">Green</Badge> | 41% |
+| Quill — docs platform | Sam Ndiaye | 2025-12-05 | <Badge tone="success">Green</Badge> | 33% |
+| Vault — SSO rollout | Ines Duarte | 2025-10-10 | <Badge tone="warning">Amber</Badge> | 57% |
+| Beacon — analytics v2 | Tom Achterberg | 2025-12-19 | <Badge tone="success">Green</Badge> | 29% |
+| Comet — onboarding flow | Aiko Tanaka | 2025-11-28 | <Badge tone="success">Green</Badge> | 46% |
+| Delta — API gateway | Ruben Costa | 2025-09-26 | <Badge tone="danger">Red</Badge> | 88% |
+
+<Button variant="secondary" ask="Show the full detail for the Atlas project">Atlas detail</Button>
+<Button variant="secondary" ask="Show the full detail for the Delta project">Delta detail</Button>
+</Card>
+
+## 2. Overdue milestones
+
+<Card title="Overdue milestones" subtitle="Past due date, not yet signed off">
+| Milestone | Project | Due | Days late | Owner |
+|---|---|---|---|---|
+| Billing schema freeze | Atlas | 2025-08-22 | 9 | Priya Raman |
+| Gateway load test sign-off | Delta | 2025-08-25 | 6 | Ruben Costa |
+| SSO pilot with 3 tenants | Vault | 2025-08-28 | 3 | Ines Duarte |
+</Card>
+
+## 3. Budget spent vs allocation
+
+<Card title="Budget" subtitle="Spent against allocation, in $k">
+<Chart type="bar" x="Project" y="$k">
+| Project | Allocated | Spent |
+|---|---|---|
+| Atlas | 620 | 484 |
+| Nimbus | 540 | 346 |
+| Orbit | 380 | 156 |
+| Quill | 300 | 99 |
+| Vault | 260 | 148 |
+| Beacon | 410 | 119 |
+| Comet | 220 | 101 |
+| Delta | 350 | 308 |
+</Chart>
+</Card>
+
+## 4. Team utilization
+
+<Card title="Team utilization" subtitle="Billable + project hours over capacity">
+<Progress value="112" max="100" label="Atlas squad" tone="danger" />
+<Progress value="94" max="100" label="Nimbus squad" tone="warning" />
+<Progress value="81" max="100" label="Orbit squad" tone="success" />
+<Progress value="76" max="100" label="Quill squad" tone="success" />
+<Progress value="97" max="100" label="Vault squad" tone="warning" />
+<Progress value="68" max="100" label="Beacon squad" tone="neutral" />
+<Progress value="88" max="100" label="Comet squad" tone="success" />
+<Progress value="104" max="100" label="Delta squad" tone="danger" />
+</Card>
+
+## 5. Risks
+
+<Card title="Risk register" subtitle="Open risks with severity">
+| Risk | Project | Severity | Owner | Mitigation |
+|---|---|---|---|---|
+| Vendor API contract unsigned | Atlas | <Badge tone="danger">Critical</Badge> | Priya Raman | Legal escalation, daily standup |
+| Two senior engineers on leave | Delta | <Badge tone="danger">Critical</Badge> | Ruben Costa | Borrow 2 from Beacon |
+| Schema drift in upstream feeds | Nimbus | <Badge tone="warning">High</Badge> | Marco Feld | Contract tests in CI |
+| Tenant SSO cert expiry | Vault | <Badge tone="warning">High</Badge> | Ines Duarte | Renewal ticket open |
+| Design handoff lag | Orbit | <Badge tone="neutral">Medium</Badge> | Lena Ortiz | Weekly design clinic |
+| Docs migration tooling flaky | Quill | <Badge tone="info">Low</Badge> | Sam Ndiaye | Fallback script ready |
+</Card>
+
+## 6. Deadlines in the next two weeks
+
+<Card title="Next 14 days" subtitle="From 31 Aug 2025">
+| Date | Item | Project | Type |
+|---|---|---|---|
+| 2025-09-02 | Gateway load test re-run | Delta | Milestone |
+| 2025-09-04 | Billing schema freeze (replanned) | Atlas | Milestone |
+| 2025-09-05 | SSO pilot with 3 tenants | Vault | Milestone |
+| 2025-09-09 | Sprint 42 review | All | Ceremony |
+| 2025-09-11 | Data lake cutover dry run | Nimbus | Milestone |
+| 2025-09-12 | Mobile beta to 200 users | Orbit | Release |
+</Card>
+
+## 7. Delivery pace
+
+<Card title="Delivery pace" subtitle="Story points completed per sprint">
+<Chart type="line" x="Sprint" y="Points">
+| Sprint | Committed | Completed |
+|---|---|---|
+| S37 | 120 | 108 |
+| S38 | 124 | 116 |
+| S39 | 130 | 121 |
+| S40 | 128 | 112 |
+| S41 | 134 | 126 |
+| S42 | 132 | 119 |
+</Chart>
+</Card>
+
+## 8. Blocked work items
+
+<Card title="Blocked items" subtitle="Waiting on a dependency or decision">
+| Item | Project | Blocked by | Days |
+|---|---|---|---|
+| Invoice PDF renderer | Atlas | Vendor contract | 9 |
+| Tenant cert rotation script | Vault | Security review | 4 |
+| Gateway rate-limit config | Delta | Platform team | 6 |
+| Feed contract tests | Nimbus | Upstream schema | 3 |
+| Mobile push credentials | Orbit | App store review | 2 |
+</Card>
+
+## 9. Take action
+
+<Card title="Request more people" subtitle="Ask for headcount on a project">
+<Form name="headcount-request">
+<Select label="Project" name="project" placeholder="Choose a project" options="Atlas | Nimbus | Orbit | Quill | Vault | Beacon | Comet | Delta" required="true" />
+<Input label="How many people" name="people" type="number" min="1" max="10" value="2" required="true" />
+<Select label="Role" name="role" options="Backend engineer | Frontend engineer | Data engineer | QA | Designer" />
+<Date label="Needed by" name="needed_by" hint="When the extra people must be in place" />
+<TextArea label="Why" name="why" rows="3" placeholder="What is blocked or at risk without this headcount" />
+<Button variant="primary">Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Export and archive">
+<Button variant="primary" icon="download-simple">Export review (PDF)</Button>
+<Button variant="secondary" icon="file-csv">Export data (CSV)</Button>
+<Button variant="tertiary" icon="archive">Archive finished project</Button>
+<Details title="Archive a finished project">
+<Form name="archive-project">
+<Select label="Project" name="project" placeholder="Choose a project" options="Quill | Beacon | Comet | Orbit" required="true" />
+<Date label="Completion date" name="completed_on" />
+<Switch label="Send closure note to stakeholders" name="notify" value="true" />
+<Button variant="danger">Archive project</Button>
+</Form>
+</Details>
+</Card>
+
+## Where things stand
+
+<Card title="Milestones across the portfolio">
+<Map>
+<Place name="Atlas — billing rewrite" lat="51.5074" lng="-0.1278" />
+<Place name="Delta — API gateway" lat="52.3676" lng="4.9041" />
+<Place name="Nimbus — data lake migration" lat="48.8566" lng="2.3522" />
+<Place name="Vault — SSO rollout" lat="52.5200" lng="13.4050" />
+</Map>
+</Card>
+
+<FollowUps>
+- Which projects are over 90% budget?
+- Show the Atlas risk plan in detail
+- Compare Q2 and Q3 delivery pace
+- Who is over-allocated this quarter?
+</FollowUps>

@@ -1,0 +1,170 @@
+# Speeding Up Your 2 GB CSV Processing in Python
+
+Reading a 2 GB CSV in Python can be painfully slow if you're using the wrong approach. Here's how to dramatically speed things up.
+
+<Callout tone="warning" title="Before you optimize">
+Profile first! Use `cProfile` or `time` to confirm the bottleneck is actually file reading, not your processing logic. Sometimes the parsing is fast but the per-row work is what's slow.
+</Callout>
+
+## The Main Culprits
+
+<Columns>
+<Card title="Common slow patterns">
+- Using pure Python loops over every row
+- Reading line-by-line with `readline()`
+- Using `csv.DictReader` when you only need a few columns
+- Not specifying column types (letting pandas guess)
+- Reading the whole file into memory unnecessarily
+</Card>
+
+<Card title="What makes it fast">
+- Vectorized operations (pandas/numpy)
+- Chunked reading for memory efficiency
+- Specifying dtypes upfront
+- Using `usecols` to load only needed columns
+- Parallel processing with multiprocessing
+</Card>
+</Columns>
+
+## Quick Wins (No Code Changes)
+
+<Steps>
+<Step title="Use pandas with dtypes" status="done">
+<Code file="fast_read.py" highlight="2|3|4">
+```python
+import pandas as pd
+
+df = pd.read_csv(
+    "large.csv",
+    dtype={"col1": "int32", "col2": "category"},  # specify types
+    usecols=["col1", "col2", "col3"],              # only needed columns
+    engine="c",                                    # C parser (default, but be explicit)
+)
+```
+</Code>
+</Step>
+<Step title="Chunk it if you're running out of memory" status="done">
+<Code file="chunked.py">
+```python
+import pandas as pd
+
+chunk_size = 500_000  # adjust based on your RAM
+results = []
+
+for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+    # process each chunk
+    results.append(chunk[chunk["value"] > 100])
+
+final_df = pd.concat(results)
+```
+</Code>
+</Step>
+<Step title="Consider Polars for even more speed" status="done">
+<Code file="polars.py">
+```python
+import polars as pl
+
+df = pl.read_csv("large.csv", low_memory=True)
+# Polars is often 2-5x faster than pandas for large files
+```
+</Code>
+</Step>
+</Steps>
+
+## Advanced Techniques
+
+<Card title="Parallel processing with multiprocessing">
+<Code file="parallel.py">
+```python
+import pandas as pd
+from multiprocessing import Pool
+
+def process_chunk(chunk):
+    # Your processing logic here
+    return chunk[chunk["amount"] > 0]
+
+# Get total rows first (fast way)
+with open("large.csv") as f:
+    total_lines = sum(1 for _ in f) - 1  # minus header
+
+chunk_size = 500_000
+n_chunks = total_lines // chunk_size + 1
+
+with Pool(4) as pool:
+    # Read in chunks, process in parallel
+    results = []
+    for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+        results.append(pool.apply(process_chunk, (chunk,)))
+```
+</Code>
+</Callout>
+
+<Callout tone="info" title="Memory tip">
+If you only need to *aggregate* (sum, count, mean), you don't need to keep the whole DataFrame—process chunk by chunk and accumulate results.
+</Callout>
+
+## Benchmark Comparison
+
+<Chart type="bar" title="Time to read 2 GB CSV" x="Method" y="Seconds">
+| Method | Seconds |
+|---|---|
+| csv.DictReader | 42 |
+| csv.reader | 30 |
+| pandas (default) | 18 |
+| pandas + dtypes | 12 |
+| Polars | 6 |
+</Chart>
+
+## When You Really Need to Go Fast
+
+<Card title="DuckDB—SQL on your CSV">
+<Code file="duckdb.py">
+```python
+import duckdb
+
+# Query the CSV directly without loading it all
+result = duckdb.sql("""
+    SELECT col1, COUNT(*) 
+    FROM 'large.csv' 
+    WHERE col2 > 100
+    GROUP BY col1
+""").df()
+```
+</Code>
+This can be **10-50x faster** than pandas for simple aggregations, because it reads and processes in parallel under the hood.
+</Card>
+
+## Decision Guide
+
+<Compare title="Which approach?">
+| Need | pandas | Polars | DuckDB |
+|---|---|---|---|
+| Quick exploration | ✓ | ✓ | ✓ |
+| Complex transformations | ✓ | ✓ | ✗ |
+| Memory efficient | Chunked | ✓ | ✓ |
+| Fastest simple queries | ✗ | ✓ | ✓ |
+| Already know SQL | ✗ | ✗ | ✓ |
+</Compare>
+
+## Final Checklist
+
+<Checklist title="Speed-up checklist" name="speed-checklist">
+- [ ] Use pandas with `dtype` and `usecols`
+- [ ] Consider Polars instead of pandas
+- [ ] Use chunking if memory is an issue
+- [ ] Try DuckDB for simple aggregations
+- [ ] Profile to confirm the bottleneck
+- [ ] Consider converting to Parquet for repeated reads
+- [ ] Use `low_memory=False` in pandas to avoid mixed-type warnings
+</Checklist>
+
+<Callout tone="success" title="Pro tip">
+If you'll read this file **repeatedly**, convert it to Parquet once (`df.to_parquet("large.parquet")`). Subsequent reads will be **5-10x faster** and use less disk space.
+</Callout>
+
+<FollowUps>
+- How do I handle a CSV with inconsistent row lengths?
+- What's the best way to parallelize pandas operations?
+- Can I use Dask for even larger-than-memory datasets?
+- How do I convert my CSV to Parquet efficiently?
+</FollowUps>

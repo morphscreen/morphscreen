@@ -1,0 +1,156 @@
+<Columns>
+<Card title="Reporting period" subtitle="Drives every metric on this screen">
+<Select label="Period" options="Last 7 days | Last 30 days | Last 90 days | This quarter" name="period" value="Last 30 days" />
+</Card>
+<Card title="Invite another admin" subtitle="Send a secure magic-link invite">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="teammate@company.com" hint="They’ll get an email with a magic link" required="true" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+</Columns>
+
+<Callout tone="success" title="Healthy month">MRR is up 3.2%, churn is at 1.4%, and NPS is 47 — all within target ranges.</Callout>
+
+<Card title="Key metrics" subtitle="All figures reflect the selected reporting period">
+<Columns>
+<Stat label="MRR" value="$84,320" change="+3.2% vs last period" />
+<Stat label="ARR" value="$1,011,840" change="+18% YoY" />
+<Stat label="Churn this month" value="1.4%" change="-0.2 pts vs last month" note="Target: < 2%" />
+<Stat label="Current NPS" value="47" change="+5 vs last quarter" note="Surveyed 220 accounts" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="New signups" subtitle="Past 90 days, weekly">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 142 |
+| W2 | 158 |
+| W3 | 149 |
+| W4 | 171 |
+| W5 | 189 |
+| W6 | 202 |
+| W7 | 218 |
+| W8 | 233 |
+| W9 | 247 |
+| W10 | 261 |
+| W11 | 274 |
+| W12 | 296 |
+| W13 | 312 |
+</Chart>
+</Card>
+<Card title="Customers by plan" subtitle="Active paying accounts">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 268 |
+| Scale | 134 |
+| Enterprise | 41 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Largest customers" subtitle="Top 10 by monthly spend, with seats">
+| Customer | Plan | Seats | Monthly spend | ARR |
+|---|---|---|---|---|
+| Acme Corp | Enterprise | 240 | $6,800 | $81,600 |
+| Globex | Enterprise | 185 | $5,400 | $64,800 |
+| Initech | Scale | 98 | $3,200 | $38,400 |
+| Umbrella Corp | Scale | 87 | $2,900 | $34,800 |
+| Stark Industries | Enterprise | 76 | $2,450 | $29,400 |
+| Wayne Enterprises | Scale | 64 | $2,100 | $25,200 |
+| Hooli | Growth | 58 | $1,850 | $22,200 |
+| Pied Piper | Growth | 52 | $1,640 | $19,680 |
+| Massive Dynamic | Starter | 44 | $1,380 | $16,560 |
+| Cyberdyne | Starter | 39 | $1,150 | $13,800 |
+</Card>
+
+<Columns>
+<Card title="Accounts at risk" subtitle="Renewal and usage risk, with reason">
+| Customer | Risk | Reason |
+|---|---|---|
+| Acme Corp | High | No admin login in 21 days; renewal in 34 days |
+| Globex | High | Seat count fell 15% this month; pricing dispute open 12 days |
+| Initech | Medium | Adoption below 20% on 2 of 3 newest features |
+| Umbrella Corp | Medium | API error rate above 5% for 7 days; no reply to outreach |
+| Hooli | Low | Competitor mentioned in notes; renewal in 60 days |
+</Card>
+<Card title="Failed payments" subtitle="Retry a failed charge">
+<Columns>
+<Card>
+<Avatar name="Stark Industries" subtitle="Enterprise" />
+**$2,450** · Visa •• 4242 · failed 2 days ago
+
+<Button variant="primary">Retry</Button>
+</Card>
+<Card>
+<Avatar name="Wayne Enterprises" subtitle="Scale" />
+**$2,100** · Amex •• 1001 · failed 5 hours ago
+
+<Button variant="primary">Retry</Button>
+</Card>
+</Columns>
+<Columns>
+<Card>
+<Avatar name="Massive Dynamic" subtitle="Growth" />
+**$1,380** · Visa •• 8821 · failed 1 day ago
+
+<Button variant="primary">Retry</Button>
+</Card>
+<Card>
+<Avatar name="Cyberdyne" subtitle="Starter" />
+**$1,150** · Mastercard •• 5500 · failed 3 days ago
+
+<Button variant="primary">Retry</Button>
+</Card>
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Newest feature adoption" subtitle="Share of active accounts using each feature">
+**Collaboration Notes** — released 6 weeks ago
+<Progress value="32" max="100" label="32%" />
+
+**Usage Alerts** — released 4 weeks ago
+<Progress value="58" max="100" label="58%" />
+
+**SSO Enforcement** — released 2 weeks ago
+<Progress value="71" max="100" label="71%" />
+</Card>
+<Card title="Seat utilization" subtitle="Purchased vs used across all plans">
+**Overall** — 2,933 / 3,562 seats
+<Progress value="2933" max="3562" label="82%" />
+
+**Starter** — 892 / 1,024
+<Progress value="892" max="1024" label="87%" />
+
+**Growth** — 1,204 / 1,436
+<Progress value="1204" max="1436" label="84%" />
+
+**Scale** — 623 / 834
+<Progress value="623" max="834" label="75%" />
+
+**Enterprise** — 214 / 268
+<Progress value="214" max="268" label="80%" />
+</Card>
+</Columns>
+
+<Details title="Dashboard coverage">
+1. **MRR** — Key metrics
+2. **ARR** — Key metrics
+3. **Churn this month** — Key metrics
+4. **New signups over the past 90 days** — New signups area chart
+5. **Customers split by plan** — Customers by plan donut chart
+6. **Ten largest customers with seats and spend** — Largest customers table
+7. **Accounts at risk with reason** — Accounts at risk table
+8. **Failed payments with retry** — Failed payments retry cards
+9. **Adoption of the three newest features** — Newest feature adoption progress bars
+10. **Current NPS** — Key metrics
+11. **Change the reporting period** — Reporting period selector at top
+12. **Seat utilization** — Seat utilization progress bars
+13. **Invite another admin** — Invite admin form at top
+</Details>

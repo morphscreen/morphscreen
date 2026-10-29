@@ -1,0 +1,77 @@
+# Daily Summary
+
+Your fitness snapshot for today. <Badge tone="success">On track</Badge>
+
+<Card title="Today's Activity">
+<Columns>
+<div>
+<Stat label="Steps" value="8,432" change="+1,204 vs yesterday" icon="footprints" tone="success" />
+<Stat label="Daily Goal" value="10,000" note="84% complete" icon="flag" />
+<Progress value="8432" max="10000" label="Steps toward goal" tone="success" />
+</div>
+<div>
+<Stat label="Calories Burned" value="612 kcal" change="+85 vs yesterday" icon="fire" tone="info" />
+<Stat label="Active Minutes" value="47" note="Goal: 30 min" icon="clock" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Workout Performance — Past Week">
+<Chart type="line" x="Day" y="Minutes">
+| Day | Workout Minutes | Calories |
+|---|---|---|
+| Mon | 32 | 210 |
+| Tue | 45 | 290 |
+| Wed | 0 | 0 |
+| Thu | 38 | 250 |
+| Fri | 52 | 340 |
+| Sat | 60 | 390 |
+| Sun | 28 | 180 |
+</Chart>
+<Columns>
+<div>
+<Stat label="Total Workouts" value="6" note="Rest day on Wed" icon="barbell" />
+</div>
+<div>
+<Stat label="Avg. Duration" value="42 min" change="+5 min vs prior week" icon="timer" />
+</div>
+<div>
+<Stat label="Best Day" value="Sat · 60 min" note="390 kcal burned" icon="trophy" tone="success" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Log a New Workout">
+<Form name="log-workout">
+<Select label="Workout Type" name="type" placeholder="Choose workout" options="Running | Cycling | Strength Training | Yoga | Swimming | HIIT | Walking" required="true" />
+<Input label="Duration (minutes)" name="duration" type="number" placeholder="e.g. 45" min="1" required="true" hint="How long did you exercise?" />
+<Input label="Calories Burned (optional)" name="calories" type="number" placeholder="e.g. 320" min="0" />
+<Radio label="Intensity" name="intensity" options="Easy | Moderate | Hard" value="Moderate" />
+<TextArea label="Notes (optional)" name="notes" placeholder="How did it feel? Any highlights?" rows="2" />
+<Switch label="Share with friends" name="share" value="false" hint="Post to your social feed" />
+<Button>Add Workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Details title="Weekly Breakdown" open="false">
+<Card title="Day-by-Day Details">
+| Day | Workout | Duration | Calories | Intensity |
+|---|---|---|---|---|
+| Mon | Running | 32 min | 210 | Moderate |
+| Tue | Strength | 45 min | 290 | Hard |
+| Wed | Rest | — | — | — |
+| Thu | Cycling | 38 min | 250 | Moderate |
+| Fri | HIIT | 52 min | 340 | Hard |
+| Sat | Swimming | 60 min | 390 | Easy |
+| Sun | Yoga | 28 min | 180 | Easy |
+</Card>
+</Details>
+
+<Callout tone="info" title="Tip">You're 84% to your step goal. A 15-minute walk would get you there.</Callout>
+
+<FollowUps>
+- Show my step history for this week
+- Suggest a workout for tomorrow
+- How many calories did I burn this week total?
+</FollowUps>

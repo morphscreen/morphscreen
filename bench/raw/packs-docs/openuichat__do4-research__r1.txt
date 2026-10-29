@@ -1,0 +1,12 @@
+root = Card([header, answer, sourcesHeader, sourceCards, confidenceCard], [src1, src2, src3])
+header = CardHeader("Does Coffee Affect Sleep?", "Evidence-based summary with sources")
+answer = TextContent("Yes, coffee significantly affects sleep. Caffeine blocks adenosine receptors, delaying sleep onset, reducing total sleep time, and degrading sleep quality — especially deep (slow-wave) and REM sleep [1][2][3]. Effects depend on dose, timing, and individual metabolism. Consuming caffeine even 6 hours before bed can reduce sleep by >1 hour [2].", "default")
+sourcesHeader = InlineHeader("Sources", "What each study found")
+sourceCards = ContextCardBlock([srcCard1, srcCard2, srcCard3], "grid", true)
+srcCard1 = ContextCardItem("drake2013", "Drake et al. (2013) — J Clin Sleep Med", "Caffeine taken 0, 3, and 6 hrs before bed all significantly disrupted sleep. Even at 6 hrs, total sleep time fell ~41 min and sleep efficiency dropped. **Key finding:** Avoid caffeine ≥6 hrs before bedtime.", "gray")
+srcCard2 = ContextCardItem("gardiner2023", "Gardiner et al. (2023) — Sleep Med Rev (meta-analysis)", "Meta-analysis of 24 studies: caffeine prolonged sleep latency (+9 min), reduced total sleep time (−45 min), lowered sleep efficiency (−7%), and decreased deep sleep (−12%). Effects were dose-dependent and worse in older adults.", "gray")
+srcCard3 = ContextCardItem("clark2017", "Clark & Landolt (2017) — Handb Exp Pharmacol", "Caffeine (200–400 mg) reduces slow-wave activity in the first sleep cycle and fragments sleep architecture. Genetic variation in CYP1A2 and ADORA2A explains why some people are 'caffeine-sensitive' while others tolerate evening coffee.", "gray")
+confidenceCard = Callout("success", "High Confidence", "The consensus across controlled trials, meta-analyses, and mechanistic reviews is strong and consistent: caffeine impairs sleep quantity and quality. Confidence: 95%.")
+src1 = { title: "Caffeine Effects on Sleep Taken 0, 3, or 6 Hours before Going to Bed", sourceName: "Journal of Clinical Sleep Medicine", url: "https://jcsm.aasm.org/doi/10.5664/jcsm.3170" }
+src2 = { title: "The Effects of Caffeine on Sleep: A Systematic Review and Meta-Analysis", sourceName: "Sleep Medicine Reviews", url: "https://www.sciencedirect.com/science/article/pii/S1087079222001234" }
+src3 = { title: "Caffeine, Sleep, and Sleep Regulation", sourceName: "Handbook of Experimental Pharmacology", url: "https://link.springer.com/chapter/10.1007/164_2017_48" }

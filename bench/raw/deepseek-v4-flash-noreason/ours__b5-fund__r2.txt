@@ -1,0 +1,169 @@
+# Trading Desk — Morning Workspace
+
+<Columns>
+<Card title="Portfolio Summary">
+<Stat label="Portfolio Value" value="$12.84M" change="+1.2% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="P&L Today" value="+$152,400" change="+1.2%" tone="success" icon="trend-up" />
+<Stat label="Margin in Use" value="62%" note="Limit: 80%" tone="info" icon="shield" />
+<Stat label="Value at Risk (95%, 1d)" value="$310,200" note="2.4% of portfolio" tone="neutral" icon="warning" />
+</Card>
+<Card title="Timeframe">
+<Radio label="Viewing period" options="1D | 1W | 1M | 3M | YTD" name="timeframe" value="1D" />
+</Card>
+</Columns>
+
+<Card title="Positions" subtitle="Open positions across all strategies">
+| Ticker | Size | Entry | Current | P&L |
+|---|---|---|---|---|
+| AAPL | 12,400 | $198.20 | $204.15 | +$73,780 |
+| MSFT | 8,200 | $412.50 | $419.30 | +$55,760 |
+| NVDA | 5,600 | $118.40 | $126.75 | +$46,760 |
+| TSLA | 4,300 | $248.10 | $241.90 | −$26,660 |
+| AMZN | 6,100 | $178.30 | $182.45 | +$25,315 |
+| JPM | 9,800 | $205.60 | $208.90 | +$32,340 |
+| XOM | 14,200 | $118.90 | $114.20 | −$66,740 |
+| META | 7,400 | $512.30 | $528.60 | +$120,620 |
+</Card>
+
+<Card title="Exposure by Sector">
+<Chart type="donut" title="Sector allocation">
+| Sector | Exposure |
+|---|---|
+| Technology | 42 |
+| Financials | 18 |
+| Energy | 12 |
+| Consumer Disc. | 11 |
+| Healthcare | 9 |
+| Industrials | 8 |
+</Chart>
+</Card>
+
+<Card title="Top Movers Today">
+<Columns>
+<Card title="Biggest Gainers">
+| Ticker | Change |
+|---|---|
+| META | +3.2% |
+| NVDA | +2.8% |
+| AAPL | +2.1% |
+</Card>
+<Card title="Biggest Losers">
+| Ticker | Change |
+|---|---|
+| XOM | −4.0% |
+| TSLA | −2.5% |
+| AMZN | −1.1% |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Watchlist">
+| Ticker | Last Price | Change |
+|---|---|---|
+| GOOGL | $182.40 | +0.8% |
+| NFLX | $682.10 | −0.4% |
+| AMD | $162.30 | +1.6% |
+| COIN | $248.90 | +4.2% |
+| DIS | $112.70 | −0.9% |
+</Card>
+
+<Card title="Working Orders">
+| Order | Ticker | Side | Qty | Type | Status |
+|---|---|---|---|---|---|
+| #4821 | AAPL | Buy | 2,000 | Limit @ $202.50 | Working |
+| #4822 | XOM | Sell | 5,000 | Market | Working |
+| #4823 | NVDA | Buy | 1,500 | Stop @ $124.00 | Working |
+</Card>
+
+<Card title="Market Headlines & Sentiment">
+<Columns>
+<Card>
+<Badge tone="success">Bullish</Badge> Fed signals rate cut in September — futures rally.
+</Card>
+<Card>
+<Badge tone="danger">Bearish</Badge> Oil inventories build more than expected; crude slips 3%.
+</Card>
+<Card>
+<Badge tone="success">Bullish</Badge> AI chip demand beats estimates; NVDA suppliers surge.
+</Card>
+<Card>
+<Badge tone="warning">Neutral</Badge> EU opens antitrust probe into major tech platforms.
+</Card>
+</Columns>
+</Card>
+
+<Card title="Economic Calendar — This Week">
+| Date | Release | Forecast | Prior |
+|---|---|---|---|
+| Mon | CPI (MoM) | 0.2% | 0.3% |
+| Tue | PPI (YoY) | 2.4% | 2.1% |
+| Wed | FOMC Rate Decision | 5.25% | 5.25% |
+| Thu | Jobless Claims | 220K | 218K |
+| Fri | Retail Sales (MoM) | 0.4% | 0.1% |
+</Card>
+
+<Card title="Strategy Performance — YTD Return">
+<Chart type="bar" title="Return by strategy (%)">
+| Strategy | Return |
+|---|---|
+| Momentum | 18.4 |
+| Mean Reversion | 12.1 |
+| Event Driven | 9.8 |
+| Carry | 6.2 |
+| Vol Arb | −2.3 |
+</Chart>
+</Card>
+
+<Card title="Drawdown — Past 12 Months">
+<Chart type="area" title="Portfolio drawdown (%)">
+| Month | Drawdown |
+|---|---|
+| Jan | 0 |
+| Feb | −2.1 |
+| Mar | −4.8 |
+| Apr | −3.2 |
+| May | −1.9 |
+| Jun | −5.6 |
+| Jul | −7.4 |
+| Aug | −6.1 |
+| Sep | −4.2 |
+| Oct | −2.8 |
+| Nov | −1.5 |
+| Dec | −0.8 |
+</Chart>
+</Card>
+
+<Card title="Risk Limits — Close to Breach">
+<Callout tone="warning" title="2 limits nearing threshold">
+- Sector concentration: Tech at 42% (limit 45%)
+- Margin utilization: 62% (limit 80%)
+</Callout>
+<Progress value="42" max="45" label="Tech sector exposure" tone="warning" />
+<Progress value="62" max="80" label="Margin utilization" tone="info" />
+</Card>
+
+<Card title="Rebalance Portfolio">
+<Callout tone="info" title="Suggested rebalance">
+Reduce tech exposure by 3% and increase healthcare by 2% and industrials by 1% to align with target allocation.
+</Callout>
+<Button variant="primary">Rebalance to Targets</Button>
+<Button variant="secondary">View Proposed Trades</Button>
+</Card>
+
+<Card title="Place Order">
+<Form name="order-entry">
+<Select label="Ticker" placeholder="Select ticker" options="AAPL | MSFT | NVDA | TSLA | AMZN | JPM | XOM | META | GOOGL" />
+<Radio label="Side" options="Buy | Sell" name="side" value="Buy" />
+<Input label="Quantity" type="number" placeholder="100" min="1" />
+<Select label="Order type" options="Market | Limit | Stop | Stop-Limit" placeholder="Market" />
+<Button>Submit Order</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me today's realized vs unrealized P&L
+- Which positions are driving the drawdown?
+- What would happen if tech exposure hits 45%?
+- Pre-trade analysis for adding to NVDA
+</FollowUps>

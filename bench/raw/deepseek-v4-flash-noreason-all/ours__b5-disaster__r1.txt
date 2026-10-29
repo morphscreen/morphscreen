@@ -1,0 +1,343 @@
+# Emergency Response Coordination Center
+
+<Badge tone="danger">Active Operations</Badge> — Updated 14:32 local time
+
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Active Incidents" value="12" tone="danger" icon="warning" />
+<Stat label="People Rescued" value="847" tone="success" icon="lifebuoy" />
+<Stat label="Casualties" value="23" tone="warning" icon="cross" />
+<Stat label="Shelters Open" value="8" tone="info" icon="house" />
+</Columns>
+<Gauge label="Overall Severity Index" value="7.2" min="1" max="10" unit="/10" tone="danger" />
+</Card>
+
+<Card title="Active Incidents by Zone">
+<Map title="Incident zones" route="false">
+| Zone | Lat | Lng | Incidents | Severity |
+|---|---|---|---|---|
+| North Zone | 40.7128 | -74.0060 | 3 | Critical |
+| East Zone | 40.7359 | -73.9911 | 4 | High |
+| South Zone | 40.6782 | -74.0059 | 2 | Moderate |
+| West Zone | 40.7484 | -74.0059 | 3 | High |
+</Map>
+
+<Columns>
+<Card title="North Zone">
+<Badge tone="danger">Critical</Badge>
+- **Flooding** — 3 blocks submerged
+- **Structural collapse** — 2 buildings
+- **Power outage** — 1,200 residents
+<Button ask="Focus on North Zone">Focus on North Zone</Button>
+</Card>
+
+<Card title="East Zone">
+<Badge tone="danger">High</Badge>
+- **Fire** — warehouse, contained
+- **Gas leak** — residential area
+- **Road blocked** — debris on Main St
+- **Medical emergency** — triage center overflow
+<Button ask="Focus on East Zone">Focus on East Zone</Button>
+</Card>
+
+<Card title="South Zone">
+<Badge tone="warning">Moderate</Badge>
+- **Water damage** — 12 homes
+- **Tree down** — power lines affected
+<Button ask="Focus on South Zone">Focus on South Zone</Button>
+</Card>
+
+<Card title="West Zone">
+<Badge tone="danger">High</Badge>
+- **Landslide** — partial road closure
+- **Building fire** — apartment complex
+- **Flooding** — low-lying areas
+<Button ask="Focus on West Zone">Focus on West Zone</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Resources Available">
+<Columns>
+<Stat label="Vehicles" value="34" icon="truck" />
+<Stat label="Personnel" value="128" icon="users" />
+<Stat label="Supplies (tons)" value="42.5" icon="package" />
+<Stat label="Medical Kits" value="560" icon="first-aid" />
+</Columns>
+
+<Card title="Vehicle Breakdown">
+<Chart type="bar" title="Fleet by type" x="Type" y="Count">
+| Type | Available | Deployed |
+|---|---|---|
+| Ambulances | 8 | 12 |
+| Fire Trucks | 5 | 7 |
+| Rescue Boats | 4 | 3 |
+| Supply Trucks | 10 | 6 |
+| Buses | 7 | 2 |
+</Chart>
+</Card>
+</Card>
+
+<Card title="Shelters">
+<Columns>
+<Card title="Central High School">
+<KeyValue>
+| Capacity | Occupancy |
+|---|---|
+| 300 | 214 |
+</KeyValue>
+<Progress value="214" max="300" label="71% full" tone="warning" />
+</Card>
+
+<Card title="Community Center">
+<KeyValue>
+| Capacity | Occupancy |
+|---|---|
+| 150 | 98 |
+</KeyValue>
+<Progress value="98" max="150" label="65% full" tone="info" />
+</Card>
+
+<Card title="St. Mary's Church">
+<KeyValue>
+| Capacity | Occupancy |
+|---|---|
+| 200 | 187 |
+</KeyValue>
+<Progress value="187" max="200" label="94% full" tone="danger" />
+</Card>
+
+<Card title="Riverside Arena">
+<KeyValue>
+| Capacity | Occupancy |
+|---|---|
+| 500 | 312 |
+</KeyValue>
+<Progress value="312" max="500" label="62% full" tone="info" />
+</Card>
+</Columns>
+<Callout tone="warning" title="Overcapacity">St. Mary's Church is at 94% capacity — consider redirecting new arrivals to Riverside Arena.</Callout>
+</Card>
+
+<Card title="Evacuation Routes">
+| Route | Status | Notes |
+|---|---|---|
+| Route A — North Highway | <Badge tone="success">Open</Badge> | Clear flow |
+| Route B — Coastal Road | <Badge tone="danger">Closed</Badge> | Flooded at mile 3 |
+| Route C — Mountain Pass | <Badge tone="warning">Partial</Badge> | One lane, debris |
+| Route D — East Bridge | <Badge tone="success">Open</Badge> | Congested |
+| Route E — Industrial Rd | <Badge tone="danger">Closed</Badge> | Landslide |
+</Card>
+
+<Card title="Weather Forecast — Next 48 Hours">
+<Chart type="line" title="Temperature & Precipitation" x="Hour" y="°C / mm">
+| Hour | Temp °C | Precip mm |
+|---|---|---|
+| Now | 18 | 2 |
+| +6h | 17 | 5 |
+| +12h | 16 | 8 |
+| +18h | 15 | 12 |
+| +24h | 14 | 15 |
+| +30h | 15 | 10 |
+| +36h | 16 | 6 |
+| +42h | 17 | 3 |
+| +48h | 19 | 1 |
+</Chart>
+<Callout tone="danger" title="Heavy rain expected">12–15 mm precipitation in the next 24 hours. Risk of additional flooding in South and West zones.</Callout>
+</Card>
+
+<Card title="Casualties & Rescues">
+<Columns>
+<Stat label="Rescued" value="847" tone="success" icon="lifebuoy" />
+<Stat label="Injured" value="156" tone="warning" icon="cross" />
+<Stat label="Deceased" value="23" tone="danger" icon="cross" />
+<Stat label="Missing" value="12" tone="danger" icon="magnifying-glass" />
+</Columns>
+<Funnel title="Rescue progress">
+| Stage | Count |
+|---|---|
+| Reported trapped | 1,038 |
+| Located | 912 |
+| Rescued | 847 |
+| Transported to care | 721 |
+| Reunited with family | 634 |
+</Funnel>
+</Card>
+
+<Card title="Volunteers on Duty">
+| Volunteer | Assignment | Status |
+|---|---|---|
+| Maria González | Shelter manager — Central HS | <Badge tone="success">On site</Badge> |
+| James Park | Supply distribution — East Zone | <Badge tone="success">On site</Badge> |
+| Sarah O'Connor | First aid — Triage center | <Badge tone="success">On site</Badge> |
+| David Kim | Search & rescue — West Zone | <Badge tone="warning">In transit</Badge> |
+| Aisha Patel | Communications — HQ | <Badge tone="success">On site</Badge> |
+| Tomás Rivera | Evacuation bus driver | <Badge tone="warning">In transit</Badge> |
+| Emma Wilson | Food distribution — South Zone | <Badge tone="success">On site</Badge> |
+| Liam Johnson | Logistics — Supply depot | <Badge tone="success">On site</Badge> |
+</Card>
+
+<Card title="Donations Received">
+<Columns>
+<Stat label="Total Value" value="$184,500" tone="success" icon="heart" />
+<Stat label="Food (kg)" value="3,200" icon="fork-knife" />
+<Stat label="Water (L)" value="8,500" icon="drop" />
+<Stat label="Clothing (items)" value="2,100" icon="shirt" />
+</Columns>
+<Chart type="bar" title="Donations by category" x="Category" y="Units">
+| Category | Quantity |
+|---|---|
+| Food | 3200 |
+| Water | 8500 |
+| Clothing | 2100 |
+| Blankets | 980 |
+| Medical | 450 |
+| Hygiene kits | 1,200 |
+</Chart>
+<Button>View donation details</Button>
+</Card>
+
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Age |
+|---|---|---|---|---|
+| REQ-1042 | South | Water pumps | <Badge tone="danger">Critical</Badge> | 2h |
+| REQ-1043 | West | Sandbags | <Badge tone="danger">Critical</Badge> | 1h |
+| REQ-1044 | North | Generators | <Badge tone="warning">High</Badge> | 3h |
+| REQ-1045 | East | Medical staff | <Badge tone="danger">Critical</Badge> | 30m |
+| REQ-1046 | South | Food rations | <Badge tone="warning">High</Badge> | 4h |
+| REQ-1047 | West | Rescue boats | <Badge tone="danger">Critical</Badge> | 45m |
+
+<Callout tone="warning" title="5 requests waiting">Prioritize East Zone medical staff request — triage center at capacity.</Callout>
+</Card>
+
+<Card title="Communication Channels">
+| Channel | Status | Notes |
+|---|---|---|
+| Radio — VHF Ch 16 | <Badge tone="success">Up</Badge> | Primary |
+| Radio — UHF Ch 22 | <Badge tone="success">Up</Badge> | Backup |
+| Landline — HQ | <Badge tone="warning">Degraded</Badge> | Intermittent |
+| Cellular — 4G/5G | <Badge tone="danger">Down</Badge> | Tower damage |
+| Satellite — VSAT | <Badge tone="success">Up</Badge> | Stable |
+| Internet — Fiber | <Badge tone="danger">Down</Badge> | Line cut |
+| Internet — LTE Backup | <Badge tone="success">Up</Badge> | Limited bandwidth |
+| Amateur Radio — Repeater | <Badge tone="success">Up</Badge> | Volunteer-run |
+</Card>
+
+<Card title="Closed Roads">
+| Road | Zone | Reason | Est. Reopen |
+|---|---|---|---|
+| Main St (1st–5th) | East | Debris | 6h |
+| Coastal Rd (mile 3–7) | South | Flooding | 24h+ |
+| Industrial Rd | West | Landslide | 12h |
+| Bridge Ave | North | Structural | 48h+ |
+| River Rd | South | Flooding | 36h |
+<Button ask="Report a new road closure">Report a new closure</Button>
+</Card>
+
+<Card title="Nearby Hospitals — Available Beds">
+<Columns>
+<Card title="St. Mary's Medical Center">
+<KeyValue>
+| Available | Total |
+|---|---|
+| 12 | 45 |
+</KeyValue>
+<Progress value="12" max="45" label="27% free" tone="success" />
+<Stat label="Distance" value="3.2 km" icon="map-pin" />
+</Card>
+
+<Card title="Riverside General">
+<KeyValue>
+| Available | Total |
+|---|---|
+| 8 | 60 |
+</KeyValue>
+<Progress value="8" max="60" label="13% free" tone="danger" />
+<Stat label="Distance" value="5.8 km" icon="map-pin" />
+</Card>
+
+<Card title="Northside Hospital">
+<KeyValue>
+| Available | Total |
+|---|---|
+| 21 | 50 |
+</KeyValue>
+<Progress value="21" max="50" label="42% free" tone="warning" />
+<Stat label="Distance" value="7.1 km" icon="map-pin" />
+</Card>
+
+<Card title="East Harbor Medical">
+<KeyValue>
+| Available | Total |
+|---|---|
+| 4 | 35 |
+</KeyValue>
+<Progress value="4" max="35" label="11% free" tone="danger" />
+<Stat label="Distance" value="9.4 km" icon="map-pin" />
+</Card>
+</Columns>
+<Callout tone="info" title="Bed capacity">Riverside General and East Harbor are nearly full — direct new patients to Northside or St. Mary's.</Callout>
+</Card>
+
+<Card title="Open Tasks">
+| Task | Assignee | Priority | Due |
+|---|---|---|---|
+| Evacuate Maple St residents | Team B — J. Park | <Badge tone="danger">Critical</Badge> | 30m |
+| Restore cell tower East | Comms crew — S. O'Connor | <Badge tone="danger">Critical</Badge> | 2h |
+| Distribute water to shelters | Logistics — L. Johnson | <Badge tone="warning">High</Badge> | 1h |
+| Clear debris on Main St | Works crew — D. Kim | <Badge tone="warning">High</Badge> | 3h |
+| Assess West Zone landslide | Engineering — T. Rivera | <Badge tone="warning">High</Badge> | 2h |
+| Set up field kitchen | Volunteers — E. Wilson | <Badge tone="info">Medium</Badge> | 4h |
+| Inventory medical supplies | Medical — A. Patel | <Badge tone="info">Medium</Badge> | 6h |
+</Card>
+
+<Card title="Request More Resources">
+<Form name="resource-request">
+<Select label="Resource type" placeholder="Choose type" options="Ambulance | Fire truck | Rescue boat | Water pump | Generator | Medical kit | Food rations | Water | Blankets | Sandbags | Personnel" required="true" />
+<Stepper label="Quantity" name="quantity" value="1" min="1" max="100" unit="units" />
+<Select label="Zone" placeholder="Choose zone" options="North | East | South | West" required="true" />
+<Select label="Priority" options="Low | Medium | High | Critical" />
+<TextArea label="Additional notes" placeholder="Describe any specific needs..." rows="3" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<Form name="broadcast">
+<Radio label="Audience" options="All zones | North only | East only | South only | West only | All personnel | All volunteers" required="true" />
+<TextArea label="Message" placeholder="Type your broadcast message here..." rows="4" required="true" />
+<Checkboxes label="Channels" options="Radio | SMS | App push | Email | Social media" value="Radio | SMS | App push" />
+<Button variant="primary">Broadcast now</Button>
+</Form>
+</Card>
+
+<Card title="Zone Focus">
+<Form name="zone-focus">
+<Select label="Select zone" options="North Zone | East Zone | South Zone | West Zone | All zones" placeholder="Choose zone to focus on" required="true" />
+<Button>Apply focus</Button>
+</Form>
+</Card>
+
+<Card title="File Situation Report">
+<Form name="sitrep">
+<Date label="Report date" name="date" required="true" />
+<Time label="Time" name="time" required="true" />
+<Select label="Zone covered" options="All zones | North | East | South | West" required="true" />
+<TextArea label="Situation summary" placeholder="Describe current situation, actions taken, and needs..." rows="5" required="true" />
+<Stepper label="People affected" name="affected" value="0" min="0" max="10000" unit="people" />
+<Stepper label="Injuries reported" name="injuries" value="0" min="0" max="1000" unit="people" />
+<File label="Attach photos or documents" accept=".jpg | .png | .pdf" multiple="true" hint="Optional but helpful" />
+<Button>Submit situation report</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" ask="Show me the North Zone dashboard">North Zone</Button>
+<Button variant="primary" ask="Show me the East Zone dashboard">East Zone</Button>
+<Button variant="primary" ask="Show me the South Zone dashboard">South Zone</Button>
+<Button variant="primary" ask="Show me the West Zone dashboard">West Zone</Button>
+<Button variant="secondary" ask="Request medical evacuation">Medical evac</Button>
+<Button variant="secondary" ask="Request heavy equipment">Heavy equipment</Button>
+</Columns>
+</Card>

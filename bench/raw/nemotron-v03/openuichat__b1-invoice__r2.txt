@@ -1,0 +1,19 @@
+root = Card([header, invoiceCard, payButton])
+header = CardHeader("Invoice #INV-2026-047", "Acme Design Studio · Billed to TechCorp Inc.")
+invoiceCard = CompositeCardBlock([invoiceItem], "grid", false)
+invoiceItem = CompositeCardItem("invoice-main", invoiceHeader, invoiceBody, invoiceFooter)
+invoiceHeader = IconText(invoiceIcon, "neutral", "l", "Amount Due", "Outstanding balance", true, "horizontal")
+invoiceIcon = Icon("credit-card", "finance")
+invoiceBody = [amountRow, dueRow, detailsRow]
+amountRow = BoldText("number", "$2,450.00", "USD", "metric", "lg")
+dueRow = EntityList([dueItem], "default", { left: "Due Date", right: "July 15, 2026", rightVariant: "text" })
+dueItem = { left: "Due Date", right: "July 15, 2026", rightVariant: "text" }
+detailsRow = EntityList([detailItems], "small")
+detailItems = [
+  { left: "Invoice Date", right: "June 15, 2026", rightVariant: "text" },
+  { left: "Payment Terms", right: "Net 30", rightVariant: "text" },
+  { left: "Project", right: "Brand Identity Package", rightVariant: "text" }
+]
+invoiceFooter = { price: BoldText("number", "$2,450.00", "Total Amount Due", "text", "md"), button: payBtn }
+payBtn = Button("Pay Now", Action([@OpenUrl("https://pay.stripe.com/invoice/INV-2026-047")]), "primary", "normal", "large")
+payButton = Buttons([payBtn], "row")

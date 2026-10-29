@@ -1,0 +1,66 @@
+{
+  "name": "commerce",
+  "version": "0.1.0",
+  "about": "Shopping: products, pricing plans, carts, ratings, comparisons and prices.",
+  "components": {
+    "Product": {
+      "about": "one product with its price; a short description between the tags, then a Button with ask for each thing the reader can do with it (Add to cart, Tell me more); rating is out of 5, count how many rated it. When the reader is choosing what to buy, show each option as one, side by side in Columns",
+      "attrs": {
+        "name": { "type": "string", "required": true },
+        "price": "string",
+        "was": "string",
+        "image": "url",
+        "rating": "number",
+        "count": "number",
+        "badge": "string",
+        "href": "url"
+      },
+      "content": "text",
+      "actions": true
+    },
+    "Plan": {
+      "about": "a pricing plan, its features as a Markdown list inside",
+      "attrs": {
+        "name": { "type": "string", "required": true },
+        "price": { "type": "string", "required": true },
+        "period": "string",
+        "note": "string",
+        "featured": "boolean"
+      },
+      "content": "list"
+    },
+    "Cart": {
+      "about": "items and totals, from the Markdown table inside: the item, the quantity, the price",
+      "attrs": {
+        "title": "string",
+        "total": "string",
+        "note": "string"
+      },
+      "content": "table"
+    },
+    "Rating": {
+      "about": "a real star rating out of max, never a made-up one",
+      "attrs": {
+        "value": { "type": "number", "required": true },
+        "max": "number",
+        "count": "string"
+      },
+      "content": "none"
+    },
+    "Compare": {
+      "about": "options side by side, from the Markdown table inside: the feature, then one column per option; yes and no become marks",
+      "attrs": { "title": "string" },
+      "content": "table"
+    },
+    "Price": {
+      "about": "a price, with the old one struck through",
+      "attrs": {
+        "value": { "type": "string", "required": true },
+        "was": "string",
+        "period": "string",
+        "note": "string"
+      },
+      "content": "none"
+    }
+  }
+}

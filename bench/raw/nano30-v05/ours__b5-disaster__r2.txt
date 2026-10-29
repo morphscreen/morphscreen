@@ -1,0 +1,136 @@
+<Card title="Active Incidents by Zone">
+<Chart type="bar" x="Zone" y="Severity" title="Incidents by Zone">
+| Zone | Severity |
+|---|---|
+| East | 2 |
+| West | 3 |
+| North | 1 |
+| South | 2 |
+</Chart>
+</Card>
+
+<Card title="Severity Summary">
+<Stat label! label="Severity Summary" value="3 High, 2 Medium" change="0" tone="info" />
+</Card>
+
+<Card title="Resources Available">
+<Stat label! label="Vehicles" value="12" change="0" tone="success" />
+<Stat label! label="Personnel" value="45" change="0" tone="success" />
+<Stat label! label="Supplies" value="300" change="0" tone="success" />
+</Card>
+
+<Card title="Shelters">
+| Shelter | Capacity | Occupancy |
+| East Shelter | 200 | 120 |
+| West Shelter | 150 | 80 |
+| North Shelter | 100 | 30 |
+| South Shelter | 180 | 150 |
+</Card>
+
+<Card title="Evacuation Routes">
+<Chart type="column" x="Route" y="Status" title="Route Status">
+| Route | Status |
+|---|---|
+| Main St | 1 |
+| Highway 5 | 0 |
+| River Rd | 1 |
+| Oak Ave | 0 |
+</Chart>
+</Card>
+
+<Card title="Weather Forecast">
+<Chart type="line" x="Hour" y="Temp (°C)" title="48‑Hour Forecast">
+| Hour | Temp |
+|---|---|
+| 0 | 18 |
+| 6 | 16 |
+| 12 | 15 |
+| 18 | 14 |
+| 24 | 13 |
+| 30 | 12 |
+| 36 | 11 |
+| 42 | 10 |
+| 48 | 9 |
+</Chart>
+</Card>
+
+<Card title="Casualties">
+<Stat label! label="Rescued" value="27" change="0" tone="success" />
+<Stat label! label="Casualties" value="3" change="0" tone="danger" />
+</Card>
+
+<Card title="Volunteers">
+| Volunteer | Assignment |
+| Alice | Search & Rescue |
+| Bob | Medical Aid |
+| Carol | Logistics |
+| Dave | Communications |
+</Card>
+
+<Card title="Donations">
+<Stat label! label="Donations Received" value="$12,500" change="0" tone="success" />
+</Card>
+
+<Card title="Aid Requests">
+<FollowUps>
+• Water purification tablets
+• Medical kits
+• Food rations
+• Shelter tents
+</FollowUps>
+</Card>
+
+<Card title="Communication Channels">
+| Channel | Status |
+| Radio | Up |
+| Satellite | Up |
+| Cell Network | Down |
+| Email | Up |
+</Card>
+
+<Card title="Roads Closed">
+<TextArea label! name="closed_roads" placeholder="List of closed roads" rows="3" hint="List of closed roads" required="false">
+- Main St
+- Highway 5
+- River Rd
+</TextArea>
+</Card>
+
+<Card title="Hospitals">
+| Hospital | Free Beds |
+| City Hospital | 15 |
+| County Hospital | 8 |
+| Regional Medical Center | 20 |
+</Card>
+
+<Card title="Open Tasks">
+<TextArea label! name="open_tasks" placeholder="List tasks with assignee" rows="4" hint="List tasks with assignee" required="false">
+• Evacuation Plan – Alice
+• Supply Delivery – Bob
+• Incident Report – Carol
+</TextArea>
+</Card>
+
+<Card title="Request Resources">
+<Form name="resource-request">
+<Select label! options="Food | Water | Medical Supplies | Equipment" name="resource_type" />
+<Input label! name="quantity" type="number" placeholder="Enter number" step="1" />
+<Button variant="primary" href="#">Request</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Update">
+<TextArea label! name="broadcast_msg" placeholder="Enter update" rows="3" hint="Enter update" required="false">
+</TextArea>
+<Button variant="secondary" href="#">Broadcast</Button>
+</Card>
+
+<Card title="Focus Zone">
+<Select label! options="East | West | North | South" name="zone" />
+</Card>
+
+<Card title="File Situation Report">
+<TextArea label! name="situation_report" placeholder="Write report" rows="5" hint="Write report" required="false">
+</TextArea>
+<Button variant="primary" href="#">Submit</Button>
+</Card>

@@ -1,0 +1,49 @@
+# Personal Budget Check
+
+<Card title="Monthly Overview" subtitle="January 2025">
+<Columns>
+<Stat label="Total Spent" value="$3,247" change="+$247 vs budget" tone="warning" />
+<Stat label="Budget" value="$3,000" change="Monthly limit" tone="neutral" />
+<Stat label="Remaining" value="-$247" change="Over budget" tone="danger" />
+</Columns>
+
+<Progress value="3247" max="3000" label="Budget utilization" tone="warning" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 680 |
+| Transportation | 420 |
+| Shopping | 350 |
+| Entertainment | 280 |
+| Utilities | 180 |
+| Other | 137 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense This Month" subtitle="Rent payment">
+<Columns>
+<Stat label="Amount" value="$1,200" tone="danger" />
+<Stat label="Category" value="Housing" tone="neutral" />
+<Stat label="Date" value="Jan 1" tone="neutral" />
+</Columns>
+<Callout tone="info" title="Recurring expense">This is your monthly rent payment. Consider if this aligns with the 30% income guideline.</Callout>
+</Card>
+
+<Card title="Select Month">
+<Select label="View month" options="January 2025 | December 2024 | November 2024 | October 2024" value="January 2025" />
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" hint="Enter expense amount" />
+<Input label="Description" name="description" placeholder="Groceries, rent, etc." required="true" />
+<Select label="Category" name="category" options="Housing | Food & Dining | Transportation | Shopping | Entertainment | Utilities | Other" placeholder="Select category" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Button>Add Expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

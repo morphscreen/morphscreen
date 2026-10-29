@@ -1,0 +1,49 @@
+root = Card([
+  CardHeader("Month-End Finance View", "Last Month"),
+  Tag("On track", null, "md", "success"),
+  cashDisplay,
+  burnDisplay,
+  runwayDisplay,
+  expenses,
+  transactions,
+  monthSelector,
+  actions
+])
+
+cashAmount = "$150,000"
+cashDisplay = TextContent(cashAmount, "large")
+
+burnAmount = "$80,000"
+burnDisplay = TextContent(burnAmount, "large")
+
+runwayMonths = "2.5"
+runwayDisplay = TextContent(runwayMonths, "large")
+
+categories = ["Salaries", "Rent", "Software", "Marketing", "Other"]
+amounts = [50000, 30000, 10000, 5000, 5000]
+colCategory = Col("Category", categories, "string")
+colAmount = Col("Amount", amounts, "number")
+expenses = Table([colCategory, colAmount])
+
+trans1 = ListItem("Investor Funding", "15,000", null, null)
+trans2 = ListItem("Equipment Purchase", "12,000", null, null)
+trans3 = ListItem("Office Lease", "11,000", null, null)
+transactions = ListBlock([trans1, trans2, trans3], "number")
+
+jan = SelectItem("Jan", "January")
+feb = SelectItem("Feb", "February")
+mar = SelectItem("Mar", "March")
+apr = SelectItem("Apr", "April")
+may = SelectItem("May", "May")
+jun = SelectItem("Jun", "June")
+jul = SelectItem("Jul", "July")
+aug = SelectItem("Aug", "August")
+sep = SelectItem("Sep", "September")
+oct = SelectItem("Oct", "October")
+nov = SelectItem("Nov", "November")
+dec = SelectItem("Dec", "December")
+monthItems = [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+monthSelector = Select("month", monthItems, "Choose month", null, "Jan", "medium")
+
+downloadBtn = Button("Download Statement", null, "secondary", "normal", "medium")
+actions = Buttons([downloadBtn])

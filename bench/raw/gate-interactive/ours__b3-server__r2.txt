@@ -1,0 +1,102 @@
+# Service Health Dashboard
+
+<Card title="Service Overview" subtitle="us-east-1 • Last updated 2 minutes ago">
+<Columns>
+<Stat label="Uptime this quarter" value="99.97%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Stat label="Error rate (5m)" value="0.23%" change="+0.08% from 1h ago" tone="warning" icon="alert-triangle" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 warning" tone="danger" icon="warning" />
+<Stat label="P99 latency" value="342ms" change="-18ms from 1h ago" tone="info" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Region Filter">
+<Select label="Select region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="us-east-1" />
+</Card>
+
+<Card title="Resource Utilization (24h)">
+<Chart type="line" x="Time" y="Usage %" title="CPU & Memory Usage">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 45 | 60 |
+| 08:00 | 62 | 71 |
+| 10:00 | 78 | 82 |
+| 12:00 | 85 | 88 |
+| 14:00 | 82 | 85 |
+| 16:00 | 79 | 83 |
+| 18:00 | 71 | 78 |
+| 20:00 | 58 | 68 |
+| 22:00 | 48 | 62 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+<Columns>
+<Details title="INC-2024-0847 • Critical • Payment API timeouts" open="true">
+**Started:** 2024-01-15 14:22 UTC  
+**Region:** us-east-1  
+**Impact:** 12% of checkout requests failing  
+**Owner:** @sarah-chen  
+**Runbook:** [Payment timeout investigation](https://runbooks.example.com/payment-timeout)
+
+<Button variant="danger" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View details</Button>
+</Details>
+
+<Details title="INC-2024-0845 • Warning • Elevated 5xx on auth service" open="false">
+**Started:** 2024-01-15 13:45 UTC  
+**Region:** us-east-1  
+**Impact:** 3% increase in login failures  
+**Owner:** @marcus-johnson  
+**Runbook:** [Auth service 5xx](https://runbooks.example.com/auth-5xx)
+
+<Button variant="warning" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View details</Button>
+</Details>
+
+<Details title="INC-2024-0842 • Warning • High latency on recommendation engine" open="false">
+**Started:** 2024-01-15 12:10 UTC  
+**Region:** eu-west-1  
+**Impact:** P99 > 2s for recommendations  
+**Owner:** @priya-sharma  
+**Runbook:** [Rec engine latency](https://runbooks.example.com/rec-latency)
+
+<Button variant="warning" size="small">Acknowledge</Button>
+<Button variant="secondary" size="small">View details</Button>
+</Details>
+</Columns>
+</Card>
+
+<Card title="Slowest Endpoints (P99 Latency)">
+| Endpoint | Method | P50 | P95 | P99 | Error Rate | Region |
+|---|---|---|---|---|---|---|
+| `/api/v1/checkout/process` | POST | 890ms | 2.1s | **3.8s** | 2.1% | us-east-1 |
+| `/api/v1/recommendations/personalized` | GET | 420ms | 1.8s | **3.2s** | 0.8% | eu-west-1 |
+| `/api/v1/auth/token/refresh` | POST | 180ms | 890ms | **2.1s** | 1.2% | us-east-1 |
+| `/api/v1/orders/history` | GET | 310ms | 1.2s | **1.9s** | 0.4% | us-west-2 |
+| `/api/v1/search/products` | GET | 245ms | 980ms | **1.7s** | 0.6% | ap-southeast-1 |
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error-threshold" type="number" placeholder="0.5" value="0.5" step="0.1" min="0.1" max="10" hint="Triggers critical alert when exceeded over 5m window" />
+<Input label="P99 latency threshold (ms)" name="latency-threshold" type="number" placeholder="1000" value="1000" step="50" min="100" max="10000" hint="Triggers warning alert when exceeded over 5m window" />
+<Input label="CPU threshold (%)" name="cpu-threshold" type="number" placeholder="85" value="85" step="1" min="50" max="100" hint="Triggers warning alert when sustained for 10m" />
+<Input label="Memory threshold (%)" name="memory-threshold" type="number" placeholder="90" value="90" step="1" min="50" max="100" hint="Triggers critical alert when sustained for 5m" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" icon="phone">Page on-call</Button>
+<Button variant="secondary" icon="git-commit">View deploy history</Button>
+<Button variant="secondary" icon="chart-line">Open Grafana</Button>
+<Button variant="tertiary" icon="message-circle">Post to #incidents</Button>
+</Columns>
+</Card>

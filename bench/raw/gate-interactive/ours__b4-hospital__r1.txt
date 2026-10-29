@@ -1,0 +1,249 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="Select operational day">
+<Columns>
+<Date label="Operational Date" name="ops-date" value="2025-01-15" />
+<Select label="View Mode" name="view-mode" options="Live | Historical | Forecast" value="Live" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="342 of 400 beds occupied">
+<Progress value="342" max="400" label="Overall Occupancy" tone="warning" />
+<Progress value="28" max="40" label="ICU (28/40)" tone="danger" />
+<Progress value="85" max="100" label="Med-Surg (85/100)" tone="info" />
+<Progress value="42" max="60" label="Telemetry (42/60)" tone="neutral" />
+<Progress value="187" max="200" label="General (187/200)" tone="success" />
+</Card>
+
+<Card title="Current ER Wait" subtitle="As of 14:32">
+<Stat label="Door-to-Provider" value="42 min" change="+8 min vs avg" tone="warning" icon="clock" />
+<Stat label="Door-to-Disposition" value="3.2 hrs" change="-0.4 hrs vs avg" tone="success" icon="chart-line" />
+<Stat label="Patients in Waiting" value="18" change="+3 vs 1hr ago" tone="danger" icon="users" />
+<Stat label="LWBS Rate" value="4.2%" change="+1.1%" tone="warning" icon="user-minus" />
+</Card>
+</Columns>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" x="Date" y="Admissions" title="Daily Admissions Trend">
+| Date | Admissions | Discharges | Net Change |
+|---|---|---|---|
+| Jan 1 | 42 | 38 | 4 |
+| Jan 2 | 38 | 41 | -3 |
+| Jan 3 | 45 | 39 | 6 |
+| Jan 4 | 52 | 44 | 8 |
+| Jan 5 | 48 | 46 | 2 |
+| Jan 6 | 41 | 43 | -2 |
+| Jan 7 | 39 | 37 | 2 |
+| Jan 8 | 44 | 40 | 4 |
+| Jan 9 | 47 | 42 | 5 |
+| Jan 10 | 51 | 48 | 3 |
+| Jan 11 | 43 | 45 | -2 |
+| Jan 12 | 40 | 38 | 2 |
+| Jan 13 | 46 | 41 | 5 |
+| Jan 14 | 49 | 44 | 5 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients" title="Current Census by Unit">
+| Department | Patients | Capacity | Occupancy |
+|---|---|---|---|
+| ICU | 28 | 40 | 70% |
+| CCU | 12 | 16 | 75% |
+| Med-Surg | 85 | 100 | 85% |
+| Telemetry | 42 | 60 | 70% |
+| Orthopedics | 24 | 30 | 80% |
+| Oncology | 18 | 25 | 72% |
+| Pediatrics | 15 | 20 | 75% |
+| L&D | 8 | 12 | 67% |
+| NICU | 10 | 14 | 71% |
+| Psych | 22 | 28 | 79% |
+| Rehab | 16 | 20 | 80% |
+| Observation | 12 | 15 | 80% |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current shift: 07:00–19:30">
+| Role | Scheduled | Present | Gap | Notes |
+|---|---|---|---|---|
+| RN — ICU | 12 | 11 | 1 | 1 call-out |
+| RN — Med-Surg | 20 | 19 | 1 | Float covering |
+| RN — ER | 14 | 14 | 0 | Full |
+| RN — Telemetry | 10 | 10 | 0 | Full |
+| Respiratory Therapy | 6 | 6 | 0 | Full |
+| CNA / PCT | 18 | 17 | 1 | 1 late |
+| Hospitalists | 5 | 5 | 0 | Full |
+| Residents | 8 | 8 | 0 | Full |
+| Pharmacists | 3 | 3 | 0 | Full |
+| Case Managers | 4 | 4 | 0 | Full |
+| Transport | 6 | 5 | 1 | 1 break |
+| Environmental Svcs | 8 | 8 | 0 | Full |
+</Card>
+</Columns>
+
+<Card title="Critical Patients — Active Alerts">
+<Columns>
+<Card title="MRN 847291 — ICU Bed 3" subtitle="Septic shock, lactate 5.8, on norepi 0.15">
+<Badge tone="danger">CODE SEPSIS</Badge>
+<Badge tone="warning">AKI Stage 2</Badge>
+<Badge tone="info">Central line day 4</Badge>
+</Card>
+<Card title="MRN 921044 — ER Bay 2" subtitle="STEMI, door-to-balloon 42 min, cath lab activated">
+<Badge tone="danger">STEMI ALERT</Badge>
+<Badge tone="info">Heparin infusion</Badge>
+</Card>
+<Card title="MRN 105832 — ICU Bed 7" subtitle="Post-arrest, targeted temp mgmt, EEG monitoring">
+<Badge tone="danger">POST-CA</Badge>
+<Badge tone="warning">Refractory VT</Badge>
+<Badge tone="info">ECMO eval pending</Badge>
+</Card>
+<Card title="MRN 774119 — Stepdown 14" subtitle="Massive PE, on heparin drip, PESI Class V">
+<Badge tone="danger">PE RESPONSE</Badge>
+<Badge tone="warning">RV strain on echo</Badge>
+<Badge tone="info">IR consult placed</Badge>
+</Card>
+<Card title="MRN 553018 — Med-Surg 312" subtitle="GI bleed, Hb 6.2, 2 units PRBC transfusing">
+<Badge tone="danger">MASSIVE TRANSFUSION</Badge>
+<Badge tone="warning">INR 2.1</Badge>
+<Badge tone="info">GI consult at bedside</Badge>
+</Card>
+<Card title="MRN 339201 — NICU Bed 4" subtitle="26wk preemie, NEC Stage II, on TPN/antibiotics">
+<Badge tone="danger">NEC ALERT</Badge>
+<Badge tone="warning">Pneumatosis on XR</Badge>
+<Badge tone="info">Surgery on standby</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Patients Ready for Discharge" subtitle="12 patients cleared, 4 pending transport, 2 awaiting scripts">
+<Columns>
+<Card title="Ready Now — Awaiting Transport (4)">
+| Patient | Unit | LOS | Destination | Barrier |
+|---|---|---|---|---|
+| MRN 442110 | Med-Surg 318 | 4d | Home | Ambulance ETA 35 min |
+| MRN 558901 | Telemetry 204 | 3d | Home | Ride pending |
+| MRN 667234 | Ortho 412 | 2d | SNF | Transport booked 15:00 |
+| MRN 771092 | Obs 102 | 1d | Home | Family en route |
+</Card>
+<Card title="Pending — Scripts / Orders (2)">
+| Patient | Unit | LOS | Destination | Barrier |
+|---|---|---|---|---|
+| MRN 883456 | Med-Surg 325 | 5d | Home | Discharge meds pending pharmacy |
+| MRN 990112 | Stepdown 18 | 6d | LTAC | Transfer orders awaiting sign |
+</Card>
+<Card title="Planned — Later Today (6)">
+| Patient | Unit | LOS | Destination | Target Time |
+|---|---|---|---|---|
+| MRN 112233 | Pediatrics 12 | 3d | Home | 14:00 |
+| MRN 223344 | Oncology 22 | 7d | Home | 15:30 |
+| MRN 334455 | Rehab 55 | 14d | Home | 16:00 |
+| MRN 445566 | Psych 8 | 5d | Group Home | 14:30 |
+| MRN 556677 | L&D 3 | 2d | Home | 15:00 |
+| MRN 667788 | CCU 6 | 4d | Stepdown | 13:30 |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Today's Operating Room Bookings" subtitle="12 ORs • 28 cases scheduled • 3 add-ons">
+<Tabs>
+<Tab title="Main ORs (8)">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| OR 1 | 07:30 | Lap Chole | Dr. Chen | Dr. Patel | Complete | 1h 12m |
+| OR 1 | 09:30 | R Hemicolectomy | Dr. Chen | Dr. Patel | In Progress | 3h 00m |
+| OR 1 | 13:30 | Ventral Hernia | Dr. Chen | Dr. Kim | Scheduled | 2h 30m |
+| OR 2 | 07:30 | THA | Dr. Ross | Dr. Lee | Complete | 2h 15m |
+| OR 2 | 10:30 | TKA | Dr. Ross | Dr. Lee | In Progress | 2h 30m |
+| OR 2 | 14:00 | ORIF Ankle | Dr. Ross | Dr. Kim | Scheduled | 2h 00m |
+| OR 3 | 07:30 | CABG x3 | Dr. Ahmed | Dr. Wong | In Progress | 5h 00m |
+| OR 4 | 07:30 | Whipple | Dr. Martinez | Dr. Singh | In Progress | 6h 30m |
+| OR 5 | 08:00 | Craniotomy | Dr. Kim | Dr. Brown | In Progress | 4h 00m |
+| OR 6 | 07:30 | LAR | Dr. Taylor | Dr. Davis | Complete | 3h 45m |
+| OR 6 | 12:00 | Add-on: Ex Lap | Dr. Taylor | Dr. Davis | Scheduled | 2h 00m |
+| OR 7 | 07:30 | ACDF x2 | Dr. Park | Dr. Wilson | Complete | 2h 30m |
+| OR 7 | 11:00 | Laminectomy | Dr. Park | Dr. Wilson | Scheduled | 2h 00m |
+| OR 8 | 07:30 | Thyroidectomy | Dr. Liu | Dr. Garcia | Complete | 1h 45m |
+| OR 8 | 10:00 | Parathyroid | Dr. Liu | Dr. Garcia | In Progress | 1h 30m |
+| OR 8 | 12:30 | Add-on: Trach | Dr. Liu | Dr. Garcia | Scheduled | 1h 00m |
+</Tab>
+<Tab title="Ambulatory (4)">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| OR 9 | 07:30 | Cataract x3 | Dr. Adams | Dr. Hall | Complete | 2h 00m |
+| OR 9 | 10:30 | Tonsillectomy | Dr. Adams | Dr. Hall | In Progress | 1h 00m |
+| OR 10 | 07:30 | Knee Scope x2 | Dr. Brooks | Dr. Young | Complete | 1h 30m |
+| OR 10 | 09:30 | Shoulder Scope | Dr. Brooks | Dr. Young | In Progress | 1h 30m |
+| OR 11 | 08:00 | Hernia x2 | Dr. Gray | Dr. King | Complete | 2h 00m |
+| OR 11 | 11:00 | Hydrocele | Dr. Gray | Dr. King | Scheduled | 0h 45m |
+| OR 12 | 07:30 | Ureteroscopy | Dr. White | Dr. Scott | Complete | 1h 15m |
+| OR 12 | 09:30 | TURP | Dr. White | Dr. Scott | In Progress | 1h 30m |
+| OR 12 | 12:00 | Add-on: Stent | Dr. White | Dr. Scott | Scheduled | 0h 45m |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Supplies Running Low" subtitle="Items below par level — auto-reorder triggered for critical">
+<Columns>
+<Card title="Critical — Below 20% Par">
+| Item | Current | Par | % Remaining | Days Left | Action |
+|---|---|---|---|---|---|
+| Norepinephrine 4mg/4ml | 12 | 100 | 12% | 1 | **STAT reorder placed** |
+| Vasopressin 20u/ml | 8 | 60 | 13% | 1 | **STAT reorder placed** |
+| Heparin 25000u/5ml | 15 | 80 | 19% | 2 | **STAT reorder placed** |
+| Propofol 1% 100ml | 24 | 150 | 16% | 2 | **STAT reorder placed** |
+| Rocuronium 100mg | 18 | 100 | 18% | 2 | **STAT reorder placed** |
+| Blood: O-Neg PRBC | 6 | 20 | 30% | 2 | **Blood bank alerted** |
+| Blood: Platelets | 12 | 40 | 30% | 1 | **Blood bank alerted** |
+</Card>
+<Card title="Low — Below 50% Par">
+| Item | Current | Par | % Remaining | Days Left | Action |
+|---|---|---|---|---|---|
+| Normal Saline 1L | 240 | 600 | 40% | 3 | Reorder submitted |
+| Lactated Ringers 1L | 180 | 500 | 36% | 3 | Reorder submitted |
+| D5W 500ml | 95 | 250 | 38% | 4 | Reorder submitted |
+| Central Line Kits | 22 | 60 | 37% | 4 | Reorder submitted |
+| Arterial Line Kits | 18 | 50 | 36% | 4 | Reorder submitted |
+| Chest Tube Trays | 12 | 30 | 40% | 5 | Reorder submitted |
+| Foley Catheters 16Fr | 85 | 200 | 43% | 5 | Reorder submitted |
+| Suction Canisters | 110 | 300 | 37% | 4 | Reorder submitted |
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Reporter Name" name="reporter" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="incident-type" options="Patient Safety | Medication Error | Fall | Equipment Failure | Security | Near Miss | Other" placeholder="Select type" required="true" />
+<Select label="Severity" name="severity" options="Level 1 — No Harm | Level 2 — Minor Harm | Level 3 — Moderate Harm | Level 4 — Major Harm | Level 5 — Death" placeholder="Select severity" required="true" />
+<Input label="Location" name="location" placeholder="Unit / Room / Area" required="true" />
+<Date label="Date & Time of Incident" name="incident-datetime" required="true" />
+<TextArea label="Description" name="description" placeholder="Describe what happened, who was involved, immediate actions taken..." rows="4" required="true" />
+<Checkboxes label="Notifications" name="notifications" options="Risk Management | Quality & Safety | Unit Manager | Medical Director | Compliance" value="Risk Management | Unit Manager" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient MRN" name="mrn" placeholder="Enter MRN" required="true" />
+<Input label="Patient Name" name="patient-name" placeholder="Auto-populates from MRN" />
+<Select label="Current Unit" name="from-unit" options="ICU | CCU | Med-Surg | Telemetry | Stepdown | ER | OR | PACU | Other" placeholder="Select current unit" required="true" />
+<Select label="Requested Unit" name="to-unit" options="ICU | CCU | Med-Surg | Telemetry | Stepdown | OR | PACU | Floor | SNF | LTAC | Other Facility" placeholder="Select destination" required="true" />
+<Select label="Urgency" name="urgency" options="Emergent — <30 min | Urgent — <2 hrs | Semi-Urgent — <6 hrs | Routine — Next Available" placeholder="Select urgency" required="true" />
+<Select label="Reason for Transfer" name="reason" options="Higher Level of Care | Lower Level of Care | Specialty Service | Bed Management | Patient/Family Request | Procedure | Isolation Needs" placeholder="Select reason" required="true" />
+<TextArea label="Clinical Summary / Rationale" name="rationale" placeholder="Include key vitals, lines, drips, isolation status, code status..." rows="4" required="true" />
+<Input label="Requesting Provider" name="requesting-provider" placeholder="Your name / pager" required="true" />
+<Input label="Accepting Provider (if known)" name="accepting-provider" placeholder="Name / pager" />
+<Button>Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Callout tone="info" title="Command Center Status">
+<strong>Last refreshed:</strong> 14:32:15 | <strong>Next auto-refresh:</strong> 14:37:15 | <strong>Active alerts:</strong> 6 critical, 12 warnings | <strong>Bed huddle:</strong> Next at 15:00 | <strong>Capacity call:</strong> 16:00 with regional partners
+</Callout>

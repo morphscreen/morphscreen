@@ -1,0 +1,71 @@
+# Personal Budget Check
+
+<Columns>
+<Stat label="Budget" value="$3,000" note="Monthly limit" icon="wallet" />
+<Stat label="Spent" value="$2,340" note="78% of budget" tone="info" icon="receipt" />
+<Stat label="Remaining" value="$660" note="22 days left" tone="success" icon="piggy-bank" />
+</Columns>
+
+<Card title="Spending vs. Budget">
+<Progress value="2340" max="3000" label="Spent $2,340 of $3,000" tone="warning" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1100 |
+| Food | 480 |
+| Transport | 260 |
+| Utilities | 220 |
+| Entertainment | 150 |
+| Other | 130 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Columns>
+<Stat label="Rent — Dec 1" value="$1,100" note="Housing" tone="danger" icon="house" />
+</Columns>
+<Callout tone="danger" title="Top spender">Housing makes up 47% of your spending this month. Consider reviewing your lease or utilities.</Callout>
+</Card>
+
+<Card title="Monthly Breakdown">
+<Chart type="bar" title="Spending by month" x="Month" y="USD">
+| Month | Spent |
+|---|---|
+| Sep | 2810 |
+| Oct | 2650 |
+| Nov | 2740 |
+| Dec | 2340 |
+</Chart>
+</Card>
+
+<Card title="View a Different Month">
+<Form name="month-selector">
+<Select label="Pick a month" options="September 2025 | October 2025 | November 2025 | December 2025" placeholder="December 2025" />
+<Button>View month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" placeholder="e.g. Groceries" />
+<Input label="Amount" type="number" step="0.01" min="0" placeholder="0.00" />
+<Select label="Category" options="Housing | Food | Transport | Utilities | Entertainment | Other" placeholder="Choose a category" />
+<Date label="Date" value="2025-12-23" />
+<Button variant="primary">Add expense</Button>
+</Form>
+</Card>
+
+<Details title="Quick tips" open="false">
+- You've spent 78% of your budget with 22 days left — pace your remaining $660.
+- Food ($480) is your second-largest category. Try meal prepping to cut it down.
+- Your rent is fixed, but utilities could drop: compare providers.
+</Details>
+
+<FollowUps>
+- Show me my spending trend over the last 6 months
+- Compare this month to last month
+- Suggest a budget cut to save more
+</FollowUps>

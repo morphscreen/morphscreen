@@ -1,0 +1,41 @@
+<Card title="Orders placed today">
+<Stat label="Orders placed today" value="124" change="+" note="" tone="info" />
+</Card>
+
+<Card title="Revenue today">
+<Stat label="Revenue today" value="$15,200" change="+" note="" tone="success" />
+</Card>
+
+<Card title="Average order value">
+<Stat label="Avg order value" value="$123" change="+" note="" tone="info" />
+</Card>
+
+<Card title="Refund rate this month">
+<Stat label="Refunds this month" value="320" change="-5%" note="" tone="warning" />
+</Card>
+
+<Card title="Order volume (past 4 weeks)">
+<Chart type="column" x="Week" y="Orders" title="Weekly order volume">
+| Week | Orders |
+|---|---|
+| W1 | 80 |
+| W2 | 110 |
+| W3 | 95 |
+| W4 | 130 |
+</Chart>
+</Card>
+
+<Card title="Recent orders">
+<Select label="Filter by status" name="status" options="All | Pending | Shipped | Cancelled | Fulfilled" />
+<Input label="Search customer" name="search" type="search" placeholder="Customer name" />
+<Steps>
+<Step title="Order #1001" status="done">Customer: Jane Doe | Total: $89.50 | Status: Shipped</Step>
+<Step title="Order #1002" status="current">Customer: John Smith | Total: $45.00 | Status: Pending</Step>
+<Step title="Order #1003" status="todo">Customer: Alice Brown | Total: $120.75 | Status: Cancelled</Step>
+</Steps>
+</Card>
+
+<Form name="fulfill-order">
+<Select label="Order ID" name="order_id" options="1001 | 1002 | 1003" />
+<Button variant="primary" type="submit">Mark fulfilled</Button>
+</Form>

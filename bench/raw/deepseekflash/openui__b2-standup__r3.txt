@@ -1,0 +1,32 @@
+root = Card([header, dateTag, missingCallout, updatesSection, blockedSection, postForm])
+
+header = CardHeader("Async Standup", "Remote team daily check-in")
+
+dateTag = Badge("Wednesday, July 9, 2025", "outline")
+
+missingCallout = Callout("warning", "3 updates still missing", "Priya, Marco, and Lena haven't posted yet today.")
+
+updatesSection = Card([updatesHeading, updatesList], "sunk")
+updatesHeading = Heading("Today's updates", "h3")
+updatesList = ListBlock([updateAlex, updateSam, updateJordan, updateNina], "image")
+updateAlex = ListItem("Alex Chen", "Shipped the auth refactor. PR ready for review. No blockers.", [alexImg], "View PR")
+updateSam = ListItem("Sam Patel", "Finished the dashboard charts. Waiting on API keys from infra.", [samImg], "View charts")
+updateJordan = ListItem("Jordan Lee", "Docs updated for the new onboarding flow. Need feedback on the quickstart.", [jordanImg], "View docs")
+updateNina = ListItem("Nina Rossi", "Ran the weekly data sync. All pipelines green.", [ninaImg], "View report")
+alexImg = "https://picsum.photos/seed/alex/80/80"
+samImg = "https://picsum.photos/seed/sam/80/80"
+jordanImg = "https://picsum.photos/seed/jordan/80/80"
+ninaImg = "https://picsum.photos/seed/nina/80/80"
+
+blockedSection = Card([blockedHeading, blockedCallout], "sunk")
+blockedHeading = Heading("Blocked", "h3")
+blockedCallout = TextCallout("danger", "Sam Patel", "Waiting on API keys from the infrastructure team to finish the dashboard charts.")
+
+postForm = Form("standup-update", formButtons, [statusField, blockerField])
+statusField = FormControl("What did you work on yesterday?", statusInput, "Share today's status with the team")
+statusInput = TextArea("status", "e.g. Shipped the login flow, wrote tests...", 3)
+blockerField = FormControl("Anything blocking you?", blockerInput, "Leave blank if you're all clear")
+blockerInput = Input("blocker", "e.g. Waiting on credentials from DevOps")
+formButtons = Buttons([postBtn, cancelBtn])
+postBtn = Button("Post update", null, "primary")
+cancelBtn = Button("Cancel", null, "tertiary")

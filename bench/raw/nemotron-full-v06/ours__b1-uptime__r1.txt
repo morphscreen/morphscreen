@@ -1,0 +1,19 @@
+<Card title="Platform Status" subtitle="API uptime and incidents for this month">
+<Columns>
+<Stat label="API Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Stat label="Incidents this month" value="1" change="0 critical" tone="info" />
+</Columns>
+
+<Callout tone="info" title="Most recent incident">
+<strong>Partial API degradation</strong> — Elevated latency on `/v1/transactions` endpoint from <strong>2025-01-18 14:22 UTC</strong> to <strong>2025-01-18 15:05 UTC</strong> (43 minutes). Root cause: database connection pool exhaustion during a scheduled migration. Resolved by rolling back the migration and increasing pool limits. No data loss.
+</Callout>
+
+<Details title="View incident timeline" open="false">
+<Steps>
+<Step title="Detected" subtitle="2025-01-18 14:22 UTC" status="done">Automated alert triggered for p99 latency > 2s</Step>
+<Step title="Investigating" subtitle="2025-01-18 14:25 UTC" status="done">On-call identified connection pool saturation</Step>
+<Step title="Mitigating" subtitle="2025-01-18 14:48 UTC" status="done">Rolled back migration, increased pool size</Step>
+<Step title="Resolved" subtitle="2025-01-18 15:05 UTC" status="done">Latency returned to baseline, monitoring confirmed stable</Step>
+</Steps>
+</Details>
+</Card>

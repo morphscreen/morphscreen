@@ -1,0 +1,88 @@
+# Service Health Overview
+
+<Callout tone="warning" title="Active incident">Payment API is degraded — acknowledged by 2 engineers, investigating now.</Callout>
+
+<Columns>
+<Stat label="Uptime (Q3)" value="99.94%" change="+0.02% vs Q2" tone="success" icon="trend-up" />
+<Stat label="Error rate (now)" value="0.42%" change="+0.31% vs 24h avg" tone="danger" icon="warning-circle" />
+<Stat label="Open incidents" value="3" change="1 critical, 2 major" tone="danger" icon="fire" />
+</Columns>
+
+<Card title="CPU & memory — last 24 hours">
+<Chart type="area" x="Time" y="Usage %">
+| Time | CPU | Memory |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 02:00 | 38 | 58 |
+| 04:00 | 35 | 57 |
+| 06:00 | 44 | 62 |
+| 08:00 | 61 | 71 |
+| 10:00 | 72 | 78 |
+| 12:00 | 68 | 76 |
+| 14:00 | 74 | 80 |
+| 16:00 | 69 | 77 |
+| 18:00 | 58 | 73 |
+| 20:00 | 52 | 69 |
+| 22:00 | 47 | 65 |
+</Chart>
+</Card>
+
+<Card title="Region filter">
+<Radio label="Narrow view to" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-2" name="region" value="All regions" />
+</Card>
+
+<Card title="Open incidents" subtitle="Sorted by severity">
+<Tabs>
+<Tab title="All (3)">
+| Severity | Incident | Service | Region | Started | Status |
+|---|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Payment API timeouts | payments | us-east-1 | 14:32 UTC | Investigating |
+| <Badge tone="warning">Major</Badge> | Elevated 5xx on checkout | checkout | eu-west-1 | 16:05 UTC | Acknowledged |
+| <Badge tone="warning">Major</Badge> | Search latency spike | search | us-west-2 | 17:48 UTC | Investigating |
+</Tab>
+<Tab title="Critical (1)">
+| Severity | Incident | Service | Region | Started | Status |
+|---|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Payment API timeouts | payments | us-east-1 | 14:32 UTC | Investigating |
+</Tab>
+<Tab title="Major (2)">
+| Severity | Incident | Service | Region | Started | Status |
+|---|---|---|---|---|---|
+| <Badge tone="warning">Major</Badge> | Elevated 5xx on checkout | checkout | eu-west-1 | 16:05 UTC | Acknowledged |
+| <Badge tone="warning">Major</Badge> | Search latency spike | search | us-west-2 | 17:48 UTC | Investigating |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Acknowledge incident">
+<Form name="ack-incident">
+<Select label="Incident" options="Payment API timeouts (Critical) | Elevated 5xx on checkout (Major) | Search latency spike (Major)" name="incident" />
+<TextArea label="Note (optional)" name="note" rows="2" placeholder="e.g. Taking over from Sarah, will check logs" />
+<Button>Acknowledge incident</Button>
+</Form>
+</Card>
+
+<Card title="Slowest endpoints — last 5 minutes">
+<Chart type="bar" x="Endpoint" y="Latency (ms)">
+| Endpoint | Latency |
+|---|---|
+| POST /v1/payments/charge | 2840 |
+| GET /v1/orders/search | 1930 |
+| POST /v1/checkout/complete | 1210 |
+| GET /v1/inventory/batch | 890 |
+| GET /v1/users/me | 640 |
+</Chart>
+</Card>
+
+<Card title="Alert threshold">
+<Slider label="Error rate threshold" min="0.5" max="5" step="0.1" value="1.5" unit="%" name="error-threshold" />
+<Callout tone="neutral" title="Current setting">You'll be paged when the 5-minute error rate exceeds 1.5% for at least 2 consecutive minutes.</Callout>
+<Button variant="secondary">Save threshold</Button>
+</Card>
+
+<FollowUps>
+- Show me the timeline for the Payment API incident
+- Compare CPU and memory across regions
+- What changed in the last deploy?
+- Who is on call right now?
+</FollowUps>

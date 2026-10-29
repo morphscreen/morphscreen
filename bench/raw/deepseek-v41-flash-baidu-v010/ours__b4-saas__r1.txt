@@ -1,0 +1,125 @@
+# Admin overview
+
+<Callout tone="info" title="Reporting period: Last 30 days">
+All figures below reflect the selected period. Change it in the Reporting period card at the bottom.
+</Callout>
+
+<Columns>
+<Stat label="Monthly recurring revenue" value="$412,800" change="+6.2% MoM" tone="success" icon="currency-dollar" />
+<Stat label="Annual recurring revenue" value="$4.95M" change="+4.8% YoY" tone="success" icon="chart-line" />
+<Stat label="Churn this month" value="2.1%" change="-0.4 pts MoM" tone="success" icon="trend-down" />
+<Stat label="Current NPS" value="48" change="+5 vs last quarter" tone="info" icon="smiley" />
+</Columns>
+
+<Card title="New signups" subtitle="Past 90 days">
+<Chart type="bar" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 142 |
+| W2 | 168 |
+| W3 | 151 |
+| W4 | 189 |
+| W5 | 204 |
+| W6 | 197 |
+| W7 | 231 |
+| W8 | 218 |
+| W9 | 246 |
+| W10 | 262 |
+| W11 | 249 |
+| W12 | 288 |
+</Chart>
+</Card>
+
+<Card title="Customers by plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 1840 |
+| Growth | 612 |
+| Business | 208 |
+| Enterprise | 47 |
+</Chart>
+</Card>
+
+<Card title="Top 10 customers" subtitle="By spend this period">
+| Customer | Plan | Seats | Spend |
+|---|---|---|---|
+| Northwind Traders | Enterprise | 420 | $38,400 |
+| Acme Corp | Enterprise | 310 | $29,100 |
+| Globex Industries | Enterprise | 265 | $24,800 |
+| Initech | Business | 190 | $18,200 |
+| Umbrella Group | Business | 175 | $16,900 |
+| Soylent Labs | Business | 160 | $15,400 |
+| Hooli | Business | 148 | $14,100 |
+| Vandelay Imports | Growth | 120 | $9,600 |
+| Stark Media | Growth | 98 | $8,200 |
+| Wayne Enterprises | Growth | 84 | $7,100 |
+</Card>
+
+<Card title="Accounts at risk" subtitle="Needs attention this week">
+| Account | MRR | Reason |
+|---|---|---|
+| Initech | $18,200 | Usage down 41% for 3 weeks |
+| Umbrella Group | $16,900 | Renewal in 12 days, no champion |
+| Vandelay Imports | $9,600 | 4 failed payments |
+| Stark Media | $8,200 | Support tickets up 3x |
+| Wayne Enterprises | $7,100 | Admin left, no replacement |
+</Card>
+
+<Card title="Failed payments" subtitle="5 accounts, $11,240 at risk">
+| Account | Amount | Attempts | Action |
+|---|---|---|---|
+| Vandelay Imports | $2,400 | 4 | <Button variant="primary" size="small" ask="Retry payment for Vandelay Imports">Retry</Button> |
+| Stark Media | $2,050 | 3 | <Button variant="primary" size="small" ask="Retry payment for Stark Media">Retry</Button> |
+| Hooli | $2,600 | 2 | <Button variant="primary" size="small" ask="Retry payment for Hooli">Retry</Button> |
+| Globex Industries | $2,700 | 2 | <Button variant="primary" size="small" ask="Retry payment for Globex Industries">Retry</Button> |
+| Acme Corp | $1,490 | 1 | <Button variant="primary" size="small" ask="Retry payment for Acme Corp">Retry</Button> |
+</Card>
+
+<Card title="Feature adoption" subtitle="Three newest features, last 30 days">
+<Chart type="horizontal" x="Feature" y="% of active accounts">
+| Feature | Adoption |
+|---|---|
+| Workflow automations | 34 |
+| Audit log export | 22 |
+| Custom roles | 17 |
+</Chart>
+<Progress value="34" max="100" label="Workflow automations" tone="success" />
+<Progress value="22" max="100" label="Audit log export" tone="info" />
+<Progress value="17" max="100" label="Custom roles" tone="warning" />
+</Card>
+
+<Card title="Seat utilization" subtitle="Company-wide, all plans">
+<Stat label="Seats purchased" value="3,412" icon="users" />
+<Stat label="Seats active" value="2,786" change="81.7% utilized" tone="info" icon="user-check" />
+<Progress value="2786" max="3412" label="Seat utilization" tone="info" />
+<Callout tone="warning" title="Over-provisioned">
+Enterprise accounts are at 68% utilization — 412 unused seats across the top 10.
+</Callout>
+</Card>
+
+<Card title="Reporting period">
+<Form name="reporting-period">
+<Select label="Period" name="period" value="Last 30 days" options="Last 7 days | Last 30 days | Last 90 days | This quarter | This year" />
+<Date label="Custom start" name="start" hint="Only used when Period is set to Custom" />
+<Button>Apply period</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Invite an admin" subtitle="They'll get an email with a setup link">
+<Form name="invite-admin">
+<Input label="Full name" name="name" placeholder="Jane Smith" required="true" />
+<Input label="Work email" name="email" type="email" placeholder="jane@company.com" required="true" hint="Must be on a company domain" />
+<Select label="Role" name="role" options="Admin | Billing admin | Read-only" />
+<Checkboxes label="Permissions" name="perms" options="Manage billing | Manage users | View reports | Manage integrations" value="Manage billing | View reports" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which accounts are up for renewal in the next 30 days?
+- Show me the churn breakdown by plan
+- How does NPS compare to the last four quarters?
+- Export the top 10 customers as CSV
+</FollowUps>

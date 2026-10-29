@@ -1,0 +1,112 @@
+<Card title="Bed Occupancy">
+<Chart type="area" title="Bed Occupancy" x="Day" y="Occupancy %">
+| Day | Occupancy % |
+|---|---|
+| Mon | 85 |
+| Tue | 88 |
+| Wed | 90 |
+| Thu | 92 |
+| Fri | 95 |
+| Sat | 94 |
+| Sun | 91 |
+</Chart>
+</Card>
+
+<Card title="Current ER Wait">
+<Stat label="Current ER Wait" value="15 min" change="+" tone="info"/>
+</Card>
+
+<Card title="Admissions (Last 14 Days)">
+<Chart type="line" title="Admissions" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Day 1 | 12 |
+| Day 2 | 9 |
+| Day 3 | 15 |
+| Day 4 | 11 |
+| Day 5 | 14 |
+| Day 6 | 13 |
+| Day 7 | 16 |
+| Day 8 | 10 |
+| Day 9 | 12 |
+| Day 10 | 15 |
+| Day 11 | 13 |
+| Day 12 | 14 |
+| Day 13 | 11 |
+| Day 14 | 16 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="pie" title="Patients by Department" x="Department" y="Count">
+| Department | Count |
+|---|---|
+| Cardiology | 45 |
+| Orthopedics | 30 |
+| Neurology | 25 |
+| Pediatrics | 20 |
+| Emergency | 35 |
+| Oncology | 15 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+<Steps>
+<Step title="Dr. Alice Smith" status="current">Physician</Step>
+<Step title="Nurse Bob Jones" status="current">Nurse</Step>
+<Step title="Tech Carla Reed" status="current">Technician</Step>
+<Step title="Respiratory Therapist Dan Kim" status="current">Respiratory Therapist</Step>
+<Step title="Pharmacist Eva Lopez" status="current">Pharmacist</Step>
+</Steps>
+</Card>
+
+<Card title="Critical Patients">
+<Callout tone="warning" title="Critical Patients Alert">
+<Stat label="Critical Patients" value="3" change="+" tone="danger"/>
+</Callout>
+</Card>
+
+<Card title="Ready for Discharge">
+<Stat label="Patients Ready" value="7" change="+" tone="success"/>
+</Card>
+
+<Card title="Operating Room Bookings">
+<Chart type="bar" title="OR Bookings" x="Surgery" y="Duration (min)">
+| Surgery | Duration |
+|---|---|
+| CABG | 180 |
+| Knee Replacement | 150 |
+| Appendectomy | 45 |
+| Coronary Angioplasty | 60 |
+| Hip Replacement | 170 |
+</Chart>
+</Card>
+
+<Card title="Supplies Status">
+<Stat label="Supplies Low" value="2" change="+" tone="warning"/>
+<Badge tone="warning">Low Stock</Badge>
+</Card>
+
+<Card title="File Incident">
+<Form name="incident-report">
+<Input label="Incident Description" placeholder="Brief description of the incident" required=true />
+<Select label="Severity" options="Low | Medium | High | Critical" placeholder="Select severity" required=true />
+<Input label="Location" placeholder="e.g., Ward 3" required=true />
+<Button variant="primary">Submit</Button>
+</Form>
+</Card>
+
+<Card title="View Another Day">
+<Date label="Select Date" placeholder="Choose a date" value="2025-01-01" hint="MM/DD/YYYY" required=true />
+<Button variant="secondary">View</Button>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" placeholder="Enter patient name" required=true />
+<Select label="Destination Department" options="ICU | General Ward | Rehab | Other" placeholder="Select department" required=true />
+<TextArea label="Reason" placeholder="Reason for transfer" rows="2" required=true />
+<Button variant="primary">Request Transfer</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

@@ -1,0 +1,285 @@
+# Emergency Response Coordination Center
+
+<Select label="Focus Zone" name="focus-zone" placeholder="All Zones" options="All Zones | Zone Alpha (Downtown) | Zone Bravo (Riverside) | Zone Charlie (Industrial) | Zone Delta (Residential North) | Zone Echo (Coastal)" />
+
+<Columns>
+<Card title="Overall Severity Summary">
+<Columns>
+<Stat label="Critical Incidents" value="3" change="+1 vs 1hr ago" tone="danger" />
+<Stat label="High Severity" value="7" change="+2" tone="warning" />
+<Stat label="Medium Severity" value="12" change="-1" tone="info" />
+<Stat label="Low Severity" value="8" change="+3" tone="success" />
+</Columns>
+</Card>
+
+<Card title="People Rescued & Casualties">
+<Columns>
+<Stat label="Rescued" value="1,247" change="+89 last 2hrs" tone="success" />
+<Stat label="Injured" value="312" change="+23" tone="warning" />
+<Stat label="Critical Condition" value="47" change="+5" tone="danger" />
+<Stat label="Fatalities" value="18" change="+2" tone="danger" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Active Incidents by Zone">
+<Chart type="bar" x="Zone" y="Incidents" title="Incidents by Zone & Severity">
+| Zone | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| Alpha | 1 | 3 | 4 | 2 |
+| Bravo | 1 | 2 | 3 | 3 |
+| Charlie | 0 | 1 | 2 | 1 |
+| Delta | 1 | 1 | 2 | 1 |
+| Echo | 0 | 0 | 1 | 1 |
+</Chart>
+
+<Details title="Incident Details">
+| Zone | Incident ID | Type | Severity | Status | Since |
+|---|---|---|---|---|---|
+| Alpha | INC-047 | Building Collapse | Critical | Active | 02:15 |
+| Alpha | INC-052 | Gas Leak | High | Contained | 03:40 |
+| Alpha | INC-058 | Flooding | High | Active | 04:10 |
+| Alpha | INC-061 | Fire | Medium | Active | 05:20 |
+| Bravo | INC-049 | Bridge Failure | Critical | Active | 02:30 |
+| Bravo | INC-054 | Landslide | High | Active | 03:55 |
+| Charlie | INC-056 | Chemical Spill | High | Contained | 04:05 |
+| Delta | INC-045 | Building Fire | Critical | Active | 01:50 |
+| Delta | INC-063 | Power Station | High | Active | 05:45 |
+| Echo | INC-060 | Coastal Flood | Medium | Active | 05:10 |
+</Details>
+</Card>
+
+<Card title="Resources Available">
+<Columns>
+<Stat label="Fire Engines" value="24 / 32" change="8 deployed" tone="warning" />
+<Stat label="Ambulances" value="18 / 28" change="10 deployed" tone="warning" />
+<Stat label="Rescue Boats" value="12 / 15" change="3 deployed" tone="info" />
+<Stat label="Helicopters" value="4 / 6" change="2 deployed" tone="info" />
+<Stat label="Personnel" value="347 / 520" change="173 deployed" tone="warning" />
+<Stat label="Medical Staff" value="89 / 140" change="51 deployed" tone="warning" />
+</Columns>
+
+<Details title="Supplies Inventory">
+| Item | Available | Reserved | Unit | Status |
+|---|---|---|---|---|
+| Water (liters) | 45,000 | 12,000 | L | <Badge tone="success">Adequate</Badge> |
+| MREs | 18,500 | 5,000 | units | <Badge tone="success">Adequate</Badge> |
+| Medical Kits | 1,200 | 400 | kits | <Badge tone="warning">Low</Badge> |
+| Blankets | 8,500 | 2,000 | units | <Badge tone="success">Adequate</Badge> |
+| Generators | 45 | 18 | units | <Badge tone="info">Moderate</Badge> |
+| Fuel (diesel, L) | 28,000 | 8,000 | L | <Badge tone="warning">Low</Badge> |
+| Sandbags | 12,000 | 5,000 | units | <Badge tone="success">Adequate</Badge> |
+| Pumps | 32 | 14 | units | <Badge tone="info">Moderate</Badge> |
+</Details>
+</Card>
+
+<Card title="Shelters - Capacity & Occupancy">
+| Shelter | Zone | Capacity | Occupied | Available | Status |
+|---|---|---|---|---|---|
+| Central Convention Center | Alpha | 2,500 | 1,847 | 653 | <Badge tone="warning">74% Full</Badge> |
+| Riverside High School | Bravo | 800 | 612 | 188 | <Badge tone="warning">77% Full</Badge> |
+| Industrial Warehouse 4 | Charlie | 1,200 | 423 | 777 | <Badge tone="info">35% Full</Badge> |
+| North Community Center | Delta | 1,500 | 1,102 | 398 | <Badge tone="warning">73% Full</Badge> |
+| Coastal Emergency Shelter | Echo | 600 | 289 | 311 | <Badge tone="info">48% Full</Badge> |
+| Mobile Shelter Unit 1 | Alpha | 300 | 156 | 144 | <Badge tone="info">52% Full</Badge> |
+| Mobile Shelter Unit 2 | Bravo | 300 | 201 | 99 | <Badge tone="warning">67% Full</Badge> |
+| University Gymnasium | Delta | 1,800 | 987 | 813 | <Badge tone="info">55% Full</Badge> |
+| **TOTAL** | | **9,000** | **5,617** | **3,383** | **62% Full** |
+</Card>
+
+<Card title="Evacuation Routes Status">
+| Route | Zone | Status | Capacity/hr | Current Flow | Est. Clear Time | Notes |
+|---|---|---|---|---|---|---|
+| Highway 101 North | Alpha | <Badge tone="success">Open</Badge> | 2,400 | 1,850 | 2.5 hrs | Heavy traffic |
+| Highway 101 South | Alpha | <Badge tone="danger">Closed</Badge> | 0 | 0 | N/A | Bridge collapse at MP 47 |
+| State Route 33 | Bravo | <Badge tone="warning">Partial</Badge> | 1,200 | 980 | 4 hrs | One lane blocked by debris |
+| County Road 12 | Bravo | <Badge tone="success">Open</Badge> | 800 | 420 | 3 hrs | Clear |
+| Industrial Blvd | Charlie | <Badge tone="danger">Closed</Badge> | 0 | 0 | N/A | Chemical spill containment |
+| North Expressway | Delta | <Badge tone="success">Open</Badge> | 3,000 | 2,100 | 2 hrs | Contraflow active |
+| Coastal Highway 1 | Echo | <Badge tone="warning">Partial</Badge> | 600 | 380 | 5 hrs | Flooding at low sections |
+| Old Town Road | Delta | <Badge tone="success">Open</Badge> | 500 | 180 | 1.5 hrs | Local traffic only |
+</Card>
+
+<Card title="Weather Forecast - Next 48 Hours">
+<Chart type="line" x="Time" y="Value" title="Temperature & Precipitation">
+| Time | Temp (°F) | Precip (in) | Wind (mph) | Conditions |
+|---|---|---|---|---|
+| Now | 68 | 0.0 | 12 | Overcast |
+| +3hr | 65 | 0.1 | 15 | Light Rain |
+| +6hr | 62 | 0.3 | 18 | Moderate Rain |
+| +9hr | 59 | 0.5 | 22 | Heavy Rain |
+| +12hr | 57 | 0.8 | 25 | Heavy Rain / Wind |
+| +15hr | 56 | 0.6 | 28 | Heavy Rain / Wind |
+| +18hr | 55 | 0.4 | 30 | Moderate Rain / High Wind |
+| +24hr | 54 | 0.2 | 25 | Light Rain / Windy |
+| +30hr | 56 | 0.1 | 20 | Drizzle |
+| +36hr | 58 | 0.0 | 15 | Cloudy |
+| +42hr | 61 | 0.0 | 12 | Partly Cloudy |
+| +48hr | 64 | 0.0 | 10 | Mostly Sunny |
+</Chart>
+
+<Callout tone="warning" title="Weather Alert">Flash Flood Watch in effect until 18:00 tomorrow. Sustained winds 25-30 mph with gusts to 40 mph expected overnight. River levels rising 2-3 ft per hour.</Callout>
+</Card>
+
+<Columns>
+<Card title="Volunteers On Duty">
+| Name | Role | Assignment | Shift | Status |
+|---|---|---|---|---|
+| Sarah Chen | Medical | Central Convention Center | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| Marcus Johnson | Logistics | Riverside High School | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| Priya Patel | Communications | EOC Radio Room | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| James Wilson | Search & Rescue | Zone Alpha - Sector 3 | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| Maria Gonzalez | Shelter Ops | North Community Center | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| David Kim | Transport | Evacuation Route North Expressway | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| Lisa Thompson | Supply Chain | Warehouse Distribution | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| Robert Davis | Engineering | Bridge Assessment Team | 06:00-18:00 | <Badge tone="success">Active</Badge> |
+| Amanda Foster | Medical | Coastal Emergency Shelter | 18:00-06:00 | <Badge tone="info">Standby</Badge> |
+| Kevin Brown | Logistics | University Gymnasium | 18:00-06:00 | <Badge tone="info">Standby</Badge> |
+</Card>
+
+<Card title="Donations Received">
+<Columns>
+<Stat label="Monetary" value="$2.4M" change="+$340K today" tone="success" />
+<Stat label="Water" value="185,000 L" change="+42,000 L" tone="success" />
+<Stat label="Food (MREs)" value="92,000" change="+18,000" tone="success" />
+<Stat label="Medical Supplies" value="3,200 kits" change="+800" tone="success" />
+<Stat label="Clothing/Blankets" value="15,000 units" change="+3,500" tone="success" />
+<Stat label="Volunteer Hours" value="4,800 hrs" change="+1,200 hrs" tone="info" />
+</Columns>
+
+<Details title="Recent Large Donations">
+| Donor | Type | Amount | Received | Status |
+|---|---|---|---|---|
+| Red Cross Regional | Monetary | $500,000 | 04:30 | <Badge tone="success">Confirmed</Badge> |
+| Metro Food Bank | Food | 25,000 MREs | 05:15 | <Badge tone="success">Received</Badge> |
+| PharmaCorp | Medical | 1,500 kits | 03:45 | <Badge tone="success">Received</Badge> |
+| City Transit Authority | Transport | 12 buses | 02:00 | <Badge tone="success">Deployed</Badge> |
+| Anonymous | Monetary | $750,000 | 01:30 | <Badge tone="success">Confirmed</Badge> |
+| BuildRight Construction | Equipment | 8 excavators | 04:00 | <Badge tone="success">Deployed</Badge> |
+</Details>
+</Card>
+</Columns>
+
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Requested By | Time | Status |
+|---|---|---|---|---|---|---|
+| REQ-847 | Alpha | Medical evacuation (12 critical) | Critical | Central Convention Center | 05:42 | <Badge tone="danger">Pending</Badge> |
+| REQ-852 | Bravo | Water purification units (4) | High | Riverside High School | 05:35 | <Badge tone="warning">Assigned</Badge> |
+| REQ-849 | Alpha | Structural engineers (3) | High | Incident Command Alpha | 05:28 | <Badge tone="warning">Assigned</Badge> |
+| REQ-855 | Delta | Additional shelter capacity (500) | High | North Community Center | 05:18 | <Badge tone="warning">Sourcing</Badge> |
+| REQ-843 | Charlie | Hazmat containment team | Critical | Incident Command Charlie | 04:55 | <Badge tone="danger">Pending</Badge> |
+| REQ-858 | Echo | Evacuation boats (6) | High | Coastal Shelter | 05:50 | <Badge tone="warning">Assigned</Badge> |
+| REQ-841 | Alpha | Backup generators (3) | Medium | Hospital Alpha | 04:30 | <Badge tone="info">Sourcing</Badge> |
+| REQ-860 | Bravo | Mental health counselors (4) | Medium | Riverside High School | 05:55 | <Badge tone="info">Pending</Badge> |
+</Card>
+
+<Card title="Communication Channels Status">
+| Channel | Type | Status | Coverage | Last Test | Notes |
+|---|---|---|---|---|---|
+| EOC Primary Radio | VHF/UHF | <Badge tone="success">Operational</Badge> | City-wide | 05:55 | Clear |
+| EOC Secondary Radio | HF | <Badge tone="success">Operational</Badge> | Regional | 05:50 | Clear |
+| Cellular Network | 4G/5G | <Badge tone="warning">Degraded</Badge> | 65% | 05:45 | Tower damage Zone Alpha |
+| Satellite Phones | Iridium | <Badge tone="success">Operational</Badge> | Global | 05:58 | 12 units active |
+| Mesh Network | LoRaWAN | <Badge tone="success">Operational</Badge> | Local zones | 05:52 | 47 nodes online |
+| Emergency Alert System | IPAWS | <Badge tone="success">Operational</Badge> | County-wide | 05:40 | Tested 05:40 |
+| Amateur Radio (ARES) | HF/VHF | <Badge tone="success">Operational</Badge> | Regional | 05:48 | 23 operators |
+| Internet/Fiber | Commercial | <Badge tone="danger">Down</Badge> | 0% | 04:20 | Fiber cut at 3 locations |
+| Landline PSTN | Copper | <Badge tone="warning">Partial</Badge> | 40% | 05:30 | Exchange damage |
+| Drone Relay | UAV | <Badge tone="success">Operational</Badge> | Zone Alpha/Delta | 05:56 | 3 drones airborne |
+</Card>
+
+<Card title="Roads Closed">
+| Road | Zone | Reason | Since | Est. Reopen | Detour |
+|---|---|---|---|---|---|
+| Highway 101 South (MP 47) | Alpha | Bridge collapse | 02:15 | 72+ hrs | Highway 99 |
+| Industrial Blvd (all) | Charlie | Chemical spill | 04:05 | 24-48 hrs | County Rd 12 |
+| Coastal Hwy 1 (MP 12-18) | Echo | Flooding | 03:30 | 12-18 hrs | Old Coast Rd |
+| Downtown Main St | Alpha | Building collapse debris | 02:20 | 48 hrs | 3rd Ave / 5th Ave |
+| Riverside Dr (Bridge) | Bravo | Structural damage | 02:30 | 72+ hrs | Highway 33 |
+| North Expressway Exit 14 | Delta | Overturned tanker | 05:10 | 4-6 hrs | Exit 13 / 15 |
+| University Ave | Delta | Flooding | 04:45 | 8-12 hrs | College Blvd |
+| Harbor Blvd | Echo | Sinkhole | 01:50 | 24 hrs | Marina Way |
+</Card>
+
+<Card title="Nearby Hospitals - Free Beds">
+| Hospital | Zone | Total Beds | ICU Free | Med/Surg Free | ER Status | Trauma Level |
+|---|---|---|---|---|---|---|
+| Metro General | Alpha | 450 | 3 / 42 | 18 / 120 | <Badge tone="warning">Divert</Badge> | Level I |
+| Riverside Medical | Bravo | 320 | 5 / 28 | 22 / 85 | <Badge tone="success">Open</Badge> | Level II |
+| Industrial Health | Charlie | 180 | 2 / 16 | 12 / 50 | <Badge tone="success">Open</Badge> | Level III |
+| North County Hospital | Delta | 280 | 8 / 30 | 35 / 90 | <Badge tone="success">Open</Badge> | Level II |
+| Coastal Community | Echo | 150 | 4 / 12 | 15 / 45 | <Badge tone="success">Open</Badge> | Level III |
+| University Medical | Delta | 520 | 12 / 55 | 48 / 150 | <Badge tone="success">Open</Badge> | Level I |
+| Veterans Hospital | Alpha | 220 | 1 / 20 | 8 / 60 | <Badge tone="danger">Full</Badge> | Level II |
+| **TOTAL** | | **2,120** | **35 / 203** | **158 / 600** | | |
+</Card>
+
+<Card title="Open Tasks">
+| Task ID | Description | Assignee | Zone | Priority | Due | Status |
+|---|---|---|---|---|---|---|
+| TSK-1420 | Establish water distribution Point Alpha-3 | Lt. M. Rodriguez | Alpha | Critical | 07:00 | <Badge tone="warning">In Progress</Badge> |
+| TSK-1421 | Clear debris Highway 101 North lane 2 | Eng. Team 4 | Alpha | High | 08:00 | <Badge tone="info">Queued</Badge> |
+| TSK-1422 | Deploy mobile medical unit to Shelter Bravo | Capt. S. Chen | Bravo | Critical | 06:30 | <Badge tone="warning">In Progress</Badge> |
+| TSK-1423 | Assess structural integrity Bridge 33 | Eng. R. Davis | Bravo | Critical | 09:00 | <Badge tone="info">Queued</Badge> |
+| TSK-1424 | Contain chemical runoff Charlie Sector 2 | Hazmat Team 2 | Charlie | Critical | 07:30 | <Badge tone="warning">In Progress</Badge> |
+| TSK-1425 | Evacuate remaining residents Echo Zone 4 | Rescue Team 3 | Echo | High | 08:00 | <Badge tone="warning">In Progress</Badge> |
+| TSK-1426 | Restore comms tower Alpha-7 | Comm. Team 1 | Alpha | High | 10:00 | <Badge tone="info">Queued</Badge> |
+| TSK-1427 | Distribute MREs to all shelters | Logistics Team 2 | All | Medium | 12:00 | <Badge tone="info">Queued</Badge> |
+| TSK-1428 | Set up family reunification center | Admin Team | Delta | Medium | 14:00 | <Badge tone="info">Queued</Badge> |
+| TSK-1429 | Coordinate volunteer shift change 18:00 | Volunteer Coord. | All | Medium | 17:00 | <Badge tone="info">Queued</Badge> |
+</Card>
+
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Columns>
+<Select label="Resource Type" name="resource-type" placeholder="Select type" options="Fire Engine | Ambulance | Rescue Boat | Helicopter | Personnel (Fire) | Personnel (Medical) | Personnel (SAR) | Water Truck | Generator | Pump | Medical Kit | MREs | Blankets | Fuel (Diesel) | Sandbags | Portable Shelter | Comms Equipment | Heavy Machinery" required="true" />
+<Input label="Quantity" name="quantity" type="number" placeholder="Enter quantity" min="1" max="100" required="true" />
+</Columns>
+<Select label="Priority" name="priority" placeholder="Select priority" options="Critical - Immediate | High - Within 2 hrs | Medium - Within 6 hrs | Low - Within 24 hrs" required="true" />
+<Select label="Delivery Zone" name="delivery-zone" placeholder="Select zone" options="Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta | Zone Echo | EOC Warehouse | Staging Area North | Staging Area South" required="true" />
+<TextArea label="Justification / Notes" name="justification" placeholder="Reason for request, special instructions..." rows="3" required="true" />
+<Button variant="primary">Submit Resource Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Emergency Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="channels" placeholder="Select channels" options="All Channels | Emergency Alert System (IPAWS) | EOC Radio Primary | EOC Radio Secondary | Amateur Radio (ARES) | Satellite Phone Network | Mesh Network | Cellular Broadcast | Public Address Sirens | Social Media / Web" required="true" />
+<Radio label="Audience" name="audience" options="Public | Responders Only | Shelter Occupants | Evacuation Zones | Specific Zone" value="Public" required="true" />
+<Select label="Zone (if specific)" name="broadcast-zone" placeholder="Select zone" options="Zone Alpha | Zone Bravo | Zone Charlie | Zone Delta | Zone Echo" />
+<TextArea label="Message" name="message" placeholder="Enter broadcast message... Be clear, concise, and actionable." rows="5" required="true" hint="Max 1600 characters. Include: what, where, when, what to do, where to get info." />
+<Checkboxes label="Options" name="options" options="Require acknowledgment | Repeat every 15 min | Log to incident record | Translate to Spanish" value="" />
+<Button variant="primary">Broadcast Now</Button>
+<Button variant="secondary">Save as Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="File Situation Report (SITREP)">
+<Form name="situation-report">
+<Columns>
+<Select label="Report Type" name="report-type" placeholder="Select type" options="Initial | Update | Final | Special" required="true" />
+<Select label="Classification" name="classification" placeholder="Classification" options="UNCLASSIFIED | LAW ENFORCEMENT SENSITIVE | FOR OFFICIAL USE ONLY" value="UNCLASSIFIED" required="true" />
+</Columns>
+<Input label="Incident Name/Number" name="incident-ref" placeholder="e.g., Flood Response 2024-001 or INC-047" required="true" />
+<Select label="Prepared By" name="prepared-by" placeholder="Select your position" options="EOC Director | Operations Section Chief | Planning Section Chief | Logistics Section Chief | Finance/Admin Chief | Safety Officer | Liaison Officer | Public Info Officer | Zone Alpha Commander | Zone Bravo Commander | Zone Charlie Commander | Zone Delta Commander | Zone Echo Commander" required="true" />
+<Date label="Report Date/Time" name="report-datetime" required="true" />
+<TextArea label="Current Situation Summary" name="situation" placeholder="Overview of current conditions, major developments since last report..." rows="4" required="true" />
+<TextArea label="Actions Taken" name="actions" placeholder="Significant actions completed since last report..." rows="3" required="true" />
+<TextArea label="Planned Actions" name="planned" placeholder="Actions planned for next operational period..." rows="3" required="true" />
+<TextArea label="Resource Status" name="resources" placeholder="Critical resource needs, shortfalls, requests pending..." rows="3" />
+<TextArea label="Issues / Concerns / Safety Hazards" name="issues" placeholder="Any issues affecting operations, safety concerns, policy decisions needed..." rows="3" />
+<Button variant="primary">Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Request mutual aid from neighboring jurisdictions
+- Activate Emergency Operations Plan Annex F (Mass Care)
+- Declare local state of emergency if not already done
+- Coordinate with National Guard for additional helicopters
+- Establish Joint Information Center for media coordination
+</FollowUps>

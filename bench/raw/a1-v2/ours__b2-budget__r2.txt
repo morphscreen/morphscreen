@@ -1,0 +1,49 @@
+# Personal Budget Check
+
+<Card title="Month selector" subtitle="Choose a month to view">
+<Select label="Month" name="month" placeholder="Select month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Card>
+
+<Card title="Budget overview" subtitle="January 2025">
+<Columns>
+<Stat label="Total spent" value="$2,847" change="Budget: $4,000" tone="info" />
+<Stat label="Remaining" value="$1,153" change="28.8% left" tone="success" />
+<Stat label="Largest expense" value="$485" change="Rent payment" tone="warning" />
+</Columns>
+
+<Progress value="2847" max="4000" label="Budget utilization: 71.2%" />
+</Card>
+
+<Card title="Spending by category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 620 |
+| Transportation | 340 |
+| Utilities | 280 |
+| Entertainment | 180 |
+| Shopping | 127 |
+| Health & Fitness | 100 |
+</Chart>
+</Card>
+
+<Card title="Largest expense this month">
+<Callout tone="warning" title="🏠 Rent payment — $485">
+**Category:** Housing  
+**Date:** January 1, 2025  
+**Notes:** Monthly rent for apartment
+</Callout>
+</Card>
+
+<Card title="Add new expense" subtitle="Record a transaction">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Enter amount in USD" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Health & Fitness | Other" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<TextArea label="Notes (optional)" name="notes" placeholder="Any additional details..." rows="3" />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

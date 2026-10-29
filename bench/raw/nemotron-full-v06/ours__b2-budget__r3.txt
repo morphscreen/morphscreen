@@ -1,0 +1,46 @@
+# Budget Overview
+
+<Card title="Month selector" subtitle="View spending for a different month">
+<Select label="Month" name="month" placeholder="Select month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025 | July 2025 | August 2025 | September 2025 | October 2025 | November 2025 | December 2025" value="January 2025" />
+</Card>
+
+<Columns>
+<Card title="Total spent this month">
+<Progress value="2847" max="3500" label="Spent $2,847 of $3,500 budget" tone="warning" />
+<Stat label="Remaining" value="$653" change="18.7% left" tone="success" />
+<Stat label="Daily avg" value="$92" change="vs $113 target" tone="info" />
+</Card>
+
+<Card title="Largest expense">
+<Callout tone="warning" title="Rent payment — $1,450">
+**Category:** Housing  
+**Date:** January 3, 2025  
+**Notes:** Monthly rent + utilities
+<Badge tone="danger">51% of budget</Badge>
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Spending by category">
+<Chart type="donut" title="January 2025 spending split">
+| Category | Amount |
+|---|---|
+| Housing | 1450 |
+| Food & Dining | 520 |
+| Transportation | 380 |
+| Shopping | 245 |
+| Entertainment | 152 |
+| Utilities | 100 |
+</Chart>
+</Card>
+
+<Card title="Add expense" subtitle="Log a new transaction">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" hint="Enter the expense amount" />
+<Input label="Description" name="description" placeholder="Groceries, Uber, Subscription..." required="true" />
+<Select label="Category" name="category" placeholder="Choose category" options="Housing | Food & Dining | Transportation | Shopping | Entertainment | Utilities | Health | Other" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Button>Add expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

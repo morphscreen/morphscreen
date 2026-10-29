@@ -1,0 +1,137 @@
+# Speeding Up a 2 GB CSV Read in Python
+
+Reading a 2 GB CSV can take minutes with naive approaches. Here's how to make it dramatically faster.
+
+<Callout tone="info" title="Quick win first">
+If your file has no tricky quoting or newlines, try **pandas with a C engine** — it's often 10-50× faster than the `csv` module.
+</Callout>
+
+## 1. Use the Right Tool for the Job
+
+<Columns>
+<div>
+<Card title="Fastest options" subtitle="C-based parsers">
+- **pandas** with `engine='c'` (default) — 2 GB in ~10-20 seconds
+- **Polars** — 2 GB in ~5-10 seconds (Rust-based, even faster)
+- **DuckDB** — SQL directly on CSV, great for filtering
+</Card>
+</div>
+<div>
+<Card title="Avoid these" subtitle="Pure-Python parsers">
+- `csv` module — 2 GB can take 2-5 minutes
+- `open()` + manual splitting — even slower
+- **pandas** with `engine='python'` — only if you need it for edge cases
+</Card>
+</div>
+</Columns>
+
+## 2. Read Only What You Need
+
+<Card title="Chunked reading example">
+```python
+import pandas as pd
+
+# Read in chunks instead of all at once
+chunksize = 100_000  # rows per chunk
+for chunk in pd.read_csv('big.csv', chunksize=chunksize):
+    # Process each chunk
+    process(chunk)
+```
+</Card>
+
+<Callout tone="success" title="Memory tip">
+If you don't need all columns, specify `usecols` — this skips parsing the rest and saves both CPU and RAM.
+</Callout>
+
+## 3. Optimize Data Types
+
+<Card title="Dtype optimization">
+```python
+import pandas as pd
+
+# Tell pandas the types upfront — avoids guessing
+df = pd.read_csv('big.csv', 
+    dtype={
+        'id': 'int32',
+        'name': 'category',  # if few unique values
+        'price': 'float32',
+        'date': 'datetime64[ns]'
+    })
+```
+</Card>
+
+<Callout tone="warning" title="Biggest mistake">
+Letting pandas guess dtypes on a 2 GB file means it has to read the whole file twice — once to peek at types, once to parse.
+</Callout>
+
+## 4. Parallelize with Dask
+
+<Card title="Dask for multi-core">
+```python
+import dask.dataframe as dd
+
+# Uses all your CPU cores
+df = dd.read_csv('big.csv')
+result = df.groupby('category').mean().compute()
+```
+</Card>
+
+## 5. Quick Benchmark
+
+<Card title="Typical timings for 2 GB CSV">
+<Chart type="bar" title="Read time by method" x="Method" y="Seconds">
+| Method | Seconds |
+|---|---|
+| csv module | 180 |
+| pandas (python engine) | 120 |
+| pandas (C engine) | 15 |
+| Polars | 8 |
+| DuckDB | 6 |
+</Chart>
+</Card>
+
+## 6. What to Choose
+
+<Compare title="Tool comparison">
+| Feature | csv | pandas | Polars | DuckDB |
+|---|---|---|---|---|
+| Speed | Slow | Fast | Very fast | Fastest |
+| Memory | Low | High | Low | Low |
+| Learning curve | Easy | Medium | Medium | Medium |
+| SQL support | No | No | No | Yes |
+| Streaming | Manual | Chunked | Lazy | Yes |
+</Compare>
+
+<Card title="My recommendation">
+For most people: **use Polars** — it's fast, memory-efficient, and has a pandas-like API.
+
+```python
+import polars as pl
+
+df = pl.read_csv('big.csv')
+# Or lazy for even better memory usage
+df = pl.scan_csv('big.csv').filter(pl.col('price') > 100).collect()
+```
+</Card>
+
+<Quiz title="Check your understanding">
+<Question text="Which approach is fastest for a 2 GB CSV?" answer="Polars or DuckDB" explain="Rust-based Polars and DuckDB are both optimized C++/Rust implementations that beat pandas, which itself beats the pure-Python csv module.">
+- csv module
+- pandas with C engine
+- Polars or DuckDB
+- open() with manual parsing
+</Question>
+<Question text="What's the main benefit of specifying dtypes when reading?" answer="It avoids double parsing" explain="Without dtypes, pandas reads the file once to guess types, then again to parse. Specifying dtypes skips the guessing pass, saving ~50% time.">
+- It makes the file smaller
+- It avoids double parsing
+- It increases accuracy
+- It enables parallel reading
+</Question>
+</Quiz>
+
+<FollowUps>
+- How do I handle CSV files with weird quoting or newlines?
+- What if my CSV is 20 GB, not 2 GB?
+- How do I write the processed data back out efficiently?
+- Can I query the CSV directly with SQL?
+</FollowUps>

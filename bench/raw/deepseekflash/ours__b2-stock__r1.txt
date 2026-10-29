@@ -1,0 +1,55 @@
+<Card title="Low-Inventory Warning" subtitle="Reorder items at or below the threshold">
+
+<Columns>
+<Stat label="Items below threshold" value="6" note="At or below 10 units" />
+<Stat label="Reorder threshold" value="10 units" note="Adjustable below" />
+<Stat label="Out of stock" value="1" note="Needs immediate attention" />
+</Columns>
+
+<Callout tone="warning" title="Reorder threshold">
+Any item at or below <strong>10 units</strong> triggers this warning and should be reordered.
+</Callout>
+
+<Input label="Search items" type="search" placeholder="Search by item name or SKU..." hint="Filters the cards below as you type." />
+
+<Slider label="Reorder threshold" min="1" max="50" step="1" value="10" name="reorder-threshold" />
+
+### Items running low
+
+<Columns>
+<Card title="Organic Green Tea 500g" subtitle="SKU: TEA-500">
+<Badge tone="danger">Critical</Badge>
+<Stat label="Remaining" value="4 units" note="Threshold: 10 units" />
+<Button variant="primary" href="/reorder/TEA-500">Reorder</Button>
+</Card>
+<Card title="Ceramic Mug 350ml" subtitle="SKU: MUG-350">
+<Badge tone="warning">Low</Badge>
+<Stat label="Remaining" value="8 units" note="Threshold: 10 units" />
+<Button variant="primary" href="/reorder/MUG-350">Reorder</Button>
+</Card>
+<Card title="Bamboo Cutlery Set" subtitle="SKU: CUT-120">
+<Badge tone="danger">Critical</Badge>
+<Stat label="Remaining" value="2 units" note="Threshold: 10 units" />
+<Button variant="primary" href="/reorder/CUT-120">Reorder</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Reusable Coffee Cup 12oz" subtitle="SKU: CUP-012">
+<Badge tone="warning">At threshold</Badge>
+<Stat label="Remaining" value="10 units" note="Threshold: 10 units" />
+<Button variant="primary" href="/reorder/CUP-012">Reorder</Button>
+</Card>
+<Card title="Beechwood Serving Board" subtitle="SKU: SRV-088">
+<Badge tone="danger">Out of stock</Badge>
+<Stat label="Remaining" value="0 units" note="Threshold: 10 units" />
+<Button variant="danger" href="/reorder/SRV-088">Reorder now</Button>
+</Card>
+<Card title="Stainless Steel Straws (4pk)" subtitle="SKU: STR-004">
+<Badge tone="warning">Low</Badge>
+<Stat label="Remaining" value="6 units" note="Threshold: 10 units" />
+<Button variant="primary" href="/reorder/STR-004">Reorder</Button>
+</Card>
+</Columns>
+
+</Card>

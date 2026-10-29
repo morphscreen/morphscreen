@@ -1,0 +1,105 @@
+# Clinic Receptionist Dashboard
+
+<Columns>
+<Stat label="Today's Appointments" value="24" icon="calendar" />
+<Stat label="Patients Expected" value="22" change="2 checked in" icon="users" />
+<Stat label="No-Show Rate (This Month)" value="8.3%" change="▼ 1.2% vs last month" tone="success" icon="chart-line" />
+<Stat label="Rooms Free Now" value="3 of 6" tone="info" icon="map-pin" />
+</Columns>
+
+<Card title="Today's Appointments" subtitle="Thursday, June 12">
+<Tabs>
+<Tab title="All (24)">
+| Time | Patient | Room | Status |
+|------|---------|------|--------|
+| 8:00 AM | Maria Gonzalez | 1 | <Badge tone="success">Checked in</Badge> |
+| 8:30 AM | James Carter | 2 | <Badge tone="info">Waiting</Badge> |
+| 9:00 AM | Priya Patel | 3 | <Badge tone="warning">Called</Badge> |
+| 9:30 AM | Robert Kim | 4 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:00 AM | Elena Rodriguez | 5 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:30 AM | David Chen | 6 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:00 AM | Sarah Johnson | 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:30 AM | Michael Brown | 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:00 PM | Aisha Khan | 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:30 PM | Thomas Weber | 4 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:00 PM | Linda Nguyen | 5 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:30 PM | Kevin O'Brien | 6 | <Badge tone="neutral">Scheduled</Badge> |
+| 3:00 PM | Fatima Al-Sayed | 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 3:30 PM | George Miller | 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 4:00 PM | Hannah Lee | 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 4:30 PM | Carlos Mendez | 4 | <Badge tone="neutral">Scheduled</Badge> |
+</Tab>
+<Tab title="Morning (8)">
+| Time | Patient | Room | Status |
+|------|---------|------|--------|
+| 8:00 AM | Maria Gonzalez | 1 | <Badge tone="success">Checked in</Badge> |
+| 8:30 AM | James Carter | 2 | <Badge tone="info">Waiting</Badge> |
+| 9:00 AM | Priya Patel | 3 | <Badge tone="warning">Called</Badge> |
+| 9:30 AM | Robert Kim | 4 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:00 AM | Elena Rodriguez | 5 | <Badge tone="neutral">Scheduled</Badge> |
+| 10:30 AM | David Chen | 6 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:00 AM | Sarah Johnson | 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 11:30 AM | Michael Brown | 2 | <Badge tone="neutral">Scheduled</Badge> |
+</Tab>
+<Tab title="Afternoon (8)">
+| Time | Patient | Room | Status |
+|------|---------|------|--------|
+| 1:00 PM | Aisha Khan | 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 1:30 PM | Thomas Weber | 4 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:00 PM | Linda Nguyen | 5 | <Badge tone="neutral">Scheduled</Badge> |
+| 2:30 PM | Kevin O'Brien | 6 | <Badge tone="neutral">Scheduled</Badge> |
+| 3:00 PM | Fatima Al-Sayed | 1 | <Badge tone="neutral">Scheduled</Badge> |
+| 3:30 PM | George Miller | 2 | <Badge tone="neutral">Scheduled</Badge> |
+| 4:00 PM | Hannah Lee | 3 | <Badge tone="neutral">Scheduled</Badge> |
+| 4:30 PM | Carlos Mendez | 4 | <Badge tone="neutral">Scheduled</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Room Status" subtitle="Right now">
+| Room | Status |
+|------|--------|
+| Room 1 | <Badge tone="success">In use</Badge> |
+| Room 2 | <Badge tone="success">In use</Badge> |
+| Room 3 | <Badge tone="success">In use</Badge> |
+| Room 4 | <Badge tone="info">Free</Badge> |
+| Room 5 | <Badge tone="info">Free</Badge> |
+| Room 6 | <Badge tone="info">Free</Badge> |
+
+<Progress value="3" max="6" label="Rooms in use" tone="info" />
+</Card>
+
+<Card title="Next Patient to Call">
+<Avatar name="Priya Patel" subtitle="9:00 AM • Room 3" />
+<Callout tone="warning" title="Ready to call">
+Priya Patel arrived at 8:45 AM and is waiting in the lobby.
+</Callout>
+<Button variant="secondary">Call patient</Button>
+</Card>
+</Columns>
+
+<Card title="Check In Patient">
+<Form name="checkin">
+<Input label="Patient name" placeholder="Search by name or ID" />
+<Select label="Appointment time" placeholder="Select time" options="8:00 AM | 8:30 AM | 9:00 AM | 9:30 AM | 10:00 AM | 10:30 AM | 11:00 AM | 11:30 AM | 1:00 PM | 1:30 PM | 2:00 PM | 2:30 PM | 3:00 PM | 3:30 PM | 4:00 PM | 4:30 PM" />
+<Input label="Room" placeholder="Auto-assigned" />
+<Checkboxes label="Notes" options="Arrived early | Needs interpreter | Insurance card on file | New patient paperwork" />
+<Button>Check in patient</Button>
+</Form>
+</Card>
+
+<Card title="Move to Another Day">
+<Form name="change-day">
+<Date label="Select date" name="appointment-date" />
+<Input label="Reason (optional)" placeholder="e.g., patient requested, schedule conflict" />
+<Button variant="secondary">View appointments for this day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the full week's schedule
+- View a patient's history and details
+- Mark a patient as no-show
+- See today's check-in statistics
+</FollowUps>

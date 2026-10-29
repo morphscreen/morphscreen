@@ -1,0 +1,49 @@
+# Invoice INV-2041
+
+<Card title="Northwind Studio → Acme Corp" subtitle="Freelance design & build, March 2026">
+<Columns>
+<Stat label="Amount due" value="$4,820.00" change="USD" tone="info" icon="currency-dollar" />
+<Stat label="Due date" value="Apr 15, 2026" note="Net 30 from issue date" tone="warning" icon="calendar" />
+<Stat label="Status" value="Unpaid" note="Issued Mar 16, 2026" tone="danger" icon="receipt" />
+</Columns>
+<Progress value="0" max="4820" label="Paid so far: $0 of $4,820" tone="warning" />
+</Card>
+
+<Card title="Pay now" subtitle="Card, bank transfer, or ACH — takes about a minute">
+<Form name="payment">
+<Radio label="Payment method" options="Card | Bank transfer (ACH) | Wire" value="Card" />
+<Input label="Amount to pay" type="number" value="4820" step="1" min="1" max="4820" hint="Partial payments accepted" />
+<Input label="Name on card" placeholder="Jane Smith" />
+<Input label="Card number" placeholder="4242 4242 4242 4242" />
+<Columns>
+<Input label="Expiry" placeholder="MM / YY" />
+<Input label="CVC" placeholder="123" />
+</Columns>
+<Input label="Billing email" type="email" placeholder="ap@acme.com" hint="Receipt goes here" />
+<Button variant="primary" icon="lock">Pay $4,820.00 now</Button>
+<Button variant="tertiary">Save card for later</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Paying by transfer instead?">
+Send to Northwind Studio, acct ending 4471, routing 021000021. Reference <strong>INV-2041</strong> so it matches automatically.
+</Callout>
+
+<Card title="What's on this invoice">
+| Line item | Qty | Rate | Amount |
+|---|---|---|---|
+| Product design sprint | 1 | $2,400.00 | $2,400.00 |
+| Front-end build | 32 | $65.00 | $2,080.00 |
+| Design system handoff | 4 | $85.00 | $340.00 |
+| **Total** | | | **$4,820.00** |
+
+<Button ask="Show me a PDF-style printable version of this invoice">Printable version</Button>
+<Button variant="secondary" ask="Email this invoice to ap@acme.com">Email invoice</Button>
+</Card>
+
+<FollowUps>
+- Can I split this into two payments?
+- What happens if I pay after Apr 15?
+- Send me a receipt once paid
+- Update the billing address on this invoice
+</FollowUps>

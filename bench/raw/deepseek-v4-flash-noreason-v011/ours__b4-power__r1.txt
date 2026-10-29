@@ -1,0 +1,139 @@
+# Power Network Operator Console
+
+<Card title="Network Overview">
+<Columns>
+<Stat label="Current Load" value="4,832 MW" change="+3.2%" tone="info" icon="lightning" />
+<Stat label="Network Capacity" value="5,200 MW" change="92.9%" tone="warning" icon="chart-line" />
+<Stat label="Price per MWh" value="$47.20" change="+$1.80" tone="neutral" icon="currency-circle-dollar" />
+<Stat label="Emissions Today" value="1,842 tCO₂" change="-12%" tone="success" icon="leaf" />
+</Columns>
+
+<Progress value="92.9" max="100" label="Capacity utilization" tone="warning" />
+</Card>
+
+<Card title="Generation Mix">
+<Chart type="donut" title="Generation by source">
+| Source | Output (MW) |
+|---|---|
+| Natural Gas | 2,140 |
+| Wind | 1,280 |
+| Solar | 720 |
+| Nuclear | 490 |
+| Hydro | 202 |
+</Chart>
+</Card>
+
+<Card title="Power Plants" subtitle="All plants | Output and status">
+| Plant | Source | Output (MW) | Status |
+|---|---|---|---|
+| Riverside Gas | Natural Gas | 680 | <Badge tone="success">Online</Badge> |
+| Eastfield Gas | Natural Gas | 520 | <Badge tone="success">Online</Badge> |
+| Green Valley Gas | Natural Gas | 480 | <Badge tone="success">Online</Badge> |
+| West Gas #2 | Natural Gas | 460 | <Badge tone="warning">Reduced</Badge> |
+| North Wind Farm | Wind | 410 | <Badge tone="success">Online</Badge> |
+| Coastal Wind Farm | Wind | 380 | <Badge tone="success">Online</Badge> |
+| South Wind Farm | Wind | 290 | <Badge tone="success">Online</Badge> |
+| Inland Wind Farm | Wind | 200 | <Badge tone="warning">Reduced</Badge> |
+| Desert Solar Array | Solar | 390 | <Badge tone="success">Online</Badge> |
+| Urban Solar Rooftops | Solar | 330 | <Badge tone="success">Online</Badge> |
+| Hillcrest Nuclear | Nuclear | 490 | <Badge tone="success">Online</Badge> |
+| River Dam Hydro | Hydro | 202 | <Badge tone="success">Online</Badge> |
+
+<Button ask="Show maintenance schedule for Riverside Gas">Riverside Gas</Button>
+<Button ask="Show output history for North Wind Farm">North Wind</Button>
+</Card>
+
+<Card title="Active Outages">
+| Region | Affected | Status | Start | Est. Restoration |
+|---|---|---|---|---|
+| Northeast District | 12,400 customers | <Badge tone="danger">Planned</Badge> | 09:15 | 14:30 |
+| Lakeside Suburbs | 3,200 customers | <Badge tone="danger">Fault</Badge> | 08:42 | 11:00 |
+| Industrial Zone 4 | 8 substations | <Badge tone="warning">Maintenance</Badge> | 07:00 | 17:00 |
+
+<Button ask="Show outage map for Northeast District">Northeast details</Button>
+<Button ask="Show outage map for Lakeside">Lakeside details</Button>
+</Card>
+
+<Card title="Demand Forecast – Next 24 Hours">
+<Chart type="line" x="Hour" y="MW" title="Forecasted load">
+| Hour | Forecast (MW) | Capacity (MW) |
+|---|---|---|
+| 00:00 | 4,100 | 5,200 |
+| 02:00 | 3,800 | 5,200 |
+| 04:00 | 3,600 | 5,200 |
+| 06:00 | 3,900 | 5,200 |
+| 08:00 | 4,500 | 5,200 |
+| 10:00 | 4,800 | 5,200 |
+| 12:00 | 5,000 | 5,200 |
+| 14:00 | 5,100 | 5,200 |
+| 16:00 | 4,900 | 5,200 |
+| 18:00 | 5,050 | 5,200 |
+| 20:00 | 4,700 | 5,200 |
+| 22:00 | 4,300 | 5,200 |
+</Chart>
+<Callout tone="warning" title="Peak approaching">Forecast reaches 5,100 MW at 14:00 – 98% of capacity</Callout>
+</Card>
+
+<Card title="Maintenance Planned – This Month">
+| Plant | Work | Date | Duration | Status |
+|---|---|---|---|---|
+| West Gas #2 | Turbine overhaul | Mar 12–14 | 3 days | <Badge tone="warning">In progress</Badge> |
+| Desert Solar Array | Inverter replacement | Mar 18 | 1 day | <Badge tone="neutral">Scheduled</Badge> |
+| Riverside Gas | Valve inspection | Mar 22 | 1 day | <Badge tone="neutral">Scheduled</Badge> |
+| Inland Wind Farm | Blade repair | Mar 25–27 | 3 days | <Badge tone="neutral">Scheduled</Badge> |
+
+<Button ask="Show full maintenance calendar for March">Full calendar</Button>
+</Card>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="CRITICAL – Overload risk">Northeast feeder line at 97% capacity. Reduce load by 50 MW within 30 minutes.</Callout>
+<Callout tone="warning" title="WARNING – Voltage sag">Lakeside substation voltage dropped to 0.92 pu. Check capacitor banks.</Callout>
+<Callout tone="info" title="INFO – Solar ramp-down">Desert Solar output dropping 120 MW as clouds move in.</Callout>
+
+<Button ask="Acknowledge overload risk alert">Acknowledge</Button>
+<Button variant="secondary" ask="Show all active alerts">All alerts</Button>
+</Card>
+
+<Card title="Region Focus">
+<Select label="Select region" placeholder="Choose a region" options="All regions | Northeast | Lakeside | Industrial Zone 4 | South District | West Corridor" />
+<Button ask="Show dashboard for Northeast region">Focus on Northeast</Button>
+<Button variant="secondary" ask="Reset to all regions">Reset</Button>
+</Card>
+
+<Card title="Curtailment Order">
+<Form name="curtailment-order">
+<Select label="Plant to curtail" placeholder="Select plant" options="Riverside Gas | Eastfield Gas | Green Valley Gas | West Gas #2 | North Wind Farm | Coastal Wind Farm | South Wind Farm | Inland Wind Farm | Desert Solar Array | Urban Solar Rooftops | Hillcrest Nuclear | River Dam Hydro" required="true" />
+<Slider label="Curtailment amount" min="0" max="500" step="10" value="50" name="curtailment-mw" unit="MW" />
+<Input label="Duration (hours)" type="number" placeholder="e.g. 2" min="0.5" max="24" step="0.5" name="duration" required="true" hint="Minimum 30 minutes" />
+<TextArea label="Reason" placeholder="e.g. Grid congestion, overload risk" name="reason" rows="2" required="true" />
+<Button variant="danger">Issue curtailment order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Emissions Today">
+<Columns>
+<Stat label="Total CO₂" value="1,842 t" change="-12%" tone="success" icon="leaf" />
+<Stat label="CO₂ per MWh" value="0.38 t" change="-5%" tone="success" />
+<Stat label="Renewable share" value="47.6%" change="+4%" tone="info" icon="wind" />
+</Columns>
+
+<Chart type="bar" title="Emissions by plant" x="Plant" y="tCO₂">
+| Plant | tCO₂ |
+|---|---|
+| Riverside Gas | 420 |
+| Eastfield Gas | 320 |
+| Green Valley Gas | 296 |
+| West Gas #2 | 284 |
+| Hillcrest Nuclear | 0 |
+| Renewables | 0 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me the load forecast for the next hour
+- What's the status of the Northeast feeder line?
+- Which plants are available for curtailment right now?
+- Compare emissions to yesterday
+- Show the maintenance schedule for next week
+</FollowUps>

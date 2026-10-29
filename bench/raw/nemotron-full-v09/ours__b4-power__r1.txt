@@ -1,0 +1,118 @@
+# Power Network Operations Console
+
+<Select label="Focus Region" name="region" placeholder="All Regions" options="All Regions | North Grid | South Grid | East Grid | West Grid | Central Hub" />
+
+<Columns>
+<Card title="Network Load" subtitle="Real-time">
+<Stat label="Current Load" value="42,847 MW" change="+2.3% vs 1hr ago" tone="info" icon="bolt" />
+<Stat label="Peak Capacity" value="58,200 MW" tone="neutral" icon="gauge" />
+<Progress value="42847" max="58200" label="73.6% of capacity" tone="info" />
+</Card>
+
+<Card title="Current Price">
+<Stat label="Price per MWh" value="$87.40" change="+$4.20 vs yesterday" tone="warning" icon="currency-usd" />
+<Stat label="Day-ahead Avg" value="$82.15" tone="neutral" icon="chart-line" />
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ Emissions" value="18,420 t" change="-3.1% vs same day last year" tone="success" icon="leaf" />
+<Stat label="Intensity" value="429 g/kWh" tone="neutral" icon="chart-bar" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Live Generation Mix">
+| Source | Output (MW) |
+|---|---|
+| Natural Gas | 14,200 |
+| Nuclear | 11,800 |
+| Wind | 8,450 |
+| Solar | 5,200 |
+| Hydro | 2,100 |
+| Coal | 1,097 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="area" x="Hour" y="MW" title="Forecast vs Actual">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 38200 | 38150 |
+| 02:00 | 36800 | 36750 |
+| 04:00 | 35900 | 35880 |
+| 06:00 | 37100 | 37050 |
+| 08:00 | 41200 | 41180 |
+| 10:00 | 44800 | 44750 |
+| 12:00 | 46500 | 46420 |
+| 14:00 | 47200 | 47100 |
+| 16:00 | 46800 | 46720 |
+| 18:00 | 48100 | 48050 |
+| 20:00 | 45900 | 45880 |
+| 22:00 | 42300 | 42250 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Output (MW) | Capacity (MW) | Status |
+|---|---|---|---|---|---|
+| Northridge CCGT | North Grid | Natural Gas | 1,240 | 1,400 | <Badge tone="success">Online</Badge> |
+| Lakeside Nuclear | Central Hub | Nuclear | 1,180 | 1,200 | <Badge tone="success">Online</Badge> |
+| Windridge Farm | East Grid | Wind | 845 | 1,200 | <Badge tone="info">Partial</Badge> |
+| Solaris Fields | South Grid | Solar | 1,050 | 1,500 | <Badge tone="success">Online</Badge> |
+| Hydropeak Dam | North Grid | Hydro | 420 | 500 | <Badge tone="success">Online</Badge> |
+| Oldtown Coal | West Grid | Coal | 320 | 550 | <Badge tone="warning">Reduced</Badge> |
+| Greenvalley CCGT | Central Hub | Natural Gas | 980 | 1,100 | <Badge tone="success">Online</Badge> |
+| Offshore Wind Array | East Grid | Wind | 1,200 | 1,800 | <Badge tone="info">Partial</Badge> |
+</Card>
+
+<Columns>
+<Card title="Active Outages">
+| Outage ID | Region | Affected Customers | Est. Restore | Cause |
+|---|---|---|---|---|
+| OUT-2024-0847 | North Grid — Sector 3 | 12,400 | 2024-01-15 14:30 | Equipment failure |
+| OUT-2024-0852 | East Grid — Coastal | 8,200 | 2024-01-15 18:00 | Storm damage |
+| OUT-2024-0855 | West Grid — Industrial | 3,100 | 2024-01-15 12:45 | Planned maintenance |
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Asset | Region | Type | Start | End | Impact (MW) |
+|---|---|---|---|---|---|
+| Transformer T-44 | Central Hub | Replacement | 2024-01-20 06:00 | 2024-01-22 18:00 | 400 |
+| Line 115kV East-West | East Grid | Inspection | 2024-01-25 08:00 | 2024-01-25 16:00 | 250 |
+| Windridge Turbine #7 | East Grid | Gearbox repair | 2024-01-28 00:00 | 2024-01-30 23:59 | 120 |
+| Hydropeak Spillway | North Grid | Annual service | 2024-02-03 06:00 | 2024-02-05 18:00 | 500 |
+</Card>
+</Columns>
+
+<Card title="Live Alerts" subtitle="Auto-refreshing">
+<Details title="⚠ Voltage deviation — North Grid Sector 3" open="true">
+Voltage dropped to 0.92 p.u. at Substation N-12. Investigating capacitor bank status. Dispatched field crew.
+</Details>
+<Details title="⚠ Frequency excursion — 59.94 Hz" open="false">
+System frequency dipped below 59.95 Hz for 12 seconds. Primary response activated. Monitoring governor response.
+</Details>
+<Details title="ℹ Wind forecast revised — East Grid" open="false">
+Wind output forecast reduced by 300 MW for 14:00–18:00 window. Ramping gas units to compensate.
+</Details>
+<Details title="✓ Outage restored — OUT-2024-0841" open="false">
+West Grid Industrial Park restored at 09:12. 4,500 customers back online. Root cause: failed insulator.
+</Details>
+</Card>
+
+<Card title="Order Curtailment">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant / Resource" name="plant" placeholder="Select plant" options="Windridge Farm (East Grid) | Offshore Wind Array (East Grid) | Solaris Fields (South Grid) | Northridge CCGT (North Grid) | Greenvalley CCGT (Central Hub)" required="true" />
+<Input label="Curtailment Amount (MW)" name="amount" type="number" placeholder="e.g. 200" min="1" max="2000" step="1" required="true" />
+</Columns>
+<Columns>
+<Select label="Reason" name="reason" placeholder="Select reason" options="Transmission constraint | Frequency regulation | Voltage support | Economic dispatch | Emergency" required="true" />
+<Date label="Effective From" name="effective_from" required="true" />
+</Columns>
+<TextArea label="Operator Notes" name="notes" placeholder="Reason, duration estimate, coordination notes..." rows="3" />
+<Button variant="danger" icon="warning">Issue Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

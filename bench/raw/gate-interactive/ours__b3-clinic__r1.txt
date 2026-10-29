@@ -1,0 +1,72 @@
+# Clinic Reception — Day View
+
+<Card title="Today's Appointments" subtitle="Monday, January 15, 2024">
+<Table>
+| Time | Patient | Room | Status | Action |
+|---|---|---|---|---|
+| 08:00 | Maria Santos | Room 1 | ✅ Checked in | — |
+| 08:30 | James Chen | Room 2 | 🟢 Waiting | <Button size="small" variant="primary">Check in</Button> |
+| 09:00 | Aisha Patel | Room 1 | 🟡 In progress | — |
+| 09:30 | Robert Kim | Room 3 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 10:00 | Elena Rodriguez | Room 2 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 10:30 | David Thompson | Room 1 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 11:00 | Sarah Williams | Room 3 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 11:30 | Michael Brown | Room 2 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 14:00 | Lisa Anderson | Room 1 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 14:30 | Kevin Martinez | Room 3 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 15:00 | Nicole Garcia | Room 2 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+| 15:30 | Steven Lee | Room 1 | ⚪ Scheduled | <Button size="small" variant="primary">Check in</Button> |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="Patients Expected Today" value="12" change="+2 vs yesterday" tone="info" icon="users" />
+<Stat label="Checked In So Far" value="1" change="11 remaining" tone="neutral" icon="check-circle" />
+<Stat label="No-Show Rate This Month" value="8.3%" change="Target: <10%" tone="success" icon="chart-line" />
+<Stat label="Avg Wait Time" value="12 min" change="Within target" tone="neutral" icon="clock" />
+</Card>
+
+<Card title="Room Status Right Now">
+<Stat label="Room 1" value="Occupied" change="Aisha Patel • 09:00–09:30" tone="warning" icon="door" />
+<Stat label="Room 2" value="Free" change="Next: James Chen at 08:30" tone="success" icon="door-open" />
+<Stat label="Room 3" value="Free" change="Next: Robert Kim at 09:30" tone="success" icon="door-open" />
+<Stat label="Room 4" value="Free" change="No bookings today" tone="info" icon="door-open" />
+</Card>
+</Columns>
+
+<Card title="Next Patient Called Out">
+<Callout tone="info" title="Now Calling: James Chen">
+<strong>Appointment:</strong> 08:30 AM • <strong>Room:</strong> 2 • <strong>Provider:</strong> Dr. Mitchell<br/>
+<strong>Reason:</strong> Annual wellness visit<br/>
+<strong>Status:</strong> Waiting in lobby — checked in at 08:25
+</Callout>
+<Button variant="primary" size="large">Mark as Roomed</Button>
+<Button variant="secondary" size="large">Patient Not Here</Button>
+</Card>
+
+<Card title="Quick Check-In">
+<Form name="checkin-form">
+<Select label="Select Patient" placeholder="Choose a scheduled patient" options="James Chen (08:30) | Robert Kim (09:30) | Elena Rodriguez (10:00) | David Thompson (10:30) | Sarah Williams (11:00) | Michael Brown (11:30) | Lisa Anderson (14:00) | Kevin Martinez (14:30) | Nicole Garcia (15:00) | Steven Lee (15:30)" required="true" />
+<Select label="Assign Room" placeholder="Choose room" options="Room 1 | Room 2 | Room 3 | Room 4" required="true" />
+<Checkboxes label="Confirm" options="Patient verified ID | Insurance confirmed | Consent forms signed" required="true" />
+<Button>Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="day-nav">
+<Date label="Select Date" name="target-date" value="2024-01-15" />
+<Radio label="Quick Jump" options="Today | Tomorrow | This Week | Next Week" value="Today" />
+<Button>Go to Date</Button>
+<Button variant="secondary" href="#">View Weekly Schedule</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Print today's schedule
+- View provider availability
+- Run end-of-day reconciliation
+- Manage waitlist
+</FollowUps>

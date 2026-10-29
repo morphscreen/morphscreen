@@ -1,0 +1,73 @@
+# Clinic Receptionist Dashboard
+
+<Card title="Today's Schedule" subtitle="Wednesday, 14 May 2025">
+<Tabs>
+<Tab title="Appointments">
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 09:00 | Maria Gonzalez | 2 | Done |
+| 09:20 | James O'Brien | 1 | Done |
+| 09:40 | Priya Patel | 3 | Done |
+| 10:00 | Tomás Silva | 2 | In session |
+| 10:20 | Aisha Khan | 1 | In session |
+| 10:40 | Lucas Meyer | 4 | Waiting |
+| 11:00 | Emma Lindqvist | 2 | Waiting |
+| 11:20 | Noah Fischer | 1 | Waiting |
+| 11:40 | Sofia Rossi | 3 | Waiting |
+| 13:00 | David Chen | 4 | Waiting |
+| 13:20 | Anna Novak | 2 | Waiting |
+| 13:40 | Omar Haddad | 1 | Waiting |
+</Tab>
+<Tab title="Queue">
+1. <Avatar name="Lucas Meyer" /> — 10:40, Room 4
+2. <Avatar name="Emma Lindqvist" /> — 11:00, Room 2
+3. <Avatar name="Noah Fischer" /> — 11:20, Room 1
+4. <Avatar name="Sofia Rossi" /> — 11:40, Room 3
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Key Metrics">
+<Stat label="Patients expected" value="12" icon="users" />
+<Stat label="No-show rate this month" value="8.3%" change="-2.1 pts vs Apr" tone="success" icon="chart-line" />
+</Card>
+
+<Card title="Rooms">
+| Room | Status |
+|---|---|
+| 1 | Busy |
+| 2 | Busy |
+| 3 | Free |
+| 4 | Free |
+
+<Callout tone="info" title="2 rooms free">Rooms 3 and 4 are available right now.</Callout>
+</Card>
+</Columns>
+
+<Card title="Next Patient">
+<Avatar name="Lucas Meyer" subtitle="10:40 · Room 4" />
+<Callout tone="success" title="Call out now">Lucas Meyer is next — please announce to waiting area.</Callout>
+</Card>
+
+<Card title="Check-in Patient">
+<Form name="check-in">
+<Input label="Patient name" placeholder="Search or type name" />
+<Input label="Appointment time" type="time" value="10:40" />
+<Radio label="Status" options="Arrived | Waiting | Reschedule" value="Arrived" />
+<Button>Check in</Button>
+</Form>
+</Card>
+
+<Card title="Change Day">
+<Form name="change-day">
+<Date label="Select another day" name="other-day" />
+<Button variant="secondary">View that day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show today's late cancellations
+- Print the waiting room list
+- Start the no-show reminder texts
+</FollowUps>

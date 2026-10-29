@@ -1,0 +1,158 @@
+# City Operations Center — Live
+
+<Select label="Focus district" options="All districts | Downtown | Riverside | Northgate | Eastside | Southport" placeholder="All districts" name="district-focus" />
+
+<Columns>
+<Card title="Current weather" subtitle="Downtown station">
+<Stat label="Temperature" value="18°C" />
+<Stat label="Conditions" value="Partly cloudy" />
+<Stat label="Wind" value="12 km/h" />
+<Stat label="Humidity" value="62%" />
+</Card>
+
+<Card title="Congestion right now" subtitle="City-wide average">
+<Stat label="Congestion index" value="68 / 100" change="+5 vs 1h ago" />
+<Badge tone="warning">Moderate</Badge>
+<Chart type="horizontal" title="Congestion by area" x="Area" y="Congestion %">
+| Area | Congestion |
+|---|---|
+| Downtown | 78 |
+| Riverside | 45 |
+| Northgate | 62 |
+| Eastside | 71 |
+| Southport | 33 |
+</Chart>
+</Card>
+
+<Card title="Transit punctuality" subtitle="Last 24 hours">
+<Stat label="On-time rate" value="92%" change="+1.2% vs yesterday" />
+<Badge tone="success">Good</Badge>
+<Stat label="Delayed routes" value="3" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water use today" subtitle="City-wide">
+<Stat label="Used" value="84,200 m³" />
+<Progress value="68" max="100" label="68% of daily target" />
+</Card>
+
+<Card title="Parking availability" subtitle="Downtown garages">
+<Stat label="Occupied" value="74%" />
+<Progress value="74" max="100" label="3,120 of 4,216 spaces used" />
+</Card>
+
+<Card title="Service request backlog" subtitle="All open requests">
+<Stat label="Open requests" value="214" change="-12% since yesterday" />
+<Badge tone="info">On track</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy use — past week" subtitle="City-wide consumption">
+<Chart type="area" title="Energy use" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 1240 |
+| Tue | 1185 |
+| Wed | 1320 |
+| Thu | 1275 |
+| Fri | 1410 |
+| Sat | 1380 |
+| Sun | 1290 |
+</Chart>
+</Card>
+
+<Card title="Air quality by district" subtitle="AQI — lower is better">
+<Chart type="bar" title="Air quality index" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Riverside | 42 |
+| Northgate | 55 |
+| Eastside | 71 |
+| Southport | 38 |
+</Chart>
+<Callout tone="warning" title="Eastside advisory">AQI above 70 — sensitive groups should limit outdoor activity.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open incidents" subtitle="By location and severity">
+| ID | Location | Type | Severity |
+|---|---|---|---|
+| INC-2041 | 5th & Main | Traffic collision | <Badge tone="danger">Critical</Badge> |
+| INC-2042 | Riverside Park | Fire — small | <Badge tone="warning">High</Badge> |
+| INC-2043 | Northgate Mall | Medical | <Badge tone="info">Medium</Badge> |
+| INC-2044 | Eastside Blvd | Water leak | <Badge tone="info">Medium</Badge> |
+</Card>
+
+<Card title="Emergency vehicles deployed" subtitle="Live positions">
+| Unit | Type | Location | Status |
+|---|---|---|---|
+| E-12 | Ambulance | Downtown | <Badge tone="success">Available</Badge> |
+| E-07 | Fire engine | Riverside | <Badge tone="warning">En route</Badge> |
+| E-03 | Police unit | Eastside | <Badge tone="warning">On scene</Badge> |
+| E-15 | Ambulance | Northgate | <Badge tone="success">Available</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public events this weekend" subtitle="City calendar">
+- **Sat 10:00** — Farmers Market, Downtown Plaza
+- **Sat 19:30** — Open Air Concert, Riverside Amphitheater
+- **Sun 09:00** — City Marathon, Northgate → Downtown
+- **Sun 14:00** — Art & Wine Festival, Eastside Park
+</Card>
+
+<Card title="Citizen reports — live feed" subtitle="As they come in">
+- **10:42** — Pothole on Oak St, <Badge tone="info">Downtown</Badge>
+- **10:39** — Streetlight out, Elm Ave, <Badge tone="info">Northgate</Badge>
+- **10:35** — Illegal dumping, Riverside Wharf, <Badge tone="warning">Riverside</Badge>
+- **10:31** — Noise complaint, <Badge tone="info">Eastside</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Roadworks planned this month" subtitle="March 2025">
+| Road | Dates | Impact |
+|---|---|---|
+| Oak St | Mar 12–18 | Lane closure |
+| River Rd | Mar 15–22 | Detour |
+| 5th Ave | Mar 20–27 | Night work |
+</Card>
+
+<Card title="Infrastructure jobs due for maintenance" subtitle="Scheduled">
+| Asset | Due date | Priority |
+|---|---|---|
+| Bridge #12 | Mar 18 | <Badge tone="danger">High</Badge> |
+| Water pump station | Mar 25 | <Badge tone="warning">Medium</Badge> |
+| Traffic signals | Mar 30 | <Badge tone="info">Low</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dispatch a crew" subtitle="Send resources to an incident">
+<Form name="dispatch">
+<Select label="Crew type" options="Traffic | Fire | Medical | Utility | Sanitation" placeholder="Select crew type" name="crew-type" />
+<Input label="Location" placeholder="Intersection or address" name="dispatch-location" />
+<TextArea label="Notes" placeholder="Additional details for the crew" name="dispatch-notes" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send a public alert" subtitle="Notify residents">
+<Form name="alert">
+<Select label="Audience" options="All districts | Downtown | Riverside | Northgate | Eastside | Southport" placeholder="Select audience" name="alert-audience" />
+<TextArea label="Message" placeholder="Alert message text" rows="4" name="alert-message" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show a detailed view of the Downtown district
+- What incidents are currently critical?
+- Which roadworks will affect traffic this week?
+- Compare energy use to last week
+</FollowUps>

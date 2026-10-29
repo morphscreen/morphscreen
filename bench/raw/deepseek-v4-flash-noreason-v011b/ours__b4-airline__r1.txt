@@ -1,0 +1,157 @@
+# Airline Hub Operations Desk
+
+<Badge tone="info">Hub: Chicago O'Hare (ORD)</Badge> <Badge tone="success">Live</Badge>
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time %" value="78%" change="-3% vs yesterday" tone="warning" icon="chart-line" />
+<Stat label="Flights Scheduled" value="342" icon="calendar" />
+<Stat label="Flights Completed" value="298" icon="map-pin" />
+<Progress value="78" max="100" label="On-time rate" tone="warning" />
+</Card>
+
+<Card title="Average Passenger Load Today">
+<Stat label="Avg Load Factor" value="87%" change="+2% vs yesterday" tone="success" icon="users" />
+<Stat label="Total Passengers" value="38,412" />
+<Stat label="Seats Available" value="44,150" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Avg Turnaround" value="42 min" change="+3 min vs target" tone="warning" icon="chart-line" />
+<Stat label="Target" value="39 min" />
+<Stat label="Fastest Today" value="28 min" />
+<Progress value="42" max="60" label="Minutes" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Flights">
+<Tabs>
+<Tab title="All Flights">
+| Flight | Route | Gate | Status | Delay |
+|---|---|---|---|---|
+| UA 241 | ORD → LHR | B12 | Boarding | — |
+| AA 108 | ORD → LAX | C7 | Delayed | 45 min |
+| DL 415 | ORD → ATL | A3 | On Time | — |
+| UA 832 | ORD → NRT | B5 | Delayed | 30 min |
+| WN 721 | ORD → DEN | D9 | On Time | — |
+| AA 554 | ORD → MIA | C12 | Cancelled | — |
+| DL 199 | ORD → JFK | A8 | On Time | — |
+| UA 377 | ORD → SFO | B2 | Delayed | 25 min |
+| WN 612 | ORD → LAS | D4 | On Time | — |
+| AA 331 | ORD → DFW | C3 | Delayed | 60 min |
+
+<Button ask="Show all 342 flights">View full schedule</Button>
+</Tab>
+
+<Tab title="Delayed Flights">
+<Callout tone="danger" title="6 Delayed Flights">Average delay: 40 minutes</Callout>
+
+| Flight | Route | Gate | Delay | Reason |
+|---|---|---|---|---|
+| AA 108 | ORD → LAX | C7 | 45 min | Crew availability |
+| UA 832 | ORD → NRT | B5 | 30 min | Late inbound |
+| UA 377 | ORD → SFO | B2 | 25 min | Maintenance |
+| AA 331 | ORD → DFW | C3 | 60 min | Weather |
+| DL 212 | ORD → SEA | A5 | 35 min | Crew availability |
+| WN 504 | ORD → PHX | D1 | 45 min | Weather |
+
+<Button ask="Show reasons for all delays" variant="secondary">Analyze delays</Button>
+</Tab>
+
+<Tab title="Cancellations Today">
+<Callout tone="danger" title="3 Cancellations">Total passengers affected: 412</Callout>
+
+| Flight | Route | Gate | Passengers | Reason |
+|---|---|---|---|---|
+| AA 554 | ORD → MIA | C12 | 148 | Weather |
+| UA 188 | ORD → EWR | B8 | 134 | Crew shortage |
+| DL 306 | ORD → BOS | A2 | 130 | Aircraft issue |
+
+<Button ask="Rebook passengers from AA 554">Rebook AA 554</Button>
+<Button ask="Rebook passengers from UA 188" variant="secondary">Rebook UA 188</Button>
+<Button ask="Rebook passengers from DL 306" variant="secondary">Rebook DL 306</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Recent Gate Changes">
+| Time | Flight | Old Gate | New Gate |
+|---|---|---|---|
+| 14:32 | UA 241 | B10 | B12 |
+| 14:15 | AA 108 | C5 | C7 |
+| 13:50 | DL 415 | A1 | A3 |
+| 13:22 | WN 721 | D7 | D9 |
+| 12:45 | UA 832 | B3 | B5 |
+
+<Button ask="Show all gate changes today">View all changes</Button>
+</Card>
+
+<Card title="Crews Available for Reassignment">
+| Crew ID | Role | Hours Left | Base |
+|---|---|---|---|
+| CRW-1042 | Captain | 6h | ORD |
+| CRW-1087 | First Officer | 8h | ORD |
+| CRW-1123 | Flight Attendant | 5h | ORD |
+| CRW-1156 | Flight Attendant | 7h | ORD |
+| CRW-1201 | Captain | 4h | ORD |
+| CRW-1229 | First Officer | 9h | ORD |
+
+<Button ask="Assign crew CRW-1042 to UA 377">Assign Captain</Button>
+<Button ask="Show all available crew" variant="secondary">Full crew list</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Connections at Risk of Being Missed">
+<Callout tone="danger" title="12 Connections at Risk">Showing tightest connections first</Callout>
+
+| Passenger | From Flight | To Flight | Connection Time |
+|---|---|---|---|
+| J. Smith | AA 108 (delayed 45m) | AA 2032 → SJC | 35 min |
+| M. Patel | UA 832 (delayed 30m) | UA 455 → HNL | 25 min |
+| L. Chen | UA 377 (delayed 25m) | UA 891 → PDX | 20 min |
+| K. Brown | AA 331 (delayed 60m) | AA 1789 → AUS | 15 min |
+| R. Garcia | DL 212 (delayed 35m) | DL 567 → SLC | 30 min |
+
+<Button ask="Show all 12 at-risk connections">View all connections</Button>
+<Button ask="Auto-rebook passengers with missed connections" variant="secondary">Auto-rebook</Button>
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook">
+<Select label="Select Flight" options="AA 554 (Cancelled) | UA 188 (Cancelled) | DL 306 (Cancelled) | AA 108 (Delayed) | UA 832 (Delayed) | UA 377 (Delayed) | AA 331 (Delayed)" placeholder="Choose a flight" required />
+<Radio label="Rebooking Method" options="Auto-assign best alternative | Let passengers choose | Manual assignment" />
+<Input label="Passenger Name (optional)" placeholder="Leave blank for all passengers" />
+<Button>Rebook Passengers</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="Weather Advisories at Hub">
+<Callout tone="warning" title="Weather Advisory">Thunderstorms expected 16:00–19:00 CST. Possible delays of 45–90 minutes.</Callout>
+
+| Advisory | Valid Until | Impact |
+|---|---|---|
+| Thunderstorm Watch | 19:00 CST | Departure delays, ground stops possible |
+| Wind Advisory | 18:00 CST | Crosswind limits for Runway 9L/27R |
+| Low Visibility | 20:00 CST | Reduced arrival rate to 32/hr |
+
+<Button ask="Show weather impact on specific flights">Flight impact analysis</Button>
+<Button ask="Show alternate hub options" variant="secondary">Diversion options</Button>
+</Card>
+
+<Card title="Switch Hub">
+<Form name="switch-hub">
+<Radio label="Select Hub" options="Chicago O'Hare (ORD) | Dallas/Fort Worth (DFW) | Atlanta (ATL) | Denver (DEN) | Los Angeles (LAX) | Newark (EWR)" value="ORD" />
+<Button>View This Hub</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed delay reasons
+- Which flights need crew reassignment?
+- List passengers on at-risk connections
+- Compare today's performance to last week
+- Show weather radar for the region
+</FollowUps>

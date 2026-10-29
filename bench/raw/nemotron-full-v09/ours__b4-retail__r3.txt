@@ -1,0 +1,133 @@
+# Store Manager Console
+
+<Select label="Store" name="store-select" options="Downtown Flagship | Mall Location | Airport Terminal | University District | Online Fulfillment" value="Downtown Flagship" />
+
+<Columns>
+<Card title="Sales Today">
+<Stat label="Revenue" value="$24,850" change="+$3,200 vs target" tone="success" icon="currency-dollar" />
+<Progress value="24850" max="30000" label="Target: $30,000" tone="success" />
+</Card>
+
+<Card title="Average Basket">
+<Stat label="Avg. Basket Size" value="$42.30" change="+$1.80 vs last week" tone="info" icon="shopping-cart" />
+</Card>
+
+<Card title="Returns This Week">
+<Stat label="Returns" value="23" change="-5 vs last week" tone="success" icon="arrow-rotate-ccw" />
+<Stat label="Return Rate" value="2.1%" change="-0.3%" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Foot Traffic Today">
+<Chart type="area" x="Hour" y="Visitors" title="Hourly Foot Traffic">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 28 |
+| 10 AM | 45 |
+| 11 AM | 67 |
+| 12 PM | 89 |
+| 1 PM | 102 |
+| 2 PM | 95 |
+| 3 PM | 88 |
+| 4 PM | 76 |
+| 5 PM | 91 |
+| 6 PM | 105 |
+| 7 PM | 78 |
+| 8 PM | 45 |
+</Chart>
+</Card>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Revenue" title="Daily Revenue Comparison">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 28400 | 26100 |
+| Tue | 31200 | 29800 |
+| Wed | 29800 | 27500 |
+| Thu | 33100 | 30200 |
+| Fri | 38500 | 35800 |
+| Sat | 42100 | 39600 |
+| Sun | 24850 | 22400 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Best Sellers (Units Today)">
+| Rank | Product | Units Sold | Revenue |
+|---|---|---|---|
+| 1 | Organic Oat Milk 1L | 47 | $1,645 |
+| 2 | Sourdough Loaf | 38 | $1,140 |
+| 3 | Free-Range Eggs 12pk | 34 | $1,020 |
+| 4 | Greek Yogurt 500g | 31 | $930 |
+| 5 | Artisan Granola 400g | 28 | $840 |
+</Card>
+
+<Card title="Items Out of Stock">
+<Badge tone="danger">7 items</Badge>
+| Product | Category | Days OOS | Reorder Status |
+|---|---|---|---|
+| Almond Butter 250g | Pantry | 3 | Ordered - ETA 2 days |
+| Gluten-Free Bread | Bakery | 1 | Ordered - ETA 1 day |
+| Cold Brew Concentrate | Beverages | 5 | **Urgent - No PO** |
+| Vegan Cheese Shreds | Dairy Alt | 2 | Ordered - ETA 3 days |
+| Sparkling Water 6pk | Beverages | 1 | In transit |
+| Protein Bars Variety | Snacks | 4 | **Urgent - No PO** |
+| Baby Spinach 150g | Produce | 1 | Ordered - ETA today |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="On Shift Today">
+<Avatar name="Maria Santos" subtitle="Shift Lead • 8AM–4PM" src="find" />
+<Avatar name="James Chen" subtitle="Cashier • 8AM–4PM" src="find" />
+<Avatar name="Priya Patel" subtitle="Floor • 8AM–4PM" src="find" />
+<Avatar name="Alex Rivera" subtitle="Stock • 7AM–3PM" src="find" />
+<Avatar name="Samira Okonkwo" subtitle="Cashier • 12PM–8PM" src="find" />
+<Avatar name="Diego Morales" subtitle="Floor • 12PM–8PM" src="find" />
+<Avatar name="Lisa Park" subtitle="Shift Lead • 12PM–8PM" src="find" />
+<Avatar name="Tommy Nguyen" subtitle="Stock • 11AM–7PM" src="find" />
+</Card>
+
+<Card title="Registers">
+| Register | Status | Cashier | Session Sales |
+|---|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | James Chen | $8,240 |
+| Register 2 | <Badge tone="success">Open</Badge> | Samira Okonkwo | $6,180 |
+| Register 3 | <Badge tone="neutral">Closed</Badge> | — | — |
+| Register 4 | <Badge tone="success">Open</Badge> | Maria Santos | $5,920 |
+| Self-Checkout 1 | <Badge tone="success">Open</Badge> | Unattended | $3,410 |
+| Self-Checkout 2 | <Badge tone="warning">Maintenance</Badge> | — | — |
+</Card>
+</Columns>
+
+<Card title="Active Promotions">
+| Promotion | Type | Start | End | Redemptions | Revenue | Performance |
+|---|---|---|---|---|---|---|
+| Summer Sips 20% Off | Percentage | Jun 1 | Aug 31 | 142 | $2,840 | <Badge tone="success">On Track</Badge> |
+| Buy 2 Get 1 Free Bakery | BOGO | Jul 15 | Jul 28 | 89 | $1,780 | <Badge tone="info">Moderate</Badge> |
+| Loyalty Double Points | Points | Jul 1 | Jul 31 | 203 | $4,060 | <Badge tone="success">Strong</Badge> |
+| Student Discount 15% | Percentage | Ongoing | — | 67 | $1,340 | <Badge tone="neutral">Steady</Badge> |
+| Weekend Bundle Deals | Bundle | Fri-Sun | Ongoing | 45 | $2,250 | <Badge tone="warning">Low Uptake</Badge> |
+</Card>
+
+<Card title="Quick Actions">
+<Form name="reorder-form">
+<Columns>
+<Select label="Item to Reorder" name="reorder-item" placeholder="Select out-of-stock item" options="Almond Butter 250g | Gluten-Free Bread | Cold Brew Concentrate | Vegan Cheese Shreds | Sparkling Water 6pk | Protein Bars Variety | Baby Spinach 150g" required="true" />
+<Input label="Quantity" name="reorder-qty" type="number" placeholder="Units" value="24" min="1" max="500" required="true" />
+<Select label="Priority" name="reorder-priority" options="Standard (3-5 days) | Express (1-2 days) | Emergency (same day)" value="Standard (3-5 days)" />
+</Columns>
+<Button variant="primary">Submit Reorder</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- View detailed sales report for this week
+- Check inventory levels for top 50 SKUs
+- Review staff scheduling for next week
+- Analyze promotion ROI by category
+</FollowUps>

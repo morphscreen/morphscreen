@@ -1,0 +1,80 @@
+# Training Platform Analytics
+
+<Card title="Cohort Filter">
+<Select label="Select Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Cohort A - Q1 2024 | Cohort B - Q1 2024 | Cohort C - Q2 2024 | Cohort D - Q2 2024" />
+</Card>
+
+<Columns>
+<Card title="Active Learners This Week">
+<Stat label="Active Learners" value="1,247" change="+8.2% vs last week" tone="success" />
+</Card>
+
+<Card title="Course Completion Rate">
+<Stat label="Completion Rate" value="73.4%" change="+2.1% vs last month" tone="info" />
+</Card>
+
+<Card title="Average Quiz Score">
+<Stat label="Avg Quiz Score" value="84.7%" change="-0.8% vs last week" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="horizontal" x="Enrollment" y="Course" title="Top Courses by Enrollment">
+| Course | Enrollment |
+|---|---|
+| Python Fundamentals | 892 |
+| Data Analysis with Pandas | 654 |
+| Web Development Bootcamp | 587 |
+| Machine Learning Basics | 423 |
+| SQL for Analytics | 398 |
+| React Advanced Patterns | 312 |
+| DevOps Essentials | 276 |
+| Cloud Architecture | 198 |
+</Chart>
+</Card>
+
+<Card title="Engagement Across Past 8 Weeks">
+<Chart type="line" x="Week" y="Active Users" title="Weekly Active Learners">
+| Week | Active Users | Sessions | Avg Session (min) |
+|---|---|---|---|
+| Week 1 | 1156 | 3420 | 42 |
+| Week 2 | 1203 | 3580 | 44 |
+| Week 3 | 1187 | 3510 | 43 |
+| Week 4 | 1247 | 3720 | 45 |
+| Week 5 | 1289 | 3890 | 46 |
+| Week 6 | 1234 | 3680 | 44 |
+| Week 7 | 1267 | 3790 | 45 |
+| Week 8 | 1247 | 3710 | 44 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+<Callout tone="warning" title="12 learners flagged">These learners have had no activity in 14+ days and incomplete required modules.</Callout>
+
+| Learner | Cohort | Last Active | Courses Incomplete | Risk Score |
+|---|---|---|---|---|
+| Sarah Chen | Cohort A | 18 days ago | 3 of 5 | High |
+| Marcus Johnson | Cohort B | 22 days ago | 2 of 4 | High |
+| Priya Patel | Cohort A | 15 days ago | 4 of 6 | Medium |
+| James Wilson | Cohort C | 19 days ago | 1 of 3 | Medium |
+| Lisa Zhang | Cohort B | 25 days ago | 3 of 5 | High |
+| David Kim | Cohort D | 16 days ago | 2 of 4 | Medium |
+| Amanda Ross | Cohort A | 20 days ago | 3 of 5 | High |
+| Robert Taylor | Cohort C | 14 days ago | 1 of 3 | Low |
+| Jennifer Lee | Cohort B | 23 days ago | 4 of 6 | High |
+| Michael Brown | Cohort D | 17 days ago | 2 of 4 | Medium |
+| Emily Davis | Cohort A | 21 days ago | 3 of 5 | High |
+| Christopher Garcia | Cohort C | 15 days ago | 2 of 4 | Medium |
+</Card>
+
+<Card title="Message Cohort" subtitle="Send a targeted message to learners in a specific cohort">
+<Form name="message-cohort">
+<Select label="Recipient Cohort" name="recipientCohort" placeholder="Select cohort" options="Cohort A - Q1 2024 | Cohort B - Q1 2024 | Cohort C - Q2 2024 | Cohort D - Q2 2024" required="true" />
+<Select label="Filter By" name="filter" placeholder="All learners in cohort" options="All learners | At-risk learners only | Inactive 7+ days | Inactive 14+ days | Completed < 50%" />
+<TextArea label="Message" name="message" placeholder="Write your message here... Use {{first_name}} for personalization." rows="5" hint="Markdown supported. Variables: {{first_name}}, {{last_name}}, {{course_progress}}, {{days_inactive}}" required="true" />
+<Checkboxes label="Delivery Channels" name="channels" options="In-app notification | Email | SMS" value="In-app notification | Email" />
+<Button>Send Message</Button>
+<Button variant="secondary">Save as Draft</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>

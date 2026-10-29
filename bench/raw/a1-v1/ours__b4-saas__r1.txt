@@ -1,0 +1,121 @@
+<Card title="Admin Overview" subtitle="SaaS Company Dashboard">
+<Columns>
+<Select label="Reporting Period" name="period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$287,450" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$3,449,400" change="+11.8% vs last year" tone="success" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+5 vs last quarter" tone="success" note="Promoters: 68% | Passives: 26% | Detractors: 6%" />
+</Columns>
+</Card>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups" title="Weekly New Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 42 |
+| Week 2 | 38 |
+| Week 3 | 51 |
+| Week 4 | 47 |
+| Week 5 | 55 |
+| Week 6 | 62 |
+| Week 7 | 58 |
+| Week 8 | 67 |
+| Week 9 | 71 |
+| Week 10 | 69 |
+| Week 11 | 74 |
+| Week 12 | 78 |
+| Week 13 | 82 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 890 |
+| Enterprise | 210 |
+| Custom | 45 |
+</Chart>
+</Card>
+
+<Card title="Feature Adoption (Newest 3)">
+<Chart type="horizontal" x="Adoption %" y="Feature" title="Adoption Rate">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34 |
+| Advanced Analytics Dashboard | 28 |
+| SSO/SCIM Provisioning | 19 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Seat Utilization Across Company">
+<Chart type="bar" x="Department" y="Utilization %" title="Seat Utilization by Department">
+| Department | Utilization % |
+|---|---|
+| Engineering | 94 |
+| Sales | 87 |
+| Marketing | 76 |
+| Customer Success | 91 |
+| Product | 83 |
+| Design | 68 |
+| Operations | 72 |
+| Finance | 45 |
+| HR | 38 |
+| Leadership | 52 |
+</Chart>
+<Callout tone="info" title="Overall Utilization">Company-wide seat utilization: 78% (1,847 of 2,368 seats used)</Callout>
+</Card>
+
+<Card title="Top 10 Customers by Revenue">
+| Customer | Plan | Seats | Monthly Spend | Annual Spend | Status |
+|---|---|---|---|---|---|
+| Acme Corporation | Enterprise | 450 | $45,000 | $540,000 | Active |
+| Globex Inc | Enterprise | 320 | $32,000 | $384,000 | Active |
+| Wayne Enterprises | Enterprise | 280 | $28,000 | $336,000 | Active |
+| Stark Industries | Professional | 180 | $18,900 | $226,800 | Active |
+| Umbrella Corp | Enterprise | 150 | $15,000 | $180,000 | At Risk |
+| Cyberdyne Systems | Professional | 140 | $14,700 | $176,400 | Active |
+| Tyrell Corporation | Enterprise | 120 | $12,000 | $144,000 | Active |
+| Oscorp Industries | Professional | 110 | $11,550 | $138,600 | Active |
+| Massive Dynamic | Custom | 95 | $11,400 | $136,800 | Active |
+| Initech | Professional | 85 | $8,925 | $107,100 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | MRR | Risk Reason | Risk Score | Last Activity |
+|---|---|---|---|---|---|---|
+| Umbrella Corp | Enterprise | 150 | $15,000 | No login in 21 days; key champion left | 87 | 21 days ago |
+| Horizon Labs | Professional | 65 | $6,825 | Feature adoption <10%; 3 failed payments | 82 | 8 days ago |
+| Apex Solutions | Starter | 25 | $1,250 | Support tickets up 300%; NPS -15 | 76 | 3 days ago |
+| Nexus Digital | Professional | 40 | $4,200 | Contract renewal in 30 days; no response | 71 | 12 days ago |
+| Vertex Analytics | Starter | 15 | $750 | Usage dropped 60% MoM | 68 | 5 days ago |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed Date | Attempt | Error Reason | Action |
+|---|---|---|---|---|---|
+| Horizon Labs | $6,825 | 2024-01-15 | 3/3 | Insufficient funds | <Button variant="primary" size="small">Retry</Button> |
+| SmallBiz Co | $299 | 2024-01-14 | 2/3 | Card expired | <Button variant="primary" size="small">Retry</Button> |
+| Local Coffee Roasters | $79 | 2024-01-13 | 1/3 | Bank declined | <Button variant="primary" size="small">Retry</Button> |
+| Freelance Design Studio | $49 | 2024-01-12 | 3/3 | Card expired | <Button variant="primary" size="small">Retry</Button> |
+| StartupXYZ | $1,250 | 2024-01-11 | 2/3 | Insufficient funds | <Button variant="primary" size="small">Retry</Button> |
+| Creative Agency Inc | $3,400 | 2024-01-10 | 1/3 | Bank declined | <Button variant="primary" size="small">Retry</Button> |
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Email Address" name="email" type="email" placeholder="admin@company.com" required="true" hint="We'll send an invitation link" />
+<Select label="Role" name="role" options="Owner | Admin | Billing Admin | Read-only" value="Admin" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

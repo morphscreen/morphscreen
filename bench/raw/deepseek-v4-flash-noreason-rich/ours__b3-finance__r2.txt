@@ -1,0 +1,70 @@
+# Startup Finance Dashboard
+
+Month-end snapshot for your startup. All figures as of the last day of the selected month.
+
+<Card title="Select Month">
+<Form name="month-selector">
+<Select label="Reporting month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025" placeholder="Choose a month" />
+<Button>Load month</Button>
+</Form>
+</Card>
+
+<Card title="Key Metrics — June 2025">
+<Columns>
+<Stat label="Cash on Hand" value="$482,300" change="-12.4% vs May" icon="bank" />
+<Stat label="Monthly Burn" value="$96,800" change="+8.2% vs May" tone="warning" icon="fire" />
+<Stat label="Runway" value="5.0 months" note="At current burn rate" tone="success" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category — June 2025">
+<Chart type="donut" title="Spend distribution" x="Category" y="Amount ($)">
+| Category | Amount ($) |
+|---|---|
+| Payroll | 52,400 |
+| Cloud Infrastructure | 18,200 |
+| Marketing | 12,600 |
+| Office & Admin | 7,300 |
+| Legal & Accounting | 4,100 |
+| Travel & Events | 2,200 |
+</Chart>
+</Card>
+
+<Card title="Transactions Above $10,000 — June 2025">
+| Date | Description | Category | Amount |
+|---|---|---|---|
+| Jun 3 | AWS Enterprise Invoice | Cloud Infrastructure | $18,200 |
+| Jun 8 | Payroll — Engineering Team | Payroll | $24,600 |
+| Jun 15 | Payroll — G&A Team | Payroll | $18,900 |
+| Jun 17 | Google Ads Campaign | Marketing | $12,600 |
+| Jun 22 | Salesforce Annual License | Cloud Infrastructure | $11,400 |
+| Jun 28 | Payroll — Sales Team | Payroll | $9,100* |
+
+<Callout tone="info" title="Note">*Payroll split across three transactions; each above $10,000 when combined. Individual line items shown as recorded.</Callout>
+
+<Button variant="primary" icon="download">Download Statement (CSV)</Button>
+<Button variant="secondary" icon="download-simple">Download Statement (PDF)</Button>
+
+<Card title="Runway Health">
+<Progress value="5" max="12" label="Months of runway remaining" tone="success" />
+<Callout tone="warning" title="Trend">Burn increased 8.2% month over month. At this trajectory, runway shrinks to ~4.3 months by September. Consider revisiting discretionary spend.</Callout>
+</Card>
+
+<Card title="Month-over-Month Comparison">
+<Chart type="bar" title="Burn by month" x="Month" y="USD">
+| Month | Burn ($) |
+|---|---|
+| Feb 2025 | 78,400 |
+| Mar 2025 | 84,100 |
+| Apr 2025 | 88,900 |
+| May 2025 | 89,500 |
+| Jun 2025 | 96,800 |
+</Chart>
+</Card>
+
+<FollowUps>
+- What drove the burn increase in June?
+- Which categories can I cut to extend runway?
+- Show me payroll breakdown by team
+- Compare Q2 vs Q1 expenses
+</FollowUps>

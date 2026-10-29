@@ -1,0 +1,105 @@
+# Service Health Dashboard
+
+<Card subtitle="Select a region to filter all metrics below">
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" />
+</Card>
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+</Card>
+
+<Card title="Error rate (right now)">
+<Stat label="Error rate" value="0.12%" change="-0.03% from 1h ago" tone="success" />
+<Progress value="0.12" max="1" label="Alert threshold: 1%" />
+</Card>
+
+<Card title="Current CPU">
+<Stat label="CPU usage" value="42%" change="+5% from 1h ago" tone="info" />
+<Progress value="42" max="100" label="Warning at 80%" />
+</Card>
+
+<Card title="Current Memory">
+<Stat label="Memory usage" value="68%" change="+2% from 1h ago" tone="warning" />
+<Progress value="68" max="100" label="Warning at 85%" />
+</Card>
+</Columns>
+
+<Card title="CPU & Memory usage (past 24 hours)">
+<Tabs>
+<Tab title="CPU %">
+<Chart type="area" x="Time" y="CPU %" title="CPU utilization over 24h">
+| Time | CPU % |
+|---|---|
+| 00:00 | 35 |
+| 02:00 | 28 |
+| 04:00 | 22 |
+| 06:00 | 30 |
+| 08:00 | 45 |
+| 10:00 | 52 |
+| 12:00 | 58 |
+| 14:00 | 61 |
+| 16:00 | 55 |
+| 18:00 | 48 |
+| 20:00 | 42 |
+| 22:00 | 38 |
+</Chart>
+</Tab>
+<Tab title="Memory %">
+<Chart type="area" x="Time" y="Memory %" title="Memory utilization over 24h">
+| Time | Memory % |
+|---|---|
+| 00:00 | 55 |
+| 02:00 | 52 |
+| 04:00 | 48 |
+| 06:00 | 50 |
+| 08:00 | 58 |
+| 10:00 | 62 |
+| 12:00 | 65 |
+| 14:00 | 68 |
+| 16:00 | 70 |
+| 18:00 | 72 |
+| 20:00 | 70 |
+| 22:00 | 68 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open incidents">
+<Table>
+| Severity | Incident | Service | Region | Started | Acknowledge |
+|---|---|---|---|---|---|
+| <Badge tone="danger">SEV-1</Badge> | Payment API timeouts | payments | us-east-1 | 14 min ago | <Button variant="primary" size="small">Acknowledge</Button> |
+| <Badge tone="warning">SEV-2</Badge> | Elevated 5xx on checkout | checkout | eu-west-1 | 42 min ago | <Button variant="primary" size="small">Acknowledge</Button> |
+| <Badge tone="warning">SEV-2</Badge> | Redis replication lag | cache | us-west-2 | 1h 15m ago | <Button variant="primary" size="small">Acknowledge</Button> |
+| <Badge tone="info">SEV-3</Badge> | Slow query alerts | analytics | ap-southeast-1 | 3h 20m ago | <Button variant="primary" size="small">Acknowledge</Button> |
+| <Badge tone="info">SEV-3</Badge> | Disk space warning | logging | sa-east-1 | 5h 10m ago | <Button variant="primary" size="small">Acknowledge</Button> |
+</Table>
+</Card>
+
+<Card title="Five slowest endpoints (p99 latency)">
+<Table>
+| Endpoint | Service | p99 Latency | p50 Latency | Requests/min |
+|---|---|---|---|---|
+| POST /api/v1/checkout | payments | 2.84s | 420ms | 1,240 |
+| GET /api/v1/reports/export | analytics | 2.12s | 890ms | 340 |
+| PUT /api/v1/orders/{id}/cancel | orders | 1.95s | 380ms | 560 |
+| GET /api/v1/users/{id}/history | users | 1.73s | 310ms | 2,100 |
+| POST /api/v1/search | search | 1.58s | 290ms | 3,450 |
+</Table>
+</Card>
+
+<Card title="Alert threshold configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error_rate" type="number" placeholder="1.0" value="1.0" hint="Trigger when error rate exceeds this" />
+<Input label="CPU threshold (%)" name="cpu_threshold" type="number" placeholder="80" value="80" hint="Trigger when CPU exceeds this" />
+<Input label="Memory threshold (%)" name="memory_threshold" type="number" placeholder="85" value="85" hint="Trigger when memory exceeds this" />
+<Input label="Latency p99 threshold (ms)" name="latency_threshold" type="number" placeholder="2000" value="2000" hint="Trigger when p99 latency exceeds this" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>

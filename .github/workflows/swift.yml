@@ -1,0 +1,43 @@
+# The SwiftUI SDK on a macOS runner. Those minutes count ten times, so this
+# runs only when the Swift SDK or the core it wraps changes.
+name: Swift
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - sdk/swift/**
+      - rust/core/**
+      - rust/ffi/**
+      - spec/**
+      - .github/workflows/swift.yml
+  pull_request:
+    paths:
+      - sdk/swift/**
+      - rust/core/**
+      - rust/ffi/**
+      - spec/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: swift-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swift:
+    name: SwiftUI SDK (macOS)
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust -> target.nosync
+      - name: The core for this Mac
+        run: MACOS_ONLY=1 bash sdk/swift/build-core.sh
+      - name: Tests
+        working-directory: sdk/swift
+        run: swift test

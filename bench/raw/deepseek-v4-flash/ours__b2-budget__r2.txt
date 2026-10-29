@@ -1,0 +1,54 @@
+# Personal budget check
+
+All amounts in USD. Viewing <Badge tone="info">November 2025</Badge>
+
+<Card title="Look at a different month" subtitle="Switch the budget screen to another month">
+<Form name="month-selector">
+<Select label="Month" name="month" placeholder="Choose a month" options="September 2025 | October 2025 | November 2025" value="November 2025" />
+<Button>View month</Button>
+</Form>
+</Card>
+
+<Card title="Budget overview" subtitle="Total spent this month against the budget">
+<Columns>
+<Stat label="Budget" value="$2,500" icon="wallet" />
+<Stat label="Spent" value="$2,340" tone="warning" icon="shopping-cart-simple" />
+<Stat label="Remaining" value="$160" tone="info" icon="currency-dollar" />
+</Columns>
+<Progress value="2340" max="2500" label="$2,340 of $2,500 used (93.6%)" tone="warning" />
+</Card>
+
+<Card title="Spending split by category">
+<Chart type="donut" title="November 2025 expenses by category">
+| Category | Amount |
+|---|---|
+| Housing | 1100 |
+| Groceries | 420 |
+| Dining | 300 |
+| Transport | 210 |
+| Utilities | 180 |
+| Entertainment | 130 |
+</Chart>
+</Card>
+
+<Card title="Largest expense" subtitle="Highlighted for November 2025">
+| Expense | Category | Amount |
+|---|---|---|
+| Rent | Housing | $1,100 <Badge tone="danger">Largest</Badge> |
+| Groceries | Groceries | $420 |
+| Team dinner | Dining | $300 |
+| Gas | Transport | $210 |
+| Electric bill | Utilities | $180 |
+
+<Callout tone="danger" title="Watch this one">Rent is your single largest expense this month at $1,100 — 47% of your total spending.</Callout>
+</Card>
+
+<Card title="Add an expense" subtitle="It will be included in the selected month">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" min="0" step="0.01" required="true" />
+<Select label="Category" name="category" placeholder="Select a category" options="Housing | Groceries | Transport | Dining | Utilities | Entertainment | Other" />
+<Date label="Date" name="date" value="2025-11-20" required="true" />
+<Button>Add expense</Button>
+</Form>
+</Card>

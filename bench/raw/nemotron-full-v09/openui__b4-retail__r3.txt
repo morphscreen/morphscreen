@@ -1,0 +1,110 @@
+root = Card([storeSelector, header, kpiRow, trafficChart, weekComparison, promotionsSection, bestSellersTable, outOfStockList, shiftsList, registersList, reorderForm], "card", "column", "l")
+
+storeSelector = Select("store_select", storeOptions, "Select store", null, "medium")
+storeOptions = [storeMain, storeDowntown, storeMall, storeAirport]
+storeMain = SelectItem("main", "Main Street (Current)")
+storeDowntown = SelectItem("downtown", "Downtown Plaza")
+storeMall = SelectItem("mall", "Westfield Mall")
+storeAirport = SelectItem("airport", "Airport Terminal")
+
+header = CardHeader("Daily Console — Main Street", "Monday, January 15, 2025 • Updated 14:32")
+
+kpiRow = Card([salesTargetCard, basketCard, returnsCard], "clear", "row", "m", "stretch", "between")
+
+salesTargetCard = Card([salesTargetLabel, salesTargetValue, salesTargetProgress], "sunk", "column", "s")
+salesTargetLabel = TextContent("Sales vs Target", "small-heavy")
+salesTargetValue = TextContent("$18,450 / $25,000 (73.8%)", "large-heavy")
+salesTargetProgress = Progress(73.8, "Target: $25,000 by close")
+
+basketCard = Card([basketLabel, basketValue, basketSub], "sunk", "column", "s")
+basketLabel = TextContent("Avg Basket Size", "small-heavy")
+basketValue = TextContent("$47.20", "large-heavy")
+basketSub = TextContent("+$3.10 vs last week", "small")
+
+returnsCard = Card([returnsLabel, returnsValue, returnsSub], "sunk", "column", "s")
+returnsLabel = TextContent("Returns This Week", "small-heavy")
+returnsValue = TextContent("23 items • $1,840", "large-heavy")
+returnsSub = TextContent("2.1% return rate", "small")
+
+trafficChart = Card([trafficHeading, footTrafficChart], "sunk", "column", "m")
+trafficHeading = Heading("Foot Traffic Today", "h3")
+footTrafficChart = AreaChart(trafficHours, [trafficSeries], "natural", "Hour", "Visitors")
+trafficHours = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"]
+trafficSeries = Series("Visitors", [12, 28, 45, 67, 89, 112, 98, 85, 72, 58, 41, 29])
+
+weekComparison = Card([weekHeading, weekChart], "sunk", "column", "m")
+weekHeading = Heading("This Week vs Last Week", "h3")
+weekChart = BarChart(weekDays, [thisWeekSeries, lastWeekSeries], "grouped", "Day", "Revenue ($)")
+weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+thisWeekSeries = Series("This Week", [18450, 22100, 19800, 24500, 28900, 35200, 31100])
+lastWeekSeries = Series("Last Week", [16200, 19800, 18500, 21900, 26400, 32100, 28900])
+
+promotionsSection = Card([promoHeading, promoTable], "sunk", "column", "m")
+promoHeading = Heading("Active Promotions", "h3")
+promoTable = Table([promoNameCol, promoTypeCol, promoUsageCol, promoRevenueCol, promoRoiCol])
+promoNameCol = Col("Promotion", ["Winter Clearance", "Buy 2 Get 1 Free", "Loyalty Double Points", "Student 15% Off"])
+promoTypeCol = Col("Type", ["Percentage", "Bundle", "Points", "Percentage"])
+promoUsageCol = Col("Uses", [142, 89, 234, 67])
+promoRevenueCol = Col("Revenue", ["$8,520", "$4,450", "$12,100", "$2,010"])
+promoRoiCol = Col("ROI", ["3.2x", "2.8x", "4.1x", "2.3x"])
+
+bestSellersTable = Card([bestsellerHeading, bestsellerTable], "sunk", "column", "m")
+bestsellerHeading = Heading("Best Sellers Today", "h3")
+bestsellerTable = Table([bsNameCol, bsCategoryCol, bsUnitsCol, bsRevenueCol])
+bsNameCol = Col("Product", ["Merino Wool Beanie", "Thermal Socks 3-pack", "Insulated Water Bottle", "Fleece Lined Gloves", "LED Headlamp"])
+bsCategoryCol = Col("Category", ["Accessories", "Apparel", "Gear", "Apparel", "Gear"])
+bsUnitsCol = Col("Units Sold", [23, 18, 15, 12, 9])
+bsRevenueCol = Col("Revenue", ["$1,150", "$540", "$750", "$480", "$405"])
+
+outOfStockList = Card([oosHeading, oosList], "sunk", "column", "m")
+oosHeading = Heading("Out of Stock", "h3")
+oosList = ListBlock(oosItems, "image")
+oosItems = [oos1, oos2, oos3, oos4]
+oos1 = ListItem("Premium Yoga Mat", "Supplier delay — ETA Jan 22", ["https://picsum.photos/seed/yogamat/80/80"], "Reorder")
+oos2 = ListItem("Stainless Steel Tumbler 32oz", "Warehouse allocation issue", ["https://picsum.photos/seed/tumbler/80/80"], "Reorder")
+oos3 = ListItem("Resistance Band Set", "Quality hold — replacement arriving Jan 20", ["https://picsum.photos/seed/bands/80/80"], "Reorder")
+oos4 = ListItem("Running Cap - Navy", "Seasonal sell-out — restock Jan 25", ["https://picsum.photos/seed/cap/80/80"], "Reorder")
+
+shiftsList = Card([shiftsHeading, shiftsList], "sunk", "column", "m")
+shiftsHeading = Heading("On Shift Today", "h3")
+shiftsList = ListBlock(shiftItems, "image")
+shiftItems = [shift1, shift2, shift3, shift4, shift5]
+shift1 = ListItem("Sarah Chen — Manager", "8:00 AM – 4:30 PM • Floor Lead", ["https://picsum.photos/seed/sarah/60/60"], null)
+shift2 = ListItem("Marcus Johnson", "8:00 AM – 4:30 PM • Register 1", ["https://picsum.photos/seed/marcus/60/60"], null)
+shift3 = ListItem("Priya Patel", "10:00 AM – 6:30 PM • Register 2", ["https://picsum.photos/seed/priya/60/60"], null)
+shift4 = ListItem("James Wilson", "12:00 PM – 8:30 PM • Floor / Stock", ["https://picsum.photos/seed/james/60/60"], null)
+shift5 = ListItem("Aisha Rahman", "12:00 PM – 8:30 PM • Register 3", ["https://picsum.photos/seed/aisha/60/60"], null)
+
+registersList = Card([regHeading, regList], "sunk", "column", "m")
+regHeading = Heading("Register Status", "h3")
+regList = ListBlock(regItems, "number")
+regItems = [reg1, reg2, reg3, reg4]
+reg1 = ListItem("Register 1", "OPEN • Marcus Johnson • $3,240 processed", null, null)
+reg2 = ListItem("Register 2", "OPEN • Priya Patel • $2,890 processed", null, null)
+reg3 = ListItem("Register 3", "OPEN • Aisha Rahman • $1,950 processed", null, null)
+reg4 = ListItem("Register 4", "CLOSED • Maintenance scheduled", null, null)
+
+reorderForm = Card([reorderHeading, reorderFormComp], "sunk", "column", "m")
+reorderHeading = Heading("Quick Reorder", "h3")
+reorderFormComp = Form("reorder", reorderButtons, [reorderItemField, reorderQtyField, reorderReasonField])
+reorderItemField = FormControl("Item to Reorder", reorderItemSelect, "Search or select from catalog")
+reorderItemSelect = Select("reorder_item", reorderItemOptions, "Type to search...", null, "medium")
+reorderItemOptions = [roi1, roi2, roi3, roi4, roi5, roi6]
+roi1 = SelectItem("yoga-mat", "Premium Yoga Mat (Out of Stock)")
+roi2 = SelectItem("tumbler-32", "Stainless Steel Tumbler 32oz (Out of Stock)")
+roi3 = SelectItem("band-set", "Resistance Band Set (Out of Stock)")
+roi4 = SelectItem("cap-navy", "Running Cap - Navy (Out of Stock)")
+roi5 = SelectItem("merino-beanie", "Merino Wool Beanie (Low Stock: 4 left)")
+roi6 = SelectItem("thermal-socks", "Thermal Socks 3-pack (Low Stock: 7 left)")
+reorderQtyField = FormControl("Quantity", reorderQtyInput, "Enter units to order")
+reorderQtyInput = Input("reorder_qty", "24", "number")
+reorderReasonField = FormControl("Reason", reorderReasonSelect)
+reorderReasonSelect = Select("reorder_reason", reorderReasonOptions, "Select reason", null, "medium")
+reorderReasonOptions = [rr1, rr2, rr3, rr4]
+rr1 = SelectItem("stockout", "Out of Stock")
+rr2 = SelectItem("low", "Low Stock Alert")
+rr3 = SelectItem("promo", "Upcoming Promotion")
+rr4 = SelectItem("seasonal", "Seasonal Replenishment")
+reorderButtons = Buttons([reorderSubmit, reorderCancel], "row")
+reorderSubmit = Button("Submit Reorder", null, "primary")
+reorderCancel = Button("Cancel", null, "tertiary")

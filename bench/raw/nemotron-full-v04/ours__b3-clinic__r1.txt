@@ -1,0 +1,113 @@
+# Clinic Reception — Day View
+
+<Columns>
+<Card title="Date" subtitle="Navigate to another day">
+<Form name="date-nav">
+<Date name="selectedDate" value="2025-01-15" />
+<Button variant="secondary" size="small">Today</Button>
+<Button variant="tertiary" size="small">Previous</Button>
+<Button variant="tertiary" size="small">Next</Button>
+</Form>
+</Card>
+
+<Card title="Expected Patients" subtitle="Appointments scheduled today">
+<Stat label="Patients Expected" value="18" change="+2 vs yesterday" tone="info" />
+</Card>
+
+<Card title="No-Show Rate" subtitle="This month (Jan 2025)">
+<Stat label="No-Show Rate" value="8.2%" change="-1.1% vs last month" tone="success" />
+</Card>
+</Columns>
+
+<Card title="Next Patient Called Out">
+<Callout tone="info" title="Exam Room 2 — Ready">
+**Maria Santos** · 10:30 AM · Annual Check-up
+<br />
+<Badge tone="success">Checked In</Badge> <Badge tone="neutral">Insurance Verified</Badge>
+</Callout>
+</Card>
+
+<Card title="Room Status" subtitle="Current availability">
+<Columns>
+<Card title="Exam Room 1" subtitle="Occupied">
+<Avatar name="James Chen" src="JC" subtitle="Since 10:15 AM" />
+<Progress value="15" max="30" label="15 min elapsed" />
+<Badge tone="warning">In Progress</Badge>
+</Card>
+
+<Card title="Exam Room 2" subtitle="Available">
+<Avatar name="Maria Santos" src="MS" subtitle="Next: 10:30 AM" />
+<Badge tone="success">Ready for Patient</Badge>
+</Card>
+
+<Card title="Exam Room 3" subtitle="Available">
+<Badge tone="success">Free Now</Badge>
+<Progress value="0" max="30" label="Available immediately" />
+</Card>
+
+<Card title="Procedure Room" subtitle="Occupied">
+<Avatar name="Robert Kim" src="RK" subtitle="Since 9:45 AM" />
+<Progress value="45" max="60" label="45 min elapsed" />
+<Badge tone="warning">In Progress</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Today's Appointments" subtitle="18 scheduled · 4 checked in · 1 no-show">
+<Tabs>
+<Tab title="All (18)">
+| Time | Patient | Type | Room | Status | Action |
+|---|---|---|---|---|---|
+| 8:00 AM | Patricia Lopez | Follow-up | Room 1 | ✅ Completed | — |
+| 8:30 AM | David Park | Consultation | Room 2 | ✅ Completed | — |
+| 9:00 AM | Sarah Mitchell | Annual Check-up | Room 3 | ✅ Completed | — |
+| 9:30 AM | Robert Kim | Procedure | Proc Room | 🔄 In Progress | — |
+| 10:00 AM | James Chen | Follow-up | Room 1 | 🔄 In Progress | — |
+| **10:30 AM** | **Maria Santos** | **Annual Check-up** | **Room 2** | **✅ Checked In** | **—** |
+| 11:00 AM | Thomas Wright | Consultation | Room 3 | ⏳ Waiting | <Button size="small">Check In</Button> |
+| 11:30 AM | Jennifer Adams | Follow-up | Room 1 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 12:00 PM | Michael Brown | Annual Check-up | Room 2 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 1:00 PM | Lisa Anderson | Consultation | Room 3 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 1:30 PM | Christopher Lee | Follow-up | Room 1 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 2:00 PM | Amanda Taylor | Procedure | Proc Room | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 2:30 PM | Daniel Martinez | Annual Check-up | Room 2 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 3:00 PM | Michelle Garcia | Consultation | Room 3 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 3:30 PM | Kevin Robinson | Follow-up | Room 1 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 4:00 PM | Stephanie Clark | Annual Check-up | Room 2 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 4:30 PM | Andrew Lewis | Consultation | Room 3 | ⏳ Scheduled | <Button size="small">Check In</Button> |
+| 5:00 PM | Nicole Walker | Follow-up | Room 1 | ❌ No-Show | <Button variant="danger" size="small">Mark Arrived</Button> |
+</Tab>
+<Tab title="Waiting (5)">
+| Time | Patient | Type | Room | Wait Time |
+|---|---|---|---|---|
+| 11:00 AM | Thomas Wright | Consultation | Room 3 | — |
+| 11:30 AM | Jennifer Adams | Follow-up | Room 1 | — |
+| 12:00 PM | Michael Brown | Annual Check-up | Room 2 | — |
+| 1:00 PM | Lisa Anderson | Consultation | Room 3 | — |
+| 1:30 PM | Christopher Lee | Follow-up | Room 1 | — |
+</Tab>
+<Tab title="Checked In (4)">
+| Time | Patient | Type | Room | Checked In |
+|---|---|---|---|---|
+| 8:00 AM | Patricia Lopez | Follow-up | Room 1 | 7:55 AM |
+| 8:30 AM | David Park | Consultation | Room 2 | 8:25 AM |
+| 9:00 AM | Sarah Mitchell | Annual Check-up | Room 3 | 8:55 AM |
+| 10:30 AM | Maria Santos | Annual Check-up | Room 2 | 10:20 AM |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Quick Check-In" subtitle="Walk-in or early arrival">
+<Form name="quick-checkin">
+<Columns>
+<Input label="Patient Name" placeholder="Search or type name" name="patientName" />
+<Select label="Appointment Type" name="apptType" options="Consultation | Follow-up | Annual Check-up | Procedure | Walk-in" placeholder="Select type" />
+</Columns>
+<Columns>
+<Select label="Assign Room" name="room" options="Exam Room 1 | Exam Room 2 | Exam Room 3 | Procedure Room" placeholder="Auto-assign" />
+<Input label="Notes" placeholder="Reason for visit / special needs" name="notes" />
+</Columns>
+<Button>Check In Patient</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

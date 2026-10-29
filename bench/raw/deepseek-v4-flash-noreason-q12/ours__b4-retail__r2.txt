@@ -1,0 +1,134 @@
+# Store Manager's Daily Console
+
+<Callout tone="info" title="Store overview">Springfield Mall — Store #104 · Updated 2 minutes ago · <Badge tone="success">Open</Badge></Callout>
+
+<Columns>
+<Card title="Sales today">
+<Stat label="Sales vs target" value="$8,452 / $10,000" change="84.5%" tone="warning" icon="chart-line" />
+<Progress value="8452" max="10000" label="Target progress" tone="warning" />
+<Stat label="Average basket size" value="$42.30" change="+5.2% vs last week" tone="success" icon="shopping-bag" />
+</Card>
+
+<Card title="This week vs last week">
+<Chart type="bar" x="Day" y="Sales ($)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 7,200 | 6,800 |
+| Tue | 7,850 | 7,100 |
+| Wed | 8,100 | 7,400 |
+| Thu | 8,452 | 7,900 |
+</Chart>
+<Stat label="Week total" value="$31,602" change="+8.4% vs last week" tone="success" icon="trend-up" />
+</Card>
+</Columns>
+
+<Card title="Foot traffic through the day">
+<Chart type="area" x="Hour" y="Customers">
+| Hour | Today | Yesterday |
+|---|---|---|
+| 9 AM | 45 | 52 |
+| 10 AM | 78 | 84 |
+| 11 AM | 112 | 105 |
+| 12 PM | 148 | 139 |
+| 1 PM | 132 | 141 |
+| 2 PM | 121 | 128 |
+| 3 PM | 96 | 108 |
+| 4 PM | 142 | 118 |
+| 5 PM | 168 | 145 |
+| 6 PM | 121 | 98 |
+</Chart>
+<Callout tone="neutral" title="Peak hour">5 PM is your busiest period — ensure all registers are staffed.</Callout>
+</Card>
+
+<Columns>
+<Card title="Best sellers">
+| Item | Units sold |
+|---|---|
+| Wireless Earbuds Pro | 34 |
+| Smart Water Bottle | 27 |
+| Yoga Mat (Sage) | 22 |
+| Protein Powder (Vanilla) | 19 |
+| Running Shoes (Size 9) | 16 |
+</Card>
+
+<Card title="Items out of stock">
+| Item | Reorder? |
+|---|---|
+| Organic Coffee Beans (1kg) | <Button size="small" variant="secondary">Reorder</Button> |
+| LED Desk Lamp | <Button size="small" variant="secondary">Reorder</Button> |
+| Bluetooth Speaker (Navy) | <Button size="small" variant="secondary">Reorder</Button> |
+| Wool Scarf (Grey) | <Button size="small" variant="secondary">Reorder</Button> |
+</Card>
+</Columns>
+
+<Card title="Who is on shift today">
+<Columns>
+<Avatar name="Sarah Chen" src="find" subtitle="Manager · 9 AM – 5 PM" />
+<Avatar name="Mike Rodriguez" src="find" subtitle="Cashier · 9 AM – 3 PM" />
+<Avatar name="Priya Patel" src="find" subtitle="Sales associate · 10 AM – 6 PM" />
+<Avatar name="Tom O'Brien" src="find" subtitle="Stock clerk · 8 AM – 4 PM" />
+<Avatar name="Emma Wilson" src="find" subtitle="Cashier · 12 PM – 8 PM" />
+<Avatar name="James Lee" src="find" subtitle="Sales associate · 1 PM – 9 PM" />
+</Columns>
+</Card>
+
+<Card title="Registers">
+| Register | Status |
+|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> |
+| Register 2 | <Badge tone="success">Open</Badge> |
+| Register 3 | <Badge tone="danger">Closed</Badge> |
+| Register 4 | <Badge tone="success">Open</Badge> |
+</Card>
+
+<Card title="Running promotions">
+<Columns>
+<Card title="Buy 1 Get 1 — Socks">
+<Stat label="Units sold" value="48" change="+12% vs forecast" tone="success" icon="tag" />
+<Progress value="48" max="60" label="Daily goal" tone="success" />
+</Card>
+<Card title="20% off Winter Jackets">
+<Stat label="Units sold" value="12" change="−8% vs forecast" tone="danger" icon="tag" />
+<Progress value="12" max="20" label="Daily goal" tone="danger" />
+</Card>
+<Card title="Free Tote with $75 spend">
+<Stat label="Qualifying purchases" value="31" change="+5% vs forecast" tone="info" icon="gift" />
+<Progress value="31" max="40" label="Daily goal" tone="info" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Returns this week">
+<Stat label="Returns" value="23" change="−15% vs last week" tone="success" icon="arrow-counter-clockwise" />
+<Chart type="line" x="Day" y="Returns">
+| Day | Returns |
+|---|---|
+| Mon | 5 |
+| Tue | 3 |
+| Wed | 6 |
+| Thu | 4 |
+| Fri | 5 |
+</Chart>
+</Card>
+
+<Card title="Reorder item">
+<Form name="reorder">
+<Select label="Item" placeholder="Choose an item" options="Organic Coffee Beans (1kg) | LED Desk Lamp | Bluetooth Speaker (Navy) | Wool Scarf (Grey)" required="true" />
+<Input label="Quantity" type="number" placeholder="24" min="1" required="true" hint="Default reorder point is 24 units" />
+<Button>Submit reorder</Button>
+</Form>
+</Card>
+
+<Card title="Switch store">
+<Form name="store-switch">
+<Select label="Select a different store" placeholder="Choose a store" options="Springfield Mall — #104 (current) | Riverside Plaza — #108 | Downtown Market — #112 | Oakwood Center — #115" />
+<Button variant="secondary">View store</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show today's transactions in detail
+- See which employees are available to cover Register 3
+- Compare promotion performance over the full week
+- View a forecast for tomorrow's sales
+</FollowUps>

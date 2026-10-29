@@ -1,0 +1,70 @@
+{
+  "name": "@morphscreen/web",
+  "version": "0.1.1",
+  "license": "Apache-2.0",
+  "description": "Renders streamed model answers as UI in the browser: the WASM core and a DOM renderer, with a React component.",
+  "keywords": [
+    "generative-ui",
+    "llm",
+    "ui",
+    "streaming",
+    "wasm",
+    "react",
+    "ag-ui",
+    "openrouter"
+  ],
+  "homepage": "https://morphscreen.com/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morphscreen/morphscreen.git",
+    "directory": "sdk/web"
+  },
+  "author": "MorphScreen <support@morphscreen.com> (https://morphscreen.com)",
+  "bugs": {
+    "url": "https://github.com/morphscreen/morphscreen/issues",
+    "email": "support@morphscreen.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js"
+    },
+    "./morphscreen.wasm": "./dist/morphscreen.wasm",
+    "./morphscreen-agent.wasm": "./dist/morphscreen-agent.wasm",
+    "./morphscreen.css": "./dist/morphscreen.css",
+    "./morphscreen-page.css": "./dist/morphscreen-page.css"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "NOTICE"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "beta"
+  }
+}

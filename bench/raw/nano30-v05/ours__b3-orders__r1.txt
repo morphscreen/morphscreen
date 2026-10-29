@@ -1,0 +1,33 @@
+<Card title="Orders Overview">
+  <Columns>
+    <Stat label="Orders Placed Today" value="12" change="+" tone="info"/>
+    <Stat label="Revenue Today" value="$4,560" change="+$800" tone="success"/>
+    <Stat label="Average Order Value" value="$380" change="+$15" tone="neutral"/>
+  </Columns>
+</Card>
+
+<Card title="Recent Orders">
+  <Input label="Search customer" name="search_customer" type="text" placeholder="Enter name" />
+  <Select label="Filter by status" name="status_filter" placeholder="All statuses" options="Pending | Processing | Fulfilled | Cancelled" />
+  <Text>Order #1234 – Alice Smith – $78.50 – Pending</Text>
+  <Text>Order #1235 – Bob Jones – $45.00 – Processing</Text>
+  <Text>Order #1236 – Carol Lee – $120.00 – Fulfilled</Text>
+  <Text>Order #1237 – Dan Wu – $67.20 – Pending</Text>
+  <Form name="fulfill-order">
+    <Select label="Order ID" name="order_id" placeholder="Select order" options="1234 | 1235 | 1236 | 1237" />
+    <Button variant="primary" label="Mark as Fulfilled" />
+  </Form>
+</Card>
+
+<Stat label="Refund Rate" value="2.3%" change="+" tone="warning" />
+
+<Card title="Order Volume (Last 4 Weeks)">
+  <Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| W1 | 45 |
+| W2 | 52 |
+| W3 | 48 |
+| W4 | 60 |
+  </Chart>
+</Card>

@@ -1,0 +1,79 @@
+# Clinic Receptionist — Day View
+
+<Card title="Today's Schedule" subtitle="Monday, January 15, 2024">
+<Columns>
+<Card title="Appointments">
+| Time | Patient | Room | Type | Status |
+|---|---|---|---|---|
+| 08:00 | Maria Santos | 1 | Follow-up | <Badge tone="success">Checked in</Badge> |
+| 08:30 | James Chen | 2 | New patient | <Badge tone="info">Waiting</Badge> |
+| 09:00 | Aisha Patel | 1 | Annual exam | <Badge tone="info">Waiting</Badge> |
+| 09:30 | Robert Kim | 3 | Consultation | <Badge tone="neutral">Scheduled</Badge> |
+| 10:00 | Lisa Thompson | 2 | Follow-up | <Badge tone="neutral">Scheduled</Badge> |
+| 10:30 | David Park | 1 | New patient | <Badge tone="neutral">Scheduled</Badge> |
+| 11:00 | Sarah Johnson | 3 | Follow-up | <Badge tone="neutral">Scheduled</Badge> |
+| 11:30 | Michael Brown | 2 | Annual exam | <Badge tone="neutral">Scheduled</Badge> |
+| 14:00 | Jennifer Lee | 1 | Consultation | <Badge tone="neutral">Scheduled</Badge> |
+| 14:30 | Carlos Rodriguez | 3 | Follow-up | <Badge tone="neutral">Scheduled</Badge> |
+| 15:00 | Emily Davis | 2 | New patient | <Badge tone="neutral">Scheduled</Badge> |
+| 15:30 | Thomas Wilson | 1 | Annual exam | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Quick Stats">
+<Stat label="Patients Expected" value="12" change="+2 vs yesterday" tone="info" />
+<Stat label="Checked In" value="1" change="8:00 AM" tone="success" />
+<Stat label="Waiting" value="2" change="In lobby" tone="warning" />
+<Stat label="No-Show Rate (Jan)" value="8.3%" change="Target: <10%" tone="success" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Room Status" subtitle="Current availability">
+<Columns>
+<Card title="Room 1 — General">
+<Badge tone="success">Occupied</Badge> — Maria Santos (since 08:00)
+<Progress value="20" max="60" label="20 min elapsed of 60" />
+</Card>
+<Card title="Room 2 — General">
+<Badge tone="warning">Patient waiting</Badge> — James Chen
+<Progress value="0" max="30" label="Ready for provider" />
+</Card>
+<Card title="Room 3 — Consultation">
+<Badge tone="info">Free</Badge> — Next: Robert Kim at 09:30
+<Progress value="0" max="30" label="Available now" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Next Patient Called">
+<Callout tone="info" title="Now Calling">
+<strong>James Chen</strong> — 08:30 appointment, Room 2 (General)<br />
+<Badge tone="info">Waiting in lobby</Badge> | <Badge tone="neutral">New patient</Badge>
+</Callout>
+
+<Form name="check-in">
+<Input label="Patient name" name="patient" value="James Chen" required="true" />
+<Select label="Room" name="room" value="Room 2" options="Room 1 | Room 2 | Room 3" required="true" />
+<Checkboxes label="Confirm" name="confirm" options="Patient verified ID | Insurance confirmed | Consent forms signed" value="" hint="Check all that apply" required="true" />
+<Button size="large">Check In Patient</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate Days">
+<Form name="date-nav">
+<Columns>
+<Date label="Select date" name="date" value="2024-01-15" required="true" />
+<Button variant="secondary" href="#">← Previous Day</Button>
+<Button variant="secondary" href="#">Next Day →</Button>
+<Button variant="tertiary" href="#">Today</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- View patient chart for James Chen
+- Print daily schedule
+- Send appointment reminders for tomorrow
+- Review no-show reports for January
+</FollowUps>

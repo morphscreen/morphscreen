@@ -1,0 +1,192 @@
+# Factory Floor Supervisor Console
+
+<Card title="Factory Floor Supervisor Console" subtitle="Shift A · 06:00–14:00 · Mon 24 Jun 2025">
+<Button>Export Shift Report</Button>
+</Card>
+
+<Card title="Live Overview">
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1%" note="Target 80%" />
+<Stat label="Units produced" value="4,382" note="Target 5,000" />
+<Stat label="Defect rate" value="1.9%" note="Past month" />
+<Stat label="Energy today" value="8.4 MWh" note="Peak 0.9 MWh/h" />
+<Stat label="Days since last incident" value="47" note="3 incidents YTD" />
+</Columns>
+<Progress value="78.4" max="100" label="OEE: Availability 88.1% · Performance 91.2% · Quality 97.6%" />
+<Progress value="4382" max="5000" label="Units produced: 4,382 / 5,000 (87.6% of target)" />
+</Card>
+
+<Card title="Line Focus" subtitle="Select a line to drill down">
+<Tabs>
+<Tab title="Line A">
+<Badge tone="success">Running</Badge>
+
+| Metric | Value |
+|---|---|
+| Product | Bearing 6204 |
+| Rate | 142 u/h |
+| OEE | 82.1% |
+| Current batch | B-2041 |
+| Next maintenance | Press P-12 · Tomorrow |
+</Tab>
+<Tab title="Line B">
+<Badge tone="success">Running</Badge>
+
+| Metric | Value |
+|---|---|
+| Product | Bearing 6205 |
+| Rate | 118 u/h |
+| OEE | 76.4% |
+| Current batch | B-2043 |
+| Next maintenance | Grinder G-4 · 3 days |
+</Tab>
+<Tab title="Line C">
+<Badge tone="warning">Idle</Badge>
+
+| Metric | Value |
+|---|---|
+| Product | Bearing 6308 |
+| Rate | 0 u/h |
+| OEE | 71.2% |
+| Current batch | B-2048 (quality hold) |
+| Issue | Material feed jam |
+</Tab>
+<Tab title="Line D">
+<Badge tone="danger">Down</Badge>
+
+| Metric | Value |
+|---|---|
+| Product | Bearing 6210 |
+| Rate | 0 u/h |
+| OEE | 64.0% |
+| Current batch | — |
+| Issue | Hydraulic leak · WO-120 |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Production Lines" subtitle="Live rate and status">
+| Line | Product | Rate (u/h) | Status |
+|---|---|---|---|
+| Line A | Bearing 6204 | 142 | 🟢 Running |
+| Line B | Bearing 6205 | 118 | 🟢 Running |
+| Line C | Bearing 6308 | 96 | 🟡 Idle |
+| Line D | Bearing 6210 | 0 | 🔴 Down |
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="Line D · Hydraulic pressure low">Robot R-7 stopped. Maintenance notified at 13:42.</Callout>
+<Callout tone="warning" title="Line C · Material feed jam">Hopper jam detected. Operator cleared, line resuming.</Callout>
+</Card>
+
+<Columns>
+<Card title="Defect Rate – Past Month">
+<Chart type="line" title="Defect Rate" x="Week" y="Defect %">
+| Week | Defect % |
+|---|---|
+| W1 | 2.1 |
+| W2 | 1.8 |
+| W3 | 2.4 |
+| W4 | 1.9 |
+</Chart>
+</Card>
+<Card title="Downtime by Cause">
+<Chart type="donut" title="Downtime" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Changeover | 14.2 |
+| Equipment failure | 11.4 |
+| Material shortage | 7.3 |
+| Quality checks | 4.9 |
+| Other | 2.8 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due | Priority |
+|---|---|---|---|
+| Press P-12 | A | Tomorrow | 🔴 High |
+| Grinder G-4 | B | 3 days | 🟠 Medium |
+| Robot R-7 | D | Today | 🔴 High |
+| Conveyor C-2 | C | 5 days | 🟢 Low |
+</Card>
+<Card title="Schedule Maintenance">
+<Form name="maintenance-schedule">
+<Select label="Machine" name="machine" placeholder="Choose machine" options="Press P-12 (Line A) | Grinder G-4 (Line B) | Conveyor C-2 (Line C) | Robot R-7 (Line D)" />
+<Date label="Date" name="maintenance-date" />
+<Input label="Notes" name="notes" placeholder="e.g. replace bearing, calibrate sensor" />
+<Button>Schedule Maintenance</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Stock Levels">
+| Material | Stock | Reorder level | Status |
+|---|---|---|---|
+| Steel coil | 12,400 kg | 8,000 kg | 🟢 OK |
+| Resin | 3,200 kg | 4,000 kg | 🟠 Low |
+| Packaging | 18,500 pcs | 15,000 pcs | 🟢 OK |
+<Progress value="3200" max="5000" label="Resin below reorder level – delivery due Wed" />
+</Card>
+<Card title="Supplier Deliveries Due This Week">
+| Supplier | Material | Due | Qty |
+|---|---|---|---|
+| SteelCo | Steel coil | Tue | 20 t |
+| PolyChem | Resin | Wed | 5 t |
+| PackRight | Cartons | Fri | 10,000 pcs |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Shift Output" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 1820 |
+| Afternoon | 1610 |
+| Night | 952 |
+</Chart>
+</Card>
+<Card title="Energy Use Today">
+<Chart type="area" title="Energy Use" x="Hour" y="MWh">
+| Hour | MWh |
+|---|---|
+| 06:00 | 0.6 |
+| 08:00 | 0.8 |
+| 10:00 | 0.9 |
+| 12:00 | 0.7 |
+| 14:00 | 0.5 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Safety">
+<Stat label="Incidents this year" value="3" note="1 lost-time · 2 first-aid" />
+<Stat label="Days since last incident" value="47" note="Last incident: 8 May" />
+</Card>
+<Card title="Batches on Quality Hold">
+| Batch | Product | Reason | Held for |
+|---|---|---|---|
+| B-2041 | Bearing 6204 | Dimensional drift | 2 h |
+| B-2048 | Bearing 6308 | Material hardness | 5 h |
+</Card>
+</Columns>
+
+<Card title="Open Work Orders" subtitle="Sorted by priority">
+| WO # | Line | Task | Priority |
+|---|---|---|---|
+| WO-120 | D | Fix hydraulic leak | 🔴 Critical |
+| WO-118 | A | Replace die | 🟠 High |
+| WO-119 | B | Calibrate torque | 🟡 Medium |
+</Card>
+
+<FollowUps>
+- Show detailed OEE trend for Line A
+- Compare this week's output to last week
+- List all open work orders sorted by due date
+- View maintenance history for Press P-12
+</FollowUps>

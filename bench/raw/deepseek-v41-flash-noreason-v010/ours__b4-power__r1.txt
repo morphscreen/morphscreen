@@ -1,0 +1,100 @@
+# Grid Control — Live Console
+
+<Callout tone="danger" title="Live feed active">All values refresh every 5 seconds. Last update 14:32:08.</Callout>
+
+<Columns>
+<Stat label="Current load" value="18.4 GW" change="+2.1% vs 1h ago" tone="warning" icon="lightning" />
+<Stat label="Capacity used" value="87%" change="+4 pts last hour" tone="warning" icon="gauge" />
+<Stat label="Price (spot)" value="$64.20 /MWh" change="+$3.10" tone="info" icon="currency-dollar" />
+<Stat label="Emissions today" value="412 kt CO₂e" change="-6% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+
+<Card title="Network headroom" subtitle="How close the grid is to its ceiling">
+<Progress value="87" max="100" label="Load vs. total capacity (18.4 GW of 21.2 GW)" tone="warning" />
+<Progress value="71" max="100" label="Reserve margin available" tone="success" />
+<Progress value="94" max="100" label="North region interconnector" tone="danger" />
+</Card>
+
+<Card title="Generation by source" subtitle="Live split, 18.4 GW total">
+<Chart type="donut" title="Generation mix (GW)">
+| Source | GW |
+|---|---|
+| Gas | 6.2 |
+| Wind | 4.8 |
+| Nuclear | 3.9 |
+| Hydro | 2.1 |
+| Solar | 1.1 |
+| Coal | 0.3 |
+</Chart>
+</Card>
+
+<Card title="Plants" subtitle="Output and status per unit">
+| Plant | Region | Output | Status |
+|---|---|---|---|
+| Aurora CCGT | North | 2.4 GW | <Badge tone="success">Online</Badge> |
+| Bracken Wind | West | 1.9 GW | <Badge tone="success">Online</Badge> |
+| Calder Nuclear | Central | 2.1 GW | <Badge tone="success">Online</Badge> |
+| Dunmore Hydro | North | 0.8 GW | <Badge tone="info">Ramping</Badge> |
+| Eastfield CCGT | East | 1.6 GW | <Badge tone="warning">Derated</Badge> |
+| Fenwick Solar | South | 0.4 GW | <Badge tone="info">Variable</Badge> |
+| Greyrock Coal | South | 0.3 GW | <Badge tone="danger">Tripped</Badge> |
+</Card>
+
+<Card title="Active outages" subtitle="2 unplanned, 1 planned">
+| Outage | Region affected | Cause | ETA |
+|---|---|---|---|
+| Greyrock Coal unit 2 | South / Fenwick | Turbine trip | 6h 20m |
+| Eastfield CCGT derate | East / Marlow | Cooling limit | 3h 05m |
+| Line 14b maintenance | North / Kestrel | Scheduled | 9h 00m |
+</Card>
+
+<Card title="Demand forecast — next 24 hours">
+<Chart type="area" x="Hour" y="GW">
+| Hour | Forecast | Capacity |
+|---|---|---|
+| 15:00 | 18.6 | 21.2 |
+| 18:00 | 20.1 | 21.2 |
+| 21:00 | 19.4 | 21.2 |
+| 00:00 | 16.8 | 21.2 |
+| 03:00 | 15.2 | 21.2 |
+| 06:00 | 16.1 | 21.2 |
+| 09:00 | 18.9 | 21.2 |
+| 12:00 | 19.7 | 21.2 |
+</Chart>
+<Callout tone="warning" title="Peak expected 18:00">Forecast peak of 20.1 GW sits within 1.1 GW of capacity. Consider pre-emptive reserve.</Callout>
+</Card>
+
+<Card title="Maintenance planned this month">
+<Steps>
+<Step title="Fenwick Solar inverter service" status="done" subtitle="Mar 04 — completed on schedule">4 inverters replaced, output restored to full.</Step>
+<Step title="Calder Nuclear refuel window" status="current" subtitle="Mar 18–22 — in progress">Unit offline for refuel; 2.1 GW removed from mix.</Step>
+<Step title="Line 14b conductor replacement" status="todo" subtitle="Mar 25 — scheduled">North/Kestrel corridor, planned 9h outage.</Step>
+<Step title="Bracken Wind gearbox overhaul" status="todo" subtitle="Mar 29 — scheduled">Turbines 12–18 offline for the day.</Step>
+</Steps>
+</Card>
+
+<Card title="Live alerts">
+<Callout tone="danger" title="14:31 — Line 14b overload">North interconnector at 94% of rating. Auto-shed armed.</Callout>
+<Callout tone="warning" title="14:28 — Reserve margin low">Spinning reserve at 71%. Fast-start units on standby.</Callout>
+<Callout tone="info" title="14:22 — Price spike">Spot price cleared at $64.20/MWh, up $3.10.</Callout>
+<Callout tone="success" title="14:15 — Wind ramp">Bracken Wind up 0.6 GW in 30 minutes.</Callout>
+</Card>
+
+<Card title="Focus & control">
+<Radio label="Focus region" options="All regions | North | South | East | West | Central" name="region" value="All regions" hint="Filters plants, outages and forecast above" />
+<Form name="curtailment">
+<Select label="Curtailment target" options="Industrial demand response | Commercial block | Residential rollback | Interruptible contracts" placeholder="Choose a target" />
+<Slider label="Curtailment volume" min="0" max="2000" step="50" value="500" name="curtail_mw" unit="MW" />
+<Input label="Window start" type="datetime-local" name="curtail_start" hint="Curtailment begins at this time" />
+<Input label="Reason / authorization code" name="curtail_reason" placeholder="e.g. AUTH-4471" />
+<Button variant="danger" icon="warning">Order curtailment</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show only the North region
+- Why did Greyrock Coal trip?
+- Forecast emissions for the rest of today
+- Draft a curtailment order for 800 MW
+</FollowUps>

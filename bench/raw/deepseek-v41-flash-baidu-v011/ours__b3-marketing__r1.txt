@@ -1,0 +1,99 @@
+# Marketing Dashboard — Week 32
+
+<Columns>
+<Stat label="Site visitors (30d)" value="184,920" change="+12.4%" tone="success" icon="users" />
+<Stat label="Conversion rate" value="3.8%" change="+0.4 pt" tone="success" icon="chart-line" />
+<Stat label="Email subscribers (MTD)" value="6,410" change="+18.2%" tone="success" icon="envelope" />
+<Stat label="Total ad spend (30d)" value="$42,300" change="+6.1%" tone="warning" icon="currency-dollar" />
+</Columns>
+
+<Card title="Date range" subtitle="Applies to every panel on this screen">
+<Form name="date-range">
+<Radio label="Preset" options="Last 7 days | Last 30 days | Last 90 days | Custom" value="Last 30 days" />
+<Date label="Start date" name="start" value="2025-07-15" />
+<Date label="End date" name="end" value="2025-08-13" />
+<Button>Apply range</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Site visitors — last 30 days">
+<Chart type="area" x="Week" y="Visitors">
+| Week | Visitors |
+|---|---|
+| W1 | 38200 |
+| W2 | 41900 |
+| W3 | 46800 |
+| W4 | 58020 |
+</Chart>
+</Card>
+
+<Card title="Conversion rate vs. visitors">
+<Chart type="line" x="Week" y="Percent">
+| Week | Conversion rate |
+|---|---|
+| W1 | 3.1 |
+| W2 | 3.4 |
+| W3 | 3.6 |
+| W4 | 3.8 |
+</Chart>
+<Callout tone="success" title="Trend">Conversion has climbed 0.7 pt over the four weeks while traffic grew — the lift is real, not a traffic-mix effect.</Callout>
+</Card>
+
+<Card title="Top five traffic sources" subtitle="Share of total sessions, last 30 days">
+| Source | Share |
+|---|---|
+| Organic search | 38 |
+| Paid social | 24 |
+| Direct | 16 |
+| Email | 13 |
+| Referral | 9 |
+</Card>
+
+<Card title="Running campaigns" subtitle="Spend to date, current flight">
+| Campaign | Spend |
+|---|---|
+| Summer Sale Retargeting | 12400 |
+| Back-to-School Search | 9800 |
+| Q3 Webinar Push | 7100 |
+| Brand Awareness — Video | 6400 |
+| Newsletter Reactivation | 3100 |
+</Card>
+
+<Card title="Best performer" subtitle="Summer Sale Retargeting">
+<Columns>
+<Stat label="ROAS" value="6.2x" tone="success" icon="trend-up" />
+<Stat label="Conversions" value="1,842" change="+31%" tone="success" />
+<Stat label="Cost per acquisition" value="$6.73" change="-14%" tone="success" />
+</Columns>
+<Badge tone="success">Scale this campaign</Badge>
+<Callout tone="info" title="Why it wins">Highest ROAS on the board at the lowest CPA, and it converts email and paid-social traffic best. Recommend shifting 15% of Brand Awareness budget here.</Callout>
+<Button ask="Show the full Summer Sale Retargeting breakdown by ad set and creative">Break down this campaign</Button>
+</Card>
+
+<Card title="Email subscriber growth — this month">
+<Chart type="bar" x="Week" y="New subscribers">
+| Week | New subscribers |
+|---|---|
+| W1 | 1180 |
+| W2 | 1490 |
+| W3 | 1720 |
+| W4 | 2020 |
+</Chart>
+<Progress value="6410" max="7000" label="Progress to 7,000 monthly goal" tone="success" />
+</Card>
+
+<Card title="Export the report">
+<Form name="export">
+<Select label="Format" options="PDF | CSV | XLSX" placeholder="Choose a format" />
+<Checkboxes label="Include" options="Charts | Raw tables | Campaign notes" value="Charts | Raw tables" />
+<Input label="Send to" type="email" placeholder="you@company.com" hint="Leave blank to download instead" />
+<Button icon="download-simple">Export report</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which campaign should I cut to fund Summer Sale Retargeting?
+- Break down paid social spend by ad set
+- Compare this month's subscriber growth to last month
+</FollowUps>

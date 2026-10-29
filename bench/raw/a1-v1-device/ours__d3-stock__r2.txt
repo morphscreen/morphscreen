@@ -1,0 +1,53 @@
+<Card title="Warehouse Stock Check" subtitle="Scan a product to view inventory across all locations">
+<Scan label="Scan product barcode" name="product-barcode" kind="barcode" hint="Point camera at barcode" required="true" />
+</Card>
+
+<Card title="Product Details" subtitle="SKU: WH-8842 | Widget Pro X200">
+<Badge tone="info">Active</Badge>
+
+### Current Stock by Warehouse
+
+| Warehouse | Location | On Hand | Reserved | Available | Reorder Point | Status |
+|---|---|---|---|---|---|---|
+| WH-NYC | Brooklyn, NY | 42 | 8 | 34 | 25 | OK |
+| WH-LAX | Los Angeles, CA | 18 | 5 | 13 | 25 | **LOW** |
+| WH-CHI | Chicago, IL | 67 | 12 | 55 | 25 | OK |
+| WH-DAL | Dallas, TX | 8 | 2 | 6 | 25 | **CRITICAL** |
+| WH-SEA | Seattle, WA | 31 | 4 | 27 | 25 | OK |
+
+<Callout tone="warning" title="Low Stock Alert">
+Warehouse WH-LAX (Los Angeles) has 13 available units — below reorder point of 25. Warehouse WH-DAL (Dallas) is critical with only 6 available units.
+</Callout>
+
+<Chart type="bar" title="Available Stock by Warehouse" x="Warehouse" y="Units">
+| Warehouse | Available |
+|---|---|
+| WH-NYC | 34 |
+| WH-LAX | 13 |
+| WH-CHI | 55 |
+| WH-DAL | 6 |
+| WH-SEA | 27 |
+</Chart>
+</Card>
+
+<Card title="Request Restock">
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-8842" hint="Auto-filled from scan" required="true" />
+<Select label="Priority" name="priority" options="Standard (3-5 business days) | Expedited (1-2 business days) | Emergency (same day)" placeholder="Select priority" required="true" />
+<Checkboxes label="Warehouses needing restock" name="warehouses" options="WH-LAX (Los Angeles) | WH-DAL (Dallas)" value="WH-LAX (Los Angeles) | WH-DAL (Dallas)" hint="Pre-selected based on low stock" required="true" />
+<Input label="Quantity per warehouse" name="quantity" type="number" value="50" hint="Units to order for each selected warehouse" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Special instructions, preferred carrier, etc." rows="3" />
+<Button>Submit Restock Request</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Recent Restock Requests" subtitle="Last 5 requests for this product">
+| Date | Warehouses | Qty Each | Priority | Status |
+|---|---|---|---|---|
+| 2024-01-15 | WH-LAX, WH-DAL | 40 | Expedited | Delivered |
+| 2024-01-08 | WH-DAL | 60 | Standard | In Transit |
+| 2024-01-02 | WH-NYC, WH-LAX | 30 | Standard | Delivered |
+| 2023-12-28 | WH-DAL | 50 | Emergency | Delivered |
+| 2023-12-20 | WH-SEA | 25 | Standard | Delivered |
+</Card>

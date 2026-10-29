@@ -1,0 +1,18 @@
+root = Card([header, nextMeeting, attendees, joinActions])
+
+header = CardHeader("Up Next on Your Calendar", "Here's what's coming up")
+
+nextMeeting = Card([meetingTitle, meetingTime], "sunk", "column", "xs")
+meetingTitle = TextContent("**Design Sync — Q3 Roadmap**", "large-heavy")
+meetingTime = TextContent("Starts in 15 minutes · 10:30 AM – 11:00 AM", "small")
+
+attendees = Card([attendeesHeading, attendeeList], "sunk", "column", "xs")
+attendeesHeading = Heading("Attendees", "h3")
+attendeeList = ListBlock([attOne, attTwo, attThree])
+attOne = ListItem("Ava Chen", "Product Design Lead", ["https://picsum.photos/seed/ava/64/64"])
+attTwo = ListItem("Marcus Reid", "Engineering Manager", ["https://picsum.photos/seed/marcus/64/64"])
+attThree = ListItem("Priya Nair", "Product Manager", ["https://picsum.photos/seed/priya/64/64"])
+
+joinActions = Buttons([joinBtn, snoozeBtn], "row")
+joinBtn = Button("Join Call", null, "primary")
+snoozeBtn = Button("Snooze 10 min", null, "secondary")

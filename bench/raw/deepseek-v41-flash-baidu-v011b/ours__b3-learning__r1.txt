@@ -1,0 +1,84 @@
+# Training Analytics — This Week
+
+<Callout tone="info" title="Cohort filter applies to the whole screen">Pick a cohort below and every number, chart and list on this page narrows to it.</Callout>
+
+<Card title="Narrow to one cohort" subtitle="Applies to all metrics on this screen">
+<Select label="Cohort" name="cohort" options="All cohorts | Cohort 2024-A (Spring) | Cohort 2024-B (Summer) | Cohort 2024-C (Autumn)" placeholder="All cohorts" hint="Leave on All cohorts to see the whole platform" />
+<Button variant="secondary" size="small">Apply filter</Button>
+</Card>
+
+## Headline numbers
+
+<Columns>
+<Stat label="Active learners this week" value="2,847" change="+6.2% vs last week" tone="success" icon="users" />
+<Stat label="Course completion rate" value="68.4%" change="+1.8 pts" tone="success" icon="chart-line" />
+<Stat label="Average quiz score" value="76.1%" change="-0.9 pts" tone="warning" icon="chart-line" />
+</Columns>
+
+<Card title="Engagement across the past eight weeks" subtitle="Weekly active learners and average session length">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active learners | Avg session (min) |
+|---|---|---|
+| W1 | 2210 | 24 |
+| W2 | 2340 | 26 |
+| W3 | 2480 | 25 |
+| W4 | 2410 | 27 |
+| W5 | 2590 | 28 |
+| W6 | 2680 | 29 |
+| W7 | 2760 | 28 |
+| W8 | 2847 | 31 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Top 6, this term">
+<Chart type="horizontal" x="Course" y="Enrolled">
+| Course | Enrolled |
+|---|---|
+| Data Fundamentals | 812 |
+| Python for Analysts | 744 |
+| SQL Essentials | 690 |
+| Cloud Basics | 523 |
+| UX Research 101 | 402 |
+| Security Awareness | 318 |
+</Chart>
+<Button ask="Break down enrollment for Data Fundamentals by cohort">Break down top course</Button>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Low activity or missed deadlines in the last 14 days">
+| Learner | Cohort | Progress | Last active | Risk |
+|---|---|---|---|---|
+| Priya Raman | 2024-B | 22% | 11 days ago | <Badge tone="danger">High</Badge> |
+| Marcus Okafor | 2024-A | 34% | 8 days ago | <Badge tone="danger">High</Badge> |
+| Elena Duarte | 2024-C | 41% | 6 days ago | <Badge tone="warning">Medium</Badge> |
+| Tom Whitfield | 2024-B | 47% | 5 days ago | <Badge tone="warning">Medium</Badge> |
+| Aisha Khan | 2024-A | 55% | 4 days ago | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Message a cohort" subtitle="Reaches everyone in the selected cohort">
+<Form name="cohort-message">
+<Select label="Send to" name="recipients" options="All cohorts | Cohort 2024-A (Spring) | Cohort 2024-B (Summer) | Cohort 2024-C (Autumn) | At-risk learners only" placeholder="Choose recipients" required="true" />
+<Select label="Template" name="template" options="Nudge: you haven't logged in | Reminder: quiz due Friday | Encouragement: you're nearly done | Custom message" placeholder="Choose a template" />
+<Input label="Subject" name="subject" placeholder="Finish your Module 3 quiz by Friday" required="true" />
+<TextArea label="Message" name="body" rows="5" placeholder="Hi {{first_name}}, you're 60% through the course — one short quiz left this week." hint="Merge tags like {{first_name}} and {{cohort}} are supported" required="true" />
+<Checkboxes label="Also do" options="Schedule for tomorrow 9am | BCC the instructor | Log this send in the learner record" />
+<Button>Send message</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="How the numbers are built">
+<Steps>
+<Step title="Pull activity events" status="done" subtitle="Logins, lesson views, quiz attempts — last 8 weeks">2.1M events processed</Step>
+<Step title="Compute weekly engagement" status="done" subtitle="Rolled up per learner per week">Unique active learners per week</Step>
+<Step title="Score dropout risk" status="current" subtitle="Weighted: days inactive, progress vs. pace, missed deadlines">Thresholds tuned monthly</Step>
+<Step title="Publish to this dashboard" status="todo" subtitle="Refreshes nightly at 02:00 UTC">Next run in 6 hours</Step>
+</Steps>
+<Progress value="68" max="100" label="Course completion rate" tone="success" />
+</Card>
+
+<FollowUps>
+- Which learners in Cohort 2024-B are behind pace?
+- Show quiz scores by question for Data Fundamentals
+- Compare completion rate across all three cohorts
+- Draft a re-engagement message for high-risk learners
+</FollowUps>

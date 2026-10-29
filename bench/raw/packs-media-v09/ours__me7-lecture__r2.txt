@@ -1,0 +1,124 @@
+# Lecture: Introduction to Machine Learning
+
+**CS 4780 • Fall 2024 • Week 3**  
+*Instructor: Dr. Sarah Chen*
+
+---
+
+<Card title="Lecture Recording" subtitle="Recorded September 18, 2024 • 1h 24m">
+<Video 
+  src="https://example.com/lectures/ml-week3.mp4" 
+  poster="https://example.com/lectures/ml-week3-poster.jpg"
+  title="Week 3: Supervised Learning Fundamentals"
+  caption="Full lecture with Q&A. Chapters: 0:00 Introduction, 12:30 Linear Regression, 28:45 Gradient Descent, 45:20 Regularization, 58:10 Model Evaluation, 1:10:15 Live Coding Demo"
+/>
+</Card>
+
+---
+
+<Card title="Slides: Main Points">
+<Tabs>
+<Tab title="Linear Regression">
+### Core Concepts
+- **Supervised learning**: Learn mapping $f: X \to Y$ from labeled examples $(x^{(i)}, y^{(i)})$
+- **Linear hypothesis**: $h_\theta(x) = \theta_0 + \theta_1 x_1 + \dots + \theta_n x_n = \theta^T x$
+- **Cost function (MSE)**: $J(\theta) = \frac{1}{2m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2$
+
+### Key Assumptions
+| Assumption | What It Means |
+|---|---|
+| Linearity | Relationship between features and target is linear |
+| Independence | Observations are independent of each other |
+| Homoscedasticity | Constant variance of errors |
+| Normality | Errors are normally distributed (for inference) |
+</Tab>
+
+<Tab title="Gradient Descent">
+### Algorithm
+```
+repeat until convergence {
+  θ_j := θ_j - α (∂/∂θ_j) J(θ)   for all j
+}
+```
+
+### Variants
+- **Batch GD**: Uses all $m$ examples per step — stable but slow for large $m$
+- **Stochastic GD**: One example per step — noisy, fast, can escape local minima
+- **Mini-batch GD**: Best of both worlds (typical batch size: 32–512)
+
+### Learning Rate $\alpha$
+- Too small → slow convergence
+- Too large → overshoot, divergence
+- **Practical tip**: Try $\alpha \in \{0.001, 0.01, 0.1, 1\}$ on log scale
+</Tab>
+
+<Tab title="Regularization">
+### Ridge (L2)
+$$J(\theta) = \text{MSE} + \lambda \sum_{j=1}^n \theta_j^2$$
+- Shrinks coefficients toward zero, never exactly zero
+- Better when many features have small effects
+
+### Lasso (L1)
+$$J(\theta) = \text{MSE} + \lambda \sum_{j=1}^n |\theta_j|$$
+- Can drive coefficients to exactly zero → **feature selection**
+- Better when only a few features matter
+
+### Elastic Net
+$$J(\theta) = \text{MSE} + \lambda_1 \|\theta\|_1 + \lambda_2 \|\theta\|_2^2$$
+- Combines both; useful when features are correlated
+</Tab>
+
+<Tab title="Model Evaluation">
+### Metrics
+| Task | Metrics |
+|---|---|
+| Regression | MSE, RMSE, MAE, $R^2$, Adjusted $R^2$ |
+| Classification | Accuracy, Precision, Recall, F1, ROC-AUC |
+
+### Validation Strategies
+- **Train/Validation/Test split** (e.g., 70/15/15)
+- **k-Fold Cross-Validation** ($k=5$ or $10$)
+- **Leave-One-Out CV** (LOOCV) — low bias, high variance
+
+### Bias-Variance Tradeoff
+- **High bias** (underfitting): Model too simple → add features, decrease $\lambda$
+- **High variance** (overfitting): Model too complex → more data, increase $\lambda$, feature selection
+</Tab>
+</Tabs>
+</Card>
+
+---
+
+<Card title="Reading List">
+### Required Reading
+| # | Title | Authors | Source | Pages | Link |
+|---|---|---|---|---|---|
+| 1 | **An Introduction to Statistical Learning** (Ch. 3: Linear Regression) | James, Witten, Hastie, Tibshirani | ISLR 2nd ed. | 59–126 | [PDF](https://www.statlearning.com/) |
+| 2 | **Pattern Recognition and Machine Learning** (Sec. 3.1–3.3) | Bishop | PRML | 138–172 | [Library Reserve](https://library.example.edu/reserve/prml) |
+| 3 | **A Few Useful Things to Know About ML** | Domingos | CACM 2012 | 1–12 | [DOI:10.1145/2347736.2347755](https://doi.org/10.1145/2347736.2347755) |
+
+### Supplementary
+| # | Title | Type | Notes |
+|---|---|---|---|
+| 4 | **Gradient Descent Lecture Notes** | Course handout | Covers convergence proofs, momentum, Adam |
+| 5 | **Regularization: Ridge, Lasso, Elastic Net** | Blog post (Distill.pub) | Interactive visualizations |
+| 6 | **Cross-Validation Done Right** | Paper (Kohavi, 1995) | Classic reference on CV pitfalls |
+
+### Optional Deep Dives
+- **Elements of Statistical Learning** (Ch. 3, 7) — mathematical depth
+- **Deep Learning** (Goodfellow et al., Ch. 4, 8) — optimization perspective
+- **Statistical Learning Theory** (Vapnik) — theoretical foundations
+
+<Callout tone="info" title="Access Notes">
+All required readings are available through the course Canvas page or the university library proxy. Supplementary materials are linked in the Week 3 module.
+</Callout>
+</Card>
+
+---
+
+<FollowUps>
+- What's the difference between Ridge and Lasso in practice?
+- How do I choose the right cross-validation strategy for my dataset?
+- Can you walk through the gradient descent derivation step by step?
+- What are common pitfalls when evaluating regression models?
+</FollowUps>

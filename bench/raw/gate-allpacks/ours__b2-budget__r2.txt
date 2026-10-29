@@ -1,0 +1,43 @@
+# Budget Overview
+
+<Card title="Monthly Budget" subtitle="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,340" change="$660 remaining" tone="success" />
+<Stat label="Progress" value="78%" />
+</Columns>
+<Progress value="2340" max="3000" label="Budget used" tone="success" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Breakdown">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 480 |
+| Transport | 320 |
+| Utilities | 180 |
+| Entertainment | 160 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense">
+<Callout tone="info" title="🏠 Rent Payment — $1,200">
+Paid on January 1st · Recurring monthly · 51% of total spending
+</Callout>
+</Card>
+
+<Card title="Select Month">
+<Select label="View month" options="January 2025 | December 2024 | November 2024 | October 2024" value="January 2025" />
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Description" placeholder="Groceries, Uber, Subscription..." />
+<Input label="Amount" type="number" placeholder="0.00" step="0.01" min="0" />
+<Select label="Category" placeholder="Choose category" options="Housing | Food | Transport | Utilities | Entertainment | Other" />
+<Date label="Date" />
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

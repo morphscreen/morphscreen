@@ -1,0 +1,43 @@
+# Low-inventory warning
+
+<Badge tone="danger">6 items below threshold</Badge>
+
+<Callout tone="warning" title="Reorder threshold: 10 units">Any item with 10 or fewer remaining units is flagged here. Suggested reorder quantities are shown next to each item.</Callout>
+
+<Columns>
+<Stat label="Items below threshold" value="6" icon="warning" tone="danger" />
+<Stat label="Critical (5 or fewer)" value="3" icon="triangle-alert" tone="danger" />
+<Stat label="Suggested units to reorder" value="108" icon="shopping-cart" tone="info" note="All items" />
+</Columns>
+
+<Card title="Search items" subtitle="Filter the low-stock list below">
+<Form name="inventory-search">
+<Input label="Search items" type="search" placeholder="e.g. Honey, SKU-A006" name="search" />
+<Select label="Category" placeholder="All categories" options="All categories | Beverages | Bakery | Pantry | Dairy" name="category" />
+<Button variant="primary" icon="magnifying-glass">Search</Button>
+</Form>
+</Card>
+
+<Card title="Low-stock items" subtitle="At or below the 10-unit threshold">
+<Button variant="primary" ask="Reorder all 108 suggested units">Reorder all below threshold</Button>
+
+| Item | Remaining | Status | Action |
+|---|---|---|---|
+| **Arabica Coffee Beans 250g**<br><Badge tone="neutral">SKU-A001</Badge> | 4 units<br><Progress value="4" max="50" label="4 left" tone="danger" /> | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small" ask="Reorder Arabica Coffee Beans (24 units)">Reorder 24</Button> |
+| **Organic Green Tea 20 bags**<br><Badge tone="neutral">SKU-A002</Badge> | 7 units<br><Progress value="7" max="50" label="7 left" tone="warning" /> | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small" ask="Reorder Organic Green Tea (12 units)">Reorder 12</Button> |
+| **Chocolate Croissant 4-pack**<br><Badge tone="neutral">SKU-A003</Badge> | 6 units<br><Progress value="6" max="50" label="6 left" tone="warning" /> | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small" ask="Reorder Chocolate Croissant (12 units)">Reorder 12</Button> |
+| **Almond Milk 1L**<br><Badge tone="neutral">SKU-A004</Badge> | 2 units<br><Progress value="2" max="50" label="2 left" tone="danger" /> | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small" ask="Reorder Almond Milk (24 units)">Reorder 24</Button> |
+| **Oat Flour 500g**<br><Badge tone="neutral">SKU-A005</Badge> | 9 units<br><Progress value="9" max="50" label="9 left" tone="warning" /> | <Badge tone="warning">Low</Badge> | <Button variant="secondary" size="small" ask="Reorder Oat Flour (12 units)">Reorder 12</Button> |
+| **Honey Jar 200g**<br><Badge tone="neutral">SKU-A006</Badge> | 1 unit<br><Progress value="1" max="50" label="1 left" tone="danger" /> | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small" ask="Reorder Honey Jar (24 units)">Reorder 24</Button> |
+
+</Card>
+
+<Details title="Adjust the reorder threshold" open="false">
+<Slider label="Warning threshold" min="5" max="25" step="1" value="10" name="threshold" />
+</Details>
+
+<FollowUps>
+- View pending purchase orders
+- Adjust thresholds per category
+- Export low-stock report
+</FollowUps>

@@ -1,0 +1,158 @@
+# Hub Operations Desk — ATL (Atlanta)
+
+<Select label="Select Hub" name="hub-select" options="ATL — Atlanta | ORD — Chicago | DFW — Dallas | DEN — Denver | LAX — Los Angeles" value="ATL — Atlanta" />
+
+<Columns>
+<Card title="On-Time Performance Today">
+<Stat label="On-Time Departures" value="87%" change="+2% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="On-Time Arrivals" value="84%" change="-1% vs yesterday" tone="info" icon="chart-line" />
+<Progress value="87" max="100" label="Target: 90%" tone="success" />
+</Card>
+
+<Card title="Average Passenger Load">
+<Stat label="Load Factor" value="82%" change="+3% vs last week" tone="info" icon="users" />
+<Stat label="Total Passengers" value="124,892" change="+1,204 vs yesterday" tone="neutral" icon="users" />
+<Progress value="82" max="100" label="Capacity utilization" tone="info" />
+</Card>
+
+<Card title="Average Turnaround Time">
+<Stat label="Current Average" value="42 min" change="-3 min vs target" tone="success" icon="calendar" />
+<Stat label="Best Today" value="28 min" change="DL 1422" tone="neutral" icon="calendar" />
+<Stat label="Worst Today" value="67 min" change="DL 891 — gate hold" tone="warning" icon="calendar" />
+</Card>
+
+<Card title="Cancellations Today">
+<Stat label="Total Cancelled" value="12" change="+3 vs yesterday" tone="danger" icon="calendar" />
+<Stat label="Weather Related" value="7" change="" tone="warning" icon="cloud" />
+<Stat label="Operational" value="5" change="" tone="danger" icon="wrench" />
+</Card>
+</Columns>
+
+<Card title="Flights — ATL Hub" subtitle="All departures/arrivals for today">
+| Flight | Route | Gate | STD/STA | Status | Pax | Notes |
+|---|---|---|---|---|---|---|
+| DL 1422 | ATL → LAX | B12 | 06:15 | **On Time** | 168/180 | |
+| DL 891 | ATL → JFK | A24 | 06:45 | **Delayed** | 142/160 | +22 min — crew timing |
+| DL 2305 | ATL → ORD | C08 | 07:00 | **On Time** | 156/180 | |
+| DL 417 | ATL → MIA | D15 | 07:30 | **On Time** | 134/150 | |
+| DL 982 | ATL → SEA | B18 | 08:00 | **Delayed** | 178/190 | +35 min — ATC flow |
+| DL 5601 | ATL → DEN | A31 | 08:15 | **Cancelled** | — | Weather — DEN |
+| DL 334 | ATL → BOS | C22 | 08:45 | **On Time** | 148/160 | |
+| DL 1102 | ATL → SFO | D05 | 09:00 | **Delayed** | 165/180 | +18 min — maintenance |
+| DL 777 | ATL → LHR | E12 | 09:30 | **On Time** | 234/280 | |
+| DL 245 | ATL → LAS | B28 | 10:00 | **On Time** | 152/180 | |
+| DL 5602 | DEN → ATL | A31 | 10:15 | **Delayed** | 145/160 | +40 min — weather DEN |
+| DL 1888 | LAX → ATL | B12 | 10:45 | **On Time** | 172/180 | |
+| DL 445 | JFK → ATL | A24 | 11:00 | **On Time** | 158/160 | |
+| DL 912 | MIA → ATL | D15 | 11:30 | **Delayed** | 138/150 | +25 min — late inbound |
+| DL 601 | ORD → ATL | C08 | 12:00 | **Cancelled** | — | Crew unavailable |
+</Card>
+
+<Card title="Delayed Flights — Requiring Attention">
+<Columns>
+<Card title="DL 891 — ATL→JFK" subtitle="Departure +22 min — Crew timing">
+<Stat label="New ETD" value="07:07" tone="warning" />
+<Stat label="Connecting Pax" value="34" tone="info" />
+<Stat label="Crew Status" value="Replacement en route" tone="info" />
+<Button variant="secondary" size="small">Rebook Connections</Button>
+</Card>
+<Card title="DL 982 — ATL→SEA" subtitle="Departure +35 min — ATC flow">
+<Stat label="New ETD" value="08:35" tone="warning" />
+<Stat label="Connecting Pax" value="28" tone="info" />
+<Stat label="ATC Update" value="Expect further delay" tone="danger" />
+<Button variant="secondary" size="small">Rebook Connections</Button>
+</Card>
+<Card title="DL 1102 — ATL→SFO" subtitle="Departure +18 min — Maintenance">
+<Stat label="New ETD" value="09:18" tone="warning" />
+<Stat label="Connecting Pax" value="19" tone="info" />
+<Stat label="Maintenance" value="Resolved — pushback soon" tone="success" />
+<Button variant="secondary" size="small">Rebook Connections</Button>
+</Card>
+<Card title="DL 5602 — DEN→ATL" subtitle="Arrival +40 min — Weather DEN">
+<Stat label="New ETA" value="10:55" tone="warning" />
+<Stat label="Connecting Pax" value="41" tone="danger" />
+<Stat label="Weather DEN" value="Low ceilings improving" tone="info" />
+<Button variant="secondary" size="small">Rebook Connections</Button>
+</Card>
+<Card title="DL 912 — MIA→ATL" subtitle="Arrival +25 min — Late inbound">
+<Stat label="New ETA" value="11:55" tone="warning" />
+<Stat label="Connecting Pax" value="22" tone="info" />
+<Stat label="Inbound" value="DL 911 delayed ex-MIA" tone="warning" />
+<Button variant="secondary" size="small">Rebook Connections</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Recent Gate Changes">
+| Time | Flight | From | To | Reason |
+|---|---|---|---|---|
+| 05:42 | DL 1422 | B18 → B12 | B12 | Equipment swap (A321→B739) |
+| 05:58 | DL 2305 | C14 → C08 | C08 | Gate conflict resolved |
+| 06:15 | DL 417 | D09 → D15 | D15 | Adjacent gate hold cleared |
+| 06:33 | DL 334 | C28 → C22 | C22 | RON aircraft repositioned |
+| 06:50 | DL 777 | E08 → E12 | E12 | Widebody gate requirement |
+| 07:05 | DL 245 | B33 → B28 | B28 | Pax boarding bridge issue |
+</Card>
+
+<Card title="Weather Advisories — ATL">
+<Callout tone="warning" title="Convective SIGMET Valid Until 14:00Z">
+Scattered to broken thunderstorms moving NE across North Georgia. Expect brief heavy rain, wind gusts 35-45 kts, and possible hail. Impact: departure delays 15-30 min, arrival holds likely 12:00-15:00 local.
+</Callout>
+<Callout tone="info" title="METAR — KATL 131153Z">
+31008KT 10SM FEW040 SCT080 BKN150 28/18 A3005 RMK AO2 SLP176 T02830183
+</Callout>
+<Callout tone="neutral" title="TAF — KATL 131130Z">
+1312/1412 31010KT P6SM SCT040 BKN100 FM131800 32012G20KT P6SM SCT035 BKN080 TEMPO 1320/1323 32020G30KT 3SM TSRA BKN025CB FM140600 33008KT P6SM SKC
+</Callout>
+</Card>
+
+<Card title="Crews Available for Reassignment">
+| Crew ID | Base | Position | Current Duty | Available At | Max Duty Remaining | Qualifications |
+|---|---|---|---|---|---|---|
+| ATL-CR-044 | ATL | Captain | Reserve | 06:00 | 12:00 | B737, B757, B767 |
+| ATL-FO-112 | ATL | First Officer | Reserve | 06:00 | 12:00 | B737, B757 |
+| ATL-FA-203 | ATL | Lead FA | Reserve | 06:30 | 14:00 | All narrowbody |
+| ATL-FA-204 | ATL | FA | Reserve | 06:30 | 14:00 | All narrowbody |
+| ATL-FA-205 | ATL | FA | Reserve | 06:30 | 14:00 | All narrowbody |
+| ATL-CR-051 | ATL | Captain | Off-duty (call-out) | 08:00 | 10:00 | A320, A321, A330 |
+| ATL-FO-118 | ATL | First Officer | Off-duty (call-out) | 08:00 | 10:00 | A320, A321 |
+| ATL-CR-038 | ATL | Captain | Deadhead ex-MCO | 09:30 | 8:30 | B737, B757, B767 |
+</Card>
+
+<Card title="Connections at Risk of Being Missed">
+| Connecting Flight | Inbound Flight | Inbound Status | Pax at Risk | Min Connect Time | Action Needed |
+|---|---|---|---|---|---|
+| DL 1422 → DL 2481 (LAX→HNL) | DL 1422 | On Time | 12 | 45 min | **Monitor** — tight but legal |
+| DL 891 → DL 1885 (JFK→SJU) | DL 891 | **Delayed +22** | 18 | 50 min | **Rebook** — misconnect likely |
+| DL 891 → DL 294 (JFK→LHR) | DL 891 | **Delayed +22** | 16 | 65 min | **Protect** — hold DL 294 15 min |
+| DL 982 → DL 612 (SEA→ANC) | DL 982 | **Delayed +35** | 28 | 55 min | **Rebook** — misconnect certain |
+| DL 5602 → DL 1422 (ATL→LAX) | DL 5602 | **Delayed +40** | 41 | 40 min | **Rebook** — misconnect certain |
+| DL 912 → DL 544 (ATL→TPA) | DL 912 | **Delayed +25** | 22 | 45 min | **Protect** — hold DL 544 10 min |
+| DL 1102 → DL 818 (SFO→OGG) | DL 1102 | **Delayed +18** | 19 | 50 min | **Monitor** — marginal |
+</Card>
+
+<Card title="Rebook Affected Passengers">
+<Form name="rebook-passengers">
+<Columns>
+<Input label="Passenger Name / PNR" name="pnr" placeholder="Enter PNR or last name" />
+<Select label="Affected Flight" name="affected-flight" options="DL 891 — ATL→JFK (+22 min) | DL 982 — ATL→SEA (+35 min) | DL 1102 — ATL→SFO (+18 min) | DL 5602 — DEN→ATL (+40 min) | DL 912 — MIA→ATL (+25 min)" placeholder="Select delayed/cancelled flight" />
+</Columns>
+<Columns>
+<Select label="Rebook Option" name="rebook-option" options="Next available same route | Alternate routing (same day) | Next day same route | Refund / future credit" placeholder="Choose rebook action" />
+<Input label="Contact Method" name="contact" placeholder="Email / SMS / App notification" />
+</Columns>
+<TextArea label="Notes" name="notes" placeholder="Special instructions, hotel/voucher needs, elite status, etc." rows="2" />
+<Columns>
+<Button variant="primary">Rebook Passenger(s)</Button>
+<Button variant="secondary">Batch Rebook All at Risk</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the crew pairing details for DL 891 replacement
+- What's the forecast for DEN this afternoon?
+- List all widebody turns at ATL today
+- Generate delay summary report for DOT filing
+</FollowUps>

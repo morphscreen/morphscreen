@@ -1,0 +1,52 @@
+# Low Inventory Warning
+
+<Card title="Inventory Alerts" subtitle="Items at or below reorder threshold">
+<Badge tone="danger">3 items need attention</Badge>
+
+<Input label="Search items" type="search" placeholder="Search by name or SKU…" hint="Filters the list below as you type" />
+
+<Stat label="Reorder threshold" value="10 units" note="Set in inventory settings" tone="warning" icon="warning" />
+
+<Card title="Running low">
+<Columns>
+<Card title="Wireless Mouse — M-200">
+<Stat label="Remaining" value="8 units" tone="danger" icon="package" />
+<Progress value="8" max="20" label="8 of 20 units left" tone="danger" />
+<Badge tone="danger">Below threshold</Badge>
+<Button variant="primary" size="small">Reorder 12 units</Button>
+</Card>
+
+<Card title="USB-C Cable 1m — C-105">
+<Stat label="Remaining" value="5 units" tone="danger" icon="package" />
+<Progress value="5" max="20" label="5 of 20 units left" tone="danger" />
+<Badge tone="danger">Below threshold</Badge>
+<Button variant="primary" size="small">Reorder 15 units</Button>
+</Card>
+
+<Card title="Laptop Stand — L-310">
+<Stat label="Remaining" value="9 units" tone="warning" icon="package" />
+<Progress value="9" max="20" label="9 of 20 units left" tone="warning" />
+<Badge tone="warning">At threshold</Badge>
+<Button variant="primary" size="small">Reorder 11 units</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="How the threshold works">
+<Callout tone="info" title="Trigger rule">
+Items appear here when remaining units drop to **10 or fewer**. When you reorder, the suggested quantity brings the stock back up to the **reorder target of 20 units**.
+</Callout>
+</Card>
+
+<Card title="Reorder all low items">
+<Form name="bulk-reorder">
+<Checkboxes label="Select items to reorder" options="Wireless Mouse (8 left) | USB-C Cable (5 left) | Laptop Stand (9 left)" name="items" />
+<Button variant="primary">Reorder selected</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- How do I change the reorder threshold?
+- Show me items that are out of stock
+- View reorder history for this week
+</FollowUps>

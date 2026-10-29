@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bootstrap host</title><link rel="icon" href="data:,">
+<!-- An admin page built with Bootstrap 5.3's components, with an
+     assistant's answer in a card. -->
+<script>if (matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.dataset.bsTheme = "dark";</script>
+<link rel="stylesheet" href="../build/embed/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Acme Admin</a>
+    <ul class="navbar-nav flex-row gap-3">
+      <li class="nav-item"><a class="nav-link active" href="#">Orders</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Customers</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container py-4">
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">Ask about your store</div>
+        <div class="card-body"><div id="slot" class="d-grid gap-4"></div></div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <form>
+            <div class="mb-3"><label for="name" class="form-label">Store name</label><input id="name" class="form-control" placeholder="Acme"></div>
+            <div class="mb-3"><label for="plan" class="form-label">Plan</label><select id="plan" class="form-select"><option>Basic</option><option>Pro</option></select></div>
+            <div class="form-check mb-3"><input class="form-check-input" type="checkbox" id="live" checked><label class="form-check-label" for="live">Live</label></div>
+            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-outline-secondary">Cancel</button>
+          </form>
+        </div>
+      </div>
+      <ul class="list-group mt-4"><li class="list-group-item">Ships in 2 days</li><li class="list-group-item">Returns within 30 days</li></ul>
+    </div>
+  </div>
+  <div class="alert alert-info mt-4" role="alert">Two orders need your attention.</div>
+  <table class="table table-striped">
+    <thead><tr><th>Order</th><th>Status</th><th class="text-end">Total</th></tr></thead>
+    <tbody><tr><td>#1042</td><td><span class="badge text-bg-success">Paid</span></td><td class="text-end">$250.00</td></tr><tr><td>#1043</td><td><span class="badge text-bg-warning">Pending</span></td><td class="text-end">$80.00</td></tr></tbody>
+  </table>
+  <h2>Policies</h2>
+  <p>Questions? <a href="#help">Read the help</a>.</p>
+  <pre><code>orders.export()</code></pre>
+</div>
+<script type="module">
+import { embed } from "./embed.js";
+await embed(document.getElementById("slot"));
+</script>
+</body>
+</html>

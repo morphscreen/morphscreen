@@ -1,0 +1,182 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="warning" title="Live andon alerts">
+<Badge tone="danger">Line 3</Badge> Machine jam detected — press 7 · <Badge tone="warning">Line 1</Badge> Material shortage — resin low · <Badge tone="info">Line 5</Badge> Quality check pending
+</Callout>
+
+<Card title="Overall Equipment Effectiveness">
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="88.2%" change="-1.4%" tone="warning" icon="clock" />
+<Stat label="Performance" value="91.0%" change="+0.8%" tone="success" icon="gauge" />
+<Stat label="Quality" value="97.6%" change="+0.3%" tone="success" icon="check-circle" />
+</Columns>
+<Progress value="78.4" max="100" label="OEE vs 85% target" tone="warning" />
+</Card>
+
+<Card title="Units Produced vs Today's Target">
+<Chart type="bar" x="Hour" y="Units">
+| Hour | Produced | Target |
+|---|---|---|
+| 06:00 | 120 | 100 |
+| 07:00 | 240 | 200 |
+| 08:00 | 380 | 300 |
+| 09:00 | 510 | 400 |
+| 10:00 | 670 | 500 |
+| 11:00 | 820 | 600 |
+| 12:00 | 940 | 700 |
+| 13:00 | 1050 | 800 |
+| 14:00 | 1190 | 900 |
+</Chart>
+<Stat label="Progress" value="1,190 / 1,600" tone="success" icon="target" />
+</Card>
+
+<Card title="Production Lines">
+| Line | Product | Rate (units/hr) | Status | OEE |
+|---|---|---|---|---|
+| Line 1 | Steel rods | 145 | <Badge tone="warning">Running slow</Badge> | 72% |
+| Line 2 | Steel sheets | 180 | <Badge tone="success">Running</Badge> | 84% |
+| Line 3 | Resin parts | 0 | <Badge tone="danger">Down — jam</Badge> | 61% |
+| Line 4 | Packaging | 210 | <Badge tone="success">Running</Badge> | 89% |
+| Line 5 | Assemblies | 95 | <Badge tone="info">Quality hold</Badge> | 76% |
+
+<Button variant="secondary" icon="eye">Focus on a line</Button>
+</Card>
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Week" y="Defect rate %">
+| Week | Defect rate |
+|---|---|
+| Week 1 | 3.2 |
+| Week 2 | 2.8 |
+| Week 3 | 2.4 |
+| Week 4 | 2.0 |
+</Chart>
+<Stat label="Current" value="2.0%" change="-1.2 pts vs start" tone="success" icon="trend-down" />
+</Card>
+
+<Card title="Downtime by Cause">
+<Chart type="pie" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Equipment failure | 14.2 |
+| Material shortage | 8.6 |
+| Changeover | 6.1 |
+| Quality hold | 4.8 |
+| Operator training | 2.3 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Last service | Due date | Priority |
+|---|---|---|---|---|
+| Press 7 | Line 3 | 2025-03-12 | 2025-04-10 | <Badge tone="danger">Overdue</Badge> |
+| Conveyor B | Line 2 | 2025-02-28 | 2025-04-02 | <Badge tone="warning">This week</Badge> |
+| Mixer 2 | Line 5 | 2025-03-20 | 2025-04-15 | <Badge tone="info">Next week</Badge> |
+| Compressor | Line 1 | 2025-03-01 | 2025-04-05 | <Badge tone="warning">This week</Badge> |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="maintenance-schedule">
+<Select label="Machine" placeholder="Select machine" options="Press 7 (Line 3) | Conveyor B (Line 2) | Mixer 2 (Line 5) | Compressor (Line 1) | Extruder (Line 4)" />
+<Date label="Date" name="maintenance-date" hint="Choose a date for the maintenance" />
+<Select label="Shift" placeholder="Select shift" options="Shift A (06:00–14:00) | Shift B (14:00–22:00) | Shift C (22:00–06:00)" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Card title="Steel">
+<Stat label="Stock" value="12.4 t" tone="success" icon="cube" />
+<Progress value="62" max="100" label="of 20 t capacity" tone="success" />
+</Card>
+<Card title="Resin">
+<Stat label="Stock" value="3.1 t" tone="danger" icon="cube" />
+<Progress value="31" max="100" label="of 10 t capacity" tone="danger" />
+<Badge tone="danger">Reorder soon</Badge>
+</Card>
+<Card title="Packaging">
+<Stat label="Stock" value="8,400 boxes" tone="warning" icon="package" />
+<Progress value="56" max="100" label="of 15,000 capacity" tone="warning" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Quantity | Due date | Status |
+|---|---|---|---|---|
+| SteelCo Ltd | Steel coils | 15 t | 2025-04-02 | <Badge tone="success">Confirmed</Badge> |
+| ResinPro | Resin pellets | 8 t | 2025-04-03 | <Badge tone="warning">Pending</Badge> |
+| BoxMakers | Cartons | 6,000 | 2025-04-04 | <Badge tone="success">Confirmed</Badge> |
+| AlloyWorks | Aluminium | 4 t | 2025-04-05 | <Badge tone="warning">Pending</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A | 1,240 |
+| Shift B | 1,180 |
+| Shift C | 1,050 |
+</Chart>
+<Badge tone="info">Shift A leading today</Badge>
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents this year" value="3" tone="success" icon="shield-check" />
+<Stat label="Days since last" value="47" tone="success" icon="calendar" />
+</Columns>
+<Callout tone="success" title="Good standing">No serious incidents in 47 days. Continue daily toolbox talks.</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch | Line | Product | Qty | Hold reason | Since |
+|---|---|---|---|---|---|
+| B-2481 | Line 5 | Assemblies | 350 | Dimensional variance | 2025-04-01 14:20 |
+| B-2479 | Line 3 | Resin parts | 500 | Material discolouration | 2025-04-01 09:45 |
+| B-2476 | Line 1 | Steel rods | 400 | Hardness below spec | 2025-03-31 16:10 |
+</Card>
+
+<Card title="Energy Use Today">
+<Chart type="area" x="Hour" y="kWh">
+| Hour | Energy |
+|---|---|
+| 06:00 | 120 |
+| 08:00 | 240 |
+| 10:00 | 310 |
+| 12:00 | 280 |
+| 14:00 | 350 |
+| 16:00 | 290 |
+</Chart>
+<Stat label="Total today" value="1,590 kWh" change="+4% vs yesterday" tone="warning" icon="lightning" />
+</Card>
+
+<Card title="Open Work Orders">
+| Order | Line | Product | Qty | Due | Priority |
+|---|---|---|---|---|---|
+| WO-1042 | Line 2 | Steel sheets | 2,000 | 2025-04-02 | <Badge tone="danger">Critical</Badge> |
+| WO-1043 | Line 4 | Packaging | 1,500 | 2025-04-03 | <Badge tone="warning">High</Badge> |
+| WO-1044 | Line 1 | Steel rods | 1,800 | 2025-04-04 | <Badge tone="warning">High</Badge> |
+| WO-1045 | Line 5 | Assemblies | 900 | 2025-04-06 | <Badge tone="info">Medium</Badge> |
+| WO-1046 | Line 3 | Resin parts | 1,200 | 2025-04-08 | <Badge tone="neutral">Low</Badge> |
+</Card>
+
+<Card title="Focus on a Line">
+<Select label="Select line" placeholder="Choose a line" options="Line 1 — Steel rods | Line 2 — Steel sheets | Line 3 — Resin parts | Line 4 — Packaging | Line 5 — Assemblies" />
+<Button variant="primary" icon="eye">Focus view</Button>
+</Card>
+
+<Card title="Export Shift Report">
+<Button variant="primary" icon="download">Export shift report (PDF)</Button>
+<Button variant="secondary" icon="file-csv">Export CSV</Button>
+<Button variant="tertiary" icon="printer">Print</Button>
+</Card>
+
+<FollowUps>
+- Show detailed OEE breakdown for Line 2
+- Compare this week's output to last week
+- List all quality holds from the past 30 days
+- Show maintenance history for Press 7
+</FollowUps>

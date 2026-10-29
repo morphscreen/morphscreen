@@ -1,0 +1,12 @@
+# Platform Status
+
+<Card title="API Uptime This Month">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last month" tone="success" />
+<Progress value="99.97" max="100" label="Target: 99.95%" />
+</Card>
+
+<Card title="Most Recent Incident">
+<Callout tone="info" title="Resolved: Aug 28, 2024 · 14:22 UTC">
+**Partial API degradation** — Elevated latency (p99 > 2s) on `/v1/search` endpoint for ~18 minutes due to a connection pool exhaustion in the read replica. Traffic was rerouted to primary while the replica recovered. Root cause: a long-running analytics query that wasn't properly scoped. Fix deployed and monitoring thresholds tightened.
+</Callout>
+</Card>

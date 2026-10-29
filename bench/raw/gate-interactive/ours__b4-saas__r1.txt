@@ -1,0 +1,105 @@
+# Admin Overview
+
+<Select label="Reporting period" name="period" options="Last 30 days | Last 90 days | Last 6 months | Last 12 months | Custom range" value="Last 90 days" />
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$127,400" change="+12.3% vs last month" tone="success" icon="currency-usd" />
+<Stat label="Annual Recurring Revenue" value="$1,528,800" change="+11.8% vs last year" tone="success" icon="currency-usd" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4pp vs last month" tone="success" icon="chart-line-down" />
+<Stat label="Current NPS" value="62" change="+3 vs last quarter" tone="info" icon="users" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 12 |
+| W2 | 18 |
+| W3 | 15 |
+| W4 | 22 |
+| W5 | 28 |
+| W6 | 25 |
+| W7 | 31 |
+| W8 | 35 |
+| W9 | 33 |
+| W10 | 40 |
+| W11 | 38 |
+| W12 | 45 |
+| W13 | 42 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 1,240 |
+| Professional | 680 |
+| Enterprise | 145 |
+| Custom | 23 |
+</Chart>
+</Card>
+
+<Card title="Newest Feature Adoption">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Workflow Builder | 34% |
+| Advanced Analytics | 52% |
+| Team Workspaces | 67% |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 450 | $18,500 | Active |
+| Globex Inc | Enterprise | 320 | $14,200 | Active |
+| Wayne Enterprises | Enterprise | 280 | $12,800 | Active |
+| Stark Industries | Professional | 180 | $9,600 | Active |
+| Umbrella Corp | Enterprise | 210 | $9,100 | Active |
+| Cyberdyne Systems | Professional | 150 | $7,800 | Active |
+| Massive Dynamic | Professional | 140 | $7,200 | Active |
+| Oscorp | Starter | 95 | $4,800 | Active |
+| Initech | Professional | 110 | $4,500 | Active |
+| Dunder Mifflin | Starter | 85 | $3,900 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | Risk Reason | Health Score | Last Login |
+|---|---|---|---|---|---|
+| Pied Piper | Professional | 45 | Low feature adoption, no admin login 30d | 23/100 | 34 days ago |
+| Hooli | Enterprise | 200 | Declining usage, support tickets up 40% | 31/100 | 12 days ago |
+| Soylent Corp | Starter | 25 | Failed payment x2, no response to emails | 18/100 | 41 days ago |
+| Wonka Industries | Professional | 60 | Champion left company, no renewal contact | 29/100 | 19 days ago |
+| Tyrell Corp | Enterprise | 150 | Contract renewal in 30 days, no decision | 35/100 | 8 days ago |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed On | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Soylent Corp | $299 | 2024-01-15 | 2 | Card declined | <Button size="small" variant="primary">Retry</Button> |
+| Apex Digital | $1,200 | 2024-01-14 | 1 | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| Meridian Labs | $4,800 | 2024-01-13 | 3 | Card expired | <Button size="small" variant="primary">Retry</Button> |
+| Nexus Systems | $750 | 2024-01-12 | 1 | Bank rejection | <Button size="small" variant="primary">Retry</Button> |
+| Vertex Solutions | $2,100 | 2024-01-11 | 2 | Fraud hold | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="Seat Utilization">
+<Progress label="Company-wide utilization" value="78" max="100" tone="info" />
+<Progress label="Enterprise plans" value="84" max="100" tone="success" />
+<Progress label="Professional plans" value="72" max="100" tone="info" />
+<Progress label="Starter plans" value="61" max="100" tone="warning" />
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email address" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" name="role" options="Admin | Owner | Billing Admin | Support Admin" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="perms" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

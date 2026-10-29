@@ -1,0 +1,94 @@
+# Service Health View
+
+<Callout tone="warning" title="Active incident">
+  Checkout API is currently degraded — 2 incidents require attention.
+</Callout>
+
+<Card title="Key metrics">
+  <Columns>
+    <Stat label="Uptime (quarter)" value="99.94%" change="+0.02% vs last quarter" tone="success" icon="trend-up" />
+    <Stat label="Error rate (now)" value="0.38%" change="0.12% above target" tone="warning" icon="warning-circle" />
+    <Stat label="Open incidents" value="3" note="1 critical, 2 high" tone="danger" icon="fire" />
+  </Columns>
+</Card>
+
+<Card title="CPU & memory — past 24 hours">
+  <Tabs>
+    <Tab title="CPU">
+      <Chart type="line" x="Time" y="CPU %">
+        | Time | CPU |
+        |---|---|
+        | 00:00 | 42 |
+        | 04:00 | 48 |
+        | 08:00 | 63 |
+        | 12:00 | 71 |
+        | 16:00 | 66 |
+        | 20:00 | 55 |
+        | 24:00 | 50 |
+      </Chart>
+    </Tab>
+    <Tab title="Memory">
+      <Chart type="line" x="Time" y="Memory %">
+        | Time | Memory |
+        |---|---|
+        | 00:00 | 55 |
+        | 04:00 | 58 |
+        | 08:00 | 61 |
+        | 12:00 | 68 |
+        | 16:00 | 72 |
+        | 20:00 | 66 |
+        | 24:00 | 60 |
+      </Chart>
+    </Tab>
+  </Tabs>
+</Card>
+
+<Card title="Region filter">
+  <Select label="Narrow to region" name="region" options="All regions | us-east-1 | us-west-2 | eu-central-1 | ap-southeast-1" value="All regions" />
+</Card>
+
+<Card title="Open incidents">
+  | Incident | Severity | Region | Status | Acknowledged |
+  |---|---|---|---|---|
+  | Checkout API timeouts | <Badge tone="danger">Critical</Badge> | us-east-1 | Open | No |
+  | Payment webhook latency | <Badge tone="warning">High</Badge> | eu-central-1 | Open | No |
+  | Search index stale | <Badge tone="warning">High</Badge> | All regions | Open | Yes |
+  | Login rate-limit errors | <Badge tone="info">Medium</Badge> | ap-southeast-1 | Open | No |
+
+  <Columns>
+    <Button variant="primary">Acknowledge selected</Button>
+    <Button variant="secondary">View incident detail</Button>
+  </Columns>
+</Card>
+
+<Card title="Slowest endpoints (last 15 min)">
+  | Endpoint | Method | Latency (p95) |
+  |---|---|---|
+  | `/api/checkout` | POST | 1,240 ms |
+  | `/api/payment/webhook` | POST | 980 ms |
+  | `/api/search` | GET | 745 ms |
+  | `/api/orders` | GET | 610 ms |
+  | `/api/inventory` | GET | 520 ms |
+</Card>
+
+<Card title="Alert threshold">
+  <Form name="alert-threshold">
+    <Slider label="Error rate threshold (%)" min="0.1" max="5" step="0.1" value="0.5" name="error-threshold" />
+    <Slider label="Latency threshold (ms)" min="200" max="2000" step="50" value="800" name="latency-threshold" />
+    <Button>Save threshold</Button>
+  </Form>
+</Card>
+
+<Card title="Acknowledge incident">
+  <Form name="acknowledge">
+    <Select label="Incident" name="incident-id" options="INC-2041 — Checkout API timeouts | INC-2042 — Payment webhook latency | INC-2044 — Login rate-limit errors" placeholder="Select incident" />
+    <TextArea label="Note (optional)" name="ack-note" placeholder="e.g., Investigating root cause" rows="3" />
+    <Button>Acknowledge incident</Button>
+  </Form>
+</Card>
+
+<FollowUps>
+- Show recent deployments
+- Compare metrics to last week
+- Open incident timeline
+</FollowUps>

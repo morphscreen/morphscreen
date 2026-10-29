@@ -1,0 +1,120 @@
+# Atlanta Hub — Operations Desk
+
+Live view · Thursday, May 15, 2025 · 14:32 EDT <Badge tone="success">Live</Badge>
+
+<Card title="Ops hub" subtitle="Switch to another hub's operations desk">
+<Form name="hub-select">
+<Select label="Hub" options="ATL – Atlanta (current) | DFW – Dallas/Fort Worth | ORD – Chicago O'Hare | JFK – New York" />
+<Button>Switch hub</Button>
+</Form>
+</Card>
+
+<Columns>
+<Stat label="On-time performance" value="87.4%" change="+2.1 pts" tone="success" icon="chart-line" />
+<Stat label="Avg passenger load" value="78%" change="+1.5 pts" icon="users" />
+<Stat label="Cancellations today" value="6" tone="danger" icon="x-circle" />
+<Stat label="Avg turnaround time" value="48 min" change="-3 min" tone="info" icon="clock" />
+</Columns>
+
+<Callout tone="warning" title="Weather advisory — ATL">
+<Badge tone="danger">Thunderstorm watch</Badge> Convective weather expected 15:00–19:00 EDT. Sustained winds 25 kt, gusts to 35 kt. Anticipate arrival delays, holding at CLT/ORD, and possible ground stop for the South Ramp after 16:00. Gate assignments for C concourse may rotate at short notice.
+</Callout>
+
+<Card title="On-time performance today" subtitle="Hourly departure OTP">
+<Chart type="area" x="Hour" y="% on time">
+| Hour | OTP |
+|---|---|
+| 06 | 92 |
+| 08 | 89 |
+| 10 | 85 |
+| 12 | 88 |
+| 14 | 83 |
+</Chart>
+</Card>
+
+<Card title="Flights — Atlanta hub" subtitle="214 departures today · showing next departures">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 872 | ATL → ORD | A12 | <Badge tone="info">Boarding</Badge> |
+| DL 1024 | ATL → LAX | B17 | <Badge tone="success">On time</Badge> |
+| DL 315 | ATL → MIA | B44 | <Badge tone="success">On time</Badge> |
+| DL 541 | ATL → JFK | C31 | <Badge tone="danger">Delayed 45m</Badge> |
+| DL 728 | ATL → DFW | E11 | <Badge tone="danger">Delayed 1h 20m</Badge> |
+| DL 902 | ATL → SEA | D22 | <Badge tone="success">Landed</Badge> |
+| DL 160 | ATL → LHR | F4 | <Badge tone="danger">Cancelled</Badge> |
+| DL 421 | ATL → MSP | B9 | <Badge tone="danger">Cancelled</Badge> |
+</Card>
+
+<Callout tone="danger" title="Delayed flights — 8 today">
+DL 728 (ATL–DFW) 1h 20m · DL 541 (ATL–JFK) 45m · DL 210 (ATL–BOS) 30m · DL 655 (ATL–PHX) 25m · DL 812 (ATL–SFO) 1h 05m · DL 377 (ATL–DTW) 15m · DL 520 (ATL–SAN) 50m · DL 940 (ATL–AUS) 20m
+</Callout>
+
+<Columns>
+<Card title="Recent gate changes" subtitle="Last 30 minutes">
+| Time | Flight | Old | New |
+|---|---|---|---|
+| 14:18 | DL 872 | B19 | A12 |
+| 14:05 | DL 315 | C17 | B44 |
+| 13:52 | DL 541 | C29 | C31 |
+| 13:47 | DL 210 | A08 | A22 |
+| 13:40 | DL 902 | D31 | D22 |
+</Card>
+
+<Card title="Connections at risk" subtitle="Passengers likely to miss connections">
+| Passenger | Connection | Buffer | Status |
+|---|---|---|---|
+| Jordan Lee | DL 728 → AA 2101 | 15m | <Badge tone="danger">At risk</Badge> |
+| Maria Gomez | DL 541 → B6 1224 | 22m | <Badge tone="warning">Watch</Badge> |
+| Sam Turner | DL 210 → UA 940 | 18m | <Badge tone="danger">At risk</Badge> |
+| Priya Patel | DL 655 → AS 331 | 25m | <Badge tone="warning">Watch</Badge> |
+</Card>
+</Columns>
+
+<Card title="Rebook affected passengers" subtitle="Change the next flight for a passenger whose connection is at risk">
+<Form name="rebook">
+<Select label="Passenger" options="Jordan Lee – DL 728 → AA 2101 | Maria Gomez – DL 541 → B6 1224 | Sam Turner – DL 210 → UA 940 | Priya Patel – DL 655 → AS 331" />
+<Select label="New flight" options="DL 1024 ATL→LAX 15:05 | DL 315 ATL→MIA 16:20 | DL 872 ATL→ORD 19:10 | DL 902 ATL→SEA 18:45" />
+<Button>Rebook passenger</Button>
+<Button variant="secondary">Seat map</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Crews available for reassignment" subtitle="12 crew members on standby">
+<Avatar name="Lisa Moreno" subtitle="Captain · 42h remaining" />
+<Avatar name="Darnell James" subtitle="First Officer · 38h remaining" />
+<Avatar name="Hannah Kim" subtitle="Purser · 56h remaining" />
+<Avatar name="Marcus Webb" subtitle="Flight Attendant · 61h remaining" />
+<Avatar name="Aisha Bello" subtitle="Flight Attendant · 54h remaining" />
+<Avatar name="Tom Okafor" subtitle="Captain · 45h remaining" />
+</Card>
+
+<Card title="Cancellations today" subtitle="6 cancellations · rebooking completed">
+| Flight | Route | Time | Status |
+|---|---|---|---|
+| DL 160 | ATL → LHR | 13:40 | <Badge tone="danger">Cancelled</Badge> |
+| DL 421 | ATL → MSP | 15:05 | <Badge tone="danger">Cancelled</Badge> |
+| DL 270 | ATL → STL | 16:35 | <Badge tone="danger">Cancelled</Badge> |
+| DL 388 | ATL → TPA | 17:50 | <Badge tone="danger">Cancelled</Badge> |
+| DL 736 | ATL → YYZ | 18:10 | <Badge tone="danger">Cancelled</Badge> |
+| DL 115 | ATL → GRU | 19:25 | <Badge tone="danger">Cancelled</Badge> |
+</Card>
+</Columns>
+
+<Card title="Average turnaround time today" subtitle="Wheels-up after arrival · rolling 2-hour window">
+<Chart type="bar" x="Hour" y="Minutes">
+| Hour | Turnaround |
+|---|---|
+| 08 | 52 |
+| 10 | 47 |
+| 12 | 44 |
+| 14 | 41 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show full flight schedule for ATL
+- Which gates have the most delayed departures today?
+- List crew members expiring on duty time within 4 hours
+- What weather is forecast for the next 6 hours at ORD/DFW?
+</FollowUps>

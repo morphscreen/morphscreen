@@ -1,0 +1,106 @@
+# Personal banking home
+
+<Card title="Acme Bank" subtitle="Wednesday, January 15, 2025">
+<Avatar name="Jordan Taylor" subtitle="Good morning, Jordan · Member since 2018" />
+</Card>
+
+## Account balances
+
+<Columns>
+<Card title="Checking" subtitle="Account ending ·4821">
+<Stat label="Available balance" value="$12,480.32" change="+$312 vs last month" />
+<Badge tone="success">Active</Badge>
+</Card>
+
+<Card title="Savings" subtitle="Account ending ·9034">
+<Stat label="Available balance" value="$32,750.85" change="+$410 this month" />
+<Badge tone="info">APY 4.25%</Badge>
+</Card>
+
+<Card title="Credit" subtitle="Visa Signature ·7702">
+<Stat label="Current balance" value="$1,452.80" note="Limit $6,500 · $5,047.20 available" />
+<Badge tone="warning">Utilization 22%</Badge>
+</Card>
+</Columns>
+
+## Recent activity
+
+<Columns>
+<Card title="Recent transactions" subtitle="Last 14 days · checking and credit">
+| Merchant | Date | Amount |
+|---|---|---|
+| Whole Foods Market | Jan 14 | −$84.23 |
+| Uber | Jan 14 | −$18.50 |
+| Spotify | Jan 13 | −$11.99 |
+| City Cafe | Jan 13 | −$23.10 |
+| Amazon | Jan 12 | −$129.45 |
+| Shell Fuel | Jan 11 | −$45.30 |
+| Acme Payroll | Jan 10 | +$2,350.00 |
+| Netflix | Jan 9 | −$15.49 |
+</Card>
+
+<Card title="Spending this month" subtitle="January 1 – 15, 2025">
+<Chart type="donut" title="Spending by category" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Dining | 412 |
+| Groceries | 348 |
+| Transport | 265 |
+| Shopping | 187 |
+| Subscriptions | 110 |
+| Utilities | 150 |
+</Chart>
+</Card>
+</Columns>
+
+## Upcoming
+
+<Columns>
+<Card title="Bills due soon" subtitle="Next 14 days">
+| Bill | Due | Amount |
+|---|---|---|
+| Comcast Internet | Jan 18 | $59.99 |
+| GreenPower Electric | Jan 21 | $97.50 |
+| Verizon Phone | Jan 24 | $45.00 |
+| Credit card payment | Jan 27 | $152.80 |
+
+<Button variant="secondary">Schedule payments</Button>
+</Card>
+
+<Card title="Vacation goal" subtitle="Hawaii · departing June 2026">
+<Stat label="Saved so far" value="$5,600" note="Goal: $8,000" />
+<Progress value="70" max="100" label="70% funded" />
+</Card>
+
+<Card title="Credit score" subtitle="TransUnion · FICO 8">
+<Stat label="Current score" value="742" note="+12 points in 3 months" />
+<Badge tone="success">Good</Badge>
+</Card>
+</Columns>
+
+## Account actions
+
+<Columns>
+<Card title="Move money" subtitle="Transfer between your accounts">
+<Form name="transfer">
+<Input label="Amount" type="number" placeholder="0.00" name="transfer-amount" required="true" />
+<Select label="From" options="Checking ·4821 | Savings ·9034" name="transfer-from" />
+<Select label="To" options="Savings ·9034 | Checking ·4821 | Credit card payment" name="transfer-to" />
+<Button>Transfer now</Button>
+</Form>
+</Card>
+
+<Card title="Account controls" subtitle="Security, statements, and alerts">
+<Switch label="Freeze credit line" name="freeze-credit" value="false" hint="Blocks new purchases until you unfreeze" />
+<Select label="Statement period" options="Jan 1 – Jan 31 (current) | Dec 1 – Dec 31 (previous) | Nov 1 – Nov 30 (older)" name="statement-period" value="Jan 1 – Jan 31 (current)" />
+<Checkboxes label="Alert triggers" options="Purchase over $500 | Purchase over $200 | Login from a new device | Balance below $100 | Credit limit or score change" name="alert-triggers" />
+</Card>
+
+<Card title="Dispute a transaction" subtitle="Review can take up to 10 business days">
+<Form name="dispute">
+<Select label="Transaction" placeholder="Select the transaction" options="Whole Foods Market – $84.23 | Amazon – $129.45 | Netflix – $15.49 | Spotify – $11.99" name="dispute-transaction" />
+<TextArea label="Reason" placeholder="What seems wrong with this charge?" name="dispute-reason" hint="Include any details that help us investigate" />
+<Button>Submit dispute</Button>
+</Form>
+</Card>
+</Columns>

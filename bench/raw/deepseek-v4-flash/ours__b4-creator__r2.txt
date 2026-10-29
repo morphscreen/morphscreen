@@ -1,0 +1,128 @@
+# Creator Studio
+
+A one-screen dashboard for a multi-platform creator. Use the platform filter to narrow every number on this screen to a single platform.
+
+<Card title="Overview" subtitle="All numbers follow the platform filter below">
+<Select label="Narrow everything to one platform" name="platform" options="All platforms | YouTube | TikTok | Instagram" value="All platforms" hint="Filters every stat, post, inbox item, and recommendation on this screen." />
+<Columns>
+<Stat label="Total followers" value="284,500" change="+4.6%" note="+12,400 in the last 30 days" tone="success" icon="users" />
+<Stat label="Engagement rate" value="6.8%" change="+0.3 pts" note="Above your 5% target" tone="success" icon="heart" />
+<Stat label="Earnings this month" value="$8,450" change="+18%" note="vs last month" tone="success" icon="currency-dollar" />
+<Stat label="Comments awaiting reply" value="14" change="-6" note="Oldest is 2 days old" tone="warning" icon="chat-circle" />
+<Stat label="Pending collab requests" value="3" note="1 expires tomorrow" tone="info" icon="handshake" />
+<Stat label="Best posting hour" value="7:00 PM" note="Peak engagement 6.4%" tone="info" icon="clock" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Best posts this month" subtitle="Ranked by reach">
+| Rank | Post | Platform | Reach | Eng. rate |
+|---|---|---|---|
+| 1 | "5-minute studio setup" short | YouTube | 412K | 9.4% |
+| 2 | "Golden hour GRWM" reel | Instagram | 288K | 11.2% |
+| 3 | BTS of a photoshoot | TikTok | 264K | 13.8% |
+| 4 | "Packing for content day" | YouTube | 198K | 7.6% |
+
+</Card>
+<Card title="Audience split by platform" subtitle="Share of your 284.5K followers">
+<Chart type="donut" title="Followers by platform" x="Platform" y="Share">
+| Platform | Share |
+|---|---|
+| YouTube | 45 |
+| TikTok | 32 |
+| Instagram | 23 |
+</Chart>
+
+128K YouTube · 91K TikTok · 65K Instagram
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Follower growth, last 30 days" subtitle="Weekly totals after the platform filter">
+<Chart type="area" x="Week" y="Followers">
+| Week | Followers |
+|---|---|
+| Nov 11 | 272100 |
+| Nov 18 | 275900 |
+| Nov 25 | 279300 |
+| Dec 2 | 284500 |
+</Chart>
+</Card>
+<Card title="Best hour to post" subtitle="Based on your last 90 days of post history">
+<Callout tone="success" title="Peak: 7:00 PM – 8:00 PM">Your audience is most active in the evening. Engagement is 34% higher than the rest of the day.</Callout>
+<Chart type="line" x="Hour" y="Engagement %">
+| Hour | Engagement |
+|---|---|
+| 14:00 | 3.4 |
+| 16:00 | 4.1 |
+| 18:00 | 5.2 |
+| 19:00 | 6.4 |
+| 20:00 | 5.8 |
+| 21:00 | 4.3 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Posts scheduled this week" subtitle="Monday through Saturday, in your local time">
+| Day | Time | Platform | Content | Status |
+|---|---|---|---|---|
+| Mon | 7:00 PM | YouTube | Short: "Low-light hack" | Scheduled |
+| Tue | 7:30 PM | Instagram | Reel: "Outfit drops" | Scheduled |
+| Thu | 7:00 PM | TikTok | Trend duet | Draft |
+| Fri | 6:00 PM | YouTube | Full video: Studio tour | Scheduled |
+| Sat | 11:00 AM | Instagram | Carousel: "Tools I use" | Unposted |
+</Card>
+
+<Columns>
+<Card title="Comments waiting for a reply" subtitle="14 across platforms — showing the oldest first">
+**@maya.films** · TikTok · 2h ago — "What lighting kit is that? 😍"
+
+<Button variant="secondary" size="small" ask="Open reply to @maya.films on TikTok">Reply</Button>
+
+**@studio_j** · Instagram · 1d ago — "Do you edit in DaVinci or Premiere?"
+
+<Button variant="secondary" size="small" ask="Open reply to @studio_j on Instagram">Reply</Button>
+
+**@_nick** · YouTube · 1d ago — "Love the new camera angle"
+
+<Button variant="secondary" size="small" ask="Open reply to @_nick on YouTube">Reply</Button>
+
+**@petra.rose** · Instagram · 2d ago — "Can you do a part 2 of the studio tour?"
+
+<Button variant="secondary" size="small" ask="Open reply to @petra.rose on Instagram">Reply</Button>
+
+<Button variant="tertiary" ask="Open the full comments inbox">View all 14</Button>
+</Card>
+<Card title="Pending collaboration requests" subtitle="3 requests waiting for your decision">
+**BrightBeauty** · TikTok · $600 + free product · ⚠️ Expires tomorrow
+
+<Button variant="primary" size="small" ask="Accept collab with BrightBeauty">Accept</Button>
+<Button variant="secondary" size="small" ask="Decline collab with BrightBeauty">Decline</Button>
+
+**LensLine** · YouTube · $1,200 + gear · Reply by Friday
+
+<Button variant="primary" size="small" ask="Accept collab with LensLine">Accept</Button>
+<Button variant="secondary" size="small" ask="Decline collab with LensLine">Decline</Button>
+
+**SnackPop** · Instagram · $400 · Expires in 5 days
+
+<Button variant="primary" size="small" ask="Accept collab with SnackPop">Accept</Button>
+<Button variant="secondary" size="small" ask="Decline collab with SnackPop">Decline</Button>
+</Card>
+</Columns>
+
+<Card title="Schedule a post" subtitle="Add a post to the queue for the platform you choose">
+<Form name="schedule-post">
+<TextArea label="Caption" name="caption" placeholder="Write your caption…" rows="3" hint="You can add hashtags later" />
+<Select label="Platform" name="schedule-platform" options="YouTube | TikTok | Instagram" placeholder="Choose platform" required="true" />
+<Date label="Publish date" name="publish-date" hint="Weekday evenings work best for your audience" />
+<Input label="Publish time" type="time" name="publish-time" value="19:00" hint="Matches your 7:00 PM peak" />
+<Button>Schedule post</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which platform should I focus on next week?
+- What's causing the engagement dip on TikTok?
+- Suggest captions for this week's scheduled posts.
+</FollowUps>

@@ -1,0 +1,109 @@
+# Logistics Control Board
+
+<Card title="Network snapshot" subtitle="Refreshed daily at 06:00 local">
+<Columns>
+<Stat label="On-time this month" value="94.2%" change="+1.8 pts vs Feb" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$412" change="-$9 vs Feb" tone="info" icon="currency-dollar" />
+<Stat label="In transit now" value="1,284" note="across 6 carriers" icon="truck" />
+<Stat label="Delayed" value="37" change="+5 since yesterday" tone="warning" icon="warning" />
+</Columns>
+<Callout tone="neutral" title="Last refreshed">Today, 06:12 local — next automatic refresh in ~15 hours.</Callout>
+</Card>
+
+<Card title="Delayed shipments" subtitle="Needs attention before end of day">
+<Callout tone="danger" title="3 delays over 24 hours">SHP-88214, SHP-88301 and SHP-88419 have breached their committed ETA window.</Callout>
+| Shipment | Origin | Destination | ETA | Delay | Status |
+|---|---|---|---|---|---|
+| SHP-88214 | Shanghai, CN | Rotterdam, NL | Apr 18, 14:00 | +31 h | <Badge tone="danger">Critical</Badge> |
+| SHP-88301 | Memphis, US | Monterrey, MX | Apr 18, 22:30 | +26 h | <Badge tone="danger">Critical</Badge> |
+| SHP-88419 | Hamburg, DE | Chicago, US | Apr 19, 09:00 | +19 h | <Badge tone="warning">At risk</Badge> |
+| SHP-88462 | Lagos, NG | Marseille, FR | Apr 19, 18:00 | +9 h | <Badge tone="warning">At risk</Badge> |
+<Button variant="danger" ask="Show me the full delay log with reason codes and last checkpoint scans for the 4 delayed shipments">Open delay log</Button>
+</Card>
+
+<Card title="Search by route" subtitle="Filter the board by origin, destination or shipment ID">
+<Form name="route-search">
+<Input label="Origin or shipment ID" name="origin" placeholder="e.g. Shanghai, CN or SHP-88214" icon="map-pin" />
+<Input label="Destination" name="destination" placeholder="e.g. Rotterdam, NL" icon="flag" />
+<Select label="Status" name="status" options="All | In transit | Delayed | Delivered" value="In transit" />
+<Button icon="magnifying-glass">Search routes</Button>
+<Button variant="tertiary">Clear filters</Button>
+</Form>
+</Card>
+
+<Card title="In transit" subtitle="1,284 active shipments — showing next 8">
+| Shipment | Origin | Destination | ETA | Mode | Status |
+|---|---|---|---|---|---|
+| SHP-88210 | Shenzhen, CN | Los Angeles, US | Apr 17, 08:00 | Ocean | <Badge tone="success">On time</Badge> |
+| SHP-88214 | Shanghai, CN | Rotterdam, NL | Apr 18, 14:00 | Ocean | <Badge tone="danger">Delayed</Badge> |
+| SHP-88233 | Singapore, SG | Sydney, AU | Apr 17, 19:45 | Air | <Badge tone="success">On time</Badge> |
+| SHP-88276 | Chicago, US | Toronto, CA | Apr 17, 11:20 | Road | <Badge tone="success">On time</Badge> |
+| SHP-88301 | Memphis, US | Monterrey, MX | Apr 18, 22:30 | Road | <Badge tone="danger">Delayed</Badge> |
+| SHP-88360 | Mumbai, IN | Jebel Ali, AE | Apr 18, 04:10 | Ocean | <Badge tone="info">Customs</Badge> |
+| SHP-88419 | Hamburg, DE | Chicago, US | Apr 19, 09:00 | Ocean | <Badge tone="warning">At risk</Badge> |
+| SHP-88462 | Lagos, NG | Marseille, FR | Apr 19, 18:00 | Air | <Badge tone="warning">At risk</Badge> |
+<FollowUps>
+- Show only shipments arriving in the next 12 hours
+- Which carrier is responsible for the most delays this week?
+- Give me the customs queue at Jebel Ali
+</FollowUps>
+</Card>
+
+<Card title="Volume split by carrier" subtitle="Share of shipments this month">
+<Columns>
+<Chart type="donut" title="Carrier share" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 412 |
+| DHL | 328 |
+| Kuehne+Nagel | 246 |
+| DB Schenker | 181 |
+| FedEx | 117 |
+</Chart>
+<Chart type="horizontal" title="Shipments per carrier" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 412 |
+| DHL | 328 |
+| Kuehne+Nagel | 246 |
+| DB Schenker | 181 |
+| FedEx | 117 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Weekly volume" subtitle="Past 8 weeks, all carriers">
+<Chart type="bar" title="Shipments per week" x="Week" y="Shipments">
+| Week | Shipments | Delayed |
+|---|---|---|
+| W9 | 1042 | 28 |
+| W10 | 1116 | 34 |
+| W11 | 1088 | 22 |
+| W12 | 1197 | 41 |
+| W13 | 1240 | 37 |
+| W14 | 1302 | 29 |
+| W15 | 1284 | 37 |
+| W16 | 1198 | 24 |
+</Chart>
+<Progress value="94.2" max="100" label="On-time rate this month" tone="success" />
+</Card>
+
+<Card title="Flag a shipment" subtitle="Routes it straight to the exceptions queue">
+<Form name="flag-shipment">
+<Input label="Shipment ID" name="shipment_id" placeholder="SHP-88214" required="true" />
+<Select label="Reason" name="reason" placeholder="Choose a reason" options="ETA breach | Damaged in transit | Customs hold | Carrier no-scan | Address issue | Other" required="true" />
+<Select label="Priority" name="priority" options="Normal | High | Urgent" value="High" />
+<TextArea label="Notes" name="notes" rows="3" placeholder="What should the carrier and the customer be told?" hint="Visible to the exceptions team only" />
+<Checkboxes label="Notify" name="notify" options="Account manager | End customer | Carrier rep" value="Account manager" />
+<Button variant="primary" icon="flag">Flag shipment</Button>
+</Form>
+</Card>
+
+<Card title="Board settings" subtitle="Applies to your view only">
+<Columns>
+<Switch label="Auto-refresh every 15 minutes" name="autorefresh" value="true" hint="Last refresh: today, 06:12" />
+<Switch label="Desktop alerts for critical delays" name="alerts" value="true" />
+</Columns>
+</Card>
+
+<Button variant="secondary" icon="arrows-clockwise" ask="Refresh the board now and tell me what changed since 06:12">Refresh now</Button>

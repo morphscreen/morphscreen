@@ -1,0 +1,111 @@
+# Grid Control — Live Console
+
+<Columns>
+<Stat label="Network load" value="41,280 MW" change="+3.1% vs 1h ago" tone="warning" icon="lightning" />
+<Stat label="Capacity used" value="87%" note="Peak headroom 6,140 MW" tone="warning" icon="gauge" />
+<Stat label="Price" value="$74.20 /MWh" change="+$6.40 last hour" tone="danger" icon="currency-dollar" />
+<Stat label="Emissions today" value="18,940 tCO₂e" change="-4.2% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+
+<Card title="Live alerts" subtitle="Newest first">
+<Callout tone="danger" title="14:52 — Feeder 12B overload">Northgate transformer at 103% rated load. Automatic tap change failed.</Callout>
+<Callout tone="warning" title="14:38 — Wind curtailment active">Coastal Ridge limited to 62% output under grid constraint.</Callout>
+<Callout tone="info" title="14:20 — Frequency event cleared">Under-frequency dip to 49.87 Hz, recovered in 41 s.</Callout>
+</Card>
+
+<Card title="Capacity position">
+<Progress value="87" max="100" label="Network utilisation" tone="warning" />
+<Progress value="62" max="100" label="Reserve margin remaining" tone="info" />
+<Progress value="94" max="100" label="North region interconnection" tone="danger" />
+</Card>
+
+<Card title="Generation by source" subtitle="Live MW and share of total">
+<Chart type="donut" title="Generation mix" x="Source" y="MW">
+| Source | MW |
+|---|---|
+| Gas | 14200 |
+| Nuclear | 9800 |
+| Wind | 7100 |
+| Hydro | 4600 |
+| Solar | 3900 |
+| Coal | 1680 |
+</Chart>
+</Card>
+
+<Card title="Demand forecast — next 24 hours" subtitle="System-wide, MW">
+<Chart type="area" x="Hour" y="MW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 15:00 | 41280 | 41410 |
+| 18:00 | 46300 | |
+| 21:00 | 43900 | |
+| 00:00 | 38200 | |
+| 03:00 | 35100 | |
+| 06:00 | 37400 | |
+| 09:00 | 42600 | |
+| 12:00 | 44800 | |
+</Chart>
+</Card>
+
+<Card title="Plants" subtitle="Output and status">
+| Plant | Type | Output | Status |
+|---|---|---|---|
+| Northgate CCGT | Gas | 1,240 MW | <Badge tone="danger">Overload</Badge> |
+| Halden Nuclear | Nuclear | 2,100 MW | <Badge tone="success">Nominal</Badge> |
+| Coastal Ridge | Wind | 480 MW | <Badge tone="warning">Curtailed</Badge> |
+| Riverbend Hydro | Hydro | 620 MW | <Badge tone="success">Nominal</Badge> |
+| Solfield Array | Solar | 310 MW | <Badge tone="success">Nominal</Badge> |
+| Ashcombe Coal 2 | Coal | 540 MW | <Badge tone="neutral">Standby</Badge> |
+| Marrow Point | Gas | 780 MW | <Badge tone="info">Ramping</Badge> |
+</Card>
+
+<Card title="Active outages" subtitle="By affected region">
+| Region | Asset | Started | Impact |
+|---|---|---|---|
+| Northgate | Feeder 12B | 14:52 | 42,000 customers at risk |
+| Eastvale | Substation 4 | 11:10 | 8,400 customers |
+| Southmoor | Line 7A | 09:35 | Industrial load only |
+| Westhaven | Transformer T3 | 06:20 | 1,200 customers |
+</Card>
+
+<Card title="Maintenance planned — this month">
+<Steps>
+<Step title="Halden Nuclear — Unit 2 refuel" status="current" subtitle="Scheduled 18–24 Mar · 900 MW offline">
+Outage window confirmed with regulator. Replacement capacity contracted.
+</Step>
+<Step title="Riverbend Hydro — turbine service" status="todo" subtitle="26 Mar · 200 MW offline">
+Two-day service on unit 3. No customer impact expected.
+</Step>
+<Step title="Eastvale Substation 4 — relay upgrade" status="todo" subtitle="29–30 Mar · no generation loss">
+Coordination with regional operator in progress.
+</Step>
+<Step title="Northgate CCGT — inspection" status="done" subtitle="Completed 4 Mar">
+No faults found. Next inspection in 6 months.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Region focus" subtitle="Narrow the console to one area">
+<Select label="Focus region" name="region" options="All regions | Northgate | Eastvale | Southmoor | Westhaven" value="All regions" hint="Filters plants, outages and alerts on this screen" />
+<Button variant="secondary" ask="Focus the console on the Northgate region">Apply focus</Button>
+</Card>
+
+<Card title="Order curtailment" subtitle="Reduce load or generation on a target asset">
+<Form name="curtailment-order">
+<Select label="Target" name="target" options="Northgate CCGT | Coastal Ridge Wind | Ashcombe Coal 2 | Marrow Point | Feeder 12B" placeholder="Choose a target" required="true" />
+<Slider label="Curtailment amount" min="0" max="500" step="10" value="150" name="mw" unit="MW" />
+<Radio label="Reason" name="reason" options="Grid constraint | Frequency control | Maintenance | Emergency" value="Grid constraint" />
+<TextArea label="Operator note" name="note" rows="3" placeholder="Context for the control room log" />
+<Button variant="danger">Issue curtailment order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Callout tone="warning" title="Operator attention">Northgate interconnection is at 94% of rating. Any further load there needs a curtailment order or reserve activation.</Callout>
+
+<FollowUps>
+- Show me the Northgate region only
+- What caused the frequency dip at 14:20?
+- Forecast emissions for the rest of today
+- Which plants can cover the Halden refuel window?
+</FollowUps>

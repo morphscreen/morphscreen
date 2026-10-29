@@ -1,0 +1,160 @@
+# Operations Room — Live
+
+<Columns>
+<Stat label="Viewers watching now" value="1.24M" change="+3.1% vs 1h ago" tone="success" icon="users" />
+<Stat label="Buffering rate" value="0.82%" change="-0.14 pts" tone="success" icon="chart-line" />
+<Stat label="New subs today" value="8,410" change="+6.2%" tone="success" icon="chart-line" />
+<Stat label="Cancellations today" value="5,120" change="-2.0%" tone="info" icon="chart-line" />
+</Columns>
+
+<Callout tone="warning" title="Two regions degraded">EU-West buffering at 2.4% and LATAM at 1.9% — above the 1.5% alert line. See delivery health below.</Callout>
+
+<Card title="Most-watched titles" subtitle="Last 24 hours, hours streamed">
+| # | Title | Hours |
+|---|---|---|
+| 1 | Ashfall Ridge S2 | 412,000 |
+| 2 | The Long Ferry | 288,500 |
+| 3 | Cold Orbit | 241,900 |
+| 4 | Kitchen Republic S7 | 198,300 |
+| 5 | Nightline | 154,700 |
+
+<Button ask="Show the top 20 titles with completion rates">See top 20</Button>
+</Card>
+
+<Card title="Watch time — past month">
+<Chart type="area" x="Day" y="Hours">
+| Day | Hours |
+|---|---|
+| Wk1 | 41.2M |
+| Wk2 | 44.8M |
+| Wk3 | 46.1M |
+| Wk4 | 49.3M |
+</Chart>
+</Card>
+
+<Card title="Subscribers vs cancellations" subtitle="Net adds per week">
+<Chart type="bar" x="Week" y="Count">
+| Week | New subs | Cancellations |
+|---|---|---|
+| W1 | 51200 | 39800 |
+| W2 | 54800 | 41200 |
+| W3 | 59100 | 38500 |
+| W4 | 62400 | 40100 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre" subtitle="Share of total watch time">
+<Chart type="horizontal" x="Genre" y="Share %">
+| Genre | Share |
+|---|---|
+| Drama | 31 |
+| Comedy | 22 |
+| Documentary | 16 |
+| Reality | 12 |
+| Thriller | 11 |
+| Kids | 8 |
+</Chart>
+</Card>
+
+<Card title="Delivery health by region">
+| Region | Buffering | Start time | Status |
+|---|---|---|---|
+| US-East | 0.41% | 1.1s | Healthy |
+| US-West | 0.55% | 1.2s | Healthy |
+| EU-West | 2.40% | 3.8s | Degraded |
+| EU-Central | 0.92% | 1.6s | Healthy |
+| LATAM | 1.90% | 3.1s | Degraded |
+| APAC | 0.78% | 1.9s | Healthy |
+
+<Button ask="Focus on EU-West delivery health">Focus EU-West</Button>
+</Card>
+
+<Card title="Releases coming this month">
+<Steps>
+<Step title="Ashfall Ridge S2 — E5" subtitle="Mar 14 · all regions" status="done">Live now, top title of the week.</Step>
+<Step title="Cold Orbit — E3" subtitle="Mar 19 · all regions" status="current">Promoted on home screen since Mar 17.</Step>
+<Step title="The Long Ferry — Finale" subtitle="Mar 24 · all regions" status="todo">Marketing push starts Mar 21.</Step>
+<Step title="Kitchen Republic S7 — E9" subtitle="Mar 29 · US, EU only" status="todo">Rights exclude APAC and LATAM.</Step>
+</Steps>
+</Card>
+
+<Card title="Licenses expiring soon">
+| Title | Expires | Days left | Renewal |
+|---|---|---|---|
+| Nightline | Apr 02 | 18 | In negotiation |
+| Harbor Lights | Apr 09 | 25 | Not started |
+| The Quiet Fleet | Apr 15 | 31 | Offer sent |
+| Iron Meadow | Apr 30 | 46 | Auto-renew |
+
+<Button ask="Show license renewal pipeline with owners">Renewal pipeline</Button>
+</Card>
+
+<Columns>
+<Stat label="Recommendation click-through" value="7.4%" change="+0.6 pts" tone="success" icon="chart-line" />
+<Stat label="Searches with no playback" value="18.2%" change="+1.1 pts" tone="warning" icon="search" />
+</Columns>
+
+<Card title="Revenue split by plan">
+<Chart type="donut" x="Plan" y="Share %">
+| Plan | Share |
+|---|---|
+| Basic | 18 |
+| Standard | 41 |
+| Premium | 33 |
+| Ad-supported | 8 |
+</Chart>
+</Card>
+
+<Card title="Viewing split by device">
+<Chart type="pie" x="Device" y="Share %">
+| Device | Share |
+|---|---|
+| Smart TV | 44 |
+| Mobile | 28 |
+| Laptop | 17 |
+| Tablet | 7 |
+| Console | 4 |
+</Chart>
+</Card>
+
+<Card title="Focus on one region" subtitle="Filters the delivery and quality views above">
+<Form name="region-focus">
+<Select label="Region" name="region" options="All regions | US-East | US-West | EU-West | EU-Central | LATAM | APAC" value="All regions" hint="Choose one to narrow the room to that region" />
+<Radio label="Time window" name="window" options="Last 1 hour | Last 24 hours | Last 7 days" value="Last 24 hours" />
+<Button>Apply focus</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Feature flags">
+| Flag | State | Rollout |
+|---|---|---|
+| New player UI | <Badge tone="success">On</Badge> | 100% |
+| AV1 encoding | <Badge tone="info">On</Badge> | 60% |
+| Auto-play next episode | <Badge tone="success">On</Badge> | 100% |
+| Download-to-go | <Badge tone="neutral">Off</Badge> | 0% |
+| AI subtitle translation | <Badge tone="warning">Canary</Badge> | 5% |
+| Ad-supported tier | <Badge tone="success">On</Badge> | 100% |
+
+<Button ask="Toggle the AV1 encoding flag rollout">Change rollout</Button>
+</Card>
+
+<Card title="Promote a title on the home screen">
+<Form name="promote-title">
+<Select label="Title" name="title" options="Ashfall Ridge S2 | The Long Ferry | Cold Orbit | Kitchen Republic S7 | Nightline" placeholder="Pick a title" />
+<Select label="Placement" name="placement" options="Hero banner | First row | Genre row | Continue-watching row" value="Hero banner" />
+<Date label="Start date" name="start" value="2025-03-17" />
+<Date label="End date" name="end" value="2025-03-24" />
+<Slider label="Audience share" name="share" min="0" max="100" step="5" value="50" unit="%" hint="Percent of home-screen visitors who see this promotion" />
+<Checkboxes label="Target regions" name="regions" options="US-East | US-West | EU-West | EU-Central | LATAM | APAC" value="US-East | US-West | EU-West" />
+<Button>Promote title</Button>
+<Button variant="tertiary">Preview on home</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Why is EU-West buffering above target?
+- Which titles lose the most viewers in the first 5 minutes?
+- Show searches with no playback by query
+- What happens if I turn off the new player UI flag?
+</FollowUps>

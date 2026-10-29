@@ -1,0 +1,49 @@
+<Card title="Platform Status" subtitle="Live overview for the platform team">
+  <Columns>
+    <Stat label="API uptime (this month)" value="99.98%" change="+0.02% vs last month" tone="success" icon="trend-up" />
+    <Stat label="Most recent incident" value="Resolved" change="Resolved 2h ago" tone="success" icon="check-circle" />
+  </Columns>
+</Card>
+
+<Card title="Most recent incident">
+  <Callout tone="success" title="Resolved — Database connection timeouts">
+    Intermittent timeouts on read replicas caused elevated API latency for ~18 minutes. The issue was resolved by failing over to a healthy replica and restarting the connection pool. No data loss occurred.
+  </Callout>
+  <Columns>
+    <Stat label="Incident started" value="Today, 09:42 UTC" icon="clock" />
+    <Stat label="Resolved at" value="Today, 10:00 UTC" icon="check" />
+    <Stat label="Duration" value="18 minutes" icon="timer" />
+  </Columns>
+</Card>
+
+<Card title="Uptime this month">
+  <Chart type="area" x="Day" y="Uptime %">
+| Day | Uptime |
+|---|---|
+| 1 | 100 |
+| 2 | 100 |
+| 3 | 99.9 |
+| 4 | 100 |
+| 5 | 100 |
+| 6 | 100 |
+| 7 | 99.8 |
+| 8 | 100 |
+| 9 | 100 |
+| 10 | 100 |
+| 11 | 99.95 |
+| 12 | 100 |
+| 13 | 100 |
+| 14 | 100 |
+| 15 | 100 |
+  </Chart>
+  <Callout tone="info" title="How we calculate uptime">
+    Uptime is measured as the percentage of successful requests (HTTP 2xx) out of all requests to the API, aggregated over the current calendar month.
+  </Callout>
+</Card>
+
+<FollowUps>
+- Show me the incident timeline for this month
+- What caused the database timeouts?
+- Compare uptime across all services
+- View the full incident postmortem
+</FollowUps>

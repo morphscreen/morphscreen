@@ -1,0 +1,46 @@
+<Card title="Standard Deviation Formula">
+<Math tex="\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2}" label="Population standard deviation" />
+<Math tex="s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}" label="Sample standard deviation" />
+</Card>
+
+<Card title="Python Implementation">
+<Code file="std_dev.py" highlight="3 | 7">
+import math
+
+def population_std(data):
+    n = len(data)
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / n
+    return math.sqrt(variance)
+
+def sample_std(data):
+    n = len(data)
+    mean = sum(data) / n
+    variance = sum((x - mean) ** 2 for x in data) / (n - 1)
+    return math.sqrt(variance)
+
+# Example
+data = [10, 12, 23, 23, 16, 23, 21, 16]
+print("Population σ:", population_std(data))
+print("Sample s:", sample_std(data))
+</Code>
+</Card>
+
+<Card title="When to Use the Sample Version">
+<Callout tone="info" title="Use sample standard deviation (n-1 denominator) when:">
+- Your data is a **sample** drawn from a larger population
+- You want an **unbiased estimator** of the population standard deviation
+- You're doing **inferential statistics** (hypothesis tests, confidence intervals)
+- The dataset does **not** represent the entire population of interest
+</Callout>
+
+<Callout tone="success" title="Use population standard deviation (N denominator) when:">
+- You have data for the **entire population**
+- You're describing the spread of **this specific dataset** only
+- No generalization to a larger group is intended
+</Callout>
+
+<Details title="Why n-1? (Bessel's correction)">
+Using <code>n</code> in the denominator underestimates the true population variance because the sample mean <code>x̄</code> is itself estimated from the data and sits closer to the sample points than the true population mean <code>μ</code>. Dividing by <code>n-1</code> corrects this bias.
+</Details>
+</Card>

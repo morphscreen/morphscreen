@@ -1,0 +1,90 @@
+# Logistics Coordinator Board
+
+<Callout tone="warning" title="3 delayed shipments">Shipments #LX-2041, #LX-2078 and #LX-2093 are behind schedule. See details below.</Callout>
+
+<Columns>
+<Stat label="On-time rate (this month)" value="94.2%" change="+1.8 pts vs last month" tone="success" icon="check-circle" />
+<Stat label="Avg cost per shipment" value="$412.50" change="-3.2% vs last month" tone="success" icon="currency-dollar" />
+<Stat label="Shipments in transit" value="38" change="12 arriving today" tone="info" icon="truck" />
+<Stat label="Last refreshed" value="2 min ago" note="Auto-refresh every 5 min" tone="neutral" icon="clock" />
+</Columns>
+
+<Card title="Shipments in transit" subtitle="Live tracking — tap a row to flag">
+<Input label="Search by route" name="route-search" placeholder="e.g. Shanghai → Hamburg, or port code" type="search" />
+
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| LX-2041 | Shanghai, CN | Hamburg, DE | Oct 18, 14:30 | <Badge tone="danger">Delayed +6h</Badge> |
+| LX-2042 | Rotterdam, NL | Chicago, US | Oct 16, 09:00 | <Badge tone="success">On time</Badge> |
+| LX-2043 | Singapore, SG | Los Angeles, US | Oct 17, 22:15 | <Badge tone="success">On time</Badge> |
+| LX-2044 | Santos, BR | Antwerp, BE | Oct 19, 11:45 | <Badge tone="info">In customs</Badge> |
+| LX-2045 | Dubai, AE | Mumbai, IN | Oct 15, 18:30 | <Badge tone="success">On time</Badge> |
+| LX-2046 | Busan, KR | Long Beach, US | Oct 20, 07:00 | <Badge tone="warning">Weather delay</Badge> |
+| LX-2047 | Valencia, ES | New York, US | Oct 16, 16:20 | <Badge tone="success">On time</Badge> |
+| LX-2048 | Ho Chi Minh, VN | Felixstowe, GB | Oct 21, 13:10 | <Badge tone="success">On time</Badge> |
+| LX-2049 | Vancouver, CA | Tokyo, JP | Oct 17, 05:45 | <Badge tone="success">On time</Badge> |
+| LX-2050 | Colombo, LK | Durban, ZA | Oct 22, 09:30 | <Badge tone="info">Awaiting vessel</Badge> |
+| LX-2078 | Ningbo, CN | Savannah, US | Oct 18, 20:00 | <Badge tone="danger">Delayed +12h</Badge> |
+| LX-2093 | Jeddah, SA | Karachi, PK | Oct 16, 12:00 | <Badge tone="danger">Delayed +3h</Badge> |
+
+<Button variant="secondary" icon="flag">Flag selected shipment</Button>
+</Card>
+
+<Card title="Delayed shipments — action required">
+<Callout tone="danger" title="3 shipments behind schedule">
+| Shipment ID | Route | Delay | Reason | Action |
+|---|---|---|---|---|
+| LX-2041 | Shanghai → Hamburg | +6h | Port congestion at Shanghai | <Button size="small" variant="secondary">Notify customer</Button> |
+| LX-2078 | Ningbo → Savannah | +12h | Vessel mechanical issue | <Button size="small" variant="secondary">Reroute via Panama</Button> |
+| LX-2093 | Jeddah → Karachi | +3h | Customs hold in Jeddah | <Button size="small" variant="secondary">Escalate to broker</Button> |
+
+<Button variant="danger" icon="warning">Flag all for review</Button>
+</Callout>
+</Card>
+
+<Card title="Volume by carrier" subtitle="Share of shipments this month">
+<Columns>
+<Chart type="donut" title="Carrier split">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 142 |
+| MSC | 118 |
+| CMA CGM | 76 |
+| Hapag-Lloyd | 54 |
+| Other | 31 |
+</Chart>
+<Chart type="bar" title="Weekly volume (last 8 weeks)" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| Aug 25 | 48 |
+| Sep 1 | 52 |
+| Sep 8 | 47 |
+| Sep 15 | 55 |
+| Sep 22 | 51 |
+| Sep 29 | 58 |
+| Oct 6 | 61 |
+| Oct 13 | 64 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Flag a shipment" subtitle="Mark for follow-up — our team will be notified">
+<Form name="flag-shipment">
+<Input label="Shipment ID" name="shipment-id" placeholder="e.g. LX-2041" required="true" />
+<Select label="Reason" name="flag-reason" placeholder="Choose a reason" options="Delayed | Damaged | Missing docs | Customs issue | Customer request | Other" required="true" />
+<TextArea label="Notes" name="flag-notes" placeholder="Add context for the team (optional)" rows="3" />
+<Switch label="Notify customer" name="notify-customer" value="false" hint="Send an automated update to the consignee" />
+<Button>Submit flag</Button>
+</Form>
+</Card>
+
+<Details title="How is on-time performance calculated?">
+<Callout tone="info" title="Methodology">On-time rate = shipments delivered within ±2h of the promised ETA, divided by total shipments delivered this month. Excludes shipments still in transit and force-majeure events (strikes, natural disasters).</Callout>
+</Details>
+
+<FollowUps>
+- Show me the most profitable routes this quarter
+- Which carriers have the worst delay rate?
+- Drill down into the Shanghai → Hamburg corridor
+- Set up an alert when a shipment is delayed more than 4 hours
+</FollowUps>

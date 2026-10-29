@@ -1,0 +1,34 @@
+root = Card([header, addExpenseButtons, expenseTable, totalCard, submitButtons])
+header = CardHeader("Expense Claim", "Add receipts, categorize expenses, and submit for reimbursement")
+addExpenseButtons = Buttons([captureBtn, uploadBtn], "row")
+captureBtn = Button("📷 Capture Receipt", { type: "continue_conversation", context: "Open camera to photograph a paper receipt and add as new expense line" }, "primary")
+uploadBtn = Button("📄 Upload PDF Invoice", { type: "continue_conversation", context: "Open file picker to upload a PDF invoice and add as new expense line" }, "secondary")
+expenseTable = EditableTable("expense-lines", expenseColumns, expenseData)
+expenseColumns = [
+  { type: "date-single", key: "date", header: "Date", width: 120 },
+  { type: "select", key: "category", header: "Category", width: 160, options: categoryOptions },
+  { type: "number", key: "amount", header: "Amount", width: 100 },
+  { type: "text", key: "receipt", header: "Receipt", width: 200 }
+]
+categoryOptions = [
+  { value: "meals", label: "🍽️ Meals & Entertainment" },
+  { value: "travel", label: "🚗 Travel & Transport" },
+  { value: "accommodation", label: "🏨 Accommodation" },
+  { value: "office", label: "📦 Office Supplies" },
+  { value: "software", label: "💻 Software & Subscriptions" },
+  { value: "other", label: "📌 Other" }
+]
+expenseData = [
+  { id: "exp-1", values: ["2026-01-15", "meals", 47.50, "receipt_meal_015.jpg"] },
+  { id: "exp-2", values: ["2026-01-16", "travel", 120.00, "uber_receipt_016.pdf"] },
+  { id: "exp-3", values: ["2026-01-17", "accommodation", 340.00, "hotel_invoice_017.pdf"] },
+  { id: "exp-4", values: ["2026-01-18", "office", 89.99, "amazon_order_018.jpg"] }
+]
+totalCard = SnippetCardBlock([totalItem], "grid", false)
+totalItem = SnippetCardItem("claim-total", totalLhs, totalRhs)
+totalLhs = IconText(totalIcon, "neutral", "l", "Claim Total", "Sum of all expense lines", false, "horizontal")
+totalIcon = Icon("circle-dollar-sign", "finance")
+totalRhs = BoldText("number", "$597.49", "4 expenses", "metric")
+submitButtons = Buttons([submitBtn, cancelBtn], "row")
+submitBtn = Button("Submit Claim", { type: "continue_conversation", context: "Submit this expense claim for approval with all 4 line items totaling $597.49" }, "primary")
+cancelBtn = Button("Save as Draft", { type: "continue_conversation", context: "Save this expense claim as draft without submitting" }, "tertiary")

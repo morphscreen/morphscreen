@@ -1,0 +1,137 @@
+# PMO Portfolio Review — Q3 2025
+
+<Select label="Quarter" name="quarter" value="Q3 2025" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" />
+
+<Callout tone="info" title="Portfolio Health Summary">
+**On track overall** — 12 of 15 projects green, 2 yellow (budget), 1 red (blocked). 84% milestone completion rate. Team utilization at 87%.
+</Callout>
+
+<Columns>
+<Card title="Active Projects">
+| Project | Owner | Deadline | Health |
+|---|---|---|---|
+| Apollo Platform v2 | S. Chen | 2025-10-15 | <Badge tone="success">Green</Badge> |
+| Orion Data Pipeline | M. Rodriguez | 2025-11-01 | <Badge tone="success">Green</Badge> |
+| Nexus Mobile App | J. Park | 2025-09-30 | <Badge tone="warning">Yellow</Badge> |
+| Helios Analytics | A. Gupta | 2025-10-31 | <Badge tone="success">Green</Badge> |
+| Vega Integration | R. Kim | 2025-11-15 | <Badge tone="danger">Red</Badge> |
+| Atlas Migration | L. Thompson | 2025-12-01 | <Badge tone="success">Green</Badge> |
+| Nova Design System | K. Williams | 2025-10-20 | <Badge tone="warning">Yellow</Badge> |
+| Phoenix API Gateway | D. Lee | 2025-11-10 | <Badge tone="success">Green</Badge> |
+</Card>
+
+<Card title="Budget: Spent vs Allocation">
+<Chart type="horizontal" x="Project" y="USD (thousands)">
+| Project | Allocated | Spent |
+|---|---|---|
+| Apollo Platform v2 | 450 | 312 |
+| Orion Data Pipeline | 380 | 298 |
+| Nexus Mobile App | 320 | 285 |
+| Helios Analytics | 290 | 187 |
+| Vega Integration | 210 | 195 |
+| Atlas Migration | 180 | 92 |
+| Nova Design System | 150 | 138 |
+| Phoenix API Gateway | 120 | 78 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Team Utilization">
+<Chart type="bar" x="Team" y="Utilization %">
+| Team | Utilization |
+|---|---|
+| Platform | 92 |
+| Data | 88 |
+| Mobile | 95 |
+| Analytics | 76 |
+| Integration | 89 |
+| Infra | 82 |
+| Design | 91 |
+| API | 79 |
+</Chart>
+</Card>
+
+<Card title="Delivery Pace (Last 6 Sprints)">
+<Chart type="line" x="Sprint" y="Story Points">
+| Sprint | Planned | Delivered |
+|---|---|---|
+| Sprint 18 | 210 | 198 |
+| Sprint 19 | 220 | 215 |
+| Sprint 20 | 230 | 208 |
+| Sprint 21 | 225 | 222 |
+| Sprint 22 | 240 | 231 |
+| Sprint 23 | 235 | 228 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Overdue Milestones">
+| Project | Milestone | Due Date | Days Overdue | Owner |
+|---|---|---|---|---|
+| Vega Integration | Security audit complete | 2025-08-20 | 12 | R. Kim |
+| Nexus Mobile App | App Store submission | 2025-08-25 | 7 | J. Park |
+| Nova Design System | Token v1.0 release | 2025-08-28 | 4 | K. Williams |
+</Card>
+
+<Card title="Risks by Severity">
+| Project | Risk | Severity | Mitigation |
+|---|---|---|---|
+| Vega Integration | Vendor API deprecation | <Badge tone="danger">Critical</Badge> | Accelerate migration to v2 |
+| Nexus Mobile App | iOS 18 compatibility | <Badge tone="warning">High</Badge> | Dedicated spike sprint |
+| Nova Design System | Token adoption lag | <Badge tone="warning">High</Badge> | Office hours + docs push |
+| Apollo Platform v2 | Scale testing gaps | <Badge tone="info">Medium</Badge> | Schedule load test week |
+| Helios Analytics | Data quality issues | <Badge tone="info">Medium</Badge> | Automate validation pipeline |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Deadlines — Next 2 Weeks">
+| Project | Milestone | Date | Status |
+|---|---|---|---|
+| Apollo Platform v2 | Beta launch | 2025-09-10 | On track |
+| Orion Data Pipeline | CDC cutover | 2025-09-12 | On track |
+| Helios Analytics | Dashboard GA | 2025-09-14 | At risk |
+| Nova Design System | Figma library v1 | 2025-09-15 | On track |
+| Atlas Migration | Phase 1 complete | 2025-09-18 | On track |
+</Card>
+
+<Card title="Blocked Work Items">
+| Project | Item | Blocker | Owner | Days Blocked |
+|---|---|---|---|---|
+| Vega Integration | Auth service refactor | Vendor contract pending | R. Kim | 14 |
+| Nexus Mobile App | Push notifications | Apple cert renewal | J. Park | 6 |
+| Nova Design System | Dark mode tokens | Design review pending | K. Williams | 3 |
+| Phoenix API Gateway | Rate limiting | Infra capacity review | D. Lee | 2 |
+</Card>
+</Columns>
+
+<Card title="Request Additional People">
+<Form name="staffing-request">
+<Select label="Project" name="project" placeholder="Select project" options="Apollo Platform v2 | Orion Data Pipeline | Nexus Mobile App | Helios Analytics | Vega Integration | Atlas Migration | Nova Design System | Phoenix API Gateway" required="true" />
+<Input label="Role needed" name="role" placeholder="e.g., Backend Engineer, QA, Designer" required="true" />
+<Input label="Number of people" name="count" type="number" min="1" max="10" value="1" required="true" />
+<TextArea label="Justification" name="justification" placeholder="Why is this needed? Impact if not filled?" rows="3" required="true" />
+<Date label="Needed by" name="neededBy" required="true" />
+<Button>Submit Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Columns>
+<Card title="Actions">
+<Button variant="primary">Export Review (PDF)</Button>
+<Button variant="secondary">Export Review (CSV)</Button>
+<Button variant="danger">Archive Finished Project</Button>
+</Card>
+
+<Card title="Archive Project">
+<Form name="archive-project">
+<Select label="Project to archive" name="archiveProject" placeholder="Select completed project" options="Apollo Platform v1 | Legacy Data Warehouse | Legacy Mobile App | Legacy Reporting" required="true" />
+<Checkboxes label="Confirm" name="confirm" options="All milestones complete | Budget reconciled | Documentation handed off | Stakeholder sign-off obtained" required="true" />
+<Button variant="danger">Archive Project</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Columns>

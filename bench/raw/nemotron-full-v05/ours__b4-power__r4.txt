@@ -1,0 +1,141 @@
+# Power Network Operations Console
+
+<Select label="Focus Region" name="region" placeholder="All Regions" options="All Regions | North Grid | South Grid | East Grid | West Grid | Central Hub" value="All Regions" />
+
+<Columns>
+<Card title="Network Load">
+<Stat label="Current Load" value="42.3 GW" change="+1.2 GW vs 1hr ago" tone="info" />
+<Stat label="Peak Capacity" value="58.0 GW" tone="neutral" />
+<Progress value="72.9" max="100" label="Capacity Utilization" tone="warning" />
+</Card>
+
+<Card title="Market Price">
+<Stat label="Current Price" value="$87.40 / MWh" change="+$4.20 vs yesterday" tone="warning" />
+<Stat label="Day-Ahead Avg" value="$82.10 / MWh" tone="neutral" />
+<Stat label="Real-Time Index" value="$91.20 / MWh" tone="info" />
+</Card>
+
+<Card title="Emissions Today">
+<Stat label="CO₂ Emissions" value="1,842 tCO₂" change="-3.2% vs same day last year" tone="success" />
+<Stat label="Emission Intensity" value="312 gCO₂/kWh" tone="info" />
+<Stat label="Renewable Share" value="41.8%" change="+2.1pp" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Generation Split by Source">
+<Chart type="donut" title="Real-Time Generation Mix" x="Source" y="Output (GW)">
+| Source | Output (GW) |
+|---|---|
+| Natural Gas | 14.2 |
+| Nuclear | 9.8 |
+| Wind | 8.5 |
+| Solar | 6.3 |
+| Hydro | 4.1 |
+| Coal | 3.7 |
+| Battery | 1.2 |
+| Other | 0.5 |
+</Chart>
+</Card>
+
+<Card title="Demand Forecast — Next 24 Hours">
+<Chart type="area" title="Hourly Demand Forecast" x="Hour" y="Demand (GW)">
+| Hour | Forecast (GW) | Actual (GW) |
+|---|---|---|
+| 00:00 | 38.2 | 38.5 |
+| 01:00 | 36.8 | 37.1 |
+| 02:00 | 35.9 | 36.2 |
+| 03:00 | 35.4 | 35.7 |
+| 04:00 | 35.8 | 36.0 |
+| 05:00 | 37.2 | 37.5 |
+| 06:00 | 40.1 | 40.3 |
+| 07:00 | 43.8 | 44.0 |
+| 08:00 | 46.5 | 46.8 |
+| 09:00 | 47.2 | 47.5 |
+| 10:00 | 47.8 | 48.0 |
+| 11:00 | 48.1 | 48.3 |
+| 12:00 | 48.5 | 48.7 |
+| 13:00 | 48.9 | 49.0 |
+| 14:00 | 49.2 | 49.3 |
+| 15:00 | 49.5 | 49.6 |
+| 16:00 | 50.1 | 50.2 |
+| 17:00 | 51.8 | 52.0 |
+| 18:00 | 52.4 | 52.5 |
+| 19:00 | 51.9 | 52.0 |
+| 20:00 | 50.2 | 50.3 |
+| 21:00 | 47.8 | 47.9 |
+| 22:00 | 44.1 | 44.2 |
+| 23:00 | 41.5 | 41.6 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Power Plants — Live Output & Status">
+| Plant | Region | Source | Capacity (MW) | Output (MW) | Status | Availability |
+|---|---|---|---|---|---|---|
+| Northridge Nuclear | North Grid | Nuclear | 2,200 | 2,156 | <Badge tone="success">Online</Badge> | 98% |
+| Westwind Farm | West Grid | Wind | 1,800 | 1,420 | <Badge tone="success">Online</Badge> | 79% |
+| Solar Valley | South Grid | Solar | 1,500 | 1,180 | <Badge tone="success">Online</Badge> | 79% |
+| Riverbend Hydro | Central Hub | Hydro | 1,200 | 980 | <Badge tone="success">Online</Badge> | 82% |
+| Gaspeak CCGT | East Grid | Natural Gas | 1,100 | 990 | <Badge tone="success">Online</Badge> | 90% |
+| Coalridge | North Grid | Coal | 1,000 | 850 | <Badge tone="success">Online</Badge> | 85% |
+| Sunfield Solar | South Grid | Solar | 900 | 620 | <Badge tone="warning">Curtailed</Badge> | 69% |
+| Eastwind Offshore | East Grid | Wind | 800 | 640 | <Badge tone="success">Online</Badge> | 80% |
+| Battery Ridge | Central Hub | Battery | 500 | 320 | <Badge tone="success">Charging</Badge> | 64% |
+| Oldstead Coal | West Grid | Coal | 400 | 0 | <Badge tone="danger">Offline</Badge> | 0% |
+</Card>
+
+<Columns>
+<Card title="Active Outages">
+| Outage ID | Region | Affected Customers | Est. Restoration | Cause |
+|---|---|---|---|---|
+| OUT-2024-0847 | North Grid — Sector 4 | 12,400 | 2024-01-15 14:30 | Transmission fault |
+| OUT-2024-0849 | East Grid — Riverside | 8,200 | 2024-01-15 16:00 | Storm damage |
+| OUT-2024-0851 | South Grid — Valley | 3,100 | 2024-01-15 12:45 | Equipment failure |
+| OUT-2024-0852 | West Grid — Coastal | 1,800 | 2024-01-15 18:00 | Vegetation contact |
+</Card>
+
+<Card title="Planned Maintenance — This Month">
+| Asset | Region | Type | Start | End | Impact |
+|---|---|---|---|---|---|
+| Transformer T-44 | North Grid | Preventive | 2024-01-20 06:00 | 2024-01-20 18:00 | 400 MW reduction |
+| Line 115kV East-West | East Grid | Inspection | 2024-01-22 08:00 | 2024-01-22 16:00 | N-1 contingency |
+| Gaspeak Unit 2 | East Grid | Major overhaul | 2024-01-28 00:00 | 2024-02-03 23:59 | 550 MW offline |
+| Solar Valley Inverter | South Grid | Firmware update | 2024-01-18 02:00 | 2024-01-18 04:00 | 150 MW reduction |
+| Battery Ridge BMS | Central Hub | Calibration | 2024-01-25 10:00 | 2024-01-25 14:00 | Storage unavailable |
+</Card>
+</Columns>
+
+<Card title="Live Alerts">
+<Callout tone="danger" title="CRITICAL — 10:42:15">Frequency deviation: 59.92 Hz — Primary response activated</Callout>
+<Callout tone="warning" title="WARNING — 10:38:42">East Grid voltage approaching lower limit (0.92 pu) — Tap changers adjusting</Callout>
+<Callout tone="info" title="INFO — 10:35:10">Wind forecast revised: +400 MW next 3 hours — Westwind Farm</Callout>
+<Callout tone="info" title="INFO — 10:30:00">Market clearing price spike: $142/MWh at 11:00 interval</Callout>
+<Callout tone="success" title="RESOLVED — 10:25:30">Northridge Nuclear returned to full output after rod adjustment</Callout>
+<Callout tone="neutral" title="NOTICE — 10:20:00">Scheduled maintenance: Line 115kV East-West on 2024-01-22</Callout>
+</Card>
+
+<Card title="Order Curtailment">
+<Form name="curtailment-order">
+<Columns>
+<Select label="Plant" name="plant" placeholder="Select plant" options="Sunfield Solar (South Grid) | Westwind Farm (West Grid) | Eastwind Offshore (East Grid) | Gaspeak CCGT (East Grid) | Battery Ridge (Central Hub)" required="true" />
+<Input label="Curtailment Amount (MW)" name="amount" type="number" placeholder="e.g., 200" min="1" max="1500" step="10" required="true" hint="Max available for curtailment shown per plant" />
+</Columns>
+<Columns>
+<Select label="Reason" name="reason" placeholder="Select reason" options="Frequency regulation | Voltage support | Transmission constraint | Economic dispatch | Emergency balancing" required="true" />
+<Select label="Duration" name="duration" placeholder="Select duration" options="15 minutes | 30 minutes | 1 hour | 2 hours | 4 hours | Until further notice" required="true" />
+</Columns>
+<TextArea label="Operator Notes" name="notes" placeholder="Reason for curtailment, coordination details, etc." rows="3" hint="Required for audit trail" required="true" />
+<Columns>
+<Button variant="danger" size="large">Submit Curtailment Order</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- Acknowledge critical frequency alert
+- Review North Grid transmission contingency
+- Confirm Gaspeak Unit 2 maintenance schedule
+- Export today's generation & emissions report
+</FollowUps>

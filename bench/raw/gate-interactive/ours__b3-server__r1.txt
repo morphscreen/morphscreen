@@ -1,0 +1,86 @@
+# Service Health Dashboard
+
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" />
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Progress value="99.97" max="100" label="Target: 99.95%" tone="success" />
+</Card>
+
+<Card title="Error rate (now)">
+<Stat label="Error rate" value="0.12%" change="-0.03% from 1h ago" tone="success" icon="alert-triangle" />
+<Progress value="12" max="100" label="Threshold: 1%" tone="info" />
+</Card>
+
+<Card title="Alert threshold">
+<Form name="alert-threshold">
+<Slider label="Error rate alert (%)" min="0.1" max="5" step="0.1" value="1" name="errorThreshold" />
+<Slider label="Latency alert (ms)" min="100" max="5000" step="50" value="500" name="latencyThreshold" />
+<Button variant="primary" size="small">Save thresholds</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="CPU & Memory usage (last 24 hours)">
+<Tabs>
+<Tab title="CPU %">
+<Chart type="area" x="Time" y="CPU %" title="CPU Utilization">
+| Time | CPU % |
+|---|---|
+| 00:00 | 23 |
+| 02:00 | 18 |
+| 04:00 | 15 |
+| 06:00 | 22 |
+| 08:00 | 35 |
+| 10:00 | 48 |
+| 12:00 | 52 |
+| 14:00 | 55 |
+| 16:00 | 51 |
+| 18:00 | 44 |
+| 20:00 | 38 |
+| 22:00 | 30 |
+</Chart>
+</Tab>
+<Tab title="Memory %">
+<Chart type="area" x="Time" y="Memory %" title="Memory Utilization">
+| Time | Memory % |
+|---|---|
+| 00:00 | 45 |
+| 02:00 | 42 |
+| 04:00 | 40 |
+| 06:00 | 43 |
+| 08:00 | 52 |
+| 10:00 | 58 |
+| 12:00 | 62 |
+| 14:00 | 65 |
+| 16:00 | 63 |
+| 18:00 | 59 |
+| 20:00 | 54 |
+| 22:00 | 48 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Open incidents">
+| ID | Service | Severity | Started | Status | Action |
+|---|---|---|---|---|---|
+| INC-2847 | payment-api | <Badge tone="danger">Critical</Badge> | 2024-01-15 14:22 | Investigating | <Button variant="danger" size="small">Acknowledge</Button> |
+| INC-2845 | auth-service | <Badge tone="warning">High</Badge> | 2024-01-15 13:45 | Mitigating | <Button variant="warning" size="small">Acknowledge</Button> |
+| INC-2842 | notification-worker | <Badge tone="info">Medium</Badge> | 2024-01-15 11:10 | Monitoring | <Button variant="info" size="small">Acknowledge</Button> |
+| INC-2839 | search-index | <Badge tone="info">Medium</Badge> | 2024-01-15 09:30 | Identified | <Button variant="info" size="small">Acknowledge</Button> |
+| INC-2835 | analytics-ingest | <Badge tone="neutral">Low</Badge> | 2024-01-15 07:15 | Resolved | <Button variant="secondary" size="small" disabled>Resolved</Button> |
+</Card>
+
+<Card title="Five slowest endpoints (p99 latency)">
+| Endpoint | Service | p99 Latency | Trend |
+|---|---|---|---|
+| POST /api/v1/payments/process | payment-api | 2,840 ms | <Badge tone="danger">↑ 12%</Badge> |
+| GET /api/v1/search/products | search-service | 1,920 ms | <Badge tone="warning">↑ 5%</Badge> |
+| POST /api/v1/orders/create | order-service | 1,450 ms | <Badge tone="neutral">→ 0%</Badge> |
+| GET /api/v1/users/{id}/recommendations | recommendation-engine | 1,280 ms | <Badge tone="success">↓ 3%</Badge> |
+| POST /api/v1/auth/refresh | auth-service | 980 ms | <Badge tone="neutral">→ 0%</Badge> |
+</Card>
+
+<Callout tone="info" title="Last refreshed">Data updated 30 seconds ago. Auto-refresh every 60s.</Callout>

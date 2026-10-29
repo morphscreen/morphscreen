@@ -1,0 +1,117 @@
+# Admin Overview
+
+<Columns>
+<Select label="Reporting period" name="period" options="Last 7 days | Last 30 days | Last 90 days | Last 12 months | Custom range" value="Last 30 days" />
+</Columns>
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$247,850" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$2,974,200" change="+14.1% YoY" tone="success" />
+<Stat label="Churn This Month" value="2.1%" change="-0.4 pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+3 vs last quarter" tone="success" />
+</Columns>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| Week 1 | 12 |
+| Week 2 | 18 |
+| Week 3 | 15 |
+| Week 4 | 22 |
+| Week 5 | 19 |
+| Week 6 | 25 |
+| Week 7 | 28 |
+| Week 8 | 31 |
+| Week 9 | 27 |
+| Week 10 | 35 |
+| Week 11 | 33 |
+| Week 12 | 41 |
+| Week 13 | 38 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Customers by Plan">
+<Chart type="donut" x="Plan" y="Customers">
+| Plan | Customers |
+|---|---|
+| Starter | 342 |
+| Professional | 187 |
+| Enterprise | 43 |
+| Custom | 12 |
+</Chart>
+</Card>
+
+<Card title="Feature Adoption (Newest 3)">
+<Chart type="bar" x="Feature" y="Adoption %">
+| Feature | Adoption % |
+|---|---|
+| AI Insights | 34 |
+| Team Workspaces | 52 |
+| Advanced Analytics | 28 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 245 | $18,500 | Active |
+| Globex Inc | Enterprise | 180 | $14,200 | Active |
+| Wayne Enterprises | Enterprise | 156 | $12,800 | Active |
+| Stark Industries | Professional | 89 | $8,900 | Active |
+| Umbrella Corp | Enterprise | 92 | $8,500 | At Risk |
+| Cyberdyne Systems | Professional | 67 | $6,700 | Active |
+| Oscorp | Professional | 54 | $5,400 | Active |
+| Tyrell Corporation | Custom | 48 | $5,100 | Active |
+| Initech | Professional | 42 | $4,200 | Active |
+| Massive Dynamic | Starter | 35 | $3,800 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | Risk Reason | Health Score | Last Login |
+|---|---|---|---|---|---|
+| Umbrella Corp | Enterprise | 92 | Declining usage (-40% MAU), failed payment last month | 23/100 | 12 days ago |
+| Pied Piper | Professional | 28 | No feature adoption, support tickets unanswered | 31/100 | 18 days ago |
+| Hooli | Starter | 15 | Seat utilization < 20%, no admin activity | 35/100 | 25 days ago |
+| Dunder Mifflin | Professional | 34 | Champion left company, no renewal conversation | 38/100 | 8 days ago |
+| Bluth Company | Starter | 12 | Payment method expired, 3 failed attempts | 41/100 | 3 days ago |
+</Card>
+
+<Card title="Failed Payments">
+| Customer | Amount | Failed Date | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Bluth Company | $299 | 2024-01-15 | 3 | Card expired | <Button size="small" variant="primary">Retry</Button> |
+| Sorenstam Ltd | $89 | 2024-01-14 | 1 | Insufficient funds | <Button size="small" variant="primary">Retry</Button> |
+| Vandelay Industries | $449 | 2024-01-13 | 2 | Card declined | <Button size="small" variant="primary">Retry</Button> |
+| Duff Beer | $199 | 2024-01-12 | 1 | Expired card | <Button size="small" variant="primary">Retry</Button> |
+| Krusty Krab | $79 | 2024-01-11 | 1 | Bank error | <Button size="small" variant="primary">Retry</Button> |
+</Card>
+
+<Card title="Seat Utilization Across Company">
+<Columns>
+<Progress label="Acme Corporation (245 seats)" value="218" max="245" />
+<Progress label="Globex Inc (180 seats)" value="156" max="180" />
+<Progress label="Wayne Enterprises (156 seats)" value="134" max="156" />
+<Progress label="Stark Industries (89 seats)" value="71" max="89" />
+<Progress label="Umbrella Corp (92 seats)" value="38" max="92" />
+<Progress label="Cyberdyne Systems (67 seats)" value="52" max="67" />
+<Progress label="Oscorp (54 seats)" value="41" max="54" />
+<Progress label="Tyrell Corporation (48 seats)" value="39" max="48" />
+<Progress label="Initech (42 seats)" value="35" max="42" />
+<Progress label="Massive Dynamic (35 seats)" value="28" max="35" />
+</Columns>
+<Callout tone="info" title="Company-wide utilization">Average seat utilization: 76.4% (1,212 of 1,588 seats active)</Callout>
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email address" name="email" type="email" placeholder="admin@company.com" required="true" />
+<Input label="Full name" name="name" placeholder="Alex Johnson" required="true" />
+<Select label="Role" name="role" options="Owner | Admin | Billing Admin | Read-only" placeholder="Select role" value="Admin" required="true" />
+<Checkboxes label="Permissions" name="permissions" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

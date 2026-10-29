@@ -1,0 +1,77 @@
+# Logistics Coordinator Board
+
+<Badge tone="info">Last refreshed: 2025-01-15 14:32 UTC</Badge>
+
+<Card title="Search shipments">
+<Input label="Search by route" placeholder="e.g. LAX → JFK, SEA → ORD" hint="Type origin → destination or carrier name" />
+</Card>
+
+<Card title="Shipments in transit">
+| # | Origin | Destination | Carrier | ETA | Status | Actions |
+|---|---|---|---|---|---|---|
+| SH-8472 | Shanghai (PVG) | Los Angeles (LAX) | Maersk | 2025-01-18 06:00 | In transit | <Button variant="secondary" size="small">Flag</Button> |
+| SH-8491 | Rotterdam (RTM) | New York (JFK) | MSC | 2025-01-17 14:00 | In transit | <Button variant="secondary" size="small">Flag</Button> |
+| SH-8503 | Singapore (SIN) | Long Beach (LB) | CMA CGM | 2025-01-19 22:00 | In transit | <Button variant="secondary" size="small">Flag</Button> |
+| SH-8510 | Hamburg (HAM) | Savannah (SAV) | Hapag-Lloyd | 2025-01-16 08:00 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| SH-8522 | Busan (PUS) | Oakland (OAK) | ONE | 2025-01-20 12:00 | In transit | <Button variant="secondary" size="small">Flag</Button> |
+| SH-8535 | Antwerp (ANR) | Houston (HOU) | Maersk | 2025-01-17 20:00 | **Delayed** | <Button variant="danger" size="small">Flag</Button> |
+| SH-8541 | Yantian (YTN) | Tacoma (TIW) | COSCO | 2025-01-21 04:00 | In transit | <Button variant="secondary" size="small">Flag</Button> |
+| SH-8558 | Felixstowe (FXT) | Charleston (CHS) | MSC | 2025-01-18 16:00 | In transit | <Button variant="secondary" size="small">Flag</Button> |
+</Card>
+
+<Callout tone="danger" title="Delayed shipments — 2 flagged">
+<strong>SH-8510</strong> (Hamburg → Savannah): Port congestion at SAV, new ETA 2025-01-19 10:00 (+3 days)<br />
+<strong>SH-8535</strong> (Antwerp → Houston): Vessel engine issue, awaiting replacement, new ETA 2025-01-22 14:00 (+5 days)
+</Callout>
+
+<Columns>
+<Card title="On-time performance (Jan 2025)">
+<Gauge label="On-time %" value="87.5" min="0" max="100" unit="%" tone="success" />
+<Stat label="Total shipments" value="16" />
+<Stat label="On-time" value="14" tone="success" />
+<Stat label="Delayed" value="2" tone="danger" />
+</Card>
+
+<Card title="Average cost per shipment">
+<Stat label="Avg cost" value="$4,850" change="-2.3% vs Dec" tone="success" />
+<Stat label="Lowest" value="$3,200" note="SEA → LAX" />
+<Stat label="Highest" value="$7,900" note="RTM → JFK" />
+</Card>
+</Columns>
+
+<Card title="Volume split by carrier (Jan 2025)">
+<Chart type="pie" title="Shipments by carrier">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 4 |
+| MSC | 3 |
+| CMA CGM | 2 |
+| Hapag-Lloyd | 2 |
+| ONE | 2 |
+| COSCO | 2 |
+| Other | 1 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume — past 8 weeks">
+<Chart type="line" x="Week" y="Shipments" title="Weekly shipment volume">
+| Week | Shipments |
+|---|---|
+| 2024-W47 | 12 |
+| 2024-W48 | 15 |
+| 2024-W49 | 14 |
+| 2024-W50 | 18 |
+| 2024-W51 | 16 |
+| 2024-W52 | 13 |
+| 2025-W01 | 17 |
+| 2025-W02 | 16 |
+</Chart>
+</Card>
+
+<Card title="Quick actions">
+<Columns>
+<Button variant="primary">Export shipment list</Button>
+<Button variant="secondary">Notify delayed customers</Button>
+<Button variant="tertiary">Refresh data</Button>
+</Columns>
+</Card>

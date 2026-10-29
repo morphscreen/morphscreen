@@ -1,0 +1,186 @@
+# Operations Room — Live Control
+
+<Card title="Now" subtitle="Live snapshot, updated every 30s">
+<Columns>
+<Stat label="Viewers watching now" value="1,284,930" change="+4.2%" tone="success" icon="users" />
+<Stat label="Buffering rate" value="0.61%" change="-0.08 pp" tone="success" icon="chart-line" />
+<Stat label="Delivery health" value="99.94%" change="+0.02%" tone="success" icon="map-pin" />
+<Stat label="Rec click-through" value="31.4%" change="-1.1 pp" tone="warning" icon="chart-line" />
+</Columns>
+</Card>
+
+<Card title="Most-watched titles" subtitle="Hours watched, last 24h">
+<Chart type="horizontal" title="Hours watched by title" x="Title" y="Hours">
+| Title | Hours |
+|---|---|
+| Nightfall Harbor | 412000 |
+| The Quiet Orbit | 338000 |
+| Salt & Static | 291000 |
+| Crown of Ash | 244000 |
+| Long Way North | 187000 |
+</Chart>
+</Card>
+
+<Card title="Watch time — past 30 days">
+<Chart type="area" title="Total watch hours per day" x="Day" y="Hours">
+| Day | Hours |
+|---|---|
+| W1 | 41200000 |
+| W2 | 44800000 |
+| W3 | 43100000 |
+| W4 | 47900000 |
+</Chart>
+</Card>
+
+<Card title="Subscribers vs. cancellations" subtitle="Net adds by week">
+<Chart type="bar" title="Gross adds and cancellations" x="Week" y="Subscribers">
+| Week | New subscribers | Cancellations |
+|---|---|---|
+| W1 | 184000 | 121000 |
+| W2 | 201000 | 134000 |
+| W3 | 176000 | 149000 |
+| W4 | 212000 | 138000 |
+</Chart>
+</Card>
+
+<Card title="Performance by genre">
+<Chart type="radar" title="Completion rate by genre" x="Genre" y="%">
+| Genre | Completion |
+|---|---|
+| Drama | 78 |
+| Comedy | 71 |
+| Documentary | 84 |
+| Thriller | 69 |
+| Kids | 88 |
+| Reality | 62 |
+</Chart>
+</Card>
+
+<Card title="Delivery health by region">
+| Region | Health | Buffering | Status |
+|---|---|---|---|
+| North America | 99.97% | 0.41% | <Badge tone="success">Healthy</Badge> |
+| Europe | 99.92% | 0.58% | <Badge tone="success">Healthy</Badge> |
+| Latin America | 99.81% | 0.94% | <Badge tone="info">Watch</Badge> |
+| Asia-Pacific | 99.88% | 0.72% | <Badge tone="success">Healthy</Badge> |
+| Middle East & Africa | 99.64% | 1.38% | <Badge tone="warning">Degraded</Badge> |
+</Card>
+
+<Card title="Focus on one region" subtitle="Filters the whole room to a single market">
+<Form name="region-focus">
+<Select label="Region" options="All regions | North America | Europe | Latin America | Asia-Pacific | Middle East & Africa" value="All regions" hint="Applies to every panel on this screen" />
+<Switch label="Alert me on buffering spikes in this region" name="region-alerts" value=true />
+<Button>Apply focus</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Releases coming this month">
+<Steps>
+<Step title="Nightfall Harbor — Season 3" status="done" subtitle="Live since Jun 2">
+All 8 episodes available.
+</Step>
+<Step title="Crown of Ash — Finale" status="current" subtitle="Drops Jun 14">
+Marketing push scheduled; trailer at 12M views.
+</Step>
+<Step title="Salt & Static — Season 2" status="todo" subtitle="Drops Jun 21">
+Subtitles in 14 languages still in review.
+</Step>
+<Step title="Long Way North — Special" status="todo" subtitle="Drops Jun 28">
+No localization issues flagged.
+</Step>
+</Steps>
+</Card>
+
+<Card title="Licenses expiring soon">
+| Title | Expires | Window | Action |
+|---|---|---|---|
+| The Quiet Orbit | Jun 18 | 6 days | <Badge tone="danger">Urgent</Badge> |
+| Crown of Ash | Jun 30 | 18 days | <Badge tone="warning">Renew</Badge> |
+| Salt & Static | Jul 9 | 27 days | <Badge tone="info">In talks</Badge> |
+| Long Way North | Jul 22 | 40 days | <Badge tone="neutral">Queued</Badge> |
+</Card>
+
+<Card title="Recommendations & search" subtitle="How discovery is performing">
+<Columns>
+<Stat label="Rec click-through" value="31.4%" change="-1.1 pp" tone="warning" icon="chart-line" />
+<Stat label="Searches with no playback" value="18.7%" change="+2.3 pp" tone="danger" icon="search" />
+</Columns>
+</Card>
+
+<Card title="Searches that ended without playback" subtitle="Top zero-playback queries, last 7 days">
+| Query | Searches | No playback |
+|---|---|---|
+| "new sci-fi 2025" | 41200 | 91% |
+| "kids dinosaur movie" | 33800 | 84% |
+| "spanish subtitles drama" | 27600 | 78% |
+| "live sports tonight" | 24100 | 96% |
+</Chart>
+</Card>
+
+<Card title="Revenue split by plan">
+<Chart type="donut" title="Revenue by plan" x="Plan" y="USD">
+| Plan | Revenue |
+|---|---|
+| Basic | 12400000 |
+| Standard | 28700000 |
+| Premium | 31900000 |
+| Annual | 14200000 |
+</Chart>
+</Card>
+
+<Card title="Viewing split by device">
+<Chart type="pie" title="Hours by device" x="Device" y="%">
+| Device | Share |
+|---|---|
+| Smart TV | 46 |
+| Mobile | 27 |
+| Tablet | 11 |
+| Web | 10 |
+| Console | 6 |
+</Chart>
+</Card>
+
+<Card title="Feature flags">
+| Flag | State | Rollout |
+|---|---|---|
+| New home screen | <Badge tone="success">On</Badge> | 100% |
+| 4K HDR tier | <Badge tone="success">On</Badge> | 60% |
+| Autoplay previews | <Badge tone="warning">Paused</Badge> | 0% |
+| Shared accounts | <Badge tone="neutral">Off</Badge> | 0% |
+| Offline downloads v2 | <Badge tone="info">Testing</Badge> | 15% |
+</Card>
+
+<Card title="Promote a title on the home screen">
+<Form name="promote-title">
+<Select label="Title" options="Nightfall Harbor | The Quiet Orbit | Salt & Static | Crown of Ash | Long Way North" placeholder="Choose a title" required=true />
+<Select label="Placement" options="Hero banner | Top row | Continue-watching row | Genre shelf" />
+<Date label="Start date" name="promo-start" required=true />
+<Date label="End date" name="promo-end" />
+<Slider label="Audience share" min="0" max="100" step="5" value="50" name="audience" unit="%" />
+<TextArea label="Promo copy" name="promo-copy" rows="3" placeholder="Short line shown under the artwork" />
+<Button>Schedule promotion</Button>
+<Button variant="tertiary">Preview on home</Button>
+</Form>
+</Card>
+
+<Card title="Where the room is watching">
+<Map>
+<Place name="North America" lat="40.7" lng="-74.0" />
+<Place name="Europe" lat="51.5" lng="-0.1" />
+<Place name="Latin America" lat="-23.5" lng="-46.6" />
+<Place name="Asia-Pacific" lat="1.35" lng="103.8" />
+<Place name="Middle East & Africa" lat="25.2" lng="55.3" />
+</Map>
+</Card>
+
+<Callout tone="warning" title="Two things need a decision today">
+Middle East & Africa buffering is above target, and *The Quiet Orbit* license expires in 6 days.
+</Callout>
+
+<FollowUps>
+- Drill into Middle East & Africa buffering
+- Renew the Quiet Orbit license
+- Why did "live sports tonight" searches fail?
+- Turn off autoplay previews
+</FollowUps>

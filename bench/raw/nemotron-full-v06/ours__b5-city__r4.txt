@@ -1,0 +1,244 @@
+# City Operations Center
+
+<Columns>
+<Card title="District Focus">
+<Select label="Select District" name="district" placeholder="All Districts" options="All Districts | Downtown | Northside | Eastport | Westview | Southgate | Riverside | University" />
+</Card>
+
+<Card title="Current Weather">
+<Stat label="Temperature" value="72°F" change="+2°F from 1hr ago" tone="neutral" />
+<Stat label="Conditions" value="Partly Cloudy" tone="info" />
+<Stat label="Wind" value="8 mph NW" tone="neutral" />
+<Stat label="Humidity" value="45%" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Congestion Right Now">
+<Progress value="68" max="100" label="Citywide Congestion Index" tone="warning" />
+<Stat label="Avg Commute Delay" value="+14 min" change="vs typical" tone="danger" />
+<Stat label="Worst Corridor" value="I-90 & Main St" change="85% capacity" tone="danger" />
+</Card>
+
+<Card title="Transit Punctuality">
+<Stat label="On-Time Performance" value="87%" change="-3% vs target" tone="warning" />
+<Chart type="bar" title="By Line" x="Line" y="On-Time %">
+| Line | On-Time % |
+|---|---|
+| Red Line | 92 |
+| Blue Line | 85 |
+| Green Line | 88 |
+| Orange Line | 81 |
+| Bus Network | 84 |
+</Chart>
+</Card>
+
+<Card title="Air Quality by District">
+<Chart type="horizontal" title="AQI (Lower is Better)" x="AQI" y="District">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Northside | 42 |
+| Eastport | 55 |
+| Westview | 38 |
+| Southgate | 65 |
+| Riverside | 31 |
+| University | 47 |
+</Chart>
+<Badge tone="warning">Downtown: Moderate</Badge>
+<Badge tone="success">Riverside: Good</Badge>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Energy Use (Past 7 Days)">
+<Chart type="line" title="MW Consumption" x="Day" y="MW">
+| Day | Residential | Commercial | Industrial | Municipal |
+|---|---|---|---|---|
+| Mon | 420 | 380 | 510 | 85 |
+| Tue | 435 | 395 | 520 | 88 |
+| Wed | 410 | 370 | 505 | 82 |
+| Thu | 445 | 410 | 530 | 90 |
+| Fri | 460 | 425 | 540 | 95 |
+| Sat | 380 | 290 | 420 | 70 |
+| Sun | 365 | 275 | 395 | 65 |
+</Chart>
+<Stat label="Peak Demand" value="1,520 MW" change="Fri 6 PM" tone="info" />
+<Stat label="Renewable Share" value="34%" change="+2% vs last week" tone="success" />
+</Card>
+
+<Card title="Water Use Today">
+<Progress value="142" max="180" label="Million Gallons Used" tone="info" />
+<Stat label="vs Average" value="+12%" change="Hot weather driving irrigation" tone="warning" />
+<Stat label="Reservoir Level" value="78%" change="-1% from yesterday" tone="neutral" />
+<Stat label="Main Breaks" value="2 active" change="Crews dispatched" tone="danger" />
+</Card>
+
+<Card title="Parking Availability Downtown">
+<Progress value="2,840" max="4,200" label="Spaces Available" tone="success" />
+<Stat label="Street Parking" value="1,120 / 1,800" tone="neutral" />
+<Stat label="Garage A (Main)" value="420 / 650" tone="info" />
+<Stat label="Garage B (Arts)" value="680 / 850" tone="success" />
+<Stat label="Garage C (Civic)" value="620 / 900" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open Incidents">
+<Tabs>
+<Tab title="All (12)">
+| ID | Type | Location | Severity | Since | Status |
+|---|---|---|---|---|---|
+| INC-2041 | Water Main Break | 5th & Oak | <Badge tone="danger">Critical</Badge> | 42 min | <Badge tone="warning">Active</Badge> |
+| INC-2040 | Signal Outage | Downtown Grid | <Badge tone="warning">High</Badge> | 1 hr 15 min | <Badge tone="warning">Active</Badge> |
+| INC-2039 | Gas Leak | 1200 Riverside Dr | <Badge tone="danger">Critical</Badge> | 2 hr 30 min | <Badge tone="info">Contained</Badge> |
+| INC-2038 | Tree Down | Northside Blvd | <Badge tone="info">Medium</Badge> | 3 hr | <Badge tone="warning">Active</Badge> |
+| INC-2037 | Power Outage | Eastport Sector 3 | <Badge tone="warning">High</Badge> | 4 hr 20 min | <Badge tone="success">Restored</Badge> |
+| INC-2036 | Sewer Backup | Southgate Ave | <Badge tone="info">Medium</Badge> | 5 hr | <Badge tone="warning">Active</Badge> |
+| INC-2035 | Road Collapse | University & 12th | <Badge tone="danger">Critical</Badge> | 6 hr 45 min | <Badge tone="warning">Active</Badge> |
+| INC-2034 | Hazmat Spill | Industrial Park | <Badge tone="danger">Critical</Badge> | 8 hr | <Badge tone="info">Contained</Badge> |
+</Tab>
+<Tab title="Critical (3)">
+| ID | Type | Location | Since | Status |
+|---|---|---|---|---|
+| INC-2041 | Water Main Break | 5th & Oak | 42 min | <Badge tone="warning">Active</Badge> |
+| INC-2039 | Gas Leak | 1200 Riverside Dr | 2 hr 30 min | <Badge tone="info">Contained</Badge> |
+| INC-2035 | Road Collapse | University & 12th | 6 hr 45 min | <Badge tone="warning">Active</Badge> |
+</Tab>
+<Tab title="Map View">
+<Callout tone="info" title="Incident Map">Interactive map would show incident pins with severity colors. Click for details and dispatch options.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Emergency Vehicles Deployed">
+| Unit | Type | Status | Location | Incident | ETA |
+|---|---|---|---|---|---|
+| ENG-12 | Fire Engine | <Badge tone="danger">En Route</Badge> | 5th & Oak | INC-2041 | 3 min |
+| LAD-03 | Ladder Truck | <Badge tone="danger">On Scene</Badge> | 5th & Oak | INC-2041 | — |
+| RES-07 | Rescue | <Badge tone="danger">En Route</Badge> | 1200 Riverside | INC-2039 | 5 min |
+| HAZ-01 | Hazmat | <Badge tone="info">Staging</Badge> | Industrial Park | INC-2034 | — |
+| AMB-14 | Ambulance | <Badge tone="success">Available</Badge> | Station 4 | — | — |
+| AMB-22 | Ambulance | <Badge tone="success">Available</Badge> | Station 1 | — | — |
+| ENG-08 | Fire Engine | <Badge tone="warning">Returning</Badge> | University & 12th | INC-2035 | 12 min |
+| POL-45 | Police | <Badge tone="info">Traffic Control</Badge> | Downtown Grid | INC-2040 | — |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Public Events This Weekend">
+| Event | Date | Time | Location | Expected | Impact |
+|---|---|---|---|---|---|
+| Riverside Jazz Festival | Sat | 12 PM–10 PM | Riverside Park | 15,000 | <Badge tone="warning">High</Badge> |
+| Marathon & 10K | Sun | 7 AM–12 PM | City Loop Course | 8,500 | <Badge tone="danger">Critical</Badge> |
+| University Graduation | Sat | 9 AM & 2 PM | University Stadium | 12,000 | <Badge tone="warning">High</Badge> |
+| Food Truck Rally | Sat | 11 AM–8 PM | Downtown Plaza | 5,000 | <Badge tone="info">Medium</Badge> |
+| Art Walk | Fri–Sun | 5 PM–10 PM | Arts District | 3,000/day | <Badge tone="info">Medium</Badge> |
+| Farmers Market | Sat | 8 AM–1 PM | Civic Center | 2,500 | <Badge tone="success">Low</Badge> |
+</Card>
+
+<Card title="Citizen Reports (Live)">
+<Details title="Latest Reports" open="true">
+| Time | Category | Location | Summary | Status |
+|---|---|---|---|---|
+| 14:32 | Pothole | 3rd & Main | Large pothole in right lane | <Badge tone="warning">Triaged</Badge> |
+| 14:28 | Graffiti | Riverside Bridge | Tagging on north face | <Badge tone="info">New</Badge> |
+| 14:25 | Streetlight | 1200 Oak St | Flickering/out since last night | <Badge tone="warning">Dispatched</Badge> |
+| 14:19 | Noise | 400 University Ave | Construction after hours | <Badge tone="info">Logged</Badge> |
+| 14:15 | Trash | Southgate Park | Overflowing bins, weekend use | <Badge tone="warning">Scheduled</Badge> |
+| 14:10 | Signal | 5th & Pine | Left turn arrow not cycling | <Badge tone="danger">Escalated</Badge> |
+| 14:05 | Water | 2200 Westview | Low pressure, discolored | <Badge tone="warning">Investigating</Badge> |
+| 14:00 | Parking | Downtown Garage B | Elevator stuck, 3rd floor | <Badge tone="info">New</Badge> |
+</Details>
+<Callout tone="info" title="Live Feed">Reports update in real-time. 47 reports today, 12 pending triage.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Service Request Backlog">
+<Stat label="Total Open" value="1,247" change="+23 vs yesterday" tone="warning" />
+<Stat label="Overdue (>SLA)" value="189" change="+12" tone="danger" />
+<Stat label="Avg Resolution" value="4.2 days" change="Target: 3 days" tone="warning" />
+<Chart type="stacked" title="By Category" x="Category" y="Count">
+| Category | Open | Overdue |
+|---|---|---|
+| Streets & Sidewalks | 312 | 58 |
+| Water & Sewer | 287 | 42 |
+| Parks & Trees | 198 | 24 |
+| Traffic Signals | 156 | 31 |
+| Buildings & Facilities | 134 | 18 |
+| Sanitation | 98 | 10 |
+| Forestry | 62 | 6 |
+</Chart>
+</Card>
+
+<Card title="Roadworks Planned This Month">
+| Project | Location | Start | End | Impact | Status |
+|---|---|---|---|---|---|
+| Main St Reconstruction | 1st–10th Ave | Jun 3 | Jun 28 | <Badge tone="danger">Full Closure</Badge> | <Badge tone="warning">Active</Badge> |
+| Bridge Deck Repair | Riverside Bridge | Jun 10 | Jun 21 | <Badge tone="warning">Lane Shift</Badge> | <Badge tone="info">Scheduled</Badge> |
+| Utility Undergrounding | University Blvd | Jun 17 | Jul 15 | <Badge tone="info">Lane Closure</Badge> | <Badge tone="info">Scheduled</Badge> |
+| Bike Lane Installation | Northside Ave | Jun 24 | Jul 12 | <Badge tone="info">Parking Loss</Badge> | <Badge tone="info">Permitted</Badge> |
+| ADA Ramp Upgrades | Downtown Core | Jun 1 | Jun 30 | <Badge tone="success">Minimal</Badge> | <Badge tone="warning">Active</Badge> |
+| Signal Modernization | Eastport Corridor | Jun 14 | Jun 28 | <Badge tone="info">Intermittent</Badge> | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Infrastructure Jobs Due for Maintenance">
+<Tabs>
+<Tab title="Overdue (8)">
+| Asset | Type | Location | Due Date | Days Overdue | Priority |
+|---|---|---|---|---|---|
+| Pump Station 4 | Water | Riverside | May 15 | 31 | <Badge tone="danger">Critical</Badge> |
+| Substation 12 | Power | Industrial | May 22 | 24 | <Badge tone="danger">Critical</Badge> |
+| Bridge 204 | Transport | Highway 90 | May 30 | 16 | <Badge tone="warning">High</Badge> |
+| Reservoir Valve 3 | Water | Westview | Jun 1 | 14 | <Badge tone="warning">High</Badge> |
+| Signal Cabinet 44 | Traffic | Downtown | Jun 5 | 10 | <Badge tone="warning">High</Badge> |
+| Lift Station 7 | Sewer | Southgate | Jun 8 | 7 | <Badge tone="info">Medium</Badge> |
+| Transformers 3&4 | Power | University | Jun 10 | 5 | <Badge tone="info">Medium</Badge> |
+| Retention Pond 2 | Stormwater | Eastport | Jun 12 | 3 | <Badge tone="info">Medium</Badge> |
+</Tab>
+<Tab title="Due This Week (14)">
+| Asset | Type | Location | Due Date | Priority |
+|---|---|---|---|---|
+| Pump Station 1 | Water | Downtown | Jun 16 | <Badge tone="warning">High</Badge> |
+| Generator 5 | Power | Hospital | Jun 17 | <Badge tone="danger">Critical</Badge> |
+| Clarifier 2 | Sewer | Treatment Plant | Jun 18 | <Badge tone="warning">High</Badge> |
+| ... | ... | ... | ... | ... |
+</Tab>
+<Tab title="All Scheduled">
+<Callout tone="neutral" title="Full Schedule">127 maintenance jobs scheduled this month. 22 critical, 45 high, 60 medium/low.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Dispatch a Crew">
+<Form name="dispatch-crew">
+<Select label="Incident / Task" name="incident" placeholder="Select or enter new" options="INC-2041 Water Main 5th & Oak | INC-2040 Signal Outage Downtown | INC-2039 Gas Leak Riverside | INC-2038 Tree Down Northside | INC-2036 Sewer Backup Southgate | INC-2035 Road Collapse University | New Task" required="true" />
+<Select label="Crew Type" name="crewType" placeholder="Select crew" options="Water Repair | Electrical | Roads & Bridges | Sewer/Drainage | Traffic Signals | Parks/Forestry | General Maintenance | Hazmat" required="true" />
+<Select label="Specific Unit" name="unit" placeholder="Auto-assign or select" options="Auto-assign nearest | WT-12 (Water Truck) | EL-07 (Bucket Truck) | RB-03 (Patch Truck) | SV-09 (Vactor) | TS-05 (Signal Truck) | PK-11 (Chipper) | HM-01 (Hazmat)" />
+<Input label="Crew Lead" name="lead" placeholder="Auto-filled from unit" />
+<TextArea label="Instructions / Notes" name="notes" placeholder="Special instructions, safety hazards, access info..." rows="3" />
+<Button variant="primary">Dispatch Crew</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Send Public Alert">
+<Form name="public-alert">
+<Select label="Alert Type" name="alertType" placeholder="Choose type" options="Emergency Alert | Traffic Advisory | Service Disruption | Air Quality | Weather Warning | Event Notice | Test Message" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Extreme | Severe | Moderate | Minor | Informational" required="true" />
+<Select label="Target Area" name="area" placeholder="Select geographic area" options="Citywide | Downtown | Northside | Eastport | Westview | Southgate | Riverside | University | Custom Polygon" required="true" />
+<Input label="Headline" name="headline" placeholder="Max 90 characters" required="true" />
+<TextArea label="Message" name="message" placeholder="Full alert text. Include actions to take, duration, contact info..." rows="4" required="true" />
+<Input label="Expires" name="expires" type="datetime-local" required="true" />
+<Checkboxes label="Channels" name="channels" options="Mobile Push | SMS | Email | Social Media | Website Banner | Highway Signs | Radio/TV (EAS)" value="Mobile Push | SMS | Website Banner" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Save as Draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+</Columns>

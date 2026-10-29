@@ -1,0 +1,52 @@
+# Low-Inventory Warning
+
+<Callout tone="warning" title="Reorder recommended">
+  The following items have fallen below the minimum stock threshold of **20 units**. Reorder before they run out.
+</Callout>
+
+<Card title="Search inventory">
+<Form name="search-inventory">
+<Input label="Search items" placeholder="Search by SKU, name, or category" type="search" hint="Type at least 2 characters to filter" />
+<Button>Search</Button>
+</Form>
+</Card>
+
+<Card title="Items running low">
+| Item | SKU | Category | Remaining units | Threshold | Status |
+|---|---|---|---|---|---|
+| Organic Almond Butter 16oz | SKU-1042 | Pantry | 12 | 20 | <Badge tone="warning">Low</Badge> |
+| Cold Brew Coffee 32oz | SKU-2107 | Beverages | 8 | 20 | <Badge tone="danger">Critical</Badge> |
+| Paper Towels (6-pack) | SKU-3315 | Household | 15 | 20 | <Badge tone="warning">Low</Badge> |
+| Greek Yogurt 24oz | SKU-4520 | Dairy | 5 | 20 | <Badge tone="danger">Critical</Badge> |
+| Whole Wheat Pasta 12oz | SKU-5601 | Pantry | 18 | 20 | <Badge tone="warning">Low</Badge> |
+
+<Columns>
+<Card title="Reorder items">
+<Form name="reorder">
+<Select label="Select item to reorder" name="item-select" options="Organic Almond Butter 16oz | Cold Brew Coffee 32oz | Paper Towels (6-pack) | Greek Yogurt 24oz | Whole Wheat Pasta 12oz" placeholder="Choose an item" hint="Items are sorted by urgency" />
+<Input label="Reorder quantity" type="number" placeholder="e.g., 40" min="1" hint="Units to order, minimum 1" />
+<Button variant="primary">Place reorder</Button>
+<Button variant="secondary">Reorder all low items</Button>
+</Form>
+</Card>
+
+<Card title="Threshold settings">
+<Form name="threshold">
+<Slider label="Low-stock threshold" min="5" max="100" step="5" value="20" name="threshold" unit=" units" hint="Any item at or below this number triggers the warning" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+</Columns>
+
+<Details title="How the warning works" open="false">
+- The threshold is set globally at **20 units** (adjustable above).
+- Items are checked at the end of each business day.
+- Items at or below the threshold appear in the table above with a **Low** or **Critical** badge (Critical = 10 units or fewer).
+- Reordering via the form sends a purchase order to your supplier and updates the inventory once received.
+</Details>
+
+<FollowUps>
+- Show only critical items (10 units or fewer)
+- View purchase order history
+- Export low-inventory report as CSV
+</FollowUps>

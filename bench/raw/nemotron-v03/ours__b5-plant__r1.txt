@@ -1,0 +1,227 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view — updated every 30s">
+<Columns>
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Stat label="OEE" value="84.2%" change="+1.3% vs yesterday" tone="success" />
+<Progress value="84.2" max="100" label="Target ≥ 85%" />
+<Badge tone="info">Availability 92.1% | Performance 95.4% | Quality 95.8%</Badge>
+</Card>
+
+<Card title="Units Produced vs Target (Today)">
+<Stat label="Produced" value="12,847" change="Target: 15,000" tone="info" />
+<Progress value="12847" max="15000" label="85.6% of daily target" />
+<Stat label="Rate" value="1,427/hr" change="Avg needed: 1,667/hr" tone="warning" />
+</Card>
+
+<Card title="Safety Summary">
+<Columns>
+<Stat label="Incidents YTD" value="3" change="0 this month" tone="success" />
+<Stat label="Days Since Last Incident" value="47" change="Record: 112 days" tone="info" />
+</Columns>
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Consumed" value="2,847 kWh" change="vs 2,610 kWh avg" tone="warning" />
+<Stat label="Cost" value="$341.64" change="$0.12/kWh" tone="neutral" />
+<Progress value="2847" max="3200" label="Daily budget: 3,200 kWh" />
+</Card>
+</Columns>
+
+<Card title="Production Lines — Live Status">
+<Select label="Focus on line" name="line-focus" options="All lines | Line A – Injection | Line B – Extrusion | Line C – Assembly | Line D – Packaging" placeholder="Select a line to filter" />
+<Table>
+| Line | Status | Rate (units/hr) | Target | OEE | Active Alarms | Last Changeover |
+|---|---|---|---|---|---|---|
+| Line A – Injection | <Badge tone="success">Running</Badge> | 1,420 | 1,500 | 86.1% | 0 | 2h 14m ago |
+| Line B – Extrusion | <Badge tone="warning">Slow</Badge> | 890 | 1,100 | 78.4% | 2 | 5h 02m ago |
+| Line C – Assembly | <Badge tone="success">Running</Badge> | 2,150 | 2,000 | 91.2% | 0 | 1h 45m ago |
+| Line D – Packaging | <Badge tone="danger">Stopped</Badge> | 0 | 1,800 | 0% | 1 | 42m ago (jam) |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| 2025-01-01 | 1.8 |
+| 2025-01-08 | 2.1 |
+| 2025-01-15 | 1.5 |
+| 2025-01-22 | 2.3 |
+| 2025-01-29 | 1.7 |
+| 2025-02-05 | 1.9 |
+| 2025-02-12 | 1.4 |
+| 2025-02-19 | 1.6 |
+| 2025-02-26 | 1.8 |
+| 2025-03-05 | 1.5 |
+| 2025-03-12 | 1.7 |
+| 2025-03-19 | 1.3 |
+| 2025-03-26 | 1.6 |
+| 2025-04-02 | 1.4 |
+| 2025-04-09 | 1.5 |
+| 2025-04-16 | 1.2 |
+| 2025-04-23 | 1.8 |
+| 2025-04-30 | 1.3 |
+| 2025-05-07 | 1.4 |
+| 2025-05-14 | 1.1 |
+| 2025-05-21 | 1.5 |
+| 2025-05-28 | 1.2 |
+| 2025-06-04 | 1.3 |
+| 2025-06-11 | 1.0 |
+| 2025-06-18 | 1.2 |
+| 2025-06-25 | 0.9 |
+| 2025-07-02 | 1.1 |
+| 2025-07-09 | 0.8 |
+| 2025-07-16 | 1.0 |
+| 2025-07-23 | 0.9 |
+</Chart>
+<Badge tone="success">Trending down — 30-day avg: 1.4%</Badge>
+</Card>
+
+<Card title="Downtime Split by Cause (This Month)">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Material shortage | 420 |
+| Mechanical failure | 310 |
+| Changeover | 285 |
+| Quality hold | 195 |
+| Operator break | 150 |
+| Power fluctuation | 95 |
+| Software/control | 60 |
+| Preventive maintenance | 45 |
+</Chart>
+<Total: 1,560 min (26 hrs) | Top cause: Material shortage (27%)>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance (Next 7 Days)">
+<Table>
+| Machine | Line | Due Date | Type | Hours Since Last | Status |
+|---|---|---|---|---|---|
+| INJ-03 | Line A | 2025-07-28 | 500-hr PM | 498 | <Badge tone="warning">Due</Badge> |
+| EXT-01 | Line B | 2025-07-29 | 1000-hr PM | 1,012 | <Badge tone="danger">Overdue</Badge> |
+| ASM-07 | Line C | 2025-07-30 | 250-hr PM | 247 | <Badge tone="info">Scheduled</Badge> |
+| PKG-02 | Line D | 2025-08-01 | 500-hr PM | 492 | <Badge tone="warning">Due</Badge> |
+| INJ-01 | Line A | 2025-08-02 | 1000-hr PM | 995 | <Badge tone="warning">Due</Badge> |
+| EXT-03 | Line B | 2025-08-03 | 250-hr PM | 248 | <Badge tone="info">Scheduled</Badge> |
+</Table>
+</Card>
+
+<Card title="Raw Material Stock">
+<Table>
+| Material | On Hand | Min Level | Reorder Pt | Days Cover | Status |
+|---|---|---|---|---|---|
+| Steel (coils) | 42 t | 15 t | 25 t | 18 | <Badge tone="success">OK</Badge> |
+| Resin (pellets) | 18 t | 8 t | 12 t | 11 | <Badge tone="warning">Watch</Badge> |
+| Packaging (cartons) | 24,500 | 10,000 | 15,000 | 22 | <Badge tone="success">OK</Badge> |
+</Table>
+<Progress value="18" max="25" label="Resin: 72% to reorder point" />
+</Card>
+</Columns>
+
+<Card title="Supplier Deliveries Due This Week">
+<Table>
+| Supplier | Material | Qty | Due Date | PO # | Status |
+|---|---|---|---|---|---|
+| AcerSteel Ltd | Steel coils | 15 t | 2025-07-28 | PO-2025-0412 | <Badge tone="info">Confirmed</Badge> |
+| PolySource Inc | Resin (PP) | 10 t | 2025-07-29 | PO-2025-0418 | <Badge tone="info">Confirmed</Badge> |
+| BoxCo Packaging | Cartons | 20,000 | 2025-07-30 | PO-2025-0421 | <Badge tone="warning">Delayed 1 day</Badge> |
+| AcerSteel Ltd | Steel coils | 10 t | 2025-08-01 | PO-2025-0425 | <Badge tone="info">Confirmed</Badge> |
+| ChemResin GmbH | Resin (ABS) | 5 t | 2025-08-02 | PO-2025-0429 | <Badge tone="info">Confirmed</Badge> |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Shift Output Comparison (Last 7 Days)">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift 1 (06-14) | 14200 | 14850 | 15100 | 14900 | 15300 | 12100 | 0 |
+| Shift 2 (14-22) | 13800 | 14200 | 14600 | 14400 | 14700 | 11800 | 0 |
+| Shift 3 (22-06) | 11500 | 11900 | 12200 | 12000 | 12300 | 9800 | 0 |
+</Chart>
+<Badge tone="info">Shift 1 leads by 8.2% vs Shift 2, 24.5% vs Shift 3</Badge>
+</Card>
+
+<Card title="Batches on Quality Hold">
+<Table>
+| Batch ID | Line | Product | Qty | Hold Reason | Since | Disposition |
+|---|---|---|---|---|---|---|
+| B-2025-0742 | Line A | Widget-XL | 1,200 | Dimensional OOS | 2025-07-24 14:30 | <Badge tone="warning">Under review</Badge> |
+| B-2025-0745 | Line B | Gasket-32 | 850 | Surface defect | 2025-07-25 09:15 | <Badge tone="info">Rework queued</Badge> |
+| B-2025-0748 | Line C | Housing-A | 2,100 | Weight variance | 2025-07-26 11:00 | <Badge tone="warning">Under review</Badge> |
+| B-2025-0751 | Line D | Carton-6 | 5,000 | Print misalign | 2025-07-26 16:45 | <Badge tone="info">Rework queued</Badge> |
+</Table>
+<Stat label="Total on hold" value="9,150 units" change="4 batches" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Open Work Orders">
+<Table>
+| WO # | Machine | Line | Priority | Description | Created | Assigned | Status |
+|---|---|---|---|---|---|---|---|
+| WO-2025-0892 | EXT-01 | Line B | <Badge tone="danger">Critical</Badge> | Gearbox vibration alarm | 2025-07-24 | M. Torres | <Badge tone="warning">In progress</Badge> |
+| WO-2025-0895 | PKG-02 | Line D | <Badge tone="danger">Critical</Badge> | Jam clearance & sensor replace | 2025-07-26 | J. Kim | <Badge tone="warning">In progress</Badge> |
+| WO-2025-0887 | INJ-03 | Line A | <Badge tone="warning">High</Badge> | Nozzle heater replacement | 2025-07-23 | R. Patel | <Badge tone="info">Parts waiting</Badge> |
+| WO-2025-0890 | ASM-07 | Line C | <Badge tone="warning">High</Badge> | Feeder calibration drift | 2025-07-24 | L. Chen | <Badge tone="info">Scheduled</Badge> |
+| WO-2025-0882 | EXT-03 | Line B | <Badge tone="info">Medium</Badge> | Cooling water leak | 2025-07-22 | M. Torres | <Badge tone="info">Scheduled</Badge> |
+| WO-2025-0875 | INJ-01 | Line A | <Badge tone="info">Medium</Badge> | Hydraulic filter change | 2025-07-21 | R. Patel | <Badge tone="success">Ready to close</Badge> |
+| WO-2025-0868 | PKG-01 | Line D | <Badge tone="neutral">Low</Badge> | Label printer maintenance | 2025-07-19 | J. Kim | <Badge tone="info">Scheduled</Badge> |
+</Table>
+</Card>
+
+<Columns>
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" options="INJ-01 | INJ-03 | EXT-01 | EXT-03 | ASM-07 | PKG-01 | PKG-02" placeholder="Select machine" required="true" />
+<Select label="Maintenance Type" name="maint-type" options="250-hr PM | 500-hr PM | 1000-hr PM | Corrective | Calibration | Lubrication" placeholder="Select type" required="true" />
+<Date label="Scheduled Date" name="maint-date" required="true" />
+<Input label="Estimated Duration (hrs)" name="duration" type="number" placeholder="e.g., 4" required="true" />
+<TextArea label="Notes / Special Instructions" name="notes" placeholder="Any special tools, parts, or safety permits needed" rows="3" />
+<Button>Schedule Maintenance</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Callout tone="danger" title="LINE D – PKG-02 STOPPED">
+Carton jam at station 3 — Operator J. Kim dispatched — 12 min elapsed
+</Callout>
+<Callout tone="warning" title="LINE B – EXT-01 SLOW">
+Extruder output 19% below target — Material feed inconsistency — 8 min elapsed
+</Callout>
+<Callout tone="warning" title="LINE B – WO-2025-0892">
+Gearbox vibration critical — Maintenance en route — 22 min elapsed
+</Callout>
+<Callout tone="info" title="LINE A – INJ-03">
+500-hr PM due in 2 hrs — Auto-scheduled for shift change
+</Callout>
+<Callout tone="info" title="LINE C – ASM-07">
+Changeover complete — Ramp-up in progress — 3 min elapsed
+</Callout>
+<Badge tone="neutral">Auto-refresh: 15s | Acknowledge alerts from terminal or mobile app</Badge>
+</Card>
+</Columns>
+
+<Card title="Export Shift Report">
+<Form name="export-report">
+<Columns>
+<Select label="Shift" name="shift" options="Shift 1 (06-14) | Shift 2 (14-22) | Shift 3 (22-06) | All shifts" placeholder="Select shift" required="true" />
+<Date label="Date" name="report-date" required="true" />
+<Checkboxes label="Include Sections" name="sections" options="OEE Summary | Production vs Target | Line Details | Defects & Quality | Downtime Analysis | Maintenance | Materials | Safety | Energy | Work Orders" value="OEE Summary | Production vs Target | Line Details | Defects & Quality | Downtime Analysis | Maintenance | Materials | Safety | Energy | Work Orders" />
+</Columns>
+<Button>Generate PDF Report</Button>
+<Button variant="secondary">Export CSV Data</Button>
+<Button variant="tertiary">Email to Team</Button>
+</Form>
+</Card>
+</Card>
+
+<FollowUps>
+- Acknowledge the Line D carton jam and assign root cause
+- Review resin reorder — only 11 days cover remaining
+- Approve disposition for batches B-2025-0742 and B-2025-0748
+- Confirm BoxCo Packaging delivery for 2025-07-30
+- Schedule 1000-hr PM for EXT-01 (overdue by 12 hrs)
+</FollowUps>

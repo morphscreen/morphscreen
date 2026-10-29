@@ -1,0 +1,99 @@
+# Editorial Content Studio
+
+<Columns>
+  <Stat label="Drafts" value="12" note="3 in review" />
+  <Stat label="Published this week" value="8" note="2 ahead of schedule" />
+  <Stat label="Most-read article" value="24.1k" note="“The Future of Remote Work”" />
+  <Stat label="Readers (30d)" value="142.8k" note="+12% vs last month" />
+</Columns>
+
+<Card title="Narrow by category" subtitle="Filters the draft and published lists below">
+  <Select label="Category" placeholder="All categories" options="All categories | News | Opinion | Features | Guides | Interviews" name="category-filter" />
+</Card>
+
+<Columns>
+  <Card title="Drafts" subtitle="Status for each piece">
+    <Badge tone="info">12 total</Badge>
+
+    | Title | Category | Updated | Status |
+    |---|---|---|---|
+    | The Future of Remote Work | Features | 2h ago | <Badge tone="info">In review</Badge> |
+    | Best Noise-Cancelling Headphones | Guides | 5h ago | <Badge tone="warning">Needs edits</Badge> |
+    | Interview: A City in the Cloud | News | 1d ago | <Badge tone="success">Ready</Badge> |
+    | How to Pitch Like a Pro | Opinion | 2d ago | <Badge tone="neutral">Scheduled</Badge> |
+    | The Rise of AI Editors | Features | 3d ago | <Badge tone="neutral">Draft</Badge> |
+  </Card>
+
+  <Card title="Published this week" subtitle="8 pieces live">
+    | Title | Category | Published | Views |
+    |---|---|---|---|
+    | The Future of Remote Work | Features | Mon | 8.2k |
+    | Best Noise-Cancelling Headphones | Guides | Tue | 6.1k |
+    | Interview: A City in the Cloud | News | Wed | 4.8k |
+    | How to Pitch Like a Pro | Opinion | Thu | 3.9k |
+    | The Rise of AI Editors | Features | Fri | 2.7k |
+    | Weekend Reading: The Best of Longform | Features | Sat | 2.1k |
+    | The Weekly News Quiz | News | Sat | 1.8k |
+    | Sunday Letters: On Attention | Opinion | Sun | 1.4k |
+  </Card>
+</Columns>
+
+<Columns>
+  <Card title="Readership over the past 30 days" subtitle="Unique readers per week">
+    <Chart type="area" x="Week of" y="Readers">
+      | Week of | Readers |
+      | Oct 2 | 31200 |
+      | Oct 9 | 34800 |
+      | Oct 16 | 33500 |
+      | Oct 23 | 38900 |
+      | Oct 30 | 42100 |
+    </Chart>
+  </Card>
+
+  <Card title="Most-read article this month" subtitle="By unique readers">
+    <Badge tone="success">Most read</Badge>
+
+    ### The Future of Remote Work
+
+    By Alex Rivera · Features · 8 min read
+
+    <Stat label="Views" value="24.1k" note="+18% vs last month" />
+
+    <Button variant="secondary">View article</Button>
+  </Card>
+</Columns>
+
+<Columns>
+  <Card title="Start a new draft" subtitle="Create a draft from scratch">
+    <Form name="new-draft">
+      <Input label="Working title" placeholder="Draft title" required="true" />
+      <Select label="Category" options="News | Opinion | Features | Guides | Interviews" placeholder="Choose category" />
+      <Button>Create draft</Button>
+    </Form>
+  </Card>
+
+  <Card title="Schedule a piece" subtitle="Pick a title and publish date">
+    <Form name="schedule-piece">
+      <Input label="Title" placeholder="Article title" required="true" />
+      <Select label="Category" options="News | Opinion | Features | Guides | Interviews" placeholder="Choose category" />
+      <Date label="Publish date" required="true" />
+      <Button>Schedule</Button>
+    </Form>
+  </Card>
+
+  <Card title="Comments awaiting reply" subtitle="3 need your response">
+    <Badge tone="warning">3 awaiting</Badge>
+
+    **Priya** on "The Future of Remote Work" · 1h ago
+    > Can you share sources for the productivity data?
+    <Button variant="secondary">Reply</Button>
+
+    **Marcus** on "Best Noise-Cancelling Headphones" · 3h ago
+    > Does the newer model support multipoint?
+    <Button variant="secondary">Reply</Button>
+
+    **Elena** on "Interview: A City in the Cloud" · 5h ago
+    > Great piece! Would love a follow-up on privacy.
+    <Button variant="secondary">Reply</Button>
+  </Card>
+</Columns>

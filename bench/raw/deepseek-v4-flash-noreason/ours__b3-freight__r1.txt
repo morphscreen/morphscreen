@@ -1,0 +1,135 @@
+# Logistics Coordinator Board
+
+<Callout tone="info" title="Data refreshed">
+Last refreshed: **today, 08:45 UTC** · Next refresh in 15 min
+</Callout>
+
+<Columns>
+<div>
+
+<Stat label="On-time % (this month)" value="94.2%" change="+1.8 pts" tone="success" icon="chart-line" />
+
+</div>
+<div>
+
+<Stat label="Avg cost / shipment" value="$412.80" change="-3.4%" tone="info" icon="currency-circle-dollar" />
+
+</div>
+<div>
+
+<Stat label="In transit" value="23" change="+4 vs yesterday" tone="neutral" icon="truck" />
+
+</div>
+</Columns>
+
+<Card title="Search by route">
+<Form name="route-search">
+<Columns>
+<div>
+<Input label="Origin" placeholder="City or port" name="origin" />
+</div>
+<div>
+<Input label="Destination" placeholder="City or port" name="destination" />
+</div>
+</Columns>
+<Button>Search routes</Button>
+</Form>
+</Card>
+
+<Card title="Shipments in transit" subtitle="23 active shipments · 3 delayed">
+<Tabs>
+<Tab title="All shipments">
+| Shipment ID | Origin | Destination | ETA | Status |
+|---|---|---|---|---|
+| SH-1042 | Ningbo | Rotterdam | Mar 18 | <Badge tone="success">On time</Badge> |
+| SH-1043 | Savannah | Dallas | Mar 15 | <Badge tone="warning">Delayed 6h</Badge> |
+| SH-1044 | Hamburg | Chicago | Mar 17 | <Badge tone="success">On time</Badge> |
+| SH-1045 | Shanghai | Los Angeles | Mar 19 | <Badge tone="success">On time</Badge> |
+| SH-1046 | Santos | Miami | Mar 14 | <Badge tone="danger">Delayed 2 days</Badge> |
+| SH-1047 | Antwerp | Memphis | Mar 16 | <Badge tone="success">On time</Badge> |
+| SH-1048 | Busan | Seattle | Mar 20 | <Badge tone="success">On time</Badge> |
+| SH-1049 | Algeciras | New York | Mar 15 | <Badge tone="warning">Delayed 4h</Badge> |
+| SH-1050 | Felixstowe | Toronto | Mar 18 | <Badge tone="success">On time</Badge> |
+| SH-1051 | Singapore | Sydney | Mar 22 | <Badge tone="success">On time</Badge> |
+</Tabs>
+<Tab title="Delayed only">
+<Callout tone="danger" title="3 delayed shipments">
+Immediate attention required — see below.
+</Callout>
+
+| Shipment ID | Origin | Destination | ETA | Delay |
+|---|---|---|---|---|
+| SH-1043 | Savannah | Dallas | Mar 15 | 6 hours — port congestion |
+| SH-1046 | Santos | Miami | Mar 14 | 2 days — customs hold |
+| SH-1049 | Algeciras | New York | Mar 15 | 4 hours — weather |
+
+<Button>Flag all delayed</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment ID" name="shipment-id" placeholder="Select shipment" options="SH-1042 | SH-1043 | SH-1044 | SH-1045 | SH-1046 | SH-1047 | SH-1048 | SH-1049 | SH-1050 | SH-1051" />
+<Select label="Reason" name="flag-reason" placeholder="Choose reason" options="Customs hold | Weather delay | Port congestion | Documentation issue | Carrier issue | Other" />
+<TextArea label="Notes" name="flag-notes" placeholder="Add details for the team…" rows="3" />
+<Button>Flag shipment</Button>
+</Form>
+</Card>
+
+<Columns>
+<div>
+
+<Card title="Volume by carrier" subtitle="This month, share of shipments">
+<Chart type="donut" title="Carrier split">
+| Carrier | Shipments |
+|---|---|
+| Maersk | 38 |
+| MSC | 27 |
+| CMA CGM | 15 |
+| Hapag-Lloyd | 12 |
+| Others | 8 |
+</Chart>
+</Card>
+
+</div>
+<div>
+
+<Card title="Weekly volume" subtitle="Past 8 weeks">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 142 |
+| W2 | 155 |
+| W3 | 149 |
+| W4 | 168 |
+| W5 | 173 |
+| W6 | 161 |
+| W7 | 179 |
+| W8 | 186 |
+</Chart>
+</Card>
+
+</div>
+</Columns>
+
+<Details title="View full shipment list" open="false">
+| Shipment ID | Origin | Destination | ETA | Status | Cost |
+|---|---|---|---|---|---|
+| SH-1042 | Ningbo | Rotterdam | Mar 18 | On time | $3,850 |
+| SH-1043 | Savannah | Dallas | Mar 15 | Delayed 6h | $1,240 |
+| SH-1044 | Hamburg | Chicago | Mar 17 | On time | $2,980 |
+| SH-1045 | Shanghai | Los Angeles | Mar 19 | On time | $4,120 |
+| SH-1046 | Santos | Miami | Mar 14 | Delayed 2 days | $2,340 |
+| SH-1047 | Antwerp | Memphis | Mar 16 | On time | $2,760 |
+| SH-1048 | Busan | Seattle | Mar 20 | On time | $3,410 |
+| SH-1049 | Algeciras | New York | Mar 15 | Delayed 4h | $3,020 |
+| SH-1050 | Felixstowe | Toronto | Mar 18 | On time | $2,890 |
+| SH-1051 | Singapore | Sydney | Mar 22 | On time | $5,240 |
+</Details>
+
+<FollowUps>
+- Show me cost per carrier this month
+- Which routes have the highest on-time risk?
+- Compare this week's volume to last month
+</FollowUps>

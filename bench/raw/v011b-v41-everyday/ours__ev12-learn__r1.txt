@@ -1,0 +1,136 @@
+# How Photosynthesis Works
+
+Photosynthesis is the process plants, algae, and some bacteria use to turn **light energy into chemical energy** stored in sugar. In one sentence: they take in water and carbon dioxide, use sunlight to rearrange the atoms, and make glucose plus oxygen.
+
+<Card title="The big picture" subtitle="One equation, two stages">
+<Math tex="6CO_2 + 6H_2O + light \rightarrow C_6H_{12}O_6 + 6O_2" label="Overall reaction" />
+
+Six carbon dioxide + six water + light energy → one glucose + six oxygen.
+</Card>
+
+<Callout tone="info" title="The key insight">
+The oxygen gas plants release comes from **water**, not carbon dioxide. This was proven with heavy-oxygen labeling in the 1930s and surprises almost everyone.
+</Callout>
+
+## The two stages
+
+<Card title="Stage 1 — Light-dependent reactions" subtitle="In the thylakoid membrane">
+<Steps>
+<Step title="Light hits chlorophyll" status="done">Pigments in the thylakoid membrane absorb photons, mostly red and blue light.</Step>
+<Step title="Water is split" status="done">The oxygen-evolving complex tears water apart: 2 H₂O → 4 H⁺ + 4 e⁻ + O₂. The O₂ is waste to the plant.</Step>
+<Step title="Electrons travel the chain" status="done">Excited electrons move through photosystem II → plastoquinone → cytochrome complex → photosystem I, losing energy at each step.</Step>
+<Step title="Energy is banked" status="current">That energy pumps protons into the thylakoid lumen, then drives ATP synthase to make ATP. Meanwhile NADP⁺ picks up electrons to become NADPH.</Step>
+</Steps>
+
+Outputs: **ATP** and **NADPH** — the "energy currency" that stage 2 spends.
+</Card>
+
+<Card title="Stage 2 — The Calvin cycle" subtitle="In the stroma, no light needed directly">
+<Steps>
+<Step title="Carbon fixation" status="done">The enzyme RuBisCO attaches CO₂ to a 5-carbon sugar (RuBP), making two 3-carbon molecules.</Step>
+<Step title="Reduction" status="done">ATP and NADPH from stage 1 convert those into G3P, a usable 3-carbon sugar.</Step>
+<Step title="Regeneration" status="current">Most G3P goes back to rebuild RuBP so the cycle can run again. The leftover G3P becomes glucose, then starch, cellulose, or sucrose.</Step>
+</Steps>
+
+It takes **3 turns** of the cycle to net one G3P, and **6 turns** to build one glucose.
+</Card>
+
+<Compare title="The two stages side by side">
+| Feature | Light reactions | Calvin cycle |
+|---|---|---|
+| Location | Thylakoid membrane | Stroma |
+| Needs light directly | yes | no |
+| Inputs | Water, light, ADP, NADP⁺ | CO₂, ATP, NADPH |
+| Outputs | O₂, ATP, NADPH | G3P (sugar) |
+| Runs at night | no | yes, if ATP/NADPH remain |
+</Compare>
+
+## Where it happens
+
+<FileTree title="Inside a chloroplast">
+- chloroplast/
+  - outer membrane/
+  - inner membrane/
+  - stroma/ (Calvin cycle runs here)
+  - thylakoid/ (light reactions run here)
+    - granum/ (stacked thylakoids)
+    - lumen/
+</FileTree>
+
+## What changes the rate
+
+<Card title="Factors that speed it up or slow it down">
+<KeyValue title="Rate drivers">
+| Factor | Effect |
+|---|---|
+| Light intensity | Rises, then plateaus when photosystems saturate |
+| CO₂ concentration | Rises, until RuBisCO maxes out |
+| Temperature | Rises to an optimum (~25 °C for most C3 plants), then falls as enzymes denature |
+| Water supply | Drought closes stomata, CO₂ can't enter, rate drops |
+| Chlorophyll amount | More pigment, more photons captured |
+</KeyValue>
+</Card>
+
+<Callout tone="warning" title="The photorespiration trap">
+RuBisCO sometimes grabs O₂ instead of CO₂, wasting energy. Hot, dry conditions make this worse because stomata close. C4 and CAM plants evolved workarounds — that's why corn and cacti thrive where wheat struggles.
+</Callout>
+
+## Try the numbers
+
+<WhatIf title="How much sugar does a leaf make?">
+<Slider label="Light intensity" min="0" max="100" step="1" value="60" name="light" unit="%" />
+<Slider label="CO₂ level" min="0" max="100" step="1" value="50" name="co2" unit="%" />
+<Slider label="Temperature" min="0" max="50" step="1" value="25" name="temp" unit="°C" />
+<Result label="Relative photosynthetic rate" value="round((light/100) * (co2/100) * max(0, 1 - abs(temp - 25)/25) * 100)" unit="%" decimals="0" />
+<Result label="Glucose per hour (mg)" value="round((light/100) * (co2/100) * max(0, 1 - abs(temp - 25)/25) * 18)" unit="mg" decimals="1" />
+</WhatIf>
+
+## Remember these
+
+<Flashcards title="Photosynthesis terms">
+| Front | Back |
+|---|---|
+| Thylakoid | The membrane stack where light reactions happen |
+| Stroma | The fluid around thylakoids where the Calvin cycle runs |
+| RuBisCO | The enzyme that fixes CO₂ onto RuBP |
+| Photolysis | Splitting water with light to release electrons and O₂ |
+| G3P | The 3-carbon sugar the Calvin cycle produces |
+| Photorespiration | RuBisCO grabbing O₂ instead of CO₂, wasting energy |
+| Chemiosmosis | Using a proton gradient to drive ATP synthase |
+</Flashcards>
+
+## Check yourself
+
+<Quiz title="Photosynthesis quiz">
+<Question text="Where does the oxygen released by photosynthesis come from?" answer="Water" explain="The oxygen-evolving complex splits water in photosystem II. The O₂ is a byproduct; the electrons and protons are what the plant actually needs.">
+- Carbon dioxide
+- Water
+- Glucose
+- ATP
+</Question>
+<Question text="Which stage can run without light, as long as ATP and NADPH are available?" answer="The Calvin cycle" explain="The Calvin cycle uses ATP and NADPH from the light reactions but does not itself absorb photons. It can briefly continue in darkness until those supplies run out.">
+- The light-dependent reactions
+- The Calvin cycle
+- Both equally
+- Neither
+</Question>
+<Question text="Why does photosynthesis slow down on a very hot, dry day?" answer="Stomata close to save water, so CO₂ can't get in" explain="Closing stomata conserves water but blocks CO₂ entry and traps O₂, which increases wasteful photorespiration and drops the rate.">
+- Chlorophyll melts
+- Stomata close to save water, so CO₂ can't get in
+- The sun emits less light
+- Glucose becomes toxic
+</Question>
+<Question text="How many turns of the Calvin cycle are needed to net one glucose molecule?" answer="Six" explain="Each turn fixes one CO₂ and nets one carbon toward sugar. Glucose has six carbons, so six turns are required.">
+- One
+- Three
+- Six
+- Twelve
+</Question>
+</Quiz>
+
+<FollowUps>
+- Explain the light reactions in more detail
+- What is the difference between C3, C4, and CAM plants?
+- How does photorespiration waste energy?
+- Give me a labeled diagram of a chloroplast
+</FollowUps>

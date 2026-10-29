@@ -1,0 +1,116 @@
+# Personal Banking Home
+
+<Badge tone="success">Account verified</Badge>
+
+<Columns>
+<Card title="Checking" subtitle="•••• 4821">
+<Stat label="Available balance" value="$3,240.50" icon="bank" />
+<Stat label="Pending" value="$120.00" note="2 transactions" tone="warning" />
+</Card>
+
+<Card title="Savings" subtitle="•••• 7394">
+<Stat label="Available balance" value="$12,680.00" icon="piggy-bank" />
+<Stat label="Interest YTD" value="$42.30" tone="success" />
+</Card>
+
+<Card title="Credit" subtitle="•••• 2156">
+<Stat label="Current balance" value="$1,450.00" icon="credit-card" />
+<Stat label="Available credit" value="$8,550.00" />
+<Stat label="Min payment due" value="$35.00" note="Due May 12" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Recent transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods Market | -$87.43 | Today |
+| Netflix | -$15.99 | Yesterday |
+| Direct Deposit – Employer | +$2,450.00 | Apr 30 |
+| Shell Gas Station | -$52.10 | Apr 28 |
+| Amazon.com | -$34.99 | Apr 27 |
+| Starbucks | -$6.75 | Apr 27 |
+
+<Button ask="Show all transactions for checking">View all</Button>
+</Card>
+
+<Card title="Spending this month" subtitle="By category">
+<Chart type="donut" title="April spending">
+| Category | Amount |
+|---|---|
+| Groceries | 520 |
+| Dining | 340 |
+| Transport | 210 |
+| Entertainment | 175 |
+| Utilities | 130 |
+| Shopping | 95 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Bills due soon">
+| Bill | Amount | Due |
+|---|---|---|
+| Electric | $85.00 | May 8 |
+| Internet | $65.00 | May 10 |
+| Phone | $45.00 | May 15 |
+
+<Button ask="Show all upcoming bills">See all bills</Button>
+</Card>
+
+<Card title="Vacation savings goal" subtitle="Hawaii trip – $5,000">
+<Progress value="12680" max="5000" label="$12,680 saved" tone="success" />
+<Stat label="Target" value="$5,000" />
+<Stat label="Progress" value="254%" note="Goal exceeded!" tone="success" icon="check-circle" />
+
+<Button ask="Change vacation goal">Adjust goal</Button>
+</Card>
+
+<Card title="Credit score">
+<Stat label="TransUnion" value="742" note="Good" icon="chart-line" />
+<Stat label="Equifax" value="738" note="Good" />
+
+<Button ask="Show credit score details">Full report</Button>
+</Card>
+</Columns>
+
+<Card title="Move money">
+<Form name="transfer">
+<Select label="From" options="Checking (••••4821) | Savings (••••7394) | Credit (••••2156)" name="from" />
+<Select label="To" options="Checking (••••4821) | Savings (••••7394) | Credit (••••2156)" name="to" />
+<Input label="Amount" type="number" name="amount" placeholder="0.00" step="0.01" min="0.01" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Card & account settings">
+<Tabs>
+<Tab title="Freeze credit">
+<Callout tone="warning" title="Card frozen">Your credit line is currently active.</Callout>
+<Button variant="danger">Freeze credit line</Button>
+</Tab>
+
+<Tab title="Statement period">
+<Select label="Statement cycle" options="1st – 30th | 5th – 4th | 10th – 9th | 15th – 14th" name="statement-cycle" />
+<Button>Save statement period</Button>
+</Tab>
+
+<Tab title="Alert triggers">
+<Checkboxes label="Send alerts for" options="Transaction over $100 | Low balance under $200 | Bill due in 3 days | Large deposit over $1,000 | Credit usage over 50%" name="alerts" />
+<Button>Save alert preferences</Button>
+</Tab>
+
+<Tab title="Dispute transaction">
+<Select label="Transaction to dispute" options="Whole Foods -$87.43 | Shell Gas -$52.10 | Amazon -$34.99" name="dispute-tx" />
+<TextArea label="Reason for dispute" name="dispute-reason" placeholder="Describe what happened…" rows="3" />
+<Button variant="danger">Submit dispute</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<FollowUps>
+- Show me my spending trend over the last 3 months
+- What's my largest single transaction this month?
+- Can I set up auto-pay for my credit card?
+- How much interest did I earn on savings this year?
+- Suggest ways to improve my credit score
+</FollowUps>

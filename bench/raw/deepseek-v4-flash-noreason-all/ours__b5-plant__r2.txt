@@ -1,0 +1,312 @@
+# Factory Floor Supervisor Console
+
+Live overview of production, quality, maintenance and safety across all lines. <Badge tone="success">Shift 2 active</Badge>
+
+<Card title="Overall Equipment Effectiveness (OEE)">
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Availability" value="88.2%" change="-0.5%" tone="info" />
+<Stat label="Performance" value="91.6%" change="+1.8%" tone="success" />
+<Stat label="Quality" value="96.9%" change="+0.4%" tone="success" />
+</Columns>
+<Gauge label="OEE vs target 85%" value="78.4" min="0" max="100" unit="%" tone="warning" />
+</Card>
+
+<Card title="Units Produced vs Today's Target">
+<Chart type="bar" x="Hour" y="Units">
+| Hour | Produced | Target |
+|---|---|---|
+| 06:00 | 120 | 100 |
+| 07:00 | 240 | 200 |
+| 08:00 | 380 | 300 |
+| 09:00 | 510 | 400 |
+| 10:00 | 640 | 500 |
+| 11:00 | 780 | 600 |
+| 12:00 | 890 | 700 |
+| 13:00 | 1020 | 800 |
+| 14:00 | 1150 | 900 |
+| 15:00 | 1290 | 1000 |
+</Chart>
+<Columns>
+<Stat label="Produced so far" value="1,290" icon="package" />
+<Stat label="Target" value="2,000" />
+<Stat label="Remaining" value="710" tone="warning" />
+<Stat label="Pace" value="129/hr" note="Required: 100/hr" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Production Lines">
+<Columns>
+<Card title="Line A — Stamping">
+<KeyValue title>
+| | |
+|---|---|
+| Rate | 240 units/hr |
+| Status | <Badge tone="success">Running</Badge> |
+| OEE | 82% |
+| Operator | Maria Chen |
+</KeyValue>
+<Button variant="secondary" ask="Focus on Line A">Focus on this line</Button>
+</Card>
+<Card title="Line B — Assembly">
+<KeyValue title>
+| | |
+|---|---|
+| Rate | 180 units/hr |
+| Status | <Badge tone="warning">Reduced</Badge> |
+| OEE | 71% |
+| Operator | James Okafor |
+</KeyValue>
+<Button variant="secondary" ask="Focus on Line B">Focus on this line</Button>
+</Card>
+<Card title="Line C — Packaging">
+<KeyValue title>
+| | |
+|---|---|
+| Rate | 320 units/hr |
+| Status | <Badge tone="success">Running</Badge> |
+| OEE | 88% |
+| Operator | Priya Sharma |
+</KeyValue>
+<Button variant="secondary" ask="Focus on Line C">Focus on this line</Button>
+</Card>
+<Card title="Line D — Testing">
+<KeyValue title>
+| | |
+|---|---|
+| Rate | 95 units/hr |
+| Status | <Badge tone="danger">Stopped</Badge> |
+| OEE | 45% |
+| Operator | — |
+</KeyValue>
+<Button variant="secondary" ask="Focus on Line D">Focus on this line</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Week" y="Defect %">
+| Week | Defect rate |
+|---|---|
+| W1 | 3.8 |
+| W2 | 3.2 |
+| W3 | 2.9 |
+| W4 | 3.1 |
+</Chart>
+<Callout tone="info" title="Current month average">3.1% defect rate — within the 4% tolerance, but up 0.2% from last week. Line B accounts for 60% of defects.</Callout>
+</Card>
+
+<Card title="Downtime by Cause — Today">
+<Chart type="donut" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Changeover | 45 |
+| Machine jam | 32 |
+| Material shortage | 18 |
+| Quality check | 15 |
+| Maintenance | 12 |
+| Other | 8 |
+</Chart>
+<Stat label="Total downtime" value="130 min" note="4.3% of shift" tone="warning" />
+</Card>
+
+<Card title="Machines Due for Maintenance">
+<Columns>
+<Card title="Press #3">
+<KeyValue title>
+| | |
+|---|---|
+| Due date | Today 16:00 |
+| Type | Preventive |
+| Last service | 28 days ago |
+</KeyValue>
+<Button ask="Schedule maintenance for Press #3">Schedule</Button>
+</Card>
+<Card title="Conveyor B2">
+<KeyValue title>
+| | |
+|---|---|
+| Due date | Tomorrow |
+| Type | Inspection |
+| Last service | 89 days ago |
+</KeyValue>
+<Button ask="Schedule maintenance for Conveyor B2">Schedule</Button>
+</Card>
+<Card title="Welder #7">
+<KeyValue title>
+| | |
+|---|---|
+| Due date | Wed 14 May |
+| Type | Calibration |
+| Last service | 175 days ago |
+</KeyValue>
+<Button ask="Schedule maintenance for Welder #7">Schedule</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel coil" value="38 t" note="Min: 20 t" tone="success" icon="warehouse" />
+<Stat label="Resin" value="1,240 kg" note="Min: 800 kg" tone="success" />
+<Stat label="Packaging" value="4,800 boxes" note="Min: 5,000 boxes" tone="danger" />
+</Columns>
+<Callout tone="danger" title="Packaging low">Reorder 2,000 boxes to cover the next 3 shifts. Supplier lead time is 2 days.</Callout>
+</Card>
+
+<Card title="Supplier Deliveries Due This Week">
+<KeyValue title>
+| | |
+|---|---|
+| Steelco — 20 t coil | Wed 14 May |
+| ResinPro — 500 kg | Thu 15 May |
+| BoxMakers — 3,000 boxes | Fri 16 May |
+| Fastener Co — 50k bolts | Fri 16 May |
+</KeyValue>
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Output |
+|---|---|
+| Shift 1 (06:00–14:00) | 1,850 |
+| Shift 2 (14:00–22:00) | 1,290 (in progress) |
+| Shift 3 (22:00–06:00) | 1,720 |
+</Chart>
+<Stat label="Best shift" value="Shift 1" note="1,850 units" tone="success" />
+</Card>
+
+<Card title="Safety">
+<Columns>
+<Stat label="Incidents this year" value="3" tone="warning" icon="shield-warning" />
+<Stat label="Days since last incident" value="47" tone="success" />
+</Columns>
+<Callout tone="warning" title="Near-miss reported">Slip hazard near Line D walkway — cleaned and reported at 09:15.</Callout>
+</Card>
+
+<Card title="Batches on Quality Hold">
+<KeyValue title>
+| | |
+|---|---|
+| Batch #A-1042 | Line A — 14:30 — Dimension check |
+| Batch #B-0871 | Line B — 13:10 — Material variance |
+| Batch #C-1155 | Line C — 11:45 — Label mismatch |
+</KeyValue>
+</Card>
+
+<Card title="Energy Use Today">
+<Columns>
+<Stat label="Energy used" value="8.4 MWh" note="Target: 9.0 MWh" tone="success" icon="lightning" />
+<Stat label="Cost" value="$1,092" />
+</Columns>
+<Chart type="area" x="Hour" y="MWh">
+| Hour | MWh |
+|---|---|
+| 06:00 | 0.4 |
+| 08:00 | 0.9 |
+| 10:00 | 1.1 |
+| 12:00 | 1.0 |
+| 14:00 | 0.8 |
+| 16:00 | 0.7 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+<Columns>
+<Card title="WO-2041">
+<Badge tone="danger">Critical</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Line | D — Testing |
+| Issue | Motor failure |
+| Opened | 10:20 today |
+</KeyValue>
+</Card>
+<Card title="WO-2039">
+<Badge tone="warning">High</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Line | B — Assembly |
+| Issue | Torque drift |
+| Opened | Yesterday |
+</KeyValue>
+</Card>
+<Card title="WO-2036">
+<Badge tone="info">Normal</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Line | A — Stamping |
+| Issue | Die wear |
+| Opened | 2 days ago |
+</KeyValue>
+</Card>
+<Card title="WO-2033">
+<Badge tone="neutral">Low</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Line | C — Packaging |
+| Issue | Sensor recalibration |
+| Opened | 4 days ago |
+</KeyValue>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" placeholder="Select machine" options="Press #3 | Conveyor B2 | Welder #7 | Line D motor" required="true" />
+<Date label="Date" required="true" />
+<Select label="Shift" options="Shift 1 (06:00–14:00) | Shift 2 (14:00–22:00) | Shift 3 (22:00–06:00)" placeholder="Select shift" />
+<Select label="Maintenance type" options="Preventive | Inspection | Calibration | Repair" placeholder="Select type" />
+<TextArea label="Notes" placeholder="Work order details, parts needed…" rows="2" />
+<Button>Schedule maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Andon Alerts — Live">
+<Columns>
+<Card title="Line D — Stopped">
+<Badge tone="danger">Active</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Time | 14:42 |
+| Reason | Motor fault |
+| Age | 18 min |
+</KeyValue>
+</Card>
+<Card title="Line B — Reduced speed">
+<Badge tone="warning">Active</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Time | 14:15 |
+| Reason | Material feed issue |
+| Age | 45 min |
+</KeyValue>
+</Card>
+<Card title="Line A — Requested help">
+<Badge tone="info">Acknowledged</Badge>
+<KeyValue title>
+| | |
+|---|---|
+| Time | 14:50 |
+| Reason | Operator assistance |
+| Age | 10 min |
+</KeyValue>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Export Shift Report">
+<Columns>
+<Button>Export as PDF</Button>
+<Button variant="secondary">Export as CSV</Button>
+<Button variant="secondary" ask="Email the shift report to the plant manager">Email report</Button>
+</Columns>
+<Callout tone="neutral" title="Report contents">OEE, output vs target, downtime, defects, safety, energy and work orders for Shift 2, 13 May 2025.</Callout>
+</Card>

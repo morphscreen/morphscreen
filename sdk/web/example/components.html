@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Components</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="../dist/morphscreen.css"><link rel="stylesheet" href="../dist/morphscreen-page.css">
+<style>
+  /* One answer a sample, stacked; ?only=id1,id2 draws just those, ?theme=dark|light|mono pins a palette. */
+  .sample { padding-block: var(--ms-s5); border-top: 1px solid var(--ms-line); }
+  .sample > h1 { max-width: 800px; margin: 0 auto; padding-inline: var(--ms-s5); font: 600 var(--ms-t-caption)/1 var(--ms-mono); color: var(--ms-ink-3); }
+  .sample > .ms-answer { box-sizing: border-box; max-width: 800px; margin: 0 auto; padding: var(--ms-s3) var(--ms-s5) 0; }
+  @media (max-width: 520px) { .sample > .ms-answer { padding-inline: var(--ms-s4); } }
+</style></head>
+<body><div id="app"></div>
+<script type="module">
+import { loadCore, createAnswer } from "../dist/index.js";
+const q = new URLSearchParams(location.search);
+if (q.get("theme")) document.documentElement.dataset.theme = q.get("theme");
+const core = await loadCore(new URL("../dist/morphscreen.wasm", import.meta.url));
+const { packs, samples } = await (await fetch("../../../test/fixtures/components.json")).json();
+const only = q.get("only")?.split(",");
+const all = packs.filter((p) => p !== "core");
+window.actions = [];
+window.answers = {};
+// Draws one sample; streamed (a chunk every few milliseconds) when asked, whole otherwise.
+window.draw = async (id, stream = false) => {
+  const s = samples.find((x) => x.id === id);
+  let wrap = document.getElementById(id);
+  if (!wrap) {
+    wrap = document.createElement("section");
+    wrap.className = "sample";
+    wrap.id = id;
+    wrap.innerHTML = `<h1>${s.name}</h1><main class="ms-answer"></main>`;
+    document.getElementById("app").appendChild(wrap);
+  }
+  const el = wrap.querySelector(".ms-answer");
+  window.answers[id]?.destroy();
+  el.textContent = "";
+  const a = createAnswer(el, { core, packs: all, onAction: (x) => window.actions.push(x) });
+  window.answers[id] = a;
+  if (!stream) {
+    a.push(s.md);
+    a.end();
+    return;
+  }
+  for (let i = 0; i < s.md.length; i += 12) {
+    a.push(s.md.slice(i, i + 12));
+    await new Promise((r) => setTimeout(r, 30));
+  }
+  a.end();
+};
+for (const s of samples) if (!only || only.includes(s.id)) await window.draw(s.id);
+window.ready = true;
+</script></body>
+</html>

@@ -1,0 +1,68 @@
+# Training Platform Analytics
+
+<Card subtitle="Filter all metrics by cohort">
+<Select label="Cohort" placeholder="All cohorts" options="All cohorts | Cohort A — Q1 2024 | Cohort B — Q1 2024 | Cohort C — Q2 2024 | Cohort D — Q2 2024" name="cohort-filter" />
+</Card>
+
+<Columns>
+<Card>
+<Stat label="Active learners this week" value="1,247" change="+8% vs last week" tone="success" icon="users" />
+</Card>
+<Card>
+<Stat label="Course completion rate" value="73%" change="+4 pp vs last month" tone="info" icon="chart-line" />
+</Card>
+<Card>
+<Stat label="Average quiz score" value="84%" change="+2 pts vs last month" tone="success" icon="award" />
+</Card>
+</Columns>
+
+<Card title="Engagement across the past 8 weeks">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active learners | Sessions | Avg session (min) |
+|---|---|---|---|
+| W1 | 980 | 3,420 | 22 |
+| W2 | 1,045 | 3,680 | 24 |
+| W3 | 1,102 | 3,910 | 23 |
+| W4 | 1,156 | 4,120 | 25 |
+| W5 | 1,189 | 4,250 | 26 |
+| W6 | 1,210 | 4,380 | 25 |
+| W7 | 1,235 | 4,490 | 27 |
+| W8 | 1,247 | 4,560 | 28 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment">
+<Chart type="horizontal" x="Enrollments" y="Course">
+| Course | Enrollments | Completion rate | Avg quiz |
+|---|---|---|---|
+| Python Fundamentals | 482 | 78% | 86% |
+| Data Analysis with Pandas | 356 | 71% | 82% |
+| Web Development Basics | 298 | 69% | 79% |
+| SQL for Analytics | 267 | 75% | 84% |
+| Machine Learning Intro | 194 | 62% | 77% |
+| DevOps Essentials | 142 | 68% | 81% |
+| Cloud Architecture | 98 | 58% | 74% |
+| Advanced JavaScript | 76 | 64% | 78% |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out">
+<Callout tone="warning" title="12 learners flagged">These learners have had no activity in 14+ days and quiz scores below 60%.</Callout>
+| Learner | Cohort | Last active | Courses enrolled | Avg quiz | Risk factors |
+|---|---|---|---|---|---|
+| Alex Chen | Cohort B | 18 days ago | 3 | 54% | No login 14d, low quiz scores |
+| Maria Santos | Cohort A | 22 days ago | 2 | 48% | No login 14d, missed 3 deadlines |
+| James Wilson | Cohort C | 15 days ago | 4 | 58% | No login 14d, declining scores |
+| Priya Patel | Cohort B | 20 days ago | 2 | 51% | No login 14d, incomplete assignments |
+| Ryan Okafor | Cohort D | 16 days ago | 3 | 56% | No login 14d, low engagement |
+</Card>
+
+<Card title="Message a cohort" subtitle="Send a targeted message to learners in a specific cohort">
+<Form name="cohort-message">
+<Select label="Recipient cohort" placeholder="Select cohort" options="Cohort A — Q1 2024 | Cohort B — Q1 2024 | Cohort C — Q2 2024 | Cohort D — Q2 2024" name="recipient-cohort" required="true" />
+<Select label="Filter by" placeholder="All learners in cohort" options="All learners in cohort | At-risk learners only | Active this week | Inactive 7+ days | Completed < 50%" name="filter" />
+<TextArea label="Message" placeholder="Write your message here…" rows="5" name="message-body" required="true" hint="Supports markdown. Learners will receive this via email and in-app notification." />
+<Button>Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>

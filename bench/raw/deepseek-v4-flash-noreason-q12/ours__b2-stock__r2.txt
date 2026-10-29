@@ -1,0 +1,46 @@
+# Low-Inventory Warning
+
+<Callout tone="warning" title="Action needed">
+6 items are at or below the reorder threshold of **20 units**. Reorder soon to avoid stockouts.
+</Callout>
+
+<Card title="Inventory Alerts" subtitle="Items at or below the reorder threshold">
+<Input label="Search items" name="search" type="search" placeholder="Search by name or SKU…" hint="Filter the list below as you type" />
+
+| Item | SKU | Remaining Units | Threshold | Status | Action |
+|---|---|---|---|---|---|
+| Organic Cold Brew Coffee 12 oz | CBC-12 | 8 | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Almond Butter 16 oz | AB-16 | 14 | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Quinoa 2 lb Bag | QN-2 | 17 | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Dark Chocolate Bar 70% | DC-70 | 19 | 20 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Olive Oil 500 ml | OO-500 | 12 | 20 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Steel-Cut Oats 24 oz | SO-24 | 20 | 20 | <Badge tone="warning">At threshold</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+
+<Callout tone="neutral" title="How reordering works">
+Tap **Reorder** on any item to create a purchase order for the suggested quantity, calculated from the threshold and recent sales velocity.
+</Callout>
+</Card>
+
+<Card title="Reorder Settings" subtitle="The threshold that triggers the warning">
+<Form name="threshold-settings">
+<Slider label="Reorder threshold" min="5" max="50" step="5" value="20" name="threshold" unit=" units" />
+<Callout tone="info" title="What this means">
+When an item’s remaining units drop to or below **20**, it appears in the low-inventory warning list above. Adjust the slider to change the threshold for all items.
+</Callout>
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<Card title="Quick Stats">
+<Columns>
+<Stat label="Items flagged" value="6" tone="danger" icon="warning" />
+<Stat label="Critical (≤10 units)" value="2" tone="danger" icon="exclamation-triangle" />
+<Stat label="Suggested reorder qty" value="94" icon="package" note="Total across all flagged items" />
+</Columns>
+</Card>
+
+<FollowUps>
+- Which items are closest to selling out?
+- Show me the purchase order for all flagged items
+- How do I adjust the threshold for a single item?
+</FollowUps>

@@ -1,0 +1,210 @@
+# Hub Operations Dashboard
+
+<Callout tone="info" title="Live operations">Data refreshes every 60 seconds. All times are local (ET).</Callout>
+
+<Columns>
+<Stat label="On-time performance" value="78%" change="+3 pts" tone="success" icon="trend-up" />
+<Stat label="Passenger load" value="82%" change="+2 pts" tone="info" icon="users" />
+<Stat label="Cancellations" value="6" change="+2" tone="danger" icon="x-circle" />
+<Stat label="Avg turnaround" value="42 min" change="−5 min" tone="success" icon="timer" />
+</Columns>
+
+<Card title="On-time performance today" subtitle="Flights departed within 15 min of schedule">
+<Progress value="78" max="100" label="On-time departures" tone="success" />
+<Chart type="line" title="Hourly on-time rate" x="Hour" y="%">
+| Hour | On-time % |
+|---|---|
+| 05:00 | 85 |
+| 06:00 | 80 |
+| 07:00 | 75 |
+| 08:00 | 70 |
+| 09:00 | 72 |
+| 10:00 | 78 |
+| 11:00 | 80 |
+| 12:00 | 82 |
+| 13:00 | 79 |
+| 14:00 | 76 |
+| 15:00 | 74 |
+| 16:00 | 78 |
+</Chart>
+</Card>
+
+<Card title="Flights" subtitle="All departures and arrivals, next 4 hours">
+<Tabs>
+<Tab title="Departures">
+<Chart type="table" x="Flight" y="Route, Gate, Status">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| UA 1234 | JFK | B12 | On time |
+| UA 5678 | SFO | C3 | Boarding |
+| DL 9012 | ATL | A7 | Delayed 45 min |
+| AA 3456 | ORD | D5 | On time |
+| UA 7890 | MIA | B8 | Delayed 20 min |
+| SW 2345 | DEN | C1 | On time |
+| UA 6789 | LAX | A2 | Boarding |
+| DL 4567 | SEA | D9 | On time |
+</Chart>
+</Tab>
+<Tab title="Arrivals">
+<Chart type="table" x="Flight" y="Route, Gate, Status">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| UA 4321 | ORD | B4 | Landed |
+| DL 8765 | ATL | A5 | On final |
+| AA 6543 | DFW | D2 | Taxiing |
+| UA 2109 | SFO | C7 | Delayed 30 min |
+| SW 9876 | DEN | C2 | On time |
+| UA 5432 | MIA | B1 | Landed |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Delayed flights" subtitle="Flights delayed 15+ minutes">
+<Callout tone="danger" title="6 flights delayed">Thunderstorms near the hub are causing knock-on delays.</Callout>
+<Columns>
+<Card title="UA 1234 → JFK">
+<KeyValue title="Delay details">
+| Detail | Value |
+|---|---|
+| Delay | 45 min |
+| Gate | B12 |
+| New departure | 14:45 |
+| Reason | Weather |
+</KeyValue>
+</Card>
+<Card title="DL 9012 → ATL">
+<KeyValue title="Delay details">
+| Detail | Value |
+|---|---|
+| Delay | 45 min |
+| Gate | A7 |
+| New departure | 15:10 |
+| Reason | Late inbound |
+</KeyValue>
+</Card>
+<Card title="UA 7890 → MIA">
+<KeyValue title="Delay details">
+| Detail | Value |
+|---|---|
+| Delay | 20 min |
+| Gate | B8 |
+| New departure | 15:05 |
+| Reason | Crew timing |
+</KeyValue>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Recent gate changes" subtitle="Last 30 minutes">
+<Columns>
+<Card title="Gate change log">
+| Time | Flight | Old gate | New gate |
+|---|---|---|---|
+| 14:02 | UA 5678 | C3 → | B2 |
+| 13:47 | DL 9012 | A7 → | A9 |
+| 13:31 | AA 3456 | D5 → | D6 |
+| 13:18 | SW 2345 | C1 → | C4 |
+| 13:05 | UA 6789 | A2 → | A4 |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Crews available for reassignment" subtitle="Qualified and ready">
+<Columns>
+<Card title="Pilots">
+<Avatar name="Capt. M. Rivera" src="https://i.pravatar.cc/150?img=12" />
+<Avatar name="Capt. J. Okafor" src="https://i.pravatar.cc/150?img=32" />
+<Avatar name="Capt. S. Chen" src="https://i.pravatar.cc/150?img=47" />
+</Card>
+<Card title="Flight attendants">
+<Avatar name="A. Novak" src="https://i.pravatar.cc/150?img=5" />
+<Avatar name="L. Fernandez" src="https://i.pravatar.cc/150?img=9" />
+<Avatar name="T. Williams" src="https://i.pravatar.cc/150?img=20" />
+<Avatar name="R. Patel" src="https://i.pravatar.cc/150?img=33" />
+</Card>
+</Columns>
+</Card>
+
+<Card title="Weather advisory at hub">
+<Callout tone="warning" title="Thunderstorm watch">Severe thunderstorms possible 14:00–18:00. Expect wind gusts to 45 mph. Ground stops possible.</Callout>
+<Map title="Storm cells near hub">
+| Location | Lat | Lng | Status |
+|---|---|---|---|
+| Hub airport | 41.9742 | -87.9073 | Current position |
+| Storm cell A | 41.7000 | -88.2000 | Moving NE at 25 mph |
+| Storm cell B | 42.1000 | -87.6000 | Developing |
+</Map>
+</Card>
+
+<Card title="Connections at risk" subtitle="Passengers with tight connections">
+<Callout tone="danger" title="12 passengers at risk">6 flights have connections under 45 minutes.</Callout>
+<Columns>
+<Card title="UA 1234 → JFK">
+| Pax | Connecting to | Time left |
+|---|---|---|
+| 3 | DL 2210 → LHR | 25 min |
+| 2 | AA 118 → MIA | 30 min |
+</Card>
+<Card title="DL 9012 → ATL">
+| Pax | Connecting to | Time left |
+|---|---|---|
+| 4 | SW 447 → SFO | 20 min |
+| 3 | UA 882 → HNL | 35 min |
+</Card>
+</Columns>
+<Button variant="primary" label="Rebook affected passengers" ask="Show me the rebooking options for passengers at risk of missing connections">Rebook affected passengers</Button>
+</Card>
+
+<Card title="Rebook affected passengers" subtitle="Select a passenger group to rebook">
+<Form name="rebook">
+<Select label="Flight" options="UA 1234 → JFK (5 pax) | DL 9012 → ATL (7 pax) | UA 7890 → MIA (2 pax)" placeholder="Choose a flight" />
+<Select label="Rebook to" options="Next available flight | Later today | Tomorrow morning" placeholder="Choose rebooking option" />
+<Checkboxes label="Notify passengers via" options="SMS | Email | App push" />
+<Button>Rebook selected</Button>
+</Form>
+</Card>
+
+<Card title="Cancellations today" subtitle="6 cancellations, 14:00 ET">
+<Columns>
+<Card title="Canceled flights">
+| Flight | Route | Time | Reason |
+|---|---|---|---|
+| UA 111 | ORD | 08:15 | Weather |
+| DL 222 | DFW | 09:30 | Mechanical |
+| AA 333 | MIA | 10:45 | Crew shortage |
+| SW 444 | DEN | 11:20 | Weather |
+| UA 555 | SEA | 12:05 | Weather |
+| DL 666 | ATL | 13:40 | Airspace |
+</Card>
+</Columns>
+</Card>
+
+<Card title="Average turnaround time" subtitle="Wheels-on to wheels-off, rolling 24h">
+<Stat label="Average turnaround" value="42 min" change="−5 min vs yesterday" tone="success" icon="timer" />
+<Chart type="bar" title="Turnaround by airline" x="Airline" y="Minutes">
+| Airline | Minutes |
+|---|---|
+| UA | 38 |
+| DL | 45 |
+| AA | 41 |
+| SW | 50 |
+| Other | 36 |
+</Chart>
+</Card>
+
+<Card title="Select hub">
+<Form name="hub-select">
+<Select label="Hub" options="ORD (current) | ATL | DFW | DEN | JFK | LAX" placeholder="Choose a hub" />
+<Button>Switch hub</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the full flight schedule for today
+- Which gates have the most delays?
+- List crews that can be reassigned to cover UA 7890
+- What's the weather outlook for the next 6 hours?
+- Detail the 6 cancellations and rebooking status
+- Compare turnaround times across hubs
+</FollowUps>

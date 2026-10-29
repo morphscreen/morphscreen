@@ -1,0 +1,165 @@
+# Store Manager's Daily Console
+
+<Callout tone="info" title="Tuesday, June 11">Store #204 · Downtown Mall · Open 9:00 AM – 9:00 PM</Callout>
+
+<Columns>
+<div>
+<Stat label="Sales Today" value="$8,452" change="+12.4%" icon="currency-dollar" tone="success" note="vs. $7,500 target" />
+</div>
+<div>
+<Stat label="Avg Basket Size" value="$46.80" change="+3.1%" icon="shopping-cart" tone="success" note="vs. $45.40 last week" />
+</div>
+<div>
+<Stat label="Returns This Week" value="23" change="-8.0%" icon="arrow-counter-clockwise" tone="success" note="vs. 25 last week" />
+</div>
+</Columns>
+
+<Card title="Sales vs. Target">
+<Chart type="bar" x="Hour" y="USD" title="Sales today vs. target">
+| Hour | Sales | Target |
+|---|---|---|
+| 9 AM | 320 | 250 |
+| 10 AM | 480 | 450 |
+| 11 AM | 610 | 550 |
+| 12 PM | 890 | 800 |
+| 1 PM | 750 | 700 |
+| 2 PM | 680 | 650 |
+| 3 PM | 720 | 700 |
+| 4 PM | 850 | 800 |
+| 5 PM | 1,120 | 950 |
+| 6 PM | 1,240 | 1,000 |
+| 7 PM | 980 | 900 |
+</Chart>
+<Progress value="8452" max="12000" label="Daily target progress" tone="info" />
+</Card>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="area" x="Hour" y="Visitors" title="Visitors by hour">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 45 |
+| 10 AM | 120 |
+| 11 AM | 185 |
+| 12 PM | 260 |
+| 1 PM | 310 |
+| 2 PM | 240 |
+| 3 PM | 220 |
+| 4 PM | 280 |
+| 5 PM | 350 |
+| 6 PM | 420 |
+| 7 PM | 380 |
+</Chart>
+<Callout tone="info" title="Peak hour">6 PM – 7 PM sees the most traffic. Consider adding a second greeter during this window.</Callout>
+</Card>
+
+<Columns>
+<Card title="Best Sellers Today">
+| Product | Units |
+|---|---|
+| Wireless Earbuds Pro | 34 |
+| Smart Water Bottle | 28 |
+| Yoga Mat Premium | 22 |
+| Insulated Tumbler 20oz | 19 |
+| Phone Tripod | 15 |
+</Card>
+
+<Card title="Out of Stock">
+<Badge tone="danger">3 items need attention</Badge>
+
+| Item | Status |
+|---|---|
+| Bluetooth Speaker Mini | Out – reorder |
+| Running Shoes Size 10 | Out – reorder |
+| USB-C Cable 2m | Low (3 left) |
+</Card>
+</Columns>
+
+<Card title="Who's on Shift Today">
+<Columns>
+<div>
+<Avatar name="Sarah Chen" src="find" subtitle="9 AM – 2 PM · Floor" />
+<Avatar name="Mike Rodriguez" src="find" subtitle="9 AM – 1 PM · Registers" />
+<Avatar name="Priya Patel" src="find" subtitle="10 AM – 3 PM · Floor" />
+</div>
+<div>
+<Avatar name="James Wilson" src="find" subtitle="12 PM – 5 PM · Registers" />
+<Avatar name="Amara Okafor" src="find" subtitle="2 PM – 7 PM · Floor" />
+<Avatar name="Tom Becker" src="find" subtitle="3 PM – 9 PM · Registers" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Running Promotions">
+| Promotion | Goal | Progress | Status |
+|---|---|---|---|
+| Summer Sale – 20% off apparel | $5,000 | $3,240 | <Badge tone="info">On track</Badge> |
+| Buy 1 Get 1 – Accessories | 150 items | 98 items | <Badge tone="warning">Behind</Badge> |
+| Member Double Points Weekend | 200 members | 214 members | <Badge tone="success">Exceeded</Badge> |
+</Card>
+
+<Card title="Registers">
+<Columns>
+<div>
+**Register 1** – Mike (9 AM – 1 PM) <Badge tone="success">Open</Badge>
+**Register 2** – James (12 PM – 5 PM) <Badge tone="success">Open</Badge>
+**Register 3** – Tom (3 PM – 9 PM) <Badge tone="success">Open</Badge>
+</div>
+<div>
+**Register 4** – Closed <Badge tone="neutral">Closed</Badge>
+**Register 5** – Closed <Badge tone="neutral">Closed</Badge>
+</div>
+</Columns>
+<Callout tone="warning" title="Open registers">3 of 5 registers open. During peak (5–7 PM), consider opening Register 4.</Callout>
+</Card>
+
+<Card title="This Week vs. Last Week">
+<Chart type="line" x="Day" y="USD" title="Sales comparison">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 6,850 | 6,420 |
+| Tue | 8,452 | 7,510 |
+| Wed | – | 7,980 |
+| Thu | – | 8,240 |
+| Fri | – | 9,120 |
+| Sat | – | 11,450 |
+| Sun | – | 8,760 |
+</Chart>
+<Columns>
+<div>
+<Stat label="Week-to-Date" value="$15,302" change="+9.8%" tone="success" />
+</div>
+<div>
+<Stat label="Projected Week" value="$54,800" change="+7.2%" tone="success" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Reorder Item">
+<Form name="reorder">
+<Select label="Item" placeholder="Choose an item" options="Bluetooth Speaker Mini | Running Shoes Size 10 | USB-C Cable 2m | Other" />
+<Stepper label="Quantity" value="10" min="1" max="100" step="5" unit="units" />
+<TextArea label="Note to vendor" placeholder="Optional notes" rows="2" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="Switch Store">
+<Select label="Store" placeholder="Choose a store" options="Store #204 – Downtown Mall | Store #118 – Westfield Plaza | Store #302 – Airport Terminal | Store #077 – City Center" />
+<Button>View store</Button>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" icon="chart-line">View full report</Button>
+<Button variant="secondary" icon="users">Staff schedule</Button>
+<Button variant="secondary" icon="package">Inventory</Button>
+<Button variant="secondary" icon="receipt">Returns log</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show me the top 10 best sellers this week
+- Which promotion should I adjust?
+- What's the conversion rate from foot traffic to sales?
+- Who's available for overtime tomorrow?
+</FollowUps>

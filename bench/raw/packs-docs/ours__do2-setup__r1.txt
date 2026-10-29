@@ -1,0 +1,100 @@
+# Project Setup Guide
+
+<Card title="Project Structure" subtitle="Files and folders in the repository">
+<FileTree title="my-project">
+- src/
+  - index.ts
+  - utils/
+    - helpers.ts
+    - constants.ts
+  - components/
+    - Button.tsx
+    - Card.tsx
+- tests/
+  - index.test.ts
+  - utils.test.ts
+- .github/
+  - workflows/
+    - ci.yml
+- public/
+  - favicon.ico
+  - manifest.json
+- package.json
+- tsconfig.json
+- .eslintrc.json
+- .prettierrc
+- .gitignore
+- README.md
+- LICENSE
+</FileTree>
+</Card>
+
+<Card title="Configuration" subtitle="TypeScript config (tsconfig.json)">
+<Code file="tsconfig.json" highlight="5 | 12 | 18">
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"]
+}
+</Code>
+</Card>
+
+<Card title="Run Commands" subtitle="Common development and build commands">
+<Code file="package.json scripts" highlight="3 | 5 | 7 | 9">
+{
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx,json}\"",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky install"
+  }
+}
+</Code>
+
+<Details title="Command reference">
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Compile TypeScript to `dist/` |
+| `npm start` | Run the compiled production build |
+| `npm test` | Run tests once (CI mode) |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run lint` | Check code style with ESLint |
+| `npm run format` | Auto-format code with Prettier |
+| `npm run typecheck` | Type-check without emitting files |
+</Details>
+</Card>
+
+<Callout tone="info" title="Quick start">
+<Steps>
+<Step title="Install dependencies" status="done">npm install</Step>
+<Step title="Run type check" status="done">npm run typecheck</Step>
+<Step title="Start development server" status="current">npm run dev</Step>
+<Step title="Run tests" status="todo">npm test</Step>
+<Step title="Build for production" status="todo">npm run build</Step>
+</Steps>
+</Callout>

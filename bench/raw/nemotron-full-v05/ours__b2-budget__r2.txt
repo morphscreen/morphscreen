@@ -1,0 +1,48 @@
+# Personal Budget Check
+
+<Card title="Budget Overview" subtitle="May 2024">
+<Columns>
+<Stat label="Spent" value="$2,847" change="$347 over budget" tone="danger" />
+<Stat label="Budget" value="$2,500" tone="neutral" />
+<Stat label="Remaining" value="-$347" tone="danger" />
+</Columns>
+
+<Progress value="2847" max="2500" label="Budget usage: 113.9%" tone="danger" />
+
+<Select label="View month" name="month" value="2024-05" options="2024-05 | 2024-04 | 2024-03 | 2024-02 | 2024-01" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food | 680 |
+| Transport | 320 |
+| Entertainment | 245 |
+| Utilities | 180 |
+| Shopping | 150 |
+| Other | 72 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="This month">
+<Callout tone="warning" title="Rent payment — $1,200">
+**Category:** Housing  
+**Date:** May 1, 2024  
+**Payment method:** Bank transfer  
+**Note:** Monthly rent for apartment
+</Callout>
+</Card>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transport | Entertainment | Utilities | Shopping | Other" required="true" />
+<Input label="Description" name="description" placeholder="What was this for?" required="true" />
+<Date label="Date" name="date" value="2024-05-15" required="true" />
+<Select label="Payment method" name="payment" placeholder="Select method" options="Cash | Card | Bank transfer | Digital wallet" />
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

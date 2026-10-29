@@ -1,0 +1,141 @@
+# Store Manager Daily Console
+
+<Card title="Store Selector">
+<Select label="Select Store" options="Downtown Main | Mall Location | Airport Terminal | Suburban Plaza" placeholder="Choose a store" />
+</Card>
+
+<Columns>
+<Card title="Sales Today vs Target">
+<Progress value="84750" max="100000" label="$84,750 / $100,000" tone="success" />
+<Stat label="Target Progress" value="84.8%" change="+2.3% vs yesterday" tone="success" />
+</Card>
+
+<Card title="Average Basket Size">
+<Stat label="Avg Basket" value="$47.20" change="+$1.80 vs last week" tone="info" />
+</Card>
+
+<Card title="Returns This Week">
+<Stat label="Returns" value="23" change="-5 vs last week" tone="success" />
+<Stat label="Return Rate" value="2.1%" change="-0.3%" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Foot Traffic Through the Day">
+<Chart type="line" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 34 |
+| 10 AM | 67 |
+| 11 AM | 89 |
+| 12 PM | 134 |
+| 1 PM | 156 |
+| 2 PM | 142 |
+| 3 PM | 128 |
+| 4 PM | 167 |
+| 5 PM | 189 |
+| 6 PM | 145 |
+| 7 PM | 98 |
+| 8 PM | 56 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Best Sellers Today">
+<Chart type="bar" x="Product" y="Units">
+| Product | Units |
+|---|---|
+| Wireless Earbuds | 42 |
+| Phone Cases | 38 |
+| Screen Protectors | 31 |
+| Power Banks | 27 |
+| Charging Cables | 24 |
+| Bluetooth Speakers | 19 |
+</Chart>
+</Card>
+
+<Card title="Items Out of Stock">
+<Details title="⚠️ 5 Items Out of Stock" open="true">
+| SKU | Product | Last Sold | Reorder Qty |
+|---|---|---|---|
+| SKU-8472 | USB-C Hub 7-in-1 | 2 days ago | 20 |
+| SKU-9103 | Wireless Charger Pad | Yesterday | 15 |
+| SKU-5521 | Noise Cancelling Headphones | 3 days ago | 10 |
+| SKU-3389 | Portable SSD 1TB | 4 days ago | 8 |
+| SKU-7745 | Smart Watch Band 42mm | 1 day ago | 25 |
+</Details>
+</Card>
+</Columns>
+
+<Card title="This Week vs Last Week">
+<Chart type="bar" x="Day" y="Revenue">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 92400 | 88100 |
+| Tue | 95600 | 91200 |
+| Wed | 98700 | 94300 |
+| Thu | 101200 | 97800 |
+| Fri | 108900 | 105400 |
+| Sat | 124500 | 118700 |
+| Sun | 87300 | 82100 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Active Promotions Performance">
+| Promotion | Type | Revenue | Units | Conversion | Status |
+|---|---|---|---|---|---|
+| Summer Sale 20% | Percentage | $12,400 | 156 | 8.2% | <Badge tone="success">Active</Badge> |
+| Buy 2 Get 1 Free | BOGO | $8,900 | 234 | 12.1% | <Badge tone="success">Active</Badge> |
+| Student Discount 15% | Percentage | $3,200 | 41 | 5.8% | <Badge tone="info">Active</Badge> |
+| Loyalty Double Points | Points | $5,600 | 67 | 6.4% | <Badge tone="warning">Ends Tomorrow</Badge> |
+| Clearance 50% Off | Percentage | $1,800 | 28 | 3.2% | <Badge tone="neutral">Low Stock</Badge> |
+</Card>
+
+<Card title="Registers Status">
+| Register | Status | Cashier | Sales Today | Transactions |
+|---|---|---|---|---|
+| Register 1 | <Badge tone="success">Open</Badge> | Sarah Chen | $18,450 | 87 |
+| Register 2 | <Badge tone="success">Open</Badge> | Mike Torres | $15,200 | 72 |
+| Register 3 | <Badge tone="success">Open</Badge> | Priya Patel | $12,800 | 61 |
+| Register 4 | <Badge tone="warning">Break</Badge> | — | $8,900 | 43 |
+| Register 5 | <Badge tone="neutral">Closed</Badge> | — | $0 | 0 |
+| Self-Checkout 1 | <Badge tone="success">Open</Badge> | Auto | $14,600 | 94 |
+| Self-Checkout 2 | <Badge tone="success">Open</Badge> | Auto | $14,800 | 98 |
+</Card>
+</Columns>
+
+<Card title="On Shift Today">
+<Columns>
+<Avatar name="Sarah Chen" subtitle="Shift Lead • 8AM–4PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" />
+<Avatar name="Mike Torres" subtitle="Cashier • 8AM–4PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike" />
+<Avatar name="Priya Patel" subtitle="Cashier • 10AM–6PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" />
+<Avatar name="James Wilson" subtitle="Floor Lead • 12PM–8PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" />
+<Avatar name="Lisa Park" subtitle="Cashier • 12PM–8PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa" />
+<Avatar name="David Kim" subtitle="Stock • 6AM–2PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=David" />
+<Avatar name="Emma Davis" subtitle="Stock • 2PM–10PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emma" />
+<Avatar name="Alex Rivera" subtitle="Security • 8AM–4PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" />
+</Columns>
+</Card>
+
+<Card title="Quick Reorder">
+<Form name="reorder-form">
+<Columns>
+<Select label="Item to Reorder" name="item" options="USB-C Hub 7-in-1 (SKU-8472) | Wireless Charger Pad (SKU-9103) | Noise Cancelling Headphones (SKU-5521) | Portable SSD 1TB (SKU-3389) | Smart Watch Band 42mm (SKU-7745) | Other..." placeholder="Select out-of-stock item" required="true" />
+<Input label="Quantity" name="qty" type="number" placeholder="20" min="1" max="500" step="1" required="true" />
+</Columns>
+<Columns>
+<Select label="Priority" name="priority" options="Standard (3-5 days) | Express (1-2 days) | Emergency (same day)" placeholder="Standard (3-5 days)" />
+<Input label="Notes" name="notes" type="text" placeholder="Optional: supplier preference, special instructions..." />
+</Columns>
+<Button>Submit Reorder Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- View detailed sales report for this week
+- Check inventory levels across all stores
+- Review staff schedule for next week
+- Analyze promotion ROI for Q3 planning
+</FollowUps>

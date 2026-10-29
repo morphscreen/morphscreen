@@ -1,0 +1,223 @@
+# City Operations Center — Live Screen
+
+<Callout tone="info" title="Shift view — Thursday, 14:32">All feeds live. Last sync 40 seconds ago. Duty officer: A. Okonkwo.</Callout>
+
+<Card title="Focus district" subtitle="Narrows every panel on this screen">
+<Select label="District" options="All districts | Riverside | Northgate | Old Town | Harbor | Eastfield | Midhill" name="district" value="All districts" hint="Changing this filters congestion, air quality, incidents, parking and events" />
+</Card>
+
+<Columns>
+<Stat label="Congestion index" value="68 / 100" change="+7 vs 1h ago" tone="warning" icon="traffic-cone" note="Moderate–heavy" />
+<Stat label="Transit punctuality" value="91.4%" change="-1.8 pts today" tone="warning" icon="bus" note="Target 95%" />
+<Stat label="Air quality (worst district)" value="AQI 112" change="Northgate" tone="danger" icon="wind" note="Unhealthy for sensitive groups" />
+<Stat label="Open incidents" value="27" change="4 critical" tone="danger" icon="warning" note="6 new in last hour" />
+</Columns>
+
+<Card title="1. Congestion right now" subtitle="Live corridor speeds and delay">
+<Chart type="bar" x="Corridor" y="Avg speed (km/h)">
+| Corridor | Speed | Free-flow |
+|---|---|---|
+| Riverside Expwy | 22 | 80 |
+| Northgate Ring | 31 | 70 |
+| Old Town Cross | 18 | 50 |
+| Harbor Approach | 44 | 60 |
+| Eastfield Link | 52 | 70 |
+</Chart>
+<Progress value="68" max="100" label="Citywide congestion index" tone="warning" />
+<Button ask="Show me the worst congestion corridor in detail">Worst corridor</Button>
+</Card>
+
+<Card title="2. Transit punctuality" subtitle="On-time performance by mode, last 60 min">
+| Mode | On time | Delayed | Cancelled |
+|---|---|---|---|
+| Metro | 93% | 6% | 1% |
+| Tram | 89% | 10% | 1% |
+| Bus | 90% | 9% | 1% |
+| Regional rail | 84% | 14% | 2% |
+</Card>
+
+<Card title="3. Air quality by district" subtitle="AQI now, PM2.5 µg/m³ in brackets">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Northgate | 112 |
+| Old Town | 96 |
+| Riverside | 74 |
+| Harbor | 61 |
+| Midhill | 55 |
+| Eastfield | 42 |
+</Chart>
+<Callout tone="warning" title="Northgate above threshold">AQI 112 for 3 consecutive hours. Consider an air-quality advisory.</Callout>
+<Button ask="Draft a public air quality advisory for Northgate">Draft advisory</Button>
+</Card>
+
+<Card title="4. Energy use — past week" subtitle="Grid load in MW, citywide">
+<Chart type="line" x="Day" y="MW">
+| Day | Load | Peak |
+|---|---|---|
+| Mon | 412 | 498 |
+| Tue | 430 | 511 |
+| Wed | 455 | 540 |
+| Thu | 468 | 562 |
+| Fri | 441 | 527 |
+| Sat | 388 | 461 |
+| Sun | 372 | 440 |
+</Chart>
+<Progress value="562" max="650" label="Peak load vs capacity (650 MW)" tone="info" />
+</Card>
+
+<Card title="5. Water use today">
+<Columns>
+<Stat label="Consumed so far" value="318 ML" change="+4% vs yesterday" tone="info" icon="drop" />
+<Stat label="Reservoir level" value="71%" change="-0.6 pts this week" tone="neutral" />
+<Stat label="Peak hour demand" value="07:00–08:00" tone="neutral" />
+</Columns>
+<Progress value="318" max="420" label="Daily allocation used (420 ML)" tone="success" />
+</Card>
+
+<Card title="6. Open incidents" subtitle="Location and severity">
+| ID | Type | Location | Severity | Since |
+|---|---|---|---|---|
+| INC-4412 | Water main break | Riverside, Mill Rd & 3rd | <Badge tone="danger">Critical</Badge> | 22 min |
+| INC-4409 | Signal failure | Northgate Ring, Jct 4 | <Badge tone="danger">Critical</Badge> | 51 min |
+| INC-4405 | Fallen tree | Old Town, Elm Park | <Badge tone="warning">High</Badge> | 1 h 40 |
+| INC-4401 | Sinkhole | Harbor, Pier 7 | <Badge tone="warning">High</Badge> | 2 h 15 |
+| INC-4398 | Streetlight outage | Eastfield, Rowan Ave | <Badge tone="neutral">Low</Badge> | 3 h 05 |
+| INC-4396 | Overflowing bin | Midhill, Market Sq | <Badge tone="neutral">Low</Badge> | 4 h 30 |
+
+<Button ask="Open incident INC-4412, the Riverside water main break">Open INC-4412</Button>
+<Button variant="secondary" ask="Show all incidents on a map">View on map</Button>
+</Card>
+
+<Card title="7. Emergency vehicle deployment" subtitle="Live unit positions">
+| Unit | Type | District | Status |
+|---|---|---|---|
+| AMB-12 | Ambulance | Riverside | <Badge tone="danger">On scene</Badge> |
+| AMB-07 | Ambulance | Northgate | <Badge tone="success">Available</Badge> |
+| FIRE-3 | Pumper | Old Town | <Badge tone="warning">En route</Badge> |
+| FIRE-8 | Ladder | Harbor | <Badge tone="success">Available</Badge> |
+| POL-21 | Patrol | Eastfield | <Badge tone="info">Patrolling</Badge> |
+| POL-04 | Patrol | Midhill | <Badge tone="success">Available</Badge> |
+</Card>
+
+<Card title="8. Parking availability downtown" subtitle="Live spaces free">
+<Chart type="horizontal" x="Garage" y="Free spaces">
+| Garage | Free | Capacity |
+|---|---|---|
+| Civic Center | 34 | 600 |
+| Market Street | 12 | 450 |
+| Riverside Deck | 88 | 520 |
+| Old Town Lot | 141 | 300 |
+| Harbor Point | 203 | 700 |
+</Chart>
+<Callout tone="warning" title="Market Street nearly full">12 spaces left. Recommend routing to Old Town Lot or Harbor Point.</Callout>
+<Button ask="Route drivers to Old Town Lot and Harbor Point">Update wayfinding signs</Button>
+</Card>
+
+<Card title="9. Public events this weekend">
+| Event | Location | Sat | Sun | Expected |
+|---|---|---|---|---|
+| Riverside Food Festival | Mill Rd riverside | 11:00–22:00 | 11:00–20:00 | 18,000 |
+| Old Town Street Market | Market Sq | 09:00–17:00 | 10:00–16:00 | 6,500 |
+| Harbor Fireworks | Pier 3 | — | 21:30–22:00 | 12,000 |
+| Midhill 10K Run | Midhill Park loop | 07:00–11:00 | — | 3,200 |
+</Card>
+
+<Card title="10. Citizen reports — incoming" subtitle="Unverified, newest first">
+| Time | Report | District | Source |
+|---|---|---|---|
+| 14:31 | "Water gushing onto Mill Rd" | Riverside | App |
+| 14:28 | "Traffic light stuck red at Jct 4" | Northgate | Phone |
+| 14:19 | "Strong smell, smoky air" | Northgate | App |
+| 14:12 | "Big pothole by Pier 7" | Harbor | Web |
+| 14:04 | "Streetlight out on Rowan Ave" | Eastfield | App |
+</Card>
+
+<Card title="11. Service request backlog">
+<Columns>
+<Stat label="Open requests" value="1,284" change="+96 this week" tone="warning" icon="clipboard" />
+<Stat label="Overdue (>14 days)" value="173" change="+12" tone="danger" />
+<Stat label="Avg. resolution" value="9.4 days" change="-0.8 days" tone="success" />
+</Columns>
+<Chart type="bar" x="Category" y="Open requests">
+| Category | Open |
+|---|---|
+| Roads & potholes | 412 |
+| Street lighting | 268 |
+| Waste & bins | 231 |
+| Water & drainage | 198 |
+| Parks & trees | 175 |
+</Chart>
+</Card>
+
+<Card title="12. Current weather">
+<Columns>
+<Stat label="Condition" value="Overcast" note="Light rain since 13:10" icon="cloud-rain" />
+<Stat label="Temperature" value="14 °C" change="-3 °C vs yesterday" tone="info" />
+<Stat label="Wind" value="22 km/h NW" note="Gusts to 41 km/h" />
+<Stat label="Rain next 6h" value="8 mm" tone="warning" />
+</Columns>
+<Callout tone="info" title="Forecast note">Rain easing after 19:00. Wind gusts may affect Harbor fireworks setup.</Callout>
+</Card>
+
+<Card title="13. Focus on one district" subtitle="Set the whole screen to a single district">
+<Form name="district-focus">
+<Radio label="Choose district" options="All districts | Riverside | Northgate | Old Town | Harbor | Eastfield | Midhill" name="focus-district" value="Riverside" />
+<Switch label="Show only incidents and assets in this district" name="strict-filter" value="true" />
+<Button>Apply focus</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="14. Dispatch a crew" subtitle="Assign a team to an incident or job">
+<Form name="dispatch-crew">
+<Select label="Incident or job" options="INC-4412 Water main break, Riverside | INC-4409 Signal failure, Northgate | INC-4405 Fallen tree, Old Town | JOB-8821 Substation maintenance, Midhill" name="target" />
+<Select label="Crew" options="Water Crew A | Water Crew B | Signals Crew 2 | Roads Crew 1 | Parks Crew 3 | Electrical Crew 4" name="crew" />
+<Select label="Priority" options="Routine | Urgent | Emergency" name="priority" />
+<Input label="ETA (minutes)" type="number" name="eta" placeholder="25" min="1" max="480" />
+<TextArea label="Instructions" name="instructions" rows="3" placeholder="Access via Mill Rd; road closure permit already issued." />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="15. Send a public alert" subtitle="Push to app, SMS and street signage">
+<Form name="public-alert">
+<Select label="Channel" options="App push + SMS | App push only | SMS only | Street signage | All channels" name="channel" />
+<Select label="District" options="Citywide | Riverside | Northgate | Old Town | Harbor | Eastfield | Midhill" name="alert-district" />
+<Select label="Severity" options="Informational | Advisory | Warning | Emergency" name="alert-severity" />
+<Input label="Headline" name="headline" placeholder="Water outage on Mill Rd" required="true" />
+<TextArea label="Message" name="message" rows="4" placeholder="Crews are repairing a water main on Mill Rd. Residents in Riverside may see low pressure until 18:00. Avoid the area." required="true" hint="Keep under 300 characters for SMS delivery" />
+<Checkboxes label="Also notify" options="Local media | Schools | Hospitals | Transit operators" name="also-notify" />
+<Button>Send alert</Button>
+<Button variant="danger">Send as emergency</Button>
+</Form>
+</Card>
+
+<Card title="16. Roadworks planned this month">
+| Project | Location | Dates | Impact |
+|---|---|---|---|
+| Mill Rd resurfacing | Riverside | 12–19 | 1 lane closed |
+| Jct 4 signal rebuild | Northgate | 15–22 | Night closures |
+| Pier 7 drainage | Harbor | 18–30 | Access restricted |
+| Elm Park path renewal | Old Town | 20–27 | Path closed |
+</Card>
+
+<Card title="17. Infrastructure jobs due for maintenance">
+| Asset | District | Due | Risk |
+|---|---|---|---|
+| Substation S-14 | Midhill | 4 days | <Badge tone="danger">High</Badge> |
+| Pump station P-2 | Riverside | 9 days | <Badge tone="warning">Medium</Badge> |
+| Bridge B-7 bearings | Harbor | 16 days | <Badge tone="warning">Medium</Badge> |
+| Water tower W-3 | Northgate | 24 days | <Badge tone="neutral">Low</Badge> |
+| Depot roof | Eastfield | 31 days | <Badge tone="neutral">Low</Badge> |
+
+<Button ask="Schedule maintenance for substation S-14 in Midhill">Schedule S-14</Button>
+</Card>
+
+<FollowUps>
+- Focus the whole screen on Riverside
+- Dispatch a crew to the Riverside water main break
+- Draft a public alert about the Northgate air quality
+- Show me all critical incidents on a map
+- Which infrastructure jobs are due in the next 7 days?
+</FollowUps>

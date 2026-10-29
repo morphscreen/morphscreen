@@ -1,0 +1,105 @@
+root = Card([
+  header,
+  portfolioValueCard,
+  plTodayCard,
+  positionsTable,
+  exposureChart,
+  varAtRiskCard,
+  gainersLosersTable,
+  watchedInstrumentsList,
+  workingOrdersTable,
+  marginCard,
+  marketHeadlinesList,
+  economicReleasesSection,
+  strategyReturnsChart,
+  drawdownChart,
+  riskLimitsCard,
+  rebalanceBtn,
+  orderForm,
+  timeframeSelect
+])
+
+header = CardHeader("Morning Workspace", null)
+
+portfolioValueHeader = CardHeader("Portfolio Value", null)
+portfolioValueCallout = TextCallout("info", "Portfolio Value", "$12,345,678")
+portfolioValueCard = Card([portfolioValueHeader, portfolioValueCallout], "sunk")
+
+plTodayHeader = CardHeader("Profit & Loss Today", null)
+plTodayCallout = TextCallout("info", "P&L", "$+1,200")
+plTodayCard = Card([plTodayHeader, plTodayCallout], "sunk")
+
+tickerCol = Col("Ticker", ["AAPL", "MSFT", "TSLA", "NVDA"], "string")
+sizeCol = Col("Size", [100, 50, 200, 75], "number")
+entryPriceCol = Col("Entry", [150.0, 300.0, 150.0, 500.0], "number")
+currentPriceCol = Col("Current", [155.0, 310.0, 165.0, 520.0], "number")
+positionsTable = Table([tickerCol, sizeCol, entryPriceCol, currentPriceCol])
+
+exposureLabels = ["Tech", "Energy", "Healthcare", "Finance"]
+exposureValues = [45, 30, 15, 10]
+exposureChart = PieChart(exposureLabels, exposureValues, "pie", "circular")
+
+varAtRiskCallout = Callout("info", "Value at Risk", "$250,000")
+varAtRiskCard = Card([varAtRiskCallout], "sunk")
+
+gainersLosersTickerCol = Col("Ticker", ["AAPL", "TSLA"], "string")
+gainersLosersPnlCol = Col("PnL", [2500, -1800], "number")
+gainersLosersTable = Table([gainersLosersTickerCol, gainersLosersPnlCol])
+
+watchedAAPL = ListItem("AAPL", "155.0", null, null)
+watchedMSFT = ListItem("MSFT", "310.0", null, null)
+watchedTSLA = ListItem("TSLA", "165.0", null, null)
+watchedInstrumentsList = ListBlock([watchedAAPL, watchedMSFT, watchedTSLA])
+
+orderTickerCol = Col("Ticker", ["AAPL", "MSFT"], "string")
+orderSideCol = Col("Side", ["Buy", "Sell"], "string")
+orderQtyCol = Col("Qty", [100, 50], "number")
+orderStatusCol = Col("Status", ["Open", "Filled"], "string")
+workingOrdersTable = Table([orderTickerCol, orderSideCol, orderQtyCol, orderStatusCol])
+
+marginCallout = TextCallout("info", "Margin in Use", "$500,000")
+marginCard = Card([marginCallout], "sunk")
+
+marketHeadline1 = ListItem("Tech rally continues", "Positive")
+marketHeadline2 = ListItem("Oil prices dip", "Negative")
+marketHeadline3 = ListItem("Gold steadies", "Neutral")
+marketHeadlinesList = ListBlock([marketHeadline1, marketHeadline2, marketHeadline3])
+
+econRelease1 = ListItem("GDP (MoM)", "Forecast 2.1%", null, null)
+econRelease2 = ListItem("CPI YoY", "Forecast 3.4%", null, null)
+econRelease3 = ListItem("Unemployment Rate", "Forecast 3.8%", null, null)
+econSectionContent = ListBlock([econRelease1, econRelease2, econRelease3])
+econSection = SectionItem("Econ Releases", "Econ Releases", econSectionContent)
+economicReleasesSection = SectionBlock([econSection], false)
+
+strategySeries1 = Series("Long Equity", [12.5])
+strategySeries2 = Series("Options", [8.0])
+strategySeries3 = Series("Crypto", [15.2])
+strategyLabels = ["Long Equity", "Options", "Crypto"]
+strategyReturnsChart = BarChart(strategyLabels, [strategySeries1, strategySeries2, strategySeries3], "grouped")
+
+drawdownLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+drawdownSeries = Series("Drawdown", [-5, -3, -8, -4, -6, -2, -9, -5, -7, -3, -4, -1])
+drawdownChart = LineChart(drawdownLabels, [drawdownSeries], "natural", "Month", "Drawdown (%)")
+
+riskLimitsCallout = Callout("warning", "Risk Limits", "$1,000,000 (90% of capacity)")
+riskLimitsCard = Card([riskLimitsCallout], "sunk")
+
+rebalanceBtn = Button("Rebalance Portfolio", null, "primary")
+
+tickerInput = Input("ticker", "Enter ticker", "text")
+sideSelect = Select("side", [SelectItem("Buy", "Buy"), SelectItem("Sell", "Sell")], "Choose side")
+qtyInput = Input("quantity", "Enter quantity", "number")
+tickerField = FormControl("Ticker", tickerInput)
+sideField = FormControl("Side", sideSelect)
+qtyField = FormControl("Quantity", qtyInput)
+formButtons = Buttons([submitBtn, cancelBtn])
+submitBtn = Button("Submit Order", null, "primary")
+cancelBtn = Button("Cancel", null, "tertiary")
+orderForm = Form("order-form", formButtons, [tickerField, sideField, qtyField])
+
+timeframeSelectItem1 = SelectItem("1D", "1 day")
+timeframeSelectItem2 = SelectItem("1W", "1 week")
+timeframeSelectItem3 = SelectItem("1M", "1 month")
+timeframeSelectItem4 = SelectItem("1Y", "1 year")
+timeframeSelect = Select("timeframe", [timeframeSelectItem1, timeframeSelectItem2, timeframeSelectItem3, timeframeSelectItem4], "1D")

@@ -1,0 +1,8 @@
+root = Card([header, uptimeSection, incidentSection], "card", "column", "l")
+header = CardHeader("Platform Status", "API uptime and incident summary for this month")
+uptimeSection = Card([uptimeLabel, uptimeProgress], "sunk", "column", "m")
+uptimeLabel = TextContent("API Uptime This Month", "large-heavy")
+uptimeProgress = Progress(99.97, "99.97% — 21 minutes 36 seconds of downtime")
+incidentSection = Card([incidentLabel, incidentCallout], "sunk", "column", "m")
+incidentLabel = TextContent("Most Recent Incident", "large-heavy")
+incidentCallout = Callout("info", "Partial API degradation — 2024-11-12", "Elevated error rates on /v1/payments endpoint from 14:22–14:47 UTC. Root cause: downstream payment provider latency spike. Mitigated by failing over to secondary provider. Fully resolved at 14:47 UTC. Postmortem published.")

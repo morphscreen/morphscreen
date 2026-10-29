@@ -1,0 +1,62 @@
+# E-Commerce Operations Desk
+
+## Key Metrics
+
+<Columns>
+<Stat label="Orders Today" value="147" change="+12% vs yesterday" tone="success" icon="shopping-cart" />
+<Stat label="Revenue Today" value="$28,450" change="+8% vs yesterday" tone="success" icon="currency-dollar" />
+<Stat label="Avg Order Value" value="$193.54" change="-2% vs yesterday" tone="neutral" icon="chart-line" />
+<Stat label="Refund Rate (Month)" value="3.2%" change="-0.4% vs last month" tone="success" icon="arrow-counter-clockwise" />
+</Columns>
+
+## Orders
+
+<Card title="Recent Orders" subtitle="Filter and search to find specific orders">
+<Columns>
+<Select label="Status" name="status-filter" placeholder="All statuses" options="All | Pending | Processing | Shipped | Delivered | Cancelled | Refunded" />
+<Input label="Search Customer" name="customer-search" type="search" placeholder="Type customer name..." hint="Filters in real time" />
+</Columns>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #ORD-2024-08921 | Sarah Mitchell | $247.00 | <Badge tone="info">Processing</Badge> | <Button variant="secondary" size="small">Mark Fulfilled</Button> |
+| #ORD-2024-08920 | James Chen | $89.50 | <Badge tone="success">Shipped</Badge> | <Button variant="tertiary" size="small" disabled>Fulfilled</Button> |
+| #ORD-2024-08919 | Maria Rodriguez | $412.30 | <Badge tone="warning">Pending</Badge> | <Button variant="secondary" size="small">Mark Fulfilled</Button> |
+| #ORD-2024-08918 | David Park | $156.75 | <Badge tone="success">Delivered</Badge> | <Button variant="tertiary" size="small" disabled>Fulfilled</Button> |
+| #ORD-2024-08917 | Lisa Thompson | $324.00 | <Badge tone="danger">Cancelled</Badge> | <Button variant="tertiary" size="small" disabled>—</Button> |
+| #ORD-2024-08916 | Robert Kim | $198.25 | <Badge tone="info">Processing</Badge> | <Button variant="secondary" size="small">Mark Fulfilled</Button> |
+| #ORD-2024-08915 | Amanda Foster | $67.90 | <Badge tone="success">Shipped</Badge> | <Button variant="tertiary" size="small" disabled>Fulfilled</Button> |
+| #ORD-2024-08914 | Kevin Walsh | $523.40 | <Badge tone="warning">Pending</Badge> | <Button variant="secondary" size="small">Mark Fulfilled</Button> |
+</Card>
+
+## Trends
+
+<Columns>
+<Card title="Order Volume (Past 4 Weeks)">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 892 |
+| Week 2 | 1,045 |
+| Week 3 | 1,178 |
+| Week 4 | 1,234 |
+</Chart>
+</Card>
+
+<Card title="Revenue Trend (Past 4 Weeks)">
+<Chart type="line" x="Week" y="Revenue">
+| Week | Revenue |
+|---|---|
+| Week 1 | 168400 |
+| Week 2 | 198200 |
+| Week 3 | 224600 |
+| Week 4 | 241800 |
+</Chart>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me orders needing attention
+- Export today's orders to CSV
+- View refund details for this month
+</FollowUps>

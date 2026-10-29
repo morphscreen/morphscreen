@@ -1,0 +1,67 @@
+# Training analytics
+
+Learner performance, engagement, and risk across your programs. <Badge tone="info">Live data</Badge>
+
+<Card title="Narrow to one cohort" subtitle="All metrics below update to the cohort you pick">
+<Columns>
+<Select label="Cohort" name="cohort" options="All cohorts | Engineering onboarding — Q3 2025 | Sales enablement — Q4 2025 | Design fundamentals — Q4 2025" placeholder="All cohorts" />
+<Button variant="primary" icon="chat" ask="Compose a message to the cohort selected in Training analytics, summarizing their progress and reminding them of any upcoming deadlines.">Message cohort</Button>
+</Columns>
+</Card>
+
+<Card title="Key metrics" subtitle="Compared with the previous 7 days">
+<Columns>
+<Stat label="Active learners this week" value="1,284" change="+8.2% week over week" icon="users" tone="info" />
+<Stat label="Course completion rate" value="68%" change="+3.5 pts" icon="check-circle" tone="success" />
+<Stat label="Average quiz score" value="82%" change="-1.2 pts" icon="target" tone="warning" />
+<Stat label="Learners at risk" value="47" change="-6 week over week" icon="warning" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Engagement across the past eight weeks" subtitle="Active learners and lessons completed per week">
+<Chart type="area" x="Week" y="Learners">
+| Week | Active learners | Lessons completed |
+|---|---|---|
+| Aug 11 | 812 | 1184 |
+| Aug 18 | 879 | 1276 |
+| Aug 25 | 941 | 1403 |
+| Sep 1 | 1022 | 1512 |
+| Sep 8 | 1098 | 1664 |
+| Sep 15 | 1164 | 1805 |
+| Sep 22 | 1231 | 1957 |
+| Sep 29 | 1284 | 2108 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Total enrollments by course">
+<Chart type="horizontal" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Python for Data Analysis | 1248 |
+| Cloud Fundamentals | 984 |
+| Leadership Essentials | 826 |
+| SQL Bootcamp | 741 |
+| Design Systems | 503 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Last active more than 7 days ago, or latest quiz below 60%">
+<Callout tone="warning" title="47 learners need follow-up">14% of the selected cohort is at risk. Engineering onboarding has the highest share (18%), driven mostly by inactivity in the past two weeks.</Callout>
+
+| Learner | Course | Progress | Last active | Latest quiz | Risk |
+|---|---|---|---|---|---|
+| Maya Chen | Python for Data Analysis | 34% | 12 days ago | 54% | <Badge tone="danger">High</Badge> |
+| Jordan Smith | Cloud Fundamentals | 42% | 9 days ago | 58% | <Badge tone="danger">High</Badge> |
+| Priya Patel | SQL Bootcamp | 28% | 15 days ago | 49% | <Badge tone="danger">High</Badge> |
+| Liam O'Brien | Leadership Essentials | 55% | 21 days ago | 61% | <Badge tone="danger">High</Badge> |
+| Sofia Garcia | Python for Data Analysis | 61% | 7 days ago | 52% | <Badge tone="warning">Medium</Badge> |
+| Noah Kim | Design Systems | 47% | 10 days ago | 63% | <Badge tone="warning">Medium</Badge> |
+</Card>
+
+<Card title="Message a cohort" subtitle="Send a note to every learner in the cohort selected above">
+<Form name="cohort-message">
+<Input label="Subject" name="subject" placeholder="Reminder: Week 4 quiz closes Friday" />
+<TextArea label="Message" name="message" rows="4" placeholder="Hi team — you're making great progress. Don't forget the Week 4 quiz closes this Friday. Book office hours if you're stuck." hint="Delivered by email and in-app notification to the selected cohort." />
+<Button variant="primary" icon="paper-plane">Send to cohort</Button>
+</Form>
+</Card>

@@ -1,0 +1,127 @@
+# Grid Operations Console
+
+Live overview of the power network. <Badge tone="success">All systems nominal</Badge>
+
+<Callout tone="warning" title="Live alert">Storm front approaching the northwest — wind generation expected to ramp down within 2 hours.</Callout>
+
+<Card title="Network load & capacity">
+<Columns>
+<div>
+<Stat label="Current load" value="5.82 GW" change="+2.1%" icon="chart-line" />
+<Stat label="Capacity" value="7.50 GW" change="77.6% utilized" tone="info" icon="gauge" />
+<Progress value="5820" max="7500" label="Load vs. capacity" tone="warning" />
+</div>
+<div>
+<Stat label="Price per MWh" value="$74.20" change="+$3.10" tone="warning" icon="currency-dollar" />
+<Stat label="Emissions today" value="2,340 tCO₂" change="-12% vs. avg" tone="success" icon="leaf" />
+</div>
+</Columns>
+</Card>
+
+<Card title="Generation mix">
+<Chart type="donut" title="Output by source">
+| Source | GW |
+|---|---|
+| Wind | 2.1 |
+| Solar | 1.4 |
+| Gas | 1.1 |
+| Nuclear | 0.9 |
+| Hydro | 0.3 |
+| Storage | 0.02 |
+</Chart>
+</Card>
+
+<Card title="Plants">
+<Tabs>
+<Tab title="All plants">
+| Plant | Source | Output | Status |
+|---|---|---|---|
+| Northwind | Wind | 1.2 GW | <Badge tone="success">Online</Badge> |
+| Solar Fields | Solar | 0.8 GW | <Badge tone="success">Online</Badge> |
+| Gas Peak 1 | Gas | 0.6 GW | <Badge tone="warning">Ramping</Badge> |
+| Nuclear Core | Nuclear | 0.9 GW | <Badge tone="success">Online</Badge> |
+| Hydro Falls | Hydro | 0.3 GW | <Badge tone="success">Online</Badge> |
+| Gas Peak 2 | Gas | 0.5 GW | <Badge tone="warning">Standby</Badge> |
+| Southwind | Wind | 0.9 GW | <Badge tone="danger">Degraded</Badge> |
+| Battery Bank | Storage | 0.02 GW | <Badge tone="success">Online</Badge> |
+</Tab>
+<Tab title="By region">
+| Region | Plants | Output |
+|---|---|---|
+| North | Northwind, Hydro Falls | 1.5 GW |
+| East | Nuclear Core, Solar Fields | 1.7 GW |
+| South | Southwind, Gas Peak 2 | 1.4 GW |
+| West | Gas Peak 1, Battery Bank | 1.22 GW |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Outages">
+| Affected region | Outage | Est. restoration |
+|---|---|---|
+| South — coastal districts | Transformer failure at substation S-12 | 18:00 today |
+| North — rural grid | Storm damage to transmission lines | 06:00 tomorrow |
+| West — industrial zone | Planned switchgear replacement | 14:00 today |
+</Card>
+
+<Card title="Demand forecast — next 24 hours">
+<Chart type="line" x="Hour" y="GW">
+| Hour | Forecast | Actual |
+|---|---|---|
+| 00:00 | 5.0 | 5.1 |
+| 02:00 | 4.6 | 4.7 |
+| 04:00 | 4.4 | 4.5 |
+| 06:00 | 4.8 | 4.9 |
+| 08:00 | 5.6 | 5.7 |
+| 10:00 | 6.1 | 6.0 |
+| 12:00 | 6.4 | 6.3 |
+| 14:00 | 6.6 | 6.5 |
+| 16:00 | 6.8 | — |
+| 18:00 | 7.0 | — |
+| 20:00 | 6.7 | — |
+| 22:00 | 6.2 | — |
+</Chart>
+</Card>
+
+<Card title="Maintenance this month">
+| Date | Plant | Work | Region |
+|---|---|---|---|
+| Jun 12 | Nuclear Core | Turbine inspection | East |
+| Jun 15 | Hydro Falls | Penstock cleaning | North |
+| Jun 18 | Southwind | Blade replacement | South |
+| Jun 22 | Gas Peak 1 | Combustor service | West |
+</Card>
+
+<Card title="Live alerts">
+<Details title="14:32 — Storm warning NW" open=true>
+Wind speeds expected to exceed 25 m/s near Northwind. Output may drop by 40% within 2 hours.
+</Details>
+<Details title="13:58 — Price spike">
+Spot price up $4.20/MWh due to gas ramp. Expect continued volatility through peak hours.
+</Details>
+<Details title="13:10 — Southwind degradation">
+Blade pitch fault detected. Output reduced to 60%. Maintenance scheduled for Jun 18.
+</Details>
+</Card>
+
+<Card title="Region focus">
+<Select label="Focus region" options="All regions | North | East | South | West" name="region-focus" />
+<Callout tone="info" title="North region">
+Load: 1.42 GW · Capacity: 2.10 GW · Plants: Northwind (1.2 GW), Hydro Falls (0.3 GW) · Outages: rural grid lines down until 06:00 tomorrow.
+</Callout>
+</Card>
+
+<Card title="Curtailment order">
+<Form name="curtailment">
+<Select label="Plant" options="Southwind | Gas Peak 2 | Solar Fields | Battery Bank" name="plant" />
+<Slider label="Output reduction (%)" min="0" max="100" step="5" value="30" name="reduction" />
+<Radio label="Duration" options="1 hour | 4 hours | 8 hours | Until further notice" name="duration" />
+<Button variant="primary" label="Send curtailment order">Send curtailment order</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the detailed load profile for the North region
+- Which plants are most at risk of overload tonight?
+- Compare today's emissions to the weekly average
+</FollowUps>

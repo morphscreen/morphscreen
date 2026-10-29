@@ -1,0 +1,77 @@
+<Card title="Low Inventory Alerts" subtitle="Items at or below their reorder threshold">
+<Columns>
+  <Stat label="Items low" value="12" change="-3 this week" icon="warning" tone="warning" />
+  <Stat label="Avg. remaining" value="8.4 units" change="vs 14.2 at restock" icon="chart-line" tone="info" />
+  <Stat label="Est. restock cost" value="$1,240" note="For all 12 items" icon="currency-circle-dollar" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Warning threshold">
+<Callout tone="info" title="How this works">
+Items are flagged when their remaining units fall to or below the threshold set below. You can adjust the global threshold, or set per-item overrides.
+</Callout>
+<Slider label="Global low-stock threshold" min="1" max="50" value="10" name="threshold" />
+<p>The current threshold is <strong>10 units</strong>. Any item with 10 or fewer remaining units appears in the list below.</p>
+</Card>
+
+<Card title="Search items">
+<Input label="Search by name or SKU" name="search" placeholder="e.g. 'coffee' or 'SKU-2041'" type="search" />
+</Card>
+
+<Card title="Low-stock items (12)">
+<Columns>
+  <Card title="Coffee beans — House blend">
+    <Badge tone="warning">Low</Badge>
+    <Stat label="Remaining" value="6 units" icon="package" tone="warning" />
+    <p>Threshold: 10 units</p>
+    <Button variant="primary" label="Reorder 20 units">Reorder 20 units</Button>
+    <Button variant="secondary" label="Set custom threshold">Set custom threshold</Button>
+  </Card>
+
+  <Card title="Paper cups — 12 oz">
+    <Badge tone="danger">Critical</Badge>
+    <Stat label="Remaining" value="2 units" icon="package" tone="danger" />
+    <p>Threshold: 10 units</p>
+    <Button variant="primary" label="Reorder 100 units">Reorder 100 units</Button>
+    <Button variant="secondary" label="Set custom threshold">Set custom threshold</Button>
+  </Card>
+
+  <Card title="Milk — Whole, 1 gal">
+    <Badge tone="warning">Low</Badge>
+    <Stat label="Remaining" value="8 units" icon="package" tone="warning" />
+    <p>Threshold: 10 units</p>
+    <Button variant="primary" label="Reorder 24 units">Reorder 24 units</Button>
+    <Button variant="secondary" label="Set custom threshold">Set custom threshold</Button>
+  </Card>
+
+  <Card title="Pastry boxes — Large">
+    <Badge tone="warning">Low</Badge>
+    <Stat label="Remaining" value="10 units" icon="package" tone="warning" />
+    <p>Threshold: 10 units</p>
+    <Button variant="primary" label="Reorder 50 units">Reorder 50 units</Button>
+    <Button variant="secondary" label="Set custom threshold">Set custom threshold</Button>
+  </Card>
+</Columns>
+</Card>
+
+<Card title="All low-stock items">
+| Item | SKU | Remaining | Threshold | Status | Reorder |
+|---|---|---|---|---|---|
+| Coffee beans — House blend | SKU-1042 | 6 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 20">Reorder 20</Button> |
+| Paper cups — 12 oz | SKU-2041 | 2 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" label="Reorder 100">Reorder 100</Button> |
+| Milk — Whole, 1 gal | SKU-3310 | 8 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 24">Reorder 24</Button> |
+| Pastry boxes — Large | SKU-1187 | 10 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 50">Reorder 50</Button> |
+| Espresso cups — 6 oz | SKU-2045 | 4 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" label="Reorder 60">Reorder 60</Button> |
+| Sugar packets | SKU-5022 | 9 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 200">Reorder 200</Button> |
+| Napkins — Beverage | SKU-6011 | 7 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 150">Reorder 150</Button> |
+| Chocolate syrup | SKU-4017 | 3 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" label="Reorder 12">Reorder 12</Button> |
+| Almond milk — 1 qt | SKU-3325 | 10 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 18">Reorder 18</Button> |
+| Tea bags — Earl Grey | SKU-7013 | 5 | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" label="Reorder 40">Reorder 40</Button> |
+| Lids — 12 oz | SKU-2109 | 8 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 100">Reorder 100</Button> |
+| Croissants — Butter | SKU-8102 | 6 | 10 | <Badge tone="warning">Low</Badge> | <Button size="small" label="Reorder 24">Reorder 24</Button> |
+</Card>
+
+<Card title="Bulk actions">
+<Button variant="secondary" label="Reorder all low items">Reorder all low items</Button>
+<Button variant="tertiary" label="Export list">Export list</Button>
+</Card>

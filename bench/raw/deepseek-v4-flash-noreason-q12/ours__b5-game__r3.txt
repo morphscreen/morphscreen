@@ -1,0 +1,190 @@
+# Game Studio Live-Ops Room
+
+<Columns>
+<Card title="Players Online">
+<Stat label="Current" value="48,291" icon="users" tone="success" change="+3.2% vs 1h ago" />
+<Stat label="Daily Active" value="1.24M" icon="chart-line" tone="info" />
+<Stat label="Monthly Active" value="8.7M" icon="calendar" tone="info" />
+<Progress value="62" label="Capacity" tone="info" />
+</Card>
+
+<Card title="Revenue Today">
+<Stat label="Revenue" value="$184,320" icon="currency-dollar" tone="success" change="+8.4% vs yesterday" />
+<Stat label="Revenue per User (DAU)" value="$0.149" icon="trend-up" tone="info" />
+<Chart type="area" x="Hour" y="Revenue (USD)">
+| Hour | Revenue |
+|---|---|
+| 00:00 | 5200 |
+| 04:00 | 3800 |
+| 08:00 | 9200 |
+| 12:00 | 18400 |
+| 16:00 | 28600 |
+| 20:00 | 42100 |
+| Now | 184320 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Session Length — Past 14 Days">
+<Chart type="line" x="Date" y="Minutes">
+| Date | Avg Session (min) |
+|---|---|
+| D-14 | 32.4 |
+| D-12 | 33.1 |
+| D-10 | 31.8 |
+| D-8 | 35.2 |
+| D-6 | 34.7 |
+| D-4 | 36.9 |
+| D-2 | 35.8 |
+| Today | 37.2 |
+</Chart>
+</Card>
+
+<Card title="Best-Selling Items">
+| Item | Units Sold (24h) | Revenue |
+|---|---|---|
+| Dragon's Hoard Chest | 12,840 | $38,520 |
+| Season Pass — Chapter 5 | 9,310 | $27,930 |
+| Mythic Skin: Void Reaper | 6,420 | $25,680 |
+| XP Boost ×3 (Bundle) | 15,200 | $15,200 |
+| Emote Pack: Dance Off | 8,110 | $8,110 |
+</Card>
+
+<Card title="Server Regions & Health">
+<Columns>
+<Card>
+<Badge tone="success">NA-East</Badge> <Progress value="72" label="Load" tone="success" /> Latency 42ms
+</Card>
+<Card>
+<Badge tone="success">NA-West</Badge> <Progress value="65" label="Load" tone="success" /> Latency 38ms
+</Card>
+<Card>
+<Badge tone="warning">EU-West</Badge> <Progress value="88" label="Load" tone="warning" /> Latency 51ms
+</Card>
+<Card>
+<Badge tone="success">EU-East</Badge> <Progress value="58" label="Load" tone="success" /> Latency 47ms
+</Card>
+<Card>
+<Badge tone="danger">AP-Southeast</Badge> <Progress value="96" label="Load" tone="danger" /> Latency 210ms — **Degraded**
+</Card>
+<Card>
+<Badge tone="success">SA-East</Badge> <Progress value="44" label="Load" tone="success" /> Latency 63ms
+</Card>
+</Columns>
+<Callout tone="warning" title="Region focus">AP-Southeast is at 96% capacity with elevated latency. Consider scaling or a hotfix.</Callout>
+</Card>
+
+<Card title="Crash Rate by App Version">
+<Chart type="bar" x="Version" y="Crash %">
+| Version | Crash % |
+|---|---|
+| 3.2.1 | 0.4 |
+| 3.2.0 | 1.2 |
+| 3.1.9 | 0.3 |
+| 3.1.8 | 0.8 |
+| 3.1.7 | 2.1 |
+</Chart>
+<Callout tone="danger" title="3.2.0 spike">Version 3.2.0 has a 1.2% crash rate, 3× above baseline. Recommend hotfix.</Callout>
+</Card>
+
+<Card title="Live Events">
+<Tabs>
+<Tab title="Running (2)">
+| Event | Ends In | Players In |
+|---|---|---|
+| **Lunar Festival** | 2d 14h | 412,000 |
+| **Double XP Weekend** | 1d 6h | 1.1M |
+</Tab>
+<Tab title="Upcoming (3)">
+| Event | Starts In | Expected |
+|---|---|---|
+| **Guild Wars Season 4** | 4d 8h | 850k |
+| **Spring Egg Hunt** | 9d 2h | 1.3M |
+| **Community Stream Drops** | 12d 5h | 500k |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Moderation Queue">
+<Columns>
+<Card>
+<Stat label="Player Reports" value="1,287" icon="flag" tone="warning" />
+<Details title="Sample reports">
+- **Hate speech** — 342 (27%)
+- **Cheating / aimbot** — 511 (40%)
+- **Scamming** — 214 (17%)
+- **Other** — 220 (17%)
+</Details>
+</Card>
+<Card>
+<Stat label="Ban Appeals" value="96" icon="gavel" tone="info" />
+<Details title="Sample appeals">
+- **Permanent ban** — 41
+- **30-day ban** — 33
+- **Chat restriction** — 22
+</Details>
+</Card>
+</Columns>
+</Card>
+
+<Card title="In-Game Currency Inflation">
+<Chart type="line" x="Week" y="Gold per Player">
+| Week | Avg Gold/Player |
+|---|---|
+| W-8 | 12,400 |
+| W-6 | 14,100 |
+| W-4 | 16,800 |
+| W-2 | 19,500 |
+| This week | 23,700 |
+</Chart>
+<Callout tone="warning" title="Inflation accelerating">Gold supply grew 21% in 2 weeks. Item prices haven't kept pace — economy risk.</Callout>
+</Card>
+
+<Card title="Running Experiments">
+<Columns>
+<Card title="Experiment A — Matchmaking ELO">
+<Stat label="Win Rate Balance" value="49.8%" tone="success" />
+<Stat label="Player Retention" value="+4.2%" tone="success" />
+<Badge tone="success">Statistically significant</Badge>
+<p>ELO-based matchmaking improved retention without hurting queue times.</p>
+</Card>
+<Card title="Experiment B — Battle Pass Price">
+<Stat label="Conversion Rate" value="2.1%" tone="warning" />
+<Stat label="Revenue Impact" value="-6.3%" tone="danger" />
+<Badge tone="danger">Underperforming</Badge>
+<p>$12.99 price point reduces conversions vs $9.99 control. Consider reverting.</p>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Patch Notes Draft">
+<Form name="patch-notes">
+<Input label="Version" placeholder="3.2.2" />
+<Input label="Title" placeholder="Hotfix: Stability & Lunar Festival" />
+<TextArea label="Notes" rows="6" placeholder="Fixed crash on Android 14…" />
+<Checkboxes label="Affected platforms" options="iOS | Android | PC | Console" name="platforms" />
+<Button>Save Draft</Button>
+<Button variant="secondary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Card title="Region Focus">
+<Select label="Focus region" options="All Regions | NA-East | NA-West | EU-West | EU-East | AP-Southeast | SA-East" name="region" placeholder="Select region…" />
+<Button variant="secondary">Apply Focus</Button>
+</Card>
+<Card title="Hotfix Ship">
+<Input label="Hotfix version" placeholder="3.2.2" />
+<TextArea label="Description" rows="3" placeholder="Crash fix for 3.2.0…" />
+<Button variant="danger" label="Ship Hotfix">Ship Hotfix</Button>
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- Compare revenue by region
+- Show crash rate for the last 24 hours
+- Draft patch notes for version 3.2.2
+- What changed in the last experiment?
+</FollowUps>

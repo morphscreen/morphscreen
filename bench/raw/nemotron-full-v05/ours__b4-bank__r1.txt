@@ -1,0 +1,149 @@
+# Personal Banking Home
+
+## Account Overview
+
+<Columns>
+<Stat label="Checking" value="$4,231.50" change="+$245.00 this month" tone="success" />
+<Stat label="Savings" value="$18,750.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,247.83" change="-$312.45 this month" tone="warning" />
+</Columns>
+
+## Quick Actions
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Columns>
+<Select label="From Account" name="fromAccount" placeholder="Select account" options="Checking ****4231 | Savings ****8750 | Credit Card ****1247" required="true" />
+<Select label="To Account" name="toAccount" placeholder="Select account" options="Checking ****4231 | Savings ****8750 | Credit Card ****1247" required="true" />
+</Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="1" required="true" hint="Available: $4,231.50 in Checking" />
+<Button>Transfer Now</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Columns>
+<Switch label="Freeze Credit Card" name="freezeCredit" value="false" hint="Prevents new charges. Recurring payments still process." />
+<Select label="Statement Period" name="statementPeriod" placeholder="Choose period" options="Current (Aug 1–31) | Last Month (Jul 1–31) | Jun 1–30 | May 1–31 | Custom Range" />
+</Columns>
+</Card>
+
+## Credit Score
+
+<Card title="Credit Score" subtitle="Updated weekly • Source: TransUnion">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 vs last month" tone="success" />
+<Progress value="742" max="850" label="Score Range" tone="success" />
+</Columns>
+<Callout tone="info" title="Key Factors">On-time payments (35%), Credit utilization (18%), Age of credit (15%), Mix of credit (10%), Recent inquiries (8%)</Callout>
+</Card>
+
+## Vacation Savings Goal
+
+<Card title="Vacation Fund — Japan Trip">
+<Progress value="11250" max="15000" label="$11,250 of $15,000 (75%)" tone="info" />
+<Columns>
+<Stat label="Target Date" value="March 2025" />
+<Stat label="Monthly Needed" value="$625" />
+<Stat label="Auto-Save" value="$500/mo" tone="success" />
+</Columns>
+</Card>
+
+## Spending This Month
+
+<Card title="Spending by Category — August 2024">
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1450 |
+| Food & Dining | 680 |
+| Transportation | 320 |
+| Shopping | 245 |
+| Entertainment | 180 |
+| Utilities | 165 |
+| Healthcare | 95 |
+| Other | 112 |
+</Chart>
+</Card>
+
+## Recent Transactions
+
+<Card title="Recent Transactions">
+<Tabs>
+<Tab title="All Accounts">
+| Date | Merchant | Category | Account | Amount |
+|---|---|---|---|---|
+| Aug 28 | Whole Foods Market | Food & Dining | Checking ****4231 | -$87.43 |
+| Aug 27 | Shell Gas Station | Transportation | Credit Card ****1247 | -$45.00 |
+| Aug 26 | Netflix | Entertainment | Credit Card ****1247 | -$15.99 |
+| Aug 25 | Salary Deposit | Income | Checking ****4231 | +$2,850.00 |
+| Aug 24 | Amazon | Shopping | Credit Card ****1247 | -$124.50 |
+| Aug 23 | Electric Bill | Utilities | Checking ****4231 | -$165.00 |
+| Aug 22 | Target | Shopping | Checking ****4231 | -$67.82 |
+| Aug 21 | Uber | Transportation | Credit Card ****1247 | -$28.45 |
+</Tab>
+<Tab title="Checking">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Aug 28 | Whole Foods Market | Food & Dining | -$87.43 |
+| Aug 25 | Salary Deposit | Income | +$2,850.00 |
+| Aug 23 | Electric Bill | Utilities | -$165.00 |
+| Aug 22 | Target | Shopping | -$67.82 |
+</Tab>
+<Tab title="Credit Card">
+| Date | Merchant | Category | Amount |
+|---|---|---|---|
+| Aug 27 | Shell Gas Station | Transportation | -$45.00 |
+| Aug 26 | Netflix | Entertainment | -$15.99 |
+| Aug 24 | Amazon | Shopping | -$124.50 |
+| Aug 21 | Uber | Transportation | -$28.45 |
+</Tab>
+</Tabs>
+<Button variant="secondary" size="small">View All Transactions</Button>
+<Button variant="tertiary" size="small">Dispute a Transaction</Button>
+</Card>
+
+## Bills Due Soon
+
+<Card title="Upcoming Bills">
+| Due Date | Payee | Amount | Account | Status |
+|---|---|---|---|---|
+| Sep 1 | Rent — Oakwood Apartments | $1,450.00 | Checking ****4231 | <Badge tone="warning">Due Soon</Badge> |
+| Sep 3 | Internet — FiberNet | $79.99 | Checking ****4231 | <Badge tone="neutral">Scheduled</Badge> |
+| Sep 5 | Car Insurance — StateFarm | $186.50 | Credit Card ****1247 | <Badge tone="neutral">Auto-pay</Badge> |
+| Sep 10 | Phone — Verizon | $85.00 | Checking ****4231 | <Badge tone="neutral">Auto-pay</Badge> |
+| Sep 15 | Credit Card Payment | $1,247.83 | Checking ****4231 | <Badge tone="warning">Due Soon</Badge> |
+</Card>
+
+## Alert Preferences
+
+<Card title="Manage Alert Triggers">
+<Form name="alert-preferences">
+<Checkboxes label="Transaction Alerts" name="txnAlerts" options="Large purchases (>$100) | International transactions | Online/phone purchases | Gas station purchases | ATM withdrawals" value="Large purchases (>$100) | International transactions" hint="Get push/email for selected transaction types" />
+<Checkboxes label="Balance & Security" name="balanceAlerts" options="Low balance (<$500) | Direct deposit received | Unusual activity detected | Password changed | New device login" value="Low balance (<$500) | Direct deposit received | Unusual activity detected" />
+<Checkboxes label="Bill & Payment Reminders" name="billAlerts" options="Bill due in 3 days | Auto-pay scheduled | Auto-pay failed | Payment posted | Statement available" value="Bill due in 3 days | Auto-pay scheduled | Statement available" />
+<Checkboxes label="Credit Monitoring" name="creditAlerts" options="Credit score changed | New inquiry on report | New account opened | Credit limit changed | Address changed" value="Credit score changed | New inquiry on report" />
+<Button>Save Preferences</Button>
+<Button variant="secondary">Reset to Defaults</Button>
+</Form>
+</Card>
+
+## Dispute a Transaction
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Select Transaction" name="disputeTxn" placeholder="Choose a transaction to dispute" options="Whole Foods Market — $87.43 (Aug 28) | Shell Gas Station — $45.00 (Aug 27) | Netflix — $15.99 (Aug 26) | Amazon — $124.50 (Aug 24) | Electric Bill — $165.00 (Aug 23) | Target — $67.82 (Aug 22) | Uber — $28.45 (Aug 21)" required="true" />
+<Radio label="Dispute Reason" name="disputeReason" options="Unauthorized charge | Wrong amount charged | Duplicate charge | Goods not received | Service not as described | Canceled subscription still charged" required="true" />
+<TextArea label="Additional Details" name="disputeDetails" placeholder="Describe what happened, include any communication with merchant..." rows="4" hint="Attach receipts or screenshots in the mobile app" required="true" />
+<Button variant="primary">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me transactions over $200 this month
+- Set up a new savings goal for emergency fund
+- Increase my credit limit
+- Download August statement as PDF
+</FollowUps>

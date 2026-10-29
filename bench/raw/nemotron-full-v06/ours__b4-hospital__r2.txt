@@ -1,0 +1,197 @@
+# Hospital Operations Command Center
+
+<Card title="Date Selector" subtitle="View data for a specific day">
+<Columns>
+<Date label="Select Date" name="view-date" value="2025-01-15" />
+<Select label="Quick Select" name="quick-date" placeholder="Choose preset" options="Today | Yesterday | Last 7 Days | Last 30 Days" value="Today" />
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Bed Occupancy" subtitle="Total: 420 beds">
+<Progress value="357" max="420" label="85% occupied" tone="warning" />
+<Stat label="Available" value="63" change="-5 vs yesterday" tone="info" />
+<Stat label="Occupied" value="357" change="+8 vs yesterday" tone="warning" />
+<Stat label="Isolation" value="12" change="+2" tone="danger" />
+</Card>
+
+<Card title="Current ER Wait Time">
+<Stat label="Average Wait" value="42 min" change="+7 min vs 1hr ago" tone="warning" />
+<Stat label="Patients Waiting" value="28" change="+5" tone="info" />
+<Stat label="LWBS (Left Without Being Seen)" value="3" change="+1" tone="danger" />
+<Progress value="28" max="40" label="ER Capacity: 70%" tone="warning" />
+</Card>
+
+<Card title="Critical Patients" subtitle="Requiring immediate attention">
+<Badge tone="danger">7 Critical</Badge>
+<Details title="Patient Details" open="true">
+| Bed | Patient | Age | Condition | Time Critical | Attending |
+|---|---|---|---|---|---|
+| ICU-3 | M. Rodriguez | 67 | Septic shock | 0:45 | Dr. Chen |
+| ICU-7 | J. Thompson | 54 | Post-op bleed | 1:12 | Dr. Patel |
+| ER-12 | S. Williams | 32 | Trauma - MVA | 0:23 | Dr. Kim |
+| ICU-1 | R. Davis | 78 | Cardiogenic shock | 2:01 | Dr. Chen |
+| ER-4 | A. Martinez | 41 | Status epilepticus | 0:56 | Dr. Kim |
+| ICU-9 | K. Johnson | 59 | ARDS | 1:34 | Dr. Patel |
+| ER-18 | L. Brown | 26 | Overdose | 0:31 | Dr. Chen |
+</Details>
+</Card>
+</Columns>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="bar" x="Date" y="Admissions" title="Daily Admissions">
+| Date | Admissions | Discharges | Net Change |
+|---|---|---|---|
+| Jan 1 | 34 | 31 | +3 |
+| Jan 2 | 28 | 25 | +3 |
+| Jan 3 | 31 | 29 | +2 |
+| Jan 4 | 36 | 33 | +3 |
+| Jan 5 | 42 | 38 | +4 |
+| Jan 6 | 39 | 35 | +4 |
+| Jan 7 | 35 | 32 | +3 |
+| Jan 8 | 33 | 30 | +3 |
+| Jan 9 | 37 | 34 | +3 |
+| Jan 10 | 41 | 37 | +4 |
+| Jan 11 | 38 | 36 | +2 |
+| Jan 12 | 34 | 31 | +3 |
+| Jan 13 | 36 | 33 | +3 |
+| Jan 14 | 39 | 35 | +4 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Patients per Department">
+<Chart type="horizontal" x="Department" y="Patients" title="Current Census by Department">
+| Department | Patients | Capacity | % Full |
+|---|---|---|---|
+| Emergency | 42 | 50 | 84 |
+| ICU | 28 | 30 | 93 |
+| Med-Surg | 84 | 100 | 84 |
+| Telemetry | 36 | 40 | 90 |
+| Oncology | 22 | 25 | 88 |
+| Pediatrics | 18 | 24 | 75 |
+| Labor & Delivery | 12 | 16 | 75 |
+| Psychiatric | 15 | 20 | 75 |
+| Observation | 24 | 30 | 80 |
+| Step-Down | 36 | 45 | 80 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift" subtitle="Current shift: 07:00–19:30">
+<Details title="Staffing Details" open="true">
+| Role | Scheduled | Present | On Call | Gap |
+|---|---|---|---|---|
+| RN — ICU | 12 | 11 | 2 | 1 |
+| RN — ER | 10 | 10 | 3 | 0 |
+| RN — Med-Surg | 20 | 19 | 4 | 1 |
+| RN — Telemetry | 8 | 8 | 2 | 0 |
+| RN — L&D | 6 | 6 | 2 | 0 |
+| Respiratory Therapy | 6 | 6 | 2 | 0 |
+| Physicians — Hospitalists | 5 | 5 | 2 | 0 |
+| Physicians — ER | 4 | 4 | 1 | 0 |
+| Physicians — ICU | 3 | 3 | 1 | 0 |
+| CNA / Tech | 18 | 17 | 3 | 1 |
+| Pharmacists | 4 | 4 | 1 | 0 |
+| Case Managers | 6 | 6 | 0 | 0 |
+</Details>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Patients Ready for Discharge" subtitle="14 patients awaiting discharge">
+<Details title="Discharge List" open="true">
+| Patient | Unit | LOS | Barrier | Est. Discharge | Discharge Planner |
+|---|---|---|---|---|---|
+| P. Anderson | Med-Surg | 5 | Transport | 10:00 | S. Miller |
+| R. Garcia | Telemetry | 3 | Home health | 11:30 | J. Lee |
+| M. Wilson | Step-Down | 7 | SNF bed | 14:00 | K. Davis |
+| D. Taylor | Oncology | 12 | Meds delivery | 12:00 | S. Miller |
+| J. Thomas | Med-Surg | 4 | Family pickup | 10:30 | J. Lee |
+| L. Jackson | Observation | 1 | Pending labs | 09:30 | K. Davis |
+| B. White | Pediatrics | 2 | Rx approval | 11:00 | S. Miller |
+| S. Harris | Med-Surg | 6 | DME | 13:00 | J. Lee |
+| C. Martin | Telemetry | 4 | PT eval | 12:30 | K. Davis |
+| A. Thompson | Step-Down | 8 | SNF bed | 15:00 | S. Miller |
+</Details>
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+<Details title="OR Schedule" open="true">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| OR-1 | 07:30–10:30 | Laparoscopic Cholecystectomy | Dr. Roberts | Dr. Park | In Progress | 3:00 |
+| OR-1 | 11:00–13:30 | Total Knee Arthroplasty | Dr. Nguyen | Dr. Park | Scheduled | 2:30 |
+| OR-1 | 14:00–16:30 | Hernia Repair | Dr. Roberts | Dr. Park | Scheduled | 2:30 |
+| OR-2 | 07:30–12:00 | Craniotomy | Dr. Ahmed | Dr. Liu | In Progress | 4:30 |
+| OR-2 | 12:30–15:00 | VP Shunt Revision | Dr. Ahmed | Dr. Liu | Scheduled | 2:30 |
+| OR-3 | 08:00–10:00 | C-Section | Dr. Foster | Dr. Kim | Scheduled | 2:00 |
+| OR-3 | 10:30–13:00 | Hysterectomy | Dr. Foster | Dr. Kim | Scheduled | 2:30 |
+| OR-4 | 07:30–11:30 | CABG ×3 | Dr. Santos | Dr. Chen | In Progress | 4:00 |
+| OR-5 | 09:00–12:00 | ORIF Femur | Dr. Brooks | Dr. Liu | Scheduled | 3:00 |
+| OR-5 | 12:30–15:00 | Shoulder Arthroscopy | Dr. Brooks | Dr. Liu | Scheduled | 2:30 |
+</Details>
+</Card>
+</Columns>
+
+<Card title="Supplies Running Low" subtitle="Items below 20% par level">
+<Details title="Supply Details" open="true">
+| Item | Current | Par Level | % Remaining | Days Left | Auto-Order | Vendor |
+|---|---|---|---|---|---|---|
+| Normal Saline 1L | 48 | 200 | 24% | 1.2 | Yes | Medline |
+| Heparin 5000u | 12 | 60 | 20% | 0.8 | Yes | Cardinal |
+| N95 Masks (M) | 180 | 1000 | 18% | 2.1 | Yes | 3M |
+| Fentanyl 100mcg | 8 | 40 | 20% | 1.0 | Yes | McKesson |
+| Propofol 20mL | 15 | 80 | 19% | 1.5 | Yes | Cardinal |
+| Central Line Kits | 6 | 30 | 20% | 1.0 | No | Cook |
+| Chest Tube Trays | 4 | 20 | 20% | 0.8 | No | Teleflex |
+| Blood Culture Bottles | 22 | 120 | 18% | 1.5 | Yes | BD |
+| IV Catheters 18G | 35 | 200 | 18% | 1.8 | Yes | BD |
+| Surgical Drapes | 12 | 60 | 20% | 1.2 | No | Medline |
+</Details>
+</Card>
+
+<Tabs>
+<Tab title="File Incident">
+<Card title="Incident Report" subtitle="Submit a safety event, near miss, or concern">
+<Form name="incident-report">
+<Select label="Incident Type *" name="incident-type" placeholder="Select type" options="Medication Error | Fall | Pressure Injury | Equipment Failure | Delay in Care | Communication Breakdown | Security Event | Other" required="true" />
+<Select label="Severity *" name="severity" placeholder="Select severity" options="Near Miss | Minor Harm | Moderate Harm | Severe Harm | Death" required="true" />
+<Input label="Location / Unit *" name="location" placeholder="e.g., ICU, ER, OR-3, Med-Surg 4B" required="true" />
+<Date label="Date & Time of Incident *" name="incident-datetime" required="true" />
+<TextArea label="Description *" name="description" placeholder="Describe what happened, contributing factors, and immediate actions taken" rows="4" required="true" />
+<TextArea label="Immediate Actions Taken" name="actions" placeholder="What was done immediately?" rows="3" />
+<Input label="Reporter Name (optional)" name="reporter" placeholder="Anonymous if preferred" />
+<Input label="Contact (optional)" name="contact" placeholder="Phone or email for follow-up" />
+<Button variant="primary">Submit Incident Report</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Request Patient Transfer">
+<Card title="Patient Transfer Request" subtitle="Request internal or external transfer">
+<Form name="transfer-request">
+<Input label="Patient Name *" name="patient-name" placeholder="Full name" required="true" />
+<Input label="MRN *" name="mrn" placeholder="Medical Record Number" required="true" />
+<Input label="Current Unit / Bed *" name="current-unit" placeholder="e.g., ICU-3, ER-12" required="true" />
+<Select label="Transfer Type *" name="transfer-type" placeholder="Select type" options="Internal — Higher Acuity (ICU/Step-Down) | Internal — Lower Acuity (Med-Surg/Telemetry) | External — Another Hospital | External — LTAC / SNF / Rehab" required="true" />
+<Input label="Requested Destination" name="destination" placeholder="Unit, facility, or 'Any Available'" />
+<Select label="Urgency *" name="urgency" placeholder="Select urgency" options="Emergent (within 30 min) | Urgent (within 2 hrs) | Semi-Urgent (within 6 hrs) | Routine (next available)" required="true" />
+<TextArea label="Clinical Reason for Transfer *" name="reason" placeholder="Diagnosis, current status, why transfer is needed" rows="4" required="true" />
+<TextArea label="Special Requirements" name="requirements" placeholder="Isolation, ventilator, continuous monitoring, specialty consult needed, etc." rows="2" />
+<Input label="Requesting Provider *" name="requesting-provider" placeholder="Name, role, contact" required="true" />
+<Input label="Accepting Provider / Unit" name="accepting-provider" placeholder="If known" />
+<Button variant="primary">Submit Transfer Request</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- View detailed bed management board
+- Check blood bank inventory
+- Review pending consults
+- Page on-call administrator
+- Generate daily census report
+</FollowUps>

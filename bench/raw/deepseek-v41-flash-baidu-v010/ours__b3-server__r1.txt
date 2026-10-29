@@ -1,0 +1,88 @@
+# Service Health — On-Call View
+
+<Callout tone="danger" title="Active SEV-1: checkout-api degraded">
+Error rate is 6.4% and climbing. Acknowledge below, then check the slowest endpoints.
+</Callout>
+
+<Columns>
+<Stat label="Uptime this quarter" value="99.87%" change="-0.09 pts vs last quarter" tone="warning" icon="activity" />
+<Stat label="Error rate (now)" value="6.4%" change="+5.1 pts in 30 min" tone="danger" icon="warning" />
+<Stat label="Open incidents" value="4" note="1 SEV-1, 1 SEV-2, 2 SEV-3" tone="danger" icon="siren" />
+<Stat label="p99 latency" value="1,840 ms" change="+720 ms" tone="warning" icon="gauge" />
+</Columns>
+
+<Card title="Region filter" subtitle="Narrow every panel below to one region">
+<Select label="Region" name="region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" value="All regions" hint="Applies to charts, incidents, and endpoints" />
+</Card>
+
+<Card title="CPU and memory — past 24 hours">
+<Chart type="line" title="CPU and memory utilization" x="Hour" y="Percent">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 61 |
+| 03:00 | 38 | 60 |
+| 06:00 | 51 | 63 |
+| 09:00 | 67 | 68 |
+| 12:00 | 74 | 72 |
+| 15:00 | 88 | 79 |
+| 18:00 | 93 | 84 |
+| 21:00 | 71 | 76 |
+| 24:00 | 58 | 69 |
+</Chart>
+</Card>
+
+<Card title="Error rate — right now">
+<Progress value="6.4" max="100" label="6.4% of requests failing (SLO: 0.5%)" tone="danger" />
+<Progress value="99.87" max="100" label="Quarter-to-date uptime 99.87%" tone="warning" />
+</Card>
+
+<Card title="Open incidents" subtitle="Severity and current state">
+| Incident | Severity | Region | State | Age |
+|---|---|---|---|---|
+| checkout-api 5xx spike | SEV-1 | us-east-1 | Triggered | 22 min |
+| payments-db replica lag | SEV-2 | us-east-1 | Triggered | 1 h 04 m |
+| search-index rebuild stalled | SEV-3 | eu-west-1 | Acknowledged | 3 h 12 m |
+| webhook retry backlog | SEV-3 | ap-southeast-1 | Acknowledged | 5 h 40 m |
+
+<Button variant="primary" ask="Acknowledge the SEV-1 incident checkout-api 5xx spike in us-east-1" icon="check">Acknowledge SEV-1</Button>
+<Button variant="secondary" ask="Acknowledge the SEV-2 incident payments-db replica lag" icon="check">Acknowledge SEV-2</Button>
+</Card>
+
+<Card title="Slowest endpoints" subtitle="Ranked by p99 latency, last 15 minutes">
+| Endpoint | p99 latency | Error rate |
+|---|---|---|
+| POST /v1/checkout | 1,840 ms | 6.4% |
+| GET /v1/cart | 1,120 ms | 1.1% |
+| POST /v1/payments | 980 ms | 0.8% |
+| GET /v1/orders/:id | 760 ms | 0.3% |
+| GET /v1/search | 640 ms | 0.2% |
+</Card>
+
+<Card title="Alert threshold" subtitle="Fire when the metric crosses this value for 5 minutes">
+<Form name="alert-threshold">
+<Select label="Metric" name="metric" options="Error rate (%) | p99 latency (ms) | CPU utilization (%) | Memory utilization (%)" required="true" />
+<Slider label="Threshold" min="0" max="100" step="1" value="5" name="threshold" unit="%" />
+<Select label="Region" name="alert-region" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1" />
+<Radio label="Notify" options="Page on-call | Slack only | Email digest" />
+<Switch label="Repeat notifications until acknowledged" name="repeat" value=true />
+<Button variant="primary">Save threshold</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Runbook checklist" subtitle="Suggested order for the current SEV-1">
+<Steps>
+<Step title="Acknowledge the SEV-1" status="current" subtitle="Stops the escalation timer">Claim the incident so the pager stops re-firing.</Step>
+<Step title="Check region filter" status="todo" subtitle="Isolate us-east-1">Confirm the spike is regional, not global.</Step>
+<Step title="Compare CPU vs memory" status="todo">If CPU leads, look for a hot loop; if memory leads, suspect a leak or GC pressure.</Step>
+<Step title="Inspect POST /v1/checkout" status="todo" subtitle="1,840 ms p99, 6.4% errors">Highest-latency endpoint during the spike.</Step>
+<Step title="Roll back or scale out" status="todo">Revert the last checkout deploy if it correlates with the onset.</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- Show me the last 30 minutes of error rate for us-east-1 only
+- Which deploy went out right before the checkout spike?
+- Acknowledge the SEV-2 payments-db replica lag incident
+- Set the error rate threshold to 2% for us-east-1
+</FollowUps>

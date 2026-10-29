@@ -1,0 +1,262 @@
+# City Operations Center
+
+<Select label="Focus District" name="district" placeholder="Select district" options="Downtown | Northside | Eastport | Westlake | Southgate | Riverside | University | Industrial" value="Downtown" />
+
+<Columns>
+<Card title="Congestion Right Now" subtitle="Live traffic index">
+<Stat label="Congestion Level" value="67%" change="+3% vs 1hr ago" tone="warning" />
+<Progress value="67" max="100" label="Traffic density" tone="warning" />
+<Stat label="Avg Speed" value="28 km/h" change="-5 km/h" tone="danger" />
+<Stat label="Active Incidents" value="12" change="+2" tone="danger" />
+</Card>
+
+<Card title="Transit Punctuality" subtitle="On-time performance">
+<Stat label="System Wide" value="87%" change="-2% vs yesterday" tone="info" />
+<Progress value="87" max="100" label="On-time departures" tone="success" />
+<Chart type="bar" title="By Line" x="Line" y="Punctuality">
+| Line | Punctuality |
+|---|---|
+| Blue Line | 92 |
+| Red Line | 89 |
+| Green Line | 85 |
+| Yellow Line | 81 |
+| Orange Line | 78 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Air Quality by District" subtitle="AQI (lower is better)">
+<Chart type="horizontal" title="Current AQI" x="AQI" y="District">
+| District | AQI |
+|---|---|
+| Downtown | 78 |
+| Industrial | 142 |
+| Riverside | 45 |
+| University | 52 |
+| Northside | 68 |
+| Eastport | 71 |
+| Westlake | 58 |
+| Southgate | 83 |
+</Chart>
+<Badge tone="warning">Industrial: Unhealthy for sensitive groups</Badge>
+<Badge tone="success">Riverside: Good</Badge>
+</Card>
+
+<Card title="Energy Use — Past 7 Days" subtitle="MW consumed">
+<Chart type="line" title="Daily Energy Consumption" x="Day" y="MW">
+| Day | Consumption |
+|---|---|
+| Mon | 1,840 |
+| Tue | 1,920 |
+| Wed | 1,880 |
+| Thu | 1,950 |
+| Fri | 2,010 |
+| Sat | 1,720 |
+| Sun | 1,650 |
+</Chart>
+<Stat label="Peak Demand" value="2,010 MW" change="Friday 6 PM" tone="info" />
+<Stat label="Weekly Total" value="12,970 MWh" change="+4.2% vs last week" tone="neutral" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Water Use Today" subtitle="Real-time consumption">
+<Stat label="Current Rate" value="4.2 M gal/hr" change="+0.3 vs avg" tone="info" />
+<Progress value="68" max="100" label="Daily capacity used" tone="neutral" />
+<Stat label="Today's Total" value="89.4 M gal" change="Projected 101 M gal" tone="neutral" />
+<Stat label="Reservoir Level" value="72%" change="-1% vs yesterday" tone="success" />
+</Card>
+
+<Card title="Current Weather" subtitle="Downtown station">
+<Stat label="Temperature" value="18°C" change="Feels like 17°C" tone="neutral" />
+<Stat label="Humidity" value="64%" change="" tone="neutral" />
+<Stat label="Wind" value="12 km/h NW" change="" tone="neutral" />
+<Stat label="Precipitation" value="0 mm" change="10% chance rain" tone="success" />
+<Badge tone="info">Partly Cloudy</Badge>
+</Card>
+</Columns>
+
+<Card title="Open Incidents" subtitle="12 active incidents">
+<Tabs>
+<Tab title="All (12)">
+| Severity | Type | Location | Since | Status |
+|---|---|---|---|---|
+| Critical | Water main break | 5th & Main (Downtown) | 08:23 | Crew dispatched |
+| High | Power outage | Industrial Zone Block 4 | 09:11 | Assessing |
+| High | Traffic signal failure | University Ave & College | 09:45 | Technician en route |
+| Medium | Sewer backup | Riverside Dr & 12th | 10:02 | Contained |
+| Medium | Gas leak reported | Eastport Shopping Ctr | 10:18 | Evacuating |
+| Low | Pothole cluster | Northside Blvd | 07:30 | Scheduled |
+| Low | Streetlight out | Westlake Park path | 06:45 | Queued |
+| Low | Graffiti | Southgate Transit Hub | 08:00 | Cleaning crew sent |
+</Tab>
+<Tab title="Critical (1)">
+| Severity | Type | Location | Since | Status |
+|---|---|---|---|---|
+| Critical | Water main break | 5th & Main (Downtown) | 08:23 | Crew dispatched |
+</Tab>
+<Tab title="High (2)">
+| Severity | Type | Location | Since | Status |
+|---|---|---|---|---|
+| High | Power outage | Industrial Zone Block 4 | 09:11 | Assessing |
+| High | Traffic signal failure | University Ave & College | 09:45 | Technician en route |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Emergency Vehicles Deployed" subtitle="Live GPS tracking">
+| Unit | Type | Status | Location | Incident |
+|---|---|---|---|---|
+| ENG-3 | Fire Engine | En route | 5th & Main | Water main break |
+| AMB-7 | Ambulance | On scene | Eastport Shopping Ctr | Gas leak |
+| PD-12 | Police Cruiser | Traffic control | University Ave & College | Signal failure |
+| HAZ-1 | Hazmat | Staging | Eastport Shopping Ctr | Gas leak |
+| ENG-9 | Fire Engine | Available | Station 2 (Northside) | — |
+| AMB-3 | Ambulance | Available | Station 1 (Downtown) | — |
+</Card>
+
+<Card title="Parking Availability — Downtown" subtitle="Real-time occupancy">
+<Progress value="78" max="100" label="Garage A (Main St)" tone="warning" />
+<Progress value="45" max="100" label="Garage B (3rd Ave)" tone="success" />
+<Progress value="92" max="100" label="Garage C (5th St)" tone="danger" />
+<Progress value="61" max="100" label="Street Metered" tone="info" />
+<Progress value="34" max="100" label="Lot D (Riverside)" tone="success" />
+<Stat label="Total Spaces" value="3,240" change="712 available" tone="neutral" />
+</Card>
+</Columns>
+
+<Card title="Public Events This Weekend" subtitle="Permitted events requiring coordination">
+<Tabs>
+<Tab title="Saturday (8 events)">
+| Time | Event | Location | Expected | Impact |
+|---|---|---|---|---|
+| 08:00 | Farmers Market | Riverside Park | 2,500 | Street closure 6th-8th |
+| 10:00 | Marathon Start | Downtown Plaza | 8,000 | Major traffic reroute |
+| 12:00 | Food Festival | Eastport Waterfront | 5,000 | Parking + transit surge |
+| 14:00 | Art Walk | University District | 3,000 | Pedestrian zones |
+| 16:00 | Concert Series | Westlake Amphitheater | 7,500 | Transit + parking |
+| 19:00 | Night Market | Southgate Square | 4,000 | Street closure |
+| 20:00 | Fireworks | Riverside Bridge | 15,000 | Bridge closure 19:30-21:00 |
+| 22:00 | After-party | Industrial Warehouse | 1,200 | Noise monitoring |
+</Tab>
+<Tab title="Sunday (5 events)">
+| Time | Event | Location | Expected | Impact |
+|---|---|---|---|---|
+| 09:00 | Bike Race | City Loop Course | 1,500 | Rolling road closures |
+| 11:00 | Cultural Festival | Northside Community Ctr | 3,500 | Transit + parking |
+| 13:00 | Pride Parade | Main St (Downtown) | 25,000 | Full closure 12:00-16:00 |
+| 15:00 | Family Day | University Quad | 2,000 | Minor parking |
+| 18:00 | Jazz in the Park | Westlake Park | 1,800 | Low impact |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Citizen Reports (Live)" subtitle="Incoming 311 reports">
+<Details title="10:23 — Pothole on 12th Ave near Library (Northside)" open="false">
+Photos attached. Auto-routed to Streets Dept. ETA 2 hrs.
+</Details>
+<Details title="10:21 — Loud construction after hours (Westlake)" open="false">
+Caller reports jackhammering at 10 PM. Noise bylaw check dispatched.
+</Details>
+<Details title="10:19 — Broken crosswalk button at 5th & Pine (Downtown)" open="true">
+Signal tech notified. Temporary pedestrian flagging requested.
+</Details>
+<Details title="10:15 — Illegal dumping alley behind Elm St (Industrial)" open="false">
+Hazmat assessment needed. Photos show chemical containers.
+</Details>
+<Details title="10:12 — Tree branch down blocking sidewalk (Riverside)" open="false">
+Parks crew dispatched. No injuries reported.
+</Details>
+<Button variant="secondary" size="small">View all 47 reports today</Button>
+</Card>
+
+<Card title="Service Request Backlog" subtitle="Open work orders by department">
+<Stat label="Total Backlog" value="1,284" change="+23 vs yesterday" tone="warning" />
+<Chart type="stacked" title="Backlog by Department & Priority" x="Department" y="Count">
+| Department | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| Streets | 12 | 45 | 187 | 234 |
+| Water | 8 | 32 | 156 | 198 |
+| Parks | 3 | 18 | 89 | 142 |
+| Facilities | 5 | 24 | 97 | 112 |
+| Signals | 2 | 15 | 67 | 89 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Roadworks Planned This Month" subtitle="Scheduled construction & maintenance">
+<Steps>
+<Step title="May 15-18: Main St Resurfacing (Downtown)" status="todo">Full closure 5th-8th Ave. Detour via 4th & 9th. Transit reroutes active.</Step>
+<Step title="May 19-22: Bridge Deck Repair (Riverside Bridge)" status="todo">Single lane each direction. Expect 15-20 min delays peak hours.</Step>
+<Step title="May 20-24: Sewer Lining Project (Industrial Zone)" status="todo">Rolling closures Block 3-6. Night work 10 PM - 6 AM.</Step>
+<Step title="May 25-28: Fiber Conduit Install (University Ave)" status="todo">Sidewalk closures. Pedestrian detours marked.</Step>
+<Step title="May 29-31: Intersection Upgrade (Northside & 12th)" status="todo">New signals + turn lanes. 3-day closure.</Step>
+</Steps>
+</Card>
+
+<Card title="Infrastructure Jobs Due for Maintenance" subtitle="Assets past due or due within 30 days">
+<Tabs>
+<Tab title="Overdue (23)">
+| Asset | Type | Location | Due Date | Days Overdue | Risk |
+|---|---|---|---|---|---|
+| Pump Station #4 | Water | Industrial | Apr 28 | 17 | High |
+| Transformer T-12 | Power | Downtown | May 1 | 14 | Critical |
+| Bridge B-07 | Transport | Riverside | May 3 | 12 | High |
+| Reservoir Valve 3 | Water | Westlake | May 5 | 10 | Medium |
+| Signal Cabinet S-44 | Traffic | University | May 8 | 7 | Medium |
+</Tab>
+<Tab title="Due This Month (41)">
+| Asset | Type | Location | Due Date | Days Left | Risk |
+|---|---|---|---|---|---|
+| Water Tower W-2 | Water | Northside | May 18 | 3 | High |
+| Substation SUB-5 | Power | Eastport | May 20 | 5 | High |
+| Tunnel Ventilation | Transport | Downtown | May 22 | 7 | Critical |
+| Dam Spillway Gates | Water | Riverside | May 25 | 10 | High |
+| Highway Signage Sys | Transport | City-wide | May 28 | 13 | Medium |
+</Tab>
+<Tab title="Due Next Month (67)">
+| Asset | Type | Location | Due Date | Days Left | Risk |
+|---|---|---|---|---|---|
+| Treatment Plant Clarifier | Water | Southgate | Jun 5 | 21 | Medium |
+| Overhead Line Sect 7 | Power | Industrial | Jun 10 | 26 | Medium |
+| Pedestrian Bridge P-3 | Transport | University | Jun 15 | 31 | Low |
+</Tab>
+</Tabs>
+</Card>
+
+<Columns>
+<Card title="Dispatch a Crew" subtitle="Create work order & assign team">
+<Form name="dispatch-crew">
+<Select label="Incident Type" name="incidentType" options="Water Main Break | Power Outage | Signal Failure | Sewer Backup | Gas Leak | Road Repair | Tree Down | Other" placeholder="Select type" required="true" />
+<Select label="Priority" name="priority" options="Critical | High | Medium | Low" value="Medium" required="true" />
+<Input label="Location / Address" name="location" placeholder="e.g., 5th & Main, Downtown" required="true" />
+<Select label="Crew Type" name="crewType" options="Water Utility | Electrical | Streets | Signals | Parks | Hazmat | Multi-dept" placeholder="Select crew" required="true" />
+<TextArea label="Details / Notes" name="details" placeholder="Additional context, hazards, access info..." rows="3" />
+<Button>Dispatch Crew</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Send Public Alert" subtitle="Emergency notification system">
+<Form name="public-alert">
+<Radio label="Alert Channel" name="channel" options="All Channels (SMS, App, Email, Radio, Signs) | SMS + App Only | Variable Message Signs Only | Radio Broadcast Only" value="All Channels (SMS, App, Email, Radio, Signs)" required="true" />
+<Select label="Severity" name="severity" options="Emergency (Immediate threat to life) | Warning (Significant disruption) | Advisory (Minor disruption) | Information (General notice)" value="Warning" required="true" />
+<Select label="Target Area" name="targetArea" options="City-wide | Downtown | Northside | Eastport | Westlake | Southgate | Riverside | University | Industrial | Custom Polygon" value="City-wide" required="true" />
+<TextArea label="Alert Message" name="message" placeholder="Enter clear, actionable message (max 360 chars for SMS)..." rows="4" required="true" hint="Include: what, where, when, action required, duration, info source" />
+<Checkboxes label="Additional Options" name="options" options="Request read receipt/acknowledgment | Auto-expire after 4 hours | Translate to Spanish/Chinese/Vietnamese | Include shelter/evacuation links" value="" />
+<Button variant="danger">Send Alert</Button>
+<Button variant="tertiary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the water main break on 5th & Main in detail
+- What's the status of the gas leak at Eastport Shopping Center?
+- List all Critical priority backlog items
+- Show traffic camera feeds for Downtown
+- Generate incident report for today's water main break
+</FollowUps>

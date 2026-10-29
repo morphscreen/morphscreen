@@ -1,0 +1,126 @@
+# Power Network Operator Console
+
+<Columns>
+  <Select label="Region focus" name="region" placeholder="All regions" options="All regions | North | South | East | West" />
+  <Badge tone="success">Grid stable</Badge>
+</Columns>
+
+<Card title="Network at a glance" subtitle="Live data · updated 14:32 UTC">
+  <Columns>
+    <Stat label="Current load" value="7,842 MW" change="+3.2% vs hour ago" />
+    <Stat label="Capacity headroom" value="1,178 MW" note="13% spare capacity" />
+    <Stat label="Price per MWh" value="$48.20" change="▲ $2.10 / MWh" />
+    <Stat label="Emissions today" value="12,840 tCO₂e" note="▼ 8% vs yesterday" />
+  </Columns>
+</Card>
+
+<Card title="Capacity status" subtitle="Rated network capacity: 9,020 MW">
+  <Progress value="87" max="100" label="87% of capacity used" />
+  <Callout tone="warning" title="Approaching capacity">
+    Load is 87% of rated capacity. Headroom is 1,178 MW. Consider curtailment or demand response above 8,500 MW.
+  </Callout>
+</Card>
+
+<Columns>
+  <Card title="Generation split by source" subtitle="Live output mix">
+    <Chart type="pie" title="Generation by source">
+      | Source | MW |
+      |---|---:|
+      | Natural gas | 3200 |
+      | Wind | 2100 |
+      | Solar | 1400 |
+      | Nuclear | 900 |
+      | Hydro | 600 |
+      | Biomass | 200 |
+    </Chart>
+
+    | Source | Output (MW) | Share |
+    |---|---:|---:|
+    | Natural gas | 3,200 | 38% |
+    | Wind | 2,100 | 25% |
+    | Solar | 1,400 | 17% |
+    | Nuclear | 900 | 11% |
+    | Hydro | 600 | 7% |
+    | Biomass | 200 | 2% |
+  </Card>
+
+  <Card title="Plant status" subtitle="All dispatched plants">
+    | Plant | Region | Source | Output (MW) | Status |
+    |---|---|---|---:|---|
+    | Riverside CCGT | North | Gas | 1,200 | <Badge tone="success">Online</Badge> |
+    | Hilltop Wind Farm | North | Wind | 850 | <Badge tone="success">Online</Badge> |
+    | Solar Valley | South | Solar | 1,400 | <Badge tone="warning">Cloud cover</Badge> |
+    | Beacon Nuclear | East | Nuclear | 900 | <Badge tone="success">Online</Badge> |
+    | Hydro Dam | West | Hydro | 600 | <Badge tone="info">Spinning reserve</Badge> |
+    | Greentech Biomass | South | Biomass | 200 | <Badge tone="success">Online</Badge> |
+    | Old Mill Gas Peaker | West | Gas | 0 | <Badge tone="danger">Maintenance</Badge> |
+  </Card>
+</Columns>
+
+<Card title="Outages" subtitle="Active incidents affecting regions">
+  | Outage ID | Region | Affected area | Customers | Status | Est. restoration |
+  |---|---|---|---:|---|---|
+  | O-1042 | North | Riverside industrial estate | 1,240 | <Badge tone="danger">Unplanned</Badge> | 16:45 UTC |
+  | O-1043 | East | Coastal towns (Brighton, Seaford) | 3,870 | <Badge tone="warning">Crew en route</Badge> | 18:30 UTC |
+  | O-1044 | South | Rural substation 22B | 540 | <Badge tone="info">Scheduled work</Badge> | Tomorrow 06:00 |
+</Card>
+
+<Card title="Demand forecast — next 24 hours" subtitle="Forecast vs available capacity">
+  <Chart type="line" title="Forecast demand (MW)" x="Hour" y="MW">
+    | Hour | Forecast |
+    |---|---:|
+    | 14:00 | 7842 |
+    | 16:00 | 8010 |
+    | 18:00 | 8620 |
+    | 20:00 | 8340 |
+    | 22:00 | 7610 |
+    | 00:00 | 6890 |
+    | 02:00 | 6420 |
+    | 04:00 | 6350 |
+    | 06:00 | 6870 |
+    | 08:00 | 7780 |
+    | 10:00 | 8210 |
+    | 12:00 | 8420 |
+    | 14:00 | 7890 |
+  </Chart>
+</Card>
+
+<Card title="Maintenance planned this month" subtitle="April 2025 schedule">
+  | Date | Plant / asset | Region | Work | Duration |
+  |---|---|---|---|---|
+  | 12 Apr | Old Mill Gas Peaker | West | Turbine overhaul | 3 days |
+  | 14 Apr | North Substation 8 | North | Transformer replacement | 6 hours |
+  | 18 Apr | Solar Valley inverters | South | Inverter firmware upgrade | 8 hours |
+  | 22 Apr | Beacon Nuclear refueling | East | Refueling outage | 5 days |
+</Card>
+
+<Card title="Live alerts" subtitle="Event stream updates automatically">
+  <Callout tone="warning" title="14:31 — Load rising fast">
+    North region demand up 4% in 15 minutes; keep watching headroom.
+  </Callout>
+  <Callout tone="danger" title="14:28 — O-1042 unplanned outage">
+    Riverside industrial estate lost supply. Crew dispatched.
+  </Callout>
+  <Callout tone="info" title="14:15 — Solar forecast updated">
+    Cloud cover over Solar Valley reduces expected output by 120 MW until 16:00.
+  </Callout>
+  <Callout tone="success" title="13:50 — Wind ramp-up">
+    Hilltop Wind Farm output increasing with wind speed.
+  </Callout>
+</Card>
+
+<Card title="Order curtailment" subtitle="Reduce output from a plant or region">
+  <Form name="curtailment-order">
+    <Select label="Plant or region" name="target" placeholder="Select target" options="Riverside CCGT (North) | Hilltop Wind Farm (North) | Solar Valley (South) | Hydro Dam (West) | North region | South region | East region | West region" />
+    <Input label="Curtailment amount" name="amount" type="number" placeholder="e.g. 250" hint="MW to reduce from the selected target" />
+    <Date label="Start date" name="start-date" />
+    <Button>Order curtailment</Button>
+  </Form>
+</Card>
+
+<Card title="Emissions today" subtitle="Carbon impact of live generation">
+  <Columns>
+    <Stat label="Total emissions" value="12,840 tCO₂e" note="▼ 8% vs yesterday" />
+    <Stat label="Average intensity" value="212 kgCO₂e/MWh" note="▼ 14 kg vs yesterday" />
+  </Columns>
+</Card>

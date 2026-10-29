@@ -1,0 +1,8 @@
+root = Card([header, bioSection, messageForm])
+header = CardHeader("Sarah Chen", "Senior Product Designer · Design Team")
+bioSection = TextContent("Sarah has 8+ years of experience crafting intuitive digital experiences across fintech, healthcare, and SaaS. She leads design system initiatives and mentors junior designers. Outside work, she enjoys urban sketching and hiking the Pacific Northwest trails.")
+messageForm = Form("contact-sarah", formButtons, [messageField])
+formButtons = Buttons([sendBtn], "row")
+sendBtn = Button("Send Message", { type: "continue_conversation", context: "Send a message to Sarah Chen" }, "primary")
+messageField = FormControl("Your Message", messageInput, "Messages are delivered to Sarah's company inbox.")
+messageInput = TextArea("message", "Write your message here...", 4, { required: true, minLength: 10 })

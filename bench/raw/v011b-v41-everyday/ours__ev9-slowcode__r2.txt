@@ -1,0 +1,145 @@
+# Speeding up a 2 GB CSV read in Python
+
+The short answer: stop using `pandas.read_csv` for the whole file, and stop using `csv.reader` in a Python loop. Pick the tool that matches what you actually need — a full table, a filtered subset, or a single pass of aggregation.
+
+<Callout tone="info" title="First, measure">
+Before optimizing, time one pass and note where it goes. A 2 GB CSV is usually I/O-bound, not CPU-bound, so the biggest wins come from reading fewer bytes and parsing fewer rows — not from a faster loop.
+</Callout>
+
+<Card title="Pick your approach" subtitle="Match the tool to the job">
+<Compare title="Which reader for which job">
+| Situation | pandas.read_csv | Polars | DuckDB | csv.reader |
+|---|---|---|---|---|
+| Need the whole table in memory | yes | yes | yes | no |
+| Need a filtered subset | no | yes | yes | no |
+| Need one-pass aggregation | no | yes | yes | yes |
+| Handles 2 GB comfortably | risky | yes | yes | yes |
+| Fastest to write | yes | yes | yes | no |
+| Zero extra dependencies | yes | no | no | yes |
+</Compare>
+</Card>
+
+<Card title="The four changes that matter most">
+
+<Steps>
+<Step title="Read only the columns you need" status="current" subtitle="usecols / select">
+Most CSVs have far more columns than you use. Dropping them cuts parse time proportionally — often 2–5× on a wide file.
+
+```python
+import pandas as pd
+df = pd.read_csv("big.csv", usecols=["id", "date", "amount"])
+```
+</Step>
+
+<Step title="Set dtypes and skip the date parser" status="todo" subtitle="dtype / parse_dates">
+`read_csv` infers types by scanning, then parses dates with a slow Python parser. Declaring dtypes and parsing dates after loading is much faster.
+
+```python
+df = pd.read_csv(
+    "big.csv",
+    usecols=["id", "date", "amount"],
+    dtype={"id": "int64", "amount": "float32"},
+)
+df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
+```
+</Step>
+
+<Step title="Use the C engine and chunk if memory is tight" status="todo">
+```python
+df = pd.read_csv("big.csv", engine="c", low_memory=False)  # default, but be explicit
+
+# or stream it
+for chunk in pd.read_csv("big.csv", chunksize=500_000):
+    process(chunk)
+```
+</Step>
+
+<Step title="Switch to Polars or DuckDB for real speed" status="todo">
+This is where the 5–20× wins live. Polars is multi-threaded and memory-efficient; DuckDB queries the file directly without loading it all.
+
+```python
+# Polars — lazy, streaming, multi-threaded
+import polars as pl
+df = pl.read_csv("big.csv", columns=["id", "date", "amount"])
+# or truly streaming:
+df = pl.scan_csv("big.csv").filter(pl.col("amount") > 100).collect(streaming=True)
+```
+
+```python
+# DuckDB — SQL straight over the CSV, no full load
+import duckdb
+duckdb.sql("""
+    SELECT date, sum(amount) AS total
+    FROM read_csv_auto('big.csv')
+    GROUP BY date
+""").df()
+```
+</Step>
+</Steps>
+
+</Card>
+
+<Card title="If you only need aggregates, never load the file" subtitle="DuckDB one-liner">
+<Code file="aggregate.py">
+import duckdb
+
+con = duckdb.sql("""
+    SELECT
+        date_trunc('month', date) AS month,
+        count(*)                  AS rows,
+        sum(amount)               AS total
+    FROM read_csv_auto('big.csv', sample_size=100000)
+    GROUP BY 1
+    ORDER BY 1
+""")
+print(con.df())
+</Code>
+DuckDB streams the file, pushes the aggregation down, and never materializes 2 GB in Python memory. This is usually the single biggest speedup available.
+</Card>
+
+<Card title="If you're stuck with the stdlib csv module">
+The pure-Python `csv.reader` loop is the slowest option by far. If you can't add dependencies, at least:
+
+- Read in **binary mode** and decode per-field, or open with `newline=""`.
+- Do work in a **single pass** — never re-read the file.
+- Avoid per-row function calls; inline the logic.
+- Consider `numpy.loadtxt` or `pandas` just for the parse step if either is already installed.
+
+```python
+import csv
+from collections import defaultdict
+
+totals = defaultdict(float)
+with open("big.csv", newline="") as f:
+    reader = csv.reader(f)
+    header = next(reader)
+    i_amt = header.index("amount")
+    i_date = header.index("date")
+    for row in reader:
+        totals[row[i_date][:7]] += float(row[i_amt])
+```
+</Card>
+
+<Card title="Rough expectations" subtitle="Same machine, 2 GB CSV, 10M rows">
+<Chart type="bar" x="Approach" y="Seconds">
+| Approach | Seconds |
+|---|---|
+| csv.reader full loop | 210 |
+| pandas.read_csv (all cols, default) | 95 |
+| pandas + usecols + dtype | 38 |
+| Polars read_csv | 9 |
+| DuckDB aggregate, no load | 6 |
+</Chart>
+Numbers vary with disk speed, column count and dtypes — treat them as relative, not absolute.
+</Card>
+
+<Callout tone="warning" title="Watch out">
+`low_memory=False` can *increase* memory use. `dtype=str` on numeric columns avoids inference but shifts parsing cost to you. And on a spinning disk or network mount, the file read itself may dominate — check with `time` before blaming Python.
+</Callout>
+
+<FollowUps>
+- Show me the Polars streaming version in full
+- How do I convert my pandas code to DuckDB SQL?
+- My CSV has messy dates and mixed types — how do I handle that fast?
+- Can I parallelize the read across CPU cores?
+</FollowUps>

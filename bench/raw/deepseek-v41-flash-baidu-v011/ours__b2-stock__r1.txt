@@ -1,0 +1,88 @@
+# Low-inventory warnings
+
+<Callout tone="warning" title="12 items below threshold">
+Reorder soon to avoid stockouts. Threshold is set to **10 units** per SKU.
+</Callout>
+
+<Card title="Search & filter">
+<Form name="inventory-search">
+<Input label="Search items" type="search" name="q" placeholder="SKU or product name" hint="Matches name, SKU, and category" />
+<Select label="Category" name="category" placeholder="All categories" options="All categories | Beverages | Pantry | Snacks | Household | Personal care" />
+<Radio label="Stock level" name="level" options="All items | Below threshold only | Out of stock only" />
+<Button>Search</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Items running low" subtitle="Sorted by urgency — lowest remaining units first">
+| Item | SKU | Remaining | Threshold | Status |
+|---|---|---|---|---|
+| Cold Brew Concentrate 1L | BEV-1042 | 3 | 10 | Critical |
+| Oat Milk Barista 1L | BEV-0871 | 4 | 10 | Critical |
+| Sea Salt Crackers | SNK-2210 | 6 | 10 | Low |
+| Olive Oil Extra Virgin 500ml | PAN-3305 | 7 | 10 | Low |
+| Dish Soap Lemon 750ml | HH-1180 | 8 | 10 | Low |
+| Sparkling Water Lime 12pk | BEV-0519 | 9 | 10 | Low |
+
+<Stat label="Items below threshold" value="12" change="+3 since yesterday" tone="warning" icon="chart-line" />
+<Stat label="Out of stock" value="2" tone="danger" icon="warning" />
+<Stat label="Trigger threshold" value="10 units" note="Per SKU, all categories" tone="info" icon="users" />
+</Card>
+
+<Card title="Reorder" subtitle="Each item can be restocked directly">
+<Columns>
+<Card title="Cold Brew Concentrate 1L" subtitle="BEV-1042 · 3 units left">
+<Badge tone="danger">Critical</Badge>
+<Slider label="Reorder quantity" min="10" max="200" step="10" value="60" name="qty-bev1042" unit="units" />
+<Button ask="Reorder 60 units of Cold Brew Concentrate 1L (BEV-1042)">Reorder now</Button>
+</Card>
+<Card title="Oat Milk Barista 1L" subtitle="BEV-0871 · 4 units left">
+<Badge tone="danger">Critical</Badge>
+<Slider label="Reorder quantity" min="10" max="200" step="10" value="80" name="qty-bev0871" unit="units" />
+<Button ask="Reorder 80 units of Oat Milk Barista 1L (BEV-0871)">Reorder now</Button>
+</Card>
+</Columns>
+<Columns>
+<Card title="Sea Salt Crackers" subtitle="SNK-2210 · 6 units left">
+<Badge tone="warning">Low</Badge>
+<Slider label="Reorder quantity" min="10" max="200" step="10" value="40" name="qty-snk2210" unit="units" />
+<Button ask="Reorder 40 units of Sea Salt Crackers (SNK-2210)">Reorder now</Button>
+</Card>
+<Card title="Olive Oil Extra Virgin 500ml" subtitle="PAN-3305 · 7 units left">
+<Badge tone="warning">Low</Badge>
+<Slider label="Reorder quantity" min="10" max="200" step="10" value="30" name="qty-pan3305" unit="units" />
+<Button ask="Reorder 30 units of Olive Oil Extra Virgin 500ml (PAN-3305)">Reorder now</Button>
+</Card>
+</Columns>
+<Columns>
+<Card title="Dish Soap Lemon 750ml" subtitle="HH-1180 · 8 units left">
+<Badge tone="warning">Low</Badge>
+<Slider label="Reorder quantity" min="10" max="200" step="10" value="50" name="qty-hh1180" unit="units" />
+<Button ask="Reorder 50 units of Dish Soap Lemon 750ml (HH-1180)">Reorder now</Button>
+</Card>
+<Card title="Sparkling Water Lime 12pk" subtitle="BEV-0519 · 9 units left">
+<Badge tone="warning">Low</Badge>
+<Slider label="Reorder quantity" min="10" max="200" step="10" value="100" name="qty-bev0519" unit="units" />
+<Button ask="Reorder 100 units of Sparkling Water Lime 12pk (BEV-0519)">Reorder now</Button>
+</Card>
+</Columns>
+<Button variant="primary" ask="Reorder all 12 low-stock items at recommended quantities">Reorder all low items</Button>
+</Card>
+
+<Card title="Warning threshold settings">
+<Details title="How the threshold works" open="true">
+The warning triggers when on-hand units for any SKU drop to or below its threshold. Default is **10 units**; individual SKUs can override it.
+</Details>
+<Form name="threshold-settings">
+<Input label="Default threshold (units)" type="number" name="threshold" value="10" min="1" max="500" step="1" hint="Applies to all SKUs without an override" />
+<Switch label="Email me when an item hits the threshold" name="notify" value=true />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show only out-of-stock items
+- Raise the threshold for beverages
+- Export the low-inventory list
+- Show reorder history for Cold Brew Concentrate
+</FollowUps>

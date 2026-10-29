@@ -1,0 +1,109 @@
+# Training Platform Analytics
+
+<Badge tone="info">Live data · Updated 5 min ago</Badge>
+
+<Card title="Cohort filter" subtitle="Narrow all analytics below to a single cohort">
+<Form name="cohort-filter">
+<Select label="Cohort" options="All cohorts | Product Design — Spring 2026 | Data Science — Winter 2026 | Frontend Dev — Fall 2025 | UX Research — Summer 2025" name="cohort" placeholder="All cohorts" />
+<Button variant="secondary">Apply filter</Button>
+</Form>
+</Card>
+
+<Card title="Key metrics" subtitle="Weekly snapshot across selected cohort">
+<Columns>
+<Stat label="Active learners this week" value="1,284" change="+12.4%" tone="success" icon="users" />
+<Stat label="Course completion rate" value="78.2%" change="+3.1 pts" tone="info" icon="check-circle" />
+<Stat label="Average quiz score" value="86.5%" change="+1.8 pts" tone="success" icon="pencil-circle" />
+<Stat label="At-risk learners" value="143" change="-8.2%" tone="warning" icon="warning" />
+</Columns>
+</Card>
+
+<Card title="Engagement — past eight weeks" subtitle="Active learners per week">
+<Chart type="line" x="Week" y="Active learners">
+| Week | Active learners |
+|---|---|
+| W1 | 1,020 |
+| W2 | 1,135 |
+| W3 | 1,090 |
+| W4 | 1,240 |
+| W5 | 1,310 |
+| W6 | 1,205 |
+| W7 | 1,340 |
+| W8 | 1,284 |
+</Chart>
+</Card>
+
+<Card title="Courses ranked by enrollment" subtitle="Enrolled learners per course — click a course to drill in">
+<Chart type="bar" x="Course" y="Enrollments">
+| Course | Enrollments |
+|---|---|
+| Product Design Foundations | 842 |
+| Data Visualization | 731 |
+| Frontend Web Development | 689 |
+| UX Research Methods | 524 |
+| Design Systems | 438 |
+| Agile Team Collaboration | 391 |
+</Chart>
+</Card>
+
+<Card title="Learners at risk of dropping out" subtitle="Based on inactivity, declining quiz scores, and missed deadlines">
+<Tabs>
+<Tab title="All at-risk learners">
+| Learner | Course | Last active | Quiz trend | Risk level |
+|---|---|---|---|---|
+| Maya Patel | Product Design Foundations | 6 days ago | Declining | <Badge tone="danger">High</Badge> |
+| Diego Ramírez | Data Visualization | 8 days ago | Stable | <Badge tone="warning">Medium</Badge> |
+| Sofia Novak | Frontend Web Development | 5 days ago | Declining | <Badge tone="danger">High</Badge> |
+| Liam O'Connor | UX Research Methods | 10 days ago | Declining | <Badge tone="danger">High</Badge> |
+| Aisha Bello | Design Systems | 4 days ago | Stable | <Badge tone="warning">Medium</Badge> |
+| Noah Kim | Agile Team Collaboration | 7 days ago | Improving | <Badge tone="neutral">Low</Badge> |
+</Tabs>
+<Tab title="High risk only">
+| Learner | Course | Last active | Quiz trend | Risk level |
+|---|---|---|---|---|
+| Maya Patel | Product Design Foundations | 6 days ago | Declining | <Badge tone="danger">High</Badge> |
+| Sofia Novak | Frontend Web Development | 5 days ago | Declining | <Badge tone="danger">High</Badge> |
+| Liam O'Connor | UX Research Methods | 10 days ago | Declining | <Badge tone="danger">High</Badge> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Message cohort" subtitle="Send a nudge, announcement, or reminder to the selected cohort">
+<Form name="cohort-message">
+<Select label="Recipients" options="All cohorts | Product Design — Spring 2026 | Data Science — Winter 2026 | Frontend Dev — Fall 2025 | UX Research — Summer 2025" name="recipients" placeholder="All cohorts" />
+<Input label="Subject" type="text" placeholder="Don't fall behind — here's a study tip" />
+<TextArea label="Message" rows="5" placeholder="Hi team, we noticed you haven't logged in this week. Here's a quick recap of what you missed…" />
+<Checkboxes label="Include with message" options="Link to course | Link to quiz | Link to discussion forum" name="include" value="Link to course" />
+<Button variant="primary">Send message</Button>
+<Button variant="secondary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="At-risk learners — breakdown" subtitle="Cohort-level view of learners needing support">
+<Columns>
+<Stat label="High risk" value="42" change="+3 this week" tone="danger" icon="warning-circle" />
+<Stat label="Medium risk" value="61" change="-5 this week" tone="warning" icon="warning" />
+<Stat label="Low risk" value="40" change="-6 this week" tone="success" icon="check" />
+</Columns>
+<Progress value="42" max="143" label="High risk share" tone="danger" />
+<Progress value="61" max="143" label="Medium risk share" tone="warning" />
+<Progress value="40" max="143" label="Low risk share" tone="success" />
+</Card>
+
+<Card title="Course completion rate by course" subtitle="Within the selected cohort">
+| Course | Completion rate | Progress |
+|---|---|---|
+| Product Design Foundations | 82% | <Progress value="82" max="100" label="82%" tone="success" /> |
+| Data Visualization | 74% | <Progress value="74" max="100" label="74%" tone="info" /> |
+| Frontend Web Development | 68% | <Progress value="68" max="100" label="68%" tone="warning" /> |
+| UX Research Methods | 79% | <Progress value="79" max="100" label="79%" tone="success" /> |
+| Design Systems | 71% | <Progress value="71" max="100" label="71%" tone="info" /> |
+| Agile Team Collaboration | 88% | <Progress value="88" max="100" label="88%" tone="success" /> |
+</Card>
+
+<FollowUps>
+- Show me the weekly trend for at-risk learners
+- Compare quiz scores across cohorts
+- Draft a re-engagement message template
+- Export this report as PDF or CSV
+</FollowUps>

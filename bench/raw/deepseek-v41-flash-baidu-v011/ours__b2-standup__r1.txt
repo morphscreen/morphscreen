@@ -1,0 +1,96 @@
+# Async Standup — Thursday, 12 June 2025
+
+<Columns>
+<Stat label="Updates posted" value="5 of 8" icon="users" tone="info" />
+<Stat label="Still missing" value="3" tone="warning" icon="clock" />
+<Stat label="Blocked" value="1" tone="danger" icon="warning" />
+<Stat label="On track" value="4" tone="success" icon="check-circle" />
+</Columns>
+
+<Callout tone="danger" title="1 person is blocked">Priya's work on the billing migration is stuck waiting on API keys from the vendor. She needs someone to chase the vendor today.</Callout>
+
+<Card title="Today's updates" subtitle="Thursday, 12 June 2025 · posted by 9:30am">
+
+<Tabs>
+<Tab title="All (5)">
+<Steps>
+<Step title="Maya Chen" subtitle="Posted 8:12am" status="done">
+Yesterday: shipped the onboarding email sequence. Today: writing the help-centre article for it. No blockers.
+</Step>
+<Step title="Tom Alvarez" subtitle="Posted 8:20am" status="done">
+Yesterday: finished the search filter bug. Today: picking up the export-to-CSV ticket. No blockers.
+</Step>
+<Step title="Priya Raman" subtitle="Posted 8:31am" status="current">
+Yesterday: started the billing migration. Today: still on it. <Badge tone="danger">Blocked</Badge> — waiting on API keys from the payment vendor, chased twice, no reply.
+</Step>
+<Step title="Jonas Weber" subtitle="Posted 8:44am" status="done">
+Yesterday: reviewed two PRs. Today: pairing with Tom on CSV export. No blockers.
+</Step>
+<Step title="Aisha Bello" subtitle="Posted 9:02am" status="done">
+Yesterday: user interviews (3 done). Today: writing up findings. No blockers.
+</Step>
+</Steps>
+</Tab>
+<Tab title="Blocked (1)">
+<Steps>
+<Step title="Priya Raman" subtitle="Billing migration" status="current">
+<Badge tone="danger">Blocked</Badge> Waiting on API keys from the payment vendor. Needs someone to escalate today.
+</Step>
+</Steps>
+<Button ask="Help Priya unblock the billing migration">Offer to help Priya</Button>
+</Tab>
+<Tab title="Missing (3)">
+<Steps>
+<Step title="Sam Okafor" subtitle="No update yet" status="todo">
+Last posted: yesterday, 8:05am.
+</Step>
+<Step title="Lena Fischer" subtitle="No update yet" status="todo">
+Last posted: two days ago.
+</Step>
+<Step title="Diego Santos" subtitle="No update yet" status="todo">
+Last posted: yesterday, 9:40am.
+</Step>
+</Steps>
+<Button ask="Nudge Sam, Lena and Diego for their standup updates">Nudge all three</Button>
+</Tab>
+</Tabs>
+
+</Card>
+
+<Card title="Post your update" subtitle="Takes about a minute">
+
+<Form name="standup-update">
+<Input label="Name" name="name" placeholder="Your name" required="true" />
+<TextArea label="What did you do yesterday?" name="yesterday" placeholder="Shipped the search filter fix..." rows="3" required="true" />
+<TextArea label="What are you doing today?" name="today" placeholder="Picking up the CSV export ticket..." rows="3" required="true" />
+<Input label="Any blockers?" name="blockers" placeholder="None — or describe what's stuck" hint="Leave blank if you're clear" />
+<Switch label="Mark me as blocked" name="blocked" value="false" hint="Flags you in the Blocked tab above" />
+<Button>Post update</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+
+</Card>
+
+<Card title="Who's in today" subtitle="8 teammates on this standup">
+
+| Teammate | Status | Posted |
+|---|---|---|
+| Maya Chen | On track | 8:12am |
+| Tom Alvarez | On track | 8:20am |
+| Priya Raman | Blocked | 8:31am |
+| Jonas Weber | On track | 8:44am |
+| Aisha Bello | On track | 9:02am |
+| Sam Okafor | Missing | — |
+| Lena Fischer | Missing | — |
+| Diego Santos | Missing | — |
+
+<Progress value="5" max="8" label="Updates posted" tone="info" />
+
+</Card>
+
+<FollowUps>
+- Draft a nudge message for the three missing updates
+- What should we do about Priya's vendor blocker?
+- Summarise today's standup into a Slack message
+- Show me this week's blockers only
+</FollowUps>

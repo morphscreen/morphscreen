@@ -1,0 +1,295 @@
+# University Administrator Dashboard
+
+<Select label="Focus Department" name="dept-filter" placeholder="All Departments" options="All Departments | Computer Science | Biology | Business | Engineering | Arts & Humanities | Mathematics | Physics | Chemistry | Psychology | Economics" />
+
+## Key Metrics Overview
+
+<Columns>
+<Card title="Total Enrollment (5-Year Trend)">
+<Chart type="line" x="Year" y="Students" title="Enrollment Trend">
+| Year | Students |
+|---|---|
+| 2020 | 18,240 |
+| 2021 | 19,100 |
+| 2022 | 20,450 |
+| 2023 | 21,800 |
+| 2024 | 22,650 |
+</Chart>
+<Stat label="Current Enrollment" value="22,650" change="+3.9% vs 2023" tone="success" />
+</Card>
+
+<Card title="Applications by Program (Fall 2024)">
+<Chart type="bar" x="Program" y="Applications" title="Applications by Program">
+| Program | Applications |
+|---|---|
+| Computer Science | 3,240 |
+| Business | 2,890 |
+| Engineering | 2,560 |
+| Biology | 1,980 |
+| Psychology | 1,650 |
+| Arts & Humanities | 1,320 |
+| Economics | 1,180 |
+| Mathematics | 980 |
+| Physics | 760 |
+| Chemistry | 690 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Acceptance Rate">
+<Stat label="Overall Acceptance Rate" value="28.4%" change="-1.2% vs last year" tone="neutral" />
+<Chart type="bar" x="Program" y="Rate %" title="Acceptance Rate by Program">
+| Program | Rate % |
+|---|---|
+| Computer Science | 18.2 |
+| Business | 22.5 |
+| Engineering | 24.8 |
+| Biology | 31.4 |
+| Psychology | 35.7 |
+| Arts & Humanities | 42.1 |
+| Economics | 38.9 |
+| Mathematics | 40.3 |
+| Physics | 45.6 |
+| Chemistry | 48.2 |
+</Chart>
+</Card>
+
+<Card title="Tuition Revenue (FY 2024)">
+<Stat label="Total Tuition Revenue" value="$184.2M" change="+5.2% vs FY23" tone="success" />
+<Stat label="Undergraduate" value="$142.8M" change="+4.8%" tone="info" />
+<Stat label="Graduate" value="$41.4M" change="+6.5%" tone="info" />
+<Chart type="bar" x="Term" y="Revenue ($M)" title="Revenue by Term">
+| Term | Revenue ($M) |
+|---|---|
+| Fall 2023 | 68.4 |
+| Spring 2024 | 65.2 |
+| Summer 2024 | 12.8 |
+| Fall 2024 (proj) | 71.5 |
+</Chart>
+</Card>
+</Columns>
+
+## Academic Operations
+
+<Columns>
+<Card title="Course Capacity Utilization">
+<Chart type="horizontal" x="Utilization %" y="Course" title="Course Fill Rates">
+| Course | Utilization % |
+|---|---|
+| CS 101: Intro to Programming | 98 |
+| BUS 201: Financial Accounting | 95 |
+| ENG 301: Thermodynamics | 92 |
+| BIO 101: General Biology | 89 |
+| PSY 101: Intro Psychology | 87 |
+| MATH 201: Calculus II | 84 |
+| ECON 101: Microeconomics | 81 |
+| ART 101: Art History | 76 |
+| CHEM 101: General Chemistry | 73 |
+| PHYS 101: Mechanics | 68 |
+</Chart>
+<Stat label="Avg Utilization" value="84.3%" tone="info" />
+<Stat label="Courses >90% Full" value="23 of 187" tone="warning" />
+</Card>
+
+<Card title="Teaching Load by Faculty">
+<Chart type="bar" x="Faculty" y="Credit Hours" title="Fall 2024 Teaching Load">
+| Faculty | Credit Hours |
+|---|---|
+| Dr. Sarah Chen (CS) | 12 |
+| Prof. James Wilson (Eng) | 11 |
+| Dr. Maria Rodriguez (Bio) | 10 |
+| Prof. David Kim (Bus) | 9 |
+| Dr. Lisa Thompson (Psy) | 9 |
+| Prof. Robert Brown (Math) | 8 |
+| Dr. Jennifer Lee (Econ) | 8 |
+| Prof. Michael Davis (Art) | 7 |
+| Dr. Amanda Foster (Chem) | 7 |
+| Prof. Kevin White (Phys) | 6 |
+</Chart>
+<Stat label="Avg Load" value="8.7 credits" tone="neutral" />
+<Stat label="Faculty >10 credits" value="3" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Students at Academic Risk">
+<Stat label="Total At-Risk Students" value="1,247" change="+8.2% vs last semester" tone="danger" />
+<Stat label="Probation (GPA <2.0)" value="682" tone="danger" />
+<Stat label="Warning (GPA 2.0-2.3)" value="415" tone="warning" />
+<Stat label="Credit Deficient" value="150" tone="warning" />
+<Chart type="bar" x="Year" y="Count" title="At-Risk Trend">
+| Year | Count |
+|---|---|
+| 2021 | 980 |
+| 2022 | 1,045 |
+| 2023 | 1,152 |
+| 2024 | 1,247 |
+</Chart>
+</Card>
+
+<Card title="Scholarship Budget Utilization">
+<Progress value="14.2" max="18.5" label="Scholarship Budget: $14.2M of $18.5M used (76.8%)" />
+<Stat label="Merit Scholarships" value="$8.4M" change="78% allocated" tone="info" />
+<Stat label="Need-Based Aid" value="$4.1M" change="72% allocated" tone="info" />
+<Stat label="Athletic Scholarships" value="$1.7M" change="85% allocated" tone="warning" />
+<Chart type="bar" x="Category" y="Used ($M)" title="Scholarship Allocation">
+| Category | Used ($M) | Total ($M) |
+|---|---|---|
+| Merit | 8.4 | 10.8 |
+| Need-Based | 4.1 | 5.7 |
+| Athletic | 1.7 | 2.0 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Housing Occupancy">
+<Progress value="3,842" max="4,100" label="Occupancy: 3,842 of 4,100 beds (93.7%)" />
+<Stat label="Freshman Housing" value="98.2%" tone="success" />
+<Stat label="Upperclassman" value="89.4%" tone="info" />
+<Stat label="Graduate Housing" value="91.7%" tone="info" />
+<Chart type="bar" x="Building" y="Occupancy %" title="Occupancy by Building">
+| Building | Occupancy % |
+|---|---|
+| North Hall | 99 |
+| South Hall | 97 |
+| East Commons | 95 |
+| West Village | 92 |
+| Graduate Tower | 91 |
+| Family Housing | 88 |
+</Chart>
+</Card>
+
+<Card title="Campus Events This Month">
+<Stat label="Total Events" value="47" tone="info" />
+<Stat label="Academic" value="18" tone="neutral" />
+<Stat label="Student Life" value="14" tone="neutral" />
+<Stat label="Athletics" value="9" tone="neutral" />
+<Stat label="Career" value="6" tone="neutral" />
+<Chart type="bar" x="Week" y="Events" title="Events by Week">
+| Week | Events |
+|---|---|
+| Oct 1-7 | 12 |
+| Oct 8-14 | 10 |
+| Oct 15-21 | 14 |
+| Oct 22-31 | 11 |
+</Chart>
+</Card>
+</Columns>
+
+## Alumni & Comparative Analytics
+
+<Columns>
+<Card title="Alumni Giving (4-Year Trend)">
+<Chart type="line" x="Year" y="Donations ($M)" title="Annual Alumni Giving">
+| Year | Donations ($M) | Donors |
+|---|---|---|
+| 2021 | 12.4 | 8,420 |
+| 2022 | 14.1 | 9,150 |
+| 2023 | 16.8 | 10,230 |
+| 2024 | 18.9 | 11,050 |
+</Chart>
+<Stat label="2024 YTD" value="$18.9M" change="+12.5% vs 2023" tone="success" />
+<Stat label="Donor Count" value="11,050" change="+8.0%" tone="success" />
+<Stat label="Avg Gift" value="$1,710" change="+4.2%" tone="info" />
+</Card>
+
+<Card title="Semester Comparison: Fall 2024 vs Fall 2023">
+<Chart type="bar" x="Metric" y="Value" title="Fall 2024 vs Fall 2023">
+| Metric | Fall 2023 | Fall 2024 |
+|---|---|---|
+| Enrollment | 21,800 | 22,650 |
+| Applications | 18,420 | 19,850 |
+| Acceptance Rate | 29.6% | 28.4% |
+| Tuition Revenue | $68.4M | $71.5M |
+| Avg Class Size | 28.4 | 29.1 |
+| Retention Rate | 91.2% | 92.1% |
+</Chart>
+<Stat label="Enrollment Change" value="+3.9%" tone="success" />
+<Stat label="Revenue Change" value="+4.5%" tone="success" />
+<Stat label="Retention Change" value="+0.9%" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Waitlisted Students by Program">
+<Chart type="bar" x="Program" y="Waitlisted" title="Waitlist Count (Fall 2024)">
+| Program | Waitlisted |
+|---|---|
+| Computer Science | 487 |
+| Business | 324 |
+| Engineering | 298 |
+| Biology | 187 |
+| Psychology | 156 |
+| Economics | 112 |
+| Mathematics | 89 |
+| Arts & Humanities | 67 |
+| Chemistry | 45 |
+| Physics | 38 |
+</Chart>
+<Stat label="Total Waitlisted" value="1,803" tone="warning" />
+<Stat label="CS Waitlist % of Apps" value="15.0%" tone="danger" />
+</Card>
+
+<Card title="Department Focus: Computer Science">
+<Stat label="Enrollment" value="3,240" change="+12.4% YoY" tone="success" />
+<Stat label="Applications" value="3,240" change="+18.2%" tone="info" />
+<Stat label="Acceptance Rate" value="18.2%" change="-2.1%" tone="warning" />
+<Stat label="Avg Class Size" value="34.2" change="+2.1" tone="warning" />
+<Stat label="Faculty Count" value="28" change="+2" tone="info" />
+<Stat label="Teaching Load Avg" value="10.3 credits" tone="warning" />
+<Stat label="At-Risk Students" value="187" change="+15" tone="danger" />
+<Stat label="Waitlisted" value="487" tone="danger" />
+</Card>
+</Columns>
+
+## Administrative Actions
+
+<Tabs>
+<Tab title="Approve New Course">
+<Card title="New Course Approval" subtitle="Submit a new course for curriculum committee review">
+<Form name="course-approval">
+<Input label="Course Code" placeholder="e.g., CS 485" required="true" />
+<Input label="Course Title" placeholder="e.g., Machine Learning Systems" required="true" />
+<Select label="Department" options="Computer Science | Biology | Business | Engineering | Arts & Humanities | Mathematics | Physics | Chemistry | Psychology | Economics" required="true" />
+<Select label="Level" options="100 - Introductory | 200 - Intermediate | 300 - Advanced | 400 - Senior Seminar | 500 - Graduate | 600 - Doctoral" required="true" />
+<Input label="Credit Hours" type="number" placeholder="3" value="3" required="true" />
+<TextArea label="Course Description" placeholder="Brief description for catalog..." rows="3" required="true" />
+<TextArea label="Prerequisites" placeholder="e.g., CS 201, CS 240, MATH 210" rows="2" />
+<Select label="Proposed Term" options="Spring 2025 | Fall 2025 | Spring 2026" required="true" />
+<Input label="Proposed Instructor" placeholder="Faculty name or 'TBD'" />
+<Select label="Delivery Mode" options="In-Person | Hybrid | Online" value="In-Person" />
+<Checkboxes label="Requires Approval From" options="Curriculum Committee | Department Chair | Dean's Office | Graduate Council (if 500+)" value="Curriculum Committee | Department Chair" required="true" />
+<Button>Submit for Approval</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Tab>
+
+<Tab title="Message Student Group">
+<Card title="Send Message to Student Group" subtitle="Compose and send announcements to targeted student populations">
+<Form name="student-message">
+<Select label="Recipient Group" options="All Students | Undergraduate | Graduate | Freshmen | Seniors | At-Risk Students | Waitlisted Students | Honors Students | International Students | Student Athletes | Specific Program (CS, Bio, Bus, etc.)" required="true" />
+<Input label="Subject" placeholder="Important: Registration Deadline Approaching" required="true" />
+<Select label="Priority" options="Normal | High | Urgent" value="Normal" />
+<TextArea label="Message" placeholder="Dear Students,\n\nThis is a reminder that..." rows="6" required="true" />
+<Checkboxes label="Delivery Channels" options="Email | SMS | Portal Notification | Mobile App Push" value="Email | Portal Notification" required="true" />
+<Date label="Schedule Send" name="send-date" hint="Leave blank to send immediately" />
+<Switch label="Require Read Receipt" name="read-receipt" value="false" />
+<Switch label="Allow Replies" name="allow-replies" value="true" />
+<Button>Send Message</Button>
+<Button variant="secondary">Preview</Button>
+<Button variant="tertiary">Save Template</Button>
+</Form>
+</Card>
+</Tab>
+</Tabs>
+
+<FollowUps>
+- Show detailed enrollment projections for next 3 years
+- Generate at-risk student intervention report
+- Compare department budgets vs actuals
+- View faculty hiring pipeline
+- Export all metrics to board report
+</FollowUps>

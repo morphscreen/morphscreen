@@ -1,0 +1,18 @@
+# Mortgage Calculator
+
+Adjust the sliders to see your estimated monthly payment and total interest.
+
+<WhatIf title="Mortgage Calculator">
+<Slider label="Loan Amount" name="loanAmount" min="50000" max="1000000" step="10000" value="300000" />
+<Slider label="Interest Rate (%)" name="interestRate" min="1" max="15" step="0.1" value="6.5" />
+<Slider label="Loan Term (Years)" name="years" min="5" max="40" step="1" value="30" />
+
+<Result label="Monthly Payment" value="loanAmount * ((interestRate/100/12) * (1+interestRate/100/12)^(years*12)) / ((1+interestRate/100/12)^(years*12) - 1)" unit="$" decimals="2" />
+<Result label="Total Interest Paid" value="(loanAmount * ((interestRate/100/12) * (1+interestRate/100/12)^(years*12)) / ((1+interestRate/100/12)^(years*12) - 1)) * years * 12 - loanAmount" unit="$" decimals="2" />
+</WhatIf>
+
+<Callout tone="info" title="How it works">
+- **Monthly Payment**: Calculated using the standard amortization formula for fixed-rate mortgages
+- **Total Interest**: The sum of all interest payments over the life of the loan
+- Results update instantly as you move the sliders
+</Callout>

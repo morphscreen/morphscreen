@@ -1,0 +1,199 @@
+# City Operations Center
+
+<Columns>
+<Stat label="Congestion index" value="1.42" change="+8% vs 1h ago" tone="warning" icon="chart-line" />
+<Stat label="Transit punctuality" value="87.4%" change="-2.1 pts today" tone="warning" icon="users" />
+<Stat label="Air quality (city avg)" value="AQI 74" change="Moderate" tone="info" icon="chart-line" />
+<Stat label="Water use today" value="412 ML" change="+3% vs avg" tone="neutral" icon="chart-line" />
+</Columns>
+
+<Card title="1. Congestion right now" subtitle="Live arterial speeds and delay">
+<Chart type="bar" x="Corridor" y="Avg speed (km/h)">
+| Corridor | Speed now | Free-flow |
+|---|---|---|
+| Riverside Expy | 22 | 65 |
+| Central Blvd | 31 | 55 |
+| North Ring | 44 | 70 |
+| Harbor Tunnel | 18 | 60 |
+| East Link | 39 | 65 |
+</Chart>
+<Callout tone="warning" title="Worst corridor">Harbor Tunnel at 18 km/h — 70% below free-flow. Consider signal retiming.</Callout>
+</Card>
+
+<Card title="2. Transit punctuality" subtitle="On-time performance by mode, last 60 min">
+| Mode | On-time | Avg delay |
+|---|---|---|
+| Metro | 91% | 0:48 |
+| Bus | 84% | 2:15 |
+| Tram | 89% | 1:02 |
+| Ferry | 96% | 0:20 |
+<Progress value="87" max="100" label="System-wide on-time" tone="warning" />
+</Card>
+
+<Card title="3. Air quality by district">
+<Chart type="bar" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Northgate | 58 |
+| Riverside | 81 |
+| Old Town | 66 |
+| Harbor | 92 |
+| Eastfield | 49 |
+| Southpark | 71 |
+</Chart>
+<Badge tone="danger">Harbor: Unhealthy</Badge> <Badge tone="warning">Riverside: Moderate</Badge> <Badge tone="success">Eastfield: Good</Badge>
+</Card>
+
+<Card title="4. Energy use — past week" subtitle="GWh per day, city grid">
+<Chart type="area" x="Day" y="GWh">
+| Day | Demand | Peak |
+|---|---|---|
+| Mon | 38.2 | 44.1 |
+| Tue | 39.6 | 45.3 |
+| Wed | 41.0 | 47.8 |
+| Thu | 40.4 | 46.2 |
+| Fri | 42.7 | 49.5 |
+| Sat | 36.1 | 41.0 |
+| Sun | 34.8 | 39.4 |
+</Chart>
+</Card>
+
+<Card title="5. Water use today">
+<Stat label="Consumed so far" value="412 ML" change="+3% vs 7-day avg" tone="neutral" icon="chart-line" />
+<Progress value="412" max="520" label="Daily allocation used (79%)" tone="info" />
+<Callout tone="info" title="Reservoir level">68% — no restrictions in effect.</Callout>
+</Card>
+
+<Card title="6. Open incidents" subtitle="Location and severity">
+| ID | Incident | Location | Severity | Status |
+|---|---|---|---|---|
+| INC-4471 | Multi-vehicle collision | Riverside Expy / Mile 12 | <Badge tone="danger">Critical</Badge> | Crews on scene |
+| INC-4468 | Water main break | Old Town, 4th & Elm | <Badge tone="warning">High</Badge> | Crew en route |
+| INC-4465 | Downed tree | Northgate Park Rd | <Badge tone="warning">High</Badge> | Pending |
+| INC-4460 | Signal outage | Central Blvd & 9th | <Badge tone="info">Medium</Badge> | Monitoring |
+| INC-4457 | Street flooding | Harbor, Pier 3 | <Badge tone="info">Medium</Badge> | Pumping |
+| INC-4452 | Graffiti report | Eastfield Plaza | <Badge tone="neutral">Low</Badge> | Queued |
+</Card>
+
+<Card title="7. Emergency vehicle deployment">
+| Unit | Type | Assigned district | Status |
+|---|---|---|---|
+| AMB-04 | Ambulance | Riverside | <Badge tone="danger">On call</Badge> |
+| AMB-11 | Ambulance | Harbor | <Badge tone="success">Available</Badge> |
+| ENG-02 | Fire engine | Old Town | <Badge tone="success">Available</Badge> |
+| ENG-07 | Fire engine | Northgate | <Badge tone="info">Staged</Badge> |
+| POL-19 | Patrol | Central | <Badge tone="success">Available</Badge> |
+| POL-22 | Patrol | Harbor | <Badge tone="danger">On call</Badge> |
+</Card>
+
+<Card title="8. Parking availability downtown">
+<Chart type="horizontal" x="Garage" y="Spaces free">
+| Garage | Free | Capacity |
+|---|---|---|
+| Civic Center | 42 | 600 |
+| Market St | 118 | 450 |
+| Riverfront | 7 | 800 |
+| Union Sq | 233 | 500 |
+| Harbor Deck | 61 | 350 |
+</Chart>
+<Badge tone="danger">Riverfront nearly full</Badge>
+</Card>
+
+<Card title="9. Public events this weekend">
+| Event | Location | Sat | Sun | Expected |
+|---|---|---|---|---|
+| Riverfront Festival | Riverside Park | 10:00–22:00 | 10:00–20:00 | 24,000 |
+| Farmers Market | Old Town Sq | 08:00–13:00 | — | 3,500 |
+| Marathon | Citywide | 06:00–13:00 | — | 18,000 |
+| Harbor Lights | Harbor Pier | — | 19:00–23:00 | 9,000 |
+<Callout tone="info" title="Traffic note">Marathon closes Central Blvd and North Ring, Sat 05:30–13:30.</Callout>
+</Card>
+
+<Card title="10. Citizen reports — live feed">
+<Steps>
+<Step title="INC-4471 — Collision" status="current" subtitle="2 min ago · Riverside">Reported via app, 3 photos attached.</Step>
+<Step title="INC-4468 — Water main break" status="done" subtitle="14 min ago · Old Town">Routed to Water Dept.</Step>
+<Step title="Pothole on 5th Ave" status="todo" subtitle="21 min ago · Old Town">Awaiting triage.</Step>
+<Step title="Streetlight out" status="todo" subtitle="34 min ago · Eastfield">Awaiting triage.</Step>
+</Steps>
+</Card>
+
+<Card title="11. Service request backlog">
+<Stat label="Open requests" value="1,284" change="+62 this week" tone="warning" icon="chart-line" />
+| Category | Open | Avg age (days) |
+|---|---|---|
+| Roads & potholes | 412 | 11 |
+| Street lighting | 268 | 7 |
+| Sanitation | 231 | 4 |
+| Water & sewer | 187 | 9 |
+| Parks | 186 | 6 |
+<Progress value="1284" max="1500" label="Backlog vs capacity threshold" tone="warning" />
+</Card>
+
+<Card title="12. Current weather">
+<Columns>
+<Stat label="Temp" value="18°C" note="Feels like 17°C" icon="chart-line" />
+<Stat label="Wind" value="22 km/h" note="NW, gusting 34" icon="chart-line" />
+<Stat label="Rain" value="0.4 mm" note="Last hour" icon="chart-line" />
+<Stat label="Visibility" value="9 km" note="Light haze" icon="chart-line" />
+</Columns>
+<Callout tone="info" title="Forecast">Showers from 16:00; possible flooding in Harbor low-lying areas.</Callout>
+</Card>
+
+<Card title="13. Focus on one district" subtitle="Filters the whole board">
+<Form name="district-focus">
+<Select label="District" name="district" placeholder="Choose a district" options="All districts | Northgate | Riverside | Old Town | Harbor | Eastfield | Southpark" value="All districts" />
+<Switch label="Lock focus across all panels" name="lock" value="false" />
+<Button>Apply focus</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="14. Dispatch a crew">
+<Form name="dispatch">
+<Select label="Incident" name="incident" placeholder="Select incident" options="INC-4471 Collision | INC-4468 Water main | INC-4465 Downed tree | INC-4460 Signal outage | INC-4457 Flooding" required="true" />
+<Select label="Crew" name="crew" placeholder="Select crew" options="Roads A | Roads B | Water 1 | Signals 2 | Sanitation 3 | Parks 1" required="true" />
+<Radio label="Priority" name="priority" options="Emergency | Urgent | Routine" value="Urgent" />
+<TextArea label="Dispatch notes" name="notes" placeholder="Access details, hazards, contact on site" rows="3" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="15. Send a public alert">
+<Form name="public-alert">
+<Input label="Headline" name="headline" placeholder="e.g. Flooding on Harbor Pier 3" required="true" />
+<TextArea label="Message" name="message" placeholder="What is happening, what people should do, where to get updates" rows="4" required="true" hint="Keep under 240 characters for SMS" />
+<Checkboxes label="Channels" name="channels" options="SMS | Email | App push | Social | Sirens" value="SMS | App push" />
+<Select label="Area" name="area" placeholder="Select area" options="Citywide | Northgate | Riverside | Old Town | Harbor | Eastfield | Southpark" />
+<Radio label="Severity" name="severity" options="Advisory | Watch | Warning | Emergency" value="Watch" />
+<Button variant="danger">Send alert</Button>
+<Button variant="tertiary">Preview</Button>
+</Form>
+</Card>
+
+<Card title="16. Roadworks planned this month">
+| Project | Location | Window | Impact |
+|---|---|---|---|
+| Resurfacing | Central Blvd, 4th–12th | Mar 4–9 | 1 lane each way |
+| Bridge joint repair | North Ring Bridge | Mar 11–15 | Night closures |
+| Water main replacement | Old Town, Elm St | Mar 14–22 | Full closure |
+| Signal upgrade | Harbor / Pier 3 | Mar 18–20 | Detours |
+| Bike lane paint | Eastfield Ave | Mar 25–27 | Rolling stops |
+</Card>
+
+<Card title="17. Infrastructure jobs due for maintenance">
+| Asset | District | Due | Risk |
+|---|---|---|---|
+| Pump Station 4 | Harbor | 6 days | <Badge tone="danger">High</Badge> |
+| Substation B | Riverside | 12 days | <Badge tone="warning">Medium</Badge> |
+| Water Tower North | Northgate | 19 days | <Badge tone="warning">Medium</Badge> |
+| Lift Station 9 | Southpark | 27 days | <Badge tone="info">Low</Badge> |
+| Reservoir Valve 2 | Old Town | Overdue | <Badge tone="danger">High</Badge> |
+</Card>
+
+<FollowUps>
+- Show only the Harbor district across every panel
+- Draft a public alert for the Harbor flooding risk
+- Which crews are free to dispatch right now?
+- List all overdue infrastructure jobs by risk
+</FollowUps>

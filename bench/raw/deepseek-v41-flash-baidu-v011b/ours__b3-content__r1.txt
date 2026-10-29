@@ -1,0 +1,97 @@
+# Content Studio
+
+A single working screen for an editor: what's in flight, what's live, what needs a reply, and the next thing to write.
+
+<Columns>
+<Stat label="Drafts in progress" value="6" change="+2 today" tone="info" icon="note-pencil" />
+<Stat label="Published this week" value="4" change="+1 vs last week" tone="success" icon="paper-plane-tilt" />
+<Stat label="Top article reads" value="18.4k" change="+22%" tone="success" icon="chart-line" />
+<Stat label="Comments awaiting reply" value="12" tone="warning" icon="chat-circle-dots" />
+</Columns>
+
+<Card title="Drafts" subtitle="Everything not yet live, with its status">
+| Title | Category | Status | Last edited |
+|---|---|---|---|
+| The quiet economics of small towns | Features | <Badge tone="info">In review</Badge> | 2h ago |
+| A field guide to urban foraging | Guides | <Badge tone="warning">Needs edits</Badge> | Yesterday |
+| Interview: the last typewriter repairman | Profiles | <Badge tone="neutral">Draft</Badge> | 3 days ago |
+| What the new transit map changes | News | <Badge tone="info">In review</Badge> | 5h ago |
+| Six recipes for a cold Sunday | Food | <Badge tone="neutral">Draft</Badge> | 6 days ago |
+| The case for slower software | Opinion | <Badge tone="warning">Fact-check</Badge> | 1 day ago |
+
+<Button ask="Open the draft 'A field guide to urban foraging'">Open top draft</Button>
+</Card>
+
+<Card title="Published this week" subtitle="4 pieces live since Monday">
+| Piece | Category | Published | Reads |
+|---|---|---|---|
+| Why the harbor moved | News | Mon | 6,120 |
+| Notes from a night shift | Features | Tue | 4,480 |
+| The new rules of bread | Food | Thu | 3,910 |
+| Letters to the editor, vol. 41 | Opinion | Fri | 1,240 |
+</Card>
+
+<Card title="Most-read this month">
+<Stat label="Top article" value="18,402 reads" change="+22% vs September" tone="success" icon="trophy" note="Why the harbor moved — News" />
+</Card>
+
+<Card title="Readership, past 30 days">
+<Chart type="line" x="Day" y="Readers">
+| Day | Readers |
+|---|---|
+| Oct 1 | 8200 |
+| Oct 5 | 9100 |
+| Oct 10 | 8800 |
+| Oct 15 | 10400 |
+| Oct 20 | 11900 |
+| Oct 25 | 11200 |
+| Oct 30 | 13400 |
+</Chart>
+</Card>
+
+<Card title="Filter by category">
+<Select label="Category" options="All categories | News | Features | Guides | Profiles | Opinion | Food" name="category" value="All categories" hint="Narrows the drafts and published lists above" />
+<Button ask="Show only Features pieces">Show Features only</Button>
+</Card>
+
+<Card title="Schedule a piece" subtitle="Set the title and the day it goes live">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="The quiet economics of small towns" required="true" />
+<Date label="Publish date" name="publish-date" required="true" hint="Must be at least tomorrow" />
+<Select label="Category" options="News | Features | Guides | Profiles | Opinion | Food" name="schedule-category" placeholder="Choose a category" />
+<Input label="Editor" name="editor" placeholder="Your name" />
+<Button>Schedule piece</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Comments awaiting reply" subtitle="12 across 5 pieces">
+| Commenter | On | Comment | Waiting |
+|---|---|---|---|
+| M. Okafor | Why the harbor moved | "Any source for the 1974 figure?" | 3h |
+| J. Lindqvist | The new rules of bread | "Hydration percentage seems off." | 6h |
+| R. Patel | Notes from a night shift | "Beautiful piece. One typo in ¶4." | 1d |
+| A. Duarte | Letters to the editor, vol. 41 | "Can I get a correction printed?" | 2d |
+
+<Button ask="Draft replies to all comments awaiting reply">Draft replies</Button>
+</Card>
+
+<Card title="Start something new">
+<Form name="new-draft">
+<Input label="Working title" name="new-title" placeholder="Untitled draft" required="true" />
+<Select label="Category" options="News | Features | Guides | Profiles | Opinion | Food" name="new-category" placeholder="Choose a category" />
+<TextArea label="Angle or notes" name="notes" rows="3" placeholder="One line on what this piece argues" />
+<Button>Start new draft</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="What to do next">
+Two drafts are in review and 12 comments are waiting. Clear the review queue before scheduling anything new.
+</Callout>
+
+<FollowUps>
+- Which drafts have been sitting longest?
+- Show me the comments on the harbor piece
+- Who reads the Features category most?
+- What published last week that I missed?
+</FollowUps>

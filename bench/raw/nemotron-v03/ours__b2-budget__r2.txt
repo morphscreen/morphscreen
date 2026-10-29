@@ -1,0 +1,56 @@
+<Card title="Personal Budget" subtitle="May 2024">
+<Select label="Month" name="month" value="May 2024" options="January 2024 | February 2024 | March 2024 | April 2024 | May 2024 | June 2024" />
+
+<Columns>
+<Stat label="Budget" value="$3,000" />
+<Stat label="Spent" value="$2,340" change="$660 remaining" tone="success" />
+<Stat label="Largest Expense" value="$450" note="Rent" tone="info" />
+</Columns>
+
+<Progress value="2340" max="3000" label="Monthly Progress: 78% spent" />
+
+<Callout tone="info" title="Largest Expense This Month">
+**Rent** — $450 (May 1)
+<br />Category: Housing | Payment method: Bank transfer
+</Callout>
+
+### Spending by Category
+
+<Chart type="donut" title="Category Breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Food | 520 |
+| Transport | 280 |
+| Entertainment | 180 |
+| Utilities | 150 |
+| Shopping | 120 |
+| Health | 80 |
+| Other | 60 |
+</Chart>
+
+<Details title="Category Details">
+| Category | Amount | % of Budget |
+|---|---|---|
+| Housing | $950 | 31.7% |
+| Food | $520 | 17.3% |
+| Transport | $280 | 9.3% |
+| Entertainment | $180 | 6.0% |
+| Utilities | $150 | 5.0% |
+| Shopping | $120 | 4.0% |
+| Health | $80 | 2.7% |
+| Other | $60 | 2.0% |
+</Details>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g., Groceries at Whole Foods" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="In USD" required="true" />
+<Select label="Category" name="category" options="Housing | Food | Transport | Entertainment | Utilities | Shopping | Health | Other" required="true" />
+<Date label="Date" name="date" value="2024-05-15" required="true" />
+<Select label="Payment Method" name="payment" options="Cash | Credit Card | Debit Card | Bank Transfer | Digital Wallet" />
+<Button>Add Expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+</Card>

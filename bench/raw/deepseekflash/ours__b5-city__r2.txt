@@ -1,0 +1,156 @@
+<Card title="City Operations Center" subtitle="Live overview · Updated 14:32 · Auto-refresh 30s">
+<Columns>
+<Select label="Focus district (13)" options="All districts | Downtown | Riverside | Eastside | Northgate | Southport" placeholder="All districts" hint="Filters every panel below" />
+<Stat label="Current weather (12)" value="72°F" note="Mostly sunny · Humidity 58% · Wind 12 mph" />
+</Columns>
+</Card>
+
+<Columns>
+<Stat label="Congestion now (1)" value="64 / 100" note="Moderate · Down 8 pts from peak" />
+<Stat label="Transit punctuality (2)" value="92%" note="On-time arrivals · 1,204 trips today" />
+<Stat label="Water use today (5)" value="12.4M gal" note="83% of daily budget · Normal" />
+<Stat label="Parking downtown (8)" value="68%" note="1,240 of 1,824 spaces occupied" />
+<Stat label="Service backlog (11)" value="342" note="Down 12 from yesterday · 58% within SLA" />
+</Columns>
+
+<Columns>
+
+<Card title="Congestion right now (1)" subtitle="Live traffic index by corridor">
+<Chart type="horizontal" title="Congestion index" x="Corridor" y="Index">
+| Corridor | Congestion |
+|---|---|
+| I-5 North | 82 |
+| Harbor Blvd | 74 |
+| 1st Ave | 65 |
+| Market St | 58 |
+| River Rd | 43 |
+</Chart>
+<Callout tone="warning" title="I-5 North">Heavy slowdown between exits 14 and 19. Estimated 15 min delay.</Callout>
+</Card>
+
+<Card title="Energy use — past week (4)" subtitle="Grid load in MWh">
+<Chart type="area" title="Weekly energy use" x="Day" y="MWh">
+| Day | Energy |
+|---|---|
+| Mon | 1240 |
+| Tue | 1310 |
+| Wed | 1180 |
+| Thu | 1360 |
+| Fri | 1420 |
+| Sat | 980 |
+| Sun | 890 |
+</Chart>
+</Card>
+
+<Card title="Air quality by district (3)" subtitle="AQI · Lower is better">
+<Chart type="bar" title="Air Quality Index" x="District" y="AQI">
+| District | AQI |
+|---|---|
+| Downtown | 68 |
+| Riverside | 54 |
+| Eastside | 72 |
+| Northgate | 41 |
+| Southport | 88 |
+</Chart>
+<Badge tone="warning">Southport above 85 — sensitive groups advised</Badge>
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Open incidents (6)" subtitle="Sorted by severity">
+| Incident | Location | Severity |
+|---|---|---|
+| Water main break | 5th & Main, Downtown | <Badge tone="danger">Critical</Badge> |
+| Power outage | Eastside Blvd, Eastside | <Badge tone="danger">Critical</Badge> |
+| Traffic signal outage | Market St & 2nd, Downtown | <Badge tone="warning">Major</Badge> |
+| Fallen tree | Riverside Park, Riverside | <Badge tone="info">Minor</Badge> |
+| Sewer odor report | Northgate Ave, Northgate | <Badge tone="info">Minor</Badge> |
+</Card>
+
+<Card title="Emergency vehicles deployed (7)" subtitle="Live unit positions">
+<Columns>
+<Avatar name="E-14" subtitle="Engine · Downtown · On scene" />
+<Avatar name="A-7" subtitle="Ambulance · Riverside · En route" />
+<Avatar name="T-3" subtitle="Truck · Eastside · Available" />
+<Avatar name="M-2" subtitle="Command · Northgate · On scene" />
+<Avatar name="E-9" subtitle="Engine · Southport · En route" />
+</Columns>
+</Card>
+
+<Card title="Citizen reports — live feed (10)" subtitle="Latest incoming requests">
+<Avatar name="Maria G." subtitle="Pothole on 3rd Ave · 2 min ago" />
+<Avatar name="James T." subtitle="Broken streetlight, Oak St · 5 min ago" />
+<Avatar name="Priya S." subtitle="Noise complaint, downtown · 8 min ago" />
+<Avatar name="Carlos R." subtitle="Graffiti at bus stop 12 · 11 min ago" />
+<Avatar name="Aisha K." subtitle="Blocked drain, Riverside · 14 min ago" />
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Public events — this weekend (9)">
+- **Sat 10:00** — Farmers Market, Downtown Plaza
+- **Sat 18:00** — Concert in the Park, Riverside Amphitheater
+- **Sun 09:00** — City Marathon, starts Northgate
+- **Sun 14:00** — Street Fair, Eastside Ave
+<Callout tone="info" title="Impact">Marathon route closes Market St 08:00–12:00 Sun. Plan alternate routes.</Callout>
+</Card>
+
+<Card title="Roadworks planned — this month (16)">
+| Road | Dates | Impact |
+|---|---|---|
+| I-5 North | Jun 3–14 | Lane closure |
+| Oak St | Jun 10–21 | Full closure |
+| Bridge Ave | Jun 17–28 | Night work only |
+</Card>
+
+<Card title="Infrastructure jobs due for maintenance (17)">
+| Asset | Due | Priority |
+|---|---|---|
+| Water pump #4 | Jun 12 | <Badge tone="danger">High</Badge> |
+| Sewer lift station | Jun 25 | <Badge tone="danger">High</Badge> |
+| Traffic light controller | Jun 18 | <Badge tone="warning">Medium</Badge> |
+| Street lighting panel | Jul 2 | <Badge tone="info">Low</Badge> |
+</Card>
+
+</Columns>
+
+<Columns>
+
+<Card title="Dispatch a crew (14)" subtitle="Assign available unit to an incident">
+<Form name="dispatch">
+<Select label="Crew type" options="Engine | Ambulance | Utility | Traffic" placeholder="Select crew type" />
+<Input label="Location" placeholder="Intersection or address" hint="e.g. 5th & Main" />
+<Select label="Priority" options="Routine | Urgent | Emergency" />
+<Button>Dispatch crew</Button>
+</Form>
+</Card>
+
+<Card title="Send public alert (15)" subtitle="Broadcast to residents in chosen area">
+<Form name="alert">
+<Select label="Audience" options="All districts | Downtown | Riverside | Eastside | Northgate | Southport" />
+<TextArea label="Alert message" placeholder="e.g. Water outage on 5th St until 6 PM. Use alternate routes." rows="4" />
+<Button variant="danger">Send alert</Button>
+</Form>
+</Card>
+
+</Columns>
+
+<Card title="How to use this screen" subtitle="Quick guide">
+<Steps>
+<Step title="Focus a district" status="current">Use the Focus district dropdown at the top to filter every panel to one area.</Step>
+<Step title="Respond to incidents" status="todo">Review open incidents, then use Dispatch a crew to assign the nearest available unit.</Step>
+<Step title="Notify the public" status="todo">For outages or hazards, compose a message in Send public alert and choose the affected district.</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- Which districts have the worst air quality trend this week?
+- Show me the status of the water main break at 5th & Main.
+- What is the estimated cost of the maintenance backlog?
+- Compare today's energy use with the same day last week.
+- List all available crews that can be dispatched right now.
+</FollowUps>

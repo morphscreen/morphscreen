@@ -1,0 +1,85 @@
+# Async Standup — Thursday, March 14
+
+<Card title="Standup board" subtitle="Thursday, March 14 · 4 of 6 posted">
+<Stat label="Updates posted" value="4 / 6" change="2 missing" tone="warning" icon="users" />
+<Progress value="4" max="6" label="Team check-in" tone="warning" />
+</Card>
+
+<Callout tone="danger" title="2 people are blocked">
+Priya is waiting on a staging deploy from infra, and Marcus can't proceed until the auth API contract is signed off.
+</Callout>
+
+<Card title="Today's updates">
+<Columns>
+<Card title="Priya Raman" subtitle="Backend · 9:02 AM">
+<Badge tone="danger">Blocked</Badge>
+
+Shipping the payments webhook retry logic. Unit tests pass; **blocked on a staging deploy** — infra ticket #4821 has been open since yesterday.
+
+<Button variant="tertiary" size="small" icon="arrow-right">Reply to Priya</Button>
+</Card>
+
+<Card title="Marcus Lee" subtitle="Frontend · 8:47 AM">
+<Badge tone="danger">Blocked</Badge>
+
+Rebuilt the settings page with the new design tokens. **Blocked on the auth API contract** — can't wire the session refresh until it's signed off.
+
+<Button variant="tertiary" size="small" icon="arrow-right">Reply to Marcus</Button>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Dana Okafor" subtitle="Design · 8:31 AM">
+<Badge tone="success">On track</Badge>
+
+Handed off the empty-state illustrations. Starting on the onboarding flow walkthrough this afternoon.
+
+<Button variant="tertiary" size="small" icon="arrow-right">Reply to Dana</Button>
+</Card>
+
+<Card title="Tomás Ibarra" subtitle="Mobile · 8:15 AM">
+<Badge tone="success">On track</Badge>
+
+Fixed the crash on cold start (Android 14). Cut release candidate 3.2.1 and sent it to QA.
+
+<Button variant="tertiary" size="small" icon="arrow-right">Reply to Tomás</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Still missing" subtitle="2 teammates haven't posted">
+<Columns>
+<Card title="Aisha Bello" subtitle="Data">
+<Badge tone="neutral">No update</Badge>
+
+Last posted 2 days ago.
+
+<Button size="small" ask="Nudge Aisha Bello for today's standup update">Nudge Aisha</Button>
+</Card>
+
+<Card title="Jonas Weber" subtitle="Infra">
+<Badge tone="neutral">No update</Badge>
+
+Last posted 3 days ago.
+
+<Button size="small" ask="Nudge Jonas Weber for today's standup update">Nudge Jonas</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Post your update" subtitle="Takes about a minute">
+<Form name="standup-update">
+<Input label="Your name" name="name" placeholder="e.g. Sam Chen" required="true" />
+<TextArea label="What did you do since yesterday?" name="yesterday" placeholder="Finished the export endpoint and added tests..." rows="3" required="true" />
+<TextArea label="What will you do today?" name="today" placeholder="Start on the rate limiter..." rows="3" required="true" />
+<Radio label="Are you blocked?" name="blocked" options="No, all clear | Yes, I'm blocked" required="true" />
+<Input label="If blocked, on what?" name="blocker" placeholder="Waiting on the vendor sandbox credentials" hint="Leave blank if you're not blocked" />
+<Button>Post update</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- What's blocking Priya and who owns ticket #4821?
+- Show me everyone's updates from the past week
+- Who hasn't posted an update in the last 3 days?
+</FollowUps>

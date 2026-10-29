@@ -1,0 +1,40 @@
+# Low Inventory Warning
+
+<Card subtitle="Items below the reorder threshold of 15 units">
+<Input label="Search items" placeholder="Search by name or SKU" type="search" />
+</Card>
+
+<Card title="Threshold Settings">
+<Columns>
+<Stat label="Reorder threshold" value="15 units" icon="alert-triangle" />
+<Stat label="Critical threshold" value="5 units" tone="danger" icon="alert-circle" />
+<Stat label="Items needing reorder" value="8" tone="warning" icon="package" />
+</Columns>
+</Card>
+
+<Card title="Low Inventory Items">
+| Item | SKU | Category | Current Stock | Status | Action |
+|---|---|---|---|---|---|
+| Organic Almond Milk 1L | BEV-ALM-001 | Beverages | 12 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Whole Wheat Bread | BAK-BRD-042 | Bakery | 8 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="danger">Reorder</Button> |
+| Free-Range Eggs (12ct) | DAI-EGG-017 | Dairy | 14 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Greek Yogurt Plain 500g | DAI-YOG-003 | Dairy | 6 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="danger">Reorder</Button> |
+| Avocados (bag of 4) | PRO-AVO-009 | Produce | 10 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="danger">Reorder</Button> |
+| Chicken Breast 1kg | MEA-CHK-021 | Meat | 13 | <Badge tone="warning">Low</Badge> | <Button size="small" variant="primary">Reorder</Button> |
+| Salmon Fillet 300g | SEA-SAL-005 | Seafood | 4 | <Badge tone="danger">Critical</Badge> | <Button size="small" variant="danger">Reorder</Button> |
+| Quinoa 1kg | GRN-QUI-011 | Grains | 15 | <Badge tone="info">At threshold</Badge> | <Button size="small" variant="secondary">Reorder</Button> |
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" size="large">Reorder All Low Items</Button>
+<Button variant="secondary" size="large">Export List</Button>
+<Button variant="tertiary" size="large">Adjust Thresholds</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Show reorder history for Organic Almond Milk
+- Set up automatic reorder for critical items
+- View supplier lead times for these products
+</FollowUps>

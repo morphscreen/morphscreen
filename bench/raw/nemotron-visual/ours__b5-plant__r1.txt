@@ -1,0 +1,181 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view • Updated 14:32">
+<Columns>
+<Card title="OEE Overview">
+<Stat label="Overall Equipment Effectiveness" value="87.4%" change="+1.2% vs yesterday" />
+<Progress value="87.4" max="100" label="Target: 85%" />
+</Card>
+
+<Card title="Today's Production">
+<Stat label="Units Produced" value="12,847 / 15,000" change="85.6% of target" />
+<Progress value="12847" max="15000" label="Target: 15,000 units" />
+</Card>
+
+<Card title="Safety Snapshot">
+<Columns>
+<Stat label="Incidents YTD" value="3" change="0 this month" />
+<Stat label="Days Since Last Incident" value="47" change="Record: 112 days" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Production Lines">
+<Select label="Focus on line" name="line-focus" options="All Lines | Line A – Injection | Line B – Extrusion | Line C – Assembly | Line D – Packaging" placeholder="Select a line to filter" />
+<Columns>
+<Card title="Line A – Injection" subtitle="Status: Running">
+<Stat label="Rate" value="420 units/hr" change="Target: 400" />
+<Stat label="OEE" value="91.2%" />
+<Badge tone="success">● Running</Badge>
+</Card>
+<Card title="Line B – Extrusion" subtitle="Status: Running">
+<Stat label="Rate" value="380 units/hr" change="Target: 400" />
+<Stat label="OEE" value="84.7%" />
+<Badge tone="success">● Running</Badge>
+</Card>
+<Card title="Line C – Assembly" subtitle="Status: Changeover">
+<Stat label="Rate" value="0 units/hr" change="Target: 350" />
+<Stat label="OEE" value="72.1%" />
+<Badge tone="warning">⏳ Changeover</Badge>
+</Card>
+<Card title="Line D – Packaging" subtitle="Status: Stopped">
+<Stat label="Rate" value="0 units/hr" change="Target: 500" />
+<Stat label="OEE" value="68.3%" />
+<Badge tone="danger">■ Stopped</Badge>
+</Card>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Defect Rate – Past 30 Days">
+<Chart type="line" x="Week" y="Defect %">
+| Week | Defect % |
+|---|---|
+| W1 | 2.1 |
+| W2 | 1.8 |
+| W3 | 2.4 |
+| W4 | 1.9 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause – This Month">
+<Chart type="pie" title="Downtime Split">
+| Cause | Hours |
+|---|---|
+| Mechanical | 42 |
+| Electrical | 18 |
+| Material Shortage | 12 |
+| Changeover | 28 |
+| Quality Hold | 8 |
+| Other | 6 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines Due for Maintenance">
+<Table>
+| Machine | Line | Due Date | Type | Priority |
+|---|---|---|---|---|
+| INJ-03 | Line A | 2025-01-20 | Preventive | High |
+| EXT-07 | Line B | 2025-01-22 | Predictive | Medium |
+| ASM-02 | Line C | 2025-01-19 | Corrective | Critical |
+| PKG-05 | Line D | 2025-01-25 | Preventive | Low |
+</Table>
+</Card>
+
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 t" change="Reorder at 15 t" />
+<Stat label="Resin Pellets" value="18.7 t" change="Reorder at 8 t" />
+<Stat label="Packaging Film" value="3,240 rolls" change="Reorder at 1,000" />
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Supplier Deliveries – This Week">
+<Table>
+| Supplier | Material | Qty | Due Date | Status |
+|---|---|---|---|---|
+| Apex Metals | Steel Coil | 25 t | 2025-01-21 | Confirmed |
+| PolySource | Resin Pellets | 15 t | 2025-01-22 | In Transit |
+| PackWell | Packaging Film | 5,000 rolls | 2025-01-20 | Confirmed |
+| Apex Metals | Steel Coil | 20 t | 2025-01-24 | Pending |
+</Table>
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Mon 1st | 4,820 |
+| Mon 2nd | 4,150 |
+| Mon 3rd | 3,877 |
+| Tue 1st | 4,910 |
+| Tue 2nd | 4,280 |
+| Tue 3rd | 3,945 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+<Table>
+| Batch | Line | Product | Qty | Reason | Since |
+|---|---|---|---|---|---|
+| B-20250118-04 | Line C | Widget-XL | 1,200 | Dimensional | 2025-01-18 06:15 |
+| B-20250119-01 | Line A | Gear-Housing | 850 | Surface finish | 2025-01-19 02:30 |
+| B-20250119-03 | Line D | Clamshell | 2,400 | Seal integrity | 2025-01-19 11:45 |
+</Table>
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Electricity" value="1,847 kWh" change="vs 1,920 kWh avg" />
+<Stat label="Gas" value="420 m³" change="vs 395 m³ avg" />
+<Stat label="Water" value="12.4 m³" change="vs 11.8 m³ avg" />
+<Progress value="1847" max="2200" label="Daily budget: 2,200 kWh" />
+</Card>
+</Columns>
+
+<Card title="Open Work Orders">
+<Table>
+| WO # | Machine | Line | Description | Priority | Assigned | Created |
+|---|---|---|---|---|---|---|
+| WO-2025-0142 | INJ-03 | Line A | Replace nozzle heater | Critical | J. Torres | 2025-01-19 05:20 |
+| WO-2025-0138 | EXT-07 | Line B | Calibrate die gap | High | M. Chen | 2025-01-18 22:10 |
+| WO-2025-0145 | ASM-02 | Line C | Fix feeder jam | High | R. Patel | 2025-01-19 07:45 |
+| WO-2025-0131 | PKG-05 | Line D | Lubricate sealer | Medium | K. Nguyen | 2025-01-17 14:30 |
+| WO-2025-0140 | INJ-01 | Line A | Clean mold vents | Low | J. Torres | 2025-01-18 18:00 |
+</Table>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" options="INJ-01 | INJ-02 | INJ-03 | EXT-05 | EXT-06 | EXT-07 | ASM-01 | ASM-02 | PKG-03 | PKG-04 | PKG-05" placeholder="Select machine" required="true" />
+<Date label="Date" name="maint-date" required="true" />
+</Columns>
+<Select label="Type" name="maint-type" options="Preventive | Predictive | Corrective" placeholder="Select type" required="true" />
+<TextArea label="Notes" name="maint-notes" placeholder="Scope, parts needed, special instructions..." rows="3" />
+<Button>Schedule</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Callout tone="danger" title="ANDON – Line C: ASM-02">
+Feeder jam detected at Station 3. Operator dispatched. Estimated clearance: 8 min.
+</Callout>
+<Callout tone="warning" title="ANDON – Line D: PKG-05">
+Seal temperature drifting +4°C. Quality checking next batch.
+</Callout>
+<Callout tone="info" title="ANDON – Line A: INJ-03">
+Cycle time 12% above baseline. Monitoring.
+</Callout>
+</Columns>
+</Card>
+
+<Card title="Actions">
+<Button>Export Shift Report (PDF)</Button>
+<Button variant="secondary">Export Shift Report (CSV)</Button>
+<Button variant="tertiary">Print Dashboard</Button>
+</Card>
+</Card>

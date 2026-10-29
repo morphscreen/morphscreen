@@ -1,0 +1,178 @@
+# Morning Desk — Wednesday 12 Feb
+
+<Callout tone="warning" title="2 risk limits approaching breach">
+Semis sector exposure at 91% of cap and portfolio VaR at 88% of limit. Review before the open.
+</Callout>
+
+<Columns>
+<Stat label="Portfolio value" value="$4,182,600" change="+0.84% today" tone="success" icon="chart-line" />
+<Stat label="P&L today" value="+$34,910" change="+0.84%" tone="success" icon="trend-up" />
+<Stat label="Margin in use" value="$1,046,000" note="25.0% of equity" tone="neutral" icon="scales" />
+<Stat label="Value at risk (1d, 95%)" value="$88,400" change="88% of limit" tone="warning" icon="shield-warning" />
+</Columns>
+
+<Card title="Positions" subtitle="Live marks as of 09:12 ET">
+| Ticker | Size | Entry | Current | P&L |
+|---|---|---|---|---|
+| NVDA | 1,200 | $612.40 | $641.05 | +$34,380 |
+| AAPL | 2,400 | $188.10 | $186.22 | -$4,512 |
+| MSFT | 900 | $402.75 | $411.30 | +$7,695 |
+| XOM | 1,500 | $104.20 | $101.88 | -$3,480 |
+| TLT | 3,000 | $92.60 | $93.41 | +$2,430 |
+| SPY | 500 | $512.30 | $514.90 | +$1,300 |
+</Card>
+
+<Card title="Exposure by sector">
+<Chart type="bar" x="Sector" y="Exposure %">
+| Sector | Exposure |
+|---|---|
+| Technology | 38 |
+| Energy | 14 |
+| Financials | 12 |
+| Healthcare | 10 |
+| Consumer | 9 |
+| Industrials | 8 |
+| Other | 9 |
+</Chart>
+</Card>
+
+<Card title="Risk limits" subtitle="Distance to breach">
+<Progress value="91" max="100" label="Semis sector exposure — 91% of cap" tone="warning" />
+<Progress value="88" max="100" label="Portfolio VaR — 88% of limit" tone="warning" />
+<Progress value="62" max="100" label="Single-name concentration (NVDA) — 62% of cap" tone="neutral" />
+<Progress value="41" max="100" label="Gross leverage — 41% of cap" tone="success" />
+</Card>
+
+<Columns>
+<Card title="Today's biggest gainers">
+| Ticker | Change |
+|---|---|
+| NVDA | +4.68% |
+| AMD | +3.21% |
+| MSFT | +1.88% |
+| AVGO | +1.42% |
+</Card>
+<Card title="Today's biggest losers">
+| Ticker | Change |
+|---|---|
+| XOM | -2.23% |
+| CVX | -1.74% |
+| PFE | -1.11% |
+| T | -0.86% |
+</Card>
+</Columns>
+
+<Card title="Watchlist" subtitle="Instruments being watched">
+| Ticker | Price | Note |
+|---|---|---|
+| TSLA | $248.10 | Pre-earnings drift |
+| AMZN | $182.44 | Breakout watch |
+| META | $498.02 | Momentum |
+| GLD | $221.30 | Hedge candidate |
+| JPM | $196.55 | Rate-sensitive |
+</Card>
+
+<Card title="Working orders">
+| Ticker | Side | Qty | Type | Limit | Status |
+|---|---|---|---|---|---|
+| NVDA | Sell | 400 | Limit | $645.00 | <Badge tone="info">Working</Badge> |
+| AAPL | Buy | 800 | Limit | $184.00 | <Badge tone="info">Working</Badge> |
+| XOM | Sell | 500 | Stop | $100.50 | <Badge tone="warning">Working</Badge> |
+| SPY | Buy | 200 | Limit | $510.00 | <Badge tone="info">Working</Badge> |
+</Card>
+
+<Card title="Strategy returns — YTD">
+<Chart type="horizontal" x="Strategy" y="Return %">
+| Strategy | Return |
+|---|---|
+| Momentum | 14.2 |
+| Mean reversion | 9.6 |
+| Carry | 6.1 |
+| Vol arb | 3.4 |
+| Trend | -2.1 |
+</Chart>
+</Card>
+
+<Card title="Drawdown — past 12 months">
+<Chart type="area" x="Month" y="Drawdown %">
+| Month | Drawdown |
+|---|---|
+| Mar | 0 |
+| Apr | -1.2 |
+| May | -2.8 |
+| Jun | -1.1 |
+| Jul | 0 |
+| Aug | -0.6 |
+| Sep | -3.4 |
+| Oct | -5.1 |
+| Nov | -2.2 |
+| Dec | -0.8 |
+| Jan | -1.4 |
+| Feb | -0.3 |
+</Chart>
+</Card>
+
+<Card title="Market headlines" subtitle="With sentiment read">
+| Headline | Sentiment |
+|---|---|
+| Chip demand forecast raised for H2 | <Badge tone="success">Positive</Badge> |
+| Fed minutes hint at longer hold | <Badge tone="warning">Cautious</Badge> |
+| Energy inventories build again | <Badge tone="danger">Negative</Badge> |
+| Retail sales beat expectations | <Badge tone="success">Positive</Badge> |
+| China export data softens | <Badge tone="warning">Cautious</Badge> |
+</Card>
+
+<Card title="Economic releases this week">
+| Day | Release | Consensus | Prior |
+|---|---|---|---|
+| Wed | CPI (YoY) | 3.1% | 3.2% |
+| Wed | Crude inventories | -1.2M | +2.4M |
+| Thu | Jobless claims | 218k | 214k |
+| Thu | PPI (MoM) | 0.2% | 0.3% |
+| Fri | Retail sales | 0.4% | 0.6% |
+</Card>
+
+<Tabs>
+<Tab title="Place order">
+<Card title="New order">
+<Form name="place-order">
+<Input label="Ticker" name="ticker" placeholder="e.g. NVDA" required="true" />
+<Radio label="Side" name="side" options="Buy | Sell" required="true" />
+<Input label="Quantity" name="quantity" type="number" min="1" step="1" placeholder="100" required="true" />
+<Select label="Order type" name="order-type" options="Market | Limit | Stop" placeholder="Choose type" />
+<Input label="Limit price" name="limit" type="number" step="0.01" placeholder="Optional" hint="Required for limit and stop orders" />
+<Button>Review order</Button>
+</Form>
+</Card>
+</Tab>
+<Tab title="Rebalance">
+<Card title="Rebalance to targets" subtitle="Trim overweights, top up underweights">
+<Slider label="Max turnover per rebalance" min="0" max="20" step="1" value="8" name="turnover" unit="%" />
+<Checkboxes label="Sectors to include" name="sectors" options="Technology | Energy | Financials | Healthcare | Consumer | Industrials" value="Technology | Energy" />
+<Switch label="Trade only during regular hours" name="rth" value="true" />
+<Button>Generate rebalance trades</Button>
+<Button variant="tertiary">Preview drift</Button>
+</Card>
+</Tab>
+<Tab title="Timeframe">
+<Card title="Chart timeframe">
+<Radio label="Range" name="timeframe" options="1D | 1W | 1M | 3M | YTD | 1Y" value="1D" />
+<Button>Apply timeframe</Button>
+</Card>
+</Tab>
+</Tabs>
+
+<Card title="Desk locations" subtitle="Where the day's names trade">
+<Map>
+<MapPoint label="NYSE — NVDA, XOM, JPM" lat="40.7069" lng="-74.0113" />
+<MapPoint label="Nasdaq — AAPL, MSFT, TSLA" lat="40.7569" lng="-73.9860" />
+<MapPoint label="CBOE — SPY, TLT options" lat="41.8781" lng="-87.6298" />
+</Map>
+</Card>
+
+<FollowUps>
+- Show me the full risk limit ladder
+- What would trigger the semis cap breach?
+- Build a rebalance plan for Technology
+- Place a limit buy for 500 TSLA at $245
+</FollowUps>

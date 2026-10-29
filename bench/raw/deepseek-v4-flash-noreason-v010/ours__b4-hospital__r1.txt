@@ -1,0 +1,167 @@
+# Hospital Operations Command View
+
+Live hospital status — updated every 5 minutes. <Badge tone="warning">ER at capacity</Badge>
+
+<Card title="Critical Alerts">
+<Callout tone="danger" title="2 Critical Patients — Immediate Attention">
+- **Bed 214B** — M. Okafor, 68 — Cardiac arrest risk, awaiting ICU bed
+- **Bed 118A** — L. Chen, 41 — Severe sepsis, on vasopressors
+</Callout>
+<Callout tone="warning" title="Supply Shortage — 3 Items">
+- **Norepinephrine** — 4 vials left (reorder at 10)
+- **Normal saline 1L** — 12 bags left (reorder at 25)
+- **Surgical gloves (size 7.5)** — 2 boxes left (reorder at 5)
+</Callout>
+</Card>
+
+<Card title="Bed Occupancy & ER Wait">
+<Columns>
+<Stat label="Bed Occupancy" value="87%" change="+3% vs yesterday" tone="warning" icon="bed" />
+<Stat label="Current ER Wait" value="2h 15m" change="+45m vs morning" tone="danger" icon="clock" />
+<Stat label="Available Beds" value="18" note="of 140 total" tone="info" icon="bed" />
+</Columns>
+<Progress value="87" max="100" label="Occupancy target 85%" tone="warning" />
+</Card>
+
+<Card title="Admissions — Past Two Weeks">
+<Chart type="line" x="Day" y="Admissions">
+| Day | Admissions |
+|---|---|
+| Mon W1 | 42 |
+| Tue W1 | 38 |
+| Wed W1 | 51 |
+| Thu W1 | 47 |
+| Fri W1 | 55 |
+| Sat W1 | 39 |
+| Sun W1 | 33 |
+| Mon W2 | 45 |
+| Tue W2 | 41 |
+| Wed W2 | 58 |
+| Thu W2 | 49 |
+| Fri W2 | 61 |
+| Sat W2 | 44 |
+| Sun W2 | 36 |
+</Chart>
+<Stat label="Total (14 days)" value="639" change="+8% vs prior 14 days" tone="warning" icon="chart-line" />
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| ER | 34 |
+| ICU | 22 |
+| Cardiology | 18 |
+| Neurology | 14 |
+| Orthopedics | 12 |
+| Pediatrics | 11 |
+| Maternity | 9 |
+| Oncology | 8 |
+| Psychiatry | 6 |
+| Other | 5 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift — Current">
+<Tabs>
+<Tab title="All Staff">
+| Staff | Role | Department |
+|---|---|---|
+| Dr. A. Rivera | Attending Physician | ER |
+| Dr. S. Patel | Surgeon | OR |
+| Dr. M. Jensen | Intensivist | ICU |
+| Dr. T. Nguyen | Cardiologist | Cardiology |
+| N. Brooks, RN | Charge Nurse | ER |
+| K. Osei, RN | ICU Nurse | ICU |
+| J. Mwangi, LPN | Floor Nurse | Med-Surg |
+| R. Silva, CNA | Aide | Med-Surg |
+| D. Kim, PharmD | Pharmacist | Pharmacy |
+| P. Novak, RT | Respiratory Therapist | ICU |
+| L. Garcia, SW | Social Worker | Discharge |
+| H. Ali, PA | Physician Assistant | Orthopedics |
+</Tab>
+<Tab title="By Department">
+<Columns>
+<Stat label="ER" value="5" note="2 MD, 2 RN, 1 PA" icon="users" />
+<Stat label="ICU" value="4" note="1 MD, 2 RN, 1 RT" icon="users" />
+<Stat label="Med-Surg" value="3" note="1 RN, 1 LPN, 1 CNA" icon="users" />
+<Stat label="OR" value="3" note="1 Surgeon, 2 RN" icon="users" />
+</Columns>
+</Tab>
+</Tabs>
+<Stat label="Total on shift" value="18" note="12 roles listed + 6 support" icon="users" />
+</Card>
+
+<Card title="Ready for Discharge">
+| Patient | Room | Department | Waiting On |
+|---|---|---|---|
+| E. Johnson | 302A | Med-Surg | Transport — 10:30 |
+| M. Alvarez | 118C | Cardiology | Family arrival |
+| R. Tanaka | 204B | Orthopedics | Prescription pickup |
+| S. Ibrahim | 215A | Pediatrics | Discharge summary |
+
+<Callout tone="info" title="Discharge capacity">4 beds can be freed today — helps relieve occupancy pressure.</Callout>
+<Button variant="secondary" ask="Show discharge checklist for E. Johnson">Start discharge — E. Johnson</Button>
+</Card>
+
+<Card title="Today's OR Bookings">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR1 | Total knee replacement | Dr. S. Patel | <Badge tone="success">Done</Badge> |
+| 08:15 | OR2 | Appendectomy | Dr. L. Morrison | <Badge tone="info">In progress</Badge> |
+| 10:00 | OR3 | Cataract removal | Dr. F. Hassan | <Badge tone="neutral">Scheduled</Badge> |
+| 11:30 | OR1 | Gallbladder removal | Dr. S. Patel | <Badge tone="neutral">Scheduled</Badge> |
+| 13:00 | OR2 | Hernia repair | Dr. L. Morrison | <Badge tone="neutral">Scheduled</Badge> |
+| 15:30 | OR3 | Debridement | Dr. F. Hassan | <Badge tone="neutral">Scheduled</Badge> |
+</Card>
+
+<Card title="Supplies Running Low">
+| Supply | Current Stock | Reorder At | Status |
+|---|---|---|---|
+| Norepinephrine | 4 vials | 10 | <Badge tone="danger">Critical</Badge> |
+| Normal saline 1L | 12 bags | 25 | <Badge tone="warning">Low</Badge> |
+| Surgical gloves 7.5 | 2 boxes | 5 | <Badge tone="danger">Critical</Badge> |
+| Insulin pens | 8 units | 15 | <Badge tone="warning">Low</Badge> |
+| ECG electrodes | 30 packs | 50 | <Badge tone="warning">Low</Badge> |
+</Card>
+<Button variant="secondary" ask="Order supplies for the 5 low items">Order all low supplies</Button>
+
+<Card title="Actions">
+<Columns>
+<Card title="File an Incident">
+<Form name="incident-report">
+<Select label="Type" options="Medication error | Fall | Equipment failure | Patient complaint | Needlestick | Other" placeholder="Select type" required="true" />
+<Input label="Location" placeholder="e.g., ER Bed 4" />
+<TextArea label="Description" placeholder="What happened?" rows="3" required="true" />
+<Input label="Reported by" placeholder="Your name" />
+<Button variant="danger">Submit incident</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient name" placeholder="Full name" required="true" />
+<Input label="Current room" placeholder="e.g., 214B" required="true" />
+<Select label="Transfer to" options="ICU | Step-down | Med-Surg | Cardiology | Neurology | Other hospital" placeholder="Choose destination" required="true" />
+<TextArea label="Reason" placeholder="Clinical justification" rows="3" required="true" />
+<Button>Request transfer</Button>
+</Form>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Look at Another Day">
+<Form name="date-lookup">
+<Date label="Select date" required="true" />
+<Select label="View" options="Overview | Admissions | OR schedule | Staffing | Discharges" placeholder="Choose view" />
+<Button variant="secondary" ask="Show hospital overview for the selected date">View that day</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show the full staffing schedule for tonight
+- Which departments are over capacity right now?
+- List patients in the ICU with their conditions
+- Flag the top 3 supply items to reorder first
+- What caused the ER wait increase this morning?
+</FollowUps>

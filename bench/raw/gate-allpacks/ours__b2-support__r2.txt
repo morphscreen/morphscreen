@@ -1,0 +1,38 @@
+# Support Lead Morning View
+
+<Columns>
+<Stat label="Open tickets" value="47" change="+3 vs yesterday" tone="warning" />
+<Stat label="Avg first response" value="12 min" change="-2 min vs target" tone="success" />
+</Columns>
+
+<Card title="Filters">
+<ToggleGroup label="Priority filter" options="All | High only" name="priority-filter" value="All" />
+</Card>
+
+<Card title="Recent tickets">
+| Ticket | Subject | Priority | Status | Updated |
+|---|---|---|---|---|
+| #1847 | Payment failure on checkout | <Badge tone="danger">High</Badge> | Open | 2 min ago |
+| #1846 | Cannot reset password | <Badge tone="warning">Medium</Badge> | In progress | 15 min ago |
+| #1845 | API rate limit questions | <Badge tone="info">Low</Badge> | Open | 32 min ago |
+| #1844 | Export feature not working | <Badge tone="danger">High</Badge> | Open | 1 hr ago |
+| #1843 | Mobile app crash on launch | <Badge tone="danger">High</Badge> | Escalated | 2 hrs ago |
+</Card>
+
+<Card title="New ticket">
+<Form name="new-ticket">
+<Input label="Subject" placeholder="Brief summary of the issue" required="true" />
+<Select label="Priority" options="Low | Medium | High | Critical" required="true" />
+<TextArea label="Description" placeholder="Details, steps to reproduce, screenshots..." rows="4" required="true" />
+<Columns>
+<Button variant="primary">Create ticket</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<FollowUps>
+- View all open tickets
+- Check SLA breaches
+- Review team assignments
+</FollowUps>

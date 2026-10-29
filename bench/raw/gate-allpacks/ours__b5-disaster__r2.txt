@@ -1,0 +1,323 @@
+# Emergency Response Coordination Center
+
+<Card title="Zone Focus" subtitle="Select a zone to filter all views">
+<Select label="Active Zone" name="zone" placeholder="All Zones" options="All Zones | North District | South District | East District | West District | Central District | Riverside | Hillside | Industrial Park" />
+</Card>
+
+<Columns>
+<Card title="Overall Severity Summary">
+<Stat label="Critical Incidents" value="3" change="+1 vs 1hr ago" tone="danger" />
+<Stat label="High Severity" value="7" change="+2" tone="warning" />
+<Stat label="Medium Severity" value="12" change="-1" tone="info" />
+<Stat label="Low Severity" value="8" change="+3" tone="success" />
+</Card>
+
+<Card title="People Rescued & Casualties">
+<Stat label="Rescued" value="1,247" change="+89 last 6hrs" tone="success" />
+<Stat label="Injured" value="234" change="+12" tone="warning" />
+<Stat label="Critical" value="31" change="+3" tone="danger" />
+<Stat label="Fatalities" value="8" change="+1" tone="danger" />
+</Card>
+
+<Card title="Resources Available">
+<Stat label="Vehicles" value="47 / 62" change="15 deployed" tone="info" />
+<Stat label="Personnel" value="312 / 420" change="108 deployed" tone="info" />
+<Stat label="Supply Units" value="1,850" change="-320 used" tone="neutral" />
+</Card>
+
+<Card title="Donations Received">
+<Stat label="Monetary" value="$2.4M" change="+$340K today" tone="success" />
+<Stat label="Supplies (tons)" value="187" change="+24" tone="success" />
+<Stat label="Volunteer Hours" value="4,200" change="+600" tone="info" />
+</Card>
+</Columns>
+
+<Tabs>
+<Tab title="Active Incidents">
+<Card title="Active Incidents by Zone">
+<Chart type="bar" x="Zone" y="Count" title="Incidents by Severity">
+| Zone | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| North District | 1 | 2 | 3 | 1 |
+| South District | 0 | 1 | 2 | 2 |
+| East District | 1 | 1 | 2 | 1 |
+| West District | 0 | 1 | 1 | 2 |
+| Central District | 1 | 1 | 2 | 1 |
+| Riverside | 0 | 1 | 1 | 1 |
+| Hillside | 0 | 0 | 1 | 0 |
+| Industrial Park | 0 | 0 | 0 | 0 |
+</Chart>
+</Card>
+
+<Card title="Incident Details">
+| Incident ID | Zone | Type | Severity | Status | Reported | Assigned Units |
+|---|---|---|---|---|---|---|
+| INC-0042 | North District | Building Collapse | Critical | Active | 14:22 | Engine 3, Rescue 1, Medic 4 |
+| INC-0041 | Central District | Chemical Spill | Critical | Active | 13:58 | Hazmat 1, Engine 5, Medic 2 |
+| INC-0039 | East District | Flash Flood | Critical | Active | 12:45 | Boat 2, Rescue 3, Medic 1 |
+| INC-0038 | North District | Multi-Vehicle Crash | High | Active | 14:10 | Engine 2, Medic 3, Police 4 |
+| INC-0037 | South District | Apartment Fire | High | Contained | 13:30 | Engine 1, Ladder 2, Medic 5 |
+| INC-0036 | East District | Gas Leak | High | Active | 13:15 | Hazmat 2, Engine 4 |
+| INC-0035 | West District | Landslide | High | Active | 12:50 | Rescue 2, Engine 6 |
+| INC-0034 | Central District | Power Substation | High | Monitoring | 12:30 | Utility 1, Engine 7 |
+| INC-0033 | Riverside | Bridge Damage | Medium | Active | 14:05 | Engineering 1 |
+| INC-0032 | North District | Water Main Break | Medium | Active | 13:40 | Utility 2, Engine 8 |
+</Card>
+</Tab>
+
+<Tab title="Shelters">
+<Card title="Shelters — Capacity & Occupancy">
+<Chart type="horizontal" x="Occupancy %" y="Shelter" title="Shelter Utilization">
+| Shelter | Capacity | Occupied | Available | Occupancy % |
+|---|---|---|---|---|
+| North Community Center | 500 | 412 | 88 | 82 |
+| South High School Gym | 300 | 245 | 55 | 82 |
+| East Elementary School | 200 | 156 | 44 | 78 |
+| West Recreation Center | 400 | 298 | 102 | 75 |
+| Central Convention Hall | 800 | 567 | 233 | 71 |
+| Riverside Church | 150 | 98 | 52 | 65 |
+| Hillside Community Hall | 250 | 142 | 108 | 57 |
+| Industrial Park Warehouse | 600 | 234 | 366 | 39 |
+</Chart>
+</Card>
+
+<Card title="Shelter Details">
+| Shelter | Zone | Manager | Phone | Medical Staff | Supplies Status | Last Updated |
+|---|---|---|---|---|---|---|
+| North Community Center | North District | M. Rodriguez | 555-0142 | 3 nurses, 1 doctor | Adequate | 14:30 |
+| South High School Gym | South District | J. Chen | 555-0187 | 2 nurses | Low - need blankets | 14:25 |
+| East Elementary School | East District | K. Williams | 555-0123 | 1 nurse, 1 paramedic | Adequate | 14:28 |
+| West Recreation Center | West District | R. Patel | 555-0156 | 2 nurses | Good | 14:32 |
+| Central Convention Hall | Central District | A. Thompson | 555-0199 | 4 nurses, 2 doctors | Excellent | 14:35 |
+| Riverside Church | Riverside | P. Okafor | 555-0111 | 1 nurse | Low - need water | 14:20 |
+| Hillside Community Hall | Hillside | L. Garcia | 555-0134 | 1 paramedic | Adequate | 14:15 |
+| Industrial Park Warehouse | Industrial Park | S. Kim | 555-0167 | 0 - request sent | Critical - need food | 14:10 |
+</Card>
+</Tab>
+
+<Tab title="Evacuation Routes">
+<Card title="Evacuation Route Status">
+| Route | Zone | Status | Capacity (veh/hr) | Current Flow | Est. Clear Time | Notes |
+|---|---|---|---|---|---|---|
+| Highway 101 North | North District | Open | 2,400 | 1,850 | — | Heavy traffic, police directing |
+| Highway 101 South | South District | Open | 2,400 | 2,100 | — | Near capacity |
+| Route 9 East | East District | Partial | 1,200 | 600 | 45 min | Lane blocked by debris |
+| Route 9 West | West District | Open | 1,200 | 450 | — | Clear |
+| I-80 Central | Central District | Closed | 0 | 0 | 2-3 hrs | Bridge inspection required |
+| Riverside Drive | Riverside | Open | 800 | 320 | — | Flooding risk rising |
+| Hillside Road | Hillside | Partial | 600 | 180 | 30 min | Rockfall cleared one lane |
+| Industrial Blvd | Industrial Park | Open | 1,000 | 200 | — | Clear, low usage |
+</Card>
+
+<Card title="Road Closures">
+| Road | Zone | Reason | Closed Since | Est. Reopen | Detour |
+|---|---|---|---|---|---|
+| I-80 Bridge | Central District | Structural damage | 11:30 | 17:00 | Use Hwy 101 |
+| Riverside Dr (mile 4-6) | Riverside | Flooding | 13:15 | Unknown | Use Hillside Rd |
+| Main St & 5th | North District | Building collapse | 14:22 | Unknown | Use Oak Ave |
+| Hillside Rd (mile 2) | Hillside | Rockfall | 12:45 | 15:30 | Use Ridge Rd |
+| Industrial Blvd & 3rd | Industrial Park | Chemical spill | 13:58 | 16:00 | Use Commerce Way |
+</Card>
+</Tab>
+
+<Tab title="Weather">
+<Card title="48-Hour Weather Forecast">
+<Chart type="line" x="Time" y="Value" title="Temperature & Precipitation">
+| Time | Temp (°F) | Precip (%) | Wind (mph) | Conditions |
+|---|---|---|---|---|
+| Now | 68 | 10 | 8 SW | Partly Cloudy |
+| +3hr | 65 | 15 | 10 SW | Cloudy |
+| +6hr | 62 | 35 | 12 SW | Light Rain |
+| +9hr | 59 | 65 | 15 SW | Rain |
+| +12hr | 57 | 80 | 18 SW | Heavy Rain |
+| +15hr | 55 | 90 | 20 SW | Thunderstorms |
+| +18hr | 54 | 75 | 18 W | Thunderstorms |
+| +21hr | 53 | 50 | 15 W | Rain |
+| +24hr | 54 | 30 | 12 W | Showers |
+| +27hr | 56 | 20 | 10 NW | Cloudy |
+| +30hr | 58 | 10 | 8 NW | Partly Cloudy |
+| +33hr | 60 | 5 | 7 NW | Mostly Sunny |
+| +36hr | 63 | 5 | 6 N | Sunny |
+| +39hr | 65 | 5 | 5 N | Sunny |
+| +42hr | 67 | 5 | 5 NE | Sunny |
+| +45hr | 68 | 5 | 5 NE | Sunny |
+| +48hr | 70 | 5 | 6 E | Sunny |
+</Chart>
+</Card>
+
+<Callout tone="warning" title="Weather Alert">
+<strong>Flash Flood Watch</strong> in effect until 06:00 tomorrow. Heavy rainfall expected 18:00-00:00 tonight (1.5-2.5 inches). River levels rising — monitor Riverside and Hillside zones closely. Wind gusts up to 25 mph during thunderstorms.
+</Callout>
+</Tab>
+
+<Tab title="Volunteers">
+<Card title="Volunteers On Duty">
+| Volunteer | Zone | Role | Shift Start | Shift End | Assignment | Status |
+|---|---|---|---|---|---|---|
+| A. Martinez | North District | Medical Support | 06:00 | 18:00 | North Community Center | Active |
+| B. Johnson | North District | Logistics | 06:00 | 18:00 | Supply Depot Alpha | Active |
+| C. Lee | South District | Shelter Ops | 06:00 | 18:00 | South High School Gym | Active |
+| D. Brown | South District | Communications | 06:00 | 18:00 | Comm Unit South | Active |
+| E. Davis | East District | Search & Rescue | 06:00 | 18:00 | River Patrol | Active |
+| F. Wilson | East District | Medical Support | 06:00 | 18:00 | East Elementary School | Active |
+| G. Anderson | West District | Shelter Ops | 06:00 | 18:00 | West Recreation Center | Active |
+| H. Thomas | West District | Logistics | 06:00 | 18:00 | Supply Depot Bravo | Active |
+| I. Jackson | Central District | Coordination | 06:00 | 18:00 | Central Command | Active |
+| J. White | Central District | Medical Support | 06:00 | 18:00 | Central Convention Hall | Active |
+| K. Harris | Riverside | Evacuation Assist | 06:00 | 18:00 | Riverside Church | Active |
+| L. Martin | Riverside | Shelter Ops | 06:00 | 18:00 | Riverside Church | Active |
+| M. Thompson | Hillside | Search & Rescue | 06:00 | 18:00 | Hillside Road Patrol | Active |
+| N. Garcia | Industrial Park | Hazmat Support | 06:00 | 18:00 | Industrial Park Warehouse | Standby |
+| O. Robinson | All Zones | Float / Reserve | 06:00 | 18:00 | Mobile Response Unit | Active |
+</Card>
+
+<Card title="Volunteer Summary">
+<Stat label="Total On Duty" value="15" tone="info" />
+<Stat label="Medical" value="4" tone="success" />
+<Stat label="Search & Rescue" value="2" tone="warning" />
+<Stat label="Shelter Operations" value="3" tone="info" />
+<Stat label="Logistics" value="2" tone="neutral" />
+<Stat label="Communications" value="1" tone="info" />
+<Stat label="Hazmat Support" value="1" tone="warning" />
+<Stat label="Float/Reserve" value="2" tone="neutral" />
+</Card>
+</Tab>
+
+<Tab title="Aid Requests">
+<Card title="Aid Requests Awaiting Action">
+| Request ID | Zone | Type | Priority | Requested | Time | Status | Assigned To |
+|---|---|---|---|---|---|---|---|
+| REQ-0234 | North District | Water (pallets) | Critical | 20 | 14:15 | Pending | — |
+| REQ-0233 | South District | Generators | High | 5 | 14:08 | Pending | — |
+| REQ-0232 | East District | Medical Kits | High | 50 | 13:55 | Pending | — |
+| REQ-0231 | Riverside | Sandbags | Critical | 500 | 13:42 | Dispatched | Logistics Team B |
+| REQ-0230 | Hillside | Evacuation Buses | High | 3 | 13:30 | Pending | — |
+| REQ-0229 | Central District | Cots/Blankets | Medium | 200 | 13:15 | Pending | — |
+| REQ-0228 | West District | Food (MREs) | Medium | 300 | 12:50 | Pending | — |
+| REQ-0227 | Industrial Park | Decon Supplies | High | 10 kits | 12:40 | Pending | — |
+| REQ-0226 | North District | Pumps | Critical | 4 | 12:20 | In Progress | Engineering Team 1 |
+| REQ-0225 | All Zones | Comms Equipment | Medium | 20 radios | 11:45 | Pending | — |
+</Card>
+</Tab>
+
+<Tab title="Communications">
+<Card title="Communication Channel Status">
+| Channel | Type | Status | Coverage | Last Test | Notes |
+|---|---|---|---|---|---|
+| Primary Radio Net | VHF/UHF | Operational | All Zones | 14:30 | Clear |
+| Secondary Radio Net | VHF/UHF | Operational | All Zones | 14:25 | Clear |
+| Tactical Channel 1 | UHF | Operational | North/Central | 14:28 | Clear |
+| Tactical Channel 2 | UHF | Operational | South/East | 14:27 | Clear |
+| Tactical Channel 3 | UHF | Degraded | West/Riverside | 14:20 | Interference near river |
+| Satellite Phones | Satellite | Operational | All Zones | 14:32 | 12 units active |
+| Cellular Network | LTE/5G | Partial | Most Zones | 14:15 | Overloaded in Central |
+| Mesh Network | LoRa | Operational | Local clusters | 14:29 | 45 nodes active |
+| Amateur Radio | HF/VHF | Operational | Regional | 14:10 | Net active 14.300 MHz |
+| Emergency Alert System | Broadcast | Operational | County-wide | 13:55 | Last used 13:45 |
+</Card>
+</Tab>
+
+<Tab title="Hospitals">
+<Card title="Nearby Hospitals — Free Beds">
+<Chart type="horizontal" x="Free Beds" y="Hospital" title="Available Capacity by Type">
+| Hospital | Zone | Total Beds | ICU Free | Med-Surg Free | ED Free | Trauma Level | Status |
+|---|---|---|---|---|---|---|---|
+| Mercy General | Central District | 450 | 4 | 18 | 6 | Level I | Accepting |
+| St. Luke's Medical | North District | 380 | 2 | 12 | 4 | Level II | Accepting |
+| County Hospital | South District | 520 | 6 | 25 | 8 | Level I | Accepting |
+| Riverside Regional | Riverside | 290 | 1 | 8 | 3 | Level III | Divert - ED Full |
+| Hillside Community | Hillside | 150 | 0 | 5 | 2 | Level IV | Accepting |
+| West Valley Medical | West District | 310 | 3 | 15 | 5 | Level II | Accepting |
+| Eastside Memorial | East District | 220 | 1 | 7 | 2 | Level III | Accepting |
+| Veterans Hospital | Industrial Park | 200 | 2 | 10 | 3 | Level II | Accepting |
+</Card>
+
+<Card title="Hospital Details">
+| Hospital | Contact | Ambulance Bay Status | Helipad | Blood Supply | Notes |
+|---|---|---|---|---|---|
+| Mercy General | 555-0200 | 4/6 open | Active | Adequate | Trauma team alerted |
+| St. Luke's Medical | 555-0210 | 3/4 open | Active | Low - O neg needed | On generator |
+| County Hospital | 555-0220 | 5/8 open | Active | Adequate | Surge plan active |
+| Riverside Regional | 555-0230 | 2/3 open | Inactive (weather) | Critical | ED on divert |
+| Hillside Community | 555-0240 | 1/2 open | N/A | Adequate | Limited surgery |
+| West Valley Medical | 555-0250 | 3/4 open | Active | Good | Normal ops |
+| Eastside Memorial | 555-0260 | 2/3 open | Active | Low - all types | On generator |
+| Veterans Hospital | 555-0270 | 2/3 open | Active | Adequate | Accepting transfers |
+</Card>
+</Tab>
+
+<Tab title="Open Tasks">
+<Card title="Open Tasks">
+| Task ID | Title | Zone | Priority | Assignee | Due | Status | Progress |
+|---|---|---|---|---|---|---|---|
+| TASK-0451 | Establish water distribution North | North District | Critical | Capt. Rodriguez | 16:00 | In Progress | 40% |
+| TASK-0450 | Evacuate Riverside mobile homes | Riverside | Critical | Lt. Chen | 15:30 | In Progress | 60% |
+| TASK-0449 | Restore comms Tower 3 | West District | High | Comm Team Alpha | 17:00 | Assigned | 0% |
+| TASK-0448 | Inspect I-80 bridge structure | Central District | High | Eng. Team 1 | 16:00 | In Progress | 25% |
+| TASK-0447 | Deploy pumps to East District | East District | High | Utility Team 2 | 15:00 | Assigned | 0% |
+| TASK-0446 | Set up triage at Hillside Hall | Hillside | Medium | Medic Unit 3 | 16:30 | Pending | 0% |
+| TASK-0445 | Distribute MREs to shelters | All Zones | Medium | Logistics Team A | 18:00 | In Progress | 35% |
+| TASK-0444 | Clear debris Route 9 East | East District | Medium | Public Works | 16:00 | In Progress | 50% |
+| TASK-0443 | Verify shelter generator fuel | All Zones | Low | Facility Teams | 20:00 | Pending | 0% |
+| TASK-0442 | Update public info boards | All Zones | Low | PIO Team | 15:00 | In Progress | 80% |
+</Card>
+</Tab>
+</Tabs>
+
+<Columns>
+<Card title="Request Additional Resources">
+<Form name="resource-request">
+<Select label="Resource Type" name="resourceType" placeholder="Select type" options="Vehicles - Fire Engines | Vehicles - Ambulances | Vehicles - Rescue Units | Vehicles - Water Tenders | Vehicles - Command Units | Personnel - Firefighters | Personnel - Paramedics | Personnel - Hazmat Techs | Personnel - Search & Rescue | Personnel - Engineers | Supplies - Water (pallets) | Supplies - Food (MREs) | Supplies - Medical Kits | Supplies - Generators | Supplies - Pumps | Supplies - Sandbags | Supplies - Cots/Blankets | Supplies - Comms Equipment | Equipment - Boats | Equipment - Helicopters | Equipment - Drones | Equipment - Heavy Machinery" required="true" />
+<Stepper label="Quantity" name="quantity" min="1" max="100" value="1" step="1" unit="units" required="true" />
+<Select label="Priority" name="priority" placeholder="Select priority" options="Critical - Immediate | High - Within 2 hrs | Medium - Within 6 hrs | Low - Within 24 hrs" required="true" />
+<Select label="Delivery Zone" name="deliveryZone" placeholder="Select zone" options="North District | South District | East District | West District | Central District | Riverside | Hillside | Industrial Park | Staging Area Alpha | Staging Area Bravo" required="true" />
+<TextArea label="Justification / Notes" name="notes" placeholder="Reason for request, special instructions..." rows="3" required="true" />
+<Button variant="primary" size="large">Submit Resource Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Broadcast Emergency Update">
+<Form name="broadcast-update">
+<Select label="Channel(s)" name="channels" placeholder="Select channels" options="All Channels | Emergency Alert System (EAS) | Primary Radio Net | Secondary Radio Net | Tactical Channels | Amateur Radio Net | Cellular Alert (WEA) | Social Media | Public Address Sirens | Shelter PA Systems | Door-to-Door Teams" required="true" />
+<Radio label="Urgency" name="urgency" options="Emergency - Immediate threat to life | Urgent - Action required soon | Advisory - Information only" value="Urgent - Action required soon" required="true" />
+<TextArea label="Message" name="message" placeholder="Enter broadcast message... Be clear, concise, and include specific instructions." rows="5" required="true" hint="Max 160 chars for WEA/SMS. Radio scripts should be under 30 seconds." />
+<Checkboxes label="Also send to" name="alsoSend" options="Zone Commanders | Shelter Managers | Hospital Liaisons | Volunteer Coordinators | Media/Press | Elected Officials" value="Zone Commanders | Shelter Managers" />
+<Button variant="danger" size="large">Broadcast Now</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+</Columns>
+
+<Card title="File Situation Report (SITREP)">
+<Form name="situation-report">
+<Columns>
+<Select label="Report Type" name="reportType" placeholder="Select type" options="Initial | Update | Final | Special" required="true" />
+<Date label="Report Date" name="reportDate" required="true" />
+<Time label="Report Time" name="reportTime" required="true" />
+<Select label="Prepared By" name="preparedBy" placeholder="Select author" options="Incident Commander | Operations Chief | Planning Chief | Logistics Chief | Finance/Admin Chief | Safety Officer | Liaison Officer | Public Info Officer" required="true" />
+</Columns>
+<Select label="Zone Focus" name="sitrepZone" placeholder="All zones or specific" options="All Zones | North District | South District | East District | West District | Central District | Riverside | Hillside | Industrial Park" required="true" />
+<TextArea label="Current Situation Summary" name="situation" placeholder="Overall status, major developments, changes since last report..." rows="4" required="true" />
+<TextArea label="Actions Taken" name="actionsTaken" placeholder="Operations conducted, resources deployed, tasks completed..." rows="3" required="true" />
+<TextArea label="Planned Actions" name="plannedActions" placeholder="Next operational period objectives, resource movements..." rows="3" required="true" />
+<TextArea label="Resource Status" name="resourceStatus" placeholder="Critical shortages, surpluses, requests pending..." rows="3" />
+<TextArea label="Issues / Concerns / Safety Hazards" name="issues" placeholder="Weather, access, communications, fatigue, secondary hazards..." rows="3" />
+<Checkboxes label="Attachments" name="attachments" options="Incident Map | Weather Overlay | Resource Tracking | Damage Assessment | Casualty Report | Evacuation Status" />
+<Button variant="primary" size="large">Submit SITREP</Button>
+<Button variant="secondary">Save Draft</Button>
+<Button variant="tertiary">Use Template</Button>
+</Form>
+</Card>
+
+<Callout tone="info" title="Last SITREP Submitted">
+<strong>SITREP-047 (Update)</strong> by Operations Chief at 14:00 | Zone: All | Next due: 16:00 | <Badge tone="info">View</Badge>
+</Callout>
+
+<FollowUps>
+- Show me the resource request history for the last 24 hours
+- Generate a consolidated resource deployment map
+- What's the current status of the I-80 bridge inspection?
+- List all critical aid requests older than 2 hours
+- Show volunteer shift change schedule for 18:00
+</FollowUps>

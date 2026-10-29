@@ -1,0 +1,60 @@
+<Card title="Warehouse Stock Check" subtitle="Scan a product to view inventory across locations">
+<Scan label="Scan product barcode" name="barcode" kind="barcode" hint="Point camera at product barcode" required="true" />
+
+<Details title="Product Details" open="true">
+<Columns>
+<Card title="Product Info">
+| Field | Value |
+|---|---|
+| **SKU** | WH-847291 |
+| **Name** | Industrial LED Panel 600x600 |
+| **Category** | Lighting / Commercial |
+| **Unit** | Each |
+| **Reorder Point** | 50 units |
+</Card>
+
+<Card title="Current Stock by Warehouse">
+| Warehouse | Location | On Hand | Reserved | Available | Status |
+|---|---|---|---|---|---|
+| WH-NYC-01 | New York, NY | 42 | 8 | 34 | <Badge tone="warning">Low</Badge> |
+| WH-LAX-02 | Los Angeles, CA | 127 | 15 | 112 | <Badge tone="success">OK</Badge> |
+| WH-CHI-03 | Chicago, IL | 89 | 12 | 77 | <Badge tone="success">OK</Badge> |
+| WH-DAL-04 | Dallas, TX | 31 | 5 | 26 | <Badge tone="danger">Critical</Badge> |
+| WH-SEA-05 | Seattle, WA | 156 | 22 | 134 | <Badge tone="success">OK</Badge> |
+| **Total** | | **445** | **62** | **383** | |
+</Card>
+</Columns>
+</Details>
+
+<Callout tone="warning" title="Low Stock Alert">
+<Badge tone="warning">WH-NYC-01</Badge> has 34 available (below reorder point of 50)
+<br />
+<Badge tone="danger">WH-DAL-04</Badge> has only 26 available (critical — 48% below reorder point)
+<br />
+<strong>Recommendation:</strong> Initiate transfer from WH-SEA-05 or WH-LAX-02, or place purchase order.
+</Callout>
+
+<Chart type="bar" title="Available Stock by Warehouse" x="Warehouse" y="Units">
+| Warehouse | Available |
+|---|---|
+| WH-NYC-01 | 34 |
+| WH-LAX-02 | 112 |
+| WH-CHI-03 | 77 |
+| WH-DAL-04 | 26 |
+| WH-SEA-05 | 134 |
+</Chart>
+
+<Details title="Request Restock" open="true">
+<Form name="restock-request">
+<Input label="Product SKU" name="sku" value="WH-847291" required="true" />
+<Select label="Request Type" name="requestType" options="Inter-warehouse Transfer | Purchase Order | Emergency Reorder" placeholder="Select request type" required="true" />
+<Select label="Source Warehouse" name="sourceWarehouse" options="WH-LAX-02 (112 avail) | WH-SEA-05 (134 avail) | WH-CHI-03 (77 avail) | External Supplier" placeholder="Select source" required="true" hint="Only shown for transfer requests" />
+<Select label="Destination Warehouse" name="destWarehouse" options="WH-DAL-04 (Critical) | WH-NYC-01 (Low) | Both" placeholder="Select destination" required="true" />
+<Input label="Quantity Requested" name="quantity" type="number" value="100" placeholder="Enter quantity" required="true" hint="Suggested: 100 units to cover both low locations" />
+<Date label="Needed By" name="neededBy" required="true" hint="Urgent: within 3 business days for WH-DAL-04" />
+<TextArea label="Notes / Justification" name="notes" placeholder="Add context for approval team..." rows="3" hint="Include urgency reason, preferred carrier, or special handling" />
+<Button>Submit Restock Request</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Details>
+</Card>

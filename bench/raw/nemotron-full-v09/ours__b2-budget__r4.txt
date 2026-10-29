@@ -1,0 +1,57 @@
+# Personal Budget Check
+
+<Card title="Monthly Overview" subtitle="January 2025">
+<Columns>
+<Stat label="Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent" value="$2,340" change="$660 remaining" tone="success" icon="credit-card" />
+<Stat label="Largest Expense" value="$850" note="Rent" icon="home" />
+</Columns>
+
+<Progress value="2340" max="3000" label="Budget used: 78%" tone="success" />
+</Card>
+
+<Card title="Select Month">
+<Select label="Month" name="month" value="January 2025" options="January 2025 | December 2024 | November 2024 | October 2024" />
+</Card>
+
+<Columns>
+<Card title="Spending by Category">
+<Chart type="donut" title="Category Split">
+| Category | Amount |
+|---|---|
+| Housing | 850 |
+| Food | 520 |
+| Transport | 310 |
+| Utilities | 180 |
+| Entertainment | 140 |
+| Shopping | 220 |
+| Other | 120 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="Rent payment">
+<Stat label="Amount" value="$850" icon="home" tone="warning" />
+<Details title="Transaction details" open="true">
+**Merchant:** Oakwood Apartments  
+**Date:** January 1, 2025  
+**Category:** Housing  
+**Payment method:** Bank transfer  
+**Recurring:** Yes (monthly)
+</Details>
+</Card>
+</Columns>
+
+<Card title="Add Expense">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+</Columns>
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food | Transport | Utilities | Entertainment | Shopping | Other" required="true" />
+<Input label="Merchant / Description" name="merchant" placeholder="e.g., Whole Foods, Uber, Netflix" required="true" />
+<Checkboxes label="Payment method" name="payment" options="Cash | Debit card | Credit card | Bank transfer | Digital wallet" value="Debit card" />
+<Switch label="Recurring expense" name="recurring" value="false" hint="Mark if this repeats monthly" />
+<Button label="Add expense" icon="plus" />
+<Button variant="secondary" label="Cancel" />
+</Form>
+</Card>

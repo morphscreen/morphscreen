@@ -1,0 +1,161 @@
+# Store Manager's Daily Console
+
+<Callout tone="info" title="Good morning, Alex">Here's your store summary for today. All systems normal.
+
+<Columns>
+<Stat label="Sales today" value="$8,240" change="+12% vs target" tone="success" icon="trend-up" />
+<Stat label="Avg basket" value="$42.60" change="+$3.10 vs last week" tone="success" icon="shopping-cart" />
+<Stat label="Returns this week" value="14" change="−3 vs last week" tone="success" icon="arrow-counter-clockwise" />
+<Stat label="Items out of stock" value="6" change="2 are critical" tone="warning" icon="warning" />
+</Columns>
+</Callout>
+
+<Card title="Store selector">
+<Select label="Viewing store" options="Downtown (Store #104) | Uptown (Store #208) | Mall (Store #315) | Airport (Store #421)" name="store-select" value="Downtown (Store #104)" hint="Switching stores reloads the console with that store's data" />
+</Card>
+
+<Card title="Sales today vs target">
+<Columns>
+<Stat label="Today's sales" value="$8,240" change="Target: $7,350" tone="success" icon="currency-dollar" />
+<Stat label="Progress" value="112%" note="On track to exceed target" tone="success" icon="chart-line" />
+</Columns>
+<Progress value="8240" max="7350" label="Sales vs target" tone="success" />
+</Card>
+
+<Card title="Foot traffic through the day">
+<Chart type="line" x="Hour" y="Customers">
+| Hour | Customers |
+|---|---|
+| 8 AM | 12 |
+| 9 AM | 28 |
+| 10 AM | 45 |
+| 11 AM | 62 |
+| 12 PM | 78 |
+| 1 PM | 85 |
+| 2 PM | 64 |
+| 3 PM | 58 |
+| 4 PM | 49 |
+| 5 PM | 71 |
+| 6 PM | 88 |
+| 7 PM | 66 |
+| 8 PM | 41 |
+</Chart>
+<Callout tone="neutral" title="Peak hours">Lunch (12–1 PM) and evening (5–6 PM) are your busiest periods. Consider scheduling extra cashiers then.</Callout>
+</Card>
+
+<Card title="Best sellers today">
+| Product | Units sold | Stock left |
+|---|---|---|
+| Organic Cold Brew 12oz | 34 | 18 |
+| Artisan Sourdough Loaf | 28 | 9 |
+| Smoked Gouda 8oz | 22 | 41 |
+| Free-Range Eggs (dozen) | 19 | 3 |
+| Maple Granola 16oz | 17 | 26 |
+
+<Badge tone="info">Top 5 by units</Badge>
+</Card>
+
+<Card title="Items out of stock">
+| Item | Category | Units sold today | Status |
+|---|---|---|---|
+| Almond Milk 64oz | Dairy | 12 | <Badge tone="danger">Critical — restock now</Badge> |
+| Greek Yogurt 32oz | Dairy | 9 | <Badge tone="danger">Critical — restock now</Badge> |
+| Olive Oil 500ml | Pantry | 6 | <Badge tone="warning">Low — reorder</Badge> |
+| Paper Towels 6-pack | Household | 5 | <Badge tone="warning">Low — reorder</Badge> |
+| Chocolate Chip Cookies | Bakery | 4 | <Badge tone="warning">Low — reorder</Badge> |
+| Basil (fresh) | Produce | 3 | <Badge tone="warning">Low — reorder</Badge> |
+
+<Callout tone="warning" title="Reorder needed">Two critical items are sold out and have been requested by customers today.</Callout>
+</Card>
+
+<Card title="Reorder an item">
+<Form name="reorder">
+<Select label="Select item" options="Almond Milk 64oz | Greek Yogurt 32oz | Olive Oil 500ml | Paper Towels 6-pack | Chocolate Chip Cookies | Basil (fresh)" name="reorder-item" placeholder="Choose item to reorder" />
+<Input label="Quantity to order" type="number" name="reorder-qty" placeholder="e.g. 24" min="1" hint="Standard case sizes: dairy=12, pantry=24, produce=10" />
+<Select label="Delivery priority" options="Standard (2–3 days) | Express (next day) | Emergency (same day)" name="delivery-priority" />
+<Button>Place reorder</Button>
+</Form>
+</Card>
+
+<Card title="Who's on shift today">
+| Name | Role | Shift | Status |
+|---|---|---|---|
+| <Avatar name="Maria Chen" src="find" subtitle="Shift lead" /> | Manager | 8 AM – 4 PM | <Badge tone="success">On shift</Badge> |
+| <Avatar name="James Okafor" src="find" subtitle="Cashier" /> | Cashier | 8 AM – 2 PM | <Badge tone="success">On shift</Badge> |
+| <Avatar name="Priya Patel" src="find" subtitle="Stock clerk" /> | Stock clerk | 9 AM – 5 PM | <Badge tone="success">On shift</Badge> |
+| <Avatar name="Tomás Rivera" src="find" subtitle="Cashier" /> | Cashier | 12 PM – 8 PM | <Badge tone="success">On shift</Badge> |
+| <Avatar name="Sarah Kim" src="find" subtitle="Bakery" /> | Baker | 6 AM – 2 PM | <Badge tone="success">On shift</Badge> |
+| <Avatar name="David Lee" src="find" subtitle="Produce" /> | Produce clerk | 10 AM – 6 PM | <Badge tone="success">On shift</Badge> |
+
+<Callout tone="neutral" title="Coverage">2 cashiers on floor. Lunch rush (12–1 PM) may need backup from the floor.</Callout>
+</Card>
+
+<Card title="This week vs last week">
+<Chart type="bar" x="Day" y="Sales ($)">
+| Day | This week | Last week |
+|---|---|---|
+| Mon | 7200 | 6800 |
+| Tue | 6900 | 7100 |
+| Wed | 8240 | 7600 |
+| Thu | 0 | 7400 |
+| Fri | 0 | 8100 |
+| Sat | 0 | 9800 |
+| Sun | 0 | 6100 |
+</Chart>
+<Columns>
+<Stat label="This week so far" value="$22,340" change="+4.5% vs same days last week" tone="success" icon="chart-line" />
+<Stat label="Projected week total" value="$51,800" change="+6.2% vs last week" tone="success" icon="trend-up" />
+</Columns>
+</Card>
+
+<Card title="Promotions performance">
+<Tabs>
+<Tab title="Active promotions">
+| Promotion | Sales lift | Redemptions | Status |
+|---|---|---|---|
+| Buy 1 Get 1 — Bakery | +18% | 47 | <Badge tone="success">Performing well</Badge> |
+| 20% off Wine | +11% | 23 | <Badge tone="success">On track</Badge> |
+| $5 off $30 — Household | +6% | 15 | <Badge tone="warning">Underperforming</Badge> |
+| 2-for-$5 Produce | +22% | 68 | <Badge tone="success">Strong</Badge> |
+</Tabs>
+<Tab title="Promotion details">
+<Callout tone="success" title="Best performer">2-for-$5 Produce is driving 22% lift with 68 redemptions. Consider extending through the weekend.</Callout>
+<Callout tone="warning" title="Needs attention">$5 off $30 Household is underperforming at 6% lift. Consider boosting visibility or increasing discount to $7.</Callout>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Register status">
+| Register | Status | Cashier | Open since |
+|---|---|---|---|
+| Reg 1 | <Badge tone="success">Open</Badge> | James Okafor | 8:00 AM |
+| Reg 2 | <Badge tone="success">Open</Badge> | Tomás Rivera | 12:00 PM |
+| Reg 3 | <Badge tone="danger">Closed</Badge> | — | — |
+| Reg 4 | <Badge tone="success">Open</Badge> | Maria Chen | 8:00 AM |
+| Reg 5 | <Badge tone="warning">On break</Badge> | Priya Patel | 9:30 AM |
+
+<Callout tone="neutral" title="Tip">Reg 3 is available if lines exceed 4 people at any register.</Callout>
+</Card>
+
+<Card title="Today at a glance">
+<Columns>
+<Stat label="Foot traffic" value="687" note="Peak at 6 PM" icon="users" />
+<Stat label="Avg basket size" value="$42.60" change="+$3.10 vs last week" tone="success" icon="shopping-cart" />
+<Stat label="Returns this week" value="14" change="−3 vs last week" tone="success" icon="arrow-counter-clockwise" />
+<Stat label="Conversion rate" value="18.2%" change="+1.4% vs last week" tone="success" icon="percent" />
+</Columns>
+</Card>
+
+<Card title="Quick actions">
+<Button>Reorder out-of-stock items</Button>
+<Button variant="secondary">View weekly report</Button>
+<Button variant="secondary">Switch store</Button>
+<Button variant="tertiary">Contact district manager</Button>
+</Card>
+
+<FollowUps>
+- Which promotion should I end early?
+- What's the forecast for tomorrow?
+- Show me the full inventory report
+- Who is available to cover Reg 3?
+</FollowUps>

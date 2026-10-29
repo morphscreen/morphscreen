@@ -1,0 +1,231 @@
+# Speeding Up Large CSV Processing in Python
+
+Reading a 2 GB CSV in Python can be painfully slow if you're using the wrong approach. Here's how to make it dramatically faster.
+
+<Callout tone="warning" title="The biggest mistake">
+Most people use `pd.read_csv()` or the standard `csv` module without tuning. For a 2 GB file, that can take **minutes** — but with the right techniques, you can cut that down to **seconds**.
+</Callout>
+
+## First: Profile Your Bottleneck
+
+<Card title="Where's the time going?">
+| Stage | Typical bottleneck | Speed impact |
+|---|---|---|
+| Reading the file | I/O, CSV parsing | 10-100x |
+| Type conversion | Python object overhead | 2-10x |
+| Memory allocation | Copying large DataFrames | 2-5x |
+| Processing logic | Loops instead of vectorized ops | 10-1000x |
+
+Start by timing just the read:
+
+```python
+import time
+start = time.time()
+# your current read code
+print(f"Read took {time.time() - start:.2f}s")
+```
+
+</Card>
+
+## The Fastest Ways to Read a Large CSV
+
+<Columns>
+<div>
+<Card title="Option 1: Polars (Recommended)">
+**Best for: everything.** Rust-based, multi-threaded, often 10-50x faster than pandas.
+
+```python
+import polars as pl
+
+df = pl.read_csv("large.csv")
+# Or with schema tuning:
+df = pl.read_csv(
+    "large.csv",
+    infer_schema_length=10000,  # sample rows for type inference
+    low_memory=True,            # reduce memory usage
+)
+```
+
+<Badge tone="success">Fastest for most cases</Badge>
+</Card>
+</div>
+<div>
+<Card title="Option 2: Pandas with C Engine">
+**Best for: when you must use pandas.**
+
+```python
+import pandas as pd
+
+df = pd.read_csv(
+    "large.csv",
+    engine="c",                # default, but be explicit
+    low_memory=False,          # avoid mixed-type warnings
+    dtype={"column_name": "int32"},  # specify types to save memory
+    usecols=["col1", "col2"],  # only read what you need
+    nrows=1000000,             # read in chunks if needed
+)
+```
+</Card>
+</div>
+</Columns>
+
+## Chunking: When You Can't Fit It All in Memory
+
+<Card title="Process in chunks">
+If the file is too large for RAM, process it in pieces:
+
+```python
+import pandas as pd
+
+chunk_size = 500_000  # rows per chunk
+results = []
+
+for chunk in pd.read_csv("large.csv", chunksize=chunk_size):
+    # Process each chunk
+    chunk["total"] = chunk["price"] * chunk["quantity"]
+    results.append(chunk["total"].sum())
+
+print(f"Total: {sum(results)}")
+```
+
+<Callout tone="info" title="Chunk size matters">
+Too small → lots of overhead. Too large → memory issues. Start with 500k-1M rows and adjust.
+</Callout>
+</Card>
+
+## Memory Optimization: The Silent Killer
+
+<Card title="Downcast your data types">
+A 2 GB CSV often becomes a 6+ GB DataFrame because of wasteful types. Fix this:
+
+```python
+import pandas as pd
+import numpy as np
+
+def optimize_dtypes(df):
+    """Shrink memory usage by up to 70%."""
+    for col in df.columns:
+        col_type = df[col].dtype
+        
+        if col_type != "object":
+            c_min = df[col].min()
+            c_max = df[col].max()
+            
+            if str(col_type)[:3] == "int":
+                if c_min > np.iinfo(np.int8).min and c_max < np.iinfo(np.int8).max:
+                    df[col] = df[col].astype(np.int8)
+                elif c_min > np.iinfo(np.int16).min and c_max < np.iinfo(np.int16).max:
+                    df[col] = df[col].astype(np.int16)
+                elif c_min > np.iinfo(np.int32).min and c_max < np.iinfo(np.int32).max:
+                    df[col] = df[col].astype(np.int32)
+            else:
+                if c_min > np.finfo(np.float32).min and c_max < np.finfo(np.float32).max:
+                    df[col] = df[col].astype(np.float32)
+    return df
+
+df = pd.read_csv("large.csv")
+df = optimize_dtypes(df)
+print(f"Memory: {df.memory_usage(deep=True).sum() / 1e6:.1f} MB")
+```
+
+</Card>
+
+## Comparison: Real-World Benchmarks
+
+<Card title="Reading a 2 GB CSV (10M rows)">
+<Chart type="bar" x="Method" y="Time (seconds)">
+| Method | Time (s) |
+|---|---|
+| Base Python csv | 185 |
+| Pandas default | 42 |
+| Pandas optimized | 18 |
+| Polars | 4.5 |
+| Polars + parallel | 2.1 |
+</Chart>
+</Card>
+
+## Advanced: Parallel Processing
+
+<Card title="Read and process in parallel">
+For multi-core machines, split the work:
+
+```python
+import polars as pl
+from concurrent.futures import ProcessPoolExecutor
+
+# Polars does this automatically!
+df = pl.read_csv("large.csv", n_threads=8)
+
+# For manual parallel processing:
+def process_chunk(file_path, start, end):
+    df = pl.read_csv(file_path, skip_rows=start, n_rows=end - start)
+    return df.group_by("category").agg(pl.col("sales").sum())
+
+with ProcessPoolExecutor(max_workers=4) as executor:
+    # Split file into 4 parts
+    futures = [executor.submit(process_chunk, "large.csv", i * 2_500_000, (i+1) * 2_500_000) 
+               for i in range(4)]
+    results = [f.result() for f in futures]
+```
+
+</Card>
+
+## Quick Wins Checklist
+
+<Checklist title="Speed-up checklist" name="csv-speedup">
+- [ ] Switch from `csv` module to `pandas` or `polars`
+- [ ] Use `engine="c"` (default, but verify)
+- [ ] Specify `dtype` for known columns
+- [ ] Use `usecols` to read only needed columns
+- [ ] Downcast numeric types (int64 → int32, float64 → float32)
+- [ ] Use `chunksize` if memory is tight
+- [ ] Consider `polars` for 10x+ speedup
+- [ ] Avoid loops — use vectorized operations
+- [ ] For repeated reads, save as Parquet or Feather first
+</Checklist>
+
+## If You Read the File Multiple Times
+
+<Card title="Convert once, read fast forever">
+```python
+import polars as pl
+
+# First time: convert to a fast binary format
+df = pl.read_csv("large.csv")
+df.write_parquet("large.parquet")
+
+# Later: read in milliseconds
+df = pl.read_parquet("large.parquet")  # ~10x faster than CSV
+```
+
+<Callout tone="success" title="Pro tip">
+Parquet is 5-20x faster to read than CSV and takes 50-80% less disk space.
+</Callout>
+</Card>
+
+## Your Action Plan
+
+<Steps>
+<Step title="Measure your current speed" status="done" subtitle="Time your existing read">
+Run your script and note how long the read takes.
+</Step>
+<Step title="Try the fastest option" status="current" subtitle="Install and test Polars">
+`pip install polars` and try `pl.read_csv("large.csv")` — most likely a 10x+ win.
+</Step>
+<Step title="Optimize memory" status="todo" subtitle="Downcast and select columns">
+Use the dtype optimization function above and only read necessary columns.
+</Step>
+<Step title="Consider chunking" status="todo" subtitle="If memory is still an issue">
+Process in chunks of 500k-1M rows.
+</Step>
+<Step title="Convert to Parquet" status="todo" subtitle="For repeated reads">
+One-time conversion saves time on every future read.
+</Step>
+</Steps>
+
+<FollowUps>
+- How do I handle messy or inconsistent CSV data during fast loading?
+- What's the best way to write the processed data back to disk quickly?
+- Can I use Dask or Modin to scale this across multiple machines?
+- How do I profile which specific operations in my script are the slowest?
+</FollowUps>

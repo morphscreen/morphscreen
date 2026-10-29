@@ -1,0 +1,52 @@
+# E-commerce Operations Desk
+
+<Card title="Today's Performance">
+<Columns>
+<Stat label="Orders Today" value="147" change="+12% vs yesterday" icon="shopping-bag" tone="info" />
+<Stat label="Revenue Today" value="$24,890" change="+8% vs yesterday" icon="currency-circle-dollar" tone="success" />
+<Stat label="Average Order Value" value="$169.32" change="−4% vs yesterday" icon="chart-line" tone="warning" />
+<Stat label="Refund Rate (Month)" value="2.3%" change="−0.4 pts vs last month" icon="arrow-counter-clockwise" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Order Volume — Past 4 Weeks">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 892 |
+| Week 2 | 1,034 |
+| Week 3 | 987 |
+| Week 4 | 1,148 |
+</Chart>
+</Card>
+
+<Card title="Recent Orders" subtitle="Filter by status or search by customer">
+<Columns>
+<Select label="Filter by status" placeholder="All statuses" options="All statuses | Pending | Paid | Fulfilled | Shipped | Delivered | Refunded" name="status-filter" />
+<Input label="Search by customer" placeholder="e.g. Jane Smith" name="customer-search" type="search" />
+</Columns>
+
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #10482 | Olivia Bennett | $212.40 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10481 | Marcus Chen | $89.99 | <Badge tone="success">Paid</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10480 | Sofia Rodriguez | $345.00 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10479 | James O'Connor | $67.25 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10478 | Aisha Patel | $158.70 | <Badge tone="info">Shipped</Badge> | — |
+| #10477 | Liam Walker | $1,204.50 | <Badge tone="success">Paid</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10476 | Emma Dubois | $44.10 | <Badge tone="danger">Refunded</Badge> | — |
+| #10475 | Noah Kim | $278.99 | <Badge tone="success">Fulfilled</Badge> | — |
+| #10474 | Mia Thompson | $92.80 | <Badge tone="warning">Pending</Badge> | <Button size="small" variant="secondary">Mark fulfilled</Button> |
+| #10473 | Ethan Brown | $186.30 | <Badge tone="success">Delivered</Badge> | — |
+</Card>
+
+<Callout tone="info" title="Fulfillment workflow">
+Clicking **Mark fulfilled** on an order updates its status to Fulfilled and triggers the shipping notification to the customer. This action is logged in the audit trail.
+</Callout>
+
+<FollowUps>
+- Show orders that need attention today
+- Export today's order report
+- View refund reasons this month
+- Compare week-over-week order volume breakdown
+</FollowUps>

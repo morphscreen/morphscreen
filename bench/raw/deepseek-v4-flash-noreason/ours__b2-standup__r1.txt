@@ -1,0 +1,77 @@
+# Async Standup
+
+**Wednesday, June 11, 2025** · <Badge tone="warning">3 updates missing</Badge>
+
+<Card title="Team status updates">
+<Columns>
+<div>
+<Avatar name="Priya Sharma" subtitle="Frontend · 8:02 AM" />
+**Building the checkout flow** — polished the payment form and wrote unit tests for the coupon logic. PR is up for review.
+<Badge tone="success">On track</Badge>
+</div>
+<div>
+<Avatar name="Marcus Chen" subtitle="Backend · 7:45 AM" />
+**API rate limiting** — implemented token bucket on the gateway. Load test shows 40% fewer 429s. Will wire up the dashboard next.
+<Badge tone="success">On track</Badge>
+</div>
+</Columns>
+
+<Columns>
+<div>
+<Avatar name="Lena Fischer" subtitle="Design · 8:30 AM" />
+**Empty states** — delivered final mockups for the new onboarding flow. Handing off to engineering today.
+<Badge tone="success">On track</Badge>
+</div>
+<div>
+<Avatar name="Diego Ramírez" subtitle="Mobile · 6:58 AM" />
+**Push notifications** — stuck on iOS certificate renewal. The Apple developer portal is rejecting the new key, and I can't reach our account owner.
+<Badge tone="danger">Blocked</Badge>
+</div>
+</Columns>
+
+<Columns>
+<div>
+<Avatar name="Ava Thompson" subtitle="QA · 8:15 AM" />
+**Regression suite** — ran the full suite, 214/215 passing. One flaky test on Safari, filing a bug now.
+<Badge tone="success">On track</Badge>
+</div>
+<div>
+<Avatar name="Tomás Silva" subtitle="DevOps · 7:20 AM" />
+**Deploy pipeline** — green across staging. Working on the blue-green rollout script for production.
+<Badge tone="success">On track</Badge>
+</div>
+</Columns>
+
+<Callout tone="warning" title="Blocked">Diego is blocked on the iOS certificate — needs account owner access. Ping **@sarah** or **@it-admin** to unblock.</Callout>
+</Card>
+
+<Card title="Post your update">
+<Form name="status-update">
+<Input label="What did you work on?" name="work" placeholder="e.g. Built the login flow" required />
+<TextArea label="Details (optional)" name="details" placeholder="Anything else the team should know?" rows="2" />
+<Select label="Status" name="status" options="On track | Blocked | Done" placeholder="Choose one" required />
+<Button>Submit update</Button>
+</Form>
+</Card>
+
+<Card title="Updates status">
+<Stat label="Submitted" value="5 / 8" tone="success" icon="check-circle" />
+<Stat label="Missing" value="3" tone="warning" icon="clock" note="Ava, Diego, Tomás" />
+<Progress value="5" max="8" label="5 of 8 teammates checked in" tone="warning" />
+</Card>
+
+<Card title="Who hasn't checked in yet">
+| Teammate | Role | Last update |
+|---|---|---|
+| Ava Thompson | QA | Yesterday, 4:10 PM |
+| Diego Ramírez | Mobile | Yesterday, 9:02 AM |
+| Tomás Silva | DevOps | 2 days ago |
+
+<Button variant="secondary">Send reminder</Button>
+</Card>
+
+<FollowUps>
+- Show me the full list of blockers
+- Who has been late the most this week?
+- Start a thread about the iOS certificate issue
+</FollowUps>

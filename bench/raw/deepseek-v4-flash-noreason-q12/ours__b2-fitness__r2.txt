@@ -1,0 +1,56 @@
+# Daily Summary
+
+<Card title="Today's Activity" subtitle="Friday, June 13">
+  <Columns>
+    <Stat label="Steps" value="7,842" change="vs 10,000 goal" icon="footprints" tone="info" />
+    <Stat label="Calories burned" value="486" change="active kcal" icon="flame" tone="success" />
+  </Columns>
+
+  <Progress value="7842" max="10000" label="Daily step goal" tone="info" />
+</Card>
+
+<Card title="Weekly workouts" subtitle="Last 7 days">
+  <Tabs>
+    <Tab title="Chart">
+      <Chart type="bar" x="Day" y="Minutes">
+        | Day | Workout minutes |
+        |---|---|
+        | Mon | 35 |
+        | Tue | 0 |
+        | Wed | 52 |
+        | Thu | 28 |
+        | Fri | 41 |
+        | Sat | 65 |
+        | Sun | 0 |
+      </Chart>
+    </Tab>
+    <Tab title="Details">
+      | Day | Workout | Duration | Intensity |
+      |---|---|---|---|
+      | Mon | Morning Run | 35 min | Moderate |
+      | Wed | Strength Training | 52 min | High |
+      | Thu | Yoga Flow | 28 min | Low |
+      | Fri | Cycling | 41 min | Moderate |
+      | Sat | HIIT Session | 65 min | High |
+
+      <Callout tone="success" title="Rest days">You took 2 rest days this week — good recovery balance.</Callout>
+    </Tab>
+  </Tabs>
+</Card>
+
+<Card title="Log a new workout">
+  <Form name="log-workout">
+    <Select label="Workout type" placeholder="Choose type" options="Running | Walking | Cycling | Strength | Yoga | HIIT | Swimming | Other" required="true" />
+    <Input label="Duration (minutes)" type="number" placeholder="30" min="1" max="600" required="true" />
+    <Select label="Intensity" placeholder="How hard was it?" options="Low | Moderate | High" required="true" />
+    <TextArea label="Notes (optional)" placeholder="How did it feel? Any highlights?" rows="3" />
+    <Button>Save workout</Button>
+    <Button variant="secondary">Cancel</Button>
+  </Form>
+</Card>
+
+<FollowUps>
+- Show my weekly step totals
+- Adjust my daily step goal
+- Suggest workouts for tomorrow
+</FollowUps>

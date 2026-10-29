@@ -1,0 +1,94 @@
+# Logistics Coordinator Board
+
+<Card title="Last updated" subtitle="Data refreshed 2 minutes ago">
+<Badge tone="info">Live</Badge>
+</Card>
+
+<Card title="Search shipments by route">
+<Form name="route-search">
+<Input label="Origin" name="origin" placeholder="e.g., Shanghai, Los Angeles" />
+<Input label="Destination" name="destination" placeholder="e.g., Rotterdam, Chicago" />
+<Select label="Carrier" name="carrier" placeholder="All carriers" options="All | Maersk | MSC | CMA CGM | Hapag-Lloyd | COSCO | Evergreen" />
+<Select label="Status" name="status" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" />
+<Button>Search</Button>
+<Button variant="secondary">Clear filters</Button>
+</Form>
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="On-time % (this month)" value="87.3%" change="+2.1% vs last month" tone="success" />
+<Stat label="Avg cost per shipment" value="$2,840" change="-$120 vs last month" tone="info" />
+<Stat label="Shipments in transit" value="142" change="+8 vs yesterday" tone="neutral" />
+<Stat label="Delayed shipments" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in transit">
+<Tabs>
+<Tab title="All (142)">
+| Shipment | Origin | Destination | Carrier | ETA | Status |
+|---|---|---|---|---|---|
+| MSK-2024-0451 | Shanghai | Los Angeles | Maersk | 2024-01-28 | In Transit |
+| MSC-2024-0892 | Ningbo | Long Beach | MSC | 2024-01-29 | In Transit |
+| CMA-2024-0334 | Shenzhen | New York | CMA CGM | 2024-01-30 | In Transit |
+| HLC-2024-0178 | Busan | Savannah | Hapag-Lloyd | 2024-01-28 | In Transit |
+| COS-2024-0567 | Qingdao | Houston | COSCO | 2024-01-31 | In Transit |
+| EVE-2024-0223 | Hong Kong | Oakland | Evergreen | 2024-01-29 | In Transit |
+| MSK-2024-0452 | Shanghai | Seattle | Maersk | 2024-02-01 | In Transit |
+| MSC-2024-0893 | Ningbo | Miami | MSC | 2024-01-30 | In Transit |
+</Tab>
+<Tab title="Delayed (18)">
+| Shipment | Origin | Destination | Carrier | ETA | Delay | Reason |
+|---|---|---|---|---|---|---|
+| MSK-2024-0412 | Shanghai | Los Angeles | Maersk | 2024-01-25 | 3 days | Port congestion |
+| MSC-2024-0856 | Ningbo | Long Beach | MSC | 2024-01-24 | 4 days | Weather delay |
+| CMA-2024-0298 | Shenzhen | New York | CMA CGM | 2024-01-23 | 5 days | Customs hold |
+| HLC-2024-0145 | Busan | Savannah | Hapag-Lloyd | 2024-01-26 | 2 days | Vessel breakdown |
+| COS-2024-0521 | Qingdao | Houston | COSCO | 2024-01-24 | 4 days | Port strike |
+| EVE-2024-0189 | Hong Kong | Oakland | Evergreen | 2024-01-27 | 1 day | Documentation |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Flag a shipment">
+<Form name="flag-shipment">
+<Select label="Shipment" name="shipment" placeholder="Select shipment to flag" options="MSK-2024-0451 | MSC-2024-0892 | CMA-2024-0334 | HLC-2024-0178 | COS-2024-0567 | EVE-2024-0223 | MSK-2024-0452 | MSC-2024-0893 | MSK-2024-0412 | MSC-2024-0856 | CMA-2024-0298 | HLC-2024-0145 | COS-2024-0521 | EVE-2024-0189" required="true" />
+<Select label="Flag type" name="flagType" placeholder="Choose flag type" options="Delay risk | Documentation issue | Customs hold | Damage report | Temperature excursion | Other" required="true" />
+<TextArea label="Notes" name="notes" placeholder="Add details for the team..." rows="3" />
+<Button>Flag shipment</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Volume split by carrier">
+<Chart type="donut" title="Shipments by carrier (this month)" x="Carrier" y="Volume">
+| Carrier | Volume |
+|---|---|
+| Maersk | 38 |
+| MSC | 32 |
+| CMA CGM | 28 |
+| Hapag-Lloyd | 22 |
+| COSCO | 15 |
+| Evergreen | 7 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume (past 8 weeks)">
+<Chart type="bar" title="Weekly shipment volume" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| 2024-W01 | 42 |
+| 2024-W02 | 38 |
+| 2024-W03 | 45 |
+| 2024-W04 | 41 |
+| 2024-W05 | 48 |
+| 2024-W06 | 44 |
+| 2024-W07 | 51 |
+| 2024-W08 | 47 |
+</Chart>
+</Card>
+
+<Callout tone="warning" title="Action required">
+<strong>18 shipments delayed</strong> — 6 exceed 3-day threshold. Review flagged shipments and coordinate with carriers on recovery plans.
+</Callout>

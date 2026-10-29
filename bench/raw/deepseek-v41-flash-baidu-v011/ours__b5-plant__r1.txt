@@ -1,0 +1,150 @@
+# Factory Floor Supervisor Console
+
+Live view for Plant 2, Line A–D. <Badge tone="warning">1 line down</Badge> <Badge tone="info">Shift B active</Badge>
+
+<Columns>
+<Stat label="Overall equipment effectiveness" value="82.4%" change="+1.8 pts vs last week" tone="success" icon="chart-line" />
+<Stat label="Units today" value="14,320 / 18,000" change="79.6% of target" tone="info" icon="gauge" />
+<Stat label="Days since last incident" value="126" tone="success" icon="shield-check" />
+</Columns>
+
+<Callout tone="danger" title="Live andon alert — Line C">Resin feed jam at Station 7. Line stopped 4 min ago. Operator paged.</Callout>
+
+<Card title="Andon alerts" subtitle="Live, newest first">
+| Line | Station | Alert | Since | State |
+|---|---|---|---|---|
+| C | 7 | Resin feed jam | 4 min | Active |
+| B | 3 | Torque out of spec | 11 min | Acknowledged |
+| D | 12 | Low packaging stock | 26 min | Active |
+</Card>
+
+<Card title="Units vs today's target">
+<Progress value="14320" max="18000" label="14,320 of 18,000 units" tone="info" />
+</Card>
+
+<Card title="Production lines" subtitle="Rate and status right now">
+| Line | Product | Rate (units/hr) | Status | OEE |
+|---|---|---|---|---|
+| A | Bracket 40 | 612 | Running | 86% |
+| B | Housing 12 | 388 | Running | 81% |
+| C | Panel 9 | 0 | Down | 64% |
+| D | Seal kit 3 | 441 | Running | 88% |
+</Card>
+
+<Card title="Defect rate — past month">
+<Chart type="line" x="Week" y="Defect %">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.4 |
+| W2 | 2.1 |
+| W3 | 1.8 |
+| W4 | 1.6 |
+</Chart>
+</Card>
+
+<Card title="Downtime by cause" subtitle="This week, minutes">
+<Chart type="bar" x="Cause" y="Minutes">
+| Cause | Minutes |
+|---|---|
+| Material shortage | 214 |
+| Machine fault | 168 |
+| Changeover | 96 |
+| Quality hold | 52 |
+| Operator error | 31 |
+</Chart>
+</Card>
+
+<Card title="Machines due for maintenance">
+| Machine | Line | Due | Task |
+|---|---|---|---|
+| Press P-204 | A | 2 days | Hydraulic service |
+| Mill M-118 | B | 5 days | Spindle bearing |
+| Conveyor C-07 | C | Overdue | Belt replacement |
+| Cutter D-31 | D | 9 days | Blade swap |
+</Card>
+
+<Card title="Materials on hand">
+<Columns>
+<Stat label="Steel" value="18.2 t" note="~6 days cover" tone="success" />
+<Stat label="Resin" value="2.1 t" note="~1.5 days cover" tone="warning" />
+<Stat label="Packaging" value="4,800 units" note="~2 days cover" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| Northgate Steel | Steel coil | Tue | Confirmed |
+| PolySource | Resin pellets | Wed | In transit |
+| CartonPro | Packaging | Thu | Delayed |
+</Card>
+
+<Card title="Shift output compared" subtitle="Units produced per shift today">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| A | 6,410 |
+| B | 5,180 |
+| C | 2,730 |
+</Chart>
+</Card>
+
+<Card title="Safety — this year">
+<Columns>
+<Stat label="Incidents year to date" value="3" tone="warning" icon="warning" />
+<Stat label="Days since last incident" value="126" tone="success" icon="shield-check" />
+<Stat label="Near misses logged" value="11" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Batches on quality hold">
+| Batch | Line | Reason | Held since |
+|---|---|---|---|
+| B-4471 | B | Torque out of spec | 11 min |
+| B-4462 | C | Surface finish | 3 hrs |
+| B-4450 | A | Dimensional check | 1 day |
+</Card>
+
+<Card title="Energy use today">
+<Columns>
+<Stat label="Electricity" value="4,120 kWh" change="+6% vs yesterday" tone="warning" icon="lightning" />
+<Stat label="Gas" value="310 m³" change="-2%" tone="success" />
+<Stat label="Cost so far" value="$612" tone="neutral" />
+</Columns>
+</Card>
+
+<Card title="Open work orders">
+| Work order | Asset | Priority | Owner |
+|---|---|---|---|
+| WO-8891 | Conveyor C-07 | High | R. Okafor |
+| WO-8887 | Press P-204 | High | L. Tran |
+| WO-8879 | Mill M-118 | Medium | S. Patel |
+| WO-8874 | Cutter D-31 | Low | Unassigned |
+</Card>
+
+<Card title="Schedule maintenance">
+<Form name="schedule-maintenance">
+<Select label="Machine" name="machine" placeholder="Choose a machine" options="Press P-204 | Mill M-118 | Conveyor C-07 | Cutter D-31" />
+<Date label="Date" name="date" />
+<Select label="Task type" name="task" placeholder="Choose a task" options="Preventive service | Repair | Inspection | Blade/belt swap" />
+<Input label="Notes" name="notes" placeholder="Optional" />
+<Button>Scheduled maintenance</Button>
+</Form>
+</Card>
+
+<Card title="Focus a line">
+<Radio label="Show detail for" name="focus-line" options="Line A | Line B | Line C | Line D | All lines" value="All lines" />
+<Button ask="Focus on Line C and show its full detail">Focus Line C</Button>
+</Card>
+
+<Card title="Shift report">
+<Button ask="Export the shift report as a PDF">Export shift report</Button>
+<Button variant="secondary" ask="Email the shift report to the plant manager">Email report</Button>
+</Card>
+
+<FollowUps>
+- Why is Line C down and what should I do next?
+- Show me the maintenance history for Press P-204
+- What's the resin stock cover if deliveries slip a day?
+- Break down OEE for Line B by availability, performance and quality
+</FollowUps>

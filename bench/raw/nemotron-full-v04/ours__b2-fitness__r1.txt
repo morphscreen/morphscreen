@@ -1,0 +1,36 @@
+# Daily Fitness Summary
+
+<Card title="Today's Progress">
+<Columns>
+<Stat label="Steps" value="8,432 / 10,000" change="+1,200 vs yesterday" tone="info" />
+<Stat label="Calories Burned" value="2,340 kcal" change="+320 vs avg" tone="success" />
+</Columns>
+
+<Progress value="8432" max="10000" label="Step Goal Progress" />
+</Card>
+
+<Card title="Workouts This Week">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Workout Minutes |
+|---|---|
+| Mon | 45 |
+| Tue | 0 |
+| Wed | 60 |
+| Thu | 30 |
+| Fri | 45 |
+| Sat | 50 |
+| Sun | 0 |
+</Chart>
+</Card>
+
+<Card title="Log New Workout" subtitle="Add today's activity">
+<Form name="log-workout">
+<Select label="Workout Type" placeholder="Select workout type" options="Running | Cycling | Swimming | Strength Training | Yoga | Walking | HIIT | Other" required="true" />
+<Input label="Duration (minutes)" type="number" placeholder="30" required="true" step="1" />
+<Input label="Calories Burned" type="number" placeholder="250" required="true" step="10" />
+<Select label="Intensity" placeholder="Choose intensity" options="Low | Moderate | High" required="true" />
+<Date label="Date" required="true" />
+<Button>Save Workout</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

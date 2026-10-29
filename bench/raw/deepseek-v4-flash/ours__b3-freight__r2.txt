@@ -1,0 +1,66 @@
+# Logistics coordinator board
+
+<Badge tone="neutral">Last refreshed 14:32 UTC · 5 min ago</Badge> <Button variant="secondary" icon="refresh" ask="Refresh the dashboard data">Refresh</Button>
+
+<Columns>
+<Stat label="On-time this month" value="94.2%" change="+1.4 pts vs last month" tone="success" icon="chart-line" />
+<Stat label="Avg cost / shipment" value="$1,284" change="-3.2% vs last month" tone="info" icon="currency-dollar" />
+<Stat label="In transit" value="47" change="+6 vs yesterday" tone="info" icon="truck" />
+<Stat label="Delayed" value="6" tone="danger" icon="warning" />
+</Columns>
+
+<Callout tone="danger" title="Delayed shipments">
+**S-1043** Rotterdam → Chicago +2 days (customs hold) · **S-1045** Monterrey → Dallas +1 day (weather) · 4 more lanes at risk.
+</Callout>
+
+<Card title="Shipments in transit" subtitle="Live from the fleet — tap Flag on any row to alert the team">
+<Form name="route-search">
+<Input label="Origin city" placeholder="e.g. Shenzhen" />
+<Input label="Destination city" placeholder="e.g. Los Angeles" />
+<Select label="Carrier" options="All carriers | Swift Haul | NorthStar Freight | TransCore | BlueLine Logistics" placeholder="All carriers" />
+<Button>Search routes</Button>
+</Form>
+
+| ID | Route | ETA | Carrier | Status | Action |
+|---|---|---|---|---|---|
+| S-1042 | Shenzhen → Los Angeles | Mar 8 | Swift Haul | On time | <Button variant="tertiary" ask="Flag shipment S-1042?">Flag</Button> |
+| S-1043 | Rotterdam → Chicago | Mar 7 | NorthStar Freight | **Delayed** (customs hold) | <Button variant="tertiary" ask="Flag shipment S-1043?">Flag</Button> |
+| S-1044 | Ho Chi Minh City → Hamburg | Mar 12 | TransCore | On time | <Button variant="tertiary" ask="Flag shipment S-1044?">Flag</Button> |
+| S-1045 | Monterrey → Dallas | Mar 6 | BlueLine Logistics | **Delayed** (weather) | <Button variant="tertiary" ask="Flag shipment S-1045?">Flag</Button> |
+| S-1046 | Shanghai → Memphis | Mar 9 | Swift Haul | On time | <Button variant="tertiary" ask="Flag shipment S-1046?">Flag</Button> |
+| S-1047 | Antwerp → Singapore | Mar 15 | NorthStar Freight | At port | <Button variant="tertiary" ask="Flag shipment S-1047?">Flag</Button> |
+</Card>
+
+<Columns>
+<Card title="Volume split by carrier">
+<Chart type="donut" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| Swift Haul | 623 |
+| NorthStar Freight | 452 |
+| TransCore | 331 |
+| BlueLine Logistics | 247 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume — past 8 weeks">
+<Chart type="area" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 152 |
+| W2 | 168 |
+| W3 | 141 |
+| W4 | 176 |
+| W5 | 189 |
+| W6 | 173 |
+| W7 | 201 |
+| W8 | 214 |
+</Chart>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show only delayed shipments
+- Which lanes have the lowest on-time rate?
+- Export the in-transit list as CSV
+</FollowUps>

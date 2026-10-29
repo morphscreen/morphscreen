@@ -1,0 +1,53 @@
+# E-Commerce Operations Desk
+
+<Card title="Today's Overview">
+<Columns>
+<Stat label="Orders Today" value="47" icon="shopping-bag" />
+<Stat label="Revenue Today" value="$8,240" icon="currency-dollar" />
+<Stat label="Avg Order Value" value="$175.32" icon="trend-up" />
+<Stat label="Refund Rate (This Month)" value="3.2%" icon="arrow-counter-clockwise" change="-0.4% from last month" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Order Volume (Past 4 Weeks)">
+<Chart type="bar" x="Week" y="Orders">
+| Week | Orders |
+|---|---|
+| Week 1 | 312 |
+| Week 2 | 289 |
+| Week 3 | 356 |
+| Week 4 | 341 |
+</Chart>
+</Card>
+
+<Card title="Filter & Search Orders">
+<Form name="order-filters">
+<Columns>
+<Select label="Filter by Status" options="All Orders | Pending | Processing | Shipped | Delivered | Cancelled | Refunded" name="status-filter" placeholder="All Orders" />
+<Input label="Search Customer" type="text" name="customer-search" placeholder="Type customer name..." hint="Search by first or last name" />
+</Columns>
+<Button variant="secondary" size="small">Apply Filters</Button>
+</Form>
+</Card>
+
+<Card title="Recent Orders">
+| Order ID | Customer | Total | Status | Action |
+|---|---|---|---|---|
+| #ORD-4821 | Sarah Johnson | $219.50 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small" ask="Mark order ORD-4821 as fulfilled">Mark Fulfilled</Button> |
+| #ORD-4820 | Michael Chen | $89.99 | <Badge tone="info">Processing</Badge> | <Button variant="primary" size="small" ask="Mark order ORD-4820 as fulfilled">Mark Fulfilled</Button> |
+| #ORD-4819 | Emily Davis | $345.00 | <Badge tone="success">Shipped</Badge> | <Button variant="secondary" size="small" disabled>Already Shipped</Button> |
+| #ORD-4818 | James Wilson | $56.75 | <Badge tone="warning">Pending</Badge> | <Button variant="primary" size="small" ask="Mark order ORD-4818 as fulfilled">Mark Fulfilled</Button> |
+| #ORD-4817 | Olivia Martinez | $152.20 | <Badge tone="danger">Cancelled</Badge> | <Button variant="secondary" size="small" disabled>Cannot Fulfill</Button> |
+| #ORD-4816 | Daniel Thompson | $78.40 | <Badge tone="info">Processing</Badge> | <Button variant="primary" size="small" ask="Mark order ORD-4816 as fulfilled">Mark Fulfilled</Button> |
+</Card>
+
+<Callout tone="info" title="Fulfillment Note">
+Click **Mark Fulfilled** on any pending or processing order to update its status. Shipped or cancelled orders cannot be changed from this screen.
+</Callout>
+
+<FollowUps>
+- Show me the refund details for this month
+- Which customers have pending orders?
+- Compare this week's volume to last week
+- What's the top-selling product today?
+</FollowUps>

@@ -1,0 +1,108 @@
+# Speeding up a 2 GB CSV read in Python
+
+The usual cause is doing the work row by row in pure Python. The fix is to push the reading and the math into C. Below are the options ranked by how much they help, plus a form so you can tell me your exact case.
+
+<Card title="First, find the real bottleneck" subtitle="Measure before you optimize">
+<Steps>
+<Step title="Time the raw read only" status="current">
+Read the file with no processing and print the count. If this is already slow, the problem is I/O or parsing, not your logic.
+</Step>
+<Step title="Check disk vs CPU" status="todo">
+If the file is on a network drive or spinning disk, no library will save you — copy it to local SSD first.
+</Step>
+<Step title="Profile the loop" status="todo">
+`python -m cProfile -s cumtime script.py` shows whether time sits in parsing, in your per-row code, or in type conversion.
+</Step>
+</Steps>
+</Card>
+
+<Card title="The fixes, best first">
+<Details title="1. pandas with the C engine, chunked" open="true">
+Read only the columns you need, declare dtypes, and use the C parser. Chunking keeps memory flat.
+
+```python
+import pandas as pd
+
+dtype = {"id": "int64", "amount": "float32", "region": "category"}
+
+total = 0
+for chunk in pd.read_csv(
+    "big.csv",
+    usecols=["id", "amount", "region"],
+    dtype=dtype,
+    engine="c",
+    chunksize=500_000,
+):
+    total += chunk["amount"].sum()
+
+print(total)
+```
+
+`category` for repeated strings and `float32` where precision allows can cut memory by half or more.
+</Details>
+
+<Details title="2. Polars — usually the fastest pure-Python option">
+Polars is multithreaded and reads CSV in parallel by default.
+
+```python
+import polars as pl
+
+df = pl.read_csv("big.csv", columns=["id", "amount", "region"])
+print(df["amount"].sum())
+```
+
+For files larger than RAM, use `pl.scan_csv` for lazy, streaming execution.
+</Details>
+
+<Details title="3. PyArrow — fastest raw parse">
+If you only need the data in memory as columns, Arrow's CSV reader is very fast and memory-efficient.
+
+```python
+import pyarrow.csv as pv
+
+table = pv.read_csv("big.csv")
+print(table.column("amount").to_pylist()[:5])
+```
+</Details>
+
+<Details title="4. Ditch Python entirely for the heavy pass">
+For a one-off sum or filter, command-line tools beat any Python loop:
+
+```bash
+# sum a column with awk
+awk -F, 'NR>1 {s+=$3} END {print s}' big.csv
+
+# or DuckDB, which queries the CSV in place
+python -c "import duckdb; print(duckdb.sql(\"SELECT sum(amount) FROM 'big.csv'\").fetchall())"
+```
+</Details>
+
+<Details title="5. If you must stay in pure Python">
+- Open with `io.open(..., newline="")` and iterate the file object directly — never `readlines()`.
+- Use `csv.reader` (C-accelerated) instead of manual `split(",")`.
+- Avoid building a list of all rows; process and discard.
+- Convert types once, outside the loop, not per row.
+</Details>
+</Card>
+
+<Callout tone="info" title="Rule of thumb">
+A 2 GB CSV is roughly 20–40 million rows. Pure Python handles ~1–2 million rows/second at best; pandas/Polars/Arrow handle tens of millions. If your script takes minutes, the loop is the problem, not the disk.
+</Callout>
+
+<Card title="Tell me your case and I'll give you the exact rewrite">
+<Form name="csv-help">
+<Input label="What does the script do with each row?" placeholder="e.g. sum a column, filter by date, build a dict" />
+<Input label="File location" placeholder="local SSD, network share, cloud bucket" />
+<Select label="What's available to you" options="Only the standard library | pandas is fine | Polars is fine | DuckDB is fine | Anything goes" />
+<Select label="File size vs RAM" options="Fits easily in memory | Close to RAM limit | Much larger than RAM" />
+<Input label="How long does it take now?" placeholder="e.g. 12 minutes" hint="Rough number is fine" />
+<Button>Get my rewrite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me a chunked pandas version that filters by date
+- How do I convert a 2 GB CSV to Parquet so future reads are instant?
+- Compare Polars and DuckDB for this file
+- My script builds a list of all rows — how do I stream instead?
+</FollowUps>

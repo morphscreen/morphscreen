@@ -1,0 +1,160 @@
+# Store Manager Console — Main Street #142
+
+<Card title="Store selector">
+<Columns>
+<Select label="Store" name="store" options="Main Street #142 | Downtown #008 | Westfield Mall #215 | Riverside #309" value="Main Street #142" />
+<Button variant="secondary">Switch store</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Sales today vs target">
+<Stat label="Sales today" value="$18,450" change="$2,340 vs target" tone="success" />
+<Progress value="18450" max="22000" label="Target: $22,000" tone="success" />
+<Stat label="Average basket" value="$47.20" change="+$3.10 vs last week" tone="info" />
+</Card>
+
+<Card title="Foot traffic (hourly)">
+<Chart type="bar" x="Hour" y="Visitors">
+| Hour | Visitors |
+|---|---|
+| 9 AM | 42 |
+| 10 AM | 68 |
+| 11 AM | 95 |
+| 12 PM | 134 |
+| 1 PM | 156 |
+| 2 PM | 142 |
+| 3 PM | 118 |
+| 4 PM | 105 |
+| 5 PM | 89 |
+| 6 PM | 76 |
+| 7 PM | 54 |
+| 8 PM | 31 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Best sellers (units today)">
+<Chart type="horizontal" x="Units" y="Item">
+| Item | Units |
+|---|---|
+| Organic Oat Milk 1L | 48 |
+| Sourdough Loaf | 42 |
+| Free-Range Eggs 12ct | 38 |
+| Greek Yogurt 500g | 35 |
+| Avocados (bag) | 31 |
+| Almond Butter | 27 |
+| Cold Brew Bottles | 24 |
+| Dark Chocolate 85% | 22 |
+</Chart>
+</Card>
+
+<Card title="Items out of stock">
+<Callout tone="warning" title="5 items need restock">
+<Details title="Out of stock items" open="true">
+| SKU | Item | Category | Days OOS | Reorder |
+|---|---|---|---|---|
+| PRD-8842 | Gluten-Free Granola | Pantry | 2 | <Button size="small">Reorder</Button> |
+| PRD-9103 | Oat Milk Barista 1L | Dairy Alt | 1 | <Button size="small">Reorder</Button> |
+| PRD-7721 | Kimchi 400g | Fermented | 3 | <Button size="small">Reorder</Button> |
+| PRD-5589 | Sparkling Water 6pk | Beverages | 1 | <Button size="small">Reorder</Button> |
+| PRD-6234 | Vegan Cheese Slices | Dairy Alt | 4 | <Button size="small">Reorder</Button> |
+</Details>
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Returns this week">
+<Stat label="Returns (Mon–Sun)" value="23" change="−4 vs last week" tone="success" />
+<Stat label="Return rate" value="2.1%" change="−0.3pp" tone="success" />
+<Chart type="bar" x="Day" y="Returns">
+| Day | Returns |
+|---|---|
+| Mon | 2 |
+| Tue | 3 |
+| Wed | 5 |
+| Thu | 4 |
+| Fri | 6 |
+| Sat | 2 |
+| Sun | 1 |
+</Chart>
+</Card>
+
+<Card title="Promotions running">
+<Details title="Active promotions" open="true">
+| Promo | Type | Redemptions | Revenue | ROI | Status |
+|---|---|---|---|---|---|
+| Summer Sips 20% | Category | 156 | $3,840 | 3.2x | <Badge tone="success">Active</Badge> |
+| Buy 2 Get 1 Free Snacks | Mix & Match | 89 | $2,150 | 2.8x | <Badge tone="success">Active</Badge> |
+| Loyalty Double Points | Loyalty | 234 | $5,620 | 4.1x | <Badge tone="success">Active</Badge> |
+| Student 10% Tue–Thu | Segment | 67 | $1,340 | 2.4x | <Badge tone="info">Ends Fri</Badge> |
+| First Order $5 Off | Acquisition | 12 | $480 | 1.9x | <Badge tone="warning">Low uptake</Badge> |
+</Details>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Registers">
+<Details title="Register status" open="true">
+| Register | Status | Cashier | Sales today | Transactions |
+|---|---|---|---|---|
+| REG-01 | <Badge tone="success">Open</Badge> | Maria S. | $4,200 | 89 |
+| REG-02 | <Badge tone="success">Open</Badge> | James K. | $3,850 | 82 |
+| REG-03 | <Badge tone="success">Open</Badge> | Priya M. | $3,600 | 76 |
+| REG-04 | <Badge tone="warning">Break</Badge> | — | $1,200 | 28 |
+| REG-05 | <Badge tone="danger">Closed</Badge> | — | $0 | 0 |
+| REG-06 (Self) | <Badge tone="success">Open</Badge> | Self | $5,600 | 115 |
+</Details>
+</Card>
+
+<Card title="On shift today">
+<Details title="Team schedule" open="true">
+<Columns>
+<Avatar name="Maria Santos" subtitle="Cashier • 9 AM – 5 PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maria" />
+<Avatar name="James Kim" subtitle="Cashier • 9 AM – 5 PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" />
+<Avatar name="Priya Mehta" subtitle="Cashier • 10 AM – 6 PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Priya" />
+<Avatar name="Alex Chen" subtitle="Floor Lead • 8 AM – 4 PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" />
+<Avatar name="Sam Rivera" subtitle="Stocker • 6 AM – 2 PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sam" />
+<Avatar name="Jordan Lee" subtitle="Stocker • 1 PM – 9 PM" src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan" />
+</Columns>
+</Details>
+</Card>
+</Columns>
+
+<Card title="This week vs last week">
+<Chart type="grouped" x="Day" y="Sales (USD)">
+| Day | This Week | Last Week |
+|---|---|---|
+| Mon | 19200 | 18450 |
+| Tue | 20100 | 19800 |
+| Wed | 21500 | 20900 |
+| Thu | 22800 | 21600 |
+| Fri | 24600 | 23400 |
+| Sat | 26800 | 25200 |
+| Sun | 18450 | 17900 |
+</Chart>
+</Card>
+
+<Card title="Quick reorder">
+<Form name="reorder-form">
+<Columns>
+<Select label="Item to reorder" name="item" placeholder="Select out-of-stock item" options="Gluten-Free Granola (PRD-8842) | Oat Milk Barista 1L (PRD-9103) | Kimchi 400g (PRD-7721) | Sparkling Water 6pk (PRD-5589) | Vegan Cheese Slices (PRD-6234)" required="true" />
+<Input label="Quantity" name="qty" type="number" placeholder="e.g., 24" min="1" max="500" value="24" required="true" />
+</Columns>
+<Columns>
+<Select label="Priority" name="priority" options="Standard (2–3 days) | Express (next day) | Emergency (same day)" value="Standard (2–3 days)" />
+<Input label="Notes" name="notes" placeholder="Special instructions for vendor" />
+</Columns>
+<Button>Submit reorder</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the inventory forecast for next week
+- Generate a staffing report for the holiday period
+- Compare this store's performance to the regional average
+- Set up a new promotion for back-to-school
+</FollowUps>

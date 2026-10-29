@@ -1,0 +1,328 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Live view • Updated 10:42 AM">
+<Columns>
+<Stat label="Overall Equipment Effectiveness" value="84.7%" change="+2.1% vs yesterday" tone="success" />
+<Stat label="Units Produced Today" value="8,432 / 10,000" change="84.3% of target" tone="info" />
+<Progress value="8432" max="10000" label="Daily Target Progress" />
+<Stat label="Energy Used Today" value="1,247 kWh" change="+5.2% vs avg" tone="warning" />
+<Stat label="Safety Incidents (YTD)" value="3" change="147 days since last" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Production Lines Overview">
+<Tabs>
+<Tab title="All Lines">
+<Columns>
+<Card title="Line A" subtitle="Status: Running">
+<Stat label="Rate" value="420 units/hr" change="Target: 450" tone="info" />
+<Stat label="OEE" value="87%" tone="success" />
+<Stat label="Defect Rate" value="1.2%" tone="warning" />
+<Badge tone="success">Running</Badge>
+</Card>
+<Card title="Line B" subtitle="Status: Running">
+<Stat label="Rate" value="380 units/hr" change="Target: 400" tone="info" />
+<Stat label="OEE" value="82%" tone="info" />
+<Stat label="Defect Rate" value="0.9%" tone="success" />
+<Badge tone="success">Running</Badge>
+</Card>
+<Card title="Line C" subtitle="Status: Downtime">
+<Stat label="Rate" value="0 units/hr" change="Target: 350" tone="danger" />
+<Stat label="OEE" value="0%" tone="danger" />
+<Stat label="Defect Rate" value="—" tone="neutral" />
+<Badge tone="danger">Downtime</Badge>
+<Callout tone="danger" title="Andon Alert">Line C — Conveyor jam at Station 3</Callout>
+</Card>
+<Card title="Line D" subtitle="Status: Changeover">
+<Stat label="Rate" value="0 units/hr" change="Target: 300" tone="warning" />
+<Stat label="OEE" value="—" tone="neutral" />
+<Stat label="Defect Rate" value="—" tone="neutral" />
+<Badge tone="warning">Changeover</Badge>
+<Callout tone="warning" title="Andon Alert">Line D — Tooling change in progress (12 min remaining)</Callout>
+</Card>
+</Columns>
+</Tab>
+<Tab title="Line A Detail">
+<Card title="Line A — Live Metrics">
+<Columns>
+<Stat label="Current Rate" value="420 units/hr" />
+<Stat label="Shift Output" value="3,150 units" />
+<Stat label="Shift Target" value="3,600 units" />
+<Stat label="OEE" value="87%" />
+<Stat label="Availability" value="94%" />
+<Stat label="Performance" value="93%" />
+<Stat label="Quality" value="98.8%" />
+<Stat label="Active Alarms" value="0" />
+</Columns>
+<Chart type="line" title="Line A Hourly Output" x="Hour" y="Units">
+| Hour | Output | Target |
+|---|---|---|
+| 6 AM | 380 | 450 |
+| 7 AM | 410 | 450 |
+| 8 AM | 430 | 450 |
+| 9 AM | 445 | 450 |
+| 10 AM | 420 | 450 |
+</Chart>
+</Card>
+</Tab>
+<Tab title="Line B Detail">
+<Card title="Line B — Live Metrics">
+<Columns>
+<Stat label="Current Rate" value="380 units/hr" />
+<Stat label="Shift Output" value="2,850 units" />
+<Stat label="Shift Target" value="3,200 units" />
+<Stat label="OEE" value="82%" />
+<Stat label="Availability" value="89%" />
+<Stat label="Performance" value="95%" />
+<Stat label="Quality" value="99.1%" />
+<Stat label="Active Alarms" value="1" />
+</Columns>
+<Chart type="line" title="Line B Hourly Output" x="Hour" y="Units">
+| Hour | Output | Target |
+|---|---|---|
+| 6 AM | 360 | 400 |
+| 7 AM | 390 | 400 |
+| 8 AM | 395 | 400 |
+| 9 AM | 385 | 400 |
+| 10 AM | 380 | 400 |
+</Chart>
+</Card>
+</Tab>
+<Tab title="Line C Detail">
+<Card title="Line C — Live Metrics">
+<Columns>
+<Stat label="Current Rate" value="0 units/hr" />
+<Stat label="Shift Output" value="1,200 units" />
+<Stat label="Shift Target" value="2,800 units" />
+<Stat label="OEE" value="0%" />
+<Stat label="Availability" value="0%" />
+<Stat label="Performance" value="—" />
+<Stat label="Quality" value="—" />
+<Stat label="Active Alarms" value="2" />
+</Columns>
+<Callout tone="danger" title="Active Andon Alerts">
+**Conveyor jam at Station 3** — Maintenance dispatched, ETA 8 min
+**Safety interlock triggered** — Operator cleared, awaiting reset
+</Callout>
+</Card>
+</Tab>
+<Tab title="Line D Detail">
+<Card title="Line D — Live Metrics">
+<Columns>
+<Stat label="Current Rate" value="0 units/hr" />
+<Stat label="Shift Output" value="900 units" />
+<Stat label="Shift Target" value="2,400 units" />
+<Stat label="OEE" value="—" />
+<Stat label="Availability" value="—" />
+<Stat label="Performance" value="—" />
+<Stat label="Quality" value="—" />
+<Stat label="Active Alarms" value="0" />
+</Columns>
+<Callout tone="warning" title="Changeover in Progress">
+Tooling change for SKU-4421 → SKU-4425. Estimated completion: 10:54 AM. Next batch: 1,200 units.
+</Callout>
+</Card>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Defect Rate — Past 30 Days">
+<Chart type="line" x="Date" y="Defect %">
+| Date | Defect % |
+|---|---|
+| 2024-11-01 | 1.8 |
+| 2024-11-02 | 1.5 |
+| 2024-11-03 | 1.3 |
+| 2024-11-04 | 1.6 |
+| 2024-11-05 | 1.2 |
+| 2024-11-06 | 1.1 |
+| 2024-11-07 | 1.4 |
+| 2024-11-08 | 1.0 |
+| 2024-11-09 | 0.9 |
+| 2024-11-10 | 1.2 |
+| 2024-11-11 | 1.1 |
+| 2024-11-12 | 1.3 |
+| 2024-11-13 | 1.0 |
+| 2024-11-14 | 0.8 |
+| 2024-11-15 | 0.9 |
+| 2024-11-16 | 1.1 |
+| 2024-11-17 | 1.0 |
+| 2024-11-18 | 0.9 |
+| 2024-11-19 | 0.8 |
+| 2024-11-20 | 0.7 |
+| 2024-11-21 | 0.9 |
+| 2024-11-22 | 1.0 |
+| 2024-11-23 | 1.1 |
+| 2024-11-24 | 1.0 |
+| 2024-11-25 | 0.9 |
+| 2024-11-26 | 0.8 |
+| 2024-11-27 | 0.7 |
+| 2024-11-28 | 0.9 |
+| 2024-11-29 | 1.0 |
+| 2024-11-30 | 1.2 |
+</Chart>
+<Callout tone="info" title="Trend">Defect rate trending downward — 30-day average: 1.08% (target: <1.5%)</Callout>
+</Card>
+
+<Columns>
+<Card title="Downtime by Cause (This Month)">
+<Chart type="donut" title="Downtime Split" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Mechanical Failure | 42 |
+| Changeover | 28 |
+| Material Shortage | 18 |
+| Quality Hold | 12 |
+| Planned Maintenance | 8 |
+| Operator Unavailable | 6 |
+| Power/Utility | 4 |
+</Chart>
+</Card>
+<Card title="Machines Due for Maintenance">
+<Columns>
+<Card title="CNC-07 (Line A)" subtitle="Due: Tomorrow">
+<Stat label="Hours Since Last PM" value="498" change="Threshold: 500 hrs" tone="warning" />
+<Badge tone="warning">Due Soon</Badge>
+</Card>
+<Card title="Injection-03 (Line B)" subtitle="Due: In 3 days">
+<Stat label="Hours Since Last PM" value="482" change="Threshold: 500 hrs" tone="info" />
+<Badge tone="info">Upcoming</Badge>
+</Card>
+<Card title="Press-12 (Line C)" subtitle="Overdue by 2 days">
+<Stat label="Hours Since Last PM" value="512" change="Threshold: 500 hrs" tone="danger" />
+<Badge tone="danger">Overdue</Badge>
+</Card>
+<Card title="Packer-04 (Line D)" subtitle="Due: In 7 days">
+<Stat label="Hours Since Last PM" value="465" change="Threshold: 500 hrs" tone="success" />
+<Badge tone="success">OK</Badge>
+</Card>
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw Material Stock">
+<Columns>
+<Stat label="Steel Coil" value="42.3 tons" change="Reorder at 15t" tone="success" />
+<Stat label="Resin Pellets" value="18.7 tons" change="Reorder at 10t" tone="info" />
+<Stat label="Packaging Film" value="8,400 kg" change="Reorder at 3,000kg" tone="success" />
+</Columns>
+<Progress value="42.3" max="60" label="Steel Capacity" />
+<Progress value="18.7" max="25" label="Resin Capacity" />
+<Progress value="8400" max="12000" label="Packaging Capacity" />
+</Card>
+<Card title="Supplier Deliveries This Week">
+<Columns>
+<Card title="Mon — SteelCo" subtitle="20 tons steel coil">
+<Badge tone="info">Scheduled</Badge>
+</Card>
+<Card title="Tue — PolySupply" subtitle="12 tons resin">
+<Badge tone="info">Scheduled</Badge>
+</Card>
+<Card title="Wed — PackRight" subtitle="5,000 kg film">
+<Badge tone="info">Scheduled</Badge>
+</Card>
+<Card title="Thu — SteelCo" subtitle="15 tons steel coil">
+<Badge tone="warning">Tentative</Badge>
+</Card>
+<Card title="Fri — PolySupply" subtitle="8 tons resin">
+<Badge tone="warning">Tentative</Badge>
+</Card>
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" title="Units per Shift (Last 7 Days)" x="Shift" y="Units">
+| Shift | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|---|---|---|---|---|---|---|---|
+| Shift 1 (6-14) | 3200 | 3350 | 3400 | 3380 | 3420 | 2800 | 0 |
+| Shift 2 (14-22) | 3100 | 3200 | 3250 | 3180 | 3300 | 2600 | 0 |
+| Shift 3 (22-6) | 2800 | 2900 | 2950 | 2880 | 2900 | 2200 | 0 |
+</Chart>
+</Card>
+
+<Columns>
+<Card title="Batches on Quality Hold">
+<Columns>
+<Card title="BATCH-20241130-A" subtitle="Line A • 500 units">
+<Stat label="Reason" value="Dimensional variance" tone="warning" />
+<Badge tone="warning">Under Review</Badge>
+</Card>
+<Card title="BATCH-20241129-C" subtitle="Line C • 300 units">
+<Stat label="Reason" value="Surface finish defect" tone="danger" />
+<Badge tone="danger">Quarantined</Badge>
+</Card>
+<Card title="BATCH-20241128-B" subtitle="Line B • 400 units">
+<Stat label="Reason" value="Material cert missing" tone="info" />
+<Badge tone="info">Awaiting Docs</Badge>
+</Card>
+</Columns>
+</Card>
+<Card title="Open Work Orders">
+<Columns>
+<Card title="WO-4421" subtitle="Priority: Critical">
+<Stat label="Machine" value="Press-12 (Line C)" />
+<Stat label="Issue" value="Hydraulic leak" />
+<Badge tone="danger">Critical</Badge>
+</Card>
+<Card title="WO-4420" subtitle="Priority: High">
+<Stat label="Machine" value="CNC-07 (Line A)" />
+<Stat label="Issue" value="Spindle vibration" />
+<Badge tone="warning">High</Badge>
+</Card>
+<Card title="WO-4419" subtitle="Priority: Medium">
+<Stat label="Machine" value="Injection-03 (Line B)" />
+<Stat label="Issue" value="Heater band replacement" />
+<Badge tone="info">Medium</Badge>
+</Card>
+<Card title="WO-4418" subtitle="Priority: Low">
+<Stat label="Machine" value="Packer-04 (Line D)" />
+<Stat label="Issue" value="Seal jaw alignment" />
+<Badge tone="success">Low</Badge>
+</Card>
+</Columns>
+</Card>
+</Columns>
+
+<Card title="Live Andon Alerts">
+<Columns>
+<Card title="🔴 Line C — Conveyor Jam" subtitle="Station 3 • 10:38 AM">
+<Callout tone="danger" title="Active">Maintenance tech dispatched. Estimated recovery: 10:50 AM. Impact: -350 units/hr.</Callout>
+</Card>
+<Card title="🟡 Line D — Changeover" subtitle="Tooling swap • 10:35 AM">
+<Callout tone="warning" title="In Progress">SKU-4421 → SKU-4425. 12 min remaining. Next batch queued.</Callout>
+</Card>
+<Card title="🟡 Line B — Quality Check" subtitle="Station 2 • 10:40 AM">
+<Callout tone="warning" title="Attention">First-article inspection required for BATCH-20241130-B. QA notified.</Callout>
+</Card>
+<Card title="🟢 Line A — Material Low" subtitle="Resin hopper • 10:41 AM">
+<Callout tone="info" title="Info">Resin level at 18%. Refill scheduled in 15 min. No production impact expected.</Callout>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" options="CNC-07 (Line A) | Injection-03 (Line B) | Press-12 (Line C) | Packer-04 (Line D) | Conveyor-01 (Line A) | Conveyor-02 (Line B) | Conveyor-03 (Line C) | Conveyor-04 (Line D)" placeholder="Select machine" required="true" />
+<Date label="Date" required="true" />
+<Select label="Type" options="Preventive | Corrective | Predictive | Calibration" placeholder="Maintenance type" required="true" />
+<Select label="Priority" options="Low | Medium | High | Critical" placeholder="Priority" required="true" />
+<TextArea label="Description" placeholder="Work details, parts needed, special instructions..." rows="3" />
+<Button variant="primary">Schedule Maintenance</Button>
+<Button variant="tertiary">Cancel</Button>
+</Columns>
+</Form>
+</Card>
+
+<Card title="Focus on Single Line">
+<Select label="Select Line to Focus" options="Line A | Line B | Line C | Line D" placeholder="Choose a production line for detailed view" />
+<Callout tone="info" title="Line Focus Mode">Select a line above to filter all charts, alerts, and work orders to that line only. Use the Production Lines tabs for quick switching.</Callout>
+</Card>
+
+<Card title="Actions">
+<Button variant="primary">Export Shift Report (PDF)</Button>
+<Button variant="secondary">Export Shift Report (CSV)</Button>
+<Button variant="tertiary">Email Report to Management</Button>
+<Button variant="tertiary">Print Dashboard</Button>
+</Card>
+</Card>

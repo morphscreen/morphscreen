@@ -1,0 +1,126 @@
+# Grid control room
+
+<Badge tone="success">Operational</Badge> <Badge tone="warning">3 active outages</Badge> · Updated 20:42 UTC
+
+<Callout tone="danger" title="Critical — Transformer NV-204 tripped">
+12,400 customers affected in Northgate. Repair crew dispatched, ETA 2 h 15 m. Line 47-N is loading at 96% of rating in Central.
+</Callout>
+
+<Card title="Network overview" subtitle="Focus region: All regions">
+<Select label="Focus region" options="All regions | Northgate | Silver Falls | Eastbrook | Central" value="All regions" hint="All panels on this screen filter to the selected region" />
+<Columns>
+<Stat label="Current load" value="6,840 MW" change="+3.2% vs forecast" tone="info" icon="lightning" />
+<Stat label="Spot price" value="$86.40" change="per MWh · +4.8% today" tone="warning" icon="currency-circle-dollar" />
+<Stat label="Emissions today" value="2,310 t CO₂" change="-6% vs yesterday" tone="success" icon="leaf" />
+</Columns>
+<Progress value="83.4" max="100" label="Capacity used — 6,840 MW of 8,200 MW, 1,360 MW headroom" tone="warning" />
+
+| Region | Load (MW) |
+|---|---|
+| Northgate | 2,140 |
+| Silver Falls | 1,690 |
+| Eastbrook | 1,250 |
+| Central | 1,760 |
+</Card>
+
+<Columns>
+<Card title="Generation mix by source">
+<Chart type="donut" x="Source" y="Output (MW)">
+| Source | Output (MW) |
+|---|---|
+| Natural gas | 2720 |
+| Wind | 1590 |
+| Nuclear | 1500 |
+| Solar | 600 |
+| Hydro | 430 |
+</Chart>
+</Card>
+
+<Card title="Live alerts" subtitle="As they arrive">
+| Time | Severity | Alert |
+|---|---|---|
+| 20:42 | <Badge tone="danger">Critical</Badge> | Line 47-N loading at 96% of rating — Central |
+| 20:38 | <Badge tone="info">Info</Badge> | Wind forecast revised up 8% — 02:00–06:00 |
+| 20:31 | <Badge tone="danger">Critical</Badge> | Transformer NV-204 breaker tripped — Northgate |
+| 20:19 | <Badge tone="info">Info</Badge> | Demand response event ended — 240 MW released |
+| 19:58 | <Badge tone="warning">Warning</Badge> | Helios Solar inverter fault — output at 220 MW |
+</Card>
+</Columns>
+
+<Card title="Demand forecast — next 24 hours" subtitle="Midnight to midnight, system-wide">
+<Chart type="line" x="Hour" y="MW">
+| Hour | Demand |
+|---|---|
+| 00:00 | 5500 |
+| 01:00 | 5200 |
+| 02:00 | 5000 |
+| 03:00 | 4900 |
+| 04:00 | 4900 |
+| 05:00 | 5100 |
+| 06:00 | 5600 |
+| 07:00 | 6100 |
+| 08:00 | 6500 |
+| 09:00 | 6400 |
+| 10:00 | 6200 |
+| 11:00 | 6100 |
+| 12:00 | 6000 |
+| 13:00 | 5900 |
+| 14:00 | 5800 |
+| 15:00 | 5900 |
+| 16:00 | 6300 |
+| 17:00 | 6700 |
+| 18:00 | 7000 |
+| 19:00 | 7100 |
+| 20:00 | 7000 |
+| 21:00 | 6700 |
+| 22:00 | 6300 |
+| 23:00 | 5900 |
+</Chart>
+</Card>
+
+<Card title="Plant output & status" subtitle="Output shown as current / rated capacity where different">
+| Plant | Region | Source | Output | Status |
+|---|---|---|---|---|
+| Astoria Nuclear | Northgate | Nuclear | 1,500 MW | <Badge tone="success">Running</Badge> |
+| Riverside CCGT | Central | Natural gas | 900 MW | <Badge tone="success">Running</Badge> |
+| Cedar Creek Gas | Eastbrook | Natural gas | 750 MW | <Badge tone="success">Running</Badge> |
+| Northwind Farm | Silver Falls | Wind | 730 / 800 MW | <Badge tone="success">Running</Badge> |
+| Blue Ridge CCGT | Silver Falls | Natural gas | 650 MW | <Badge tone="success">Running</Badge> |
+| Old Mill Wind | Central | Wind | 480 / 550 MW | <Badge tone="success">Running</Badge> |
+| Eastgate Peaker | Northgate | Natural gas | 420 MW | <Badge tone="success">Running</Badge> |
+| Beacon Hill Solar | Central | Solar | 380 / 500 MW | <Badge tone="warning">Running — cloud cover</Badge> |
+| Harbor Wind | Eastbrook | Wind | 380 / 450 MW | <Badge tone="success">Running</Badge> |
+| Helios Solar | Northgate | Solar | 220 / 240 MW | <Badge tone="warning">Partial — inverter fault</Badge> |
+| Summit Hydro | Silver Falls | Hydro | 310 MW | <Badge tone="success">Running</Badge> |
+| Pine Valley Hydro | Eastbrook | Hydro | 120 / 180 MW | <Badge tone="success">Running</Badge> |
+</Card>
+
+<Columns>
+<Card title="Outages — affected regions" subtitle="24,500 customers affected">
+| Asset | Region | Customers | Severity | ETA |
+|---|---|---|---|---|
+| Transformer NV-204 | Northgate | 12,400 | <Badge tone="danger">Critical</Badge> | 2 h 15 m |
+| HV line 88 | Silver Falls | 8,900 | <Badge tone="warning">Major</Badge> | 5 h 40 m |
+| Substation 12 secondary | Eastbrook | 3,200 | <Badge tone="warning">Minor</Badge> | 45 m |
+</Card>
+
+<Card title="Maintenance — this month">
+| Plant / asset | Region | Date | Duration |
+|---|---|---|---|
+| Beacon Hill Solar — inverter bank 3 | Central | Jun 4 | 09:00–17:00 |
+| Eastgate Peaker — turbine B inspection | Northgate | Jun 7 | 22:00–04:00 |
+| Old Mill Wind — gearbox replacement | Central | Jun 12–13 | 48 h |
+| Northwind Farm — SCADA update | Silver Falls | Jun 18 | 10:00–14:00 |
+| Harbor Wind — blade inspection | Eastbrook | Jun 24 | 06:00–18:00 |
+</Card>
+</Columns>
+
+<Card title="Order curtailment" subtitle="Dispatchable plants only">
+<Form name="curtailment-order">
+<Select label="Plant" placeholder="Select a plant to curtail" options="Riverside CCGT | Cedar Creek Gas | Blue Ridge CCGT | Eastgate Peaker | Northwind Farm | Beacon Hill Solar | Helios Solar | Summit Hydro | Pine Valley Hydro" name="plant" />
+<Slider label="Amount to curtail" min="0" max="500" step="10" value="100" name="mw" />
+<Select label="Duration" options="1 hour | 4 hours | 8 hours | 12 hours | 24 hours" name="duration" />
+<Select label="Reason" options="Grid stability | Overload relief | Price optimization | Maintenance window" name="reason" />
+<Button>Submit curtailment order</Button>
+</Form>
+</Card>

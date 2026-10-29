@@ -1,0 +1,80 @@
+root = Card([
+  header,
+  congestion,
+  transitBadge,
+  airQualityCard,
+  energyChart,
+  waterUse,
+  incidentsCard,
+  vehiclesCard,
+  parkingCard,
+  eventsCard,
+  reportsCard,
+  serviceBacklog,
+  weatherCallout,
+  districtFocusBtn,
+  dispatchCrewBtn,
+  alertForm,
+  roadworksCard,
+  maintenanceCard
+])
+header = CardHeader("City Operations Center", "Live Dashboard")
+congestion = TextContent("Congestion: 65%", "large")
+transitBadge = Tag("92%", null, "md", "success")
+airQualityHeader = CardHeader("Air Quality", null)
+airItem1 = ListItem(title: "North", subtitle: "AQI 45")
+airItem2 = ListItem(title: "South", subtitle: "AQI 62")
+airItem3 = ListItem(title: "East", subtitle: "AQI 55")
+airQualityList = ListBlock(items: [airItem1, airItem2, airItem3], variant: "number")
+airQualityCard = Card([airQualityHeader, airQualityList], "sunk")
+energySeries = Series("Energy", [1200, 1150, 1300, 1250, 1350, 1400, 1380])
+energyChart = LineChart(labels: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], series: [energySeries], variant: "linear", xLabel: "Day", yLabel: "kWh")
+waterUse = TextContent("Water Use Today: 2.5M gallons", "large")
+incidentsHeader = CardHeader("Open Incidents", null)
+incidentItem1 = ListItem(title: "Main St & 5th", subtitle: "Severity: High")
+incidentItem2 = ListItem(title: "Elm Ave & 3rd", subtitle: "Severity: Medium")
+incidentItem3 = ListItem(title: "Park Blvd & 7th", subtitle: "Severity: Low")
+incidentsList = ListBlock(items: [incidentItem1, incidentItem2, incidentItem3], variant: "number")
+incidentsCard = Card([incidentsHeader, incidentsList], "sunk")
+vehiclesHeader = CardHeader("Emergency Vehicles", null)
+vehicleItem1 = ListItem(title: "Ambulance", subtitle: "Location: Downtown")
+vehicleItem2 = ListItem(title: "Fire Truck", subtitle: "Location: Midtown")
+vehicleItem3 = ListItem(title: "Police Car", subtitle: "Location: Eastside")
+vehiclesList = ListBlock(items: [vehicleItem1, vehicleItem2, vehicleItem3], variant: "number")
+vehiclesCard = Card([vehiclesHeader, vehiclesList], "sunk")
+parkingHeader = CardHeader("Parking Availability", null)
+parkingItem1 = ListItem(title: "Downtown", subtitle: "120 spots")
+parkingItem2 = ListItem(title: "Midtown", subtitle: "45 spots")
+parkingItem3 = ListItem(title: "Eastside", subtitle: "80 spots")
+parkingList = ListBlock(items: [parkingItem1, parkingItem2, parkingItem3], variant: "number")
+parkingCard = Card([parkingHeader, parkingList], "sunk")
+eventsHeader = CardHeader("Public Events", null)
+eventItem1 = ListItem(title: "Music Festival", subtitle: "Sat 2pm-10pm")
+eventItem2 = ListItem(title: "Tech Meetup", subtitle: "Sun 10am-1pm")
+eventItem3 = ListItem(title: "Street Fair", subtitle: "Sat 11am-6pm")
+eventsList = ListBlock(items: [eventItem1, eventItem2, eventItem3], variant: "number")
+eventsCard = Card([eventsHeader, eventsList], "sunk")
+reportsHeader = CardHeader("Citizen Reports", null)
+reportItem1 = ListItem(title: "Traffic congestion on Main St", subtitle: null)
+reportItem2 = ListItem(title: "Air quality concern in North district", subtitle: null)
+reportsList = ListBlock(items: [reportItem1, reportItem2], variant: "number")
+reportsCard = Card([reportsHeader, reportsList], "sunk")
+serviceCols = [Col("Request", ["R-001", "R-002", "R-003"], "string"), Col("Age (days)", [12,5,30], "number"), Col("Priority", ["High","Medium","Low"], "string")]
+serviceBacklog = Table(columns: serviceCols)
+weatherCallout = TextCallout(variant: "info", title: "Current Weather", description: "22°C, Partly Cloudy")
+districtFocusBtn = Button("Focus District", null, "primary")
+dispatchCrewBtn = Button("Dispatch Crew", null, "primary")
+alertTextArea = TextArea("alert_msg", "Enter alert message", rows: 3)
+alertMessageField = FormControl("Message", alertTextArea)
+alertSubmitBtn = Button("Send Alert", null, "primary")
+alertForm = Form(name: "alert-form", buttons: [alertSubmitBtn], fields: [alertMessageField])
+roadworksHeader = CardHeader("Roadworks Planned", null)
+roadworkItem1 = ListItem(title: "Main Ave Repave", subtitle: "July 15")
+roadworkItem2 = ListItem(title: "Park Blvd Resurfacing", subtitle: "August 1")
+roadworksList = ListBlock(items: [roadworkItem1, roadworkItem2], variant: "number")
+roadworksCard = Card([roadworksHeader, roadworksList], "sunk")
+maintenanceHeader = CardHeader("Infrastructure Maintenance", null)
+jobItem1 = ListItem(title: "Bridge Inspection", subtitle: "June 1")
+jobItem2 = ListItem(title: "Water Main Replacement", subtitle: "July 20")
+maintenanceList = ListBlock(items: [jobItem1, jobItem2], variant: "number")
+maintenanceCard = Card([maintenanceHeader, maintenanceList], "sunk")

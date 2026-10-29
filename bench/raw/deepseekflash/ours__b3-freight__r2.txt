@@ -1,0 +1,81 @@
+<Card title="Logistics Coordinator Board" subtitle="Last refreshed: Today at 14:32 UTC — auto-refresh every 5 min">
+<Badge tone="success">Live · Updated 2 min ago</Badge>
+
+<Columns>
+<Stat label="On-time rate (this month)" value="94.2%" change="+1.8 pts vs last month" />
+<Stat label="Avg cost / shipment" value="$842" change="−3.2% vs last month" />
+<Stat label="Shipments in transit" value="47" note="Across 5 carriers" />
+<Stat label="Delayed shipments" value="6" note="2 critical" />
+</Columns>
+</Card>
+
+<Callout tone="danger" title="Delayed shipments called out">
+<strong>SHP-1046</strong> (Busan → Long Beach) is <strong>1 day late</strong> · <strong>SHP-1043</strong> (Shenzhen → Hamburg) is <strong>6h late</strong> · <strong>SHP-1045</strong> (Hong Kong → Felixstowe) is <strong>at risk</strong> due to port congestion. All other in-transit shipments are on schedule.
+</Callout>
+
+<Columns>
+<Card title="Search by Route" subtitle="Find any shipment by origin or destination">
+<Form name="route-search">
+<Input label="Route" placeholder="e.g. Shanghai → Rotterdam, or just 'Hamburg'" hint="Matches origin, destination, or full route" />
+<Button>Search shipments</Button>
+<Button variant="secondary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Average Cost per Shipment" subtitle="Last 30 days, all modes">
+<Stat label="Blended average" value="$842" note="Ocean $612 · Air $2,340 · Rail $1,105" />
+<Badge tone="success">Below budget by 4.1%</Badge>
+</Card>
+</Columns>
+
+<Card title="Shipments in Transit" subtitle="47 active shipments — 6 delayed">
+| Shipment | Origin | Destination | ETA | Status | Action |
+|---|---|---|---|---|---|
+| SHP-1042 | Shanghai | Rotterdam | Aug 24, 09:00 | <Badge tone="success">On time</Badge> | <Button variant="danger" ask>Flag</Button> |
+| SHP-1043 | Shenzhen | Hamburg | Aug 25, 18:30 | <Badge tone="danger">Delayed 6h</Badge> | <Button variant="danger" ask>Flag</Button> |
+| SHP-1044 | Ningbo | Los Angeles | Aug 26, 07:15 | <Badge tone="success">On time</Badge> | <Button variant="danger" ask>Flag</Button> |
+| SHP-1045 | Hong Kong | Felixstowe | Aug 26, 22:40 | <Badge tone="warning">At risk</Badge> | <Button variant="danger" ask>Flag</Button> |
+| SHP-1046 | Busan | Long Beach | Aug 27, 11:00 | <Badge tone="danger">Delayed 1d</Badge> | <Button variant="danger" ask>Flag</Button> |
+| SHP-1047 | Qingdao | Antwerp | Aug 28, 14:20 | <Badge tone="success">On time</Badge> | <Button variant="danger" ask>Flag</Button> |
+| SHP-1048 | Yantian | New York | Aug 29, 05:45 | <Badge tone="success">On time</Badge> | <Button variant="danger" ask>Flag</Button> |
+
+<Details title="View all 47 in-transit shipments">
+The table above shows the 7 highest-priority loads. The remaining 40 shipments are on schedule and tracked in the full manifest. Use the route search to pull up a specific lane.
+</Details>
+</Card>
+
+<Columns>
+<Card title="Volume Split by Carrier" subtitle="Share of shipments this month">
+<Chart type="donut" title="Carrier volume share" x="Carrier" y="Share %">
+| Carrier | Share |
+|---|---|
+| Maersk | 38 |
+| MSC | 27 |
+| CMA CGM | 15 |
+| Hapag-Lloyd | 12 |
+| Others | 8 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past Two Months" subtitle="Shipments per week, last 8 weeks">
+<Chart type="bar" title="Weekly shipments" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 118 |
+| W2 | 142 |
+| W3 | 131 |
+| W4 | 156 |
+| W5 | 149 |
+| W6 | 163 |
+| W7 | 138 |
+| W8 | 154 |
+</Chart>
+</Card>
+</Columns>
+
+<FollowUps>
+- Which shipments are at risk of missing their ETA?
+- Show me the cost breakdown by carrier
+- What's the on-time rate for the Shanghai → Rotterdam lane?
+- Flag all delayed shipments for customer notification
+</FollowUps>

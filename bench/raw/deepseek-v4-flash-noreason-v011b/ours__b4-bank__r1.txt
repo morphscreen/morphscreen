@@ -1,0 +1,92 @@
+# Personal Banking Home
+
+<Card title="Account Balances">
+<Columns>
+<Stat label="Checking" value="$3,420.89" icon="bank" />
+<Stat label="Savings" value="$12,150.00" icon="piggy-bank" />
+<Stat label="Credit" value="$2,310.45" change="+$45.20" note="Current balance" tone="warning" icon="credit-card" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions">
+| Merchant | Amount | Date |
+|---|---|---|
+| Whole Foods Market | -$87.32 | Today |
+| Amazon.com | -$29.99 | Yesterday |
+| Starbucks | -$5.45 | 2 days ago |
+| Shell Gas Station | -$45.00 | 3 days ago |
+| Netflix | -$15.99 | 4 days ago |
+<Button ask="Show more recent transactions" variant="secondary" size="small">View all</Button>
+</Card>
+
+<Card title="Spending This Month">
+<Chart type="donut" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Groceries | 520 |
+| Dining | 340 |
+| Transportation | 210 |
+| Entertainment | 180 |
+| Utilities | 150 |
+| Other | 95 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+| Bill | Amount | Due Date |
+|---|---|---|
+| Rent | $1,200 | Apr 1 |
+| Electric Bill | $85 | Apr 5 |
+| Internet | $65 | Apr 10 |
+| Phone | $45 | Apr 12 |
+<Button ask="Show all upcoming bills" variant="secondary" size="small">See all bills</Button>
+</Card>
+
+<Card title="Vacation Savings Goal">
+<Progress value="3200" max="5000" label="$3,200 of $5,000 saved" tone="success" />
+<Stat label="Saved" value="$3,200" note="$1,800 to go" icon="airplane" />
+<Button ask="Add to vacation fund" variant="secondary" size="small">Add funds</Button>
+</Card>
+
+<Card title="Credit Score">
+<Stat label="Your Score" value="742" note="Good" tone="success" icon="chart-line" />
+<Button ask="Show credit score details" variant="secondary" size="small">View details</Button>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer">
+<Select label="From" options="Checking ($3,420.89) | Savings ($12,150.00) | Credit ($2,310.45)" name="from" />
+<Select label="To" options="Checking ($3,420.89) | Savings ($12,150.00) | Credit ($2,310.45)" name="to" />
+<Input label="Amount" type="number" name="amount" placeholder="0.00" step="0.01" min="0.01" />
+<Button>Transfer</Button>
+</Form>
+</Card>
+
+<Card title="Credit Card Settings">
+<Columns>
+<Button ask="Freeze my credit line" variant="danger" size="small">Freeze Credit Line</Button>
+<Select label="Statement Period" options="Current (Mar 1-31) | Previous (Feb 1-28) | Custom" name="statement" />
+</Columns>
+</Card>
+
+<Card title="Alert Preferences">
+<Form name="alerts">
+<Checkboxes label="Trigger alerts for" options="Large purchases over $100 | Low balance under $500 | Bill due reminders | Credit score changes | Suspicious activity" name="alert-triggers" value="Large purchases over $100 | Low balance under $500 | Bill due reminders" />
+<Button>Save Preferences</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute">
+<Select label="Transaction" options="Whole Foods Market -$87.32 | Amazon.com -$29.99 | Starbucks -$5.45 | Shell Gas Station -$45.00 | Netflix -$15.99" name="transaction" placeholder="Select transaction" />
+<TextArea label="Reason for dispute" name="reason" placeholder="Describe why this transaction is incorrect" rows="3" required="true" />
+<Button variant="danger">Submit Dispute</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my spending trends this month
+- What's my available credit?
+- How can I increase my credit score?
+- Show my transaction history for March
+</FollowUps>

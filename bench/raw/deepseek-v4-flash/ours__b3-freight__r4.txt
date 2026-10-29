@@ -1,0 +1,68 @@
+# Logistics board
+
+<Badge tone="neutral">Last refreshed 14:32 ET · 5 min ago</Badge>
+
+<Columns>
+<Stat label="On-time rate · this month" value="92.4%" change="+1.2 pts vs Feb" tone="success" icon="chart-line" />
+<Stat label="Avg cost per shipment" value="$1,284" change="−3.2% vs Feb" icon="trend-down" />
+<Stat label="In transit" value="8" note="2 delayed" tone="warning" icon="truck" />
+<Stat label="Last refreshed" value="14:32 ET" note="5 min ago" icon="clock" />
+</Columns>
+
+<Callout tone="warning" title="Delayed shipments">SH-1043 (Shenzhen → Los Angeles) is ~18h behind due to weather at LAX. SH-1046 (Mumbai → Felixstowe) is ~30h behind due to port congestion at JNPT. Both carriers have been notified.</Callout>
+
+<Card title="Search by route" subtitle="Find any in-transit shipment by origin or destination">
+<Form name="route-search">
+<Input label="From" name="origin" placeholder="City, port or region" hint="e.g. Shenzhen, CN" />
+<Input label="To" name="destination" placeholder="City, port or region" hint="e.g. Los Angeles, US" />
+<Button>Search routes</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Shipments in transit" subtitle="Live status for all active movements">
+| Shipment | Origin | Destination | ETA | Status | Flag |
+|---|---|---|---|---|---|
+| SH-1042 · Oceanic Express | Zhengzhou, CN | Hamburg, DE | Mar 28 · 14:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" ask="Flag shipment SH-1042 for review">Flag</Button> |
+| SH-1043 · AirLink | Shenzhen, CN | Los Angeles, US | Mar 27 · 09:30 | <Badge tone="danger">Delayed 18h</Badge> | <Button variant="secondary" ask="Flag delayed shipment SH-1043">Flag</Button> |
+| SH-1044 · Oceanic Express | Rotterdam, NL | Chicago, US | Mar 30 · 22:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" ask="Flag shipment SH-1044 for review">Flag</Button> |
+| SH-1045 · TruckLine | Ho Chi Minh City, VN | Rotterdam, NL | Apr 01 · 08:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" ask="Flag shipment SH-1045 for review">Flag</Button> |
+| SH-1046 · RailPro | Mumbai, IN | Felixstowe, UK | Mar 29 · 18:30 | <Badge tone="danger">Delayed 30h</Badge> | <Button variant="secondary" ask="Flag delayed shipment SH-1046">Flag</Button> |
+| SH-1047 · AirLink | Singapore, SG | Sydney, AU | Apr 02 · 06:15 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" ask="Flag shipment SH-1047 for review">Flag</Button> |
+| SH-1048 · Oceanic Express | Busan, KR | Long Beach, US | Mar 26 · 11:45 | <Badge tone="success">On time</Badge> | <Button variant="tertiary" ask="Flag shipment SH-1048 for review">Flag</Button> |
+</Card>
+
+<Columns>
+<Card title="Volume split by carrier" subtitle="Share of shipments this month · avg cost $1,284">
+<Chart type="donut" title="Shipments by carrier">
+| Carrier | Shipments |
+|---|---|
+| Oceanic Express | 42 |
+| AirLink | 23 |
+| RailPro | 19 |
+| TruckLine | 16 |
+</Chart>
+</Card>
+
+<Card title="Weekly volume · past 8 weeks" subtitle="Total shipments per week">
+<Chart type="bar" x="Week of" y="Shipments">
+| Week | Shipments |
+|---|---|
+| Feb 3 | 148 |
+| Feb 10 | 161 |
+| Feb 17 | 155 |
+| Feb 24 | 172 |
+| Mar 3 | 164 |
+| Mar 10 | 181 |
+| Mar 17 | 176 |
+| Mar 24 | 189 |
+</Chart>
+</Card>
+</Columns>
+
+<FollowUps>
+- Compare average cost by lane
+- Show delayed shipments for the last 30 days
+- Export the in-transit list to CSV
+- Drill into AirLink performance this month
+</FollowUps>

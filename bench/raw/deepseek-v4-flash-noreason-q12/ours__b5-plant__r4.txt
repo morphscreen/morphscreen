@@ -1,0 +1,165 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="warning" title="Live Andon Alerts">
+<Badge tone="danger">Line 3 — Press jam</Badge> • <Badge tone="warning">Line 5 — Material low</Badge> • <Badge tone="info">Line 2 — Changeover in progress</Badge>
+</Callout>
+
+<Columns>
+<Stat label="OEE" value="78.4%" change="+2.1%" tone="success" icon="chart-line" />
+<Stat label="Units produced" value="8,432" change="vs 9,000 target" tone="info" icon="gear" />
+<Stat label="Safety incidents (YTD)" value="3" change="Last: 42 days ago" tone="success" icon="shield-check" />
+<Stat label="Energy use today" value="14.2 MWh" change="vs 16.0 MWh budget" tone="info" icon="lightning" />
+</Columns>
+
+<Card title="Production Lines">
+<Columns>
+<Card title="Line 1 — Stamping">
+<Badge tone="success">Running</Badge>
+<Stat label="Rate" value="142/hr" change="Target: 150/hr" />
+<Progress value="95" max="100" label="Efficiency" tone="success" />
+<Button variant="secondary" size="small">Focus on line</Button>
+</Card>
+<Card title="Line 2 — Assembly">
+<Badge tone="info">Changeover</Badge>
+<Stat label="Rate" value="0/hr" change="Resumes in 22 min" />
+<Progress value="60" max="100" label="Changeover progress" tone="info" />
+<Button variant="secondary" size="small">Focus on line</Button>
+</Card>
+<Card title="Line 3 — Welding">
+<Badge tone="danger">Down</Badge>
+<Stat label="Rate" value="0/hr" change="Stop: 14:32 — Press jam" />
+<Progress value="0" max="100" label="Uptime today" tone="danger" />
+<Button variant="secondary" size="small">Focus on line</Button>
+</Card>
+<Card title="Line 4 — Painting">
+<Badge tone="success">Running</Badge>
+<Stat label="Rate" value="128/hr" change="Target: 130/hr" />
+<Progress value="98" max="100" label="Efficiency" tone="success" />
+<Button variant="secondary" size="small">Focus on line</Button>
+</Card>
+<Card title="Line 5 — Packaging">
+<Badge tone="warning">Material low</Badge>
+<Stat label="Rate" value="96/hr" change="Target: 120/hr" />
+<Progress value="80" max="100" label="Efficiency" tone="warning" />
+<Button variant="secondary" size="small">Focus on line</Button>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Production vs Target — Today">
+<Chart type="bar" x="Hour" y="Units">
+| Hour | Produced | Target |
+|---|---|---|
+| 06:00 | 620 | 650 |
+| 07:00 | 640 | 650 |
+| 08:00 | 610 | 650 |
+| 09:00 | 655 | 650 |
+| 10:00 | 670 | 650 |
+| 11:00 | 580 | 650 |
+| 12:00 | 420 | 650 |
+| 13:00 | 630 | 650 |
+| 14:00 | 590 | 650 |
+</Chart>
+</Card>
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Week" y="Defect %">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.1 |
+| W2 | 2.4 |
+| W3 | 1.9 |
+| W4 | 1.6 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause — This Week">
+<Chart type="donut" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Equipment failure | 12.5 |
+| Changeover | 8.0 |
+| Material shortage | 5.5 |
+| Quality hold | 3.0 |
+| Operator break | 2.5 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due date | Type |
+|---|---|---|---|
+| Press P-102 | Line 1 | Tomorrow | Preventive |
+| Welding robot W-7 | Line 3 | In 3 days | Inspection |
+| Conveyor C-4 | Line 5 | In 5 days | Lubrication |
+| Compressor K-2 | Utility | Overdue (2 days) | Filter change |
+</Card>
+
+<Card title="Stock Levels">
+<Columns>
+<Stat label="Steel" value="42 t" change="Min: 30 t" tone="success" icon="cube" />
+<Stat label="Resin" value="18 t" change="Min: 20 t" tone="warning" icon="cube" />
+<Stat label="Packaging" value="12,400 units" change="Min: 8,000" tone="success" icon="box" />
+</Columns>
+</Card>
+
+<Card title="Supplier Deliveries — This Week">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| SteelCo | Steel coils | Today 16:00 | On time |
+| PolyChem | Resin | Tomorrow 08:00 | On time |
+| PackRight | Boxes | Thu 10:00 | In transit |
+| AlloyWorks | Aluminum sheets | Fri 14:00 | Confirmed |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Output |
+|---|---|
+| Morning | 3,850 |
+| Afternoon | 3,120 |
+| Night | 1,462 |
+</Chart>
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch | Product | Qty | Reason | Started |
+|---|---|---|---|---|
+| B-4581 | Bracket A | 420 | Dimensional drift | 14:05 |
+| B-4582 | Bracket B | 380 | Surface defect | 13:47 |
+| B-4579 | Housing C | 250 | Material cert pending | 11:20 |
+</Card>
+
+<Card title="Open Work Orders">
+| Work order | Product | Priority | Due | Line |
+|---|---|---|---|---|
+| WO-2041 | Bracket A | <Badge tone="danger">Critical</Badge> | Today 16:30 | Line 1 |
+| WO-2042 | Housing C | <Badge tone="warning">High</Badge> | Tomorrow | Line 2 |
+| WO-2043 | Bracket B | <Badge tone="info">Medium</Badge> | Thu | Line 4 |
+| WO-2044 | Cover D | <Badge tone="neutral">Low</Badge> | Fri | Line 5 |
+</Card>
+
+<Card title="Schedule Maintenance">
+<Form name="maintenance-schedule">
+<Select label="Machine" placeholder="Select machine" options="Press P-102 | Welding robot W-7 | Conveyor C-4 | Compressor K-2 | Line 1 | Line 2 | Line 3 | Line 4 | Line 5" />
+<Date label="Date" name="maintenance-date" />
+<Select label="Maintenance type" options="Preventive | Inspection | Lubrication | Filter change | Repair" />
+<Button>Schedule</Button>
+</Form>
+</Card>
+
+<Card title="Focus on a Line">
+<Select label="Select line" placeholder="Choose a line" options="Line 1 — Stamping | Line 2 — Assembly | Line 3 — Welding | Line 4 — Painting | Line 5 — Packaging" />
+<Button variant="secondary">Apply focus</Button>
+</Card>
+
+<Card title="Shift Report">
+<Button>Export shift report (PDF)</Button>
+<Button variant="secondary">Export shift report (CSV)</Button>
+</Card>
+
+<FollowUps>
+- What's the current bottleneck on Line 3?
+- Which work orders are at risk of missing their due date?
+- Show me the defect trend for the last quarter.
+- What caused the downtime spike in week 2?
+</FollowUps>

@@ -1,0 +1,63 @@
+root = Card([categoryFilter, draftsSection, publishedSection, topArticleSection, readershipChart, commentsSection, scheduleForm, newDraftBtn], "card", "column", "l")
+
+categoryFilter = Select("category", categoryOptions, "All categories", null, "medium")
+categoryOptions = [optAll, optNews, optFeatures, optOpinion, optReviews]
+optAll = SelectItem("all", "All categories")
+optNews = SelectItem("news", "News")
+optFeatures = SelectItem("features", "Features")
+optOpinion = SelectItem("opinion", "Opinion")
+optReviews = SelectItem("reviews", "Reviews")
+
+draftsSection = Card([draftsHeader, draftsTable], "sunk", "column", "m")
+draftsHeader = Heading("Drafts", "h3")
+draftsTable = Table([draftTitle, draftStatus, draftUpdated, draftActions])
+draftTitle = Col("Title", ["Climate policy deep-dive", "AI in local newsrooms", "Urban farming renaissance", "The new space race", "Mental health in schools"])
+draftStatus = Col("Status", ["In review", "Editing", "Needs fact-check", "Drafting", "Ready to schedule"])
+draftUpdated = Col("Last updated", ["2 hours ago", "Yesterday", "3 days ago", "1 week ago", "5 hours ago"])
+draftActions = Col("Actions", ["Edit", "Edit", "Edit", "Edit", "Schedule"])
+
+publishedSection = Card([publishedHeader, publishedTable], "sunk", "column", "m")
+publishedHeader = Heading("Published this week", "h3")
+publishedTable = Table([pubTitle, pubCategory, pubDate, pubViews])
+pubTitle = Col("Title", ["City council passes housing bill", "How community gardens feed neighborhoods", "Interview: Mayor on transit plan", "School board votes on curriculum", "Weekend weather: storms likely"])
+pubCategory = Col("Category", ["News", "Features", "News", "News", "News"])
+pubDate = Col("Published", ["Mon 9:00", "Tue 14:30", "Wed 11:15", "Thu 16:45", "Fri 8:00"])
+pubViews = Col("Views", [12400, 8900, 15600, 6200, 21000])
+
+topArticleSection = Card([topArticleHeader, topArticleCard], "sunk", "column", "m")
+topArticleHeader = Heading("Most-read article this month", "h3")
+topArticleCard = Callout("success", "City council passes housing bill", "15,600 views • Published Wed • Category: News • Avg. read time: 4m 12s")
+
+readershipChart = Card([readershipHeader, readershipLine], "sunk", "column", "m")
+readershipHeader = Heading("Readership (past 30 days)", "h3")
+readershipLine = LineChart(readershipLabels, [readershipSeries], "natural", "Date", "Views")
+readershipLabels = ["Day 1", "Day 4", "Day 7", "Day 10", "Day 13", "Day 16", "Day 19", "Day 22", "Day 25", "Day 28", "Day 30"]
+readershipSeries = Series("Daily views", [8200, 9100, 7800, 11200, 9500, 10300, 8900, 12100, 13400, 11800, 14200])
+
+commentsSection = Card([commentsHeader, commentsTable], "sunk", "column", "m")
+commentsHeader = Heading("Comments awaiting reply", "h3")
+commentsTable = Table([commentAuthor, commentArticle, commentText, commentTime])
+commentAuthor = Col("Author", ["Sarah M.", "James K.", "Priya R.", "Marcus T.", "Elena V."])
+commentArticle = Col("Article", ["Housing bill passes", "Community gardens", "Mayor transit interview", "School curriculum vote", "Weekend weather"])
+commentText = Col("Comment", ["What about rent control?", "Can I volunteer?", "Bus frequency details?", "Impact on AP classes?", "Evacuation routes?"])
+commentTime = Col("Time", ["15 min ago", "1 hour ago", "3 hours ago", "5 hours ago", "8 hours ago"])
+
+scheduleForm = Card([scheduleHeader, scheduleFormInner], "sunk", "column", "m")
+scheduleHeader = Heading("Schedule a piece", "h3")
+scheduleFormInner = Form("schedule-piece", scheduleButtons, [titleField, dateField, categoryField])
+titleField = FormControl("Article title", titleInput)
+titleInput = Input("title", "Enter article title", "text", null, "")
+dateField = FormControl("Publish date & time", datePicker)
+datePicker = DatePicker("publish_date", "single", null, null)
+categoryField = FormControl("Category", scheduleCategorySelect)
+scheduleCategorySelect = Select("schedule_category", scheduleCategoryOptions, "Select category", null, "medium")
+scheduleCategoryOptions = [schedNews, schedFeatures, schedOpinion, schedReviews]
+schedNews = SelectItem("news", "News")
+schedFeatures = SelectItem("features", "Features")
+schedOpinion = SelectItem("opinion", "Opinion")
+schedReviews = SelectItem("reviews", "Reviews")
+scheduleButtons = Buttons([scheduleSubmitBtn, scheduleCancelBtn])
+scheduleSubmitBtn = Button("Schedule", null, "primary")
+scheduleCancelBtn = Button("Cancel", null, "tertiary")
+
+newDraftBtn = Button("Start new draft", null, "primary", "normal", "large")

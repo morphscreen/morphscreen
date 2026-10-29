@@ -1,0 +1,75 @@
+# Async Standup · 2025-01-15
+
+<Card title="Post your update" subtitle="Share what you did, what's next, and any blockers">
+<Form name="standup-update">
+<Input label="What did you complete yesterday?" placeholder="Finished API integration, wrote tests" name="completed" />
+<Input label="What will you tackle today?" placeholder="Review PR #247, start onboarding docs" name="planned" />
+<TextArea label="Blockers (optional)" placeholder="Waiting on design review for new dashboard" name="blockers" rows="2" />
+<Switch label="I'm blocked and need help" name="isBlocked" />
+<Button>Post update</Button>
+<Button variant="tertiary">Skip today</Button>
+</Form>
+</Card>
+
+<Card title="Team status" subtitle="8 of 10 updates posted · <Badge tone=\"warning\">2 missing</Badge>">
+<Details title="🟢 Alex Chen — Posted 08:42" open="true">
+**Completed:** Shipped v2.3 release, fixed 3 critical bugs
+**Planned:** Code review for PR #289, pair with Jamie on auth refactor
+</Details>
+
+<Details title="🟢 Priya Sharma — Posted 09:15" open="true">
+**Completed:** Finished user research synthesis, shared deck
+**Planned:** Draft Q1 roadmap, sync with design on new patterns
+</Details>
+
+<Details title="🔴 Marcus Johnson — Posted 09:03 · <Badge tone=\"danger\">BLOCKED</Badge>" open="true">
+**Completed:** Built webhook retry logic, added monitoring
+**Planned:** Deploy to staging, verify end-to-end flow
+**Blockers:** Staging environment down since 06:00 — DevOps investigating (INC-1847)
+</Details>
+
+<Details title="🟢 Sam Rivera — Posted 08:58" open="true">
+**Completed:** Wrote integration tests for payment service
+**Planned:** Add contract tests, update API docs
+</Details>
+
+<Details title="🟢 Jordan Kim — Posted 09:22" open="true">
+**Completed:** Completed accessibility audit for checkout
+**Planned:** Fix color contrast issues, test with screen readers
+</Details>
+
+<Details title="🟢 Taylor Brooks — Posted 08:30" open="true">
+**Completed:** Migrated 3 services to new logging infra
+**Planned:** Cut over remaining 2 services, deprecate old pipeline
+</Details>
+
+<Details title="🟢 Casey Park — Posted 09:10" open="true">
+**Completed:** Designed new onboarding flow mockups
+**Planned:** Prototype in Figma, usability test Thursday
+</Details>
+
+<Details title="🟢 Riley Chen — Posted 08:55" open="true">
+**Completed:** Optimized DB queries, 40% latency reduction
+**Planned:** Add query plan monitoring, document indexes
+</Details>
+
+<Details title="⚪ Morgan Lee — <Badge tone=\"neutral\">No update yet</Badge>" open="false">
+No update posted
+</Details>
+
+<Details title="⚪ Alex Turner — <Badge tone=\"neutral\">No update yet</Badge>" open="false">
+No update posted
+</Details>
+</Card>
+
+<Card title="Blockers needing help">
+| Teammate | Blocker | Since | Status |
+|---|---|---|---|
+| Marcus Johnson | Staging environment down (INC-1847) | 06:00 | 🔴 DevOps investigating |
+</Card>
+
+<Card title="Quick actions">
+<Button variant="secondary" size="small">Remind missing teammates</Button>
+<Button variant="tertiary" size="small">Export standup summary</Button>
+<Button variant="tertiary" size="small">View yesterday's standup</Button>
+</Card>

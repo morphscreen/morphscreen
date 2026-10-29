@@ -1,0 +1,93 @@
+<Card title="Async Standup" subtitle="Monday, January 15, 2024">
+  <Columns>
+    <Stat label="Updates posted" value="7" change="of 10 team members" tone="info" />
+    <Stat label="Missing updates" value="3" change="Sarah, Marcus, Priya" tone="warning" />
+    <Stat label="Blocked" value="2" change="Needs help" tone="danger" />
+  </Columns>
+
+  <Details title="🚨 Blocked teammates (2)" open="true">
+    <Columns>
+      <Card title="Alex Chen" subtitle="Frontend Engineer">
+        <Avatar name="Alex Chen" src="https://api.dicebear.com/7.x/avataaars/svg?seed=alex" subtitle="Blocked" />
+        <Callout tone="danger" title="Blocked: Design system tokens">
+          Waiting on design team to finalize new color tokens for the dashboard redesign. PR #2847 is ready to merge once tokens are published.
+        </Callout>
+        <strong>Yesterday:</strong> Finished dashboard layout components<br />
+        <strong>Today:</strong> Blocked on tokens, will work on unit tests while waiting
+      </Card>
+      <Card title="Jordan Kim" subtitle="Backend Engineer">
+        <Avatar name="Jordan Kim" src="https://api.dicebear.com/7.x/avataaars/svg?seed=jordan" subtitle="Blocked" />
+        <Callout tone="danger" title="Blocked: Database migration">
+          Migration script for user_preferences table failing in staging. Need DBA review on index strategy before proceeding.
+        </Callout>
+        <strong>Yesterday:</strong> Wrote migration script, tested locally<br />
+        <strong>Today:</strong> Debugging staging failure, awaiting DBA availability
+      </Card>
+    </Columns>
+  </Details>
+
+  <Details title="✅ Updates posted (7)" open="true">
+    <Card title="Taylor Rodriguez" subtitle="Product Manager">
+      <Avatar name="Taylor Rodriguez" src="https://api.dicebear.com/7.x/avataaars/svg?seed=taylor" subtitle="On track" />
+      <strong>Yesterday:</strong> Finalized Q1 roadmap with leadership, reviewed sprint demo<br />
+      <strong>Today:</strong> Writing specs for mobile push notifications, sync with design at 2pm
+    </Card>
+    <Card title="Sam Park" subtitle="Full Stack Engineer">
+      <Avatar name="Sam Park" src="https://api.dicebear.com/7.x/avataaars/svg?seed=sam" subtitle="On track" />
+      <strong>Yesterday:</strong> Shipped user export feature (feature flag on)<br />
+      <strong>Today:</strong> Code review for auth refactor PR #2891, start on webhook retry logic
+    </Card>
+    <Card title="Riley Brooks" subtitle="DevOps Engineer">
+      <Avatar name="Riley Brooks" src="https://api.dicebear.com/7.x/avataaars/svg?seed=riley" subtitle="On track" />
+      <strong>Yesterday:</strong> Updated CI pipeline for new Node version, fixed flaky e2e tests<br />
+      <strong>Today:</strong> Rolling out staging environment refresh, docs for new deploy process
+    </Card>
+    <Card title="Casey Morgan" subtitle="Designer">
+      <Avatar name="Casey Morgan" src="https://api.dicebear.com/7.x/avataaars/svg?seed=casey" subtitle="On track" />
+      <strong>Yesterday:</strong> Delivered dashboard mockups, usability test prep<br />
+      <strong>Today:</strong> Finalizing color tokens (unblocking Alex), mobile notification designs
+    </Card>
+    <Card title="Drew Patel" subtitle="QA Engineer">
+      <Avatar name="Drew Patel" src="https://api.dicebear.com/7.x/avataaars/svg?seed=drew" subtitle="On track" />
+      <strong>Yesterday:</strong> Tested user export, found 2 P0 bugs (fixed)<br />
+      <strong>Today:</strong> Regression suite for auth refactor, exploratory testing on webhooks
+    </Card>
+    <Card title="Avery Singh" subtitle="Tech Lead">
+      <Avatar name="Avery Singh" src="https://api.dicebear.com/7.x/avataaars/svg?seed=avery" subtitle="On track" />
+      <strong>Yesterday:</strong> Architecture review for payments v2, mentoring session<br />
+      <strong>Today:</strong> RFC for event-driven architecture, pair with Jordan on migration
+    </Card>
+    <Card title="Quinn Foster" subtitle="Security Engineer">
+      <Avatar name="Quinn Foster" src="https://api.dicebear.com/7.x/avataaars/svg?seed=quinn" subtitle="On track" />
+      <strong>Yesterday:</strong> Completed SAML audit, updated threat model<br />
+      <strong>Today:</strong> Pen test coordination for Q1, review auth refactor PR for security
+    </Card>
+  </Details>
+
+  <Details title="⏳ Missing updates (3)" open="false">
+    <Columns>
+      <Avatar name="Sarah Mitchell" src="https://api.dicebear.com/7.x/avataaars/svg?seed=sarah" subtitle="Data Engineer" />
+      <Avatar name="Marcus Webb" src="https://api.dicebear.com/7.x/avataaars/svg?seed=marcus" subtitle="Mobile Engineer" />
+      <Avatar name="Priya Nair" src="https://api.dicebear.com/7.x/avataaars/svg?seed=priya" subtitle="Platform Engineer" />
+    </Columns>
+    <p style="margin-top: 8px; color: var(--muted);">Reminders sent at 10:00 AM. Auto-reminder at 2:00 PM if still missing.</p>
+  </Details>
+
+  <hr style="margin: 16px 0;" />
+
+  <h3>Post your update</h3>
+  <Form name="standup-update">
+    <TextArea label="What did you do yesterday?" name="yesterday" placeholder="Finished API integration for payments..." rows="3" required="true" />
+    <TextArea label="What will you do today?" name="today" placeholder="Start on webhook retry logic, code review..." rows="3" required="true" />
+    <Checkboxes label="Status" name="status" options="On track | Blocked (I'll add details below)" hint="Select 'Blocked' to add details" />
+    <TextArea label="Blockers (if any)" name="blockers" placeholder="Describe what's blocking you and what help you need..." rows="3" hint="Only required if you selected 'Blocked'" />
+    <Button>Post update</Button>
+    <Button variant="tertiary">Save as draft</Button>
+  </Form>
+</Card>
+
+<FollowUps>
+- Who's available to help Alex with design tokens?
+- Can a DBA review Jordan's migration today?
+- Remind Sarah, Marcus, and Priya to post updates
+</FollowUps>

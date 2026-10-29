@@ -1,0 +1,26 @@
+root = Card([
+  header,
+  description,
+  qualifications,
+  salary,
+  applyForm,
+  shareBtn
+])
+
+header = CardHeader("Senior UI/UX Designer", "Design Team")
+description = TextContent("We are seeking a creative designer to lead UI/UX initiatives across our product suite, collaborating closely with product managers and engineers to deliver intuitive, user-centered experiences.", "default")
+qualifications = ListBlock(items: (qual1, qual2, qual3), variant: "number")
+qual1 = ListItem("5+ years of UI/UX design experience", "Portfolio showcasing strong interaction design")
+qual2 = ListItem("Proficiency in Figma and Sketch", "Experience designing responsive layouts")
+qual3 = ListItem("Strong understanding of user research methods", "Ability to translate insights into design solutions")
+salary = TextContent("Salary: $90,000 - $130,000 per year", "large")
+applyForm = Form("apply-form", applyButtons, [nameField, emailField, resumeField])
+nameField = FormControl("Full name", nameInput)
+nameInput = Input("name", "John Doe", "text")
+emailField = FormControl("Work email", emailInput, "We only use this to reply")
+emailInput = Input("email", "john@example.com", "email")
+resumeField = FormControl("Resume (link)", resumeInput)
+resumeInput = Input("resume", null, "url")
+applyButtons = Buttons([applyBtn])
+applyBtn = Button("Apply", null, "primary")
+shareBtn = Button("Share posting", null, "secondary")

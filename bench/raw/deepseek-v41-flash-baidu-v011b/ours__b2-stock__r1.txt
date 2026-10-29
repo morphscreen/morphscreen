@@ -1,0 +1,69 @@
+# Low-Inventory Warnings
+
+<Callout tone="warning" title="8 SKUs below threshold">
+Restock before the weekend rush. Threshold is set to 10 units per SKU.
+</Callout>
+
+<Card title="Threshold" subtitle="Applies to every SKU unless overridden">
+<Columns>
+<Stat label="Warning threshold" value="10 units" icon="warning" />
+<Stat label="SKUs below threshold" value="8" tone="danger" icon="chart-line" />
+<Stat label="Out of stock" value="2" tone="danger" />
+<Stat label="Reorder lead time" value="3 days" tone="info" />
+</Columns>
+<Progress value="8" max="42" label="8 of 42 SKUs low" tone="warning" />
+</Card>
+
+<Card title="Search items">
+<Form name="search-items">
+<Input label="Search by name or SKU" name="query" type="search" placeholder="e.g. oat milk, SKU-1042" hint="Matches name, SKU, and supplier" />
+<Select label="Filter" name="filter" options="All low items | Out of stock only | Below 5 units | Reordered" />
+<Button>Search</Button>
+</Form>
+</Card>
+
+<Card title="Items running low">
+| Item | SKU | Remaining | Threshold | Status |
+|---|---|---|---|---|
+| Oat Milk 1L | SKU-1042 | 2 | 10 | Out of stock soon |
+| Sourdough Loaf | SKU-2210 | 3 | 10 | Low |
+| Cold Brew 330ml | SKU-3087 | 4 | 10 | Low |
+| Almond Butter 500g | SKU-1156 | 6 | 10 | Low |
+| Sparkling Water 6pk | SKU-4402 | 7 | 10 | Low |
+| Free-Range Eggs 12 | SKU-2003 | 8 | 10 | Low |
+| Greek Yogurt 1kg | SKU-1190 | 9 | 10 | Low |
+| Dark Chocolate 70% | SKU-5521 | 0 | 10 | Out of stock |
+</Card>
+
+<Card title="Reorder">
+<Columns>
+<Button variant="primary" ask="Reorder Oat Milk 1L (SKU-1042) — suggest a quantity">Reorder Oat Milk 1L</Button>
+<Button variant="primary" ask="Reorder Sourdough Loaf (SKU-2210) — suggest a quantity">Reorder Sourdough Loaf</Button>
+</Columns>
+<Columns>
+<Button variant="primary" ask="Reorder Cold Brew 330ml (SKU-3087) — suggest a quantity">Reorder Cold Brew 330ml</Button>
+<Button variant="primary" ask="Reorder Almond Butter 500g (SKU-1156) — suggest a quantity">Reorder Almond Butter 500g</Button>
+</Columns>
+<Columns>
+<Button variant="primary" ask="Reorder Sparkling Water 6pk (SKU-4402) — suggest a quantity">Reorder Sparkling Water 6pk</Button>
+<Button variant="primary" ask="Reorder Free-Range Eggs 12 (SKU-2003) — suggest a quantity">Reorder Free-Range Eggs 12</Button>
+</Columns>
+<Columns>
+<Button variant="primary" ask="Reorder Greek Yogurt 1kg (SKU-1190) — suggest a quantity">Reorder Greek Yogurt 1kg</Button>
+<Button variant="danger" ask="Reorder Dark Chocolate 70% (SKU-5521) — it is out of stock, rush order">Rush order Dark Chocolate 70%</Button>
+</Columns>
+</Card>
+
+<Card title="Adjust the threshold">
+<Form name="threshold-settings">
+<Slider label="Warning threshold" name="threshold" min="1" max="50" step="1" value="10" unit="units" />
+<Switch label="Email me when a SKU crosses the threshold" name="email-alerts" value="true" />
+<Button>Save threshold</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Which supplier is fastest for the out-of-stock items?
+- Draft a purchase order for all 8 low items
+- Show last month's restock history
+</FollowUps>

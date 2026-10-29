@@ -1,0 +1,121 @@
+# Personal banking home
+
+One screen, top to bottom: what you have, what moved, where it went, what's coming, and the controls to act on it.
+
+<Card title="Accounts" subtitle="Balances as of today, 9:41 AM">
+<Columns>
+<Stat label="Checking ··4821" value="$4,286.10" change="+$312 this week" tone="success" icon="bank" />
+<Stat label="Savings ··7730" value="$18,940.55" change="+$150 this month" tone="info" icon="piggy-bank" />
+<Stat label="Credit ··0194" value="-$1,204.38" note="Limit $8,000 · 15% used" tone="neutral" icon="credit-card" />
+</Columns>
+<Progress value="1204" max="8000" label="Credit used" tone="success" />
+</Card>
+
+<Card title="Recent transactions" subtitle="Last 5 posted">
+| Merchant | Category | Date | Amount |
+|---|---|---|---|
+| Blue Bottle Coffee | Dining | Today | -$6.75 |
+| Whole Foods Market | Groceries | Yesterday | -$84.12 |
+| Metro Transit | Transport | Yesterday | -$2.75 |
+| Northwind Utilities | Bills | Mar 4 | -$118.40 |
+| Payroll — Kestrel Labs | Income | Mar 3 | +$2,410.00 |
+<Button ask="Show all transactions from this month">See all transactions</Button>
+</Card>
+
+<Card title="Spending by category" subtitle="This month, $1,842 total">
+<Chart type="donut" title="March spending" x="Category" y="USD">
+| Category | Amount |
+|---|---|
+| Housing | 940 |
+| Groceries | 386 |
+| Dining | 214 |
+| Transport | 132 |
+| Subscriptions | 96 |
+| Other | 74 |
+</Chart>
+</Card>
+
+<Card title="Bills due soon">
+<Steps>
+<Step title="Northwind Utilities" status="current" subtitle="Due Mar 12 · $118.40 · autopay on">Electric + water</Step>
+<Step title="Rent — Cedar Property" status="todo" subtitle="Due Mar 15 · $1,450.00 · autopay on">Monthly rent</Step>
+<Step title="Northline Insurance" status="todo" subtitle="Due Mar 22 · $86.00 · autopay off">Auto policy</Step>
+<Step title="Vireo Fiber" status="todo" subtitle="Due Mar 28 · $64.99 · autopay on">Internet</Step>
+</Steps>
+<Button ask="Turn on autopay for Northline Insurance">Fix autopay for Northline</Button>
+</Card>
+
+<Card title="Vacation savings goal" subtitle="Portugal, September">
+<Stat label="Saved so far" value="$2,340 of $4,000" change="59%" tone="info" icon="airplane-tilt" />
+<Progress value="2340" max="4000" label="Vacation fund" tone="info" />
+<Callout tone="success" title="On pace">At $150/month you'll hit the goal by August 14, three weeks early.</Callout>
+<Button ask="Move $200 into the vacation savings goal">Add $200 to the goal</Button>
+</Card>
+
+<Card title="Credit score">
+<Columns>
+<Stat label="Current score" value="742" change="+8 since Feb" tone="success" icon="chart-line" />
+<Stat label="Band" value="Very good" note="Range 300–850" />
+</Columns>
+<Chart type="line" title="Score history" x="Month" y="Score">
+| Month | Score |
+|---|---|
+| Oct | 718 |
+| Nov | 724 |
+| Dec | 721 |
+| Jan | 734 |
+| Feb | 734 |
+| Mar | 742 |
+</Chart>
+<Button ask="What is affecting my credit score right now?">What's affecting my score?</Button>
+</Card>
+
+<Card title="Move money" subtitle="Between your accounts, or to the vacation goal">
+<Form name="transfer">
+<Select label="From" name="from" options="Checking ··4821 | Savings ··7730 | Credit ··0194" />
+<Select label="To" name="to" options="Savings ··7730 | Checking ··4821 | Vacation goal | Credit ··0194" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" hint="Available to move: $4,286.10" required="true" />
+<Date label="Send on" name="date" hint="Leave blank to send now" />
+<Button>Move money</Button>
+</Form>
+</Card>
+
+<Card title="Card controls">
+<Switch label="Freeze credit line ··0194" name="freeze-credit" value="false" hint="Blocks new purchases. Recurring bills and autopay are not affected." />
+<Callout tone="warning" title="Freezing is reversible">You can unfreeze instantly from this screen.</Callout>
+</Card>
+
+<Card title="Statements">
+<Form name="statement-period">
+<Radio label="Statement period" name="period" options="March 2025 (current) | February 2025 | January 2025 | Q4 2024 | Custom range" value="March 2025 (current)" />
+<Button>View statement</Button>
+<Button variant="secondary">Download PDF</Button>
+</Form>
+</Card>
+
+<Card title="Alert settings" subtitle="Choose what triggers a notification">
+<Form name="alert-prefs">
+<Checkboxes label="Notify me when" name="triggers" options="A purchase is over $100 | My balance drops below $500 | A bill is due in 3 days | A card is used abroad | A direct deposit arrives | My credit score changes" value="A purchase is over $100 | A bill is due in 3 days" />
+<Select label="Delivery" name="delivery" options="Push + email | Push only | Email only | Text message" />
+<Input label="Balance threshold" name="threshold" type="number" placeholder="500" hint="Alert me below this amount" />
+<Button>Save alert settings</Button>
+</Form>
+</Card>
+
+<Card title="Dispute a transaction">
+<Form name="dispute">
+<Select label="Transaction" name="txn" placeholder="Pick a transaction" options="Blue Bottle Coffee — $6.75, today | Whole Foods Market — $84.12, yesterday | Metro Transit — $2.75, yesterday | Northwind Utilities — $118.40, Mar 4 | Payroll — Kestrel Labs — +$2,410.00, Mar 3" required="true" />
+<Select label="Reason" name="reason" options="I don't recognize this charge | I was charged twice | Wrong amount | Goods or services not received | Cancelled subscription" />
+<TextArea label="What happened?" name="details" placeholder="Add any detail that helps us review this" rows="4" />
+<Checkboxes label="Attach if you have it" name="evidence" options="Receipt | Cancellation confirmation | Chat with merchant | Other" />
+<Button variant="danger">Submit dispute</Button>
+</Form>
+<Callout tone="info" title="What happens next">We credit the amount while we review, usually within 10 business days. You'll get updates by push and email.</Callout>
+</Card>
+
+<FollowUps>
+- How much did I spend on dining last month?
+- Move $500 from checking to savings
+- Why did my credit score go up 8 points?
+- Which subscriptions renew this month?
+</FollowUps>

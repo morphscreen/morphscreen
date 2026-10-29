@@ -1,0 +1,97 @@
+# Budget check — October
+
+<Card title="October at a glance" subtitle="1–31 October 2025">
+<Columns>
+<Stat label="Spent this month" value="$2,184" change="+6% vs Sept" tone="warning" icon="chart-line" />
+<Stat label="Monthly budget" value="$2,500" note="Set on 1 Oct" icon="target" />
+<Stat label="Left to spend" value="$316" tone="danger" icon="wallet" />
+<Stat label="Days remaining" value="9" note="≈ $35/day safe pace" icon="calendar" />
+</Columns>
+
+<Progress value="2184" max="2500" label="Budget used" tone="warning" />
+
+<Callout tone="warning" title="You're 87% through the budget with 9 days left">
+At the current pace you'd finish around **$2,500** — right on the line. Trimming one dining-out trip would put you back under.
+</Callout>
+</Card>
+
+<Card title="Spending by category" subtitle="October, share of $2,184">
+<Chart type="donut" title="October spending by category" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 980 |
+| Groceries | 412 |
+| Dining out | 268 |
+| Transport | 196 |
+| Utilities | 174 |
+| Subscriptions | 96 |
+| Other | 58 |
+</Chart>
+
+| Category | Spent | Budget | Status |
+|---|---|---|---|
+| Housing | $980 | $980 | <Badge tone="success">On budget</Badge> |
+| Groceries | $412 | $450 | <Badge tone="success">Under</Badge> |
+| Dining out | $268 | $200 | <Badge tone="danger">Over by $68</Badge> |
+| Transport | $196 | $220 | <Badge tone="success">Under</Badge> |
+| Utilities | $174 | $180 | <Badge tone="success">Under</Badge> |
+| Subscriptions | $96 | $80 | <Badge tone="warning">Over by $16</Badge> |
+| Other | $58 | $100 | <Badge tone="success">Under</Badge> |
+</Card>
+
+<Card title="Largest single expense" subtitle="Biggest one-off hit this month">
+<Columns>
+<Stat label="Amount" value="$980" note="Rent — 1 Oct" tone="info" icon="receipt" />
+<Stat label="Share of month" value="45%" note="of all October spending" icon="chart-pie" />
+<Stat label="vs September" value="+$0" change="no change" tone="neutral" icon="arrows-down-up" />
+</Columns>
+
+<Callout tone="info" title="Rent is fixed — it isn't the problem">
+The $980 rent is unavoidable and unchanged. Your overrun is coming from **dining out (+$68)** and **subscriptions (+$16)**. Those two are where a fix actually helps.
+</Callout>
+</Card>
+
+<Card title="Look at a different month">
+<Form name="month-picker">
+<Select label="Month" name="month" value="October 2025" options="October 2025 | September 2025 | August 2025 | July 2025" hint="Pick a month to reload the summary above" />
+<Button>View month</Button>
+<Button variant="tertiary">Compare two months</Button>
+</Form>
+</Card>
+
+<Card title="Add an expense">
+<Form name="add-expense">
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required="true" hint="In dollars" />
+<Input label="Description" name="description" placeholder="e.g. Corner Cafe lunch" required="true" />
+<Date label="Date" name="date" value="2025-10-22" required="true" />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Groceries | Dining out | Transport | Utilities | Subscriptions | Other" required="true" />
+<Radio label="Paid with" name="method" options="Card | Cash | Bank transfer" />
+<Switch label="This was a one-off / unexpected expense" name="oneoff" value="false" />
+<Button>Add expense</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="What to do next">
+<Steps>
+<Step title="Log any receipts you haven't entered yet" status="current" subtitle="Dining and groceries are the usual gaps">
+Unentered spending is the most common reason a budget looks fine until the last week.
+</Step>
+<Step title="Cap dining out at $50 for the rest of October" status="todo" subtitle="You have $316 left in total">
+That alone keeps the month under budget without touching anything else.
+</Step>
+<Step title="Audit subscriptions" status="todo" subtitle="$96 against an $80 budget">
+Cancel or pause one unused service and you're back on plan.
+</Step>
+<Step title="Set November's budget from this month's actuals" status="todo" subtitle="Rent $980, groceries $450, dining $220">
+Adjust the two categories you overshot so next month starts realistic.
+</Step>
+</Steps>
+</Card>
+
+<FollowUps>
+- Show me September's spending breakdown
+- Which subscriptions am I paying for?
+- What's my average daily spend this month?
+- Set a $200 dining-out budget for November
+</FollowUps>

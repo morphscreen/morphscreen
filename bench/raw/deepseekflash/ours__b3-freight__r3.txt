@@ -1,0 +1,71 @@
+<Card title="Logistics Coordinator's Board" subtitle="Last refreshed: Today at 14:32 UTC · Auto-refresh every 5 min">
+<Badge tone="success">All carrier APIs connected</Badge> <Badge tone="info">8,432 total shipments this month</Badge>
+</Card>
+
+<Callout tone="danger" title="Delayed shipments">
+3 shipments are behind schedule — SH-2042 and SH-2044 are past their original ETA. Review the flagged rows below.
+</Callout>
+
+<Columns>
+<Stat label="On-time % this month" value="94.2%" change="+1.1 pts" note="Target ≥ 95%" />
+<Stat label="Avg cost per shipment" value="$412" change="-3.2%" note="vs last month" />
+<Stat label="Shipments in transit" value="1,284" note="across 4 carriers" />
+<Stat label="Delayed shipments" value="3" note="1 critical" />
+</Columns>
+
+<Columns>
+<Card title="Search by route" subtitle="Find any shipment in transit">
+<Form name="route-search">
+<Input label="Route" placeholder="e.g. Shanghai → Los Angeles" hint="Search by origin, destination, or both" />
+<Button>Search routes</Button>
+</Form>
+</Card>
+<Card title="Flag a shipment" subtitle="Mark a shipment for coordinator review">
+<Form name="flag-shipment">
+<Select label="Shipment ID" placeholder="Choose a shipment to flag" options="SH-2041 (Ningbo → Rotterdam) | SH-2042 (Chicago → Dallas) | SH-2043 (Hamburg → Singapore) | SH-2044 (Shanghai → Los Angeles) | SH-2045 (Miami → São Paulo) | SH-2046 (Dubai → Mumbai)" />
+<Button variant="danger">Flag shipment</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Volume split by carrier" subtitle="Last 30 days">
+<Chart type="pie" title="Carrier volume share">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 145 |
+| UPS | 112 |
+| DHL | 78 |
+| Maersk | 54 |
+</Chart>
+</Card>
+<Card title="Weekly volume" subtitle="Past 8 weeks">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| W1 | 320 |
+| W2 | 380 |
+| W3 | 350 |
+| W4 | 410 |
+| W5 | 390 |
+| W6 | 430 |
+| W7 | 450 |
+| W8 | 470 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Shipments in transit" subtitle="6 of 1,284 shipments shown">
+| Shipment ID | Origin | Destination | ETA | Status | Action |
+|---|---|---|---|---|---|
+| SH-2041 | Ningbo, CN | Rotterdam, NL | Apr 18, 09:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary">Flag</Button> |
+| SH-2042 | Chicago, US | Dallas, US | Apr 16, 18:00 | <Badge tone="danger">Delayed</Badge> | <Button variant="tertiary">Flag</Button> |
+| SH-2043 | Hamburg, DE | Singapore, SG | Apr 19, 14:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary">Flag</Button> |
+| SH-2044 | Shanghai, CN | Los Angeles, US | Apr 15, 22:00 | <Badge tone="danger">Delayed</Badge> | <Button variant="tertiary">Flag</Button> |
+| SH-2045 | Miami, US | São Paulo, BR | Apr 22, 11:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary">Flag</Button> |
+| SH-2046 | Dubai, AE | Mumbai, IN | Apr 17, 16:00 | <Badge tone="success">On time</Badge> | <Button variant="tertiary">Flag</Button> |
+</Card>
+
+<Callout tone="info" title="Data freshness">
+All numbers last refreshed at 14:32 UTC today. Shipment statuses update every 5 minutes from carrier APIs.
+</Callout>

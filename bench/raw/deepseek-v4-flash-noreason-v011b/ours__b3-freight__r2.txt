@@ -1,0 +1,85 @@
+# Logistics Coordinator Dashboard
+
+<Callout tone="info" title="Last refreshed">Dashboard data refreshed 2 minutes ago</Callout>
+
+<Card title="Shipments in Transit">
+<Columns>
+<Stat label="On-Time % This Month" value="87.3%" change="-2.1%" note="vs last month" icon="chart-line" />
+<Stat label="Avg Cost/Shipment" value="$342.18" icon="currency-dollar" />
+</Columns>
+
+<Tabs>
+<Tab title="Active Shipments">
+| Origin | Destination | ETA | Status |
+|---|---|---|---|
+| Los Angeles, CA | Chicago, IL | 2025-07-18 14:00 | <Badge tone="success">On Time</Badge> |
+| Seattle, WA | Denver, CO | 2025-07-17 09:30 | <Badge tone="warning">Delayed 2h</Badge> |
+| Miami, FL | New York, NY | 2025-07-19 11:00 | <Badge tone="success">On Time</Badge> |
+| Houston, TX | Phoenix, AZ | 2025-07-16 22:00 | <Badge tone="danger">Delayed 6h</Badge> |
+| Portland, OR | Dallas, TX | 2025-07-20 08:00 | <Badge tone="success">On Time</Badge> |
+
+<Button variant="secondary" ask="Flag shipment HOU-PHX as urgent">🚩 Flag Shipment</Button>
+</Tab>
+
+<Tab title="Delayed Shipments">
+<Callout tone="danger" title="3 Delayed Shipments">
+- **Seattle → Denver** (ETA: 2025-07-17 09:30) — Delayed 2h due to weather
+- **Houston → Phoenix** (ETA: 2025-07-16 22:00) — Delayed 6h due to mechanical issue
+- **Atlanta → Boston** (ETA: 2025-07-18 16:00) — Delayed 1h due to traffic
+</Callout>
+
+<Button ask="Show all delayed shipments with details">View All Delays</Button>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Search by Route">
+<Form name="route-search">
+<Input label="Origin" placeholder="City or ZIP code" name="origin" />
+<Input label="Destination" placeholder="City or ZIP code" name="destination" />
+<Button variant="primary">Search Routes</Button>
+</Form>
+</Card>
+
+<Card title="Volume Split by Carrier">
+<Chart type="donut" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| FedEx | 342 |
+| UPS | 287 |
+| DHL | 156 |
+| USPS | 98 |
+| Other | 45 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume (Past 2 Months)">
+<Chart type="bar" x="Week" y="Shipments">
+| Week | Shipments |
+|---|---|
+| May 26 | 210 |
+| Jun 2 | 245 |
+| Jun 9 | 228 |
+| Jun 16 | 267 |
+| Jun 23 | 254 |
+| Jun 30 | 289 |
+| Jul 7 | 276 |
+| Jul 14 | 302 |
+</Chart>
+</Card>
+
+<Card title="Flag a Shipment">
+<Form name="flag-shipment">
+<Input label="Shipment ID" placeholder="e.g. SHP-2025-0716" name="shipment-id" required />
+<Select label="Reason" options="Delayed | Damaged | Lost | Urgent | Other" name="flag-reason" placeholder="Select reason" />
+<TextArea label="Notes" placeholder="Additional details..." name="notes" rows="2" />
+<Button variant="danger">🚩 Flag Shipment</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the most delayed routes this month
+- Compare carrier on-time performance
+- Export this dashboard as a PDF
+- Set up an alert when on-time % drops below 85%
+</FollowUps>

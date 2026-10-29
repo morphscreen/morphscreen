@@ -1,0 +1,92 @@
+<Card title="Hub Operations Desk" subtitle="Shift B · Wednesday, July 9">
+<Select label="Select hub" options="Atlanta (ATL) | Chicago (ORD) | Dallas (DFW) | Denver (DEN)" name="hub" value="atl" />
+</Card>
+
+<Columns>
+<Card title="On-Time Performance">
+<Stat label="Today" value="87.3%" change="+2.1% vs yesterday" />
+<Progress value="87.3" max="100" label="Target: 85%" />
+</Card>
+<Card title="Passenger Load">
+<Stat label="Today" value="78%" note="Target: 80%" />
+</Card>
+<Card title="Cancellations">
+<Stat label="Today" value="4" note="2 weather-related" />
+</Card>
+<Card title="Avg Turnaround">
+<Stat label="Today" value="42 min" change="-3 min vs yesterday" />
+</Card>
+</Columns>
+
+<Callout tone="warning" title="Delayed Flights">
+UA 118 (25m), DL 891 (40m), WN 402 (15m) — see flight board below for details.
+</Callout>
+
+<Callout tone="danger" title="Cancellations Today">
+AA 310 (ATL → MIA), DL 512 (ATL → MSP), WN 908 (ATL → LAS), UA 221 (ATL → EWR). 2 weather-related, 2 mechanical.
+</Callout>
+
+<Columns>
+<Card title="Flight Board" subtitle="All departures & arrivals today">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| DL 452 | ATL → JFK | B14 | <Badge tone="success">On time</Badge> |
+| UA 118 | ATL → ORD | C7 | <Badge tone="warning">Delayed 25m</Badge> |
+| AA 203 | ATL → DFW | C9 | <Badge tone="info">Boarding</Badge> |
+| WN 734 | ATL → DEN | A3 | <Badge tone="success">On time</Badge> |
+| DL 891 | ATL → LAX | B22 | <Badge tone="warning">Delayed 40m</Badge> |
+| UA 556 | ATL → SFO | C12 | <Badge tone="neutral">Departed</Badge> |
+| AA 310 | ATL → MIA | A7 | <Badge tone="danger">Cancelled</Badge> |
+| B6 228 | ATL → BOS | B5 | <Badge tone="success">On time</Badge> |
+| DL 177 | ATL → SEA | B18 | <Badge tone="info">Boarding</Badge> |
+| WN 402 | ATL → PHX | A11 | <Badge tone="warning">Delayed 15m</Badge> |
+</Card>
+
+<Card title="Recent Gate Changes" subtitle="Last 60 minutes">
+- **10:42 AM** — DL 452 moved B12 → B14
+- **10:18 AM** — AA 203 moved C3 → C9
+- **09:55 AM** — WN 734 moved A1 → A3
+- **09:30 AM** — UA 118 moved C5 → C7
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Crews Available for Reassignment" subtitle="5 crews on standby">
+<Avatar name="Capt. R. Alvarez" subtitle="A330 · 4h rest" />
+<Avatar name="FO M. Chen" subtitle="B737 · 2h rest" />
+<Avatar name="Capt. S. Okafor" subtitle="A320 · Ready" />
+<Avatar name="FO L. Petrov" subtitle="B757 · 3h rest" />
+<Avatar name="Purser J. Kim" subtitle="A330 · Ready" />
+</Card>
+
+<Card title="Weather Advisory" subtitle="ATL terminal area">
+<Callout tone="warning" title="Thunderstorms">
+Thunderstorm cells within 20 nm of ATL. Expect ground stops 2–4 PM. Wind shear advisory in effect until 6 PM.
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Connections at Risk" subtitle="Passengers who may miss their connection">
+| Passenger | From | To | Layover |
+|---|---|---|---|
+| J. Smith | DL 452 (delayed) | DL 891 → LAX | 35m |
+| A. Garcia | UA 118 (delayed) | UA 556 → SFO | 20m |
+| M. Johnson | WN 402 (delayed) | WN 734 → DEN | 45m |
+</Card>
+
+<Card title="Rebook Affected Passengers" subtitle="Find alternatives for at-risk connections">
+<Form name="rebook">
+<Input label="Passenger confirmation" placeholder="e.g. ABC123" />
+<Select label="Preferred airline" options="Any airline | Delta | United | American | Southwest" name="airline" />
+<Button>Find alternatives</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show me the full delay breakdown by route
+- Which crews are closest to legal rest limits?
+- What's the weather outlook for the next 6 hours?
+- List all passengers on AA 310 who need rebooking
+</FollowUps>

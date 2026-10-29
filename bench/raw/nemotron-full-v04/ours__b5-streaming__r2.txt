@@ -1,0 +1,188 @@
+# Streaming Operations Dashboard
+
+<Select label="Focus Region" name="region" placeholder="All Regions" options="All Regions | North America | Europe | APAC | LATAM | MENA" value="All Regions" />
+
+<Columns>
+<Card title="Live Viewers">
+<Stat label="Watching Now" value="2.4M" change="+3.2% vs 1hr ago" tone="success" />
+<Progress value="78" max="100" label="Concurrent capacity" />
+</Card>
+
+<Card title="Buffering Rate">
+<Stat label="Global Buffer Rate" value="0.42%" change="-0.05% WoW" tone="success" />
+<Progress value="42" max="100" label="Target < 0.5%" />
+</Card>
+
+<Card title="Recommendation CTR">
+<Stat label="Click-Through Rate" value="12.7%" change="+0.8% WoW" tone="info" />
+</Card>
+
+<Card title="Search Abandonment">
+<Stat label="Searches → No Playback" value="18.3%" change="-1.2% WoW" tone="warning" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Most-Watched Titles (Last 24h)">
+<Chart type="horizontal" title="Hours Watched" x="Title" y="Hours">
+| Title | Hours |
+|---|---|
+| The Crown S6 | 1,240,000 |
+| Stranger Things S4 | 980,000 |
+| Wednesday S1 | 875,000 |
+| Squid Game S2 | 720,000 |
+| Bridgerton S3 | 650,000 |
+| The Witcher S3 | 590,000 |
+| Black Mirror S6 | 510,000 |
+| Arcane S2 | 480,000 |
+</Chart>
+</Card>
+
+<Card title="Watch Time (Past 30 Days)">
+<Chart type="area" title="Hours Watched" x="Date" y="Hours (M)">
+| Date | Hours |
+|---|---|
+| 2024-10-01 | 4.2 |
+| 2024-10-08 | 4.8 |
+| 2024-10-15 | 5.1 |
+| 2024-10-22 | 5.6 |
+| 2024-10-29 | 6.2 |
+| 2024-11-05 | 5.9 |
+| 2024-11-12 | 6.4 |
+| 2024-11-19 | 6.8 |
+| 2024-11-26 | 7.1 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Subscribers: New vs Cancelled">
+<Chart type="line" title="Count" x="Week" y="Subscribers">
+| Week | New | Cancelled |
+|---|---|---|
+| W1 | 142,000 | 89,000 |
+| W2 | 156,000 | 92,000 |
+| W3 | 168,000 | 87,000 |
+| W4 | 174,000 | 95,000 |
+| W5 | 181,000 | 91,000 |
+| W6 | 190,000 | 88,000 |
+| W7 | 198,000 | 93,000 |
+| W8 | 205,000 | 90,000 |
+</Chart>
+</Card>
+
+<Card title="Performance by Genre">
+<Chart type="bar" title="Avg Completion Rate" x="Genre" y="Rate (%)">
+| Genre | Completion |
+|---|---|
+| Drama | 87 |
+| Thriller | 84 |
+| Comedy | 82 |
+| Sci-Fi | 79 |
+| Documentary | 76 |
+| Animation | 74 |
+| Reality | 68 |
+| Kids | 65 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Delivery Health by Region">
+<Chart type="bar" title="Avg Start Time (s)" x="Region" y="Seconds">
+| Region | Start Time | Buffer Rate | Error Rate |
+|---|---|---|---|
+| North America | 1.2 | 0.31% | 0.08% |
+| Europe | 1.4 | 0.38% | 0.11% |
+| APAC | 1.8 | 0.52% | 0.15% |
+| LATAM | 2.1 | 0.67% | 0.22% |
+| MENA | 2.4 | 0.71% | 0.28% |
+</Chart>
+</Card>
+
+<Card title="Revenue Split by Plan">
+<Chart type="donut" title="Monthly Revenue" x="Plan" y="USD (M)">
+| Plan | Revenue |
+|---|---|
+| Premium 4K | 42.5 |
+| Standard HD | 28.3 |
+| Basic SD | 12.1 |
+| Mobile Only | 8.7 |
+| Family | 19.4 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Viewing Split by Device">
+<Chart type="pie" title="Hours Watched" x="Device" y="Hours (M)">
+| Device | Hours |
+|---|---|
+| Smart TV | 3.8 |
+| Mobile | 2.9 |
+| Desktop | 1.6 |
+| Tablet | 1.2 |
+| Game Console | 0.9 |
+| Streaming Stick | 0.7 |
+</Chart>
+</Card>
+
+<Card title="Releases This Month">
+| Date | Title | Type | Genre |
+|---|---|---|---|
+| Nov 15 | The Crown S6 Finale | Series | Drama |
+| Nov 18 | Rebel Moon Pt 2 | Film | Sci-Fi |
+| Nov 22 | Squid Game S2 | Series | Thriller |
+| Nov 25 | Chicken Run 2 | Film | Animation |
+| Nov 28 | Beckham Docuseries | Series | Documentary |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Licenses Expiring Soon">
+| Title | Expires | Days Left | Action |
+|---|---|---|---|
+| The Office (US) | Dec 31 | 42 | Renew / Remove |
+| Parks & Recreation | Dec 31 | 42 | Renew / Remove |
+| Friends | Jan 15 | 57 | Renew / Remove |
+| Harry Potter Films | Jan 31 | 73 | Renew / Remove |
+| Marvel Films (Legacy) | Feb 14 | 87 | Renew / Remove |
+</Card>
+
+<Card title="Feature Flags">
+<Form name="feature-flags">
+<Switch label="New Recommendation Engine" name="rec-engine-v2" value="true" hint="ML-based ranking" />
+<Switch label="Shuffle Play Button" name="shuffle-play" value="true" hint="Random episode playback" />
+<Switch label="Live Sports Low-Latency" name="sports-ll" value="false" hint="Sub-3s latency mode" />
+<Switch label="Profile Pin Protection" name="profile-pin" value="true" hint="Kids profile lock" />
+<Switch label="Download Quality Selector" name="dl-quality" value="true" hint="User chooses bitrate" />
+<Switch label="Watch Party v2" name="watch-party-v2" value="false" hint="Sync + video chat" />
+<Switch label="AI Dubbing Preview" name="ai-dubbing" value="false" hint="Auto-generated dubs" />
+<Switch label="Interactive Overlays" name="interactive" value="true" hint="Trivia, polls, shop" />
+</Form>
+</Card>
+</Columns>
+
+<Card title="Promote Title on Home Screen">
+<Form name="promote-title">
+<Columns>
+<Select label="Title" name="promo-title" placeholder="Select a title" options="The Crown S6 | Stranger Things S4 | Wednesday S1 | Squid Game S2 | Bridgerton S3 | The Witcher S3 | Black Mirror S6 | Arcane S2 | Rebel Moon Pt 2 | Chicken Run 2 | Beckham Docuseries" required="true" />
+<Select label="Placement" name="promo-placement" placeholder="Choose placement" options="Hero Banner | Row 1: Continue Watching | Row 2: Trending Now | Row 3: Top Picks for You | Row 4: New Releases | Row 5: Because You Watched..." required="true" />
+</Columns>
+<Columns>
+<Input label="Start Date" name="promo-start" type="date" value="2024-11-20" required="true" />
+<Input label="End Date" name="promo-end" type="date" value="2024-12-20" required="true" />
+</Columns>
+<TextArea label="Custom Copy (optional)" name="promo-copy" placeholder="e.g., 'The wait is over. The final season arrives Nov 22.'" rows="2" />
+<Button>Promote Title</Button>
+<Button variant="secondary">Clear Promotion</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Drill into APAC buffering spikes
+- Compare completion rates by title length
+- Forecast Q1 license renewal costs
+- A/B test new recommendation engine
+- Review watch party v2 beta metrics
+</FollowUps>

@@ -1,0 +1,133 @@
+# Speeding up a 2 GB CSV read in Python
+
+The short answer: **stop using `pandas.read_csv` on the whole file if you don't need the whole file**, and if you do, switch the engine and the dtypes. A 2 GB CSV usually means 20–60 s in default pandas and 2–6 s with the fixes below.
+
+<Callout tone="info" title="First, measure">Run once with `time` and check: is it CPU-bound (parse) or I/O-bound (disk)? `iostat`/`top` tells you. If the file is on a network drive, fixing that alone can be 10x.</Callout>
+
+<Card title="What actually costs time" subtitle="Typical 2 GB CSV, ~10M rows, 15 columns">
+
+| Cost | Share | Fix |
+|---|---|---|
+| Type inference (scanning every column) | ~30% | Pass `dtype=` explicitly |
+| Python-level parsing | ~40% | Use `engine="pyarrow"` or `polars` |
+| Reading columns you don't use | ~20% | `usecols=` |
+| Object dtype strings | ~10% | `category` for low-cardinality cols |
+
+</Card>
+
+## Pick your path
+
+<Tabs>
+<Tab title="Fastest (polars)">
+
+```python
+import polars as pl
+
+df = pl.read_csv(
+    "big.csv",
+    schema_overrides={"id": pl.Int64, "amount": pl.Float64},
+    low_memory=False,          # faster when RAM allows
+)
+```
+
+Polars reads CSV multi-threaded by default. Expect **5–15x** over pandas. If the file fits in memory as Arrow, this is the end of the story.
+
+</Tab>
+<Tab title="Stay in pandas, go faster">
+
+```python
+import pandas as pd
+
+df = pd.read_csv(
+    "big.csv",
+    engine="pyarrow",          # pandas >= 2.0, needs pyarrow installed
+    dtype={"id": "int64", "amount": "float64", "country": "category"},
+    usecols=["id", "amount", "country", "ts"],
+    parse_dates=["ts"],
+)
+```
+
+`engine="pyarrow"` is the single biggest win inside pandas. It skips the C parser and uses Arrow's multithreaded reader.
+
+</Tab>
+<Tab title="Chunked / streaming">
+
+Use this when the file doesn't fit in RAM, or you only need aggregates.
+
+```python
+import pandas as pd
+
+totals = {}
+for chunk in pd.read_csv("big.csv", chunksize=500_000, dtype={...}):
+    g = chunk.groupby("country")["amount"].sum()
+    totals = g.add(pd.Series(totals), fill_value=0)
+
+print(totals)
+```
+
+For a one-pass aggregate, `polars` streaming is cleaner:
+
+```python
+import polars as pl
+
+out = (
+    pl.scan_csv("big.csv")
+      .group_by("country")
+      .agg(pl.col("amount").sum())
+      .collect(streaming=True)
+)
+```
+
+</Tab>
+</Tabs>
+
+## The three rules that matter most
+
+<Steps>
+<Step title="Read fewer columns" status="current">`usecols=` is free speed. If you use 4 of 15 columns, you skip ~70% of the parse.</Step>
+<Step title="Never let pandas infer dtypes">Inference scans the file. Pass `dtype=` for every column you keep. Strings you filter on should be `category` if they repeat.</Step>
+<Step title="Switch the engine">`engine="pyarrow"` in pandas, or use polars. This is where the multithreading lives.</Step>
+<Step title="Only then tune the disk">Local SSD, not a network mount. `mmap` doesn't help CSVs. Compressed `.parquet` is 3–10x smaller and 5–20x faster to read — convert once.</Step>
+</Steps>
+
+<Card title="Rough numbers" subtitle="2 GB, 10M rows, 15 cols, local SSD">
+
+| Approach | Time |
+|---|---|
+| `pd.read_csv` defaults | 45–60 s |
+| + `usecols` + `dtype` | 20–25 s |
+| + `engine="pyarrow"` | 5–8 s |
+| polars `read_csv` | 3–5 s |
+| same data as Parquet | 1–2 s |
+
+</Card>
+
+<Callout tone="warning" title="If you read the same CSV more than once">Convert it. `df.write_parquet("big.parquet")` once, then every future read is a couple of seconds. This is usually the real fix.</Callout>
+
+<Details title="Is the slowness actually in the read?">
+Common false positives:
+
+- **`print(df.head())` on a huge frame** — pandas formats the whole thing sometimes. Use `df.head().to_string()`.
+- **`df.apply(..., axis=1)`** after loading — this is often slower than the read itself. Vectorize or use `.itertuples()`.
+- **`df.astype(str)` or object columns** — every downstream op pays for it.
+- **Reading from `/mnt/...` or a mounted share** — check with `dd if=big.csv of=/dev/null bs=1M`.
+
+Time the read alone: `python -c "import time,pandas as pd; t=time.time(); pd.read_csv('big.csv'); print(time.time()-t)"`.
+</Details>
+
+<Card title="Try it on your file">
+<Form name="csv-help">
+<Select label="Which path fits you?" options="Polars read_csv | pandas + pyarrow engine | Chunked streaming | Convert to Parquet first" name="path" />
+<Input label="Row count (approx)" type="number" name="rows" placeholder="10000000" hint="Helps size the recommendation" />
+<Input label="Columns you actually use" name="cols" placeholder="id, amount, country, ts" />
+<Checkboxes label="Constraints" options="Must stay on pandas | No extra dependencies allowed | File does not fit in RAM | Runs on a network drive" name="constraints" />
+<Button>Get a tailored snippet</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the polars version of my pandas script
+- How do I convert this CSV to Parquet safely?
+- My bottleneck is a groupby after loading, not the read
+- Can I read only the last 30 days of rows?
+</FollowUps>

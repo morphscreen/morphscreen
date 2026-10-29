@@ -1,0 +1,93 @@
+<Card title="Account Balances" subtitle="As of today">
+<Columns>
+<Stat label="Checking" value="$4,231.50" change="+$245.30 this month" tone="success" />
+<Stat label="Savings" value="$18,750.00" change="+$500.00 this month" tone="info" />
+<Stat label="Credit Card" value="-$1,247.80" change="-$312.40 this month" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Recent Transactions" subtitle="Last 10 transactions">
+<Chart type="bar" x="Merchant" y="Amount">
+| Merchant | Amount |
+|---|---|
+| Whole Foods | -87.45 |
+| Shell Gas | -45.00 |
+| Netflix | -15.99 |
+| Amazon | -124.99 |
+| Salary Deposit | 3,200.00 |
+| Uber | -22.50 |
+| Starbucks | -8.75 |
+| Rent Payment | -1,800.00 |
+| Spotify | -10.99 |
+| Target | -67.32 |
+</Chart>
+</Card>
+
+<Card title="Spending by Category (This Month)">
+<Chart type="donut" title="Monthly Spend" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1800 |
+| Food & Dining | 420 |
+| Transportation | 180 |
+| Entertainment | 85 |
+| Shopping | 192 |
+| Utilities | 245 |
+| Subscriptions | 37 |
+</Chart>
+</Card>
+
+<Card title="Bills Due Soon" subtitle="Next 14 days">
+<Columns>
+<Stat label="Electric Bill" value="$142.30" note="Due Oct 18" tone="neutral" />
+<Stat label="Internet" value="$79.99" note="Due Oct 20" tone="neutral" />
+<Stat label="Phone Bill" value="$85.00" note="Due Oct 22" tone="neutral" />
+<Stat label="Car Insurance" value="$168.00" note="Due Oct 25" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Vacation Savings Goal" subtitle="Hawaii Trip - Target: $5,000">
+<Progress value="3200" max="5000" label="$3,200 of $5,000 saved (64%)" />
+<Callout tone="info" title="On track">At your current savings rate of $500/month, you'll reach your goal in 3.6 months.</Callout>
+</Card>
+
+<Card title="Credit Score" subtitle="Updated weekly via TransUnion">
+<Columns>
+<Stat label="Current Score" value="742" change="+12 since last month" tone="success" />
+<Stat label="Rating" value="Very Good" note="Range: 740-799" tone="neutral" />
+</Columns>
+<Callout tone="success" title="Key factors helping your score">On-time payments (100%), Low credit utilization (18%), Long credit history (8.2 years)</Callout>
+</Card>
+
+<Card title="Move Money">
+<Form name="transfer-form">
+<Select label="From Account" name="fromAccount" placeholder="Select source account" options="Checking ($4,231.50) | Savings ($18,750.00) | Credit Card (-$1,247.80)" required="true" />
+<Select label="To Account" name="toAccount" placeholder="Select destination account" options="Checking ($4,231.50) | Savings ($18,750.00) | Credit Card (-$1,247.80)" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Minimum $1.00" required="true" />
+<Button>Transfer</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Credit Line Controls">
+<Switch label="Freeze Credit Card" name="freezeCard" value="false" hint="Prevents new purchases, recurring payments still process" />
+<Callout tone="warning" title="What happens when frozen">New transactions will be declined. Automatic payments and returns still go through. You can unfreeze anytime.</Callout>
+</Card>
+
+<Card title="Statement Period">
+<Select label="Select Period" name="statementPeriod" placeholder="Choose a statement period" options="Current Cycle (Oct 1–31) | Last Cycle (Sep 1–30) | Aug 1–31 | Jul 1–31 | Custom Range" />
+</Card>
+
+<Card title="Alert Preferences" subtitle="Choose what triggers notifications">
+<Checkboxes label="Alert Triggers" name="alertTriggers" options="Large Transaction (>$100) | Low Balance (<$500) | Bill Due Soon (3 days) | Direct Deposit Received | Credit Score Change | Suspicious Activity | International Transaction | ATM Withdrawal" value="Large Transaction (>$100) | Low Balance (<$500) | Bill Due Soon (3 days) | Direct Deposit Received | Suspicious Activity" />
+</Card>
+
+<Card title="Dispute a Transaction">
+<Form name="dispute-form">
+<Select label="Transaction to Dispute" name="disputeTransaction" placeholder="Select a recent transaction" options="Whole Foods - $87.45 (Oct 12) | Shell Gas - $45.00 (Oct 11) | Netflix - $15.99 (Oct 10) | Amazon - $124.99 (Oct 9) | Uber - $22.50 (Oct 8) | Starbucks - $8.75 (Oct 7) | Target - $67.32 (Oct 6) | Spotify - $10.99 (Oct 5)" required="true" />
+<Select label="Dispute Reason" name="disputeReason" placeholder="Select reason" options="Unauthorized Charge | Incorrect Amount | Goods Not Received | Service Not Rendered | Duplicate Charge | Canceled Subscription | Other" required="true" />
+<TextArea label="Additional Details" name="disputeDetails" placeholder="Describe what happened..." rows="4" hint="Include any relevant details, dates, or communication with the merchant" required="true" />
+<Button variant="danger">Submit Dispute</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

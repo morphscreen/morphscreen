@@ -1,0 +1,74 @@
+# Clinic Receptionist — Day View
+
+<Card title="Today's Appointments" subtitle="Monday, January 15, 2024">
+| Time | Patient | Reason | Room | Status |
+|---|---|---|---|---|
+| 08:00 | Maria Santos | Annual checkup | Room 1 | ✅ Checked in |
+| 08:30 | James Chen | Follow-up | Room 2 | ⏳ Waiting |
+| 09:00 | Aisha Patel | Vaccination | Room 1 | 📅 Scheduled |
+| 09:30 | Robert Kim | Physical therapy | Room 3 | 📅 Scheduled |
+| 10:00 | Elena Rodriguez | Consultation | Room 2 | 📅 Scheduled |
+| 10:30 | David Thompson | Blood work | Room 1 | 📅 Scheduled |
+| 11:00 | Priya Sharma | Dermatology | Room 3 | 📅 Scheduled |
+| 14:00 | Michael Brown | Cardiology | Room 2 | 📅 Scheduled |
+| 14:30 | Lisa Wang | Neurology | Room 1 | 📅 Scheduled |
+| 15:00 | Carlos Mendez | Orthopedics | Room 3 | 📅 Scheduled |
+</Card>
+
+<Columns>
+<Card title="Expected Patients Today">
+<Stat label="Total appointments" value="10" />
+<Stat label="Checked in" value="1" change="+1 today" tone="success" />
+<Stat label="Waiting" value="1" tone="info" />
+<Stat label="Remaining" value="8" tone="neutral" />
+</Card>
+
+<Card title="No-Show Rate (This Month)">
+<Stat label="No-show rate" value="12%" change="-2% vs last month" tone="success" />
+<Stat label="Total scheduled" value="248" />
+<Stat label="No-shows" value="30" tone="warning" />
+<Stat label="Completed visits" value="218" tone="success" />
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Room Availability (Right Now)">
+<Progress label="Room 1 — General" value="30" max="60" tone="info" />
+<Progress label="Room 2 — Consultation" value="0" max="60" tone="success" />
+<Progress label="Room 3 — Specialty" value="0" max="60" tone="success" />
+<Progress label="Room 4 — Procedure" value="45" max="60" tone="warning" />
+<Progress label="Room 5 — Imaging" value="60" max="60" tone="danger" />
+</Card>
+
+<Card title="Next Patient Called Out">
+<Callout tone="info" title="Now serving: James Chen">
+<strong>08:30 appointment</strong> — Follow-up<br />
+Room 2 • Checked in at 08:25
+</Callout>
+<Callout tone="neutral" title="Up next: Aisha Patel">
+<strong>09:00 appointment</strong> — Vaccination<br />
+Room 1 • Not yet checked in
+</Callout>
+</Card>
+</Columns>
+
+<Card title="Check In Patient">
+<Form name="check-in">
+<Select label="Select patient" name="patient" placeholder="Choose a patient" options="James Chen (08:30) | Aisha Patel (09:00) | Robert Kim (09:30) | Elena Rodriguez (10:00) | David Thompson (10:30) | Priya Sharma (11:00) | Michael Brown (14:00) | Lisa Wang (14:30) | Carlos Mendez (15:00)" required="true" />
+<Select label="Assign room" name="room" placeholder="Auto-assign or choose" options="Auto-assign | Room 1 — General | Room 2 — Consultation | Room 3 — Specialty | Room 4 — Procedure" />
+<Checkboxes label="Confirm" name="confirm" options="Patient verified identity | Insurance confirmed | Consent forms signed" hint="Check all that apply" />
+<Button>Check in patient</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>
+
+<Card title="Navigate to Another Day">
+<Form name="date-nav">
+<Columns>
+<Input label="Jump to date" name="date" type="date" value="2024-01-15" required="true" />
+<Select label="Quick select" name="quick" placeholder="Or choose a preset" options="Today | Tomorrow | This Friday | Next Monday | Next week" />
+</Columns>
+<Button>Go to date</Button>
+<Button variant="tertiary" href="#">← Back to today</Button>
+</Form>
+</Card>

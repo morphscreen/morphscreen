@@ -1,0 +1,40 @@
+# Low Inventory Warning
+
+<Callout tone="warning" title="Low Stock Alert">
+Items below the reorder threshold of **15 units** are shown below. Restock soon to avoid stockouts.
+</Callout>
+
+<Card title="Reorder Threshold">
+<Columns>
+<Stat label="Current Threshold" value="15 units" icon="alert-triangle" />
+<Stat label="Items Below Threshold" value="7" icon="package" tone="warning" />
+</Columns>
+<Slider label="Adjust threshold" min="5" max="50" step="1" value="15" name="threshold" />
+<Callout tone="info" title="Threshold Settings">
+When an item's stock falls to or below this number, it appears in the low-inventory list and triggers a warning. Changes take effect immediately.
+</Callout>
+</Card>
+
+<Card title="Search Items">
+<Input label="Search low-stock items" placeholder="Search by name, SKU, or category..." type="search" name="search" hint="Filters the list below in real time" />
+</Card>
+
+<Card title="Items Running Low">
+| Item | SKU | Category | Current Stock | Status | Action |
+|---|---|---|---|---|---|
+| Organic Almond Milk 1L | AM-1001 | Beverages | 3 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Whole Wheat Bread Loaf | BR-2045 | Bakery | 8 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Free-Range Eggs (12-pack) | EG-3012 | Dairy | 12 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Greek Yogurt Plain 500g | YG-4078 | Dairy | 5 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Avocado Hass (bag of 6) | AV-5021 | Produce | 9 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Chicken Breast 1kg | CH-6034 | Meat | 6 | <Badge tone="danger">Critical</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+| Quinoa Organic 500g | QU-7090 | Pantry | 14 | <Badge tone="warning">Low</Badge> | <Button variant="primary" size="small">Reorder</Button> |
+</Card>
+
+<Card title="Quick Actions">
+<Columns>
+<Button variant="primary" icon="package">Reorder All Low Items</Button>
+<Button variant="secondary" icon="download">Export Low Stock Report</Button>
+<Button variant="tertiary" icon="bell">Set Up Auto-Reorder Rules</Button>
+</Columns>
+</Card>

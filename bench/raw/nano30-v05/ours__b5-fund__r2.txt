@@ -1,0 +1,89 @@
+<Card title="Portfolio Overview">
+<Stat label="Portfolio Value" value="$5.2M" change="+$0.5M" tone="success"/>
+<Stat label="P&L Today" value="+$250k" change="+$250k" tone="success"/>
+<Stat label="Margin in Use" value="$2.1M" change="+$2M" tone="info"/>
+<Stat label="Value at Risk (1D)" value="$150k" change="-$150k" tone="warning"/>
+<Stat label="Risk Limits" value="$500k" change="+$50k" tone="warning"/>
+<Stat label="Max Drawdown (1Y)" value="18%" change="-$300k" tone="danger"/>
+<Progress value=18 max=100 label="18%" tone="danger"/>
+</Card>
+
+<Card title="Positions">
+<Chart type="table" x="Ticker" y="Size, Entry, Current">
+| Ticker | Size | Entry | Current |
+|---|---|---|---|
+| AAPL | 150 | 170.00 | 175.30 |
+| MSFT | 80 | 300.00 | 312.45 |
+| TSLA | 50 | 750.00 | 720.10 |
+| NVDA | 30 | 500.00 | 525.60 |
+</Chart>
+</Card>
+
+<Card title="Sector Exposure">
+<Chart type="pie" x="Sector" y="Exposure">
+| Sector | Exposure |
+|---|---|
+| Tech | 45% |
+| Healthcare | 20% |
+| Energy | 15% |
+| Finance | 12% |
+| Consumer | 8% |
+</Chart>
+</Card>
+
+<Card title="Top Movers">
+<Stat label="Biggest Gainer" value="+$50k" change="+$50k" tone="success"/>
+<Stat label="Biggest Loser" value="-$75k" change="-$75k" tone="danger"/>
+</Card>
+
+<Card title="Watched Instruments">
+<TextArea label="Instruments" placeholder="AAPL $175.30 | MSFT $312.45 | TSLA $720.10 | NVDA $525.60" rows=2 />
+</Card>
+
+<Card title="Market Headlines">
+<TextArea label="Headlines" placeholder="Tech earnings beat expectations (info) | Oil prices dip on supply concerns (warning) | Fed rate decision looming (danger)" rows=2 />
+</Card>
+
+<Card title="Economic Releases this Week">
+<Details title="Economic Releases this Week" open=true>
+<TextArea label="Releases" placeholder="Mon: CPI (high impact) | Wed: Retail Sales (medium) | Fri: Jobs Report (high)" rows=2 />
+</Details>
+</Card>
+
+<Card title="Strategy Returns YTD">
+<Chart type="bar" x="Strategy" y="Return%">
+| Strategy | Return% |
+|---|---|
+| Long/Short Equity | 12% |
+| Market Neutral | 5% |
+| Trend Following | 8% |
+| Arbitrage | 3% |
+</Chart>
+</Card>
+
+<Card title="Working Orders">
+<Chart type="table" x="OrderID" y="Ticker, Side, Qty, Status">
+| OrderID | Ticker | Side | Qty | Status |
+|---|---|---|---|---|
+| O001 | AAPL | Buy | 100 | Filled |
+| O002 | TSLA | Sell | 50 | Pending |
+| O003 | NVDA | Buy | 20 | Filled |
+</Chart>
+</Card>
+
+<Card title="Rebalance">
+<Button variant="primary" href="#">Rebalance Portfolio</Button>
+</Card>
+
+<Card title="Place Order">
+<Form name="order-form">
+<Input label="Ticker" name="ticker" placeholder="e.g., AAPL" required=true />
+<Select label="Side" name="side" options="Buy | Sell" placeholder="Choose side" required=true />
+<Input label="Quantity" name="qty" type="number" placeholder="Number of shares" required=true />
+<Button variant="primary" href="#">Place Order</Button>
+</Form>
+</Card>
+
+<Card title="Timeframe">
+<Select label="Timeframe" options="1D | 1W | 1M" name="timeframe" placeholder="Select timeframe" required=true />
+</Card>

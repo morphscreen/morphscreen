@@ -1,0 +1,67 @@
+<Card title="Clinic Day View" subtitle="Monday, January 15, 2024">
+<Columns>
+<Card title="Today's Appointments" subtitle="12 scheduled">
+<Table>
+| Time | Patient | Room | Status |
+|---|---|---|---|
+| 8:00 AM | Sarah Johnson | Room 1 | ✓ Checked in |
+| 8:30 AM | Michael Chen | Room 2 | Waiting |
+| 9:00 AM | Emily Rodriguez | Room 1 | Scheduled |
+| 9:30 AM | James Wilson | Room 3 | Scheduled |
+| 10:00 AM | Lisa Thompson | Room 2 | Scheduled |
+| 10:30 AM | Robert Brown | Room 1 | Scheduled |
+| 11:00 AM | Jennifer Davis | Room 3 | Scheduled |
+| 11:30 AM | David Miller | Room 2 | Scheduled |
+| 1:00 PM | Amanda Garcia | Room 1 | Scheduled |
+| 1:30 PM | Christopher Lee | Room 3 | Scheduled |
+| 2:00 PM | Michelle Taylor | Room 2 | Scheduled |
+| 2:30 PM | Daniel Anderson | Room 1 | Scheduled |
+</Table>
+</Card>
+
+<Card title="Quick Stats">
+<Columns>
+<Stat label="Patients Expected" value="12" change="+2 vs yesterday" tone="info" />
+<Stat label="Checked In" value="1" change="11 remaining" tone="neutral" />
+<Stat label="No-Show Rate" value="8.2%" change="This month" tone="warning" />
+<Progress value="8.2" max="100" label="No-show rate" />
+</Columns>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Room Availability" subtitle="Right now">
+<Columns>
+<Badge tone="success">Room 1 — Free at 9:00 AM</Badge>
+<Badge tone="danger">Room 2 — Occupied until 9:00 AM</Badge>
+<Badge tone="success">Room 3 — Free now</Badge>
+<Badge tone="neutral">Room 4 — Not scheduled</Badge>
+</Columns>
+</Card>
+
+<Card title="Next Patient Called" subtitle="Currently in waiting area">
+<Avatar name="Michael Chen" subtitle="8:30 AM • Room 2 • Annual Physical" />
+<Callout tone="info" title="Called at 8:28 AM">Patient is in the waiting area. Room 2 will be free in 2 minutes.</Callout>
+</Card>
+</Columns>
+
+<Card title="Check In Patient">
+<Form name="check-in">
+<Columns>
+<Select label="Patient" name="patient" placeholder="Select patient" options="Michael Chen (8:30 AM) | Emily Rodriguez (9:00 AM) | James Wilson (9:30 AM) | Lisa Thompson (10:00 AM) | Robert Brown (10:30 AM) | Jennifer Davis (11:00 AM) | David Miller (11:30 AM) | Amanda Garcia (1:00 PM) | Christopher Lee (1:30 PM) | Michelle Taylor (2:00 PM) | Daniel Anderson (2:30 PM)" required="true" />
+<Select label="Room" name="room" placeholder="Assign room" options="Room 1 | Room 2 | Room 3 | Room 4" required="true" />
+</Columns>
+<Button>Check In Patient</Button>
+<Button variant="secondary">Mark as No-Show</Button>
+</Form>
+</Card>
+
+<Card title="Navigate">
+<Columns>
+<Button variant="secondary" href="#">← Previous Day</Button>
+<Button variant="primary">Today</Button>
+<Button variant="secondary" href="#">Next Day →</Button>
+<Date label="Jump to date" name="jump-date" />
+</Columns>
+</Card>
+</Card>

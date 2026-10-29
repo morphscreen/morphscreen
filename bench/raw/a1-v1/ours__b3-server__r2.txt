@@ -1,0 +1,169 @@
+<Card title="Service Health Dashboard" subtitle="Production • Last updated: 2 minutes ago">
+<Columns>
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | ap-southeast-1 | sa-east-1" value="All regions" />
+<Select label="Service" name="service" placeholder="All services" options="All services | api-gateway | payment-service | user-service | notification-service | auth-service" value="All services" />
+</Columns>
+</Card>
+
+<Card title="Uptime This Quarter" subtitle="Q1 2025 • Target: 99.95%">
+<Stat label="Uptime" value="99.97%" change="+0.02% vs last quarter" tone="success" />
+<Progress value="99.97" max="100" label="Quarterly SLA progress" />
+<Callout tone="info" title="Downtime breakdown">13 min 12 sec total downtime • 3 incidents • Longest: 7 min 45 sec (Jan 14)</Callout>
+</Card>
+
+<Card title="Resource Usage (Last 24 Hours)">
+<Tabs>
+<Tab title="CPU Usage">
+<Chart type="area" x="Time" y="CPU %" title="CPU Utilization">
+| Time | CPU % |
+|---|---|
+| 00:00 | 23 |
+| 02:00 | 19 |
+| 04:00 | 15 |
+| 06:00 | 18 |
+| 08:00 | 34 |
+| 10:00 | 52 |
+| 12:00 | 61 |
+| 14:00 | 58 |
+| 16:00 | 49 |
+| 18:00 | 55 |
+| 20:00 | 42 |
+| 22:00 | 31 |
+</Chart>
+<Stat label="Current" value="38%" change="Peak: 61% at 12:00" tone="neutral" />
+</Tab>
+<Tab title="Memory Usage">
+<Chart type="area" x="Time" y="Memory %" title="Memory Utilization">
+| Time | Memory % |
+|---|---|
+| 00:00 | 41 |
+| 02:00 | 38 |
+| 04:00 | 35 |
+| 06:00 | 37 |
+| 08:00 | 45 |
+| 10:00 | 58 |
+| 12:00 | 67 |
+| 14:00 | 64 |
+| 16:00 | 59 |
+| 18:00 | 62 |
+| 20:00 | 54 |
+| 22:00 | 48 |
+</Chart>
+<Stat label="Current" value="52%" change="Peak: 67% at 12:00" tone="neutral" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Error Rate (Real-time)">
+<Columns>
+<Stat label="Error Rate" value="0.23%" change="0.05% ↑ last 5 min" tone="warning" />
+<Stat label="Requests/min" value="12,840" change="Normal volume" tone="neutral" />
+<Stat label="P99 Latency" value="312 ms" change="Within SLA" tone="success" />
+</Columns>
+<Progress value="23" max="100" label="Error rate vs 1% threshold" />
+<Chart type="line" x="Time" y="Error %" title="Error Rate Trend (Last Hour)">
+| Time | Error % |
+|---|---|
+| 5 min ago | 0.18 |
+| 4 min ago | 0.21 |
+| 3 min ago | 0.19 |
+| 2 min ago | 0.25 |
+| 1 min ago | 0.23 |
+| Now | 0.23 |
+</Chart>
+</Card>
+
+<Card title="Open Incidents">
+<Form name="incidents">
+<Details title="INC-2025-0142 • Payment timeout on checkout • SEV-2" open="true">
+<Columns>
+<Badge tone="danger">SEV-2</Badge>
+<Badge tone="info">us-east-1</Badge>
+<Badge tone="neutral">12 min ago</Badge>
+</Columns>
+<p>Payment service returning 504 on 3.2% of checkout requests. Affecting ~450 users/min.</p>
+<Button variant="primary" name="ack-142">Acknowledge</Button>
+<Button variant="secondary" name="view-142">View runbook</Button>
+</Details>
+
+<Details title="INC-2025-0141 • Elevated latency on /api/v1/users • SEV-3" open="true">
+<Columns>
+<Badge tone="warning">SEV-3</Badge>
+<Badge tone="info">eu-west-1</Badge>
+<Badge tone="neutral">47 min ago</Badge>
+</Columns>
+<p>P99 latency at 2.1s (SLA: 500ms). Database connection pool exhaustion suspected.</p>
+<Button variant="primary" name="ack-141">Acknowledge</Button>
+<Button variant="secondary" name="view-141">View runbook</Button>
+</Details>
+
+<Details title="INC-2025-0140 • Notification delivery failures • SEV-3" open="false">
+<Columns>
+<Badge tone="warning">SEV-3</Badge>
+<Badge tone="info">us-west-2</Badge>
+<Badge tone="neutral">2 hr 13 min ago</Badge>
+</Columns>
+<p>Email provider returning 429 rate limits. Queue backing up, 12k messages delayed.</p>
+<Button variant="primary" name="ack-140">Acknowledge</Button>
+<Button variant="secondary" name="view-140">View runbook</Button>
+</Details>
+
+<Details title="INC-2025-0139 • Auth token validation errors • SEV-1" open="false">
+<Columns>
+<Badge tone="danger">SEV-1</Badge>
+<Badge tone="info">all regions</Badge>
+<Badge tone="neutral">Resolved 15 min ago</Badge>
+</Columns>
+<p>JWT signing key rotation caused brief validation failures. Auto-remediated after 4 min.</p>
+<Badge tone="success">Resolved</Badge>
+</Details>
+</Form>
+</Card>
+
+<Card title="Slowest Endpoints (P99 Latency)">
+<Chart type="horizontal" x="Latency (ms)" y="Endpoint" title="Top 5 Slowest Endpoints">
+| Endpoint | Latency (ms) |
+|---|---|
+| POST /api/v1/payments/process | 1,847 |
+| GET /api/v1/users/search | 1,203 |
+| POST /api/v1/orders/bulk | 987 |
+| GET /api/v1/analytics/export | 892 |
+| PUT /api/v1/users/profile | 654 |
+</Chart>
+<Table>
+| Endpoint | P50 | P95 | P99 | Error Rate | Throughput |
+|---|---|---|---|---|---|
+| POST /api/v1/payments/process | 312 ms | 945 ms | 1,847 ms | 2.1% | 1,240/min |
+| GET /api/v1/users/search | 187 ms | 623 ms | 1,203 ms | 0.4% | 3,450/min |
+| POST /api/v1/orders/bulk | 421 ms | 712 ms | 987 ms | 0.8% | 890/min |
+| GET /api/v1/analytics/export | 567 ms | 734 ms | 892 ms | 0.1% | 45/min |
+| PUT /api/v1/users/profile | 145 ms | 389 ms | 654 ms | 0.2% | 2,100/min |
+</Table>
+</Card>
+
+<Card title="Alert Threshold Configuration">
+<Form name="alert-config">
+<Columns>
+<Input label="Error Rate Threshold (%)" name="error-threshold" type="number" placeholder="1.0" value="1.0" hint="Trigger alert when error rate exceeds this" />
+<Input label="P99 Latency Threshold (ms)" name="latency-threshold" type="number" placeholder="500" value="500" hint="Trigger alert when P99 exceeds this" />
+</Columns>
+<Columns>
+<Input label="CPU Threshold (%)" name="cpu-threshold" type="number" placeholder="80" value="80" hint="Sustained for 5 minutes" />
+<Input label="Memory Threshold (%)" name="memory-threshold" type="number" placeholder="85" value="85" hint="Sustained for 5 minutes" />
+</Columns>
+<Columns>
+<Select label="Notification Channel" name="notify-channel" options="PagerDuty | Slack #on-call | Email | PagerDuty + Slack" value="PagerDuty + Slack" />
+<Select label="Severity" name="alert-severity" options="SEV-1 (Critical) | SEV-2 (Major) | SEV-3 (Minor)" value="SEV-2 (Major)" />
+</Columns>
+<Button>Save Thresholds</Button>
+<Button variant="secondary">Reset to Defaults</Button>
+<Callout tone="info" title="Current alert status">3 active alerts • Error rate (firing) • Payment latency (firing) • CPU us-east-1 (pending)</Callout>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me the runbook for INC-2025-0142
+- Page the on-call for payment-service
+- Create a postmortem for SEV-1 incident
+- View deployment history for last 24 hours
+</FollowUps>

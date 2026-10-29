@@ -1,0 +1,88 @@
+# Clinic Reception — Day View
+
+<Card title="Navigation" subtitle="Select a day to view">
+<Form name="day-nav">
+<Date label="Date" name="date" value="2025-01-15" />
+<Button variant="primary">Go</Button>
+<Button variant="secondary" href="#">Today</Button>
+</Form>
+</Card>
+
+<Columns>
+<Stat label="Patients Expected" value="24" change="+3 vs yesterday" tone="info" />
+<Stat label="No-Show Rate (Jan)" value="8.2%" change="-1.1% vs Dec" tone="success" />
+</Columns>
+
+<Card title="Next Patient Called" subtitle="Room 2 — Dr. Chen">
+<Callout tone="success" title="Maria Santos — 10:15 AM">
+**Reason:** Follow-up (Hypertension)  
+**Checked in:** 10:08 AM  
+**Wait time:** 7 min  
+**Room:** 2 (Dr. Chen)
+</Callout>
+<Button variant="primary" size="large">Mark Room Ready</Button>
+</Card>
+
+<Card title="Today's Appointments" subtitle="15 scheduled • 3 checked in • 1 no-show">
+<Agenda title="2025-01-15">
+| Time | Patient | Reason | Status | Action |
+|---|---|---|---|---|
+| 08:00 | James Wilson | Annual Physical | ✅ Checked in | <Button variant="tertiary" size="small">Undo</Button> |
+| 08:30 | Patricia Moore | Flu Symptoms | ✅ Checked in | <Button variant="tertiary" size="small">Undo</Button> |
+| 09:00 | Robert Kim | Back Pain | ⏳ Waiting | <Button variant="primary" size="small">Check In</Button> |
+| 09:30 | Linda Chen | Diabetes Follow-up | ⏳ Waiting | <Button variant="primary" size="small">Check In</Button> |
+| 10:00 | **Maria Santos** | **Hypertension Follow-up** | 🟢 **In Room 2** | <Button variant="secondary" size="small">Complete</Button> |
+| 10:30 | David Park | Rash Evaluation | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 11:00 | Susan Brown | Medication Review | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 11:30 | Michael Lee | Sports Physical | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 13:00 | Karen White | Allergy Testing | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 13:30 | Thomas Garcia | Post-Op Check | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 14:00 | Jennifer Adams | Anxiety Consult | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 14:30 | Christopher Taylor | Ear Infection | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 15:00 | Amanda Martinez | Thyroid Follow-up | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 15:30 | Daniel Robinson | Skin Check | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+| 16:00 | Michelle Clark | Vaccination | 📅 Scheduled | <Button variant="primary" size="small">Check In</Button> |
+</Agenda>
+</Card>
+
+<Card title="Room Availability" subtitle="Real-time status">
+<Columns>
+<Card title="Room 1 — Dr. Patel" subtitle="Available in 12 min">
+<Badge tone="warning">Occupied</Badge>
+<Progress value="75" max="100" label="Session progress" tone="info" />
+<small>James Wilson — Annual Physical (ends ~08:45)</small>
+</Card>
+<Card title="Room 2 — Dr. Chen" subtitle="In session">
+<Badge tone="success">In Use</Badge>
+<Progress value="30" max="100" label="Session progress" tone="success" />
+<small>Maria Santos — Hypertension Follow-up (started 10:15)</small>
+</Card>
+<Card title="Room 3 — Dr. Kim" subtitle="Free now">
+<Badge tone="success">Free</Badge>
+<Progress value="0" max="100" label="Session progress" tone="neutral" />
+<small>Next: David Park at 10:30</small>
+</Card>
+<Card title="Room 4 — Nurse Station" subtitle="Free now">
+<Badge tone="success">Free</Badge>
+<Progress value="0" max="100" label="Session progress" tone="neutral" />
+<small>Available for vitals / triage</small>
+</Card>
+</Columns>
+</Card>
+
+<Card title="Quick Check-In" subtitle="Walk-in or early arrival">
+<Form name="quick-checkin">
+<Combobox label="Patient" name="patient" placeholder="Type name or scan ID" options="James Wilson | Patricia Moore | Robert Kim | Linda Chen | David Park | Susan Brown | Michael Lee | Karen White | Thomas Garcia | Jennifer Adams | Christopher Taylor | Amanda Martinez | Daniel Robinson | Michelle Clark" />
+<Select label="Provider" name="provider" placeholder="Assign provider" options="Dr. Patel (Room 1) | Dr. Chen (Room 2) | Dr. Kim (Room 3) | Nurse Station (Room 4)" />
+<Select label="Reason" name="reason" placeholder="Visit reason" options="Follow-up | Acute Issue | Annual Physical | Medication Review | Lab Results | Vaccination | Other" />
+<Button variant="primary">Check In Patient</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Print daily schedule
+- View provider dashboards
+- Manage waitlist
+- Run end-of-day report
+</FollowUps>

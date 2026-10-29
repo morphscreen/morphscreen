@@ -1,0 +1,24 @@
+# Support morning view
+
+<Card title="Queue at a glance" subtitle="Good morning — here’s where things stand.">
+<Columns>
+<Stat label="Open tickets" value="42" note="-3 vs yesterday" tone="neutral" icon="ticket" />
+<Stat label="Avg first response" value="1h 12m" note="-8m vs last week" tone="success" icon="clock" />
+<Stat label="High priority" value="7" note="+2 since yesterday" tone="warning" icon="warning" />
+</Columns>
+<Callout tone="danger" title="SLA breaches">3 high-priority tickets are past their first-response target.</Callout>
+</Card>
+
+<Card title="Recent tickets" subtitle="Five most recent tickets">
+<Radio label="Priority filter" options="All tickets | High-priority only" name="priority-filter" value="All tickets" hint="Narrows the list to tickets marked High priority." />
+
+| # | Subject | Customer | Priority | Status | Received |
+|---|---|---|---|---|---|
+| T-4821 | Login fails after 2FA update | Acme Inc. | <Badge tone="danger">High</Badge> | Open | 8:32 AM |
+| T-4820 | Billing invoice missing line items | Globex | <Badge tone="warning">Medium</Badge> | Awaiting reply | 7:55 AM |
+| T-4819 | API rate limit exceeded unexpectedly | Initech | <Badge tone="danger">High</Badge> | Open | 7:12 AM |
+| T-4818 | Request to downgrade plan | Umbrella | <Badge tone="neutral">Low</Badge> | Resolved | 6:48 AM |
+| T-4817 | CSV export is slow | Stark Industries | <Badge tone="warning">Medium</Badge> | Open | 6:02 AM |
+
+<Button variant="primary" icon="plus">New ticket</Button>
+</Card>

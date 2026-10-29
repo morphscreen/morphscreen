@@ -1,0 +1,143 @@
+# Quarterly Command View
+
+<Card title="Quarter Selector & Region Focus">
+<Columns>
+  <div>
+    <Select label="Quarter" options="Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025" name="quarter" value="Q3 2025" />
+  </div>
+  <div>
+    <Select label="Region" options="All Regions | North America | EMEA | APAC | LATAM" name="region" value="All Regions" />
+  </div>
+  <div>
+    <Button variant="secondary" icon="download">Export Pack</Button>
+  </div>
+</Columns>
+</Card>
+
+<Card title="Key Metrics" subtitle="Q3 2025 · All Regions">
+<Columns>
+  <Stat label="Revenue" value="$48.2M" change="+12.4% QoQ" tone="success" icon="trend-up" />
+  <Stat label="Costs" value="$31.7M" change="+8.1% QoQ" tone="warning" icon="trend-down" />
+  <Stat label="Profit" value="$16.5M" change="+21.3% QoQ" tone="success" icon="chart-line" />
+  <Stat label="Months of Runway" value="14.2" change="+1.8 vs last Q" tone="success" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Revenue & Costs Over Four Quarters">
+<Tabs>
+  <Tab title="Revenue">
+    <Chart type="bar" x="Quarter" y="Revenue ($M)">
+      | Quarter | Revenue |
+      |---|---|
+      | Q4 2024 | 32.1 |
+      | Q1 2025 | 36.8 |
+      | Q2 2025 | 42.9 |
+      | Q3 2025 | 48.2 |
+    </Chart>
+  </Tab>
+  <Tab title="Costs">
+    <Chart type="bar" x="Quarter" y="Costs ($M)">
+      | Quarter | Costs |
+      |---|---|
+      | Q4 2024 | 24.3 |
+      | Q1 2025 | 26.9 |
+      | Q2 2025 | 29.3 |
+      | Q3 2025 | 31.7 |
+    </Chart>
+  </Tab>
+  <Tab title="Revenue vs Costs">
+    <Chart type="line" x="Quarter" y="USD ($M)">
+      | Quarter | Revenue | Costs |
+      |---|---|---|
+      | Q4 2024 | 32.1 | 24.3 |
+      | Q1 2025 | 36.8 | 26.9 |
+      | Q2 2025 | 42.9 | 29.3 |
+      | Q3 2025 | 48.2 | 31.7 |
+    </Chart>
+  </Tab>
+</Tabs>
+</Card>
+
+<Card title="Budget by Department vs Plan">
+<Chart type="horizontal" x="Department" y="USD ($M)">
+  | Department | Actual | Plan |
+  |---|---|---|
+  | Engineering | 12.4 | 13.0 |
+  | Sales & Marketing | 8.9 | 8.5 |
+  | Operations | 5.2 | 5.0 |
+  | Product | 3.1 | 3.4 |
+  | G&A | 2.1 | 2.0 |
+</Chart>
+<Callout tone="warning" title="Over plan">Sales & Marketing is 4.7% over plan; Operations is 4.0% over plan.</Callout>
+</Card>
+
+<Card title="Headcount by Department">
+<Chart type="bar" x="Department" y="Headcount">
+  | Department | Headcount |
+  |---|---|
+  | Engineering | 142 |
+  | Sales & Marketing | 98 |
+  | Operations | 54 |
+  | Product | 37 |
+  | G&A | 22 |
+</Chart>
+</Card>
+
+<Card title="Top Risks">
+| Risk | Owner | Severity | Mitigation |
+|---|---|---|---|
+| Key enterprise deal slippage | Sarah Chen | <Badge tone="danger">High</Badge> | Executive sponsor engagement; discount acceleration |
+| Engineering attrition (12% annualized) | Marcus Webb | <Badge tone="warning">Medium</Badge> | Retention plan; comp review in October |
+| Supply chain disruption (APAC) | Priya Sharma | <Badge tone="warning">Medium</Badge> | Dual-sourcing; 8-week buffer stock |
+| FX volatility (EUR/USD) | Tom Okafor | <Badge tone="neutral">Low</Badge> | Hedging 70% of exposure |
+| Data privacy regulation (EU) | Elena Petrova | <Badge tone="success">Low</Badge> | Compliance audit complete; gap closed |
+</Card>
+
+<Card title="Strategic Initiatives">
+| Initiative | Owner | Status | Progress |
+|---|---|---|---|
+| Expand into APAC enterprise | Sarah Chen | <Badge tone="success">On track</Badge> | <Progress value="65" max="100" label="65%" tone="success" /> |
+| AI-powered support platform | Marcus Webb | <Badge tone="warning">At risk</Badge> | <Progress value="40" max="100" label="40%" tone="warning" /> |
+| SOC 2 Type II certification | Elena Petrova | <Badge tone="success">On track</Badge> | <Progress value="78" max="100" label="78%" tone="success" /> |
+| Product-led growth motion | Dana Kim | <Badge tone="danger">Behind</Badge> | <Progress value="25" max="100" label="25%" tone="danger" /> |
+| Global hiring program | Marcus Webb | <Badge tone="success">On track</Badge> | <Progress value="90" max="100" label="90%" tone="success" /> |
+</Card>
+
+<Card title="Commercial Health">
+<Columns>
+  <Stat label="Sales Pipeline" value="$84.6M" change="+18% QoQ" tone="success" icon="funnel" />
+  <Stat label="Win Rate" value="23.4%" change="+2.1 pts" tone="success" icon="target" />
+  <Stat label="Customers" value="1,284" change="+86 net new" tone="success" icon="users" />
+  <Stat label="Churn" value="1.8%" change="-0.3 pts" tone="success" icon="user-minus" />
+  <Stat label="NPS" value="54" change="+6" tone="success" icon="star" />
+</Columns>
+</Card>
+
+<Card title="Board Meeting Agenda — Next Session">
+<Steps>
+  <Step title="Q3 financial review" status="done">Revenue, costs, and profit vs plan; updated forecast.</Step>
+  <Step title="APAC expansion update" status="done">First 3 enterprise logos; pipeline status.</Step>
+  <Step title="AI platform go-to-market" status="current">Beta results; pricing; launch timeline.</Step>
+  <Step title="Risk review" status="todo">Top 5 risks; mitigation progress.</Step>
+  <Step title="Q4 priorities & budget" status="todo">Resource allocation; hiring plan.</Step>
+</Steps>
+</Card>
+
+<Card title="Notes">
+<Details title="View data assumptions" open="false">
+  <ul>
+    <li>All figures in USD, consolidated, non-GAAP.</li>
+    <li>Headcount as of last day of quarter.</li>
+    <li>Churn is monthly logo churn, annualized.</li>
+    <li>NPS measured via quarterly customer survey (n=412).</li>
+  </ul>
+</Details>
+</Card>
+
+<FollowUps>
+- Show the full P&L statement
+- Compare this quarter to the same quarter last year
+- Dive into the APAC region pipeline by stage
+- What changed in win rate quarter over quarter?
+- Show hiring plan for next quarter
+</FollowUps>

@@ -1,0 +1,10 @@
+<Card title="API Uptime This Month" icon="chart-line">
+  <Stat label="Uptime" value="99.94%" change="Target: 99.9%" tone="success" />
+  <Progress value="99.94" max="100" label="Monthly SLA" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident" icon="alert-triangle">
+  <Callout tone="info" title="Database connection pool exhaustion — Resolved Oct 12, 2024 at 14:23 UTC">
+    A connection leak in the new analytics worker caused the pool to saturate after ~6 hours of runtime. The worker was restarted, the leak patched in v2.3.1, and a max-lifetime guard was added to prevent recurrence. No data loss; ~2% of requests returned 503 for 11 minutes.
+  </Callout>
+</Card>

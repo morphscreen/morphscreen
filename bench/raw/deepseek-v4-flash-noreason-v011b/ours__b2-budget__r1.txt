@@ -1,0 +1,53 @@
+# Monthly Budget Check
+
+<Card title="Budget Overview" subtitle="This month">
+<Columns>
+<Stat label="Budget" value="$3,000" icon="wallet" />
+<Stat label="Spent" value="$2,340" note="78%" tone="warning" icon="trend-down" />
+<Stat label="Remaining" value="$660" icon="piggy-bank" />
+</Columns>
+<Progress value="78" max="100" label="78% of budget used" tone="warning" />
+</Card>
+
+<Card title="Spending by Category">
+<Chart type="donut" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 950 |
+| Food | 520 |
+| Transportation | 310 |
+| Entertainment | 240 |
+| Utilities | 180 |
+| Other | 140 |
+</Chart>
+</Card>
+
+<Card title="Largest Expense" subtitle="This month">
+<Callout tone="danger" title="Rent - $950">
+This is 40.6% of your total spending this month. Consider if this aligns with your budget goals.
+</Callout>
+</Card>
+
+<Card title="Change Month">
+<Form name="change-month">
+<Select label="Select month" name="month" options="January | February | March | April | May | June | July | August | September | October | November | December" value="November" />
+<Button variant="secondary" label="View this month">View this month</Button>
+</Form>
+</Card>
+
+<Card title="Add an Expense">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g., Groceries" required />
+<Input label="Amount ($)" name="amount" type="number" placeholder="0.00" step="0.01" min="0" required />
+<Select label="Category" name="category" placeholder="Choose a category" options="Housing | Food | Transportation | Entertainment | Utilities | Other" required />
+<Date label="Date" name="date" required />
+<TextArea label="Notes (optional)" name="notes" placeholder="Any additional details..." rows="3" />
+<Button label="Add expense">Add expense</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- [Show me last month's spending](/)
+- [I want to adjust my budget](/)
+- [Compare spending trends](/)
+</FollowUps>

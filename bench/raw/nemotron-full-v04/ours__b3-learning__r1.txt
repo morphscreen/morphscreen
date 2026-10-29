@@ -1,0 +1,91 @@
+# Training Platform Analytics
+
+<Card title="Cohort Filter">
+<Select label="Select Cohort" name="cohort" placeholder="All cohorts" options="All cohorts | Q1 2025 Onboarding | Engineering Bootcamp | Sales Accelerator | Leadership Track | Data Science Intensive" />
+</Card>
+
+<Columns>
+<Card title="Active Learners This Week">
+<Stat label="Active Learners" value="1,247" change="+8.2% vs last week" tone="success" />
+</Card>
+<Card title="Course Completion Rate">
+<Stat label="Completion Rate" value="73.4%" change="+2.1% vs last month" tone="info" />
+</Card>
+<Card title="Average Quiz Score">
+<Stat label="Avg Quiz Score" value="84.7%" change="-0.8% vs last week" tone="warning" />
+</Card>
+</Columns>
+
+<Card title="Courses Ranked by Enrollment">
+<Chart type="bar" x="Course" y="Enrollments" title="Top Courses by Enrollment">
+| Course | Enrollments |
+|---|---|
+| React Fundamentals | 482 |
+| Python for Data Science | 417 |
+| Cloud Architecture | 356 |
+| Agile Project Management | 289 |
+| SQL Essentials | 267 |
+| UX Design Principles | 198 |
+| DevOps Foundations | 174 |
+| Machine Learning Basics | 156 |
+</Chart>
+</Card>
+
+<Card title="Learners at Risk of Dropping Out">
+<Tabs>
+<Tab title="High Risk (12)">
+| Learner | Course | Last Active | Progress | Risk Score |
+|---|---|---|---|---|
+| Alex Chen | Cloud Architecture | 14 days ago | 23% | 92 |
+| Maria Santos | React Fundamentals | 11 days ago | 31% | 87 |
+| James Wilson | Python for Data Science | 18 days ago | 18% | 94 |
+| Priya Patel | DevOps Foundations | 9 days ago | 41% | 81 |
+| Kevin Zhang | SQL Essentials | 16 days ago | 27% | 89 |
+</Tab>
+<Tab title="Medium Risk (34)">
+| Learner | Course | Last Active | Progress | Risk Score |
+|---|---|---|---|---|
+| Sarah Kim | Agile Project Management | 7 days ago | 52% | 68 |
+| David Brown | UX Design Principles | 5 days ago | 45% | 64 |
+| Lisa Anderson | Machine Learning Basics | 8 days ago | 38% | 71 |
+</Tab>
+<Tab title="All at Risk">
+<Progress value="46" max="1247" label="46 of 1,247 learners flagged (3.7%)" />
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Engagement Across Past 8 Weeks">
+<Chart type="line" x="Week" y="Engagement" title="Weekly Active Learners & Session Duration">
+| Week | Active Learners | Avg Session (min) | Completions |
+|---|---|---|---|
+| Week 1 | 892 | 42 | 156 |
+| Week 2 | 945 | 45 | 178 |
+| Week 3 | 1,012 | 48 | 201 |
+| Week 4 | 1,087 | 51 | 234 |
+| Week 5 | 1,156 | 49 | 267 |
+| Week 6 | 1,198 | 53 | 289 |
+| Week 7 | 1,234 | 55 | 312 |
+| Week 8 | 1,247 | 57 | 328 |
+</Chart>
+</Card>
+
+<Card title="Message Cohort" subtitle="Send announcements or reminders to selected cohort">
+<Form name="message-cohort">
+<Select label="Recipient Cohort" name="recipient" placeholder="Select cohort" options="Q1 2025 Onboarding | Engineering Bootcamp | Sales Accelerator | Leadership Track | Data Science Intensive" required="true" />
+<Input label="Subject" name="subject" placeholder="e.g., Week 5 Check-in & Resources" required="true" />
+<TextArea label="Message" name="message" placeholder="Write your message here... Supports markdown formatting." rows="6" required="true" hint="Learners will receive this via email and in-app notification" />
+<Checkboxes label="Delivery Channels" name="channels" options="In-app notification | Email | SMS" value="In-app notification | Email" hint="At least one channel required" required="true" />
+<Switch label="Schedule for later" name="schedule" value="false" hint="Toggle to pick a date/time" />
+<Date label="Send Date" name="sendDate" hint="Required if scheduling" />
+<Button variant="primary">Send Message</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me completion trends by course
+- Export at-risk learner list to CSV
+- Compare cohort performance side-by-side
+- Set up automated nudge campaigns for inactive learners
+</FollowUps>

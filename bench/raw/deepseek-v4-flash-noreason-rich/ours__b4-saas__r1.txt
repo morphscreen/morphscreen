@@ -1,0 +1,130 @@
+# Admin Overview
+
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$184,300" change="+4.2% vs last month" tone="success" icon="chart-line" />
+<Stat label="Annual Recurring Revenue" value="$2.21M" change="+18.7% YoY" tone="success" icon="trend-up" />
+<Stat label="Churn This Month" value="2.8%" change="−0.4 pts vs last month" tone="success" icon="user-minus" />
+<Stat label="Current NPS" value="52" change="+5 vs last quarter" tone="success" icon="heart" />
+</Columns>
+
+<Card title="Reporting Period">
+<Radio label="Reporting period" options="Last 30 days | Last 90 days | This quarter | This year" name="reporting-period" value="Last 30 days" />
+<Button variant="secondary" label="Apply period">Apply period</Button>
+</Card>
+
+<Card title="New Signups — Past 90 Days">
+<Chart type="area" x="Week" y="Signups">
+| Week | Signups |
+|---|---|
+| W1 | 82 |
+| W2 | 95 |
+| W3 | 104 |
+| W4 | 118 |
+| W5 | 132 |
+| W6 | 145 |
+| W7 | 158 |
+| W8 | 171 |
+| W9 | 186 |
+| W10 | 202 |
+| W11 | 219 |
+| W12 | 238 |
+| W13 | 256 |
+</Chart>
+<Callout tone="info" title="Trend">Signups have grown 3.1× over the past 90 days, driven by the new onboarding flow.</Callout>
+</Card>
+
+<Card title="Customers by Plan">
+<Chart type="donut" title="Plan distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 412 |
+| Growth | 287 |
+| Scale | 154 |
+| Enterprise | 63 |
+</Chart>
+</Card>
+
+<Card title="Ten Largest Customers">
+| Company | Seats | Monthly Spend | Plan |
+|---|---|---|---|
+| Northwind Traders | 240 | $18,400 | <Badge tone="info">Enterprise</Badge> |
+| Contoso Ltd. | 185 | $14,200 | <Badge tone="info">Enterprise</Badge> |
+| Fabrikam Inc. | 150 | $11,800 | <Badge tone="info">Enterprise</Badge> |
+| Adventure Works | 120 | $9,600 | <Badge tone="info">Enterprise</Badge> |
+| Tailwind Toys | 98 | $7,400 | <Badge tone="info">Scale</Badge> |
+| Proseware Corp | 85 | $6,900 | <Badge tone="info">Scale</Badge> |
+| Litware Ltd. | 74 | $5,800 | <Badge tone="info">Scale</Badge> |
+| Wingtip Toys | 62 | $4,900 | <Badge tone="info">Scale</Badge> |
+| Southridge Video | 55 | $4,300 | <Badge tone="info">Scale</Badge> |
+| Blue Yonder Air | 48 | $3,700 | <Badge tone="info">Growth</Badge> |
+</Card>
+
+<Card title="Accounts at Risk">
+<Callout tone="warning" title="6 accounts need attention">These accounts have shown signs of churn in the last 30 days.</Callout>
+
+| Company | Risk Reason | MRR at Risk |
+|---|---|---|
+| Contoso Ltd. | <Badge tone="warning">No login in 21 days</Badge> | $14,200 |
+| Fabrikam Inc. | <Badge tone="warning">Support ticket: "considering alternatives"</Badge> | $11,800 |
+| Tailwind Toys | <Badge tone="warning">Downgrade request submitted</Badge> | $7,400 |
+| Litware Ltd. | <Badge tone="warning">Seat count reduced by 30%</Badge> | $5,800 |
+| Wingtip Toys | <Badge tone="warning">Failed payment 2× this month</Badge> | $4,900 |
+| Blue Yonder Air | <Badge tone="warning">Usage dropped 65% since last quarter</Badge> | $3,700 |
+</Card>
+
+<Card title="Failed Payments">
+<Callout tone="danger" title="3 payments failed this month">Retry to recover revenue before accounts are suspended.</Callout>
+
+| Company | Amount | Attempts | Last Failed |
+|---|---|---|---|
+| Wingtip Toys | $4,900 | 2 | Mar 14 |
+| Southridge Video | $4,300 | 1 | Mar 16 |
+| Wide World Importers | $2,100 | 3 | Mar 18 |
+
+<Button label="Retry Wingtip Toys">Retry Wingtip Toys</Button>
+<Button label="Retry Southridge Video" variant="secondary">Retry Southridge Video</Button>
+<Button label="Retry Wide World Importers" variant="secondary">Retry Wide World Importers</Button>
+</Card>
+
+<Card title="Feature Adoption — Newest Features">
+<Chart type="bar" x="Feature" y="Active usage %">
+| Feature | Adoption |
+|---|---|
+| AI Reports | 34 |
+| API v2 | 28 |
+| Team Dashboards | 19 |
+</Chart>
+<Callout tone="info" title="Target">Goal is 50% adoption for each feature by end of quarter. AI Reports is closest at 34%.</Callout>
+</Card>
+
+<Card title="Seat Utilization">
+<Stat label="Total Seats" value="2,847" />
+<Stat label="Active Seats" value="2,198" />
+<Stat label="Utilization" value="77.2%" tone="warning" icon="users" />
+
+<Progress value="77.2" max="100" label="Overall seat utilization" tone="warning" />
+
+| Plan | Seats Used | Total Seats | Utilization |
+|---|---|---|---|
+| Starter | 412 | 520 | 79% |
+| Growth | 861 | 1,100 | 78% |
+| Scale | 654 | 850 | 77% |
+| Enterprise | 271 | 377 | 72% |
+
+<Callout tone="warning" title="Optimization opportunity">Scaling back unused seats on Enterprise could save ~$3,100/month.</Callout>
+</Card>
+
+<Card title="Invite Another Admin">
+<Form name="invite-admin">
+<Input label="Admin email" type="email" placeholder="colleague@company.com" hint="They'll get an invite link" required="true" />
+<Select label="Role" options="Admin (full access) | Billing admin (payments only) | Viewer (read-only)" name="admin-role" placeholder="Choose a role" required="true" />
+<Button>Send invite</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show detailed churn breakdown by plan
+- Compare feature adoption month over month
+- List all customers with seat utilization over 95%
+- Export the accounts at risk report
+</FollowUps>

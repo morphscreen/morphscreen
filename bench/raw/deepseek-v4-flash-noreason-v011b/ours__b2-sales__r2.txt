@@ -1,0 +1,62 @@
+<Card title="Monthly Sales Check" subtitle="A founder's quick overview of your business health">
+  <Columns>
+    <Stat label="Revenue This Month" value="$84,200" change="+12.3%" icon="trend-up" tone="success" />
+    <Stat label="Conversion Rate" value="3.4%" change="+0.2 pp" icon="percent" tone="info" />
+  </Columns>
+</Card>
+
+<Card title="Revenue Trend (Last 6 Months)" subtitle="Monthly revenue in USD">
+  <Chart type="line" x="Month" y="Revenue ($)">
+| Month | Revenue |
+|---|---|
+| Oct | 62,100 |
+| Nov | 58,400 |
+| Dec | 71,900 |
+| Jan | 68,500 |
+| Feb | 75,000 |
+| Mar | 84,200 |
+  </Chart>
+  <Button variant="secondary" ask="Explain the revenue trend in more detail">Analyze this trend</Button>
+</Card>
+
+<Card title="Best-Selling Products" subtitle="Top 3 by units sold this month">
+  <Columns>
+    <Card title="1. Premium Widget Pro">
+      <Stat label="Units Sold" value="1,204" icon="package" />
+      <Button ask="Show more details for Premium Widget Pro">View product details</Button>
+    </Card>
+    <Card title="2. Basic Gadget">
+      <Stat label="Units Sold" value="876" icon="package" />
+      <Button ask="Show more details for Basic Gadget">View product details</Button>
+    </Card>
+    <Card title="3. Deluxe Kit">
+      <Stat label="Units Sold" value="543" icon="package" />
+      <Button ask="Show more details for Deluxe Kit">View product details</Button>
+    </Card>
+  </Columns>
+</Card>
+
+<Card title="Conversion Rate Details" subtitle="Overall: 3.4%">
+  <Callout tone="info" title="How this is calculated">
+    Conversion rate = (Purchases / Total Visitors) × 100. This month: 8,400 purchases out of 247,000 visitors.
+  </Callout>
+  <Stat label="Monthly Visitors" value="247,000" icon="users" />
+  <Stat label="Monthly Purchases" value="8,400" icon="shopping-cart" />
+  <Button ask="Show conversion rate by traffic source">View by source</Button>
+</Card>
+
+<Card title="Download Your Data" subtitle="Export numbers for your records or analysis">
+  <Form name="download-report">
+    <Select label="Report format" options="CSV (.csv) | Excel (.xlsx) | PDF (.pdf)" name="format" placeholder="Choose format" />
+    <Checkboxes label="Include in export" options="Revenue data | Product sales | Conversion stats | All of the above" name="include" />
+    <Button icon="download">Download Report</Button>
+  </Form>
+  <Button variant="tertiary" ask="Email me this report instead">Email report</Button>
+</Card>
+
+<FollowUps>
+- Compare this month to last month
+- Show me the revenue breakdown by product category
+- What caused the conversion rate change?
+- Show me the top 10 products instead
+</FollowUps>

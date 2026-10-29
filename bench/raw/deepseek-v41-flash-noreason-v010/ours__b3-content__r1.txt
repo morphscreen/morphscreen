@@ -1,0 +1,105 @@
+# Content Studio
+
+<Columns>
+<Stat label="Drafts in progress" value="7" change="+2 today" tone="info" icon="pencil-simple" />
+<Stat label="Published this week" value="5" change="+1 vs last week" tone="success" icon="check-circle" />
+<Stat label="Comments awaiting reply" value="12" change="4 older than 3 days" tone="warning" icon="chat-circle" />
+<Stat label="30-day reads" value="48,210" change="+9.4%" tone="success" icon="chart-line" />
+</Columns>
+
+<Card title="Drafts" subtitle="Status for every piece in the pipeline">
+| Title | Category | Status | Last edited |
+|---|---|---|---|
+| The Quiet Return of Longform | Culture | <Badge tone="warning">In review</Badge> | 2h ago |
+| Field Notes: Salt Flats | Travel | <Badge tone="info">Drafting</Badge> | Yesterday |
+| Why Newsletters Won | Media | <Badge tone="neutral">Outline</Badge> | 3d ago |
+| A Short History of Margins | Design | <Badge tone="warning">In review</Badge> | 4d ago |
+| Ten Interviews, One Question | Interviews | <Badge tone="info">Drafting</Badge> | 5d ago |
+| The Cost of Free Shipping | Business | <Badge tone="danger">Needs edits</Badge> | 1w ago |
+| Notes on a Cold Spring | Essays | <Badge tone="neutral">Outline</Badge> | 1w ago |
+
+<Button variant="primary" icon="plus" ask="Start a new draft">New draft</Button>
+<Button variant="tertiary" ask="Show all drafts">View all drafts</Button>
+</Card>
+
+<Card title="Published this week">
+| Title | Category | Published | Reads |
+|---|---|---|---|
+| The Cartographers of Nowhere | Travel | Mon | 3,412 |
+| What We Owe the Archive | Culture | Tue | 2,908 |
+| A Grammar of Small Talk | Essays | Wed | 2,140 |
+| The Last Independent Bookstore | Business | Thu | 1,876 |
+| Twenty Minutes with a Luthier | Interviews | Fri | 1,204 |
+</Card>
+
+<Card title="Most-read this month">
+<Stat label="The Cartographers of Nowhere" value="18,940 reads" change="+22% vs last month" tone="success" icon="trophy" />
+<Progress value="18940" max="24000" label="Share of monthly reads" tone="info" />
+<Button variant="secondary" ask="Show the full leaderboard for this month">See full leaderboard</Button>
+</Card>
+
+<Card title="Readership, past 30 days">
+<Chart type="area" x="Day" y="Reads">
+| Day | Reads |
+|---|---|
+| 1 | 1180 |
+| 5 | 1320 |
+| 10 | 1490 |
+| 15 | 1410 |
+| 20 | 1680 |
+| 25 | 1810 |
+| 30 | 1940 |
+</Chart>
+</Card>
+
+<Card title="Filter by category">
+<Form name="category-filter">
+<Select label="Category" name="category" placeholder="All categories" options="All categories | Culture | Travel | Media | Design | Interviews | Business | Essays" />
+<Checkboxes label="Status" name="status" options="Outline | Drafting | In review | Needs edits | Published" />
+<Switch label="Only pieces awaiting my reply" name="awaiting" value="false" />
+<Button>Apply filter</Button>
+<Button variant="tertiary">Reset</Button>
+</Form>
+</Card>
+
+<Card title="Schedule a piece" subtitle="Give it a title and a publish date">
+<Form name="schedule-piece">
+<Input label="Title" name="title" placeholder="e.g. The Quiet Return of Longform" required="true" />
+<Input label="Category" name="category" placeholder="Culture" />
+<Date label="Publish date" name="publish_date" required="true" hint="Goes live at 9:00 AM local time" />
+<Input label="Publish time" name="publish_time" type="time" value="09:00" />
+<TextArea label="Editor's note" name="note" placeholder="Anything the desk should know before it goes out" rows="3" />
+<Button>Schedule piece</Button>
+<Button variant="tertiary">Save as draft</Button>
+</Form>
+</Card>
+
+<Card title="Comments awaiting reply" subtitle="12 open threads">
+<Columns>
+<Avatar name="Mara Osei" subtitle="on The Cartographers of Nowhere" />
+<Avatar name="Dev Raman" subtitle="on What We Owe the Archive" />
+<Avatar name="Lena Fischer" subtitle="on A Grammar of Small Talk" />
+</Columns>
+
+| Commenter | Piece | Comment | Waiting |
+|---|---|---|---|
+| Mara Osei | The Cartographers of Nowhere | "Where did the 1974 survey figure come from?" | 2h |
+| Dev Raman | What We Owe the Archive | "Typo in the third paragraph — 'recieve'." | 6h |
+| Lena Fischer | A Grammar of Small Talk | "Can you expand the bit about silence?" | 1d |
+| Tomas Beck | The Last Independent Bookstore | "Is the owner still taking interviews?" | 3d |
+| Priya Nair | Twenty Minutes with a Luthier | "Loved this. Any follow-up planned?" | 4d |
+
+<Button variant="primary" ask="Open the comment queue">Reply to comments</Button>
+<Button variant="tertiary" ask="Mark all comments as read">Mark all read</Button>
+</Card>
+
+<Callout tone="info" title="Next up">
+Two pieces are sitting in review and three comments are older than three days — clear those before scheduling anything new.
+</Callout>
+
+<FollowUps>
+- Which draft should I finish first?
+- Show me the comment queue sorted by oldest
+- What published best on Tuesdays?
+- Draft a reply to Mara Osei's comment
+</FollowUps>

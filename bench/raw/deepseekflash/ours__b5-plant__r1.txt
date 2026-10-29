@@ -1,0 +1,155 @@
+<Card title="Factory Floor Supervisor Console" subtitle="Plant 2 · 14 Mar 2025 14:32 · Shift B">
+<Columns>
+<Select label="Line focus" name="line-focus" options="All lines | Line A | Line B | Line C | Line D" value="All lines" hint="Filters all panels to the selected line" />
+<Button variant="primary">Export shift report</Button>
+</Columns>
+</Card>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="78.4%" change="+2.1%" note="vs yesterday" />
+<Progress value="78.4" max="100" label="Availability 91.2% · Performance 86.5% · Quality 99.4%" />
+</Card>
+<Card title="Units vs daily target">
+<Stat label="Produced" value="4,215" note="Target 5,000 units" />
+<Progress value="4215" max="5000" label="84.3% of target" />
+</Card>
+<Card title="Energy use today">
+<Stat label="Consumption" value="12.4 MWh" change="-3.1%" note="vs same shift yesterday" />
+</Card>
+<Card title="Safety">
+<Stat label="Incidents YTD" value="3" note="42 days since last incident" />
+</Card>
+</Columns>
+
+<Card title="Production lines" subtitle="Live rate and status per line">
+| Line | Product | Rate (u/h) | Target (u/h) | Status |
+|---|---|---|---|---|
+| Line A | Bracket XR-7 | 142 | 145 | <Badge tone="success">Running</Badge> |
+| Line B | Flange Y-12 | 118 | 120 | <Badge tone="success">Running</Badge> |
+| Line C | Sleeve Z-4 | 0 | 110 | <Badge tone="danger">Idle · jam</Badge> |
+| Line D | Cap Q-2 | 96 | 100 | <Badge tone="warning">Changeover</Badge> |
+</Card>
+
+<Columns>
+<Card title="Defect rate — past month" subtitle="Daily average, March 2025">
+<Chart type="line" title="Defect rate" x="Date" y="Defect rate %">
+| Date | Defect rate % |
+|---|---|
+| Mar 1 | 2.1 |
+| Mar 5 | 1.8 |
+| Mar 10 | 2.4 |
+| Mar 15 | 1.9 |
+| Mar 20 | 2.2 |
+| Mar 25 | 1.6 |
+| Mar 30 | 1.4 |
+</Chart>
+</Card>
+<Card title="Downtime by cause" subtitle="This week · 47.5 h total">
+<Chart type="donut" title="Downtime split" x="Cause" y="Hours">
+| Cause | Hours |
+|---|---|
+| Changeover | 18.5 |
+| Breakdown | 11.2 |
+| Material shortage | 8.4 |
+| Quality stops | 5.6 |
+| Other | 3.8 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Shift output comparison" subtitle="Units produced per shift">
+<Chart type="bar" title="Shift output" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Shift A | 4582 |
+| Shift B | 4215 |
+| Shift C | 3940 |
+</Chart>
+</Card>
+<Card title="Energy use today" subtitle="Hourly consumption, 06:00–14:00">
+<Chart type="line" title="Energy use" x="Hour" y="MWh">
+| Hour | MWh |
+|---|---|
+| 06:00 | 0.8 |
+| 07:00 | 1.2 |
+| 08:00 | 1.6 |
+| 09:00 | 1.7 |
+| 10:00 | 1.6 |
+| 11:00 | 1.5 |
+| 12:00 | 1.4 |
+| 13:00 | 1.3 |
+| 14:00 | 1.3 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Machines due for maintenance" subtitle="Next 7 days">
+| Machine | Due | Task | Priority |
+|---|---|---|---|
+| Press P-04 | 15 Mar | Hydraulic service | <Badge tone="danger">Due tomorrow</Badge> |
+| Conveyor C-12 | 16 Mar | Belt replacement | <Badge tone="warning">2 days</Badge> |
+| Robot R-07 | 18 Mar | Joint lubrication | <Badge tone="info">4 days</Badge> |
+| Compressor K-02 | 20 Mar | Filter change | <Badge tone="info">6 days</Badge> |
+</Card>
+<Card title="Supplier deliveries due this week">
+| Supplier | Material | Due | Status |
+|---|---|---|---|
+| Nordic Steel AB | Steel coil | Fri 14 Mar | <Badge tone="success">Delivered</Badge> |
+| ChemPoly GmbH | Resin pellets | Mon 17 Mar | <Badge tone="warning">In transit</Badge> |
+| PackRight Ltd | Cardboard boxes | Tue 18 Mar | <Badge tone="info">Scheduled</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Raw material stock" subtitle="Current levels vs capacity">
+<Columns>
+<Stat label="Steel" value="68%" note="12.4 t / 18.2 t" />
+<Stat label="Resin" value="42%" change="Low stock" note="210 kg / 500 kg" />
+<Stat label="Packaging" value="87%" note="3,480 / 4,000 boxes" />
+</Columns>
+</Card>
+<Card title="Batches on quality hold" subtitle="Awaiting disposition">
+| Batch | Product | Reason | Held since |
+|---|---|---|---|
+| B-2414 | Bracket XR-7 | Dimensional variance | 12:22 |
+| B-2417 | Sleeve Z-4 | Missing material cert | 08:50 |
+| B-2421 | Cap Q-2 | Surface defect | 13:27 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Open work orders" subtitle="Sorted by priority">
+| WO | Line | Task | Priority |
+|---|---|---|---|
+| WO-1082 | Line C | Rebuild extruder seal | <Badge tone="danger">Critical</Badge> |
+| WO-1083 | Line A | Calibrate torque tool | <Badge tone="warning">High</Badge> |
+| WO-1084 | Line B | Replace guide rail | <Badge tone="warning">High</Badge> |
+| WO-1085 | Line D | Update PLC recipe | <Badge tone="info">Medium</Badge> |
+</Card>
+<Card title="Live andon alerts" subtitle="3 active">
+<Callout tone="danger" title="Line C · Press P-04 jammed">2 min ago · Operator M. Ruiz pulled the andon cord.</Callout>
+<Callout tone="warning" title="Line D · Changeover in progress">12 min ago · Expected to finish in 18 min.</Callout>
+<Callout tone="warning" title="Line B · Resin hopper low">25 min ago · Hopper at 18%, replenishment requested.</Callout>
+</Card>
+</Columns>
+
+<Card title="Schedule maintenance" subtitle="Book a machine for service">
+<Form name="schedule-maintenance">
+<Columns>
+<Select label="Machine" name="machine" placeholder="Select machine" options="Press P-04 | Conveyor C-12 | Robot R-07 | Compressor K-02" />
+<Date label="Date" name="maintenance-date" />
+<Select label="Maintenance type" name="maintenance-type" placeholder="Select type" options="Preventive | Corrective | Inspection | Calibration" />
+</Columns>
+<Button variant="primary">Schedule maintenance</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show OEE trend for the last 30 days
+- Open the andon alert log
+- Generate a maintenance calendar for next week
+- View detailed quality hold report
+</FollowUps>

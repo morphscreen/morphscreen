@@ -1,0 +1,53 @@
+# Personal Budget Check
+
+<Card title="Month selector">
+<Select label="Select month" name="month" placeholder="Choose month" options="January 2025 | February 2025 | March 2025 | April 2025 | May 2025 | June 2025" value="January 2025" />
+</Card>
+
+<Card title="Budget overview">
+<Columns>
+<Stat label="Total budget" value="$3,000" />
+<Stat label="Total spent" value="$2,147" change="$853 remaining" tone="success" />
+<Stat label="Budget used" value="71.6%" change="On track" tone="info" />
+</Columns>
+<Progress value="2147" max="3000" label="Budget progress" tone="success" />
+</Card>
+
+<Card title="Spending by category">
+<Chart type="donut" title="Category breakdown" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200 |
+| Food & Dining | 450 |
+| Transportation | 280 |
+| Utilities | 180 |
+| Entertainment | 120 |
+| Shopping | 85 |
+| Health & Fitness | 60 |
+| Other | 72 |
+</Chart>
+</Card>
+
+<Card title="Largest expense">
+<Columns>
+<Stat label="Rent payment" value="$1,200" change="Housing · Jan 3" tone="warning" />
+<Stat label="% of total" value="55.9%" />
+<Stat label="vs. category budget" value="$1,200 / $1,200" change="At limit" tone="danger" />
+</Columns>
+<Callout tone="info" title="Largest single expense">Your rent payment of $1,200 on January 3rd represents 55.9% of all spending this month and uses your entire housing budget.</Callout>
+</Card>
+
+<Card title="Add expense">
+<Form name="add-expense">
+<Columns>
+<Input label="Amount" name="amount" type="number" placeholder="0.00" step="0.01" min="0.01" required="true" hint="Expense amount" />
+<Select label="Category" name="category" placeholder="Select category" options="Housing | Food & Dining | Transportation | Utilities | Entertainment | Shopping | Health & Fitness | Other" required="true" />
+</Columns>
+<Input label="Description" name="description" placeholder="What was this for?" hint="e.g., Groceries, Uber, Electric bill" required="true" />
+<Date label="Date" name="date" value="2025-01-15" required="true" />
+<Columns>
+<Button>Add expense</Button>
+<Button variant="secondary">Cancel</Button>
+</Columns>
+</Form>
+</Card>

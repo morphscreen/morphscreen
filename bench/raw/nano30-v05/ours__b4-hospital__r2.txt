@@ -1,0 +1,76 @@
+<Card title="Hospital Operations Overview">
+  <Columns>
+    <Card title="Bed Occupancy">
+      <Stat label="Bed occupancy" value="85%" change="+" tone="info"/>
+    </Card>
+    <Card title="ER Wait">
+      <Stat label="ER wait" value="22 min" change="+" tone="info"/>
+    </Card>
+    <Card title="Admissions (2 weeks)">
+      <Chart type="line" x="Day" y="Admissions" title="Admissions">
+| Day | Admissions |
+|---|---|
+| Day 1 | 12 |
+| Day 2 | 9 |
+| Day 3 | 15 |
+| Day 4 | 11 |
+| Day 5 | 13 |
+</Chart>
+    </Card>
+    <Card title="Patients per Department">
+      <Chart type="bar" x="Department" y="Patients" title="Patients per Department">
+| Department | Patients |
+|---|---|
+| ICU | 30 |
+| Med-Surg | 45 |
+| Surgery | 20 |
+| Radiology | 10 |
+</Chart>
+    </Card>
+    <Card title="Staff on Shift">
+      <Details title="Staff on Shift" open="true">
+        <TextArea label="Staff list" placeholder="Dr. Smith - Doctor<br> Nurse Jones - Nurse<br> Tech Lee - Technician" rows="5"/>
+      </Details>
+    </Card>
+    <Card title="Critical Patients">
+      <Callout tone="warning" title="Critical Patients">
+        3 patients currently critical; monitoring closely.
+      </Callout>
+    </Card>
+    <Card title="Ready for Discharge">
+      <Stat label="Ready for discharge" value="12" change="+" tone="info"/>
+    </Card>
+    <Card title="Operating Room Bookings">
+      <Chart type="bar" x="Time" y="Bookings" title="OR Bookings">
+| Time | Bookings |
+|---|---|
+| 08:00 | 1 |
+| 10:00 | 2 |
+| 14:00 | 1 |
+| 16:00 | 2 |
+</Chart>
+    </Card>
+    <Card title="Supplies">
+      <Badge tone="warning">Supplies low</Badge>
+      <Stat label="Supplies status" value="Low" change="+" tone="warning"/>
+    </Card>
+    <Card title="Incident Reporting">
+      <Form name="incident-report">
+        <Input label="Incident description" placeholder="e.g., medication error" required="false"/>
+        <Input label="Location" placeholder="Ward 3" required="false"/>
+        <Button variant="danger" href="#">File Incident</Button>
+      </Form>
+    </Card>
+    <Card title="View Another Day">
+      <Date label="Select date" name="date" value="" hint="Choose a date" required="true"/>
+    </Card>
+    <Card title="Patient Transfer">
+      <Form name="transfer-request">
+        <Input label="Patient ID" placeholder="12345" required="false"/>
+        <Select label="From Department" options="ICU | Med-Surg | Surgery | Other" required="false"/>
+        <Select label="To Department" options="ICU | Med-Surg | Surgery | Other" required="false"/>
+        <Button variant="primary" href="#">Request Transfer</Button>
+      </Form>
+    </Card>
+  </Columns>
+</Card>

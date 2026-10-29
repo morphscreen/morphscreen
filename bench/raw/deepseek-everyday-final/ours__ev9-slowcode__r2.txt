@@ -1,0 +1,219 @@
+# Speeding up a 2 GB CSV read in Python
+
+Reading a 2 GB CSV with plain Python can take minutes. Here's how to make it dramatically faster, from quick wins to major rewrites.
+
+<Card title="Quick wins first" subtitle="No code changes required">
+<Columns>
+<Stat label="Use compression" value="~60%" note="Smaller file, faster I/O" tone="success" icon="lightning" />
+<Stat label="Parallelize" value="8-16x" note="With multiprocessing" tone="success" icon="cpu" />
+<Stat label="Upgrade Python" value="~15%" note="PyPy vs CPython" tone="info" icon="rocket" />
+</Columns>
+</Card>
+
+## 1. Use the right tool for the job
+
+<Card title="Comparison of CSV readers">
+<Compare title="CSV reading methods">
+| Method | Speed (2 GB) | Memory | Best for |
+|---|---|---|---|
+| Plain `csv.reader` | ~3-5 min | Low | Small files, simple needs |
+| `pandas.read_csv` | ~30-60 sec | High (RAM-heavy) | Data analysis, tabular data |
+| `polars.read_csv` | ~10-20 sec | Low-moderate | Large files, fast processing |
+| `datatable.fread` | ~8-15 sec | Moderate | Very large files, R-like syntax |
+| `csvkit` CLI | ~2-4 min | Low | Quick command-line inspection |
+| `duckdb` SQL | ~5-10 sec | Low | Complex queries on big CSVs |
+</Compare>
+</Card>
+
+<Callout tone="info" title="Recommendation">
+For most cases, **Polars** is the best balance of speed and ease. If you're already using pandas, try `pandas.read_csv` with the `engine='pyarrow'` parameter first.
+
+```python
+import polars as pl
+
+# Fastest simple approach
+df = pl.read_csv("large.csv")
+
+# Or with pandas + pyarrow engine
+import pandas as pd
+df = pd.read_csv("large.csv", engine="pyarrow")
+```
+</Callout>
+
+## 2. Optimize your current pandas code
+
+<Card title="Pandas optimizations" subtitle="If you're stuck with pandas">
+<Steps>
+<Step title="Use the right engine" status="done">
+`engine='pyarrow'` or `engine='c'` (default) is much faster than the pure Python engine.
+</Step>
+<Step title="Specify dtypes" status="done">
+Don't let pandas guess types. Pass `dtype` explicitly to avoid the costly inference pass.
+</Step>
+<Step title="Read only what you need" status="done">
+Use `usecols` to load only necessary columns, and `nrows` to sample first.
+</Step>
+<Step title="Chunk it" status="done">
+Process in chunks to keep memory low:
+
+```python
+chunksize = 100_000
+for chunk in pd.read_csv("large.csv", chunksize=chunksize, dtype=...):
+    process(chunk)
+```
+</Step>
+</Steps>
+</Card>
+
+<Card title="Best pandas settings">
+<Code file="read_csv_optimized.py" highlight="2 | 4">
+import pandas as pd
+
+df = pd.read_csv(
+    "large.csv",
+    engine="c",              # C engine, not python
+    dtype={"col1": "int32", "col2": "float32"},  # smaller dtypes
+    usecols=["col1", "col2"], # only needed columns
+    low_memory=False,        # avoid mixed-type warnings
+)
+</Code>
+</Card>
+
+## 3. The heavy artillery: parallel processing
+
+<Card title="Parallel CSV reading" subtitle="Split the file, read in parallel">
+<Steps>
+<Step title="Split the file" status="done">
+Use `split` on Linux/Mac or `csvsplit` on Windows to break into 8-16 chunks.
+</Step>
+<Step title="Read chunks in parallel" status="done">
+```python
+from multiprocessing import Pool
+import pandas as pd
+
+def read_chunk(path):
+    return pd.read_csv(path, dtype=...)
+
+with Pool(8) as pool:
+    chunks = pool.map(read_chunk, chunk_files)
+    df = pd.concat(chunks, ignore_index=True)
+```
+</Step>
+<Step title="Watch out for I/O bottlenecks" status="done">
+Parallel reads help most on SSDs. On HDDs, disk seeks can make parallel slower.
+</Step>
+</Steps>
+</Card>
+
+## 4. Memory-efficient streaming
+
+<Card title="Streaming with generators" subtitle="Process line by line without loading everything">
+<Code file="streaming_csv.py">
+import csv
+
+def process_csv(filename):
+    with open(filename, "r") as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        for row in reader:
+            # Process one row at a time
+            yield transform(row)
+
+# Process without memory blow-up
+for result in process_csv("large.csv"):
+    save_result(result)
+</Code>
+</Card>
+
+<Callout tone="warning" title="Memory trap">
+`pandas.read_csv` without `chunksize` loads the **entire file into RAM**. A 2 GB CSV can easily become 8-12 GB in memory with default dtypes. Always check available RAM first.
+</Callout>
+
+## 5. Alternative: Use a database
+
+<Card title="SQLite / DuckDB approach" subtitle="Let the database handle the heavy lifting">
+<Steps>
+<Step title="Import once" status="done">
+```python
+import duckdb
+
+duckdb.sql("""
+    CREATE TABLE data AS 
+    SELECT * FROM read_csv_auto('large.csv')
+""")
+```
+</Step>
+<Step title="Query with SQL" status="done">
+```sql
+SELECT col1, AVG(col2) 
+FROM data 
+WHERE col3 > 100 
+GROUP BY col1
+```
+</Step>
+<Step title="Benefits" status="done">
+- Indexes for fast lookups
+- Query only what you need
+- Handles files larger than RAM
+</Step>
+</Steps>
+</Card>
+
+## 6. Format matters
+
+<Card title="If you control the data format" subtitle="Consider alternatives to CSV">
+<Compare title="File format comparison">
+| Format | Read speed | File size | Notes |
+|---|---|---|---|
+| CSV | Baseline | 2 GB | Human-readable |
+| Parquet | 3-5x faster | ~500 MB | Columnar, great for analytics |
+| Feather | 5-10x faster | ~1 GB | In-memory format |
+| Arrow IPC | 5-10x faster | ~800 MB | Similar to Feather |
+| Pickle | 2-3x faster | ~1.5 GB | Python-only |
+</Compare>
+
+<Callout tone="success" title="Best practice">
+If you're repeatedly reading the same data, **convert once to Parquet** and read that instead. It's 3-5x faster and takes half the disk space.
+
+```python
+import polars as pl
+pl.read_csv("large.csv").write_parquet("large.parquet")
+# Now read in seconds
+df = pl.read_parquet("large.parquet")
+```
+</Callout>
+</Card>
+
+## Summary: Decision guide
+
+<Card title="Which approach should I use?">
+<Columns>
+<Card title="One-time read">
+- Use **Polars** or **pandas + pyarrow engine**
+- Specify dtypes explicitly
+- Read only needed columns
+</Card>
+<Card title="Repeated reads">
+- Convert to **Parquet** once
+- Or load into **SQLite/DuckDB**
+- Query with SQL
+</Card>
+<Card title="Memory-constrained">
+- **Chunk** with pandas or polars
+- **Stream** with generators
+- Use **DuckDB** (spills to disk)
+</Card>
+<Card title="Huge files (>10 GB)">
+- Use **Dask** or **Vaex** for out-of-core
+- Parallelize across cores
+- Consider distributed processing (Spark)
+</Card>
+</Columns>
+</Card>
+
+<FollowUps>
+- How do I convert CSV to Parquet efficiently?
+- What's the best way to handle missing values in large CSVs?
+- How do I profile my CSV reading code to find bottlenecks?
+- Can I use GPU acceleration for CSV parsing?
+</FollowUps>

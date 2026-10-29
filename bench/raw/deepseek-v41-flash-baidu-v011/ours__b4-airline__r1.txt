@@ -1,0 +1,108 @@
+# Hub Operations — Single Screen
+
+Live view for the operations desk. Everything below is one screen: status at the top, flights and exceptions in the middle, crew and rebooking at the bottom.
+
+<Columns>
+<Stat label="On-time performance" value="82.4%" change="+1.8 pts vs yesterday" tone="success" icon="chart-line" />
+<Stat label="Cancellations today" value="6" change="+2 vs yesterday" tone="warning" icon="x-circle" />
+<Stat label="Avg passenger load" value="87.1%" change="+3.2 pts vs 7-day avg" tone="info" icon="users" />
+<Stat label="Avg turnaround time" value="46 min" change="-4 min vs target" tone="success" icon="clock" />
+</Columns>
+
+<Callout tone="warning" title="Weather advisory active at hub">
+Thunderstorms forecast 14:00–19:00 local. Ground stop possible for arrivals; expect holding and gate congestion. De-icing not required.
+</Callout>
+
+<Card title="Flights at hub today" subtitle="Number, route, gate, status">
+| Flight | Route | Gate | Status |
+|---|---|---|---|
+| HA 214 | SEA → ORD | B12 | On time |
+| HA 388 | ORD → DEN | C04 | Boarding |
+| HA 512 | ORD → MIA | B07 | Delayed 35 min |
+| HA 640 | ORD → PHX | D19 | Delayed 1h 10m |
+| HA 702 | ORD → LGA | A03 | On time |
+| HA 815 | ORD → SFO | C11 | Delayed 20 min |
+| HA 930 | ORD → BOS | B22 | Cancelled |
+| HA 1042 | ORD → ATL | D06 | On time |
+</Card>
+
+<Card title="Delayed flights" subtitle="Called out for the desk">
+<Callout tone="danger" title="HA 640 — ORD → PHX">
+Delayed 1h 10m. Crew duty time at risk. 41 connecting passengers affected.
+</Callout>
+
+<Callout tone="warning" title="HA 512 — ORD → MIA">
+Delayed 35 min. Gate hold at B07; inbound aircraft late from SEA.
+</Callout>
+
+<Callout tone="warning" title="HA 815 — ORD → SFO">
+Delayed 20 min. Weather-related flow control.
+</Callout>
+</Card>
+
+<Card title="Recent gate changes">
+<Steps>
+<Step title="HA 388 moved C04 → C09" status="done" subtitle="2 min ago">Reason: gate conflict with HA 512</Step>
+<Step title="HA 702 moved A03 → A11" status="done" subtitle="14 min ago">Reason: jet bridge maintenance</Step>
+<Step title="HA 1042 moved D06 → D02" status="current" subtitle="Just now">Reason: inbound aircraft repositioned</Step>
+</Steps>
+</Card>
+
+<Card title="Crews available for reassignment">
+| Crew | Base | Duty remaining | Status |
+|---|---|---|---|
+| CA-118 | ORD | 3h 40m | Available |
+| CA-204 | ORD | 2h 15m | Available |
+| CA-331 | ORD | 5h 05m | Available |
+| CA-407 | ORD | 1h 30m | Reserve |
+| CA-512 | ORD | 4h 20m | Available |
+</Card>
+
+<Card title="Connections at risk">
+<Chart type="bar" title="Passengers at risk by connecting bank" x="Bank" y="Passengers">
+| Bank | At risk |
+|---|---|
+| 12:00 | 18 |
+| 13:30 | 34 |
+| 15:00 | 52 |
+| 16:30 | 41 |
+| 18:00 | 27 |
+</Chart>
+</Card>
+
+<Card title="Rebook affected passengers" subtitle="Applies to delayed and cancelled flights">
+<Form name="rebook">
+<Select label="Flight" options="HA 640 ORD → PHX | HA 512 ORD → MIA | HA 815 ORD → SFO | HA 930 ORD → BOS (cancelled)" />
+<Input label="Passenger count" type="number" min={1} max={400} placeholder="e.g. 41" />
+<Radio label="Rebooking priority" options="Next available | Same day only | Next day" />
+<Checkboxes label="Include" options="Hotel voucher | Meal voucher | Ground transport" />
+<Button>Rebook passengers</Button>
+<Button variant="tertiary">Hold and review</Button>
+</Form>
+</Card>
+
+<Card title="Switch hub">
+<Select label="Hub" options="ORD — Chicago O'Hare | ATL — Atlanta | DFW — Dallas/Fort Worth | DEN — Denver | SEA — Seattle" />
+<Button ask="Show the operations screen for ATL">View hub</Button>
+</Card>
+
+<Card title="Hub map" subtitle="Gates and advisories in play">
+<Map>
+<MapPin lat={41.9742} lng={-87.9073} label="ORD — Hub" />
+<MapPin lat={41.9786} lng={-87.9048} label="Gate B12 — HA 214" />
+<MapPin lat={41.9794} lng={-87.9080} label="Gate C04 — HA 388" />
+<MapPin lat={41.9762} lng={-87.9055} label="Gate B07 — HA 512" />
+<MapPin lat={41.9801} lng={-87.9102} label="Gate D19 — HA 640" />
+<MapPin lat={41.9738} lng={-87.9031} label="Gate A03 — HA 702" />
+<MapPin lat={41.9775} lng={-87.9090} label="Gate C11 — HA 815" />
+<MapPin lat={41.9750} lng={-87.9060} label="Gate B22 — HA 930" />
+<MapPin lat={41.9810} lng={-87.9045} label="Gate D06 — HA 1042" />
+</Map>
+</Card>
+
+<FollowUps>
+- Which flights are at risk of missing the 14:00 weather window?
+- Show crews with more than 3 hours duty remaining
+- Rebook all passengers from HA 930
+- What is the on-time performance by route today?
+</FollowUps>

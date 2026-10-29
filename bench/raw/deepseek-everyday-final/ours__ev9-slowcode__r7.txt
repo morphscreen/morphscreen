@@ -1,0 +1,185 @@
+# Speeding up reading a 2 GB CSV in Python
+
+Reading a 2 GB CSV with default methods is slow because Python reads it row by row, converting every value to a Python object. Here's how to make it dramatically faster.
+
+## Quick wins (minimal code changes)
+
+<Card title="Start here: pandas with engine and dtypes">
+The fastest way with the least code is usually `pandas` with the right engine and data types.
+
+```python
+import pandas as pd
+
+# The default C engine is faster than the Python engine
+df = pd.read_csv("large.csv", engine="c")
+
+# Tell pandas the dtypes upfront — it skips guessing
+df = pd.read_csv(
+    "large.csv",
+    engine="c",
+    dtype={
+        "id": "int32",
+        "name": "string",
+        "amount": "float32",
+    },
+)
+```
+
+<Callout tone="success" title="Typical speedup">
+Specifying `dtype` and using the C engine can cut read time by **40–60%** on a 2 GB file. The C engine is already the default, so the biggest win is often the `dtype` hint.
+</Callout>
+</Card>
+
+## Read only what you need
+
+<Card title="Reduce the data volume">
+Often you don't need the whole 2 GB. Reading less is always faster.
+
+<Tabs>
+<Tab title="Only some columns">
+```python
+import pandas as pd
+
+# Only read the columns you actually need
+df = pd.read_csv("large.csv", usecols=["id", "amount"])
+```
+</Tab>
+
+<Tab title="Only some rows">
+```python
+# Read only the first 100,000 rows
+df = pd.read_csv("large.csv", nrows=100_000)
+
+# Or skip rows and read a chunk
+df = pd.read_csv("large.csv", skiprows=range(1, 500_000), nrows=100_000)
+```
+</Tab>
+
+<Tab title="Process in chunks">
+```python
+# Process in chunks to keep memory low
+chunks = pd.read_csv("large.csv", chunksize=500_000)
+for chunk in chunks:
+    process(chunk)  # your processing logic
+```
+</Tab>
+</Tabs>
+</Card>
+
+## Advanced: parallel reading
+
+<Card title="Split the file and read in parallel">
+For maximum speed, split the CSV into parts and read them with multiple processes.
+
+<Steps>
+<Step title="Split the file" status="done">
+Use command-line tools to split without loading into Python:
+
+```bash
+# Split into 8 files of ~250 MB each (keeping the header)
+head -1 large.csv > header.csv
+split -l 2500000 large.csv part_
+```
+
+Or use `pandas` to split programmatically:
+```python
+import pandas as pd
+
+for i, chunk in enumerate(pd.read_csv("large.csv", chunksize=500_000)):
+    chunk.to_csv(f"part_{i}.csv", index=False)
+```
+</Step>
+
+<Step title="Read in parallel" status="current">
+```python
+from concurrent.futures import ProcessPoolExecutor
+import pandas as pd
+
+def read_part(filename):
+    return pd.read_csv(filename)
+
+with ProcessPoolExecutor(max_workers=8) as pool:
+    parts = list(pool.map(read_part, [f"part_{i}.csv" for i in range(8)]))
+
+df = pd.concat(parts, ignore_index=True)
+```
+</Step>
+
+<Step title="Clean up" status="todo">
+```python
+import os
+for i in range(8):
+    os.remove(f"part_{i}.csv")
+```
+</Step>
+</Steps>
+
+<Callout tone="info" title="When to parallelize">
+Parallel reading helps most on multi-core machines. On a typical 4–8 core laptop, you can get **3–6× faster** reads. The overhead of splitting is worth it for files larger than ~1 GB.
+</Callout>
+</Card>
+
+## Alternative: Polars (often the fastest)
+
+<Card title="Try Polars for big CSV files">
+Polars is a modern DataFrame library that's often **5–10× faster** than pandas for reading CSV files.
+
+```python
+import polars as pl
+
+df = pl.read_csv("large.csv")
+
+# You can also use lazy evaluation for even better performance
+df = pl.scan_csv("large.csv").collect()
+```
+
+<Callout tone="success" title="Real-world benchmark">
+On a 2 GB CSV with 10 million rows, Polars typically reads in **2–3 seconds** versus **15–25 seconds** for pandas. It also uses less memory.
+</Callout>
+</Card>
+
+## Comparison of approaches
+
+<Compare title="Speed vs. effort">
+| Approach | Speedup vs. default | Code changes | Best when |
+|---|---|---|---|
+| pandas + dtypes | 1.5–2× | Minimal | You need pandas anyway |
+| Read only needed columns | 2–4× | Small | You don't need all columns |
+| Chunked processing | 1–2× (per chunk) | Moderate | Memory is limited |
+| Parallel split + read | 3–6× | Moderate | Multi-core machine |
+| Polars | 5–10× | Rewrite some code | You can switch libraries |
+</Compare>
+
+## Recipe: full example
+
+<Card title="Complete working example">
+```python
+import pandas as pd
+import time
+
+start = time.time()
+
+# 1. Read with dtype hints
+df = pd.read_csv(
+    "large.csv",
+    engine="c",
+    dtype={
+        "id": "int32",
+        "name": "string",
+        "amount": "float32",
+        "date": "string",
+    },
+    parse_dates=["date"],
+)
+
+print(f"Loaded {len(df):,} rows in {time.time() - start:.1f} seconds")
+print(df.head())
+```
+</Card>
+
+<FollowUps>
+- How do I read a CSV faster if I only need to filter rows?
+- What's the best way to save a large DataFrame back to disk quickly?
+- How does Polars compare to pandas for other operations?
+- Can I use PyArrow to speed up CSV reading?
+</FollowUps>

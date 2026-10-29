@@ -1,0 +1,38 @@
+root = Card([
+    bedOccupancyTag,
+    erWaitTag,
+    admissionsChart,
+    patientsTable,
+    staffList,
+    criticalCallout,
+    readyForDischargeTag,
+    orTable,
+    suppliesLowTag,
+    fileIncidentBtn,
+    viewOtherDayBtn,
+    requestTransferBtn
+])
+bedOccupancyTag = Tag("85% occupancy", null, "md", "success")
+erWaitTag = Tag("ER Wait: 15 min", null, "md", "info")
+admissionDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+admissionValues = [5, 8, 12, 7, 15, 10, 9, 13, 11, 14, 16, 12, 18, 15]
+admissionsSeries = Series("Admissions", admissionValues)
+admissionsChart = LineChart(labels: admissionDays, series: [admissionsSeries], variant: "linear", xLabel: "Day", yLabel: "Admissions")
+deptNames = ["Cardiology", "Neurology", "Orthopedics", "Pediatrics", "Oncology"]
+patientCounts = [30, 22, 45, 18, 12]
+deptCol = Col("Department", deptNames, "string")
+countCol = Col("Patients", patientCounts, "number")
+patientsTable = Table(columns: [deptCol, countCol])
+staffItems = [ListItem("Dr. Smith", "Physician"), ListItem("Nurse Jane", "Nurse"), ListItem("Tech Alan", "Technician"), ListItem("Doc Lee", "Doctor"), ListItem("Admin Paul", "Administrator")]
+staffList = ListBlock(items: staffItems, variant: "number")
+criticalCallout = Callout(variant: "error", title: "Critical Patients", description: "3 patients")
+readyForDischargeTag = Tag("Ready for discharge: 5", null, "md", "info")
+orNames = ["OR 1", "OR 2", "OR 3"]
+orTimes = ["08:00", "10:30", "13:00"]
+orCol = Col("Operating Room", orNames, "string")
+timeCol = Col("Time", orTimes, "string")
+orTable = Table(columns: [orCol, timeCol])
+suppliesLowTag = Tag("Supplies low: 2 items", null, "md", "warning")
+fileIncidentBtn = Button("File Incident", null, "primary")
+viewOtherDayBtn = Button("View another day", null, "secondary")
+requestTransferBtn = Button("Request Patient Transfer", null, "primary")

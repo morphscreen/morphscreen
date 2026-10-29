@@ -1,0 +1,199 @@
+# Streaming Operations Dashboard
+
+<Columns>
+<Stat label="Live Viewers" value="2.4M" change="+12% vs last hour" tone="success" />
+<Stat label="Avg Buffering Rate" value="0.84%" change="-0.12pp" tone="success" />
+<Stat label="Recommendation CTR" value="4.7%" change="+0.3pp" tone="info" />
+<Stat label="Zero-Result Searches" value="18.2K" change="+5% WoW" tone="warning" />
+</Columns>
+
+<Card title="Regional Focus">
+<Select label="Select Region" name="region" placeholder="All Regions" options="All Regions | North America | Europe | APAC | LATAM | MEA" />
+</Card>
+
+<Columns>
+<Card title="Most-Watched Titles (Last 24h)">
+<Chart type="horizontal" x="Hours" y="Title">
+| Title | Hours |
+|---|---|
+| The Crown S6 | 4.2M |
+| Stranger Things S4 | 3.8M |
+| Wednesday S1 | 3.1M |
+| Squid Game S1 | 2.9M |
+| Bridgerton S3 | 2.7M |
+| The Witcher S3 | 2.4M |
+| Money Heist S5 | 2.1M |
+| Arcane S2 | 1.9M |
+</Chart>
+</Card>
+
+<Card title="Watch Time — Past 30 Days">
+<Chart type="line" x="Date" y="Hours (M)">
+| Date | Hours (M) |
+|---|---|
+| Oct 1 | 82.4 |
+| Oct 4 | 88.1 |
+| Oct 7 | 91.3 |
+| Oct 10 | 95.7 |
+| Oct 13 | 102.2 |
+| Oct 16 | 108.9 |
+| Oct 19 | 115.4 |
+| Oct 22 | 118.7 |
+| Oct 25 | 122.1 |
+| Oct 28 | 125.6 |
+| Oct 31 | 128.3 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="New Subscribers vs Cancellations">
+<Chart type="bar" x="Week" y="Count (K)">
+| Week | New Subs | Cancellations |
+|---|---|---|
+| W1 | 142 | 28 |
+| W2 | 156 | 31 |
+| W3 | 168 | 29 |
+| W4 | 174 | 33 |
+| W5 | 181 | 30 |
+| W6 | 189 | 27 |
+| W7 | 195 | 25 |
+| W8 | 202 | 28 |
+</Chart>
+</Card>
+
+<Card title="Performance by Genre">
+<Chart type="horizontal" x="Hours (M)" y="Genre">
+| Genre | Hours (M) |
+|---|---|
+| Drama | 42.1 |
+| Comedy | 28.7 |
+| Action | 24.3 |
+| Documentary | 18.9 |
+| Sci-Fi | 15.6 |
+| Horror | 12.4 |
+| Animation | 11.8 |
+| Reality | 9.2 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Buffering Rate Trend">
+<Chart type="line" x="Date" y="Rate (%)">
+| Date | Rate (%) |
+|---|---|
+| Oct 1 | 1.12 |
+| Oct 4 | 1.05 |
+| Oct 7 | 0.98 |
+| Oct 10 | 0.92 |
+| Oct 13 | 0.87 |
+| Oct 16 | 0.84 |
+| Oct 19 | 0.81 |
+| Oct 22 | 0.79 |
+| Oct 25 | 0.82 |
+| Oct 28 | 0.84 |
+| Oct 31 | 0.84 |
+</Chart>
+</Card>
+
+<Card title="Delivery Health by Region">
+<Chart type="bar" x="Region" y="Health Score">
+| Region | Health Score |
+|---|---|
+| North America | 98.7 |
+| Europe | 97.9 |
+| APAC | 96.4 |
+| LATAM | 94.2 |
+| MEA | 91.8 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Releases Coming This Month">
+| Date | Title | Type | Genre |
+|---|---|---|---|
+| Nov 3 | The Diplomat S2 | Series | Political Thriller |
+| Nov 7 | Chicken Run 2 | Film | Animation |
+| Nov 10 | F1: Drive to Survive S6 | Series | Sports Doc |
+| Nov 14 | Rebel Moon Pt 2 | Film | Sci-Fi |
+| Nov 17 | Squid Game: The Challenge | Series | Reality |
+| Nov 21 | The Killer | Film | Action |
+| Nov 24 | Virgin River S5 | Series | Romance |
+| Nov 28 | Maestro | Film | Biography |
+</Card>
+
+<Card title="Licenses Expiring Soon">
+| Title | Expires | Days Left | Action |
+|---|---|---|---|
+| The Office (US) | Dec 15 | 15 | <Badge tone="danger">Renew</Badge> |
+| Parks & Recreation | Dec 22 | 22 | <Badge tone="warning">Negotiating</Badge> |
+| Friends | Jan 5 | 36 | <Badge tone="info">Auto-renew</Badge> |
+| Harry Potter Films | Jan 12 | 43 | <Badge tone="warning">Reviewing</Badge> |
+| Marvel Films (Phase 1-3) | Jan 20 | 51 | <Badge tone="success">Extended</Badge> |
+| Seinfeld | Feb 1 | 63 | <Badge tone="info">Monitoring</Badge> |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Revenue Split by Plan">
+<Chart type="donut" x="Plan" y="Revenue (%)">
+| Plan | Revenue (%) |
+|---|---|
+| Premium 4K | 42 |
+| Standard HD | 35 |
+| Basic SD | 15 |
+| Mobile Only | 8 |
+</Chart>
+</Card>
+
+<Card title="Viewing Split by Device">
+<Chart type="donut" x="Device" y="Hours (%)">
+| Device | Hours (%) |
+|---|---|
+| Smart TV | 48 |
+| Mobile | 28 |
+| Desktop | 14 |
+| Tablet | 7 |
+| Gaming Console | 3 |
+</Chart>
+</Card>
+</Columns>
+
+<Card title="Feature Flags">
+| Flag | Description | State | Owner |
+|---|---|---|---|
+| new_recommendation_engine | ML-based recs v2 | <Switch name="new_rec_engine" value="true" /> | ML Team |
+| shuffle_play | Shuffle episodes | <Switch name="shuffle_play" value="true" /> | Product |
+| live_sports_dvr | Cloud DVR for live | <Switch name="live_dvr" value="false" /> | Platform |
+| profile_pin | PIN-protected profiles | <Switch name="profile_pin" value="true" /> | Security |
+| offline_downloads_4k | 4K download support | <Switch name="offline_4k" value="false" /> | Client |
+| social_watch_party | Sync viewing + chat | <Switch name="watch_party" value="true" /> | Social |
+| ai_dubbing | Auto-dubbed audio tracks | <Switch name="ai_dubbing" value="false" /> | AI Team |
+| dynamic_ad_insertion | Server-side ad stitching | <Switch name="dai" value="true" /> | Ads |
+</Card>
+
+<Card title="Promote Title on Home Screen">
+<Form name="promote-title">
+<Columns>
+<Select label="Title" name="title" placeholder="Select a title" options="The Crown S6 | Stranger Things S4 | Wednesday S1 | Squid Game S1 | Bridgerton S3 | The Witcher S3 | Money Heist S5 | Arcane S2 | Chicken Run 2 | Rebel Moon Pt 2" required="true" />
+<Select label="Placement" name="placement" placeholder="Choose placement" options="Hero Banner | Top Row | Continue Watching | Trending Now | Because You Watched | Genre Row" required="true" />
+</Columns>
+<Columns>
+<Input label="Start Date" name="start_date" type="date" required="true" />
+<Input label="End Date" name="end_date" type="date" required="true" />
+</Columns>
+<TextArea label="Custom Copy (optional)" name="copy" placeholder="Override default promotional text" rows="3" />
+<Button>Promote Title</Button>
+<Button variant="secondary">Clear Promotion</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show me buffering rate by ISP for North America
+- Compare recommendation CTR by user segment
+- List titles with highest completion rates this month
+- Export subscriber churn cohort analysis
+- Check CDN capacity utilization for APAC region
+</FollowUps>

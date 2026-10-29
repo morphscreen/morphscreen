@@ -1,0 +1,212 @@
+# Emergency Response Coordination Center
+
+Cyclone Kavya response — Day 3, 09:30 local time. <Badge tone="danger">Overall severity: Critical</Badge>
+
+<Card title="2 — Overall severity summary" subtitle="24 active incidents across 5 zones">
+<Columns>
+<Stat label="Critical" value="5" tone="danger" icon="map-pin" />
+<Stat label="High" value="8" tone="warning" icon="chart-line" />
+<Stat label="Medium" value="7" tone="info" />
+<Stat label="Low" value="4" tone="neutral" />
+</Columns>
+
+<Chart type="bar" x="Zone" y="Incidents">
+| Zone | Critical | High | Medium | Low |
+|---|---|---|---|---|
+| North | 2 | 2 | 1 | 0 |
+| South | 1 | 2 | 2 | 1 |
+| East | 1 | 2 | 2 | 2 |
+| West | 1 | 2 | 1 | 0 |
+| Central | 0 | 0 | 1 | 1 |
+</Chart>
+</Card>
+
+<Card title="17 — Zone focus" subtitle="Narrow the dashboard to one operational zone">
+<Select label="Focus zone" options="All zones | North | South | East | West | Central" placeholder="All zones" />
+<Callout tone="info" title="Applies to everything below">Incidents, shelters, routes, roads, hospitals, volunteers, tasks, and aid requests will filter to the selected zone.</Callout>
+</Card>
+
+<Columns>
+<Card title="1 — Active incidents by zone" subtitle="Severity per incident">
+| ID | Zone | Incident | Severity | Responding units |
+|---|---|---|---|---|
+| INC-104 | North | Flooding | Critical | Boat 3, USAR 1 |
+| INC-107 | North | Building collapse | High | USAR 2, Med 1 |
+| INC-112 | South | Stranded residents | High | Boat 1 |
+| INC-118 | East | Fire after storm | Medium | Engine 4 |
+| INC-121 | West | Medical evacuation | Critical | Heli 1, Med 2 |
+| INC-125 | Central | Power line down | Low | Utility 2 |
+| INC-129 | South | Supply route blocked | Medium | Dozer 1 |
+</Card>
+
+<Card title="3 — Response resources available" subtitle="Operational today">
+<Columns>
+<Stat label="Vehicles" value="68" icon="truck" />
+<Stat label="Personnel" value="214" icon="users" />
+<Stat label="Meals" value="12,400" icon="package" />
+<Stat label="Water" value="8,500 L" icon="droplet" />
+</Columns>
+<Columns>
+<Stat label="Blankets" value="3,200" />
+<Stat label="Fuel" value="4,200 L" />
+<Stat label="Medical kits" value="180" />
+<Stat label="Boats" value="12" />
+</Columns>
+<Callout tone="warning" title="Low stock">Blankets and medical kits are below the 48-hour target. Consider requesting more.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="7 — People rescued and casualties" subtitle="Since start of response">
+<Columns>
+<Stat label="Rescued" value="1,842" tone="success" change="+126 today" icon="lifebuoy" />
+<Stat label="Casualties" value="57" tone="danger" change="+4 today" icon="heart" />
+<Stat label="Missing" value="23" tone="warning" icon="magnifying-glass" />
+</Columns>
+</Card>
+
+<Card title="9 — Donations received" subtitle="Cash and in-kind relief">
+<Columns>
+<Stat label="Cash" value="$2.4M" tone="success" icon="hand-coins" />
+<Stat label="In-kind value" value="$380K" icon="package" />
+<Stat label="Relief kits" value="6,200" icon="first-aid" />
+</Columns>
+<Callout tone="info" title="Urgently needed">Drinking water, baby food, blankets, and insulin.</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="4 — Shelters: capacity and occupancy" subtitle="Beds free = capacity − occupied">
+| Shelter | Zone | Capacity | Occupied | Free |
+|---|---|---|---|---|
+| Central Stadium | Central | 800 | 612 | 188 |
+| West Convention Center | West | 400 | 389 | 11 |
+| City High School | North | 300 | 245 | 55 |
+| East Church Hall | East | 200 | 88 | 112 |
+| South School | South | 250 | 40 | 210 |
+| North Community Hall | North | 150 | 150 | 0 |
+</Card>
+
+<Card title="5 — Evacuation routes" subtitle="Status of each route">
+| Route | Zone | Status | Note |
+|---|---|---|---|
+| NH-16 Northbound | North | Congested | Slow; debris at km 12 |
+| Harbor Rd | South | Open | Minor flooding |
+| Ridge Blvd | West | Closed | Landslide at km 4 |
+| Old Bridge Rd | East | Closed | Structural damage |
+| Central Expressway | Central | Open | Normal flow |
+| Lakeview Dr | East | Congested | Flooded margins |
+</Card>
+</Columns>
+
+<Card title="6 — Weather forecast: next 48 hours" subtitle="From 09:00 today">
+<Chart type="line" x="Time" y="Value">
+| Time | Temp (°C) | Wind (km/h) | Rainfall (mm) |
+|---|---|---|---|
+| 09:00 | 26 | 45 | 12 |
+| 15:00 | 25 | 52 | 18 |
+| 21:00 | 24 | 58 | 22 |
+| 03:00 | 24 | 63 | 25 |
+| 09:00 | 23 | 61 | 20 |
+| 15:00 | 23 | 55 | 15 |
+| 21:00 | 25 | 40 | 8 |
+| 09:00 | 26 | 35 | 5 |
+</Chart>
+<Callout tone="warning" title="Heavy rain through tonight">Flash flooding possible in East and South zones; winds ease after 21:00 tomorrow.</Callout>
+</Card>
+
+<Columns>
+<Card title="8 — Volunteers on duty" subtitle="Assignments by zone">
+| Volunteer | Assignment | Zone | Status |
+|---|---|---|---|
+| Asha Raman | Shelter support | North | On duty |
+| Miguel Torres | First aid | South | On duty |
+| Priya Sharma | Food distribution | East | On duty |
+| James Whitfield | Transport | Central | On duty |
+| Lena Kovač | Comms relay | West | On duty |
+| David Osei | Boat rescue | North | On duty |
+</Card>
+
+<Card title="10 — Aid requests awaiting action" subtitle="Unfulfilled requests">
+| ID | Zone | Request | Priority | Age |
+|---|---|---|---|---|
+| AR-305 | Central | Insulin supply | Critical | 30 min |
+| AR-301 | East | 200 blankets | Critical | 2 h |
+| AR-302 | North | 1 water tanker | High | 1 h |
+| AR-304 | West | Diesel 500 L | High | 3 h |
+| AR-303 | South | Baby food packs | Medium | 4 h |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="11 — Communication channels" subtitle="Operational status">
+| Channel | Status | Note |
+|---|---|---|
+| VHF radio | Up | Primary coordination |
+| Satellite phone | Up | Backup link |
+| Cellular network | Degraded | ~40% capacity |
+| Public sirens | Down | Fault in East sector |
+| Starlink internet | Up | 85 Mbps |
+| Amateur radio | Up | Volunteer net active |
+</Card>
+
+<Card title="12 — Roads closed" subtitle="Segments currently closed">
+| Road segment | Zone | Reason | Est. reopening |
+|---|---|---|---|
+| NH-16, km 12–18 | North | Flooded | 24 h |
+| Old Bridge Rd | East | Structural damage | 72 h |
+| Harbor Access Rd | South | Debris | 12 h |
+| Ridge Blvd | West | Landslide | 48 h |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="13 — Nearby hospitals: free beds" subtitle="Acute care capacity">
+| Hospital | Zone | Total beds | Free beds | ER |
+|---|---|---|---|---|
+| Central General | Central | 420 | 65 | Open |
+| North District Hospital | North | 250 | 18 | Critical |
+| East Community Hospital | East | 120 | 42 | Open |
+| South Samaritan | South | 180 | 0 | Full |
+| West Peak Medical | West | 95 | 12 | Open |
+</Card>
+
+<Card title="14 — Open tasks" subtitle="Assigned and in progress">
+| Task | Assignee | Zone | Priority | Due |
+|---|---|---|---|---|
+| Medical evac West Peak | Heli 1 | West | Critical | ASAP |
+| Clear NH-16 debris | Dozer crew 2 | North | Critical | 16:00 |
+| Restore siren controller | Comms unit | East | High | 20:00 |
+| Deliver blankets to East Church | Volunteer transport | East | High | 18:00 |
+| Set up water point South School | PW crew | South | Medium | 19:00 |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="15 — Request more resources" subtitle="Type and quantity are routed to logistics">
+<Form name="resource-request">
+<Select label="Zone" options="North | South | East | West | Central" placeholder="Select zone" />
+<Select label="Resource type" options="Vehicles | Boats | Fuel | Medical supplies | Water | Food | Blankets | Generators | Personnel" placeholder="Select type" />
+<Input label="Quantity" type="number" placeholder="e.g. 50" />
+<Select label="Priority" options="Routine | Urgent | Critical" placeholder="Routine" />
+<Button>Submit request</Button>
+</Form>
+</Card>
+
+<Card title="16 — Broadcast an update" subtitle="Send a message out on public channels">
+<Form name="broadcast">
+<Select label="Channel" options="All channels | VHF radio | Satellite | Sirens | Cellular | Internet" placeholder="All channels" />
+<TextArea label="Message" placeholder="Type the update to broadcast…" rows="4" required="true" />
+<Button variant="primary">Broadcast now</Button>
+</Form>
+</Card>
+
+<Card title="18 — File a situation report" subtitle="From the field to command">
+<Form name="sitrep">
+<Input label="Reported by" placeholder="Name / unit" />
+<Select label="Zone" options="North | South | East | West | Central | All zones" placeholder="Select zone" />
+<TextArea label="Situation summary" placeholder="What is happening right now? People affected? Needs?" rows="4" required="true" />
+<Button>Submit sitrep</Button>
+</Form>
+</Card>
+</Columns>

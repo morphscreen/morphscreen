@@ -1,0 +1,36 @@
+# Support lead's morning view
+
+<Badge tone="info">Monday · 09:00</Badge>
+
+<Columns>
+<Stat label="Open tickets" value="23" note="+4 since yesterday" icon="ticket" />
+<Stat label="Avg first response" value="14 min" note="Target: under 20 min" tone="success" icon="timer" />
+<Stat label="Resolved yesterday" value="41" note="Best day this month" icon="check-circle" />
+</Columns>
+
+<Callout tone="warning" title="Needs attention">
+Two high-priority tickets are close to breaching SLA. Turn on the High priority filter below to focus on them.
+</Callout>
+
+<Card title="Recent tickets" subtitle="Newest first — five most recent">
+<Switch label="High priority only" hint="Narrows the list to urgent tickets" />
+
+| Ticket | Subject | Priority | Status | Age |
+|---|---|---|---|---|
+| #2841 | Payment failed at checkout | <Badge tone="danger">High</Badge> | Open | 12m |
+| #2840 | Cannot reset password | <Badge tone="warning">Medium</Badge> | Open | 34m |
+| #2839 | Invoice missing tax ID | <Badge tone="neutral">Low</Badge> | Waiting on customer | 1h |
+| #2838 | API rate limit too strict | <Badge tone="danger">High</Badge> | Open | 2h |
+| #2837 | Mobile app crashes on iOS 18 | <Badge tone="danger">High</Badge> | Open | 3h |
+
+*Showing 5 of 23 open tickets.*
+</Card>
+
+<Card title="Open a new ticket" subtitle="File it right from the morning view">
+<Form name="new-ticket">
+<Input label="Subject" placeholder="Brief summary" required="true" />
+<Select label="Priority" options="Low | Medium | High" placeholder="Choose a priority" />
+<TextArea label="Description" rows="3" placeholder="What's happening?" />
+<Button icon="plus" variant="primary">Open ticket</Button>
+</Form>
+</Card>

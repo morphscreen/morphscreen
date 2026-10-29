@@ -1,0 +1,62 @@
+# Month-End Finance View
+
+<Card title="Cash Position">
+<Columns>
+<Stat label="Cash on Hand" value="$847,320" change="+2.3% vs last month" tone="success" icon="wallet" />
+<Stat label="Monthly Burn" value="$143,500" change="-5.1% vs last month" tone="info" icon="trend-down" />
+<Stat label="Runway" value="5.9 months" change="+0.3 months" tone="success" icon="clock" />
+</Columns>
+</Card>
+
+<Card title="Expenses by Category">
+<Chart type="donut" title="This Month's Spend">
+| Category | Amount |
+|---|---|
+| Payroll & Benefits | 68500 |
+| Cloud Infrastructure | 22400 |
+| Marketing & Ads | 18900 |
+| Office & Admin | 12100 |
+| Professional Services | 9800 |
+| Travel & Events | 7200 |
+| Other | 4600 |
+</Chart>
+</Card>
+
+<Card title="Large Transactions ($10k+) This Month">
+| Date | Description | Category | Amount |
+|---|---|---|---|
+| Mar 5 | AWS Q1 Reserved Instances | Cloud Infrastructure | $24,300 |
+| Mar 8 | LinkedIn Ads Campaign | Marketing & Ads | $15,800 |
+| Mar 12 | Payroll Processing (Mar 1-15) | Payroll & Benefits | $34,250 |
+| Mar 18 | Office Lease - April | Office & Admin | $12,100 |
+| Mar 22 | Legal Retainer - Q2 | Professional Services | $10,000 |
+| Mar 25 | Payroll Processing (Mar 16-31) | Payroll & Benefits | $34,250 |
+| Mar 28 | Google Cloud Credits | Cloud Infrastructure | $11,200 |
+</Card>
+
+<Card title="Select Month">
+<Form name="select-month">
+<Date label="View financials for" name="month" hint="Choose any month to see its snapshot" />
+<Button variant="primary" label="View Month">View Month</Button>
+</Form>
+</Card>
+
+<Card title="Download Statement">
+<Columns>
+<Button variant="primary" icon="download" label="Download PDF">Download Full Statement (PDF)</Button>
+<Button variant="secondary" icon="download" label="Download CSV">Download Raw Data (CSV)</Button>
+</Columns>
+</Card>
+
+<Card title="Quick Actions">
+<Button ask="Show me the detailed breakdown for Cloud Infrastructure">Breakdown: Cloud Infrastructure</Button>
+<Button ask="Compare this month to last month">Compare to Last Month</Button>
+<Button ask="Forecast runway at current burn rate">Runway Forecast</Button>
+</Card>
+
+<FollowUps>
+- Show me the top 5 cost-saving opportunities
+- What's our revenue this month?
+- Alert me if burn exceeds $150k next month
+- Compare actuals to budget
+</FollowUps>

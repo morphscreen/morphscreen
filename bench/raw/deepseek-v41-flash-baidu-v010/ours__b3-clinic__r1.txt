@@ -1,0 +1,80 @@
+# Front desk — today
+
+<Card title="Live status" subtitle="Tuesday, 14 May">
+<Columns>
+<Stat label="Patients expected" value="18" icon="users" />
+<Stat label="Checked in" value="7" change="+2 in last 20 min" tone="info" icon="check-circle" />
+<Stat label="No-show rate" value="6.2%" change="-1.4 pts vs April" tone="success" icon="chart-line" />
+<Stat label="Rooms free now" value="3 of 8" tone="warning" icon="door" />
+</Columns>
+</Card>
+
+<Card title="Next patient called out">
+<Callout tone="info" title="Now calling — Room 4">
+**Marcus Bell** · 10:40 · Dr. Osei · General consult
+
+<Button variant="primary" ask="Mark Marcus Bell as seated in Room 4">Mark as seated</Button>
+<Button variant="tertiary" ask="Send Marcus Bell back to the waiting room">Send back to waiting</Button>
+</Callout>
+</Card>
+
+<Card title="Today's appointments" subtitle="18 booked · 7 checked in · 2 no-shows so far">
+| Time | Patient | Provider | Room | Status |
+|---|---|---|---|---|
+| 08:30 | Elena Vasquez | Dr. Osei | 2 | Seen |
+| 09:00 | Tom Whitfield | Dr. Osei | 2 | Seen |
+| 09:15 | Priya Raman | Dr. Lund | 5 | No-show |
+| 09:40 | Grace Kim | Dr. Osei | 2 | Seen |
+| 10:10 | Daniel Okafor | Dr. Lund | 5 | Checked in |
+| 10:40 | Marcus Bell | Dr. Osei | 4 | Called |
+| 11:00 | Sofia Marchetti | Dr. Reyes | 7 | Checked in |
+| 11:20 | Aaron Feld | Dr. Lund | 5 | Checked in |
+| 11:45 | Nia Thompson | Dr. Reyes | 7 | Booked |
+| 12:10 | Liam Doyle | Dr. Osei | 4 | Booked |
+| 13:00 | Hana Sato | Dr. Lund | 5 | Booked |
+| 13:30 | Owen Brady | Dr. Reyes | 7 | Booked |
+| 14:00 | Fatima Noor | Dr. Osei | 2 | Booked |
+| 14:20 | Jack Ellery | Dr. Lund | 5 | Booked |
+| 14:50 | Rosa Delgado | Dr. Reyes | 7 | Booked |
+| 15:15 | Ben Achebe | Dr. Osei | 4 | Booked |
+| 15:40 | Chloe Nakamura | Dr. Lund | 5 | Booked |
+| 16:10 | Samir Haddad | Dr. Reyes | 7 | Booked |
+
+<Button variant="secondary" ask="Show only the appointments still waiting to be checked in">Show waiting only</Button>
+<Button variant="tertiary" ask="Show the no-shows from today">Show no-shows</Button>
+</Card>
+
+<Card title="Rooms right now" subtitle="Updated 2 minutes ago">
+<Columns>
+<Stat label="Room 2" value="In use" note="Grace Kim · until 10:35" tone="warning" />
+<Stat label="Room 4" value="Free" note="Next: Marcus Bell, 10:40" tone="success" />
+<Stat label="Room 5" value="Free" note="Next: Aaron Feld, 11:20" tone="success" />
+<Stat label="Room 7" value="Free" note="Next: Sofia Marchetti, 11:00" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Check a patient in" subtitle="Search by name or appointment time">
+<Form name="check-in">
+<Input label="Patient name" name="patient" placeholder="Start typing a name…" hint="Matches today's booked list" required="true" />
+<Select label="Appointment time" name="time" placeholder="Pick the booked slot" options="08:30 Elena Vasquez | 09:00 Tom Whitfield | 09:15 Priya Raman | 09:40 Grace Kim | 10:10 Daniel Okafor | 10:40 Marcus Bell | 11:00 Sofia Marchetti | 11:20 Aaron Feld | 11:45 Nia Thompson | 12:10 Liam Doyle | 13:00 Hana Sato | 13:30 Owen Brady | 14:00 Fatima Noor | 14:20 Jack Ellery | 14:50 Rosa Delgado | 15:15 Ben Achebe | 15:40 Chloe Nakamura | 16:10 Samir Haddad" required="true" />
+<Radio label="Patient arrived" options="On time | Late | Arrived early" />
+<Switch label="Send to waiting room screen" name="waiting-room" value=true />
+<Button>Check in patient</Button>
+<Button variant="tertiary">Clear</Button>
+</Form>
+</Card>
+
+<Card title="Move to another day">
+<Columns>
+<Button variant="secondary" icon="arrow-left" ask="Show me Monday, 13 May">Previous day</Button>
+<Button variant="secondary" icon="arrow-right" ask="Show me Wednesday, 15 May">Next day</Button>
+<Button variant="tertiary" icon="calendar" ask="Jump to a specific date — ask me which one">Pick a date</Button>
+</Columns>
+</Card>
+
+<FollowUps>
+- Who is still waiting to be checked in?
+- Which provider has the most open slots this afternoon?
+- Show me this month's no-show list
+- Which room frees up next?
+</FollowUps>

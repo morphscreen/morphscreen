@@ -1,0 +1,1219 @@
+/* MorphScreen default theme (web), roadmap Q11: IBM Plex with petrol.
+
+   It styles answers and nothing else, so it can go on any app's page
+   (roadmap C5): every rule is scoped to an answer (.ms-answer, which the SDK
+   puts on the element it draws into) or the agent's thread (.ms-thread),
+   every class is ms- (the core writes them so), and the app's own components
+   inside an answer (.ms-custom) keep the app's styles. Each selector carries
+   one .ms-answer more than it would alone, so an app's element rules
+   (Bootstrap's reboot: h1, p, table) don't restyle answers whichever
+   stylesheet loads first. The page around a server-rendered answer (its
+   background, its column) is page.css's.
+
+   Layout rules, applied everywhere:
+   1. One spacing scale (--ms-s1 to --ms-s6). Containers space their children; the
+      children carry no margins of their own, so gaps are always the same kind.
+      Blocks in an answer sit 24 px apart, paragraphs 12, a heading has more
+      room above than below.
+   2. Only the outermost card is a box (a hairline, a resting shadow). Inside
+      it, sections are separated by a hairline and a larger gap; tiles inside a
+      card are a quiet fill, never a box in a box.
+   3. Columns are symmetric: the renderer picks 2, 3 or 4 equal columns from
+      the child count (6 as 3x2, 8 as 4x2), and tiles in a row are equal height.
+
+   Colors, type, corners, depth and motion come from the theme,
+   spec/theme.tokens.json (render/tokens.css, generated; the build puts the
+   faces and tokens first). No JavaScript is needed to read or use anything here: tabs switch
+   with radio inputs, details open, forms submit. The web SDK lays its designed
+   controls (pickers, players, morphs) over the native ones and marks what it
+   adds with data-ms-added. data-theme="mono" on <html> is the grayscale
+   palette; "light"/"dark" pin the scheme. Tone is a light tint with a small
+   mark, never a colored side stripe. */
+
+/* Icons for CSS masks: shapes only, colored by the element (background: currentColor or a tone). */
+:root {
+  --ms-i-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+  --ms-i-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 6.5l11 11M17.5 6.5l-11 11'/%3E%3C/svg%3E");
+  --ms-i-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  --ms-i-chevron-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E");
+  --ms-i-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h13M13 6.5l5.5 5.5-5.5 5.5'/%3E%3C/svg%3E");
+  --ms-i-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+  --ms-i-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+  --ms-i-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5.5M12 7.7v.2'/%3E%3C/svg%3E");
+  --ms-i-success: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8.2 12.3l2.6 2.6 5-5.3'/%3E%3C/svg%3E");
+  --ms-i-warning: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 4L2.8 19.5h18.4z'/%3E%3Cpath d='M12 10v4.2M12 16.9v.2'/%3E%3C/svg%3E");
+  --ms-i-danger: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7.5v5.5M12 16.2v.2'/%3E%3C/svg%3E");
+  --ms-i-note: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4.5h14v15H5z'/%3E%3Cpath d='M8.5 9h7M8.5 12.5h7M8.5 16h4'/%3E%3C/svg%3E");
+  --ms-i-calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='5.5' width='16' height='14.5' rx='2'/%3E%3Cpath d='M4 10h16M8.5 3.5v4M15.5 3.5v4'/%3E%3C/svg%3E");
+  --ms-i-calendar-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='5.5' width='16' height='14.5' rx='2'/%3E%3Cpath d='M4 10h16M8.5 3.5v4M15.5 3.5v4M12 12.5v5M9.5 15h5'/%3E%3C/svg%3E");
+  --ms-i-clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M12 7.5V12l3 2'/%3E%3C/svg%3E");
+  --ms-i-upload: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15.5V4.5M7.5 9L12 4.5 16.5 9'/%3E%3Cpath d='M4.5 14.5V19a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4.5'/%3E%3C/svg%3E");
+  --ms-i-camera: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8.5h3.2L9 6h6l1.8 2.5H20V19H4z'/%3E%3Ccircle cx='12' cy='13.2' r='3.3'/%3E%3C/svg%3E");
+  --ms-i-scan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8.5V5h3.5M16.5 5H20v3.5M20 15.5V19h-3.5M7.5 19H4v-3.5M4 12h16'/%3E%3C/svg%3E");
+  --ms-i-mic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='3.5' width='6' height='11' rx='3'/%3E%3Cpath d='M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v2.5'/%3E%3C/svg%3E");
+  --ms-i-pin: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z'/%3E%3Ccircle cx='12' cy='10' r='2.3'/%3E%3C/svg%3E");
+  --ms-i-user: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8.5' r='3.5'/%3E%3Cpath d='M5 19.5c1.2-3.3 4-5 7-5s5.8 1.7 7 5'/%3E%3C/svg%3E");
+  --ms-i-share: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='6.5' cy='12' r='2.5'/%3E%3Ccircle cx='17.5' cy='6' r='2.5'/%3E%3Ccircle cx='17.5' cy='18' r='2.5'/%3E%3Cpath d='M8.7 10.8l6.6-3.6M8.7 13.2l6.6 3.6'/%3E%3C/svg%3E");
+  --ms-i-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 14a4.2 4.2 0 0 0 6 0l3-3a4.2 4.2 0 0 0-6-6l-1 1M14 10a4.2 4.2 0 0 0-6 0l-3 3a4.2 4.2 0 0 0 6 6l1-1'/%3E%3C/svg%3E");
+  --ms-i-folder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 7a1.5 1.5 0 0 1 1.5-1.5h4.3l2 2.2H19a1.5 1.5 0 0 1 1.5 1.5v8.3A1.5 1.5 0 0 1 19 19H5a1.5 1.5 0 0 1-1.5-1.5z'/%3E%3C/svg%3E");
+  --ms-i-file: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 3.5h7.5l4.5 4.5v12.5h-12z'/%3E%3Cpath d='M14 3.5V8h4.5'/%3E%3C/svg%3E");
+  --ms-i-pen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20l1-4.2L15.6 5.2a2 2 0 0 1 2.8 0l.4.4a2 2 0 0 1 0 2.8L8.2 19z'/%3E%3Cpath d='M13.5 7.3l3.2 3.2'/%3E%3C/svg%3E");
+  --ms-i-quote: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.5 7H6.8A1.8 1.8 0 0 0 5 8.8v2.4A1.8 1.8 0 0 0 6.8 13H9v.5c0 1.8-1 3-3 3.5M19 7h-2.7a1.8 1.8 0 0 0-1.8 1.8v2.4a1.8 1.8 0 0 0 1.8 1.8h2.2v.5c0 1.8-1 3-3 3.5'/%3E%3C/svg%3E");
+  --ms-i-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M16 16l4 4'/%3E%3C/svg%3E");
+  --ms-i-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 5.5v13l10.5-6.5z' fill='black' stroke='none'/%3E%3C/svg%3E");
+  --ms-i-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3L2.8 9.5l6.4-.8z' fill='black' stroke='none'/%3E%3C/svg%3E");
+  --ms-i-dash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 12h10'/%3E%3C/svg%3E");
+}
+
+/* An answer, and the agent's thread, are set in our type wherever they're
+   shown: what the page around them sets on text that inherits (MUI's letter
+   spacing, an uppercase heading) stops at their edge, and their light or
+   dark is theirs, not the page's. */
+.ms-answer, .ms-thread { color: var(--ms-ink); font: var(--ms-t-body)/var(--ms-lh-body) var(--ms-font); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color-scheme: var(--ms-scheme); letter-spacing: normal; word-spacing: normal; text-transform: none; text-indent: 0; text-align: start; text-shadow: none; white-space: normal; word-break: normal; overflow-wrap: normal; hyphens: manual; font-feature-settings: normal; font-variation-settings: normal; list-style: disc outside; cursor: auto; visibility: visible; }
+.ms-thread { box-sizing: border-box; }
+/* The page's own resets (Tailwind's preflight, Bootstrap's reboot, MUI's
+   baseline) don't reach inside: what they change, and nothing more, goes back
+   to what the browser gives it, as on a page of its own. Every rule below
+   outranks these, so this file's own styles stand; an app's own components
+   (.ms-custom) keep the app's. Only these properties: "all: revert" did the
+   same at a third of an answer's CPU while it streamed, most of it on every
+   element's ::before, ::after and ::marker (test-embed.mjs checks the
+   answers in all three pages, pseudo-elements included). SVG, MathML and
+   whatever is sized by its own attributes keep those attributes (reverting
+   everything would drop them), and get back only what a reset changes on them. */
+.ms-answer :where(:not(svg, svg *, math, math *, [width], [height])):not(.ms-custom *) { box-sizing: revert; margin: revert; padding: revert; border: revert; border-radius: revert; outline: revert; font: revert; line-height: revert; letter-spacing: revert; word-spacing: revert; text-transform: revert; text-decoration: revert; text-align: revert; text-indent: revert; text-shadow: revert; color: revert; background: revert; list-style: revert; display: revert; vertical-align: revert; float: revert; width: revert; max-width: revert; min-width: revert; height: revert; max-height: revert; min-height: revert; caption-side: revert; border-collapse: revert; border-spacing: revert; white-space: revert; opacity: revert; cursor: revert; appearance: revert; overflow: revert; object-fit: revert; quotes: revert; content: revert; tab-size: revert; font-feature-settings: revert; font-variation-settings: revert; -webkit-tap-highlight-color: revert; transition: revert; box-shadow: revert; }
+/* On ::before and ::after the pages change only box-sizing (MUI's and Bootstrap's "*, ::before,
+   ::after"); our numbers and keys are sized in the browser's. */
+.ms-answer :where(:not(svg, svg *, math, math *, [width], [height])):not(.ms-custom *)::before, .ms-answer :where(:not(svg, svg *, math, math *, [width], [height])):not(.ms-custom *)::after { box-sizing: revert; }
+.ms-answer :where(svg, math, math *, [width], [height]):not(.ms-custom *) { display: revert; vertical-align: revert; float: revert; box-sizing: revert; max-width: revert; max-height: revert; min-width: revert; min-height: revert; margin: revert; padding: revert; border: revert; outline: revert; overflow: revert; background: revert; object-fit: revert; }
+.ms-answer [hidden]:not(.ms-custom *) { display: none !important; }
+.ms-answer *:not(.ms-custom *) { box-sizing: border-box; margin: 0; }
+
+
+
+.ms-answer :focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+.ms-answer :not(.ms-custom *)::selection { background: color-mix(in srgb, var(--ms-accent) 22%, transparent); }
+
+/* ---------- Rhythm: containers space their children ---------- */
+.ms-answer.ms-answer > * + *:not(.ms-custom *) { margin-top: var(--ms-s5); }
+.ms-answer .ms-card > * + *:not(.ms-custom *),
+.ms-answer .ms-group > * + *:not(.ms-custom *),
+.ms-answer .ms-cell > * + *:not(.ms-custom *),
+.ms-answer .ms-panels > div > * + *:not(.ms-custom *),
+.ms-answer details > * + *:not(.ms-custom *),
+.ms-answer .ms-form > * + *:not(.ms-custom *) { margin-top: var(--ms-s4); }
+/* Running text keeps closer together than blocks do. */
+:is(.ms-answer.ms-answer, .ms-answer :is(.ms-card, .ms-group, .ms-cell, .ms-panels > div, details)) > :is(p, ul, ol) + :is(p, ul, ol):not(.ms-custom *) { margin-top: var(--ms-s3); }
+/* Headings get more room above than below. */
+.ms-answer.ms-answer > * + :is(h1, h2, h3, h4):not(.ms-custom *) { margin-top: var(--ms-s6); }
+.ms-answer .ms-card > * + :is(h1, h2, h3, h4):not(.ms-custom *),
+.ms-answer .ms-group > * + :is(h1, h2, h3, h4):not(.ms-custom *),
+.ms-answer .ms-cell > * + :is(h1, h2, h3, h4):not(.ms-custom *) { margin-top: var(--ms-s5); }
+.ms-answer :is(h1, h2, h3, h4, h5, h6) + *:not(.ms-custom *) { margin-top: var(--ms-s2) !important; }
+
+/* ---------- Type ---------- */
+.ms-answer h1:not(.ms-custom *), .ms-answer h2:not(.ms-custom *), .ms-answer h3:not(.ms-custom *), .ms-answer h4:not(.ms-custom *), .ms-answer h5:not(.ms-custom *), .ms-answer h6:not(.ms-custom *) { font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; color: var(--ms-ink); }
+.ms-answer h1:not(.ms-custom *) { font-size: var(--ms-t-title); line-height: var(--ms-lh-title); font-weight: 650; letter-spacing: -0.02em; }
+.ms-answer h2:not(.ms-custom *) { font-size: var(--ms-t-title2); line-height: var(--ms-lh-title2); letter-spacing: -0.015em; }
+.ms-answer h3:not(.ms-custom *) { font-size: var(--ms-t-title3); line-height: var(--ms-lh-title3); }
+.ms-answer h4:not(.ms-custom *), .ms-answer h5:not(.ms-custom *), .ms-answer h6:not(.ms-custom *) { font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); }
+.ms-answer p:not(.ms-custom *) { text-wrap: pretty; }
+.ms-answer strong:not(.ms-custom *), .ms-answer b:not(.ms-custom *) { font-weight: 600; }
+.ms-answer a:not(.ms-custom *) { color: var(--ms-accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--ms-accent) 35%, transparent); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: text-decoration-color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer a:hover:not(.ms-custom *) { text-decoration-color: currentColor; }
+.ms-answer code:not(.ms-custom *) { font: .87em var(--ms-mono); background: var(--ms-tile); border: 1px solid var(--ms-line); padding: .05em .35em; border-radius: var(--ms-r-sm); }
+/* A long name in running text breaks where it must rather than widen the page. */
+.ms-answer :not(pre) > code:not(.ms-custom *) { overflow-wrap: anywhere; }
+.ms-answer pre:not(.ms-custom *) { background: var(--ms-tile); border: 1px solid var(--ms-line); padding: var(--ms-s3) var(--ms-s4); border-radius: var(--ms-r); overflow-x: auto; font: var(--ms-t-mono)/var(--ms-lh-mono) var(--ms-mono); }
+.ms-answer pre code:not(.ms-custom *) { background: none; border: 0; padding: 0; font-size: inherit; }
+.ms-answer blockquote:not(.ms-custom *) { padding-left: var(--ms-s5); color: var(--ms-ink-2); font-style: italic; }
+.ms-answer hr:not(.ms-custom *) { border: 0; border-top: 1px solid var(--ms-line); }
+.ms-answer ul:not(.ms-custom *), .ms-answer ol:not(.ms-custom *) { padding-left: 1.3em; }
+.ms-answer li + li:not(.ms-custom *) { margin-top: var(--ms-s1); }
+.ms-answer li:not(.ms-custom *)::marker { color: var(--ms-ink-3); }
+.ms-answer ol > li:not(.ms-custom *)::marker { font-variant-numeric: var(--ms-numeric, tabular-nums); }
+/* A task: a box that is checked when done (filled with the accent, its check in the accent's ink). */
+.ms-answer li.ms-task:not(.ms-custom *) { list-style: none; margin-left: -1.3em; padding-left: 1.75em; position: relative; }
+.ms-answer li.ms-task:not(.ms-custom *)::before { content: ""; position: absolute; left: 0; top: .28em; width: 16px; height: 16px; border: 1.5px solid var(--ms-line-2); border-radius: 5px; background: var(--ms-surface); }
+.ms-answer li.ms-task.ms-done:not(.ms-custom *) { color: var(--ms-ink-3); text-decoration: line-through; text-decoration-color: var(--ms-line-2); }
+.ms-answer li.ms-task.ms-done:not(.ms-custom *)::before { background: var(--ms-accent); border-color: var(--ms-accent); }
+.ms-answer li.ms-task.ms-done:not(.ms-custom *)::after { content: ""; position: absolute; left: 0; top: .28em; width: 16px; height: 16px; background: var(--ms-accent-ink); mask: var(--ms-i-check) center / 12px no-repeat; }
+.ms-answer img:not(.ms-custom *) { max-width: 100%; height: auto; border-radius: var(--ms-r); display: block; }
+
+/* ---------- Card and sections ---------- */
+.ms-answer .ms-card:not(.ms-custom *) { background: var(--ms-surface); border: 1px solid var(--ms-line); border-radius: var(--ms-r); padding: 20px; box-shadow: var(--ms-shadow-1); display: flow-root; }
+@media (max-width: 520px) { .ms-answer .ms-card:not(.ms-custom *) { padding: var(--ms-s4); } }
+/* A card that opens with a photo and holds only text after it: on a wide
+   screen the photo sits beside the text, which runs on under it if long. */
+@media (min-width: 640px) {
+  .ms-answer.ms-answer > .ms-card:not(:has(> :is(.ms-table, table, .ms-cols, figure, form, .ms-gallery, .ms-tabs, .ms-steps, .ms-group, pre, .ms-actions, div))) > header + p:has(> .ms-pic:only-child):not(.ms-custom *) {
+    float: left; width: 42%; margin: var(--ms-s5) var(--ms-s5) var(--ms-s2) 0;
+  }
+  .ms-answer.ms-answer > .ms-card:not(:has(> :is(.ms-table, table, .ms-cols, figure, form, .ms-gallery, .ms-tabs, .ms-steps, .ms-group, pre, .ms-actions, div))) > header + p:has(> .ms-pic:only-child) + *:not(.ms-custom *) { margin-top: var(--ms-s5); }
+  .ms-answer.ms-answer > .ms-card > header + p:has(> .ms-pic:only-child) > .ms-pic img:not(.ms-custom *) { max-height: 320px; }
+}
+.ms-answer .ms-card > header h2:not(.ms-custom *) { font-size: var(--ms-t-title3); line-height: var(--ms-lh-title3); font-weight: 620; letter-spacing: -0.012em; }
+.ms-answer .ms-card > header p:not(.ms-custom *), .ms-answer .ms-group > header p:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); margin-top: 2px; }
+.ms-answer .ms-card > header + *:not(.ms-custom *) { margin-top: var(--ms-s5); }
+.ms-answer .ms-group > header h3:not(.ms-custom *) { font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); }
+.ms-answer .ms-group > header + *:not(.ms-custom *) { margin-top: var(--ms-s3); }
+/* A section that follows other content gets a hairline and more room. */
+.ms-answer .ms-card > * + .ms-group:not(.ms-custom *),
+.ms-answer.ms-answer > * + .ms-group:not(.ms-custom *),
+.ms-answer .ms-panels > div > * + .ms-group:not(.ms-custom *),
+.ms-answer .ms-cell > * + .ms-group:not(.ms-custom *) { margin-top: var(--ms-s5); padding-top: var(--ms-s5); border-top: 1px solid var(--ms-line); }
+
+/* ---------- Columns: symmetric, equal-height ----------
+   The core decides how many cells a row holds at most (n2 to n5) and how
+   narrow a cell may get (m140 to m280, by what the cells hold: small tiles,
+   cards, running text, charts). A row takes as many cells as fit at that
+   width, so four cards become two rows of two on a tablet and one column on
+   a phone, and a short last row shares its full width instead of leaving a
+   lone narrow card. Cells in a row are the same height. */
+.ms-answer .ms-cols:not(.ms-custom *) { display: flex; flex-wrap: wrap; gap: var(--ms-s3); align-items: stretch; --ms-per: 1; --ms-min: 0px; }
+.ms-answer .ms-cols > .ms-cell:not(.ms-custom *) { flex: 1 1 max(var(--ms-min), calc((100% - (var(--ms-per) - 1) * var(--ms-s3)) / var(--ms-per) - .1px)); }
+.ms-answer .ms-cols.ms-n2:not(.ms-custom *) { --ms-per: 2; } .ms-answer .ms-cols.ms-n3:not(.ms-custom *) { --ms-per: 3; } .ms-answer .ms-cols.ms-n4:not(.ms-custom *) { --ms-per: 4; } .ms-answer .ms-cols.ms-n5:not(.ms-custom *) { --ms-per: 5; }
+.ms-answer .ms-cols.ms-m140:not(.ms-custom *) { --ms-min: 140px; } .ms-answer .ms-cols.ms-m200:not(.ms-custom *) { --ms-min: 200px; } .ms-answer .ms-cols.ms-m260:not(.ms-custom *) { --ms-min: 260px; } .ms-answer .ms-cols.ms-m280:not(.ms-custom *) { --ms-min: 280px; }
+.ms-answer .ms-cell:not(.ms-custom *) { display: flex; flex-direction: column; min-width: 0; }
+.ms-answer .ms-cell > :only-child:not(.ms-custom *) { flex: 1; }
+/* Sections and stats inside columns become tiles of the same height. */
+.ms-answer .ms-cell > .ms-group:not(.ms-custom *), .ms-answer .ms-cell > .ms-stat:not(.ms-custom *), .ms-answer .ms-cell > .ms-callout:not(.ms-custom *) { flex: 1; }
+.ms-answer .ms-cell > .ms-group:not(.ms-custom *) { background: var(--ms-tile); border-radius: var(--ms-r); padding: var(--ms-s4) calc(var(--ms-s4) + 2px); border: 0; margin: 0; }
+.ms-answer .ms-cell > .ms-group > header + *:not(.ms-custom *) { margin-top: var(--ms-s3); }
+
+/* ---------- Icons (Phosphor, regular): the text's color and size, quieter in headings ---------- */
+/* A heading's or label's last two words: together where they fit (no word
+   alone on the last line), wrapped inside where they don't. */
+.ms-answer .ms-pair:not(.ms-custom *) { display: inline-block; }
+.ms-answer .ms-icon:not(.ms-custom *) { width: 1.15em; height: 1.15em; fill: currentColor; flex: none; vertical-align: -0.2em; margin-inline-end: .4em; }
+.ms-answer h2 > .ms-icon:not(.ms-custom *), .ms-answer h3 > .ms-icon:not(.ms-custom *), .ms-answer .ms-stat .ms-label > .ms-icon:not(.ms-custom *) { color: var(--ms-ink-3); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn) > .ms-icon { width: 1.1em; height: 1.1em; margin-inline-end: .4em; }
+
+/* ---------- Stat: a big tabular number, a quiet label, the change as a pill ---------- */
+.ms-answer .ms-stat:not(.ms-custom *) { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; align-content: start; column-gap: var(--ms-s2); row-gap: 3px; padding: 14px var(--ms-s4); background: var(--ms-tile); border-radius: var(--ms-r); }
+.ms-answer .ms-stat > .ms-label:not(.ms-custom *), .ms-answer .ms-stat > .ms-value:not(.ms-custom *) { grid-column: 1 / -1; }
+.ms-answer .ms-stat .ms-label:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); font-weight: 550; }
+.ms-answer .ms-stat .ms-value:not(.ms-custom *) { font-size: var(--ms-t-display); font-weight: 640; letter-spacing: -0.025em; line-height: 1.15; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+/* The change: its number as a pill (the tone's tint, an arrow for its direction), then what
+   it's compared with as quiet text that wraps. Plain text, not flex, so IDs stay in the line. */
+.ms-answer .ms-stat .ms-change:not(.ms-custom *) { grid-column: 1 / -1; font-size: var(--ms-t-caption); line-height: 20px; color: var(--ms-ink-3); font-variant-numeric: var(--ms-numeric, tabular-nums); --ms-tone: var(--ms-ink-2); --ms-tone-bg: var(--ms-tile); }
+.ms-answer .ms-stat .ms-change > b:not(.ms-custom *) { display: inline-block; margin-inline-end: 5px; padding: 0 7px 0 6px; border-radius: var(--ms-r-sm); font-weight: 600; white-space: nowrap; color: var(--ms-tone); background: var(--ms-tone-bg); }
+.ms-answer .ms-stat .ms-change.ms-up:not(.ms-custom *) { --ms-tone: var(--ms-good); --ms-tone-bg: var(--ms-good-bg); }
+.ms-answer .ms-stat .ms-change.ms-down:not(.ms-custom *) { --ms-tone: var(--ms-bad); --ms-tone-bg: var(--ms-bad-bg); }
+.ms-answer .ms-stat .ms-change:is(.ms-up, .ms-down) > b:not(.ms-custom *)::before { content: ""; display: inline-block; width: 7px; height: 6px; margin-right: 4px; vertical-align: 1px; background: currentColor; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.ms-answer .ms-stat .ms-change.ms-down > b:not(.ms-custom *)::before { clip-path: polygon(0 0, 100% 0, 50% 100%); }
+.ms-answer .ms-stat .ms-change.ms-success:not(.ms-custom *) { --ms-tone: var(--ms-good); --ms-tone-bg: var(--ms-good-bg); }
+.ms-answer .ms-stat .ms-change.ms-warning:not(.ms-custom *) { --ms-tone: var(--ms-warn); --ms-tone-bg: var(--ms-warn-bg); }
+.ms-answer .ms-stat .ms-change.ms-danger:not(.ms-custom *) { --ms-tone: var(--ms-bad); --ms-tone-bg: var(--ms-bad-bg); }
+.ms-answer .ms-stat .ms-change.ms-info:not(.ms-custom *) { --ms-tone: var(--ms-info); --ms-tone-bg: var(--ms-info-bg); }
+/* A tone with no change line shows as a dot by the label, like a badge's. */
+.ms-answer .ms-stat:is(.ms-success, .ms-warning, .ms-danger, .ms-info) .ms-label:not(.ms-custom *)::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; background: var(--ms-tone); }
+.ms-answer .ms-stat.ms-success:not(.ms-custom *) { --ms-tone: var(--ms-good); } .ms-answer .ms-stat.ms-warning:not(.ms-custom *) { --ms-tone: var(--ms-warn); }
+.ms-answer .ms-stat.ms-danger:not(.ms-custom *) { --ms-tone: var(--ms-bad); } .ms-answer .ms-stat.ms-info:not(.ms-custom *) { --ms-tone: var(--ms-info); }
+.ms-answer .ms-stat .ms-note:not(.ms-custom *) { grid-column: 1 / -1; color: var(--ms-ink-3); font-size: var(--ms-t-caption); line-height: 18px; min-width: 0; }
+.ms-answer .ms-cell > .ms-group .ms-stat:not(.ms-custom *) { background: transparent; padding: 0; }
+/* A stat on the page itself (not inside a card) is a card of its own. */
+.ms-answer.ms-answer > .ms-stat:not(.ms-custom *), .ms-answer.ms-answer > .ms-cols > .ms-cell > .ms-stat:not(.ms-custom *) { background: var(--ms-surface); border: 1px solid var(--ms-line); box-shadow: var(--ms-shadow-1); }
+
+/* ---------- Table: a quiet header band, hairlines between rows ---------- */
+.ms-answer .ms-table:not(.ms-custom *) { overflow-x: auto; }
+.ms-answer table:not(.ms-custom *) { border-collapse: separate; border-spacing: 0; width: 100%; font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer th:not(.ms-custom *), .ms-answer td:not(.ms-custom *) { text-align: left; padding: 9px var(--ms-s3); border-bottom: 1px solid var(--ms-line); vertical-align: middle; }
+.ms-answer thead th:not(.ms-custom *) { background: var(--ms-tile); color: var(--ms-ink-3); font-size: var(--ms-t-caption); line-height: var(--ms-lh-caption); font-weight: 550; padding-block: 8px; border-bottom: 0; white-space: nowrap; }
+.ms-answer thead th:first-child:not(.ms-custom *) { border-radius: var(--ms-r-ctl) 0 0 var(--ms-r-ctl); }
+.ms-answer thead th:last-child:not(.ms-custom *) { border-radius: 0 var(--ms-r-ctl) var(--ms-r-ctl) 0; }
+.ms-answer tbody th:not(.ms-custom *) { font-weight: 550; color: var(--ms-ink); }
+.ms-answer tbody tr:not(.ms-custom *) { transition: background-color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer tbody tr:hover > *:not(.ms-custom *) { background: color-mix(in srgb, var(--ms-tile) 60%, transparent); }
+.ms-answer .ms-num:not(.ms-custom *) { text-align: right; }
+.ms-answer tbody tr:last-child > *:not(.ms-custom *) { border-bottom: 0; }
+.ms-answer tfoot th:not(.ms-custom *), .ms-answer tfoot td:not(.ms-custom *) { border-top: 1px solid var(--ms-line-2); border-bottom: 0; font-weight: 600; }
+
+/* ---------- Badge ---------- */
+/* Inline blocks, not flex: in a flex box every bold word or kept-together ID becomes
+   its own item, and the spaces around it disappear. */
+/* The dot sits in the first line's indent, out of the text, so it never wraps
+   away from the first word; lines after the first use the full width. */
+.ms-answer .ms-badge:not(.ms-custom *) { position: relative; display: inline-block; max-width: 100%; padding: 2px 8px; text-indent: 11px; font-size: var(--ms-t-caption); font-weight: 600; line-height: 16px; border-radius: var(--ms-r-sm); vertical-align: 1px; background: var(--ms-tile); color: var(--ms-ink-2); }
+.ms-answer .ms-badge:not(.ms-custom *)::before { content: ""; position: absolute; left: 8px; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.ms-answer .ms-badge > *:not(.ms-custom *) { text-indent: 0; }
+.ms-answer .ms-badge.ms-neutral:not(.ms-custom *) { text-indent: 0; box-shadow: inset 0 0 0 1px var(--ms-line); background: var(--ms-surface); }
+.ms-answer .ms-badge.ms-neutral:not(.ms-custom *)::before { display: none; }
+.ms-answer .ms-badge.ms-success:not(.ms-custom *) { background: var(--ms-good-bg); color: var(--ms-good); }
+.ms-answer .ms-badge.ms-warning:not(.ms-custom *) { background: var(--ms-warn-bg); color: var(--ms-warn); }
+.ms-answer .ms-badge.ms-danger:not(.ms-custom *) { background: var(--ms-bad-bg); color: var(--ms-bad); }
+.ms-answer .ms-badge.ms-info:not(.ms-custom *) { background: var(--ms-info-bg); color: var(--ms-info); }
+/* A product's label (Sale, New): a small tag, the same whatever it says. */
+.ms-answer .ms-tag:not(.ms-custom *) { display: inline-block; padding: 2px 7px; font-size: var(--ms-t-caption); line-height: 16px; font-weight: 650; border-radius: var(--ms-r-sm); background: var(--ms-ink); color: var(--ms-page); }
+
+/* ---------- Callout: a tint and its tone's mark ---------- */
+.ms-answer .ms-callout:not(.ms-custom *) { display: grid; grid-template-columns: 18px minmax(0, 1fr); column-gap: 10px; padding: var(--ms-s3) 14px; border-radius: var(--ms-r); background: var(--ms-info-bg); font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); --ms-tone: var(--ms-info); --ms-mark: var(--ms-i-info); }
+.ms-answer .ms-callout:not(.ms-custom *)::before { content: ""; grid-column: 1; grid-row: 1; width: 18px; height: 18px; margin-top: 1.5px; background: var(--ms-tone); mask: var(--ms-mark) center / contain no-repeat; }
+.ms-answer .ms-callout > *:not(.ms-custom *) { grid-column: 2; }
+.ms-answer .ms-callout > * + *:not(.ms-custom *) { margin-top: var(--ms-s1); }
+.ms-answer .ms-callout > strong:not(.ms-custom *) { display: block; font-weight: 620; color: var(--ms-ink); }
+.ms-answer .ms-callout > p:not(.ms-custom *) { color: var(--ms-ink-2); }
+.ms-answer .ms-callout.ms-success:not(.ms-custom *) { background: var(--ms-good-bg); --ms-tone: var(--ms-good); --ms-mark: var(--ms-i-success); }
+.ms-answer .ms-callout.ms-warning:not(.ms-custom *) { background: var(--ms-warn-bg); --ms-tone: var(--ms-warn); --ms-mark: var(--ms-i-warning); }
+.ms-answer .ms-callout.ms-danger:not(.ms-custom *) { background: var(--ms-bad-bg); --ms-tone: var(--ms-bad); --ms-mark: var(--ms-i-danger); }
+.ms-answer .ms-callout.ms-neutral:not(.ms-custom *) { background: var(--ms-tile); --ms-tone: var(--ms-ink-3); --ms-mark: var(--ms-i-note); }
+
+/* ---------- Steps: numbered circles on a rail; done ones filled with a check ---------- */
+.ms-answer .ms-steps:not(.ms-custom *) { list-style: none; padding: 0; counter-reset: s; }
+.ms-answer .ms-steps > li:not(.ms-custom *) { position: relative; padding: 0 0 var(--ms-s4) 36px; margin: 0; counter-increment: s; background: linear-gradient(var(--ms-line-2), var(--ms-line-2)) 10.25px 28px / 1.5px calc(100% - 31px) no-repeat; }
+.ms-answer .ms-steps > li:last-child:not(.ms-custom *) { padding-bottom: 0; background: none; }
+/* A done step's connector in the accent; the last step has none (it used to fill its whole row). */
+.ms-answer .ms-steps > li.ms-done:not(:last-child):not(.ms-custom *) { background-image: linear-gradient(var(--ms-accent), var(--ms-accent)); }
+.ms-answer .ms-steps > li:not(.ms-custom *)::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--ms-line-2); background: var(--ms-surface); color: var(--ms-ink-3); font: 600 11px/1 var(--ms-mono); display: grid; place-items: center; }
+.ms-answer .ms-steps > li.ms-done:not(.ms-custom *)::before { content: ""; background: var(--ms-accent); border-color: var(--ms-accent); }
+.ms-answer .ms-steps > li.ms-done:not(.ms-custom *)::after { content: ""; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; background: var(--ms-accent-ink); mask: var(--ms-i-check) center / 13px no-repeat; }
+.ms-answer .ms-steps > li.ms-current:not(.ms-custom *)::before { border-color: var(--ms-accent); color: var(--ms-accent); box-shadow: 0 0 0 3px var(--ms-accent-bg); }
+.ms-answer .ms-steps > li > strong:not(.ms-custom *) { display: block; font-weight: 600; }
+.ms-answer .ms-steps > li > small:not(.ms-custom *) { display: block; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); }
+.ms-answer .ms-steps > li.ms-todo > strong:not(.ms-custom *) { color: var(--ms-ink-2); font-weight: 500; }
+.ms-answer .ms-steps > li > p:not(.ms-custom *) { margin-top: 2px; color: var(--ms-ink-2); font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); }
+
+/* ---------- Progress: a slim bar in the accent (or its tone) ---------- */
+.ms-answer .ms-progress:not(.ms-custom *) { display: grid; grid-template-columns: 1fr auto; gap: var(--ms-s2) var(--ms-s3); align-items: center; }
+.ms-answer .ms-progress > span:not(.ms-custom *) { font-size: var(--ms-t-callout); color: var(--ms-ink-2); font-weight: 550; }
+.ms-answer .ms-progress > small:not(.ms-custom *) { font-size: var(--ms-t-footnote); color: var(--ms-ink-3); font-variant-numeric: var(--ms-numeric, tabular-nums); grid-row: 1; grid-column: 2; }
+.ms-answer progress:not(.ms-custom *) { grid-column: 1 / -1; width: 100%; height: 6px; appearance: none; border: 0; border-radius: 3px; background: var(--ms-line); overflow: hidden; color: var(--ms-accent); }
+.ms-answer progress:not(.ms-custom *)::-webkit-progress-bar { background: var(--ms-line); border-radius: 3px; }
+.ms-answer progress:not(.ms-custom *)::-webkit-progress-value { background: currentColor; border-radius: 3px; }
+.ms-answer progress:not(.ms-custom *)::-moz-progress-bar { background: currentColor; border-radius: 3px; }
+.ms-answer .ms-progress.ms-success progress:not(.ms-custom *) { color: var(--ms-good); } .ms-answer .ms-progress.ms-warning progress:not(.ms-custom *) { color: var(--ms-warn); }
+.ms-answer .ms-progress.ms-danger progress:not(.ms-custom *) { color: var(--ms-bad); } .ms-answer .ms-progress.ms-info progress:not(.ms-custom *) { color: var(--ms-info); }
+
+/* ---------- Avatar ---------- */
+.ms-answer .ms-avatar:not(.ms-custom *) { display: flex; gap: var(--ms-s3); align-items: center; }
+.ms-answer .ms-avatar > span:not(.ms-custom *), .ms-answer .ms-avatar > img:not(.ms-custom *) { width: 40px; height: 40px; border-radius: 50%; flex: none; object-fit: cover; }
+.ms-answer .ms-avatar > span:not(.ms-custom *) { display: grid; place-items: center; background: var(--ms-accent-bg); color: var(--ms-accent); font-weight: 600; font-size: var(--ms-t-footnote); letter-spacing: .02em; }
+.ms-answer .ms-avatar strong:not(.ms-custom *) { display: block; font-weight: 600; }
+.ms-answer .ms-avatar small:not(.ms-custom *) { display: block; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); }
+
+/* ---------- Gallery ---------- */
+.ms-answer .ms-gallery:not(.ms-custom *) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ms-s4) var(--ms-s3); }
+.ms-answer .ms-gallery > figure:not(.ms-custom *) { margin: 0; min-width: 0; display: flex; flex-direction: column; gap: var(--ms-s2); }
+.ms-answer .ms-gallery img:not(.ms-custom *) { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.ms-answer .ms-gallery figcaption:not(.ms-custom *) { font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); color: var(--ms-ink-2); display: flex; flex-direction: column; gap: 2px; }
+.ms-answer .ms-gallery figcaption > span > strong:first-child:not(.ms-custom *) { display: block; color: var(--ms-ink); font-weight: 600; font-size: var(--ms-t-callout); }
+/* A photo still loading holds its place in the tile color. */
+.ms-answer img[srcset]:not(.ms-custom *) { background: var(--ms-tile); }
+/* A photo's credit: who took it and its license, small and quiet under it. */
+.ms-answer .ms-credit:not(.ms-custom *) { display: block; font-size: var(--ms-t-caption); line-height: var(--ms-lh-caption); color: var(--ms-ink-3); overflow-wrap: anywhere; }
+.ms-answer .ms-credit a:not(.ms-custom *) { color: inherit; text-decoration-color: var(--ms-line-2); }
+.ms-answer .ms-pic:not(.ms-custom *) { display: inline-flex; flex-direction: column; gap: var(--ms-s1); max-width: 100%; vertical-align: top; }
+/* A paragraph that is only a photo: the width of the text, no taller than a screenful. */
+.ms-answer p > .ms-pic:only-child:not(.ms-custom *) { display: flex; }
+.ms-answer p:has(> .ms-pic:only-child):not(.ms-custom *), .ms-answer p:has(> img:only-child):not(.ms-custom *) { max-inline-size: none; }
+.ms-answer p > .ms-pic:only-child > img:not(.ms-custom *), .ms-answer p > img:only-child:not(.ms-custom *) { width: 100%; max-height: 480px; object-fit: cover; }
+@media (max-width: 520px) {
+  .ms-answer .ms-gallery:not(.ms-custom *) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* An odd one out at the end takes the whole row, wide. */
+  .ms-answer .ms-gallery > figure:last-child:nth-child(odd):not(.ms-custom *) { grid-column: 1 / -1; }
+  .ms-answer .ms-gallery > figure:last-child:nth-child(odd) img:not(.ms-custom *) { aspect-ratio: 16 / 9; }
+}
+
+/* ---------- Chart: Our World in Data's quiet axes, the data in the series colors ---------- */
+.ms-answer .ms-chart:not(.ms-custom *) { width: 100%; }
+.ms-answer .ms-chart figcaption:not(.ms-custom *) { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ms-s3); flex-wrap: wrap; font-weight: 600; font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); margin-bottom: var(--ms-s3); }
+.ms-answer .ms-chart figcaption .ms-axis:not(.ms-custom *) { font-weight: 450; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+.ms-answer .ms-chart svg:not(.ms-custom *) { display: block; width: 100%; height: auto; overflow: visible; }
+.ms-answer .ms-chart text:not(.ms-custom *) { fill: var(--ms-ink-3); font: 12px var(--ms-font); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-chart .ms-grid:not(.ms-custom *) { stroke: var(--ms-line); }
+.ms-answer .ms-chart .ms-base:not(.ms-custom *) { stroke: var(--ms-line-2); }
+.ms-answer .ms-chart .ms-s1:not(.ms-custom *) { fill: var(--ms-c1); stroke: var(--ms-c1); } .ms-answer .ms-chart .ms-s2:not(.ms-custom *) { fill: var(--ms-c2); stroke: var(--ms-c2); }
+.ms-answer .ms-chart .ms-s3:not(.ms-custom *) { fill: var(--ms-c3); stroke: var(--ms-c3); } .ms-answer .ms-chart .ms-s4:not(.ms-custom *) { fill: var(--ms-c4); stroke: var(--ms-c4); }
+.ms-answer .ms-chart .ms-s5:not(.ms-custom *) { fill: var(--ms-c5); stroke: var(--ms-c5); } .ms-answer .ms-chart .ms-s6:not(.ms-custom *) { fill: var(--ms-c6); stroke: var(--ms-c6); }
+.ms-answer .ms-chart .ms-s7:not(.ms-custom *) { fill: var(--ms-c7); stroke: var(--ms-c7); } .ms-answer .ms-chart .ms-s8:not(.ms-custom *) { fill: var(--ms-c8); stroke: var(--ms-c8); }
+.ms-answer .ms-chart rect:not(.ms-custom *) { stroke: none; }
+.ms-answer .ms-chart path.ms-slice:not(.ms-custom *) { stroke: var(--ms-surface); stroke-width: 2; }
+.ms-answer .ms-chart path.ms-line:not(.ms-custom *) { fill: none !important; stroke-width: 2.25; stroke-linejoin: round; stroke-linecap: round; }
+.ms-answer .ms-chart path.ms-fill:not(.ms-custom *) { stroke: none !important; opacity: .1; }
+.ms-answer .ms-chart polygon.ms-ring:not(.ms-custom *) { fill: none; stroke: var(--ms-line); }
+.ms-answer .ms-chart polygon.ms-radar:not(.ms-custom *) { fill-opacity: .14; stroke-width: 1.75; stroke-linejoin: round; }
+.ms-answer .ms-chart circle:not(.ms-custom *) { stroke: var(--ms-surface); stroke-width: 1.5; }
+.ms-answer .ms-chart .ms-legend:not(.ms-custom *) { list-style: none; padding: 0; margin-top: var(--ms-s3); display: flex; flex-wrap: wrap; gap: var(--ms-s1) var(--ms-s4); font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); color: var(--ms-ink-2); }
+.ms-answer .ms-chart .ms-legend li:not(.ms-custom *) { display: flex; align-items: center; gap: 6px; margin: 0; }
+.ms-answer .ms-chart .ms-legend i:not(.ms-custom *) { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+.ms-answer .ms-chart .ms-legend i.ms-s1:not(.ms-custom *) { background: var(--ms-c1); } .ms-answer .ms-chart .ms-legend i.ms-s2:not(.ms-custom *) { background: var(--ms-c2); } .ms-answer .ms-chart .ms-legend i.ms-s3:not(.ms-custom *) { background: var(--ms-c3); }
+.ms-answer .ms-chart .ms-legend i.ms-s4:not(.ms-custom *) { background: var(--ms-c4); } .ms-answer .ms-chart .ms-legend i.ms-s5:not(.ms-custom *) { background: var(--ms-c5); } .ms-answer .ms-chart .ms-legend i.ms-s6:not(.ms-custom *) { background: var(--ms-c6); }
+.ms-answer .ms-chart .ms-legend i.ms-s7:not(.ms-custom *) { background: var(--ms-c7); } .ms-answer .ms-chart .ms-legend i.ms-s8:not(.ms-custom *) { background: var(--ms-c8); }
+.ms-answer .ms-chart .ms-legend .ms-v:not(.ms-custom *) { color: var(--ms-ink-3); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+/* A pie with room puts its legend beside it, one slice a row with its share. */
+.ms-answer .ms-chart.ms-side:not(.ms-custom *) { display: grid; grid-template-columns: 200px minmax(0, 1fr); column-gap: var(--ms-s6); align-items: center; }
+.ms-answer .ms-chart.ms-side figcaption:not(.ms-custom *) { grid-column: 1 / -1; }
+.ms-answer .ms-chart.ms-side .ms-legend:not(.ms-custom *) { flex-direction: column; flex-wrap: nowrap; gap: 0; margin: 0; font-size: var(--ms-t-callout); }
+.ms-answer .ms-chart.ms-side .ms-legend li:not(.ms-custom *) { padding: 7px 0; border-bottom: 1px solid var(--ms-line); }
+.ms-answer .ms-chart.ms-side .ms-legend li:last-child:not(.ms-custom *) { border-bottom: 0; }
+.ms-answer .ms-chart.ms-side .ms-legend .ms-v:not(.ms-custom *) { margin-left: auto; color: var(--ms-ink); font-weight: 550; }
+@media (max-width: 520px) { .ms-answer .ms-chart.ms-side:not(.ms-custom *) { grid-template-columns: 1fr; } .ms-answer .ms-chart.ms-side svg:not(.ms-custom *) { max-width: 220px; margin: 0 auto var(--ms-s3); } }
+
+/* ---------- Device pack ---------- */
+/* A file input as a drop zone (the SDK draws its own over it; this is the same look without script). */
+.ms-answer input[type="file"]:not(.ms-custom *) { height: auto; padding: 10px 12px; font-size: var(--ms-t-footnote); color: var(--ms-ink-2); border-style: dashed; background: var(--ms-tile); }
+.ms-answer input[type="file"]:not(.ms-custom *)::file-selector-button { font: inherit; font-weight: 600; margin-right: 10px; padding: 5px 11px; border-radius: var(--ms-r-ctl); border: 1px solid var(--ms-line-2); background: var(--ms-surface); color: var(--ms-ink); cursor: pointer; box-shadow: var(--ms-shadow-1); }
+.ms-answer .ms-field > input + input[type="file"]:not(.ms-custom *) { margin-top: 2px; }
+.ms-answer .ms-map svg:not(.ms-custom *) { display: block; width: 100%; height: auto; background: var(--ms-tile); border-radius: var(--ms-r); }
+.ms-answer .ms-map figcaption:not(.ms-custom *) { font-weight: 600; font-size: var(--ms-t-headline); margin-bottom: var(--ms-s3); }
+.ms-answer .ms-map .ms-route:not(.ms-custom *) { fill: none; stroke: var(--ms-accent); stroke-width: 2.5; stroke-dasharray: 6 5; stroke-linecap: round; }
+/* The tiles come from the app's map provider, shown as it draws them; its credit goes under the map. */
+.ms-answer .ms-map svg + .ms-credit:not(.ms-custom *), .ms-answer .ms-map .ms-maplive + .ms-credit:not(.ms-custom *) { margin-top: var(--ms-s1); }
+.ms-answer .ms-map .ms-pin:not(.ms-custom *) { fill: var(--ms-accent); stroke: var(--ms-surface); stroke-width: 2; }
+.ms-answer .ms-map svg text:not(.ms-custom *) { fill: var(--ms-accent-ink); font: 600 11px var(--ms-font); }
+/* With no tiles to draw on, the map is a quiet grid the pins stand on, not an empty box. */
+.ms-answer .ms-map svg:not(:has(.ms-tiles)):not(.ms-custom *) { background-color: var(--ms-tile); background-image: linear-gradient(var(--ms-line) 1px, transparent 1px), linear-gradient(90deg, var(--ms-line) 1px, transparent 1px); background-size: 32px 32px; background-position: -1px -1px; }
+.ms-answer .ms-places:not(.ms-custom *) { margin-top: var(--ms-s3); padding-left: 1.6em; }
+.ms-answer .ms-places li:not(.ms-custom *) { padding: 3px 0; }
+.ms-answer .ms-places li:not(.ms-custom *)::marker { font-weight: 600; color: var(--ms-accent); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-places a:not(.ms-custom *) { font-weight: 550; }
+.ms-answer .ms-places small:not(.ms-custom *) { display: block; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+
+/* ---------- A component with no renderer: its attributes as a list ---------- */
+.ms-answer .ms-facts:not(.ms-custom *) { display: grid; grid-template-columns: fit-content(40%) minmax(0, 1fr); gap: var(--ms-s1) var(--ms-s4); font-size: var(--ms-t-callout); }
+.ms-answer .ms-facts dt:not(.ms-custom *) { color: var(--ms-ink-3); }
+.ms-answer .ms-facts dd:not(.ms-custom *) { margin: 0; }
+
+/* ---------- Follow-ups: chips that ask, the arrow moving on hover ---------- */
+.ms-answer .ms-followups:not(.ms-custom *) { display: flex; flex-wrap: wrap; gap: var(--ms-s2); }
+/* An inline block, not flex: a flex chip makes each kept-together ID its own column. */
+.ms-answer .ms-followups a:not(.ms-custom *) { position: relative; display: inline-block; max-width: 100%; text-decoration: none; border: 1px solid var(--ms-line-2); border-radius: var(--ms-r-ctl); padding: 6px 32px 6px 12px; font-size: var(--ms-t-callout); line-height: 20px; color: var(--ms-ink); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); transition: border-color var(--ms-dur-fast) var(--ms-ease), color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-followups a:not(.ms-custom *)::after { content: ""; position: absolute; right: 11px; top: calc(50% - 7px); width: 14px; height: 14px; background: var(--ms-ink-3); mask: var(--ms-i-arrow) center / contain no-repeat; transition: transform var(--ms-dur) var(--ms-spring), background-color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-followups a:hover:not(.ms-custom *) { border-color: var(--ms-accent); color: var(--ms-accent); }
+.ms-answer .ms-followups a:hover:not(.ms-custom *)::after { background: var(--ms-accent); transform: translateX(2px); }
+
+/* ---------- Details: a plus that becomes a minus ---------- */
+.ms-answer details:not(.ms-custom *) { border-top: 1px solid var(--ms-line); border-bottom: 1px solid var(--ms-line); padding: var(--ms-s3) 0; }
+.ms-answer details + details:not(.ms-custom *) { border-top: 0; margin-top: 0 !important; }
+/* The title flows as one line of text (its last words kept together in a
+   span), with the mark at the end; a flex row would pull the span apart. */
+.ms-answer summary:not(.ms-custom *) { cursor: pointer; font-weight: 600; list-style: none; display: block; position: relative; padding-inline-end: 1.75em; }
+.ms-answer summary:not(.ms-custom *)::-webkit-details-marker { display: none; }
+.ms-answer summary:not(.ms-custom *)::after { content: ""; position: absolute; inset-inline-end: 0; top: calc(50% - 8px); width: 16px; height: 16px; background: var(--ms-ink-3); mask: var(--ms-i-plus) center / contain no-repeat; }
+.ms-answer details[open] > summary:not(.ms-custom *)::after { mask-image: var(--ms-i-minus); }
+/* The SDK morphs the mark itself (an SVG it adds), so the drawn one steps aside. */
+.ms-answer summary:has(> [data-ms-added]):not(.ms-custom *)::after { display: none; }
+.ms-answer summary > svg[data-ms-added]:not(.ms-custom *) { position: absolute; inset-inline-end: 0; top: calc(50% - 8px); width: 16px; height: 16px; fill: none; stroke: var(--ms-ink-3); stroke-width: 2; stroke-linecap: round; }
+.ms-answer details > :not(summary):not(.ms-custom *) { color: var(--ms-ink-2); }
+
+/* ---------- Tabs (radio inputs, no script; the SDK slides the underline) ---------- */
+.ms-answer .ms-tabs > input:not(.ms-custom *) { position: absolute; opacity: 0; pointer-events: none; }
+/* The tab names in one row that scrolls sideways on a phone, never a second row. */
+.ms-answer .ms-tablist:not(.ms-custom *) { position: relative; display: flex; gap: var(--ms-s5); overflow-x: auto; scrollbar-width: none; box-shadow: inset 0 -1px var(--ms-line); }
+.ms-answer .ms-tablist:not(.ms-custom *)::-webkit-scrollbar { display: none; }
+.ms-answer .ms-tablist > label:not(.ms-custom *) { flex: none; white-space: nowrap; padding: var(--ms-s2) 0; cursor: pointer; color: var(--ms-ink-3); font-size: var(--ms-t-callout); font-weight: 600; border-bottom: 2px solid transparent; transition: color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-tablist > label:hover:not(.ms-custom *) { color: var(--ms-ink-2); }
+.ms-answer .ms-tablist > [data-ms-added]:not(.ms-custom *) { position: absolute; bottom: 0; left: 0; height: 2px; background: var(--ms-primary); border-radius: 1px; pointer-events: none; }
+.ms-answer .ms-tabs .ms-panels:not(.ms-custom *) { padding-top: var(--ms-s4); }
+.ms-answer .ms-tabs .ms-panels > div:not(.ms-custom *) { display: none; }
+.ms-answer .ms-tabs > input:nth-of-type(1):checked ~ .ms-tablist > label:nth-child(1):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(2):checked ~ .ms-tablist > label:nth-child(2):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(3):checked ~ .ms-tablist > label:nth-child(3):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(4):checked ~ .ms-tablist > label:nth-child(4):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(5):checked ~ .ms-tablist > label:nth-child(5):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(6):checked ~ .ms-tablist > label:nth-child(6):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(7):checked ~ .ms-tablist > label:nth-child(7):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(8):checked ~ .ms-tablist > label:nth-child(8):not(.ms-custom *) { color: var(--ms-ink); border-bottom-color: var(--ms-ink); }
+/* With the sliding line in place, the labels' own lines step aside. */
+.ms-answer .ms-tablist:has(> [data-ms-added]) > label:not(.ms-custom *) { border-bottom-color: transparent !important; }
+.ms-answer .ms-tabs > input:nth-of-type(1):focus-visible ~ .ms-tablist > label:nth-child(1):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(2):focus-visible ~ .ms-tablist > label:nth-child(2):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(3):focus-visible ~ .ms-tablist > label:nth-child(3):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(4):focus-visible ~ .ms-tablist > label:nth-child(4):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(5):focus-visible ~ .ms-tablist > label:nth-child(5):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(6):focus-visible ~ .ms-tablist > label:nth-child(6):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(7):focus-visible ~ .ms-tablist > label:nth-child(7):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(8):focus-visible ~ .ms-tablist > label:nth-child(8):not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: -2px; border-radius: var(--ms-r-sm); }
+.ms-answer .ms-tabs > input:nth-of-type(1):checked ~ .ms-panels > div:nth-child(1):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(2):checked ~ .ms-panels > div:nth-child(2):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(3):checked ~ .ms-panels > div:nth-child(3):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(4):checked ~ .ms-panels > div:nth-child(4):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(5):checked ~ .ms-panels > div:nth-child(5):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(6):checked ~ .ms-panels > div:nth-child(6):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(7):checked ~ .ms-panels > div:nth-child(7):not(.ms-custom *),
+.ms-answer .ms-tabs > input:nth-of-type(8):checked ~ .ms-panels > div:nth-child(8):not(.ms-custom *) { display: block; }
+
+/* ---------- Forms: Stripe's fields; the SDK's own pickers over the native ones ---------- */
+.ms-answer .ms-form:not(.ms-custom *) { display: block; }
+.ms-answer .ms-field:not(.ms-custom *) { display: grid; gap: 6px; border: 0; padding: 0; min-width: 0; align-content: start; }
+.ms-answer .ms-field > span:not(.ms-custom *), .ms-answer .ms-field > legend:not(.ms-custom *) { font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); font-weight: 600; padding: 0; color: var(--ms-ink); }
+.ms-answer .ms-field small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-caption); line-height: var(--ms-lh-caption); }
+.ms-answer input:not(.ms-custom *), .ms-answer select:not(.ms-custom *), .ms-answer textarea:not(.ms-custom *) { font: inherit; font-size: 14.5px; color: var(--ms-ink); background: var(--ms-surface); border: 1px solid var(--ms-line-2); border-radius: var(--ms-r-ctl); padding: 0 12px; width: 100%; height: 40px; transition: border-color var(--ms-dur-fast) var(--ms-ease), box-shadow var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer textarea:not(.ms-custom *) { height: auto; padding: 9px 12px; resize: vertical; line-height: 1.5; }
+.ms-answer input:hover:not(.ms-custom *), .ms-answer select:hover:not(.ms-custom *), .ms-answer textarea:hover:not(.ms-custom *) { border-color: color-mix(in srgb, var(--ms-line-2) 55%, var(--ms-ink-3)); }
+.ms-answer input:focus:not(.ms-custom *), .ms-answer select:focus:not(.ms-custom *), .ms-answer textarea:focus:not(.ms-custom *) { outline: none; border-color: var(--ms-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ms-accent) 22%, transparent); }
+.ms-answer input:user-invalid:not(.ms-custom *), .ms-answer textarea:user-invalid:not(.ms-custom *), .ms-answer select:user-invalid:not(.ms-custom *) { border-color: var(--ms-bad); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ms-bad) 16%, transparent); }
+.ms-answer input:not(.ms-custom *)::placeholder, .ms-answer textarea:not(.ms-custom *)::placeholder { color: var(--ms-ink-3); }
+/* A mask can't sit on a select, so its chevron is an image, drawn in each palette's quiet ink. */
+.ms-answer select:not(.ms-custom *) { appearance: none; padding-right: 36px; cursor: pointer; background: var(--ms-surface) no-repeat right 12px center / 16px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23626877' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]):not([data-theme="mono"]) .ms-answer select:not(.ms-custom *) { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8f9b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); } }
+:root[data-theme="dark"] .ms-answer select:not(.ms-custom *) { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8f9b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); }
+.ms-answer input[type="date"]:not(.ms-custom *), .ms-answer input[type="time"]:not(.ms-custom *), .ms-answer input[type="datetime-local"]:not(.ms-custom *) { font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer :not(.ms-custom *)::-webkit-calendar-picker-indicator { opacity: .55; cursor: pointer; }
+/* A range: the accent fills to the thumb (--ms-p: the core's fill0 to fill100 class, then the SDK as the reader drags). */
+.ms-answer input[type="range"]:not(.ms-custom *) { appearance: none; height: 20px; padding: 0; border: 0; background: transparent; box-shadow: none !important; --ms-p: 50%; cursor: pointer; }
+.ms-answer input[type="range"].ms-fill0:not(.ms-custom *) { --ms-p: 0%; } .ms-answer input[type="range"].ms-fill1:not(.ms-custom *) { --ms-p: 1%; } .ms-answer input[type="range"].ms-fill2:not(.ms-custom *) { --ms-p: 2%; } .ms-answer input[type="range"].ms-fill3:not(.ms-custom *) { --ms-p: 3%; } .ms-answer input[type="range"].ms-fill4:not(.ms-custom *) { --ms-p: 4%; } .ms-answer input[type="range"].ms-fill5:not(.ms-custom *) { --ms-p: 5%; } .ms-answer input[type="range"].ms-fill6:not(.ms-custom *) { --ms-p: 6%; } .ms-answer input[type="range"].ms-fill7:not(.ms-custom *) { --ms-p: 7%; } .ms-answer input[type="range"].ms-fill8:not(.ms-custom *) { --ms-p: 8%; } .ms-answer input[type="range"].ms-fill9:not(.ms-custom *) { --ms-p: 9%; } .ms-answer input[type="range"].ms-fill10:not(.ms-custom *) { --ms-p: 10%; } .ms-answer input[type="range"].ms-fill11:not(.ms-custom *) { --ms-p: 11%; } .ms-answer input[type="range"].ms-fill12:not(.ms-custom *) { --ms-p: 12%; } .ms-answer input[type="range"].ms-fill13:not(.ms-custom *) { --ms-p: 13%; } .ms-answer input[type="range"].ms-fill14:not(.ms-custom *) { --ms-p: 14%; } .ms-answer input[type="range"].ms-fill15:not(.ms-custom *) { --ms-p: 15%; } .ms-answer input[type="range"].ms-fill16:not(.ms-custom *) { --ms-p: 16%; } .ms-answer input[type="range"].ms-fill17:not(.ms-custom *) { --ms-p: 17%; } .ms-answer input[type="range"].ms-fill18:not(.ms-custom *) { --ms-p: 18%; } .ms-answer input[type="range"].ms-fill19:not(.ms-custom *) { --ms-p: 19%; } .ms-answer input[type="range"].ms-fill20:not(.ms-custom *) { --ms-p: 20%; } .ms-answer input[type="range"].ms-fill21:not(.ms-custom *) { --ms-p: 21%; } .ms-answer input[type="range"].ms-fill22:not(.ms-custom *) { --ms-p: 22%; } .ms-answer input[type="range"].ms-fill23:not(.ms-custom *) { --ms-p: 23%; } .ms-answer input[type="range"].ms-fill24:not(.ms-custom *) { --ms-p: 24%; } .ms-answer input[type="range"].ms-fill25:not(.ms-custom *) { --ms-p: 25%; } .ms-answer input[type="range"].ms-fill26:not(.ms-custom *) { --ms-p: 26%; } .ms-answer input[type="range"].ms-fill27:not(.ms-custom *) { --ms-p: 27%; } .ms-answer input[type="range"].ms-fill28:not(.ms-custom *) { --ms-p: 28%; } .ms-answer input[type="range"].ms-fill29:not(.ms-custom *) { --ms-p: 29%; } .ms-answer input[type="range"].ms-fill30:not(.ms-custom *) { --ms-p: 30%; } .ms-answer input[type="range"].ms-fill31:not(.ms-custom *) { --ms-p: 31%; } .ms-answer input[type="range"].ms-fill32:not(.ms-custom *) { --ms-p: 32%; } .ms-answer input[type="range"].ms-fill33:not(.ms-custom *) { --ms-p: 33%; } .ms-answer input[type="range"].ms-fill34:not(.ms-custom *) { --ms-p: 34%; } .ms-answer input[type="range"].ms-fill35:not(.ms-custom *) { --ms-p: 35%; } .ms-answer input[type="range"].ms-fill36:not(.ms-custom *) { --ms-p: 36%; } .ms-answer input[type="range"].ms-fill37:not(.ms-custom *) { --ms-p: 37%; } .ms-answer input[type="range"].ms-fill38:not(.ms-custom *) { --ms-p: 38%; } .ms-answer input[type="range"].ms-fill39:not(.ms-custom *) { --ms-p: 39%; } .ms-answer input[type="range"].ms-fill40:not(.ms-custom *) { --ms-p: 40%; } .ms-answer input[type="range"].ms-fill41:not(.ms-custom *) { --ms-p: 41%; } .ms-answer input[type="range"].ms-fill42:not(.ms-custom *) { --ms-p: 42%; } .ms-answer input[type="range"].ms-fill43:not(.ms-custom *) { --ms-p: 43%; } .ms-answer input[type="range"].ms-fill44:not(.ms-custom *) { --ms-p: 44%; } .ms-answer input[type="range"].ms-fill45:not(.ms-custom *) { --ms-p: 45%; } .ms-answer input[type="range"].ms-fill46:not(.ms-custom *) { --ms-p: 46%; } .ms-answer input[type="range"].ms-fill47:not(.ms-custom *) { --ms-p: 47%; } .ms-answer input[type="range"].ms-fill48:not(.ms-custom *) { --ms-p: 48%; } .ms-answer input[type="range"].ms-fill49:not(.ms-custom *) { --ms-p: 49%; } .ms-answer input[type="range"].ms-fill50:not(.ms-custom *) { --ms-p: 50%; } .ms-answer input[type="range"].ms-fill51:not(.ms-custom *) { --ms-p: 51%; } .ms-answer input[type="range"].ms-fill52:not(.ms-custom *) { --ms-p: 52%; } .ms-answer input[type="range"].ms-fill53:not(.ms-custom *) { --ms-p: 53%; } .ms-answer input[type="range"].ms-fill54:not(.ms-custom *) { --ms-p: 54%; } .ms-answer input[type="range"].ms-fill55:not(.ms-custom *) { --ms-p: 55%; } .ms-answer input[type="range"].ms-fill56:not(.ms-custom *) { --ms-p: 56%; } .ms-answer input[type="range"].ms-fill57:not(.ms-custom *) { --ms-p: 57%; } .ms-answer input[type="range"].ms-fill58:not(.ms-custom *) { --ms-p: 58%; } .ms-answer input[type="range"].ms-fill59:not(.ms-custom *) { --ms-p: 59%; } .ms-answer input[type="range"].ms-fill60:not(.ms-custom *) { --ms-p: 60%; } .ms-answer input[type="range"].ms-fill61:not(.ms-custom *) { --ms-p: 61%; } .ms-answer input[type="range"].ms-fill62:not(.ms-custom *) { --ms-p: 62%; } .ms-answer input[type="range"].ms-fill63:not(.ms-custom *) { --ms-p: 63%; } .ms-answer input[type="range"].ms-fill64:not(.ms-custom *) { --ms-p: 64%; } .ms-answer input[type="range"].ms-fill65:not(.ms-custom *) { --ms-p: 65%; } .ms-answer input[type="range"].ms-fill66:not(.ms-custom *) { --ms-p: 66%; } .ms-answer input[type="range"].ms-fill67:not(.ms-custom *) { --ms-p: 67%; } .ms-answer input[type="range"].ms-fill68:not(.ms-custom *) { --ms-p: 68%; } .ms-answer input[type="range"].ms-fill69:not(.ms-custom *) { --ms-p: 69%; } .ms-answer input[type="range"].ms-fill70:not(.ms-custom *) { --ms-p: 70%; } .ms-answer input[type="range"].ms-fill71:not(.ms-custom *) { --ms-p: 71%; } .ms-answer input[type="range"].ms-fill72:not(.ms-custom *) { --ms-p: 72%; } .ms-answer input[type="range"].ms-fill73:not(.ms-custom *) { --ms-p: 73%; } .ms-answer input[type="range"].ms-fill74:not(.ms-custom *) { --ms-p: 74%; } .ms-answer input[type="range"].ms-fill75:not(.ms-custom *) { --ms-p: 75%; } .ms-answer input[type="range"].ms-fill76:not(.ms-custom *) { --ms-p: 76%; } .ms-answer input[type="range"].ms-fill77:not(.ms-custom *) { --ms-p: 77%; } .ms-answer input[type="range"].ms-fill78:not(.ms-custom *) { --ms-p: 78%; } .ms-answer input[type="range"].ms-fill79:not(.ms-custom *) { --ms-p: 79%; } .ms-answer input[type="range"].ms-fill80:not(.ms-custom *) { --ms-p: 80%; } .ms-answer input[type="range"].ms-fill81:not(.ms-custom *) { --ms-p: 81%; } .ms-answer input[type="range"].ms-fill82:not(.ms-custom *) { --ms-p: 82%; } .ms-answer input[type="range"].ms-fill83:not(.ms-custom *) { --ms-p: 83%; } .ms-answer input[type="range"].ms-fill84:not(.ms-custom *) { --ms-p: 84%; } .ms-answer input[type="range"].ms-fill85:not(.ms-custom *) { --ms-p: 85%; } .ms-answer input[type="range"].ms-fill86:not(.ms-custom *) { --ms-p: 86%; } .ms-answer input[type="range"].ms-fill87:not(.ms-custom *) { --ms-p: 87%; } .ms-answer input[type="range"].ms-fill88:not(.ms-custom *) { --ms-p: 88%; } .ms-answer input[type="range"].ms-fill89:not(.ms-custom *) { --ms-p: 89%; } .ms-answer input[type="range"].ms-fill90:not(.ms-custom *) { --ms-p: 90%; } .ms-answer input[type="range"].ms-fill91:not(.ms-custom *) { --ms-p: 91%; } .ms-answer input[type="range"].ms-fill92:not(.ms-custom *) { --ms-p: 92%; } .ms-answer input[type="range"].ms-fill93:not(.ms-custom *) { --ms-p: 93%; } .ms-answer input[type="range"].ms-fill94:not(.ms-custom *) { --ms-p: 94%; } .ms-answer input[type="range"].ms-fill95:not(.ms-custom *) { --ms-p: 95%; } .ms-answer input[type="range"].ms-fill96:not(.ms-custom *) { --ms-p: 96%; } .ms-answer input[type="range"].ms-fill97:not(.ms-custom *) { --ms-p: 97%; } .ms-answer input[type="range"].ms-fill98:not(.ms-custom *) { --ms-p: 98%; } .ms-answer input[type="range"].ms-fill99:not(.ms-custom *) { --ms-p: 99%; } .ms-answer input[type="range"].ms-fill100:not(.ms-custom *) { --ms-p: 100%; }
+.ms-answer input[type="range"]:not(.ms-custom *)::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(var(--ms-accent), var(--ms-accent)) 0 / var(--ms-p) 100% no-repeat, var(--ms-line-2); }
+.ms-answer input[type="range"]:not(.ms-custom *)::-moz-range-track { height: 4px; border-radius: 2px; background: var(--ms-line-2); }
+.ms-answer input[type="range"]:not(.ms-custom *)::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--ms-accent); }
+.ms-answer input[type="range"]:not(.ms-custom *)::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; margin-top: -7px; border-radius: 50%; background: var(--ms-surface); border: 2px solid var(--ms-accent); box-shadow: var(--ms-shadow-1); transition: transform var(--ms-dur-fast) var(--ms-spring); }
+.ms-answer input[type="range"]:not(.ms-custom *)::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--ms-surface); border: 2px solid var(--ms-accent); }
+.ms-answer input[type="range"]:active:not(.ms-custom *)::-webkit-slider-thumb { transform: scale(1.12); }
+.ms-answer input[type="range"]:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+/* Checkboxes and radios: drawn boxes, the accent when chosen. */
+.ms-answer input[type="checkbox"]:not(.ms-custom *), .ms-answer input[type="radio"]:not(.ms-custom *) { appearance: none; width: 18px; height: 18px; flex: none; padding: 0; margin: 0; border: 1.5px solid var(--ms-line-2); border-radius: 5px; background: var(--ms-surface) center / 12px no-repeat; cursor: pointer; transition: background-color var(--ms-dur-fast) var(--ms-ease), border-color var(--ms-dur-fast) var(--ms-ease), box-shadow var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer input[type="radio"]:not(.ms-custom *) { border-radius: 50%; }
+.ms-answer input[type="checkbox"]:checked:not(.ms-custom *) { background-color: var(--ms-accent); border-color: var(--ms-accent); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E"); }
+.ms-answer input[type="radio"]:checked:not(.ms-custom *) { border-color: var(--ms-accent); background: var(--ms-accent); box-shadow: inset 0 0 0 4px var(--ms-surface); }
+.ms-answer :is(input[type="checkbox"], input[type="radio"]):focus-visible:not(.ms-custom *) { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--ms-accent) 25%, transparent); }
+.ms-answer input[type="radio"]:checked:focus-visible:not(.ms-custom *) { box-shadow: inset 0 0 0 4px var(--ms-surface), 0 0 0 3px color-mix(in srgb, var(--ms-accent) 25%, transparent); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]):not([data-theme="mono"]) .ms-answer input[type="checkbox"]:checked:not(.ms-custom *) { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23071012' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E"); } }
+:root[data-theme="dark"] .ms-answer input[type="checkbox"]:checked:not(.ms-custom *) { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23071012' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E"); }
+.ms-answer .ms-range:not(.ms-custom *) { display: flex; justify-content: space-between; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer fieldset.ms-field:not(.ms-custom *) { gap: var(--ms-s2); }
+.ms-answer .ms-choice:not(.ms-custom *) { display: flex; gap: 10px; align-items: center; font-size: var(--ms-t-callout); cursor: pointer; }
+.ms-answer .ms-choice > input:not(.ms-custom *) { flex: none; }
+.ms-answer .ms-switch:not(.ms-custom *) { display: flex; gap: var(--ms-s3); align-items: center; justify-content: space-between; font-size: var(--ms-t-callout); cursor: pointer; }
+.ms-answer .ms-switch > span:not(.ms-custom *) { order: -1; }
+.ms-answer .ms-switch input:not(.ms-custom *) { appearance: none; width: 38px; height: 22px; border-radius: 11px; border: 0; background: var(--ms-line-2); position: relative; cursor: pointer; flex: none; padding: 0; transition: background-color var(--ms-dur) var(--ms-ease); }
+.ms-answer .ms-switch input:not(.ms-custom *)::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .25); transition: transform var(--ms-dur-slow) var(--ms-spring); }
+.ms-answer .ms-switch input:checked:not(.ms-custom *) { background: var(--ms-accent); }
+.ms-answer .ms-switch input:checked:not(.ms-custom *)::after { transform: translateX(16px); }
+.ms-answer .ms-switch input:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+
+/* ---------- Buttons: ink for the main action; consecutive buttons sit in one row ---------- */
+.ms-answer :is(.ms-actions:not(.ms-custom *), .ms-custom .ms-actions) { display: flex; flex-wrap: wrap; gap: var(--ms-s2); align-items: center; }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn) { display: inline-block; box-sizing: border-box; max-width: 100%; min-height: 36px; padding: 8px 14px; font: inherit; font-size: var(--ms-t-callout); font-weight: 600; line-height: 18px; text-align: center; text-wrap: balance; text-decoration: none; border-radius: var(--ms-r-ctl); border: 1px solid var(--ms-primary); background: var(--ms-primary); color: var(--ms-primary-ink); cursor: pointer; transition: transform var(--ms-dur-fast) var(--ms-spring), background-color var(--ms-dur-fast) var(--ms-ease), border-color var(--ms-dur-fast) var(--ms-ease), box-shadow var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn):hover { background: color-mix(in srgb, var(--ms-primary) 86%, var(--ms-page)); border-color: color-mix(in srgb, var(--ms-primary) 86%, var(--ms-page)); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn):active { transform: scale(.97); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-secondary { background: var(--ms-surface); color: var(--ms-ink); border-color: var(--ms-line-2); box-shadow: var(--ms-shadow-1); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-secondary:hover { border-color: color-mix(in srgb, var(--ms-line-2) 55%, var(--ms-ink-3)); background: var(--ms-surface); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-tertiary { background: transparent; border-color: transparent; color: var(--ms-accent); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-tertiary:hover { background: var(--ms-accent-bg); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-danger { background: var(--ms-bad-bg); color: var(--ms-bad); border-color: transparent; }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-danger:hover { background: color-mix(in srgb, var(--ms-bad) 16%, var(--ms-bad-bg)); }
+/* Disabled reads as disabled: no ink, no shadow, no press. */
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn):disabled, .ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn)[aria-disabled="true"] { background: var(--ms-tile); color: var(--ms-ink-3); border-color: var(--ms-line); box-shadow: none; cursor: not-allowed; transform: none; }
+.ms-answer td .ms-btn:not(.ms-custom *), .ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-small { min-height: 28px; line-height: 18px; padding: 4px 10px; font-size: var(--ms-t-footnote); }
+.ms-answer :is(.ms-btn:not(.ms-custom *), .ms-custom .ms-btn).ms-large { min-height: 44px; line-height: 20px; padding: 11px 20px; font-size: var(--ms-t-body); }
+.ms-answer .ms-cell > .ms-actions:not(.ms-custom *), .ms-answer .ms-cell > .ms-btn:not(.ms-custom *) { margin-top: auto; }
+
+/* A card placed in columns: on the page it stays a card; inside a card it is
+   a tile, not a box in a box. A lone stat inside it takes its surface. */
+.ms-answer .ms-cell > .ms-card:not(.ms-custom *) { padding: var(--ms-s4); }
+.ms-answer .ms-card .ms-cell > .ms-card:not(.ms-custom *) { background: var(--ms-tile); border: 0; box-shadow: none; }
+.ms-answer .ms-cell > .ms-card > header h2:not(.ms-custom *) { font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); }
+.ms-answer .ms-cell > .ms-card > header + *:not(.ms-custom *) { margin-top: var(--ms-s3); }
+.ms-answer .ms-cell > .ms-card .ms-stat:not(.ms-custom *), .ms-answer .ms-cell > .ms-group .ms-stat:not(.ms-custom *) { background: transparent; padding: 0; border: 0; box-shadow: none; }
+.ms-answer .ms-cell > .ms-card .ms-stat .ms-value:not(.ms-custom *) { font-size: clamp(1.05rem, 15cqi, 1.75rem); }
+
+/* Buttons never stretch with their cell; they sit at its foot. */
+.ms-answer .ms-cell > .ms-actions:not(.ms-custom *) { flex: none !important; margin-top: auto; }
+/* Tables in tiles: a little tighter. */
+.ms-answer .ms-cell table:not(.ms-custom *) { font-size: var(--ms-t-footnote); }
+.ms-answer .ms-cell th:not(.ms-custom *), .ms-answer .ms-cell td:not(.ms-custom *) { padding: 6px 8px; }
+.ms-answer .ms-cell > .ms-btn:not(.ms-custom *) { flex: none !important; align-self: flex-start; margin-top: auto; }
+/* A badge on its own in a cell stays a badge, not a tall coloured block. */
+.ms-answer .ms-cell > .ms-badge:not(.ms-custom *) { flex: none !important; align-self: flex-start; }
+.ms-answer .ms-cols.ms-with-field > .ms-cell > .ms-btn:only-child:not(.ms-custom *) { margin-top: calc(var(--ms-lh-footnote) + 6px); }
+.ms-answer td .ms-avatar:not(.ms-custom *) { gap: var(--ms-s2); }
+.ms-answer td .ms-avatar > span:not(.ms-custom *), .ms-answer td .ms-avatar > img:not(.ms-custom *) { width: 28px; height: 28px; font-size: 11px; }
+.ms-answer td .ms-avatar small:not(.ms-custom *) { font-size: var(--ms-t-caption); }
+
+/* ---------- Charts that respond (the web SDK adds hover, tap and legend toggles) ---------- */
+.ms-answer .ms-chart:not(.ms-custom *) { position: relative; }
+.ms-answer .ms-chart .ms-hover:not(.ms-custom *) { pointer-events: none; }
+.ms-answer .ms-chart .ms-hover .ms-cross:not(.ms-custom *) { stroke: var(--ms-ink-3); stroke-width: 1; stroke-dasharray: 2 3; }
+.ms-answer .ms-chart .ms-hover .ms-dot:not(.ms-custom *) { stroke: var(--ms-surface); stroke-width: 2; }
+.ms-answer .ms-chart .ms-hover .ms-band:not(.ms-custom *) { fill: var(--ms-ink); opacity: .05; }
+.ms-answer .ms-chart path.ms-slice.ms-on:not(.ms-custom *) { stroke: var(--ms-ink); }
+.ms-answer .ms-chart-tip:not(.ms-custom *) { position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; min-width: 140px; max-width: 260px; padding: var(--ms-s2) 10px; background: var(--ms-surface); color: var(--ms-ink); border: 1px solid var(--ms-line); border-radius: var(--ms-r-ctl); box-shadow: var(--ms-shadow-2); font-size: var(--ms-t-footnote); line-height: 1.5; opacity: 0; transform: translateY(2px); transition: opacity var(--ms-dur-fast) var(--ms-ease), transform var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-chart-tip.ms-on:not(.ms-custom *) { opacity: 1; transform: none; }
+.ms-answer .ms-chart-tip strong:not(.ms-custom *) { display: block; font-weight: 550; color: var(--ms-ink-3); font-size: var(--ms-t-caption); margin-bottom: 3px; }
+.ms-answer .ms-chart-tip div:not(.ms-custom *) { display: grid; grid-template-columns: 8px 1fr auto; gap: var(--ms-s2); align-items: center; color: var(--ms-ink-2); }
+.ms-answer .ms-chart-tip i:not(.ms-custom *) { width: 8px; height: 8px; border-radius: 2px; }
+.ms-answer .ms-chart-tip i.ms-s1:not(.ms-custom *) { background: var(--ms-c1); } .ms-answer .ms-chart-tip i.ms-s2:not(.ms-custom *) { background: var(--ms-c2); } .ms-answer .ms-chart-tip i.ms-s3:not(.ms-custom *) { background: var(--ms-c3); } .ms-answer .ms-chart-tip i.ms-s4:not(.ms-custom *) { background: var(--ms-c4); }
+.ms-answer .ms-chart-tip i.ms-s5:not(.ms-custom *) { background: var(--ms-c5); } .ms-answer .ms-chart-tip i.ms-s6:not(.ms-custom *) { background: var(--ms-c6); } .ms-answer .ms-chart-tip i.ms-s7:not(.ms-custom *) { background: var(--ms-c7); } .ms-answer .ms-chart-tip i.ms-s8:not(.ms-custom *) { background: var(--ms-c8); }
+.ms-answer .ms-chart-tip b:not(.ms-custom *) { font-weight: 650; color: var(--ms-ink); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-chart .ms-legend button:not(.ms-custom *) { all: unset; display: flex; align-items: center; gap: 6px; cursor: pointer; border-radius: var(--ms-r-sm); padding: 1px 2px; transition: color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-chart .ms-legend button:hover:not(.ms-custom *) { color: var(--ms-ink); }
+.ms-answer .ms-chart .ms-legend button:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+.ms-answer .ms-chart .ms-legend button[aria-pressed="false"]:not(.ms-custom *) { color: var(--ms-ink-3); text-decoration: line-through; text-decoration-color: var(--ms-line-2); }
+.ms-answer .ms-chart .ms-legend button[aria-pressed="false"] i:not(.ms-custom *) { opacity: .3; }
+.ms-answer .ms-chart.ms-off-s1 svg .ms-s1:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s2 svg .ms-s2:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s3 svg .ms-s3:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s4 svg .ms-s4:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s5 svg .ms-s5:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s6 svg .ms-s6:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s7 svg .ms-s7:not(.ms-custom *),
+.ms-answer .ms-chart.ms-off-s8 svg .ms-s8:not(.ms-custom *) { opacity: .08; }
+.ms-answer .ms-chart svg :is(.ms-s1, .ms-s2, .ms-s3, .ms-s4, .ms-s5, .ms-s6, .ms-s7, .ms-s8):not(.ms-custom *) { transition: opacity var(--ms-dur) var(--ms-ease); }
+/* Without the SDK, lines draw in, bars grow, slices and areas fade in: once, short,
+   and not at all with reduced motion. The SDK's morphs replace these (data-ms-morph). */
+@media (prefers-reduced-motion: no-preference) {
+  .ms-answer .ms-chart:not([data-ms-morph]) path.ms-line:not(.ms-custom *) { stroke-dasharray: 1; animation: ms-draw calc(var(--ms-dur-slow) * 2.5) var(--ms-ease) both; }
+  .ms-answer .ms-chart:not([data-ms-morph]) rect[data-i]:not(.ms-custom *) { transform-box: fill-box; transform-origin: 50% 100%; animation: ms-grow calc(var(--ms-dur-slow) * 1.8) var(--ms-spring) both; }
+  .ms-answer .ms-chart:not([data-ms-morph]) svg[data-kind="horizontal"] rect[data-i]:not(.ms-custom *) { transform-origin: 0 50%; animation-name: ms-grow-x; }
+  .ms-answer .ms-chart:not([data-ms-morph]) :is(path.ms-slice, path.ms-fill, polygon.ms-radar, svg > circle):not(.ms-custom *) { animation: ms-fade calc(var(--ms-dur-slow) * 1.8) var(--ms-ease) both; }
+}
+@keyframes ms-draw { from { stroke-dashoffset: 1; } }
+@keyframes ms-grow { from { transform: scaleY(0); } }
+@keyframes ms-grow-x { from { transform: scaleX(0); } }
+@keyframes ms-fade { from { opacity: 0; } }
+
+/* ---------- A row of stats ----------
+   Numbers shrink to fit their tile instead of overflowing it. When any label
+   in a row wraps, every label in that row reserves two lines, so the values
+   all start at the same height (the renderer sets .label2). */
+.ms-answer .ms-stat:not(.ms-custom *) { container-type: inline-size; }
+.ms-answer .ms-stat .ms-value:not(.ms-custom *) { font-size: clamp(1.05rem, 15cqi, var(--ms-t-display)); overflow-wrap: break-word; }
+/* Sized so the row's longest value fits: a digit is about .6em wide. */
+.ms-answer .ms-cols.ms-v12 .ms-stat .ms-value:not(.ms-custom *) { font-size: clamp(.95rem, 12.5cqi, 1.75rem); }
+.ms-answer .ms-cols.ms-v14 .ms-stat .ms-value:not(.ms-custom *) { font-size: clamp(.95rem, 10.5cqi, 1.75rem); }
+.ms-answer .ms-cols.ms-v17 .ms-stat .ms-value:not(.ms-custom *) { font-size: clamp(.9rem, 8.5cqi, 1.75rem); }
+.ms-answer .ms-stat .ms-change:empty:not(.ms-custom *), .ms-answer .ms-stat .ms-note:empty:not(.ms-custom *) { display: none; }
+/* Only while every tile is on one row (a phone wraps them, and a row of short
+   labels then has nothing to line up with): at least per x 140px plus gaps. */
+.ms-answer .ms-cols.ms-label2:not(.ms-custom *) { container: ms-cols / inline-size; }
+@container ms-cols (min-width: 292px) { .ms-answer .ms-cols.ms-n2.ms-label2 .ms-stat .ms-label:not(.ms-custom *) { min-height: calc(2 * var(--ms-lh-footnote)); } }
+@container ms-cols (min-width: 444px) { .ms-answer .ms-cols.ms-n3.ms-label2 .ms-stat .ms-label:not(.ms-custom *) { min-height: calc(2 * var(--ms-lh-footnote)); } }
+@container ms-cols (min-width: 596px) { .ms-answer .ms-cols.ms-n4.ms-label2 .ms-stat .ms-label:not(.ms-custom *) { min-height: calc(2 * var(--ms-lh-footnote)); } }
+@container ms-cols (min-width: 748px) { .ms-answer .ms-cols.ms-n5.ms-label2 .ms-stat .ms-label:not(.ms-custom *) { min-height: calc(2 * var(--ms-lh-footnote)); } }
+
+/* ---------- While an answer streams (the web renderer) ----------
+   A row of columns fills slots as its cells arrive and gets its final grid
+   when it closes. A component shows from its first complete line; until
+   then a placeholder holds its place, a quiet tile that breathes, into which
+   the SDK draws the component's own outline (a chart's lines, a gauge's arc)
+   and morphs that into the real thing. */
+/* A row still streaming: slots filled left to right, so no cell moves as others
+   arrive. Its up class is the most a row of its kind holds (set by the SDK from
+   the core's plan while the first cell streams; two until then), each slot never
+   narrower than its m class allows, so a phone still gets one or two. It takes
+   its final columns when it closes. */
+.ms-answer .ms-cols.ms-streaming:not(.ms-custom *) { --ms-slots: 2; }
+.ms-answer .ms-cols.ms-streaming.ms-up1:not(.ms-custom *) { --ms-slots: 1; --ms-min: 0px; }
+.ms-answer .ms-cols.ms-streaming.ms-up4:not(.ms-custom *) { --ms-slots: 4; }
+.ms-answer .ms-cols.ms-streaming:not(.ms-m140, .ms-m200, .ms-m260, .ms-m280, .ms-up1):not(.ms-custom *) { --ms-min: 200px; }
+/* The same flex rows as the final columns (so closing changes widths, never the
+   kind of layout), each cell a slot's width that doesn't grow into empty slots. */
+.ms-answer .ms-cols.ms-streaming > .ms-cell:not(.ms-custom *) { flex: 0 1 max(var(--ms-min), calc((100% - (var(--ms-slots) - 1) * var(--ms-s3)) / var(--ms-slots) - .1px)); }
+.ms-answer .ms-pending:not(.ms-custom *) { min-height: 44px; background: var(--ms-tile); border-radius: var(--ms-r); }
+@media (prefers-reduced-motion: no-preference) { .ms-answer .ms-pending:not(.ms-custom *) { animation: ms-breathe 1.6s var(--ms-ease) infinite alternate; } }
+@keyframes ms-breathe { from { opacity: 1; } to { opacity: .55; } }
+.ms-answer .ms-pending > svg[data-ms-added]:not(.ms-custom *) { display: block; width: 100%; height: 100%; }
+.ms-answer figure.ms-pending:not(.ms-custom *) { min-height: 200px; }
+/* While a component streams, its placeholder holds about the room it will take
+   (the median height of each type in the bench answers at 760 px), so the page
+   barely moves when it's drawn. */
+.ms-answer .ms-pending[data-type="Progress"]:not(.ms-custom *) { min-height: 37px; }
+.ms-answer .ms-pending[data-type="Avatar"]:not(.ms-custom *) { min-height: 46px; }
+.ms-answer .ms-pending[data-type="Combobox"]:not(.ms-custom *), .ms-answer .ms-pending[data-type="Input"]:not(.ms-custom *), .ms-answer .ms-pending[data-type="Select"]:not(.ms-custom *), .ms-answer .ms-pending[data-type="Stepper"]:not(.ms-custom *) { min-height: 67px; }
+.ms-answer .ms-pending[data-type="Price"]:not(.ms-custom *) { min-height: 68px; }
+.ms-answer .ms-pending[data-type="Countdown"]:not(.ms-custom *) { min-height: 72px; }
+.ms-answer .ms-pending[data-type="FollowUps"]:not(.ms-custom *) { min-height: 78px; }
+.ms-answer .ms-pending[data-type="RatingInput"]:not(.ms-custom *) { min-height: 80px; }
+.ms-answer .ms-pending[data-type="Embed"]:not(.ms-custom *) { min-height: 82px; }
+.ms-answer .ms-pending[data-type="Stat"]:not(.ms-custom *) { min-height: 83px; }
+.ms-answer .ms-pending[data-type="Math"]:not(.ms-custom *) { min-height: 84px; }
+.ms-answer .ms-pending[data-type="Sparkline"]:not(.ms-custom *) { min-height: 93px; }
+.ms-answer .ms-pending[data-type="Audio"]:not(.ms-custom *) { min-height: 95px; }
+.ms-answer .ms-pending[data-type="Contact"]:not(.ms-custom *), .ms-answer .ms-pending[data-type="Date"]:not(.ms-custom *), .ms-answer .ms-pending[data-type="Time"]:not(.ms-custom *) { min-height: 96px; }
+.ms-answer .ms-pending[data-type="TimeSlots"]:not(.ms-custom *) { min-height: 99px; }
+.ms-answer .ms-pending[data-type="VoiceNote"]:not(.ms-custom *) { min-height: 107px; }
+.ms-answer .ms-pending[data-type="Radio"]:not(.ms-custom *) { min-height: 108px; }
+.ms-answer .ms-pending[data-type="Agenda"]:not(.ms-custom *) { min-height: 114px; }
+.ms-answer .ms-pending[data-type="Location"]:not(.ms-custom *) { min-height: 130px; }
+.ms-answer .ms-pending[data-type="TextArea"]:not(.ms-custom *) { min-height: 145px; }
+.ms-answer .ms-pending[data-type="Citation"]:not(.ms-custom *) { min-height: 146px; }
+.ms-answer .ms-pending[data-type="KeyValue"]:not(.ms-custom *) { min-height: 151px; }
+.ms-answer .ms-pending[data-type="Gauge"]:not(.ms-custom *) { min-height: 173px; }
+.ms-answer .ms-pending[data-type="Checklist"]:not(.ms-custom *) { min-height: 180px; }
+.ms-answer .ms-pending[data-type="Event"]:not(.ms-custom *) { min-height: 188px; }
+.ms-answer .ms-pending[data-type="Poll"]:not(.ms-custom *) { min-height: 200px; }
+.ms-answer .ms-pending[data-type="Checkboxes"]:not(.ms-custom *) { min-height: 201px; }
+.ms-answer .ms-pending[data-type="Funnel"]:not(.ms-custom *) { min-height: 213px; }
+/* A chart waiting for its first rows: its caption as the chart will have it, the outline in a breathing tile under it. */
+.ms-answer figure.ms-pending[data-type="Chart"]:not(.ms-custom *) { min-height: 0; background: none; border-radius: 0; animation: none; }
+.ms-answer figure.ms-pending[data-type="Chart"] > figcaption:not(.ms-custom *) { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ms-s3); flex-wrap: wrap; font-weight: 600; font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); margin-bottom: var(--ms-s3); }
+.ms-answer figure.ms-pending[data-type="Chart"] > figcaption .ms-axis:not(.ms-custom *) { font-weight: 450; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+.ms-answer figure.ms-pending[data-type="Chart"] > .ms-plot:not(.ms-custom *) { aspect-ratio: 700 / 276; background: var(--ms-tile); border-radius: var(--ms-r); }
+@media (prefers-reduced-motion: no-preference) { .ms-answer figure.ms-pending[data-type="Chart"] > .ms-plot:not(.ms-custom *) { animation: ms-breathe 1.6s var(--ms-ease) infinite alternate; } }
+.ms-answer .ms-pending > .ms-plot > svg[data-ms-added]:not(.ms-custom *) { display: block; width: 100%; height: 100%; }
+.ms-answer .ms-pending[data-type="Plan"]:not(.ms-custom *) { min-height: 228px; }
+.ms-answer .ms-pending[data-type="Flashcards"]:not(.ms-custom *) { min-height: 230px; }
+.ms-answer .ms-pending[data-type="Compare"]:not(.ms-custom *) { min-height: 235px; }
+.ms-answer .ms-pending[data-type="Signature"]:not(.ms-custom *) { min-height: 276px; }
+.ms-answer .ms-pending[data-type="QR"]:not(.ms-custom *) { min-height: 285px; }
+.ms-answer .ms-pending[data-type="WhatIf"]:not(.ms-custom *) { min-height: 300px; }
+.ms-answer .ms-pending[data-type="Gallery"]:not(.ms-custom *) { min-height: 335px; }
+.ms-answer .ms-pending[data-type="Cart"]:not(.ms-custom *) { min-height: 345px; }
+.ms-answer .ms-pending[data-type="Heatmap"]:not(.ms-custom *) { min-height: 355px; }
+.ms-answer .ms-pending[data-type="Tree"]:not(.ms-custom *) { min-height: 359px; }
+.ms-answer .ms-pending[data-type="Calendar"]:not(.ms-custom *) { min-height: 391px; }
+.ms-answer .ms-pending[data-type="Video"]:not(.ms-custom *) { min-height: 403px; }
+.ms-answer .ms-pending[data-type="Timeline"]:not(.ms-custom *) { min-height: 408px; }
+.ms-answer .ms-pending[data-type="Quiz"]:not(.ms-custom *) { min-height: 420px; }
+.ms-answer .ms-pending[data-type="Product"]:not(.ms-custom *) { min-height: 438px; }
+.ms-answer .ms-pending[data-type="Carousel"]:not(.ms-custom *) { min-height: 489px; }
+.ms-answer .ms-pending[data-type="Code"]:not(.ms-custom *) { min-height: 535px; }
+.ms-answer .ms-pending[data-type="Diff"]:not(.ms-custom *) { min-height: 595px; }
+.ms-answer .ms-pending[data-type="FileTree"]:not(.ms-custom *) { min-height: 630px; }
+.ms-answer .ms-maplive:not(.ms-custom *) { height: 320px; border-radius: var(--ms-r); overflow: hidden; }
+.ms-answer .ms-maplive .ms-pin:not(.ms-custom *) { width: 22px; height: 22px; border-radius: 50%; background: var(--ms-accent); color: var(--ms-accent-ink); font: 600 11px var(--ms-font); display: grid; place-items: center; border: 2px solid var(--ms-surface); box-shadow: var(--ms-shadow-1); }
+.ms-answer .ms-field > input + .ms-btn:not(.ms-custom *), .ms-answer .ms-field > .ms-btn:not(.ms-custom *) { justify-self: start; }
+.ms-answer .ms-previews:not(.ms-custom *) { display: flex; flex-wrap: wrap; gap: var(--ms-s2); }
+.ms-answer .ms-previews img:not(.ms-custom *) { width: 72px; height: 72px; object-fit: cover; border-radius: var(--ms-r-ctl); }
+.ms-answer .ms-scan-overlay:not(.ms-custom *) { position: fixed; inset: 0; background: rgba(0, 0, 0, .85); display: grid; place-items: center; gap: var(--ms-s3); align-content: center; z-index: 1000; }
+.ms-answer .ms-scan-overlay video:not(.ms-custom *) { width: min(92vw, 480px); border-radius: var(--ms-r); }
+
+/* ================= Packs (spec/packs) ================= */
+.ms-answer figure > figcaption:not(.ms-custom *) { font-weight: 600; font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); margin-bottom: var(--ms-s3); }
+/* ---------- data ---------- */
+/* Key and value: Stripe's details list, a hairline between rows. */
+.ms-answer .ms-kv dl:not(.ms-custom *) { display: grid; grid-template-columns: fit-content(40%) minmax(0, 1fr); column-gap: var(--ms-s5); font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); }
+.ms-answer .ms-kv dt:not(.ms-custom *), .ms-answer .ms-kv dd:not(.ms-custom *) { padding: 7px 0; border-bottom: 1px solid var(--ms-line); }
+.ms-answer .ms-kv dt:last-of-type:not(.ms-custom *), .ms-answer .ms-kv dd:last-of-type:not(.ms-custom *) { border-bottom: 0; }
+.ms-answer .ms-kv dt:not(.ms-custom *) { color: var(--ms-ink-3); }
+.ms-answer .ms-kv dd:not(.ms-custom *) { margin: 0; font-variant-numeric: var(--ms-numeric, tabular-nums); color: var(--ms-ink); }
+.ms-answer .ms-timeline ol:not(.ms-custom *) { list-style: none; padding: 0; }
+.ms-answer .ms-timeline li:not(.ms-custom *) { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: var(--ms-s3); position: relative; padding-bottom: var(--ms-s4); margin: 0; }
+.ms-answer .ms-timeline li:not(.ms-custom *)::before { content: ""; position: absolute; left: calc(7.5em + 2px); top: .5em; width: 9px; height: 9px; border-radius: 50%; background: var(--ms-surface); border: 2px solid var(--ms-accent); box-sizing: border-box; }
+.ms-answer .ms-timeline li:not(.ms-custom *)::after { content: ""; position: absolute; left: calc(7.5em + 6px); top: calc(.5em + 13px); bottom: 4px; width: 1px; background: var(--ms-line-2); }
+.ms-answer .ms-timeline li:last-child:not(.ms-custom *)::after { display: none; }
+.ms-answer .ms-timeline li:last-child:not(.ms-custom *) { padding-bottom: 0; }
+.ms-answer .ms-timeline time:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-footnote); font-variant-numeric: var(--ms-numeric, tabular-nums); padding-top: 1px; }
+.ms-answer .ms-timeline li > span:not(.ms-custom *) { padding-left: var(--ms-s5); }
+/* In a narrow space the date sits above its entry, beside the rail, and a
+   key/value list with long values puts each value under its key. */
+.ms-answer .ms-timeline:not(.ms-custom *), .ms-answer .ms-kv:not(.ms-custom *) { container-type: inline-size; }
+@container (max-width: 460px) {
+  .ms-answer .ms-timeline li:not(.ms-custom *) { grid-template-columns: minmax(0, 1fr); gap: 2px; padding-left: var(--ms-s5); }
+  .ms-answer .ms-timeline li:not(.ms-custom *)::before { left: 0; top: .45em; }
+  .ms-answer .ms-timeline li:not(.ms-custom *)::after { left: 4px; }
+  .ms-answer .ms-timeline li > span:not(.ms-custom *) { padding-left: 0; }
+  .ms-answer .ms-kv.ms-long dl:not(.ms-custom *) { grid-template-columns: minmax(0, 1fr); }
+  .ms-answer .ms-kv.ms-long dt:not(.ms-custom *) { border-bottom: 0; padding-bottom: 0; }
+  .ms-answer .ms-kv.ms-long dd:not(.ms-custom *) { padding-top: 2px; }
+}
+.ms-answer .ms-gauge:not(.ms-custom *) { display: grid; grid-template-columns: 1fr 1fr; max-width: 240px; text-align: center; --ms-tone: var(--ms-accent); }
+.ms-answer .ms-gauge svg:not(.ms-custom *) { grid-column: 1 / -1; width: 100%; overflow: visible; }
+.ms-answer .ms-gauge .ms-track:not(.ms-custom *), .ms-answer .ms-gauge .ms-value:not(.ms-custom *) { fill: none; stroke-width: 9; stroke-linecap: round; }
+.ms-answer .ms-gauge .ms-track:not(.ms-custom *) { stroke: var(--ms-line); }
+.ms-answer .ms-gauge .ms-value:not(.ms-custom *) { stroke: var(--ms-tone); }
+.ms-answer .ms-gauge strong:not(.ms-custom *) { grid-column: 1 / -1; margin-top: -1.75em; font-size: 26px; line-height: 32px; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-gauge strong span:not(.ms-custom *) { font-size: .5em; font-weight: 550; color: var(--ms-ink-3); margin-left: 3px; letter-spacing: 0; }
+.ms-answer .ms-gauge figcaption:not(.ms-custom *) { grid-column: 1 / -1; order: 3; margin: var(--ms-s1) 0 0; font-weight: 550; font-size: var(--ms-t-callout); color: var(--ms-ink-2); }
+.ms-answer .ms-gauge small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-caption); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-gauge small:first-of-type:not(.ms-custom *) { text-align: left; padding-left: 4px; } .ms-answer .ms-gauge small:last-of-type:not(.ms-custom *) { text-align: right; padding-right: 4px; }
+.ms-answer .ms-gauge.ms-success:not(.ms-custom *) { --ms-tone: var(--ms-good); } .ms-answer .ms-gauge.ms-warning:not(.ms-custom *) { --ms-tone: var(--ms-warn); } .ms-answer .ms-gauge.ms-danger:not(.ms-custom *) { --ms-tone: var(--ms-bad); } .ms-answer .ms-gauge.ms-info:not(.ms-custom *) { --ms-tone: var(--ms-info); }
+/* Capped so the ink stays readable on the darkest cell (4.5:1, tested). */
+/* A cell's shade in tenths, by class (the core writes heat0 to heat10). */
+.ms-answer .ms-heatmap td.ms-heat0:not(.ms-custom *) { --ms-v: 0; }
+.ms-answer .ms-heatmap td.ms-heat1:not(.ms-custom *) { --ms-v: 0.1; }
+.ms-answer .ms-heatmap td.ms-heat2:not(.ms-custom *) { --ms-v: 0.2; }
+.ms-answer .ms-heatmap td.ms-heat3:not(.ms-custom *) { --ms-v: 0.3; }
+.ms-answer .ms-heatmap td.ms-heat4:not(.ms-custom *) { --ms-v: 0.4; }
+.ms-answer .ms-heatmap td.ms-heat5:not(.ms-custom *) { --ms-v: 0.5; }
+.ms-answer .ms-heatmap td.ms-heat6:not(.ms-custom *) { --ms-v: 0.6; }
+.ms-answer .ms-heatmap td.ms-heat7:not(.ms-custom *) { --ms-v: 0.7; }
+.ms-answer .ms-heatmap td.ms-heat8:not(.ms-custom *) { --ms-v: 0.8; }
+.ms-answer .ms-heatmap td.ms-heat9:not(.ms-custom *) { --ms-v: 0.9; }
+.ms-answer .ms-heatmap td.ms-heat10:not(.ms-custom *) { --ms-v: 1; }
+.ms-answer .ms-heatmap td:not(.ms-custom *) { background: color-mix(in srgb, var(--ms-c1) calc(var(--ms-v) * var(--ms-heat-max)), var(--ms-surface)); text-align: center; font-variant-numeric: var(--ms-numeric, tabular-nums); font-size: var(--ms-t-footnote); border-bottom: 2px solid var(--ms-surface); border-right: 2px solid var(--ms-surface); border-radius: 3px; }
+.ms-answer .ms-heatmap tbody th:not(.ms-custom *) { font-size: var(--ms-t-footnote); font-weight: 550; color: var(--ms-ink-2); }
+.ms-answer .ms-heatmap tbody tr:hover > *:not(.ms-custom *) { background: color-mix(in srgb, var(--ms-c1) calc(var(--ms-v, 0) * var(--ms-heat-max)), var(--ms-surface)); }
+.ms-answer .ms-funnel ol:not(.ms-custom *) { list-style: none; padding: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content max-content; gap: 10px var(--ms-s3); align-items: center; }
+.ms-answer .ms-funnel li:not(.ms-custom *) { display: contents; }
+.ms-answer .ms-funnel .ms-label:not(.ms-custom *) { font-size: var(--ms-t-callout); color: var(--ms-ink-2); }
+.ms-answer .ms-funnel .ms-bar:not(.ms-custom *) { height: 24px; background: var(--ms-tile); border-radius: var(--ms-r-sm); overflow: hidden; }
+/* A bar is an SVG whose rect is the step's share: an attribute, never a style. */
+.ms-answer .ms-funnel .ms-bar svg:not(.ms-custom *) { display: block; width: 100%; height: 100%; }
+.ms-answer .ms-funnel .ms-bar rect:not(.ms-custom *) { fill: var(--ms-accent); }
+.ms-answer .ms-funnel li + li .ms-bar rect:not(.ms-custom *) { fill: color-mix(in srgb, var(--ms-accent) 78%, var(--ms-surface)); }
+.ms-answer .ms-funnel li + li + li .ms-bar rect:not(.ms-custom *) { fill: color-mix(in srgb, var(--ms-accent) 60%, var(--ms-surface)); }
+.ms-answer .ms-funnel li + li + li + li .ms-bar rect:not(.ms-custom *) { fill: color-mix(in srgb, var(--ms-accent) 45%, var(--ms-surface)); }
+.ms-answer .ms-funnel .ms-n:not(.ms-custom *) { font-variant-numeric: var(--ms-numeric, tabular-nums); text-align: right; font-weight: 600; font-size: var(--ms-t-callout); }
+.ms-answer .ms-funnel small:not(.ms-custom *) { color: var(--ms-ink-3); font-variant-numeric: var(--ms-numeric, tabular-nums); text-align: right; font-size: var(--ms-t-footnote); }
+.ms-answer .ms-spark:not(.ms-custom *) { container-type: inline-size; display: grid; grid-template-columns: minmax(0, 1fr) minmax(48px, min(104px, 40%)); grid-template-rows: auto auto auto; column-gap: var(--ms-s3); align-items: center; padding: 14px var(--ms-s4); background: var(--ms-tile); border-radius: var(--ms-r); }
+.ms-answer .ms-spark .ms-label:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-footnote); font-weight: 550; }
+/* The number shrinks with a narrow tile rather than running into its line. */
+.ms-answer .ms-spark .ms-value:not(.ms-custom *) { font-size: clamp(16px, 11cqi, 22px); line-height: 28px; font-weight: 640; letter-spacing: -0.02em; font-variant-numeric: var(--ms-numeric, tabular-nums); grid-row: 2; }
+.ms-answer .ms-spark svg:not(.ms-custom *) { grid-column: 2; grid-row: 1 / 4; width: 100%; height: 34px; overflow: visible; }
+.ms-answer .ms-spark polyline:not(.ms-custom *) { fill: none; stroke: var(--ms-accent); stroke-width: 1.8; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.ms-answer .ms-spark .ms-change:not(.ms-custom *) { font-size: var(--ms-t-caption); font-weight: 600; grid-row: 3; justify-self: start; padding: 0 6px; border-radius: var(--ms-r-sm); line-height: 18px; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-spark .ms-change.ms-up:not(.ms-custom *) { color: var(--ms-good); background: var(--ms-good-bg); } .ms-answer .ms-spark .ms-change.ms-down:not(.ms-custom *) { color: var(--ms-bad); background: var(--ms-bad-bg); }
+.ms-answer .ms-spark .ms-value:not(.ms-custom *) { white-space: nowrap; }
+.ms-answer.ms-answer > .ms-spark:not(.ms-custom *), .ms-answer.ms-answer > .ms-cols > .ms-cell > .ms-spark:not(.ms-custom *) { background: var(--ms-surface); border: 1px solid var(--ms-line); box-shadow: var(--ms-shadow-1); }
+/* In a table row the sparkline is the line and its latest value, not a tile. */
+.ms-answer td .ms-spark:not(.ms-custom *) { grid-template-columns: auto 80px; grid-template-rows: auto; padding: 0; background: none; border: 0; box-shadow: none; }
+.ms-answer td .ms-spark .ms-label:not(.ms-custom *), .ms-answer td .ms-spark .ms-change:not(.ms-custom *) { display: none; }
+.ms-answer td .ms-spark .ms-value:not(.ms-custom *) { grid-row: 1; font-size: inherit; font-weight: 500; line-height: inherit; }
+.ms-answer td .ms-spark svg:not(.ms-custom *) { grid-row: 1; width: 80px; height: 24px; }
+/* Trees: guides down each level; a file tree adds folder and file marks. */
+.ms-answer .ms-tree-list ul:not(.ms-custom *) { list-style: none; padding-left: 0; }
+.ms-answer .ms-tree-list ul ul:not(.ms-custom *) { padding-left: var(--ms-s4); border-left: 1px solid var(--ms-line-2); margin-left: 7px; }
+.ms-answer .ms-tree-list li:not(.ms-custom *) { margin: 0; padding: 2px 0 2px var(--ms-s2); }
+.ms-answer .ms-tree-list li.ms-dir > span:not(.ms-custom *) { font-weight: 600; }
+.ms-answer .ms-filetree .ms-tree-list:not(.ms-custom *) { font: var(--ms-t-footnote)/1.75 var(--ms-mono); }
+.ms-answer .ms-filetree .ms-tree-list li > span:not(.ms-custom *)::before { content: ""; display: inline-block; width: 15px; height: 15px; margin-right: 6px; vertical-align: -2.5px; background: var(--ms-ink-3); mask: var(--ms-i-file) center / contain no-repeat; }
+.ms-answer .ms-filetree .ms-tree-list li.ms-dir > span:not(.ms-custom *)::before { background: var(--ms-accent); mask-image: var(--ms-i-folder); }
+/* ---------- commerce ---------- */
+.ms-answer .ms-product:not(.ms-custom *) { position: relative; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: var(--ms-s4); align-items: start; padding: var(--ms-s4); border: 1px solid var(--ms-line); border-radius: var(--ms-r); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); transition: box-shadow var(--ms-dur) var(--ms-ease), transform var(--ms-dur) var(--ms-spring); }
+.ms-answer .ms-product:hover:not(.ms-custom *) { box-shadow: var(--ms-shadow-2); }
+.ms-answer .ms-product:not(:has(img, .ms-img-missing)):not(.ms-custom *) { grid-template-columns: 1fr; }
+.ms-answer .ms-product img:not(.ms-custom *), .ms-answer .ms-product .ms-img-missing:not(.ms-custom *) { width: 96px; height: 96px; object-fit: cover; background: var(--ms-tile); border-radius: var(--ms-r-ctl); }
+.ms-answer .ms-product :is(h3, h4):not(.ms-custom *) { font-size: var(--ms-t-headline); line-height: var(--ms-lh-headline); }
+.ms-answer .ms-product :is(h3, h4) a:not(.ms-custom *) { color: var(--ms-ink); text-decoration: none; }
+.ms-answer .ms-product :is(h3, h4) a:hover:not(.ms-custom *) { text-decoration: underline; text-decoration-color: var(--ms-line-2); }
+.ms-answer .ms-product > div > * + *:not(.ms-custom *) { margin-top: 6px; }
+.ms-answer .ms-product > div > p:not(.ms-price):not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); }
+.ms-answer .ms-cell > .ms-product:not(.ms-custom *) { grid-template-columns: 1fr; }
+.ms-answer .ms-cell > .ms-product img:not(.ms-custom *), .ms-answer .ms-cell > .ms-product .ms-img-missing:not(.ms-custom *) { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+.ms-answer .ms-cell > .ms-product:not(.ms-custom *) { flex: 1; }
+/* With the photo on top, the tag sits on the photo's corner. */
+.ms-answer .ms-cell > .ms-product:has(> img) .ms-tag:not(.ms-custom *) { position: absolute; top: calc(var(--ms-s4) + 8px); left: calc(var(--ms-s4) + 8px); margin: 0; background: rgba(255, 255, 255, .94); color: #16181d; box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+.ms-answer .ms-price:not(.ms-custom *) { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--ms-s2); row-gap: 2px; }
+.ms-answer .ms-price strong:not(.ms-custom *) { font-size: 20px; line-height: 26px; font-weight: 650; letter-spacing: -0.015em; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-price s:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-callout); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-price small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+.ms-answer .ms-price .ms-note:not(.ms-custom *) { flex-basis: 100%; }
+/* Stars: a filled share over an empty row, inline with the text around them. */
+.ms-answer .ms-stars:not(.ms-custom *) { display: inline-block; color: var(--ms-line-2); letter-spacing: 1px; line-height: 1; white-space: nowrap; font-size: .95em; }
+.ms-answer .ms-stars > .ms-lit:not(.ms-custom *) { color: var(--ms-star); }
+.ms-answer .ms-stars > .ms-half:not(.ms-custom *) { background: linear-gradient(90deg, var(--ms-star) 50%, var(--ms-line-2) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ms-answer .ms-rating:not(.ms-custom *) { display: inline-flex; align-items: baseline; gap: 5px; font-variant-numeric: var(--ms-numeric, tabular-nums); white-space: nowrap; vertical-align: baseline; }
+.ms-answer .ms-rating > span:not(.ms-stars):not(.ms-custom *) { font-weight: 600; }
+.ms-answer .ms-rating small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: .87em; }
+/* Pricing: the featured plan lifted and edged in the accent; rows of plans line
+   their parts up across the row (name, price, note, features) with subgrid. */
+.ms-answer .ms-plan:not(.ms-custom *) { display: grid; align-content: start; padding: 20px; border: 1px solid var(--ms-line); border-radius: var(--ms-r); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); }
+.ms-answer .ms-plan.ms-featured:not(.ms-custom *) { border-color: color-mix(in srgb, var(--ms-accent) 55%, var(--ms-line)); box-shadow: var(--ms-shadow-2), 0 0 0 1px color-mix(in srgb, var(--ms-accent) 55%, var(--ms-line)); }
+.ms-answer .ms-plan > * + *:not(.ms-custom *) { margin-top: var(--ms-s2); }
+.ms-answer .ms-plan :is(h3, h4):not(.ms-custom *) { font-size: var(--ms-t-headline); font-weight: 640; }
+.ms-answer .ms-plan .ms-price strong:not(.ms-custom *) { font-size: var(--ms-t-display); line-height: var(--ms-lh-display); letter-spacing: -0.025em; }
+.ms-answer .ms-plan .ms-note:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); }
+.ms-answer .ms-plan .ms-note:empty:not(.ms-custom *) { margin: 0; }
+.ms-answer .ms-plan.ms-featured .ms-note:not(:empty):not(.ms-custom *) { color: var(--ms-accent); font-weight: 600; }
+.ms-answer .ms-plan ul:not(.ms-custom *) { list-style: none; padding: 14px 0 0; margin-top: var(--ms-s3); border-top: 1px solid var(--ms-line); font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); display: grid; gap: 8px; align-content: start; }
+.ms-answer .ms-plan li:not(.ms-custom *) { padding-left: 24px; position: relative; margin: 0; }
+.ms-answer .ms-plan li:not(.ms-custom *)::before { content: ""; position: absolute; left: 0; top: 2.5px; width: 16px; height: 16px; background: var(--ms-accent); mask: var(--ms-i-check) center / contain no-repeat; }
+.ms-answer .ms-cell > .ms-plan:not(.ms-custom *) { flex: 1; }
+@supports (grid-template-rows: subgrid) {
+  .ms-answer .ms-cols:has(> .ms-cell > .ms-plan:only-child):not(.ms-custom *) { display: grid; grid-template-columns: repeat(auto-fit, minmax(max(var(--ms-min), 180px), 1fr)); grid-auto-rows: auto; }
+  .ms-answer .ms-cols:has(> .ms-cell > .ms-plan:only-child) > .ms-cell:not(.ms-custom *) { grid-row: span 4; display: grid; grid-template-rows: subgrid; }
+  .ms-answer .ms-cols:has(> .ms-cell > .ms-plan:only-child) > .ms-cell > .ms-plan:not(.ms-custom *) { grid-row: 1 / -1; grid-template-rows: subgrid; row-gap: 0; }
+}
+.ms-answer .ms-cart .ms-num:not(.ms-custom *) { text-align: right; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-cart tfoot th:not(.ms-custom *) { text-align: right; font-weight: 600; color: var(--ms-ink-2); }
+.ms-answer .ms-cart tfoot td:not(.ms-custom *) { font-weight: 650; font-size: var(--ms-t-body); }
+.ms-answer .ms-cart > small:not(.ms-custom *) { display: block; margin-top: var(--ms-s2); padding-inline: var(--ms-s3); color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+.ms-answer .ms-compare .ms-yes:not(.ms-custom *), .ms-answer .ms-compare .ms-no:not(.ms-custom *) { display: inline-block; width: 18px; height: 18px; vertical-align: middle; }
+.ms-answer .ms-compare .ms-yes:not(.ms-custom *) { background: var(--ms-good); mask: var(--ms-i-check) center / contain no-repeat; }
+.ms-answer .ms-compare .ms-no:not(.ms-custom *) { background: var(--ms-ink-3); mask: var(--ms-i-dash) center / contain no-repeat; }
+.ms-answer .ms-compare tbody th:not(.ms-custom *) { color: var(--ms-ink-2); font-weight: 550; }
+/* ---------- scheduling ---------- */
+/* A month: Cal.com's grid, events as small accent chips on their days. */
+.ms-answer .ms-calendar table:not(.ms-custom *) { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0; border: 1px solid var(--ms-line); border-radius: var(--ms-r); overflow: hidden; }
+.ms-answer .ms-calendar:not(.ms-custom *) { container-type: inline-size; }
+.ms-answer .ms-calendar thead th:not(.ms-custom *) { font-size: var(--ms-t-caption); font-weight: 550; color: var(--ms-ink-3); padding: 7px var(--ms-s1); background: var(--ms-tile); border-radius: 0; text-align: center; }
+.ms-answer .ms-calendar td:not(.ms-custom *) { vertical-align: top; height: 72px; padding: 5px; border-bottom: 1px solid var(--ms-line); border-right: 1px solid var(--ms-line); font-size: var(--ms-t-caption); line-height: 1.35; }
+.ms-answer .ms-calendar td:last-child:not(.ms-custom *) { border-right: 0; }
+.ms-answer .ms-calendar tbody tr:last-child td:not(.ms-custom *) { border-bottom: 0; }
+.ms-answer .ms-calendar tbody tr:hover > *:not(.ms-custom *) { background: none; }
+.ms-answer .ms-calendar td > span:not(.ms-custom *) { display: inline-grid; place-items: center; min-width: 22px; height: 22px; border-radius: 11px; color: var(--ms-ink-3); font-variant-numeric: var(--ms-numeric, tabular-nums); font-weight: 500; }
+.ms-answer .ms-calendar td.ms-on > span:not(.ms-custom *) { background: var(--ms-accent); color: var(--ms-accent-ink); font-weight: 650; }
+.ms-answer .ms-calendar td small:not(.ms-custom *) { display: block; margin-top: 4px; padding: 2px 5px; border-radius: var(--ms-r-sm); background: var(--ms-accent-bg); color: var(--ms-accent); font-size: max(12px, .92em); line-height: 1.3; font-weight: 550; hyphens: auto; overflow-wrap: anywhere; }
+.ms-answer .ms-cal-list:not(.ms-custom *) { display: none; list-style: none; padding: 0; margin-top: var(--ms-s3); font-size: var(--ms-t-callout); }
+.ms-answer .ms-cal-list li:not(.ms-custom *) { display: grid; grid-template-columns: 4.5em minmax(0, 1fr); gap: var(--ms-s3); padding: 6px 0; margin: 0; border-bottom: 1px solid var(--ms-line); }
+.ms-answer .ms-cal-list li:last-child:not(.ms-custom *) { border-bottom: 0; }
+.ms-answer .ms-cal-list time:not(.ms-custom *) { color: var(--ms-accent); font-weight: 600; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-cal-list li.ms-key:not(.ms-custom *) { display: flex; align-items: center; gap: var(--ms-s2); color: var(--ms-ink-2); border: 0; }
+.ms-answer .ms-cal-list li.ms-key:not(.ms-custom *)::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ms-accent); }
+/* A month on a phone: the event days filled, the events listed underneath. */
+@container (max-width: 520px) {
+  .ms-answer .ms-calendar td:not(.ms-custom *) { height: 44px; text-align: center; }
+  .ms-answer .ms-calendar td small:not(.ms-custom *) { display: none; }
+  .ms-answer .ms-cal-list:not(.ms-custom *) { display: block; }
+}
+.ms-answer .ms-event:not(.ms-custom *) { padding: 14px var(--ms-s4); background: var(--ms-tile); border-radius: var(--ms-r); --ms-tone: var(--ms-ink-3); }
+.ms-answer .ms-event > * + *:not(.ms-custom *) { margin-top: 3px; }
+.ms-answer .ms-event time:not(.ms-custom *) { font-size: var(--ms-t-footnote); color: var(--ms-ink-2); font-weight: 550; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-event time:not(.ms-custom *)::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ms-tone); margin-right: 7px; vertical-align: 1px; }
+.ms-answer .ms-event :is(h3, h4):not(.ms-custom *) { font-size: var(--ms-t-headline); }
+.ms-answer .ms-event .ms-where:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-callout); padding-left: 20px; position: relative; }
+.ms-answer .ms-event .ms-where:not(.ms-custom *)::before { content: ""; position: absolute; left: 0; top: 3px; width: 15px; height: 15px; background: var(--ms-ink-3); mask: var(--ms-i-pin) center / contain no-repeat; }
+.ms-answer .ms-event > p:not(.ms-where):not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-callout); }
+.ms-answer .ms-event.ms-success:not(.ms-custom *) { --ms-tone: var(--ms-good); } .ms-answer .ms-event.ms-warning:not(.ms-custom *) { --ms-tone: var(--ms-warn); } .ms-answer .ms-event.ms-danger:not(.ms-custom *) { --ms-tone: var(--ms-bad); } .ms-answer .ms-event.ms-info:not(.ms-custom *) { --ms-tone: var(--ms-info); }
+/* Time slots and toggle groups: Cal.com's slot buttons, chosen in the primary colour. A slot
+   keeps to one line: the core marks a group whose options run longer (wide from 8
+   characters, long from 14), and its columns widen to fit them. */
+.ms-answer .ms-chips > div:not(.ms-custom *) { display: grid; grid-template-columns: repeat(auto-fill, minmax(88px, 1fr)); gap: var(--ms-s2); }
+.ms-answer .ms-chips.ms-wide > div:not(.ms-custom *) { grid-template-columns: repeat(auto-fill, minmax(min(100%, 7.75em), 1fr)); }
+.ms-answer .ms-chips.ms-long > div:not(.ms-custom *) { grid-template-columns: repeat(auto-fill, minmax(min(100%, 12em), 1fr)); }
+.ms-answer .ms-chips label:not(.ms-custom *) { position: relative; margin: 0; }
+.ms-answer .ms-chips input:not(.ms-custom *) { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.ms-answer .ms-chips span:not(.ms-custom *) { display: flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 12px; border: 1px solid var(--ms-line-2); border-radius: var(--ms-r-ctl); font-size: var(--ms-t-callout); font-weight: 600; font-variant-numeric: var(--ms-numeric, tabular-nums); background: var(--ms-surface); text-align: center; white-space: nowrap; transition: border-color var(--ms-dur-fast) var(--ms-ease), background-color var(--ms-dur-fast) var(--ms-ease), color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-chips.ms-wide span:not(.ms-custom *) { padding-inline: 8px; }
+.ms-answer .ms-chips.ms-long span:not(.ms-custom *) { white-space: normal; text-wrap: balance; padding-block: 6px; }
+.ms-answer .ms-chips label:hover span:not(.ms-custom *) { border-color: var(--ms-accent); color: var(--ms-accent); }
+.ms-answer .ms-chips input:checked + span:not(.ms-custom *) { background: var(--ms-primary); border-color: var(--ms-primary); color: var(--ms-primary-ink); }
+.ms-answer .ms-chips input:focus-visible + span:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+/* One time column for every row, as wide as the longest time ("10:30-11:15am"), so a range never runs into its text. */
+.ms-answer .ms-agenda ol:not(.ms-custom *) { list-style: none; padding: 0; display: grid; grid-template-columns: fit-content(45%) minmax(0, 1fr); column-gap: var(--ms-s3); }
+.ms-answer .ms-agenda li:not(.ms-custom *) { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; padding: 9px 0; border-top: 1px solid var(--ms-line); margin: 0; font-size: var(--ms-t-callout); }
+.ms-answer .ms-agenda time:not(.ms-custom *) { min-inline-size: 4.5em; }
+.ms-answer .ms-agenda li:first-child:not(.ms-custom *) { border-top: 0; padding-top: 0; }
+.ms-answer .ms-agenda time:not(.ms-custom *) { color: var(--ms-accent); font-weight: 600; font-variant-numeric: var(--ms-numeric, tabular-nums); font-size: var(--ms-t-footnote); padding-top: 1px; }
+.ms-answer .ms-countdown:not(.ms-custom *) { display: flex; flex-direction: column; gap: 2px; padding: 14px var(--ms-s4); background: var(--ms-tile); border-radius: var(--ms-r); }
+.ms-answer .ms-countdown .ms-label:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-footnote); font-weight: 550; }
+.ms-answer .ms-countdown time:not(.ms-custom *) { font-size: 26px; line-height: 32px; font-weight: 650; letter-spacing: -0.02em; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+/* ---------- media ---------- */
+.ms-answer .ms-video video:not(.ms-custom *) { width: 100%; border-radius: var(--ms-r); background: #0b0c0f; aspect-ratio: 16 / 9; display: block; }
+.ms-answer .ms-video figcaption:not(.ms-custom *) { margin: var(--ms-s2) 0 0; font-weight: 400; color: var(--ms-ink-2); font-size: var(--ms-t-callout); }
+.ms-answer .ms-video figcaption strong:not(.ms-custom *) { color: var(--ms-ink); font-weight: 600; }
+.ms-answer .ms-audio audio:not(.ms-custom *) { width: 100%; }
+.ms-answer .ms-embed a:not(.ms-custom *) { display: flex; flex-direction: column; gap: 2px; padding: 14px var(--ms-s4); padding-left: calc(var(--ms-s4) + 48px); border: 1px solid var(--ms-line); border-radius: var(--ms-r); text-decoration: none; position: relative; background: var(--ms-surface); box-shadow: var(--ms-shadow-1); color: var(--ms-ink); transition: border-color var(--ms-dur-fast) var(--ms-ease), box-shadow var(--ms-dur) var(--ms-ease); }
+.ms-answer .ms-embed a:hover:not(.ms-custom *) { border-color: var(--ms-line-2); box-shadow: var(--ms-shadow-2); }
+.ms-answer .ms-embed a:not(.ms-custom *)::before { content: ""; position: absolute; left: var(--ms-s4); top: 50%; margin-top: -18px; width: 36px; height: 36px; border-radius: 50%; background: var(--ms-ink); }
+.ms-answer .ms-embed a:not(.ms-custom *)::after { content: ""; position: absolute; left: calc(var(--ms-s4) + 10px); top: 50%; margin-top: -8px; width: 16px; height: 16px; background: var(--ms-page); mask: var(--ms-i-play) center / contain no-repeat; }
+.ms-answer .ms-embed:not([data-player]) a:not(.ms-custom *)::after { mask-image: var(--ms-i-link); }
+.ms-answer .ms-embed strong:not(.ms-custom *) { font-weight: 600; }
+.ms-answer .ms-embed small:not(.ms-custom *) { color: var(--ms-ink-3); overflow-wrap: anywhere; font-size: var(--ms-t-footnote); }
+.ms-answer .ms-embed iframe:not(.ms-custom *) { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: var(--ms-r); }
+/* A carousel: whole photos where there is room, a peek of the next on a phone. */
+.ms-answer .ms-carousel > div:not(.ms-rail-nav):not(.ms-custom *) { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - var(--ms-s3)) / 2); gap: var(--ms-s3); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: var(--ms-r); overscroll-behavior-x: contain; }
+.ms-answer .ms-carousel > div:not(.ms-rail-nav):not(.ms-custom *)::-webkit-scrollbar { display: none; }
+.ms-answer .ms-carousel > div:not(.ms-rail-nav) > *:not(.ms-custom *) { scroll-snap-align: start; min-width: 0; }
+.ms-answer .ms-carousel img:not(.ms-custom *) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (max-width: 520px) { .ms-answer .ms-carousel > div:not(.ms-rail-nav):not(.ms-custom *) { grid-auto-columns: 85%; } }
+/* ---------- docs ---------- */
+/* Code: Stripe's docs, a file bar over the lines; highlighted lines in the accent's tint. */
+/* The file bar and the lines are two boxes edge to edge (the lines scroll on their own).
+   The bar is a block, not flex: a path's kept-together parts would become columns. */
+.ms-answer .ms-codefile:not(.ms-custom *), .ms-answer .ms-diff:not(.ms-custom *) { position: relative; }
+.ms-answer .ms-codefile figcaption:not(.ms-custom *), .ms-answer .ms-diff figcaption:not(.ms-custom *) { position: relative; display: block; font: var(--ms-t-caption)/20px var(--ms-mono); color: var(--ms-ink-2); padding: 6px 44px 6px var(--ms-s4); margin: 0; background: var(--ms-surface); border: 1px solid var(--ms-line); border-radius: var(--ms-r) var(--ms-r) 0 0; overflow-wrap: anywhere; }
+.ms-answer .ms-codefile pre:not(.ms-custom *), .ms-answer .ms-diff pre:not(.ms-custom *) { counter-reset: ln; padding-left: 0; padding-right: 0; }
+.ms-answer .ms-codefile figcaption + pre:not(.ms-custom *), .ms-answer .ms-diff figcaption + pre:not(.ms-custom *) { border-top: 0; border-radius: 0 0 var(--ms-r) var(--ms-r); }
+/* Each line a box of its own, at least a line tall: an empty line keeps its place and its number. */
+.ms-answer .ms-codefile code > span:not(.ms-custom *), .ms-answer .ms-diff code > span:not(.ms-custom *) { display: inline-block; width: 100%; padding: 0 var(--ms-s4) 0 3.4em; min-height: 1lh; position: relative; }
+.ms-answer .ms-codefile code > span:not(.ms-custom *)::before { counter-increment: ln; content: counter(ln); position: absolute; left: 0; width: 2.4em; text-align: right; color: var(--ms-ink-3); opacity: .75; }
+.ms-answer .ms-codefile code > span.ms-hl:not(.ms-custom *) { background: var(--ms-accent-bg); }
+.ms-answer .ms-diff code > span:not(.ms-custom *) { padding-left: var(--ms-s4); }
+.ms-answer .ms-diff code > span.ms-add:not(.ms-custom *) { background: var(--ms-good-bg); color: var(--ms-good); }
+.ms-answer .ms-diff code > span.ms-del:not(.ms-custom *) { background: var(--ms-bad-bg); color: var(--ms-bad); }
+.ms-answer .ms-diff code > span.ms-meta:not(.ms-custom *) { color: var(--ms-ink-3); }
+.ms-answer .ms-math > div:not(.ms-custom *) { font: 1.2rem/1.6 "STIX Two Math", "Cambria Math", "Latin Modern Math", serif; padding: var(--ms-s4); background: var(--ms-tile); border-radius: var(--ms-r); overflow-x: auto; text-align: center; }
+.ms-answer .ms-math math:not(.ms-custom *) { font-family: "STIX Two Math", "Cambria Math", "Latin Modern Math", math; font-size: 1.3rem; }
+.ms-answer .ms-math figcaption:not(.ms-custom *) { margin: var(--ms-s2) 0 0; font-weight: 400; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); text-align: center; }
+.ms-answer .ms-citation:not(.ms-custom *) { position: relative; font-style: normal; color: var(--ms-ink); padding: var(--ms-s4) var(--ms-s4) var(--ms-s4) 48px; border-radius: var(--ms-r); background: var(--ms-tile); }
+.ms-answer .ms-citation:not(.ms-custom *)::before { content: ""; position: absolute; left: var(--ms-s4); top: var(--ms-s4); width: 20px; height: 20px; background: var(--ms-accent); mask: var(--ms-i-quote) center / contain no-repeat; }
+.ms-answer .ms-citation p:not(.ms-custom *) { color: var(--ms-ink); font-size: var(--ms-t-body); }
+.ms-answer .ms-citation footer:not(.ms-custom *) { margin-top: var(--ms-s2); font-size: var(--ms-t-footnote); color: var(--ms-ink-2); font-weight: 550; }
+.ms-answer .ms-citation footer small:not(.ms-custom *) { color: var(--ms-ink-3); font-weight: 400; font-size: 1em; }
+/* ---------- inputs ---------- */
+.ms-answer .ms-star-input > div:not(.ms-custom *) { display: inline-flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; }
+.ms-answer .ms-star-input input:not(.ms-custom *) { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ms-answer .ms-star-input label:not(.ms-custom *) { width: 28px; height: 28px; font-size: 20px; line-height: 28px; text-align: center; color: transparent; cursor: pointer; background: var(--ms-line-2); mask: var(--ms-i-star) center / contain no-repeat; transition: background-color var(--ms-dur-fast) var(--ms-ease), transform var(--ms-dur) var(--ms-spring); }
+.ms-answer .ms-star-input input:checked ~ label:not(.ms-custom *), .ms-answer .ms-star-input label:hover:not(.ms-custom *), .ms-answer .ms-star-input label:hover ~ label:not(.ms-custom *) { background: var(--ms-star); }
+.ms-answer .ms-star-input label:active:not(.ms-custom *) { transform: scale(.88); }
+.ms-answer .ms-star-input input:focus-visible + label:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; border-radius: 4px; }
+.ms-answer .ms-stepper > span:not(.ms-custom *) { display: flex; align-items: center; gap: var(--ms-s2); }
+.ms-answer .ms-stepper input:not(.ms-custom *) { max-width: 120px; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-stepper small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+/* The SDK's stepper: minus, the number, plus, in one box. */
+.ms-answer .ms-stepper .ms-step:not(.ms-custom *) { display: inline-flex; align-items: stretch; height: 40px; border: 1px solid var(--ms-line-2); border-radius: var(--ms-r-ctl); background: var(--ms-surface); overflow: hidden; }
+.ms-answer .ms-stepper .ms-step:focus-within:not(.ms-custom *) { border-color: var(--ms-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ms-accent) 22%, transparent); }
+.ms-answer .ms-stepper .ms-step button:not(.ms-custom *) { all: unset; width: 38px; display: grid; place-items: center; cursor: pointer; color: var(--ms-ink-2); transition: background-color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-stepper .ms-step button:not(.ms-custom *)::before { content: ""; width: 14px; height: 14px; background: currentColor; mask: var(--ms-i-minus) center / contain no-repeat; }
+.ms-answer .ms-stepper .ms-step button + input + button:not(.ms-custom *)::before { mask-image: var(--ms-i-plus); }
+.ms-answer .ms-stepper .ms-step button:hover:not(:disabled):not(.ms-custom *) { background: var(--ms-tile); }
+.ms-answer .ms-stepper .ms-step button:disabled:not(.ms-custom *) { color: var(--ms-line-2); cursor: default; }
+.ms-answer .ms-stepper .ms-step button:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: -2px; }
+.ms-answer .ms-stepper .ms-step input:not(.ms-custom *) { width: 56px; height: auto; border: 0; border-left: 1px solid var(--ms-line); border-right: 1px solid var(--ms-line); border-radius: 0; text-align: center; font-weight: 600; box-shadow: none !important; appearance: textfield; -moz-appearance: textfield; }
+.ms-answer .ms-stepper .ms-step input:not(.ms-custom *)::-webkit-inner-spin-button, .ms-answer .ms-stepper .ms-step input:not(.ms-custom *)::-webkit-outer-spin-button { appearance: none; margin: 0; }
+.ms-answer .ms-signature input:not(.ms-custom *) { border: 0; border-bottom: 1.5px solid var(--ms-line-2); border-radius: 0; padding: 0 2px; height: 48px; font-size: 20px; font-style: italic; background: transparent; box-shadow: none !important; }
+.ms-answer .ms-signature input:focus:not(.ms-custom *) { border-bottom-color: var(--ms-accent); }
+/* Inputs that say what they hold: a mark at the start. */
+.ms-answer :is(.ms-contact, .ms-field:has(> input[autocomplete="street-address"])):not(.ms-custom *) { position: relative; }
+.ms-answer .ms-contact > input:not(.ms-custom *), .ms-answer .ms-field > input[autocomplete="street-address"]:not(.ms-custom *) { padding-left: 36px; }
+.ms-answer .ms-contact:not(.ms-custom *)::after, .ms-answer .ms-field:has(> input[autocomplete="street-address"]):not(.ms-custom *)::after { content: ""; position: absolute; left: 12px; width: 16px; height: 16px; background: var(--ms-ink-3); mask: var(--ms-i-user) center / contain no-repeat; pointer-events: none; top: calc(var(--ms-lh-footnote) + 6px + 12px); }
+.ms-answer .ms-field:has(> input[autocomplete="street-address"]):not(.ms-custom *)::after { mask-image: var(--ms-i-pin); }
+/* Calendar and share buttons carry their mark. */
+.ms-answer :is(a.ms-btn:not(.ms-custom *), .ms-custom a.ms-btn)[download$=".ics"]::before, .ms-answer :is(a.ms-btn:not(.ms-custom *), .ms-custom a.ms-btn).ms-share::before { content: ""; display: inline-block; width: 16px; height: 16px; margin-right: 7px; vertical-align: -3px; background: currentColor; mask: var(--ms-i-calendar-plus) center / contain no-repeat; }
+.ms-answer :is(a.ms-btn:not(.ms-custom *), .ms-custom a.ms-btn).ms-share::before { mask-image: var(--ms-i-share); }
+/* ---------- device, second set ---------- */
+/* As wide as its code or its value (an ID kept whole), whichever is wider. */
+.ms-answer .ms-qr:not(.ms-custom *) { display: flex; width: fit-content; flex-direction: column; align-items: center; gap: var(--ms-s2); max-width: 100%; padding: var(--ms-s4); border: 1px solid var(--ms-line); border-radius: var(--ms-r); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); }
+.ms-answer .ms-qr svg:not(.ms-custom *) { width: 200px; height: 200px; border-radius: var(--ms-r-sm); }
+.ms-answer .ms-qr figcaption:not(.ms-custom *) { margin: 0; text-align: center; font-size: var(--ms-t-callout); }
+.ms-answer .ms-qr small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-caption); overflow-wrap: anywhere; text-align: center; font-family: var(--ms-mono); }
+
+/* ================= Text that reads well at any width ================= */
+/* IDs, dates, times, versions and codes stay on one line (the renderer wraps them in .nb). */
+.ms-answer .ms-nb:not(.ms-custom *) { white-space: nowrap; }
+/* Long words may hyphenate in prose; nothing breaks mid-word otherwise. */
+.ms-answer p:not(.ms-custom *), .ms-answer li:not(.ms-custom *), .ms-answer dd:not(.ms-custom *), .ms-answer blockquote:not(.ms-custom *), .ms-answer .ms-callout > *:not(.ms-custom *) { hyphens: auto; overflow-wrap: break-word; }
+/* Link text is often a slug or a name: it breaks at its own hyphens, never at new ones. */
+.ms-answer a:not(.ms-custom *) { hyphens: manual; }
+/* Table columns are narrow, so a cell breaks between words, never inside one. */
+.ms-answer td:not(.ms-custom *) { overflow-wrap: break-word; }
+/* Running text keeps to a readable length (about 70 characters a line) in a wide card;
+   rows of a list that is a table in all but name (an agenda, a timeline) and quote tiles run full width. */
+.ms-answer p:not(.ms-custom *), .ms-answer li:not(.ms-custom *), .ms-answer blockquote:not(.ms-custom *) { max-inline-size: 70ch; }
+.ms-answer :is(.ms-agenda, .ms-timeline, .ms-cal-list, .ms-checklist, .ms-places, .ms-flashcards, .ms-quiz) li:not(.ms-custom *), .ms-answer blockquote.ms-citation:not(.ms-custom *), .ms-answer .ms-citation p:not(.ms-custom *) { max-inline-size: none; }
+/* Running text and cells don't leave one word alone on their last line. */
+.ms-answer p:not(.ms-custom *), .ms-answer li:not(.ms-custom *), .ms-answer td:not(.ms-custom *), .ms-answer dd:not(.ms-custom *), .ms-answer blockquote:not(.ms-custom *) { text-wrap-style: pretty; }
+/* Short labels and titles share their lines evenly instead of stranding a word. */
+.ms-answer h1:not(.ms-custom *), .ms-answer h2:not(.ms-custom *), .ms-answer h3:not(.ms-custom *), .ms-answer h4:not(.ms-custom *), .ms-answer strong:not(.ms-custom *), .ms-answer figcaption:not(.ms-custom *), .ms-answer legend:not(.ms-custom *), .ms-answer th:not(.ms-custom *), .ms-answer .ms-stat .ms-label:not(.ms-custom *), .ms-answer summary:not(.ms-custom *), .ms-answer .ms-field > span:not(.ms-custom *) { text-wrap: balance; }
+/* Still streaming (the SDK marks it until it closes): plain wrapping, so the words already shown never move. */
+.ms-answer [data-ms-streaming]:not(.ms-custom *), .ms-answer [data-ms-streaming] *:not(.ms-custom *) { text-wrap: wrap; }
+/* Small text never drops below 12px, however deep it sits. */
+.ms-answer .ms-range small:not(.ms-custom *), .ms-answer td .ms-btn:not(.ms-custom *), .ms-answer .ms-btn.ms-small:not(.ms-custom *), .ms-answer .ms-field small:not(.ms-custom *), .ms-answer .ms-stat .ms-note:not(.ms-custom *), .ms-answer .ms-stat .ms-change:not(.ms-custom *), .ms-answer .ms-chart .ms-legend:not(.ms-custom *), .ms-answer .ms-places small:not(.ms-custom *) { font-size: max(12px, .8rem); }
+/* A chart comes drawn at up to three widths (the core's c-hi, c-mid, c-lo) and
+   the one nearest the space it has shows, so its labels stay readable from a
+   phone tile to a wide column. Without container queries the first one shows. */
+.ms-answer .ms-chart-fit:not(.ms-custom *) { container-type: inline-size; }
+.ms-answer .ms-chart-fit > div:not(:first-child):not(.ms-custom *) { display: none; }
+@container (max-width: 460px) {
+  .ms-answer .ms-chart-fit > div.ms-c-hi:not(.ms-c-mid):not(.ms-custom *) { display: none; }
+  .ms-answer .ms-chart-fit > div.ms-c-mid:not(.ms-custom *) { display: block; }
+}
+@container (max-width: 340px) {
+  .ms-answer .ms-chart-fit > div.ms-c-mid:not(.ms-custom *) { display: none; }
+  .ms-answer .ms-chart-fit > div.ms-c-lo:not(.ms-custom *) { display: block; }
+}
+/* A picture that didn't load: its description in a quiet tile of the same size. */
+.ms-answer .ms-img-missing:not(.ms-custom *) { display: grid; place-items: center; text-align: center; padding: var(--ms-s2); background: var(--ms-tile); color: var(--ms-ink-3); font-size: var(--ms-t-footnote); border-radius: var(--ms-r); overflow-wrap: break-word; text-wrap: balance; }
+/* A long description in a small tile: a size smaller, so it runs two even lines, not three short ones. */
+.ms-answer .ms-img-missing.ms-long:not(.ms-custom *) { font-size: var(--ms-t-caption); }
+.ms-answer .ms-img-missing.ms-icon-only .ms-icon:not(.ms-custom *) { width: 28px; height: 28px; margin: 0; color: var(--ms-ink-3); }
+.ms-answer .ms-gallery .ms-img-missing:not(.ms-custom *), .ms-answer .ms-carousel .ms-img-missing:not(.ms-custom *) { aspect-ratio: 4 / 3; }
+.ms-answer .ms-carousel .ms-img-missing:not(.ms-custom *) { scroll-snap-align: start; }
+/* Text only screen readers get (a mark's meaning, say). */
+.ms-answer .ms-sr:not(.ms-custom *) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Tables keep cells readable and scroll sideways rather than squeezing words into slivers. */
+.ms-answer .ms-table table:not(.ms-custom *) { min-width: 100%; }
+.ms-answer td.ms-wide:not(.ms-custom *) { min-width: calc(12ch + 2 * var(--ms-s3)); }
+/* A table too wide for a phone scrolls rather than crushing every column:
+   short cells keep to one line, long ones wrap at a readable width. */
+.ms-answer .ms-table:not(.ms-custom *) { container-type: inline-size; }
+@container (max-width: 460px) {
+  .ms-answer .ms-table th:not(.ms-custom *), .ms-answer .ms-table td:not(.ms-long):not(.ms-custom *) { white-space: nowrap; }
+  .ms-answer .ms-table td.ms-long:not(.ms-custom *) { min-width: calc(24ch + 2 * var(--ms-s3)); }
+  /* A row's name (a comparison's feature) wraps, so the options beside it keep their room:
+     four plans fit a chat widget's width side by side. */
+  .ms-answer .ms-table tbody th:not(.ms-custom *) { white-space: normal; min-width: 7em; }
+  .ms-answer .ms-compare th:not(.ms-custom *), .ms-answer .ms-compare td:not(.ms-custom *) { padding-inline: var(--ms-s2); }
+}
+/* A table still wider than its box says so: the side with more to see fades out (the SDK
+   marks it, data-more, and keeps it current as the table scrolls), and a comparison's
+   feature names stay put while its options scroll under them. */
+.ms-answer .ms-table[data-more="right"]:not(.ms-custom *) { mask-image: linear-gradient(to left, transparent, #000 48px); }
+.ms-answer .ms-table[data-more="left"]:not(.ms-custom *) { mask-image: linear-gradient(to right, transparent, #000 48px); }
+.ms-answer .ms-table[data-more="both"]:not(.ms-custom *) { mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); }
+.ms-answer .ms-compare .ms-table[data-more] tbody th:not(.ms-custom *), .ms-answer .ms-compare .ms-table[data-more] thead th:first-child:not(.ms-custom *) { position: sticky; left: 0; z-index: 1; }
+.ms-answer .ms-compare .ms-table[data-more] tbody th:not(.ms-custom *) { background: var(--ms-surface); }
+.ms-answer .ms-compare .ms-table[data-more="left"]:not(.ms-custom *) { mask-image: none; }
+.ms-answer .ms-compare .ms-table[data-more="both"]:not(.ms-custom *) { mask-image: linear-gradient(to left, transparent, #000 48px); }
+.ms-answer .ms-calendar td:not(.ms-num):not(.ms-custom *), .ms-answer .ms-heatmap td:not(.ms-num):not(.ms-custom *) { min-width: 0; }
+.ms-answer .ms-heatmap th:not(.ms-custom *), .ms-answer .ms-heatmap td:not(.ms-custom *) { font-size: max(12px, var(--ms-t-footnote)); }
+
+/* ---------- interactive (Q7): quiz, flashcards, poll, checklist, what-if ---------- */
+/* Quiz and poll: Duolingo's and Typeform's rows, a lettered key on each, the key
+   turning into a check or a cross when marked (the SDK morphs it). */
+.ms-answer .ms-quiz .ms-questions:not(.ms-custom *) { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--ms-s6); }
+.ms-answer :is(.ms-quiz, .ms-flashcards, .ms-checklist, .ms-whatif) > .ms-caption:not(.ms-custom *) { font-weight: 600; font-size: var(--ms-t-headline); margin-bottom: var(--ms-s3); }
+.ms-answer .ms-question:not(.ms-custom *), .ms-answer .ms-whatif .ms-result:not(.ms-custom *) { max-inline-size: none; }
+.ms-answer .ms-question fieldset:not(.ms-custom *), .ms-answer .ms-poll:not(.ms-custom *) { border: 0; padding: 0; margin-inline: 0; display: grid; gap: var(--ms-s2); min-width: 0; counter-reset: opt; }
+.ms-answer .ms-question fieldset:not(.ms-custom *) { margin: 0; }
+.ms-answer .ms-question legend:not(.ms-custom *), .ms-answer .ms-poll legend:not(.ms-custom *) { font-weight: 640; font-size: var(--ms-t-title3); line-height: var(--ms-lh-title3); letter-spacing: -0.012em; padding: 0; margin-bottom: var(--ms-s3); text-wrap: balance; }
+.ms-answer .ms-question label:not(.ms-custom *), .ms-answer .ms-poll label:not(.ms-custom *) { position: relative; display: flex; align-items: center; gap: var(--ms-s3); padding: 11px 14px; border: 1.5px solid var(--ms-line); border-radius: var(--ms-r); background: var(--ms-surface); cursor: pointer; font-weight: 520; counter-increment: opt; transition: border-color var(--ms-dur-fast) var(--ms-ease), background-color var(--ms-dur) var(--ms-ease), transform var(--ms-dur-fast) var(--ms-spring); }
+.ms-answer .ms-question label:not(.ms-custom *)::before, .ms-answer .ms-poll label:not(.ms-custom *)::before { content: counter(opt, upper-alpha); flex: none; width: 26px; height: 26px; border-radius: var(--ms-r-ctl); border: 1.5px solid var(--ms-line-2); display: grid; place-items: center; font: 600 12px/1 var(--ms-mono); color: var(--ms-ink-2); transition: background-color var(--ms-dur) var(--ms-ease), border-color var(--ms-dur) var(--ms-ease), color var(--ms-dur) var(--ms-ease); }
+.ms-answer .ms-question label:hover:not(:has(input:disabled)):not(.ms-custom *), .ms-answer .ms-poll label:hover:not(:has(input:disabled)):not(.ms-custom *) { border-color: var(--ms-line-2); background: var(--ms-tile); }
+.ms-answer .ms-question label:active:not(:has(input:disabled)):not(.ms-custom *), .ms-answer .ms-poll label:active:not(:has(input:disabled)):not(.ms-custom *) { transform: scale(.99); }
+.ms-answer .ms-question label:has(input:focus-visible):not(.ms-custom *), .ms-answer .ms-poll label:has(input:focus-visible):not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+.ms-answer .ms-question label:has(input:checked):not(.ms-custom *), .ms-answer .ms-poll label:has(input:checked):not(.ms-custom *) { border-color: var(--ms-accent); background: var(--ms-accent-bg); }
+.ms-answer .ms-question label:has(input:checked):not(.ms-custom *)::before, .ms-answer .ms-poll label:has(input:checked):not(.ms-custom *)::before { border-color: var(--ms-accent); background: var(--ms-accent); color: var(--ms-accent-ink); }
+/* The radio itself is the row: it stays for the keyboard and screen readers, unseen. */
+.ms-answer .ms-question input:not(.ms-custom *), .ms-answer .ms-poll input:not(.ms-custom *) { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.ms-answer .ms-checklist input:not(.ms-custom *) { margin: 0; flex: none; }
+.ms-answer .ms-question input:disabled + span:not(.ms-custom *), .ms-answer .ms-poll input:disabled + span:not(.ms-custom *) { color: var(--ms-ink); }
+.ms-answer .ms-question label:has(input:disabled):not(.ms-custom *), .ms-answer .ms-poll label:has(input:disabled):not(.ms-custom *) { cursor: default; }
+.ms-answer .ms-question label.ms-right:has(input):not(.ms-custom *) { background: var(--ms-good-bg); border-color: var(--ms-good); }
+.ms-answer .ms-question label.ms-wrong:has(input):not(.ms-custom *) { background: var(--ms-bad-bg); border-color: var(--ms-bad); }
+.ms-answer .ms-question label:is(.ms-right, .ms-wrong):has(input):not(.ms-custom *)::before { content: ""; color: transparent; }
+.ms-answer .ms-question label.ms-right:has(input):not(.ms-custom *)::before { background: var(--ms-good); border-color: var(--ms-good); }
+.ms-answer .ms-question label.ms-wrong:has(input):not(.ms-custom *)::before { background: var(--ms-bad); border-color: var(--ms-bad); }
+/* The key's check or cross (without the SDK, drawn; with it, morphed from the letter). */
+.ms-answer .ms-question label:is(.ms-right, .ms-wrong):not(.ms-custom *)::after { content: ""; position: absolute; left: 14px; top: calc(50% - 13px); width: 26px; height: 26px; background: var(--ms-surface); mask: var(--ms-i-check) center / 15px no-repeat; }
+.ms-answer .ms-question label.ms-wrong:not(.ms-custom *)::after { mask-image: var(--ms-i-x); }
+.ms-answer .ms-question label:is(.ms-right, .ms-wrong):has(> [data-ms-added]):not(.ms-custom *)::after { display: none; }
+.ms-answer .ms-question label > svg[data-ms-added]:not(.ms-custom *) { position: absolute; left: 14px; top: calc(50% - 13px); width: 26px; height: 26px; fill: none; stroke: var(--ms-surface); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.ms-answer .ms-question label:not(.ms-right):has(input:disabled):not(:has(input:checked)):not(.ms-custom *) { opacity: .55; }
+.ms-answer .ms-question .ms-explain:not(.ms-custom *) { margin-top: var(--ms-s3); border: 0; padding: 0; background: none; }
+.ms-answer .ms-question .ms-explain summary:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-footnote); cursor: pointer; width: fit-content; padding: 0; border: 0; font-weight: 500; }
+.ms-answer .ms-question .ms-explain summary:not(.ms-custom *)::after, .ms-answer .ms-flashcards .ms-card summary:not(.ms-custom *)::after { content: none; }
+.ms-answer .ms-explain p:not(.ms-custom *) { color: var(--ms-ink-2); margin-top: var(--ms-s1); font-size: var(--ms-t-callout); line-height: var(--ms-lh-callout); }
+/* Marked, the reason shows as a panel under the choices (the SDK opens it). */
+.ms-answer .ms-question .ms-explain[open][data-ms-shown]:not(.ms-custom *) { padding: var(--ms-s3) 14px; background: var(--ms-tile); border-radius: var(--ms-r); }
+.ms-answer .ms-question .ms-explain[data-ms-shown] > summary:not(.ms-custom *) { display: none; }
+.ms-answer .ms-question .ms-explain[data-ms-shown] p:not(.ms-custom *) { margin: 0; }
+.ms-answer .ms-question .ms-explain p strong:not(.ms-custom *) { color: var(--ms-ink); }
+/* Before an answer is chosen, the SDK keeps the answer out of sight. */
+.ms-answer .ms-question[data-ms-unanswered] .ms-explain:not(.ms-custom *) { display: none; }
+/* While a quiz still streams (inert until it closes), its answers stay out of sight too. */
+.ms-answer .ms-quiz[inert] .ms-explain:not(.ms-custom *) { display: none; }
+.ms-answer .ms-quiz .ms-score:not(.ms-custom *) { margin-top: var(--ms-s5); font-weight: 600; font-size: var(--ms-t-title3); display: flex; align-items: center; gap: var(--ms-s4); }
+.ms-answer .ms-quiz .ms-score > svg[data-ms-added]:not(.ms-custom *) { flex: none; width: 56px; height: 56px; }
+.ms-answer .ms-quiz .ms-score .ms-ring:not(.ms-custom *) { fill: none; stroke: var(--ms-line); stroke-width: 6; }
+.ms-answer .ms-quiz .ms-score .ms-fill:not(.ms-custom *) { fill: none; stroke: var(--ms-accent); stroke-width: 6; stroke-linecap: round; }
+.ms-answer .ms-progress-line:not(.ms-custom *) { display: flex; align-items: center; gap: var(--ms-s3); color: var(--ms-ink-3); font-size: var(--ms-t-footnote); font-variant-numeric: var(--ms-numeric, tabular-nums); margin-bottom: var(--ms-s3); }
+.ms-answer .ms-progress-line progress:not(.ms-custom *) { flex: 1; max-width: 240px; height: 6px; color: var(--ms-accent); }
+/* Flashcards: Quizlet's cards, turned over in place. */
+.ms-answer .ms-flashcards ol:not(.ms-custom *) { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--ms-s3); }
+.ms-answer .ms-flashcards .ms-card:not(.ms-custom *) { display: flex; flex-direction: column; min-height: var(--ms-card-h, 112px); border: 1px solid var(--ms-line); border-radius: var(--ms-r); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); padding: 0; margin: 0; transition: box-shadow var(--ms-dur) var(--ms-ease), background-color var(--ms-dur) var(--ms-ease); }
+.ms-answer .ms-flashcards .ms-card:hover:not(.ms-custom *) { box-shadow: var(--ms-shadow-2); }
+.ms-answer .ms-flashcards .ms-card > summary:not(.ms-custom *) { flex: 1; list-style: none; cursor: pointer; padding: var(--ms-s4); min-height: 112px; display: grid; place-items: center; text-align: center; font-weight: 600; text-wrap: balance; }
+.ms-answer :is(.ms-flashcards, .ms-quiz, .ms-checklist) li + li:not(.ms-custom *) { margin-top: 0; }
+.ms-answer .ms-flashcards .ms-card summary:not(.ms-custom *)::-webkit-details-marker { display: none; }
+.ms-answer .ms-flashcards .ms-card[open] > summary:not(.ms-custom *) { flex: none; min-height: 0; padding-bottom: 0; color: var(--ms-ink-3); font-size: var(--ms-t-footnote); font-weight: 500; }
+.ms-answer .ms-flashcards .ms-card p:not(.ms-custom *) { flex: 1; display: grid; place-items: center; padding: var(--ms-s2) var(--ms-s4) var(--ms-s3); text-align: center; text-wrap: balance; }
+.ms-answer .ms-flashcards .ms-card.ms-known:not(.ms-custom *) { background: var(--ms-good-bg); border-color: transparent; box-shadow: none; }
+.ms-answer .ms-card-actions:not(.ms-custom *) { display: flex; gap: var(--ms-s2); justify-content: center; padding: 0 var(--ms-s3) var(--ms-s3); }
+.ms-answer .ms-flashcards .ms-card:not([open]) .ms-card-actions:not(.ms-custom *) { display: none; }
+.ms-answer .ms-poll-status:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-footnote); }
+/* A poll's results: each row fills to its share (the SDK sets --ms-share). */
+.ms-answer .ms-poll label[data-share]:not(.ms-custom *) { background: linear-gradient(var(--ms-accent-bg), var(--ms-accent-bg)) 0 0 / var(--ms-share, 0%) 100% no-repeat, var(--ms-surface); transition: background-size var(--ms-dur-slow) var(--ms-spring); }
+.ms-answer .ms-poll label[data-share]:not(.ms-custom *)::after { content: attr(data-share); margin-inline-start: auto; font-weight: 600; font-variant-numeric: var(--ms-numeric, tabular-nums); color: var(--ms-ink-2); font-size: var(--ms-t-footnote); }
+.ms-answer .ms-checklist ul:not(.ms-custom *) { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+.ms-answer .ms-checklist label:not(.ms-custom *) { display: flex; align-items: center; gap: var(--ms-s3); padding: 7px 0; cursor: pointer; }
+.ms-answer .ms-checklist input:checked + span:not(.ms-custom *) { color: var(--ms-ink-3); text-decoration: line-through; text-decoration-color: var(--ms-line-2); }
+.ms-answer .ms-checklist span:not(.ms-custom *) { transition: color var(--ms-dur) var(--ms-ease); }
+.ms-answer .ms-field .ms-range output:not(.ms-custom *) { font-weight: 650; color: var(--ms-ink); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-field:has(> input[type="range"]):not(.ms-custom *) { grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--ms-s3); row-gap: 4px; }
+.ms-answer .ms-field > input[type="range"]:not(.ms-custom *) { grid-column: 1 / -1; }
+.ms-answer .ms-field > .ms-range:not(.ms-custom *) { display: contents; }
+.ms-answer .ms-field > .ms-range > output:not(.ms-custom *) { grid-row: 1; grid-column: 2; font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); }
+.ms-answer .ms-field > .ms-range > small:not(.ms-custom *) { color: var(--ms-ink-3); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-field > .ms-range > small:last-of-type:not(.ms-custom *) { grid-column: 2; justify-self: end; }
+/* A what-if's sliders and results space out like a form's fields. */
+.ms-answer .ms-whatif > * + *:not(.ms-custom *) { margin-top: var(--ms-s4); }
+.ms-answer .ms-whatif > .ms-result + .ms-result:not(.ms-custom *) { margin-top: var(--ms-s2); }
+.ms-answer .ms-whatif .ms-result:not(.ms-custom *) { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ms-s3); padding-top: var(--ms-s3); border-top: 1px solid var(--ms-line); }
+.ms-answer .ms-whatif .ms-result + .ms-result:not(.ms-custom *) { border-top: 0; padding-top: 0; }
+.ms-answer .ms-whatif .ms-result > span:not(.ms-custom *) { color: var(--ms-ink-2); font-size: var(--ms-t-callout); }
+.ms-answer .ms-whatif .ms-result output:not(.ms-custom *) { font-size: 22px; line-height: 28px; font-weight: 650; letter-spacing: -0.015em; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+
+/* ---------- a conversation (the AG-UI SDK, roadmap Q9) ---------- */
+/* The reader's turns as short tiles on the right; the agent's answers as
+   answers are anywhere else. */
+.ms-thread.ms-thread:not(.ms-custom *) { max-width: 800px; margin: 0 auto; padding: var(--ms-s6) var(--ms-s5) 64px; display: flex; flex-direction: column; gap: var(--ms-s6); }
+.ms-thread.ms-thread > .ms-turn:not(.ms-custom *) { min-width: 0; }
+.ms-thread.ms-thread > .ms-turn.ms-user:not(.ms-custom *) { align-self: flex-end; max-width: min(85%, 560px); background: var(--ms-tile); border-radius: var(--ms-r); padding: var(--ms-s2) var(--ms-s3); white-space: pre-wrap; overflow-wrap: anywhere; }
+.ms-thread.ms-thread > .ms-turn.ms-answer:not(.ms-custom *) { align-self: stretch; padding: 0; max-width: none; margin: 0; }
+.ms-thread.ms-thread > .ms-run-note:not(.ms-custom *) { margin: 0; display: flex; gap: var(--ms-s2); align-items: baseline; font-size: var(--ms-t-footnote); line-height: var(--ms-lh-footnote); color: var(--ms-ink-2); }
+.ms-thread.ms-thread > .ms-run-note:not(.ms-custom *)::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--ms-ink-3); transform: translateY(-1px); }
+.ms-thread.ms-thread > .ms-run-note[data-tone="bad"]:not(.ms-custom *)::before { background: var(--ms-bad); }
+
+/* Nothing moves for a reader who asked for less motion. */
+@media (prefers-reduced-motion: reduce) { .ms-answer.ms-answer *:not(.ms-custom *), .ms-thread.ms-thread *:not(.ms-custom *) { transition: none !important; } }
+
+/* ================= The web SDK's own controls (controls.ts, interactive.ts) =================
+   Drawn over the native ones, which stay on the page hidden and are what a form submits. */
+.ms-answer [data-ms-hidden]:not(.ms-custom *) { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; opacity: 0 !important; pointer-events: none !important; }
+/* A picker: the field shows the value; the menu opens under it. */
+.ms-answer .ms-pick:not(.ms-custom *) { position: relative; min-width: 0; }
+.ms-answer .ms-control:not(.ms-custom *) { all: unset; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: var(--ms-s2); width: 100%; height: 40px; padding: 0 12px; border: 1px solid var(--ms-line-2); border-radius: var(--ms-r-ctl); background: var(--ms-surface); color: var(--ms-ink); font: inherit; font-size: 14.5px; cursor: pointer; transition: border-color var(--ms-dur-fast) var(--ms-ease), box-shadow var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-control:hover:not(.ms-custom *) { border-color: color-mix(in srgb, var(--ms-line-2) 55%, var(--ms-ink-3)); }
+.ms-answer .ms-control:focus-visible:not(.ms-custom *), .ms-answer .ms-pick[data-open] > .ms-control:not(.ms-custom *) { border-color: var(--ms-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ms-accent) 22%, transparent); outline: none; }
+.ms-answer .ms-control > span:not(.ms-custom *) { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-control > svg:not(.ms-custom *), .ms-answer .ms-icon-btn > svg:not(.ms-custom *) { flex: none; width: 16px; height: 16px; fill: none; stroke: var(--ms-ink-3); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ms-answer .ms-control .ms-chev:not(.ms-custom *) { transition: transform var(--ms-dur) var(--ms-spring); }
+.ms-answer .ms-pick[data-open] .ms-chev:not(.ms-custom *) { transform: rotate(180deg); }
+.ms-answer .ms-placeholder:not(.ms-custom *) { color: var(--ms-ink-3); }
+.ms-answer .ms-combo > input:not(.ms-custom *) { width: 100%; padding-right: 36px; }
+.ms-answer .ms-combo > .ms-chev:not(.ms-custom *) { position: absolute; right: 12px; top: calc(50% - 8px); width: 16px; height: 16px; fill: none; stroke: var(--ms-ink-3); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; transition: transform var(--ms-dur) var(--ms-spring); }
+.ms-answer .ms-combo[data-open] > .ms-chev:not(.ms-custom *) { transform: rotate(180deg); }
+.ms-answer .ms-opt b:not(.ms-custom *) { font-weight: 650; color: var(--ms-ink); }
+.ms-answer .ms-opt small:not(.ms-custom *) { color: var(--ms-ink-3); font-size: var(--ms-t-footnote); }
+.ms-answer .ms-menu:not(.ms-custom *) { position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; right: 0; max-height: 280px; overflow-y: auto; padding: 4px; background: var(--ms-surface); border: 1px solid var(--ms-line); border-radius: var(--ms-r); box-shadow: var(--ms-shadow-2); }
+.ms-answer .ms-opt:not(.ms-custom *) { display: flex; align-items: center; justify-content: space-between; gap: var(--ms-s2); padding: 8px 10px; border-radius: 5px; font-size: var(--ms-t-callout); cursor: pointer; font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-opt:hover:not(.ms-custom *), .ms-answer .ms-opt.ms-active:not(.ms-custom *) { background: var(--ms-tile); }
+.ms-answer .ms-opt[aria-selected="true"]:not(.ms-custom *) { font-weight: 600; }
+.ms-answer .ms-opt[aria-selected="true"]:not(.ms-custom *)::after { content: ""; flex: none; width: 14px; height: 14px; background: var(--ms-accent); mask: var(--ms-i-check) center / contain no-repeat; }
+/* A month: the picked day in the accent, today marked, outside the range quiet. */
+.ms-answer .ms-cal:not(.ms-custom *) { left: auto; width: 284px; padding: 10px; overflow: visible; max-height: none; }
+.ms-answer .ms-cal-head:not(.ms-custom *) { display: flex; align-items: center; justify-content: space-between; gap: var(--ms-s2); padding-bottom: var(--ms-s2); font-weight: 600; font-size: var(--ms-t-callout); }
+.ms-answer .ms-cal-head > span:not(.ms-custom *) { white-space: nowrap; }
+.ms-answer .ms-icon-btn:not(.ms-custom *) { all: unset; box-sizing: border-box; width: 30px; height: 30px; display: grid; place-items: center; border-radius: var(--ms-r-ctl); cursor: pointer; transition: background-color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-icon-btn:hover:not(.ms-custom *) { background: var(--ms-tile); }
+.ms-answer .ms-icon-btn:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 1px; }
+.ms-answer .ms-icon-btn:disabled:not(.ms-custom *) { opacity: .35; cursor: default; }
+.ms-answer .ms-cal-grid:not(.ms-custom *) { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; text-align: center; }
+.ms-answer .ms-dow:not(.ms-custom *) { font-size: var(--ms-t-caption); color: var(--ms-ink-3); padding: 4px 0; }
+.ms-answer .ms-day:not(.ms-custom *) { all: unset; box-sizing: border-box; display: grid; place-items: center; height: 34px; border-radius: var(--ms-r-ctl); font-size: var(--ms-t-footnote); font-variant-numeric: var(--ms-numeric, tabular-nums); cursor: pointer; }
+.ms-answer .ms-day:hover:not(.ms-custom *) { background: var(--ms-tile); }
+.ms-answer .ms-day:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: -2px; }
+.ms-answer .ms-day.ms-today:not(.ms-custom *) { color: var(--ms-accent); font-weight: 700; }
+.ms-answer .ms-day[aria-pressed="true"]:not(.ms-custom *) { background: var(--ms-accent); color: var(--ms-accent-ink); font-weight: 600; }
+.ms-answer .ms-day:disabled:not(.ms-custom *) { color: var(--ms-line-2); cursor: default; background: none; }
+/* Files: a drop zone, the picked ones listed in it. */
+.ms-answer .ms-drop:not(.ms-custom *) { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px var(--ms-s3); padding: var(--ms-s4); border: 1.5px dashed var(--ms-line-2); border-radius: var(--ms-r); background: var(--ms-tile); color: var(--ms-ink-2); font-size: var(--ms-t-callout); text-align: center; transition: border-color var(--ms-dur-fast) var(--ms-ease), background-color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-drop.ms-over:not(.ms-custom *) { border-color: var(--ms-accent); background: var(--ms-accent-bg); }
+.ms-answer .ms-drop-icon:not(.ms-custom *) { width: 20px; height: 20px; fill: none; stroke: var(--ms-ink-3); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ms-answer .ms-drop-list:not(.ms-custom *) { flex-basis: 100%; list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; font-size: var(--ms-t-footnote); color: var(--ms-ink); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-drop-list:empty:not(.ms-custom *) { display: none; }
+/* Players: one play button that morphs into pause, a thin track, the time. */
+.ms-answer .ms-player:not(.ms-custom *) { display: flex; align-items: center; gap: var(--ms-s3); font-size: var(--ms-t-footnote); color: var(--ms-ink-2); font-variant-numeric: var(--ms-numeric, tabular-nums); }
+.ms-answer .ms-audio-bar:not(.ms-custom *) { padding: 10px 14px 10px 10px; border: 1px solid var(--ms-line); border-radius: var(--ms-r); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); }
+.ms-answer .ms-title:not(.ms-custom *) { flex: 0 1 auto; min-width: 0; max-width: 40%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ms-ink); font-weight: 600; font-size: var(--ms-t-callout); }
+.ms-answer .ms-play:not(.ms-custom *) { all: unset; flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--ms-ink); display: grid; place-items: center; cursor: pointer; transition: transform var(--ms-dur-fast) var(--ms-spring); }
+.ms-answer .ms-play:active:not(.ms-custom *) { transform: scale(.92); }
+.ms-answer .ms-play:focus-visible:not(.ms-custom *), .ms-answer .ms-big:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+.ms-answer .ms-play svg:not(.ms-custom *) { width: 16px; height: 16px; fill: var(--ms-page); }
+.ms-answer .ms-seek:not(.ms-custom *) { flex: 1; min-width: 60px; }
+.ms-answer .ms-time:not(.ms-custom *) { flex: none; min-width: 3.5em; text-align: right; }
+/* The stage only places the play button and bar over the video, which keeps its own dark fill. */
+.ms-answer .ms-stage:not(.ms-custom *) { position: relative; border-radius: var(--ms-r); overflow: hidden; }
+.ms-answer .ms-stage > video:not(.ms-custom *) { border-radius: 0; }
+.ms-answer .ms-big:not(.ms-custom *) { all: unset; position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer; }
+.ms-answer .ms-big svg:not(.ms-custom *) { width: 64px; height: 64px; padding: 20px; box-sizing: border-box; border-radius: 50%; background: rgba(255, 255, 255, .94); fill: #0b0c0f; box-shadow: 0 6px 18px rgba(0, 0, 0, .3); transition: transform var(--ms-dur) var(--ms-spring); }
+.ms-answer .ms-big:hover svg:not(.ms-custom *) { transform: scale(1.06); }
+.ms-answer .ms-playing .ms-big:not(.ms-custom *) { display: none; }
+.ms-answer .ms-video-bar:not(.ms-custom *) { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--ms-s3); color: #fff; background: linear-gradient(transparent, rgba(0, 0, 0, .55)); opacity: 0; transition: opacity var(--ms-dur) var(--ms-ease); }
+.ms-answer .ms-playing .ms-video-bar:not(.ms-custom *), .ms-answer .ms-stage:hover .ms-video-bar:not(.ms-custom *), .ms-answer .ms-stage:focus-within .ms-video-bar:not(.ms-custom *) { opacity: 1; }
+.ms-answer .ms-video-bar .ms-play:not(.ms-custom *) { background: rgba(255, 255, 255, .94); }
+.ms-answer .ms-video-bar .ms-play svg:not(.ms-custom *) { fill: #0b0c0f; }
+.ms-answer .ms-video-bar .ms-seek:not(.ms-custom *)::-webkit-slider-runnable-track { background: linear-gradient(#fff, #fff) 0 / var(--ms-p, 0%) 100% no-repeat, rgba(255, 255, 255, .35); }
+.ms-answer input[type="range"].ms-seek:not(.ms-custom *) { --ms-p: 0%; }
+/* A carousel's arrows, at its top right. */
+.ms-answer .ms-carousel:not(.ms-custom *) { position: relative; }
+.ms-answer .ms-rail-nav:not(.ms-custom *) { display: flex; justify-content: flex-end; gap: 6px; margin-top: var(--ms-s2); }
+.ms-answer .ms-rail-nav .ms-icon-btn:not(.ms-custom *) { border: 1px solid var(--ms-line-2); background: var(--ms-surface); box-shadow: var(--ms-shadow-1); }
+/* Code: the copy button in the file bar (or the block's corner). */
+.ms-answer .ms-copy:not(.ms-custom *) { all: unset; box-sizing: border-box; width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--ms-r-ctl); cursor: pointer; color: var(--ms-ink-3); transition: background-color var(--ms-dur-fast) var(--ms-ease), color var(--ms-dur-fast) var(--ms-ease); }
+.ms-answer .ms-copy:hover:not(.ms-custom *) { background: var(--ms-tile); color: var(--ms-ink); }
+.ms-answer .ms-copy:focus-visible:not(.ms-custom *) { outline: 2px solid var(--ms-focus); outline-offset: 1px; }
+.ms-answer .ms-copy.ms-ok:not(.ms-custom *) { color: var(--ms-good); }
+.ms-answer .ms-copy svg:not(.ms-custom *) { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ms-answer figcaption > .ms-copy:not(.ms-custom *) { position: absolute; top: 2px; right: 6px; }
+.ms-answer .ms-has-copy:not(.ms-custom *) { position: relative; }
+.ms-answer .ms-has-copy > .ms-copy:not(.ms-custom *) { position: absolute; top: 6px; right: 6px; background: var(--ms-surface); }
+/* A quiz key's check or cross, and a poll's chosen key. */
+.ms-answer :is(.ms-question, .ms-poll) label > .ms-mark:not(.ms-custom *) { position: absolute; left: 14px; top: calc(50% - 13px); width: 26px; height: 26px; fill: none; stroke: var(--ms-surface); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.ms-answer .ms-poll label:has(> .ms-mark):not(.ms-custom *)::before { content: ""; }
+.ms-answer .ms-poll label > .ms-mark:not(.ms-custom *) { stroke: var(--ms-accent-ink); }
+.ms-answer .ms-question label:is(.ms-right, .ms-wrong):has(> .ms-mark):not(.ms-custom *)::after { display: none; }
+/* A done step's check, drawn by the SDK (the theme's own mark steps aside). */
+.ms-answer .ms-steps > li[data-ms-drawn]:not(.ms-custom *)::after { display: none; }
+.ms-answer .ms-steps > li > .ms-step-check:not(.ms-custom *) { position: absolute; left: 0; top: 1px; width: 22px; height: 22px; padding: 4px; box-sizing: border-box; fill: none; stroke: var(--ms-accent-ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+/* A send button's mark (sending()): an arc while it works, then a check. */
+.ms-answer .ms-btn > .ms-send:not(.ms-custom *) { width: 1.1em; height: 1.1em; margin-inline-end: .4em; vertical-align: -0.2em; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+/* The stepper's box (controls.ts wraps the number in it). */
+/* While an agent works and nothing shows yet: one small breathing mark (agent.ts). */
+/* The agent's "working on it" dot sits in the thread, before its answer has begun. */
+.ms-thread.ms-thread > .ms-working { width: 10px; height: 10px; margin: 6px 2px; border-radius: 50%; background: var(--ms-accent); }
+@media (prefers-reduced-motion: no-preference) { .ms-thread.ms-thread > .ms-working { animation: ms-working 1s var(--ms-ease) infinite alternate; } }
+@keyframes ms-working { from { transform: scale(.7); opacity: .5; } to { transform: scale(1); opacity: 1; } }

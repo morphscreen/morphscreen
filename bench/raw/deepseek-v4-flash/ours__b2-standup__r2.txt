@@ -1,0 +1,69 @@
+# Daily async standup
+
+**Beam Mobile · Product & Engineering** — <Badge tone="neutral">Today · Wednesday, June 18, 2025</Badge>
+
+<Card title="Today at a glance" subtitle="Wednesday, June 18, 2025">
+<Columns>
+<Stat label="Updates posted" value="6 / 8" tone="success" icon="chat-text" />
+<Stat label="Missing updates" value="2" note="Tomás, Aisha" tone="warning" icon="hourglass" />
+<Stat label="Blocked" value="2" note="Diego, Lena" tone="danger" icon="warning" />
+</Columns>
+<Progress value="6" max="8" label="Check-in progress — 2 updates still missing" tone="info" />
+</Card>
+
+<Callout tone="danger" title="2 teammates are blocked — lend a hand">
+**Diego Ramírez** is waiting on **API credentials** from the platform team (asked twice since yesterday).  
+**Lena Fischer** is waiting on **final design assets** for the checkout screen.
+</Callout>
+
+<Card title="Team updates" subtitle="6 posted · oldest first">
+<Avatar name="Sam Okafor" subtitle="Platform · 8:31 AM" />
+
+Refactored the dashboard components and cleaned up the design docs. CI is green across the board.
+
+<Avatar name="Diego Ramírez" subtitle="Backend · 8:47 AM" />
+
+Integration logic is complete, but I can't run the test suite until the platform team sends API credentials. Asked twice since yesterday.
+
+<Badge tone="danger">Blocked — API credentials</Badge>
+
+<Avatar name="Noah Williams" subtitle="QA · 8:55 AM" />
+
+Patched the auth session bug from yesterday. Deployed to staging and verified with product — ready for release.
+
+<Avatar name="Maya Chen" subtitle="Frontend · 9:02 AM" />
+
+Shipped the new onboarding flow. PR for the billing fix is up for review — feedback welcome.
+
+<Avatar name="Priya Patel" subtitle="Backend · 9:14 AM" />
+
+Finished tests for the notification service; coverage is back above 90%. Starting the rate-limiter task next.
+
+<Avatar name="Lena Fischer" subtitle="Design · 9:26 AM" />
+
+Checkout UI is about 80% done. Waiting on final assets to finish the empty states — everything else is spec'd.
+
+<Badge tone="danger">Blocked — design assets</Badge>
+
+<Callout tone="warning" title="2 updates still missing">
+**Tomás Silva** (Backend) — hasn't checked in yet  
+**Aisha Khan** (Design) — hasn't checked in yet  
+<Button variant="secondary" size="small" ask>Remind them</Button>
+</Callout>
+</Card>
+
+<Card title="Post your update" subtitle="Add your check-in for Wednesday, June 18, 2025">
+<Form name="standup-update">
+<Select label="Who's posting?" name="author" options="Maya Chen | Diego Ramírez | Priya Patel | Sam Okafor | Lena Fischer | Noah Williams | Tomás Silva | Aisha Khan" placeholder="Choose your name" required="true" />
+<TextArea label="What did you get done today?" name="update" placeholder="Progress, decisions, open questions…" rows="3" required="true" hint="Bullet points work great — Done / Doing / Blocked" />
+<Switch label="I'm blocked on something" name="blocked" hint="Your update will be flagged for the team" />
+<Input label="What's blocking you?" name="blocker" placeholder="e.g. waiting on API credentials from Platform" hint="Optional — only if you're blocked" />
+<Button variant="primary" icon="paper-plane-tilt">Post update</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Send a gentle reminder to Tomás and Aisha
+- Open the blocked thread for Diego Ramírez
+- Show yesterday's standup
+</FollowUps>

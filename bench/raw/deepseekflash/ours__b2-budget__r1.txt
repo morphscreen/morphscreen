@@ -1,0 +1,60 @@
+<Card title="Personal Budget Check" subtitle="March 2025">
+<Columns>
+<Select label="Month" name="month" options="January 2025 | February 2025 | March 2025 | April 2025" value="March 2025" hint="Switch to another month" />
+<Button variant="primary" ask="add-expense">+ Add expense</Button>
+</Columns>
+</Card>
+
+<Card title="Monthly overview" subtitle="March 2025 vs. budget">
+<Columns>
+<Stat label="Total spent" value="$2,458.75" note="82% of budget" />
+<Stat label="Monthly budget" value="$3,000.00" note="Fixed" />
+<Stat label="Remaining" value="$541.25" note="18% left" />
+</Columns>
+<Progress value="82" max="100" label="Budget used" />
+<Callout tone="success" title="On track">You're $541.25 under budget with 5 days left in March.</Callout>
+</Card>
+
+<Columns>
+<Card title="Spending by category" subtitle="March 2025">
+<Chart type="donut" title="Category split" x="Category" y="Amount">
+| Category | Amount |
+|---|---|
+| Housing | 1200.00 |
+| Groceries | 485.60 |
+| Utilities | 287.00 |
+| Transport | 212.40 |
+| Dining out | 178.25 |
+| Entertainment | 95.50 |
+</Chart>
+
+| Category | Amount | Share |
+|---|---|---|
+| Housing | $1,200.00 | 49% |
+| Groceries | $485.60 | 20% |
+| Utilities | $287.00 | 12% |
+| Transport | $212.40 | 9% |
+| Dining out | $178.25 | 7% |
+| Entertainment | $95.50 | 4% |
+</Card>
+
+<Card title="Largest expense" subtitle="This month">
+<Badge tone="warning">Top spend</Badge>
+
+### Rent
+**$1,200.00**
+Housing · March 1, 2025
+<Progress value="49" max="100" label="49% of total spend" />
+</Card>
+</Columns>
+
+<Card title="Add an expense" subtitle="Record a new purchase">
+<Form name="add-expense">
+<Input label="Description" name="description" placeholder="e.g. Grocery run at Whole Foods" required="true" />
+<Input label="Amount" name="amount" type="number" placeholder="0.00" hint="Use a decimal point, e.g. 42.50" required="true" />
+<Select label="Category" name="category" options="Housing | Groceries | Utilities | Transport | Dining out | Entertainment | Other" placeholder="Choose a category" required="true" />
+<Date label="Date" name="date" value="2025-03-26" />
+<Button>Add expense</Button>
+<Button variant="secondary">Reset</Button>
+</Form>
+</Card>

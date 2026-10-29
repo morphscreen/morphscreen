@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MorphScreen agent</title>
+<link rel="stylesheet" href="../dist/morphscreen.css">
+<style>
+  /* The page around the conversation: a header line, the thread, a composer pinned to the bottom. */
+  body { margin: 0; background: var(--ms-page); color: var(--ms-ink); font: var(--ms-t-body)/var(--ms-lh-body) var(--ms-font); }
+  .top { max-width: 800px; margin: 0 auto; padding: var(--ms-s4) var(--ms-s5) 0; display: flex; gap: var(--ms-s3); align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+  .top strong { font-size: var(--ms-t-headline); }
+  .top small { color: var(--ms-ink-3); font-size: var(--ms-t-footnote); overflow-wrap: anywhere; }
+  .top button { font: inherit; font-size: var(--ms-t-footnote); color: var(--ms-ink-2); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  #chat { padding-bottom: 140px; }
+  .empty { max-width: 800px; margin: 0 auto; padding: var(--ms-s6) var(--ms-s5); color: var(--ms-ink-3); }
+  .composer { position: fixed; inset: auto 0 0 0; background: var(--ms-page); border-top: 1px solid var(--ms-line); padding: var(--ms-s3) var(--ms-s5) calc(var(--ms-s3) + env(safe-area-inset-bottom, 0px)); }
+  .composer form { max-width: 800px; margin: 0 auto; display: flex; gap: var(--ms-s2); align-items: flex-end; }
+  .composer textarea { flex: 1; min-width: 0; resize: none; font: inherit; color: var(--ms-ink); background: var(--ms-surface); border: 1px solid var(--ms-line-2); border-radius: var(--ms-r); padding: var(--ms-s2) var(--ms-s3); min-height: 44px; max-height: 160px; box-sizing: border-box; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .composer textarea:focus-visible { outline: 2px solid var(--ms-focus); outline-offset: 1px; }
+  .composer button { min-height: 44px; padding: 8px 16px; font: inherit; font-size: var(--ms-t-callout); font-weight: 600; border-radius: var(--ms-r-ctl); border: 1px solid var(--ms-ink); background: var(--ms-ink); color: var(--ms-page); cursor: pointer; }
+  .composer button:hover { background: color-mix(in srgb, var(--ms-ink) 86%, var(--ms-page)); }
+  .composer button:focus-visible { outline: 2px solid var(--ms-focus); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<header class="top"><strong>Agent</strong><small id="where"></small><button type="button" id="fresh">New conversation</button></header>
+<p class="empty" id="empty">Ask for something to look at, a quiz, a plan, a form to fill in.</p>
+<main id="chat"></main>
+<div class="composer">
+  <form id="composer">
+    <label class="visually-hidden" for="say">Message</label>
+    <textarea id="say" rows="1" placeholder="Message the agent" autocomplete="off"></textarea>
+    <button type="submit" id="send">Send</button>
+  </form>
+</div>
+<script type="module" src="./build/agent.js"></script>
+</body>
+</html>

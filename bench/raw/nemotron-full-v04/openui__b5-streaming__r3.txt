@@ -1,0 +1,188 @@
+root = Card([header, kpis, regionSelector, mainTabs, featureFlags, promoteForm], "card", "column", "l")
+
+header = CardHeader("Streaming Operations Room", "Real-time platform health & content intelligence")
+
+kpis = Card([currentViewers, bufferingRate, recClickRate, zeroPlaybackSearches], "clear", "row", "l", "stretch", "around")
+
+currentViewers = Card([viewersLabel, viewersValue], "sunk", "column", "m", "center")
+viewersLabel = TextContent("Viewers Right Now", "small")
+viewersValue = TextContent("2.4M", "large-heavy")
+
+bufferingRate = Card([bufferLabel, bufferValue, bufferProgress], "sunk", "column", "m", "center")
+bufferLabel = TextContent("Buffering Rate", "small")
+bufferValue = TextContent("0.8%", "large-heavy")
+bufferProgress = Progress(0.8, "Target < 1%")
+
+recClickRate = Card([recLabel, recValue], "sunk", "column", "m", "center")
+recLabel = TextContent("Rec Click-Through", "small")
+recValue = TextContent("12.4%", "large-heavy")
+
+zeroPlaybackSearches = Card([zeroLabel, zeroValue], "sunk", "column", "m", "center")
+zeroLabel = TextContent("Searches → No Play", "small")
+zeroValue = TextContent("3.2%", "large-heavy")
+
+regionSelector = Card([regionLabel, regionSelect], "clear", "row", "m", "center", "start")
+regionLabel = TextContent("Focus Region:", "default")
+regionSelect = Select("region_focus", regionOptions, "All Regions", null, "medium")
+regionOptions = [optGlobal, optNA, optEU, optAPAC, optLATAM]
+optGlobal = SelectItem("global", "Global (All)")
+optNA = SelectItem("na", "North America")
+optEU = SelectItem("eu", "Europe")
+optAPAC = SelectItem("apac", "Asia-Pacific")
+optLATAM = SelectItem("latam", "Latin America")
+
+mainTabs = Tabs([tabOverview, tabContent, tabGrowth, tabTech, tabRevenue])
+
+tabOverview = TabItem("overview", "Overview", [watchTimeChart, subChurnChart, genrePerfChart, deliveryHealthTable])
+tabContent = TabItem("content", "Content", [topTitlesTable, upcomingReleases, expiringLicenses])
+tabGrowth = TabItem("growth", "Growth", [revenueSplitChart, deviceSplitChart])
+tabTech = TabItem("tech", "Technical", [bufferingTrendChart, cdnHealthChart])
+tabRevenue = TabItem("revenue", "Revenue", [planRevenueTable, arpuChart])
+
+watchTimeChart = Card([watchTimeHeader, watchTimeLine], "sunk", "column", "m")
+watchTimeHeader = CardHeader("Watch Time (Past 30 Days)", "Total hours streamed daily")
+watchTimeLine = LineChart(watchTimeLabels, [watchTimeSeries], "natural", "Date", "Hours (M)")
+watchTimeLabels = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7", "Day 8", "Day 9", "Day 10", "Day 11", "Day 12", "Day 13", "Day 14", "Day 15", "Day 16", "Day 17", "Day 18", "Day 19", "Day 20", "Day 21", "Day 22", "Day 23", "Day 24", "Day 25", "Day 26", "Day 27", "Day 28", "Day 29", "Day 30"]
+watchTimeSeries = Series("Hours Streamed", [4.2, 4.5, 4.1, 4.8, 5.2, 5.8, 6.1, 4.3, 4.6, 4.4, 4.9, 5.3, 5.7, 6.0, 6.3, 4.5, 4.8, 4.5, 5.0, 5.4, 5.8, 6.2, 6.5, 4.7, 5.0, 4.8, 5.2, 5.6, 6.0, 6.3])
+
+subChurnChart = Card([subChurnHeader, subChurnArea], "sunk", "column", "m")
+subChurnHeader = CardHeader("Subscribers: New vs Cancelled", "Net growth trajectory")
+subChurnArea = AreaChart(subChurnLabels, [newSubSeries, churnSeries], "natural", "Week", "Subscribers (K)")
+subChurnLabels = ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12"]
+newSubSeries = Series("New Subscribers", [18, 22, 19, 25, 28, 30, 24, 26, 29, 32, 27, 31])
+churnSeries = Series("Cancellations", [12, 14, 11, 13, 15, 16, 14, 13, 15, 17, 14, 16])
+
+genrePerfChart = Card([genreHeader, genreRadar], "sunk", "column", "m")
+genreHeader = CardHeader("Performance by Genre", "Engagement index across categories")
+genreRadar = RadarChart(genreLabels, [genreSeries])
+genreLabels = ["Drama", "Comedy", "Action", "Sci-Fi", "Documentary", "Horror", "Animation", "Thriller"]
+genreSeries = Series("Engagement Index", [85, 72, 78, 81, 65, 58, 88, 76])
+
+deliveryHealthTable = Card([deliveryHeader, deliveryTable], "sunk", "column", "m")
+deliveryHeader = CardHeader("Delivery Health by Region", "CDN performance & error rates")
+deliveryTable = Table([regionCol, latencyCol, errorCol, throughputCol, statusCol])
+regionCol = Col("Region", ["North America", "Europe", "Asia-Pacific", "Latin America", "Middle East", "Africa"])
+latencyCol = Col("Avg Latency (ms)", [42, 58, 89, 112, 95, 134])
+errorCol = Col("Error Rate (%)", [0.12, 0.18, 0.31, 0.45, 0.38, 0.52])
+throughputCol = Col("Throughput (Gbps)", [240, 180, 95, 42, 28, 15])
+statusCol = Col("Status", ["Healthy", "Healthy", "Degraded", "Warning", "Degraded", "Critical"])
+
+topTitlesTable = Card([titlesHeader, titlesTable], "sunk", "column", "m")
+titlesHeader = CardHeader("Most-Watched Titles (Past 7 Days)", "Ranked by total hours streamed")
+titlesTable = Table([rankCol, titleCol, genreCol, hoursCol, viewersCol, completionCol])
+rankCol = Col("#", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+titleCol = Col("Title", ["The Crown S6", "Stranger Things S4", "Wednesday", "Squid Game", "Bridgerton S2", "The Witcher S3", "Ozark S4", "Arcane S2", "Black Mirror S6", "Severance S2"])
+genreCol = Col("Genre", ["Drama", "Sci-Fi", "Comedy", "Thriller", "Romance", "Fantasy", "Crime", "Animation", "Anthology", "Sci-Fi"])
+hoursCol = Col("Hours (M)", [12.4, 11.8, 10.9, 10.2, 9.7, 9.1, 8.6, 8.3, 7.9, 7.5])
+viewersCol = Col("Unique Viewers (M)", [8.2, 7.9, 7.5, 7.1, 6.8, 6.4, 6.1, 5.9, 5.6, 5.3])
+completionCol = Col("Completion %", [87, 84, 91, 89, 82, 78, 85, 93, 76, 88])
+
+upcomingReleases = Card([releasesHeader, releasesList], "sunk", "column", "m")
+releasesHeader = CardHeader("Releases This Month", "Upcoming premieres & returning seasons")
+releasesList = ListBlock(releaseItems, "number")
+releaseItems = [rel1, rel2, rel3, rel4, rel5, rel6]
+rel1 = ListItem("The Crown: Final Season", "Nov 14 • Drama • 6 episodes", null, "Promote")
+rel2 = ListItem("Squid Game: The Challenge", "Nov 22 • Reality • 10 episodes", null, "Promote")
+rel3 = ListItem("Berlin (Money Heist Spinoff)", "Nov 29 • Crime • 8 episodes", null, "Promote")
+rel4 = ListItem("Blue Eye Samurai S2", "Nov 15 • Animation • 8 episodes", null, "Promote")
+rel5 = ListItem("The Diplomat S2", "Nov 9 • Political Thriller • 6 episodes", null, "Promote")
+rel6 = ListItem("Scott Pilgrim Takes Off", "Nov 17 • Animation • 8 episodes", null, "Promote")
+
+expiringLicenses = Card([licensesHeader, licensesTable], "sunk", "column", "m")
+licensesHeader = CardHeader("Licenses Expiring Soon", "Content leaving the platform in 30 days")
+licensesTable = Table([licTitleCol, licGenreCol, licExpireCol, licHoursCol, licActionCol])
+licTitleCol = Col("Title", ["The Office (US)", "Friends", "Parks & Rec", "How I Met Your Mother", "The Big Bang Theory", "Modern Family"])
+licGenreCol = Col("Genre", ["Comedy", "Comedy", "Comedy", "Comedy", "Comedy", "Comedy"])
+licExpireCol = Col("Expires", ["Dec 15", "Dec 20", "Dec 28", "Jan 5", "Jan 12", "Jan 18"])
+licHoursCol = Col("Hours (30d)", [2.1, 1.8, 0.9, 0.7, 1.2, 1.0])
+licActionCol = Col("Action", ["Renew", "Renew", "Evaluate", "Let Expire", "Renew", "Evaluate"])
+
+revenueSplitChart = Card([revSplitHeader, revSplitPie], "sunk", "column", "m")
+revSplitHeader = CardHeader("Revenue Split by Plan", "Monthly recurring revenue distribution")
+revSplitPie = PieChart(revPlanLabels, revPlanValues, "donut")
+revPlanLabels = ["Premium 4K", "Standard HD", "Basic SD", "Mobile Only", "Annual Prepaid"]
+revPlanValues = [42, 35, 12, 6, 5]
+
+deviceSplitChart = Card([devSplitHeader, devSplitBar], "sunk", "column", "m")
+devSplitHeader = CardHeader("Viewing Split by Device", "Share of total watch time")
+devSplitBar = HorizontalBarChart(devLabels, [devSeries], "grouped", "Share (%)", "Device")
+devLabels = ["Smart TV", "Mobile", "Desktop", "Tablet", "Game Console", "Streaming Stick"]
+devSeries = Series("Watch Time %", [45, 28, 12, 8, 4, 3])
+
+bufferingTrendChart = Card([bufferTrendHeader, bufferTrendLine], "sunk", "column", "m")
+bufferTrendHeader = CardHeader("Buffering Rate Trend (30 Days)", "Percentage of sessions with rebuffer events")
+bufferTrendLine = LineChart(bufferLabels, [bufferSeries], "natural", "Date", "Buffer Rate (%)")
+bufferLabels = ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "D21", "D22", "D23", "D24", "D25", "D26", "D27", "D28", "D29", "D30"]
+bufferSeries = Series("Buffer Rate", [0.9, 0.8, 0.7, 0.8, 0.9, 1.1, 1.0, 0.8, 0.7, 0.8, 0.9, 0.8, 0.7, 0.8, 0.9, 1.0, 0.9, 0.8, 0.7, 0.8, 0.9, 0.8, 0.7, 0.8, 0.9, 0.8, 0.7, 0.8, 0.8, 0.8])
+
+cdnHealthChart = Card([cdnHeader, cdnScatter], "sunk", "column", "m")
+cdnHeader = CardHeader("CDN Node Health", "Latency vs Error Rate by edge node")
+cdnScatter = ScatterChart([cdnSeries], "Latency (ms)", "Error Rate (%)")
+cdnSeries = ScatterSeries("Edge Nodes", cdnPoints)
+cdnPoints = [Point(35, 0.08), Point(42, 0.12), Point(48, 0.15), Point(55, 0.18), Point(62, 0.22), Point(70, 0.28), Point(78, 0.35), Point(85, 0.42), Point(95, 0.48), Point(110, 0.55), Point(125, 0.62), Point(140, 0.71)]
+
+planRevenueTable = Card([planRevHeader, planRevTable], "sunk", "column", "m")
+planRevHeader = CardHeader("Revenue by Plan (Monthly)", "ARPU and subscriber counts")
+planRevTable = Table([planNameCol, planSubsCol, planArpuCol, planRevCol, planChurnCol])
+planNameCol = Col("Plan", ["Premium 4K", "Standard HD", "Basic SD", "Mobile Only", "Annual Prepaid"])
+planSubsCol = Col("Subscribers (M)", [8.2, 12.5, 4.1, 2.3, 3.7])
+planArpuCol = Col("ARPU ($)", [19.99, 14.99, 9.99, 6.99, 149.99])
+planRevCol = Col("Monthly Rev ($M)", [164, 187, 41, 16, 555])
+planChurnCol = Col("Monthly Churn %", [2.1, 3.2, 4.8, 6.5, 1.2])
+
+arpuChart = Card([arpuHeader, arpuLine], "sunk", "column", "m")
+arpuHeader = CardHeader("ARPU Trend by Plan (12 Months)", "Average revenue per user evolution")
+arpuLine = LineChart(arpuLabels, [arpuPremium, arpuStandard, arpuBasic, arpuMobile], "natural", "Month", "ARPU ($)")
+arpuLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+arpuPremium = Series("Premium 4K", [19.99, 19.99, 19.99, 19.99, 19.99, 19.99, 19.99, 19.99, 19.99, 19.99, 19.99, 19.99])
+arpuStandard = Series("Standard HD", [14.99, 14.99, 14.99, 14.99, 14.99, 14.99, 14.99, 14.99, 14.99, 14.99, 14.99, 14.99])
+arpuBasic = Series("Basic SD", [9.99, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99, 9.99])
+arpuMobile = Series("Mobile Only", [6.99, 6.99, 6.99, 6.99, 6.99, 6.99, 6.99, 6.99, 6.99, 6.99, 6.99, 6.99])
+
+featureFlags = Card([flagsHeader, flagsTable], "sunk", "column", "m")
+flagsHeader = CardHeader("Feature Flags", "Platform-wide toggles & rollout status")
+flagsTable = Table([flagNameCol, flagDescCol, flagEnvCol, flagRolloutCol, flagStatusCol, flagActionCol])
+flagNameCol = Col("Flag", ["new_recommendation_engine", "shuffle_play", "download_quality_selector", "watch_party_v2", "ai_dubbing", "live_sports_ui", "profile_pin_protection", "kids_mode_redesign"])
+flagDescCol = Col("Description", ["ML-based recs replacing collaborative filtering", "Random episode play for comfort shows", "Per-title download quality choice", "Synced viewing with chat & reactions", "Auto-generated dubs in 12 languages", "Scoreboard, multi-cam, DVR controls", "PIN lock per profile", "New avatar system & content gating"])
+flagEnvCol = Col("Environment", ["Production", "Staging", "Production", "Canary (5%)", "Staging", "Development", "Production", "Production"])
+flagRolloutCol = Col("Rollout %", [100, 0, 100, 5, 0, 0, 100, 100])
+flagStatusCol = Col("Status", ["Enabled", "Disabled", "Enabled", "Enabled", "Disabled", "Disabled", "Enabled", "Enabled"])
+flagActionCol = Col("Action", ["Monitor", "Enable", "Monitor", "Expand", "Enable", "Deploy", "Monitor", "Monitor"])
+
+promoteForm = Card([promoteHeader, promoteFormInner], "sunk", "column", "m")
+promoteHeader = CardHeader("Promote Title on Home Screen", "Feature a title in the hero carousel & top row")
+promoteFormInner = Form("promote_title", promoteButtons, [promoteTitleField, promotePositionField, promoteDurationField, promoteRegionField, promoteAudienceField])
+promoteTitleField = FormControl("Title", promoteTitleSelect, "Search or select a title from catalog")
+promoteTitleSelect = Select("title_id", promoteTitleOptions, "Select a title...", null, "large")
+promoteTitleOptions = [promoOpt1, promoOpt2, promoOpt3, promoOpt4, promoOpt5]
+promoOpt1 = SelectItem("tt_crown_s6", "The Crown: Final Season")
+promoOpt2 = SelectItem("tt_squid_challenge", "Squid Game: The Challenge")
+promoOpt3 = SelectItem("tt_berlin", "Berlin (Money Heist Spinoff)")
+promoOpt4 = SelectItem("tt_blue_samurai_s2", "Blue Eye Samurai S2")
+promoOpt5 = SelectItem("tt_diplomat_s2", "The Diplomat S2")
+promotePositionField = FormControl("Placement", promotePositionRadio)
+promotePositionRadio = RadioGroup("placement", [posHero, posTopRow, posGenreRow, posContinueRow])
+posHero = RadioItem("Hero Carousel", "Full-width auto-playing banner at top", "hero")
+posTopRow = RadioItem("Top Row", "First row after hero — high visibility", "top_row")
+posGenreRow = RadioItem("Genre Row", "Within relevant genre collection", "genre_row")
+posContinueRow = RadioItem("Continue Watching", "Injected into continue row", "continue_row")
+promoteDurationField = FormControl("Duration (Days)", promoteDurationSlider)
+promoteDurationSlider = Slider("duration_days", "discrete", 1, 30, 1, [7], "Days to feature", null, [7])
+promoteRegionField = FormControl("Target Regions", promoteRegionChecks)
+promoteRegionChecks = CheckBoxGroup("target_regions", [chkGlobal, chkNA, chkEU, chkAPAC, chkLATAM], null, ["global"])
+chkGlobal = CheckBoxItem("Global", "All regions", "global", true)
+chkNA = CheckBoxItem("North America", "US & Canada", "na", false)
+chkEU = CheckBoxItem("Europe", "EU + UK", "eu", false)
+chkAPAC = CheckBoxItem("Asia-Pacific", "Japan, Korea, ANZ, SEA", "apac", false)
+chkLATAM = CheckBoxItem("Latin America", "Brazil, Mexico, Argentina", "latam", false)
+promoteAudienceField = FormControl("Audience Segment", promoteAudienceSelect)
+promoteAudienceSelect = Select("audience_segment", audienceOptions, "All Viewers", null, "medium")
+audienceOptions = [audAll, audNew, audReturning, audChurnRisk, audGenreFans]
+audAll = SelectItem("all", "All Viewers")
+audNew = SelectItem("new", "New Subscribers (< 30 days)")
+audReturning = SelectItem("returning", "Returning from Churn")
+audChurnRisk = SelectItem("churn_risk", "High Churn Risk (ML scored)")
+audGenreFans = SelectItem("genre_fans", "Genre Affinity Match")
+promoteButtons = Buttons([promoteSubmitBtn, promotePreviewBtn], "row")
+promoteSubmitBtn = Button("Launch Promotion", null, "primary")
+promotePreviewBtn = Button("Preview Placement", null, "secondary")

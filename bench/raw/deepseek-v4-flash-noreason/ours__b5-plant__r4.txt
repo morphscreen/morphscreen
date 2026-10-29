@@ -1,0 +1,145 @@
+# Factory Floor Supervisor Console
+
+<Callout tone="warning" title="Live Andon Alerts">
+2 open alerts — Line 3 jammed, Line 5 material low
+</Callout>
+
+<Columns>
+<Card title="Overall Equipment Effectiveness">
+<Stat label="OEE" value="78.4%" change="+2.1% vs yesterday" tone="success" icon="chart-line" />
+<Progress value="78.4" max="100" label="Target 85%" tone="info" />
+</Card>
+
+<Card title="Units Produced vs Target">
+<Stat label="Produced" value="4,382" change="Target 5,000" icon="factory" />
+<Progress value="87.6" max="100" label="87.6% of target" tone="info" />
+</Card>
+</Columns>
+
+<Card title="Production Lines">
+| Line | Product | Rate (units/h) | Status |
+|---|---|---|---|
+| Line 1 | Steel Frame A | 42 | <Badge tone="success">Running</Badge> |
+| Line 2 | Steel Frame B | 38 | <Badge tone="success">Running</Badge> |
+| Line 3 | Resin Base | 0 | <Badge tone="danger">Jammed</Badge> |
+| Line 4 | Packaging Kit | 51 | <Badge tone="success">Running</Badge> |
+| Line 5 | Steel Frame C | 12 | <Badge tone="warning">Slow</Badge> |
+
+<Button variant="secondary">Focus on Line 1</Button>
+<Button variant="secondary">Focus on Line 2</Button>
+<Button variant="secondary">Focus on Line 3</Button>
+<Button variant="secondary">Focus on Line 4</Button>
+<Button variant="secondary">Focus on Line 5</Button>
+</Card>
+
+<Card title="Defect Rate — Past Month">
+<Chart type="line" x="Week" y="Defect rate (%)">
+| Week | Defect rate |
+|---|---|
+| W1 | 2.1 |
+| W2 | 1.8 |
+| W3 | 2.4 |
+| W4 | 1.6 |
+</Chart>
+</Card>
+
+<Card title="Downtime by Cause">
+<Chart type="donut" title="Downtime split">
+| Cause | Hours |
+|---|---|
+| Machine jam | 6.5 |
+| Material shortage | 3.2 |
+| Changeover | 2.1 |
+| Maintenance | 1.8 |
+| Other | 0.9 |
+</Chart>
+</Card>
+
+<Card title="Machines Due for Maintenance">
+| Machine | Line | Due date | Priority |
+|---|---|---|---|
+| Press P-01 | Line 1 | Today | <Badge tone="danger">High</Badge> |
+| Molder M-03 | Line 3 | Tomorrow | <Badge tone="warning">Medium</Badge> |
+| Conveyor C-02 | Line 5 | In 3 days | <Badge tone="info">Low</Badge> |
+
+<Details title="Schedule Maintenance">
+<Form name="maintenance">
+<Select label="Machine" options="Press P-01 | Molder M-03 | Conveyor C-02 | Press P-02 | Molder M-01" />
+<Date label="Date" name="maint-date" />
+<Button>Schedule</Button>
+</Form>
+</Details>
+</Card>
+
+<Card title="Raw Material Stock">
+| Material | Stock (units) | Reorder level | Status |
+|---|---|---|---|
+| Steel | 12,400 | 10,000 | <Badge tone="success">OK</Badge> |
+| Resin | 3,100 | 4,000 | <Badge tone="warning">Low</Badge> |
+| Packaging | 8,900 | 5,000 | <Badge tone="success">OK</Badge> |
+</Card>
+
+<Card title="Supplier Deliveries This Week">
+| Supplier | Material | Qty | Due | Status |
+|---|---|---|---|---|
+| SteelCo Ltd | Steel | 5,000 | Mon | <Badge tone="success">Confirmed</Badge> |
+| ResinWorks | Resin | 2,000 | Wed | <Badge tone="warning">Pending</Badge> |
+| PackPlus | Packaging | 3,000 | Fri | <Badge tone="info">Scheduled</Badge> |
+</Card>
+
+<Card title="Shift Output Comparison">
+<Chart type="bar" x="Shift" y="Units">
+| Shift | Units |
+|---|---|
+| Morning | 1,650 |
+| Afternoon | 1,540 |
+| Night | 1,192 |
+</Chart>
+</Card>
+
+<Card title="Safety">
+<Stat label="Incidents this year" value="3" tone="warning" icon="warning" />
+<Stat label="Days since last incident" value="47" tone="success" icon="calendar" />
+</Card>
+
+<Card title="Batches on Quality Hold">
+| Batch ID | Product | Qty | Hold reason |
+|---|---|---|---|
+| B-2041 | Steel Frame A | 120 | Dimensional check |
+| B-2044 | Resin Base | 85 | Material variance |
+| B-2047 | Packaging Kit | 200 | Label mismatch |
+</Card>
+
+<Card title="Energy Use Today">
+<Stat label="Energy consumed" value="18.4 MWh" change="−3% vs yesterday" tone="info" icon="lightning" />
+<Chart type="area" x="Hour" y="MWh">
+| Hour | MWh |
+|---|---|
+| 06:00 | 1.1 |
+| 09:00 | 1.6 |
+| 12:00 | 1.4 |
+| 15:00 | 1.7 |
+| 18:00 | 1.3 |
+</Chart>
+</Card>
+
+<Card title="Open Work Orders">
+| Order ID | Line | Product | Qty | Priority |
+|---|---|---|---|---|
+| WO-118 | Line 1 | Steel Frame A | 500 | <Badge tone="danger">Critical</Badge> |
+| WO-119 | Line 2 | Steel Frame B | 400 | <Badge tone="warning">High</Badge> |
+| WO-120 | Line 4 | Packaging Kit | 300 | <Badge tone="info">Normal</Badge> |
+| WO-121 | Line 5 | Steel Frame C | 250 | <Badge tone="info">Normal</Badge> |
+</Card>
+
+<Card title="Export Shift Report">
+<Button variant="primary" icon="download">Export PDF</Button>
+<Button variant="secondary" icon="download">Export CSV</Button>
+</Card>
+
+<FollowUps>
+- What's the current status of Line 3?
+- Show me the last 24 hours of output for Line 1
+- Which work orders are critical?
+- What's the trend in defect rate?
+</FollowUps>

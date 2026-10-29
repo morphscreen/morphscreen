@@ -1,0 +1,134 @@
+# Admin Overview
+
+<Card title="Reporting Period">
+<Columns>
+<Select label="Period" name="reporting-period" options="Last 30 days | Last 90 days | Last 12 months | Year to date | Custom range" value="Last 30 days" />
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="Monthly Recurring Revenue" value="$247,850" change="+12.3% vs last month" tone="success" />
+<Stat label="Annual Recurring Revenue" value="$2,974,200" change="+14.1% YoY" tone="success" />
+<Stat label="Churn This Month" value="2.4%" change="-0.3pp vs last month" tone="success" />
+<Stat label="Current NPS" value="62" change="+4 vs last quarter" tone="success" />
+</Columns>
+</Card>
+
+<Card title="New Signups (Past 90 Days)">
+<Chart type="line" x="Week" y="Signups" title="Weekly Signup Trend">
+| Week | Signups |
+|---|---|
+| Week 1 | 23 |
+| Week 2 | 31 |
+| Week 3 | 28 |
+| Week 4 | 35 |
+| Week 5 | 42 |
+| Week 6 | 38 |
+| Week 7 | 45 |
+| Week 8 | 51 |
+| Week 9 | 47 |
+| Week 10 | 53 |
+| Week 11 | 58 |
+| Week 12 | 62 |
+| Week 13 | 59 |
+</Chart>
+</Card>
+
+<Card title="Customers by Plan">
+<Columns>
+<Chart type="donut" title="Plan Distribution">
+| Plan | Customers |
+|---|---|
+| Starter | 342 |
+| Professional | 187 |
+| Enterprise | 46 |
+| Custom | 12 |
+</Chart>
+<Chart type="bar" x="Plan" y="Revenue" title="Revenue by Plan">
+| Plan | Revenue |
+|---|---|
+| Starter | 412000 |
+| Professional | 892000 |
+| Enterprise | 1245000 |
+| Custom | 425000 |
+</Chart>
+</Columns>
+</Card>
+
+<Card title="Top 10 Customers by Spend">
+| Customer | Plan | Seats | Monthly Spend | Status |
+|---|---|---|---|---|
+| Acme Corporation | Enterprise | 240 | $24,000 | Active |
+| Globex Inc | Enterprise | 180 | $18,500 | Active |
+| Wayne Enterprises | Enterprise | 150 | $16,200 | Active |
+| Stark Industries | Custom | 120 | $15,800 | Active |
+| Umbrella Corp | Enterprise | 110 | $14,300 | At Risk |
+| Cyberdyne Systems | Professional | 95 | $11,400 | Active |
+| Massive Dynamic | Enterprise | 85 | $10,200 | Active |
+| Initech | Professional | 80 | $9,600 | Active |
+| Soylent Corp | Enterprise | 75 | $9,000 | Active |
+| Aperture Science | Professional | 70 | $8,400 | Active |
+</Card>
+
+<Card title="Accounts at Risk">
+| Account | Plan | Seats | Risk Score | Reason | Last Activity |
+|---|---|---|---|---|---|
+| Umbrella Corp | Enterprise | 110 | 87 | Declining usage (-42% MoM), no feature adoption | 14 days ago |
+| Pied Piper | Professional | 45 | 76 | Failed payments (3), support tickets unanswered | 8 days ago |
+| Hooli | Starter | 25 | 71 | Key champion left, no admin login in 30 days | 32 days ago |
+| Dunder Mifflin | Professional | 60 | 68 | Contract renewal in 45 days, no expansion talks | 21 days ago |
+| Bluth Company | Starter | 15 | 62 | Usage below 20% of seats, no integrations active | 19 days ago |
+</Card>
+
+<Card title="Failed Payments (Retry Available)">
+| Customer | Amount | Failed Date | Attempts | Last Error | Action |
+|---|---|---|---|---|---|
+| Pied Piper | $4,200 | 2024-01-12 | 3 | Insufficient funds | <Button variant="primary" size="small">Retry</Button> |
+| Bluth Company | $1,500 | 2024-01-10 | 2 | Card expired | <Button variant="primary" size="small">Retry</Button> |
+| Dunder Mifflin | $9,600 | 2024-01-08 | 1 | Bank declined | <Button variant="primary" size="small">Retry</Button> |
+| Hooli | $2,500 | 2024-01-05 | 4 | Card expired | <Button variant="primary" size="small">Retry</Button> |
+| Sterling Cooper | $3,800 | 2024-01-03 | 2 | Insufficient funds | <Button variant="primary" size="small">Retry</Button> |
+</Card>
+
+<Card title="Newest Feature Adoption">
+<Columns>
+<Progress label="AI Insights (launched 3 weeks ago)" value="34" max="100" tone="info" />
+<Progress label="Workflow Automations (launched 5 weeks ago)" value="52" max="100" tone="success" />
+<Progress label="Advanced Analytics (launched 7 weeks ago)" value="41" max="100" tone="info" />
+</Columns>
+<Chart type="bar" x="Feature" y="Adoption %" title="Feature Adoption Rate">
+| Feature | Adoption % |
+|---|---|
+| AI Insights | 34 |
+| Workflow Automations | 52 |
+| Advanced Analytics | 41 |
+</Chart>
+</Card>
+
+<Card title="Seat Utilization">
+<Columns>
+<Stat label="Total Seats Purchased" value="12,840" />
+<Stat label="Active Seats" value="9,630" change="75% utilization" tone="info" />
+<Stat label="Unused Seats" value="3,210" change="25% waste" tone="warning" />
+</Columns>
+<Progress label="Overall Seat Utilization" value="75" max="100" tone="info" />
+<Chart type="bar" x="Plan" y="Utilization %" title="Utilization by Plan">
+| Plan | Utilization % |
+|---|---|
+| Starter | 68 |
+| Professional | 78 |
+| Enterprise | 82 |
+| Custom | 71 |
+</Chart>
+</Card>
+
+<Card title="Invite New Admin">
+<Form name="invite-admin">
+<Input label="Email" type="email" placeholder="admin@company.com" required="true" />
+<Select label="Role" name="admin-role" options="Owner | Admin | Billing Admin | Read-only" placeholder="Select role" required="true" />
+<Checkboxes label="Permissions" name="admin-perms" options="Manage users | Manage billing | View analytics | Configure integrations | Manage security" value="Manage users | View analytics" />
+<Button>Send Invitation</Button>
+<Button variant="tertiary">Cancel</Button>
+</Form>
+</Card>

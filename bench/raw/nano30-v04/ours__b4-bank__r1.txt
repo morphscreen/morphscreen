@@ -1,0 +1,72 @@
+<Card title="Account Balances">
+  <Columns>
+    <Stat label="Checking" value="$1,250" change="0" note="0" tone="neutral" />
+    <Stat label="Savings" value="$8,750" change="250" note="increase" tone="success" />
+    <Stat label="Credit" value="$5,000" change="-200" note="decrease" tone="warning" />
+  </Columns>
+</Card>
+
+<Card title="Recent Transactions">
+  <TextArea label="Recent transactions" name="transactions" placeholder="• Amazon.com – $45.67
+• Starbucks – $12.50
+• Uber – $34.20" rows="4" hint="Merchant and amount" required="false" />
+</Card>
+
+<Card title="Spending Split">
+  <Chart type="bar" title="Monthly Spending by Category" x="Category" y="Amount" >
+    | Category | Amount |
+    | Groceries | $600 |
+    | Dining Out | $300 |
+    | Utilities | $150 |
+    | Entertainment | $100 |
+    | Transport | $80 |
+    | Misc | $70 |
+  </Chart>
+</Card>
+
+<Card title="Bills Due Soon">
+  <TextArea label="Upcoming bills" name="bills" placeholder="12/01 - Electricity $120
+12/15 - Water $45
+12/20 - Internet $60" rows="3" hint="Date and amount" required="false" />
+</Card>
+
+<Card title="Vacation Savings">
+  <Stat label="Goal" value="$5,000" change="0" note="target" tone="neutral" />
+  <Progress value="600" max="5000" label="60%" tone="success" />
+</Card>
+
+<Card title="Credit Score">
+  <Stat label="Credit Score" value="720" change="10" note="good" tone="success" />
+</Card>
+
+<Form name="transfer">
+  <Input label="From account" name="from_account" type="select" placeholder="Select account" required="true">
+    <Select options="Checking | Savings | Credit" name="from" placeholder="Choose account" required="true" />
+  </Input>
+  <Input label="To account" name="to_account" type="select" placeholder="Select account" required="true">
+    <Select options="Checking | Savings | Credit" name="to" placeholder="Choose account" required="true" />
+  </Input>
+  <Input label="Amount" name="amount" type="number" placeholder="Enter amount" required="true" />
+  <Button variant="primary" href="#" size="medium">Transfer</Button>
+  <Button variant="secondary" href="#" size="medium">Cancel</Button>
+</Form>
+
+<Card title="Credit Line">
+  <Switch label="Freeze credit line" name="freeze_credit" value="true" />
+</Card>
+
+<Card title="Statement Period">
+  <Date label="Period" name="statement_period" />
+</Card>
+
+<Form name="alerts">
+  <Checkboxes label="Alert triggers" name="alert_triggers" options="Low balance | High spend | Large transfer | Bill due" value="Low balance | High spend | Large transfer | Bill due" required="false" />
+  <Button variant="primary" href="#" size="small">Save</Button>
+  <Button variant="secondary" href="#" size="small">Cancel</Button>
+</Form>
+
+<Form name="dispute">
+  <Input label="Transaction ID" name="dispute_txn_id" type="text" placeholder="Enter transaction ID" required="true" />
+  <Button variant="primary" href="#" size="small">Dispute</Button>
+  <Button variant="secondary" href="#" size="small">Cancel</Button>
+</Form>

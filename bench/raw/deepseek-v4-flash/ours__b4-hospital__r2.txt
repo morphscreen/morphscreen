@@ -1,0 +1,156 @@
+# St. Mary's Medical Center — Command View
+
+<Badge tone="success">All systems nominal</Badge> — Updated 07:45, Jul 17
+
+<Card title="Key metrics" subtitle="Live across all units">
+<Columns>
+<Stat label="Bed occupancy" value="87%" change="+3%" tone="warning" icon="bed" />
+<Stat label="Current ER wait" value="42 min" change="−8 min" tone="info" icon="clock" />
+<Stat label="Admissions (14 days)" value="1,124" change="+6%" tone="success" icon="chart-line" />
+<Stat label="Ready for discharge" value="18" change="+4" tone="neutral" icon="users" />
+</Columns>
+</Card>
+
+<Card title="Bed occupancy" subtitle="Overall and by unit">
+<Progress value={87} max={100} tone="warning" label="Total occupied" />
+
+| Unit | Occupancy |
+|---|---|
+| Med/Surg | 92% |
+| ICU | 88% |
+| Maternity | 81% |
+| Pediatrics | 74% |
+| Psychiatry | 66% |
+
+<Callout tone="warning" title="Med/Surg above 90%">5 beds available; 3 transfers pending out of unit.</Callout>
+</Card>
+
+<Columns>
+<Card title="Admissions — last 14 days">
+<Chart type="area" x="Date" y="Admissions">
+| Date | Admissions |
+|---|---|
+| Jul 4 | 74 |
+| Jul 5 | 81 |
+| Jul 6 | 79 |
+| Jul 7 | 88 |
+| Jul 8 | 92 |
+| Jul 9 | 85 |
+| Jul 10 | 90 |
+| Jul 11 | 98 |
+| Jul 12 | 86 |
+| Jul 13 | 93 |
+| Jul 14 | 101 |
+| Jul 15 | 89 |
+| Jul 16 | 96 |
+| Jul 17 | 84 |
+</Chart>
+</Card>
+
+<Card title="Patients per department">
+<Chart type="bar" x="Department" y="Patients">
+| Department | Patients |
+|---|---|
+| ER | 24 |
+| ICU | 12 |
+| Med/Surg | 58 |
+| Pediatrics | 16 |
+| Maternity | 14 |
+| Psychiatry | 9 |
+| Oncology | 21 |
+</Chart>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Staff on shift" subtitle="Current roster with roles">
+| Name | Role | Unit |
+|---|---|---|
+| M. Okafor, MD | Attending | ER |
+| J. Alvarez, RN | Charge nurse | ICU |
+| S. Patel, MD | Resident | Med/Surg |
+| D. Kim, RN | Staff nurse | Pediatrics |
+| L. Brooks, RT | Respiratory therapist | ICU |
+| T. Nguyen, NP | Nurse practitioner | Oncology |
+| R. Singh, MD | Anesthesiologist | OR |
+| A. Rossi, CNA | Nursing aide | Maternity |
+</Card>
+
+<Card title="Critical patients" subtitle="Escalate immediately">
+<Callout tone="danger" title="3 critical patients">
+- **Room 412** — A. Whitfield, sepsis, BP unstable — ICU team aware
+- **Room 305** — H. Al-Farsi, post-op bleeding — OR on standby
+- **ER Bay 7** — J. Osei, STEMI — awaiting cath lab
+</Callout>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Ready for discharge" subtitle="Awaiting transport or paperwork">
+| Patient | Room | Status |
+|---|---|---|
+| G. Martinez | 214 | Paperwork ready |
+| E. Lawson | 118 | Awaiting pickup |
+| P. Chen | 302 | Meds to be ordered |
+| S. Haddad | 226 | Awaiting pickup |
+| M. Turner | 141 | Paperwork ready |
+</Card>
+
+<Card title="Operating room bookings — today">
+| Time | OR | Procedure | Surgeon | Status |
+|---|---|---|---|---|
+| 07:30 | OR 1 | Total knee | Dr. Bell | In progress |
+| 08:00 | OR 2 | Lap chole | Dr. Njoroge | In progress |
+| 09:30 | OR 3 | C-section | Dr. Fontaine | On time |
+| 10:00 | OR 1 | Hernia repair | Dr. Bell | On time |
+| 11:30 | OR 2 | Scope | Dr. Quinn | Delayed 20m |
+| 13:00 | OR 4 | Mastectomy | Dr. Osei-Tutu | On time |
+</Card>
+</Columns>
+
+<Columns>
+<Card title="Supplies running low" subtitle="Reorder thresholds">
+| Supply | Stock | Status |
+|---|---|---|
+| Normal saline 1L | 14 cases | <Badge tone="danger">Critical</Badge> |
+| N95 masks | 32 boxes | <Badge tone="warning">Low</Badge> |
+| IV start kits | 18 trays | <Badge tone="warning">Low</Badge> |
+| Insulin pens | 9 units | <Badge tone="warning">Low</Badge> |
+| Abx — Piperacillin | 6 doses | <Badge tone="danger">Critical</Badge> |
+</Card>
+
+<Card title="View another day" subtitle="Load a past or upcoming command view">
+<Form name="view-day">
+<Date label="Date" name="view-date" value="2025-07-17" />
+<Button variant="secondary">Load day</Button>
+</Form>
+</Card>
+</Columns>
+
+<Columns>
+<Card title="File an incident" subtitle="Critical or non-critical event reporting">
+<Form name="incident-report">
+<Select label="Incident type" name="incident-type" options="Medication error | Fall | Equipment failure | Security | Staff injury | Other" />
+<Input label="Location" name="location" placeholder="e.g. Room 412, ER Bay 3" />
+<TextArea label="Description" name="description" placeholder="Brief factual summary" rows={3} />
+<Button>File incident</Button>
+</Form>
+</Card>
+
+<Card title="Request a patient transfer" subtitle="Between units or to another facility">
+<Form name="transfer-request">
+<Input label="Patient MRN" name="mrn" placeholder="e.g. 338-19-204" />
+<Select label="Destination" name="destination" options="ICU | Med/Surg | Cardio | Neuro | Oncology | Maternity | External facility" />
+<Select label="Priority" name="priority" options="Routine | Urgent | STAT" />
+<TextArea label="Reason" name="reason" placeholder="Clinical justification" rows={3} />
+<Button>Request transfer</Button>
+</Form>
+</Card>
+</Columns>
+
+<FollowUps>
+- Show full patient census by unit
+- View staff schedule for tomorrow
+- See incident report summary
+- Check transfer request queue
+</FollowUps>

@@ -1,0 +1,169 @@
+# Hospital Operations Command Center
+
+<Card title="Command Center" subtitle="Real-time operations dashboard">
+<Columns>
+<Select label="View Date" name="view-date" placeholder="Select date" options="Today | Yesterday | Last 7 days | Last 30 days | Custom range" value="Today" />
+<Date label="Custom Date" name="custom-date" />
+</Columns>
+</Card>
+
+<Card title="Critical Metrics">
+<Columns>
+<Stat label="Bed Occupancy" value="87%" change="+2% vs yesterday" tone="warning" />
+<Stat label="ER Wait Time" value="42 min" change="-8 min vs avg" tone="success" />
+<Stat label="Critical Patients" value="12" change="+3 vs 2hrs ago" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Bed Occupancy Detail">
+<Progress value="87" max="100" label="Overall Occupancy: 87% (261/300 beds)" tone="warning" />
+<Columns>
+<Stat label="ICU" value="94% (28/30)" tone="danger" />
+<Stat label="Med-Surg" value="82% (82/100)" tone="info" />
+<Stat label="Telemetry" value="89% (40/45)" tone="warning" />
+<Stat label="Step-Down" value="78% (31/40)" tone="success" />
+</Columns>
+</Card>
+
+<Card title="Admissions — Past 14 Days">
+<Chart type="line" x="Day" y="Admissions" title="Daily Admissions Trend">
+| Day | Admissions |
+|---|---|
+| Day 1 | 42 |
+| Day 2 | 38 |
+| Day 3 | 45 |
+| Day 4 | 41 |
+| Day 5 | 47 |
+| Day 6 | 52 |
+| Day 7 | 49 |
+| Day 8 | 44 |
+| Day 9 | 46 |
+| Day 10 | 50 |
+| Day 11 | 48 |
+| Day 12 | 53 |
+| Day 13 | 51 |
+| Day 14 | 49 |
+</Chart>
+</Card>
+
+<Card title="Patients per Department">
+<Chart type="bar" x="Department" y="Patients" title="Current Census by Department">
+| Department | Patients |
+|---|---|
+| Emergency | 34 |
+| ICU | 28 |
+| Med-Surg | 82 |
+| Telemetry | 40 |
+| Step-Down | 31 |
+| Pediatrics | 18 |
+| OB/GYN | 12 |
+| Psychiatry | 16 |
+</Chart>
+</Card>
+
+<Card title="Staff on Shift">
+| Role | On Shift | Scheduled | Status |
+|---|---|---|---|
+| RN | 42 | 45 | <Badge tone="warning">3 short</Badge> |
+| LPN | 18 | 20 | <Badge tone="warning">2 short</Badge> |
+| CNA | 24 | 24 | <Badge tone="success">Full</Badge> |
+| Respiratory Therapy | 8 | 8 | <Badge tone="success">Full</Badge> |
+| Physicians (Attending) | 12 | 12 | <Badge tone="success">Full</Badge> |
+| Residents | 16 | 16 | <Badge tone="success">Full</Badge> |
+| Pharmacists | 4 | 4 | <Badge tone="success">Full</Badge> |
+| Social Work | 3 | 3 | <Badge tone="success">Full</Badge> |
+</Card>
+
+<Card title="Critical Patients — Requiring Immediate Attention">
+<Callout tone="danger" title="12 Critical Patients Flagged">
+<strong>ICU Bed 3:</strong> Septic shock, lactate 5.2, on norepinephrine<br />
+<strong>ICU Bed 7:</strong> Post-code ROSC, targeted temp management<br />
+<strong>ER Bay 2:</strong> STEMI, cath lab activated, ETA 5 min<br />
+<strong>ER Bay 5:</strong> Major trauma, MTP activated, OR on standby<br />
+<strong>Tele 12:</strong> New-onset A-fib RVR, hemodynamically unstable<br />
+<strong>Med-Surg 44:</strong> GI bleed, Hb 6.1, 2 units transfusing<br />
+</Callout>
+<Details title="View all 12 critical patients">
+| Location | Patient | Condition | Intervention | Time Flagged |
+|---|---|---|---|---|
+| ICU-3 | M. Rodriguez, 67 | Septic shock | Vasopressors, antibiotics | 06:12 |
+| ICU-7 | J. Chen, 54 | Post-cardiac arrest | TTM protocol | 04:45 |
+| ER-2 | R. Thompson, 61 | STEMI | Cath lab activated | 08:23 |
+| ER-5 | A. Williams, 29 | Polytrauma | MTP, OR standby | 08:15 |
+| Tele-12 | D. Kim, 72 | A-fib RVR | Cardizem drip | 07:58 |
+| MS-44 | P. Garcia, 58 | GI bleed | Blood transfusion | 07:30 |
+| ICU-11 | S. Patel, 45 | ARDS | Prone positioning | 06:40 |
+| ICU-15 | L. Davis, 63 | Cardiogenic shock | Impella placed | 05:20 |
+| ER-8 | K. Johnson, 38 | Status epilepticus | Keppra load | 08:10 |
+| Tele-8 | M. Brown, 69 | PE, hypotensive | Heparin, ICU consult | 07:45 |
+| MS-12 | T. Martinez, 52 | DKA | Insulin drip | 07:15 |
+| Step-3 | R. Wilson, 77 | Sepsis, AKI | CRRT consult | 06:55 |
+</Details>
+</Card>
+
+<Card title="Patients Ready for Discharge">
+| Patient | Unit | LOS | Discharge Plan | Barrier | Target Time |
+|---|---|---|---|---|---|
+| S. Anderson, 45 | MS-22 | 3 days | Home with PT | Transport pending | 11:00 |
+| J. Lee, 62 | Tele-5 | 4 days | Home | Med reconciliation | 10:30 |
+| M. Taylor, 38 | Peds-8 | 2 days | Home | Parent arrival 10:00 | 10:30 |
+| R. White, 71 | Step-12 | 5 days | SNF | Bed confirmation | 12:00 |
+| K. Harris, 29 | OB-3 | 2 days | Home | Car seat check | 11:00 |
+| D. Clark, 55 | MS-37 | 6 days | Home health | DME delivery | 13:00 |
+</Card>
+
+<Card title="Today's Operating Room Bookings">
+| OR | Time | Procedure | Surgeon | Anesthesia | Status | Duration |
+|---|---|---|---|---|---|---|
+| OR-1 | 07:30-11:00 | Laparoscopic Whipple | Dr. Chen | Dr. Park | <Badge tone="success">In Progress</Badge> | 3.5h |
+| OR-2 | 08:00-10:30 | Total Knee Arthroplasty | Dr. Rodriguez | Dr. Kim | <Badge tone="success">In Progress</Badge> | 2.5h |
+| OR-3 | 07:45-12:00 | CABG x3 | Dr. Thompson | Dr. Lee | <Badge tone="success">In Progress</Badge> | 4.25h |
+| OR-4 | 10:00-11:30 | Lap Cholecystectomy | Dr. Patel | Dr. Wong | <Badge tone="info">Scheduled</Badge> | 1.5h |
+| OR-5 | 11:00-13:00 | ORIF Tib/Fib | Dr. Kim | Dr. Chen | <Badge tone="info">Scheduled</Badge> | 2h |
+| OR-1 | 12:00-15:00 | Colectomy | Dr. Chen | Dr. Park | <Badge tone="info">Scheduled</Badge> | 3h |
+| OR-2 | 11:30-14:00 | THA | Dr. Rodriguez | Dr. Kim | <Badge tone="info">Scheduled</Badge> | 2.5h |
+| OR-6 | 08:00-16:00 | **Trauma/Backup** | On Call | On Call | <Badge tone="warning">Holding</Badge> | 8h |
+</Card>
+
+<Card title="Supplies Running Low">
+| Item | Current | Par Level | Unit | Days Remaining | Status |
+|---|---|---|---|---|---|
+| N95 Masks (M) | 240 | 500 | boxes | 3 | <Badge tone="danger">Critical</Badge> |
+| IV Normal Saline 1L | 180 | 400 | bags | 4 | <Badge tone="danger">Critical</Badge> |
+| Heparin 25k units | 45 | 100 | vials | 5 | <Badge tone="warning">Low</Badge> |
+| Propofol 1% 20ml | 60 | 150 | vials | 4 | <Badge tone="warning">Low</Badge> |
+| Fentanyl 100mcg/2ml | 80 | 200 | vials | 5 | <Badge tone="warning">Low</Badge> |
+| Central Line Kits (Triple) | 22 | 50 | kits | 6 | <Badge tone="warning">Low</Badge> |
+| Chest Tube Trays | 15 | 30 | trays | 7 | <Badge tone="warning">Low</Badge> |
+| Blood Culture Bottles | 120 | 300 | sets | 5 | <Badge tone="warning">Low</Badge> |
+</Card>
+
+<Card title="File an Incident Report">
+<Form name="incident-report">
+<Input label="Reporter Name" placeholder="Your name" required="true" />
+<Select label="Incident Type" name="incident-type" placeholder="Select type" options="Patient Safety | Medication Error | Fall | Equipment Failure | Security | Infection Control | Other" required="true" />
+<Select label="Severity" name="severity" placeholder="Select severity" options="Level 1 - No Harm | Level 2 - Minor Harm | Level 3 - Moderate Harm | Level 4 - Severe Harm | Level 5 - Death" required="true" />
+<Input label="Location" placeholder="Unit / Room / Area" required="true" />
+<TextArea label="Description" placeholder="Describe what happened, when, who was involved..." rows="4" required="true" />
+<TextArea label="Immediate Actions Taken" placeholder="What was done immediately?" rows="3" />
+<Input label="Patient MRN (if applicable)" placeholder="Medical Record Number" />
+<Button>Submit Incident Report</Button>
+<Button variant="secondary">Save as Draft</Button>
+</Form>
+</Card>
+
+<Card title="Request Patient Transfer">
+<Form name="transfer-request">
+<Input label="Patient Name" placeholder="Patient full name" required="true" />
+<Input label="Patient MRN" placeholder="Medical Record Number" required="true" />
+<Select label="Current Location" name="current-location" placeholder="Select current unit" options="ER | ICU | Med-Surg | Telemetry | Step-Down | Pediatrics | OB/GYN | Psychiatry | OR | PACU" required="true" />
+<Select label="Requested Destination" name="destination" placeholder="Select destination" options="ICU | Step-Down | Telemetry | Med-Surg | Pediatrics | OB/GYN | Psychiatry | External Facility | OR | PACU" required="true" />
+<Select label="Transfer Reason" name="transfer-reason" placeholder="Select reason" options="Higher Level of Care | Lower Level of Care | Specialty Service | Bed Management | Procedure | Repatriation | Patient/Family Request" required="true" />
+<Select label="Urgency" name="urgency" placeholder="Select urgency" options="Emergent (immediate) | Urgent (within 1 hour) | Semi-Urgent (within 4 hours) | Routine (next available)" required="true" />
+<TextArea label="Clinical Summary" placeholder="Brief clinical picture, reason for transfer, current interventions..." rows="4" required="true" />
+<Input label="Accepting Physician" placeholder="Name of accepting provider" />
+<Input label="Contact Number" placeholder="Callback number for transport team" type="tel" required="true" />
+<Button>Submit Transfer Request</Button>
+<Button variant="secondary">Cancel</Button>
+</Form>
+</Card>

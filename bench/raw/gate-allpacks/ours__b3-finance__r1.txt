@@ -1,0 +1,44 @@
+# Month-End Finance View
+
+<Card title="January 2025" subtitle="Month-end snapshot">
+<Columns>
+<Select label="Month" name="month" value="2025-01" options="2025-01 | 2024-12 | 2024-11 | 2024-10 | 2024-09" />
+<Button variant="secondary" href="/api/finance/statement?month=2025-01">Download statement</Button>
+</Columns>
+</Card>
+
+<Card title="Key metrics">
+<Columns>
+<Stat label="Cash on hand" value="$487,200" change="-$42,800 vs last month" tone="info" />
+<Stat label="Monthly burn" value="$84,500" change="+$3,200 vs last month" tone="warning" />
+<Stat label="Runway" value="5.8 months" change="-0.4 months" tone="danger" />
+</Columns>
+</Card>
+
+<Card title="Expenses by category">
+<Chart type="donut" title="January 2025 expenses">
+| Category | Amount |
+|---|---|
+| Payroll | 42,000 |
+| Cloud & hosting | 18,500 |
+| Marketing | 12,000 |
+| Professional services | 6,800 |
+| Office & ops | 3,200 |
+| Travel | 2,000 |
+</Chart>
+</Card>
+
+<Card title="Transactions > $10,000 this month">
+| Date | Vendor | Category | Amount |
+|---|---|---|---|
+| 2025-01-03 | AWS | Cloud & hosting | $18,500 |
+| 2025-01-05 | Payroll run | Payroll | $42,000 |
+| 2025-01-08 | Acme Marketing | Marketing | $12,000 |
+| 2025-01-12 | Legal Partners LLP | Professional services | $10,500 |
+| 2025-01-15 | Stripe fees | Payment processing | $10,200 |
+| 2025-01-22 | Office lease | Office & ops | $12,000 |
+</Card>
+
+<Callout tone="info" title="Note">
+Burn includes all operating expenses. Runway calculated as cash on hand ÷ average monthly burn over last 3 months.
+</Callout>

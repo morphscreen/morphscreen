@@ -1,0 +1,95 @@
+# Service Health Dashboard
+
+<Card subtitle="Select a region to filter all metrics below">
+<Select label="Region" name="region" placeholder="All regions" options="All regions | us-east-1 | us-west-2 | eu-west-1 | eu-central-1 | ap-southeast-1 | ap-northeast-1" />
+</Card>
+
+<Columns>
+<Card title="Uptime this quarter">
+<Stat label="Uptime" value="99.94%" change="+0.02% vs last quarter" tone="success" icon="chart-line" />
+<Progress value="99.94" max="100" label="Target: 99.9%" tone="success" />
+</Card>
+
+<Card title="Error rate (right now)">
+<Stat label="Error rate" value="0.12%" change="-0.03% from 1h ago" tone="success" icon="alert-triangle" />
+<Progress value="12" max="100" label="Threshold: 1%" tone="success" />
+</Card>
+
+<Card title="Active incidents">
+<Stat label="Open" value="3" change="1 critical, 2 warning" tone="danger" icon="alert-circle" />
+</Card>
+</Columns>
+
+<Card title="CPU & Memory usage (last 24 hours)">
+<Chart type="area" x="Time" y="Usage %" title="Resource utilization">
+| Time | CPU % | Memory % |
+|---|---|---|
+| 00:00 | 42 | 58 |
+| 02:00 | 38 | 55 |
+| 04:00 | 35 | 52 |
+| 06:00 | 45 | 60 |
+| 08:00 | 62 | 71 |
+| 10:00 | 78 | 82 |
+| 12:00 | 85 | 88 |
+| 14:00 | 79 | 84 |
+| 16:00 | 71 | 78 |
+| 18:00 | 68 | 75 |
+| 20:00 | 55 | 68 |
+| 22:00 | 48 | 62 |
+</Chart>
+</Card>
+
+<Card title="Five slowest endpoints (p95 latency)">
+<Chart type="horizontal" x="Latency (ms)" y="Endpoint" title="Top 5 by p95 latency">
+| Endpoint | Latency (ms) |
+|---|---|
+| POST /api/v2/reports/generate | 2,840 |
+| GET /api/v1/search/fulltext | 1,920 |
+| POST /api/v3/batch/process | 1,650 |
+| GET /api/v1/analytics/aggregate | 1,410 |
+| PUT /api/v2/users/bulk-update | 1,180 |
+</Chart>
+</Card>
+
+<Card title="Open incidents">
+<Tabs>
+<Tab title="All (3)">
+| Severity | Incident | Service | Started | Duration | Actions |
+|---|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Database connection pool exhausted | payments-api | 14:22 UTC | 47m | <Button variant="danger" size="small">Acknowledge</Button> |
+| <Badge tone="warning">Warning</Badge> | Elevated 5xx on checkout flow | checkout-service | 15:05 UTC | 4m | <Button variant="warning" size="small">Acknowledge</Button> |
+| <Badge tone="warning">Warning</Badge> | High latency on recommendations | recs-engine | 14:58 UTC | 11m | <Button variant="warning" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="Critical (1)">
+| Severity | Incident | Service | Started | Duration | Actions |
+|---|---|---|---|---|---|
+| <Badge tone="danger">Critical</Badge> | Database connection pool exhausted | payments-api | 14:22 UTC | 47m | <Button variant="danger" size="small">Acknowledge</Button> |
+</Tab>
+<Tab title="Warning (2)">
+| Severity | Incident | Service | Started | Duration | Actions |
+|---|---|---|---|---|---|
+| <Badge tone="warning">Warning</Badge> | Elevated 5xx on checkout flow | checkout-service | 15:05 UTC | 4m | <Button variant="warning" size="small">Acknowledge</Button> |
+| <Badge tone="warning">Warning</Badge> | High latency on recommendations | recs-engine | 14:58 UTC | 11m | <Button variant="warning" size="small">Acknowledge</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Alert threshold configuration">
+<Form name="alert-thresholds">
+<Columns>
+<Input label="Error rate threshold (%)" name="error-threshold" type="number" placeholder="1.0" value="1.0" step="0.1" min="0.1" max="10" hint="Trigger alert when error rate exceeds this" />
+<Input label="CPU threshold (%)" name="cpu-threshold" type="number" placeholder="85" value="85" step="1" min="50" max="99" hint="Trigger alert when CPU exceeds this" />
+<Input label="Memory threshold (%)" name="memory-threshold" type="number" placeholder="90" value="90" step="1" min="50" max="99" hint="Trigger alert when memory exceeds this" />
+<Input label="Latency p95 threshold (ms)" name="latency-threshold" type="number" placeholder="2000" value="2000" step="100" min="500" max="10000" hint="Trigger alert when p95 latency exceeds this" />
+</Columns>
+<Button>Save thresholds</Button>
+<Button variant="secondary">Reset to defaults</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show incident timeline for payments-api
+- View error rate breakdown by endpoint
+- Compare current metrics to last week
+- List recent deployments in us-east-1
+</FollowUps>

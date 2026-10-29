@@ -1,0 +1,55 @@
+# Daily Fitness Summary
+
+<Card title="Today's Progress" subtitle="Monday, June 12">
+<Columns>
+<Stat label="Steps" value="6,842" change="+12% vs yesterday" icon="footprints" />
+<Stat label="Daily Goal" value="10,000" note="68% complete" icon="flag" />
+<Stat label="Calories Burned" value="1,847" change="+8% vs yesterday" icon="flame" />
+</Columns>
+
+<Progress value="68" max="100" label="Step goal progress" tone="info" />
+</Card>
+
+<Card title="Workouts This Week">
+<Chart type="bar" x="Day" y="Minutes">
+| Day | Cardio | Strength | Total |
+|---|---|---|---|
+| Mon | 30 | 20 | 50 |
+| Tue | 25 | 0 | 25 |
+| Wed | 40 | 30 | 70 |
+| Thu | 20 | 25 | 45 |
+| Fri | 35 | 0 | 35 |
+| Sat | 45 | 40 | 85 |
+| Sun | 0 | 0 | 0 |
+</Chart>
+
+<Callout tone="success" title="Great week!">You averaged 44 minutes of activity per day. Saturday was your most active day.</Callout>
+
+<Details title="View workout details">
+| Day | Workout Type | Duration | Calories |
+|---|---|---|---|
+| Monday | Run + Weights | 50 min | 320 |
+| Tuesday | Run | 25 min | 180 |
+| Wednesday | Swim + Weights | 70 min | 450 |
+| Thursday | Cycling | 45 min | 290 |
+| Friday | Run | 35 min | 220 |
+| Saturday | Hike + Weights | 85 min | 520 |
+| Sunday | Rest | — | — |
+</Details>
+</Card>
+
+<Card title="Log a New Workout">
+<Form name="log-workout">
+<Select label="Workout type" options="Running | Walking | Cycling | Swimming | Strength Training | Yoga | HIIT | Other" name="type" placeholder="Choose workout type" required="true" />
+<Input label="Duration (minutes)" type="number" name="duration" placeholder="e.g. 30" min="1" max="600" required="true" />
+<Input label="Distance (optional)" type="number" name="distance" placeholder="e.g. 5.2" step="0.1" min="0" hint="in kilometers" />
+<Slider label="Effort level" min="1" max="10" step="1" value="5" name="effort" unit="/10" />
+<Button>Log Workout</Button>
+</Form>
+</Card>
+
+<FollowUps>
+- Show my step history for the past 7 days
+- Suggest a workout for tomorrow
+- Compare this week to last week
+</FollowUps>

@@ -1,0 +1,33 @@
+# Platform Status
+
+<Card title="API Uptime — This Month">
+<Stat label="Current uptime" value="99.98%" note="Updated just now" tone="success" icon="trend-up" />
+<Progress value="99.98" max="100" label="Uptime target: 99.9%" tone="success" />
+</Card>
+
+<Card title="Most Recent Incident" subtitle="Resolved">
+<Badge tone="success">Resolved</Badge>
+
+**Incident:** Intermittent 502 errors on `GET /v2/orders`
+
+**Timeline:**
+- Started: Tuesday, 14:32 UTC
+- Root cause: Degraded connection pool in the payments service
+- Resolved: Tuesday, 15:07 UTC
+
+**Impact:** ~2% of API requests failed during the 35-minute window. No data loss occurred.
+
+<Details title="Full postmortem">
+During a routine deployment of the payments service, the connection pool was misconfigured, causing the service to exhaust available database connections. This led to intermittent 502 responses for requests routed to that service. The deployment was rolled back and the pool size was corrected. A follow-up fix to the deployment pipeline will validate connection pool settings automatically before rollout.
+</Details>
+</Card>
+
+<Card title="What to watch next">
+<Columns>
+<Stat label="Last 24h availability" value="100%" tone="success" icon="check-circle" />
+<Stat label="Open incidents" value="0" tone="success" icon="shield-check" />
+</Columns>
+</Card>
+
+<Button variant="secondary" ask="Show me the full incident history">View incident history</Button>
+<Button variant="tertiary" ask="How is uptime calculated?">How is uptime calculated?</Button>

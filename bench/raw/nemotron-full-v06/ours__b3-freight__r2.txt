@@ -1,0 +1,111 @@
+# Logistics Coordinator Board
+
+<Card subtitle="Last refreshed: 2024-01-15 14:32 UTC">
+<Columns>
+<Input label="Search by route" name="route-search" placeholder="e.g., LAX → JFK, SEA → ORD" type="search" hint="Type origin → destination or carrier code" />
+<Select label="Filter status" name="status-filter" placeholder="All statuses" options="All | In Transit | Delayed | Delivered | Exception" value="All" />
+</Columns>
+</Card>
+
+<Card title="Key Metrics">
+<Columns>
+<Stat label="On-Time % (Jan)" value="87.3%" change="+2.1% vs Dec" tone="success" />
+<Stat label="Avg Cost / Shipment" value="$1,847" change="-$112 vs Dec" tone="info" />
+<Stat label="Active Shipments" value="142" change="+8 vs yesterday" tone="neutral" />
+<Stat label="Delayed Count" value="18" change="-3 vs yesterday" tone="warning" />
+</Columns>
+</Card>
+
+<Card title="Shipments in Transit">
+<Tabs>
+<Tab title="All (142)">
+| # | Origin | Destination | Carrier | ETA | Status | Cost | Actions |
+|---|---|---|---|---|---|---|---|
+| SH-8842 | Los Angeles (LAX) | New York (JFK) | FedEx Freight | 2024-01-16 14:00 | <Badge tone="success">On Time</Badge> | $2,150 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8843 | Seattle (SEA) | Chicago (ORD) | UPS Supply Chain | 2024-01-17 09:30 | <Badge tone="success">On Time</Badge> | $1,890 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8844 | Miami (MIA) | Dallas (DFW) | XPO Logistics | 2024-01-16 18:00 | <Badge tone="warning">Delayed</Badge> | $1,420 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8845 | Chicago (ORD) | Atlanta (ATL) | Old Dominion | 2024-01-18 11:00 | <Badge tone="success">On Time</Badge> | $1,680 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8846 | Houston (IAH) | Phoenix (PHX) | YRC Worldwide | 2024-01-17 15:30 | <Badge tone="danger">Exception</Badge> | $2,310 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8847 | Denver (DEN) | San Francisco (SFO) | FedEx Freight | 2024-01-19 08:00 | <Badge tone="success">On Time</Badge> | $1,950 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | Boston (BOS) | Washington (IAD) | UPS Supply Chain | 2024-01-16 20:00 | <Badge tone="warning">Delayed</Badge> | $1,240 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8849 | Atlanta (ATL) | Los Angeles (LAX) | XPO Logistics | 2024-01-18 13:00 | <Badge tone="success">On Time</Badge> | $2,480 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8850 | Dallas (DFW) | Seattle (SEA) | Old Dominion | 2024-01-17 10:00 | <Badge tone="success">On Time</Badge> | $1,760 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Phoenix (PHX) | Chicago (ORD) | YRC Worldwide | 2024-01-19 16:00 | <Badge tone="warning">Delayed</Badge> | $1,890 | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Delayed (18)">
+| # | Origin | Destination | Carrier | ETA | Status | Delay | Cost | Actions |
+|---|---|---|---|---|---|---|---|---|
+| SH-8844 | Miami (MIA) | Dallas (DFW) | XPO Logistics | 2024-01-16 18:00 | <Badge tone="warning">Delayed</Badge> | +4.5 hrs | $1,420 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8848 | Boston (BOS) | Washington (IAD) | UPS Supply Chain | 2024-01-16 20:00 | <Badge tone="warning">Delayed</Badge> | +2.0 hrs | $1,240 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8851 | Phoenix (PHX) | Chicago (ORD) | YRC Worldwide | 2024-01-19 16:00 | <Badge tone="warning">Delayed</Badge> | +6.0 hrs | $1,890 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8832 | Seattle (SEA) | Portland (PDX) | FedEx Freight | 2024-01-15 12:00 | <Badge tone="warning">Delayed</Badge> | +1.5 hrs | $890 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8837 | Chicago (ORD) | Detroit (DTW) | Old Dominion | 2024-01-15 14:00 | <Badge tone="warning">Delayed</Badge> | +3.0 hrs | $1,100 | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+<Tab title="Exceptions (3)">
+| # | Origin | Destination | Carrier | ETA | Status | Issue | Cost | Actions |
+|---|---|---|---|---|---|---|---|---|
+| SH-8846 | Houston (IAH) | Phoenix (PHX) | YRC Worldwide | 2024-01-17 15:30 | <Badge tone="danger">Exception</Badge> | Weather hold | $2,310 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8829 | Newark (EWR) | Boston (BOS) | UPS Supply Chain | 2024-01-14 10:00 | <Badge tone="danger">Exception</Badge> | Customs delay | $1,560 | <Button variant="tertiary" size="small">Flag</Button> |
+| SH-8815 | San Diego (SAN) | Las Vegas (LAS) | FedEx Freight | 2024-01-13 18:00 | <Badge tone="danger">Exception</Badge> | Vehicle breakdown | $980 | <Button variant="tertiary" size="small">Flag</Button> |
+</Tab>
+</Tabs>
+</Card>
+
+<Callout tone="warning" title="⚠ 18 Delayed Shipments — Action Required">
+<strong>Top delayed lanes:</strong> PHX→ORD (+6h), MIA→DFW (+4.5h), ORD→DTW (+3h). <br />
+<strong>Carriers with most delays:</strong> YRC Worldwide (5), XPO Logistics (4), UPS Supply Chain (3). <br />
+<Button variant="secondary" size="small">View Delay Report</Button>
+<Button variant="tertiary" size="small">Notify Carriers</Button>
+</Callout>
+
+<Card title="Volume Split by Carrier (Jan)">
+<Chart type="donut" title="Shipments by Carrier" x="Carrier" y="Shipments">
+| Carrier | Shipments |
+|---|---|
+| FedEx Freight | 38 |
+| UPS Supply Chain | 32 |
+| XPO Logistics | 28 |
+| Old Dominion | 24 |
+| YRC Worldwide | 20 |
+</Chart>
+</Card>
+
+<Card title="Weekly Volume — Past 8 Weeks">
+<Chart type="bar" title="Weekly Shipment Volume" x="Week" y="Shipments">
+| Week | Shipments | On-Time | Delayed |
+|---|---|---|---|
+| 2023-W49 | 156 | 138 | 18 |
+| 2023-W50 | 162 | 142 | 20 |
+| 2023-W51 | 148 | 131 | 17 |
+| 2023-W52 | 134 | 119 | 15 |
+| 2024-W01 | 142 | 124 | 18 |
+| 2024-W02 | 155 | 137 | 18 |
+| 2024-W03 | 149 | 132 | 17 |
+| 2024-W04 | 142 | 124 | 18 |
+</Chart>
+</Card>
+
+<Card title="Cost Analysis">
+<Columns>
+<Stat label="Avg Cost (All)" value="$1,847" tone="neutral" />
+<Stat label="Avg Cost (On-Time)" value="$1,720" tone="success" />
+<Stat label="Avg Cost (Delayed)" value="$2,180" tone="warning" />
+<Stat label="Avg Cost (Exception)" value="$2,850" tone="danger" />
+</Columns>
+<Chart type="horizontal" title="Avg Cost by Carrier" x="Cost (USD)" y="Carrier">
+| Carrier | Avg Cost |
+|---|---|
+| FedEx Freight | 2150 |
+| UPS Supply Chain | 1980 |
+| XPO Logistics | 1720 |
+| Old Dominion | 1680 |
+| YRC Worldwide | 2010 |
+</Chart>
+</Card>
+
+<FollowUps>
+- Show me shipments delayed > 4 hours
+- Compare on-time % by carrier this month
+- Export delayed shipments to CSV
+- Set up alerts for PHX→ORD lane
+</FollowUps>

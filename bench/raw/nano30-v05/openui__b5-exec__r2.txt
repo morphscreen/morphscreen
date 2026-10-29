@@ -1,0 +1,77 @@
+root = Card([headerCard, quarterSelect, regionSelect, exportBtn, revenueCard, costsCard, profitCard, revChart, costChart, budgetTable, headcountChart, riskList, initiativeCard, runwayCallout, salesPipelineCallout, winRateCallout, customerCountCard, npsCallout, boardFollowUp])
+
+headerCard = CardHeader("Quarterly Command View")
+
+quarterSelect = Select("quarter", [q1,q2,q3,q4], "Select quarter", null, "Q1")
+
+regionSelect = Select("region", [r1,r2,r3,r4], "Select region", null, "North")
+
+exportBtn = Button("Export Pack", null, "primary")
+
+revenueTag = TextCallout("neutral", "Revenue", "$128,400")
+
+costsTag = TextCallout("neutral", "Costs", "$95,000")
+
+profitTag = TextCallout("success", "Profit", "$33,400")
+
+revenueSeries = Series("Revenue", [24100,30800,34600,38900])
+
+revChart = LineChart(["Q1","Q2","Q3","Q4"], [revenueSeries], "natural", "Quarter", "USD")
+
+costSeries = Series("Costs", [15000,16500,17000,18000])
+
+costChart = LineChart(["Q1","Q2","Q3","Q4"], [costSeries], "natural", "Quarter", "USD")
+
+colDept = Col("Department", ["Engineering","Marketing","Sales","HR","Finance"], "string")
+
+colBudget = Col("Budget", [1000000,800000,600000,400000,300000], "number")
+
+colPlan = Col("Plan", [1100000,850000,650000,420000,320000], "number")
+
+colVariance = Col("Variance", [-100000,-50000,-50000,-20000,-20000], "number")
+
+budgetTable = Table([colDept, colBudget, colPlan, colVariance])
+
+headcountSeries = Series("Headcount", [250,180,120,80,60])
+
+headcountChart = HorizontalBarChart(["Engineering","Marketing","Sales","HR","Finance"], [headcountSeries], "grouped", "Department", "Count")
+
+riskItem1 = ListItem("Revenue shortfall", "John Doe")
+
+riskItem2 = ListItem("Cost overrun", "Jane Smith")
+
+riskItem3 = ListItem("Talent retention", "Bob Brown")
+
+riskList = ListBlock([riskItem1, riskItem2, riskItem3], "number")
+
+initItem1 = ListItem("Launch new product", "In Progress")
+
+initItem2 = ListItem("Expand market", "Planned")
+
+initItem3 = ListItem("Optimize operations", "Completed")
+
+initiativeList = ListBlock([initItem1, initItem2, initItem3])
+
+initiativeCard = Card([initiativeList])
+
+runwayCallout = TextCallout("info", "Runway", "12 months")
+
+salesPipelineCallout = TextCallout("neutral", "Sales Pipeline", "$5M")
+
+winRateCallout = TextCallout("success", "Win Rate", "35%")
+
+customerCountCallout = TextCallout("neutral", "Customer Count", "1,200")
+
+churnCallout = TextCallout("warning", "Churn Rate", "5%")
+
+customerCountCard = Card([customerCountCallout, churnCallout])
+
+npsCallout = TextCallout("info", "NPS", "45")
+
+followUpItem1 = FollowUpItem("Review Q2 financials")
+
+followUpItem2 = FollowUpItem("Approve new budget")
+
+followUpItem3 = FollowUpItem("Discuss talent strategy")
+
+boardFollowUp = FollowUpBlock([followUpItem1, followUpItem2, followUpItem3])

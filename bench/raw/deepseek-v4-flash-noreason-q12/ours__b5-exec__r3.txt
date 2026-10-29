@@ -1,0 +1,173 @@
+# Quarterly Command View
+
+<Card title="Quarter Selector & Region Focus">
+<div style="display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+
+<Select label="Quarter" placeholder="Select quarter" options="Q1 FY25 | Q2 FY25 | Q3 FY25 | Q4 FY25" value="Q3 FY25" />
+
+<Select label="Region" placeholder="All regions" options="All Regions | North America | EMEA | APAC | LATAM" value="All Regions" />
+
+<Button variant="secondary" icon="download">Export Pack (PDF)</Button>
+<Button variant="secondary" icon="file-xls">Export Pack (Excel)</Button>
+
+</div>
+</Card>
+
+<Card title="Financial Summary" subtitle="Q3 FY25 • All Regions">
+<Columns>
+<Stat label="Revenue" value="$48.2M" change="+12.4% QoQ" tone="success" icon="trend-up" />
+<Stat label="Costs" value="$41.7M" change="+8.1% QoQ" tone="warning" icon="trend-down" />
+<Stat label="Profit" value="$6.5M" change="+38.3% QoQ" tone="success" icon="currency-circle-dollar" />
+<Stat label="Months of Runway" value="14.2" change="Stable" tone="info" icon="hourglass" />
+</Columns>
+</Card>
+
+<Card title="Revenue & Costs by Quarter">
+<Tabs>
+<Tab title="Revenue">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Revenue |
+|---|---|
+| Q1 FY25 | 36.8 |
+| Q2 FY25 | 42.9 |
+| Q3 FY25 | 48.2 |
+| Q4 FY25 (Forecast) | 52.1 |
+</Chart>
+</Tab>
+<Tab title="Costs">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Costs |
+|---|---|
+| Q1 FY25 | 34.1 |
+| Q2 FY25 | 38.6 |
+| Q3 FY25 | 41.7 |
+| Q4 FY25 (Forecast) | 44.3 |
+</Chart>
+</Tab>
+<Tab title="Profit">
+<Chart type="bar" x="Quarter" y="USD (M)">
+| Quarter | Profit |
+|---|---|
+| Q1 FY25 | 2.7 |
+| Q2 FY25 | 4.3 |
+| Q3 FY25 | 6.5 |
+| Q4 FY25 (Forecast) | 7.8 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Budget vs. Plan by Department" subtitle="Q3 FY25 • Actuals vs. Plan">
+<Chart type="horizontal" x="Department" y="USD (M)">
+| Department | Budget | Plan | Variance |
+|---|---|---|---|
+| Engineering | 12.4 | 12.0 | 0.4 |
+| Sales & Marketing | 10.8 | 11.2 | -0.4 |
+| Operations | 7.9 | 8.0 | -0.1 |
+| Product | 5.6 | 5.5 | 0.1 |
+| G&A | 3.1 | 3.0 | 0.1 |
+| R&D | 1.9 | 2.0 | -0.1 |
+</Chart>
+<Callout tone="warning" title="Variance alert">Sales & Marketing is $400K under plan; Engineering is $400K over plan.</Callout>
+</Card>
+
+<Card title="Headcount by Department" subtitle="Q3 FY25 • All Regions">
+<Chart type="bar" x="Department" y="Headcount">
+| Department | Headcount |
+|---|---|
+| Engineering | 214 |
+| Sales & Marketing | 168 |
+| Operations | 142 |
+| Product | 89 |
+| G&A | 54 |
+| R&D | 31 |
+</Chart>
+<Stat label="Total Headcount" value="698" change="+14 QoQ" tone="info" icon="users" />
+</Card>
+
+<Card title="Top Risks" subtitle="Owner assigned for each risk">
+| Risk | Impact | Likelihood | Owner | Status |
+|---|---|---|---|---|
+| Key enterprise customer churn (Acme Corp) | High | Medium | Sarah Chen | <Badge tone="warning">Mitigating</Badge> |
+| Supply chain disruption (Asia) | Medium | High | Miguel Torres | <Badge tone="danger">Monitoring</Badge> |
+| Cybersecurity breach attempt | High | Low | Priya Patel | <Badge tone="success">Contained</Badge> |
+| Regulatory change (GDPR update) | Medium | Medium | James O'Neil | <Badge tone="warning">Assessing</Badge> |
+| Key engineer departure | Medium | Medium | Lisa Wong | <Badge tone="warning">Mitigating</Badge> |
+</Card>
+
+<Card title="Strategic Initiatives" subtitle="Q3 FY25 status">
+| Initiative | Owner | Status | Progress |
+|---|---|---|---|
+| Expand into APAC market | Michael Ross | On track | <Progress value="65" max="100" label="65%" tone="info" /> |
+| Launch mobile app v2 | Aisha Khan | At risk | <Progress value="45" max="100" label="45%" tone="warning" /> |
+| Migrate to cloud-native infra | David Kim | On track | <Progress value="80" max="100" label="80%" tone="success" /> |
+| AI-powered customer support | Elena Petrova | Delayed | <Progress value="30" max="100" label="30%" tone="danger" /> |
+| Net-zero carbon by 2030 | Tomás García | On track | <Progress value="55" max="100" label="55%" tone="info" /> |
+</Card>
+
+<Card title="Commercial Performance" subtitle="Q3 FY25 • All Regions">
+<Columns>
+<Stat label="Sales Pipeline" value="$38.7M" change="+18% QoQ" tone="success" icon="funnel" />
+<Stat label="Win Rate" value="34%" change="+3 pts" tone="success" icon="target" />
+<Stat label="Customer Count" value="2,847" change="+126 net new" tone="success" icon="building-office" />
+<Stat label="Churn Rate" value="2.1%" change="-0.4 pts" tone="success" icon="user-minus" />
+<Stat label="NPS" value="52" change="+6 pts" tone="success" icon="star" />
+</Columns>
+</Card>
+
+<Card title="Customer & NPS Detail">
+<Tabs>
+<Tab title="Customer Count">
+<Chart type="line" x="Month" y="Customers">
+| Month | Customers |
+|---|---|
+| Apr | 2,621 |
+| May | 2,689 |
+| Jun | 2,721 |
+| Jul | 2,784 |
+| Aug | 2,847 |
+</Chart>
+</Tab>
+<Tab title="Churn">
+<Chart type="line" x="Month" y="Churn %">
+| Month | Churn % |
+|---|---|
+| Apr | 2.8 |
+| May | 2.6 |
+| Jun | 2.4 |
+| Jul | 2.3 |
+| Aug | 2.1 |
+</Chart>
+</Tab>
+<Tab title="NPS">
+<Chart type="line" x="Month" y="NPS">
+| Month | NPS |
+|---|---|
+| Apr | 44 |
+| May | 46 |
+| Jun | 48 |
+| Jul | 51 |
+| Aug | 52 |
+</Chart>
+</Tab>
+</Tabs>
+</Card>
+
+<Card title="Next Board Meeting" subtitle="Agenda items for Nov 14, 2025">
+<Steps>
+<Step title="Approve Q3 financials" status="done" subtitle="Completed by CFO">Review and approve Q3 P&L and balance sheet.</Step>
+<Step title="APAC expansion decision" status="current" subtitle="Up for discussion">Vote on $2.5M investment for APAC go-to-market.</Step>
+<Step title="Executive compensation review" status="todo" subtitle="Pre-read shared">Review comp philosophy and proposed changes.</Step>
+<Step title="FY26 budget approval" status="todo" subtitle="Draft in progress">Approve preliminary FY26 budget and headcount plan.</Step>
+<Step title="Succession planning" status="todo" subtitle="Not yet started">Discuss succession for C-suite and key VP roles.</Step>
+</Steps>
+<Callout tone="info" title="Board pack deadline">Final board pack must be submitted by Nov 7, 2025.</Callout>
+</Card>
+
+<FollowUps>
+- Show full P&L statement for Q3
+- Compare this quarter to same quarter last year
+- Drill into APAC region performance
+- See hiring plan for next quarter
+- View cash flow statement
+</FollowUps>
