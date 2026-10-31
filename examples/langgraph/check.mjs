@@ -66,29 +66,29 @@ try {
   await idle(live ? 240000 : 30000);
   step("first run over");
   const first = await page.evaluate(() => ({
-    turns: [...document.querySelectorAll("#chat > .turn")].map((t) => t.classList[1]),
-    quiz: !!document.querySelector(".turn.answer .quiz"),
-    checklist: !!document.querySelector(".turn.answer .checklist"),
-    note: document.querySelector(".run-note:not([hidden])")?.textContent ?? "",
+    turns: [...document.querySelectorAll("#chat > .ms-turn")].map((t) => t.classList[1]),
+    quiz: !!document.querySelector(".ms-turn.ms-answer .ms-quiz"),
+    checklist: !!document.querySelector(".ms-turn.ms-answer .ms-checklist"),
+    note: document.querySelector(".ms-run-note:not([hidden])")?.textContent ?? "",
   }));
-  want(first.turns.join() === "user,assistant", `turns ${first.turns}`);
+  want(first.turns.join() === "ms-user,ms-assistant", `turns ${first.turns}`);
   want(!first.note, `note ${first.note}`);
   if (!live) want(first.quiz && first.checklist, `the lesson's components ${JSON.stringify(first)}`);
 
   if (first.checklist) {
-    await page.click(".checklist li:nth-child(2) input");
+    await page.click(".ms-checklist li:nth-child(2) input");
   }
   if (first.quiz) {
     // Answer every question: the quiz goes back as the next turn.
-    const n = await page.evaluate(() => document.querySelectorAll(".question").length);
-    for (let k = 1; k <= n; k++) await page.click(`.question:nth-child(${k}) label:nth-of-type(1) input`);
-    step(`answered ${n} questions; ${await page.evaluate(() => document.querySelectorAll("#chat > .turn").length)} turns`);
-    await page.waitForFunction("document.querySelectorAll('#chat > .turn').length >= 4", { timeout: live ? 240000 : 30000 });
+    const n = await page.evaluate(() => document.querySelectorAll(".ms-question").length);
+    for (let k = 1; k <= n; k++) await page.click(`.ms-question:nth-child(${k}) label:nth-of-type(1) input`);
+    step(`answered ${n} questions; ${await page.evaluate(() => document.querySelectorAll("#chat > .ms-turn").length)} turns`);
+    await page.waitForFunction("document.querySelectorAll('#chat > .ms-turn').length >= 4", { timeout: live ? 240000 : 30000 });
     await idle(live ? 240000 : 30000);
     const second = await page.evaluate(() => ({
-      user: document.querySelectorAll("#chat > .turn.user")[1]?.textContent ?? "",
-      reply: document.querySelectorAll("#chat > .turn.answer")[1]?.textContent ?? "",
-      ticks: [...document.querySelectorAll(".checklist input")].map((i) => i.checked).join(),
+      user: document.querySelectorAll("#chat > .ms-turn.ms-user")[1]?.textContent ?? "",
+      reply: document.querySelectorAll("#chat > .ms-turn.ms-answer")[1]?.textContent ?? "",
+      ticks: [...document.querySelectorAll(".ms-checklist input")].map((i) => i.checked).join(),
       state: window.chat.state(),
     }));
     want(second.user.startsWith("I finished the quiz:"), `quiz turn ${second.user}`);
@@ -104,10 +104,10 @@ try {
   if (process.env.SHOT) await page.screenshot({ path: process.env.SHOT, fullPage: true });
 
   // A reload: the conversation and its components come back.
-  const turns = await page.evaluate(() => document.querySelectorAll("#chat > .turn").length);
+  const turns = await page.evaluate(() => document.querySelectorAll("#chat > .ms-turn").length);
   await page.goto(`${origin}/example/agent.html`);
   await page.waitForFunction("window.ready === true");
-  const back = await page.evaluate(() => ({ turns: document.querySelectorAll("#chat > .turn").length, score: document.querySelector(".quiz .score")?.textContent ?? "" }));
+  const back = await page.evaluate(() => ({ turns: document.querySelectorAll("#chat > .ms-turn").length, score: document.querySelector(".ms-quiz .ms-score")?.textContent ?? "" }));
   want(back.turns === turns, `turns after reload ${back.turns} of ${turns}`);
   if (first.quiz) want(/of \d+ right/.test(back.score), `quiz after reload ${back.score}`);
   await browser.close();
