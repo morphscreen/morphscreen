@@ -500,6 +500,7 @@ How a repair went. In a stream's last chunk it also carries the repaired `text` 
 | `provider` | string |  |  |
 | `usage` | object |  |  |
 | `text` | string |  |  |
+| `appended` | boolean |  | In a stream, true when the repair only added to the end of the answer (tags the model left open, closed): those lines streamed as ordinary content before the last chunk, so there is no `text` to draw in place of what streamed. |
 | `valid` | boolean |  |  |
 
 ### Verdict

@@ -64,7 +64,7 @@ Then the last chunk's `morphscreen` field carries the core's verdict on the answ
 }
 ```
 
-Draw `repair.text` in place of what streamed (with the web SDK, `destroy()` the answer and draw a new one in the same element). `valid` is about that text: the repaired one when there is one, otherwise what streamed; `repair.errors_before` counts what the streamed one had. A repair that couldn't fix everything says `errors_left` and `why`, and its text is still the best version. Without streaming, the answer you get is already the repaired one.
+Draw `repair.text` in place of what streamed (with the web SDK, `destroy()` the answer and draw a new one in the same element). A repair that only closed what the model left open, the commonest kind, needs none of that: its closing lines arrive as ordinary content before the last chunk, `repair.appended` is `true` and there's no `repair.text`, so pushing every chunk's content as usual finishes the answer where it is. `valid` is about that text: the repaired one when there is one, otherwise what streamed; `repair.errors_before` counts what the streamed one had. A repair that couldn't fix everything says `errors_left` and `why`, and its text is still the best version. Without streaming, the answer you get is already the repaired one.
 
 In the op stream (`/v1/ui` with `output: "ops"`), a diagnostic's class is the `cls` field; everywhere else it's `class`.
 

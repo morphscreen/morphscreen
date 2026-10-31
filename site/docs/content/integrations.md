@@ -56,5 +56,5 @@ Use the agent build with `connectAgent`, as the [Quick start](/docs/quickstart) 
 With a chat UI of your own (your own message bubbles, your own loading states, the page around each answer), stream `/v1/chat/completions` from your server instead and draw each answer with `createAnswer` (or `<Answer>` in React). Then:
 
 - push each chunk's `delta.content` into the answer, and call `end()` when the stream ends;
-- when the last chunk's `morphscreen.repair.text` is there, draw it in place of what streamed ([Validation](/docs/format/validation#what-you-see)); a chunk with `morphscreen.repairing` comes first, so you can show that a fix is on its way;
+- when the last chunk's `morphscreen.repair.text` is there, draw it in place of what streamed; a repair that only closed open tags streams its closing lines as content instead, so there's nothing to swap ([Validation](/docs/format/validation#what-you-see)); a chunk with `morphscreen.repairing` comes first, so you can show that a fix is on its way;
 - turn the reader's actions into your next user message with `core.actionMessage(action)`, worded as the API words them ([Actions and state](/docs/format/actions)).

@@ -130,6 +130,10 @@ function snapshot(which) {
 
 const load = async (file, query) => {
   await page.goto(`${base}/${file}?${query}`, { waitUntil: "load" });
+  // The scrollbar's room held open, with answers or without: where scrollbars
+  // take space (Firefox on Linux) a page grown taller by its answers would
+  // otherwise narrow, and a centred host move, with no style of it changed.
+  await page.addStyleTag({ content: "html { overflow-y: scroll; }" });
   await page.waitForFunction(() => window.ready === true, { timeout: 30000 });
   await page.evaluate(() => document.fonts.ready);
   // Charts and the rest settle after their first frame.

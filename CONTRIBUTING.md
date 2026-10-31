@@ -1,6 +1,7 @@
 # Contributing
 
 Thanks for wanting to help. Bugs, ideas and pull requests are all welcome.
+Everyone here follows the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Issues
 
