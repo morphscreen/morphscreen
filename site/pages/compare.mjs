@@ -30,7 +30,7 @@ export function compareOpenUI({ board }) {
 
   const body = `
 <header class="page-head">
-  <h1 class="title1">MorphScreen against OpenUI, measured</h1>
+  <h1 class="title1">MorphScreen against OpenUI,&nbsp;measured</h1>
   <p class="lead">OpenUI is the open-source generative UI library we measure ourselves against. Both formats get the same briefs, the same models and providers, and the same rules for what counts as valid. Of ${measured} rows with numbers for both, MorphScreen is ahead on ${board.tally.ours}, OpenUI on ${board.tally.openui}, and ${board.tally.tie} are even. ${board.tally.unmeasured} rows are ours alone so far.</p>
   <p class="small">Scoreboard of ${board.date}: commit ${esc(board.commit)}, prompt ${esc(board.prompt)}. <a href="/benchmark">How it's run, every raw answer, and why OpenUI is ahead where it is</a>. <a href="/demo">Both renderers drawing the same answer, live</a>.</p>
 </header>
