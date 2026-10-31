@@ -107,7 +107,14 @@ async function look(page, name, width) {
   });
   for (const d of defects.slice(0, 5)) problems.push(`${where}: layout ${d.kind} at ${d.at}${d.detail ? ` (${d.detail})` : ""}`);
   await page.evaluate(axeSource);
-  const axe = await page.evaluate(async () => (await window.axe.run(document)).violations.map((v) => `${v.id} (${v.nodes.length}): ${v.nodes[0].target}`));
+  // A contrast failure says what axe measured, since it can differ by platform (fonts, scrollbars).
+  const axe = await page.evaluate(async () =>
+    (await window.axe.run(document)).violations.map((v) => {
+      const d = v.nodes[0].any?.[0]?.data;
+      const measured = v.id === "color-contrast" && d ? ` [${d.fgColor} on ${d.bgColor}, ${d.contrastRatio}:1 at ${d.fontSize} ${d.fontWeight}${d.messageKey ? `, ${d.messageKey}` : ""}]` : "";
+      return `${v.id} (${v.nodes.length}): ${v.nodes[0].target}${measured}`;
+    }),
+  );
   for (const v of axe) problems.push(`${where}: axe ${v}`);
   await page.screenshot({ path: join(out, `${name.replaceAll("/", "_") || "home"}-${width}.png`), fullPage: true });
 }
