@@ -76,6 +76,9 @@ async function look(page, name, width) {
     for (const s of document.querySelectorAll(".section")) s.style.contentVisibility = "visible";
   });
   await wait(300);
+  // And whatever was already fading when it was turned off ends first: a slow
+  // machine caught the pricing cards part way in, their grey at 90% (axe 4.34:1).
+  await page.evaluate(() => Promise.race([Promise.all(document.getAnimations().filter((a) => a.effect?.getTiming().iterations !== Infinity).map((a) => a.finished.catch(() => {}))), new Promise((r) => setTimeout(r, 3000))]));
   const where = `${name} at ${width} px`;
   const wide = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
   if (wide > 0) {

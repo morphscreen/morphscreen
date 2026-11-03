@@ -13,7 +13,7 @@ import { execFileSync, spawn } from "node:child_process";
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { createRequire } from "node:module";
-import { extname, join } from "node:path";
+import { dirname, extname, join } from "node:path";
 import { launch } from "../browser.mjs";
 
 const here = import.meta.dirname;
@@ -125,6 +125,8 @@ for (const [template, pm] of cases) {
     PATH_FOR = NODE[template] ? `${nodeBin(NODE[template])}:${process.env.PATH}` : process.env.PATH;
     rmSync(dir, { recursive: true, force: true });
     cpSync(join(here, "templates", template), dir, { recursive: true });
+    // Its folder too: a fresh project may not have it (SvelteKit's starter dropped src/lib).
+    mkdirSync(dirname(join(dir, t.sample)), { recursive: true });
     writeFileSync(join(dir, t.sample), `export const SAMPLE = ${JSON.stringify(sample)};\n`);
     const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
     pkg.dependencies = { ...pkg.dependencies, "@morphscreen/web": `file:${tgz}` };
