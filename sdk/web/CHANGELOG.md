@@ -3,7 +3,10 @@
 Every published version of `@morphscreen/web`, newest first. A release
 publishes only a version written here.
 
-## Unreleased
+## 0.1.2
+
+Fixes found building demos on 0.1.1: charts' hover, signatures, required
+marks, fonts an app didn't ask for, and a map without WebGL.
 
 - A chart's hover shows as meant: a faint band behind the column, a dashed
   crosshair on line charts, dots in each line's colour, and a layer the
