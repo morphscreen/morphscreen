@@ -652,10 +652,12 @@ impl R<'_> {
             Some(v) => v.to_string(),
             None => slug(n.attr("label").unwrap_or("field")),
         };
+        // A required field says so by its label, as the packs' fields and the native SDKs do.
         let field = |label: &str, control: String, hint: Option<&str>| {
             format!(
-                "<label class=\"field\"><span>{}</span>{}{}</label>",
+                "<label class=\"field\"><span>{}{}</span>{}{}</label>",
                 esc(label),
+                if truthy("required") { " *" } else { "" },
                 control,
                 match hint {
                     Some(h) if !h.is_empty() => format!("<small>{}</small>", esc(h)),
@@ -1003,7 +1005,7 @@ impl R<'_> {
                 let radio = n.ty == "Radio";
                 let value = a("value").map(|v| v.to_string());
                 let chosen = list(a("value"));
-                let mut o = format!("<fieldset class=\"field\"><legend>{}</legend>", s("label"));
+                let mut o = format!("<fieldset class=\"field\"><legend>{}{}</legend>", s("label"), if truthy("required") { " *" } else { "" });
                 for opt in list(a("options")) {
                     let checked = if radio { value.as_deref() == Some(opt.as_str()) } else { chosen.contains(&opt) };
                     o.push_str(&format!(

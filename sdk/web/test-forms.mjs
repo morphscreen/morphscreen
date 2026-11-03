@@ -83,10 +83,64 @@ const said = await page.evaluate(async () => {
 });
 want(said.includes("\n- Time: 10:00\n") && said.includes("\n- How was it?: 2"), `the message names the labels: ${JSON.stringify(said)}`);
 
+// A form whose fields are all required, one of them signed on the pad: every
+// required field shows the mark, and what was drawn goes with the form as a
+// PNG under <name>-drawing (the typed name stays under <name>), worded in the
+// message as the file it is.
+await page.evaluate(() => (window.actions = []));
+const consent = `<Form name="consent">
+<Input label="Full name" name="fullname" required="true" />
+<Input label="Address" name="address" required="true" />
+<File label="ID document" name="doc" required="true" />
+<Signature label="Sign here" name="sig" required="true" />
+<Button>Sign</Button>
+</Form>
+`;
+await page.evaluate((t) => window.run(t, { chunk: 40, packs: ["inputs", "device"] }), consent);
+const marks = await page.evaluate(() =>
+  [...document.querySelectorAll("form .field > span:first-child, form .field > legend, form [data-ms-type] > span:first-child")].map((s) => s.textContent.trim()).filter(Boolean),
+);
+for (const l of ["Full name", "Address", "ID document", "Sign here"]) want(marks.includes(`${l} *`), `required "${l}" should show the mark: labels ${JSON.stringify(marks)}`);
+await page.type('input[name="fullname"]', "Ana Lima");
+await page.type('input[name="address"]', "Rua Augusta 10, Lisbon");
+await page.evaluate(() => {
+  const i = document.querySelector('input[name="doc"]');
+  const t = new DataTransfer();
+  t.items.add(new File(["%PDF-1.4"], "id.pdf", { type: "application/pdf" }));
+  i.files = t.files;
+  i.dispatchEvent(new Event("change", { bubbles: true }));
+});
+const pad = await page.evaluate(() => {
+  const c = document.querySelector("form canvas");
+  c.scrollIntoView({ block: "center" });
+  const r = c.getBoundingClientRect();
+  return { x: r.left, y: r.top, w: r.width, h: r.height };
+});
+await page.mouse.move(pad.x + pad.w * 0.15, pad.y + pad.h * 0.6);
+await page.mouse.down();
+for (let k = 1; k <= 12; k++) await page.mouse.move(pad.x + pad.w * (0.15 + k * 0.05), pad.y + pad.h * (0.6 - Math.sin(k / 2) * 0.25));
+await page.mouse.up();
+await page.evaluate(() => [...document.querySelectorAll("button")].find((b) => b.textContent.trim() === "Sign").click());
+await new Promise((r) => setTimeout(r, 200));
+const signed = await page.evaluate(async () => {
+  const a = window.actions.filter((x) => x.type === "submit").pop();
+  if (!a) return null;
+  const d = a.fields["sig-drawing"]?.[0];
+  const head = d ? [...new Uint8Array(await d.slice(0, 8).arrayBuffer())] : [];
+  const { loadCore } = await import("/sdk/web/dist/index.js");
+  const core = await loadCore("/sdk/web/dist/morphscreen.wasm");
+  return { name: a.fields.fullname, typed: a.fields.sig, file: d && { name: d.name, type: d.type, size: d.size, png: head.join() === "137,80,78,71,13,10,26,10" }, label: a.labels["sig-drawing"], said: core.actionMessage(a) };
+});
+want(signed, "the signed form wasn't sent (a required field held it back?)");
+want(signed?.name === "Ana Lima" && signed?.typed === "", `the typed fields: ${JSON.stringify(signed && { name: signed.name, typed: signed.typed })}`);
+want(signed?.file?.name === "sig.png" && signed.file.type === "image/png" && signed.file.png && signed.file.size > 500, `the drawing should come as a PNG under sig-drawing: ${JSON.stringify(signed?.file)}`);
+want(signed?.label === "Sign here (drawing)", `the drawing's label: ${signed?.label}`);
+want(signed?.said?.includes("\n- Sign here (drawing): sig.png (image/png)") && !signed.said.includes("base64"), `the message names the drawing as a file: ${JSON.stringify(signed?.said)}`);
+
 await browser.close();
 server.close();
 if (failures.length) {
   console.error(`forms: ${failures.length} problems\n  ${failures.join("\n  ")}`);
   process.exit(1);
 }
-console.log("forms: ok (time slot, toggles, level, stars and combobox send what was picked, with their labels)");
+console.log("forms: ok (time slot, toggles, level, stars and combobox send what was picked, with their labels; required fields marked; a drawn signature sent as a PNG)");

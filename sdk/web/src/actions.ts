@@ -25,6 +25,14 @@ function labelOf(wrap: HTMLElement): string {
 }
 
 /** A form's fields, typed by the component each came from. */
+/** A canvas's data URL as a PNG file, for the app to upload like any other. */
+function png(dataUrl: string, name: string): File {
+  const bytes = atob(dataUrl.slice(dataUrl.indexOf(",") + 1));
+  const buf = new Uint8Array(bytes.length);
+  for (let i = 0; i < bytes.length; i++) buf[i] = bytes.charCodeAt(i);
+  return new File([buf], name, { type: "image/png" });
+}
+
 export function serialize(form: HTMLFormElement, meta: { node: string; form: string; button: string }): Action {
   const fields: Record<string, FieldValue> = {};
   const labels: Record<string, string> = {};
@@ -55,6 +63,16 @@ export function serialize(form: HTMLFormElement, meta: { node: string; form: str
       case "Location": {
         const at = wrap.dataset.location;
         fields[name] = at ? JSON.parse(at) : (input?.value ?? "");
+        break;
+      }
+      case "Signature": {
+        // The name typed, and what was drawn on the pad as a PNG, the way a Scan's photo comes.
+        fields[name] = input?.value ?? "";
+        const drawn = wrap.querySelector<HTMLInputElement>(`input[type=hidden][name="${CSS.escape(name)}-drawing"]`)?.value;
+        if (drawn) {
+          fields[`${name}-drawing`] = [png(drawn, `${name}.png`)];
+          if (label) labels[`${name}-drawing`] = `${label} (drawing)`;
+        }
         break;
       }
       case "Scan": {

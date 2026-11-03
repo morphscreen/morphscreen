@@ -13,7 +13,7 @@ import { arrive, details, enhanceControls, stepDone, tabs } from "./controls";
 import { keepIds, withPair } from "./text";
 import { fadeIn, rise } from "./motion";
 import { wordsAfter, wordsBefore } from "./words";
-import type { Attrs, Op, Session, Span } from "./core";
+import { warmFonts, type Attrs, type Op, type Session, type Span } from "./core";
 import { enhance } from "./device";
 import { enhanceInteractive } from "./interactive";
 import { fieldState, fill, serialize, type Action } from "./actions";
@@ -212,6 +212,7 @@ export class Renderer {
     // The stylesheet styles answers only, inside this class (theme.css, roadmap C5).
     this.marked = !root.classList.contains("ms-answer");
     root.classList.add("ms-answer");
+    warmFonts(root);
     root.addEventListener("click", this.onClick);
     root.addEventListener("submit", this.onSubmit, true);
   }

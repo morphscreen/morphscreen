@@ -865,31 +865,31 @@ function renderNode(n: Node, depth: number): string {
     case "Camera": {
       // capture opens the camera on phones; elsewhere it's a file picker for images.
       const facing = tone("facing", a.facing, ["back", "front"], "back") === "front" ? "user" : "environment";
-      return field(String(a.label ?? ""), `<input type="file" name="${esc(name)}" accept="image/*" capture="${facing}"${a.multiple === true || String(a.multiple) === "true" ? " multiple" : ""}${a.required ? " required" : ""}>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<input type="file" name="${esc(name)}" accept="image/*" capture="${facing}"${a.multiple === true || String(a.multiple) === "true" ? " multiple" : ""}${a.required ? " required" : ""}>`, a.hint);
     }
     case "Scan":
       // Scanning needs a script or the app; the page takes the code typed, or a photo of it.
-      return field(String(a.label ?? ""), `<input name="${esc(name)}" placeholder="Type the code"${a.required ? " required" : ""}><input type="file" name="${esc(name)}-photo" accept="image/*" capture="environment" aria-label="Or a photo of the code">`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<input name="${esc(name)}" placeholder="Type the code"${a.required ? " required" : ""}><input type="file" name="${esc(name)}-photo" accept="image/*" capture="environment" aria-label="Or a photo of the code">`, a.hint);
     case "Location":
       // Reading the location needs a script or the app; the page asks for a place instead.
-      return field(String(a.label ?? ""), `<input name="${esc(name)}" placeholder="City or address" autocomplete="street-address"${a.required ? " required" : ""}>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<input name="${esc(name)}" placeholder="City or address" autocomplete="street-address"${a.required ? " required" : ""}>`, a.hint);
     case "File": {
       const accept = acceptList(a.accept);
-      return field(String(a.label ?? ""), `<input type="file" name="${esc(name)}"${accept ? ` accept="${esc(accept)}"` : ""}${a.multiple === true || String(a.multiple) === "true" ? " multiple" : ""}${a.required ? " required" : ""}>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<input type="file" name="${esc(name)}"${accept ? ` accept="${esc(accept)}"` : ""}${a.multiple === true || String(a.multiple) === "true" ? " multiple" : ""}${a.required ? " required" : ""}>`, a.hint);
     }
     case "Input":
-      return field(String(a.label ?? ""), `<input name="${esc(name)}" type="${tone("type", a.type, ["text", "email", "number", "password", "url", "tel", "search", "date", "time", "datetime-local"], "text")}"${a.step !== undefined ? ` step="${s("step")}"` : ""}${a.min ? ` min="${s("min")}"` : ""}${a.max ? ` max="${s("max")}"` : ""}${a.placeholder ? ` placeholder="${s("placeholder")}"` : ""}${a.value ? ` value="${s("value")}"` : ""}${a.required ? " required" : ""}>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<input name="${esc(name)}" type="${tone("type", a.type, ["text", "email", "number", "password", "url", "tel", "search", "date", "time", "datetime-local"], "text")}"${a.step !== undefined ? ` step="${s("step")}"` : ""}${a.min ? ` min="${s("min")}"` : ""}${a.max ? ` max="${s("max")}"` : ""}${a.placeholder ? ` placeholder="${s("placeholder")}"` : ""}${a.value ? ` value="${s("value")}"` : ""}${a.required ? " required" : ""}>`, a.hint);
     case "TextArea":
-      return field(String(a.label ?? ""), `<textarea name="${esc(name)}" rows="${Number(a.rows) || 3}"${a.placeholder ? ` placeholder="${s("placeholder")}"` : ""}${a.required ? " required" : ""}>${s("value")}</textarea>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<textarea name="${esc(name)}" rows="${Number(a.rows) || 3}"${a.placeholder ? ` placeholder="${s("placeholder")}"` : ""}${a.required ? " required" : ""}>${s("value")}</textarea>`, a.hint);
     case "Select":
-      return field(String(a.label ?? ""), `<select name="${esc(name)}"${a.required ? " required" : ""}>${a.placeholder ? `<option value="">${s("placeholder")}</option>` : ""}${list(a.options).map((o) => `<option${String(a.value) === o ? " selected" : ""}>${esc(o)}</option>`).join("")}</select>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<select name="${esc(name)}"${a.required ? " required" : ""}>${a.placeholder ? `<option value="">${s("placeholder")}</option>` : ""}${list(a.options).map((o) => `<option${String(a.value) === o ? " selected" : ""}>${esc(o)}</option>`).join("")}</select>`, a.hint);
     case "Date":
-      return field(String(a.label ?? ""), `<input type="date" name="${esc(name)}"${a.value ? ` value="${s("value")}"` : ""}${a.required ? " required" : ""}>`, a.hint);
+      return field(String(a.label ?? "") + (a.required ? " *" : ""), `<input type="date" name="${esc(name)}"${a.value ? ` value="${s("value")}"` : ""}${a.required ? " required" : ""}>`, a.hint);
     case "Slider":
-      return field(`${a.label ?? ""}`, `<input type="range" name="${esc(name)}" min="${s("min")}" max="${s("max")}"${a.step ? ` step="${s("step")}"` : ""}${a.value !== undefined ? ` value="${s("value")}"` : ""}><span class="range"><small>${s("min")}</small><small>${s("max")}</small></span>`, undefined);
+      return field(`${a.label ?? ""}${a.required ? " *" : ""}`, `<input type="range" name="${esc(name)}" min="${s("min")}" max="${s("max")}"${a.step ? ` step="${s("step")}"` : ""}${a.value !== undefined ? ` value="${s("value")}"` : ""}><span class="range"><small>${s("min")}</small><small>${s("max")}</small></span>`, undefined);
     case "Checkboxes":
     case "Radio":
-      return `<fieldset class="field"><legend>${s("label")}</legend>${list(a.options).map((o) => `<label class="choice"><input type="${n.name === "Radio" ? "radio" : "checkbox"}" name="${esc(name)}" value="${esc(o)}"${(n.name === "Radio" ? String(a.value) === o : list(a.value).includes(o)) ? " checked" : ""}${n.name === "Radio" && (a.required === true || String(a.required) === "true") ? " required" : ""}>${esc(o)}</label>`).join("")}${a.hint ? `<small>${s("hint")}</small>` : ""}</fieldset>`;
+      return `<fieldset class="field"><legend>${s("label")}${a.required ? " *" : ""}</legend>${list(a.options).map((o) => `<label class="choice"><input type="${n.name === "Radio" ? "radio" : "checkbox"}" name="${esc(name)}" value="${esc(o)}"${(n.name === "Radio" ? String(a.value) === o : list(a.value).includes(o)) ? " checked" : ""}${n.name === "Radio" && (a.required === true || String(a.required) === "true") ? " required" : ""}>${esc(o)}</label>`).join("")}${a.hint ? `<small>${s("hint")}</small>` : ""}</fieldset>`;
     case "Switch":
       return `<label class="switch"><input type="checkbox" role="switch" name="${esc(name)}"${a.value === true || String(a.value) === "true" ? " checked" : ""}><span>${s("label")}</span></label>`;
     case "Button": {

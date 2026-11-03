@@ -136,7 +136,10 @@ export class Core {
 
   /** The user message an action starts, or "" when it starts none (a Checklist tick, a card marked known). */
   actionMessage(action: unknown): string {
-    const p = this.call([JSON.stringify(action)], (ap, al) => this.x.ms_action_message(ap, al));
+    // A form's files (uploads, a photo, a drawn signature) are worded by their name and type:
+    // the browser's File has no JSON of its own and would arrive empty.
+    const json = JSON.stringify(action, (_k, v) => (typeof File !== "undefined" && v instanceof File ? { name: v.name, type: v.type, size: v.size } : v));
+    const p = this.call([json], (ap, al) => this.x.ms_action_message(ap, al));
     if (!p) throw new Error(this.error());
     return this.get(p);
   }
@@ -273,7 +276,6 @@ export class AgentCore {
 
 /** Loads the WASM core: a URL, the bytes, or a fetch Response. */
 export async function loadCore(src: string | URL | ArrayBuffer | Uint8Array | Response): Promise<Core> {
-  warmFonts();
   let instance: WebAssembly.Instance;
   if (src instanceof ArrayBuffer || src instanceof Uint8Array) {
     instance = (await WebAssembly.instantiate(src as BufferSource, {})).instance;
@@ -287,12 +289,25 @@ export async function loadCore(src: string | URL | ArrayBuffer | Uint8Array | Re
   return new Core(instance.exports as unknown as Exports);
 }
 
+const warmed = new Set<string>();
+
 /**
- * Starts the answer faces loading (morphscreen.css declares them) while the core
- * loads, so the first answer usually draws in Plex rather than swapping to it.
- * Does nothing where the stylesheet isn't on the page or the app set its own faces.
+ * Starts the Plex faces loading for an answer about to draw (morphscreen.css
+ * declares them), so its first words usually draw in Plex rather than
+ * swapping to it: only the faces the answer's own --ms-font and --ms-mono name
+ * first. An app that set its own faces, on :root or scoped to its answers,
+ * fetches nothing from dist/fonts, and neither does a page without the stylesheet.
  */
-function warmFonts() {
-  if (typeof document === "undefined" || !document.fonts?.load) return;
-  for (const face of ['400 15px "IBM Plex Sans"', '600 15px "IBM Plex Sans"', '400 13px "IBM Plex Mono"']) document.fonts.load(face).catch(() => {});
+export function warmFonts(el: Element) {
+  if (typeof getComputedStyle !== "function" || !document.fonts?.load) return;
+  const style = getComputedStyle(el);
+  const first = (name: string) => style.getPropertyValue(name).split(",")[0].trim().replace(/^["']|["']$/g, "");
+  const faces: string[] = [];
+  if (first("--ms-font") === "IBM Plex Sans") faces.push('400 15px "IBM Plex Sans"', '600 15px "IBM Plex Sans"');
+  if (first("--ms-mono") === "IBM Plex Mono") faces.push('400 13px "IBM Plex Mono"');
+  for (const face of faces) {
+    if (warmed.has(face)) continue;
+    warmed.add(face);
+    document.fonts.load(face).catch(() => {});
+  }
 }

@@ -48,8 +48,8 @@ Answers are set in IBM Plex Sans, with IBM Plex Mono for code and keys. They
 ship in `dist/fonts` (SIL Open Font License, `dist/fonts/LICENSE`) and load
 from there, never from a font host; each script's file (Latin, Latin
 Extended, Greek, Cyrillic, Vietnamese) loads only when an answer uses it, so a
-typical English answer fetches about 60 KB once. `loadCore` starts them
-loading alongside the core. Until they arrive, text is set in Arial or Menlo
+typical English answer fetches about 60 KB once. Each answer starts them
+loading as it's created. Until they arrive, text is set in Arial or Menlo
 sized to Plex's widths, so it barely moves when Plex takes over.
 
 To use the app's own faces instead (its chrome's, say):
@@ -61,7 +61,7 @@ To use the app's own faces instead (its chrome's, say):
 }
 ```
 
-Nothing from `dist/fonts` is fetched then.
+Nothing from `dist/fonts` is fetched then, scoped to one element (a chat) or set for the whole page.
 
 ## Controls
 

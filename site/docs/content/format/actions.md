@@ -60,8 +60,9 @@ I filled in the form "route" and pressed "Plan my visit":
 | Camera, File | a list of `File`s, the browser's own, for your app to upload |
 | Location | `{ lat, lng, accuracy }` in degrees and metres when the reader shared it, or the place they typed |
 | Scan | the code, as text; a photo of it, when they took one, as files under `<name>-photo` |
+| Signature | the name typed in its box, as text; what was drawn on the pad, when the reader signed there, as a PNG `File` under `<name>-drawing` |
 
-The SDK checks `required` before it sends anything. A photo, a file or a location exists only after the reader acted: nothing is captured until they tap.
+The SDK checks `required` before it sends anything. A photo, a file, a drawn signature or a location exists only after the reader acted: nothing is captured until they tap.
 
 ## State
 

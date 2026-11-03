@@ -5,6 +5,19 @@ publishes only a version written here.
 
 ## Unreleased
 
+- An app that sets its own faces (`--ms-font`, `--ms-mono`) no longer
+  downloads IBM Plex: the SDK warmed the Plex files when the core loaded,
+  whatever the theme said: Plex Sans and Plex Mono, 60 KB on an English page, for nothing. Now each answer warms
+  only the faces its own styles name, so with the app's faces, on `:root`
+  or scoped to a chat, nothing is fetched from `dist/fonts`.
+- A signature drawn on the pad is sent with its form, as a PNG `File` under
+  `<name>-drawing`; before, only the typed name was read, so a signed pad
+  arrived as an empty string.
+- Every required field shows the required mark (` *`), as a Signature's
+  already did and the SwiftUI and Compose SDKs do; Input, TextArea, Select,
+  Date, File and the rest had none.
+- A form's files appear in `core.actionMessage` by name and type
+  ("id.pdf (application/pdf)") instead of `{}`.
 - A map keeps the core's drawn map when the live one can't start: without
   WebGL (switched off, or a machine without it) MapLibre fails, and the
   figure was left as an empty box.
