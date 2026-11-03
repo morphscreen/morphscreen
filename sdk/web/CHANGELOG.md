@@ -5,6 +5,12 @@ publishes only a version written here.
 
 ## Unreleased
 
+- A chart's hover shows as meant: a faint band behind the column, a dashed
+  crosshair on line charts, dots in each line's colour, and a layer the
+  pointer passes through. Their names lacked the `ms-` prefix the
+  stylesheet uses, so the band drew as a solid black block over the bar,
+  the crosshair didn't show, the dots were black and the layer caught the
+  pointer.
 - An app that sets its own faces (`--ms-font`, `--ms-mono`) no longer
   downloads IBM Plex: the SDK warmed the Plex files when the core loaded,
   whatever the theme said: Plex Sans and Plex Mono, 60 KB on an English page, for nothing. Now each answer warms

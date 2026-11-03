@@ -76,6 +76,37 @@ for (const width of [390, 760]) {
     const first = { bar: ["Jan", "120"], line: ["1", "25"], area: ["Mon", "1,200"], stacked: ["W1", "12"], horizontal: ["CS 101", "98"], scatter: ["A", "4.1"], pie: ["Search", "5,400"], donut: ["Free", "1,842"], radar: ["Speed", "8"] }[target.kind];
     kinds.add(target.kind);
     if (!first || !first.every((w) => tip.includes(w))) failures.push(`${width} ${target.kind}: tooltip "${tip.replace(/\n/g, " / ")}" lacks ${first}`);
+    // What the hover drew is styled as the stylesheet says: a faint band, a dashed
+    // crosshair, dots in their series' colours, in a layer the pointer passes through.
+    // (Named without the ms- prefix they got no style: a solid black band over the bar.)
+    const hover = await fig.evaluate((f) => {
+      const layer = f.querySelector("svg .ms-hover, svg [data-ms-added][aria-hidden]");
+      if (!layer) return null;
+      const cs = (e) => getComputedStyle(e);
+      const series = (e) => {
+        const c = [...e.classList].find((x) => /^ms-s\d+$/.test(x));
+        const ref = c && f.querySelector(`svg > .${c}:not([data-ms-added] *)`);
+        // A line's colour is its stroke; an area's, its fill.
+        return ref ? (cs(ref).stroke !== "none" ? cs(ref).stroke : cs(ref).fill) : null;
+      };
+      return {
+        through: cs(layer).pointerEvents,
+        unnamed: [...layer.children].filter((e) => ![...e.classList].some((c) => c.startsWith("ms-"))).map((e) => e.getAttribute("class")),
+        bands: [...layer.querySelectorAll(".ms-band")].map((b) => +cs(b).opacity),
+        cross: [...layer.querySelectorAll(".ms-cross")].map((c) => [cs(c).stroke, cs(c).strokeDasharray]),
+        dots: [...layer.querySelectorAll(".ms-dot")].map((d) => [cs(d).fill, series(d)]),
+      };
+    });
+    const at = `${width} ${target.kind}`;
+    if (hover) {
+      if (hover.through !== "none") failures.push(`${at}: the hover layer catches the pointer (pointer-events ${hover.through})`);
+      if (hover.unnamed.length) failures.push(`${at}: hover parts without the ms- prefix, so unstyled: ${hover.unnamed.join(", ")}`);
+      if (hover.bands.some((o) => o > 0.1)) failures.push(`${at}: the hover band is drawn solid (opacity ${hover.bands.join(", ")}), over the bar`);
+      if (hover.cross.some(([stroke, dash]) => stroke === "none" || dash === "none")) failures.push(`${at}: the crosshair isn't a dashed line: ${JSON.stringify(hover.cross)}`);
+      if (hover.dots.some(([fill, colour]) => fill === "rgb(0, 0, 0)" || (colour && fill !== colour))) failures.push(`${at}: hover dots aren't in their line's colour: ${JSON.stringify(hover.dots)}`);
+    }
+    if (["bar", "stacked", "horizontal"].includes(target.kind) && !hover?.bands.length) failures.push(`${at}: no hover band drawn`);
+    if (target.kind === "line" && (!hover?.cross.length || !hover?.dots.length)) failures.push(`${at}: no crosshair or dots on hover`);
   }
   for (const k of ["bar", "line", "area", "stacked", "horizontal", "scatter", "pie", "donut", "radar"]) if (!kinds.has(k)) failures.push(`${width}: no ${k} chart drawn`);
   // A legend item switches its series off.
@@ -108,4 +139,4 @@ if (failures.length) {
   console.log(failures.join("\n"));
   process.exit(1);
 }
-console.log("charts: ok (9 types x 2 widths: tooltips, legend toggle, axe)");
+console.log("charts: ok (9 types x 2 widths: tooltips, hover band, crosshair and dots styled, legend toggle, axe)");

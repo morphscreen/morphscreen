@@ -73,7 +73,7 @@ function enhance(fig: HTMLElement, opts: ChartOptions): (() => void) | null {
   const reflow = !!opts.redraw && REFLOW.has(kind);
 
   // What this adds isn't in the core's HTML; marked so a page can be compared with it.
-  const layer = svgEl("g", { class: "hover", "aria-hidden": "true", "data-ms-added": "1" });
+  const layer = svgEl("g", { class: "ms-hover", "aria-hidden": "true", "data-ms-added": "1" });
   svg.appendChild(layer);
   const tip = document.createElement("div");
   tip.className = "ms-chart-tip";
@@ -113,17 +113,17 @@ function enhance(fig: HTMLElement, opts: ChartOptions): (() => void) | null {
       svg.querySelector(`path.ms-slice[data-i="${i}"]`)?.classList.add("ms-on");
     } else if (kind === "horizontal") {
       const bh = ph / n;
-      layer.appendChild(svgEl("rect", { class: "band", x: l, y: t + bh * i, width: pw, height: bh }));
+      layer.appendChild(svgEl("rect", { class: "ms-band", x: l, y: t + bh * i, width: pw, height: bh }));
     } else if (kind === "line" || kind === "area" || kind === "scatter") {
       const cx = xOf(i);
-      layer.appendChild(svgEl("line", { class: "cross", x1: cx, x2: cx, y1: t, y2: t + ph }));
+      layer.appendChild(svgEl("line", { class: "ms-cross", x1: cx, x2: cx, y1: t, y2: t + ph }));
       for (const s of items) {
         const v = num(s.value);
-        if (Number.isFinite(v)) layer.appendChild(svgEl("circle", { class: `dot s${s.j + 1}`, cx, cy: y(v), r: 4 }));
+        if (Number.isFinite(v)) layer.appendChild(svgEl("circle", { class: `ms-dot ms-s${s.j + 1}`, cx, cy: y(v), r: 4 }));
       }
     } else if (kind !== "radar") {
       const bw = pw / n;
-      layer.appendChild(svgEl("rect", { class: "band", x: l + bw * i, y: t, width: bw, height: ph }));
+      layer.appendChild(svgEl("rect", { class: "ms-band", x: l + bw * i, y: t, width: bw, height: ph }));
     }
     tip.replaceChildren();
     const title = document.createElement("strong");
