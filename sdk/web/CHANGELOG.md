@@ -10,6 +10,9 @@ publishes only a version written here.
   whatever the theme said: Plex Sans and Plex Mono, 60 KB on an English page, for nothing. Now each answer warms
   only the faces its own styles name, so with the app's faces, on `:root`
   or scoped to a chat, nothing is fetched from `dist/fonts`.
+- A tab's underline keeps to its label's width when the face arrives after
+  the answer drew, and an answer is styled again then, so widths in the
+  font's own units follow the face in Firefox.
 - A signature drawn on the pad is sent with its form, as a PNG `File` under
   `<name>-drawing`; before, only the typed name was read, so a signed pad
   arrived as an empty string.

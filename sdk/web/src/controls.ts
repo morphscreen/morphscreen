@@ -678,10 +678,14 @@ export function tabs(el: HTMLElement): Off | void {
     if (panel && !reduced()) animate(panel, { opacity: [0, 1], transform: ["translateY(3px)", "translateY(0)"] }, { duration: 0.18 }).finished.then(() => panel.removeAttribute("style"));
   };
   radios.forEach((r) => r.addEventListener("change", change));
-  const ro = typeof ResizeObserver === "function" ? new ResizeObserver(() => put(at())) : null;
+  const again = () => put(at());
+  const ro = typeof ResizeObserver === "function" ? new ResizeObserver(again) : null;
   ro?.observe(list);
+  // A label's width changes when its face arrives, though the row's may not.
+  document.fonts?.addEventListener?.("loadingdone", again);
   return () => {
     ro?.disconnect();
+    document.fonts?.removeEventListener?.("loadingdone", again);
     line.remove();
   };
 }

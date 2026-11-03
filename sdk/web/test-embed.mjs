@@ -96,7 +96,13 @@ function snapshot(which) {
   const walk = (root, keep, path, out, sized) => {
     out[path] = look(root);
     if (root.id === "slot") delete out[path]["grid-template-columns"];
-    if (sized) {
+    // Inside an answer, an element that draws no box (display none or contents) is
+    // compared by whether it shows: its lengths count only once it does, and
+    // Firefox leaves font-relative ones (70ch) as they were before the face arrived
+    // until then.
+    if (sized && !root.getClientRects().length) {
+      out[path] = { display: out[path].display };
+    } else if (sized) {
       const r = root.getBoundingClientRect();
       out[path].size = `${Math.round(r.width)}x${Math.round(r.height)}`;
       for (const pseudo of ["::before", "::after"]) {

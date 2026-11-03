@@ -289,7 +289,7 @@ export async function loadCore(src: string | URL | ArrayBuffer | Uint8Array | Re
   return new Core(instance.exports as unknown as Exports);
 }
 
-const warmed = new Set<string>();
+const warmed = new Map<string, Promise<unknown>>();
 
 /**
  * Starts the Plex faces loading for an answer about to draw (morphscreen.css
@@ -298,16 +298,27 @@ const warmed = new Set<string>();
  * first. An app that set its own faces, on :root or scoped to its answers,
  * fetches nothing from dist/fonts, and neither does a page without the stylesheet.
  */
-export function warmFonts(el: Element) {
+export function warmFonts(el: HTMLElement) {
   if (typeof getComputedStyle !== "function" || !document.fonts?.load) return;
   const style = getComputedStyle(el);
   const first = (name: string) => style.getPropertyValue(name).split(",")[0].trim().replace(/^["']|["']$/g, "");
   const faces: string[] = [];
   if (first("--ms-font") === "IBM Plex Sans") faces.push('400 15px "IBM Plex Sans"', '600 15px "IBM Plex Sans"');
   if (first("--ms-mono") === "IBM Plex Mono") faces.push('400 13px "IBM Plex Mono"');
-  for (const face of faces) {
-    if (warmed.has(face)) continue;
-    warmed.add(face);
-    document.fonts.load(face).catch(() => {});
-  }
+  if (!faces.length) return;
+  for (const face of faces) if (!warmed.has(face)) warmed.set(face, document.fonts.load(face).catch(() => []));
+  // Lengths in the font's own units (running text's 70ch) are worked out once in
+  // Firefox: when the faces are in, the answer is styled again so they follow.
+  void Promise.all(faces.map((f) => warmed.get(f))).then(() => restyle(el));
+}
+
+/** Styles an answer again: a custom property set on it and taken off a frame later. */
+function restyle(el: HTMLElement) {
+  if (!el.isConnected) return;
+  const had = el.hasAttribute("style");
+  el.style.setProperty("--ms-faces", "in");
+  requestAnimationFrame(() => {
+    el.style.removeProperty("--ms-faces");
+    if (!had && !el.getAttribute("style")) el.removeAttribute("style");
+  });
 }
