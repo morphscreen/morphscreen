@@ -17,6 +17,7 @@ import { benchmarkPage } from "./pages/benchmark.mjs";
 import { compareOpenUI } from "./pages/compare.mjs";
 import { demoPage } from "./pages/demo.mjs";
 import { home } from "./pages/home.mjs";
+import { blogPages, changelogPage } from "./pages/journal.mjs";
 import { pricingPage } from "./pages/pricing.mjs";
 import { APP, DEMO, MAIL, ORIGIN, STATUS, esc } from "./pages/shared.mjs";
 
@@ -134,7 +135,7 @@ ${page.noindex ? `<meta name="robots" content="noindex">` : `<link rel="canonica
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${css.ui}">
 <link rel="stylesheet" href="${css.site}">
-${page.answer ? `<link rel="stylesheet" href="${css.answer}">\n` : ""}${page.lazyAnswer ? `<noscript><link rel="stylesheet" href="${css.answer}"></noscript>\n` : ""}${page.poster ? `<link rel="preload" as="image" href="${page.poster}" fetchpriority="high">\n` : ""}${page.docs ? `<link rel="stylesheet" href="${css.docs}">\n<script src="${docsJs}" defer></script>\n` : ""}${page.demo ? `<script src="${demoJs}" defer></script>\n` : ""}<meta property="og:type" content="website">
+${page.answer ? `<link rel="stylesheet" href="${css.answer}">\n` : ""}${page.lazyAnswer ? `<noscript><link rel="stylesheet" href="${css.answer}"></noscript>\n` : ""}${page.poster ? `<link rel="preload" as="image" href="${page.poster}" fetchpriority="high">\n` : ""}${page.docs ? `<link rel="stylesheet" href="${css.docs}">\n<script src="${docsJs}" defer></script>\n` : ""}${page.demo ? `<script src="${demoJs}" defer></script>\n` : ""}${page.feed ? `<link rel="alternate" type="application/rss+xml" title="${esc(page.feed.title)}" href="/${page.feed.file}">\n` : ""}<meta property="og:type" content="website">
 <meta property="og:site_name" content="MorphScreen">
 <meta property="og:title" content="${esc(page.title)}">
 <meta property="og:description" content="${esc(page.description)}">
@@ -173,7 +174,7 @@ ${page.stage ? `<main id="main">\n${page.stage}\n<div class="wrap">\n${page.body
       <p>&copy; 2026 Nandishwar Singh, trading as MorphScreen. Hiranagar, Jammu and Kashmir, India.</p>
     </div>
     <nav aria-labelledby="foot-product"><h2 id="foot-product">Product</h2><ul>
-      <li><a href="/docs">Docs</a></li><li><a href="/#how">How it works</a></li><li><a href="/docs/components">Components</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/benchmark">Benchmark</a></li><li><a href="/compare/openui">Against OpenUI</a></li><li><a href="https://github.com/morphscreen/morphscreen">GitHub</a></li><li><a href="${STATUS}">Status</a></li>
+      <li><a href="/docs">Docs</a></li><li><a href="/#how">How it works</a></li><li><a href="/docs/components">Components</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/benchmark">Benchmark</a></li><li><a href="/compare/openui">Against OpenUI</a></li><li><a href="https://github.com/morphscreen/morphscreen">GitHub</a></li><li><a href="${STATUS}">Status</a></li><li><a href="/changelog">Changelog</a></li>
     </ul></nav>
     <nav aria-labelledby="foot-account"><h2 id="foot-account">Account</h2><ul>
       <li><a href="${APP}/signin">Get a free key</a></li><li><a href="${APP}/signin">Sign in</a></li><li><a href="${DEMO}">Book a demo</a></li><li><a href="/contact">Contact</a></li>
@@ -207,6 +208,8 @@ const pages = [
   benchmarkPage({ board, dist }),
   await demoPage({ dist, css }),
   ...["terms.html", "privacy.html", "refunds.html", "delivery.html", "contact.html", "subprocessors.html", "security.html", "book.html", "404.html"].map(textPage),
+  changelogPage(),
+  ...blogPages(),
   ...docs({ dist, board, plans: all }),
 ];
 
