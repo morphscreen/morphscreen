@@ -93,6 +93,9 @@ function structured(page) {
     const url = `${ORIGIN}${page.path}`;
     graph.push({ "@type": page.docs ? "TechArticle" : "WebPage", "@id": url, url, name: page.og.title, description: page.description, isPartOf: { "@id": `${ORIGIN}/#site` }, primaryImageOfPage: { "@type": "ImageObject", url: page.og.url, width: 1200, height: 630 } });
   }
+  if (page.faq) {
+    graph.push({ "@type": "FAQPage", "@id": `${ORIGIN}${page.path}#questions`, mainEntity: page.faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
+  }
   if (page.path === "/" || page.path === "/pricing") {
     graph.push({
       "@type": "SoftwareApplication",

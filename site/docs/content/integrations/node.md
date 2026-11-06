@@ -12,7 +12,7 @@ The page's `connectAgent` sends its runs to your route, which adds the key and t
 ```js file="site/docs/snippets/agent-proxy.mjs" title="server.mjs"
 ```
 
-In Express, Fastify or Hono, the route body is the same: read the run, set `forwardedProps.model`, `fetch` MorphScreen's `/v1/ui`, and pipe the response body back with its status and content type.
+In Fastify or another framework, the route body is the same: read the run, set `forwardedProps.model`, `fetch` MorphScreen's `/v1/ui`, and pipe the response body back with its status and content type. [Express](/docs/integrations/express) and [Hono](/docs/integrations/hono) have their own pages.
 
 ## The answer's text, or HTML
 

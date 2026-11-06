@@ -27,7 +27,7 @@ Every package manager works: npm, pnpm, Yarn (with node_modules or Plug'n'Play) 
 
 ## On your server
 
-Your server keeps the key and talks to MorphScreen: [Node.js](/docs/integrations/node), [Python](/docs/integrations/python), or [HTML with no JavaScript](/docs/integrations/html) for pages drawn on the server.
+Your server keeps the key and talks to MorphScreen: [Node.js](/docs/integrations/node), [Express](/docs/integrations/express), [Hono](/docs/integrations/hono), [Python](/docs/integrations/python), or [HTML with no JavaScript](/docs/integrations/html) for pages drawn on the server.
 
 In these examples a saved answer stands in for your server's stream, so they run anywhere. In your app, the text comes from your server's route ([Quick start](/docs/quickstart)).
 

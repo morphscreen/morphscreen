@@ -14,8 +14,10 @@ export const NAV = [
         pages: [
           { path: "/docs", title: "Introduction" },
           { path: "/docs/quickstart", title: "Quick start" },
-          { path: "/docs/comparison", title: "MorphScreen vs others" },
+          { path: "/docs/comparison", title: "Generative UI SDKs compared" },
+          { path: "/docs/comparison/copilotkit", title: "MorphScreen vs CopilotKit" },
           { path: "/docs/coding-agents", title: "Coding agent setup" },
+          { path: "/docs/faq", title: "Questions and answers" },
         ],
       },
       {
