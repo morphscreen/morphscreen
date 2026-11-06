@@ -70,11 +70,13 @@ const families = packs();
 
 const MARK = `<svg viewBox="0 0 280 200" aria-hidden="true" focusable="false"><path d="M20,20 L100,20 L140,104 L180,20 L260,20 L260,180 L20,180 Z" fill="currentColor"/></svg>`;
 
+const REPO = "https://github.com/morphscreen/morphscreen";
 const NAV = [
   ["/docs", "Docs", true],
   ["/pricing", "Pricing"],
   ["/benchmark", "Benchmark"],
-  [`${STATUS}`, "Status"],
+  ["/blog", "Blog"],
+  [REPO, "GitHub"],
 ];
 
 // Who we are, as search engines read it: the organisation, the product and its prices.
@@ -87,6 +89,7 @@ function structured(page) {
     logo: `${ORIGIN}/icon-512.png`,
     email: MAIL,
     founder: { "@type": "Person", name: "Nandishwar Singh" },
+    sameAs: [REPO, "https://www.npmjs.com/package/@morphscreen/web"],
     address: { "@type": "PostalAddress", streetAddress: "Ward number 5", addressLocality: "Hiranagar", addressRegion: "Jammu and Kashmir", postalCode: "184142", addressCountry: "IN" },
   };
   const graph = [org, { "@type": "WebSite", "@id": `${ORIGIN}/#site`, name: "MorphScreen", url: ORIGIN, publisher: { "@id": `${ORIGIN}/#org` } }];
@@ -114,6 +117,20 @@ function structured(page) {
   }
   if (page.faq) {
     graph.push({ "@type": "FAQPage", "@id": `${ORIGIN}${page.path}#questions`, mainEntity: page.faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
+  }
+  if (page.path === "/") {
+    // The open part, as code: where it lives and under which licence.
+    graph.push({
+      "@type": "SoftwareSourceCode",
+      "@id": `${ORIGIN}/#code`,
+      name: "MorphScreen",
+      description: "The MorphScreen format, its Rust core and the web, SwiftUI and Compose SDKs: a model answers in Markdown with a few tags, the core checks every line against the app's components as it streams, and the SDKs draw it.",
+      codeRepository: REPO,
+      license: "https://www.apache.org/licenses/LICENSE-2.0",
+      programmingLanguage: ["Rust", "TypeScript", "Swift", "Kotlin"],
+      runtimePlatform: ["Web browsers (WebAssembly)", "iOS", "macOS", "Android", "JVM"],
+      publisher: { "@id": `${ORIGIN}/#org` },
+    });
   }
   if (page.path === "/" || page.path === "/pricing") {
     graph.push({
@@ -188,11 +205,11 @@ ${page.stage ? `<main id="main">\n${page.stage}\n<div class="wrap">\n${page.body
   <div class="wrap foot__cols">
     <div class="foot__who">
       <a class="brand" href="/">${MARK}<span>MorphScreen</span></a>
-      <p>Generative UI for any model, checked as it streams.</p>
+      <p>Open-source generative UI for any model, checked as it streams. The core and SDKs are Apache-2.0.</p>
       <p>&copy; 2026 Nandishwar Singh, trading as MorphScreen. Hiranagar, Jammu and Kashmir, India.</p>
     </div>
     <nav aria-labelledby="foot-product"><h2 id="foot-product">Product</h2><ul>
-      <li><a href="/docs">Docs</a></li><li><a href="/#how">How it works</a></li><li><a href="/docs/components">Components</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/benchmark">Benchmark</a></li><li><a href="/compare/openui">Against OpenUI</a></li><li><a href="https://github.com/morphscreen/morphscreen">GitHub</a></li><li><a href="${STATUS}">Status</a></li><li><a href="/changelog">Changelog</a></li>
+      <li><a href="/docs">Docs</a></li><li><a href="/#how">How it works</a></li><li><a href="/docs/components">Components</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/benchmark">Benchmark</a></li><li><a href="/compare/openui">Against OpenUI</a></li><li><a href="https://github.com/morphscreen/morphscreen">GitHub</a></li><li><a href="${STATUS}">Status</a></li><li><a href="/changelog">Changelog</a></li><li><a href="/blog">Blog</a></li>
     </ul></nav>
     <nav aria-labelledby="foot-account"><h2 id="foot-account">Account</h2><ul>
       <li><a href="${APP}/signin">Get a free key</a></li><li><a href="${APP}/signin">Sign in</a></li><li><a href="${DEMO}">Book a demo</a></li><li><a href="/contact">Contact</a></li>

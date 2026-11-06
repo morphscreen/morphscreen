@@ -27,6 +27,7 @@ export function pricingPage({ plans }) {
 <header class="page-head">
   <h1 class="title1">Pricing</h1>
   <p class="lead">One price per call, with the model included on paid plans. Start free and move up from the dashboard when you need to.</p>
+  <p class="section__note">The format, the core and the SDKs are <a href="https://github.com/morphscreen/morphscreen">open source under Apache-2.0</a> and cost nothing. These plans are for the hosted API: the model included in the price, repairs by the same model, and metering.</p>
 </header>
 ${pricing(plans, { heading: "h2", id: "plans", title: "Plans" })}
 <section class="section" aria-labelledby="limits-title">

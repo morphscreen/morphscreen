@@ -59,7 +59,7 @@ export function changelogPage() {
   const day = (iso) => new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
   const body = `<header class="page-head">
 <h1 class="title1">Changelog</h1>
-<p class="lead">Every published version of <code>@morphscreen/web</code>, newest first. <a href="/changelog.xml">RSS</a></p>
+<p class="lead">Every version of the web SDK we've published, newest first. <a href="/changelog.xml">RSS</a></p>
 </header>
 <div class="prose">
 ${sections.map((s) => `<h2 id="${s.id}">${esc(s.version)}${s.date ? ` <span class="small">${day(s.date)}</span>` : ""}</h2>\n${s.html}`).join("\n")}

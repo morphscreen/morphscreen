@@ -111,7 +111,7 @@ export function benchmarkPage({ board, dist }) {
 <section class="section" aria-labelledby="runs-title">
   <div class="section__head">
     <h2 id="runs-title" class="title">The runs</h2>
-    <p class="section__note">Each archive holds every raw answer in both formats as the model wrote it, one line per call with its model, tokens, cost and time, and our verdict on each answer.</p>
+    <p class="section__note">Each archive holds every raw answer in both formats as the model wrote it, one line per call with its model, tokens, cost and time, and our verdict on each answer. The code that runs the benchmark is open source in <a href="https://github.com/morphscreen/morphscreen">the repository</a>, so you can run it yourself.</p>
   </div>
   <div class="table-scroll" tabindex="0" role="region" aria-label="Benchmark runs">
     <table class="board runs">

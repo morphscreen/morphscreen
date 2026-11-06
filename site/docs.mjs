@@ -367,7 +367,7 @@ export function docs({ dist, board, plans }) {
   writeFileSync(join(dist, "docs/search.json"), JSON.stringify(search));
   writeFileSync(
     join(dist, "llms.txt"),
-    `# MorphScreen\n\n> Generative UI for any model: a model answers in Markdown with a few tags, MorphScreen checks every line as it streams and draws it as UI on the web.\n\nEvery docs page is also served as Markdown (add .md to its address). The whole docs in one file: ${ORIGIN}/llms-full.txt\n\n${NAV.map((tab) => tab.groups.map((g) => `## ${tab.name}: ${g.title}\n\n${g.pages.map((p) => `- [${p.title}](${ORIGIN}${p.path === "/docs" ? "/docs/index" : p.path}.md)`).join("\n")}`).join("\n\n")).join("\n\n")}\n`,
+    `# MorphScreen\n\n> Generative UI for any model: a model answers in Markdown with a few tags, MorphScreen checks every line as it streams and draws it as UI on the web.\n\nOpen source under Apache-2.0 (the format, the Rust core and the SDKs): https://github.com/morphscreen/morphscreen. Apps add their own components beside the built-in ones: ${ORIGIN}/docs/format/custom-components.md\n\nEvery docs page is also served as Markdown (add .md to its address). The whole docs in one file: ${ORIGIN}/llms-full.txt\n\n${NAV.map((tab) => tab.groups.map((g) => `## ${tab.name}: ${g.title}\n\n${g.pages.map((p) => `- [${p.title}](${ORIGIN}${p.path === "/docs" ? "/docs/index" : p.path}.md)`).join("\n")}`).join("\n\n")).join("\n\n")}\n`,
   );
   writeFileSync(join(dist, "llms-full.txt"), full.join("\n\n---\n\n"));
   return pages;

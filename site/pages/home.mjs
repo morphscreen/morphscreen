@@ -111,7 +111,7 @@ export function home({ plans, board, families, css }) {
   <div class="wrap stage__body">
     <div class="stage__copy">
       <h1 id="hero-title" class="stage__title"><span>Let your model answer</span> <span>with real UI.</span></h1>
-      <p class="stage__sub">Cards, charts, photos, quizzes and forms, drawn while the answer streams. Every line is checked against the components your app allows, and fixed by the same model when it breaks one.</p>
+      <p class="stage__sub">Cards, charts, photos, quizzes, forms and your own components, drawn while the answer streams. Every line is checked against the components your app allows, and fixed by the same model when it breaks one.</p>
       <div class="stage__ctas">
         <a class="btn btn--primary btn--large" href="${APP}/signin">Get a free key</a>
         <a class="stage__ghost" href="${DEMO}">Book a 30-minute demo</a>
@@ -120,7 +120,7 @@ export function home({ plans, board, families, css }) {
         <code class="install__cmd"><span class="install__sign" aria-hidden="true">$</span> npm install @morphscreen/web</code>
         <button type="button" class="install__copy" data-copy-text="npm install @morphscreen/web" aria-label="Copy the install command">Copy</button>
       </div>
-      <p class="stage__note">The web SDK, on npm now: <a href="/docs/quickstart">from a key to an answer in your page</a> in about ten minutes. Free: ${count(free.included)} calls on our model with no model key, then up to ${count(free.monthly)} a month on your own OpenRouter key. No card.</p>
+      <p class="stage__note"><a href="https://github.com/morphscreen/morphscreen">Open source on GitHub</a> under Apache-2.0: the format, the Rust core and the SDKs. The web SDK, on npm now: <a href="/docs/quickstart">from a key to an answer in your page</a> in about ten minutes. Free: ${count(free.included)} calls on our model with no model key, then up to ${count(free.monthly)} a month on your own OpenRouter key. No card.</p>
     </div>
   </div>
   <div class="wrap stage__foot">
@@ -232,12 +232,62 @@ export function home({ plans, board, families, css }) {
 <section class="section gallery" id="components" aria-labelledby="components-title" data-reveal>
   <div class="section__head">
     ${heading("h2", "components-title", `${total} components in ${families.length} families.`, "Your app allows the ones it wants.")}
-    <p class="section__note fade">Core comes with every answer. An app names the packs it wants, or takes them all, and the model is told about only those. Pick a family to see it drawn.</p>
+    <p class="section__note fade">Core comes with every answer. An app names the packs it wants, or takes them all, and the model is told about only those, and adds <a href="#your-components">its own</a> beside them. Pick a family to see it drawn.</p>
   </div>
   <div class="gallery__body">
     <fieldset class="picks fade"><legend class="sr-only">A family of components</legend>${picks}</fieldset>
     <div class="gallery__panels">${panels}</div>
   </div>
+</section>`;
+
+  // Your own components: the pack that describes one, and the code that draws it.
+  const pack = `{
+  "name": "shop",
+  "components": {
+    "ProductCard": {
+      "about": "a product with its price",
+      "attrs": {
+        "name": { "type": "string", "required": true },
+        "price": { "type": "string", "required": true },
+        "stock": ["in", "low", "out"]
+      },
+      "content": "none"
+    }
+  }
+}`;
+  const draw = `import { Answer, type CustomProps } from "@morphscreen/web/react";
+import shop from "./shop.json";
+
+function ProductCard({ attrs }: CustomProps) {
+  return <YourCard name={attrs.name} price={attrs.price} />;
+}
+
+<Answer core={core} text={text} custom={[shop]}
+  components={{ ProductCard }} />`;
+  const own = `
+<section class="section own" id="your-components" aria-labelledby="own-title" data-reveal>
+  <div class="section__head">
+    ${heading("h2", "own-title", "Your own components,", "drawn by your own code.")}
+    <p class="section__note fade">A product card from your catalogue, a seat map, a chart from your design system. Describe it once: the model learns it from the prompt, the core checks every use of it as it streams, and your code draws it, in React or plain JavaScript. The model writes <code>&lt;ProductCard name="Trail 3" price="$89" stock="low" /&gt;</code> beside the built-in components, and your card appears in the answer.</p>
+  </div>
+  <div class="own__code fade">
+    <figure><figcaption class="small">1. Describe it once: shop.json</figcaption><pre class="code" tabindex="0"><code>${esc(pack)}</code></pre></figure>
+    <figure><figcaption class="small">2. Draw it with your code: App.tsx</figcaption><pre class="code" tabindex="0"><code>${esc(draw)}</code></pre></figure>
+  </div>
+  <p class="section__note fade"><a href="/docs/format/custom-components">Your own components</a> in the docs has the whole of it: attribute types, buttons inside them, and drawing while they stream.</p>
+</section>`;
+
+  const open = `
+<section class="section own" id="open-source" aria-labelledby="open-title" data-reveal>
+  <div class="section__head">
+    ${heading("h2", "open-title", "Open source.", "The hosted API is the paid part.")}
+    <p class="section__note fade">The format, the Rust core, the web, SwiftUI and Compose SDKs and the benchmark are on GitHub under Apache-2.0. Read them, run them, draw answers with no call to us at all. The API adds what's hard to run yourself: the model included in every plan, repairs by the same model, and metering.</p>
+  </div>
+  <ul class="own__links fade">
+    <li><a href="https://github.com/morphscreen/morphscreen">github.com/morphscreen/morphscreen</a>: the core, the SDKs, the spec and the benchmark</li>
+    <li><a href="https://github.com/morphscreen/starter-react">starter-react</a> and <a href="https://github.com/morphscreen/starter-nextjs">starter-nextjs</a>: a working chat to start from</li>
+    <li><a href="https://github.com/morphscreen/morphscreen/issues">Issues</a>: bugs, ideas and the work open to contributors</li>
+  </ul>
 </section>`;
 
   const faq = `
@@ -246,6 +296,8 @@ export function home({ plans, board, families, css }) {
     ${heading("h2", "questions-title", "Questions", "people ask first.")}
   </div>
   <div class="faq__list fade">
+    <details><summary>Is it open source?</summary><p>Yes. The format, the Rust core and the SDKs are open source under Apache-2.0 at <a href="https://github.com/morphscreen/morphscreen">github.com/morphscreen/morphscreen</a>, along with the benchmark and its raw answers. The hosted API, which adds the included model, repairs and metering, is the paid part, with a free plan.</p></details>
+    <details><summary>Can the model use my own components?</summary><p>Yes. Describe a component once (its name, attributes and what it's for) and send it with the call: the model uses it beside the built-in ones, the core checks every use, and your own code draws it (<a href="/docs/format/custom-components">your own components</a>).</p></details>
     <details><summary>Which models can I use?</summary><p>DeepSeek V4.1 Flash is included on every plan and runs on our key; V4 Flash steps in when V4.1 can't serve a call. Any other model on OpenRouter works with your own OpenRouter key, sent with the call and never kept.</p></details>
     <details><summary>Do you keep my users' prompts and answers?</summary><p>No. We keep a line for each call: when, with which key, how long it took and whether the answer was valid. Never what was said, unless you turn on debug logs for a project, which keeps its prompts and answers for 7 days.</p></details>
     <details><summary>What happens at my plan's limit?</summary><p>The free plan stops until its day or month starts again, and the API answers with 402 or 429 and when to try again. Paid plans carry on: calls past the month are extra, billed with the month, up to as many again as the plan includes.</p></details>
@@ -267,12 +319,12 @@ export function home({ plans, board, families, css }) {
   return {
     path: "/",
     title: "MorphScreen: let your model answer with real UI",
-    description: `Turn a model's reply into cards, charts, forms and quizzes while it streams, checked line by line against your app's components. ${total} components; free plan, no card.`,
+    description: `Open-source generative UI: your model answers with cards, charts, forms and your own components, checked line by line as they stream. Free plan, no card.`,
     step: "landing",
     poster: "/media/hero.jpg",
     lazyAnswer: true,
     files: { [WHOLE]: text },
     stage,
-    body: morph + proof + live + gallery + pricing(plans) + faq + close,
+    body: morph + proof + live + gallery + own + open + pricing(plans) + faq + close,
   };
 }

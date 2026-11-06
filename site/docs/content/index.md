@@ -10,6 +10,10 @@ description: MorphScreen lets a model answer with real UI. It reads the answer a
 
 A model writes its answer as Markdown with a few tags, like `<Card>`, `<Chart>`, `<Quiz>` and `<Form>`. MorphScreen's core reads that text as it arrives, checks each line against the components your app allows, and hands your page something it can draw at once. When a line breaks a rule, the API asks the same model to fix only that line.
 
+Next to the built-in components, the model can use [your own](/docs/format/custom-components): describe a component once, and the core checks it and your code draws it.
+
+The format, the Rust core and the SDKs are open source under Apache-2.0 at [github.com/morphscreen/morphscreen](https://github.com/morphscreen/morphscreen). The hosted API adds the model included in every plan, repairs and metering.
+
 [Get a key and make a first call](/docs/quickstart), or [see every component](/docs/components) drawn live.
 
 ## How it works

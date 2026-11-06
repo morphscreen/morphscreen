@@ -890,6 +890,39 @@ main > .wrap > .section {
   }
 }
 
+/* Your own components and open source: two code samples side by side, and
+   a short list of where things are. */
+.own__code {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.own__code figure {
+  margin: 0;
+  min-width: 0;
+}
+.own__code figcaption {
+  margin-bottom: 8px;
+  color: var(--msui-text-2);
+}
+.own .section__note + .own__code + .section__note {
+  margin-top: 20px;
+}
+.own__links {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--msui-text-2);
+}
+@media (max-width: 960px) {
+  .own__code {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* The families: pick one, see it drawn. A pair of radios the CSS reads, so
    it works without JavaScript. */
 .gallery__body {
