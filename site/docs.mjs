@@ -17,7 +17,7 @@
 // catalog and the API's own description (site/docs/components.mjs and
 // reference.mjs), so they can't drift from the product.
 
-import { existsSync, mkdirSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { coreHtml, repo } from "./data.mjs";
 import { componentPages } from "./docs/components.mjs";
@@ -288,6 +288,8 @@ export function docs({ dist, board, plans }) {
         // Its ### headings become the page's ##, so the headings stay in order.
         return (end < 0 ? rest : rest.slice(0, end)).replace(/^## .*\n+/, "").replace(/^#(#{2,}) /gm, "$1 ");
       })
+      // {{components:all}}: how many components the packs have together, from spec/packs.
+      .replace(/\{\{components:all\}\}/g, () => String(readdirSync(join(repo, "spec/packs")).filter((f) => f.endsWith(".json")).reduce((n, f) => n + Object.keys(JSON.parse(readFileSync(join(repo, "spec/packs", f), "utf8")).components ?? {}).length, 0)))
       // {{prompt:core}}, {{prompt:all}}: the system prompt's tokens, core alone and every pack, from the
       // scoreboard's prompt rows; {{prompt:per}}, what each component a pack adds costs.
       .replace(/\{\{prompt:(core|all|per)\}\}/g, (_, which) => {
@@ -351,7 +353,12 @@ export function docs({ dist, board, plans }) {
     <p class="search__hint small">Enter opens the first result, Escape closes.</p>
   </div>
 </div>`;
-    pages.push({ path: entry.path, title: `${page.title} | MorphScreen docs`, description: page.description, step: "docs", docs: true, answer: true, body, card: { section: entry.group, title: page.title, visual: cardVisual(page.md) } });
+    // The questions page carries its questions as structured data too: each ## heading and its answer in plain words.
+    const faq = entry.path === "/docs/faq" ? page.md.split(/^## /m).slice(1).map((part) => {
+      const [q, ...rest] = part.split("\n");
+      return { q: q.trim(), a: rest.join(" ").replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[`*]/g, "").replace(/\s+/g, " ").trim() };
+    }) : undefined;
+    pages.push({ path: entry.path, title: `${page.title} | MorphScreen docs`, description: page.description, step: "docs", docs: true, answer: true, body, faq, card: { section: entry.group, title: page.title, visual: cardVisual(page.md) } });
   }
   writeFileSync(join(dist, "docs/search.json"), JSON.stringify(search));
   writeFileSync(

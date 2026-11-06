@@ -19,6 +19,13 @@ export const NAV = [
         ],
       },
       {
+        title: "Guides",
+        pages: [
+          { path: "/docs/guides/generative-ui-react", title: "Generative UI in React" },
+          { path: "/docs/guides/llm-output-as-ui", title: "Rendering LLM output as UI" },
+        ],
+      },
+      {
         title: "The format",
         pages: [
           { path: "/docs/format", title: "Overview" },
@@ -38,6 +45,7 @@ export const NAV = [
           { path: "/docs/agents", title: "Overview" },
           { path: "/docs/agents/ag-ui", title: "AG-UI agents" },
           { path: "/docs/agents/langgraph", title: "LangGraph" },
+          { path: "/docs/agents/langchain", title: "LangChain.js" },
           { path: "/docs/agents/openai-compatible", title: "OpenAI-compatible clients" },
         ],
       },
@@ -73,6 +81,8 @@ export const NAV = [
         title: "On your server",
         pages: [
           { path: "/docs/integrations/node", title: "Node.js" },
+          { path: "/docs/integrations/express", title: "Express" },
+          { path: "/docs/integrations/hono", title: "Hono" },
           { path: "/docs/integrations/python", title: "Python" },
           { path: "/docs/integrations/html", title: "HTML without JavaScript" },
         ],
