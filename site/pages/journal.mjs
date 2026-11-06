@@ -9,7 +9,8 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { repo } from "../data.mjs";
+import { coreHtml, repo } from "../data.mjs";
+import { plainMarkdown, render } from "../docs.mjs";
 import { esc, ORIGIN } from "./shared.mjs";
 
 const { Marked } = await import("marked");
@@ -81,7 +82,11 @@ ${sections.map((s) => `<h2 id="${s.id}">${esc(s.version)}${s.date ? ` <span clas
   };
 }
 
-/** The blog's pages: its posts and the list of them, or none while nothing is published. */
+/** The blog's pages: its posts and the list of them, or none while nothing is
+ * published. A post is Markdown with the docs' blocks (`:::figure` draws an
+ * answer as a figure), drawn like a docs page without the sidebar: its
+ * contents list, Copy Markdown, the post as Markdown beside it for agents,
+ * and BlogPosting structured data. */
 export function blogPages() {
   const dir = join(repo, "site/blog");
   const posts = (existsSync(dir) ? readdirSync(dir) : [])
@@ -92,12 +97,18 @@ export function blogPages() {
       if (!m) throw new Error(`site/blog/${f}: no front matter`);
       const meta = Object.fromEntries(m[1].split("\n").map((l) => [l.slice(0, l.indexOf(":")).trim(), l.slice(l.indexOf(":") + 1).trim()]));
       for (const k of ["title", "description", "date"]) if (!meta[k]) throw new Error(`site/blog/${f}: no ${k}`);
-      return { slug: f.replace(/\.md$/, ""), ...meta, html: md(src.slice(m[0].length)) };
+      const text = src.slice(m[0].length);
+      const { html, toc } = render(text);
+      const figure = text.match(/^:::figure[^\n]*\n([\s\S]*?)^:::[ \t]*$/m)?.[1];
+      // Reading time from the words people read, at 230 a minute: code and an answer's tags don't count.
+      const words = text.replace(/```[\s\S]*?```/g, "").replace(/<[^>]+>/g, "").split(/\s+/).filter(Boolean).length;
+      return { slug: f.replace(/\.md$/, ""), ...meta, text, html, toc, figure, minutes: Math.max(1, Math.round(words / 230)) };
     })
     .filter((p) => p.draft !== "true")
     .sort((a, b) => b.date.localeCompare(a.date));
   if (!posts.length) return [];
   const day = (d) => new Date(`${d}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  const markdown = Object.fromEntries(posts.map((p) => [`blog/${p.slug}.md`, plainMarkdown(p.title, p.description, p.text).replace(/\n\n/, `\n\n${day(p.date)}, by Nandishwar Singh\n\n`)]));
   const list = {
     path: "/blog",
     title: "Blog | MorphScreen",
@@ -107,29 +118,53 @@ export function blogPages() {
 <h1 class="title1">Blog</h1>
 <p class="lead">How MorphScreen works and what we measured. <a href="/blog.xml">RSS</a></p>
 </header>
-<div class="prose">
-${posts.map((p) => `<h2><a href="/blog/${p.slug}">${esc(p.title)}</a></h2>\n<p class="small">${day(p.date)}</p>\n<p>${esc(p.description)}</p>`).join("\n")}
+<div class="cards cards--posts">
+${posts.map((p) => `<a class="card-link" href="/blog/${p.slug}"><span class="card-link__text">${day(p.date)} · ${p.minutes} min read</span><span class="card-link__title">${esc(p.title)}</span><span class="card-link__text">${esc(p.description)}</span></a>`).join("\n")}
 </div>`,
+    article: true,
     feed: { file: "blog.xml", title: "The MorphScreen blog" },
     files: {
       "blog.xml": feed({ title: "The MorphScreen blog", path: "/blog", description: "How MorphScreen works and what we measured.", items: posts.map((p) => ({ title: p.title, link: `${ORIGIN}/blog/${p.slug}`, date: `${p.date}T00:00:00Z`, html: p.html })) }),
+      ...markdown,
     },
   };
   return [
     list,
-    ...posts.map((p) => ({
+    ...posts.map((p, i) => ({
       path: `/blog/${p.slug}`,
       title: `${p.title} | MorphScreen`,
       description: p.description,
       step: "legal",
-      body: `<header class="page-head">
-<p class="small">${day(p.date)}, by Nandishwar Singh</p>
-<h1 class="title1">${esc(p.title)}</h1>
-</header>
-<div class="prose">
-${p.html}
-</div>`,
+      article: true,
+      answer: true,
+      post: { headline: p.title, date: p.date, words: p.text.split(/\s+/).length, keywords: p.keywords },
+      card: { section: "Blog", title: p.title, visual: p.figure ? { type: "answer", html: coreHtml(p.figure, "all") } : undefined },
       feed: { file: "blog.xml", title: "The MorphScreen blog" },
+      body: `<div class="docs docs--post">
+  <article class="doc">
+    <header class="doc__head">
+      <p class="doc__group"><a href="/blog">Blog</a> · ${day(p.date)} · ${p.minutes} min read</p>
+      <h1 class="title1">${esc(p.title)}</h1>
+      <p class="lead">${esc(p.description)}</p>
+      <p class="small">By Nandishwar Singh, who builds MorphScreen</p>
+      <div class="doc__tools"><button type="button" class="btn btn--small" data-copy-md="/blog/${p.slug}.md">Copy Markdown</button><a class="btn btn--small" href="/blog/${p.slug}.md">View as Markdown</a></div>
+    </header>
+    <div class="doc__body">${p.html}</div>
+    <nav class="doc__pager" aria-label="More posts">${posts[i + 1] ? `<a class="pager pager--prev" href="/blog/${posts[i + 1].slug}"><span class="pager__dir">Older</span><span class="pager__title">${esc(posts[i + 1].title)}</span></a>` : "<span></span>"}${posts[i - 1] ? `<a class="pager pager--next" href="/blog/${posts[i - 1].slug}"><span class="pager__dir">Newer</span><span class="pager__title">${esc(posts[i - 1].title)}</span></a>` : ""}</nav>
+  </article>
+  <aside class="toc" aria-label="On this page">${p.toc.length ? `<p class="toc__title">On this page</p><ul>${p.toc.map((h) => `<li class="toc__d${h.depth}"><a href="#${h.id}">${h.text}</a></li>`).join("")}</ul>` : ""}</aside>
+</div>`,
     })),
   ];
+}
+
+/** What llms.txt and llms-full.txt say about the blog: each post, as Markdown. */
+export function blogForAgents() {
+  const pages = blogPages().filter((p) => p.post);
+  if (!pages.length) return { list: "", full: "" };
+  const files = blogPages()[0].files;
+  return {
+    list: `\n## Blog\n\n${pages.map((p) => `- [${p.post.headline}](${ORIGIN}${p.path}.md): ${p.description}`).join("\n")}\n`,
+    full: pages.map((p) => files[`${p.path.slice(1)}.md`]).join("\n\n"),
+  };
 }

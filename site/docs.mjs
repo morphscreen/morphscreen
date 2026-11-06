@@ -10,6 +10,7 @@
 //   ```sh pm                         one install line, as npm, pnpm, Yarn and bun tabs
 //   :::note Title  ...  :::          a callout (note, tip, warning)
 //   :::preview  ...  :::             an answer in our format, drawn live by the core
+//   :::figure Caption  ...  :::      the same, drawn as a figure with its caption (the blog)
 //   :::cards  - [Title](href): text  :::   links as cards
 //   :::steps  ### One  ### Two  :::  numbered steps
 //
@@ -165,7 +166,7 @@ function directives(md, render) {
     const line = lines[i];
     const f = line.match(/^(`{3,})/);
     if (f) fence = fence === null ? f[1] : line.startsWith(fence) && line.trim() === fence ? null : fence;
-    const open = fence === null && line.match(/^:::(note|tip|warning|preview|cards|steps)\s*(.*)$/);
+    const open = fence === null && line.match(/^:::(note|tip|warning|preview|figure|cards|steps)\s*(.*)$/);
     if (!open) {
       out.push(line);
       continue;
@@ -177,7 +178,7 @@ function directives(md, render) {
       const l = lines[i];
       const g = l.match(/^(`{3,})/);
       if (g) inner = inner === null ? g[1] : l.trim() === inner ? null : inner;
-      if (inner === null && /^:::(note|tip|warning|preview|cards|steps)\b/.test(l)) depth++;
+      if (inner === null && /^:::(note|tip|warning|preview|figure|cards|steps)\b/.test(l)) depth++;
       else if (inner === null && l.trim() === ":::") {
         if (depth === 0) break;
         depth--;
@@ -188,6 +189,7 @@ function directives(md, render) {
     const text = body.join("\n");
     let html;
     if (kind === "preview") html = preview(text, arg || "all");
+    else if (kind === "figure") html = `<figure class="answer-figure"><div class="preview"><div class="ms-answer">${coreHtml(text, "all")}</div></div>${arg ? `<figcaption>${render.inline(arg)}</figcaption>` : ""}</figure>`;
     else if (kind === "cards") {
       const items = [...text.matchAll(/^- \[([^\]]+)\]\(([^)]+)\):?\s*(.*)$/gm)];
       html = `<div class="cards">${items.map(([, t, href, d]) => `<a class="card-link" href="${esc(href)}"><span class="card-link__title">${esc(t)}</span><span class="card-link__text">${render.inline(d)}</span></a>`).join("")}</div>`;
@@ -199,9 +201,11 @@ function directives(md, render) {
 }
 
 /** The page as Markdown for people and agents to copy: our blocks written plainly. */
-function plainMarkdown(title, description, md) {
+export function plainMarkdown(title, description, md) {
   const body = md
     .replace(/^:::preview.*\n([\s\S]*?)^:::\s*$/gm, (_, a) => "```markdown\n" + a.replace(/\n$/, "") + "\n```")
+    // A figure's answer as its source, under its caption: the numbers in its tables stay readable.
+    .replace(/^:::figure[ \t]*(.*)\n([\s\S]*?)^:::\s*$/gm, (_, c, a) => `${c.trim() ? `${c.trim()}\n\n` : ""}\`\`\`markdown\n${a.replace(/\n$/, "")}\n\`\`\``)
     .replace(/^:::(note|tip|warning)\s*(.*)\n([\s\S]*?)^:::\s*$/gm, (_, k, t, a) => a.trim().split("\n").map((l, i) => (i === 0 ? `> **${t || { note: "Note", tip: "Tip", warning: "Careful" }[k]}:** ${l}` : `> ${l}`)).join("\n"))
     .replace(/^:::(cards|steps)\s*\n?/gm, "")
     .replace(/^:::\s*$/gm, "")
@@ -210,7 +214,7 @@ function plainMarkdown(title, description, md) {
 }
 
 /** Renders one page's Markdown: its HTML, the h2 and h3 for the contents. */
-function render(md) {
+export function render(md) {
   const toc = [];
   const used = new Set();
   let tables = 0;

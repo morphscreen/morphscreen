@@ -17,7 +17,7 @@ import { benchmarkPage } from "./pages/benchmark.mjs";
 import { compareOpenUI } from "./pages/compare.mjs";
 import { demoPage } from "./pages/demo.mjs";
 import { home } from "./pages/home.mjs";
-import { blogPages, changelogPage } from "./pages/journal.mjs";
+import { blogForAgents, blogPages, changelogPage } from "./pages/journal.mjs";
 import { pricingPage } from "./pages/pricing.mjs";
 import { APP, DEMO, MAIL, ORIGIN, STATUS, esc } from "./pages/shared.mjs";
 
@@ -94,6 +94,24 @@ function structured(page) {
     const url = `${ORIGIN}${page.path}`;
     graph.push({ "@type": page.docs ? "TechArticle" : "WebPage", "@id": url, url, name: page.og.title, description: page.description, isPartOf: { "@id": `${ORIGIN}/#site` }, primaryImageOfPage: { "@type": "ImageObject", url: page.og.url, width: 1200, height: 630 } });
   }
+  if (page.post) {
+    const url = `${ORIGIN}${page.path}`;
+    graph.push({
+      "@type": "BlogPosting",
+      "@id": `${url}#post`,
+      headline: page.post.headline,
+      description: page.description,
+      datePublished: page.post.date,
+      dateModified: page.post.date,
+      author: { "@type": "Person", name: "Nandishwar Singh", url: ORIGIN },
+      publisher: { "@id": `${ORIGIN}/#org` },
+      mainEntityOfPage: { "@id": url },
+      image: page.og?.url,
+      wordCount: page.post.words,
+      ...(page.post.keywords ? { keywords: page.post.keywords } : {}),
+      isPartOf: { "@type": "Blog", "@id": `${ORIGIN}/blog#blog`, name: "The MorphScreen blog", url: `${ORIGIN}/blog` },
+    });
+  }
   if (page.faq) {
     graph.push({ "@type": "FAQPage", "@id": `${ORIGIN}${page.path}#questions`, mainEntity: page.faq.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
   }
@@ -135,7 +153,7 @@ ${page.noindex ? `<meta name="robots" content="noindex">` : `<link rel="canonica
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${css.ui}">
 <link rel="stylesheet" href="${css.site}">
-${page.answer ? `<link rel="stylesheet" href="${css.answer}">\n` : ""}${page.lazyAnswer ? `<noscript><link rel="stylesheet" href="${css.answer}"></noscript>\n` : ""}${page.poster ? `<link rel="preload" as="image" href="${page.poster}" fetchpriority="high">\n` : ""}${page.docs ? `<link rel="stylesheet" href="${css.docs}">\n<script src="${docsJs}" defer></script>\n` : ""}${page.demo ? `<script src="${demoJs}" defer></script>\n` : ""}${page.feed ? `<link rel="alternate" type="application/rss+xml" title="${esc(page.feed.title)}" href="/${page.feed.file}">\n` : ""}<meta property="og:type" content="website">
+${page.answer ? `<link rel="stylesheet" href="${css.answer}">\n` : ""}${page.lazyAnswer ? `<noscript><link rel="stylesheet" href="${css.answer}"></noscript>\n` : ""}${page.poster ? `<link rel="preload" as="image" href="${page.poster}" fetchpriority="high">\n` : ""}${page.docs || page.article ? `<link rel="stylesheet" href="${css.docs}">\n<script src="${docsJs}" defer></script>\n` : ""}${page.demo ? `<script src="${demoJs}" defer></script>\n` : ""}${page.feed ? `<link rel="alternate" type="application/rss+xml" title="${esc(page.feed.title)}" href="/${page.feed.file}">\n` : ""}<meta property="og:type" content="website">
 <meta property="og:site_name" content="MorphScreen">
 <meta property="og:title" content="${esc(page.title)}">
 <meta property="og:description" content="${esc(page.description)}">
@@ -277,6 +295,14 @@ writeFileSync(join(dist, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 ${listed.map((p) => `  <url><loc>${ORIGIN}${p.path}</loc></url>`).join("\n")}
 </urlset>
 `);
+// The blog's posts in llms.txt and llms-full.txt, after the docs.
+{
+  const blog = blogForAgents();
+  if (blog.list) {
+    writeFileSync(join(dist, "llms.txt"), readFileSync(join(dist, "llms.txt"), "utf8") + blog.list);
+    writeFileSync(join(dist, "llms-full.txt"), `${readFileSync(join(dist, "llms-full.txt"), "utf8")}\n\n---\n\n${blog.full}`);
+  }
+}
 writeFileSync(join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
 // The dashboard's and the status page's cards, at addresses that don't change
 // (their pages are built elsewhere): drawn again when their words change.
