@@ -25,13 +25,13 @@ const HELP = `morphscreen ${version}: generative UI for any model (https://morph
   --json                    the result as JSON, for scripts and coding agents
 `;
 
+if (flag("--version") || flag("-v") || command === "version") {
+  console.log(version);
+  process.exit(0);
+}
 if (!command || flag("--help") || flag("-h")) {
   process.stdout.write(HELP);
   process.exit(command || flag("--help") || flag("-h") ? 0 : 1);
-}
-if (flag("--version") || command === "version") {
-  console.log(version);
-  process.exit(0);
 }
 
 if (command === "init") {

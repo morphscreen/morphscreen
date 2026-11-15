@@ -3,6 +3,15 @@ title: Next.js
 description: The App Router with the page rendered on the server and the answer drawn in a client component.
 ---
 
+One command sets it up: it installs the SDK, writes a route that keeps your key on the server and a chat page at `/morphscreen`, and never overwrites a file. Then `doctor` checks it all.
+
+```sh title="Terminal"
+npx morphscreen init
+npx morphscreen doctor
+```
+
+Or by hand, as the rest of this page does:
+
 ```sh pm
 npm install @morphscreen/web
 ```

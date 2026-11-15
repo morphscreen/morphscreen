@@ -155,4 +155,5 @@ test("the command: help, JSON for agents, and its exit codes", () => {
   }
   assert.equal(code, 1, "doctor fails with no SDK and no key");
   assert.match(execFileSync(process.execPath, [bin, "--help"], { encoding: "utf8" }), /npx morphscreen init/);
+  assert.match(execFileSync(process.execPath, [bin, "--version"], { encoding: "utf8" }), /^\d+\.\d+\.\d+\n$/);
 });

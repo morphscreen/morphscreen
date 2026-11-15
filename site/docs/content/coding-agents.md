@@ -5,6 +5,10 @@ description: Point Claude Code, Cursor, Codex or any coding agent at MorphScreen
 
 Every page of these docs is also plain Markdown, and the whole set is one file. Give your coding agent either, and it can write MorphScreen code from the real reference instead of guessing.
 
+## Set up and check, in one command each
+
+In a Next.js app with the App Router, `npx morphscreen init` installs the SDK, writes the server route and a chat page at `/morphscreen`, and leaves a place for the key. `npx morphscreen doctor --json` checks everything and gives a fix for each problem, as JSON your agent can read; it exits 1 while anything fails.
+
 ## The MorphScreen skill
 
 A skill that knows how to add MorphScreen to an app: when it fits, the pieces, the recipes for Next.js and React with Vite, your own components, and every mistake we've seen with its fix. In Claude Code:
