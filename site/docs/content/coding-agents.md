@@ -5,6 +5,17 @@ description: Point Claude Code, Cursor, Codex or any coding agent at MorphScreen
 
 Every page of these docs is also plain Markdown, and the whole set is one file. Give your coding agent either, and it can write MorphScreen code from the real reference instead of guessing.
 
+## The MorphScreen skill
+
+A skill that knows how to add MorphScreen to an app: when it fits, the pieces, the recipes for Next.js and React with Vite, your own components, and every mistake we've seen with its fix. In Claude Code:
+
+```sh title="Terminal"
+claude plugin marketplace add morphscreen/skills
+claude plugin install morphscreen@morphscreen
+```
+
+For Codex, copy `plugins/morphscreen/skills/morphscreen` from [github.com/morphscreen/skills](https://github.com/morphscreen/skills) into `~/.codex/skills/`. Then ask for what you want, like "add a chat to this app whose answers come back as charts and tables".
+
 ## The docs, for agents
 
 | What | Where |

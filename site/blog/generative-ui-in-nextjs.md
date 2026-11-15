@@ -136,6 +136,12 @@ export function Chat() {
 
 `connectAgent` holds the whole conversation: what the reader typed, each answer drawn as it streams, and the buttons, forms and quizzes in an answer sent back as the next turn. Your page itself can stay a server component that renders `<Chat />`.
 
+The answers need the SDK's stylesheet, once, in `app/layout.tsx`. Without it they come out as bare HTML:
+
+```ts title="app/layout.tsx"
+import "@morphscreen/web/morphscreen.css";
+```
+
 ## 4. Your own components
 
 The built-in ones (75 of them, in packs) cover a lot, but the point is usually your app's own pieces: a product card from your store, a booking slot, a ticket. You describe each one once in JSON, the model is told about it, every line that uses it is checked against that description while it streams, and your own React code draws it. [Custom components](https://morphscreen.com/docs/format/custom-components) has the whole thing.
