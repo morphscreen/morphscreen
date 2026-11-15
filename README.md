@@ -29,6 +29,9 @@ the model and has the same model repair any line that breaks a rule) is
 MorphScreen's paid service, with a free plan; its server isn't in here.
 Docs: https://morphscreen.com/docs
 
+For coding agents: https://morphscreen.com/llms.txt lists every docs page as
+Markdown, and https://morphscreen.com/llms-full.txt is the whole docs in one file.
+
 ## Use it
 
 ```sh
