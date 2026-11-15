@@ -189,6 +189,7 @@ p {
 }
 .bar__links a,
 .bar__signin {
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   min-height: 36px;
@@ -216,6 +217,12 @@ p {
   }
   .bar {
     padding-left: 14px;
+  }
+  .bar__links a {
+    padding: 0 8px;
+  }
+  .bar .btn--small {
+    padding: 0 10px;
   }
 }
 
@@ -920,6 +927,160 @@ main > .wrap > .section {
 @media (max-width: 960px) {
   .own__code {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* /try: the playground. The answers in a panel, the box under them; the
+   example prompts until the first one goes. A notice says what the
+   playground turned down, with a tint and a small dot, no stripe. */
+.try {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--msui-hairline);
+  border-radius: var(--msui-r-panel);
+  background-color: var(--msui-base);
+}
+.try__thread[hidden] {
+  display: none;
+}
+.try__thread {
+  min-width: 0;
+}
+.try__hint {
+  margin: 0 0 10px;
+  color: var(--msui-text-3);
+  font-size: 14px;
+}
+.try__examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.try__example {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--msui-hairline);
+  border-radius: 999px;
+  background-color: var(--msui-raised);
+  color: var(--msui-text-2);
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--msui-dur-fast) var(--msui-ease), color var(--msui-dur-fast) var(--msui-ease);
+}
+.try__example:hover:not(:disabled) {
+  background-color: var(--msui-control);
+  color: var(--msui-text);
+}
+.try__example:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+.try__notice {
+  padding: 14px 16px;
+  border-radius: var(--msui-r-control);
+  background-color: var(--msui-sky-tint);
+}
+.try__notice[hidden] {
+  display: none;
+}
+.try__notice-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--msui-text);
+  font-weight: 600;
+}
+.try__notice-title::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--msui-sky);
+}
+.try__notice-text {
+  margin: 6px 0 0 18px;
+  color: var(--msui-text-2);
+  font-size: 15px;
+}
+.try__notice-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0 18px;
+}
+.try__notice-ctas[hidden] {
+  display: none;
+}
+.try__form {
+  position: sticky;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--msui-hairline);
+  border-radius: var(--msui-r-control);
+  background-color: var(--msui-raised);
+}
+/* While the recordings question is on screen, the box stays in the page instead of under it. */
+body:has(#consent:not([hidden])) .try__form {
+  position: static;
+}
+.try__form:focus-within {
+  border-color: var(--msui-edge);
+}
+.try__form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: var(--msui-text);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+.try__form textarea:focus {
+  outline: none;
+}
+.try__form textarea::placeholder {
+  color: var(--msui-text-3);
+}
+.try__form textarea:disabled {
+  opacity: 0.5;
+}
+.try__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.try__meta {
+  flex: 1;
+  margin: 0;
+  color: var(--msui-text-3);
+}
+.try__restart[hidden] {
+  display: none;
+}
+.btn:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+@media (max-width: 640px) {
+  .try {
+    padding: 12px;
+    border-radius: var(--msui-r-card);
   }
 }
 

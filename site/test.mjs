@@ -28,6 +28,8 @@ const checker = readFileSync(join(here, "../bench/quality/check.js"), "utf8");
 // and each page with the security policy ops/site/Caddyfile.block gives its
 // path (less the https upgrade, as this server is plain http).
 const visits = [];
+const playground = [];
+const tryAnswer = readFileSync(join(here, "../bench/raw/deepseek-everyday-final/ours__ev10-sales__r1.txt"), "utf8");
 const types = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css", ".woff2": "font/woff2", ".svg": "image/svg+xml", ".png": "image/png", ".xml": "application/xml", ".txt": "text/plain", ".wasm": "application/wasm", ".json": "application/json" };
 // The public repository has no ops/: tools/export-oss.mjs writes the same policies there as site/headers.json.
 const caddy = join(here, "../ops/site/Caddyfile.block");
@@ -35,7 +37,7 @@ const policy = existsSync(caddy)
   ? Object.fromEntries([...readFileSync(caddy, "utf8").matchAll(/header @(\w+) \{\s*X-Frame-Options (\w+)\s*Content-Security-Policy "([^"]+)"/g)].map(([, name, frame, csp]) => [name, { "x-frame-options": frame, "content-security-policy": csp.replace("; upgrade-insecure-requests", "") }]))
   : JSON.parse(readFileSync(join(here, "headers.json"), "utf8"));
 if (!policy.pages || !policy.frames || !policy.openui || !policy.book) throw new Error("ops/site/Caddyfile.block: the pages', frames', OpenUI frame's and booking page's policies weren't all found");
-const headers = (path) => (path === "/demo/frames/openui.html" ? policy.openui : path.startsWith("/demo/frames/") ? policy.frames : path === "/book" ? policy.book : policy.pages);
+const headers = (path) => (path === "/demo/frames/openui.html" ? policy.openui : path.startsWith("/demo/frames/") ? policy.frames : path === "/book" ? policy.book : path === "/try" && policy.try ? policy.try : policy.pages);
 const file = (path) => {
   const f = join(dist, decodeURIComponent(path));
   if (existsSync(f) && extname(f) && statSync(f).isFile()) return f;
@@ -45,6 +47,31 @@ const file = (path) => {
 };
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, "http://x");
+  // The playground (/try): a recorded answer as an AG-UI run, and "full" when a prompt asks for it.
+  if (url.pathname === "/v1/playground/status") {
+    return res.writeHead(200, { "content-type": "application/json" }).end(JSON.stringify({ open: true, left: 5 - playground.length, resets_at: new Date(Math.ceil(Date.now() / 86_400_000) * 86_400_000).toISOString() }));
+  }
+  if (url.pathname === "/v1/playground") {
+    let raw = "";
+    for await (const c of req) raw += c;
+    const input = JSON.parse(raw);
+    const prompt = input.messages.at(-1).content;
+    if (/full/.test(prompt)) {
+      return res.writeHead(429, { "content-type": "application/json", "retry-after": "3600" }).end(JSON.stringify({ error: { code: 429, message: "Today's free quota is full.", type: "playground_full", metadata: { error_type: "rate_limit_exceeded", reason: "playground_full" } } }));
+    }
+    playground.push(prompt);
+    res.writeHead(200, { "content-type": "text/event-stream" });
+    const ev = (e) => res.write(`data: ${JSON.stringify(e)}\n\n`);
+    ev({ type: "RUN_STARTED", threadId: input.threadId, runId: input.runId });
+    ev({ type: "TEXT_MESSAGE_START", messageId: "m-answer", role: "assistant" });
+    for (let i = 0; i < tryAnswer.length; i += 48) {
+      ev({ type: "TEXT_MESSAGE_CONTENT", messageId: "m-answer", delta: tryAnswer.slice(i, i + 48) });
+      await wait(8);
+    }
+    ev({ type: "TEXT_MESSAGE_END", messageId: "m-answer" });
+    ev({ type: "RUN_FINISHED", threadId: input.threadId, runId: input.runId });
+    return res.end();
+  }
   if (url.pathname === "/v1/visit") {
     let raw = "";
     for await (const c of req) raw += c;
@@ -234,6 +261,41 @@ for (const width of [390, 760, 1280]) {
   }
   for (const e of errors) problems.push(`demo: ${e}`);
   await page.screenshot({ path: join(out, "demo-played.png") });
+  await page.close();
+}
+
+// The playground: an example prompt streams an answer into the thread, the
+// prompts left go down, and when the day's quota is full the page says so,
+// closes the box and takes the refused prompt back out.
+{
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1280, height: 900 });
+  await page.setRequestInterception(true);
+  page.on("request", (r) => (r.url().startsWith(base) ? r.continue() : r.abort()));
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (m) => (/Content.Security.Policy/i.test(m.text()) || (m.type() === "error" && !/429|\/v1\/visit/.test(m.text() + (m.location()?.url ?? "")))) && errors.push(m.text().slice(0, 160)));
+  playground.length = 0;
+  await page.goto(`${base}/try`, { waitUntil: "load" });
+  await page.waitForFunction(() => /5 free prompts left/.test(document.getElementById("try-meta").textContent), { timeout: 20_000 }).catch(() => problems.push("try: the prompts left never showed"));
+  await page.click(".try__example");
+  const drawn = await page.waitForFunction(() => document.querySelector("#try-thread .ms-answer h1, #try-thread .ms-answer h2") && document.getElementById("try-meta").textContent.includes("4 free"), { timeout: 30_000 }).then(() => true, () => false);
+  if (!drawn) problems.push(`try: the example's answer wasn't drawn (${await page.$eval("#try-thread", (t) => t.innerText.slice(0, 120))})`);
+  if (!(await page.$eval("#try-start", (e) => e.hidden))) problems.push("try: the examples stayed after the first prompt");
+  await page.type("#try-prompt", "is it full yet");
+  await page.click("#try-send");
+  const closed = await page.waitForFunction(() => !document.getElementById("try-notice").hidden, { timeout: 10_000 }).then(() => true, () => false);
+  if (!closed) problems.push("try: no notice when the quota was full");
+  else {
+    const n = await page.evaluate(() => ({ title: document.getElementById("try-notice-title").textContent, ctas: !document.getElementById("try-notice-ctas").hidden, box: document.getElementById("try-prompt").disabled, thread: document.getElementById("try-thread").innerText, sdk: [...document.querySelectorAll("#try-thread .ms-run-note")].some((e) => !e.hidden) }));
+    if (n.title !== "Today's free quota is full") problems.push(`try: the notice said "${n.title}"`);
+    if (!n.ctas || !n.box) problems.push("try: the full notice didn't offer a key or close the box");
+    if (n.thread.includes("is it full yet")) problems.push("try: the refused prompt stayed in the thread");
+    if (n.sdk) problems.push("try: the SDK's own error note showed beside ours");
+    if (!/ev|sales|\w/.test(n.thread)) problems.push("try: the first answer went with the refused prompt");
+  }
+  await page.screenshot({ path: join(out, "try-full.png"), fullPage: true });
+  for (const e of errors) problems.push(`try: ${e}`);
   await page.close();
 }
 

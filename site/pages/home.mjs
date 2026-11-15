@@ -113,8 +113,8 @@ export function home({ plans, board, families, css }) {
       <h1 id="hero-title" class="stage__title"><span>Let your model answer</span> <span>with real UI.</span></h1>
       <p class="stage__sub">Cards, charts, photos, quizzes, forms and your own components, drawn while the answer streams. Every line is checked against the components your app allows, and fixed by the same model when it breaks one.</p>
       <div class="stage__ctas">
-        <a class="btn btn--primary btn--large" href="${APP}/signin">Get a free key</a>
-        <a class="stage__ghost" href="${DEMO}">Book a 30-minute demo</a>
+        <a class="btn btn--primary btn--large" href="/try">Try it, no sign-up</a>
+        <a class="btn btn--large" href="${APP}/signin">Get a free key</a>
       </div>
       <div class="install">
         <code class="install__cmd"><span class="install__sign" aria-hidden="true">$</span> npm install @morphscreen/web</code>

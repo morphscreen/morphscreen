@@ -19,6 +19,7 @@ import { demoPage } from "./pages/demo.mjs";
 import { home } from "./pages/home.mjs";
 import { blogForAgents, blogPages, changelogPage } from "./pages/journal.mjs";
 import { pricingPage } from "./pages/pricing.mjs";
+import { tryPage } from "./pages/try.mjs";
 import { APP, DEMO, MAIL, ORIGIN, STATUS, esc } from "./pages/shared.mjs";
 
 const here = import.meta.dirname;
@@ -72,6 +73,7 @@ const MARK = `<svg viewBox="0 0 280 200" aria-hidden="true" focusable="false"><p
 
 const REPO = "https://github.com/morphscreen/morphscreen";
 const NAV = [
+  ["/try", "Try it", true],
   ["/docs", "Docs", true],
   ["/pricing", "Pricing"],
   ["/benchmark", "Benchmark"],
@@ -170,7 +172,7 @@ ${page.noindex ? `<meta name="robots" content="noindex">` : `<link rel="canonica
 <link rel="preload" href="/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${css.ui}">
 <link rel="stylesheet" href="${css.site}">
-${page.answer ? `<link rel="stylesheet" href="${css.answer}">\n` : ""}${page.lazyAnswer ? `<noscript><link rel="stylesheet" href="${css.answer}"></noscript>\n` : ""}${page.poster ? `<link rel="preload" as="image" href="${page.poster}" fetchpriority="high">\n` : ""}${page.docs || page.article ? `<link rel="stylesheet" href="${css.docs}">\n<script src="${docsJs}" defer></script>\n` : ""}${page.demo ? `<script src="${demoJs}" defer></script>\n` : ""}${page.feed ? `<link rel="alternate" type="application/rss+xml" title="${esc(page.feed.title)}" href="/${page.feed.file}">\n` : ""}<meta property="og:type" content="website">
+${page.answer ? `<link rel="stylesheet" href="${css.answer}">\n` : ""}${page.lazyAnswer ? `<noscript><link rel="stylesheet" href="${css.answer}"></noscript>\n` : ""}${page.poster ? `<link rel="preload" as="image" href="${page.poster}" fetchpriority="high">\n` : ""}${page.docs || page.article ? `<link rel="stylesheet" href="${css.docs}">\n<script src="${docsJs}" defer></script>\n` : ""}${page.demo ? `<script src="${demoJs}" defer></script>\n` : ""}${page.module ? `<script type="module" src="${page.module}"></script>\n` : ""}${page.feed ? `<link rel="alternate" type="application/rss+xml" title="${esc(page.feed.title)}" href="/${page.feed.file}">\n` : ""}<meta property="og:type" content="website">
 <meta property="og:site_name" content="MorphScreen">
 <meta property="og:title" content="${esc(page.title)}">
 <meta property="og:description" content="${esc(page.description)}">
@@ -242,6 +244,7 @@ const pages = [
   compareOpenUI({ board }),
   benchmarkPage({ board, dist }),
   await demoPage({ dist, css }),
+  await tryPage({ dist, app: APP }),
   ...["terms.html", "privacy.html", "refunds.html", "delivery.html", "contact.html", "subprocessors.html", "security.html", "book.html", "404.html"].map(textPage),
   changelogPage(),
   ...blogPages(),

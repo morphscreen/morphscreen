@@ -1443,6 +1443,30 @@
             "description": "When links come back, while `paused`."
           }
         }
+      },
+      "PlaygroundStatus": {
+        "type": "object",
+        "required": [
+          "open",
+          "left",
+          "resets_at"
+        ],
+        "properties": {
+          "open": {
+            "type": "boolean",
+            "description": "Whether today's free quota has room for a prompt."
+          },
+          "left": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Prompts this address has left today."
+          },
+          "resets_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the day's quota and prompts start over (midnight UTC)."
+          }
+        }
       }
     },
     "responses": {
@@ -1937,6 +1961,78 @@
         "responses": {
           "204": {
             "description": "Counted, or not counted: the answer is the same."
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          }
+        }
+      }
+    },
+    "/v1/playground": {
+      "post": {
+        "operationId": "playground",
+        "summary": "A prompt from anyone, without an account: the playground at morphscreen.com/try",
+        "description": "An AG-UI run (protocol 1.0) on the model included on paid plans, on our key, with every pack, no photos and repair on. No key of any kind: it's held instead to $0.50 a UTC day on our key for every visitor together (past it, `playground_full`: \"Today's free quota is full\" until midnight UTC), 5 prompts a day from one address (`playground_prompts_used`), and a few runs at once (`playground_busy`). Only what a reader and the answers wrote, as text: a prompt of at most 1,000 characters, at most 12 messages and 12,000 characters in all, an answer of at most 3,000 tokens. Every 429 carries Retry-After.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunAgentInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Server-sent events: AG-UI events, as /v1/ui sends them.",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                },
+                "x-event-schema": {
+                  "$ref": "#/components/schemas/AguiEvent"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "413": {
+            "$ref": "#/components/responses/TooLarge"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooMany"
+          },
+          "502": {
+            "$ref": "#/components/responses/BadGateway"
+          },
+          "503": {
+            "$ref": "#/components/responses/Unavailable"
+          },
+          "504": {
+            "$ref": "#/components/responses/GatewayTimeout"
+          }
+        }
+      }
+    },
+    "/v1/playground/status": {
+      "get": {
+        "operationId": "playgroundStatus",
+        "summary": "Whether a prompt can go to the playground now, and how many are left today",
+        "description": "For the address asking. `open` is false once the day's budget is spent or our key is low; both start over at `resets_at`, midnight UTC.",
+        "responses": {
+          "200": {
+            "description": "The playground today",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlaygroundStatus"
+                }
+              }
+            }
           },
           "503": {
             "$ref": "#/components/responses/Unavailable"
